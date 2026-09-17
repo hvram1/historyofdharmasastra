@@ -58,63 +58,6 @@
 })();
 </script>
 
-<script>
-(function(){
-  var R = {ytOrder:null, calls:[], errors:[], worstOverflow:0, worstAt:null, hashes:{}};
-  window.__R = R;
-  window.addEventListener('error', function(e){
-    R.errors.push(String(e.message) + ' @' + (e.lineno || '?'));
-  });
-  // The append is synchronous and adjacent to the callback's definition, so
-  // this is the only moment at which their order can be observed. A
-  // MutationObserver cannot see it -- it fires after both have run.
-  var origAppend = document.head.appendChild.bind(document.head);
-  document.head.appendChild = function(n){
-    if (n && n.tagName === 'SCRIPT' && /iframe_api/.test(n.src || '')) {
-      // STICKY FALSE. The first version of this recorded only the latest
-      // append, so a page that requested the API early and then requested it
-      // again after defining the callback reported "fine" -- the mutation test
-      // with an injected race passed, which is the one outcome a regression
-      // check must never produce. Any append before the callback exists is the
-      // fault, whatever happens afterwards.
-      var defined = (typeof window.onYouTubeIframeAPIReady === 'function');
-      R.ytOrder = (R.ytOrder === null) ? defined : (R.ytOrder && defined);
-      setTimeout(function(){
-        if (typeof window.onYouTubeIframeAPIReady === 'function') {
-          try { window.onYouTubeIframeAPIReady(); }
-          catch(e){ R.errors.push('onYouTubeIframeAPIReady: ' + e.message); }
-        }
-      }, 0);
-      return n;                      // never actually load YouTube
-    }
-    return origAppend(n);
-  };
-  window.YT = {
-    PlayerState:{UNSTARTED:-1, ENDED:0, PLAYING:1, PAUSED:2, BUFFERING:3, CUED:5},
-    Player: function(el, opts){
-      var self = this;
-      this.loadVideoById = function(o){
-        R.calls.push({fn:'loadVideoById', v:(o&&o.videoId)||null, at:(o&&o.startSeconds)||0}); };
-      this.cueVideoById = function(o){
-        R.calls.push({fn:'cueVideoById', v:(o&&o.videoId)||null, at:(o&&o.startSeconds)||0}); };
-      this.seekTo = function(t){ R.calls.push({fn:'seekTo', v:null, at:t}); };
-      this.playVideo = function(){ R.calls.push({fn:'playVideo', v:null, at:null}); };
-      this.pauseVideo = function(){ R.calls.push({fn:'pauseVideo', v:null, at:null}); };
-      this.stopVideo=function(){};
-      this.getCurrentTime=function(){return 0;}; this.getPlayerState=function(){return 2;};
-      this.getDuration=function(){return 3600;}; this.destroy=function(){};
-      this.getIframe=function(){return document.createElement('iframe');};
-      this.addEventListener=function(){}; this.removeEventListener=function(){};
-      setTimeout(function(){
-        if (opts && opts.events && opts.events.onReady) {
-          try { opts.events.onReady({target:self}); } catch(e){}
-        }
-      }, 0);
-    }
-  };
-})();
-</script>
-
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -142,8 +85,8 @@
           crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Site CSS -->
-    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/fonts.css?v=1.2">
-    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/navbar.css?v=2.4">
+    <link rel="stylesheet" href="https://sanatana.in/mahabharata/public/css/fonts.css?v=1.2">
+    <link rel="stylesheet" href="https://sanatana.in/mahabharata/public/css/navbar.css?v=2.4">
 
     <title>Manusmṛti — References in History of Dharmaśāstra</title>
     <style>
@@ -965,6 +908,15 @@
        (a long unbroken verse reference) scrolls inside the table's own box
        instead of scrolling the page. */
     .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    /* Found by matching the verse, not by trusting its number. `at` is the
+       source Kane names; `also` is somewhere else printing the same words,
+       which is a true match and a false citation -- so they never look alike. */
+    .corpus { font-size: 0.72rem; margin-top: 5px; padding-left: 8px;
+        border-left: 2px solid var(--saffron); }
+    .corpus.also { border-left-color: var(--rule, #ddd); opacity: .8;
+        font-style: italic; }
+    .corpus a { color: var(--indigo); text-decoration: none; }
+    .corpus a:hover { text-decoration: underline; }
     @media (max-width: 700px) {
         .ref-table { font-size: 0.85rem; }
         .ref-table th, .ref-table td { padding: 8px 6px; }
@@ -992,7 +944,7 @@
 </head>
 <body>
     
-    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mbta/">
+    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mahabharata/">
       <div class="container-fluid">&emsp;&emsp;
       <a href="../index.html" class="navbar-brand" style="text-decoration:none;">
         <span class="devanagari ms-3" style="font-size:1.5rem; color:var(--saffron); font-weight:700;">धर्मशास्त्रम्</span>
@@ -1012,7 +964,7 @@
                 <a class="nav-link fs-5 active" href="../index.html">खण्डाः</a>
             </li>&nbsp;
             <li class="nav-item">
-                <a class="nav-link fs-5" href="https://sanatana.in/mbta/">महाभारतम्</a>
+                <a class="nav-link fs-5" href="https://sanatana.in/mahabharata/">महाभारतम्</a>
             </li>&nbsp;
             <li class="nav-item">
                 <a class="nav-link fs-5" href="https://sanatana.in">सनातनम्</a>
@@ -1468,7 +1420,7 @@
 
         <tr id="II.10">
             <td class="verse-ref">II.10</td>
-            <td class="verse-text"><div class="kane-sa" lang="sa">श्रुतिस्तु वेदो विज्ञेयो धर्मशास्त्रं तु वै स्मृतिः ।</div><div class="kane-note">मनु II. 10.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-1/30-the-smritis.html#fn-30-the-smritis-1">vol-1-part-1 §30-the-smritis</a></div></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">श्रुतिस्तु वेदो विज्ञेयो धर्मशास्त्रं तु वै स्मृतिः ।</div><div class="kane-note">मनु II. 10.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-1/30-the-smritis.html#fn-30-the-smritis-1">vol-1-part-1 §30-the-smritis</a></div><div class="corpus also" title="matched on 45 characters of the verse itself, not on its number">the same words stand at १ पर्व १ (ब्रह्मपर्व) 7.55</div></td>
             <td class="verse-locs"><a href="../vol-1-part-1/30-the-smritis.html#p-30-the-smritis-3">vol-1-part-1 §30-the-smritis</a> · <a href="../vol-1-part-1/61-vishvarūpa.html#p-61-vishvarūpa-4">vol-1-part-1 §61-vishvarūpa</a> · <a href="../vol-3/chapter-xxxiii-customs-and-dharmashastra-works.html#p-chapter-xxxiii-customs-and-dharmashastra-works-11">vol-3 §chapter-xxxiii-customs-and-dharmashastra-works</a> · <a href="../vol-3/chapter-xxxiii-customs-and-dharmashastra-works.html#p-chapter-xxxiii-customs-and-dharmashastra-works-12">vol-3 §chapter-xxxiii-customs-and-dharmashastra-works</a> · <a href="../vol-5-part-2/chapter-xxix-some-fundamental-doctrines-of-pūrvamīmāmsā.html#p-chapter-xxix-some-fundamental-doctrines-of-pūrvamīmāmsā-70">vol-5-part-2 §chapter-xxix-some-fundamental-doctrines-of-pūrvamīmāmsā</a></td>
             <td class="verse-context"><small>...e frequent word is Dharmaśāstra, though Manu (II. 10) says ‘Smṛti is Dharmaśāstra.’ On Pāṇ. I...</small></td>
         </tr>
@@ -1944,7 +1896,7 @@
 
         <tr id="II.74">
             <td class="verse-ref">II.74</td>
-            <td class="verse-text"><div class="kane-sa" lang="sa">व्याहृतीर्विद्वातः पादादिवन्तेषु वा तदर्थर्चयेरुत्तमानां कृत्स्नायाम् । आप . गृ . 11. 11; on which सुदर्शन says ‘ ओं भूरस्तत्सवितुर्वरेण्यम् । ओं भुवः भर्गो देवस्य धीमहि । ओं स्वः धियो यो नः प्रचोदयात् । ओं सुवः तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि धियो यो नः प्रचोदयात् । this is one method ; another is to put the vyāhṛtis at the end e. g. ओं तत्सवितुर्वरेण्यं भूः । ओं भर्गो देवस्य धीमहि भुवः । ओं धियो यो नः प्रचोदयात् स्वः । ओं तत्सवितुर्व ... धीमहि भूः । ओं धियो यो नः प्रचोदयात् भुवः । ओं तत्सवितु ... यात् सुवः ॥ compare Bhār. gr. I. 9. बौ . गृ . II. 5. 40 is the same as आप . गृ . II. 11. स्वः is often pronounced as सुवः . ‘ ओमिति ब्रह्म । ओमितीदं सर्वम् । ... ओमिति ब्राह्मणः प्रवक्ष्याब्राह्म महाप्राप्नोमवानीति । तै . उ . I. 8 योगसूत्र I. 27 declares ‘ तस्य वाचक्ः प्रणवः ’ ओंकारः सर्ववेदसारं तस्माद् ब्रह्मप्येवमाय एनद्धि प्रतिपद्येत । आप . धृ . सू . I. 4. 13. 6. मेघा० on</div><div class="kane-note">मनु II. 74 ‘ सर्वब्रह्मग्रहन नस्यफनमित्यधिमाषापर्म यथा स्यात् । ... अतो ह्यसमन्जपजशाब्दाद्वचनचयादीनामारभे नास्ति प्रणवोऽन्यञ्चापि उधारणार्थ वैदिकवाक्यमाद्याहार । In the माण्डूक्योपनिषद् (12) and in गौडपाद 's कारिका (I. 24–29) ओंकार is identified with the supreme Brahma.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-vii-upanayana.html#fn-chapter-vii-upanayana-100">vol-2-part-1 §chapter-vii-upanayana</a></div></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">व्याहृतीर्विद्वातः पादादिवन्तेषु वा तदर्थर्चयेरुत्तमानां कृत्स्नायाम् । आप . गृ . 11. 11; on which सुदर्शन says ‘ ओं भूरस्तत्सवितुर्वरेण्यम् । ओं भुवः भर्गो देवस्य धीमहि । ओं स्वः धियो यो नः प्रचोदयात् । ओं सुवः तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि धियो यो नः प्रचोदयात् । this is one method ; another is to put the vyāhṛtis at the end e. g. ओं तत्सवितुर्वरेण्यं भूः । ओं भर्गो देवस्य धीमहि भुवः । ओं धियो यो नः प्रचोदयात् स्वः । ओं तत्सवितुर्व ... धीमहि भूः । ओं धियो यो नः प्रचोदयात् भुवः । ओं तत्सवितु ... यात् सुवः ॥ compare Bhār. gr. I. 9. बौ . गृ . II. 5. 40 is the same as आप . गृ . II. 11. स्वः is often pronounced as सुवः . ‘ ओमिति ब्रह्म । ओमितीदं सर्वम् । ... ओमिति ब्राह्मणः प्रवक्ष्याब्राह्म महाप्राप्नोमवानीति । तै . उ . I. 8 योगसूत्र I. 27 declares ‘ तस्य वाचक्ः प्रणवः ’ ओंकारः सर्ववेदसारं तस्माद् ब्रह्मप्येवमाय एनद्धि प्रतिपद्येत । आप . धृ . सू . I. 4. 13. 6. मेघा० on</div><div class="kane-note">मनु II. 74 ‘ सर्वब्रह्मग्रहन नस्यफनमित्यधिमाषापर्म यथा स्यात् । ... अतो ह्यसमन्जपजशाब्दाद्वचनचयादीनामारभे नास्ति प्रणवोऽन्यञ्चापि उधारणार्थ वैदिकवाक्यमाद्याहार । In the माण्डूक्योपनिषद् (12) and in गौडपाद 's कारिका (I. 24–29) ओंकार is identified with the supreme Brahma.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-vii-upanayana.html#fn-chapter-vii-upanayana-100">vol-2-part-1 §chapter-vii-upanayana</a></div><div class="corpus also" title="matched on 49 characters of the verse itself, not on its number">the same words stand at <a href="https://yajurveda.sanatana.in/prasna/1/5" target="_blank" rel="noopener">तैत्तिरीयसंहिता 1.5.6.4 →</a></div></td>
             <td class="verse-locs"><a href="../vol-2-part-1/chapter-vii-upanayana.html#p-chapter-vii-upanayana-36">vol-2-part-1 §chapter-vii-upanayana</a> · <a href="../vol-2-part-1/chapter-vii-upanayana.html#p-chapter-vii-upanayana-36">vol-2-part-1 §chapter-vii-upanayana</a></td>
             <td class="verse-context"><small>...Prajāpati as the essence. Medhātithi on Manu (II. 74) says that 'om must be uttered at the be...</small></td>
         </tr>
@@ -2175,7 +2127,7 @@
 
         <tr id="II.136">
             <td class="verse-ref">II.136</td>
-            <td class="verse-text"><div class="kane-sa" lang="sa">आचार्यवद् गृहस्थोऽपि माननीया बहुश्रुतः । अभ्यागतान्गुणनां च परा विद्येति माननम् ॥ वित्तं बन्धुर्वयः कर्म विद्या भवति पञ्चमी । एतानि मान्यास्थानानि गरीयो यदुत्तरम् ॥ The latter is</div><div class="kane-note">मनु II. 136 and the former summa- rises मनु III. 77–80. H. D. —44</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-1/31-the-manusmriti.html#fn-31-the-manusmriti-55">vol-1-part-1 §31-the-manusmriti</a></div></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">आचार्यवद् गृहस्थोऽपि माननीया बहुश्रुतः । अभ्यागतान्गुणनां च परा विद्येति माननम् ॥ वित्तं बन्धुर्वयः कर्म विद्या भवति पञ्चमी । एतानि मान्यास्थानानि गरीयो यदुत्तरम् ॥ The latter is</div><div class="kane-note">मनु II. 136 and the former summa- rises मनु III. 77–80. H. D. —44</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-1/31-the-manusmriti.html#fn-31-the-manusmriti-55">vol-1-part-1 §31-the-manusmriti</a></div><div class="corpus also" title="matched on 46 characters of the verse itself, not on its number">the same words stand at १ पर्व १ (ब्रह्मपर्व) 4.70</div></td>
             <td class="verse-locs"><a href="../vol-1-part-1/31-the-manusmriti.html#p-31-the-manusmriti-27">vol-1-part-1 §31-the-manusmriti</a> · <a href="../vol-2-part-1/chapter-vii-upanayana.html#p-chapter-vii-upanayana-88">vol-2-part-1 §chapter-vii-upanayana</a></td>
             <td class="verse-context"><small>...a&gt;&lt;/sup&gt; one of which is identical with Manu (II. 136) and the other is a summary of Manu (III...</small></td>
         </tr>
@@ -3211,7 +3163,7 @@
 
         <tr id="III.121">
             <td class="verse-ref">III.121</td>
-            <td class="verse-text"><div class="kane-sa" lang="sa">मायातितिः शुनिश्चयुभर्ता श्राद्धक्रियारतः । नमस्कारेण मन्त्रेण पञ्चयज्ञाच हापयेत् अनुतिष्ठेत् ॥ याज्ञ . I. 121. The coṃ of विश्वरूप says : श्राद्धकर्म चामन्त्रकं यथाकालं कुर्यात् , अन्वहं पञ्चमहायज्ञान् । ईयांतुं विशेषः। नमस्कारमात्रमेव प्रयु श्लीत न देवताभिधानानि। मन्त्रतया च प्रतिषेधात् देवोदेशेन त्यागः कर्तव्य एव। आहे तु देवतापदान्यपि मन्त्रमात्रादिषेधात् प्रवर्त्तन्ते । The मिताक्षरा commentary says श्राद्धानि निलयैमिलकाम्यानि , क्रियाः खातक कृतप्रदशषितेषु रथः । नम इत्यनेन मन्त्रेण पूर्वात्कान् पञ्चमहायज्ञान् अहरर्ह हापयेत् अनुतिष्ठेत् नमस्कारमन्त्रे च केचित् – देवताभ्यः पितृभ्यश्च महायोगिभ्य एव च। नमः स्वाहायै स्वधायै नित्यमेव नमो नमः। इति वर्णयन्ति नम इत्यन्वे । मेषातिथि on</div><div class="kane-note">मनु III. 121 remarks (probably following Gautama) ‘ नमस्कारोऽनुज्ञातोऽस्य न देवता पदम् ’.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-2/107-raghunandana.html#fn-107-raghunandana-9">vol-1-part-2 §107-raghunandana</a></div></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">मायातितिः शुनिश्चयुभर्ता श्राद्धक्रियारतः । नमस्कारेण मन्त्रेण पञ्चयज्ञाच हापयेत् अनुतिष्ठेत् ॥ याज्ञ . I. 121. The coṃ of विश्वरूप says : श्राद्धकर्म चामन्त्रकं यथाकालं कुर्यात् , अन्वहं पञ्चमहायज्ञान् । ईयांतुं विशेषः। नमस्कारमात्रमेव प्रयु श्लीत न देवताभिधानानि। मन्त्रतया च प्रतिषेधात् देवोदेशेन त्यागः कर्तव्य एव। आहे तु देवतापदान्यपि मन्त्रमात्रादिषेधात् प्रवर्त्तन्ते । The मिताक्षरा commentary says श्राद्धानि निलयैमिलकाम्यानि , क्रियाः खातक कृतप्रदशषितेषु रथः । नम इत्यनेन मन्त्रेण पूर्वात्कान् पञ्चमहायज्ञान् अहरर्ह हापयेत् अनुतिष्ठेत् नमस्कारमन्त्रे च केचित् – देवताभ्यः पितृभ्यश्च महायोगिभ्य एव च। नमः स्वाहायै स्वधायै नित्यमेव नमो नमः। इति वर्णयन्ति नम इत्यन्वे । मेषातिथि on</div><div class="kane-note">मनु III. 121 remarks (probably following Gautama) ‘ नमस्कारोऽनुज्ञातोऽस्य न देवता पदम् ’.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-2/107-raghunandana.html#fn-107-raghunandana-9">vol-1-part-2 §107-raghunandana</a></div><div class="corpus also" title="matched on 64 characters of the verse itself, not on its number">the same words stand at प्रभासक्षेत्रमाहात्म्यम् 206.111</div></td>
             <td class="verse-locs"><a href="../vol-2-part-1/chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage.html#p-chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage-6">vol-2-part-1 §chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage</a> · <a href="../vol-2-part-2/chapter-xx-vaishvadeva.html#p-chapter-xx-vaishvadeva-2">vol-2-part-2 §chapter-xx-vaishvadeva</a> · <a href="../vol-2-part-2/chapter-xx-vaishvadeva.html#p-chapter-xx-vaishvadeva-8">vol-2-part-2 §chapter-xx-vaishvadeva</a></td>
             <td class="verse-context"><small>..." id="fnref-polyandry-11"&gt;11&lt;/a&gt;&lt;/sup&gt;. Manu (III. 121) says that from food cooked in the eveni...</small></td>
         </tr>
@@ -3512,7 +3464,7 @@
 
         <tr id="III.206">
             <td class="verse-ref">III.206</td>
-            <td class="verse-text"><div class="kane-sa" lang="sa">आ ब्रह्मन् ब्राह्मणो ब्रह्मवर्चसी जायतामास्मिन् राष्ट्रे राजन्य इषव्यः शूरौ महारथो जायतां दोग्ध्री धेनुर्वोढानड्वानाशुः सप्तिः पुरन्धिर्योषा जिष्णु रथेष्टाः सभेयो युवास्य यजमान - स्य वीरो जायतां निकामे नः पर्जन्यो वर्षतु फलिन्यो न ओषधयः पच्यन्तां योगक्षेमो नः कल्पताम्। तै . सं . VII. 5. 18, तै . ब्रा . III. 8. 13 (where this is explained), बाज सं . 22. Vide हेमाद्रि (on श्रा p 1159). 919 a दत्रोपज्ञा। गोमयेनोपलेप्य भूमिमार्जनं भाण्डशौचं ब्राह्मणान् निम्नन्त्रयेत्। स्मृतिरत्न ( श्राद्ध ) p. 409, आ . प्र p. 108, ब्रह्मवर्चावि कर्तव्यं यत् कर्तमीति जानता। स्थानोपलेपनं चैव कृत्वा विभावं निम्नन्त्रयेत्। नृ . च . ( श्रा ) p. 403, आ क्रि . कौ . p. 76, हेमाद्रि (on श्रा ) p 1150, आहुतत्त्व p 192. हेमाद्रि explains ‘ आदिशब्दश्च प्रकारवचनः। तेन श्राद्धोपयोगिसंभारसंपादभूमेलनोपशोधादि गृह्यते ’,</div><div class="kane-src"><span class="tier sole" title="the only Sanskrit on the only passage citing it — inferred">sole</span> <a href="../vol-4/chapter-ix-shrāddha.html#fn-chapter-ix-shrāddha-177">vol-4 §chapter-ix-shrāddha</a></div></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">आ ब्रह्मन् ब्राह्मणो ब्रह्मवर्चसी जायतामास्मिन् राष्ट्रे राजन्य इषव्यः शूरौ महारथो जायतां दोग्ध्री धेनुर्वोढानड्वानाशुः सप्तिः पुरन्धिर्योषा जिष्णु रथेष्टाः सभेयो युवास्य यजमान - स्य वीरो जायतां निकामे नः पर्जन्यो वर्षतु फलिन्यो न ओषधयः पच्यन्तां योगक्षेमो नः कल्पताम्। तै . सं . VII. 5. 18, तै . ब्रा . III. 8. 13 (where this is explained), बाज सं . 22. Vide हेमाद्रि (on श्रा p 1159). 919 a दत्रोपज्ञा। गोमयेनोपलेप्य भूमिमार्जनं भाण्डशौचं ब्राह्मणान् निम्नन्त्रयेत्। स्मृतिरत्न ( श्राद्ध ) p. 409, आ . प्र p. 108, ब्रह्मवर्चावि कर्तव्यं यत् कर्तमीति जानता। स्थानोपलेपनं चैव कृत्वा विभावं निम्नन्त्रयेत्। नृ . च . ( श्रा ) p. 403, आ क्रि . कौ . p. 76, हेमाद्रि (on श्रा ) p 1150, आहुतत्त्व p 192. हेमाद्रि explains ‘ आदिशब्दश्च प्रकारवचनः। तेन श्राद्धोपयोगिसंभारसंपादभूमेलनोपशोधादि गृह्यते ’,</div><div class="kane-src"><span class="tier sole" title="the only Sanskrit on the only passage citing it — inferred">sole</span> <a href="../vol-4/chapter-ix-shrāddha.html#fn-chapter-ix-shrāddha-177">vol-4 §chapter-ix-shrāddha</a></div><div class="corpus also" title="matched on 66 characters of the verse itself, not on its number">the same words stand at <a href="https://yajurveda.sanatana.in/prasna/7/5" target="_blank" rel="noopener">तैत्तिरीयसंहिता 7.5.18.1 →</a></div></td>
             <td class="verse-locs"><a href="../vol-4/chapter-ix-shrāddha.html#p-chapter-ix-shrāddha-67">vol-4 §chapter-ix-shrāddha</a></td>
             <td class="verse-context"><small>...this and for the washing of the clotheṣ Manu III. 206 also requires that the spot where śrādd...</small></td>
         </tr>
@@ -4198,7 +4150,7 @@
 
         <tr id="4.80">
             <td class="verse-ref">4.80</td>
-            <td class="verse-text"><div class="kane-sa" lang="sa">अथापि यमगीताश्लोकानुदाहरन्ति । स्मशानमेतत्तत्प्रत्यक्षं ये शूद्राः पापचारिणः । तस्माच्छूद्रसमीपे तु नाध्येतव्यं कदाचन ॥ न शद्राय मतिं दद्यान्नोच्छिष्टं न हविष्कृतम् । न चास्योपदिशेद्धर्मं न चास्य व्रतमादिशेत् ॥ यथास्योपदिशेद्धर्मं यथास्य व्रतमादिशेत् । सोऽसंयृतं तमो घोरं सह तेन प्रपद्यते ॥ वसिष्ठ 18. 13-15. The last two are almost the same as</div><div class="kane-note">मनु IV. 80-81 and the first is a paraphrase of आप . श्रौ . ‘ पशुषु वा एतच्छूशाने यच्छूद्रः । तस्माच्छूद्रसमीपे नाध्येतव्यम् ’ . नाघदोपोऽसि राज्ञां वै व्रतिनां न च सत्रणाम् । ऐन्दस्थानमुपासीना ब्रह्मभूता हि ते सदा ॥ वसिष्ठ 19. 48 and मनु V. 93. ‘ अथाप्युदाहरन्ति । अथ चेन्मन्त्रविद्युक्तः शारीरैः पङ्क्तिदूषणैः । अदुष्टयं तं यमः प्राह पङ्क्तिपावन एव सः । वसिष्ठ ॥ 11. 20; vide बृहद्यम 3. 41. धूर्त वा यदि वा तैलं विप्रो नाद्यान्नखशयुतम् । यमस्तदशुचिं प्राह तुल्यं गोमांसभक्षणेः ॥ वसिष्ठ 14. 30.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-1/50-yama.html#fn-50-yama-5">vol-1-part-1 §50-yama</a></div></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">अथापि यमगीताश्लोकानुदाहरन्ति । स्मशानमेतत्तत्प्रत्यक्षं ये शूद्राः पापचारिणः । तस्माच्छूद्रसमीपे तु नाध्येतव्यं कदाचन ॥ न शद्राय मतिं दद्यान्नोच्छिष्टं न हविष्कृतम् । न चास्योपदिशेद्धर्मं न चास्य व्रतमादिशेत् ॥ यथास्योपदिशेद्धर्मं यथास्य व्रतमादिशेत् । सोऽसंयृतं तमो घोरं सह तेन प्रपद्यते ॥ वसिष्ठ 18. 13-15. The last two are almost the same as</div><div class="kane-note">मनु IV. 80-81 and the first is a paraphrase of आप . श्रौ . ‘ पशुषु वा एतच्छूशाने यच्छूद्रः । तस्माच्छूद्रसमीपे नाध्येतव्यम् ’ . नाघदोपोऽसि राज्ञां वै व्रतिनां न च सत्रणाम् । ऐन्दस्थानमुपासीना ब्रह्मभूता हि ते सदा ॥ वसिष्ठ 19. 48 and मनु V. 93. ‘ अथाप्युदाहरन्ति । अथ चेन्मन्त्रविद्युक्तः शारीरैः पङ्क्तिदूषणैः । अदुष्टयं तं यमः प्राह पङ्क्तिपावन एव सः । वसिष्ठ ॥ 11. 20; vide बृहद्यम 3. 41. धूर्त वा यदि वा तैलं विप्रो नाद्यान्नखशयुतम् । यमस्तदशुचिं प्राह तुल्यं गोमांसभक्षणेः ॥ वसिष्ठ 14. 30.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-1/50-yama.html#fn-50-yama-5">vol-1-part-1 §50-yama</a></div><div class="corpus also" title="matched on 74 characters of the verse itself, not on its number">the same words stand at रेवाखण्डम् 228.8</div></td>
             <td class="verse-locs"><a href="../vol-1-part-1/9-vasishtha-dharmasutra.html#p-9-vasishtha-dharmasutra-8">vol-1-part-1 §9-vasishtha-dharmasutra</a> · <a href="../vol-1-part-1/10-vishnudharmasutra.html#p-10-vishnudharmasutra-5">vol-1-part-1 §10-vishnudharmasutra</a></td>
             <td class="verse-context"><small>... Yama, one of which (14) is the same as Manu 4. 80 and another (15) is very similar to Man...</small></td>
         </tr>
@@ -4597,7 +4549,7 @@
 
         <tr id="IV.178">
             <td class="verse-ref">IV.178</td>
-            <td class="verse-text"><div class="kane-sa" lang="sa">1661 येनास्य पितरो याता येन याताः पितामहाः। तेन यायात्सतां मार्गं तेन गच्छन्न रिच्यते ॥</div><div class="kane-note">मनु IV. 178 The सन्त्वार्तिक p 211 (on Jai I 3. 7) quotes this reads दुष्प्यति for रिच्यते and remarks ' देवो ह्य य विप्रादिभिरेवं नाचरित - स्तस्यप - न्तस्प्रमतिषिद्धस्यैव ते तं परिहरेन्नयेत् . ' मेधा very appositely explains, अविदुषां सुलभ - नानाधात्वनुपपत्तेर्वेशोपमिति । . यदि पितुः पितामहादीनां कैश्चित्कथञ्चिद्वा आभ्यनुपपत्ति इति सतां मार्गमनुपाद । Vide also मिता on य । 254 where मनु IV. 178 is quoted and H of Dh vol II p 460 n 1086 where मेधा . on मनु II. 18 is quoted</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-3/chapter-xxxiii-customs-and-dharmashastra-works.html#fn-chapter-xxxiii-customs-and-dharmashastra-works-5">vol-3 §chapter-xxxiii-customs-and-dharmashastra-works</a></div></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">1661 येनास्य पितरो याता येन याताः पितामहाः। तेन यायात्सतां मार्गं तेन गच्छन्न रिच्यते ॥</div><div class="kane-note">मनु IV. 178 The सन्त्वार्तिक p 211 (on Jai I 3. 7) quotes this reads दुष्प्यति for रिच्यते and remarks ' देवो ह्य य विप्रादिभिरेवं नाचरित - स्तस्यप - न्तस्प्रमतिषिद्धस्यैव ते तं परिहरेन्नयेत् . ' मेधा very appositely explains, अविदुषां सुलभ - नानाधात्वनुपपत्तेर्वेशोपमिति । . यदि पितुः पितामहादीनां कैश्चित्कथञ्चिद्वा आभ्यनुपपत्ति इति सतां मार्गमनुपाद । Vide also मिता on य । 254 where मनु IV. 178 is quoted and H of Dh vol II p 460 n 1086 where मेधा . on मनु II. 18 is quoted</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-3/chapter-xxxiii-customs-and-dharmashastra-works.html#fn-chapter-xxxiii-customs-and-dharmashastra-works-5">vol-3 §chapter-xxxiii-customs-and-dharmashastra-works</a></div><div class="corpus also" title="matched on 40 characters of the verse itself, not on its number">the same words stand at उत्तरभागः 15.20</div></td>
             <td class="verse-locs"><a href="../vol-2-part-1/chapter-ix-marriage.html#p-chapter-ix-marriage-36">vol-2-part-1 §chapter-ix-marriage</a> · <a href="../vol-2-part-1/chapter-xv-satī-self-immolation-of-widows.html#p-chapter-xv-satī-self-immolation-of-widows-5">vol-2-part-1 §chapter-xv-satī-self-immolation-of-widows</a></td>
             <td class="verse-context"><small>...others literally following the words of Manu IV. 178 held by the practice which their forefa...</small></td>
         </tr>
@@ -7474,7 +7426,7 @@
 
         <tr id="VIII.86">
             <td class="verse-ref">VIII.86</td>
-            <td class="verse-text"><div class="kane-sa" lang="sa">The मन्त्र is आदित्यचन्द्रावनिलोऽनलश्च द्यौर्भूमिरापो हृदयं यमश्च । अहश्च रात्रिश्च तथा च सन्ध्ये जानन्ति नराप सुकृतम् ॥ आदित्यै 74 30. It is to be noted that विज्ञान quoted by the विशा० regards this verse of the आदित्यै as a मन्त्र and Prajāpati quoted by the Vyavahāranirnaya p. 153 does the same Compare for a similar verse</div><div class="kane-note">Manu VIII. 86. .</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-3/chapter-xiv-ordeals.html#fn-chapter-xiv-ordeals-23">vol-3 §chapter-xiv-ordeals</a></div></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">The मन्त्र is आदित्यचन्द्रावनिलोऽनलश्च द्यौर्भूमिरापो हृदयं यमश्च । अहश्च रात्रिश्च तथा च सन्ध्ये जानन्ति नराप सुकृतम् ॥ आदित्यै 74 30. It is to be noted that विज्ञान quoted by the विशा० regards this verse of the आदित्यै as a मन्त्र and Prajāpati quoted by the Vyavahāranirnaya p. 153 does the same Compare for a similar verse</div><div class="kane-note">Manu VIII. 86. .</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-3/chapter-xiv-ordeals.html#fn-chapter-xiv-ordeals-23">vol-3 §chapter-xiv-ordeals</a></div><div class="corpus also" title="matched on 58 characters of the verse itself, not on its number">the same words stand at agni (no sections) 255.35</div></td>
             <td class="verse-locs"><a href="../vol-2-part-1/chapter-i-the-topics-of-dharmashastra.html#p-chapter-i-the-topics-of-dharmashastra-7">vol-2-part-1 §chapter-i-the-topics-of-dharmashastra</a></td>
             <td class="verse-context"><small>... 91–92. Vide also Ādi- parva 74. 28-29, Manu VIII. 86, Anūśāsana 2. 73–74. The reason given f...</small></td>
         </tr>
@@ -8643,7 +8595,7 @@
 
         <tr id="9.3">
             <td class="verse-ref">9.3</td>
-            <td class="verse-text"><div class="kane-sa" lang="sa">पापे कुर्वति यत्किञ्चिप्रजा राजा हरक्षिताः । चतुर्थ तस्य पापस्य राजा विन्दति भारत ॥ अथाहुः सर्वमेवेति भयोर्धर्ममिति निश्चयः । चतुर्थं मतमस्माकं मनोः भुवानुशासनम् ॥ अनु . 61. 34-35. Here भीष्म is supposed to address युधिष्ठिर . Compare मनुस्मृति 8. 18. पादोऽधर्मस्य कर्तारं पादः शाक्षिणमुच्यति । पादः सभासदः सर्वान् पादो राजानमृच्छति ॥ प्रजापतिमते हेतञ्च स्त्री स्वातन्त्र्यमर्हति ॥ अनु . 20. 14 and पिता रक्षति कौमारे भर्ता रक्षति यौवने । पुत्राश्च स्थविरे काले नास्ति स्त्रीणां स्वतन्त्रता ॥ मनु . 20. 21</div><div class="kane-note">मनु 9. 3 is almost the same.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-1/31-the-manusmriti.html#fn-31-the-manusmriti-47">vol-1-part-1 §31-the-manusmriti</a></div></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">पापे कुर्वति यत्किञ्चिप्रजा राजा हरक्षिताः । चतुर्थ तस्य पापस्य राजा विन्दति भारत ॥ अथाहुः सर्वमेवेति भयोर्धर्ममिति निश्चयः । चतुर्थं मतमस्माकं मनोः भुवानुशासनम् ॥ अनु . 61. 34-35. Here भीष्म is supposed to address युधिष्ठिर . Compare मनुस्मृति 8. 18. पादोऽधर्मस्य कर्तारं पादः शाक्षिणमुच्यति । पादः सभासदः सर्वान् पादो राजानमृच्छति ॥ प्रजापतिमते हेतञ्च स्त्री स्वातन्त्र्यमर्हति ॥ अनु . 20. 14 and पिता रक्षति कौमारे भर्ता रक्षति यौवने । पुत्राश्च स्थविरे काले नास्ति स्त्रीणां स्वतन्त्रता ॥ मनु . 20. 21</div><div class="kane-note">मनु 9. 3 is almost the same.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-1/31-the-manusmriti.html#fn-31-the-manusmriti-47">vol-1-part-1 §31-the-manusmriti</a></div><div class="corpus also" title="matched on 44 characters of the verse itself, not on its number">the same words stand at सृष्टिखण्डम् 52.23</div></td>
             <td class="verse-locs"><a href="../vol-1-part-1/9-vasishtha-dharmasutra.html#p-9-vasishtha-dharmasutra-6">vol-1-part-1 §9-vasishtha-dharmasutra</a> · <a href="../vol-1-part-1/31-the-manusmriti.html#p-31-the-manusmriti-26">vol-1-part-1 §31-the-manusmriti</a></td>
             <td class="verse-context"><small>... 91 = Bauḍ Dh. S. II. 1. 52; Vaṣ 5. 3 = Manu 9. 3 = Bauḍ Dh. S. II. 2. 46; Vaṣ 11. 27–28 ...</small></td>
         </tr>
@@ -10330,7 +10282,7 @@
 
         <tr id="X.51-56">
             <td class="verse-ref">X.51-56</td>
-            <td class="verse-text"><div class="kane-sa" lang="sa">गोमूत्रं गोमयं क्षीरं दधि सर्पिः कुशोदकं । एकरात्रोपवासश्च श्वपाकमापि शोधयेत् ॥ वसिष्ठ 27. 3, विष्णुधर्मोत्तर II. 42. 31-32.</div><div class="kane-src"><span class="tier sole" title="the only Sanskrit on the only passage citing it — inferred">sole</span> <a href="../vol-5-part-2/chapter-xxix-some-fundamental-doctrines-of-pūrvamīmāmsā.html#fn-chapter-xxix-some-fundamental-doctrines-of-pūrvamīmāmsā-67">vol-5-part-2 §chapter-xxix-some-fundamental-doctrines-of-pūrvamīmāmsā</a></div></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">गोमूत्रं गोमयं क्षीरं दधि सर्पिः कुशोदकं । एकरात्रोपवासश्च श्वपाकमापि शोधयेत् ॥ वसिष्ठ 27. 3, विष्णुधर्मोत्तर II. 42. 31-32.</div><div class="kane-src"><span class="tier sole" title="the only Sanskrit on the only passage citing it — inferred">sole</span> <a href="../vol-5-part-2/chapter-xxix-some-fundamental-doctrines-of-pūrvamīmāmsā.html#fn-chapter-xxix-some-fundamental-doctrines-of-pūrvamīmāmsā-67">vol-5-part-2 §chapter-xxix-some-fundamental-doctrines-of-pūrvamīmāmsā</a></div><div class="corpus also" title="matched on 50 characters of the verse itself, not on its number">the same words stand at agni (no sections) 175.20</div></td>
             <td class="verse-locs"><a href="../vol-2-part-1/chapter-ii-varna.html#p-chapter-ii-varna-86">vol-2-part-1 §chapter-ii-varna</a> · <a href="../vol-2-part-1/chapter-ii-varna.html#p-chapter-ii-varna-174">vol-2-part-1 §chapter-ii-varna</a> · <a href="../vol-5-part-2/chapter-xxix-some-fundamental-doctrines-of-pūrvamīmāmsā.html#p-chapter-xxix-some-fundamental-doctrines-of-pūrvamīmāmsā-50">vol-5-part-2 §chapter-xxix-some-fundamental-doctrines-of-pūrvamīmāmsā</a></td>
             <td class="verse-context"><small>...hu-Śātātapa ( 59 ) has a similar verse. Manu (X. 51-56) says that cāṇḍālas and śvapacas should ...</small></td>
         </tr>
@@ -11184,7 +11136,7 @@
 
         <tr id="XI.171-72">
             <td class="verse-ref">XI.171-72</td>
-            <td class="verse-text"><div class="kane-sa" lang="sa">A few of the original basic texts (not many in number), that were full of differences of opinion among the sages and had to be reconciled or explained away somehow, may be cited here in the original. Many of the medieval writers cite them and seek to bring order out of theṃ तस्मा - समानादेव पुरुषदत्ता जायते इर्द हि चतुर्थे पुरुषे तृतीये सङ्ग्रामहे इति वि देवं दीप्यमाना जात्वा आसने एनम्प्रादु तत् । शतपथ ब्रा . I. 8. 3. 6 quoted by विश्वरूप on या . I. 53. The स्मृतिच . I. 72 quotes this and explains ' दौहित्रीपययोषमांयुलुहुहित् – पितृयषेषी - परिययवमुकं भवति । तयोः कुटस्थारभ्य तृतीयस्वान् । सङ्ग्रामहे विवहामहे इलयर्षः ' । असमानप्ररैर्वि - वाहः । ऊर्ध्व सममापितृष्वषुभ्यो बीजिनश्च मातृष्वषुभ्यः पञ्चमात् । गौ . ध . सू . IV. 2-3; सगोत्राय दुहितरं न प्रयच्छेत् । मातृष्व योनिसम्बन्धेष्यः । आप . ध . सू . II. 5. 10. 15–16; असपिण्डा च या मातुस्सगोत्रा च या पितुः । सा प्रशस्ता द्विजातीनां दारकर्मणि मैथुने ॥ मनु . III. 5; सपिण्डता तु पुरुषे सप्रमे विनिवर्तते । मनु . V. 60; लक्षण्यां स्त्रियमद्वहेत् । अनन्यपूर्विक सपिण्डां यवीयसीम् ॥ अरोहिणीं भ्रातृमतीमसमानार्षगोत्रजाम् । पञ्चमी सप्तमी चैव मानुतः पितृतस्तथा ॥ या . I. 52-53; ' त्रीस्त्रीन्मातुतः पक्षात्तीन्पितृतः ' पैठीनसि quoted by मिता० on या . I. 53; अपरार्क p. 82 (on या . I. 53) quotes पैठीनसि as ' असमामापैरीं कन्यां वरयेत् । पञ्च मातुतः परिहरेत् सप्त पितुतः । ' पैतृष्वसर्यो भगिनी स्वस्त्रियां मातुश् च । मातृष्व भ्रातृस्तसर्यां गत्वा चान्द्रायणं चरन् ॥ एतास्तितस्रस्तु भार्यार्थे नोपयेच्छेत् बुद्धिमान् । ज्ञातिलेना - नुपेयास्ताः पन्तुष्वपनवधः ॥</div><div class="kane-note">मनु . XI. 171-72. In spite of these verses of Manu marriage of a male with his maternal uncle's daughter is highly thought of by certain subdivisions even among brāhmaṇas in Mahārāṣṭra and South India. Vide for a discussion on this question History of dharmaśāstra, vol. II. pp. 458–466.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-2/98-shūlapāni.html#fn-98-shūlapāni-13">vol-1-part-2 §98-shūlapāni</a></div></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">A few of the original basic texts (not many in number), that were full of differences of opinion among the sages and had to be reconciled or explained away somehow, may be cited here in the original. Many of the medieval writers cite them and seek to bring order out of theṃ तस्मा - समानादेव पुरुषदत्ता जायते इर्द हि चतुर्थे पुरुषे तृतीये सङ्ग्रामहे इति वि देवं दीप्यमाना जात्वा आसने एनम्प्रादु तत् । शतपथ ब्रा . I. 8. 3. 6 quoted by विश्वरूप on या . I. 53. The स्मृतिच . I. 72 quotes this and explains ' दौहित्रीपययोषमांयुलुहुहित् – पितृयषेषी - परिययवमुकं भवति । तयोः कुटस्थारभ्य तृतीयस्वान् । सङ्ग्रामहे विवहामहे इलयर्षः ' । असमानप्ररैर्वि - वाहः । ऊर्ध्व सममापितृष्वषुभ्यो बीजिनश्च मातृष्वषुभ्यः पञ्चमात् । गौ . ध . सू . IV. 2-3; सगोत्राय दुहितरं न प्रयच्छेत् । मातृष्व योनिसम्बन्धेष्यः । आप . ध . सू . II. 5. 10. 15–16; असपिण्डा च या मातुस्सगोत्रा च या पितुः । सा प्रशस्ता द्विजातीनां दारकर्मणि मैथुने ॥ मनु . III. 5; सपिण्डता तु पुरुषे सप्रमे विनिवर्तते । मनु . V. 60; लक्षण्यां स्त्रियमद्वहेत् । अनन्यपूर्विक सपिण्डां यवीयसीम् ॥ अरोहिणीं भ्रातृमतीमसमानार्षगोत्रजाम् । पञ्चमी सप्तमी चैव मानुतः पितृतस्तथा ॥ या . I. 52-53; ' त्रीस्त्रीन्मातुतः पक्षात्तीन्पितृतः ' पैठीनसि quoted by मिता० on या . I. 53; अपरार्क p. 82 (on या . I. 53) quotes पैठीनसि as ' असमामापैरीं कन्यां वरयेत् । पञ्च मातुतः परिहरेत् सप्त पितुतः । ' पैतृष्वसर्यो भगिनी स्वस्त्रियां मातुश् च । मातृष्व भ्रातृस्तसर्यां गत्वा चान्द्रायणं चरन् ॥ एतास्तितस्रस्तु भार्यार्थे नोपयेच्छेत् बुद्धिमान् । ज्ञातिलेना - नुपेयास्ताः पन्तुष्वपनवधः ॥</div><div class="kane-note">मनु . XI. 171-72. In spite of these verses of Manu marriage of a male with his maternal uncle's daughter is highly thought of by certain subdivisions even among brāhmaṇas in Mahārāṣṭra and South India. Vide for a discussion on this question History of dharmaśāstra, vol. II. pp. 458–466.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-2/98-shūlapāni.html#fn-98-shūlapāni-13">vol-1-part-2 §98-shūlapāni</a></div><div class="corpus also" title="matched on 51 characters of the verse itself, not on its number">the same words stand at १ पर्व १ (ब्रह्मपर्व) 7.1</div></td>
             <td class="verse-locs"><a href="../vol-3/chapter-xxxii-practices-of-shistas-conflict-among-shruti-smriti-and-sadāchāra-an.html#p-chapter-xxxii-practices-of-shistas-conflict-among-shruti-smriti-and-sadāchāra-an-13">vol-3 §chapter-xxxii-practices-of-shistas-conflict-among-shruti-smriti-and-sadāchāra-an</a></td>
             <td class="verse-context"><small>...that are yet opposed to smṛtis (such as Manu XI. 171-72) and for which a visible motive can eas...</small></td>
         </tr>
@@ -11716,7 +11668,7 @@
 
         <tr id="XII.100">
             <td class="verse-ref">XII.100</td>
-            <td class="verse-text"><div class="kane-sa" lang="sa">सेनापत्यं च राज्यं च दण्डनेतृत्वमेव च । सर्वलोकाधिपत्यं च वेदशास्त्रविदर्हति ॥</div><div class="kane-note">मनुस्मृति XII, 100.; तै . सं . I, 7.3 एते देवाः प्रत्यक्षां यद् ब्राह्मणाः ।</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-1/31-the-manusmriti.html#fn-31-the-manusmriti-42">vol-1-part-1 §31-the-manusmriti</a></div></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">सेनापत्यं च राज्यं च दण्डनेतृत्वमेव च । सर्वलोकाधिपत्यं च वेदशास्त्रविदर्हति ॥</div><div class="kane-note">मनुस्मृति XII, 100.; तै . सं . I, 7.3 एते देवाः प्रत्यक्षां यद् ब्राह्मणाः ।</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-1/31-the-manusmriti.html#fn-31-the-manusmriti-42">vol-1-part-1 §31-the-manusmriti</a></div><div class="corpus also" title="matched on 64 characters of the verse itself, not on its number">the same words stand at चतुर्थस्कन्धे 22.45</div></td>
             <td class="verse-locs"><a href="../vol-1-part-1/31-the-manusmriti.html#p-31-the-manusmriti-26">vol-1-part-1 §31-the-manusmriti</a> · <a href="../vol-1-part-1/31-the-manusmriti.html#p-31-the-manusmriti-26">vol-1-part-1 §31-the-manusmriti</a></td>
             <td class="verse-context"><small>...Śūdraṣ Therefore, Jayaswal's remarks on Manu XII. 100 are worthless for settling the date of ...</small></td>
         </tr>
@@ -12059,7 +12011,7 @@
         <div class="row border-bottom">
             <div class="col-md-1"></div>
             <div class="col-md-2">
-                <img src="https://sanatana.in/mbta/public/images/Homepage_html/images/layer_8.png" alt="">
+                <img src="https://sanatana.in/mahabharata/public/images/Homepage_html/images/layer_8.png" alt="">
             </div>
             <div class="col-md-5 text-white">
                 <p>The divine knowledge and wisdom of our shastras is the only thing eternal,
@@ -12090,7 +12042,7 @@
             </p>
             <p class="col-md-6 fs-6 text-end text-light">
                 <a class="text-white" rel="nofollow" href="http://www.srirangadigital.com" target="_blank">
-                    <img src="https://sanatana.in/mbta/public/images/logo.png" alt="sriranga logo" />
+                    <img src="https://sanatana.in/mahabharata/public/images/logo.png" alt="sriranga logo" />
                     <small>Designed, Developed and Maintained by Sriranga Digital</small>
                 </a>
             </p>
@@ -12104,219 +12056,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
             crossorigin="anonymous"></script>
-
-<script>
-(function(){
-  var R = window.__R;
-  function all(s){ return Array.prototype.slice.call(document.querySelectorAll(s)); }
-  function faceSeconds(t){
-    var m = /(\d+):(\d\d)(?::(\d\d))?/.exec(t || '');
-    if (!m) return null;
-    return m[3] ? (+m[1]*3600 + +m[2]*60 + +m[3]) : (+m[1]*60 + +m[2]);
-  }
-  function clearToast(){
-    var t = document.getElementById('toast');
-    if (t) { t.className = t.className.replace(/\bshow\b/g,''); t.textContent = ''; }
-  }
-  // takeRecords() is synchronous; the observer's own callback is not, and a
-  // click's effect has to be read before the next click happens.
-  function probe(el){
-    var before = R.calls.length, mo = new MutationObserver(function(){});
-    clearToast();
-    mo.observe(document.documentElement, {childList:true, subtree:true,
-                                          attributes:true, characterData:true});
-    var err = null;
-    try { el.click(); } catch(e) { err = String(e.message); }
-    var mut = mo.takeRecords().length;
-    mo.disconnect();
-    // THE WORST STATE, NOT THE LAST ONE. Overflow used to be read once, after
-    // the sweep -- and the sweep ends on whatever view its last press opened.
-    // The edition's index reported 0 while its "What it draws on" tab stood
-    // 11px past a 390px screen: a pass on exactly the defect it exists to find.
-    var de = document.documentElement, ov = de.scrollWidth - de.clientWidth;
-    if (ov > R.worstOverflow) {
-      R.worstOverflow = ov;
-      R.worstAt = (el.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 40);
-    }
-    var t = document.getElementById('toast');
-    var toast = (t && /\bshow\b/.test(t.className) && t.textContent.trim()) || null;
-    // AN ADDRESS THE PAGE HANDS OUT. The atlases publish no <a href="#...">:
-    // pressing a verse writes the address into the URL bar and the reader
-    // copies it from there. So a hash the page sets itself is an address it
-    // has published, and the deep-link pass owes it the same test as a link.
-    if (location.hash.length > 1) R.hashes[location.hash.slice(1)] = 1;
-    return {call: R.calls.length > before ? R.calls[R.calls.length-1] : null,
-            mut: mut, toast: toast, err: err};
-  }
-
-  function sweepMarks(out, sel){
-    var marks = all(sel);
-    marks.forEach(function(m){
-      if (m.disabled) return;
-      out.marks.total++;
-      var r = probe(m);
-      if (r.err) { out.marks.errors.push({t:(m.textContent||'').trim().slice(0,40), e:r.err}); return; }
-      if (r.call) {
-        out.marks.played++;
-        var face = faceSeconds(m.textContent);
-        if (face !== null && r.call.at != null) {
-          var d = Math.abs(r.call.at - face);
-          if (d > 2.0) out.marks.bad_time.push(
-            {t:(m.textContent||'').trim().slice(0,40), face:face, at:r.call.at, d:+d.toFixed(2)});
-        }
-      } else if (r.toast) {
-        out.marks.refused++;
-        if (out.marks.refusals.length < 6) out.marks.refusals.push(r.toast.slice(0,70));
-      } else if (r.mut) {
-        out.marks.acted++;
-      } else {
-        out.marks.dead.push((m.className||'') + ' | ' + (m.textContent||'').trim().slice(0,40));
-      }
-    });
-  }
-
-  function label(b){
-    var id = b.id ? '#'+b.id : '';
-    var cls = (b.className||'').trim().split(/\s+/).slice(0,2).join('.');
-    var txt = (b.textContent||'').trim().replace(/\s+/g,' ').slice(0,28);
-    return (id || ('.'+cls) || 'button') + (txt ? ' «'+txt+'»' : '');
-  }
-
-  setTimeout(function(){
-    var out = {yt_order: R.ytOrder, errors: [], lanes: null,
-               marks:{total:0, played:0, refused:0, acted:0, dead:[], bad_time:[],
-                      errors:[], refusals:[]},
-               controls:{total:0, dead:[]},
-               overflow:null, rendered:0,
-               buttons_at_start: all('button').length};
-
-    try { out.lanes = V.langs.map(function(l){
-            return {id:l.id, name:l.name||null, speaker:l.speaker||null, sim:!!l.sim}; }); }
-    catch(e) { out.lanes = null; }
-
-    out.rendered = all('.mk, .pl, .row, .verse, tr').length;
-
-    // A play control is whatever plays, not whatever is called .mk. The
-    // anukramaṇikā and the witness build theirs with `el('button')` and no
-    // stable class, so a selector registry would simply have missed them --
-    // which it did, on the first run of this file.
-    var PLAY = 'button.mk, button.pl, button.playall, .marks button,' +
-               ' .lane button, .lanes button, .row button, .part button';
-    sweepMarks(out, PLAY);
-    // The chapters come from the data, never from a guess. Varāha, Garuḍa and
-    // Viṣṇu are scoped to the chapters actually walked, so 1, 2, 3 need not
-    // exist -- and showChapter() does `esc(V.chapters[ch].name)` with no guard,
-    // so a guessed number throws rather than returning empty. That was this
-    // harness's own first "finding".
-    var chaps = [];
-    try { chaps = Object.keys(V.chapters).map(Number)
-                    .filter(function(n){ return !isNaN(n); }); } catch(e) {}
-    out.chapters = chaps.length;
-    if (typeof showChapter === 'function' && chaps.length) {
-      chaps.slice(0, 3).forEach(function(ch){
-        try { showChapter(ch); } catch(e) { out.errors.push('showChapter(' + ch + '): ' + e.message); return; }
-        sweepMarks(out, PLAY);       // showChapter rebuilds the rows
-      });
-    }
-    var seen = {};
-    all(PLAY).forEach(function(b){ seen[label(b)] = 1; });
-
-    // Everything else. After the marks, because a panel toggle can hide the
-    // rows they live in.
-    //
-    // LIVE, NOT A SNAPSHOT. The first version took all('button') once and
-    // pressed each in turn. On the Smṛtimuktāphalam edition a click re-renders
-    // the pane, so every later button in the snapshot was detached by the time
-    // its turn came -- and a click on a detached node never bubbles to the
-    // delegated listener on #pane. 194 of smp6's controls reported dead; all
-    // 194 were detached; none was dead. So the buttons are re-read after every
-    // press, deduplicated by label, and a detached one is never pressed.
-    //
-    // THE KEY IS LABEL + POSITION, not label alone. A label-only key collapsed
-    // every verse's identical ▶ button into one press, and the suite caught
-    // it: played counts fell on seven atlases with no page changed. The k-th
-    // connected button bearing a given label is the same control across a
-    // re-render, so it is the key that survives both failure modes.
-    var probed = {}, presses = 0, CAP = 6000;
-    var startSet = (function(){ var bs = all('button'), nth = {}, ks = [];
-      bs.forEach(function(x){ if (!x.isConnected || x.disabled) return;
-        var L = label(x); nth[L] = (nth[L] || 0) + 1; ks.push(L + '#' + nth[L]); });
-      return ks; })();
-    function nextButton(){
-      var bs = all('button'), nth = {};
-      for (var i = 0; i < bs.length; i++) {
-        var b = bs[i];
-        if (!b.isConnected) continue;
-        var L = label(b), k = nth[L] = (nth[L] || 0) + 1, key = L + '#' + k;
-        if (b.disabled || seen[L] || probed[key]) continue;
-        return {el: b, key: key};
-      }
-      return null;
-    }
-    var nb, b;
-    while (presses < CAP && (nb = nextButton())) {
-      b = nb.el; probed[nb.key] = 1; presses++;
-      out.controls.total++;
-      var r = probe(b);
-      if (r.call) { out.marks.total++; out.marks.played++;   // it played: it was a play control
-        var face = faceSeconds(b.textContent);
-        if (face !== null && r.call.at != null && r.call.fn !== 'playVideo'
-            && r.call.fn !== 'pauseVideo') {
-          var d = Math.abs(r.call.at - face);
-          if (d > 2.0) out.marks.bad_time.push(
-            {t:(b.textContent||'').trim().slice(0,40), face:face, at:r.call.at, d:+d.toFixed(2)});
-        }
-        continue; }
-      if (!r.toast && !r.mut && !r.err) out.controls.dead.push(label(b));
-    }
-    out.controls.capped = presses >= CAP;
-    // COVERAGE, reported rather than assumed: every button still on the page
-    // that the sweep never pressed. A count that falls is only a finding if
-    // this is zero -- otherwise it may be the sweep that missed, not the page.
-    out.controls.unreached = (function(){
-      var bs = all('button'), nth = {}, miss = [];
-      bs.forEach(function(x){
-        if (!x.isConnected || x.disabled) return;
-        var L = label(x), k = nth[L] = (nth[L] || 0) + 1;
-        if (!seen[L] && !probed[L + '#' + k]) miss.push(L + '#' + k);
-      });
-      return {n: miss.length, e: miss.slice(0, 5)};
-    })();
-    // Present when the sweep began, never pressed, gone by the end: removed by
-    // an earlier press. Not reachable in the state the sweep drove the page to,
-    // but reachable from a fresh load -- so this is a coverage gap, and it is
-    // printed, never folded silently into a pass.
-    out.controls.hidden_by_sweep = startSet.filter(function(k){
-      return !probed[k] && !seen[k.replace(/#\d+$/, '')]; }).length;
-
-    // Every address this page publishes, as "target.html#fragment": the links
-    // it renders, and the hashes it wrote into the URL during the sweep. The
-    // anukramaṇikā's 647 register links address seven OTHER pages, which is
-    // why these are pooled by target rather than tested where they were found.
-    var self = location.pathname.split('/').pop(), addrs = {};
-    all('a[href]').forEach(function(a){
-      var h = a.getAttribute('href') || '';
-      if (h.indexOf('#') < 0 || /^[a-z][a-z0-9+.-]*:/i.test(h)) return;
-      var cut = h.indexOf('#'), page = h.slice(0, cut) || self, frag = h.slice(cut + 1);
-      if (frag) addrs[page + '#' + frag] = 1;
-    });
-    Object.keys(R.hashes).forEach(function(f){ addrs[self + '#' + f] = 1; });
-    out.addresses = Object.keys(addrs);
-
-    var de = document.documentElement;
-    var endOverflow = de.scrollWidth - de.clientWidth;
-    out.overflow = Math.max(endOverflow, R.worstOverflow);
-    out.overflow_after = endOverflow >= R.worstOverflow ? '(page as left)' : R.worstAt;
-    out.viewport = de.clientWidth;
-    out.errors = out.errors.concat(R.errors).slice(0, 12);
-
-    var pre = document.createElement('pre');
-    pre.id = '__regress';
-    pre.textContent = btoa(unescape(encodeURIComponent(JSON.stringify(out))));
-    document.body.appendChild(pre);
-  }, 1800);
-})();
-</script>
 
 <script>
 (function(){

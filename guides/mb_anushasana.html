@@ -1,63 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>
-(function(){
-  var R = {ytOrder:null, calls:[], errors:[], worstOverflow:0, worstAt:null, hashes:{}};
-  window.__R = R;
-  window.addEventListener('error', function(e){
-    R.errors.push(String(e.message) + ' @' + (e.lineno || '?'));
-  });
-  // The append is synchronous and adjacent to the callback's definition, so
-  // this is the only moment at which their order can be observed. A
-  // MutationObserver cannot see it -- it fires after both have run.
-  var origAppend = document.head.appendChild.bind(document.head);
-  document.head.appendChild = function(n){
-    if (n && n.tagName === 'SCRIPT' && /iframe_api/.test(n.src || '')) {
-      // STICKY FALSE. The first version of this recorded only the latest
-      // append, so a page that requested the API early and then requested it
-      // again after defining the callback reported "fine" -- the mutation test
-      // with an injected race passed, which is the one outcome a regression
-      // check must never produce. Any append before the callback exists is the
-      // fault, whatever happens afterwards.
-      var defined = (typeof window.onYouTubeIframeAPIReady === 'function');
-      R.ytOrder = (R.ytOrder === null) ? defined : (R.ytOrder && defined);
-      setTimeout(function(){
-        if (typeof window.onYouTubeIframeAPIReady === 'function') {
-          try { window.onYouTubeIframeAPIReady(); }
-          catch(e){ R.errors.push('onYouTubeIframeAPIReady: ' + e.message); }
-        }
-      }, 0);
-      return n;                      // never actually load YouTube
-    }
-    return origAppend(n);
-  };
-  window.YT = {
-    PlayerState:{UNSTARTED:-1, ENDED:0, PLAYING:1, PAUSED:2, BUFFERING:3, CUED:5},
-    Player: function(el, opts){
-      var self = this;
-      this.loadVideoById = function(o){
-        R.calls.push({fn:'loadVideoById', v:(o&&o.videoId)||null, at:(o&&o.startSeconds)||0}); };
-      this.cueVideoById = function(o){
-        R.calls.push({fn:'cueVideoById', v:(o&&o.videoId)||null, at:(o&&o.startSeconds)||0}); };
-      this.seekTo = function(t){ R.calls.push({fn:'seekTo', v:null, at:t}); };
-      this.playVideo = function(){ R.calls.push({fn:'playVideo', v:null, at:null}); };
-      this.pauseVideo = function(){ R.calls.push({fn:'pauseVideo', v:null, at:null}); };
-      this.stopVideo=function(){};
-      this.getCurrentTime=function(){return 0;}; this.getPlayerState=function(){return 2;};
-      this.getDuration=function(){return 3600;}; this.destroy=function(){};
-      this.getIframe=function(){return document.createElement('iframe');};
-      this.addEventListener=function(){}; this.removeEventListener=function(){};
-      setTimeout(function(){
-        if (opts && opts.events && opts.events.onReady) {
-          try { opts.events.onReady({target:self}); } catch(e){}
-        }
-      }, 0);
-    }
-  };
-})();
-</script>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Anuśāsanaparva Study Guide — History of Dharmaśāstra</title>
@@ -305,7 +248,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
         <h1>Anuśāsanaparva</h1>
         <p class="desc">The Book of Instructions — dāna, ācāra, dharma teachings from Bhīṣma's deathbed.</p>
         <p class="stats">125 references across 8 volumes</p>
-        <div><a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="ext-link">Browse on MBTA ↗</a>
+        <div><a href="https://sanatana.in/mahabharata/listing/parva/anushasanaparva" target="_blank" class="ext-link">Browse on MBTA ↗</a>
             <a href="../refs/mb_anushasana.html" class="ref-page-link">Verse reference table →</a>
         </div>
         <div style="margin-top:8px"><a href="../subjects/dana.html" class="subject-tag">Dāna (Gifts and Charity)</a></div>
@@ -313,7 +256,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
     
             <div class="top-adhyayas">
                 <h3>Most-Cited Adhyāyas</h3>
-                <div class="adhyaya-chips"><a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="adhyaya-chip">Adhyāya 90 <small>(6)</small></a><a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="adhyaya-chip">Adhyāya 97 <small>(3)</small></a><a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="adhyaya-chip">Adhyāya 104 <small>(3)</small></a><a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="adhyaya-chip">Adhyāya 88 <small>(2)</small></a><a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="adhyaya-chip">Adhyāya 149 <small>(2)</small></a><a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="adhyaya-chip">Adhyāya 25 <small>(2)</small></a><a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="adhyaya-chip">Adhyāya 59 <small>(2)</small></a><a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="adhyaya-chip">Adhyāya 37 <small>(2)</small></a><a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="adhyaya-chip">Adhyāya 91 <small>(2)</small></a><a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="adhyaya-chip">Adhyāya 125 <small>(2)</small></a></div>
+                <div class="adhyaya-chips"><span class="adhyaya-chip">Adhyāya 90 <small>(6)</small></span><span class="adhyaya-chip">Adhyāya 97 <small>(3)</small></span><span class="adhyaya-chip">Adhyāya 104 <small>(3)</small></span><span class="adhyaya-chip">Adhyāya 88 <small>(2)</small></span><span class="adhyaya-chip">Adhyāya 149 <small>(2)</small></span><span class="adhyaya-chip">Adhyāya 25 <small>(2)</small></span><span class="adhyaya-chip">Adhyāya 59 <small>(2)</small></span><span class="adhyaya-chip">Adhyāya 37 <small>(2)</small></span><span class="adhyaya-chip">Adhyāya 91 <small>(2)</small></span><span class="adhyaya-chip">Adhyāya 125 <small>(2)</small></span></div>
             </div>
     
             <div class="vol-section">
@@ -329,7 +272,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-1-part-1/1-meaning-of-dharma.html#p-1-meaning-of-dharma-2" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">115.1 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">115.1</span>
                         </div>
                     </div>
                     
@@ -343,7 +286,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-1-part-1/7-dharmasutra-of-āpastamba.html#p-7-dharmasutra-of-āpastamba-5" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">90.46 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">90.46</span>
                         </div>
                     </div>
                     
@@ -357,7 +300,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-1-part-1/10-vishnudharmasutra.html#p-10-vishnudharmasutra-4" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">88.12-17 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">88.12-17</span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -366,7 +309,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-1-part-1/10-vishnudharmasutra.html#p-10-vishnudharmasutra-9" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">88.11-15 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">88.11-15</span>
                         </div>
                     </div>
                     
@@ -380,7 +323,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-22" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">6.38 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">6.38</span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -389,7 +332,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-59" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -398,7 +341,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-101" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">23.67 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">23.67</span>
                         </div>
                     </div>
                     
@@ -412,7 +355,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-1-part-1/21-cyavana.html#p-21-cyavana-2" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">18.38 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">18.38</span>
                         </div>
                     </div>
                     
@@ -426,7 +369,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-1-part-1/27-bharadvāja-and-bhāradvāja.html#p-27-bharadvāja-and-bhāradvāja-5" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">30.24 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">30.24</span>
                         </div>
                     </div>
                     
@@ -440,7 +383,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-1-part-1/31-the-manusmriti.html#p-31-the-manusmriti-26" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -449,7 +392,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-1-part-1/31-the-manusmriti.html#p-31-the-manusmriti-26" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">cl <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">cl</span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -458,7 +401,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-1-part-1/31-the-manusmriti.html#p-31-the-manusmriti-26" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -467,7 +410,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-1-part-1/31-the-manusmriti.html#p-31-the-manusmriti-26" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     
@@ -481,7 +424,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-12" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -490,7 +433,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-24" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">c <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">c</span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -499,7 +442,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-32" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -508,7 +451,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-41" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -517,7 +460,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-41" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -526,7 +469,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-46" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">149.14-120 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">149.14-120</span>
                         </div>
                     </div>
                     
@@ -540,7 +483,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-1-part-1/33-the-purānas.html#p-33-the-purānas-6" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">25.42 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">25.42</span>
                         </div>
                     </div>
                     
@@ -554,7 +497,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-1-part-1/50-yama.html#p-50-yama-6" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     
@@ -573,7 +516,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-1-part-2/71-vijnāneshvara.html#p-71-vijnāneshvara-27" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">141.89 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">141.89</span>
                         </div>
                     </div>
                     
@@ -587,7 +530,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-1-part-2/94-madanapāla-and-vishveshvarabhatta.html#p-94-madanapāla-and-vishveshvarabhatta-8" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     
@@ -601,7 +544,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-1-part-2/113-the-vīramitrodaya-of-mitramiśra.html#p-113-the-vīramitrodaya-of-mitramiśra-18" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     
@@ -620,7 +563,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-2-part-1/chapter-ii-varna.html#p-chapter-ii-varna-27" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">148.29 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">148.29</span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -629,7 +572,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-2-part-1/chapter-ii-varna.html#p-chapter-ii-varna-28" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">48.1 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">48.1</span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -638,7 +581,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-2-part-1/chapter-ii-varna.html#p-chapter-ii-varna-40" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">22.22 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">22.22</span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -647,7 +590,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-2-part-1/chapter-ii-varna.html#p-chapter-ii-varna-182" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">33.21-23 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">33.21-23</span>
                         </div>
                     </div>
                     
@@ -661,7 +604,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-2-part-1/chapter-iii-the-duties-disabilities-and-privileges-of-varnas.html#p-chapter-iii-the-duties-disabilities-and-privileges-of-varnas-12" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">152.19 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">152.19</span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -670,7 +613,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-2-part-1/chapter-iii-the-duties-disabilities-and-privileges-of-varnas.html#p-chapter-iii-the-duties-disabilities-and-privileges-of-varnas-22" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -679,7 +622,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-2-part-1/chapter-iii-the-duties-disabilities-and-privileges-of-varnas.html#p-chapter-iii-the-duties-disabilities-and-privileges-of-varnas-25" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -688,7 +631,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-2-part-1/chapter-iii-the-duties-disabilities-and-privileges-of-varnas.html#p-chapter-iii-the-duties-disabilities-and-privileges-of-varnas-53" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">59.33 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">59.33</span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -697,7 +640,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-2-part-1/chapter-iii-the-duties-disabilities-and-privileges-of-varnas.html#p-chapter-iii-the-duties-disabilities-and-privileges-of-varnas-54" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">165.10 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">165.10</span>
                         </div>
                     </div>
                     
@@ -711,7 +654,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-2-part-1/chapter-iv-untouchability.html#p-chapter-iv-untouchability-4" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">47.18 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">47.18</span>
                         </div>
                     </div>
                     
@@ -725,7 +668,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-2-part-1/chapter-v-slavery.html#p-chapter-v-slavery-4" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     
@@ -739,7 +682,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-2-part-1/chapter-vii-upanayana.html#p-chapter-vii-upanayana-103" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">37.11 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">37.11</span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -748,7 +691,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-2-part-1/chapter-vii-upanayana.html#p-chapter-vii-upanayana-114" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">c <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">c</span>
                         </div>
                     </div>
                     
@@ -762,7 +705,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-2-part-1/chapter-ix-marriage.html#p-chapter-ix-marriage-20" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">44.16 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">44.16</span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -771,7 +714,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-2-part-1/chapter-ix-marriage.html#p-chapter-ix-marriage-63" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">4.49-59 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">4.49-59</span>
                         </div>
                     </div>
                     
@@ -785,7 +728,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-2-part-1/chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage.html#p-chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage-10" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">146.55 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">146.55</span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -794,7 +737,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-2-part-1/chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage.html#p-chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage-12" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -803,7 +746,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-2-part-1/chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage.html#p-chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage-14" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">123 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">123</span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -812,7 +755,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-2-part-1/chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage.html#p-chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage-27" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     
@@ -826,7 +769,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-2-part-1/chapter-xvii-āhnika-and-āchāra.html#p-chapter-xvii-āhnika-and-āchāra-6" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -835,7 +778,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-2-part-1/chapter-xvii-āhnika-and-āchāra.html#p-chapter-xvii-āhnika-and-āchāra-6" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">97 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">97</span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -844,7 +787,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-2-part-1/chapter-xvii-āhnika-and-āchāra.html#p-chapter-xvii-āhnika-and-āchāra-9" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">104.23 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">104.23</span>
                         </div>
                     </div>
                     
@@ -863,7 +806,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-2-part-2/chapter-xix-devayajna.html#p-chapter-xix-devayajna-18" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">149.14-120 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">149.14-120</span>
                         </div>
                     </div>
                     
@@ -877,7 +820,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-2-part-2/chapter-xx-vaishvadeva.html#p-chapter-xx-vaishvadeva-4" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">97.16-18 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">97.16-18</span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -886,7 +829,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-2-part-2/chapter-xx-vaishvadeva.html#p-chapter-xx-vaishvadeva-7" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">97.22-23 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">97.22-23</span>
                         </div>
                     </div>
                     
@@ -900,7 +843,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-2-part-2/chapter-xxii-bhojana.html#p-chapter-xxii-bhojana-4" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">104.57 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">104.57</span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -909,7 +852,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-2-part-2/chapter-xxii-bhojana.html#p-chapter-xxii-bhojana-7" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">90 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">90</span>
                         </div>
                     </div>
                     
@@ -923,7 +866,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-2-part-2/chapter-xxv-dāna-gifts.html#p-chapter-xxv-dāna-gifts-6" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">i <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">i</span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -932,7 +875,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-2-part-2/chapter-xxv-dāna-gifts.html#p-chapter-xxv-dāna-gifts-13" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">59.7 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">59.7</span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -941,7 +884,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-2-part-2/chapter-xxv-dāna-gifts.html#p-chapter-xxv-dāna-gifts-14" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">62.2 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">62.2</span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -950,7 +893,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-2-part-2/chapter-xxv-dāna-gifts.html#p-chapter-xxv-dāna-gifts-19" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">37.2-3 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">37.2-3</span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -959,7 +902,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-2-part-2/chapter-xxv-dāna-gifts.html#p-chapter-xxv-dāna-gifts-57" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -968,7 +911,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-2-part-2/chapter-xxv-dāna-gifts.html#p-chapter-xxv-dāna-gifts-59" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">66.53 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">66.53</span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -977,7 +920,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-2-part-2/chapter-xxv-dāna-gifts.html#p-chapter-xxv-dāna-gifts-59" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">71.39-41 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">71.39-41</span>
                         </div>
                     </div>
                     
@@ -991,7 +934,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-2-part-2/chapter-xxvi-pratishthā-and-utsarga.html#p-chapter-xxvi-pratishthā-and-utsarga-7" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">58.23-32 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">58.23-32</span>
                         </div>
                     </div>
                     
@@ -1005,7 +948,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-2-part-2/chapter-xxvii-vānaprastha-forest-hermit.html#p-chapter-xxvii-vānaprastha-forest-hermit-24" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">25.62-64 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">25.62-64</span>
                         </div>
                     </div>
                     
@@ -1019,7 +962,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-2-part-2/general-index.html#p-general-index-1" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     
@@ -1038,7 +981,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-3/chapter-i-preliminary.html#p-chapter-i-preliminary-3" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -1047,7 +990,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-3/chapter-i-preliminary.html#p-chapter-i-preliminary-8" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     
@@ -1061,7 +1004,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-3/chapter-ii-seven-angas-of-rājya.html#p-chapter-ii-seven-angas-of-rājya-8" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -1070,7 +1013,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-3/chapter-ii-seven-angas-of-rājya.html#p-chapter-ii-seven-angas-of-rājya-17" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">ci <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">ci</span>
                         </div>
                     </div>
                     
@@ -1084,7 +1027,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-3/chapter-iii-duties-and-responsibilities-of-the-ruler.html#p-chapter-iii-duties-and-responsibilities-of-the-ruler-3" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     
@@ -1098,7 +1041,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-3/chapter-xvi-contracts.html#p-chapter-xvi-contracts-9" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">117.20 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">117.20</span>
                         </div>
                     </div>
                     
@@ -1112,7 +1055,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-3/chapter-xxvii-dāyabhāga-partition-of-wealth.html#p-chapter-xxvii-dāyabhāga-partition-of-wealth-91" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     
@@ -1126,7 +1069,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-3/chapter-xxxiii-customs-and-dharmashastra-works.html#p-chapter-xxxiii-customs-and-dharmashastra-works-1" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">104.6-9 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">104.6-9</span>
                         </div>
                     </div>
                     
@@ -1140,7 +1083,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-23" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     
@@ -1154,7 +1097,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-3/general-index.html#p-general-index-1" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -1163,7 +1106,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-3/general-index.html#p-general-index-12" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     
@@ -1182,7 +1125,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-4/chapter-ii-means-of-reducing-consequences-of-sins.html#p-chapter-ii-means-of-reducing-consequences-of-sins-16" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     
@@ -1196,7 +1139,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-4/chapter-vii-eschatology.html#p-chapter-vii-eschatology-3" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     
@@ -1210,7 +1153,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-4/chapter-ix-shrāddha.html#p-chapter-ix-shrāddha-36" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">91 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">91</span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -1219,7 +1162,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-4/chapter-ix-shrāddha.html#p-chapter-ix-shrāddha-39" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">87 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">87</span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -1228,7 +1171,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-4/chapter-ix-shrāddha.html#p-chapter-ix-shrāddha-49" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">91.43-44 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">91.43-44</span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -1237,7 +1180,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-4/chapter-ix-shrāddha.html#p-chapter-ix-shrāddha-49" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">127.13 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">127.13</span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -1246,7 +1189,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-4/chapter-ix-shrāddha.html#p-chapter-ix-shrāddha-52" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">90.25-31 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">90.25-31</span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -1255,7 +1198,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-4/chapter-ix-shrāddha.html#p-chapter-ix-shrāddha-57" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">90.6-11 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">90.6-11</span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -1264,7 +1207,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-4/chapter-ix-shrāddha.html#p-chapter-ix-shrāddha-69" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">90.12-13 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">90.12-13</span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -1273,7 +1216,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-4/chapter-ix-shrāddha.html#p-chapter-ix-shrāddha-78" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">90.22 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">90.22</span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -1282,7 +1225,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-4/chapter-ix-shrāddha.html#p-chapter-ix-shrāddha-83" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">c <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">c</span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -1291,7 +1234,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-4/chapter-ix-shrāddha.html#p-chapter-ix-shrāddha-113" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">92, 15 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">92, 15</span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -1300,7 +1243,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-4/chapter-ix-shrāddha.html#p-chapter-ix-shrāddha-118" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">125.38-40 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">125.38-40</span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -1309,7 +1252,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-4/chapter-ix-shrāddha.html#p-chapter-ix-shrāddha-118" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">125.25, 26 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">125.25, 26</span>
                         </div>
                     </div>
                     
@@ -1323,7 +1266,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-4/chapter-x-ekoddista-and-other-shrāddhas.html#p-chapter-x-ekoddista-and-other-shrāddhas-22" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -1332,7 +1275,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-4/chapter-x-ekoddista-and-other-shrāddhas.html#p-chapter-x-ekoddista-and-other-shrāddhas-25" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -1341,7 +1284,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-4/chapter-x-ekoddista-and-other-shrāddhas.html#p-chapter-x-ekoddista-and-other-shrāddhas-32" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -1350,7 +1293,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-4/chapter-x-ekoddista-and-other-shrāddhas.html#p-chapter-x-ekoddista-and-other-shrāddhas-32" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">57.28-29 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">57.28-29</span>
                         </div>
                     </div>
                     
@@ -1364,7 +1307,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-4/chapter-xii-the-ganges.html#p-chapter-xii-the-ganges-29" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     
@@ -1378,7 +1321,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-4/chapter-xiv-gayā.html#p-chapter-xiv-gayā-6" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -1387,7 +1330,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-4/chapter-xiv-gayā.html#p-chapter-xiv-gayā-6" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -1396,7 +1339,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-4/chapter-xiv-gayā.html#p-chapter-xiv-gayā-9" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     
@@ -1410,7 +1353,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-4/abbreviations-employed-in-this-list-alone.html#p-abbreviations-employed-in-this-list-alone-1" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     
@@ -1424,7 +1367,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-4/general-index-of-vol-iv.html#p-general-index-of-vol-iv-2" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -1433,7 +1376,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-4/general-index-of-vol-iv.html#p-general-index-of-vol-iv-4" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -1442,7 +1385,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-4/general-index-of-vol-iv.html#p-general-index-of-vol-iv-20" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -1451,7 +1394,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-4/general-index-of-vol-iv.html#p-general-index-of-vol-iv-38" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">166 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">166</span>
                         </div>
                     </div>
                     
@@ -1470,7 +1413,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-5-part-1/chapter-ii-vrata-in-vedic-literature-sūtras-and-smritis-definition-and-importanc.html#p-chapter-ii-vrata-in-vedic-literature-sūtras-and-smritis-definition-and-importanc-13" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     
@@ -1484,7 +1427,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-5-part-1/chapter-v-ekādashī.html#p-chapter-v-ekādashī-7" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">c <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">c</span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -1493,7 +1436,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-5-part-1/chapter-v-ekādashī.html#p-chapter-v-ekādashī-7" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -1502,7 +1445,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-5-part-1/chapter-v-ekādashī.html#p-chapter-v-ekādashī-7" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     
@@ -1516,7 +1459,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-5-part-1/list-of-vratas-and-utsavas.html#p-list-of-vratas-and-utsavas-197" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">103.3 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">103.3</span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -1525,7 +1468,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-5-part-1/list-of-vratas-and-utsavas.html#p-list-of-vratas-and-utsavas-379" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">167.23 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">167.23</span>
                         </div>
                     </div>
                     
@@ -1539,7 +1482,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-5-part-1/chapter-xv-units-of-kāla.html#p-chapter-xv-units-of-kāla-10" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     
@@ -1558,7 +1501,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-5-part-2/chapter-xxii-origin-and-development-of-purāna-literature.html#p-chapter-xxii-origin-and-development-of-purāna-literature-37" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     
@@ -1572,7 +1515,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-5-part-2/chapter-xxiv-influence-of-purānas-on-dharmashastra.html#p-chapter-xxiv-influence-of-purānas-on-dharmashastra-17" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -1581,7 +1524,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-5-part-2/chapter-xxiv-influence-of-purānas-on-dharmashastra.html#p-chapter-xxiv-influence-of-purānas-on-dharmashastra-24" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -1590,7 +1533,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-5-part-2/chapter-xxiv-influence-of-purānas-on-dharmashastra.html#p-chapter-xxiv-influence-of-purānas-on-dharmashastra-25" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     
@@ -1604,7 +1547,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-5-part-2/chapter-xxix-some-fundamental-doctrines-of-pūrvamīmāmsā.html#p-chapter-xxix-some-fundamental-doctrines-of-pūrvamīmāmsā-70" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">45, 17 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">45, 17</span>
                         </div>
                     </div>
                     
@@ -1618,7 +1561,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-5-part-2/chapter-xxxii-yoga-and-dharmashastra.html#p-chapter-xxxii-yoga-and-dharmashastra-7" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     
@@ -1632,7 +1575,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-5-part-2/chapter-xxxiv-cosmology.html#p-chapter-xxxiv-cosmology-61" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     
@@ -1646,7 +1589,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-5-part-2/chapter-xxxv-the-doctrine-of-karma-and-punarjanma-transmigration-or-metempsychos.html#p-chapter-xxxv-the-doctrine-of-karma-and-punarjanma-transmigration-or-metempsychos-48" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -1655,7 +1598,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-5-part-2/chapter-xxxv-the-doctrine-of-karma-and-punarjanma-transmigration-or-metempsychos.html#p-chapter-xxxv-the-doctrine-of-karma-and-punarjanma-transmigration-or-metempsychos-49" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     
@@ -1669,7 +1612,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-5-part-2/chapter-xxxvi-fundamental-and-leading-characteristics-of-hindu-culture-and-civil.html#p-chapter-xxxvi-fundamental-and-leading-characteristics-of-hindu-culture-and-civil-22" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -1678,7 +1621,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-5-part-2/chapter-xxxvi-fundamental-and-leading-characteristics-of-hindu-culture-and-civil.html#p-chapter-xxxvi-fundamental-and-leading-characteristics-of-hindu-culture-and-civil-23" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -1687,7 +1630,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-5-part-2/chapter-xxxvi-fundamental-and-leading-characteristics-of-hindu-culture-and-civil.html#p-chapter-xxxvi-fundamental-and-leading-characteristics-of-hindu-culture-and-civil-23" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">113.8-9 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">113.8-9</span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -1696,7 +1639,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-5-part-2/chapter-xxxvi-fundamental-and-leading-characteristics-of-hindu-culture-and-civil.html#p-chapter-xxxvi-fundamental-and-leading-characteristics-of-hindu-culture-and-civil-25" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     
@@ -1710,7 +1653,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-5" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -1719,7 +1662,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-88" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">742 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">742</span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -1728,7 +1671,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-148" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">915 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">915</span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -1737,7 +1680,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-186" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse">1528 <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse">1528</span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -1746,7 +1689,7 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-245" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     <div class="snippet">
@@ -1755,225 +1698,12 @@ a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
                             <a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-245" class="snippet-link">
                                 Read in context →
                             </a>
-                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                            <span class="snippet-verse"></span>
                         </div>
                     </div>
                     
                 </div>
             </div>
 </div>
-<script>
-(function(){
-  var R = window.__R;
-  function all(s){ return Array.prototype.slice.call(document.querySelectorAll(s)); }
-  function faceSeconds(t){
-    var m = /(\d+):(\d\d)(?::(\d\d))?/.exec(t || '');
-    if (!m) return null;
-    return m[3] ? (+m[1]*3600 + +m[2]*60 + +m[3]) : (+m[1]*60 + +m[2]);
-  }
-  function clearToast(){
-    var t = document.getElementById('toast');
-    if (t) { t.className = t.className.replace(/\bshow\b/g,''); t.textContent = ''; }
-  }
-  // takeRecords() is synchronous; the observer's own callback is not, and a
-  // click's effect has to be read before the next click happens.
-  function probe(el){
-    var before = R.calls.length, mo = new MutationObserver(function(){});
-    clearToast();
-    mo.observe(document.documentElement, {childList:true, subtree:true,
-                                          attributes:true, characterData:true});
-    var err = null;
-    try { el.click(); } catch(e) { err = String(e.message); }
-    var mut = mo.takeRecords().length;
-    mo.disconnect();
-    // THE WORST STATE, NOT THE LAST ONE. Overflow used to be read once, after
-    // the sweep -- and the sweep ends on whatever view its last press opened.
-    // The edition's index reported 0 while its "What it draws on" tab stood
-    // 11px past a 390px screen: a pass on exactly the defect it exists to find.
-    var de = document.documentElement, ov = de.scrollWidth - de.clientWidth;
-    if (ov > R.worstOverflow) {
-      R.worstOverflow = ov;
-      R.worstAt = (el.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 40);
-    }
-    var t = document.getElementById('toast');
-    var toast = (t && /\bshow\b/.test(t.className) && t.textContent.trim()) || null;
-    // AN ADDRESS THE PAGE HANDS OUT. The atlases publish no <a href="#...">:
-    // pressing a verse writes the address into the URL bar and the reader
-    // copies it from there. So a hash the page sets itself is an address it
-    // has published, and the deep-link pass owes it the same test as a link.
-    if (location.hash.length > 1) R.hashes[location.hash.slice(1)] = 1;
-    return {call: R.calls.length > before ? R.calls[R.calls.length-1] : null,
-            mut: mut, toast: toast, err: err};
-  }
-
-  function sweepMarks(out, sel){
-    var marks = all(sel);
-    marks.forEach(function(m){
-      if (m.disabled) return;
-      out.marks.total++;
-      var r = probe(m);
-      if (r.err) { out.marks.errors.push({t:(m.textContent||'').trim().slice(0,40), e:r.err}); return; }
-      if (r.call) {
-        out.marks.played++;
-        var face = faceSeconds(m.textContent);
-        if (face !== null && r.call.at != null) {
-          var d = Math.abs(r.call.at - face);
-          if (d > 2.0) out.marks.bad_time.push(
-            {t:(m.textContent||'').trim().slice(0,40), face:face, at:r.call.at, d:+d.toFixed(2)});
-        }
-      } else if (r.toast) {
-        out.marks.refused++;
-        if (out.marks.refusals.length < 6) out.marks.refusals.push(r.toast.slice(0,70));
-      } else if (r.mut) {
-        out.marks.acted++;
-      } else {
-        out.marks.dead.push((m.className||'') + ' | ' + (m.textContent||'').trim().slice(0,40));
-      }
-    });
-  }
-
-  function label(b){
-    var id = b.id ? '#'+b.id : '';
-    var cls = (b.className||'').trim().split(/\s+/).slice(0,2).join('.');
-    var txt = (b.textContent||'').trim().replace(/\s+/g,' ').slice(0,28);
-    return (id || ('.'+cls) || 'button') + (txt ? ' «'+txt+'»' : '');
-  }
-
-  setTimeout(function(){
-    var out = {yt_order: R.ytOrder, errors: [], lanes: null,
-               marks:{total:0, played:0, refused:0, acted:0, dead:[], bad_time:[],
-                      errors:[], refusals:[]},
-               controls:{total:0, dead:[]},
-               overflow:null, rendered:0,
-               buttons_at_start: all('button').length};
-
-    try { out.lanes = V.langs.map(function(l){
-            return {id:l.id, name:l.name||null, speaker:l.speaker||null, sim:!!l.sim}; }); }
-    catch(e) { out.lanes = null; }
-
-    out.rendered = all('.mk, .pl, .row, .verse, tr').length;
-
-    // A play control is whatever plays, not whatever is called .mk. The
-    // anukramaṇikā and the witness build theirs with `el('button')` and no
-    // stable class, so a selector registry would simply have missed them --
-    // which it did, on the first run of this file.
-    var PLAY = 'button.mk, button.pl, button.playall, .marks button,' +
-               ' .lane button, .lanes button, .row button, .part button';
-    sweepMarks(out, PLAY);
-    // The chapters come from the data, never from a guess. Varāha, Garuḍa and
-    // Viṣṇu are scoped to the chapters actually walked, so 1, 2, 3 need not
-    // exist -- and showChapter() does `esc(V.chapters[ch].name)` with no guard,
-    // so a guessed number throws rather than returning empty. That was this
-    // harness's own first "finding".
-    var chaps = [];
-    try { chaps = Object.keys(V.chapters).map(Number)
-                    .filter(function(n){ return !isNaN(n); }); } catch(e) {}
-    out.chapters = chaps.length;
-    if (typeof showChapter === 'function' && chaps.length) {
-      chaps.slice(0, 3).forEach(function(ch){
-        try { showChapter(ch); } catch(e) { out.errors.push('showChapter(' + ch + '): ' + e.message); return; }
-        sweepMarks(out, PLAY);       // showChapter rebuilds the rows
-      });
-    }
-    var seen = {};
-    all(PLAY).forEach(function(b){ seen[label(b)] = 1; });
-
-    // Everything else. After the marks, because a panel toggle can hide the
-    // rows they live in.
-    //
-    // LIVE, NOT A SNAPSHOT. The first version took all('button') once and
-    // pressed each in turn. On the Smṛtimuktāphalam edition a click re-renders
-    // the pane, so every later button in the snapshot was detached by the time
-    // its turn came -- and a click on a detached node never bubbles to the
-    // delegated listener on #pane. 194 of smp6's controls reported dead; all
-    // 194 were detached; none was dead. So the buttons are re-read after every
-    // press, deduplicated by label, and a detached one is never pressed.
-    //
-    // THE KEY IS LABEL + POSITION, not label alone. A label-only key collapsed
-    // every verse's identical ▶ button into one press, and the suite caught
-    // it: played counts fell on seven atlases with no page changed. The k-th
-    // connected button bearing a given label is the same control across a
-    // re-render, so it is the key that survives both failure modes.
-    var probed = {}, presses = 0, CAP = 6000;
-    var startSet = (function(){ var bs = all('button'), nth = {}, ks = [];
-      bs.forEach(function(x){ if (!x.isConnected || x.disabled) return;
-        var L = label(x); nth[L] = (nth[L] || 0) + 1; ks.push(L + '#' + nth[L]); });
-      return ks; })();
-    function nextButton(){
-      var bs = all('button'), nth = {};
-      for (var i = 0; i < bs.length; i++) {
-        var b = bs[i];
-        if (!b.isConnected) continue;
-        var L = label(b), k = nth[L] = (nth[L] || 0) + 1, key = L + '#' + k;
-        if (b.disabled || seen[L] || probed[key]) continue;
-        return {el: b, key: key};
-      }
-      return null;
-    }
-    var nb, b;
-    while (presses < CAP && (nb = nextButton())) {
-      b = nb.el; probed[nb.key] = 1; presses++;
-      out.controls.total++;
-      var r = probe(b);
-      if (r.call) { out.marks.total++; out.marks.played++;   // it played: it was a play control
-        var face = faceSeconds(b.textContent);
-        if (face !== null && r.call.at != null && r.call.fn !== 'playVideo'
-            && r.call.fn !== 'pauseVideo') {
-          var d = Math.abs(r.call.at - face);
-          if (d > 2.0) out.marks.bad_time.push(
-            {t:(b.textContent||'').trim().slice(0,40), face:face, at:r.call.at, d:+d.toFixed(2)});
-        }
-        continue; }
-      if (!r.toast && !r.mut && !r.err) out.controls.dead.push(label(b));
-    }
-    out.controls.capped = presses >= CAP;
-    // COVERAGE, reported rather than assumed: every button still on the page
-    // that the sweep never pressed. A count that falls is only a finding if
-    // this is zero -- otherwise it may be the sweep that missed, not the page.
-    out.controls.unreached = (function(){
-      var bs = all('button'), nth = {}, miss = [];
-      bs.forEach(function(x){
-        if (!x.isConnected || x.disabled) return;
-        var L = label(x), k = nth[L] = (nth[L] || 0) + 1;
-        if (!seen[L] && !probed[L + '#' + k]) miss.push(L + '#' + k);
-      });
-      return {n: miss.length, e: miss.slice(0, 5)};
-    })();
-    // Present when the sweep began, never pressed, gone by the end: removed by
-    // an earlier press. Not reachable in the state the sweep drove the page to,
-    // but reachable from a fresh load -- so this is a coverage gap, and it is
-    // printed, never folded silently into a pass.
-    out.controls.hidden_by_sweep = startSet.filter(function(k){
-      return !probed[k] && !seen[k.replace(/#\d+$/, '')]; }).length;
-
-    // Every address this page publishes, as "target.html#fragment": the links
-    // it renders, and the hashes it wrote into the URL during the sweep. The
-    // anukramaṇikā's 647 register links address seven OTHER pages, which is
-    // why these are pooled by target rather than tested where they were found.
-    var self = location.pathname.split('/').pop(), addrs = {};
-    all('a[href]').forEach(function(a){
-      var h = a.getAttribute('href') || '';
-      if (h.indexOf('#') < 0 || /^[a-z][a-z0-9+.-]*:/i.test(h)) return;
-      var cut = h.indexOf('#'), page = h.slice(0, cut) || self, frag = h.slice(cut + 1);
-      if (frag) addrs[page + '#' + frag] = 1;
-    });
-    Object.keys(R.hashes).forEach(function(f){ addrs[self + '#' + f] = 1; });
-    out.addresses = Object.keys(addrs);
-
-    var de = document.documentElement;
-    var endOverflow = de.scrollWidth - de.clientWidth;
-    out.overflow = Math.max(endOverflow, R.worstOverflow);
-    out.overflow_after = endOverflow >= R.worstOverflow ? '(page as left)' : R.worstAt;
-    out.viewport = de.clientWidth;
-    out.errors = out.errors.concat(R.errors).slice(0, 12);
-
-    var pre = document.createElement('pre');
-    pre.id = '__regress';
-    pre.textContent = btoa(unescape(encodeURIComponent(JSON.stringify(out))));
-    document.body.appendChild(pre);
-  }, 1800);
-})();
-</script>
-
 </body>
 </html>
