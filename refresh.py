@@ -177,6 +177,42 @@ def check_citations(cache):
     return {'n': len(urls), 'bad': bad, 'bases': sorted(bases)}
 
 
+def check_outbound(files, cache):
+    """The links this book makes INTO the edition, resolved against it.
+
+    The reverse of check_citations, and it exists for the same reason: an
+    address published by one site and honoured by another is a contract that
+    neither side can check alone. Kane names the digest 69 times here and each
+    mention links to the edition, 31 of them to a kāṇḍa -- `#kanda:ahnika`.
+    Those slugs are declared in smp_site.py (KANDA_SLUGS) and shipped in the
+    anukramaṇikā's own data, so renaming one there breaks links here, silently
+    and with no 404 to notice: an unknown fragment just shows the whole
+    register. Reading the slugs back out of the published page is the only way
+    to know they still resolve.
+    """
+    import json
+    index = os.path.join(SMP, 'index.html')
+    if not os.path.isfile(index):
+        return None
+    src = read(index, cache)
+    m = re.search(r'<script id="data" type="application/json">', src)
+    try:
+        D = json.loads(src[m.end():src.index('</script>', m.end())])
+        known = set(D['kandas'])
+    except (ValueError, KeyError, AttributeError):
+        return {'n': 0, 'bad': ['the anukramaṇikā ships no kāṇḍa table — '
+                                'it cannot honour a #kanda: address'], 'known': set()}
+    used, bad = 0, []
+    pat = re.compile(r'href="[^"]*?/smp/#kanda:([a-z]+)"')
+    for f in (x for x in files if x.endswith('.html')):
+        for slug in pat.findall(read(os.path.join(HERE, f), cache)):
+            used += 1
+            if slug not in known:
+                bad.append('%s -> #kanda:%s (the edition knows %s)'
+                           % (f, slug, ', '.join(sorted(known))))
+    return {'n': used, 'bad': bad, 'known': known}
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--check', action='store_true', help='verify only; copy nothing')
@@ -222,6 +258,15 @@ def main():
         if cit['n'] == 0:
             print('  (the edition published no Kane link at all — check KANE_SITE '
                   'in dharmasastra-gcp/smp/smp_site.py)')
+
+    out = check_outbound(files, cache)
+    if out is not None:
+        print('%d kāṇḍa link(s) into the edition%s'
+              % (out['n'], ' — %d UNRESOLVABLE' % len(out['bad']) if out['bad'] else
+                 ' (%s)' % ', '.join(sorted(out['known'])) if out['n'] else ''))
+        for b in out['bad'][:10]:
+            print('  %s' % b)
+        bad += len(out['bad'])
 
     total = sum(os.path.getsize(os.path.join(HERE, f)) for f in files
                 if os.path.isfile(os.path.join(HERE, f)))
