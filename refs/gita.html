@@ -87,6 +87,14 @@
     @media (max-width: 768px) {
         .dh-content { padding: 24px 20px; }
         .dh-wrapper { flex-direction: column; }
+        /* THE COMPOUNDS SET THE FLOOR. A column flex item cannot be narrower
+           than its own min-content, and this book's min-content is a 59-letter
+           Devanagari compound or `Sumantu-Jaimini-Vaiśampāyana-Paila-sūtra-
+           bhāṣya-Bhārata-Mahābhā-` at 65: the content column measured 496px on
+           a 390px screen and took the page with it. `anywhere` rather than
+           `break-word` on purpose -- only `anywhere` reduces the intrinsic
+           minimum, which is the number doing the damage. */
+        .dh-content { overflow-wrap: anywhere; }
     }
 
     /* ── TOC Sidebar ── */
@@ -835,6 +843,20 @@
     .verse-locs a:hover { text-decoration: underline; }
     .verse-context { color: var(--ink-secondary); font-style: italic; max-width: 400px; }
     .verse-text { max-width: 460px; }
+    /* FOUR COLUMNS DO NOT FIT A PHONE. `.verse-text` and `.verse-context` set
+       460px and 400px, so this table could not be narrower than 828px however
+       small the screen -- measured at 390px, where it hung 458px past the
+       viewport and took the whole page with it. On a phone the two prose
+       columns are let go of so the cells wrap, and whatever is still too wide
+       (a long unbroken verse reference) scrolls inside the table's own box
+       instead of scrolling the page. */
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    @media (max-width: 700px) {
+        .ref-table { font-size: 0.85rem; }
+        .ref-table th, .ref-table td { padding: 8px 6px; }
+        .verse-context, .verse-text { max-width: none; }
+        .verse-ref { white-space: normal; min-width: 0; }
+    }
     .kane-sa { font-family: 'Noto Serif Devanagari', serif; font-size: 0.95rem;
         line-height: 1.7; color: var(--ink); }
     .kane-note { font-size: 0.72rem; color: var(--ink-secondary); margin-top: 4px;
@@ -903,6 +925,7 @@
                <b>16</b> of them with the verse as Kane prints it · <a href="https://advaita-sharada.sringeri.net/display/bhashya/Gita" target="_blank" class="ext-link">Read text →</a></p>
         </div>
 
+        <div class="table-wrap">
         <table class="ref-table">
             <thead>
                 <tr><th>Verse</th><th>The verse, as Kane prints it</th><th>Locations</th><th>Context</th></tr>
@@ -1673,6 +1696,7 @@
         </tr>
             </tbody>
         </table>
+        </div>
     </div>
 
     

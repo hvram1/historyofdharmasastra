@@ -1,6 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+(function(){
+  var R = {ytOrder:null, calls:[], errors:[], worstOverflow:0, worstAt:null, hashes:{}};
+  window.__R = R;
+  window.addEventListener('error', function(e){
+    R.errors.push(String(e.message) + ' @' + (e.lineno || '?'));
+  });
+  // The append is synchronous and adjacent to the callback's definition, so
+  // this is the only moment at which their order can be observed. A
+  // MutationObserver cannot see it -- it fires after both have run.
+  var origAppend = document.head.appendChild.bind(document.head);
+  document.head.appendChild = function(n){
+    if (n && n.tagName === 'SCRIPT' && /iframe_api/.test(n.src || '')) {
+      // STICKY FALSE. The first version of this recorded only the latest
+      // append, so a page that requested the API early and then requested it
+      // again after defining the callback reported "fine" -- the mutation test
+      // with an injected race passed, which is the one outcome a regression
+      // check must never produce. Any append before the callback exists is the
+      // fault, whatever happens afterwards.
+      var defined = (typeof window.onYouTubeIframeAPIReady === 'function');
+      R.ytOrder = (R.ytOrder === null) ? defined : (R.ytOrder && defined);
+      setTimeout(function(){
+        if (typeof window.onYouTubeIframeAPIReady === 'function') {
+          try { window.onYouTubeIframeAPIReady(); }
+          catch(e){ R.errors.push('onYouTubeIframeAPIReady: ' + e.message); }
+        }
+      }, 0);
+      return n;                      // never actually load YouTube
+    }
+    return origAppend(n);
+  };
+  window.YT = {
+    PlayerState:{UNSTARTED:-1, ENDED:0, PLAYING:1, PAUSED:2, BUFFERING:3, CUED:5},
+    Player: function(el, opts){
+      var self = this;
+      this.loadVideoById = function(o){
+        R.calls.push({fn:'loadVideoById', v:(o&&o.videoId)||null, at:(o&&o.startSeconds)||0}); };
+      this.cueVideoById = function(o){
+        R.calls.push({fn:'cueVideoById', v:(o&&o.videoId)||null, at:(o&&o.startSeconds)||0}); };
+      this.seekTo = function(t){ R.calls.push({fn:'seekTo', v:null, at:t}); };
+      this.playVideo = function(){ R.calls.push({fn:'playVideo', v:null, at:null}); };
+      this.pauseVideo = function(){ R.calls.push({fn:'pauseVideo', v:null, at:null}); };
+      this.stopVideo=function(){};
+      this.getCurrentTime=function(){return 0;}; this.getPlayerState=function(){return 2;};
+      this.getDuration=function(){return 3600;}; this.destroy=function(){};
+      this.getIframe=function(){return document.createElement('iframe');};
+      this.addEventListener=function(){}; this.removeEventListener=function(){};
+      setTimeout(function(){
+        if (opts && opts.events && opts.events.onReady) {
+          try { opts.events.onReady({target:self}); } catch(e){}
+        }
+      }, 0);
+    }
+  };
+})();
+</script>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Yajña (Sacrifice and Ritual) — History of Dharmaśāstra</title>
@@ -25,7 +82,7 @@ body {
 .navbar {
     background: linear-gradient(135deg, #3D2B1F 0%, #5C3D2E 100%);
     padding: 10px 24px;
-    display: flex;
+    display: flex; flex-wrap: wrap;
     align-items: center;
     gap: 18px;
     position: sticky;
@@ -7002,5 +7059,218 @@ body {
                 <div class="overflow">...and 171 more paragraphs in this volume</div>
             </div>
 </div>
+<script>
+(function(){
+  var R = window.__R;
+  function all(s){ return Array.prototype.slice.call(document.querySelectorAll(s)); }
+  function faceSeconds(t){
+    var m = /(\d+):(\d\d)(?::(\d\d))?/.exec(t || '');
+    if (!m) return null;
+    return m[3] ? (+m[1]*3600 + +m[2]*60 + +m[3]) : (+m[1]*60 + +m[2]);
+  }
+  function clearToast(){
+    var t = document.getElementById('toast');
+    if (t) { t.className = t.className.replace(/\bshow\b/g,''); t.textContent = ''; }
+  }
+  // takeRecords() is synchronous; the observer's own callback is not, and a
+  // click's effect has to be read before the next click happens.
+  function probe(el){
+    var before = R.calls.length, mo = new MutationObserver(function(){});
+    clearToast();
+    mo.observe(document.documentElement, {childList:true, subtree:true,
+                                          attributes:true, characterData:true});
+    var err = null;
+    try { el.click(); } catch(e) { err = String(e.message); }
+    var mut = mo.takeRecords().length;
+    mo.disconnect();
+    // THE WORST STATE, NOT THE LAST ONE. Overflow used to be read once, after
+    // the sweep -- and the sweep ends on whatever view its last press opened.
+    // The edition's index reported 0 while its "What it draws on" tab stood
+    // 11px past a 390px screen: a pass on exactly the defect it exists to find.
+    var de = document.documentElement, ov = de.scrollWidth - de.clientWidth;
+    if (ov > R.worstOverflow) {
+      R.worstOverflow = ov;
+      R.worstAt = (el.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 40);
+    }
+    var t = document.getElementById('toast');
+    var toast = (t && /\bshow\b/.test(t.className) && t.textContent.trim()) || null;
+    // AN ADDRESS THE PAGE HANDS OUT. The atlases publish no <a href="#...">:
+    // pressing a verse writes the address into the URL bar and the reader
+    // copies it from there. So a hash the page sets itself is an address it
+    // has published, and the deep-link pass owes it the same test as a link.
+    if (location.hash.length > 1) R.hashes[location.hash.slice(1)] = 1;
+    return {call: R.calls.length > before ? R.calls[R.calls.length-1] : null,
+            mut: mut, toast: toast, err: err};
+  }
+
+  function sweepMarks(out, sel){
+    var marks = all(sel);
+    marks.forEach(function(m){
+      if (m.disabled) return;
+      out.marks.total++;
+      var r = probe(m);
+      if (r.err) { out.marks.errors.push({t:(m.textContent||'').trim().slice(0,40), e:r.err}); return; }
+      if (r.call) {
+        out.marks.played++;
+        var face = faceSeconds(m.textContent);
+        if (face !== null && r.call.at != null) {
+          var d = Math.abs(r.call.at - face);
+          if (d > 2.0) out.marks.bad_time.push(
+            {t:(m.textContent||'').trim().slice(0,40), face:face, at:r.call.at, d:+d.toFixed(2)});
+        }
+      } else if (r.toast) {
+        out.marks.refused++;
+        if (out.marks.refusals.length < 6) out.marks.refusals.push(r.toast.slice(0,70));
+      } else if (r.mut) {
+        out.marks.acted++;
+      } else {
+        out.marks.dead.push((m.className||'') + ' | ' + (m.textContent||'').trim().slice(0,40));
+      }
+    });
+  }
+
+  function label(b){
+    var id = b.id ? '#'+b.id : '';
+    var cls = (b.className||'').trim().split(/\s+/).slice(0,2).join('.');
+    var txt = (b.textContent||'').trim().replace(/\s+/g,' ').slice(0,28);
+    return (id || ('.'+cls) || 'button') + (txt ? ' «'+txt+'»' : '');
+  }
+
+  setTimeout(function(){
+    var out = {yt_order: R.ytOrder, errors: [], lanes: null,
+               marks:{total:0, played:0, refused:0, acted:0, dead:[], bad_time:[],
+                      errors:[], refusals:[]},
+               controls:{total:0, dead:[]},
+               overflow:null, rendered:0,
+               buttons_at_start: all('button').length};
+
+    try { out.lanes = V.langs.map(function(l){
+            return {id:l.id, name:l.name||null, speaker:l.speaker||null, sim:!!l.sim}; }); }
+    catch(e) { out.lanes = null; }
+
+    out.rendered = all('.mk, .pl, .row, .verse, tr').length;
+
+    // A play control is whatever plays, not whatever is called .mk. The
+    // anukramaṇikā and the witness build theirs with `el('button')` and no
+    // stable class, so a selector registry would simply have missed them --
+    // which it did, on the first run of this file.
+    var PLAY = 'button.mk, button.pl, button.playall, .marks button,' +
+               ' .lane button, .lanes button, .row button, .part button';
+    sweepMarks(out, PLAY);
+    // The chapters come from the data, never from a guess. Varāha, Garuḍa and
+    // Viṣṇu are scoped to the chapters actually walked, so 1, 2, 3 need not
+    // exist -- and showChapter() does `esc(V.chapters[ch].name)` with no guard,
+    // so a guessed number throws rather than returning empty. That was this
+    // harness's own first "finding".
+    var chaps = [];
+    try { chaps = Object.keys(V.chapters).map(Number)
+                    .filter(function(n){ return !isNaN(n); }); } catch(e) {}
+    out.chapters = chaps.length;
+    if (typeof showChapter === 'function' && chaps.length) {
+      chaps.slice(0, 3).forEach(function(ch){
+        try { showChapter(ch); } catch(e) { out.errors.push('showChapter(' + ch + '): ' + e.message); return; }
+        sweepMarks(out, PLAY);       // showChapter rebuilds the rows
+      });
+    }
+    var seen = {};
+    all(PLAY).forEach(function(b){ seen[label(b)] = 1; });
+
+    // Everything else. After the marks, because a panel toggle can hide the
+    // rows they live in.
+    //
+    // LIVE, NOT A SNAPSHOT. The first version took all('button') once and
+    // pressed each in turn. On the Smṛtimuktāphalam edition a click re-renders
+    // the pane, so every later button in the snapshot was detached by the time
+    // its turn came -- and a click on a detached node never bubbles to the
+    // delegated listener on #pane. 194 of smp6's controls reported dead; all
+    // 194 were detached; none was dead. So the buttons are re-read after every
+    // press, deduplicated by label, and a detached one is never pressed.
+    //
+    // THE KEY IS LABEL + POSITION, not label alone. A label-only key collapsed
+    // every verse's identical ▶ button into one press, and the suite caught
+    // it: played counts fell on seven atlases with no page changed. The k-th
+    // connected button bearing a given label is the same control across a
+    // re-render, so it is the key that survives both failure modes.
+    var probed = {}, presses = 0, CAP = 6000;
+    var startSet = (function(){ var bs = all('button'), nth = {}, ks = [];
+      bs.forEach(function(x){ if (!x.isConnected || x.disabled) return;
+        var L = label(x); nth[L] = (nth[L] || 0) + 1; ks.push(L + '#' + nth[L]); });
+      return ks; })();
+    function nextButton(){
+      var bs = all('button'), nth = {};
+      for (var i = 0; i < bs.length; i++) {
+        var b = bs[i];
+        if (!b.isConnected) continue;
+        var L = label(b), k = nth[L] = (nth[L] || 0) + 1, key = L + '#' + k;
+        if (b.disabled || seen[L] || probed[key]) continue;
+        return {el: b, key: key};
+      }
+      return null;
+    }
+    var nb, b;
+    while (presses < CAP && (nb = nextButton())) {
+      b = nb.el; probed[nb.key] = 1; presses++;
+      out.controls.total++;
+      var r = probe(b);
+      if (r.call) { out.marks.total++; out.marks.played++;   // it played: it was a play control
+        var face = faceSeconds(b.textContent);
+        if (face !== null && r.call.at != null && r.call.fn !== 'playVideo'
+            && r.call.fn !== 'pauseVideo') {
+          var d = Math.abs(r.call.at - face);
+          if (d > 2.0) out.marks.bad_time.push(
+            {t:(b.textContent||'').trim().slice(0,40), face:face, at:r.call.at, d:+d.toFixed(2)});
+        }
+        continue; }
+      if (!r.toast && !r.mut && !r.err) out.controls.dead.push(label(b));
+    }
+    out.controls.capped = presses >= CAP;
+    // COVERAGE, reported rather than assumed: every button still on the page
+    // that the sweep never pressed. A count that falls is only a finding if
+    // this is zero -- otherwise it may be the sweep that missed, not the page.
+    out.controls.unreached = (function(){
+      var bs = all('button'), nth = {}, miss = [];
+      bs.forEach(function(x){
+        if (!x.isConnected || x.disabled) return;
+        var L = label(x), k = nth[L] = (nth[L] || 0) + 1;
+        if (!seen[L] && !probed[L + '#' + k]) miss.push(L + '#' + k);
+      });
+      return {n: miss.length, e: miss.slice(0, 5)};
+    })();
+    // Present when the sweep began, never pressed, gone by the end: removed by
+    // an earlier press. Not reachable in the state the sweep drove the page to,
+    // but reachable from a fresh load -- so this is a coverage gap, and it is
+    // printed, never folded silently into a pass.
+    out.controls.hidden_by_sweep = startSet.filter(function(k){
+      return !probed[k] && !seen[k.replace(/#\d+$/, '')]; }).length;
+
+    // Every address this page publishes, as "target.html#fragment": the links
+    // it renders, and the hashes it wrote into the URL during the sweep. The
+    // anukramaṇikā's 647 register links address seven OTHER pages, which is
+    // why these are pooled by target rather than tested where they were found.
+    var self = location.pathname.split('/').pop(), addrs = {};
+    all('a[href]').forEach(function(a){
+      var h = a.getAttribute('href') || '';
+      if (h.indexOf('#') < 0 || /^[a-z][a-z0-9+.-]*:/i.test(h)) return;
+      var cut = h.indexOf('#'), page = h.slice(0, cut) || self, frag = h.slice(cut + 1);
+      if (frag) addrs[page + '#' + frag] = 1;
+    });
+    Object.keys(R.hashes).forEach(function(f){ addrs[self + '#' + f] = 1; });
+    out.addresses = Object.keys(addrs);
+
+    var de = document.documentElement;
+    var endOverflow = de.scrollWidth - de.clientWidth;
+    out.overflow = Math.max(endOverflow, R.worstOverflow);
+    out.overflow_after = endOverflow >= R.worstOverflow ? '(page as left)' : R.worstAt;
+    out.viewport = de.clientWidth;
+    out.errors = out.errors.concat(R.errors).slice(0, 12);
+
+    var pre = document.createElement('pre');
+    pre.id = '__regress';
+    pre.textContent = btoa(unescape(encodeURIComponent(JSON.stringify(out))));
+    document.body.appendChild(pre);
+  }, 1800);
+})();
+</script>
+
 </body>
 </html>

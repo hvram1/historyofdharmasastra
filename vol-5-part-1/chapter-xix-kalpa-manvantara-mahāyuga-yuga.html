@@ -87,6 +87,14 @@
     @media (max-width: 768px) {
         .dh-content { padding: 24px 20px; }
         .dh-wrapper { flex-direction: column; }
+        /* THE COMPOUNDS SET THE FLOOR. A column flex item cannot be narrower
+           than its own min-content, and this book's min-content is a 59-letter
+           Devanagari compound or `Sumantu-Jaimini-Vaiśampāyana-Paila-sūtra-
+           bhāṣya-Bhārata-Mahābhā-` at 65: the content column measured 496px on
+           a 390px screen and took the page with it. `anywhere` rather than
+           `break-word` on purpose -- only `anywhere` reduces the intrinsic
+           minimum, which is the number doing the damage. */
+        .dh-content { overflow-wrap: anywhere; }
     }
 
     /* ── TOC Sidebar ── */
