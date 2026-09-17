@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline — 73. Halāyudha</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+    :root {
+        --parchment: #faf6ef;
+        --parchment-mid: #f0e6d3;
+        --saffron: #e8941a;
+        --ink: #2c1810;
+        --ink-secondary: #5a3e2b;
+        --rule: #d4c5a9;
+        --indigo: #2d5a87;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+        font-family: 'Lora', Georgia, serif;
+        background: var(--parchment);
+        color: var(--ink);
+    }
+    .navbar {
+        background: linear-gradient(135deg, #1a0f0a, #2c1810);
+        padding: 12px 24px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+    .navbar a { color: var(--parchment); text-decoration: none; }
+    .navbar .devanagari { font-size: 1.3rem; }
+    .navbar .nav-title { font-family: 'Lora', serif; font-size: 1rem; opacity: 0.9; }
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+    .breadcrumb-bar a { color: var(--saffron); text-decoration: none; }
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+    .content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 24px;
+    }
+    h1 {
+        font-size: 1.6rem;
+        margin-bottom: 8px;
+        color: var(--ink);
+    }
+    .subtitle {
+        font-size: 0.9rem;
+        color: var(--ink-secondary);
+        margin-bottom: 24px;
+    }
+    .timeline-container {
+        overflow-x: auto;
+        padding: 16px 0;
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        background: var(--parchment);
+    }
+    .timeline-svg {
+        display: block;
+        min-width: 100%;
+    }
+    .timeline-svg .tl-evt { cursor: pointer; }
+    .timeline-svg .tl-evt:hover { transform: scale(1.5); }
+    .event-list {
+        margin-top: 32px;
+    }
+    .event-list h2 {
+        font-size: 1.1rem;
+        margin-bottom: 16px;
+        color: var(--ink-secondary);
+    }
+    .event-item {
+        display: flex;
+        gap: 16px;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--rule);
+        font-size: 0.88rem;
+    }
+    .event-year {
+        min-width: 90px;
+        font-weight: 600;
+        color: var(--saffron);
+        font-family: 'Open Sans', sans-serif;
+    }
+    .event-label { font-weight: 600; }
+    .event-context {
+        color: var(--ink-secondary);
+        font-size: 0.82rem;
+        margin-top: 2px;
+    }
+    .event-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.8rem;
+    }
+    .event-link:hover { text-decoration: underline; }
+    .back-link {
+        display: inline-block;
+        margin-top: 24px;
+        color: var(--saffron);
+        text-decoration: none;
+        font-family: 'Open Sans', sans-serif;
+    }
+    .back-link:hover { text-decoration: underline; }
+    .century-group {
+        margin-bottom: 8px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        overflow: hidden;
+    }
+    .century-heading {
+        display: block;
+        padding: 10px 16px;
+        background: var(--parchment-mid);
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: var(--ink);
+    }
+    .century-heading:hover { background: #e8dcc8; }
+    .century-count {
+        font-weight: 400;
+        color: var(--ink-secondary);
+        font-size: 0.82rem;
+    }
+    .century-events {
+        padding: 8px 16px;
+    }
+    .vol-tl-link {
+        display: inline-block;
+        margin: 4px 8px 4px 0;
+        padding: 6px 14px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        color: var(--saffron);
+        text-decoration: none;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+    }
+    .vol-tl-link:hover {
+        border-color: var(--saffron);
+        background: #f5ebe0;
+    }
+    .vol-tl-count {
+        color: var(--ink-secondary);
+        font-size: 0.78rem;
+    }
+    /* ── Tab switcher ── */
+    .tl-tabs {
+        display: flex; gap: 0; margin-bottom: 20px;
+        border-bottom: 2px solid var(--rule);
+    }
+    .tl-tab {
+        padding: 10px 20px; cursor: pointer;
+        font-family: 'Open Sans', sans-serif; font-size: 0.9rem;
+        color: var(--ink-secondary); border-bottom: 2px solid transparent;
+        margin-bottom: -2px; transition: all 0.2s;
+    }
+    .tl-tab:hover { color: var(--ink); }
+    .tl-tab.active { color: var(--saffron); border-bottom-color: var(--saffron); font-weight: 600; }
+    .tl-panel { display: none; }
+    .tl-panel.active { display: block; }
+    /* ── Entity graph styles ── */
+    .eg-entity {
+        border: 1px solid var(--rule); border-radius: 6px;
+        margin-bottom: 8px; overflow: hidden; transition: border-color 0.2s;
+    }
+    .eg-entity.highlighted { border-color: var(--saffron); box-shadow: 0 0 0 1px var(--saffron); }
+    .eg-header {
+        display: flex; align-items: center; gap: 12px;
+        padding: 10px 16px; background: var(--parchment-mid);
+        cursor: pointer; font-family: 'Open Sans', sans-serif;
+    }
+    .eg-header:hover { background: #e8dcc8; }
+    .eg-name { font-weight: 600; font-size: 0.92rem; flex: 1; }
+    .eg-type {
+        font-size: 0.72rem; padding: 2px 8px; border-radius: 10px;
+        background: var(--parchment); color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .eg-claims-count {
+        font-size: 0.78rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif;
+    }
+    .eg-body { padding: 12px 16px; display: none; }
+    .eg-entity.open .eg-body { display: block; }
+    .eg-range-bar {
+        position: relative; height: 32px;
+        background: var(--parchment-mid); border-radius: 4px;
+        margin-bottom: 10px; overflow: hidden;
+    }
+    .eg-range-fill {
+        position: absolute; top: 6px; height: 20px;
+        background: var(--saffron); opacity: 0.3; border-radius: 3px;
+    }
+    .eg-range-dot {
+        position: absolute; top: 11px; width: 10px; height: 10px;
+        background: var(--saffron); border-radius: 50%;
+        transform: translateX(-5px); cursor: pointer;
+    }
+    .eg-range-dot:hover { transform: translateX(-5px) scale(1.4); }
+    .eg-range-label {
+        position: absolute; top: -2px;
+        font-size: 0.7rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif;
+        transform: translateX(-50%);
+    }
+    .eg-cooccur {
+        margin-top: 8px; padding-top: 8px;
+        border-top: 1px solid var(--rule);
+    }
+    .eg-cooccur-title {
+        font-size: 0.78rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif; margin-bottom: 6px;
+    }
+    .eg-cooccur-chip {
+        display: inline-block; margin: 2px 4px 2px 0;
+        padding: 3px 10px; background: var(--parchment-mid);
+        border: 1px solid var(--rule); border-radius: 12px;
+        font-size: 0.78rem; color: var(--ink);
+        font-family: 'Open Sans', sans-serif;
+        cursor: pointer; transition: all 0.2s;
+    }
+    .eg-cooccur-chip:hover { border-color: var(--saffron); color: var(--saffron); }
+    .eg-cooccur-weight {
+        font-size: 0.68rem; color: var(--ink-secondary); margin-left: 2px;
+    }
+    .eg-claim-list { margin-top: 8px; }
+    .eg-claim {
+        display: flex; gap: 12px; padding: 4px 0;
+        font-size: 0.82rem; border-bottom: 1px solid #f0e6d3;
+    }
+    .eg-claim-year {
+        min-width: 80px; font-weight: 600; color: var(--saffron);
+        font-family: 'Open Sans', sans-serif; font-size: 0.8rem;
+    }
+    .eg-claim-ctx { color: var(--ink-secondary); font-size: 0.78rem; }
+    .eg-claim a { color: var(--indigo); text-decoration: none; font-size: 0.76rem; }
+    .eg-claim a:hover { text-decoration: underline; }
+    .eg-stats {
+        display: flex; gap: 24px; margin-bottom: 16px;
+        font-family: 'Open Sans', sans-serif; font-size: 0.85rem;
+        color: var(--ink-secondary);
+    }
+    .eg-stat-num { font-weight: 700; color: var(--saffron); font-size: 1.1rem; }
+    .eg-sort {
+        font-family: 'Open Sans', sans-serif; font-size: 0.82rem;
+        margin-bottom: 12px; color: var(--ink-secondary);
+    }
+    .eg-sort a {
+        color: var(--indigo); text-decoration: none; cursor: pointer;
+        margin: 0 6px;
+    }
+    .eg-sort a:hover { text-decoration: underline; }
+    .eg-sort a.active { color: var(--saffron); font-weight: 600; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="../index.html"><span class="devanagari">धर्मशास्त्रम्</span></a>
+        <a href="../index.html" class="nav-title">History of Dharmaśāstra</a>
+    </div>
+    
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep"> &rsaquo; </span>
+        <a href="index.html">Volume I: Part II</a>
+        <span class="sep"> &rsaquo; </span>
+        <a href="73-halāyudha.html">73. Halāyudha</a>
+        <span class="sep"> &rsaquo; </span>
+        <span>Timeline</span>
+    </div>
+    
+    <div class="content">
+        <h1>Timeline: 73. Halāyudha</h1>
+        <p class="subtitle">35 dated references</p>
+        <div class="tl-tabs">
+            <div class="tl-tab active" data-panel="events-panel">Events</div>
+            <div class="tl-tab" data-panel="graph-panel">Entity Graph</div>
+        </div>
+        <div id="events-panel" class="tl-panel active">
+            <div class="timeline-container">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 280" class="timeline-svg" role="img" aria-label="Timeline for 73. Halāyudha">
+<rect width="2000" height="280" fill="#faf6ef" rx="8"/>
+<line x1="60" y1="100" x2="1960" y2="100" stroke="#c4956a" stroke-width="2"/>
+<line x1="60.0" y1="94" x2="60.0" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="60.0" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">600 CE</text>
+<line x1="215.0619834710744" y1="94" x2="215.0619834710744" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="215.0619834710744" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">700 CE</text>
+<line x1="411.3429752066116" y1="94" x2="411.3429752066116" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="411.3429752066116" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">800 CE</text>
+<line x1="607.6239669421487" y1="94" x2="607.6239669421487" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="607.6239669421487" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">900 CE</text>
+<line x1="803.904958677686" y1="94" x2="803.904958677686" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="803.904958677686" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1000 CE</text>
+<line x1="1000.1859504132232" y1="94" x2="1000.1859504132232" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="1000.1859504132232" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1100 CE</text>
+<line x1="1196.4669421487604" y1="94" x2="1196.4669421487604" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="1196.4669421487604" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1200 CE</text>
+<line x1="1392.7479338842975" y1="94" x2="1392.7479338842975" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="1392.7479338842975" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1300 CE</text>
+<line x1="1589.0289256198348" y1="94" x2="1589.0289256198348" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="1589.0289256198348" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1400 CE</text>
+<line x1="1785.309917355372" y1="94" x2="1785.309917355372" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="1785.309917355372" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1500 CE</text>
+<text x="60" y="120" text-anchor="start" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">&larr; 1 earlier</text>
+<line x1="60.0" y1="100" x2="60.0" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="60.0" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-73-halāyudha-23" data-href="73-halāyudha.html#p-73-halāyudha-23"><title>Ṛgveda</title></circle>
+<line x1="60.0" y1="106" x2="60.0" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="60.0" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Ṛgveda</text>
+<text x="60.0" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">401 CE</text>
+<line x1="217.02479338842974" y1="100" x2="411.3429752066116" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="314.18388429752065" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-73-halāyudha-4" data-href="73-halāyudha.html#p-73-halāyudha-4"><title>are quoted in the Dhvanyāloka (latter ha</title></circle>
+<line x1="314.18388429752065" y1="106" x2="314.18388429752065" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="314.18388429752065" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">are quoted in the Dhvanyā</text>
+<text x="314.18388429752065" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">701 CE</text>
+<line x1="509.48347107438013" y1="100" x2="607.6239669421487" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="558.5537190082645" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-73-halāyudha-4" data-href="73-halāyudha.html#p-73-halāyudha-4"><title>are quoted in the Dhvanyāloka (latter ha</title></circle>
+<line x1="558.5537190082645" y1="106" x2="558.5537190082645" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="558.5537190082645" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">are quoted in the Dhvanyā</text>
+<text x="558.5537190082645" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">850 CE</text>
+<circle cx="686.1363636363636" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-73-halāyudha-2" data-href="73-halāyudha.html#p-73-halāyudha-2"><title>The name Halāyudha ( an epithet of Balar</title></circle>
+<line x1="686.1363636363636" y1="106" x2="686.1363636363636" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="686.1363636363636" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">The name Halāyudha ( an e</text>
+<text x="686.1363636363636" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">940 CE</text>
+<line x1="705.7644628099174" y1="100" x2="803.904958677686" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="754.8347107438017" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-73-halāyudha-2" data-href="73-halāyudha.html#p-73-halāyudha-2"><title>The name Halāyudha ( an epithet of Balar</title></circle>
+<line x1="754.8347107438017" y1="106" x2="754.8347107438017" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="754.8347107438017" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">The name Halāyudha ( an e</text>
+<text x="754.8347107438017" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">950 CE</text>
+<circle cx="723.4297520661157" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-73-halāyudha-2" data-href="73-halāyudha.html#p-73-halāyudha-2"><title>The name Halāyudha ( an epithet of Balar</title></circle>
+<line x1="723.4297520661157" y1="106" x2="723.4297520661157" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="723.4297520661157" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">The name Halāyudha ( an e</text>
+<text x="723.4297520661157" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">959 CE</text>
+<line x1="792.1280991735538" y1="100" x2="798.0165289256198" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="795.0723140495868" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-73-halāyudha-2" data-href="73-halāyudha.html#p-73-halāyudha-2"><title>The name Halāyudha ( an epithet of Balar</title></circle>
+<line x1="795.0723140495868" y1="106" x2="795.0723140495868" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="795.0723140495868" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">The name Halāyudha ( an e</text>
+<text x="795.0723140495868" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">994 CE</text>
+<line x1="960.9297520661157" y1="100" x2="1057.107438016529" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1009.0185950413223" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-73-halāyudha-17" data-href="73-halāyudha.html#p-73-halāyudha-17"><title>Kielhorn concluded that the Sena era beg</title></circle>
+<line x1="1009.0185950413223" y1="106" x2="1009.0185950413223" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1009.0185950413223" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Kielhorn concluded that t</text>
+<text x="1009.0185950413223" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1080 CE</text>
+<line x1="1002.1487603305785" y1="100" x2="1196.4669421487604" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1099.3078512396694" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-73-halāyudha-4" data-href="73-halāyudha.html#p-73-halāyudha-4"><title>are quoted in the Dhvanyāloka (latter ha</title></circle>
+<line x1="1099.3078512396694" y1="106" x2="1099.3078512396694" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1099.3078512396694" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">are quoted in the Dhvanyā</text>
+<text x="1099.3078512396694" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1101 CE</text>
+<circle cx="1011.9628099173553" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="2" stroke-dasharray="2,2" class="tl-evt" data-para="p-73-halāyudha-17" data-href="73-halāyudha.html#p-73-halāyudha-17"><title>Kielhorn concluded that the Sena era beg</title></circle>
+<line x1="1011.9628099173553" y1="106" x2="1011.9628099173553" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1011.9628099173553" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Kielhorn concluded that t</text>
+<text x="1011.9628099173553" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1106 CE</text>
+<line x1="1015.8884297520661" y1="100" x2="1039.4421487603304" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1027.6652892561983" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-73-halāyudha-17" data-href="73-halāyudha.html#p-73-halāyudha-17"><title>Kielhorn concluded that the Sena era beg</title></circle>
+<line x1="1027.6652892561983" y1="106" x2="1027.6652892561983" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1027.6652892561983" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Kielhorn concluded that t</text>
+<text x="1027.6652892561983" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1108 CE</text>
+<line x1="1035.51652892562" y1="100" x2="1037.4793388429753" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1036.4979338842977" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-73-halāyudha-17" data-href="73-halāyudha.html#p-73-halāyudha-17"><title>Kielhorn concluded that the Sena era beg</title></circle>
+<line x1="1036.4979338842977" y1="106" x2="1036.4979338842977" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1036.4979338842977" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Kielhorn concluded that t</text>
+<text x="1036.4979338842977" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1118 CE</text>
+<line x1="1037.4793388429753" y1="100" x2="1039.4421487603304" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1038.4607438016528" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-73-halāyudha-16" data-href="73-halāyudha.html#p-73-halāyudha-16"><title>The La. Saṃ is still popular in north Bi</title></circle>
+<line x1="1038.4607438016528" y1="106" x2="1038.4607438016528" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1038.4607438016528" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">The La. Saṃ is still popu</text>
+<text x="1038.4607438016528" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1119 CE</text>
+<circle cx="1037.4793388429753" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-73-halāyudha-17" data-href="73-halāyudha.html#p-73-halāyudha-17"><title>Kielhorn concluded that the Sena era beg</title></circle>
+<line x1="1037.4793388429753" y1="106" x2="1037.4793388429753" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1037.4793388429753" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Kielhorn concluded that t</text>
+<text x="1037.4793388429753" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1119 CE</text>
+<circle cx="1098.3264462809918" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-73-halāyudha-23" data-href="73-halāyudha.html#p-73-halāyudha-23"><title>Ṛgveda</title></circle>
+<line x1="1098.3264462809918" y1="106" x2="1098.3264462809918" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1098.3264462809918" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Ṛgveda</text>
+<text x="1098.3264462809918" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1150 CE</text>
+<circle cx="1098.3264462809918" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-73-halāyudha-26" data-href="73-halāyudha.html#p-73-halāyudha-26"><title>Kātyāyana</title></circle>
+<line x1="1098.3264462809918" y1="106" x2="1098.3264462809918" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1098.3264462809918" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Kātyāyana</text>
+<text x="1098.3264462809918" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1150 CE</text>
+<line x1="1117.9545454545453" y1="100" x2="1119.9173553719008" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1118.935950413223" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-73-halāyudha-12" data-href="73-halāyudha.html#p-73-halāyudha-12"><title>King Ballālasena of Bengal began the com</title></circle>
+<line x1="1118.935950413223" y1="106" x2="1118.935950413223" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1118.935950413223" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">King Ballālasena of Benga</text>
+<text x="1118.935950413223" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1160 CE</text>
+<line x1="1117.9545454545453" y1="100" x2="1196.4669421487604" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1157.2107438016528" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-73-halāyudha-13" data-href="73-halāyudha.html#p-73-halāyudha-13"><title>The passages quoted in the note establis</title></circle>
+<line x1="1157.2107438016528" y1="106" x2="1157.2107438016528" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1157.2107438016528" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">The passages quoted in th</text>
+<text x="1157.2107438016528" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1160 CE</text>
+<line x1="1133.6570247933885" y1="100" x2="1135.6198347107438" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1134.6384297520663" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-73-halāyudha-12" data-href="73-halāyudha.html#p-73-halāyudha-12"><title>King Ballālasena of Bengal began the com</title></circle>
+<line x1="1134.6384297520663" y1="106" x2="1134.6384297520663" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1134.6384297520663" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">King Ballālasena of Benga</text>
+<text x="1134.6384297520663" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1168 CE</text>
+<circle cx="1133.6570247933885" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-73-halāyudha-13" data-href="73-halāyudha.html#p-73-halāyudha-13"><title>The passages quoted in the note establis</title></circle>
+<line x1="1133.6570247933885" y1="106" x2="1133.6570247933885" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1133.6570247933885" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">The passages quoted in th</text>
+<text x="1133.6570247933885" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1168 CE</text>
+<circle cx="1135.6198347107438" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="2" stroke-dasharray="2,2" class="tl-evt" data-para="p-73-halāyudha-13" data-href="73-halāyudha.html#p-73-halāyudha-13"><title>The passages quoted in the note establis</title></circle>
+<line x1="1135.6198347107438" y1="106" x2="1135.6198347107438" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1135.6198347107438" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">The passages quoted in th</text>
+<text x="1135.6198347107438" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1169 CE</text>
+<line x1="1137.5826446280992" y1="100" x2="1139.5454545454547" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1138.564049586777" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-73-halāyudha-12" data-href="73-halāyudha.html#p-73-halāyudha-12"><title>King Ballālasena of Bengal began the com</title></circle>
+<line x1="1138.564049586777" y1="106" x2="1138.564049586777" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1138.564049586777" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">King Ballālasena of Benga</text>
+<text x="1138.564049586777" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1170 CE</text>
+<line x1="1153.2851239669424" y1="100" x2="1155.2479338842975" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1154.26652892562" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-73-halāyudha-13" data-href="73-halāyudha.html#p-73-halāyudha-13"><title>The passages quoted in the note establis</title></circle>
+<line x1="1154.26652892562" y1="106" x2="1154.26652892562" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1154.26652892562" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">The passages quoted in th</text>
+<text x="1154.26652892562" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1178 CE</text>
+<circle cx="1155.2479338842975" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="2" stroke-dasharray="2,2" class="tl-evt" data-para="p-73-halāyudha-17" data-href="73-halāyudha.html#p-73-halāyudha-17"><title>Kielhorn concluded that the Sena era beg</title></circle>
+<line x1="1155.2479338842975" y1="106" x2="1155.2479338842975" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1155.2479338842975" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Kielhorn concluded that t</text>
+<text x="1155.2479338842975" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1179 CE</text>
+<circle cx="1196.4669421487604" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-73-halāyudha-13" data-href="73-halāyudha.html#p-73-halāyudha-13"><title>The passages quoted in the note establis</title></circle>
+<line x1="1196.4669421487604" y1="106" x2="1196.4669421487604" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1196.4669421487604" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">The passages quoted in th</text>
+<text x="1196.4669421487604" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1200 CE</text>
+<line x1="1198.4297520661157" y1="100" x2="1392.7479338842975" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1295.5888429752067" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-73-halāyudha-4" data-href="73-halāyudha.html#p-73-halāyudha-4"><title>are quoted in the Dhvanyāloka (latter ha</title></circle>
+<line x1="1295.5888429752067" y1="106" x2="1295.5888429752067" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1295.5888429752067" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">are quoted in the Dhvanyā</text>
+<text x="1295.5888429752067" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1201 CE</text>
+<line x1="1198.4297520661157" y1="100" x2="1200.392561983471" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1199.4111570247933" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-73-halāyudha-17" data-href="73-halāyudha.html#p-73-halāyudha-17"><title>Kielhorn concluded that the Sena era beg</title></circle>
+<line x1="1199.4111570247933" y1="106" x2="1199.4111570247933" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1199.4111570247933" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Kielhorn concluded that t</text>
+<text x="1199.4111570247933" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1201 CE</text>
+<line x1="1206.280991735537" y1="100" x2="1208.2438016528924" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1207.2623966942147" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-73-halāyudha-13" data-href="73-halāyudha.html#p-73-halāyudha-13"><title>The passages quoted in the note establis</title></circle>
+<line x1="1207.2623966942147" y1="106" x2="1207.2623966942147" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1207.2623966942147" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">The passages quoted in th</text>
+<text x="1207.2623966942147" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1205 CE</text>
+<circle cx="1263.202479338843" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-73-halāyudha-17" data-href="73-halāyudha.html#p-73-halāyudha-17"><title>Kielhorn concluded that the Sena era beg</title></circle>
+<line x1="1263.202479338843" y1="106" x2="1263.202479338843" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1263.202479338843" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Kielhorn concluded that t</text>
+<text x="1263.202479338843" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1234 CE</text>
+<circle cx="1265.1652892561985" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-73-halāyudha-17" data-href="73-halāyudha.html#p-73-halāyudha-17"><title>Kielhorn concluded that the Sena era beg</title></circle>
+<line x1="1265.1652892561985" y1="106" x2="1265.1652892561985" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1265.1652892561985" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Kielhorn concluded that t</text>
+<text x="1265.1652892561985" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1235 CE</text>
+<line x1="1590.9917355371902" y1="100" x2="1785.309917355372" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1688.150826446281" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-73-halāyudha-27" data-href="73-halāyudha.html#p-73-halāyudha-27"><title>There is a work called Karmopadeśinī ( a</title></circle>
+<line x1="1688.150826446281" y1="106" x2="1688.150826446281" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1688.150826446281" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">There is a work called Ka</text>
+<text x="1688.150826446281" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1401 CE</text>
+<line x1="1787.2727272727273" y1="100" x2="1960.0" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1873.6363636363635" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-73-halāyudha-3" data-href="73-halāyudha.html#p-73-halāyudha-3"><title>But the Introduction (pp. I-VI) to the K</title></circle>
+<line x1="1873.6363636363635" y1="106" x2="1873.6363636363635" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1873.6363636363635" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">But the Introduction (pp.</text>
+<text x="1873.6363636363635" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1501 CE</text>
+<line x1="1787.2727272727273" y1="100" x2="1960.0" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1873.6363636363635" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-73-halāyudha-18" data-href="73-halāyudha.html#p-73-halāyudha-18"><title>Sourindra Mohan Tagore (introduction to </title></circle>
+<line x1="1873.6363636363635" y1="106" x2="1873.6363636363635" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1873.6363636363635" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Sourindra Mohan Tagore (i</text>
+<text x="1873.6363636363635" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1501 CE</text>
+<circle cx="1802.9752066115705" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="2" stroke-dasharray="2,2" class="tl-evt" data-para="p-73-halāyudha-26" data-href="73-halāyudha.html#p-73-halāyudha-26"><title>Kātyāyana</title></circle>
+<line x1="1802.9752066115705" y1="106" x2="1802.9752066115705" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1802.9752066115705" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Kātyāyana</text>
+<text x="1802.9752066115705" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1509 CE</text>
+<circle cx="1810.8264462809918" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-73-halāyudha-3" data-href="73-halāyudha.html#p-73-halāyudha-3"><title>But the Introduction (pp. I-VI) to the K</title></circle>
+<line x1="1810.8264462809918" y1="106" x2="1810.8264462809918" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1810.8264462809918" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">But the Introduction (pp.</text>
+<text x="1810.8264462809918" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1513 CE</text>
+</svg>
+            </div>
+            <div class="event-list">
+                <h2>All Dated References</h2>
+                <div class="event-item"><span class="event-year">401 CE</span><div><span class="event-label">Ṛgveda</span><div class="event-context">In the Br. Up. V. 14. 4 we have the famous remark ‘ cakṣur-vai satyam ’ and it is added ‘ therefore when two persons com...</div><a href="73-halāyudha.html#p-73-halāyudha-23" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">about 701 CE</span><div><span class="event-label">are quoted in the Dhvanyāloka (latter half of 9th century) and in the Kāvyālaṅkā</span><div class="event-context">are quoted in the Dhvanyāloka (latter half of 9th century) and in the Kāvyālaṅkārasūtravṛtti of Vāmana (about 8th centur...</div><a href="73-halāyudha.html#p-73-halāyudha-4" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">850 CE</span><div><span class="event-label">are quoted in the Dhvanyāloka (latter half of 9th century) and in the Kāvyālaṅkā</span><div class="event-context">are quoted in the Dhvanyāloka (latter half of 9th century) and in the Kāvyālaṅkārasūtravṛtti of Vāmana (about 8th centur...</div><a href="73-halāyudha.html#p-73-halāyudha-4" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">940 CE</span><div><span class="event-label">The name Halāyudha ( an epithet of Balarāma, the brother of Kṛṣṇa ) was a common</span><div class="event-context">The name Halāyudha ( an epithet of Balarāma, the brother of Kṛṣṇa ) was a common one in India and therefore there are se...</div><a href="73-halāyudha.html#p-73-halāyudha-2" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">950 CE</span><div><span class="event-label">The name Halāyudha ( an epithet of Balarāma, the brother of Kṛṣṇa ) was a common</span><div class="event-context">The name Halāyudha ( an epithet of Balarāma, the brother of Kṛṣṇa ) was a common one in India and therefore there are se...</div><a href="73-halāyudha.html#p-73-halāyudha-2" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">959 CE</span><div><span class="event-label">The name Halāyudha ( an epithet of Balarāma, the brother of Kṛṣṇa ) was a common</span><div class="event-context">The name Halāyudha ( an epithet of Balarāma, the brother of Kṛṣṇa ) was a common one in India and therefore there are se...</div><a href="73-halāyudha.html#p-73-halāyudha-2" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">994 CE</span><div><span class="event-label">The name Halāyudha ( an epithet of Balarāma, the brother of Kṛṣṇa ) was a common</span><div class="event-context">The name Halāyudha ( an epithet of Balarāma, the brother of Kṛṣṇa ) was a common one in India and therefore there are se...</div><a href="73-halāyudha.html#p-73-halāyudha-2" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">between 1080 CE</span><div><span class="event-label">Kielhorn concluded that the Sena era began in Śake 1041 i. e. 1119 A. D. ( vide</span><div class="event-context">Kielhorn concluded that the Sena era began in Śake 1041 i. e. 1119 A. D. ( vide I. A. 19 p. 1–7 ). The era as employed t...</div><a href="73-halāyudha.html#p-73-halāyudha-17" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1101 CE</span><div><span class="event-label">are quoted in the Dhvanyāloka (latter half of 9th century) and in the Kāvyālaṅkā</span><div class="event-context">are quoted in the Dhvanyāloka (latter half of 9th century) and in the Kāvyālaṅkārasūtravṛtti of Vāmana (about 8th centur...</div><a href="73-halāyudha.html#p-73-halāyudha-4" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">about 1106 CE</span><div><span class="event-label">Kielhorn concluded that the Sena era began in Śake 1041 i. e. 1119 A. D. ( vide</span><div class="event-context">Kielhorn concluded that the Sena era began in Śake 1041 i. e. 1119 A. D. ( vide I. A. 19 p. 1–7 ). The era as employed t...</div><a href="73-halāyudha.html#p-73-halāyudha-17" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1108 CE</span><div><span class="event-label">Kielhorn concluded that the Sena era began in Śake 1041 i. e. 1119 A. D. ( vide</span><div class="event-context">Kielhorn concluded that the Sena era began in Śake 1041 i. e. 1119 A. D. ( vide I. A. 19 p. 1–7 ). The era as employed t...</div><a href="73-halāyudha.html#p-73-halāyudha-17" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1118 CE</span><div><span class="event-label">Kielhorn concluded that the Sena era began in Śake 1041 i. e. 1119 A. D. ( vide</span><div class="event-context">Kielhorn concluded that the Sena era began in Śake 1041 i. e. 1119 A. D. ( vide I. A. 19 p. 1–7 ). The era as employed t...</div><a href="73-halāyudha.html#p-73-halāyudha-17" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1119 CE</span><div><span class="event-label">The La. Saṃ is still popular in north Bihar and its first year is now regarded a</span><div class="event-context">The La. Saṃ is still popular in north Bihar and its first year is now regarded as 1119–20 A. D. How and when the La. Saṃ...</div><a href="73-halāyudha.html#p-73-halāyudha-16" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1119 CE</span><div><span class="event-label">Kielhorn concluded that the Sena era began in Śake 1041 i. e. 1119 A. D. ( vide</span><div class="event-context">Kielhorn concluded that the Sena era began in Śake 1041 i. e. 1119 A. D. ( vide I. A. 19 p. 1–7 ). The era as employed t...</div><a href="73-halāyudha.html#p-73-halāyudha-17" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1150 CE</span><div><span class="event-label">Ṛgveda</span><div class="event-context">In the Br. Up. V. 14. 4 we have the famous remark ‘ cakṣur-vai satyam ’ and it is added ‘ therefore when two persons com...</div><a href="73-halāyudha.html#p-73-halāyudha-23" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1150 CE</span><div><span class="event-label">Kātyāyana</span><div class="event-context">For reasons of space it is impossible to illustrate Halā- yudha's principles and methods of the exposition of vedic Mant...</div><a href="73-halāyudha.html#p-73-halāyudha-26" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1160 CE</span><div><span class="event-label">King Ballālasena of Bengal began the composition of the Adbhutasāgara in the yea</span><div class="event-context">King Ballālasena of Bengal began the composition of the Adbhutasāgara in the year 1090 of the Śaka era (i. e. 1168–9 A. ...</div><a href="73-halāyudha.html#p-73-halāyudha-12" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1160 CE</span><div><span class="event-label">The passages quoted in the note establish that the Ad- bhutasāgara was begun in</span><div class="event-context">The passages quoted in the note establish that the Ad- bhutasāgara was begun in 1168 A. D. by Ballālasena, who passed aw...</div><a href="73-halāyudha.html#p-73-halāyudha-13" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1168 CE</span><div><span class="event-label">King Ballālasena of Bengal began the composition of the Adbhutasāgara in the yea</span><div class="event-context">King Ballālasena of Bengal began the composition of the Adbhutasāgara in the year 1090 of the Śaka era (i. e. 1168–9 A. ...</div><a href="73-halāyudha.html#p-73-halāyudha-12" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1168 CE</span><div><span class="event-label">The passages quoted in the note establish that the Ad- bhutasāgara was begun in</span><div class="event-context">The passages quoted in the note establish that the Ad- bhutasāgara was begun in 1168 A. D. by Ballālasena, who passed aw...</div><a href="73-halāyudha.html#p-73-halāyudha-13" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">about 1169 CE</span><div><span class="event-label">The passages quoted in the note establish that the Ad- bhutasāgara was begun in</span><div class="event-context">The passages quoted in the note establish that the Ad- bhutasāgara was begun in 1168 A. D. by Ballālasena, who passed aw...</div><a href="73-halāyudha.html#p-73-halāyudha-13" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">about 1170 CE</span><div><span class="event-label">King Ballālasena of Bengal began the composition of the Adbhutasāgara in the yea</span><div class="event-context">King Ballālasena of Bengal began the composition of the Adbhutasāgara in the year 1090 of the Śaka era (i. e. 1168–9 A. ...</div><a href="73-halāyudha.html#p-73-halāyudha-12" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">about 1178 CE</span><div><span class="event-label">The passages quoted in the note establish that the Ad- bhutasāgara was begun in</span><div class="event-context">The passages quoted in the note establish that the Ad- bhutasāgara was begun in 1168 A. D. by Ballālasena, who passed aw...</div><a href="73-halāyudha.html#p-73-halāyudha-13" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">about 1179 CE</span><div><span class="event-label">Kielhorn concluded that the Sena era began in Śake 1041 i. e. 1119 A. D. ( vide</span><div class="event-context">Kielhorn concluded that the Sena era began in Śake 1041 i. e. 1119 A. D. ( vide I. A. 19 p. 1–7 ). The era as employed t...</div><a href="73-halāyudha.html#p-73-halāyudha-17" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1200 CE</span><div><span class="event-label">The passages quoted in the note establish that the Ad- bhutasāgara was begun in</span><div class="event-context">The passages quoted in the note establish that the Ad- bhutasāgara was begun in 1168 A. D. by Ballālasena, who passed aw...</div><a href="73-halāyudha.html#p-73-halāyudha-13" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1201 CE</span><div><span class="event-label">are quoted in the Dhvanyāloka (latter half of 9th century) and in the Kāvyālaṅkā</span><div class="event-context">are quoted in the Dhvanyāloka (latter half of 9th century) and in the Kāvyālaṅkārasūtravṛtti of Vāmana (about 8th centur...</div><a href="73-halāyudha.html#p-73-halāyudha-4" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">about 1201 CE</span><div><span class="event-label">Kielhorn concluded that the Sena era began in Śake 1041 i. e. 1119 A. D. ( vide</span><div class="event-context">Kielhorn concluded that the Sena era began in Śake 1041 i. e. 1119 A. D. ( vide I. A. 19 p. 1–7 ). The era as employed t...</div><a href="73-halāyudha.html#p-73-halāyudha-17" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1205 CE</span><div><span class="event-label">The passages quoted in the note establish that the Ad- bhutasāgara was begun in</span><div class="event-context">The passages quoted in the note establish that the Ad- bhutasāgara was begun in 1168 A. D. by Ballālasena, who passed aw...</div><a href="73-halāyudha.html#p-73-halāyudha-13" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1234 CE</span><div><span class="event-label">Kielhorn concluded that the Sena era began in Śake 1041 i. e. 1119 A. D. ( vide</span><div class="event-context">Kielhorn concluded that the Sena era began in Śake 1041 i. e. 1119 A. D. ( vide I. A. 19 p. 1–7 ). The era as employed t...</div><a href="73-halāyudha.html#p-73-halāyudha-17" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1235 CE</span><div><span class="event-label">Kielhorn concluded that the Sena era began in Śake 1041 i. e. 1119 A. D. ( vide</span><div class="event-context">Kielhorn concluded that the Sena era began in Śake 1041 i. e. 1119 A. D. ( vide I. A. 19 p. 1–7 ). The era as employed t...</div><a href="73-halāyudha.html#p-73-halāyudha-17" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1401 CE</span><div><span class="event-label">There is a work called Karmopadeśinī ( a manual on the daily religious rites ) a</span><div class="event-context">There is a work called Karmopadeśinī ( a manual on the daily religious rites ) ascribed to Halāyudha ; vide JASB vol. XI...</div><a href="73-halāyudha.html#p-73-halāyudha-27" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1501 CE</span><div><span class="event-label">But the Introduction (pp. I-VI) to the Kavirahasya has some interesting featureṣ</span><div class="event-context">But the Introduction (pp. I-VI) to the Kavirahasya has some interesting featureṣ It repeats the story of king Ādiśūra of...</div><a href="73-halāyudha.html#p-73-halāyudha-3" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1501 CE</span><div><span class="event-label">Sourindra Mohan Tagore (introduction to Kavirahasya p. I–II) says that Ādiśūra b</span><div class="event-context">Sourindra Mohan Tagore (introduction to Kavirahasya p. I–II) says that Ādiśūra brought to Bengal five Brāhmaṇas from Kan...</div><a href="73-halāyudha.html#p-73-halāyudha-18" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">before 1509 CE</span><div><span class="event-label">Kātyāyana</span><div class="event-context">For reasons of space it is impossible to illustrate Halā- yudha's principles and methods of the exposition of vedic Mant...</div><a href="73-halāyudha.html#p-73-halāyudha-26" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1513 CE</span><div><span class="event-label">But the Introduction (pp. I-VI) to the Kavirahasya has some interesting featureṣ</span><div class="event-context">But the Introduction (pp. I-VI) to the Kavirahasya has some interesting featureṣ It repeats the story of king Ādiśūra of...</div><a href="73-halāyudha.html#p-73-halāyudha-3" class="event-link">View in text &rarr;</a></div></div>
+            </div>
+        </div>
+        <div id="graph-panel" class="tl-panel">
+            <div class="eg-stats">
+<div><span class="eg-stat-num">2</span> entities</div>
+<div><span class="eg-stat-num">4</span> date claims</div>
+<div><span class="eg-stat-num">2</span> debated</div>
+<div><span class="eg-stat-num">55</span> co-occurrences</div>
+</div>
+<div class="eg-sort">Sort: <a class="active" onclick="egSort('date')">by date</a><a onclick="egSort('claims')">by claims</a><a onclick="egSort('name')">by name</a></div>
+<div id="eg-entities">
+<div class="eg-entity" data-key="gveda" data-consensus="1150" data-claims="2" data-name="Ṛgveda"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Ṛgveda</span><span class="eg-type">text</span><span class="eg-claims-count">2 claims &middot; 401 CE to 1150 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="401" data-max="1509"><span class="eg-range-label" style="left:0;">401 CE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1509 CE</span><div class="eg-range-fill" style="left:0.0%;width:67.6%;"></div><div class="eg-range-dot" style="left:0.0%;" title="401 CE — 5th century A. D."></div><div class="eg-range-dot" style="left:67.6%;" title="1150 CE — 1150 A. D."></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="k-ty-yanasm-ti" onclick="egHighlight('k-ty-yanasm-ti')">Kātyāyanasmṛti<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="apar-rka" onclick="egHighlight('apar-rka')">Aparārka<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="b-had-ra-yaka-upani-ad" onclick="egHighlight('b-had-ra-yaka-upani-ad')">Bṛhadāraṇyaka Upaniṣad<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="gautama-dharmas-tra" onclick="egHighlight('gautama-dharmas-tra')">Gautama Dharmasūtra<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="history-of-dharma-stra" onclick="egHighlight('history-of-dharma-stra')">History of Dharmaśāstra<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="manusm-ti" onclick="egHighlight('manusm-ti')">Manusmṛti<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="medh-tithi" onclick="egHighlight('medh-tithi')">Medhātithi<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="mit-k-ar" onclick="egHighlight('mit-k-ar')">Mitākṣarā<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">401 CE</span><div><span class="eg-claim-ctx">In the Br. Up. V. 14. 4 we have the famous remark ‘ cakṣur-vai satyam ’ and it is added ‘ therefore ...</span> <a href="73-halāyudha.html#p-73-halāyudha-23">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">1150 CE</span><div><span class="eg-claim-ctx">In the Br. Up. V. 14. 4 we have the famous remark ‘ cakṣur-vai satyam ’ and it is added ‘ therefore ...</span> <a href="73-halāyudha.html#p-73-halāyudha-23">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="k-ty-yanasm-ti" data-consensus="1509" data-claims="2" data-name="Kātyāyanasmṛti"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Kātyāyanasmṛti</span><span class="eg-type">text</span><span class="eg-claims-count">2 claims &middot; 1150 CE to 1509 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="401" data-max="1509"><span class="eg-range-label" style="left:0;">401 CE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1509 CE</span><div class="eg-range-fill" style="left:67.6%;width:32.4%;"></div><div class="eg-range-dot" style="left:67.6%;" title="1150 CE — 1150 A. D."></div><div class="eg-range-dot" style="left:100.0%;" title="1509 CE — before 1509 A. D."></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="gveda" onclick="egHighlight('gveda')">Ṛgveda<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="apar-rka" onclick="egHighlight('apar-rka')">Aparārka<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="b-had-ra-yaka-upani-ad" onclick="egHighlight('b-had-ra-yaka-upani-ad')">Bṛhadāraṇyaka Upaniṣad<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="gautama-dharmas-tra" onclick="egHighlight('gautama-dharmas-tra')">Gautama Dharmasūtra<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="history-of-dharma-stra" onclick="egHighlight('history-of-dharma-stra')">History of Dharmaśāstra<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="manusm-ti" onclick="egHighlight('manusm-ti')">Manusmṛti<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="medh-tithi" onclick="egHighlight('medh-tithi')">Medhātithi<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="mit-k-ar" onclick="egHighlight('mit-k-ar')">Mitākṣarā<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">1150 CE</span><div><span class="eg-claim-ctx">For reasons of space it is impossible to illustrate Halā- yudha&#x27;s principles and methods of the expo...</span> <a href="73-halāyudha.html#p-73-halāyudha-26">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">before 1509 CE</span><div><span class="eg-claim-ctx">For reasons of space it is impossible to illustrate Halā- yudha&#x27;s principles and methods of the expo...</span> <a href="73-halāyudha.html#p-73-halāyudha-26">view</a></div></div></div></div></div>
+</div>
+<script>
+function egToggle(header) {
+    header.parentElement.classList.toggle('open');
+}
+function egHighlight(key) {
+    // Remove existing highlights
+    document.querySelectorAll('.eg-entity.highlighted').forEach(function(el) {
+        el.classList.remove('highlighted');
+    });
+    // Highlight target and scroll to it
+    var target = document.querySelector('.eg-entity[data-key="' + key + '"]');
+    if (target) {
+        target.classList.add('highlighted');
+        target.classList.add('open');
+        target.scrollIntoView({behavior: 'smooth', block: 'center'});
+    }
+}
+function egSort(mode) {
+    var container = document.getElementById('eg-entities');
+    var items = Array.from(container.querySelectorAll('.eg-entity'));
+    items.sort(function(a, b) {
+        if (mode === 'date') return parseInt(a.dataset.consensus) - parseInt(b.dataset.consensus);
+        if (mode === 'claims') return parseInt(b.dataset.claims) - parseInt(a.dataset.claims);
+        if (mode === 'name') return a.dataset.name.localeCompare(b.dataset.name);
+        return 0;
+    });
+    items.forEach(function(el) { container.appendChild(el); });
+    // Update active sort link
+    document.querySelectorAll('.eg-sort a').forEach(function(a) { a.classList.remove('active'); });
+    event.target.classList.add('active');
+}
+</script>
+        </div>
+        <a href="73-halāyudha.html" class="back-link">&larr; Back to 73. Halāyudha</a>
+    </div>
+    <script>
+    document.querySelectorAll('.tl-evt').forEach(function(el) {
+        el.addEventListener('click', function() {
+            var href = this.getAttribute('data-href');
+            if (href) {
+                window.location.href = href;
+            } else {
+                var paraId = this.getAttribute('data-para');
+                if (paraId) {
+                    var target = document.getElementById(paraId);
+                    if (target) target.scrollIntoView({behavior: 'smooth'});
+                }
+            }
+        });
+    });
+    // Tab switching
+    document.querySelectorAll('.tl-tab').forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            document.querySelectorAll('.tl-tab').forEach(function(t) { t.classList.remove('active'); });
+            document.querySelectorAll('.tl-panel').forEach(function(p) { p.classList.remove('active'); });
+            tab.classList.add('active');
+            var panel = document.getElementById(tab.getAttribute('data-panel'));
+            if (panel) panel.classList.add('active');
+        });
+    });
+    </script>
+</body>
+</html>

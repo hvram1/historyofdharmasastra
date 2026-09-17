@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- MDB UI Kit -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/fonts.css?v=1.2">
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/navbar.css?v=2.4">
+
+    <title>Mitākṣarā — References in History of Dharmaśāstra</title>
+    <style>
+    :root {
+        --saffron:        #D4600A;
+        --saffron-light:  #F0924A;
+        --saffron-wash:   rgba(212, 96, 10, 0.07);
+        --indigo:         #2E5FA3;
+        --indigo-dark:    #1C3D70;
+        --maroon:         #7A1E1E;
+        --amber:          #C97A1A;
+        --ink:            #1A1209;
+        --ink-secondary:  #4A3B2A;
+        --parchment:      #FDFAF4;
+        --parchment-mid:  #F5EFE2;
+        --rule:           rgba(180, 130, 60, 0.22);
+        --shadow:         0 2px 18px rgba(90, 50, 10, 0.08);
+        --font-devanagari: 'Tiro Devanagari Sanskrit', 'Siddhanta', 'Noto Sans Devanagari', serif;
+        --font-roman:      'Junicode', Georgia, serif;
+    }
+
+    body {
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: var(--font-roman);
+    }
+
+    .devanagari {
+        font-family: var(--font-devanagari);
+    }
+
+    /* ── Navbar overrides ── */
+    .navbar-ontop { z-index: 1031; }
+    .hdclr { color: var(--saffron); }
+    .engpara { font-family: 'Open Sans', sans-serif; }
+
+    /* ── Layout ── */
+    .dh-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .dh-content {
+        flex: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        background: var(--parchment);
+        box-shadow: var(--shadow);
+        min-height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        .dh-content { padding: 24px 20px; }
+        .dh-wrapper { flex-direction: column; }
+    }
+
+    /* ── TOC Sidebar ── */
+    .toc-sidebar {
+        position: sticky;
+        top: 80px;
+        width: 280px;
+        min-width: 280px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding: 20px 16px;
+        margin-right: 24px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        scrollbar-width: thin;
+    }
+
+    .toc-title {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--saffron-light);
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list li {
+        padding: 4px 0;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-list li.toc-l3 {
+        padding-left: 16px;
+        font-size: 0.78rem;
+    }
+
+    .toc-list li a {
+        color: var(--ink-secondary);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .toc-list li a:hover { color: var(--saffron); }
+
+    .toc-list li.active {
+        border-left-color: var(--saffron);
+    }
+
+    .toc-list li.active a {
+        color: var(--saffron);
+        font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-sidebar { display: none; }
+    }
+
+    /* ── Mobile TOC Toggle ── */
+    .toc-mobile-toggle {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1050;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--saffron);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-mobile-toggle { display: block; }
+    }
+
+    /* ── Section Headings ── */
+    .section-heading {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        margin: 48px 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--rule);
+        letter-spacing: 0.5px;
+        scroll-margin-top: 80px;
+    }
+
+    h2.section-heading { font-size: 1.6rem; }
+
+    h3.section-heading {
+        font-size: 1.25rem;
+        border-left: 4px solid var(--saffron-light);
+        border-bottom: none;
+        padding: 8px 16px;
+        background: var(--saffron-wash);
+        border-radius: 0 5px 5px 0;
+    }
+
+    /* ── Prose ── */
+    .prose {
+        font-family: var(--font-roman);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+        color: var(--ink);
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    .prose em { color: var(--maroon); }
+
+    .prose:target {
+        background: rgba(212, 96, 10, 0.12);
+        border-left: 4px solid var(--saffron);
+        padding-left: 16px;
+        margin-left: -20px;
+        border-radius: 0 6px 6px 0;
+        animation: target-pulse 2s ease-out;
+    }
+
+    @keyframes target-pulse {
+        0%   { background: rgba(212, 96, 10, 0.30); }
+        100% { background: rgba(212, 96, 10, 0.12); }
+    }
+
+    /* ── Footnote References ── */
+    .fn-ref {
+        font-size: 0.75em;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    .fn-ref a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 0 2px;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: color 0.15s;
+    }
+
+    .fn-ref a:hover { color: var(--indigo); }
+
+    /* ── Synopsis Box ── */
+    .synopsis-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron-light);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .synopsis-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .synopsis-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .synopsis-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .synopsis-box.open .synopsis-toggle i {
+        transform: rotate(90deg);
+    }
+    .synopsis-body {
+        display: none;
+        padding: 0 20px 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+    }
+    .synopsis-box.open .synopsis-body { display: block; }
+    .synopsis-body p { margin: 0; }
+    .synopsis-attribution {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: var(--ink-secondary);
+        opacity: 0.7;
+        font-style: italic;
+    }
+    .synopsis-audio {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    .synopsis-play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--saffron);
+        background: none;
+        color: var(--saffron);
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: background 0.2s, color 0.2s;
+        padding: 0;
+    }
+    .synopsis-play-btn:hover {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn.playing {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn i { padding-left: 2px; }
+
+    /* ── Index Terms Panel ── */
+    .index-terms-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .index-terms-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .index-terms-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .index-terms-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .index-terms-box.open .index-terms-toggle i {
+        transform: rotate(90deg);
+    }
+    .index-terms-body {
+        display: none;
+        padding: 0 20px 16px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .index-terms-box.open .index-terms-body { display: block; }
+    .index-terms-dl {
+        margin: 0;
+        padding: 0;
+    }
+    .index-terms-dl dt {
+        font-family: var(--font-roman);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+        margin-top: 8px;
+    }
+    .index-terms-dl dd {
+        margin: 2px 0 0 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        color: var(--ink-secondary);
+        line-height: 1.5;
+    }
+    .nyaya-heading {
+        font-family: var(--font-roman);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        margin: 16px 0 4px;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+    }
+
+    /* ── Inline Index Popovers ── */
+    .idx-term {
+        border-bottom: 1px dotted var(--saffron-light);
+        cursor: help;
+        position: relative;
+    }
+    .idx-term:hover::after {
+        content: attr(data-def);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        background: rgba(44, 36, 22, 0.92);
+        color: #F5ECD8;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        max-width: 280px;
+        z-index: 100;
+        white-space: normal;
+        line-height: 1.4;
+        pointer-events: none;
+    }
+
+    /* ── Structured Version Banner ── */
+    .structured-banner {
+        margin: 0 0 28px;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, rgba(212, 96, 10, 0.06) 0%, rgba(212, 96, 10, 0.02) 100%);
+        border: 1px solid var(--saffron-light);
+        border-radius: 6px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        color: var(--ink-secondary);
+        line-height: 1.6;
+    }
+    .structured-banner i { color: var(--saffron); margin-right: 4px; }
+    .structured-banner a { color: var(--indigo); font-weight: 600; text-decoration: none; }
+    .structured-banner a:hover { text-decoration: underline; }
+
+    /* ── Footnotes Section ── */
+    .footnotes-section {
+        margin: 32px 0 48px;
+        padding: 20px 24px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .footnotes-section hr {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 0 0 16px;
+    }
+
+    .footnotes-list {
+        padding-left: 24px;
+        margin: 0;
+    }
+
+    .footnote-item {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+        scroll-margin-top: 80px;
+    }
+
+    .footnote-item:target {
+        background: rgba(212, 96, 10, 0.1);
+        border-radius: 4px;
+        padding: 4px 6px;
+        margin-left: -6px;
+    }
+
+    .fn-back {
+        color: var(--saffron-light);
+        text-decoration: none;
+        font-size: 0.85em;
+        margin-left: 4px;
+    }
+
+    .fn-back:hover { color: var(--saffron); }
+
+    /* ── Reference Links ── */
+    a.ref {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: all 0.15s;
+    }
+
+    a.ref:hover {
+        color: var(--saffron);
+        border-bottom-style: solid;
+    }
+
+    a.mbta-ext {
+        color: var(--indigo);
+        font-size: 0.7em;
+        margin-left: 2px;
+        opacity: 0.5;
+        text-decoration: none;
+        vertical-align: super;
+    }
+    a.mbta-ext:hover { opacity: 1; color: var(--saffron); }
+
+    /* ── References Panel (sidebar) ── */
+    .refs-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .refs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .refs-list li {
+        padding: 3px 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .ref-source-link {
+        font-weight: 600;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .ref-source-link:hover {
+        text-decoration: underline;
+    }
+
+    .ref-verse-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.76rem;
+    }
+
+    .ref-verse-link:hover {
+        text-decoration: underline;
+        color: var(--saffron);
+    }
+
+    .ref-verses {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Timeline panel ── */
+    .timeline-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .timeline-list li {
+        padding: 2px 0;
+        font-size: 0.76rem;
+        line-height: 1.4;
+        position: relative;
+        padding-left: 14px;
+    }
+
+    .timeline-list li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--saffron);
+    }
+
+    .timeline-list li.tl-approximate::before {
+        background: transparent;
+        border: 2px solid var(--saffron);
+        width: 4px;
+        height: 4px;
+    }
+
+    .timeline-list li.tl-century::before {
+        background: transparent;
+        border: 2px dashed var(--saffron);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+
+    .tl-dot-link {
+        text-decoration: none;
+        color: var(--ink);
+        display: block;
+    }
+
+    .tl-dot-link:hover {
+        color: var(--saffron);
+    }
+
+    .tl-year {
+        font-weight: 600;
+        color: var(--saffron);
+        font-size: 0.72rem;
+        min-width: 70px;
+        display: inline-block;
+    }
+
+    .tl-label {
+        color: var(--ink-secondary);
+        font-size: 0.72rem;
+    }
+
+    .tl-view-link, .tl-more {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.72rem;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .tl-view-link:hover, .tl-more:hover {
+        text-decoration: underline;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+
+    .breadcrumb-bar a {
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+
+    .breadcrumb-bar .sep {
+        color: var(--amber);
+        margin: 0 8px;
+    }
+
+    .breadcrumb-bar .current {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Chapter Navigation ── */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        margin-top: 48px;
+        border-top: 2px solid var(--rule);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .chapter-nav a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        transition: all 0.2s;
+        max-width: 45%;
+    }
+
+    .chapter-nav a:hover {
+        background: var(--saffron-wash);
+        border-color: var(--saffron-light);
+    }
+
+    .nav-prev { text-align: left; }
+    .nav-next { text-align: right; margin-left: auto; }
+
+    .page-range {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+    }
+
+    /* ── Volume Cards (Landing) ── */
+    .vol-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .vol-card {
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        transition: all 0.25s;
+    }
+
+    .vol-card:hover {
+        border-color: var(--saffron-light);
+        box-shadow: 0 4px 24px rgba(212, 96, 10, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .vol-num {
+        font-family: var(--font-roman);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--saffron);
+        margin-bottom: 8px;
+    }
+
+    .vol-subtitle {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        line-height: 1.5;
+        flex: 1;
+    }
+
+    .vol-chapters {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        margin-top: 12px;
+    }
+
+    /* ── Chapter Cards (Volume Index) ── */
+    .chapter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .chapter-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .chapter-card:hover {
+        border-color: var(--saffron-light);
+        background: var(--saffron-wash);
+    }
+
+    .card-num {
+        font-family: var(--font-roman);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--saffron);
+        min-width: 36px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        flex: 1;
+    }
+
+    .card-pages {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        color: var(--ink-secondary);
+    }
+
+    /* ── Landing Hero ── */
+    .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-family: var(--font-roman);
+        font-size: 2.4rem;
+        color: var(--saffron);
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .hero .devanagari-title {
+        font-family: var(--font-devanagari);
+        font-size: 1.8rem;
+        color: var(--ink);
+        margin-bottom: 16px;
+    }
+
+    .hero .author {
+        font-family: var(--font-roman);
+        font-size: 1.1rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .hero .desc {
+        font-family: var(--font-roman);
+        font-size: 1rem;
+        color: var(--ink-secondary);
+        line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer { margin-top: 48px; }
+
+
+    .ref-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    .ref-table th { text-align: left; padding: 10px 12px; border-bottom: 2px solid var(--saffron);
+        font-family: 'Open Sans', sans-serif; font-size: 0.8rem; color: var(--ink-secondary);
+        text-transform: uppercase; letter-spacing: 0.5px; }
+    .ref-table td { padding: 8px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+    .ref-table tr:target { background: var(--saffron-wash); }
+    .verse-ref { font-weight: 600; color: var(--saffron); white-space: nowrap; min-width: 80px; }
+    .verse-locs a { color: var(--indigo); text-decoration: none; font-size: 0.85rem; }
+    .verse-locs a:hover { text-decoration: underline; }
+    .verse-context { color: var(--ink-secondary); font-style: italic; max-width: 400px; }
+    .verse-text { max-width: 460px; }
+    .kane-sa { font-family: 'Noto Serif Devanagari', serif; font-size: 0.95rem;
+        line-height: 1.7; color: var(--ink); }
+    .kane-note { font-size: 0.72rem; color: var(--ink-secondary); margin-top: 4px;
+        padding-left: 8px; border-left: 2px solid var(--rule, #ddd); opacity: .85; }
+    .kane-src { font-size: 0.7rem; color: var(--ink-secondary); margin-top: 3px; }
+    .kane-src a { color: var(--indigo); text-decoration: none; }
+    .kane-src a:hover { text-decoration: underline; }
+    .tier { text-transform: uppercase; letter-spacing: .06em; font-size: 0.62rem;
+        border: 1px solid currentColor; border-radius: 2px; padding: 0 3px; }
+    .tier.cited { color: #1f6b5c; }
+    .tier.sole { color: #a8730d; }
+    .kane-none { color: var(--ink-secondary); font-size: 0.75rem; opacity: .55; }
+    .source-hero { text-align: center; padding: 40px 20px 30px; max-width: 800px; margin: 0 auto; }
+    .source-hero h1 { font-family: var(--font-roman); color: var(--saffron); font-size: 2rem; }
+    .source-hero .stats { font-family: 'Open Sans', sans-serif; color: var(--ink-secondary);
+        font-size: 0.9rem; margin-top: 8px; }
+    .ext-link { color: var(--indigo); font-weight: 600; }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mbta/">
+      <div class="container-fluid">&emsp;&emsp;
+      <a href="../index.html" class="navbar-brand" style="text-decoration:none;">
+        <span class="devanagari ms-3" style="font-size:1.5rem; color:var(--saffron); font-weight:700;">धर्मशास्त्रम्</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="../index.html">धर्मशास्त्रम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5 active" href="../index.html">खण्डाः</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in/mbta/">महाभारतम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in">सनातनम्</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+
+    <div style="max-width: 1100px; margin: 0 auto; padding: 20px;">
+        <div class="breadcrumb-bar">
+            <a href="../index.html">Home</a>
+            <span class="sep">›</span>
+            <a href="index.html">References</a>
+            <span class="sep">›</span>
+            <span class="current">Mitākṣarā</span>
+        </div>
+
+        <div class="source-hero">
+            <h1>Mitākṣarā</h1>
+            <p class="stats">1399 references across all volumes ·
+               44 distinct verses ·
+               <b>4</b> of them with the verse as Kane prints it</p>
+        </div>
+
+        <table class="ref-table">
+            <thead>
+                <tr><th>Verse</th><th>The verse, as Kane prints it</th><th>Locations</th><th>Context</th></tr>
+            </thead>
+            <tbody>
+                
+        <tr id="c">
+            <td class="verse-ref">c</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">The विश्वरूपसमुच्चय quoted in the उद्धाहतत्तव (p. 116) is quite explicit ‘ संतानों निषेधते यस्मात्पूर्वाज्जाउमयम्र च | तमादाव गणेषीमामयं याचव कप्पयकाम् ॥ ’</div><div class="kane-src"><span class="tier sole" title="the only Sanskrit on the only passage citing it — inferred">sole</span> <a href="../vol-2-part-1/chapter-ix-marriage.html#fn-chapter-ix-marriage-67">vol-2-part-1 §chapter-ix-marriage</a></div></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/10-vishnudharmasutra.html#p-10-vishnudharmasutra-7">vol-1-part-1 §10-vishnudharmasutra</a> · <a href="../vol-1-part-1/61-vishvarūpa.html#p-61-vishvarūpa-13">vol-1-part-1 §61-vishvarūpa</a> · <a href="../vol-1-part-1/61-vishvarūpa.html#p-61-vishvarūpa-20">vol-1-part-1 §61-vishvarūpa</a> · <a href="../vol-1-part-1/62-bhāruci.html#p-62-bhāruci-6">vol-1-part-1 §62-bhāruci</a> · <a href="../vol-1-part-2/79-jīmūtavāhana.html#p-79-jīmūtavāhana-16">vol-1-part-2 §79-jīmūtavāhana</a></td>
+            <td class="verse-context"><small>...erses that are quoted as Viṣṇu's in the Mitākṣarā could not be traced in the extant dharmas...</small></td>
+        </tr>
+
+        <tr id="ci">
+            <td class="verse-ref">ci</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">गौतमः । भानिनीशुल्कं सोदराणापूर्व माधुः । पूर्व चेत्थेकैः । आहुस्संविभाग - षट्पत्याविधषेणितम् । वि . मि . p. 143.</div><div class="kane-src"><span class="tier sole" title="the only Sanskrit on the only passage citing it — inferred">sole</span> <a href="../vol-3/chapter-xxx-stridhana.html#fn-chapter-xxx-stridhana-60">vol-3 §chapter-xxx-stridhana</a></div></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-34">vol-1-part-1 §34-the-yājnavalkya-smriti</a> · <a href="../vol-1-part-1/37-brihaspati.html#p-37-brihaspati-9">vol-1-part-1 §37-brihaspati</a> · <a href="../vol-1-part-2/71-vijnāneshvara.html#p-71-vijnāneshvara-13">vol-1-part-2 §71-vijnāneshvara</a> · <a href="../vol-3/chapter-xxx-stridhana.html#p-chapter-xxx-stridhana-28">vol-3 §chapter-xxx-stridhana</a> · <a href="../vol-3/chapter-xxx-stridhana.html#p-chapter-xxx-stridhana-29">vol-3 §chapter-xxx-stridhana</a></td>
+            <td class="verse-context"><small>...alkya (viz. “sodaro nānyamātṛjaḥ”). The Mit. cites Bṛhad- Yājñavalkya on prāyaścitta. S...</small></td>
+        </tr>
+
+        <tr id="l">
+            <td class="verse-ref">l</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/64-medhātithi.html#p-64-medhātithi-17">vol-1-part-1 §64-medhātithi</a> · <a href="../vol-3/chapter-xxvii-dāyabhāga-partition-of-wealth.html#p-chapter-xxvii-dāyabhāga-partition-of-wealth-49">vol-3 §chapter-xxvii-dāyabhāga-partition-of-wealth</a></td>
+            <td class="verse-context"><small>...ārya, he is later than 820 A. D. As the Mit. looked upon him as an authoritative write...</small></td>
+        </tr>
+
+        <tr id="I">
+            <td class="verse-ref">I</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-8">vol-1-part-1 §34-the-yājnavalkya-smriti</a> · <a href="../vol-1-part-1/34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-8">vol-1-part-1 §34-the-yājnavalkya-smriti</a> · <a href="../vol-1-part-1/35-the-parāshara-smriti.html#p-35-the-parāshara-smriti-13">vol-1-part-1 §35-the-parāshara-smriti</a> · <a href="../vol-1-part-2/75-prakāsha.html#p-75-prakāsha-7">vol-1-part-2 §75-prakāsha</a> · <a href="../vol-1-part-2/78-the-kalpataru-of-lakshmīdhara.html#p-78-the-kalpataru-of-lakshmīdhara-9">vol-1-part-2 §78-the-kalpataru-of-lakshmīdhara</a></td>
+            <td class="verse-context"><small>.... The Garuḍapurāṇa here agrees with the Mit. In some cases Garuḍa strikes an independe...</small></td>
+        </tr>
+
+        <tr id="i">
+            <td class="verse-ref">i</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">Vide Parami v. Mahadevi I. L. R. 34 Boṃ 278 at p. 283 (for प्रायश्चित्तमयूख ) and 22 Boṃ L. R. p. 334 (for प्रतिष्ठामयूख ).</div><div class="kane-src"><span class="tier sole" title="the only Sanskrit on the only passage citing it — inferred">sole</span> <a href="../vol-1-part-2/112-nīlakanthabhatta.html#fn-112-nīlakanthabhatta-6">vol-1-part-2 §112-nīlakanthabhatta</a></div></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-8">vol-1-part-1 §34-the-yājnavalkya-smriti</a> · <a href="../vol-1-part-1/34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-12">vol-1-part-1 §34-the-yājnavalkya-smriti</a> · <a href="../vol-1-part-1/34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-57">vol-1-part-1 §34-the-yājnavalkya-smriti</a> · <a href="../vol-1-part-1/61-vishvarūpa.html#p-61-vishvarūpa-2">vol-1-part-1 §61-vishvarūpa</a> · <a href="../vol-1-part-1/61-vishvarūpa.html#p-61-vishvarūpa-16">vol-1-part-1 §61-vishvarūpa</a></td>
+            <td class="verse-context"><small>... in the Mit.). Besides, verse 22 of the Mit. is read differently in the Garuḍa (daśa d...</small></td>
+        </tr>
+
+        <tr id="1">
+            <td class="verse-ref">1</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-2/78-the-kalpataru-of-lakshmīdhara.html#p-78-the-kalpataru-of-lakshmīdhara-11">vol-1-part-2 §78-the-kalpataru-of-lakshmīdhara</a></td>
+            <td class="verse-context"><small>...ore than a page in Mit. ), 619 ( I. 86, Mit. 1½ pages ), 654 ( II. II4-5, Mit. one pag...</small></td>
+        </tr>
+
+        <tr id="I.91">
+            <td class="verse-ref">I.91</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-8">vol-1-part-1 §34-the-yājnavalkya-smriti</a></td>
+            <td class="verse-context"><small>...96. 1 b) has the same half verse as the Mit. I. 91 a and the same half verse (96. 3 a ) as...</small></td>
+        </tr>
+
+        <tr id="I.296">
+            <td class="verse-ref">I.296</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-8">vol-1-part-1 §34-the-yājnavalkya-smriti</a></td>
+            <td class="verse-context"><small>...t their understanding. For example, the Mit. (I.296) reads (as also Viś.) ‘sūryaḥ somo mahip...</small></td>
+        </tr>
+
+        <tr id="II.4">
+            <td class="verse-ref">II.4</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-vi-samskāras.html#p-chapter-vi-samskāras-7">vol-2-part-1 §chapter-vi-samskāras</a></td>
+            <td class="verse-context"><small>...e Sṃ C. (I. p. 13) and the Subodhinī on Mit. II. 4 follow Gautama. Vaik. speaks of eightee...</small></td>
+        </tr>
+
+        <tr id="II.179">
+            <td class="verse-ref">II.179</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-6">vol-1-part-1 §34-the-yājnavalkya-smriti</a></td>
+            <td class="verse-context"><small>...tu te mocya daivarājapariplutāḥ,’ while Mit. (II.179) and Agni (257.26) read ‘svakuṭumbāvirod...</small></td>
+        </tr>
+
+        <tr id="II.199">
+            <td class="verse-ref">II.199</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-6">vol-1-part-1 §34-the-yājnavalkya-smriti</a></td>
+            <td class="verse-context"><small>...dhistu,’ while both Agni ( 257.49 ) and Mit. ( II. 199 ) read ‘glahe śatikavṛddhi- stu,’ which c...</small></td>
+        </tr>
+
+        <tr id="III.23">
+            <td class="verse-ref">III.23</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-8">vol-1-part-1 §34-the-yājnavalkya-smriti</a></td>
+            <td class="verse-context"><small>...s Aparārka also) one verse found in the Mit. (III.23) as said above, while the Mit. omits two...</small></td>
+        </tr>
+
+        <tr id="v">
+            <td class="verse-ref">v</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-6">vol-1-part-1 §34-the-yājnavalkya-smriti</a> · <a href="../vol-3/chapter-xxix-order-of-succession-after-the-son.html#p-chapter-xxix-order-of-succession-after-the-son-7">vol-3 §chapter-xxix-order-of-succession-after-the-son</a></td>
+            <td class="verse-context"><small>...pa. Yāj. II. 228 in Viś. becomes in the Mit. verse 263, Agni following the order of Vi...</small></td>
+        </tr>
+
+        <tr id="Vi">
+            <td class="verse-ref">Vi</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-6">vol-1-part-1 §34-the-yājnavalkya-smriti</a> · <a href="../vol-3/chapter-xxix-order-of-succession-after-the-son.html#p-chapter-xxix-order-of-succession-after-the-son-63">vol-3 §chapter-xxix-order-of-succession-after-the-son</a> · <a href="../vol-3/chapter-xxx-stridhana.html#p-chapter-xxx-stridhana-28">vol-3 §chapter-xxx-stridhana</a></td>
+            <td class="verse-context"><small>...arūpa and 19 verses as contained in the Mit. Viśvarūpa puts three verses between the tw...</small></td>
+        </tr>
+
+        <tr id="vi">
+            <td class="verse-ref">vi</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">तथा ब्रह्मा०पुराणे । ' शैवान्नाशुशुपानान् स्पृष्ट्रा लोकायतिकनास्तिकान् । विकर्म - स्थान् द्विजान् शश्ां सवासा जलमाविशेत् ॥ मिता . on या . III. 30.</div><div class="kane-src"><span class="tier sole" title="the only Sanskrit on the only passage citing it — inferred">sole</span> <a href="../vol-1-part-2/71-vijnāneshvara.html#fn-71-vijnāneshvara-3">vol-1-part-2 §71-vijnāneshvara</a></div></td>
+            <td class="verse-locs"><a href="../vol-1-part-2/71-vijnāneshvara.html#p-71-vijnāneshvara-5">vol-1-part-2 §71-vijnāneshvara</a> · <a href="../vol-3/chapter-xxix-order-of-succession-after-the-son.html#p-chapter-xxix-order-of-succession-after-the-son-38">vol-3 §chapter-xxix-order-of-succession-after-the-son</a> · <a href="../vol-4/chapter-i-sin-in-rigveda-conception-of-rita-enumeration-and-classification-of-si.html#p-chapter-i-sin-in-rigveda-conception-of-rita-enumeration-and-classification-of-si-33">vol-4 §chapter-i-sin-in-rigveda-conception-of-rita-enumeration-and-classification-of-si</a></td>
+            <td class="verse-context"><small>...ve Purāṇas are mentioned by name in the Mitākṣarā viz. the Brahmāṇḍa&lt;sup class="fn-ref"&gt;&lt;a h...</small></td>
+        </tr>
+
+        <tr id="11">
+            <td class="verse-ref">11</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-2/78-the-kalpataru-of-lakshmīdhara.html#p-78-the-kalpataru-of-lakshmīdhara-11">vol-1-part-2 §78-the-kalpataru-of-lakshmīdhara</a></td>
+            <td class="verse-context"><small>... more than half a page ), 318 ( II. 49, Mit. 11 lines of comment ), 350 ( II. 169, Mit....</small></td>
+        </tr>
+
+        <tr id="60">
+            <td class="verse-ref">60</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/general-index-of-vol-iv.html#p-general-index-of-vol-iv-20">vol-4 §general-index-of-vol-iv</a></td>
+            <td class="verse-context"><small>... conventional mean- ing of, acc. to the Mitākṣarā 60; consequences of not performing p, for ...</small></td>
+        </tr>
+
+        <tr id="70">
+            <td class="verse-ref">70</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/general-index.html#p-general-index-1">vol-2-part-2 §general-index</a></td>
+            <td class="verse-context"><small>...n, 171; two groups of, distinguished by Mitākṣarā 70; twelve kinds of, mentioned by Veda-Vyā...</small></td>
+        </tr>
+
+        <tr id="122">
+            <td class="verse-ref">122</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-6">vol-1-part-1 §34-the-yājnavalkya-smriti</a></td>
+            <td class="verse-context"><small>...of the Mit. Agni (256.8) reads with the Mit. (122) ‘vibhākteṣu suto jātaḥ savarṇāyām vibhā...</small></td>
+        </tr>
+
+        <tr id="123">
+            <td class="verse-ref">123</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-6">vol-1-part-1 §34-the-yājnavalkya-smriti</a></td>
+            <td class="verse-context"><small>...eads ‘mātāpyamśaṁ samam haret’ with the Mit. (123), while Viś. (127) reads ‘mātāpyamśaṁ sa...</small></td>
+        </tr>
+
+        <tr id="125">
+            <td class="verse-ref">125</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-6">vol-1-part-1 §34-the-yājnavalkya-smriti</a></td>
+            <td class="verse-context"><small>...nd ‘vidjāstu dvyekabhāgi- naḥ’ with the Mit. (125); Agni (256.21) reads ‘rdhabhagi- kaṁ’ w...</small></td>
+        </tr>
+
+        <tr id="129">
+            <td class="verse-ref">129</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/general-index-of-vol-iv.html#p-general-index-of-vol-iv-41">vol-4 §general-index-of-vol-iv</a></td>
+            <td class="verse-context"><small>...Vidyāsūkta, 444 Vijñāneśvara, author of Mitākṣarā 129, 368 Vināśana, place where river Sarasv...</small></td>
+        </tr>
+
+        <tr id="134">
+            <td class="verse-ref">134</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-6">vol-1-part-1 §34-the-yājnavalkya-smriti</a></td>
+            <td class="verse-context"><small>...256.21) reads ‘rdhabhagi- kaṁ’ with the Mit. (134). Agni. (256.27) reads ‘andhoṣ cikitsyar...</small></td>
+        </tr>
+
+        <tr id="140">
+            <td class="verse-ref">140</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-6">vol-1-part-1 §34-the-yājnavalkya-smriti</a></td>
+            <td class="verse-context"><small>...reads ‘andhoṣ cikitsyarogadyā’ with the Mit. (140), while Viś. (144) reads ‘rogi ca.’ The ...</small></td>
+        </tr>
+
+        <tr id="146">
+            <td class="verse-ref">146</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-6">vol-1-part-1 §34-the-yājnavalkya-smriti</a></td>
+            <td class="verse-context"><small>...ads ‘vyayam dadyāc-ca sodayam’ with the Mit. (146), while Viś. (150) reads ‘dāpyaś-ca soda...</small></td>
+        </tr>
+
+        <tr id="148">
+            <td class="verse-ref">148</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-6">vol-1-part-1 §34-the-yājnavalkya-smriti</a></td>
+            <td class="verse-context"><small>... ‘na dattam strīdhanam yasyai’ with the Mit. (148) and not ‘yasyā’ as Viś. (152) does, as ...</small></td>
+        </tr>
+
+        <tr id="149">
+            <td class="verse-ref">149</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-6">vol-1-part-1 §34-the-yājnavalkya-smriti</a></td>
+            <td class="verse-context"><small>...yā gṛha-kṣetraiś-ca yautakaih’ with the Mit. (149), while Viś. (153) reads ‘bhavanā deyā g...</small></td>
+        </tr>
+
+        <tr id="175">
+            <td class="verse-ref">175</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-6">vol-1-part-1 §34-the-yājnavalkya-smriti</a></td>
+            <td class="verse-context"><small>...d ‘svakuṭumbāvirodhena deyam’ while the Mit. ( 175 ) reads ‘svam kuṭumbāvirodhena.’ Viś. ( I...</small></td>
+        </tr>
+
+        <tr id="255">
+            <td class="verse-ref">255</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-6">vol-1-part-1 §34-the-yājnavalkya-smriti</a></td>
+            <td class="verse-context"><small>...n easier reading. Agni 258.45 occurs in Mit. ( 255 ), but is wanting in Viśvarūpa. Yāj. II. ...</small></td>
+        </tr>
+
+        <tr id="268">
+            <td class="verse-ref">268</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/general-index-of-vol-iv.html#p-general-index-of-vol-iv-2">vol-4 §general-index-of-vol-iv</a></td>
+            <td class="verse-context"><small>...oid of both in ten days 270, defined by Mitākṣarā 268, derivation from the word ‘śuci’ 267, d...</small></td>
+        </tr>
+
+        <tr id="553">
+            <td class="verse-ref">553</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/general-index.html#p-general-index-14">vol-3 §general-index</a></td>
+            <td class="verse-context"><small>...d others 429, 431 Sobodhinī, coṃ on the Mitākṣarā 553n, 705n, 731, 733n, 750o, 757, 764n, 774...</small></td>
+        </tr>
+
+        <tr id="561">
+            <td class="verse-ref">561</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/general-index.html#p-general-index-11">vol-3 §general-index</a></td>
+            <td class="verse-context"><small>...sion 319, of coparcenary property under Mitākṣarā 561; reasons for the view that o. arises fr...</small></td>
+        </tr>
+
+        <tr id="591">
+            <td class="verse-ref">591</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/general-index.html#p-general-index-5">vol-3 §general-index</a></td>
+            <td class="verse-context"><small>...s smaller than a joint family under the Mitākṣarā 591, existing between father and son under ...</small></td>
+        </tr>
+
+        <tr id="591-92">
+            <td class="verse-ref">591-92</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/general-index.html#p-general-index-5">vol-3 §general-index</a></td>
+            <td class="verse-context"><small>...562, characteristics of property acc to Mitākṣarā 591-92, interest of members in property is flu...</small></td>
+        </tr>
+
+        <tr id="631">
+            <td class="verse-ref">631</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/general-index.html#p-general-index-61">vol-2-part-2 §general-index</a></td>
+            <td class="verse-context"><small>...n from brāhmaṇs to caṇḍāla according to Mit. 631; in epigraphic records, 629; no dharmaś...</small></td>
+        </tr>
+
+        <tr id="639">
+            <td class="verse-ref">639</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/general-index.html#p-general-index-13">vol-3 §general-index</a></td>
+            <td class="verse-context"><small>... father's ṣ p. acc. to strict theory of Mitākṣarā 639, son has no power to prevent father fro...</small></td>
+        </tr>
+
+        <tr id="656">
+            <td class="verse-ref">656</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/general-index.html#p-general-index-11">vol-3 §general-index</a></td>
+            <td class="verse-context"><small>...n of anuloma m held to be aurasa by the Mitākṣarā 656, with brotherless maiden disapproved of...</small></td>
+        </tr>
+
+        <tr id="659">
+            <td class="verse-ref">659</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/general-index.html#p-general-index-11">vol-3 §general-index</a></td>
+            <td class="verse-context"><small>...as 659, was called Dvyamusyayana by the Mit. 659. Ksiräsvamin, coṃ of Amarakosa 48, 66, ...</small></td>
+        </tr>
+
+        <tr id="732">
+            <td class="verse-ref">732</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/general-index.html#p-general-index-13">vol-3 §general-index</a></td>
+            <td class="verse-context"><small>...o kinds, gotraja and bhinnagotra acc to Mitākṣarā 732 Sapinḍīkaraṇa, a śrāddha 737 Saradachar...</small></td>
+        </tr>
+
+        <tr id="748">
+            <td class="verse-ref">748</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/general-index.html#p-general-index-9">vol-3 §general-index</a></td>
+            <td class="verse-context"><small>...amāṇodakas 752, meaning of, acc. to the Mit. 748, peculiar meaning ascribed to the word ...</small></td>
+        </tr>
+
+        <tr id="749">
+            <td class="verse-ref">749</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/general-index.html#p-general-index-10">vol-3 §general-index</a></td>
+            <td class="verse-context"><small>... order Dāya- bhāga 739, order of, under Mitākṣarā 749, order of, to a sooless man 791ff, sist...</small></td>
+        </tr>
+
+        <tr id="837-38">
+            <td class="verse-ref">837-38</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/general-index.html#p-general-index-11">vol-3 §general-index</a></td>
+            <td class="verse-context"><small>...a, sagotra or sapravara is void, acc to Mit. 837-38, with maternal uncle's daughter 876-77,...</small></td>
+        </tr>
+
+        <tr id="1184">
+            <td class="verse-ref">1184</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-240">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>...ña, which is strenuously opposed by the Mitākṣarā 1184; Śabara lays down that one that wants t...</small></td>
+        </tr>
+
+        <tr id="1272">
+            <td class="verse-ref">1272</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-53">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>...even by eminent medieval works like the Mitākṣarā 1272; should not be merely for the sake of c...</small></td>
+        </tr>
+            </tbody>
+        </table>
+    </div>
+
+    
+    <footer class="container-fluid pt-4" style="background-color:#2e4144">
+        <div class="row border-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img src="https://sanatana.in/mbta/public/images/Homepage_html/images/layer_8.png" alt="">
+            </div>
+            <div class="col-md-5 text-white">
+                <p>The divine knowledge and wisdom of our shastras is the only thing eternal,
+                   which was and which will remain ever-present in this gods creation.
+                   Our endeavours are to preserve this knowledge.</p>
+            </div>
+            <div class="col-md-1 text-white">
+                <div class="d-flex" style="height: 75px;">
+                    <div class="vr"></div>
+                </div>
+            </div>
+            <div class="col-md-3 text-white">
+                <i class="fa-solid fa-globe"></i>&emsp;
+                <a href="https://sanatanasampatti.in" class="text-light">www.sanatanasampatti.in</a><br>
+                <i class="fa-solid fa-envelope"></i>&emsp;
+                <a href="" class="text-light">sriranga.yoga@gmail.com</a>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center py-3 mb-4 align-items-center border-bottom">
+            <div class="col-md-2 text-white fs-4 text-center">Project</div>
+            <div class="col-md-2 text-white fs-4 text-center">Our Mission</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contribute</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contact Us</div>
+        </div>
+        <div class="row">
+            <p class="col-md-6 fs-6 text-start text-light">
+                <small>&copy; 2026 Sanatanasampatti</small>
+            </p>
+            <p class="col-md-6 fs-6 text-end text-light">
+                <a class="text-white" rel="nofollow" href="http://www.srirangadigital.com" target="_blank">
+                    <img src="https://sanatana.in/mbta/public/images/logo.png" alt="sriranga logo" />
+                    <small>Designed, Developed and Maintained by Sriranga Digital</small>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+</body>
+</html>

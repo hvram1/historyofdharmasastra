@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- MDB UI Kit -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/fonts.css?v=1.2">
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/navbar.css?v=2.4">
+
+    <title>7. Dharmasutra of Āpastamba — Volume I: Part I — History of Dharmaśāstra</title>
+    <style>
+    :root {
+        --saffron:        #D4600A;
+        --saffron-light:  #F0924A;
+        --saffron-wash:   rgba(212, 96, 10, 0.07);
+        --indigo:         #2E5FA3;
+        --indigo-dark:    #1C3D70;
+        --maroon:         #7A1E1E;
+        --amber:          #C97A1A;
+        --ink:            #1A1209;
+        --ink-secondary:  #4A3B2A;
+        --parchment:      #FDFAF4;
+        --parchment-mid:  #F5EFE2;
+        --rule:           rgba(180, 130, 60, 0.22);
+        --shadow:         0 2px 18px rgba(90, 50, 10, 0.08);
+        --font-devanagari: 'Tiro Devanagari Sanskrit', 'Siddhanta', 'Noto Sans Devanagari', serif;
+        --font-roman:      'Junicode', Georgia, serif;
+    }
+
+    body {
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: var(--font-roman);
+    }
+
+    .devanagari {
+        font-family: var(--font-devanagari);
+    }
+
+    /* ── Navbar overrides ── */
+    .navbar-ontop { z-index: 1031; }
+    .hdclr { color: var(--saffron); }
+    .engpara { font-family: 'Open Sans', sans-serif; }
+
+    /* ── Layout ── */
+    .dh-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .dh-content {
+        flex: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        background: var(--parchment);
+        box-shadow: var(--shadow);
+        min-height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        .dh-content { padding: 24px 20px; }
+        .dh-wrapper { flex-direction: column; }
+    }
+
+    /* ── TOC Sidebar ── */
+    .toc-sidebar {
+        position: sticky;
+        top: 80px;
+        width: 280px;
+        min-width: 280px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding: 20px 16px;
+        margin-right: 24px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        scrollbar-width: thin;
+    }
+
+    .toc-title {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--saffron-light);
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list li {
+        padding: 4px 0;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-list li.toc-l3 {
+        padding-left: 16px;
+        font-size: 0.78rem;
+    }
+
+    .toc-list li a {
+        color: var(--ink-secondary);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .toc-list li a:hover { color: var(--saffron); }
+
+    .toc-list li.active {
+        border-left-color: var(--saffron);
+    }
+
+    .toc-list li.active a {
+        color: var(--saffron);
+        font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-sidebar { display: none; }
+    }
+
+    /* ── Mobile TOC Toggle ── */
+    .toc-mobile-toggle {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1050;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--saffron);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-mobile-toggle { display: block; }
+    }
+
+    /* ── Section Headings ── */
+    .section-heading {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        margin: 48px 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--rule);
+        letter-spacing: 0.5px;
+        scroll-margin-top: 80px;
+    }
+
+    h2.section-heading { font-size: 1.6rem; }
+
+    h3.section-heading {
+        font-size: 1.25rem;
+        border-left: 4px solid var(--saffron-light);
+        border-bottom: none;
+        padding: 8px 16px;
+        background: var(--saffron-wash);
+        border-radius: 0 5px 5px 0;
+    }
+
+    /* ── Prose ── */
+    .prose {
+        font-family: var(--font-roman);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+        color: var(--ink);
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    .prose em { color: var(--maroon); }
+
+    .prose:target {
+        background: rgba(212, 96, 10, 0.12);
+        border-left: 4px solid var(--saffron);
+        padding-left: 16px;
+        margin-left: -20px;
+        border-radius: 0 6px 6px 0;
+        animation: target-pulse 2s ease-out;
+    }
+
+    @keyframes target-pulse {
+        0%   { background: rgba(212, 96, 10, 0.30); }
+        100% { background: rgba(212, 96, 10, 0.12); }
+    }
+
+    /* ── Footnote References ── */
+    .fn-ref {
+        font-size: 0.75em;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    .fn-ref a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 0 2px;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: color 0.15s;
+    }
+
+    .fn-ref a:hover { color: var(--indigo); }
+
+    /* ── Synopsis Box ── */
+    .synopsis-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron-light);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .synopsis-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .synopsis-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .synopsis-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .synopsis-box.open .synopsis-toggle i {
+        transform: rotate(90deg);
+    }
+    .synopsis-body {
+        display: none;
+        padding: 0 20px 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+    }
+    .synopsis-box.open .synopsis-body { display: block; }
+    .synopsis-body p { margin: 0; }
+    .synopsis-attribution {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: var(--ink-secondary);
+        opacity: 0.7;
+        font-style: italic;
+    }
+    .synopsis-audio {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    .synopsis-play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--saffron);
+        background: none;
+        color: var(--saffron);
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: background 0.2s, color 0.2s;
+        padding: 0;
+    }
+    .synopsis-play-btn:hover {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn.playing {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn i { padding-left: 2px; }
+
+    /* ── Index Terms Panel ── */
+    .index-terms-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .index-terms-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .index-terms-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .index-terms-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .index-terms-box.open .index-terms-toggle i {
+        transform: rotate(90deg);
+    }
+    .index-terms-body {
+        display: none;
+        padding: 0 20px 16px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .index-terms-box.open .index-terms-body { display: block; }
+    .index-terms-dl {
+        margin: 0;
+        padding: 0;
+    }
+    .index-terms-dl dt {
+        font-family: var(--font-roman);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+        margin-top: 8px;
+    }
+    .index-terms-dl dd {
+        margin: 2px 0 0 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        color: var(--ink-secondary);
+        line-height: 1.5;
+    }
+    .nyaya-heading {
+        font-family: var(--font-roman);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        margin: 16px 0 4px;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+    }
+
+    /* ── Inline Index Popovers ── */
+    .idx-term {
+        border-bottom: 1px dotted var(--saffron-light);
+        cursor: help;
+        position: relative;
+    }
+    .idx-term:hover::after {
+        content: attr(data-def);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        background: rgba(44, 36, 22, 0.92);
+        color: #F5ECD8;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        max-width: 280px;
+        z-index: 100;
+        white-space: normal;
+        line-height: 1.4;
+        pointer-events: none;
+    }
+
+    /* ── Structured Version Banner ── */
+    .structured-banner {
+        margin: 0 0 28px;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, rgba(212, 96, 10, 0.06) 0%, rgba(212, 96, 10, 0.02) 100%);
+        border: 1px solid var(--saffron-light);
+        border-radius: 6px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        color: var(--ink-secondary);
+        line-height: 1.6;
+    }
+    .structured-banner i { color: var(--saffron); margin-right: 4px; }
+    .structured-banner a { color: var(--indigo); font-weight: 600; text-decoration: none; }
+    .structured-banner a:hover { text-decoration: underline; }
+
+    /* ── Footnotes Section ── */
+    .footnotes-section {
+        margin: 32px 0 48px;
+        padding: 20px 24px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .footnotes-section hr {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 0 0 16px;
+    }
+
+    .footnotes-list {
+        padding-left: 24px;
+        margin: 0;
+    }
+
+    .footnote-item {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+        scroll-margin-top: 80px;
+    }
+
+    .footnote-item:target {
+        background: rgba(212, 96, 10, 0.1);
+        border-radius: 4px;
+        padding: 4px 6px;
+        margin-left: -6px;
+    }
+
+    .fn-back {
+        color: var(--saffron-light);
+        text-decoration: none;
+        font-size: 0.85em;
+        margin-left: 4px;
+    }
+
+    .fn-back:hover { color: var(--saffron); }
+
+    /* ── Reference Links ── */
+    a.ref {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: all 0.15s;
+    }
+
+    a.ref:hover {
+        color: var(--saffron);
+        border-bottom-style: solid;
+    }
+
+    a.mbta-ext {
+        color: var(--indigo);
+        font-size: 0.7em;
+        margin-left: 2px;
+        opacity: 0.5;
+        text-decoration: none;
+        vertical-align: super;
+    }
+    a.mbta-ext:hover { opacity: 1; color: var(--saffron); }
+
+    /* ── References Panel (sidebar) ── */
+    .refs-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .refs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .refs-list li {
+        padding: 3px 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .ref-source-link {
+        font-weight: 600;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .ref-source-link:hover {
+        text-decoration: underline;
+    }
+
+    .ref-verse-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.76rem;
+    }
+
+    .ref-verse-link:hover {
+        text-decoration: underline;
+        color: var(--saffron);
+    }
+
+    .ref-verses {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Timeline panel ── */
+    .timeline-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .timeline-list li {
+        padding: 2px 0;
+        font-size: 0.76rem;
+        line-height: 1.4;
+        position: relative;
+        padding-left: 14px;
+    }
+
+    .timeline-list li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--saffron);
+    }
+
+    .timeline-list li.tl-approximate::before {
+        background: transparent;
+        border: 2px solid var(--saffron);
+        width: 4px;
+        height: 4px;
+    }
+
+    .timeline-list li.tl-century::before {
+        background: transparent;
+        border: 2px dashed var(--saffron);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+
+    .tl-dot-link {
+        text-decoration: none;
+        color: var(--ink);
+        display: block;
+    }
+
+    .tl-dot-link:hover {
+        color: var(--saffron);
+    }
+
+    .tl-year {
+        font-weight: 600;
+        color: var(--saffron);
+        font-size: 0.72rem;
+        min-width: 70px;
+        display: inline-block;
+    }
+
+    .tl-label {
+        color: var(--ink-secondary);
+        font-size: 0.72rem;
+    }
+
+    .tl-view-link, .tl-more {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.72rem;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .tl-view-link:hover, .tl-more:hover {
+        text-decoration: underline;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+
+    .breadcrumb-bar a {
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+
+    .breadcrumb-bar .sep {
+        color: var(--amber);
+        margin: 0 8px;
+    }
+
+    .breadcrumb-bar .current {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Chapter Navigation ── */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        margin-top: 48px;
+        border-top: 2px solid var(--rule);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .chapter-nav a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        transition: all 0.2s;
+        max-width: 45%;
+    }
+
+    .chapter-nav a:hover {
+        background: var(--saffron-wash);
+        border-color: var(--saffron-light);
+    }
+
+    .nav-prev { text-align: left; }
+    .nav-next { text-align: right; margin-left: auto; }
+
+    .page-range {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+    }
+
+    /* ── Volume Cards (Landing) ── */
+    .vol-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .vol-card {
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        transition: all 0.25s;
+    }
+
+    .vol-card:hover {
+        border-color: var(--saffron-light);
+        box-shadow: 0 4px 24px rgba(212, 96, 10, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .vol-num {
+        font-family: var(--font-roman);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--saffron);
+        margin-bottom: 8px;
+    }
+
+    .vol-subtitle {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        line-height: 1.5;
+        flex: 1;
+    }
+
+    .vol-chapters {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        margin-top: 12px;
+    }
+
+    /* ── Chapter Cards (Volume Index) ── */
+    .chapter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .chapter-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .chapter-card:hover {
+        border-color: var(--saffron-light);
+        background: var(--saffron-wash);
+    }
+
+    .card-num {
+        font-family: var(--font-roman);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--saffron);
+        min-width: 36px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        flex: 1;
+    }
+
+    .card-pages {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        color: var(--ink-secondary);
+    }
+
+    /* ── Landing Hero ── */
+    .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-family: var(--font-roman);
+        font-size: 2.4rem;
+        color: var(--saffron);
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .hero .devanagari-title {
+        font-family: var(--font-devanagari);
+        font-size: 1.8rem;
+        color: var(--ink);
+        margin-bottom: 16px;
+    }
+
+    .hero .author {
+        font-family: var(--font-roman);
+        font-size: 1.1rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .hero .desc {
+        font-family: var(--font-roman);
+        font-size: 1rem;
+        color: var(--ink-secondary);
+        line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer { margin-top: 48px; }
+</style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mbta/">
+      <div class="container-fluid">&emsp;&emsp;
+      <a href="../index.html" class="navbar-brand" style="text-decoration:none;">
+        <span class="devanagari ms-3" style="font-size:1.5rem; color:var(--saffron); font-weight:700;">धर्मशास्त्रम्</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="../index.html">धर्मशास्त्रम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5 active" href="../index.html">खण्डाः</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in/mbta/">महाभारतम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in">सनातनम्</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+
+    <div class="dh-wrapper container-xl">
+        <nav id="toc" class="toc-sidebar">
+<div class="refs-panel">
+<h5 class="toc-title">References</h5>
+<ul class="refs-list">
+<li><a href="../refs/mb_anushasana.html" class="ref-source-link">Anuśāsanaparva</a> <span class="ref-verses"><a href="../refs/mb_anushasana.html#90.46" class="ref-verse-link">90.46</a></span></li>
+<li><a href="../refs/apararka.html" class="ref-source-link">Aparārka</a> <span class="ref-verses"><a href="../refs/apararka.html#c" class="ref-verse-link">c</a></span></li>
+<li><a href="../refs/arthashastra.html" class="ref-source-link">Arthaśāstra</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/atharvaveda.html" class="ref-source-link">Atharvaveda</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/baudhayana.html" class="ref-source-link">Baudhāyana Dharmasūtra</a> <span class="ref-verses"><a href="../refs/baudhayana.html#II.1.25-26" class="ref-verse-link">II.1.25-26</a>, <a href="../refs/baudhayana.html#ci" class="ref-verse-link">ci</a>, <a href="../refs/baudhayana.html#II.1.50" class="ref-verse-link">II.1.50</a>, <a href="../refs/baudhayana.html#I.8.7-12" class="ref-verse-link">I.8.7-12</a></span></li>
+<li><a href="../refs/gita.html" class="ref-source-link">Bhagavadgītā</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/brihadaranyaka.html" class="ref-source-link">Bṛhadāraṇyaka Upaniṣad</a> <span class="ref-verses"><a href="../refs/brihadaranyaka.html#Vi.2" class="ref-verse-link">Vi.2</a></span></li>
+<li><a href="../refs/brihaspati.html" class="ref-source-link">Bṛhaspati</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/chandogya.html" class="ref-source-link">Chāndogya Upaniṣad</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/gautama.html" class="ref-source-link">Gautama Dharmasūtra</a> <span class="ref-verses"><a href="../refs/gautama.html#16.34" class="ref-verse-link">16.34</a>, <a href="../refs/gautama.html#16.2" class="ref-verse-link">16.2</a>, <a href="../refs/gautama.html#1" class="ref-verse-link">1</a>, <a href="../refs/gautama.html#I.19" class="ref-verse-link">I.19</a>, <a href="../refs/gautama.html#I.23" class="ref-verse-link">I.23</a>, <a href="../refs/gautama.html#16.19" class="ref-verse-link">16.19</a> <a href="../refs/gautama.html" class="ref-verse-link">+3</a></span></li>
+<li><a href="../refs/hodh.html" class="ref-source-link">History of Dharmaśāstra</a> <span class="ref-verses"><a href="../refs/hodh.html#vol. II" class="ref-verse-link">vol. II</a>, <a href="../refs/hodh.html#vol. I" class="ref-verse-link">vol. I</a>, <a href="../refs/hodh.html#I" class="ref-verse-link">I</a>, <a href="../refs/hodh.html#Vol. I" class="ref-verse-link">Vol. I</a></span></li>
+<li><a href="../refs/kautilya.html" class="ref-source-link">Kauṭilya Arthaśāstra</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/kamasutra.html" class="ref-source-link">Kāmasūtra</a> <span class="ref-verses"><a href="../refs/kamasutra.html#III.1.14.Vi" class="ref-verse-link">III.1.14.Vi</a></span></li>
+<li><a href="../refs/katyayana.html" class="ref-source-link">Kātyāyana</a> <span class="ref-verses"><a href="../refs/katyayana.html#i" class="ref-verse-link">i</a>, <a href="../refs/katyayana.html#c" class="ref-verse-link">c</a></span></li>
+<li><a href="../refs/manu.html" class="ref-source-link">Manusmṛti</a> <span class="ref-verses"><a href="../refs/manu.html#6.43" class="ref-verse-link">6.43</a>, <a href="../refs/manu.html#III.101" class="ref-verse-link">III.101</a>, <a href="../refs/manu.html#4.212" class="ref-verse-link">4.212</a>, <a href="../refs/manu.html#8.317" class="ref-verse-link">8.317</a>, <a href="../refs/manu.html#II.83" class="ref-verse-link">II.83</a>, <a href="../refs/manu.html#II.247" class="ref-verse-link">II.247</a> <a href="../refs/manu.html" class="ref-verse-link">+2</a></span></li>
+<li><a href="../refs/medhatithi.html" class="ref-source-link">Medhātithi</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mitakshara.html" class="ref-source-link">Mitākṣarā</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/narada.html" class="ref-source-link">Nārada</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/taittiriya_s.html" class="ref-source-link">Taittirīya Saṃhitā</a> <span class="ref-verses"><a href="../refs/taittiriya_s.html#II.5.2.7" class="ref-verse-link">II.5.2.7</a></span></li>
+<li><a href="../refs/taittiriya_ar.html" class="ref-source-link">Taittirīya Āraṇyaka</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mb_vanaparva.html" class="ref-source-link">Vanaparva</a> <span class="ref-verses"><a href="../refs/mb_vanaparva.html#133.1" class="ref-verse-link">133.1</a></span></li>
+<li><a href="../refs/vasishtha.html" class="ref-source-link">Vasiṣṭha Dharmasūtra</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/vishvarupa.html" class="ref-source-link">Viśvarūpa</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/yajnavalkya.html" class="ref-source-link">Yājñavalkya</a> <span class="ref-verses"><a href="../refs/yajnavalkya.html#III.237" class="ref-verse-link">III.237</a>, <a href="../refs/yajnavalkya.html#III.252" class="ref-verse-link">III.252</a>, <a href="../refs/yajnavalkya.html#II.132" class="ref-verse-link">II.132</a></span></li>
+<li><a href="../refs/apastamba.html" class="ref-source-link">Āpastamba Dharmasūtra</a> <span class="ref-verses"><a href="../refs/apastamba.html#II.5.11.15-16" class="ref-verse-link">II.5.11.15-16</a>, <a href="../refs/apastamba.html#II.4.8.7" class="ref-verse-link">II.4.8.7</a>, <a href="../refs/apastamba.html#I.1.2.38" class="ref-verse-link">I.1.2.38</a>, <a href="../refs/apastamba.html#II.1" class="ref-verse-link">II.1</a>, <a href="../refs/apastamba.html#I.3.11.3" class="ref-verse-link">I.3.11.3</a>, <a href="../refs/apastamba.html#I.3.9.3" class="ref-verse-link">I.3.9.3</a> <a href="../refs/apastamba.html" class="ref-verse-link">+25</a></span></li>
+<li><a href="../refs/shatapatha.html" class="ref-source-link">Śatapatha Brāhmaṇa</a> <span class="ref-verses"><a href="../refs/shatapatha.html#XII.4.1.4" class="ref-verse-link">XII.4.1.4</a></span></li>
+<li><a href="../refs/rigveda.html" class="ref-source-link">Ṛgveda</a> <span class="ref-verses"></span></li>
+</ul>
+</div>
+<div class="timeline-panel">
+<h5 class="toc-title">Timeline</h5>
+<ul class="timeline-list">
+<li class="tl-approximate"><a href="#p-7-dharmasutra-of-āpastamba-26" class="tl-dot-link"><span class="tl-year">~800 BCE</span> <span class="tl-label">Kātyāyana</span></a></li>
+<li class="tl-century"><a href="#p-7-dharmasutra-of-āpastamba-26" class="tl-dot-link"><span class="tl-year">~700 BCE</span> <span class="tl-label">Kātyāyana</span></a></li>
+<li class="tl-exact"><a href="#p-7-dharmasutra-of-āpastamba-26" class="tl-dot-link"><span class="tl-year">~675 BCE</span> <span class="tl-label">Kātyāyana</span></a></li>
+<li class="tl-range"><a href="#p-7-dharmasutra-of-āpastamba-22" class="tl-dot-link"><span class="tl-year">~600 BCE</span> <span class="tl-label">Āpastamba Dharmasūtra</span></a></li>
+<li class="tl-exact"><a href="#p-7-dharmasutra-of-āpastamba-26" class="tl-dot-link"><span class="tl-year">~600 BCE</span> <span class="tl-label">Kātyāyana</span></a></li>
+<li class="tl-exact"><a href="#p-7-dharmasutra-of-āpastamba-26" class="tl-dot-link"><span class="tl-year">~575 BCE</span> <span class="tl-label">Kātyāyana</span></a></li>
+<li class="tl-exact"><a href="#p-7-dharmasutra-of-āpastamba-26" class="tl-dot-link"><span class="tl-year">~550 BCE</span> <span class="tl-label">Kātyāyana</span></a></li>
+<li class="tl-exact"><a href="#p-7-dharmasutra-of-āpastamba-26" class="tl-dot-link"><span class="tl-year">~500 BCE</span> <span class="tl-label">Kātyāyana</span></a></li>
+<li class="tl-range"><a href="#p-7-dharmasutra-of-āpastamba-22" class="tl-dot-link"><span class="tl-year">~450 BCE</span> <span class="tl-label">Āpastamba Dharmasūtra</span></a></li>
+<li class="tl-exact"><a href="#p-7-dharmasutra-of-āpastamba-34" class="tl-dot-link"><span class="tl-year">~450 BCE</span> <span class="tl-label">Kātyāyana</span></a></li>
+<li class="tl-century"><a href="#p-7-dharmasutra-of-āpastamba-26" class="tl-dot-link"><span class="tl-year">~400 BCE</span> <span class="tl-label">Kātyāyana</span></a></li>
+<li class="tl-exact"><a href="#p-7-dharmasutra-of-āpastamba-26" class="tl-dot-link"><span class="tl-year">~300 BCE</span> <span class="tl-label">Kātyāyana</span></a></li>
+<li><a href="7-dharmasutra-of-āpastamba-timeline.html" class="tl-more">View all 42 dates &rarr;</a></li>
+</ul>
+<a href="7-dharmasutra-of-āpastamba-timeline.html" class="tl-view-link">View full timeline &rarr;</a>
+</div>
+<h5 class="toc-title">Sections</h5>
+<ul class="toc-list">
+<li class="toc-l2"><a href="#7-dharmasutra-of-āpastamba">7. Dharmasutra of Āpastamba</a></li>
+</ul>
+</nav>
+        <main class="dh-content">
+            
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep">›</span>
+        <a href="index.html">Volume I: Part I</a>
+        <span class="sep">›</span>
+        <span class="current">7. Dharmasutra of Āpastamba</span>
+    </div>
+    
+            <h1 class="text-center" style="font-family: var(--font-roman); font-size: 2rem; color: var(--saffron); margin-bottom: 8px;">
+                7. Dharmasutra of Āpastamba
+            </h1>
+            <p class="text-center" style="font-family: 'Open Sans', sans-serif; color: var(--ink-secondary); font-size: 0.9rem; margin-bottom: 36px;">
+                Volume I: Part I <span class="page-range">pp. 53–90</span>
+            </p>
+
+            
+    <div class="synopsis-box" id="synopsis">
+        <button class="synopsis-toggle" onclick="this.parentElement.classList.toggle('open')"
+                aria-expanded="false" aria-controls="synopsis-body">
+            <i class="fa-solid fa-chevron-right"></i>
+            Kane's Synopsis
+        </button>
+        <div class="synopsis-audio">
+            <span class="synopsis-play-btn" role="button" tabindex="0"
+                    onclick="toggleSynopsisAudio(this)"
+                    data-src="../audio/synopsis/vol-1-part-1/vol-1-part-1_sec007.mp3" title="Listen to synopsis">
+                <i class="fa-solid fa-play"></i>
+            </span>
+            <audio preload="none"></audio>
+        </div>
+        <div class="synopsis-body" id="synopsis-body">
+            <p>The Āpastambakalpasūtra of the Black Yajurveda divided in-
+to 30 praśnas, dharmasūtra constituting 28th and 29th praśnas
+thereof - Āpastamba is one of the five subdivisions of the Khāṇḍi-
+keya school of Taittirīyaśākhā -Āpastambagṛhya and dharma-sūtras
+are compositions of the same author-some sūtras of the two are iden-
+tical-Āp. gṛhya does not treat of some topics as they are dealt with
+in dharmasūtra - though Dr. Ram Gopal points out ten sūtras in
+Āp. Gr. about the choice of a marriageable girl there is only one
+rule worth something - there are several passages where Āp. Dh. S.
+presupposes Āp. Gr.-contents of Āp. dharmasūtra-form and struc-
+ture of Āp. dharmasūtra-Āp. is more archaic and un-Pāṇinian than
+any other dharmasūtra-many unfamiliar words in Āp.-several verses
+quoted in Āp.-literature known to Āp.-Āp. mentions six aṅgas of
+Veda and ten writers on dharma by name-Śvetaketu and Āp.-Hārīta
+quoted frequently by Āp.-Āp. controverts several veiws - striking
+coincidences between Gautama and Āp.-Āp. quotes a verse from
+Purāṇa and speaks of the view of Bhaviṣyatpurāṇa - Āpastamba
+and Manu - Āpastamba presupposes many rules of the Mīmāṁsā
+and agrees closely with Jaimini's sūtras-age of Āp. Dh. S. - quoted
+by Śābara, Kumārila, Śaṁkarācārya, Viśvarūpa and Medhātithi -
+home and personal history of Āpastamba not known - Dr. Ram
+Gopal's view about Āpastamba being earlier than Pāṇini who gives
+Āpastamba's name in Bidādigana, refuted - reply to Dr. Ram
+Gopal's puerile arguments about the home of Āpastamba etc.-Āp.
+is later than Gautama and probably Baudhāyana - Āp. Dh. S. may
+be assigned to the period of 450-350 B. C. not 600-300 B. C. ( as in
+the first edition)- Āp. condemns niyoga, rejects secondary sons, does
+not admit paiśāca and Prājāpatya forms of marriage - divergence
+v
+between the views of Āp. and Gautama and other sūtrakāras -
+Haradatta's is the only commentary extant on Āp. - Āpastamba
+smṛti in verse.</p>
+            <p class="synopsis-attribution">— Synopsis by P.V. Kane, from History of Dharmaśāstra</p>
+        </div>
+    </div>
+
+
+            
+
+            <h2 id="7-dharmasutra-of-āpastamba" class="section-heading">7. Dharmasutra of Āpastamba</h2>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-1">##7. Dharmasūtra of Āpastamba.</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-2">This has been edited several times (viz. by Bühler in the Bombay Sanskrit Series with large extracts from Haradatta's commentary called Ujjvalā and also at Kumbhakonam with the complete commentary of Haradatta and translated by Bühler with an introduction in S. B. E. vol. II ). The Āpastam-bakalpasūtra of the Taittirīya Śākhā of the black Yajurveda is divided into 30 <em>praśnas</em>. According to Bühler, the first 24 <em>praśnas</em> contain the treatment of Śrauta sacrifices; the 25th contains <em>paribhāṣās</em>, <em>pravarakhaṇḍa</em>, and Hautraka prayers to be recited by Hotṛ priests; 26th and 27th <em>praśnas</em> constitute the Gṛhyasūtra, the 28th and 29th Dharmasūtra and the 30th <em>praśna</em> is Sulvasūtra. Bühler seems to be slightly inaccurate here. According to Caundappa, who commented on the Āpastambiya sūtras in the 14th century, the Āpastambiyaman-trapāṭha forms the 25th and 26th <em>praśnas</em> of the Kalpasūtra and the Gṛhyasūtra forms 27th <em>praśna</em>.<sup class="fn-ref"><a href="#fn-7-dharmasutra-of-āpastamba-1" id="fnref-7-dharmasutra-of-āpastamba-1">1</a></sup> The Śrauta-sūtra of Āpastamba was edited by Dr. Garbe in the B. I. series; the Gṛhya and Mantrapāṭha were edited by Dr. Winternitz. The Gṛhya with the commentary of Sudarśanācārya has been edited in the Mysore Govt. Oriental series by Pandit Mahadeva Sastri (in 1893). It is divided into eight paṭalas and 23 khaṇḍaṣ According to the Caraṇavyūha, Āpastamba (or “bha” as written in many southern msṣ) is one of the five sub-divisions of the Khāṇḍikīya school of the Taittirīyaśākhā of the Black Yajurveda. Whether the author of the Āpastambīya Śrauta, Gṛhya and Dharma sūtras is the same is difficult to determine. One sūtra in the Āpastambadharma (II. 2. 5. 17) is the same as <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> Śrauta (III. 17. 8 and VIII. 4. 6). Oldenberg (S. B. E. vol. 30, p. XXXII) does not subscribe to Bühler's view (S. B. E. Vol. II, pp. XIII-XIV) that the authors of the <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> Śrauta and Dharma were identical and gives it as his own view that another person of the same school might have imitated the style of the author of the Śrauta. Whatever may be said of the identity of the authorship of the Śrauta and Dharma sūtras, the Gṛhya and Dharma seem to be very closely related and both seem to be the compositions of the same author. The <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> Gṛhya-sūtra, as compared with the Āśvalāyana-gṛhya or Gobhilagṛhya, is extremely brief and leaves out many rules that are given in other Gṛhya workṣ For example, about the choice of a girl, the <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> Gr. gives only one worthwhile rule (I. 3. 18)<sup class="fn-ref"><a href="#fn-7-dharmasutra-of-āpastamba-2" id="fnref-7-dharmasutra-of-āpastamba-2">2</a></sup>, the other rules (I. 3. 10–17) are of a trivial character such as that the girl that is sleepy or weeping or leaves the house when the bridegroom’s party comes to choose her or when the girl’s name is that of a river, nakṣatra or tree or she has a name in which the penultimate letter is r or &c. but all those rules in the gṛhyasūtra (including the one in sūtra 18) are recommendatory and a marriage entered into against these rules would have been valid even in old timeṣ The most important rule, breach of which would have made the marriage void, is stated in <a class="ref" href="../refs/apastamba.html#II.5.11.15-16" data-source="apastamba" data-ref="II.5.11.15-16" title="Āpastamba Dharmasūtra II.5.11.15-16">Āp. Dh. S. II. 5. 11. 15-16</a>) viz. that the gotra of the bride’s father and of the bridegroom must not be the same and there must be no sapiṇḍa relationship between the two on the mother’s and father’s side.</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-3">Dr. Ram Gopal says on p. 57 (of his work) that I am not accurate when I state about the choice of a girl that <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> Gr. S. gives only a single rule (I quoted that rule). I added that it must not be a <em>sagotra</em> or <em>sapiṇḍa</em>. Dr. Ram Gopal is swayed by mere numberṣ He points out that there are ten sūtras in <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> Gr. about the choice of a marriageable girl. What I wanted to emphasise was that only one rule of <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> Gr. was worth something and I quoted that rule. A marriage entered in defiance of all the ten rules in <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> Gr. would have been quite valid even in those dayṣ I wanted to illustrate how <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> Gr. S. was scrappy and omitted even vital matterṣ The rules (only two) forbidding a sagotra or sapiṇḍa girl for marriage were vital and breach of them would have made the marriage voiḍ <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> Gr. S. I. 3. 21 is not Āpastamba's opinion; it is the view of others ( Yasyāṃ manaścakṣusor-nibandhas-tāsyāṃ-ṛddhir-netaradādriyetyetyeke ). Even this rule is recommendatory and not obligatory and a marriage in defiance of it would have been quite valid in those days and would be valid also in these dayṣ That view occurs also in the <a class="ref" href="../refs/kamasutra.html#III.1.14.Vi" data-source="kamasutra" data-ref="III.1.14.Vi" title="Kāmasūtra III.1.14.Vi">Kāmasūtra III. 1. 14. Vi</a>de <a class="ref" href="../refs/hodh.html#vol. II" data-source="hodh" data-ref="vol. II" title="History of Dharmaśāstra vol. II">H. of Dh. vol. II</a>. p. 432 note 1025 for further informatioṇ In the 2nd volume of <a class="ref" href="../refs/hodh.html" data-source="hodh" data-ref="" title="History of Dharmaśāstra">H. of Dh.</a> on pp. 437-38, I mentioned this prohibition of sagotra and sapravara marriages and recommended on pp. 498-99 that the legislature should intervene and loosen the absolute bar against sagotra and sapravara marriageṣ The Indian Parliament (by Act 25 of 1955, called the Hindu Marriage Act) has removed the bar against Sagotra and Sapiṇḍa marriages to a great extent. Vide sections 3 (f and g) and 5 of that Act. The <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> Gṛhya is silent about the forms of marriage, about holidays, about the duties of brahmacārins and such other subjects which are generally treated of in other Gṛhyasūtraṣ These subjects are dealt with in the <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp. Dh. S.</a> and there are several places where the Dharma- sūtra presupposes the existence of the Gṛhya and refers to it. Compare <a class="ref" href="../refs/apastamba.html#II.1" data-source="apastamba" data-ref="II.1" title="Āpastamba Dharmasūtra II.1">Āp. Dh. S. II. 1</a>, 2. 10-11<sup class="fn-ref"><a href="#fn-7-dharmasutra-of-āpastamba-3" id="fnref-7-dharmasutra-of-āpastamba-3">3</a></sup> with <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> Gr. S. III. 7 (particularly sūtras 1, 17, 23 ). Vide note 54 above. Some sūtras are identical in the Gṛhya and Dharma, e. g. <a class="ref" href="../refs/apastamba.html#I.1.2.38" data-source="apastamba" data-ref="I.1.2.38" title="Āpastamba Dharmasūtra I.1.2.38">Āp. Dh. S. I. 1. 2. 38</a> and Gṛhya IV. 11. 15-16 ( about the staff of Brahmacārin ); <a class="ref" href="../refs/apastamba.html#II.4.8.7" data-source="apastamba" data-ref="II.4.8.7" title="Āpastamba Dharmasūtra II.4.8.7">Āp. Dh. S. II. 4. 8. 7</a> and Gṛhya V. 13. 19. In some cases the Gṛhya- sūtra itself seems to refer to the teachings of the Dharmasūtra, e. g. Grhya 8. 21. 1 and Dharma II. 7. 16. 6-7. All these facts make it highly probable, if not certain, that the Grhya and Dharma sūtras were composed by the same author and that the details of certain topics were purposely omitted in the Grhya to The Smrticandrikā (III. p. 458) distinctly asserts that the author of the Dharmasūtra and the gṛhyasūtra was the same.</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-4">The contents of the <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> dharma-sūtra are :— 1. the authoritative sources of <em>dharma</em> are the Vedas and the usages of those who know <em>dharma</em>; the four <em>varṇas</em>, their precedence; definition of <em>ācārya</em> and his greatness, time for <em>upanayana</em> according to the <em>varṇas</em> and according to one's desire ; <em>prāyaścitta</em> if proper time for <em>upanayana</em> is gone; he whose father, grand-father and great-grand-father had no <em>upanayana</em> performed becomes <em>patita</em>, but he can be purified by <em>prāyaścitta</em>; the duties of <em>brahmacārin</em>, residence with teacher for 48 years, 36, 25 or 12 years; rules of conduct for <em>brahmacārin</em>, his staff girdle and garment, rules about begging for food, bringing fuel and offering to fire; the vows of a <em>brahmacārin</em> are his <em>tapas</em>; rules about saluting teacher and others according to <em>varṇas</em>; giving <em>dakṣiṇā</em> to the teacher at the end of study ; rules for <em>snātaka</em>; rules about holidays and about the time and place for Vedic study; rules about holidays apply to study of the Veda and not to the use of <em>mantras</em> in Vedic rites; the five great daily <em>yajñas</em> to the <em>bhūtas</em>, men, gods, <em>pitṛs</em>, and sages; honouring men of higher castes, old men, parents, brothers and sisters and others; method of inquiring about one's health &c. according to <em>varṇas</em>; occasions of wearing <em>yajñopavīta</em>; times and manner of <em>ācamana</em>; rules about forbidden and permitted food and drink ; the avocation of a <em>vaṇij</em> not allowed to a <em>brāhmaṇa</em> except in distress; rules forbidding the sale or exchange of certain things; grave sins (<em>patanīya</em>), such as theft, the murder of a <em>brāhmaṇa</em> or other man, causing abortion, incest, drinking wine etc; other sins are not so grave, though they make the perpetrator impure, discussion of some metaphysical questions such as the knowledge of the soul, Brahma, the moral faults that lead to perdition such as anger, avarice, hypocrisy &c; the virtues that lead to the highest goal, such as absence of anger or avarice &c, truthfulness, tranquillity; compensation for killing a <em>Kṣatriya</em>, <em>Vaiśya</em>, or <em>Śūdra</em> and women; <em>prāyaścitta</em> for killing a <em>Brāhmaṇa</em> and an <em>Ātreyī Brāhmaṇa</em> woman, for killing a <em>guru</em> or a <em>Śrotriya</em> ; <em>prāyaścitta</em> for violating the bed of a <em>guru</em>, for drinking wine and for theft of gold; prāyaścittas for killing several birds, cows and bulls, and for abusing those who should not be abused, for sexual intercourse with a śūdra woman, for taking forbidden food and drink &c.; rules about Kṛcchra for twelve nights; what constitutes theft; how one should act towards a fallen (patita ) guru and mother; various opinions about prāyaścitta for viola- ting guru’s bed; prāyaścitta for a husband who has intercourse with another woman and for wife's adultery; prāyaścitta for killing a bhrūṇa (a learned brāhmaṇa); brāhmaṇa was not to wield arms, except in self-defence against bodily injury; prāyaścitta for abhiśāsta; prāyaścittas for lesser sins; various views about snātaka (Vidyāsnātaka, Vratasnātaka and Vidyāvratasnātaka ); the observances (vratas) of snātaka as regards garments, answe- ring calls of nature, about scandalous talk, about not seeing the rising or setting Sun, avoiding moral faults such as anger; II (praśna ) the householder's observances commence on marriage (pāṇigrahaṇa); rules of conduct for a householder about taking food and fasting, about sexual intercourse; all the varṇas attain unmeasured bliss by performing their duties and are re-born in conditions appropriate to their actions and by means of evil deeds are re-born in evil surroundings e. g. a brāhmaṇa who is a thief or a murderer of a brāhmaṇa becomes a Caṇḍāla, a similarly guilty rājanya becomes a paulkasa; the three higher castes should after bathing perform Vaiśvadeva; Sūdras may cook food for their masters of higher castes under the supervision of Āryas; offerings (bali) of cooked food; guests (atithi) should be first offered food, then children, old men, sick persons and pregnant women (and then the householder himself); no one should be refused food when he comes at the end of Vaiśvadeva; rules of receiving guests, such as unlearned brāhmaṇas, kṣatriyas, vaiśyas and śūdras; an house holder should always wear an upper garment or his sacred thread may serve that purpose; in the absence of a brāhmaṇa teacher, a brāhmaṇa may learn from a kṣatriya or vaiśya teacher; duties of a married man when his teacher comes as a guest; duty of house- holder to teach and to observe the rules of conduct laid down for him; in case of doubt as to a guest's caste and character, how to proceed; who is an atithi; praise of honouring an atithi; procedure in case an atithi comes to a king or to one who has consecrated fires; to whom and when madhuparka is to be offered; the six aṅgas of Veda named; all including dogs and caṇḍālas should be given food after Vaiśvadeva; all gifts to be made with water; one must not give at the expense of servants and slaves ; one may subject himself, wife and sons to privations ( but not servants ) ; amount of food to be taken by brahmacārin, householder, hermit &c. ; occasions for begging are the teacher, marriage, sacrifice, maintenance of parents and avoidance of the cessation of some worthy observance ( like agnihotra ) ; the peculiar karmans of brāhmaṇas and the other castes ; rules of war ; the king to appoint a purohita skilled in dharma and art of government, who is to carry out punishments and penances ; punishments including death sentence according to the gravity of the offences, but a brāhmaṇa was not to be killed or injured or to be made a slave ; rule of the road ; a man of the lower caste by practising his duties rises higher and higher when re-born and a man of the higher castes goes lower by adharma ; one should not marry another wife, when the first has children and is helpful in the performance of dharma ; rules about marriageable girl, i. e. she must not be sagotra and sapiṇḍa of the mother ; six forms of marriage viz. brāhma, ārṣa, daiva, gāndharva, āsura, rākṣasa ; preference among the six ; rules of conduct after marriage ; sons born of wives of the same caste can perform the duties appropriate to the father's caste and inherit parent's property ; the son of a woman who was once married or who is not married according to prescribed forms or who is not begotten ( or to him on whose wife he is begotten ) ; there can be no gift or sale of a child ; partition during father's lifetime and equal division ; exclusion from inheritance of the impotent, lunatics and sinners ; the inheritance in the absence of son goes to nearest sapiṇḍa, then to the teacher and then to the pupil, or the daughter and ultimately to the king ; the opinion of some that the largest share goes to the eldest son is opposed to the Vedas ; no partition between husband and wife ; usages of countries and families not to be followed if opposed to the Vedas ; impurity on death of agnates, cognates &c ; gifts to be made at proper time, place and to proper person ; śrāddhas ; times of śrāddha ; materials required at śrāddha ; food ( including flesh ) appropriate at śrāddhas ; what brāhmaṇas are to be called at śrāddha ; the four āśramas ; rules about parivrāj i. e. sannyāsin ; the duties of forest hermit ; praise of the meritorious and condem- nation of evil-doers ; special rules about kings ; founding of his capital and palace ; position of the sabhā ; extirpation of thieves ; gifts of land and wealth to brāhmaṇas ; protection of people ; persons exempt from taxation, such as Śrotriyas, women of all castes, students and ascetics ; punishment of young men for adultery; punishment varied according as the woman wronged was Ārya or Śūdra; punishments for abuse and for homicide; punishments for various breaches of conduct; dispute between cowherd and master; the perpetrator, the abettor and one who approves of the act are all guilty; who are to decide disputes; in case of doubt decision by inference and by divine proof (ordeals); punishment for perjury; all other dharmas should be learnt, according to some, from women and people of all casteṣ</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-5">Each of the two praśnas of the Āpastamba-dharma-sūtra is divided into eleven pātalas, there being 32 and 29 khaṇḍikās in the two pātalas respectively. The Dharmasūtra is written in a more concise and compact style than that of <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> and has more archaic and un-Pāṇinean forms than any other extant Dharmasūtra. For example, the following are against the rules of Pāṇini; Adhāsana (for adha āsana) in I. 1. 2. 21, aglāmsnu (I. 2. 3. 22 ), muhūrtīca (I. 2. 8. 22 ), aghryamāna (I. 4, 12. 8), sarvatopeta (for 'sarvata upeta') in I. 6. 19. 9, sakHim (for sakHim) in I. 7. 21. 9. Haradatta points out in many places that the current reading was un-Pāṇinean and therefore he read differently (e. g. in II. 2. 5. 2 he reads ‘aviprakramaṇa’, while the current reading was ‘aviprakramiṇa’.)<sup class="fn-ref"><a href="#fn-7-dharmasutra-of-āpastamba-4" id="fnref-7-dharmasutra-of-āpastamba-4">4</a></sup>. This makes it probable that in the original text there must have been many more un-Pāṇinean forms than in the one preserved by Haradatta. There are many unfamiliar or rare words used by Āpastamba, i. e. ananiyoga (I. 6. 19. 12), anaiścārika (I. 8. 22. 1), kartapatya (I. 2. 5. 3), vyupatoda and vyupajāva (–‘pa’) in I. 2. 8. 15, brahmama- hāinstuta (I. 1. 1. 32 ). We meet with strange forms of certain words, such as paryānta (I. 3. 9. 21), praśāsta (II. 8. 19. 3), anatyaya (I. 1. 1. 21, for anatyaya), brahmmojjham (for-ojjhah) in I. 7. 21. 8, śvāvit (I. 5. 17. 37 ), sthevāna (I. 11. 30. 19 for sthīvana ), ācāryadāre (for-dāreṣu) in I. 2. 7. 27. Though the <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> Dharmasūtra is mainly in prose, there are verses here and there.Some of the verses are expressly stated to be taken from other sources by being introduced with the word “udaraharanti” or with “athāpyudāharanti” e. g. I. 6. 19. 13 (two ślokas from a Purāṇa), I. 6. 19. 15 (compare <a class="ref" href="../refs/manu.html#8.317" data-source="manu" data-ref="8.317" title="Manusmṛti 8.317">Manu 8. 317</a> and Vaṣ 19. 44), I. 11. 31. 1, I. 11. 32. 24, II. 4. 9. 13 (two verses, same as Bauḍ II. 7. 22–23), II. 7. 17. 8, II. 6. 13. 6 (three verses almost the same as in Bauḍ II. 2. 34–36 ), II. 9. 23. 4–5 (two ślokas from a Purāṇa ). Besides these, there are several isolated verses, most of which seem to be quotations, though not introduced with words like “udāharanti”. They are I. 4. 14. 25, I. 6. 19. 14 (the first pāda of which is <a class="ref" href="../refs/manu.html#4.212" data-source="manu" data-ref="4.212" title="Manusmṛti 4.212">Manu 4. 212</a> ), I. 9. 27. 10, I. 9. 27. 11 ( same as Bauḍ II. 1. 42 ), II. 2. 4. 14 (compare <a class="ref" href="../refs/manu.html#III.101" data-source="manu" data-ref="III.101" title="Manusmṛti III.101">Manu III. 101</a> ). Some of these verses are defective in metre, there being nine syllables in one anustubh pāda as in I. 9. 27. 10, II. 9. 23. 4–5, II. 2 4. 14. One of the verses is in the classical Upajāti metre (II. 7. 17. 18 ), while another closely approaches that metre (I. 9. 27. 11 ). Besides these, there are a few half-verses, II. 5. 11. 5–6 (same as latter half of <a class="ref" href="../refs/mb_vanaparva.html#133.1" data-source="mb_vanaparva" data-ref="133.1" title="Vanaparva 133.1">Vanaparva 133. 1</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva#P03_U07_A133_S001" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>), II. 9. 21 10 ( <a class="ref" href="../refs/manu.html#6.43" data-source="manu" data-ref="6.43" title="Manusmṛti 6.43">Manu 6. 43</a> has the first pāda ). Thus in all there are about twenty verses, of which at least six occur in <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>. Some sūtras that are printed as prose are parts of verses, e. g. I. 2. 5. 11. Besidese these, there are several verses in the pātalas dealing with metaphysics (1. 8. 22. 4–8 and I. 9. 23. 1–3 ) that are pieced together largely from Upaniṣad passageṣ Āpastamba in several places employs the first person plural about himself<sup class="fn-ref"><a href="#fn-7-dharmasutra-of-āpastamba-5" id="fnref-7-dharmasutra-of-āpastamba-5">5</a></sup>, e. g. I. 1. 1. 27, I. 8. 23. 4. Haradatta points out that in his day there was difference in the text as handed down in Northern and in Southern India.<sup class="fn-ref"><a href="#fn-7-dharmasutra-of-āpastamba-6" id="fnref-7-dharmasutra-of-āpastamba-6">6</a></sup> Āpastamba quotes, besides the <em>Samhitās</em>, the Brāhmaṇas very frequently (e. g., I. 1. 10-11, I. 1. 3. 9, I. 1. 3. 26, I. 2. 7. 7, I. 2. 7. 11, I. 3. 10 8 ). He quotes the Vājasaneyaka (I. 5. 17. 31 ) and the Vājasaneyi-brāhmaṇa (I. 4. 12. 3 on svādhyāya ), he speaks of the Upaniṣads (II. 2. 5. 1), his quotations (II. 2. 3. 16-11. 2. 4. 1–9) from the <a class="ref" href="../refs/taittiriya_ar.html" data-source="taittiriya_ar" data-ref="" title="Taittirīya Āraṇyaka">Tai. Āraṇyaka</a> agree, according to Bühler, with the text current in the Andhra country. He speaks<sup class="fn-ref"><a href="#fn-7-dharmasutra-of-āpastamba-7" id="fnref-7-dharmasutra-of-āpastamba-7">7</a></sup> of the six angas of the Veda (in II. 4. 8. 10), and I added from the Kumbhakonam edition (which I was then using) ‘and the next sūtra enumerates <em>chandas, kalpa, grammar, jyotisa, Nirukta, Śikṣā</em> (phonetics ) and Chandovīciti (metrics) which are seven etc.’ I find that Haradatta reads Chandahkalpa as one word and explains ‘Chando Vedas-tatkalpayati ... iti Chandahkalpah Kalpasūtrāni’. This is an extremely far-fetched explanatioṇ Everywhere the Vedāngas are six. No other writer mentions so far as I know Chandah-kalpa as an anga I pointed out the discrepancy relying on the two sūtras as printeḍ I thought that the word Chandas was printed inadvertently (before ‘Kalpa’). There is a further inelegance. If the reading Chandah–kalpa be accepted, then the word Chandas is used in the same sentence in two senses viz. Veda and metre. Besides, Vedāngas are all related to the Vedas and Kalpa in the context of the enumeration of Vedāngas would only mean ‘ritual of Vedic sacrifices’ and in Chandah–kalpa the word ‘Chandas’ then would be redundant. He speaks of the six angas of the Veda (II. 4. 8. 10) and in the next sūtra enumerates Chandas, Kalpa, grammar, Jyotisa, Nirukta, Śikṣā, (phonetics) and Chandoviciti (metrics), which are seven (Śikṣā being probably intended to be included in grammar). There are passages in Āpastamba which agree with the Nirukta, e. g. the definition of ācārya <sup class="fn-ref"><a href="#fn-7-dharmasutra-of-āpastamba-8" id="fnref-7-dharmasutra-of-āpastamba-8">8</a></sup>. He quotes the views of ten writers on dharma by name, viz. Eka (I. 6. 19. 7), Kanva (I. 6. 19. 3 and I. 10. 28. 1), Kānva (I. 6. 19. 4 and 7, I. 10. 28. 1), Puṣkarasādi (I. 6. 19. 7, I. 10. 28. 1), Vārṣyāyaṇī (I. 6. 19. 5 and 8, I. 10. 28. 2), Śvetaketu (I. 4. 13. 19 and I. 2. 5. 6), Hārita (I. 4. 13. 11, I. 6. 18. I, I. 6. 19. 12, I. 10. 28. 5 and 16, I. 10. 29. 12 and 16). Some of the names (viz. Kautsa, Vārṣyāyaṇī, and Puṣkarasādi) occur in the Nirukta. He quotes the view of Śvetaketu in Śvetaketu's own words (in I. 4. 13. 20) that even a married man should every year stay with his teacher for two months to refresh his studies and gives it as his own opinion that Śvetaketu's view is opposed to the Śāstras (the Vedas). In another place (I. 1. 4. 5–6) he speaks of Śvetaketu as an avara (a person belonging to later ages) and as one who on account of the remnant of his meritorious actions done in a former life or lives was able to grasp the four Vedas in a short time. It is usual to see in this a reference to Śvetaketu in the <a class="ref" href="../refs/chandogya.html" data-source="chandogya" data-ref="" title="Chāndogya Upaniṣad">Chāndogya</a> Upaniṣad (VI. 1. 1–2), where it is stated that Śvetaketu mastered all the Vedas in twelve yearṣ But this identification is somewhat of doubtful value. Āpastamba quotes Śvetaketu as a teacher of dharma. The quotation from Śvetaketu given by Āpastamba has nothing corresponding to it in the Upaniṣaḍ Besides, the <a class="ref" href="../refs/chandogya.html" data-source="chandogya" data-ref="" title="Chāndogya Upaniṣad">Chāndogya</a> Upaniṣad appears to make a distinction between two Śvetaketus (in VI. I and VI. 8), one being called Āruṇeya and the other Āruṇī (son of Āruṇa). Hārita, whose views are cited so frequently, is quoted by <a class="ref" href="../refs/baudhayana.html#II.1.50" data-source="baudhayana" data-ref="II.1.50" title="Baudhāyana Dharmasūtra II.1.50">Baudhāyana (II. 1. 50)</a> and also by <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> (II. 6. ). From the two sūtras (I. 6. 19. 3 and 7) it follows that Kanva and Kāṇva are two distinct writerṣ The Kumbhakonam edition reads Kāṇva in I. 10. 28. 1, while Bühler reads Kanva there. Kāṇva Bodhāyana is a teacher, whose name occurs in the ṛṣitarpaṇa in many workṣ The view ascribed to Kāṇva by Āpastamba in I. 6. 19. 7 seems to be the same as that of the <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>-dharma-sūtra (I. 2. 19?). It has been shown above that there are close parallels in thought and expression between <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> and Āpastamba. In several places Āpastamba seems to be controverting the views of <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> or similar views held by otherṣ Āpastamba condemns the view of giving the paternal wealth to the eldest son as opposed to the Vedas and explains the Vedic text (<a class="ref" href="../refs/taittiriya_s.html#II.5.2.7" data-source="taittiriya_s" data-ref="II.5.2.7" title="Taittirīya Saṃhitā II.5.2.7">Tai. S. II. 5. 2. 7</a>, quoted above) about the eldest son being endowed with all wealth as a mere anuvāda and not a vidhi (vide Ap. Dh. S. II. 6. 14. 6-13). <a class="ref" href="../refs/baudhayana.html#ci" data-source="baudhayana" data-ref="ci" title="Baudhāyana Dharmasūtra ci">Baudhāyana ci</a>tes both the texts of the <a class="ref" href="../refs/taittiriya_s.html" data-source="taittiriya_s" data-ref="" title="Taittirīya Saṃhitā">Tai. S.</a> about equal division among sons and about the eldest son's larger share and seems to favour the latter view by putting it last (II. 2. 2-7). Similarly, the discussion in Āpastamba (I. 1. 4. 5-12) about a brahmacārin eating the leavings (ucchiṣṭa) of his guru, provided the things are not directly forbidden by Śruti, seems to be directed against <a class="ref" href="../refs/baudhayana.html#II.1.25-26" data-source="baudhayana" data-ref="II.1.25-26" title="Baudhāyana Dharmasūtra II.1.25-26">Baudhāyana (II. 1. 25-26)</a>. Although Āpastamba does not expressly quote Gautama, he appears to have had before him the Gautama-dharma-sūtra. He speaks of a smṛti (II. 6. 15. 25 ) that lays down that upanayana confers adhikāra on a man for śāstric actions and that before upanayana one is free to do any thing and to eat anything. This, as interpreted by Haradatta, refers to Gautama (II. 1)<sup class="fn-ref"><a href="#fn-7-dharmasutra-of-āpastamba-9" id="fnref-7-dharmasutra-of-āpastamba-9">9</a></sup>. There are striking coincidences between Gautama and Āpastamba, e. g. <a class="ref" href="../refs/gautama.html#I.19" data-source="gautama" data-ref="I.19" title="Gautama Dharmasūtra I.19">Gaut. I. 19</a>. = <a class="ref" href="../refs/apastamba.html#I.1.1.41" data-source="apastamba" data-ref="I.1.1.41" title="Āpastamba Dharmasūtra I.1.1.41">Āp. I. 1. 1. 41</a> (about some teachers prescribing the yellow robe to a brahmacārin), <a class="ref" href="../refs/gautama.html#I.3" data-source="gautama" data-ref="I.3" title="Gautama Dharmasūtra I.3">Gaut. I. 3</a> = <a class="ref" href="../refs/apastamba.html#11.6.13.7" data-source="apastamba" data-ref="11.6.13.7" title="Āpastamba Dharmasūtra 11.6.13.7">Āp. 11. 6. 13. 7</a> (about the violation of dharma by the great in former ages), (<a class="ref" href="../refs/gautama.html#9.5" data-source="gautama" data-ref="9.5" title="Gautama Dharmasūtra 9.5">Gaut. 9. 5</a>? = <a class="ref" href="../refs/apastamba.html#I.11.31.13" data-source="apastamba" data-ref="I.11.31.13" title="Āpastamba Dharmasūtra I.11.31.13">Āp. I. 11. 31. 13</a>, <a class="ref" href="../refs/gautama.html#23.9" data-source="gautama" data-ref="23.9" title="Gautama Dharmasūtra 23.9">Gaut. 23. 9</a>. = <a class="ref" href="../refs/apastamba.html#I.9.25.2" data-source="apastamba" data-ref="I.9.25.2" title="Āpastamba Dharmasūtra I.9.25.2">Āp. I. 9. 25. 2</a>; (<a class="ref" href="../refs/gautama.html#16.19" data-source="gautama" data-ref="16.19" title="Gautama Dharmasūtra 16.19">Gaut. 16. 19</a> = <a class="ref" href="../refs/apastamba.html#I.3.9.14-15" data-source="apastamba" data-ref="I.3.9.14-15" title="Āpastamba Dharmasūtra I.3.9.14-15">Āp. I. 3. 9. 14-15</a> ). Āpastamba frequently refers to the views of his predecessors in the words 'eke' (I. 1. 2, 37, 38, 41; 1. 1. 4. 17; I. 2. 5. 20; I. 2. 6. 4., I. 3. 9. 3, I. 3. 11. 3 &c.) and ‘aparam’ (II. 6. 15. 22 ). It is somewhat remarkable that in many of these cases (where ‘eke’ occurs), the views are those either held by Gautama or ascribed by him also to others, e. g. <a class="ref" href="../refs/apastamba.html#I.1.2.38" data-source="apastamba" data-ref="I.1.2.38" title="Āpastamba Dharmasūtra I.1.2.38">Āp. I. 1. 2. 38</a> about the staff of a brahmacārin refers to <a class="ref" href="../refs/gautama.html#I.23" data-source="gautama" data-ref="I.23" title="Gautama Dharmasūtra I.23">Gaut. I. 23</a>; <a class="ref" href="../refs/apastamba.html#I.1.2.41" data-source="apastamba" data-ref="I.1.2.41" title="Āpastamba Dharmasūtra I.1.2.41">Āp. I. 1. 2. 41</a> is almost same as <a class="ref" href="../refs/gautama.html#I.19" data-source="gautama" data-ref="I.19" title="Gautama Dharmasūtra I.19">Gaut. I. 19</a>, <a class="ref" href="../refs/apastamba.html#I.2.5.20" data-source="apastamba" data-ref="I.2.5.20" title="Āpastamba Dharmasūtra I.2.5.20">Āp. I. 2. 5. 20</a> seems to refer to <a class="ref" href="../refs/gautama.html#1" data-source="gautama" data-ref="1" title="Gautama Dharmasūtra 1">Gaut. 1</a>, 54-59, <a class="ref" href="../refs/apastamba.html#I.3.9.3" data-source="apastamba" data-ref="I.3.9.3" title="Āpastamba Dharmasūtra I.3.9.3">Āp. I. 3. 9. 3</a> (the view of some that Vedic study lasts for four months and a half) seems to refer to <a class="ref" href="../refs/gautama.html#16.2" data-source="gautama" data-ref="16.2" title="Gautama Dharmasūtra 16.2">Gaut. 16. 2</a>, and <a class="ref" href="../refs/apastamba.html#I.3.11.3" data-source="apastamba" data-ref="I.3.11.3" title="Āpastamba Dharmasūtra I.3.11.3">Āp. I. 3. 11. 3</a> (about not studying after dining at a sacrifice for deities that are manusya-prakrti) pointedly refers to <a class="ref" href="../refs/gautama.html#16.34" data-source="gautama" data-ref="16.34" title="Gautama Dharmasūtra 16.34">Gaut. 16. 34</a> which contains the word ‘manusyayajñabhojana’. Āpastamba twice quotes verses from a Purāṇa (I. 6. 9. 13, II. 9. 23. 3) and in one place gives in prose the view of a Purāṇa (1. 10. 29. 7 ).<sup class="fn-ref"><a href="#fn-7-dharmasutra-of-āpastamba-11" id="fnref-7-dharmasutra-of-āpastamba-11">11</a></sup> Āpastamba (II. 9. 24. 6) speaks of the view of a Bhavisyat-purāṇa (about creation of the world after a periodic dissolution). In one place Āpastamba (II. 11. 29. 11-12) says that ‘the knowledge that exists (traditionally) among women and śūdras is the furthest limit of vidyā and it is said to be a supplement of the <a class="ref" href="../refs/atharvaveda.html" data-source="atharvaveda" data-ref="" title="Atharvaveda">Atharvaveda</a>’. Here he probably refers to <a class="ref" href="../refs/arthashastra.html" data-source="arthashastra" data-ref="" title="Arthaśāstra">Arthaśāstra</a>, which according to the caraṇavyūha, is the Upaveda of the Atharva-veda. Āpastamba refers (II. 7. 16. 1) to <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> as founder of the institution of śrāddha. But this appears to be a reference to <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>, the mythical progenitor of mankind, and not to the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a>. It is noteworthy that Āpastamba (II. 17. 8) quotes a verse, which is the same as <a class="ref" href="../refs/mb_anushasana.html#90.46" data-source="mb_anushasana" data-ref="90.46" title="Anuśāsanaparva 90.46">Anuśāsanaparva 90. 46</a><a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> (sambhojani nāma &c. ). The <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āpastambadharmasūtra</a> stands in a peculiar relation to the Pūrvamīmāmsā. It is the only extant Dharmasūtra that contains many of the technical terms and doctrines of the Mimāmsā. He says (I. 1. 4. 8) ‘a positive Vedic text is more cogent than an usage which merely leads to an inference (of its being based on a Vedic text now lost <sup class="fn-ref"><a href="#fn-7-dharmasutra-of-āpastamba-12" id="fnref-7-dharmasutra-of-āpastamba-12">12</a></sup>). This refers to Jaimini's rule (I. 3. 3) “if there is a conflict between an express Vedic text and Smṛti, the latter is to be disregarded; but if there be no conflict an inference (may be made that the Smṛti is based upon some Śruti)'. In another place Āpastamba says (1. 4. 12. 11) 'where an action is done on account of finding pleasure therefrom (i. e. from a worldly motive), there is no (inference of its being based on) Śāstra'. This is the same as Jaimini's teaching (IV. 1. 2)<sup class="fn-ref"><a href="#fn-7-dharmasutra-of-āpastamba-13" id="fnref-7-dharmasutra-of-āpastamba-13">13</a></sup>. He speaks of the convention (<span class="devanagari">सामञ्जस</span>) of those who know Nyāya (i. e. Mimāmsā) that aṅgas (such as the Kalpasūtras are) cannot be designated the Vedas (which are the principal), which is clearly a reference to Pūrvamimāmsā (I. 3. 11-14)<sup class="fn-ref"><a href="#fn-7-dharmasutra-of-āpastamba-14" id="fnref-7-dharmasutra-of-āpastamba-14">14</a></sup> and he says that those who know Nyāya lay down that a mere <em>anuvāda</em> (affirming or reciting) of what is well-known to all is not a positive rule (a <em>vidhi</em>), which is similar to Jaimini's rule<sup class="fn-ref"><a href="#fn-7-dharmasutra-of-āpastamba-15" id="fnref-7-dharmasutra-of-āpastamba-15">15</a></sup>. The dictum of Āpastamba that the word “sale” (<em>kraya</em>) applied to a bride in some Vedic texts is merely figurative closely resembles Jaimini's<sup class="fn-ref"><a href="#fn-7-dharmasutra-of-āpastamba-16" id="fnref-7-dharmasutra-of-āpastamba-16">16</a></sup> remarks on the same point.</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-6">The remark of Āpastamba that the rules of <em>anadhyāya</em> only apply to Vedic study and not to the recital of <em>mantras</em> at sacri- fices corresponds to a rule in Jaimini<sup class="fn-ref"><a href="#fn-7-dharmasutra-of-āpastamba-17" id="fnref-7-dharmasutra-of-āpastamba-17">17</a></sup> almost in the same wordṣ These examples show that in Āpastamba's day Mimā- msā doctrines had been far advanced and that works existed that dealt with Mimāmsā topics (Nyāyas). The correspondence in language with the Pūrvamimāmsāsūtra is so close that one is tempted to advance the view that Āpastamba knew the extant Mimāmsā-sūtra or an earlier version of it that contained almost the same expressionṣ It cannot be said that all these passages are later interpolationṣ They have all been explained by Haradatta and one of the sūtras referring to Mimāmsā topics occurs in so early a work as the commentary of <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a> (on Yaj. 1. 7) who quotes "Brāhmaṇoktā vidhayah" &c. (<a class="ref" href="../refs/apastamba.html#I.4.12.10" data-source="apastamba" data-ref="I.4.12.10" title="Āpastamba Dharmasūtra I.4.12.10">Āp. I. 4. 12. 10</a>). The last passage is quoted by <a class="ref" href="../refs/medhatithi.html" data-source="medhatithi" data-ref="" title="Medhātithi">Medhātithi</a> also (on <a class="ref" href="../refs/manu.html#II.6" data-source="manu" data-ref="II.6" title="Manusmṛti II.6">Manu II. 6</a>). The dharmasūtra of Āpastamba has been quoted from very ancient times as authoritative. Śabara in his bhāṣya on Jaimini VI. 8. 18 quotes one sūtra of Āpastamba and a paraphrase of another.<sup class="fn-ref"><a href="#fn-7-dharmasutra-of-āpastamba-18" id="fnref-7-dharmasutra-of-āpastamba-18">18</a></sup> The Tantravārtika refers to the sūtras of Āpastamba about local and family usages,<sup class="fn-ref"><a href="#fn-7-dharmasutra-of-āpastamba-19" id="fnref-7-dharmasutra-of-āpastamba-19">19</a></sup> about drinking wine and about the conflict between the views of <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> and Āpastamba (vide above page 46 also). Śaṅkarācārya in his bhāṣya on Brahmasūtra IV. 2. 14 quotes Āpastamba I. 7. 20. 3 (about the planting of trees for fruit as a meritorious act and the collateral benefits of shade and fragrance). He also cites Āpastamba (I. 8. 23. 2)<sup class="fn-ref"><a href="#fn-7-dharmasutra-of-āpastamba-20" id="fnref-7-dharmasutra-of-āpastamba-20">20</a></sup> in his bhāṣya on Bṛhad- āraṇyaka, he cites <a class="ref" href="../refs/apastamba.html#I.5.15.1" data-source="apastamba" data-ref="I.5.15.1" title="Āpastamba Dharmasūtra I.5.15.1">Āp. Dh. S. I. 5. 15. 1</a> (upāsane gurūņām &c.). <a class="ref" href="../refs/apastamba.html#II.9.23.3-5" data-source="apastamba" data-ref="II.9.23.3-5" title="Āpastamba Dharmasūtra II.9.23.3-5">Āp. Dh. S. (II. 9. 23. 3–5)</a> quotes from a Purāṇa two verses which are very similar to two verses quoted by Śaṅkarācārya in his Bhāṣya on Chāṇ Up. V. 10. 1. <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a> on <a class="ref" href="../refs/yajnavalkya.html#III.252" data-source="yajnavalkya" data-ref="III.252" title="Yājñavalkya III.252">Yāj. III. 252</a> refers to one verse and a half quoted by Āpastamba (I. 9. 25. 11 Tri. eḍ) and explains it. The two paṭalas of Āpastamba (I. 8. 22 and 23) dealing with adhyātma (philosophy) were commented upon by Śaṅkarācārya, who, from the general style and method of the commentary (vide Trivandrum edition of the adhyāt- mapatala) seems to be the same as the great ācārya. Sureśvara in his Vārtika (I. 1. 97) on Śaṅkara’s bhāṣya on the Bṛha- dāraṇyakopaniṣad quotes the sūtra about the planting of mango (Āpastamba I. 7. 20. 3<sup class="fn-ref"><a href="#fn-7-dharmasutra-of-āpastamba-21" id="fnref-7-dharmasutra-of-āpastamba-21">21</a></sup>) treeṣ <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a>, who according to Mādhava, was the the same as Sureśvara,<sup class="fn-ref"><a href="#fn-7-dharmasutra-of-āpastamba-22" id="fnref-7-dharmasutra-of-āpastamba-22">22</a></sup> quotes (Trivandrum edition) in his commentary on <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yājñavalkya</a> (ācāra and vyavahāra only) Āpastamba's sūtras about twenty timeṣ The quotations show that the text of Āpastamba was identical with the one printed, barring a few variations that are no more than mere slips on the part of the scribes of Msṣ In his commentary on <a class="ref" href="../refs/yajnavalkya.html#III.237" data-source="yajnavalkya" data-ref="III.237" title="Yājñavalkya III.237">Yāj. III. 237</a> <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a> quotes eighteen sūtras of Āpastamba (I. 9. 24, 6-23 ) consecutively which are the same as those in the printed text. <a class="ref" href="../refs/medhatithi.html" data-source="medhatithi" data-ref="" title="Medhātithi">Medhātithi</a> quotes Āpastamba II. 5. 11. 2, II. 4. 7. 16, II. 8. 19. 20, I. 4. 14. 30-31 on <a class="ref" href="../refs/manu.html#II.247" data-source="manu" data-ref="II.247" title="Manusmṛti II.247">Manu II. 247</a>, III. 102, III. 273 and VIII 357 respectively and appears to refer to Āpastamba I. 4. 13. 6 ( about “om” ) on <a class="ref" href="../refs/manu.html#II.83" data-source="manu" data-ref="II.83" title="Manusmṛti II.83">Manu II. 83</a>. The <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mitākṣarā</a> has several quotations and <a class="ref" href="../refs/apararka.html#c" data-source="apararka" data-ref="c" title="Aparārka c">Aparārka c</a>ontains about two hundred sūtras of Āpastamba, though rather in a mutilated forṃ But it is not necessary to refer to these and other later works in detail, since Haradatta's commentary, as will be shown later on, was written about the time of <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a>. Thus from the days of Śabara ( 400 A. D. at the latest ) to 1100 A. D. we have a host of writers who vouch for the authenticity of the extant text of Āpastamba.</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-7">About the home and personal history of Āpastamba little is knowṇ Āpastamba is not an ancient name. It does not occur in the Vedic textṣ It occurs in the gaṇa “Bidādi” in Pāṇini IV. 1. 104. Dr. Ram Gopal ( on p. 75 of his work ) thinks rather naively that the occurrence of Āpastamba’s name in the Bidādigana lends some support to the view that Āpastamba is earlier than Pāṇini. The Bidādi-gaṇa has nothing to do with termination to the words in the gaṇa in the sense of (gotrāpatya) ‘a descendant from grandson downwards but not a son’. Bida’s son would be Baidi, but his grandson would be Baida. Besides, this gaṇa contains about fifty words in the Gaṇapāṭha now available. Āpastamba is the 14th in the list. Moreover, the gaṇas are liable to be added to as illustrated by what is said above on Kambojadigana. Besides, the mere occurrence of the word Āpastamba in the Bidādi-gaṇa does not convey that the person mentioned is the author of the Gṛhya or Dharma-sūtra known now as Āpastamba’ṣ All that can be held to follow from the Bidādi-gaṇa is that a person named Āpastamba and his descendants named after him were known at the time. He speaks of himself as belonging to later ages (avara). Vide Āpastamba<sup class="fn-ref"><a href="#fn-7-dharmasutra-of-āpastamba-23" id="fnref-7-dharmasutra-of-āpastamba-23">23</a></sup> I. 2. 5. 4. and II. 6. 13. 9. In the tarpaṇa he is generally mentioned after Bodhāyana and before Satyāṣāḍha Hiraṇyakeśin ( vide note 68a above ). Therefore according to tradition his school was elder or more authoritative than that of Hiraṇyakeśiṇ In one place Āpastamba refers to a peculiar śrāddha usage of the udicyas (II. 7. 17. 17).<sup class="fn-ref"><a href="#fn-7-dharmasutra-of-āpastamba-24" id="fnref-7-dharmasutra-of-āpastamba-24">24</a></sup> Āpastamba must be supposed to have embodied in his work the usages of his own country. If he specially mentions the usages of a particular locality, it would follow that he did not hail from that locality. But the exact meaning of “Udīcya” is doubtful. Haradatta quotes a verse of the grammarians, according to which the Country north of the Śarāvatī was called “Udīcya”. According to the Mahārṇava quoted in the commentary on the Caraṇavyūhata the Āpastambīyas were to be found to the south of the Narmadā, in the south-east, that is, in Āndhra and the territory about the mouth of the Godāvarī. Therefore it is natural to suppose that Āpastamba’s school had its origin in the south and probably in Āndhra.</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-8">Now that rather puerile arguments have been advanced by Dr. Ram Gopal about the home of Āpastamba, <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> and Hiraṇyakeśin (on pp. 96-100), a more thorough reply is given here by reference to numerous grants and inscriptions,</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-9">Dr. Ram Gopal does not bother about inscriptions and copper plate grantṣ I had referred in the first edition (of 1930) to Pallava grants in general and mentioned a specific one in I. A. Vol. V, p. 155. In that grant five out of the eight donees are Āpastambhīyas, one is Gautama Hairaṇyakeśa Saṣṭhikumāra, one is Vājasaneyaka and one more Sāmavediṇ</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-10">(2) There is another grant earlier than the above ( of 4th century A. D. ) viz. the Gorantla plates of king Attivarman edited in I. A. vol. IX pp. 102-3, in which the donee Koṭṭiśarman described as ‘Āpastambhasūtra- Ṛg-yajus-sāmavide.</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-11">(3) Kadagatturu plates of Western Ganga King Durvinita, Circa 555-605 A. D. vide Ep. Carṇ Vol. XII. Mi. 110 ); the donee was Skandhaśarman of the Bhāradvājagotra and Āpastambhasūtra.</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-12">(4) Kopparam plates of Cālukya Pulakeśin II. ( E. I. Vol. XVIII pp. 259-261, the donee being Vedaśarman of the Śāṇḍily-āyana gotra and of the Āpastambhasūtra.</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-13">(5) Ederu plates of Eastern Cālukya Vijayāditya II ( Circa 799-843 A. D.; vide E. I. Vol. V. pp. 119-122. Grant to a Āpas- tambha brāhmaṇa of the Kāśyapa gotra and Āpastambhasūtra.</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-14">(6) Grant of Eastern Cālukya king Bhīma II (10th cent- ury A. D. ); vide South Indian Inscriptions Vol. I. pp. 43 ff.</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-15">(7) Charter of Pallava king Narasimha - varman II ( about 711 A. D. ) in Sanskrit but in early Telugu, Kannada characters and the donee is described as a student of Āpa- stambasūtra, of Rathitara gotra named Kumāramaṇḍaśarmaṇ</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-16">All these are specially cited by me for Āpastambhīyas as doneeṣ Now about Bodhāyana ( <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> ). It has been seen above that Bodhāyana is called ‘pravacaṇakāra’ in the passages on tarpaṇa (vide note 68 a above) and hence in some early grants the donees are described as students of Pravacaṇa or Pravacaṇa- sūtra or-carana or-Kalpa, though in the South Indian records from the 11th century A. D. and onwards the <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>-sūtra does occur.</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-17">(1) Śringeri plates of Avinīta (circa 495-555 A. D. ) in Mysore Arch. Rep. 1916 pp. 34-35, where two of three donees are students of Pravacaṇa-kalpa;</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-18">(2) Bangalore Residency Plates of Western Ganga king Avinīta (c. 495-555 A. D. ) in Myṣ Arch. Rep. 1911;</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-19">(3) Uttanūr plates of Durvinita ( Myṣ Arch. Rep. 1916 ), where 48 brāhmaṇas of Taittirīya-carana and Pravacaṇa-Āpa- stamba-sūtra are mentioneḍ (4) and (5) Gummareddipura Plates of Durvinīta (circae 555-605 A. D.) in Myṣ Arch. Rep. 1912 pp. 31-32 ) and Nallāla Grant of Durvinīta (Myṣ Arch. Rep. 1924 p. 70 ) where donees are of pravacana-kalpa. (6) Alūr grant of Yuvarāja Nārasimha (c. 800 A. D.), Myṣ Arch. Rep. 1924 p. 75) where donee is of Pravacana-Kalpa. (7) Udāyendiram grant of Pallava king Nandivarman, 8th century A. D. (E. I. Vol. III. pp. 145 ff) issued from Kāñci-pura to the donee of Pravacanasūtra named Kulasarmaṇ (8) Raykota plates of Skandaśiṣya (E. I. Vol. V. pp. 49 ff (about 9th century A. D.). The donee is Mādhavasarman of the Vatsagotra and of the Pravacanasūtra.</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-20">A comparative statement of the students of the sūtras (Āpastamba, Bodhāyana, Hiraṇyakeśin) from a few grants will be extremely instructive :</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-21">1.  In the Udāyendiram plates (of 8th century A. D.) of Nandivarman Pallavamalla in S. I. I. Vol. II. pp. 361 ff there are 39 donees of <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> Sūtra, 16 of Pravacanasūtra and 4 Bahvṛcas (Ṛgvedins). The number of donees actually named is 59, though on p. 368 it is stated that the donees were 108. 2.  In the Tandauttottam Pallava plates of 8th century A. D. in S. I. I. Vol. II. pp. 517ff, among the 244 donees, 139 are Āpastambīyas, 24 of the Pravacanasūtra, 2 of Āgniveśyasūtra, 1 of Āśvalāyana. 3.  In the grant of Eastern Cālukya Narendramṛgarāja 9th century A. D. (S. I. I. Vol. I. pp. 31ff), of the 24 donees, 18 are Āpastambīyas, 6 are Hiraṇyakeśins (but these latter are mention- ed first ). 4.  In the unpublished Karandai plates of Chola King Rājendra I (1019-20 A. D.), out of 1080 donees, about 620 are Āpastambīyas, 55 Baudhāyanīyas, 42 Satyāṣādha (i. e. Hiraṇya- keśins ). Vide Annual Report on Indian Epigraphy for 1949-50 pp. 3 and 17 No. 57. The grant consists of 55 plates falling in three groupṣ The first group is of three plates entirely in Sanskrit written in grantha characterṣ It gives the king's genealogy and records the gift of the village Tribhuvana-mahādevī agrahāra to a number of brāhmaṇaṣ Second group of 52 plates is in Tamil language, gives details of lands included in the village, the boundaries of the village and the officials connected with the grant. The third group of 30 plates also in Tamil merely contains the names of the brāhmaṇa donees of the village.</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-22">‘The age of the <a class="ref" href="../refs/apastamba.html#c" data-source="apastamba" data-ref="c" title="Āpastamba Dharmasūtra c">Āpastamba-dharmasūtra c</a>an be settled within only approximate limitṣ It is probably later than the Gautama Dharma-sūtra and also the Baudhāyayana dharmasūtra and before 400 A. D. it was an authoritative smṛti work according to Śabara. Āpastamba is enumerated by <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yājñavalkya</a> as a writer on dharma (I. 5) and by Sańkha-Likhita. Its grammar which often deviates from Pāṇini leads one to infer that he flourished a little before or immediately after Pāṇini. As he quotes the views of ten writers on Dharma-śāstra he cannot be placed amongst the early writers on Dharma. It is doubtful whether the provision that one should not take food from a Sańgha can be taken to refer to Buddhist sańgha. Pāṇini employs the word sańgha in several sūtras (IV. 3. 127, V. I. 58, V. 2. 52), but in all these there is no clear indication of the ideas attached to the Buddhist Sańgha. <a class="ref" href="../refs/apastamba.html#I.6.18.31" data-source="apastamba" data-ref="I.6.18.31" title="Āpastamba Dharmasūtra I.6.18.31">Āp. Dh. S. I. 6. 18. 31</a> (avidhinā ca pravrajitaḥ) provides that one should not take food from one who has become an ascetic without observing the rules about entering that order. This does not necessarily mean that he refers to Buddhist and Jain monkṣ As Sannyāsa became popular many must have pretended to be sannyāsins without first observing the rules for entering that order. The <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp. Dh. S.</a> was probably composed at a time when the Mīmāṁsā system had already been foundeḍ Hence if a tolerably definite period is demanded, then the <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp. Dh. S.</a> should have to be assigned to the period of 450-350 B. C. and not 600-300 B. C. (as in the first edition).</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-23">On p. 84 of the first edition I tried to explain why we have a complete set of śrauta, grhya and dharma sūtras for <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> and others (all belonging to the Kṛṣṇa-yajurveda) and why an Āśvalāyana-dharmasūtra for Ṛgvedins and Gobhila dharmasūtra for Sāmavedins or Pāraskara (or Kātya) Dharma-sūtra for Śukla Yajurveda had not come down to uṣ Dr. Ram Gopal would not miss an opportunity to criticize the <a class="ref" href="../refs/hodh.html" data-source="hodh" data-ref="" title="History of Dharmaśāstra">H. of Dh.</a> as he does on pp. 51-52. I have had often to show in this edition the worth of his research.</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-24">But on the subject of Āpastamba’s home which he holds to have been in North India his remarks display the fantastic nature of some of his researcheṣ He relies on four pieces of internal evidence to corroborate his view that Āpastamba’s home was in the North. First, he remarks ‘a number of words which are of rare occurrence in Sanskrit and which are peculiar to the sūtras of Āpastamba are current even now in the language which is spoken in Kuru-Pāñcāla and its neighbourhooḍ' He cites p. 96 only two words, viz. <em>ghoṭa</em> (a horse) and <em>bhayeḍaka</em> (dangerous or furious ram), both from <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> Śrauta (XV. 3. 12 and XV. 19. 4 respectively) 'ājyasthālim rauhinakapāle ca parimaṇḍale-ghoṭa-prakāre' <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> Śr. XV. 3. 12 and 'atha yadi gṛdhraḥ salāvṛkī bhayeḍako dīrgha-mukhyulūko...śakuniḥ (<a class="ref" href="../refs/apastamba.html#XV.19.4" data-source="apastamba" data-ref="XV.19.4" title="Āpastamba Dharmasūtra XV.19.4">Āp. XV. 19. 4</a>). He cites no similar words from either the Gṛhyasūtra or Dharmasūtra of <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> He remarks ‘<a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> S. S. XV. 3. 12 employs the word Ghoṭa to denote a horse; and the word <span class="devanagari">घोडा</span> is used in Hindi in the same sense’. His idea appears to be (though he does not make a very clear statement) that as Hindi is now spoken in what was called Kuru-Pāñcāla in ancient times and Hindi-speaking people use the word <em>ghoḍā</em> (for horse) now, the ancient <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> S. S. which employs the word <em>ghoṭa</em> in the same sense should be regarded as composed in north India. Research means careful endeavour and inquiries to discover facts by the scientific study of a subject. If Dr. Ram Gopal had inquired of non-Hindi people in Delhi such as Bengalis, Gujaratis and Mahārāṣṭrians (of whom large numbers are now residents of Delhi) he would have found that all these groups of people employ the same word for a horse respectively in Bengali, Gujarati and Marathi. If he had referred to the Amarakośa<sup class="fn-ref"><a href="#fn-7-dharmasutra-of-āpastamba-30" id="fnref-7-dharmasutra-of-āpastamba-30">30</a></sup> he would have found that <em>ghoṭaka</em> is held by that comparatively early work as a synonym of <em>aśva</em> (<em>ghoṭake viti-turaga-turaṅgā- śvaturangamāḥ</em>). If he had carried his inquiries further he would have found that the <a class="ref" href="../refs/kamasutra.html" data-source="kamasutra" data-ref="" title="Kāmasūtra">Kāmasūtra</a><sup class="fn-ref"><a href="#fn-7-dharmasutra-of-āpastamba-31" id="fnref-7-dharmasutra-of-āpastamba-31">31</a></sup> of Vātsyāyana (in I. 1. 4) mentions a predecessor named Ghoṭakamukha, who wrote a work on Kaṇyāsamprayuktākādhikaraṇa and who was so called probably because he had a long neck like that of a horse. In the <a class="ref" href="../refs/arthashastra.html" data-source="arthashastra" data-ref="" title="Arthaśāstra">Arthaśāstra</a> of <a class="ref" href="../refs/kautilya.html" data-source="kautilya" data-ref="" title="Kauṭilya Arthaśāstra">Kauṭilya</a> the name ‘Ghoṭa-mukha’ is cited in V. 5.11 as that of a minister. <em>Ghoṭaka</em> or <em>ghoṭa</em> therefore looks ancient enough as a purely Sanskrit worḍ An eminent epigra- phist who knows all the south Indian languages informs me that the linguists regard the word as Dravidian and connect it with Telugu <em>gurramu</em> and Kannada <em>kudire</em> or <em>kudure</em>. If the word <em>ghoṭa</em> be Dravidian, Dr. Ram Gopal’s argument would recoil on him like a boomerang. The same reasoning applies to the word ‘<em>bhayedaka</em>’ (<em>bhayahetubhūtaḥ edakah</em>, a dangerous ram). That word is compounded of <em>bhaya</em> (danger) and <em>edaka</em>. ‘<em>bhaya</em>’ by itself occurs even in the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> at least a dozen times and <em>eḍaka</em> means ‘ram’ according to <em>Amarakośa</em><sup class="fn-ref"><a href="#fn-7-dharmasutra-of-āpastamba-35" id="fnref-7-dharmasutra-of-āpastamba-35">35</a></sup>. <em>Meṣa</em> is a synonym of ‘<em>eḍaka</em>’ and both these words occur in the present day Marathi. <em>Edaka</em> is one of the three unclean (<em>amedhya</em>) animals acc. to <em><a class="ref" href="../refs/shatapatha.html#XII.4.1.4" data-source="shatapatha" data-ref="XII.4.1.4" title="Śatapatha Brāhmaṇa XII.4.1.4">Śat. Br. XII. 4. 1. 4</a></em>. <em>Edaka</em> is the 2nd word in ‘<em>ajādi-gaṇa</em>’ (‘<em>ajādyataṣṭāp</em>’ <em>Pāṇ. IV. 1. 4</em>). When Pāṇini mentions a <em>gaṇa</em> with <em>ādi</em> it must be presumed that at least the first three of the words in the <em>gaṇa</em> were known to him, though we know that in some <em>gaṇas</em> some words were inserted later. Following the reasoning of Dr. Ram Gopal one may as well say that Āpastamba’s home was in Mahārāṣṭra where both words (<em>ghoḍa</em> and <em>eḍaka</em>) are found in the people’s speech and the latter word at least was known before Pāṇini. Both these words were regarded as Sanskrit in the centuries before and after the Christian era by lexicographers and <em>eḍaka</em> was known many centuries before Christ, when there was no Hindi language in existence at all. This argument of Dr. Ram Gopal, it would be seen, is ridiculous and worthlesṣ</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-25">On p. 97 Dr Ram Gopal relies, for propping his hypothesis that Āpastamba came from the north on certain phonetic tendencies that characterize modern Hindi. He instances only one word viz. <em>Śikṣā</em> (in <em><a class="ref" href="../refs/apastamba.html#II.4.8.11" data-source="apastamba" data-ref="II.4.8.11" title="Āpastamba Dharmasūtra II.4.8.11">Āp. Dh. S. II. 4. 8. 11</a></em>) which is one of the six Vedāṅgas and compares it with Hindi ‘<em>śikha</em>’. This is on a par with his reliance on <em>ghoṭaka</em> and <em>eḍaka</em> referred to above. <em>Śikṣa</em> in Hindi means to learn or a pupil, while <em>Śikṣa</em> or <em>śikṣā</em> is a name for a Vedāṅga and <em>śikha</em> in the sense ‘to learn’ is derived from the root <em>śikṣa</em> (to learn, ‘<em>śikṣate</em>’) and ‘<em>śikha</em>’ (pupil) is derived from ‘<em>śiṣya</em>’. I feel grave doubts whether Dr. Ram Gopal is aware of the real technical meaning of ‘<em>Śikṣā</em>’ or <em>Śikṣā</em>’ occurring in the Upaniṣads and other ancient workṣ Vide note 85 a above where the Tai. Up. employs the <em>dīrghaī</em> in <em>Śikṣā</em> and briefly enumerates the subjects of that <em>vedāṅga</em> and <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> belonging to the Kṛṣṇa Yajurveda uses the word as <em>Śikṣā</em> but Muṇḍaka employs <em>śikṣā</em>. ( Vide the same note. ) It was probably written at a time when Jaimini had founded his school. Hence we shall not be far wrong if we assign it to some period between 600-300 B. C. On several points his views are opposed to those of his predecessors, e. g. he rejects secondary sons, condemns <em>niyoga</em>, does not admit Paiśāca and Prājāpatya as valid forms of marriage (vide above page 50). There are other points also wherein Āpastamba differs from Gautama and the other <em>sūtrakāras</em>. Gautama (IV. 14-17) and <a class="ref" href="../refs/baudhayana.html#I.8.7-12" data-source="baudhayana" data-ref="I.8.7-12" title="Baudhāyana Dharmasūtra I.8.7-12">Baudhāyana (I. 8. 7-12)</a> give long lists of mixed castes and Gautama includes Yavana among theṃ Āpastamba is silent on this point. But this has hardly any bearing on chronology. Even the Vedic works mention the Niṣāda and the Pūrvamīmāṃsāsūtra has a special adhikaraṇa (VI. 1. 51) devoted to him; the <a class="ref" href="../refs/brihadaranyaka.html" data-source="brihadaranyaka" data-ref="" title="Bṛhadāraṇyaka Upaniṣad">Br. Up</a>aniṣad mentions (IV. 3. 22 and 37) such castes as Caṇḍāla, and the <a class="ref" href="../refs/gita.html" data-source="gita" data-ref="" title="Bhagavadgītā">Gītā</a> mentions the Śvapāka. The <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> Śrauta speaks of the Niṣāda (9. 14. 12-13). The <a class="ref" href="../refs/apastamba.html#II.1.2.6" data-source="apastamba" data-ref="II.1.2.6" title="Āpastamba Dharmasūtra II.1.2.6">Āp. Dh. S. (II. 1. 2. 6)</a> mentions Caṇḍāla, Paulkasa and Vaina. Gautama (17. 30) forbids the eating of the flesh of cows and bulls, while <a class="ref" href="../refs/apastamba.html#I.5.7.30-31" data-source="apastamba" data-ref="I.5.7.30-31" title="Āpastamba Dharmasūtra I.5.7.30-31">Āp. (I. 5. 7. 30-31)</a> seems to allow it and cites the Vājasaneyaka for support. In this connection it has to be noted that <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> also has a similar sūtra (14. 46). <a class="ref" href="../refs/apastamba.html#I.9.27.10" data-source="apastamba" data-ref="I.9.27.10" title="Āpastamba Dharmasūtra I.9.27.10">Āp. (I. 9. 27. 10)</a> prescribes a penance for one who practises usury and lays down that one should not eat at the usurer's (I. 6. 18. 22), while Gautama appears to allow usury to a Brāhmaṇa as a calling if done through an agent (X. 6). <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>, on the other hand, quotes verses that condemn usury in strong language as even worse than brahma-hatyā, holds that a Brāhmaṇa who is a usurer should be treated as a śūdra and allows the first two castes to practise usury only towards atheists, śūdras and such like persons (I. 5. 79-81). So these differences of <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> from others are hardly conclusive as to his chronological positioṇ</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-26">Dr. Ram Gopal on p. 75 of his work refers to the fact that I place Āpastamba between 600 B. C. and 300 B. C. (on p. 45 of <a class="ref" href="../refs/hodh.html#vol. I" data-source="hodh" data-ref="vol. I" title="History of Dharmaśāstra vol. I">H. Dh. vol. I</a>), and then remarks that ‘ (he) adduces no cogent arguments in support of his view’ and then patronizingly adds ‘It is not possible in the present state of researches into Vedic literature, to assign precise dates to individual sūtrakāras and we at the most determine approximately the lower and upper limits of the sūtra perioḍ We are, therefore, not going to discuss here the possibility of assigning dates to individual authors’. I am going to show that he himself adduces ‘no cogent arguments’ for the dates he assignṣ In the first place, a period between 600 B. C. to 300 B. C. (to which I assigned Āpastamba) is not, I hope it will be admitted by most people, a precise data at all and is far more unprecise than what Dr. Ram Gopal would assign to him (as I am going to point out below from his own work). On p. 89 of his work Dr. Ram Gopal remarks 'most of the sūtras were composed between circa 800 B. C. and 500 B. C.' From the general words employed by him on p. 90 it appears to be his view that not only the Srauta and Grhya sūtras but other sūtras also and Dharmasūtras were composed between 800 B. C. to 500 B. C. On p. 81 of his work he mentions four groups of sūtras (śrauta, gṛhya and dharma). He himself says that ‘all the sūtras belonging to the 4th group seem to be later than the beginning of the Christian era’. This group should be omitted from consideratioṇ The first group contains 11 sūtra works (Śrauta, Gṛhya and Dharma), the 2nd group contains 10 sūtra works (all being either Śrauta or Gṛhya). The third group contains eight works, all either Śrauta or Gṛhya except <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha Dh S.</a>, of which only the sūtra portion (and not verses) is included in this group. He regards all the sūtras in group one and most of those in group 2 as earlier than Panini. The main prop of his dates for the three classes of sūtras is Panini’s date. On p. 83 he states that divergent views have been expressed by eminent scholars about Pāṇini’s date ranging from 7th century B. C. to 4th century B. C. In this welter of differing views Dr. Ram Gopal fixes the date of Pāṇini at about 600 B. C.-550 B. C. (p. 88). What is the strong evidence on which he relies for this date? It is only this that he holds Patañjali’s date to be 150 B. C. and affirms that there is a near unanimity among scholars about this date. Then he conjectures (pp. 87-88) that a period of at least two centuries intervened between Patañjali and <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> (the author of the vārtikas on Pāṇini) and that another period of at least 200 years must be held to separate <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> and Pāṇini (pp. 87-88). My aim is only to show how large a part conjectures play in these dates of <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> and Pāṇini. Taking, however, for the moment these conjectures as good arguments, three groups of sūtra works (29 in all) set out by Dr. Ram Gopal have to be squeezed into a period of three hundred years, the third group being later than the second and the 2nd group later than first. For all the three groups the total period allotted is 300 years (800 B. C. to 500 B. C.). The first group is the largest and it would not be unjust to say that the largest group (viz. the first) should be allotted 125 years (out of 300), that is, the first group flourished between 800 B. C. to 675 B. C. according to Dr. Ram Gopal, the 2nd group may be allotted 100 years (i. e. 675-575 B. C.) and the third group of only 8 works may be assigned 75 years i. e. from 575 B. C. to 500 B. C. The Śrauta, Grhya and Dharma sūtras of Āpastamba are placed in the 2nd group by Dr. Ram Gopal i. e. Āpastamba himself is placed between 675 B. C.-575 B. C. by hiṃ It would be noticed that this dating of the learned Doctor for Āpastamba is far more precise than my date (on p. 45 of vol. I of H. Dṇ) viz. 600 B. C. to 300 B. C. While saying that it is impossible to assign precise dates to individual sūtrakāras and professing not to give precise dates to them, he puts the authors of ten sūtra works within the short span of about 100 years and assigns individual authors of the 2nd group of the sūtra works to the period from about 675 B. C. to 575 B. C. Scholars will note the great disparity that Dr. Ram Gopal exhibits between his precepts and his performance.</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-27">This is not the place to discuss at length the dates of Patañjali and Pāṇini. But a few words must be said on account of the importance attached to those dates in some scholars in settling the chronology of Dharmasūtra workṣ Dr. D. C. Sircar advances arguments for questioning the date 150 B. C. for Patañjali and himself holds that Patañjali nourished about 100 A. D. (viz. I. H. Q. Vol. 15 pp. 633-38). The date 150 B. C. for Patañjali is mainly based on Mahābhāṣya references to Pusyamitra (Śunga ruler between about 187 B. C. to 151 B. C.) On Vārtika 7 to Pāṇini I. 1. 69 (svam rūpam etc.) the Mahābhāṣya cites the instances of ‘Pusyamitrasabhā’ and ‘Candraguptasabhā’. On Vārtikas 3 and 4 on Pāṇ. III. 1. 26 it cites (Pusyamitro yājayate yājakā yājayantiti tatra bhavitavyam Pusyamitro yājayate yājakā yajantiti...tam (tyāgam) ca Pusyamitrah karoti yājakā prayojayante). Again, on Vārtika 1 on Pāṇ. III. 2. 123 (vartamāne lat) the Mahābhāṣya says ‘iha Pusyamitram yājayīnaḥ’. There are several difficulties in the case of these passageṣ There are what are called in grammar ‘mūrdhābhīṣikta’ examples (i. e. stock examples) not necessarily contemporary with the author but handed down traditionally. Patañjali himself speaks of ‘mūrdhābhīṣiktam-udāharaṇam’ (Kielhorn’s eḍ Vol. I. p. 144 on Pāṇ. I. 1. 57). In the very first passage ‘Candraguptasabhā’ is certainly such an example, since even if Patañjali be assigned to 150 B. C., Candragupta flourished at least 150 years before him and Patañjali could not have known it personally but only by tradition or hearsay. Then we have to keep in mind the vicissitudes through which, according to the Vākyapadīya (II. verses 484–490) of Bhartṛhari, the Mahābhāṣya passed in the early centuries of the Christian era. It is narrated there that “Saṅgraha (a very extensive work on Pāṇini’s grammar attributed to Vyāḍi) was practically lost, that the great teacher Patañjali composed a work called Mahābhāṣya containing the seeds of all nyāyas, but persons with undeveloped intellects could not ascertain its import, that Bāiji, Saubhava and Haryakṣa flooded that work of the sage (viz. Patañjali) by following baseless reasoningṣ The traditional interpretation of (Sanskrit) grammar which slipped from the disciples of Patañjali remained in course of time among the southern people merely in the form of a work (in <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>scripts). After securing the tradition from a mountain (in the south) Candrācārya and others following the essence of the bhāṣya made it blossom forth in various wayṣ<sup class="fn-ref"><a href="#fn-7-dharmasutra-of-āpastamba-27" id="fnref-7-dharmasutra-of-āpastamba-27">27</a></sup></p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-28">The Vākyapadīya is certainly not later than 600 A. D., though there are some scholars who place it not later than the 3rd century A. D. (vide, for example, Shri Sadhu Ram in J. G. J. R. I. Vol. IX pp. 135–151). Whatever the date of the Vākyapadīya, we cannot be certain that the present Msṣ and editions of the Mahābhāṣya represent an exact reproduction of what Patañjali composeḍ All that I want to emphasise is that we should not be cocksure about the date of the Mahābhāṣya and not regard 150 B. C. as a certain date for Patañjali’s Mahābhāṣya but should regard it only a possible or at the most a probable one.</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-29">Then as to the period of two centuries at least between Patañjali and <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> and between <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> and Pāṇini suggested by Dr. Ram Gopal, I have to urge certain objectionṣ Pāṇini’s family is said to have been living in Śalātura in North-West India (supposed to be mentioned in Pāṇ. IV. 3. 94) and Pāṇini is designated Śālāturīya by later classical writers like Bhāmaha (in Kāvyālaṅkāra VI. 62–63). Śalātura is identified by Cunningham in ‘Ancient Geography of India’ pp. 66–67 with Lahur, a small town north-west of Ohind in the angle between the Kabul river and the Induṣ <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> (the author of Vārtikas) is supposed to have been a dākṣiṇātya on account of a rather jocular <sup class="fn-ref"><a href="#fn-7-dharmasutra-of-āpastamba-35" id="fnref-7-dharmasutra-of-āpastamba-35">35</a></sup> remark of the Mahābhāṣya on the first Vārtika. There were no printing presses in those days and works were propagated by means of oral transmission or by making manuscripts and by the process of learned and ambitious writers visiting royal courts or rich men and pariṣads or samitiṣ For example, in the <a class="ref" href="../refs/brihadaranyaka.html#Vi.2" data-source="brihadaranyaka" data-ref="Vi.2" title="Bṛhadāraṇyaka Upaniṣad Vi.2">Br. Up. Vi. 2</a> and <a class="ref" href="../refs/chandogya.html" data-source="chandogya" data-ref="" title="Chāndogya Upaniṣad">Chāndogya</a> Up. (V. 3)<sup class="fn-ref"><a href="#fn-7-dharmasutra-of-āpastamba-28" id="fnref-7-dharmasutra-of-āpastamba-28">28</a></sup> Svetaketu Āruṇeya is said to have repaired to the Pariṣad or Samiti of the Pañcāla people or country (between the foot of the Himālayas and the river Yamunā) and a Rājanya asked him five questionṣ Learned Brāhmaṇas were a specially favoured class in ancient India. Learned works from one part of Bhārata spread quickly to even distant parts of the country in a short time on account of the visits of learned men to sabhās patronized by kings, their ministers and rich meṇ Rājaśekhara (about 900 A. D.) in his Kāvyamīmāṁsā (chap. XX pp. 54-55) gives valuable informatioṇ He says that the king should convene assemblies of poets and when the king is a poet all people become poetṣ The king should construct a hall for examining poems and that he should emulate <sup class="fn-ref"><a href="#fn-7-dharmasutra-of-āpastamba-29" id="fnref-7-dharmasutra-of-āpastamba-29">29</a></sup> (kings like) Vāsudeva, Sātavāhana, Sūdraka, Sāhasāṅka and others (who presided over sabhās in their days) by bestowing honours and gifts, that between assemblies for discussions about poetic works he should order discussions in Śāstraṣ The king should arrange meetings of Brāhmaṇas for examining the worth of poetic and Śāstric works and quotes two verses, one referring to the examination of poets like Kālidāsa and Bhāravi in Ujjayinī and the other referring to writers on Śāstras in Pāṭaliputra and expressly names Pāṇini, Vyāḍi, Vararuci (<a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>) and Patañjali as having been examineḍ Thus there were even in ancient times means for rapid transmission of really valuable works to distant landṣ</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-30">For his proposition that <a class="ref" href="../refs/katyayana.html#i" data-source="katyayana" data-ref="i" title="Kātyāyana i">Kātyāyana i</a>s separated from Pāṇini by at least two centuries (p. 87) Dr. Ram Gopal relies mainly on two circumstances viz. considerable change in Sanskrit idiom between Pāṇini’s time and <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>’s time and (secondly) much time must have passed before a grammar composed in Northwest India could become so popular as to induce an author from the South to compose Vārtikas thereoṇ The first circums- tance is worth little. Even in these days of the diffusion of primary education, daily newspapers, railways, radio progra- mmes, a regional language like Marathi spoken in Berar and Khandesh varies in some details from the same language as spoken in Poona, Satara and the Konkaṇ The changes noted by <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> are not at all fundamental. Pāṇini himself refers to many differences and mentions by name ten predeces- sons viz. Āpiśali (VI. 1. 92), Kāśyapa (1. 2. 25, VIII. 68), Gārgya (VIII. 3. 20, VIII. 4. 67), Gālava (VI. 3. 61, VIII. 4. 67), Cākravarmaṇa (VI. 1. 130), Bhāradvāja (VII. 2. 63), Śākaṭāyana (III. 4. 111, VIII. 3. 18, VIII. 4. 50), Śākalya (1. 1. 16, VI. 1. 127, VIII. 37. 9, VIII. 4. 51), Senaka (V. 1. 112, Śpotāyana (VI. 1. 123). Pāṇini, moreover, refers to ‘ācāryas’ in general in VII. 3. 49 and VIII. 4. 52. He also speaks of eastern ācāryas in III. 4. 18 and northern ācāryas in VI. 3. 32 (‘mātara pitara- ṇīcām’). This last citation shows that, though Pāṇini came himself from northwest India, Sanskrit was spoken even in the extreme north much beyond Pāṇini’s home and the people used the form ‘Mātarapitarau’ instead of ‘Mātāpitarau’ as required by Pāṇini. This state of things existed even before Pāṇini in the time of Yāska, who states that the verbal form ‘Savati’ is used by the Kamboja people in the sense of ‘gati’, but only a derivative from it viz. ‘savaḥ’ is used by the Ārya people (and not the verbal form). This shows that in Yāska’s time the Kambojas were not accepted as Āryas, though their language was basically the same as that of the Āryaṣ<sup class="fn-ref"><a href="#fn-7-dharmasutra-of-āpastamba-30" id="fnref-7-dharmasutra-of-āpastamba-30">30</a></sup></p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-31">Haradatta <sup class="fn-ref"><a href="#fn-7-dharmasutra-of-āpastamba-32" id="fnref-7-dharmasutra-of-āpastamba-32">32</a></sup> says ‘what was not present to the mind of the Sūtrakāra (Pāṇini) or what was not noticed by him is clearly stated by the Vākyakāra (<a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>) and the Bhāṣyakāra (what was not noticed by the Vākyakāra. To illustrate, Pāṇini says ‘Kambojāl-luk’ (IV. 1. 175) meaning that the king of Kamboja is called Kamboja. <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> adds a vārttika ‘Kambojādibhyo lug-vacanam codādyartham’. Patañjali in his Bhāṣya specifies ‘Coda, Kaḷera and Kerala’ as the words included in Kambojādi-gaṇa but in the Gaṇapāṭha at the end of the Siddhāntakaumudī (Nir. eḍ of 1929 ) Śaka and Yavana are further additions to the words of that gaṇa. Pāṇini dwelling in north-west India either forgot to include Coḷa (or Coḷa) and Kerala or did not know those names or it is possible that those names were first coined about the time of Pāṇini or even after him but <a class="ref" href="../refs/katyayana.html#c" data-source="katyayana" data-ref="c" title="Kātyāyana c">Kātyāyana c</a>oming later and being a southerner included Coḷa (or Coḷa) and Kerala. This shows how the Gaṇa-pāṭha as now printed is not necessarily valid for Pāṇini’s time.</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-32">The 2nd circumstance relied upon by Dr. Ram Gopal has been answered above by reference to the role of parişads and by what kings should do and did in ancient India for the encouragement and diffusion of Sanskrit literature.</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-33">Pāṇini mentions ten predecessors by name, besides eastern and northern ācāryaṣ But <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> mentions only a few names such as Pauṣkarasādi ( Vārttika 3 on Pāṇ. VIII. 4. 48), Vājapyāyana ( Vārttika 35 on Pāṇ. I. 2. 64), Vyāḍi (Vārttika 45, on Pāṇ. I. 2. 64 ). I am aware that Patañjali notices different readings in the Vārttikas (on which he comments) such as by the Saunāgas ( about 6 times ) and by the Bhāradvājīyas ( about ten times ). But considering the huge number <sup class="fn-ref"><a href="#fn-7-dharmasutra-of-āpastamba-32" id="fnref-7-dharmasutra-of-āpastamba-32">32</a></sup> of Vārttikas On the Aṣṭādhyāyī this is a mere flea-bite. Similarly, it appears that a few Vārttikas other than those of <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> existed in Patañjali’s day. Taking all these things into consideration, <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> may be said to have flourished one hundred years or at the most 150 years before Patañjali i. e. 300 B. C.-250 B. C., conceding for argument that Patañjali flourished about 150 B. C. But if Patañjali is held to have flourished in the first century A. D., <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> would have to be brought down to about 150 B. C. to 100 B. C.</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-34">If <a class="ref" href="../refs/katyayana.html#i" data-source="katyayana" data-ref="i" title="Kātyāyana i">Kātyāyana i</a>s placed at about 300 B. C.-250 B. C. Pāṇin should be placed at 450 B. C.-400 B. C.</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-35">Pāṇini’s sūtras themselves furnish some material to show that he did not flourish in the early phases of the sūtra period but rather in the later phases of it. A few references to some of Pāṇini's sūtras on literary works and a few other matters will be helpful in arriving at a tentative date for Pāṇini. Pāṇini says ‘Purāṇāprokteṣu brāhmaṇakalpe-u’ (IV. 3. 105), which means the affix <em>ṇini</em> is applied to Brāhmaṇa works and Kalpa works, provided these are declared by ancient (munis). The examples are Bhāllavinah and Śātyāyaninah from Bhallu and Śātyāyana. This clearly shows that in Pāṇini's times there were sūtra works both ancient and not ancient (i. e. composed nearer his time ).</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-36">According to Pāṇini IV. 3. 105 as it stands the termination <em>ṇini</em> would not apply to Brāhmaṇa works and Kalpasūtras that were not ancient. <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> adds a vārtika that ‘<em>ṇini</em>’ will not apply to <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yājñavalkya</a>'s and other Brāhmaṇas though they are equally purāṇaprokta (and so we shall have ‘<a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yājñ</a>avalkānī’ and ‘Saulabhānī’ Brāhmaṇānī. The Kāśikā says that it is reported in the ākhyānas that <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yājñavalkya</a> and others do not belong to old times and the sūtrakāra acts on that.<sup class="fn-ref"><a href="#fn-7-dharmasutra-of-āpastamba-35" id="fnref-7-dharmasutra-of-āpastamba-35">35</a></sup> An example of an ancient Kalpa is Paiṅgīkalpa. Then there are the two sūtras ‘Pārāśarya-śilālibhyām bhikṣunaṭasūtrayoḥ’ and ‘Karmandakṛśāśvad-iṇiḥ’ (IV. 3. 110-111). These show that before Pāṇini wrote Bhikṣu-sūtras by Pārāśarya and Karmaṇḍa and Naṭasūtras by Śilālin and Kṛśāśva had been composed While Bauḍ Dh.S. (II. 1. 43-44) includes among Upapātakas the profession of actors (raṅgopajīvana) and the profession of The teaching of dancing (Nātyācārya), these facts amount to this that before Pāṇini and in his day also the profession of actors appears to have been not looked down upon in North-west India, while <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>, an inhabitant of the southern parts of India (as I noted), looked down upon it.</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-37">Pāṇini has the sūtra ‘adhikṛtya kṛte granthe’ (IV. 3. 87) and then follows ‘Śiśukranda-Yamasabha-dvandvendrājananādibhyaś-chaḥ.’ (IV. 3. 88), which means that the affix ‘cha’ (i. e. Iya ) is added to denote a book composed with reference to children's cries, the assembly of Yama, dvandva compounds and words in the Indra-jananādi-gaṇa (e. g. Śiśukranda, Yama-sabhīya, Kirātārjuniya, Indrajanaṇiya etc.). This shows that much secular literature had already been produced in Pāṇini’s dayṣ A Vārtika may be mentioned in connection with the date of Pāṇini. The sūtra is ‘adhikṛtya kṛte granthe (Pāṇ. IV. 3. 87) and the vārtika is ‘Lubākhyāyikābhyaḥ bahulam’. The sūtra states as a general rule that works composed with reference to something have the affix ‘an’ (a) added to the word denoting the matter e. g. a work concerning Subhadrā would be called Saubhadrā. <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> says that in the case of the literary genre called Ākhyāyikās this termination is in most cases not addeḍ Patañjali cites the names of two literary works called Ākhyāyikās viz. Vāsavadattā and Sumanottarā, <sup class="fn-ref"><a href="#fn-7-dharmasutra-of-āpastamba-34" id="fnref-7-dharmasutra-of-āpastamba-34">34</a></sup> where the termination is not found but also names an Ākhyāyikā called Bhaimarathī where the termination ‘an’ was applieḍ</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-38">The above shows that in Pāṇini’s time ākhyāyikās existed and they ended in the affix an, while <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> knew many ākhyāyikās (mark the plural) which showed no terminatioṇ</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-39">For deciding the question of the home of Āpastamba Dr. Ram Gopal relies upon what <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> Gr. (II. 14. 1. 6.) says about Simantonnayanya (parting of the hair for a pregnant woman) and about the two verses employed therein from the Āpastambiya Mantrapāṭha (praśna II, 10th Khaṇḍa, verses 12-13). In that ceremony the husband directs two men to sing verses (gāthās) to the accompaniment of a lute. The two verses are <sup class="fn-ref"><a href="#fn-7-dharmasutra-of-āpastamba-35" id="fnref-7-dharmasutra-of-āpastamba-35">35</a></sup> "The people of Śālva declared 'this Yaungandhari alone is our king'," the people who (reside) along thy banks, O Yamunā, whose (dominion) revolves all round (if the reading is vivṛtta-cakre). The people of the brāhmaṇa class who reside along thy banks and over whom your dominion runs or exists; O river (so and so)." Ap. Gr. S. says the first verse of the two is to be sung for Sālva people and the other verse for brāhmaṇas and reference to river ( in the vocative ) on which they reside is to be made. The author of Ap. Gr. found two verses in the Mantrapātha of nearly the same import and having nearly the same wordṣ He had to assign a proper <em>viniyoga</em> to each of the two verseṣ Straightforwardly construed, acc. to Ap. Gr. the first verse ( in which ‘Sālvih ’ are expressly mentioned ) should be sung in the case of all people of Sālva country ( whether brāhmaṇas, kṣatriyas or vaisyas ) and the 2nd verse was to be sung in the case of brāhmaṇas ( other than Sālva brāhmaṇas ). This leaves a lacuna viz. what verse, if any, is to be sung for Kṣatriyas and Vaisyas who do not belong to the Sālva country. It is possible that brāhmaṇas are meant to be only illustrative ( <em>pradarśanār- tham</em> ) i. e. brāhmaṇas and others not belonging to the Sālva country should employ the 2nd verse. It would be seen how several interpretations are given by Haradatta and Sudarśanā- cārya on account of these difficultieṣ Among the first twelve verses in Ap. M. P. II. 11 five are common to both <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Rg.</a> and <a class="ref" href="../refs/taittiriya_s.html" data-source="taittiriya_s" data-ref="" title="Taittirīya Saṃhitā">Tai. S.</a> and two ( viz. verses 10–11 ) occur in <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Rg.</a>, <a class="ref" href="../refs/atharvaveda.html" data-source="atharvaveda" data-ref="" title="Atharvaveda">Atharvaveda</a> and <a class="ref" href="../refs/taittiriya_s.html" data-source="taittiriya_s" data-ref="" title="Taittirīya Saṃhitā">Tai. S.</a> That shows that the Ap. M. P., though collected for Āpastambīyas, could be drawn upon or referred to by others who were not Āpastambīyas but studied some other śākhā. Siman- tonnayana was a practice common to all persons ( at least of the three varnas ) in those dayṣ It should be noted that among the grhyasūtras there is great divergence about the details of Simantonnayana and about the verse to be sung. Āśvalāyana ( I. 14. 6–7 ), Hiraṇyakeśin, Bauḍ Gr. ( I. 10.9 ), Bharadvāja and Pāraskara ( I. 15. 7–8 ) prescribe in this <em>saṁskāra</em> only one verse and that too in honour of king Soma and no mention is made of ‘sālvīk’ as in Ap. Gr. S. These Gr. sūtras were not bound to follow strictly the Āpastambīya Mantrapātha, while Ap.Gr. was so bounḍ It is also remarkable that the Gr. sūtras of Gōbhila, Khādira, Laugākṣī and Vaikhānasa are silent even about the singing of a particular verse by lute playerṣ Pāras- kara says that acc. to some the verse appointed ( i. e. prescribed, <em>niyukta,</em> ) must be sung. Pāraskara probably refers by this to the Ap. Gr. simply because in the Ap. M. P. ( which is a compil- ation made by somebody who is not now definitely known ) a verse occurs in which Sālva people are mentioned and because that verse ( one of two verses ) prescribed by Ap. Gr. was sung in Simantonnayana, it would be a wild conjecture on the part of anybody including Dr. Ram Gopal to say that the author of Ap. .Gr. S. came from the Sālva country. Owing to the defects in . his outlook and methods, I propose not to refer to Dr. Ram Gopal's work hereafter as far as possible. This volume would become very bulky if I were to reply to all his arguments, many of them baseless and inane.</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-40">I must say a few words about another recent work on Dharmasūtraṣ Dr. S. C. Banerji (of Maulana Azad College, Calcutta) recently published (in 1962) a work on ‘Dharma-sūtras, a study in their origin and development’. He has summarised in the first 73 pages the contents of a portion of my History of Dharmaśāstra (published so far back as 1930) that dealt with the Dharmasūtras, quotes from them and refers to them dozens of times (sometimes four or five times on the same page). He is fond of adding sage remarks of which a few specimens are quoted below, though he admits on p. 7 (ṇ 1) ‘for chronological questions relating to the works, we have taken Kane (HDH Vol. I) as the chief authority.’ The work comprises several articles which Dr. Banerji contributed to some journals at different timeṣ For example he contributed reconstruction of Hārīta-dharmasūtra in J.O.I. (Baroda, 1958) pp. 14-37, which, with a few additions, appears in his work on pp. 257-287, re-construction of Atri, Cyavana, Bhāradvāja and Devala in JOI. (Baroda) Vol. VI, now represented in ‘Dharma-sūtras’ etc. pp. 244-257; reconstruction of Uśanas in ABORI vol. 39, pp. 85-100 (1953) now appears in ‘Dharmasūtras’ pp. 340-44, ‘Flora and Fauna of Dharmasūtras’ in J. O. I. (Baroda) vol. V, pp. 345-359 are set out now in ‘Dharmasūtras’ pp. 206-228. He is more a collector than a scholar doing original and thorough research on his own account. He has given useful tables and appendices for workers on Sanskrit studieṣ He often writes rather pompously and does little arduous or valuable research himself. More than thirty-five years ago, I collected passages from Śankha-Likhitasūtra (published in ABORI vol. VII-VIII) found in printed workṣ Since then a good many works on Dharma-śāstra have been printeḍ He does not make an effort to supplement what was not included by me and yet remarks (on p. 239 ṇ 1) ‘P. V. Kane has collected, though not exhaustively, many passages ascribed to Śankha-Likhita’, but he excludes my collection from his work nor does he make the collection exhaustive by his own effort and research. On p. 73 he proposes to study the diversified contents of Dharma-sūtras under four main heads viz. (A) Ācāra, (B) Prāyaścitta, (C) Vyavahāra, (D) Rājadharma. Under A he makes four sub- heads (1) Saṁskāras, (2) Śrāddha, (3) Āśauca, (4) Dravya- śuddhi and some miscellaneous ruleṣ To Upanayana and Vivāha he devotes pp. 73-80, to Śrāddha pp. 81-85, to Āśauca pp. 85-89 and to Dravyaśuddhi pp. 89-95; B. Prāyaścitta, con- cept of Prāyaścitta, classification of sins and modes of expiation; all this is disposed of in pp. 95-99. Then C: Vyavahāra includ- ing judicial procedure, inheritance and succession and partition are allotted pp. 109-120; D. Rājadharma is disposed of in pp. 121-125. Social, cultural, religious and economic conditions reflected in Dharmasūtras are discussed under ten heads viz. Varṇāśramadharma; system of education; food and drink; position of women; law and administration; religion and philo- sophy; Āpaddharma; manners, morals, customs and amusements; Brāhmaṇical supremacy and position of śūdras; economic life; all these are given in pp. 126-265. On p. 73 (note 1) he is plea- sed to observe 'P. V. Kane in his HDH Vol. II. briefly indicates the contents of this literature in tracing the evolution of a parti- cular rite, custom or institution from the earliest times through different stageṣ But, as is usual in a work like his, there is no systematic, critical and comparative study of the contents of Dharmaśūtras in it. The present attempt is made with a view to supplying this neeḍ' Although he refers in the Bibliography at the end of the book (on p. 54) to the History of Dharmaśāstra (Vol. I-V), it appears to me that he has either not read volumes III to V of that History or ignored them with what motives I cannot understanḍ Vol. III was published in 1946, Vol. IV in 1953 and Vol. V part I in 1958, at least several years before his present volume (published in 1962). There is not a single reference, so far as I could see, to those volumes in pp. 73-205. The subject of śrāddha which he disposes of in four pages (81-85) was treated by me in Vol. IV pp. 334-551 by tracing its history from Vedic times, in the sūtras, Smṛtis and comparatively modern works; the subject of Prāyaścittas, sins and expiations was dealt with in Vol. IV pp. 1-178, which he disposed of in pp. 95-99. Āśauca to which Dr. Banerji assigned four pages was dealt with by me in the same volume (IV) at pp. 267-309 and Dravya- śuddhi in Vol. IV pp. 309-333. Dr. Banerji spares for Vyava- hāra (including judicial procedure, inheritance, succession, partition) pp. 109-120 and for Rājadharma pp. 121-125; while I devote pp. 1-241 in Vol. III. to Rājadharma and begin it with a summary of what <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp. Dh. S.</a> states and I treat 'Vyavahāra' in pp. 242-824 (in Vol. III). How far he attempts 'a systematic, critical and comparative study of the contents of the Dharmasūtras' ( to quote his own words ) in his book is for Sanskrit scholars to judge. I should like to say ( begging his pardon ) that he appears to me to be a conceited writer. I shall set out only one but an important instance. In the first vol. of <a class="ref" href="../refs/hodh.html#I" data-source="hodh" data-ref="I" title="History of Dharmaśāstra I">H. of Dh. I</a> devoted pp. 213–221 to <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>. I began by calling him one of a triumvirate in the realm of ancient Hindu Law and procedure and based my remarks on quotations contained in a dozen works and authorṣ I stated ( on p. 213 ) that <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> appears to have taken <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> and <a class="ref" href="../refs/brihaspati.html" data-source="brihaspati" data-ref="" title="Bṛhaspati">Bṛhaspati</a> as his models in the treatment of Vyavahāra. I referred to a work called Karmapradīpa of <a class="ref" href="../refs/katyayana.html#i" data-source="katyayana" data-ref="i" title="Kātyāyana i">Kātyāyana i</a>n Jīvananda's collection of Smṛtis and held ( on p. 221 ) that that author is different from <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>, the Jurist. In 1933 I published '<a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>-smṛtisṛroddhāra' in which I brought together 973 verses of <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> on Vyavahāra alone, extracted from twenty works, which work is mentioned by Dr. Banerji in his Bibliography on p. 542. Later on Prof. Ranga Swami Aiyangar collected over a hundred verses of <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> the jurist and published them in one of the papers presented to me on my 61st birthday ( vide Kane Festschrift pp. 7–17 ). About <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> the jurist with whom I dealt on pp. 213–218 ( in Vol. I. of <a class="ref" href="../refs/hodh.html" data-source="hodh" data-ref="" title="History of Dharmaśāstra">H. of Dh.</a> ) I stated 'All known quotations of <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> are in verse ' ( p. 218 ). About this Dr. Banerji on p. 241 of his work remarks that Kane is not accurate when he asserts that 'all knowṇ.....verse' and in connection with my remark about <a class="ref" href="../refs/medhatithi.html" data-source="medhatithi" data-ref="" title="Medhātithi">Medhātithi</a>'s reference to a sūtra of <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> that 'we must either suppose that he ( <a class="ref" href="../refs/medhatithi.html" data-source="medhatithi" data-ref="" title="Medhātithi">Medhātithi</a> ) is referring to some other work of <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> than the one in verse from which hundreds of verses are cited by other writers or that <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>'s work on Vyavahāra also contained some prose passages' ( p. 218 ). Dr. Banerji remarks ( pp. 241–42 ) that I am not right in drawing the inference and that 'our collection of prose passages attributed to <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> by different writers proves conclusively that neither of the inferences of Kane is tenable'. My first inference based on <a class="ref" href="../refs/medhatithi.html" data-source="medhatithi" data-ref="" title="Medhātithi">Medhātithi</a> quoting a sūtra of <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> was that <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> also wrote another work in sūtra style. Dr. Banerji says this inference is wrong. Then it follows that <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> did not write another work in prose. My second inference was that <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>'s work on Vyavahāra might have contained prose passageṣ This, he says, is wrong; if so, it follows that <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>'s Vyavahāra did not contain prose passageṣ He is inconsistent in thiṣ On p. 53 ( at the top left hand column ) No. 7 under the caption 'minor writers on Dharmasūtra' he states about ‘<a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>’ “it may be pointed out that Kane does not mention the fact that to this author are ascribed sūtras also in addition to verses on Smṛti”. Before saying anything more I shall examine the prose extracts from <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> which Dr. Banerji sets out on pp. 295-296. They are only eleven and taken from seven digests and commentarieṣ His method seems to be to take up printed Sanskrit nibandhas and commentaries and look at the Index of names of authors quoted or to read hurriedly some passages and when the name <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> (or any other writer about whom he wants to write) appears, to put it down in his collection without troubling to trace it to its source. I set out the quotations in the learned author's own order. Number and quotation Work from which taken and page therein</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-41">1 Athāto nityasnānam nadyādau ……pratiśiñcet Grhastharatnākara p. 208 2 aparāhṇe vratopāyaniyamāśnīta Kṛtya-kalpataru 3 ā caturthyā yadahaḥ sampadyate tadahaḥ Grhasthakāṇḍa p. 141 Kṛtyaratnākara p. 320 4 ābhyudayike yugmānāśayet Caturvarga-cintāmaṇi I. p. 141 5 Grāmyābbhir-oṣadhibhiḥ sahānnena Smṛticandrikā on śrāddha ……uttarās-tarpayanti (Mysore eḍ) pp. 252-3 6 Chāgoṣra-meṣaṇālabhya ... vāhṛtya pacet II p. 203 of above work 7 Piṇḍavacca paścimā pratipattiḥ Grhastharatnākara p. 284 8 Sāvitryā brāhmaṇam-upanayīta Kṛtyakalpataru, ……sarveṣām vā sāvitrī Brahmacārio p. 106 9 Sauvarṇa-rājataudumbara ……patrapuṭādiṣu vā Smṛticandrikā on śrāddha p. 291 10 Striyaḥ...pratipadi ... ... ... Kṛtyaratnākara p. 323 māvāsyāyām sarvam 11 Svahākā rapradānahomah Manvarthamuktāvali of Kullūka p. 93 (i.e. on <a class="ref" href="../refs/manu.html#III.85" data-source="manu" data-ref="III.85" title="Manusmṛti III.85">Manu III. 85</a>.)</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-42">Dr. Banerji forgets or ignores that <a class="ref" href="../refs/katyayana.html#i" data-source="katyayana" data-ref="i" title="Kātyāyana i">Kātyāyana i</a>s a name borne by several eminent authorṣ There is <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>, author of the Vārtikas on Pāṇini, who is held to have flourished some centuries before the Christian era, there is an extensive <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>-śrautasūtra which also is a work of a period before the Christian era. I dealt with a third <a class="ref" href="../refs/katyayana.html#i" data-source="katyayana" data-ref="i" title="Kātyāyana i">Kātyāyana i</a>n <a class="ref" href="../refs/hodh.html#Vol. I" data-source="hodh" data-ref="Vol. I" title="History of Dharmaśāstra Vol. I">H. of Dh. Vol. I </a>who was a jurist and whom I assigned to the period between the 4th and 6th century A. D. (p. 218 of vol. I, eḍ of 1930). Dr. Banerjee appears to accept this date (p. 242 of his work). If the learned doctor had carefully read the prose passages attributed to <a class="ref" href="../refs/katyayana.html#i" data-source="katyayana" data-ref="i" title="Kātyāyana i">Kātyāyana i</a>n medieval nibandhas set out by him on pp. 295–296, he would have found that all of them refer to snāna, śrāddha and none refers to law and judicial procedure at all. A cautious scholar would have paused before fathering those passages on <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> the jurist. The doctor’s reading is neither deep nor vast and, not being cautious, he gives free rein to his imaginatioṇ The doctor has probably not read or heard that there is a parisista in nine kaṇḍikās attributed to <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> and attached to the Pāraskaragṛhyasūtra (which also is spoken of as Kāṭīya). I shall show that most of the prose passages he sets out (on pp. 295–296) as <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>’s occur in that Pariśista (Gujarāti Press eḍ of 1917)<sup>*</sup> as follows :–</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-43">No. 1 athāto...pratisīñcet-Occurs on p. 410 of Pār. Gṛ.; No. 2 is in <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>’s śrautasūtra II. 1. 10; No.3 ‘a caturthyā...tadahah’ is on p. 423 Śrāddhasūtra, kaṇḍikā 6; No. 4 ābhyudayike...śayet in Śrāddhasūtra, whole of Kaṇḍikā 6; No. 5 ‘grāmyābhir...... tarpayantī’ and No. 6 ‘Chāgs ......pacet’ occur on p. 519 of the Gujarāti Press eḍ of Pāraskara Gṛ.; No. 7 piṇḍavacca...... pratipattih occurs in Karmapradipa p. 9 <em>alias</em> Chāndogāhnika (in B. I. series, Cal. 1909); No. 8 ‘sāvitryā......vā sāvitrī’–compare Pāraskara Gṛ. (kāṇḍs 2, kaṇḍika 3, ‘Gāyatrīm, brahmaṇāyā- nubrūyāt, Triṣṭubham rājanyasya, Jagatīm vaiśyasya, sarveṣām vā Gāyatrīm’, 7–10). It should be noted that <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> (p. 33) quotes from <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> the passage ‘Gāyatryā, triṣṭubhā...... jagatyā... sarvesām vā gāyatrīm’; the passage as quoted in the Kṛtyakalpataru is almost the same as in Pār. Gṛ. and is attri- buted to <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> by <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> a probably because the Pār. Gṛ. is also called Kāṭīya Gṛ. and, as shown above (p. 18), Pāraskara is another name of <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>. No. 9 Śauvarṇa......putādisu vā- occurs in the Śrāddhasūtra, Kaṇḍikā 2 (p. 443. Gujarāti press eḍ); No.10 ‘striyaḥ...pratipadi......māvāsyāyām sarvam’– is the whole of kaṇḍikā 9 of the Śrāddhasūtra (Gujarāti press eḍ p. 538, except the first three words); No. 11 ‘svāhā...homah’. these words of Kullūka are an echo of <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>-śrauta-sūtra VI. 10. 20-24 ‘pratnigadya homāḥ...svāhākārapradānāḥ.’ The two passages (2, 7) out of eleven are so brief that to find their source is like searching for a pin in a haystack. I had to spend hours in tracing the sources of these passageṣ All these passages, it is clear, do not refer to any juridical matter. Dr. Banerji has often stated as shown above that I had not proved conclusively my propositionṣ I hope that scholars will concede that I have conclusively proved at least one thing viz. what Dr. Banerji regarded (on p. 242, line 4) as conclusively proved by him has been conclusively proved to be wrong. After this exhibition of his carefulness and scholarship I do not want to expose his vanity and shallownesṣ He is very anxious to impress on his readers his cleverness and industry. On page 229 of <a class="ref" href="../refs/hodh.html#I" data-source="hodh" data-ref="I" title="History of Dharmaśāstra I">H. of Dh. I</a>, I briefly dealt with Pracetas and remarked that in both <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> and <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> we find prose passages and verses cited from Pracetaṣ At the end I said a few prose quota- tions from Pr. are noted in the Smṛticandrikā and by Haradatta. ‘Kane is not absolutely accurate in holding that a few prose quotations etc.’ He cites about 61 passages (prose) from Pracetas of which 34 are extracted from the Mit, <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> and Smṛtican- drikā to which works I had expressly referreḍ In order to reduce the bulk of the volume I did not set out any prose passageṣ That is all. I never said that only a few prose passages of Pracetas are known to nibandhaṣ</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-44">The commentary of Haradatta called Ujjvalā-vṛtti is the only one so far recovereḍ For an account of Haradatta, vide sec. 86. The Smṛticandrikā (I, page 25) quotes a passage from the bhāṣya of Āpastamba (II, 6.15.19-20) and (II p.300) quotes the explana- tion of the bhāṣyakāra on Āpastamba II, 6, 14. 1. Both these passages are not found in the commentary of Haradatta, though Haradatta holds the same view as that of the Bhāṣyakāra. Similarly, the Viramitrodaya (Vyavahāra, page 671) quotes the bhāṣyakāra of Āpastamba, but that quotation does not agree with Haradatta. Haradatta himself does not call his work bhāṣya, but vṛtti. Besides, the Subodhinī on the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mitākṣarā</a> (on <a class="ref" href="../refs/yajnavalkya.html#II.132" data-source="yajnavalkya" data-ref="II.132" title="Yājñavalkya II.132">Yāj. II. 132</a>) quotes a passage from the Āpastambadharmavṛtti which is found in Haradatta on <a class="ref" href="../refs/apastamba.html#II.6.14.1" data-source="apastamba" data-ref="II.6.14.1" title="Āpastamba Dharmasūtra II.6.14.1">Āp. II. 6. 14. 1</a>. Haradatta himself cites sometimes two or three other interpretations of the same sūtra (e. g. on <a class="ref" href="../refs/apastamba.html#I.2.5.2" data-source="apastamba" data-ref="I.2.5.2" title="Āpastamba Dharmasūtra I.2.5.2">Āp. I. 2. 5. 2</a>; I. 3. 10. 6; I. 5. 15. 20; II. 2. 3. 16). So the bhāṣyakāra was probably one of his predecessorṣ It appears from the Kalpataru of Lakṣmīdhara that Kapardin wrote a bhāṣya on <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp. Dh. S.</a> e. g. the Brahmacārī- kāṇḍa of that work on p. 15 quotes <a class="ref" href="../refs/apastamba.html#II.2.1" data-source="apastamba" data-ref="II.2.1" title="Āpastamba Dharmasūtra II.2.1">Āp. Dh. S. II. 2. 1</a>, 2-5 and remarks 'etacca nityānām-eva karmaṇām phalāntaram-iti Kapardibhāṣyam'; also on p. 257 it quotes <a class="ref" href="../refs/apastamba.html#I.3.11.27-28" data-source="apastamba" data-ref="I.3.11.27-28" title="Āpastamba Dharmasūtra I.3.11.27-28">Āp. Dh. S. I. 3. 11. 27- 28</a> and cites <span class="devanagari">तस्मात् पुण्यैः कर्मभिः क्षयं कुर्यात्</span>. Lakṣmīdhara on śrāddha uses the explanation of <a class="ref" href="../refs/apastamba.html#II.7.17.21" data-source="apastamba" data-ref="II.7.17.21" title="Āpastamba Dharmasūtra II.7.17.21">Āp. Dh. S. II. 7.17. 21</a> ‘Svitrī...śūdrot- panno brāhmaṇyāmitiyete śraddhe...paṅktidūṣaṇā bhavanti’ and Haradatta seems to have taken it from Kapardiṇ In Naiyatakala-kāṇḍa it quotes Kapardibhāṣya on <a class="ref" href="../refs/apastamba.html#I.17.5" data-source="apastamba" data-ref="I.17.5" title="Āpastamba Dharmasūtra I.17.5">Āp. Dh. S. I. 17. 5</a> (pp. 239 and 306 ); on pp. 275-6 <a class="ref" href="../refs/apastamba.html#I.2.7.19-21" data-source="apastamba" data-ref="I.2.7.19-21" title="Āpastamba Dharmasūtra I.2.7.19-21">Āp. Dh. S. I. 2. 7. 19-21</a> are quoted and Kapardibhāṣya on ‘Ugrataḥ śūdrato vāharet’ is quoteḍ From a corrupt passage in Mr. Gharpure’s edition of the Smṛticandrikā ( 2nd part p. 419 ) it follows that Dhūrta- svāmin had either composed a bhāṣya on <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp. Dh. S.</a> (the reference is to <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> Dh. I. 5. 17. 18 and 20 ‘śuktam ca’ and ‘Śuktam cāparayogam’ or that he had in some other work referred to <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> aphorisms and explained theṃ Dhūrtasvāmin wrote a bhāṣya on the Śrauta-sūtra of Āpastamba, the first vol. of which was published in G. O. S. in 1956.</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-45">In <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a>, Haradatta, Smṛticandrikā and other works there are numerous quotations in verse ascribed to Āpastamba. These quotations are concerned with topics of Āhnika, Śrāddha, and Prāyaścitta. The Smṛticandrikā (III. pp. 423 and 426) quotes a Stoṭrāpastamba. Haradatta on Gautama (22. 18) quotes several verses on prāyaścitta from Āpastamba. Three of these verses are found in the Āpastamba-smṛti in verse (Jivananda's collection vol. I pp. 567-584 chap. I verses 16, 19, 31 ). The Smṛti printed by Jivananda contains about 207 verses in ten chapters on prāyaścitta and purificationṣ But the quota- tions from the Smṛticandrikā and <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> show that the verse Āpastamba was a much larger work and since they regarded the versified work as equally authoritative with the sūtra work, the versified smṛti must have been comparatively an ancient work.</p>
+<p class="prose" id="p-7-dharmasutra-of-āpastamba-46">Shri. A. N. Krishna Aiyangar in Kunhan Raja Felicitation Volume (pp. 392-397) points out that there are some additional sūtras of <a class="ref" href="../refs/apastamba.html#I" data-source="apastamba" data-ref="I" title="Āpastamba Dharmasūtra I">Āp. Dh. S. I</a>n the Raṅgaswami Aiyangar Coṃ Vol. (pp. 337-339) an account is given of an Āpastambasmṛti mṣ in Adyar Library in six patalas and 800 grantha.</p>
+<aside class="footnotes-section" aria-label="Footnotes">
+<hr>
+<ol class="footnotes-list">
+<li id="fn-7-dharmasutra-of-āpastamba-1" class="footnote-item"><span class="devanagari">पंचविंशेथ षड्विशे गृह्यमन्त्राः प्रकीर्तिताः । २७मेथ सप्तविंशे स्याद्ध्यातन्तन्त्रविधिवमःः ।।</span> (Dr. Winternitz's edition of Āp. Mantrapāṭha p. IX ). The editor further states (p. IX ṇ 2) that Paribhāṣās form part of the 24th praśna and not of the 25th, as Bühler sayṣ <a href="#fnref-7-dharmasutra-of-āpastamba-1" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-7-dharmasutra-of-āpastamba-2" class="footnote-item"><span class="devanagari">वधूशील्लक्षणसंपन्नारोग्यगूणवत्येत् ।</span> <a href="#fnref-7-dharmasutra-of-āpastamba-2" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-7-dharmasutra-of-āpastamba-3" class="footnote-item">‘ <span class="devanagari">श्रोभूते स्थालीपाकः । तस्योपचारः पात्रेण व्याख्यातः ।</span>’ <span class="devanagari">आप</span>. <span class="devanagari">ध</span>. <span class="devanagari">सूः ।</span> ‘<span class="devanagari">अथैनामाग्ने</span>- <span class="devanagari">येन स्थालीपाकेन याजयति । एवमूर्ध्वं दक्षिणावर्जमुपपिताभ्यां पर्वसु कार्यम् । पात्रेणैनामाग्नीन्याधायैनां कर्माणि व्याख्यातान्याचायरायाणि गृह्यन्ते । आप</span>. <span class="devanagari">गृ</span>. <span class="devanagari">सूः</span> Vide also <span class="devanagari">आप</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. II. 7. 17. 6 ‘ <span class="devanagari">सर्वेषु ऋतुषु सर्वतः समवदाय शेषस्य प्रासावशवराथै प्राश्नीयाद्यथोक्तम्</span> ' and <span class="devanagari">आप</span>. <span class="devanagari">गृ</span>. <span class="devanagari">सू</span>. 8. 21. 9 ‘ <span class="devanagari">सर्वतः समवदायोत्तरेण यजुषा शेषस्य प्रासावशवरार्थै प्राश्नीयात्</span> ; ‘ <span class="devanagari">उभयतः परिषेचनं यथा पुरस्तात्</span> ' <span class="devanagari">आप</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. II. 2. 3. 17 and <span class="devanagari">आप</span>. <span class="devanagari">गृ</span>. I. 2. 3. ; ‘ <span class="devanagari">समावृत्तं चे</span>...<span class="devanagari">यथोपदिशं पूजयेत्</span> ' <span class="devanagari">आप</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. II. 2. 5. 4 refers to <span class="devanagari">आप</span>. <span class="devanagari">गृ</span>. <span class="devanagari">सू</span>. V. 13. 2-19. <a href="#fnref-7-dharmasutra-of-āpastamba-3" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-7-dharmasutra-of-āpastamba-4" class="footnote-item">'<span class="devanagari">प्रयेण मकारसपरिमिकास्वोर्यते । तद्रोग्येष्प्व एवार्थः । ईकाख्य छाम्पसोपाटो वा ।</span>'. <a href="#fnref-7-dharmasutra-of-āpastamba-4" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-7-dharmasutra-of-āpastamba-5" class="footnote-item">‘<span class="devanagari">आर्षेऽस्मासु बाहुप्रथ्य</span> ... <span class="devanagari">यथा क्लृप्तेषु समर्थः स्याद्यन्ति कदाचयः</span>’ <span class="devanagari">आप</span>. I. 1. 1. 27 ; '<span class="devanagari">तत्रात्मालाभ्यायान्नु श्लोकाऽव्यवहितास्त्रयः</span> I. 8. 22. 3 ; ' <span class="devanagari">अथ भूतादादीच चान्द्रोदवाह</span>. <span class="devanagari">स्थितम्</span>: I. 8. 23. 4. <a href="#fnref-7-dharmasutra-of-āpastamba-5" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-7-dharmasutra-of-āpastamba-6" class="footnote-item">On the sūtra <span class="devanagari">अन्यत्र राहुदर्शनात्</span> (II. 7. 17. 25 ) he says ‘<span class="devanagari">उदीच्यस्तत्त्वयाप्रेण न पठन्ति । तथा च पूर्वेणै व्याख्यातम्</span>’. <a href="#fnref-7-dharmasutra-of-āpastamba-6" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-7-dharmasutra-of-āpastamba-7" class="footnote-item"><span class="devanagari">षडङ्गो वेदः।</span> ‘<span class="devanagari">छन्दः कल्पो व्याकरणं ज्योतिषं निरूक्तं शीक्षाऽछन्दोविचितिरिति। आप</span>. <span class="devanagari">धृ</span>. II. 4. 8. 10-11. The <span class="devanagari">शुद्धकोषः</span> I. 5. reads <span class="devanagari">शिक्षा कल्पो व्याकरणं निरूक्तं छन्दो ज्योतिषमिति।</span> The <span class="devanagari">तैत्तिरीय०</span> I. 2. reads ‘<span class="devanagari">अथ शीक्षा व्याख्यानम्। वर्णः स्वरः। मात्रा बलम्। साम सन्तानः। इत्युक्तः शीक्षाध्यायः।</span> <a href="#fnref-7-dharmasutra-of-āpastamba-7" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-7-dharmasutra-of-āpastamba-8" class="footnote-item">‘<span class="devanagari">यस्माद्‌धर्मानधिगच्छेन्न स आचार्यः</span>’ <span class="devanagari">आप</span>. <span class="devanagari">धृ</span>. <span class="devanagari">सू</span>. I. 1. 1. 1; ‘<span class="devanagari">आचार्यः कस्मा</span>–<span class="devanagari">दाचार्यते अथाचिनोत्यर्थान्‌ अथाचिनोति बुद्धिमिति वा</span>’ <span class="devanagari">निरूक्त</span> I. 4 and ‘<span class="devanagari">तस्यै न बुध्न्रीकतस्सद्माह</span>’ (quoted in <span class="devanagari">निरूक्त</span> II. 3.). <a href="#fnref-7-dharmasutra-of-āpastamba-8" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-7-dharmasutra-of-āpastamba-9" class="footnote-item">'<span class="devanagari">क आपवाषः। य इंसेवेति कन्नः ।</span> ...<span class="devanagari">क्षुद्रा मिश्रा लोकैकैः कूणिकौ काण्वकुलौ तथा पुष्करसादिः ।</span>' <span class="devanagari">आप</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. I. 6. 19. 2, 3 and 7. Here various views on the question as to whose food should be partaken by begging are set forth. Baudhāyana says '<span class="devanagari">ने ब्राह्मणायः स्वकर्मस्थाः ।</span>' which tallies with <span class="devanagari">क्षुद्रा मिश्रा</span> &c. <a href="#fnref-7-dharmasutra-of-āpastamba-9" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-7-dharmasutra-of-āpastamba-10" class="footnote-item"><span class="devanagari">अत्र हरिकारः शास्त्रे भवति । सा निद्रा । स्मृतिज्ञाः । आप</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. I. 6. 15. 23-25; <span class="devanagari">मण्डपण्णायम् कान्तवामः कान्तवामः । अक्षताम् । गौ</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. II. 1-2. . <a href="#fnref-7-dharmasutra-of-āpastamba-10" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-7-dharmasutra-of-āpastamba-11" class="footnote-item">‘ <span class="devanagari">यो हिंसाधर्मनिकास्तां हन्ति मनुष्येषु मर्त्य स्रुघाति न तस्मिन्द्बोध इति पुराणे</span> ’ <span class="devanagari">आप</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. I. 10. 29. 7; this seems to be a summary of a verse like the one in Baudhāyana (Dh. S. I. 10, 12) and Vasiṣṭha (III. 18) ‘ <span class="devanagari">स्वाध्यायेन कुले जातात इत्छाद्यतात्वनयम् । न तेन भूणहा स स्वाम्यम्बुत्वं मनुष्यच्छति</span> ’ (Bauḍ has <span class="devanagari">अप्थापकं कुले</span> and <span class="devanagari">भूणहा भवति</span>). <a href="#fnref-7-dharmasutra-of-āpastamba-11" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-7-dharmasutra-of-āpastamba-12" class="footnote-item">‘ <span class="devanagari">श्रुतिर्वा बलीयस्यनुमानिकादाचारात्</span> ’ <span class="devanagari">आप</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. <span class="devanagari">विरोधे त्ववपंदस्यं स्यात्पइति घट्ट</span>-<span class="devanagari">मानम्</span> ’ <span class="devanagari">प्र</span>. <span class="devanagari">मी</span>. Vide also ‘ <span class="devanagari">विप्रतिषेधे श्रुतिलब्धणं बळीषः</span> ’ <span class="devanagari">आप</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. I, 11, 30, 9 for the same positioṇ <a href="#fnref-7-dharmasutra-of-āpastamba-12" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-7-dharmasutra-of-āpastamba-13" class="footnote-item">'<span class="devanagari">यत्र तु श्रुत्युपलब्धितः प्रवृत्तिर्न तत्र शास्त्रमस्ति</span>' <span class="devanagari">आप</span>.; <span class="devanagari">यस्मिन्निति पुरुषस्य तस्य लिप्साधर्मलक्षणायोपकल्पत्</span>’ <span class="devanagari">पृ</span>. <span class="devanagari">मी</span>. <span class="devanagari">सू</span>. Vide also <span class="devanagari">आप</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. I. 1. 4. 9-10 '<span class="devanagari">दृश्यते त्वर्थे प्रवृत्तिलक्षणम्। प्रीतिलक्षणम्</span>' and '<span class="devanagari">हेतुदर्शनाच्च</span>' <span class="devanagari">पृ</span>. <span class="devanagari">मी</span>. <span class="devanagari">सू</span>. I. 3. 4. <a href="#fnref-7-dharmasutra-of-āpastamba-13" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-7-dharmasutra-of-āpastamba-14" class="footnote-item">'<span class="devanagari">अङ्गना तु प्रधानेरुपदेश इति न्यायवित्वमप्य</span>:'<span class="devanagari">। आप</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. II. 4. 8. 13. <a href="#fnref-7-dharmasutra-of-āpastamba-14" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-7-dharmasutra-of-āpastamba-15" class="footnote-item">'<span class="devanagari">अन्याय्ये निरर्थवादमनर्थविधिमाहुर्न्यायविद्</span>:' <span class="devanagari">आप</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. II. 6. 14. 13.; '<span class="devanagari">अर्थवादो वा विधिशेषत्वादस्तुतिमात्रं</span>' <span class="devanagari">पृ</span>. <span class="devanagari">मी</span>. <span class="devanagari">सू</span>. VI. 7. 30. <a href="#fnref-7-dharmasutra-of-āpastamba-15" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-7-dharmasutra-of-āpastamba-16" class="footnote-item"><span class="devanagari">तवपि क्रयशब्दः संस्तुतिमत्रम्। धर्माद्धि सम्बन्धः। आप</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. II. 6. 13. 11-12; '<span class="devanagari">क्रयस्य धर्ममात्रत्वम्</span>' <span class="devanagari">पृ</span>. <span class="devanagari">मी</span>. <span class="devanagari">सू</span>. VI. 1. 15. <a href="#fnref-7-dharmasutra-of-āpastamba-16" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-7-dharmasutra-of-āpastamba-17" class="footnote-item">'<span class="devanagari">विदिं प्रत्यनध्यायः श्रूयते न कर्मयोगे मन्त्राणाम्</span>' <span class="devanagari">आप</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. I. 4. 12. 9; '<span class="devanagari">विदिं प्रति विधानाद्वा सर्वकालं प्रयोगः स्यात्कर्मार्थमर्थवादोपदेशात्</span>' <span class="devanagari">पृ</span>. <span class="devanagari">मी</span>. <span class="devanagari">सू</span>. XII. 3. 19. <a href="#fnref-7-dharmasutra-of-āpastamba-17" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-7-dharmasutra-of-āpastamba-18" class="footnote-item">“ <span class="devanagari">यथैष स्मृतिः</span> ‘<span class="devanagari">धर्मं च अर्थं च कामे च नातिचरितव्या</span> ’ <span class="devanagari">इति</span>, ‘<span class="devanagari">धर्मप्रजासंपन्ने द्वारे नान्यां कुर्वीत</span>’ <span class="devanagari">इति च एवंविदपि स्मर्यत एव</span> ‘<span class="devanagari">अनन्ततरापाये अन्यां कुर्वीत</span> ’<span class="devanagari">। शाबर</span>. <span class="devanagari">आप</span>. says ‘<span class="devanagari">धर्मप्रजासंपन्ने द्वारे नान्यां कुर्वीत। अनन्ततराभावे कार्या प्रागनुधेयात्</span>’ II. 5. 11. 12–13. <a href="#fnref-7-dharmasutra-of-āpastamba-18" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-7-dharmasutra-of-āpastamba-19" class="footnote-item"><span class="devanagari">तन्त्रवार्तिक</span> p. 138 ‘<span class="devanagari">प्रतिदेशं व्यवस्था। आपस्तम्बेन संग्रह दृष्टानुदूल्हनमाहुतम् ॥</span>’ ; This has in view ‘<span class="devanagari">एतेन देशकालधर्मा व्याख्याताः</span>’ <span class="devanagari">आप</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. II. 6. 15. 1; <span class="devanagari">यद्यपि चापस्तम्बस्मृतिवचनानुल्यवलाशङ्गा भवेत्तथापि तस्माद् ब्राह्मणः सुरां न पिबेदिति एतेन प्रत्यक्षमृतिविधिना निष्ठकृतति नैवं विनाचारप्रामाणादृष्टिद्रव्यम्।</span> <a href="#fnref-7-dharmasutra-of-āpastamba-19" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-7-dharmasutra-of-āpastamba-20" class="footnote-item"><span class="devanagari">परमालभानमेव प्रकृत्यापस्तम्भः पठति</span> ‘ <span class="devanagari">तस्मात्काभ्यः प्रभवति सर्वे स मूले झाप्सक्षिकः स नित्यः</span>’ <a href="#fnref-7-dharmasutra-of-āpastamba-20" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-7-dharmasutra-of-āpastamba-21" class="footnote-item"><span class="devanagari">आत्रे फलार्थं ह्यप्यादि झापस्तम्वस्मृतिर्वचः । फलवत्त्वं समाचष्टे निरपामपि कर्मोपाम् । बृहदारण्यकोपानवार्तिक</span>. <span class="devanagari">आपस्तम्ब</span>’s words are ‘<span class="devanagari">तदथा आत्रे फलार्थं निमित्ते झाभा मय्य रूपयवृत्तेशे तर्त धर्मं वचनेामगर्भा अनुल्पणमो।</span>’ <a href="#fnref-7-dharmasutra-of-āpastamba-21" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-7-dharmasutra-of-āpastamba-22" class="footnote-item">Vide my article in JBBRAS for 1922 pp. 205–206, H. D.–9 <a href="#fnref-7-dharmasutra-of-āpastamba-22" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-7-dharmasutra-of-āpastamba-23" class="footnote-item">‘<span class="devanagari">तस्माद्यपयेऽवरेषु न जायन्ते नियमातिक्रमात्</span>’ and ‘<span class="devanagari">तद्धीष्टीय प्रयुञ्जानः सतिष्ठत्वपरः</span>’. <a href="#fnref-7-dharmasutra-of-āpastamba-23" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-7-dharmasutra-of-āpastamba-24" class="footnote-item"><span class="devanagari">उदीच्यवृत्तिस्त्रिस्नासनगतानां हस्तेक्षुदपात्रांनयगम् ।</span>; on this <span class="devanagari">हरदत्त</span> reads a verse of the grammarians viz. <span class="devanagari">प्रादुदत्रो विभजते हंसः</span> : <span class="devanagari">क्षीरोदके यथा । विबुधां छन्दलिङ्गेभ्यश्चावसा नः पातु शरावत्ती</span> and adds <span class="devanagari">शरावत्त्या उदयीत्त्यार्थमां वृतिराचारः</span> Hemādri in <span class="devanagari">चतुर्वर्गचिन्तामणि</span> (III, 1. p. 1350) quotes the same Āpastamba sūtra and the Verse <span class="devanagari">प्रादुदत्रो</span> &c but reads <span class="devanagari">सरस्वती</span> for <span class="devanagari">शरावती</span>. Is <span class="devanagari">शरावती</span> the modern Rāptī, a tributary of the Sarayū or is it <span class="devanagari">शरावती</span> near Honāvar in north Canara or any other river? This verse occurs in the Kāsikā on Pān I. 1. 75. Pāṇini in VI. 3. 120 explains the word Sarāvatī as meaning abounding in reeds, 'which may be applicable to many riverṣ Dr. Ram Gopal, after referring to the different Identifications, made by various scholars (pp. 95-96), finds that in the Rāmāyaṇa (II. 68. 13–16) occurs a river called Saradaṇḍā and at once jumps to the conclusion that Saradaṇḍā ‘conveys 'almost the same sense as Sarāvatī' (p. 96). Sarāvatī is formed from sara with affix ‘matup.’ Has ‘danda’ the same sense as ‘matup’? I should like to know where it is so stateḍ The usual meanings of ‘danda’ are a staff, army, punishment or fine., and one of the four upāyas in Rājanīti. One should like to know how Saradaṇḍā (which is a compound word having two separate nouns) can have the same sense as Sarāvatī (which is formed by a noun and an affix matup. <a href="#fnref-7-dharmasutra-of-āpastamba-24" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-7-dharmasutra-of-āpastamba-25" class="footnote-item">The Amarakośa cannot be placed later than the 5th century A. D. and may be a century or two earlier, Vide H. of Dh. Vol. V. p. 840 note 1367 for authoritieṣ <a href="#fnref-7-dharmasutra-of-āpastamba-25" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-7-dharmasutra-of-āpastamba-26" class="footnote-item">The Kāmasūtra is assigned to the 4th century A. D. by Winternitz in History of Indian Literature, Vol. III (1922, German) p. 540 and Mr. H. C. Chakladar in Asutosh Mookerji Silver Jubilee Vol. III. 327 holds that it should be placed in the middle of the 3rd century A.D.; so the author Ghoṭakamukha would have to be placed at least about the first century A. D., if not earlier, <a href="#fnref-7-dharmasutra-of-āpastamba-26" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-7-dharmasutra-of-āpastamba-27" class="footnote-item"><span class="devanagari">संक्षेप रुचिरन्तराप्यधिगमान् संयम्य व्याकरणान् संग्रहेऽस्तमुपागते । कृतेऽथ पतञ्जलिना गुरुणा तीर्थदर्शिना । सर्वेषां न्यायबीजानां महाभाष्ये निबन्धने । येजिसोभव न्यक्षेपैः शुष्कतर्कानुसारिभिः । आर्षे विप्लावितं ग्रन्थे संग्रप्रतिकृच्छ्रके । य</span>. <span class="devanagari">पतञ्जलिशिष्येभ्यो भ्रष्टो व्याकरणगमः । काले स दक्षिणापयेषु ग्रन्थमात्रे व्यवस्थितः । पर्वतादागमं लब्ध्वा भाष्यबीजानुसारिभिः । स नीतो बहुशाखत्वं चन्द्राचार्यादिभिः पुनः ॥ वाक्यपदीय</span> II, verses 484–89. <a href="#fnref-7-dharmasutra-of-āpastamba-27" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-7-dharmasutra-of-āpastamba-28" class="footnote-item"><span class="devanagari">अमरकोश</span> says '<span class="devanagari">समज्या परिषद्गोष्ठी सभासमितिसंसदः ।</span> <a href="#fnref-7-dharmasutra-of-āpastamba-28" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-7-dharmasutra-of-āpastamba-29" class="footnote-item"><span class="devanagari">श्रूयते चोज्जयिन्यां काव्यकारपरीक्षा । इह कालिदासमेण्ठराजकुमाररूपभारवः । हरिचन्द्रचन्द्रगुप्तौ परीक्षितविशालयाम् ॥ श्रूयते च</span>, <span class="devanagari">पाटलिपुत्रे शास्त्रकारपरीक्षा । अत्रोपवर्षवर्षपाणिनिपिङ्गलादि व्याडिः । वररुचिपातञ्जली इह परीक्षिताः ख्याति मुपजग्मुः ॥ काव्यमीमांसा</span> p. 55. <a href="#fnref-7-dharmasutra-of-āpastamba-29" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-7-dharmasutra-of-āpastamba-30" class="footnote-item"><span class="devanagari">असंवित्तिनिर्दृष्टे कर्मण्योर्विधानमसुना प्र</span>. <span class="devanagari">पूर्यते शमिन्नक ॥</span> 2. It may be noted that in the Pali Assalāyanasutta eḍ by me (1950) p. 10 it is stated that there are no distinctions of castes among men (yavana) and Kamboja people, Kamboja is the Pamir regioṇ <a href="#fnref-7-dharmasutra-of-āpastamba-30" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-7-dharmasutra-of-āpastamba-31" class="footnote-item"><span class="devanagari">हरदत्त</span> says ' <span class="devanagari">यत्सूत्रकृतोऽमतं वा वाक्यकारेण तदुद्भूतम् । वाक्यकारो नवीक्षेतैनद्भाषयं च भाषयकृतम् ॥ पदमञ्जरी</span> on <span class="devanagari">काशिका</span> p. 7. <a href="#fnref-7-dharmasutra-of-āpastamba-31" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-7-dharmasutra-of-āpastamba-32" class="footnote-item">Printed Vārttikapāṭha (without author’s name) contains Vārttikas in Kielhorn’s edition printed in large type, number 4200, Vile pp. 123-223 of Vol. VII (in Marathi), i. e., Marathi translation of Patañjali’s Mahābhāṣya by M. M. Vasudeva Shastri Abhyankar for details about the number of Vārttikaṣ <a href="#fnref-7-dharmasutra-of-āpastamba-32" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-7-dharmasutra-of-āpastamba-33" class="footnote-item">This raises an interesting questioṇ Patañjali names ‘Yājñavalkānī Brāhmaṇānī’ and ‘Saulabhānī’. What are these? The present writer suggests that Yājñavalkānī are those passages of the Bṛ. Up. (II. 2-3, IV. 1-4) in which Yājñavalkya propounds perennial philosophy to Janaka and other questionerṣ Saulabhānī Brāhmaṇānī may be those passages of the Bṛ. Up. (II. 4 and IV. 5) in which Maitreyī is instructed by Yājñavalkya. Sulabhā Maitreyī is one of the three women to whom water is offered in the <em>tarpaṇa</em>. The Bṛ. Up. is divided into six adhyāyas and each adhyāya is divided into parts called brāhmaṇaṣ From this interpretation, if accepted by scholars, it would follow that in Pāṇini's time the Bṛ. Up. passages mentioned above were not regarded as composed by a <em>cirantana</em> sage but in Kātyāyana's days, those passages had come to be regarded as old and therefore Kātyāyana had to frame a special vārtika about theṃ The Kāśikā passage is ‘<span class="devanagari">याज्ञवल्कादयश्चिरकाला इत्याख्यानेषु वार्ता । तथा व्यवहारति सूत्रकारः</span>’ It is noteworthy that Haradatta on Āp. D. S II 2, 5. 13-14 ‘<span class="devanagari">सर्वंभूतपीनादादकोण्श्थ्र। त्रिरुया च जिंयानाम् ।</span> (<span class="devanagari">वर्जयेत्</span>)’, remarks ‘<span class="devanagari">तैत्तिरीयनुष्टुब्गाथा याज्ञवल्क्यीनि ब्राह्मणानीति व्याख्यानात्</span>’ <a href="#fnref-7-dharmasutra-of-āpastamba-33" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-7-dharmasutra-of-āpastamba-34" class="footnote-item">For the story of Sumana and Uttarā, vide Dr. V. S Agrawal’s interesting paper about it based upon Pāli works and commentaries in ‘Poona Orientalist ’ Vol. VII pp. 197-200. Vide also Pāṇini IV. 2. 59-60. ⁴ Tadadhite tadveda ‘and ‘kratukthādi - sūtrāntāt-thak’ and the Mahā- bhāṣya thereon for the existence of an extensive sūtra literature in the times of Pāṇini and Patañjali. Pāṇini thus came towards the later phases of the sūtra literature. Therefore, to assign him to about 450-400 B. C. would appear to be the most proper and probable date. N. D.—11 <a href="#fnref-7-dharmasutra-of-āpastamba-34" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-7-dharmasutra-of-āpastamba-35" class="footnote-item">The <span class="devanagari">आप</span>. <span class="devanagari">गृ</span>. I. 14.3-6 are: <span class="devanagari">परिषेच न चान्वै</span>... <span class="devanagari">ऊर्ध्वं सीमनस्तु यव</span>... <span class="devanagari">गायतामिति वीणागायिनः संज्ञाप्तिरिति । उत्तरयाः पूर्वा साला</span>... <span class="devanagari">निर्देशश्च यश्यो वस्सन्ति ।</span> The two verses from the Āpastambīya-mantrapāṭha (eḍ by Winternitz) II. 11. 12-13 are: <span class="devanagari">योंग्यचरिर सो राजंति मालवेस्वादिव । विद्युतचकासीरेण यहजुने तव ॥ सोम एव नो राजेस्याडुनागीणी</span>: <span class="devanagari">प्रजा</span>: <span class="devanagari">। विद्युतचका</span>... Vide H. of Dh. Vol. II. pp. 224-225 and note 519 for various readings in both verses, references to Yaugandharī, Śālvas and Sālvavayava in Pāṇini, the Kāśikā and in the <em>parvans</em> of Mahābhārata. In the first verse, unless we understand 'prajāh' after 'sālvīḥ', the meaning would be 'women of Śālva' declared &c. The difficulty is what is the exact reading of the third pāda in both verses, <span class="devanagari">विद्युतचकां</span> or -<span class="devanagari">चक्र</span> for -<span class="devanagari">चक्र</span> as vocative, or <span class="devanagari">निविद्युच्चक्रा</span> or <span class="devanagari">अविद्युच्चक्र</span> o. The word 'vivṛtta' occurs even in the Ṛgveda (X, 27.21). In Yāj. Smṛti I, 266 we have <span class="devanagari">प्रवृत्तचक्ता</span> rendered by the Mitākṣarā as <span class="devanagari">अप्रतिहताजता</span>. If the reading is <span class="devanagari">विद्युतं चक्रं यासु</span> i, e. 'on whom your wheel (i. e. power or dominion) revolves'. Prof. Hazra objects to my rendering of the word 'cakra' as 'dominion' and in a matter of fact way asks how a river is to have dominion and asserts 'cakra' should be taken to mean 'army'. This is useless as it is not the army that is relevant in the work here but the people dwelling on the banks of the river. Ṛg. poets looked upon great rivers as goddesses, implored them to accept their prayer (Ṛg. X.75. 5-6) and state that Sarasvatī vanquishes their enemies (Ṛg. II.30.8). It should be noted that Vedic mantras are prescribed for some purposes not actually expressed in them, but even on the basis of a single word that has some remote connection with the bīhītā bhūmiḥ' &c., which is Ap. Mantrapātha I.6.1 and which occurs in Ṛg. X. 85. 1. and Atharvaveda XIV, 1, 1 (but not in Tai. S.) is recited (acc. to Ap. Gr. II.5.19 Uttara rathasyottambhani) at the time of supporting the chariot in which the newly married pair is to start for the husband's home, simply because the word 'uttabhitā' occurs therein, though in the Ṛgveda verse what is said to be supported is the earth and the heaveṇ Even in modern times at the time of a bath in any river old people repeat the verse "Imam me Gāṅge" etc. (Ṛg. X, 75.5). Vide Dharmasindhu page 275 for Snana-vidhi (Nir. eḍ of 1926). Vide a long paper on Sīmantonnayana by J. Gonda in East and West Journal (Rome) vol. VII pp. 12-31. <a href="#fnref-7-dharmasutra-of-āpastamba-35" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-7-dharmasutra-of-āpastamba-36" class="footnote-item">The editor notes that the mṣ of Kṛtyakalpataru does not attributes No. 8 to Kātyāyana, but as Aparārka on p. 33 attributes an almost identical passage to Kātyāyana, his name is inserted by the editor before this passage. The passage as read by Aparārka is: <span class="devanagari">गायत्र्या</span>..... <span class="devanagari">गायत्नीम् । आदृष्टपति इतिः</span> The Kṛtyakalpataru probably summarises Pār. Gṛ. in its own wordṣ <a href="#fnref-7-dharmasutra-of-āpastamba-36" class="fn-back" aria-label="Back to text">↩</a></li>
+</ol>
+</aside>
+
+            <div class="chapter-nav">
+                <a href="6-the-baudhāyana-dharmasutra.html" class="nav-prev"><i class="fa-solid fa-chevron-left"></i> 6. The Baudhāyana Dharmasutra</a>
+                <a href="8-hiranyakesi-dharmasutra.html" class="nav-next">8. Hiranyakesi-dharmasutra <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </main>
+    </div>
+
+    <button class="toc-mobile-toggle" onclick="toggleMobileToc()" aria-label="Table of contents">
+        <i class="fa-solid fa-list"></i>
+    </button>
+
+    
+    <footer class="container-fluid pt-4" style="background-color:#2e4144">
+        <div class="row border-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img src="https://sanatana.in/mbta/public/images/Homepage_html/images/layer_8.png" alt="">
+            </div>
+            <div class="col-md-5 text-white">
+                <p>The divine knowledge and wisdom of our shastras is the only thing eternal,
+                   which was and which will remain ever-present in this gods creation.
+                   Our endeavours are to preserve this knowledge.</p>
+            </div>
+            <div class="col-md-1 text-white">
+                <div class="d-flex" style="height: 75px;">
+                    <div class="vr"></div>
+                </div>
+            </div>
+            <div class="col-md-3 text-white">
+                <i class="fa-solid fa-globe"></i>&emsp;
+                <a href="https://sanatanasampatti.in" class="text-light">www.sanatanasampatti.in</a><br>
+                <i class="fa-solid fa-envelope"></i>&emsp;
+                <a href="" class="text-light">sriranga.yoga@gmail.com</a>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center py-3 mb-4 align-items-center border-bottom">
+            <div class="col-md-2 text-white fs-4 text-center">Project</div>
+            <div class="col-md-2 text-white fs-4 text-center">Our Mission</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contribute</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contact Us</div>
+        </div>
+        <div class="row">
+            <p class="col-md-6 fs-6 text-start text-light">
+                <small>&copy; 2026 Sanatanasampatti</small>
+            </p>
+            <p class="col-md-6 fs-6 text-end text-light">
+                <a class="text-white" rel="nofollow" href="http://www.srirangadigital.com" target="_blank">
+                    <img src="https://sanatana.in/mbta/public/images/logo.png" alt="sriranga logo" />
+                    <small>Designed, Developed and Maintained by Sriranga Digital</small>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        const headings = [];
+        tocLinks.forEach(link => {
+            const id = link.getAttribute('href').substring(1);
+            const el = document.getElementById(id);
+            if (el) headings.push({ el: el, link: link.parentElement });
+        });
+
+        function onScroll() {
+            let current = null;
+            for (const h of headings) {
+                const rect = h.el.getBoundingClientRect();
+                if (rect.top <= 120) current = h;
+            }
+            tocLinks.forEach(l => l.parentElement.classList.remove('active'));
+            if (current) current.link.classList.add('active');
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    });
+
+    function toggleMobileToc() {
+        const toc = document.getElementById('toc');
+        if (!toc) return;
+        if (toc.style.display === 'block') {
+            toc.style.display = '';
+            toc.style.position = '';
+        } else {
+            toc.style.display = 'block';
+            toc.style.position = 'fixed';
+            toc.style.top = '0';
+            toc.style.left = '0';
+            toc.style.width = '80vw';
+            toc.style.maxWidth = '320px';
+            toc.style.height = '100vh';
+            toc.style.maxHeight = '100vh';
+            toc.style.zIndex = '2000';
+            toc.style.background = 'var(--parchment)';
+            toc.style.boxShadow = '4px 0 20px rgba(0,0,0,0.2)';
+            toc.style.padding = '24px';
+            toc.style.overflowY = 'auto';
+        }
+    }
+    </script>
+
+    <script>
+    function toggleSynopsisAudio(btn) {
+        var audio = btn.parentElement.querySelector('audio');
+        if (!audio.src) audio.src = btn.getAttribute('data-src');
+        if (audio.paused) {
+            audio.play();
+            btn.classList.add('playing');
+            btn.querySelector('i').className = 'fa-solid fa-pause';
+        } else {
+            audio.pause();
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        }
+        audio.onended = function() {
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        };
+        // Prevent click from toggling the synopsis open/close
+        event.stopPropagation();
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- MDB UI Kit -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/fonts.css?v=1.2">
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/navbar.css?v=2.4">
+
+    <title>108. Nārāyanabhatta — Volume I: Part II — History of Dharmaśāstra</title>
+    <style>
+    :root {
+        --saffron:        #D4600A;
+        --saffron-light:  #F0924A;
+        --saffron-wash:   rgba(212, 96, 10, 0.07);
+        --indigo:         #2E5FA3;
+        --indigo-dark:    #1C3D70;
+        --maroon:         #7A1E1E;
+        --amber:          #C97A1A;
+        --ink:            #1A1209;
+        --ink-secondary:  #4A3B2A;
+        --parchment:      #FDFAF4;
+        --parchment-mid:  #F5EFE2;
+        --rule:           rgba(180, 130, 60, 0.22);
+        --shadow:         0 2px 18px rgba(90, 50, 10, 0.08);
+        --font-devanagari: 'Tiro Devanagari Sanskrit', 'Siddhanta', 'Noto Sans Devanagari', serif;
+        --font-roman:      'Junicode', Georgia, serif;
+    }
+
+    body {
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: var(--font-roman);
+    }
+
+    .devanagari {
+        font-family: var(--font-devanagari);
+    }
+
+    /* ── Navbar overrides ── */
+    .navbar-ontop { z-index: 1031; }
+    .hdclr { color: var(--saffron); }
+    .engpara { font-family: 'Open Sans', sans-serif; }
+
+    /* ── Layout ── */
+    .dh-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .dh-content {
+        flex: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        background: var(--parchment);
+        box-shadow: var(--shadow);
+        min-height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        .dh-content { padding: 24px 20px; }
+        .dh-wrapper { flex-direction: column; }
+    }
+
+    /* ── TOC Sidebar ── */
+    .toc-sidebar {
+        position: sticky;
+        top: 80px;
+        width: 280px;
+        min-width: 280px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding: 20px 16px;
+        margin-right: 24px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        scrollbar-width: thin;
+    }
+
+    .toc-title {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--saffron-light);
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list li {
+        padding: 4px 0;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-list li.toc-l3 {
+        padding-left: 16px;
+        font-size: 0.78rem;
+    }
+
+    .toc-list li a {
+        color: var(--ink-secondary);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .toc-list li a:hover { color: var(--saffron); }
+
+    .toc-list li.active {
+        border-left-color: var(--saffron);
+    }
+
+    .toc-list li.active a {
+        color: var(--saffron);
+        font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-sidebar { display: none; }
+    }
+
+    /* ── Mobile TOC Toggle ── */
+    .toc-mobile-toggle {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1050;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--saffron);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-mobile-toggle { display: block; }
+    }
+
+    /* ── Section Headings ── */
+    .section-heading {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        margin: 48px 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--rule);
+        letter-spacing: 0.5px;
+        scroll-margin-top: 80px;
+    }
+
+    h2.section-heading { font-size: 1.6rem; }
+
+    h3.section-heading {
+        font-size: 1.25rem;
+        border-left: 4px solid var(--saffron-light);
+        border-bottom: none;
+        padding: 8px 16px;
+        background: var(--saffron-wash);
+        border-radius: 0 5px 5px 0;
+    }
+
+    /* ── Prose ── */
+    .prose {
+        font-family: var(--font-roman);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+        color: var(--ink);
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    .prose em { color: var(--maroon); }
+
+    .prose:target {
+        background: rgba(212, 96, 10, 0.12);
+        border-left: 4px solid var(--saffron);
+        padding-left: 16px;
+        margin-left: -20px;
+        border-radius: 0 6px 6px 0;
+        animation: target-pulse 2s ease-out;
+    }
+
+    @keyframes target-pulse {
+        0%   { background: rgba(212, 96, 10, 0.30); }
+        100% { background: rgba(212, 96, 10, 0.12); }
+    }
+
+    /* ── Footnote References ── */
+    .fn-ref {
+        font-size: 0.75em;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    .fn-ref a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 0 2px;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: color 0.15s;
+    }
+
+    .fn-ref a:hover { color: var(--indigo); }
+
+    /* ── Synopsis Box ── */
+    .synopsis-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron-light);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .synopsis-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .synopsis-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .synopsis-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .synopsis-box.open .synopsis-toggle i {
+        transform: rotate(90deg);
+    }
+    .synopsis-body {
+        display: none;
+        padding: 0 20px 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+    }
+    .synopsis-box.open .synopsis-body { display: block; }
+    .synopsis-body p { margin: 0; }
+    .synopsis-attribution {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: var(--ink-secondary);
+        opacity: 0.7;
+        font-style: italic;
+    }
+    .synopsis-audio {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    .synopsis-play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--saffron);
+        background: none;
+        color: var(--saffron);
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: background 0.2s, color 0.2s;
+        padding: 0;
+    }
+    .synopsis-play-btn:hover {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn.playing {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn i { padding-left: 2px; }
+
+    /* ── Index Terms Panel ── */
+    .index-terms-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .index-terms-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .index-terms-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .index-terms-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .index-terms-box.open .index-terms-toggle i {
+        transform: rotate(90deg);
+    }
+    .index-terms-body {
+        display: none;
+        padding: 0 20px 16px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .index-terms-box.open .index-terms-body { display: block; }
+    .index-terms-dl {
+        margin: 0;
+        padding: 0;
+    }
+    .index-terms-dl dt {
+        font-family: var(--font-roman);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+        margin-top: 8px;
+    }
+    .index-terms-dl dd {
+        margin: 2px 0 0 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        color: var(--ink-secondary);
+        line-height: 1.5;
+    }
+    .nyaya-heading {
+        font-family: var(--font-roman);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        margin: 16px 0 4px;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+    }
+
+    /* ── Inline Index Popovers ── */
+    .idx-term {
+        border-bottom: 1px dotted var(--saffron-light);
+        cursor: help;
+        position: relative;
+    }
+    .idx-term:hover::after {
+        content: attr(data-def);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        background: rgba(44, 36, 22, 0.92);
+        color: #F5ECD8;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        max-width: 280px;
+        z-index: 100;
+        white-space: normal;
+        line-height: 1.4;
+        pointer-events: none;
+    }
+
+    /* ── Structured Version Banner ── */
+    .structured-banner {
+        margin: 0 0 28px;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, rgba(212, 96, 10, 0.06) 0%, rgba(212, 96, 10, 0.02) 100%);
+        border: 1px solid var(--saffron-light);
+        border-radius: 6px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        color: var(--ink-secondary);
+        line-height: 1.6;
+    }
+    .structured-banner i { color: var(--saffron); margin-right: 4px; }
+    .structured-banner a { color: var(--indigo); font-weight: 600; text-decoration: none; }
+    .structured-banner a:hover { text-decoration: underline; }
+
+    /* ── Footnotes Section ── */
+    .footnotes-section {
+        margin: 32px 0 48px;
+        padding: 20px 24px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .footnotes-section hr {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 0 0 16px;
+    }
+
+    .footnotes-list {
+        padding-left: 24px;
+        margin: 0;
+    }
+
+    .footnote-item {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+        scroll-margin-top: 80px;
+    }
+
+    .footnote-item:target {
+        background: rgba(212, 96, 10, 0.1);
+        border-radius: 4px;
+        padding: 4px 6px;
+        margin-left: -6px;
+    }
+
+    .fn-back {
+        color: var(--saffron-light);
+        text-decoration: none;
+        font-size: 0.85em;
+        margin-left: 4px;
+    }
+
+    .fn-back:hover { color: var(--saffron); }
+
+    /* ── Reference Links ── */
+    a.ref {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: all 0.15s;
+    }
+
+    a.ref:hover {
+        color: var(--saffron);
+        border-bottom-style: solid;
+    }
+
+    a.mbta-ext {
+        color: var(--indigo);
+        font-size: 0.7em;
+        margin-left: 2px;
+        opacity: 0.5;
+        text-decoration: none;
+        vertical-align: super;
+    }
+    a.mbta-ext:hover { opacity: 1; color: var(--saffron); }
+
+    /* ── References Panel (sidebar) ── */
+    .refs-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .refs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .refs-list li {
+        padding: 3px 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .ref-source-link {
+        font-weight: 600;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .ref-source-link:hover {
+        text-decoration: underline;
+    }
+
+    .ref-verse-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.76rem;
+    }
+
+    .ref-verse-link:hover {
+        text-decoration: underline;
+        color: var(--saffron);
+    }
+
+    .ref-verses {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Timeline panel ── */
+    .timeline-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .timeline-list li {
+        padding: 2px 0;
+        font-size: 0.76rem;
+        line-height: 1.4;
+        position: relative;
+        padding-left: 14px;
+    }
+
+    .timeline-list li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--saffron);
+    }
+
+    .timeline-list li.tl-approximate::before {
+        background: transparent;
+        border: 2px solid var(--saffron);
+        width: 4px;
+        height: 4px;
+    }
+
+    .timeline-list li.tl-century::before {
+        background: transparent;
+        border: 2px dashed var(--saffron);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+
+    .tl-dot-link {
+        text-decoration: none;
+        color: var(--ink);
+        display: block;
+    }
+
+    .tl-dot-link:hover {
+        color: var(--saffron);
+    }
+
+    .tl-year {
+        font-weight: 600;
+        color: var(--saffron);
+        font-size: 0.72rem;
+        min-width: 70px;
+        display: inline-block;
+    }
+
+    .tl-label {
+        color: var(--ink-secondary);
+        font-size: 0.72rem;
+    }
+
+    .tl-view-link, .tl-more {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.72rem;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .tl-view-link:hover, .tl-more:hover {
+        text-decoration: underline;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+
+    .breadcrumb-bar a {
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+
+    .breadcrumb-bar .sep {
+        color: var(--amber);
+        margin: 0 8px;
+    }
+
+    .breadcrumb-bar .current {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Chapter Navigation ── */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        margin-top: 48px;
+        border-top: 2px solid var(--rule);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .chapter-nav a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        transition: all 0.2s;
+        max-width: 45%;
+    }
+
+    .chapter-nav a:hover {
+        background: var(--saffron-wash);
+        border-color: var(--saffron-light);
+    }
+
+    .nav-prev { text-align: left; }
+    .nav-next { text-align: right; margin-left: auto; }
+
+    .page-range {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+    }
+
+    /* ── Volume Cards (Landing) ── */
+    .vol-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .vol-card {
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        transition: all 0.25s;
+    }
+
+    .vol-card:hover {
+        border-color: var(--saffron-light);
+        box-shadow: 0 4px 24px rgba(212, 96, 10, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .vol-num {
+        font-family: var(--font-roman);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--saffron);
+        margin-bottom: 8px;
+    }
+
+    .vol-subtitle {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        line-height: 1.5;
+        flex: 1;
+    }
+
+    .vol-chapters {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        margin-top: 12px;
+    }
+
+    /* ── Chapter Cards (Volume Index) ── */
+    .chapter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .chapter-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .chapter-card:hover {
+        border-color: var(--saffron-light);
+        background: var(--saffron-wash);
+    }
+
+    .card-num {
+        font-family: var(--font-roman);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--saffron);
+        min-width: 36px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        flex: 1;
+    }
+
+    .card-pages {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        color: var(--ink-secondary);
+    }
+
+    /* ── Landing Hero ── */
+    .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-family: var(--font-roman);
+        font-size: 2.4rem;
+        color: var(--saffron);
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .hero .devanagari-title {
+        font-family: var(--font-devanagari);
+        font-size: 1.8rem;
+        color: var(--ink);
+        margin-bottom: 16px;
+    }
+
+    .hero .author {
+        font-family: var(--font-roman);
+        font-size: 1.1rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .hero .desc {
+        font-family: var(--font-roman);
+        font-size: 1rem;
+        color: var(--ink-secondary);
+        line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer { margin-top: 48px; }
+</style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mbta/">
+      <div class="container-fluid">&emsp;&emsp;
+      <a href="../index.html" class="navbar-brand" style="text-decoration:none;">
+        <span class="devanagari ms-3" style="font-size:1.5rem; color:var(--saffron); font-weight:700;">धर्मशास्त्रम्</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="../index.html">धर्मशास्त्रम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5 active" href="../index.html">खण्डाः</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in/mbta/">महाभारतम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in">सनातनम्</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+
+    <div class="dh-wrapper container-xl">
+        <nav id="toc" class="toc-sidebar">
+<div class="refs-panel">
+<h5 class="toc-title">References</h5>
+<ul class="refs-list">
+<li><a href="../refs/mahabharata.html" class="ref-source-link">Mahābhārata</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/vasishtha.html" class="ref-source-link">Vasiṣṭha Dharmasūtra</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/rigveda.html" class="ref-source-link">Ṛgveda</a> <span class="ref-verses"><a href="../refs/rigveda.html#III.33.5" class="ref-verse-link">III.33.5</a>, <a href="../refs/rigveda.html#III.53.9-12" class="ref-verse-link">III.53.9-12</a>, <a href="../refs/rigveda.html#vi" class="ref-verse-link">vi</a></span></li>
+</ul>
+</div>
+<div class="timeline-panel">
+<h5 class="toc-title">Timeline</h5>
+<ul class="timeline-list">
+<li class="tl-exact"><a href="#p-108-nārāyanabhatta-4" class="tl-dot-link"><span class="tl-year">1513 CE</span> <span class="tl-label">( Continued on the next page )</span></a></li>
+<li class="tl-exact"><a href="#p-108-nārāyanabhatta-6" class="tl-dot-link"><span class="tl-year">1513 CE</span> <span class="tl-label">As he was born in 1513 A. D. a</span></a></li>
+<li class="tl-range"><a href="#p-108-nārāyanabhatta-6" class="tl-dot-link"><span class="tl-year">~1540 CE</span> <span class="tl-label">As he was born in 1513 A. D. a</span></a></li>
+<li class="tl-exact"><a href="#p-108-nārāyanabhatta-6" class="tl-dot-link"><span class="tl-year">1545 CE</span> <span class="tl-label">As he was born in 1513 A. D. a</span></a></li>
+<li class="tl-exact"><a href="#p-108-nārāyanabhatta-6" class="tl-dot-link"><span class="tl-year">1612 CE</span> <span class="tl-label">As he was born in 1513 A. D. a</span></a></li>
+<li class="tl-exact"><a href="#p-108-nārāyanabhatta-4" class="tl-dot-link"><span class="tl-year">1915 CE</span> <span class="tl-label">( Continued on the next page )</span></a></li>
+</ul>
+<a href="108-nārāyanabhatta-timeline.html" class="tl-view-link">View full timeline &rarr;</a>
+</div>
+<h5 class="toc-title">Sections</h5>
+<ul class="toc-list">
+<li class="toc-l2"><a href="#108-nārāyanabhatta">108. Nārāyanabhatta</a></li>
+</ul>
+</nav>
+        <main class="dh-content">
+            
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep">›</span>
+        <a href="index.html">Volume I: Part II</a>
+        <span class="sep">›</span>
+        <span class="current">108. Nārāyanabhatta</span>
+    </div>
+    
+            <h1 class="text-center" style="font-family: var(--font-roman); font-size: 2rem; color: var(--saffron); margin-bottom: 8px;">
+                108. Nārāyanabhatta
+            </h1>
+            <p class="text-center" style="font-family: 'Open Sans', sans-serif; color: var(--ink-secondary); font-size: 0.9rem; margin-bottom: 36px;">
+                Volume I: Part II <span class="page-range">pp. 903–907</span>
+            </p>
+
+            
+    <div class="synopsis-box" id="synopsis">
+        <button class="synopsis-toggle" onclick="this.parentElement.classList.toggle('open')"
+                aria-expanded="false" aria-controls="synopsis-body">
+            <i class="fa-solid fa-chevron-right"></i>
+            Kane's Synopsis
+        </button>
+        <div class="synopsis-audio">
+            <span class="synopsis-play-btn" role="button" tabindex="0"
+                    onclick="toggleSynopsisAudio(this)"
+                    data-src="../audio/synopsis/vol-1-part-2/vol-1-part-2_sec108.mp3" title="Listen to synopsis">
+                <i class="fa-solid fa-play"></i>
+            </span>
+            <audio preload="none"></audio>
+        </div>
+        <div class="synopsis-body" id="synopsis-body">
+            <p>Nārāyaṇabhaṭṭa is recognized as the most distinguished member of the Bhaṭṭa family, originating from Benares. A glimpse into his personal history reveals his birth in the year 1513 A.D., marking the commencement of a life dedicated to scholarship.
+
+His substantial literary legacy encompasses several important works. Prominent among these are the *Antyeṣṭipaddhati*, a treatise on funeral rites, the *Tristhalisetu*, likely pertaining to holy places or pilgrimage, and the *Prayogaratna*, which elucidates various religious practices. Furthermore, Nārāyaṇabhaṭṭa authored a significant commentary on verses found in *Kālamādhava*. The span of his principal literary activity is documented between the years 1540 and 1570 A.D., reflecting a productive three decades of scholarly output.
+
+However, it is essential to draw a clear distinction regarding the authorship of *Dharmapravṛtti*; the Nārāyaṇa responsible for this work is a different individual and should not be conflated with the Nārāyaṇabhaṭṭa who is the subject of this overview.</p>
+            <p class="synopsis-attribution">— Synopsis by P.V. Kane, from History of Dharmaśāstra</p>
+        </div>
+    </div>
+
+
+            
+
+            <h2 id="108-nārāyanabhatta" class="section-heading">108. Nārāyanabhatta</h2>
+<p class="prose" id="p-108-nārāyanabhatta-1">108. Nārāyaṇabhaṭṭa Nārāyaṇabhaṭṭa<sup>1364</sup> was the most famous of the celebrated family of the Bhaṭṭas of Benareṣ For a biography of the Bhāṭṭa</p>
+<p class="prose" id="p-108-nārāyanabhatta-2">1364 The work of Śaṅkarabhaṭṭa is called Gādhi-vaṁśānucarita. The first leaf of the mṣ is missing and the work comes abruptly to an enḍ Even in ancient times there appears to have been a rivalry between the two great sages of the <a class="ref" href="../refs/rigveda.html#vi" data-source="rigveda" data-ref="vi" title="Ṛgveda vi">Ṛgveda vi</a>z. <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> ( to whom and his family are ascribed the verses in the VII Maṇḍala of the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> ) and Viśvāmitra ( to whom are ascribed the verses of the 3rd Maṇḍala of the same Veda ). It appears from <a class="ref" href="../refs/rigveda.html#III.53.9-12" data-source="rigveda" data-ref="III.53.9-12" title="Ṛgveda III.53.9-12">Ṛg. III. 53. 9-12</a> that Viśvāmitra's ancestor was Kuśika and that his prayers helped Bhārata people. At least as early as the Mahābhāṣya ( vol. II p. 254 of Kielhorn's eḍ ) of Patañjali ( on Pāṇ IV. 1. 104 ) the pedigree was Kuśika-Gādhi-Viśvāmitra. The name Gādhi does not occur in the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a>. The <a class="ref" href="../refs/mahabharata.html" data-source="mahabharata" data-ref="" title="Mahābhārata">Mahābhārata</a> and some of the Purāṇas are full of stories about the rivalry between Viśvā- mitra and <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a>. For enmity ( <em>vaira</em> ) between the two sages, vide Ādi chap. 175-176, Chitrashala eḍ The gotra of the family was Viśvāmitra and the family is known as Gādhivaṁśa. In <a class="ref" href="../refs/rigveda.html#III.33.5" data-source="rigveda" data-ref="III.33.5" title="Ṛgveda III.33.5">Ṛg. III. 33. 5</a> Viśvāmitra is said to be <em>sūnu</em> ( son ) of Kuśika. The plural of Kuśika occurs frequently in the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛg.</a> Śaṅkarabhaṭṭa also composed a work called Dvaitanirṇaya, an account of which contributed by the present author will be found in ABORI vol. III pp. 67-72 ( for 1921–22 ). The Gādhivaṁśānucarita of Śaṅkarabhaṭṭa does not mention the fact of the re-establishment of Viśveśvara by his father Nārāyaṇabhaṭṭa. It is later descendants of Nārāyaṇabhaṭṭa that refer to this deed of Nārāyaṇabhaṭṭa. It is possible that Śaṅkarabhaṭṭa wrote the Gādhivaṁśānucarita before the restoration of Viśveśvara shrine.</p>
+<p class="prose" id="p-108-nārāyanabhatta-3">Nārāyaṇabhaṭṭa appears to have composed a work called ' <em>jivac-chrāddhavidhi</em> ' ( based on the Brahmapurāṇa and other works ) enabling a person to perform his own <em>śrāddha</em> while he was alive. Vide Prof. G. V. Devasthali's Deṣ Cat. of Sanskrit and Prakrit Msṣ in the Library of the Bombay University No. 1045 p. 376 and Prof. Velankar's Deṣ Cat. of the Sanskrit Msṣ in the Iccharam Desai Collection of the Bombay University Noṣ 292–294 pp. 60–61. No. 292 begins: <span class="devanagari">तत्र ब्रह्मपुराणे । अथ जीवच्छ्राद्धविधिः । देशकालधनश्रद्धान्वयसमुद्ग्रहितः ।</span></p>
+<p class="prose" id="p-108-nārāyanabhatta-4">( Continued on the next page ) family of Benares, vide I. A. vol. 41 pp. 7-13 and for a detailed account of some members of that family and their works (particularly on Dharmaśāstra), vide the present author's Intro- duction to the Vyavahāramayūkha ( pp. v-xlv ) published by the B. O. R. I. in 1926. From several references it appears that Nārāyaṇabhaṭṭa wrote a bhāṣya on the Gobhila-gṛhya-sūtra; vide Smṛtitattva (vol. 1)–Tithi p. 14 ‘ Kuśāntarapratinidhir-Bhaṭṭanā- rāyaṇair - Gobhila-bhāṣya uktaḥ ); Saṁskāratattva pp. 878 and 904; (vol. II ) Udvāhatattva p. 130. A few more examples of the use of the honorific plural Bhaṭṭa-Nārāyaṇacaraṇāḥ ' by Raghu, may be added here. Vide (vol. I) Śrāddha pp. 201, 245; Saṁskāra p. 868; (vol. II) Māthapratisthā 620, Śuddhi 251. M. M. Haraprasad Śāstrī has bright to light a biography of this family written by Śaṅkarabhaṭṭa, a son of Nārāyaṇabhaṭṭa ( Inḍ Ant. for 1912 vol. 41, pp. 7-13 ). Nārāyaṇabhaṭṭa's father Rāme- śvarabhaṭṭa whose gotra was Viśvāmitra migrated from Prati- ṣṭhāna ( Paithan ) in the Deccan to Benareṣ Rāmeśvarabhaṭṭa was a very learned man and his learning drew to him students from the whole of India. Nārāyaṇabhaṭṭa was born according to Śaṅkarabhaṭṭa’s biography in Śake 1435 in the month of Caitra (i. e. about March 1513 A. D. ). Nārāyaṇabhaṭṭa was the eldest of three sons, the other two being Śrīdhara and Mādhava. Nārāyaṇabhaṭṭa learnt all the śāstras at the feet of his father. Pandits all over India looked up to him as their leader and patron and he was an assiduous collector of Sanskrit msṣ It is said that Nārāyaṇabhaṭṭa brought down by his holiness rain in a season of drought and thereby induced the Mahomedan ruler that had razed the temple of Viśveśvara at Benares to the ground to allow him to rebuild it. For his erudition and piety Nārāyaṇabhaṭṭa was honoured with the title ‘Jagadguru’ and his family was given the first place of honour in the assembly of learned Brāhmaṇas and at the recitations of the Vedaṣ It was Nārāyaṇabhaṭṭa and his equally worthy descendants that raised dākṣiṇātya pandits to the position of high eminence at Benares which they still holḍ Nārāyaṇabhaṭṭa wrote numerous works on dharmaśāstra among which may be mentioned the Antyeṣṭipaddhati (printed by Nirṇayasāgara Press), the Tristhalī-setu (dealing with the ceremonies to be performed generally at all sacred places and particularly at Prayāga, Kāśī and Gayā) and the Prayogaratna (printed at the Nirṇayasāgara Press, 1915 A. D.). This last contains detailed descriptions and rituals of the saṁskāras from garbhādhāna to vivāha. His are standard works on the subjects they deal with and are used even now almost throughout the whole of India. He composed a com-mentary on the introductory verses contained in the Kālamādhava (vide Madras Triennial Cat. vol. III. Sanskrit C. p. 4114 No. 2852) and a commentary on portions of the Śāstradīpikā of Pārthasārathimiśra. He composed a work on ordeals which is referred to in the Vyavahāratattva of Nīlakaṇṭha (vide p. 457 of my edition of the Vyavahāramayūkha and Bikaner cat. p. 387 No. 832 for a Divyānuṣṭhāna-paddhati of Nārāyaṇabhaṭṭa) and also paddhatis on the dedication of gardens, tanks etc. For a Jalaśayotsargavidhi of Nārāyaṇa, vide I. O. Cat. No. 1717 and Mitra's Notices V. p. 146 and Prof, Velankar's Cat. of the Bombay University's Desai Collection of Msṣ pp. 41-42 No. 204. He exercised a profound influence over later writers directly and indirectly through his sons and grand-sonṣ Vide Cat. of India Office Sanskrit Msṣ ( part III p. 547 where the <span class="devanagari">दानही</span> ( <span class="devanagari">हा</span> ? ) <span class="devanagari">रावलि</span>-<span class="devanagari">प्रकाशा</span> of <span class="devanagari">दिवाकर</span> son of <span class="devanagari">महादेव</span> says so ) and Hultzsch's Report on South Indian Sanskrit msṣ vol. III. p. 106 which quotes a verse from <span class="devanagari">भाट्ट्दिनकर</span> about the re-installation of Viśveśvara by Nārāyaṇabhaṭṭa : <span class="devanagari">श्रीरामेरुत्तरस्ततः समभवच्छ्रीभट्ट्नारायणः शाखास्न्नायपरायणः खळमतत्वषा</span>-<span class="devanagari">नैकविद्वरावणः । काश्यां पातकनिर्वृत्तै भगवतो विश्वेश्वरस्याचलं लिङ्गं भाग्यवशालुसुखाय जगतां संस्थापयामास यः ॥</span> 5th verse at the end of the work.</p>
+<p class="prose" id="p-108-nārāyanabhatta-5">Those interested in the several eminent writers of this gifted Bhatta family of Benares may refer to the present author's Introduction to the Vyavahāramayūkha of Nīlakaṇṭha (published H, D, 114 by the Bhandarkar Oriental Institute, Poona, in 1926 pp. v-xxvII). Only a brief pedigree of the family is added here:<sup>1365</sup></p>
+<p class="prose" id="p-108-nārāyanabhatta-6">As he was born in 1513 A. D. and composed the commentary on the Vṛttaratnākara in 1545 A. D., his literary activity must be placed between 1540 and 1570 A. D. This is further corroborated by the fact that his grandson Kamalākarabhatta composed the Nirnayasindhu, one of his earliest works, in 1612 A. D.</p>
+<p class="prose" id="p-108-nārāyanabhatta-7">It appears that Kāntānathabhaṭṭa, a descendant of Kamalā- karabhaṭṭa, published a work called ‘ Bhaṭṭa-vaṁśa-Kāvyaṁ ’ in 1903 at the Ananda-kadambinī press of Mirzapur. Kāntānātha- Bhaṭṭa was head Pandit at the Sanskrit Pāṭhaśālā at that place. In the Hindi Preface to that work he said that he saw Śaṅkara- bhaṭṭa’s work called Gadhivaṁśavarnana and Mandlik's edition of the Vyavahāramayūkha and that induced him to write the work. It is in 10 sargas and contains 429 verses in several metreṣ The pedigree he gives differs from Śańkarabhaṭṭa’s work in several respectṣ It is unnecessary to pursue this matter here.</p>
+<p class="prose" id="p-108-nārāyanabhatta-8">There is a work on dharmaśāstra called Dharmapravṛtti composed by a Nārāyaṇa. Mr. K. P. Jayaswal holds that this was composed by <em>jagadguru</em> Nārāyaṇabhaṭṭa (JBORS for 1927, vol. XIII, parts III-IV, p. xi). The same view is held by M. M. Haraprasad Śāstrī (Inḍ Ant. for 1912 p. 7). Prof. Velankar in his Cat. of the Sanskrit Msṣ in the Iccharam Suryaram Desai Collection of the Bombay University (p. 45) appears to identify Nārāyaṇa, author of Dharmapravṛtti (msṣ No. 217 and 218 on p. 45) with the famous Nārāyaṇabhaṭṭa, author of Prayogaratna. But this identity is extremely doubtful. The benedictory verses<sup class="fn-ref"><a href="#fn-108-nārāyanabhatta-3" id="fnref-108-nārāyanabhatta-3">3</a></sup> in the Dharmapravṛtti are different from those of the Prayo- garatna and Tristhālisetu, the method of treatment and the style are different and the colophons are also different. The author of the Dharmapravṛtti does not mention his ancestors as Nārāyaṇabhaṭṭa doeṣ Nīlakaṇṭha in his Vyavahāramayūkha finds<sup class="fn-ref"><a href="#fn-108-nārāyanabhatta-4" id="fnref-108-nārāyanabhatta-4">4</a></sup> fault with the Dharmapravṛtti by saying that certain quotations therein are unauthoritative.</p>
+<aside class="footnotes-section" aria-label="Footnotes">
+<hr>
+<ol class="footnotes-list">
+<li id="fn-108-nārāyanabhatta-1" class="footnote-item">( Continued from the previous page ) <span class="devanagari">जीवते सति जीवाय दद्याच्छ्राद्धं स्वयं नरः ॥</span>; the present author in his youth knew some persons in the Konkan that had performed Jīvao-śrāddha. This was a perverse extension of the original idea of Śrāddha. It may however be noted that the Vayu- purāṇa ( on Gayā ) chap. 83. 34 refers to the offering of śrāddha to oneself at Gayā. <span class="devanagari">आत्मनस्तुमहाबुद्धे गयायां तु तिलैषिणा । पिण्डनिर्वापणं कुर्यान्नवा बान्धवा गोत्रजाः ॥</span> quoted in <span class="devanagari">त्रिस्थ०सेतु</span> p. 350 from <span class="devanagari">स्मृति</span>- <span class="devanagari">रत्नावली</span> ; vide also <span class="devanagari">पिण्डो देयस्तु सर्वेभ्यः सर्वे कुलताारकैः । आत्मनस्तु तथा देयो बन्धुर्गोत्रकैस्तथा ॥ वा०</span> 105. 12 and <span class="devanagari">अधि०</span> 115. 68 The <span class="devanagari">त्रिस्थली</span>- <span class="devanagari">सेतु</span> p. 350 remarks ' <span class="devanagari">इदं चान्यस्वातमनो वा जीवतः पिण्डदानं जनार्दनहस्त एव कार्यं न तु गयातीर्थमात्रे ।</span> <a href="#fnref-108-nārāyanabhatta-1" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-108-nārāyanabhatta-2" class="footnote-item">Nāgapāśa – son Cāṅgadeva – son Govinda – son Rāmeśvara     <em>   Nārāyaṇa         </em>   Rāmakṛṣṇa         <em>   Śaṅkara             </em>   Ranganātha                 <em>   Siddheśvara                     </em>   Dinākara alias Divākara                         <em>   Viśveśvara alias Gāgābhaṭṭa                             </em>   Ananta                             <em>   Prabhākara                             </em>   Śyāma                     <em>   Kamalākara                     </em>   Lakṣmaṇa             <em>   Dāmodara             </em>   Nṛsiṁha                 <em>   Śaṅkara                 </em>   Bhānu                 <em>   Daughter             </em>   Nīlakaṇṭha     <em>   Śrīdhara         </em>   Govinda             <em>   Four sons     </em>   Mādhava         <em>   Raghunātha     </em>   son Divākara surnamed Kāla (or Kāḷe of modern days). <a href="#fnref-108-nārāyanabhatta-2" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-108-nārāyanabhatta-3" class="footnote-item">The introductory verse is: <span class="devanagari">नारायणं नमस्कृत्य कामदं च सरस्वतीम् । गणनाथं गुरुञ्चैव धर्मसंरक्षणाय वै ।। धर्मप्रवृत्त्यै क्रियते कलो नारायणेन तु ।</span> I. O. cat. p. 480 No. 1560. <a href="#fnref-108-nārāyanabhatta-3" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-108-nārāyanabhatta-4" class="footnote-item">Vide p. 134 of <span class="devanagari">व्यवहारमयूख</span> ( my edition ). <a href="#fnref-108-nārāyanabhatta-4" class="fn-back" aria-label="Back to text">↩</a></li>
+</ol>
+</aside>
+
+            <div class="chapter-nav">
+                <a href="107-raghunandana.html" class="nav-prev"><i class="fa-solid fa-chevron-left"></i> 107. Raghunandana</a>
+                <a href="109-todarānanda.html" class="nav-next">109. Todarānanda <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </main>
+    </div>
+
+    <button class="toc-mobile-toggle" onclick="toggleMobileToc()" aria-label="Table of contents">
+        <i class="fa-solid fa-list"></i>
+    </button>
+
+    
+    <footer class="container-fluid pt-4" style="background-color:#2e4144">
+        <div class="row border-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img src="https://sanatana.in/mbta/public/images/Homepage_html/images/layer_8.png" alt="">
+            </div>
+            <div class="col-md-5 text-white">
+                <p>The divine knowledge and wisdom of our shastras is the only thing eternal,
+                   which was and which will remain ever-present in this gods creation.
+                   Our endeavours are to preserve this knowledge.</p>
+            </div>
+            <div class="col-md-1 text-white">
+                <div class="d-flex" style="height: 75px;">
+                    <div class="vr"></div>
+                </div>
+            </div>
+            <div class="col-md-3 text-white">
+                <i class="fa-solid fa-globe"></i>&emsp;
+                <a href="https://sanatanasampatti.in" class="text-light">www.sanatanasampatti.in</a><br>
+                <i class="fa-solid fa-envelope"></i>&emsp;
+                <a href="" class="text-light">sriranga.yoga@gmail.com</a>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center py-3 mb-4 align-items-center border-bottom">
+            <div class="col-md-2 text-white fs-4 text-center">Project</div>
+            <div class="col-md-2 text-white fs-4 text-center">Our Mission</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contribute</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contact Us</div>
+        </div>
+        <div class="row">
+            <p class="col-md-6 fs-6 text-start text-light">
+                <small>&copy; 2026 Sanatanasampatti</small>
+            </p>
+            <p class="col-md-6 fs-6 text-end text-light">
+                <a class="text-white" rel="nofollow" href="http://www.srirangadigital.com" target="_blank">
+                    <img src="https://sanatana.in/mbta/public/images/logo.png" alt="sriranga logo" />
+                    <small>Designed, Developed and Maintained by Sriranga Digital</small>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        const headings = [];
+        tocLinks.forEach(link => {
+            const id = link.getAttribute('href').substring(1);
+            const el = document.getElementById(id);
+            if (el) headings.push({ el: el, link: link.parentElement });
+        });
+
+        function onScroll() {
+            let current = null;
+            for (const h of headings) {
+                const rect = h.el.getBoundingClientRect();
+                if (rect.top <= 120) current = h;
+            }
+            tocLinks.forEach(l => l.parentElement.classList.remove('active'));
+            if (current) current.link.classList.add('active');
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    });
+
+    function toggleMobileToc() {
+        const toc = document.getElementById('toc');
+        if (!toc) return;
+        if (toc.style.display === 'block') {
+            toc.style.display = '';
+            toc.style.position = '';
+        } else {
+            toc.style.display = 'block';
+            toc.style.position = 'fixed';
+            toc.style.top = '0';
+            toc.style.left = '0';
+            toc.style.width = '80vw';
+            toc.style.maxWidth = '320px';
+            toc.style.height = '100vh';
+            toc.style.maxHeight = '100vh';
+            toc.style.zIndex = '2000';
+            toc.style.background = 'var(--parchment)';
+            toc.style.boxShadow = '4px 0 20px rgba(0,0,0,0.2)';
+            toc.style.padding = '24px';
+            toc.style.overflowY = 'auto';
+        }
+    }
+    </script>
+
+    <script>
+    function toggleSynopsisAudio(btn) {
+        var audio = btn.parentElement.querySelector('audio');
+        if (!audio.src) audio.src = btn.getAttribute('data-src');
+        if (audio.paused) {
+            audio.play();
+            btn.classList.add('playing');
+            btn.querySelector('i').className = 'fa-solid fa-pause';
+        } else {
+            audio.pause();
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        }
+        audio.onended = function() {
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        };
+        // Prevent click from toggling the synopsis open/close
+        event.stopPropagation();
+    }
+    </script>
+</body>
+</html>

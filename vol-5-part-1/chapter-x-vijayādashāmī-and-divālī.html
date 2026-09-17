@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- MDB UI Kit -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/fonts.css?v=1.2">
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/navbar.css?v=2.4">
+
+    <title>Chapter X. Vijayādashāmī and Divālī — Volume V: Part I — History of Dharmaśāstra</title>
+    <style>
+    :root {
+        --saffron:        #D4600A;
+        --saffron-light:  #F0924A;
+        --saffron-wash:   rgba(212, 96, 10, 0.07);
+        --indigo:         #2E5FA3;
+        --indigo-dark:    #1C3D70;
+        --maroon:         #7A1E1E;
+        --amber:          #C97A1A;
+        --ink:            #1A1209;
+        --ink-secondary:  #4A3B2A;
+        --parchment:      #FDFAF4;
+        --parchment-mid:  #F5EFE2;
+        --rule:           rgba(180, 130, 60, 0.22);
+        --shadow:         0 2px 18px rgba(90, 50, 10, 0.08);
+        --font-devanagari: 'Tiro Devanagari Sanskrit', 'Siddhanta', 'Noto Sans Devanagari', serif;
+        --font-roman:      'Junicode', Georgia, serif;
+    }
+
+    body {
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: var(--font-roman);
+    }
+
+    .devanagari {
+        font-family: var(--font-devanagari);
+    }
+
+    /* ── Navbar overrides ── */
+    .navbar-ontop { z-index: 1031; }
+    .hdclr { color: var(--saffron); }
+    .engpara { font-family: 'Open Sans', sans-serif; }
+
+    /* ── Layout ── */
+    .dh-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .dh-content {
+        flex: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        background: var(--parchment);
+        box-shadow: var(--shadow);
+        min-height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        .dh-content { padding: 24px 20px; }
+        .dh-wrapper { flex-direction: column; }
+    }
+
+    /* ── TOC Sidebar ── */
+    .toc-sidebar {
+        position: sticky;
+        top: 80px;
+        width: 280px;
+        min-width: 280px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding: 20px 16px;
+        margin-right: 24px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        scrollbar-width: thin;
+    }
+
+    .toc-title {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--saffron-light);
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list li {
+        padding: 4px 0;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-list li.toc-l3 {
+        padding-left: 16px;
+        font-size: 0.78rem;
+    }
+
+    .toc-list li a {
+        color: var(--ink-secondary);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .toc-list li a:hover { color: var(--saffron); }
+
+    .toc-list li.active {
+        border-left-color: var(--saffron);
+    }
+
+    .toc-list li.active a {
+        color: var(--saffron);
+        font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-sidebar { display: none; }
+    }
+
+    /* ── Mobile TOC Toggle ── */
+    .toc-mobile-toggle {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1050;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--saffron);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-mobile-toggle { display: block; }
+    }
+
+    /* ── Section Headings ── */
+    .section-heading {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        margin: 48px 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--rule);
+        letter-spacing: 0.5px;
+        scroll-margin-top: 80px;
+    }
+
+    h2.section-heading { font-size: 1.6rem; }
+
+    h3.section-heading {
+        font-size: 1.25rem;
+        border-left: 4px solid var(--saffron-light);
+        border-bottom: none;
+        padding: 8px 16px;
+        background: var(--saffron-wash);
+        border-radius: 0 5px 5px 0;
+    }
+
+    /* ── Prose ── */
+    .prose {
+        font-family: var(--font-roman);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+        color: var(--ink);
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    .prose em { color: var(--maroon); }
+
+    .prose:target {
+        background: rgba(212, 96, 10, 0.12);
+        border-left: 4px solid var(--saffron);
+        padding-left: 16px;
+        margin-left: -20px;
+        border-radius: 0 6px 6px 0;
+        animation: target-pulse 2s ease-out;
+    }
+
+    @keyframes target-pulse {
+        0%   { background: rgba(212, 96, 10, 0.30); }
+        100% { background: rgba(212, 96, 10, 0.12); }
+    }
+
+    /* ── Footnote References ── */
+    .fn-ref {
+        font-size: 0.75em;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    .fn-ref a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 0 2px;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: color 0.15s;
+    }
+
+    .fn-ref a:hover { color: var(--indigo); }
+
+    /* ── Synopsis Box ── */
+    .synopsis-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron-light);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .synopsis-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .synopsis-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .synopsis-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .synopsis-box.open .synopsis-toggle i {
+        transform: rotate(90deg);
+    }
+    .synopsis-body {
+        display: none;
+        padding: 0 20px 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+    }
+    .synopsis-box.open .synopsis-body { display: block; }
+    .synopsis-body p { margin: 0; }
+    .synopsis-attribution {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: var(--ink-secondary);
+        opacity: 0.7;
+        font-style: italic;
+    }
+    .synopsis-audio {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    .synopsis-play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--saffron);
+        background: none;
+        color: var(--saffron);
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: background 0.2s, color 0.2s;
+        padding: 0;
+    }
+    .synopsis-play-btn:hover {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn.playing {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn i { padding-left: 2px; }
+
+    /* ── Index Terms Panel ── */
+    .index-terms-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .index-terms-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .index-terms-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .index-terms-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .index-terms-box.open .index-terms-toggle i {
+        transform: rotate(90deg);
+    }
+    .index-terms-body {
+        display: none;
+        padding: 0 20px 16px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .index-terms-box.open .index-terms-body { display: block; }
+    .index-terms-dl {
+        margin: 0;
+        padding: 0;
+    }
+    .index-terms-dl dt {
+        font-family: var(--font-roman);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+        margin-top: 8px;
+    }
+    .index-terms-dl dd {
+        margin: 2px 0 0 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        color: var(--ink-secondary);
+        line-height: 1.5;
+    }
+    .nyaya-heading {
+        font-family: var(--font-roman);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        margin: 16px 0 4px;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+    }
+
+    /* ── Inline Index Popovers ── */
+    .idx-term {
+        border-bottom: 1px dotted var(--saffron-light);
+        cursor: help;
+        position: relative;
+    }
+    .idx-term:hover::after {
+        content: attr(data-def);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        background: rgba(44, 36, 22, 0.92);
+        color: #F5ECD8;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        max-width: 280px;
+        z-index: 100;
+        white-space: normal;
+        line-height: 1.4;
+        pointer-events: none;
+    }
+
+    /* ── Structured Version Banner ── */
+    .structured-banner {
+        margin: 0 0 28px;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, rgba(212, 96, 10, 0.06) 0%, rgba(212, 96, 10, 0.02) 100%);
+        border: 1px solid var(--saffron-light);
+        border-radius: 6px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        color: var(--ink-secondary);
+        line-height: 1.6;
+    }
+    .structured-banner i { color: var(--saffron); margin-right: 4px; }
+    .structured-banner a { color: var(--indigo); font-weight: 600; text-decoration: none; }
+    .structured-banner a:hover { text-decoration: underline; }
+
+    /* ── Footnotes Section ── */
+    .footnotes-section {
+        margin: 32px 0 48px;
+        padding: 20px 24px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .footnotes-section hr {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 0 0 16px;
+    }
+
+    .footnotes-list {
+        padding-left: 24px;
+        margin: 0;
+    }
+
+    .footnote-item {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+        scroll-margin-top: 80px;
+    }
+
+    .footnote-item:target {
+        background: rgba(212, 96, 10, 0.1);
+        border-radius: 4px;
+        padding: 4px 6px;
+        margin-left: -6px;
+    }
+
+    .fn-back {
+        color: var(--saffron-light);
+        text-decoration: none;
+        font-size: 0.85em;
+        margin-left: 4px;
+    }
+
+    .fn-back:hover { color: var(--saffron); }
+
+    /* ── Reference Links ── */
+    a.ref {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: all 0.15s;
+    }
+
+    a.ref:hover {
+        color: var(--saffron);
+        border-bottom-style: solid;
+    }
+
+    a.mbta-ext {
+        color: var(--indigo);
+        font-size: 0.7em;
+        margin-left: 2px;
+        opacity: 0.5;
+        text-decoration: none;
+        vertical-align: super;
+    }
+    a.mbta-ext:hover { opacity: 1; color: var(--saffron); }
+
+    /* ── References Panel (sidebar) ── */
+    .refs-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .refs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .refs-list li {
+        padding: 3px 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .ref-source-link {
+        font-weight: 600;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .ref-source-link:hover {
+        text-decoration: underline;
+    }
+
+    .ref-verse-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.76rem;
+    }
+
+    .ref-verse-link:hover {
+        text-decoration: underline;
+        color: var(--saffron);
+    }
+
+    .ref-verses {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Timeline panel ── */
+    .timeline-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .timeline-list li {
+        padding: 2px 0;
+        font-size: 0.76rem;
+        line-height: 1.4;
+        position: relative;
+        padding-left: 14px;
+    }
+
+    .timeline-list li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--saffron);
+    }
+
+    .timeline-list li.tl-approximate::before {
+        background: transparent;
+        border: 2px solid var(--saffron);
+        width: 4px;
+        height: 4px;
+    }
+
+    .timeline-list li.tl-century::before {
+        background: transparent;
+        border: 2px dashed var(--saffron);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+
+    .tl-dot-link {
+        text-decoration: none;
+        color: var(--ink);
+        display: block;
+    }
+
+    .tl-dot-link:hover {
+        color: var(--saffron);
+    }
+
+    .tl-year {
+        font-weight: 600;
+        color: var(--saffron);
+        font-size: 0.72rem;
+        min-width: 70px;
+        display: inline-block;
+    }
+
+    .tl-label {
+        color: var(--ink-secondary);
+        font-size: 0.72rem;
+    }
+
+    .tl-view-link, .tl-more {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.72rem;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .tl-view-link:hover, .tl-more:hover {
+        text-decoration: underline;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+
+    .breadcrumb-bar a {
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+
+    .breadcrumb-bar .sep {
+        color: var(--amber);
+        margin: 0 8px;
+    }
+
+    .breadcrumb-bar .current {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Chapter Navigation ── */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        margin-top: 48px;
+        border-top: 2px solid var(--rule);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .chapter-nav a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        transition: all 0.2s;
+        max-width: 45%;
+    }
+
+    .chapter-nav a:hover {
+        background: var(--saffron-wash);
+        border-color: var(--saffron-light);
+    }
+
+    .nav-prev { text-align: left; }
+    .nav-next { text-align: right; margin-left: auto; }
+
+    .page-range {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+    }
+
+    /* ── Volume Cards (Landing) ── */
+    .vol-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .vol-card {
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        transition: all 0.25s;
+    }
+
+    .vol-card:hover {
+        border-color: var(--saffron-light);
+        box-shadow: 0 4px 24px rgba(212, 96, 10, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .vol-num {
+        font-family: var(--font-roman);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--saffron);
+        margin-bottom: 8px;
+    }
+
+    .vol-subtitle {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        line-height: 1.5;
+        flex: 1;
+    }
+
+    .vol-chapters {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        margin-top: 12px;
+    }
+
+    /* ── Chapter Cards (Volume Index) ── */
+    .chapter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .chapter-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .chapter-card:hover {
+        border-color: var(--saffron-light);
+        background: var(--saffron-wash);
+    }
+
+    .card-num {
+        font-family: var(--font-roman);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--saffron);
+        min-width: 36px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        flex: 1;
+    }
+
+    .card-pages {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        color: var(--ink-secondary);
+    }
+
+    /* ── Landing Hero ── */
+    .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-family: var(--font-roman);
+        font-size: 2.4rem;
+        color: var(--saffron);
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .hero .devanagari-title {
+        font-family: var(--font-devanagari);
+        font-size: 1.8rem;
+        color: var(--ink);
+        margin-bottom: 16px;
+    }
+
+    .hero .author {
+        font-family: var(--font-roman);
+        font-size: 1.1rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .hero .desc {
+        font-family: var(--font-roman);
+        font-size: 1rem;
+        color: var(--ink-secondary);
+        line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer { margin-top: 48px; }
+</style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mbta/">
+      <div class="container-fluid">&emsp;&emsp;
+      <a href="../index.html" class="navbar-brand" style="text-decoration:none;">
+        <span class="devanagari ms-3" style="font-size:1.5rem; color:var(--saffron); font-weight:700;">धर्मशास्त्रम्</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="../index.html">धर्मशास्त्रम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5 active" href="../index.html">खण्डाः</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in/mbta/">महाभारतम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in">सनातनम्</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+
+    <div class="dh-wrapper container-xl">
+        <nav id="toc" class="toc-sidebar">
+<div class="refs-panel">
+<h5 class="toc-title">References</h5>
+<ul class="refs-list">
+<li><a href="../refs/gautama.html" class="ref-source-link">Gautama Dharmasūtra</a> <span class="ref-verses"><a href="../refs/gautama.html#VIII, 19" class="ref-verse-link">VIII, 19</a></span></li>
+<li><a href="../refs/hodh.html" class="ref-source-link">History of Dharmaśāstra</a> <span class="ref-verses"><a href="../refs/hodh.html#vol. II" class="ref-verse-link">vol. II</a>, <a href="../refs/hodh.html#vol II p 435" class="ref-verse-link">vol II p 435</a></span></li>
+<li><a href="../refs/kamasutra.html" class="ref-source-link">Kāmasūtra</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/manu.html" class="ref-source-link">Manusmṛti</a> <span class="ref-verses"><a href="../refs/manu.html#V.14" class="ref-verse-link">V.14</a>, <a href="../refs/manu.html#II.11" class="ref-verse-link">II.11</a></span></li>
+<li><a href="../refs/padma_purana.html" class="ref-source-link">Padmapurāṇa</a> <span class="ref-verses"><a href="../refs/padma_purana.html#VI.124.4" class="ref-verse-link">VI.124.4</a></span></li>
+<li><a href="../refs/taittiriya_br.html" class="ref-source-link">Taittirīya Brāhmaṇa</a> <span class="ref-verses"><a href="../refs/taittiriya_br.html#I.2.1.7" class="ref-verse-link">I.2.1.7</a>, <a href="../refs/taittiriya_br.html#I.2.1.16" class="ref-verse-link">I.2.1.16</a></span></li>
+<li><a href="../refs/taittiriya_ar.html" class="ref-source-link">Taittirīya Āraṇyaka</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mb_vanaparva.html" class="ref-source-link">Vanaparva</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/vishnu_smriti.html" class="ref-source-link">Viṣṇu Smṛti</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/vishnu_purana.html" class="ref-source-link">Viṣṇupurāṇa</a> <span class="ref-verses"><a href="../refs/vishnu_purana.html#V.29" class="ref-verse-link">V.29</a></span></li>
+<li><a href="../refs/yajnavalkya.html" class="ref-source-link">Yājñavalkya</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mb_shantiparva.html" class="ref-source-link">Śāntiparva</a> <span class="ref-verses"><a href="../refs/mb_shantiparva.html#225" class="ref-verse-link">225</a></span></li>
+<li><a href="../refs/rigveda.html" class="ref-source-link">Ṛgveda</a> <span class="ref-verses"><a href="../refs/rigveda.html#X.94.1" class="ref-verse-link">X.94.1</a>, <a href="../refs/rigveda.html#VI.28.1" class="ref-verse-link">VI.28.1</a>, <a href="../refs/rigveda.html#X.10" class="ref-verse-link">X.10</a>, <a href="../refs/rigveda.html#X.119" class="ref-verse-link">X.119</a></span></li>
+</ul>
+</div>
+<h5 class="toc-title">Sections</h5>
+<ul class="toc-list">
+<li class="toc-l2"><a href="#chapter-x-vijayādashāmī-and-divālī">Chapter X. Vijayādashāmī and Divālī</a></li>
+</ul>
+</nav>
+        <main class="dh-content">
+            
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep">›</span>
+        <a href="index.html">Volume V: Part I</a>
+        <span class="sep">›</span>
+        <span class="current">Chapter X. Vijayādashāmī and Divālī</span>
+    </div>
+    
+            <h1 class="text-center" style="font-family: var(--font-roman); font-size: 2rem; color: var(--saffron); margin-bottom: 8px;">
+                Chapter X. Vijayādashāmī and Divālī
+            </h1>
+            <p class="text-center" style="font-family: 'Open Sans', sans-serif; color: var(--ink-secondary); font-size: 0.9rem; margin-bottom: 36px;">
+                Volume V: Part I <span class="page-range">pp. 188–210</span>
+            </p>
+
+            
+    <div class="synopsis-box" id="synopsis">
+        <button class="synopsis-toggle" onclick="this.parentElement.classList.toggle('open')"
+                aria-expanded="false" aria-controls="synopsis-body">
+            <i class="fa-solid fa-chevron-right"></i>
+            Kane's Synopsis
+        </button>
+        <div class="synopsis-audio">
+            <span class="synopsis-play-btn" role="button" tabindex="0"
+                    onclick="toggleSynopsisAudio(this)"
+                    data-src="../audio/synopsis/vol-5-part-1/vol-5-part-1_sec010.mp3" title="Listen to synopsis">
+                <i class="fa-solid fa-play"></i>
+            </span>
+            <audio preload="none"></audio>
+        </div>
+        <div class="synopsis-body" id="synopsis-body">
+            <p>Chapter Ten of P.V. Kane's monumental 'History of Dharmaśāstra' is dedicated to a meticulous exploration of two paramount Hindu festivals: Vijayādaśamī and Divālī. This scholarly overview delves into their profound significance within the fabric of Hindu socio-religious life, examining their multifaceted origins and historical evolution. The chapter meticulously traces the scriptural references and traditional practices that underpin these celebrations, from Vedic antecedents to later Dharmaśāstra commentaries.
+
+A central focus remains on the specific rituals, observances, and customs that characterize these festivals. This includes a detailed account of the various pūjās, vratas, and ceremonies performed, exploring their prescribed methodologies and symbolic meanings. Kane elucidates how Vijayādaśamī, often associated with victory and the culmination of Navarātri, and Divālī, the festival of lights symbolizing prosperity and the triumph of good, are embedded within the larger framework of dharma. The discussion encompasses the social, ethical, and spiritual dimensions these festivals impart, illustrating their enduring role in shaping communal life and individual religious practice across diverse traditions of Bhārata.</p>
+            <p class="synopsis-attribution">— Synopsis by P.V. Kane, from History of Dharmaśāstra</p>
+        </div>
+    </div>
+
+
+            
+    <div class="index-terms-box" id="index-terms">
+        <button class="index-terms-toggle" onclick="this.parentElement.classList.toggle('open')"
+                aria-expanded="false" aria-controls="index-terms-body">
+            <i class="fa-solid fa-chevron-right"></i>
+            Index Terms (142)
+        </button>
+        <div class="index-terms-body" id="index-terms-body">
+            <dl class="index-terms-dl"><dt>## Hemādri</dt><dd>on Vrata , 105n-107, 153n-4n, 156n-7n, 183n-5, 6n, 745n-46, (speaks of some mudrās), on Kāla , 78n-8n, 137n-8n, 201n-3n, 243n-50n, 663n-5n, 67274; on śrāddha , on Dāna</dd><dt>## Mahābhāṣya of Patañjali (about 150 B. C.) : (vide under Patañjali)</dt><dd>658n-68n, (on numerals ), (de-rives ‘Paurāṇika’ ), (full of Pūrva-mīmāṁsā matters), (men-tions Kāśakṛtsni ), (on Veda ), (divisions of the four Vedas ), (śabdapramāṇakā . vayam ), (on *prakṛti* and *pratyaya*), ('na' means 'sadrśa' in some cases), (śāstra is meant to give defi-nite rules), (primary meaning to be preferred to secondary), (on Sattra for one thousand years), (date of), (employs an ungrammatical form in *Aviravikanyāya* ); mentions several men and inci-dents connected with *Kṛṣṇa* such as killing Kamsa ; papēr by present author on ‘*Mahābhāṣya* and the *bhāṣya* of *Śabara*’ ; quoted several times by *Śabara* who refers to its author as *Ācārya* and ‘*abhiyukta*’ ; re-marks that Vedas and their meaning are eternal but the arrangement of words is not eternal and hence arise diffe-rent Vedic texts like *Kāṭhaka*, *Kālāpaka* etc. , (M. included Śakas and *yavanas* among *śūdras*) ; ed. by Kielhorn</dd><dt>## Pradoṣa</dt><dd>period of three or six ghaṭikās after sunset</dd><dt>## Prahlāda</dt><dd>attained highest bliss through the grace of God : great devotee of Viṣṇu and grandfather of Bali</dd><dt>*homa*</dt><dd>and *dāna* ), 1325n-26, 1328n-29n, 1634n-36n, 1638n-1640, Vol. III. — (on pp.) , ( on Manu II. 7 ) , and n, ( discussion on valid customs and usages ), ( Kumārila's explanations of transgressions by great men of antiquity ), ( adoption by Hindu widow ), 1469n-70, Vol IV3, 40n-41, 673n-4n, ( meaning of</dd><dt>Aghamaraṣaṇa hymn (Ṛg. X. 1-3) highly praised as remover of consequences of sins</dt><dt>Agnipurāņa</dt><dd>(chapters of, on Śānti), (examples of three kinds of utpātas), (three best śāntis are Amṛta</dd><dt>Agrāyaṇa or Navasasyeṣṭi 206-207; Divali festival cannot be traced to</dt><dt>Ahalyākāmadhenu</dt><dt>Annals of Bhandarkar Oriental Institute; 3</dt><dd>(on a modern Siddha Śivayogin ), (on Bhavadāsa ), (on Gītā .4 ), (present author's paper on ‘Brief sketch of the PMS’), (pre-sent author's paper ‘Pūrva-mīmāṁsā’), (Śaṅkha-dharmasūtra )</dd><dt>Anuśāsana-parva</dt><dd>(on parks), (quotes gāthās from Yama's Dharmaśāstra )</dd><dt>Aparājitādevī : procedure of the worship of</dt><dd>on Vijayādaśamī , procedure of worship of, by a king</dd><dt>Apāmārga</dt><dd>a plant used in incantations and medicine</dd><dt>Atharvaveda</dt><dd>(verses of, used in Śāntis on dreams), (on Utpātas), (abhaya-mantras), (two interpretations of X. 8. 9), (magic spells in), (spells for softening the heart and for destroying worms), (on dīkṣā), (on joys of heaven), (aṣṭakāmantra</dd><dt>Aśvayujī</dt><dd>one of the seven Pākayajnas m. by Gaut. performed on full Moon of Āśvina</dd><dt>Bali</dt><dd>proper time for worship of Bali, when pratipadā is mixed with Amāvāsyā or dvitīyā ; Śiva was defeated on this day in dice-play by</dd><dt>Bali with his ministers and his brothers</dt><dd>king should arrange for dramatic spectacles about kṣatriyas, Mantra addressed to Bali ; most important item on this day is the worship of Bali</dd><dt>Balipratipadā</dt><dd>see</dd><dt>Bengal; Hazra dates it between-A. D.;</dt><dt>Berossus</dt><dt>Bhavadāsa</dt><dd>(between</dd><dt>Bhaviṣyapurāṇa</dt><dd>(on śāntis), (part discarded by Ballālasena because tainted with heretical doctrines), (divides smṛti contents into five categories); divided into four parvans of which only the first viz. Brāhma can claim an early date, the</dd><dt>Bhaviṣyottara Purāṇa; 40</dt><dd>held not authoritative by</dd><dt>Bhrātṛ-dvitīya</dt><dd>same as Yama-dvitīya, an indepen-dent festival tacked on to Dīvali ; hardly any religi-ous ceremony observed in these days ; on 2nd of bright half of Kārtika ; procedure on, wor-ship of Yama, Yamunā and Citragupta and some other de-tails found in mediæval digests are now dropped</dd><dt>Bhāgavata-purāṇa 112</dt><dd>(on</dd><dt>Bhūtācaturdaśī</dt><dt>Brahmapurāṇa 43</dt><dd>(on nyāsa), ( on Sāṅkhya ), (on creation), chapters containing verses deal with tīrthas, com-posed between 10th and 12th</dd><dt>Bṛhat-saṃhitā of Varāhamihira</dt><dd>(on units of time from kṣaṇa to kalpa), (praise of</dd><dt>Bṛhatsamhitā of Varāhamihira 69n</dt><dd>edited Saddharmapuṇḍarīka with Bunyiu Nanjio ; published part of Yogayātrā in volumes of 'Indische</dd><dt>Cirajīvin persons</dt><dd>eight named</dd><dt>Cows</dt><dd>honoured on certain tithis called Yugādi, Yugāntya etc. ; praise of ; worship of, on Balipratipadā</dd><dt>Das</dt><dd>S. R., paper of, on ‘Study of Vrata rites in Bengal’ in ‘Man in India’ Vol. pp</dd><dt>Dasarā- ( vide under Aparājitā and Vijayādaśamī ); Durbar and processions held in Baroda and Mysore on this day 192–193; speculations about origin of</dt><dd>worship of weapons of war and implements of trade on ; word derived, 194&lt;sup&gt;n&lt;/sup&gt;</dd><dt>Delhi</dt><dd>)</dd><dt>Devala</dt><dd>a. of Smṛti, (allowed brāhmaṇa to eat food from certain śūdras)</dd><dt>Dharmasindhu</dt><dd>71n-73n, ( nyāsa and mudrā are avaidika )</dd><dt>Divāli Festival; 194–210; (see under Narakāsura</dt><dd>Lakṣmīpūjana, Bali Pratipadā, Bhrātṛdvitīyā ); Apāmārga to be whirled over one’s head on 14th, Amāvāsyā in D. important day ; called</dd><dt>Filliozat</dt><dd>Prof. J.</dd><dt>Gautama-dharma-sūtra</dt><dd>1544n–45</dd><dt>Gode</dt><dd>Prof P. K.</dd><dt>Gomatīvidyā</dt><dt>Govardhanapūjā on Balipratipadā</dt><dd>also called Annakūṭa</dd><dt>Govardhanapūjā; Bali addressed as future Indra 201; B. is also called Dyūtapratipadā</dt><dd>Balirājya extends over three days from 14th in Dīvālī, cows, bulls and calves worshipped on this day</dd><dt>Gupte</dt><dd>B. A., work of, on ‘Hindu holidays and ceremonials’ , on Sāvitrīvrata origins, in I. A. vol. , on Diwali, on Śivarātri origin ; on Holikā, criticized</dd><dt>Gāyadānr</dt><dd>festival in Bihar, Orissa and other places on Balipratipadā</dd><dt>History between–</dt><dt>History of Dharmaśāstra : Vol. I</dt><dd>on pp , vol. II on pp. , 31n-33n, 218n-9n, 674n-5n. , . , 1096n-97, 1217n-18, ( for Madhuparka ), ( for Sautrāmaṇi ), ( Upanayana for women ), ( marrying a maternal uncle's daughter and gift or sale of horses ), ( distinction between *yāga*</dd><dt>in Divālī 196 and n; ten names of</dt><dd>in Bhartṛdvitīyā ; wrong conclusions, of western scholars from Yama and Yamī hymn</dd><dt>Indian Antiquary (Journal): 94</dt><dd>(grant of A. D. containing predictions of matters that came to be true)</dd><dt>Jayāmangala</dt><dd>commentary on Vātsyāyana's Kāmasūtra</dd><dt>Kaumudī festival (vide Dīvali):</dt><dt>Kaumudī jāgara and Yakṣātri included under *kriyā*</dt><dt>Keith</dt><dd>about A. D. ; dates ( approximate ) of several writers on P. M. S. in Sanskrit ; descriptions of creation and dissolution of the world are not to be literally understood, the universe as a whole has no beginning and no end, descriptions are meant to illustrate power of daiva and human effort and to urge men to perform their duties enjoined by Veda ; dharma is the proper subject of P. M. S. acc. to Śāstradīpikā and not ‘Vedārtha’</dd><dt>Khañjariṭa (wagtail) or Khanjana bird; eating of flesh of</dt><dd>forbidden by Manu and Yāj. ; prognostications from movements of</dd><dt>Krama</dt><dd>Kumārila, mantra, maxims, mīmāṁsā, niyama, parisaṁkhyā, Śabara, Śāstra, sūtra, svarga, ūha, Veda, Vedāntasūtra, vidhi, Vṛttikāra, words ), ( auspicious times for all rites in honour of gods ), adhikārin of P. M. S. is one who has studied the Veda from guru ; approximate date of, between B. C. , authors mentioned by both P. M. S.</dd><dt>Kālanirṇaya 54n</dt><dd>77n-8n, 105n-107, 227n-230, 243n-5n</dd><dt>Kālatattvavivecana 73n</dt><dt>Kālaviveka of Jīmūtavāhana 41n</dt><dd>78n-9n, 97n-100n, 176n-178n, 671n-74n, mentions seven predecessors that wrote on Kāla</dd><dt>Kāli</dt><dd>mentioned in Mahābhārata ; one of the dhyānas of</dd><dt>Kārtika-śukla first is one of three most auspicious days in the year 201; Kārtika-śukla first if it has Svātinakṣatra is most commended 201; lights in temples of Viṣṇu</dt><dd>Śiva and other gods, in monasteries, rooms for implements, on caityas, stables, not a festival in honour of a single god as Navarātra is, oil bath necessary on all three days from 14th, of lights, and fireworks, is most joyful of festivals and observed throughout India, though the observances differ in detail from age to age and from country to country ; on evenings of 14th dark half and Amāvāsyā men with firebrands show the way to pitṛs ; origin of, not certain ; rites on Amāvāsyā in, rites performed on the 14th of dark half of Aśvina ( or Kārtika according to pūrṇimānta reckoning ), second tithi of Kārtikaśukla is called Bhrātṛdvitīyā ; tarpaṇa on 14th of Yama with seven names or names, and n; three days, viz. 14th, Amāvāsyā and Kārtika śukla first constitute Kaumudī festival , usage of eating kinds of vegetables on 14th in Divali</dd><dt>Kārtika-śukla-pratipadā is socalled; gifts made on bath on this day become inexhaustible and please Viṣṇu; king to offer worship to</dt><dt>Kūrmapurāṇa</dt><dd>103n–4n, (on Kāla), (incorporates Upaniṣad passages ), (on Ahiṃsā), ( similar to Yaj. I. ), extent of, is 17000 or 18000 acc. to many Purāṇas ; note on</dd><dt>Kṛtyaratnākara 30</dt><dd>213n-216n, 246n-249n, begins with Vāravratas</dd><dt>Kṛtyatattva 88n</dt><dd>123n-25n</dd><dt>Kṛṣṇa (vide under Kṛṣṇajanmāṣṭamīvrata) : K. and Arjuna are described as drunk with wine and married their maternal uncle’s daughters; identifies himself with Vāsuki and Ananta (a nāga); killed Narākāsura and married0 women imprisoned by the latter–; story of suspicion about K. killing Prasenajit for syamantaka jewel</dt><dt>Lakṣmī becomes stable by illuminations on this day</dt><dd>long list of observances on this day, Mārgaśīrṣalī on, described, Naivedya to Bali included wine and meat ; ordinary people also should establish in their houses image of Bali with white rice grains and worship it with flowers and fruits, people even now engage in gambling on this day in some places, procedure of the worship of</dd><dt>Macdonell</dt><dd>a. of 'Vedic Mythology', sometimes indulges in facile assumptions , (does not agree with Deussen about Kṣatriyas being original cherishers of</dd><dt>Madanapārijāta</dt><dd>47n–8n, ( North Indian work of about A. D. quotes a half verse of Prabhākara ), (on Vākyabheda )</dd><dt>Manusmṛti 24n</dt><dd>(units of time), (on Śiṣṭabrāhmaṇas), (virtues necessary for all varṇas ), (on Yama and Niyama), (quoted by Kulārṇava ), (appears to suggest that Veda is self-existent ), and n (many Arthavādas in ), (in III. gives several options expressly ), 1256n–58n, (on duties of Sannyāsins ), (uses word saṃsāra frequently), (on repentance ), frequently echoes the very words of the Veda ; mentions many Sāṅkhya tenets , practice of M. of stating opposite views on the same point one after another, (limits sadācāra to only certain parts of India, excluding Madhya-deśa and Āryāvarta ), (varṇa and jāti confounded ), (brāhmaṇa selling milk for more than three days became a śūdra ), (king was a divinity in human form ), (duties common to all men ); some verses are identical with those in Śāntiparva, Vanaparva and some Purāṇas , some verses of, almost identical with verses in Āp. Dh. S. ; some verses of, almost the same in Matsyapurāṇa ; some verses identical with Parāśarasmṛti ; three theories about creation in ; very eminent position assigned to M. by Bṛhaspati ; whatever Manusmṛti proclaims as dharma was already declared so in the Veda acc. to M. II 7, on which commentators differ</dd><dt>Marriage</dt><dd>(vide Candrabala, child marriage Restraint Act, Gorajas, Gurvāditya, Kūṭas, Simhastha, Tārābala); anuloma marriages allowed by most Smṛtis but medieval writers changed all that by Kalivarjya ; auspicious ages for the marriage of maidens and of bridegrooms ; auspicious times, months and nakṣatras for, auspicious nakṣatras for M., different views on, calculation on tallying the horoscopes of both bride and bridegroom in regard to eight matters, called 'ghāṭita-guṇa-vicāra' or 'vadhū-vara-melaka-vicāra' ; Cantrabala and Tārābala in M. ; comparative astrological strength of tithi, week-day, nakṣatra, Sun, Moon in m. ; great importance of gaṇa and nāḍī among brāhmaṇas even now, intricate astrological rules for, Jupiter, auspicious and inauspicious positions of, in m. ; Moon, importance of the auspicious position of, in m. ; not disapproved in simhastha Guru when performed north of the Ganges and South of the Godāvari ; proper lagna rāśis at time of m. ; Rājamārtanda devotes verses to astrological requirements of m. ; Ṛgveda X. is marriage hymn, rule of 'godhūli' or gorajas muhūrta in m. ; rules about simhastha Guru observed even now ; rules about the sameness of rāśi or nakṣatra of bride and bridegroom in m. ; Śaiva marriage acc. to Mahānirvāṇatantra in which no question of caste arises ; Śanti for inauspiciousness of Jupiter ; tithis proper and inauspicious for m. ; usages of countries to be followed about month proper for m. ; Venus, position of, in m. ; week days proper for m. ; when a maiden is very grown -up, no waiting for an auspicious time but one should consider only the lagna and the moon's position at m. ; Yama and Yami dialogue (Ṛg. X. ) wrongly considered by some Western scholars as referring to marriage of brother and sister ; ban against intercaste marriages removed by legislation .; futile legislation as to dowry in m. . Mars, statements about position of, in Mahābhārata are irreconcilable . Marshall, Sir John, editor of three volumes on Sanchi n; a. of 'Taxila' (three vol.,) and Guide to Taxila Martin E. W. editor of 'In Search of Faith', a symposium by several writers , . Marx: meaning of 'I am not a marxist' . Maskarin, means (a wandering ascetic), acc. to Pāṇini and Mahābhāṣya . Mātharavṛtti, com. on Sāṅkhya-kārikā not later than A. D., furnishes names of Sāṅkhya teachers between Pañcaśikha and Īśvarakṛṣṇa ; on the same Saṣṭi-tantra</dd><dt>Matsyapurāṇa : 40</dt><dd>545n–6n, (on Yātrā ), (on auspicious persons and things ) , (on Śāntis ), ( nume-rous Śāntis ), ( eighteen Śāntis ), (on dreams ), (gives contents of Vāyu ), ( characteristics in addition to five ) ; ( full list of Andhra kings ), ( period between Parīkṣit and Nanda ), ( contents of Bhaviṣya ), (‘Om Namo Nārāyaṇāya’ is Mūlamantra ), ( ten Ābhīra kings ), ( ten avatāras ), ( Viṣṇu cursed by Bhṛgu ), 1023n–24, ( description of black magic rite ), (nyāsa with mantras ) , 1377n–78, (on Sāṁkhya ), (on rebi-rths for sins ), (on writers about Vāstūśāstra ); Aparārka quotes verses from it and Kalpataru about , chief among Purāṇas acc. to Vāmana , date of, about middle or end of 3rd century A. D. , glorifies both Viṣṇu and Śiva ; has verses that also occur in Yaj. Smṛti, Manusmṛti and Mahābhārata , one of the ancient Purāṇas and has per-haps the largest number of Smṛti chapters and the best preserved ; Padmapurāṇa has hundreds of verses identi-cal with those of M. ; Śaṅ-karācārya appears to quote verse ( from it ) ; story of</dd><dt>Mukerji R. C. a. of 'Ancient Indian fasts and feasts' 60</dt><dt>Mādhavācārya</dt><dd>a. of Kālanirṇaya, a. of com.on Sūtasamhita, a. of Jaiminīnyāyāyamālāvistāra</dd><dt>Mārgapāli</dt><dd>on Balipratipadā, described</dd><dt>Mārkaṇḍeya 75n</dt><dd>supposed to be one of the eight immortals (cirajivināḥ) invoked on Yamadvitīyā</dd><dt>Narakacaturdaśī; also called</dt><dt>Narakāsura</dt><dd>killed by Kṛṣṇa and lights lighted with four wicks in memory of</dd><dt>Nepal</dt><dd>gambling in, on large scale on Balipratipadā</dd><dt>Nilamatapurāṇa</dt><dt>Nirājana</dt><dd>a Śānti , of horses and elephants ; of king and soldiers ; on the king's march for invasion ; procedure of and mantras in</dd><dt>Nirṇayasindhu (written in 1612 A. D.)</dt><dd>41n-43, 47n-50n, 153n-4n, 161n-2n, 196n-199n, 203n-5n, 207n-8n, 218n-9n, 243n-4, 246n-7n, 607n-8n, 664n-5n, 765n-6n, (times for dīkṣā )</dd><dt>Nirṇayāmṛta</dt><dd>69n-71n</dd><dt>Nārada-samhitā 195n</dt><dt>Padmapurāṇa 32</dt><dd>196n-97, 204n-07n, ( on Upāśruti-like divination ), ( chapters identical with those of Matsya ), ( condemns Advaita and Mīmāṁsā ), ( on nyāsa ), and ( avers that Mīmāṁsā is nirīśvara ), ( descrip-tion of heaven )</dd><dt>Persons</dt><dd>eight mythological long-lived persons, images of, to be worshipped on Yamadvitīyā</dd><dt>Puruṣārtha-cintāmaṇi 17n</dt><dd>100n-102, . Puruṣārthasudhānidhi, of Sāyaṇa</dd><dt>Puruṣārtha-vidhi: (see Kratvaṛtha): defined in P. M. S. IV. 1. 2</dt><dd>rules about the acquisition of wealth are P. , is what a man undertakes for securing the reward of happiness ; principal sacrifices like Darśa-pūrṇamāsa are included under P.</dd><dt>Purāṇasamuccaya</dt><dd>q. by Hemādri ; by Nirṇayasindhu</dd><dt>Pārvati are shown as playing with dice; described by</dt><dt>Pārvatī</dt><dd>so gambling recommended on this day, story of Bali, narrated in several Purāṇas is ancient, long prior to Mahābhāṣya , Vāmana thrust Bali into nether regions, gave him overlordship of Pātāla and made him the future Indra</dd><dt>Pāṇini</dt><dd>5, (knew Naṭasūtras of Śīlālin and Kṛśāśva), (explains ‘Mīmāṁsate’), (mentions Kāśyapa to show respect), (charge that Pāṇini violates his own rules), (distinguishes between the author of a work and expositor or tran-mitter of it), (does not observe his own rules), called Śālāturiya by Bhāmaha and other medieval writers ; date of, hailed from Northwest India ; in P.'s times there were mendicant ascetics (bhikṣus) who studied the Bhikṣusūtra of Parāśarya and that of Karmāṇḍa and were called 'Pārāśariṇo bhikṣavaḥ' . ; names of countries and places expressly mentioned by P. ; papers on geographical details in, teaches formation of words like Takṣaśila ; was acquainted with the whole of India from the extreme northwest of India to Kalinga ( Orissa ), Āśmaka ( country near Ajaṇṭā and Paithan) and modern Kutch , (Sindhu as the name of a country ), (word jāti occurs ), ( on Brāhma-ṇaka ), (names at least ten predecessors and shows that before him there was considerable secular litera-ture ). of teachers ending in 'Ānanda', speaks of three mārgas (paths) viz. Dakṣiṇa, Vāma, Uttara, speaks of jīvanmukti and quotes Upaniṣads ; (well known verse 'pitvā pitvā ' etc. esoterically explained )</dd><dt>Pūrpā-tithi</dt><dt>Radhakrishnan</dt><dd>Dr S. : a. of Indian 'Philosophy' , a. of 'Source book of Indian Philosophy' , (jointly with C. A. Moore) ; a. of 'India and China' , a of 'The Brahmasūtras', pp. of Introduction on 'Karma and Punarjanma', a. of 'Idealist view of life' ; a. of 'Eastern Religions and Western thought' (Schweitzer Criticized) ; a. of 'Kalkin or future of civilization' (defects of modern Democracy )</dd><dt>Raghunandana</dt><dd>a. of several Tattvas , (illustrates ‘rātrisattranyāya’)</dd><dt>Ramalila</dt><dd>celebrations in North India on first ten days of Asvina-sukla</dd><dt>Rājamārtaṇḍa of Bhoja (on astrology and dharmasastra topics) 46</dt><dd>90n–91, 212n–3n, ( verses on Upana yana), 608n–9n, mentions only vratas , quoted by V. K. K.</dd><dt>Samayamayūkha 66n</dt><dd>136n-37n, 14546n, 227n-8n, 243n-4n</dd><dt>Samuel</dt><dd>(Bible)</dd><dt>Saṅkalpa</dt><dd>necessary in every religious rite; contents of, formula of, in vrata, in a fast or vrata to be made in the morning</dd><dt>Simollanghana</dt><dt>Sister</dt><dd>house of, to be visited by brother on Bhātṛdvitīyā</dd><dt>Smṛtikaustubha 81n</dt><dt>Taittiriya Araṇyaka</dt><dt>Taittiriya Brāhmaṇa</dt><dd>(adhrigupraisa), (food is life), (has all verses of Rg. X. except one), Tai. Br. I. 5 differs from Tai. Br. III. 1 as to the names of nakṣatras and presiding deities</dd><dt>Tantrik worship)</dt><dd>(verses of, q. by Mahānirvāṇa-tantra), (Vedic Mantras employed in T. works exemplified), (orb of Sun is called wheel), (references that are held historical), (who went to heaven and what joys were there), (Madhvācārya claims that he is referred to in Ṛg. text I. . 1-3), (mantras full of faith in God and beati-tude), and n, (quoted often by Upaniṣads), (some doubters about Indra), Ṛg.IX.82.1 explained in Tāṇḍya), (passages where word Karman occurs), (Ṛg. VII.33.10-14 about Vasiṣṭha's two births explained), (interpretation of Ṛg. X. . 3 ), (Vaiśvā-nara ), and n, (river Sindhu), (meaning of 'Kṛṇvanto Viś-vam Āryam'), (.indications of at least three Āśramas ), (shift towards oblation of cooked food or ghee as equal to animal sacrifices); (Vasiṣṭha's prayer that sins due to wine and gambling may be for-given); prayer to bestow ten songs on newly married bride) (X. . explained )</dd><dt>Tithitattya 53</dt><dd>136n-8, 165n-167n</dd><dt>Tāntrik influence on 912n; 45</dt><dd>(about sūta), (Ballālasena discards parts of it), (runs down animal sacrifices or sacrifices even with kuśas and flowers), (no dharma higher-than doing good to others), (six aṅgas of Yoga), 1447n-8n</dd><dt>V. S.</dt><dd>Śaṅkarācārya oppose this doctrine and hold that reward is given by God, why called A.</dd><dt>Vaikhānasa-smārtasūtra 528</dt><dd>(mentions Wednesday ), (on Śānti of nine planets ), (ten yamas ), date of, between B. C. to A. D. ; refers to nakṣatras called janma, karma, sāṁgha-tika, sāmudāyika and vainā-śika and these terms are ex-plained in the Yogayātrā and Viṣṇudharmottara</dd><dt>Vanaparva</dt><dd>(time of starting of Kṛtayuga), (on Kalisvarūpa), (names Matsyapurāṇa and a purāṇa proclaimed by Vāyu), (close agreement with Yugapurāṇa), (giving up of tṛṣṇā), (on functions of ten prāṇas)</dd><dt>Vartikas ( on Pāṇini ) 68n</dt><dt>Varāhapurāṇa: 31n</dt><dd>(mentions Bhaviṣya), (on pūrta), date of, earlier than 10th century A. D. ; has some chapters in prose and some in prose and verse ; note on ; refers to a Śaka king called Nandavardhana ; supposed to have been narrated to the Earth by Viṣṇu in Boar incarnation, Vyāsa does not appear in this P., though Sūta figures in the beginning of several chapters</dd><dt>Varṣakriyākaumudī: 31n</dt><dd>54n-5n, 72n-81n. 83n-5n, 176n-178n, 180n-182n, . , 207n8n, 212n-215n, 220n-22n</dd><dt>Vasiṣṭha Siddhānta</dt><dd>one of the Vāyavīyasaṁhitā . five Siddhāntas and far from Vāyupurāṇa, accurate, . , (on</dd><dt>Vernal Equinox: deemed to have occurred on Aśvinī-nakṣatra about Śaka 444 but now it has receded to Uttarābhādrapadā 712; was in Kr̥ttikās about 2300 B. C</dt><dd>&lt;sup&gt;497n&lt;/sup&gt; ; was in divisional sign Aries about B. C</dd><dt>Vijaya</dt><dd>time and Muhūrta so called</dd><dt>Vijayadaśamī ( vide under ‘Dasarā’ ): chief observances of 190; in place of śamī</dt><dd>another tree called ‘Aptā’ is worshipped in Mahārāṣṭra ; on 10th of Āśvina bright half, one of the three most auspicious days in the year, Rāma is said to have marched against Laṅkā on this day, time for, when 10th tithi is mixed with 9th or 11th tithi ; time for celebrating it is afternoon or pradoṣa ; time for new undertakings even though the moon or some other planets be not favourable</dd><dt>Virātaparva 179</dt><dt>Viṣṇu: (vide under Avatāras</dt><dd>Śāstras): appears to be a name of the Sun in the Ṛgveda and came to be regarded as Highest God in Brāhmaṇa times ; Bhaviṣyapurāṇa says that V. begins to sleep in the first quarter of Anurādhā nakṣatra, turns on another side in the middle of Śrāvaṇa and wakes up in the last quarter of Revati ; day of, is equal to whole life of Brahmā ; different tithis (11th, 12th, 15th) for Viṣṇu's going to sleep in different authorities ; deluded people and asuras by producing Māyāmoha from his body that led them away from the Vedic path ; how śayana (sleeping) and prabodha (awakening) of V. are to be celebrated, identified with sacrifice (yajña) ; Meghadūta and Vanaparva mention the sleeping of Viṣṇu on the snake Śeṣa and waking up , one thousand eight names of V. set out in Anuśāsana parva, chap. and Garuḍapurāṇa I. . 1–160, possible explanations of sleep of Viṣṇu for four months ; steps called V. in sacrifices ; was supposed to go to sleep on night of 11th of Āṣāḍha bright half and to awake in the day on 11th of Kārtika bright half , was supposed to turn from one side to the other in his sleep on Bhādrapada bright half 11th tithi (which was therefore called Parivartinī ; worship of V. in three different ways, Vaidika, Tantrika or Miśra ; worship of, in six mediums , worship of, may be performed on Śālāgrāma stone, on a jewel, yantra, maṇḍala, image, or in a temple, acc. to Padmapurāṇa</dd><dt>Viṣṇudharmottara</dt><dd>an Upapurāṇa: , ( on</dd><dt>Viṣṇupurāṇa: 79n</dt><dd>( mentions Garga ), ( a verse of V. quoted as</dd><dt>Vratarāja 34</dt><dt>Vājasaneya Saṃhitā</dt><dd>(on</dd><dt>Vāmanapurāṇa: 71</dt><dd>(says Matsya is chief among Purāṇas), (adapts Ṛg. I. . 1), (on ahiṁsā), date between A. D., note on, short Purāṇa with verses in Venk. ed. and prose in chap. , )</dd><dt>Week Days : ( vide under 'horā</dt><dd>sabbath, calendar') : actions proper to be done on different w. according to Bṛhatsamhitā, Garga and Atharvaṇa Jyotiṣa ; arrangement of Hindu W. not based on Greek division of day into horās, but on ghaṭikās ; auspicious for all uudertakings are Monday, Wednesday; Thursday and Friday , combinations of certain tithis and W. yield all rewards ; combinations of certain W. tithis and nakṣatras bad for certain matters, derived by Indians from Chaldæans acc. to S. B. Dixit ; derived in Europe ultimately from Babylonian gods, Dio ( A. D. ) says W. originated in Egypt and were of recent introduction in his day ; for Upanayana Tuesday and Saturday inauspicious ; have no force at night in marriages ; known in Italy before A.D.; literary evidence in Sanskrit on W. ; no evidence that the Indian names of W. and the method of arriving at the order of the days is not indigenous ; not named in Bible ; not mentioned in Mahābhārata ; not borrowed en bloc by India from outside ; oldest reference to W. in Indian Inscriptions is of the Gupta year ( A.D. ) ; one of the five aṅgas of a pañcāṅga ; order of W. takes no account of the distances of planets ; origin and development of, probable that W. were known to Indians between B.C. to A.D. ; probably suggested to Indians from worship in Babylonian temples of planets on different week days ; Ptolemy makes no astrological use of W. ; Sanskrit literature concerning W. ; Sarton’s view that Greeks had nothing to do with W. but Egyptians and Babylonians developed W. ; section on, in Atharvaṇa Jyotiṣa</dd><dt>X.. 1); in Śat</dt><dt>Yakṣarātri–; festival comprises five items spread over five days with illuminations and crackers fromth of dark half of Aśvina;</dt><dt>Āsana or Āsanas (vide under Gherandasamhitā</dt><dd>Hathayoga, Inscriptions, Śivasamhitā) ; an anga of Yoga and defined as what is stable and comfortable in Y. S. (i. e. bodily posture) and in Gītā means seat covered with Kuśa grass, deer-skin and garment, handbook on, published by Śrī Kuvalayānanda, with figures ; is first aṅga in Hathayoga, of which there are , most important being Siddhasana ; names of āsanas ; Padmāsana mentioned by Dakṣasmṛti and by Śaṅkara , photographs of Ā. in Dr. Goswami’s work, 1394: sixteen figures of Ā. in Dr. Behanan’s work and more figures in other works ; ten Ā. named by Yogabhāsya ; Yaj. Smṛti (III. ) seems to have Padmāsana in view and n</dd><dt>Śāmi: (vide under Śānti): cult of</dt><dd>is ancient ; plant or branch, connected with appeasing terrible aspects ; war supposed to destroy sins and appease the wrath of gods when worshipped , worshipped on Vijayādaśamī</dd><dt>Śāntiparva</dt><dd>692n-93, (auspicious nimittas ), ( the verse ‘ Guror-apyava-liptasya etc. ), ( on tṛṣṇā ), on ahiṁsā ), (pupils of Vyāsa ); (Pañcarātra-śāstra ex-pounded ), and n., (mentions Dharmaśāstras ), (high praise of Sāṅkhya ), (quoted by Yoga-bhāṣya ) (Yoga matters ), . , (on pratyāhāra ), (immortality of soul ), (Devayāna and Pitṛ-yāna paths ), (life is far more miserable than happy ), (theory of Kalpas etc. ), (souls of six colours ), (qualities necessary for being treated as brāhmaṇa ), (apotheosis of satya )</dd><dt>Ṛgveda (vide God</dt><dd>Veda): 2-22, . , 726n-28n, 737n-39n, (mystic words and spells in), (Ṛg. V. . 4 deemed to refer to Kādividyā), (Ṛg. verses q. in Kularṇavatantra), (Ṛg. IV. . 5 ('Hamsaḥ' etc.) to be recited over wine and other tattvas in</dd></dl><h4 class="nyaya-heading">Mīmāṁsā Nyāyas</h4><dl class="index-terms-dl"><dt>अर्थमनर्थमिति प्रैर्विदि</dt><dd>जै. III. 7. 14</dd><dt>ऋतुलिङ्गन्याय</dt><dd>जै. I. 3. 7</dd><dt>एकवाक्यतान्याय</dt><dd>जै. II. 1. 46</dd><dt>काकासिगौलककन्याय</dt><dd>जै I. 3. 7</dd><dt>द्वयोः प्रजायतिन्याय</dt><dt>नास्ति वचनस्यातिभारः</dt><dd>जै. II. 2. 27</dd><dt>भूतसामान्याय or भूतौ स्थात्सर्धर्मत्वम्</dt><dd>जै. XII. 2. 22</dd><dt>यस्य येनाभिसम्बन्धो दूरस्थेपि स्यथापि धर्मणामानर्दमवन्मकारणद्</dt><dt>रात्रिसत्त्रन्यायः</dt><dd>जै. IV. 3. 17-19</dd><dt>वृण्ढापूपिकन्याय or वृण्ढापूपिकीनीति</dt><dt>सर्वं स्याद्भूतत्वात्</dt></dl>
+        </div>
+    </div>
+
+
+            <h2 id="chapter-x-vijayādashāmī-and-divālī" class="section-heading">Chapter X. Vijayādashāmī and Divālī</h2>
+<p class="prose" id="p-chapter-x-vijayādashāmī-and-divālī-1">Vijayādaśamī and Divālī</p>
+<p class="prose" id="p-chapter-x-vijayādashāmī-and-divālī-2">The 10th tithi of Aśvina-śukla is called Vijayā-daśamī. It is elaborately described in Hemādri (on vrata, vol. 1 pp. 970-973), Nirṇayasindhu (pp 69-70), Puruṣārtha-cintāmaṇi (pp. 145-148), Vratarāja (pp 359-361) and Kalātattva-vivecana (pp. 309-312), <span class="idx-term" data-def="71n-73n, ( nyāsa and mudrā are avaidika )">Dharmasindhu</span> (p 96). As Daśamī (10th tithi) is not mentioned in the Yugmarākya the Kalanirnaya relies on a verse that in the bright half that tithi which exists at sunrise should be accepted for performance of rites and in the dark half the one that exists at sunset <sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-1" id="fnref-chapter-x-vijayādashāmī-and-divālī-1">1</a></sup> Hemādri proposed (on vrata vol. I p 973) two simple rules (when 10th is viddhā) that that tithi on which Śravaṇa-nakṣatra exists should be accepted and in all other cases 10th mixed with 9th be accepteḍ But the other digests introduce many other considerations and complicated rules follow. A few of them are given below If the 10th tithi is mixed up with 9th and 11th, the day on which it is mixed with 9th should be accepted provided there is no Śravaṇa-nakṣatra on the next. The Skanda says: Aparājita-devī should be worshipped by men on the 10th towards the north-east and in the afternoon, when the 10th is mixed with 9th. Aparājita should be worshipped on that day for welfare and victory. Another verse <sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-1" id="fnref-chapter-x-vijayādashāmī-and-divālī-1">1</a></sup> is 'A person should offer worship on the 10th tithi in Aśvina bright half and should not perform the worship of Aparājita on Ekādaśī' It must be remembered that the proper time for Vijayā-daśamī rites is aparāhṇa (afternoon) and pradosa <sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-1" id="fnref-chapter-x-vijayādashāmī-and-divālī-1">1</a></sup> is gaunakalā (secondary time). If 10th extends over aparāhṇa on two days, the first (i. e 10th mixed with 9th) should be accepteḍ If the 10th exists at pradosa time (but not at aparāhṇa) on two days, then the later (viz. 10th mixed with 11th) should be accepted; Śravaṇa is not decisive just as Rohiṇī in Janmāṣṭami is not. If on both days the tenth tithi does not exist at the time of aparāhṇa then the first (10th mixed with 9th) is to be accepted; but in this case if on the 2nd day Śrāvaṇa-nakṣatra exists at the time of aparāhṇa then the latter (10th mixed with 11th) is to be accepteḍ These are the conclusions of N. S. The P. C. (p. 148) disputes the last propositioṇ Hemādri and follow-ing him Nirṇayasindhu (p. 189) quote Kaśyapa<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-2" id="fnref-chapter-x-vijayādashāmī-and-divālī-2">2</a></sup> to the follow-ing effect: 'if daśamī exists for some time at sunrise and if there is then ekādaśī for the rest of that day and there is Śrāvaṇa-nakṣatra at aparāhṇa on that day, that tithi is called Vijayā; since Rāma started on his invasion (against Rāvaṇa) on Śrāvaṇa-nakṣatra, men should celebrate the crossing of the limits of their village on that day and nakṣatra'. The Nirṇaya-sindhu and other works quote a verse<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-3" id="fnref-chapter-x-vijayādashāmī-and-divālī-3">3</a></sup> 'That time (on 10th tithi in Aśvina) which is slightly later than evening twilight and when the stars have just begun to appear is to be known as <span class="idx-term" data-def="time and Muhūrta so called">Vijaya</span> (success of all undertakings).' Bhṛgu says 'the<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-4" id="fnref-chapter-x-vijayādashāmī-and-divālī-4">4</a></sup> 11th muhūrta (on a day of 15 muhūrtas) is called Vijaya; all desirous of victory should march out at that time.' These verses explain why this tithi is called Vijayā-daśamī. These two verses show that the time called Vijaya is of two kindṣ</p>
+<p class="prose" id="p-chapter-x-vijayādashāmī-and-divālī-3">The Vijayādaśamī is one of the three most auspicious days In the year (the other two being Caitra-śukla first tithi and Kārtika-śukla 1st). Therefore in India children begin to learn the alphabet on this day (i. e. perform Sarasvatīpūjana), people start new undertakings on this day, even when the moon and the like are not astrologically favourable<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-5" id="fnref-chapter-x-vijayādashāmī-and-divālī-5">5</a></sup> and if the king marches against his foes on this tithi when there is Śravana-nakṣatra it is very auspicious and brings to him victory and peace.</p>
+<p class="prose" id="p-chapter-x-vijayādashāmī-and-divālī-4">On this day the principal acts are the worship of Aparājita, the worship of Śamī, Sīmollanghana (crossing the boundary of one's village), returning home and having a lamp waved before oneself by the women in the house, wearing new clothes and ornaments and in the case of a king, <span class="idx-term" data-def="a Śānti , of horses and elephants ; of king and soldiers ; on the king's march for invasion ; procedure of and mantras in">nirājana</span> of the horses, elephants, soldiers and marching out.</p>
+<p class="prose" id="p-chapter-x-vijayādashāmī-and-divālī-5">Dasaṛā or Vijayādaśamī is a great day for people of all castes, but it is specially a day for the kṣatriyas, the nobles and kingṣ</p>
+<p class="prose" id="p-chapter-x-vijayādashāmī-and-divālī-6">The procedure of the worship of Aparājita (invincible) Devī is briefly as follows (from Dharmasindhu p 96) In the after-noon one should go to the north-east of one's village, smear the earth (with cowdung) on a pure spot, should draw with sandal-wood paste or the like a figure with eight segments, should make a <span class="idx-term" data-def="necessary in every religious rite; contents of, formula of, in vrata, in a fast or vrata to be made in the morning">saṅkalpa</span> as in the note and should invoke Aparājita in the midst of that figure with the words 'salutations to Aparājita' and also invoke Jayā and Vijayā to the right and left of Aparājita respectively with the words 'salutation to Kriyāśakti' and 'salutation to Umā' respectively. He should then offer worship with sixteen upacāras to Aparājita, Jayā and Vijayā with the mantras 'Aparājitāyai namaḥ, Jayāyai namaḥ, Vijayāyai namaḥ' and offer the prayer 'O Devī! accepting this pūjā which I have offered to you according to my ability, for my protection may you go to your own place'. In the case of the king he should pray for victory in the words 'May Aparājita wearing a striking necklace and resplendent golden girdle and fond of doing good bestow victory on me' and then he should take leave of her in the words 'O Devī! &co'. Then all people should go out of the village to Śamī (Mimosa Suma) tree grow-ing in the north-east, offer worship to it People may perform the crossing of the boundary of the village before or after the worship of Śamī. Some provide that the images of Rāma and Sītā should be worshipped on Vijayādaśamī, since Rāma con-quered Laṅkā on this day (A. K. folio 218)<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-6" id="fnref-chapter-x-vijayādashāmī-and-divālī-6">6</a></sup>. In the case of the king the procedure described by Hemādri (on vrata vol. I. pp. 970-71) is as follows: the king coming out of his palace should be preceded by his purohita and after performing the rites on starting for a journey should march towards the east; after reaching the end of the capital he should perform Vāstupūjā (worship of a site) and worship the guardians of the quarters and the devatās (in temples) he may meet on the roaḍ He should then offer worship to Śami tree with Paurāṇika mantra <sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-7" id="fnref-chapter-x-vijayādashāmī-and-divālī-7">7</a></sup> 'I take refuge with the blessed and auspicious Śami tree, that removes all inauspicious things and evil acts and the effects of bad dreams'; then he (the king) should take first towards the east and towards other directions the <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> stepṣ After making an effigy of his enemy or merely bringing him before his mind he (the king) should pierce him in the heart with an arrow <sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-8" id="fnref-chapter-x-vijayādashāmī-and-divālī-8">8</a></sup> with a golden shaft The purohita recites verses about the victory of the king in the quarters; the king should honour worthy brāhmaṇas, the astrologer and purohita and should arrange sports of elephants, horses and foot-soldierṣ He should then enter his palace to the accompaniment of auspicious shouts like 'Jaya' and lights should be waved before him by courtezanṣ The king who performs every year this auspicious ceremony secures long life, health, prosperity and defeat and obtains unblemished wealth and victory in the worlḍ If a king <sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-9" id="fnref-chapter-x-vijayādashāmī-and-divālī-9">9</a></sup> starts on an invasion without celebrating Vijayādaśamī he would secure no victory for a year in his kingdoṃ The Tithi-tattva quotes Rājamārtaṇḍa <sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-10" id="fnref-chapter-x-vijayādashāmī-and-divālī-10">10</a></sup> to the effect that if for any reason the king cannot march out in person on Vijayādaśamī he should send out his umbrella or favourite weapon for a victorious march. The Nirnayasindhu, Dharmasindhu and other late medieval works add some verses about Śāmi and other details <sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-11" id="fnref-chapter-x-vijayādashāmī-and-divālī-11">11</a></sup> 'Śāmi destroys sin, Śāmi has reddish thorns, it held (concealed) the arrows of Arjuna and it appealed lovingly to Rāma, O Śāmi worshipped by Rāma! May you remove obstacles on the march that I am to undertake according to my convenience and ease'. If a Śāmi tree is not available, then the aśmantaka tree <sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-12" id="fnref-chapter-x-vijayādashāmī-and-divālī-12">12</a></sup> should be worshipped with a mantra (given in note below). Taking up a little wet clay from the root of the Śāmi tree together with akṣatas one should bring it to one's house to the accompaniment of songs and loud instrumental music; then the person should wear new apparel and ornaments along with his relatives and lights should be waved before him as an auspicious rite by chaste young womeṇ <sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-13" id="fnref-chapter-x-vijayādashāmī-and-divālī-13">13</a></sup></p>
+<p class="prose" id="p-chapter-x-vijayādashāmī-and-divālī-7">In modern times on Vijayadaśamī there is śamīpūjā in many parts of India. But śāmi is a rare tree. In Mahārāṣṭra and Konkaṇa, twigs of a tree called Āptā are brought from the forest and arranged in the form of a bush near a temple and in the afternoon the people of a town or village engage in a sort of mock scramble for taking away twigs of Āptā and distribute the leaves among their neighbours, friends and relatives saying 'take this gold'. In Saurāṣṭra and in several other places there is no such distribution of leaveṣ The Dharmasindhu notes that common people (in Mahārāṣṭra) cut off twigs of śāmi and take them to their houses but that this has no śāstra basiṣ <sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-14" id="fnref-chapter-x-vijayādashāmī-and-divālī-14">14</a></sup> In some places a he-buffalo or a goat was formerly sacrificed on this day In the former princely States of India such as Baroda and Mysore durbars were held on Vijayādaśamī (or Dasară, as it is called) and grand processions with richly caparisoned elephants and prancing horses were taken out on the streets of the capital. The kings in ancient and medieval times performed the Nīrājana ceremony of horses and elephants, soldiers and the king himself. Kālidāsa mentions that when śarad came Raghu performed the śānti rite called vājinirājana (Raghuvamśa IV. 24-25). In his Bṛhatsamhitā (chap. 44. eḍ by Kern) Varāha describes at length lustration rites for horses, elephants and men The Nirṇaya- sindhu sets out the mantras at the time of nīrājana of the army 'O goddess, ruling over gods! may my army divided into four sections (elephants, chariots, horsemen and foot-soldiers) attain to the position of having no enemy left in this world and may victory come to me everywhere through your favour.' The Tithi- tattva provides that the king after performing nīrājana for vigour to his army should see the fine khañjana bird in the vicinity of water or cowpens and address it with the mantra <sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-15" id="fnref-chapter-x-vijayādashāmī-and-divālī-15">15</a></sup> 'O khañja- ritabird! you have come to the earth, you have a blue and auspi- cious neck and you bestow all desires; salutation to you!' The Tithitattva then (p. 103) descants upon the conclusions about the future to be drawn from the several places where the khañjarita (wagtail) is seen and from the directions in which it is seeṇ The Bṛhatsamhitā has a chapter (45) on the auguries to be drawn from the sight of the khañjana bird, almost the whole of which is quoted by the Kṛtyaratnākara (pp 366-373) and a few verses of which are quoted by Varṣakriyākaumudī pp 450-51. In <a class="ref" href="../refs/manu.html#V.14" data-source="manu" data-ref="V.14" title="Manusmṛti V.14">Manu V. 14</a> and Yāj I. 174 among the birds whose flesh is for- bidden for eating is khañjarita (probably because it was such a valuable bird for prognostications).</p>
+<p class="prose" id="p-chapter-x-vijayādashāmī-and-divālī-8">In some parts of Northern India Rāmalīlā celebrations go on for ten days and culminate on the 10th of Aśvina in the burning of a tall hollow paper and wickerwork structure conceal- ing crackers representing Rāvaṇa and his hostṣ</p>
+<p class="prose" id="p-chapter-x-vijayādashāmī-and-divālī-9">There are several other local customs and usages such as worship of weapons of war and implements of one's trade or avocation associated with Dasarā or Vijayādaśamī which are passed over here for reasons of space. There are many conjectures about the origin of the <em>Dasarā</em> festival. Some, relying on the usages of some parts of India to offer to gods ears of new corn, of hanging on the doors of the house the ears of green or unripe paddy and of putting in the turban young sprouts of wheat and the like, hold that it is more or less an agricultural festival. Others hold that as, about <em>Dasarā</em> monsoon rains stop, swollen rivers abate and crops are near being garnered, it is the most suitable time for marching on an expedition and that therefore the origin is due to military exigencieṣ I incline to the latter view. In ancient countries other than India, there was a fixed season when kings went to battle. For example, we read in II <span class="idx-term" data-def="(Bible)">Samuel</span> chap. 11 1: 'And it came to pass, after the year was expired, at the time when kings go forth to battle, that, David sent Joab'. The cult of <em>Śami</em> is very ancient. Two logs of wood (araniis) from an <em>Aśvatthā</em> tree growing inside a <em>Śami</em> were employed in producing fire by attrition for Vedic sacrificeṣ Fire symbolizes vigour and valour and logs of <em>Śami</em> are helpful in producing fire and śami wood is very harḍ In the Atharva-veda (VII. 11. 1) we have the words 'the <em>Aśvatthā</em> tree rides <em>Śami</em>'. The <a class="ref" href="../refs/taittiriya_br.html#I.2.1.16" data-source="taittiriya_br" data-ref="I.2.1.16" title="Taittirīya Brāhmaṇa I.2.1.16">Tai. Br. I. 2. 1. 16</a> refers to Agni being produced from <em>Aśvatthā</em> that is '<em>Śamīgarbha</em>' and <a class="ref" href="../refs/taittiriya_br.html#I.2.1.7" data-source="taittiriya_br" data-ref="I.2.1.7" title="Taittirīya Brāhmaṇa I.2.1.7">Tai. Br. I. 2. 1. 7</a> connects <em>Śami</em> with <em>śanti</em> (the removal of adverse signs). In the <a class="ref" href="../refs/taittiriya_ar.html" data-source="taittiriya_ar" data-ref="" title="Taittirīya Āraṇyaka">Tai. Ā.</a> (VI. 9. 2.) we read 'O <em>Śami</em>! remove from us (destroy) sins and enmities' (<em>śamī śamayāsmad-aghā dveśamsi</em>). It had some affinity with <em>Navarātra</em> also, as the latter celebrates the military exploit of Devi against <em>Mahiśāsura</em>, and was therefore celebrated immediately after <em>Navarātra</em>. The word '<em>Dasarā</em>' is derived from 'daśa' meaning 10 and 'ahan' (a day).</p>
+<p class="prose" id="p-chapter-x-vijayādashāmī-and-divālī-10"><em>Dipālī</em>: This festival of lights, illuminations and fireworks is the most joyful of all festivals and is most widely observed throughout India. Observances, however, differ in detail and number from age to age and from province to province. It is not a single festival in honour of a single god or goddess as the <em>Krșnajanmāṣtami</em> or the <em>Navarātra</em> iṣ It is spread over four or five days and contains several independent itemṣ The days of <em>Dīpāvalī</em> properly so called are three. It is called <em>Dipāvalī</em> (row of lamps) in many works, but also <em>Dīpālikā</em> (in colophon to chap. 140 of <em>Bhavișyottarā</em>). When emphasis is laid only on one item in this festival of several days it is also designated <em>Sukharātri</em> in <em>Rājamārtanda</em> (verses 1346-1348, vide ABORI vol.36. p 329) and in Kālāviveka (pp. 232, 403-4), Yaksarātri<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-16" id="fnref-chapter-x-vijayādashāmī-and-divālī-16">16</a></sup> in Vatsyā- yana's <a class="ref" href="../refs/kamasutra.html" data-source="kamasutra" data-ref="" title="Kāmasūtra">Kāmasūtra</a>, Sukhasuptikā (in Vrataprakāśa, folio 204 and vol. II. pp. 348-349). In a scholarly paper contributed to the Journal of the Ganganath Jha Institute (vol.III. pp. 205-216) Prof. P. K. <span class="idx-term" data-def="Prof P. K.">Gode</span> traces the antiquity of this festival. The Bhaviṣyottara contains a charming verse with a double entendre <sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-17" id="fnref-chapter-x-vijayādashāmī-and-divālī-17">17</a></sup> ‘May this auspicious day of lights remove your sins which the thunder of clouds is stopped (or in which Meghanāda i. e. Indrajit, son of Rāvaṇa, is described as killed), in which the tips of wicks are burning (or in which Rāvaṇa became infuriated) and in which young women find delight (or with which Rāma is pleased). Some works like the N. S. and Kālatattvavivecana (p. 315) hold that the three days viz. 14th, amāvasyā and Kārtika first, constitute the Kaumudī festival<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-18" id="fnref-chapter-x-vijayādashāmī-and-divālī-18">18</a></sup>.</p>
+<p class="prose" id="p-chapter-x-vijayādashāmī-and-divālī-11">Taken all in all Dīpāvalī spreads over about five dayṣ The whole festival comprises five principal items spread over five days, viz. worship of wealth, the celebration of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>'s victory over <span class="idx-term" data-def="killed by Kṛṣṇa and lights lighted with four wicks in memory of">Narakāsura</span>, worship of Lakṣmī, victory of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> over <span class="idx-term" data-def="proper time for worship of Bali, when pratipadā is mixed with Amāvāsyā or dvitīyā ; Śiva was defeated on this day in dice-play by">Bali</span> and dice-play and the exchange of brotherly and sisterly affectioṇ There are illuminations and the discharge of crackers on almost all the five days from the 13th of the dark half of Āśvina This last is called in Gujarat and Saurāṣṭra ‘Dhanteras’. Before and on this day houses are painted and decorated, the courtyards of houses are cleaned, and metal vessels are polished and illuminations begiṇ The <a class="ref" href="../refs/padma_purana.html#VI.124.4" data-source="padma_purana" data-ref="VI.124.4" title="Padmapurāṇa VI.124.4">Padmapurāṇa VI. 124. 4</a> refers to illuminations on the 13th of the dark half of Kārtika (by the pūrṇimānta reckoning). Skanda quoted by <span class="idx-term" data-def="69n-71n">Nirṇayāmṛta</span> provides for lighting lamps at the advent of night on Kārtika dark 13th outside the house in honour of Yama in order to avoid accidental death<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-19" id="fnref-chapter-x-vijayādashāmī-and-divālī-19">19</a></sup></p>
+<p class="prose" id="p-chapter-x-vijayādashāmī-and-divālī-12">The Bhaviṣyottara contains a lengthy description of the four days of the Divālī festival from the 14th. I shall take that chapter as basis and add, where necessary, other passages from other textṣ</p>
+<p class="prose" id="p-chapter-x-vijayādashāmī-and-divālī-13">On the 14th of the dark half of Āśvina<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-20" id="fnref-chapter-x-vijayādashāmī-and-divālī-20">20</a></sup> (or of Kārtika in the pūrṇimānta reckoning) <span class="idx-term" data-def="eight mythological long-lived persons, images of, to be worshipped on Yamadvitīyā">persons</span> afraid of Hell should take an oil bath at the time of daybreak, should whirl over their heads the twigs of <span class="idx-term" data-def="a plant used in incantations and medicine">Apāmārga</span> tree together with clods of ploughed land and the thorns (of the twigs). The mantra to be repeated is noted below<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-21" id="fnref-chapter-x-vijayādashāmī-and-divālī-21">21</a></sup> Then the purāṇa provides for tarpana (satiation with anjaliṣ of water &c mixed with sesame) to Yama and mentions seven names of Yama.<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-22" id="fnref-chapter-x-vijayādashāmī-and-divālī-22">22</a></sup> Then the purāṇa provides that a lamp should be lit for Naraka (i. e. for the avoidance of Naraka) and that in the evening illumination with charming lamps should be provided in the temples of Brahmā, <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>, Śiva and others, in mathas (monasteries), in rooms for implements, on caityas (mounds on which sacred trees grow), in assembly halls, on rivers, and ramparts, in parks, wells, principal roads and in the women's apartments, in shrines of siddhas, Arhats (Jaina saints), Buddha, Cāmuṇḍā, Bhairava, in isolated stables for horses and elephants (verses 15–17). Other texts provide that on this day in the midst of the bath one should whirl over one's body twigs and leaves of apāmārga or of gourd or of prapunnāta (called Tāklā in Marathi) for the removal of hell and that one should light a lamp with four wicks in memory of Narakāsura. It was believed<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-23" id="fnref-chapter-x-vijayādashāmī-and-divālī-23">23</a></sup> that Lakṣmī came to dwell in oil and the Ganges came to all waters on the 14th in Dīpāvalī and he who would take an oil bath on this morning would not see the world of Yama. In modern times, people in the Deccan after their bath on 14th crush under their foot a bitter fruit called Kārit, which probably represents Narakāsura. The oil bath was to be taken about the time of arunodaya, but if for some reason it could not be done then it may be taken even after sunrise.<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-24" id="fnref-chapter-x-vijayādashāmī-and-divālī-24">24</a></sup> The Dharmasindhu says that even yatis (ascetics) should undergo the oil bath on this day. It appears probable that originally the 14th was called Narakacaturdaśī because Yama was to be propitiated for fear of Hell. Later on the legend about the killing by Kṛṣṇa of Narakāsura, king of Prāgjyotiṣa city (Kāmarūpa), said to have been born of the Earth when it came in contact with the Varāha incarnation of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>, was pressed into service. People nowadays remember only Narakāsura on this day and hardly any one performs Yamatarpaṇa.<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-25" id="fnref-chapter-x-vijayādashāmī-and-divālī-25">25</a></sup> The depreda tions of Narakāsura are narrated in the <a class="ref" href="../refs/vishnu_purana.html#V.29" data-source="vishnu_purana" data-ref="V.29" title="Viṣṇupurāṇa V.29">Viṣṇupurāṇa V. 29</a> and in the Bhāgavata X. (uttarārdha) chap. 59. He deprived Aditi, the mother of gods, of her ear ornaments, Varuṇa of his umbrella, Mandara of a peak called Maniparvata and kidnapped 16100 girls of gods, siddhas and kings and imprisoned them in his palace.<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-26" id="fnref-chapter-x-vijayādashāmī-and-divālī-26">26</a></sup> Kṛṣṇa killed him and if Purāṇa descriptions are to be treated as historical Kṛṣṇa’s actions were prompted by great pity and he raised the status of these unfortunate women by marry- ing them all.</p>
+<p class="prose" id="p-chapter-x-vijayādashāmī-and-divālī-14">The Tithitattva notes that there is a usage of eating fourteen kinds of vegetables on this day in order to correspond with the 14th tithi, enumerates them from Nirṇayāmṛta and recommends that this should be followeḍ<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-27" id="fnref-chapter-x-vijayādashāmī-and-divālī-27">27</a></sup></p>
+<p class="prose" id="p-chapter-x-vijayādashāmī-and-divālī-15">Several works such as the Varṣakriyā-kaumudī and the Dharmasindhu prescribe that<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-28" id="fnref-chapter-x-vijayādashāmī-and-divālī-28">28</a></sup> on the evenings of the 14th of the dark half and amāvasyā of Āśvina men with firebrands in their hands should show the way to their pitṛs (deceased ancestors) with the mantra ‘May those men in my family who were cremated and those who had no cremation performed for them and those that were burnt only by resplendent fire (without religious rites?), reach the highest state (or goal); may those śrāddhas (in the dark half of Bhādrapada or Āśvina acc to pūrṇimānta reckoning) find their way by the brilliant light (of the firebrands) and reach (their own worlds)</p>
+<p class="prose" id="p-chapter-x-vijayādashāmī-and-divālī-16">The mediæval texts prescribe on 14th of Āśvina<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-29" id="fnref-chapter-x-vijayādashāmī-and-divālī-29">29</a></sup> dark half the performance of the following acts, viz oil bath, tarpaṇa of Yama, lighting lamp for Naraka, illuminations at night, holding firebrands, worship of Śiva, worship of Mahārātri, taking food at night only Out of these only three (viz oil bath, lighting a lamp for Naraka and night illumination) are now-a-days generally performed and the rest are omitteḍ After the bath people put on new clothes and ornaments and take a repast of sweets and the like and in the noon there is a sumptuous feast There is a good deal of discussion in the Nirṇayasindhu (p. 197), P. C (p. 241), Dharmasindhu (p 104) about the time when oil bath is to be taken, if the 14th is mixed up with the 13th and amāvasyā That is passed over here Narakacaturdaśī is also called Bhūtācaturdaśī in Kṛtyatattava (p. 450).</p>
+<p class="prose" id="p-chapter-x-vijayādashāmī-and-divālī-17">On all the three days, viz. 14th of dark half of Āśvina, amāvāsyā, and the first of Kārtika-śukla an oil bath in the morning is prescribed for him who desires wealth and prosperity.</p>
+<p class="prose" id="p-chapter-x-vijayādashāmī-and-divālī-18">Āśvina amāvāsyā is a very important day. One should take an oil bath in the morning<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-30" id="fnref-chapter-x-vijayādashāmī-and-divālī-30">30</a></sup> and perform the worship of Lakṣmī for the removal of alakṣmī (bad luck, penury) Some texts add that the barks of five trees<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-31" id="fnref-chapter-x-vijayādashāmī-and-divālī-31">31</a></sup> should be boiled in water for the bath and the person should have lights waved before him by womeṇ The Bhaviṣyottara (in chap 140, verses 14-29) describes the celebrations on amāvāsyā at some length. Briefly it comes to thiṣ In the morning one should take ( an oil) bath, worship gods and pitṛs and perform the pārvana śrāddha with curds, milk, ghee and feed brāhmaṇas with various edibleṣ Then in the afternoon the king should proclaim in his capital 'today is the sovereignty of Bali; O people! enjoy yourselves'. People also in their houses should make merry with dance and music, should offer tāmbūla to each other and anoint their bodies with saffron powder, dress themselves in silken robes and wear gold and jewels, young women move about in groups wearing brilliant clothes, the houses should be full of rows of lamps, handsome maidens should cast rice grains about and the waving of lamps (nīrājana) should be resorted to which confers victory. Towards midnight the king should move about in the capital on foot to see the fun and charm of the festival and then return to his palace. When midnight is past and people's eyes are heavy with approaching sleep, the women in the city should create great noise by beating winnowing baskets and drums and should drive out alakṣmī (ill luck) from the court-yards of their houseṣ Hemādri (on vrata vol. II, pp. 348-349) quotes from Bhaviṣya certain additional items: 'no one except children or ailing persons should take a meal by day, one should worship Lakṣmī in the evening and should illuminate with treelike rows of lights shrines of gods, squares where four roads meet, cemeteries, rivers, mountains, houses, bottoms of trees, cowpens, caveṣ They should decorate shops where merchandise is bought and sold with white cloth and flowers, then feed brāhmaṇas and hungry persons in places surrounded by lamps and take dinner dressed in white garments and decked with ornamentṣ The Nīlamata-purāṇa calls this amāvāsyā night 'Sukh-suptikā' and describes it (verses 505-510) in the same way as Hemādri's quotation does <sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-32" id="fnref-chapter-x-vijayādashāmī-and-divālī-32">32</a></sup>. In Bengal Kālī is worshipped on this day, who it is said is both Lakṣmī and Sarasvatī. In modern times this is a day specially for merchants and traderṣ On this day they worship their books of account, invite friends, customers and other traders and give them tāmbūla and some sweetṣ Old accounts are closed and new ones openeḍ There is a popular legend that Brahmā gave to brāhmaṇas rakṣābandhana (Śrāvana Full Moon day) as their festival, Dasarā to kṣatriyas, Dīvālī to traders and Holikā to Śūdraṣ The night of the worship of Lakṣmī<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-33" id="fnref-chapter-x-vijayādashāmī-and-divālī-33">33</a></sup> is called Sukharātri, since Lakṣmī gives up her sleep on the amāvāsyā when the sun is in Libra (or Balance) and it is provided in some works that at the dawn of Sukharātri when the house is illuminated by lamps one should honour one's relatives with words of complimentary queries and worship Lakṣmī, that removes the taint of ill luck, with auspicious flowers, sandal-wood paste, curds, yellow pigment and fruitṣ The Kṛtyatattva quotes a verse "when there is 14th tithi in a portion of the day and there is amāvāsyā on the night of that day Lakṣmī Sukharātrika" and then gives an elaborate procedure of the worship of Lakṣmī. Some works such as the Varṣakriyā-Kaumudi, Kṛtyatattva (p 452) and Dharmasindhu (p 107). provides that on this Sukharātri not only Laksmi but also Kubera<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-34" id="fnref-chapter-x-vijayādashāmī-and-divālī-34">34</a></sup> is to be worshippeḍ</p>
+<p class="prose" id="p-chapter-x-vijayādashāmī-and-divālī-19">The first of Kārtika-śukla is regarded as one of the three most auspicious days of the year. The Dharmasindhu<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-35" id="fnref-chapter-x-vijayādashāmī-and-divālī-35">35</a></sup> remarks that though the three days from the 14th tithi are designated Dipāvali yet that day which has Svāti-naksatra is most commendeḍ It may be stated that Balipratipada is often conjoined to Svāti-naksatra. On this day also an oil bath is obligatory. The most important item on this tithi is the worship of Bali. The Bhavisyottara (140. 47-73) describes this worship of Bali as follows: The king should at night draw the figure of Bali having two arms on a circle made on the ground with five coloured powders; the image should have all ornaments and should have Vindhyāvali (Bali's queen) near him, should be surrounded by asuras like Kūsmaṇda, Bāna, Mura and others, should wear a crown and ear ornaments; the king should himself offer worship in the midst of his palace together with his brothers and ministers with several kinds of lotuses and offer sandalwood paste, incense and navedya of food including wine and meat and employ the following mantra<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-36" id="fnref-chapter-x-vijayādashāmī-and-divālī-36">36</a></sup> 'salutation to you, O king Bali, son of Virocana, enemy of gods and the future Indra, accept this worship.' Having thus worshipped he should keep awake at night by arranging for dramatic spectacles presented by actors based on stories about kṣatriyaṣ Ordinary people also should establish inside their houses on a couch the image of king Bali made with white rice grains and worship it with flowers and fruitṣ Whatever gifts,<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-37" id="fnref-chapter-x-vijayādashāmī-and-divālī-37">37</a></sup> large or small, are made on this day become inexhaustible and bring delight to <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>. The Kṛtyatattva (p 453) provides that three anjalis of flowers should be offered to Bali The Bhaviṣyottara adds ‘this tithi increases the dominion of Bali; baths and gifts made on this tithi in Kārtika yield a hundredfold reward’</p>
+<p class="prose" id="p-chapter-x-vijayādashāmī-and-divālī-20">If the pratipad is mixed with amāvasyā or dvitiya, the worship of Bali, the proper time of which is night, should be performed on pratipad mixed with amāvasyā, since Hemādri quotes from Padma ‘Śivarātri and Bali's day should be observed on the day when the tithi is mixed with the preceding tithi’ and on account of the yugma-vākya Mādhava also is of the same <sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-38" id="fnref-chapter-x-vijayādashāmī-and-divālī-38">38</a></sup> opinion</p>
+<p class="prose" id="p-chapter-x-vijayādashāmī-and-divālī-21">Bali was the son of Virocana and grandson of Prahlāda, a great devotee of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>. In the <a class="ref" href="../refs/mb_vanaparva.html" data-source="mb_vanaparva" data-ref="" title="Vanaparva"><span class="idx-term" data-def="(time of starting of Kṛtayuga), (on Kalisvarūpa), (names Matsyapurāṇa and a purāṇa proclaimed by Vāyu), (close agreement with Yugapurāṇa), (giving up of tṛṣṇā), (on functions of ten prāṇas)">Vanaparva</span></a><a href="https://sanatana.in/mbta/listing/parva/vanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> (28 2) Bali asks his grandfather Prahlāda the question ‘which is better, kṣamā (for- bearance) or tejas’ (vigorous action) In the <a class="ref" href="../refs/mb_shantiparva.html#225" data-source="mb_shantiparva" data-ref="225" title="Śāntiparva 225"><span class="idx-term" data-def="692n-93, (auspicious nimittas ), ( the verse ‘ Guror-apyava-liptasya etc. ), ( on tṛṣṇā ), on ahiṁsā ), (pupils of Vyāsa ); (Pañcarātra-śāstra ex-pounded ), and n., (mentions Dharmaśāstras ), (high...">Śāntiparva</span> 225</a><a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> 13 it is said that Bali felt jealous of brāhmaṇas The story of Bali who had become very powerful and made gods lose their tejas is narrated in Brahmapurāṇa 73, Kūrma 1, 17, Vāmana chap 77 and 92, Matsya chap 245-246 and Bhaviṣyottara 140 Bali began an Aśvamedha <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> assumed the form of a dwarf brāhmaṇa student and begged for land that would be measured by his three steps Though warned by Śukra that the dwarf was really <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>, Bali promised to give land equal to three steps Then the dwarf grew larger and larger and covered heaven and earth in two steps When Vāmana asked Bali where to plant the third step Bali told him to plant it on his back and thus Bali was thrust into the nether regionṣ <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> being <sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-39" id="fnref-chapter-x-vijayādashāmī-and-divālī-39">39</a></sup> pleased with Bali's adherence to his plighted word conferred on Bali the overlordship of <em>pātāla</em> and the position of the future Indra. This story is an ancient one. The Mahābhāṣya<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-40" id="fnref-chapter-x-vijayādashāmī-and-divālī-40">40</a></sup> on <span class="idx-term" data-def="5, (knew Naṭasūtras of Śīlālin and Kṛśāśva), (explains ‘Mīmāṁsate’), (mentions Kāśyapa to show respect), (charge that Pāṇini violates his own rules), (distinguishes between the author of a work and...">Pāṇini</span> III I. 26 states that when a person recites the story of Bali's imprisonment (in <em>pātāla</em> by <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>) or represents it on the stage people use such phraseology as 'Balim bandhayati' (he imprisons Bali), though Bali was imprisoned a long time ago. This makes it certain that the story was embodied in dramas and poems more than two thousand years ago.</p>
+<p class="prose" id="p-chapter-x-vijayādashāmī-and-divālī-22">The <span class="idx-term" data-def="see">Balipratipadā</span> appears to be called Virapratipadā<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-41" id="fnref-chapter-x-vijayādashāmī-and-divālī-41">41</a></sup> in the Vāmana-purāṇa. It is also called Dyūtāpratipadā (Kṛtyatattva p. 452). The purāṇas<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-42" id="fnref-chapter-x-vijayādashāmī-and-divālī-42">42</a></sup> say that on that day Śiva was defeated in dice-play by <span class="idx-term" data-def="so gambling recommended on this day, story of Bali, narrated in several Purāṇas is ancient, long prior to Mahābhāṣya , Vāmana thrust Bali into nether regions, gave him overlordship of Pātāla and ma...">Pārvatī</span>, that Śaṅkara became sad, while Gaurī remained happy. Therefore, on this day in the morning men should resort to gambling. Whoever succeeded on this day in gambling would find that the whole year thereafter was beneficial to him but if he suffered defeat in gambling that day he would lose his wealth that year. In Ellora cave No. 21 Śaṅkara and Pārvatī are shown as playing with dice; vide plate 38 in 'Ellora' by Balasaheb Pant-Pratinidhi of Aundh. In many parts of India people engage on this day in gambling and fortunes are often lost or made on this day. Even in a comparatively small country like <span class="idx-term" data-def="gambling in, on large scale on Balipratipadā">Nepal</span> gambling stakes soared up to three million rupees in 1955 on the Balipratipadā day. On this day also there should be illuminationṣ It is said 'by lighting<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-40" id="fnref-chapter-x-vijayādashāmī-and-divālī-40">40</a></sup> lamps during (the day of) Bali's domination Lakṣmī becomes stable; this is called Dīpāvalī because there is waving of lights in this festival. Having reached (the day of) Bali's domination how will lamps be burning in the houses of those who do not observe the festival of the rows of lamps?' The Dharmasindhu furnishes<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-44" id="fnref-chapter-x-vijayādashāmī-and-divālī-44">44</a></sup> a long list of the observances on this pratipad day according to the several purāṇas and digests, viz. worship of Bali, illuminations, holiday for and worship of <span class="idx-term" data-def="honoured on certain tithis called Yugādi, Yugāntya etc. ; praise of ; worship of, on Balipratipadā">cows</span> and bulls, worship of Govardhana, the tying of Mārgapālī (lit protectress of the road), wearing new clothes, dice-play, waving of lights before men by women (whose husbands are alive), and tying up an auspicious garlanḍ In modern times only three out of these, viz worship of Bali, illuminations and gambling are observed and the rest are hardly observed anywhere. Therefore only brief references will be made to the rest. Cows, calves and bulls are to be worshipped with two mantras (quoted in note) and decorated and cows are not to be milked and bulls are not to be made to carry burdens this day. This is to be done in the morning of Kārtika pratipaḍ If it be mixed up with <sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-45" id="fnref-chapter-x-vijayādashāmī-and-divālī-45">45</a></sup> the 2nd it should not be done on that day as that would lead to the death of one's sons, wife and loss of wealth, but this should be observed when pratipad is mixed with amāvāsyā. <span class="idx-term" data-def="a. of Smṛti, (allowed brāhmaṇa to eat food from certain śūdras)">Devala</span> prescribes this and remarks that by the wor- ship of cows three prosper, viz people, cows and the king. As regards Govardhana-pūjā, those who are in the vicinity of Govar- dhana (a hill near Mathurā) should go to it and worship in the morning, while others not near it should prepare a Govardhana with cowdung or with heaps of cooked food or draw it in a picture and worship it along with Gopāla (Kṛṣṇa) and offer all the 16 upacāras to Govardhana and Gopāla (Kṛṣṇa) with mantras which pointedly refer to Kṛṣṇa's giving protection to the settlement of cowherds (Gokula) against the heavy downpour of rain to the discomfiture of Indra. The sankalpa is given in the note.<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-46" id="fnref-chapter-x-vijayādashāmī-and-divālī-46">46</a></sup> The naivedya is to be on a grand scale. Therefore, the Smṛtikaustubha (p. 174) states that Govardhana-pūjā<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-47" id="fnref-chapter-x-vijayādashāmī-and-divālī-47">47</a></sup> is called Annakūṭa (heap or hill of food) in <a class="ref" href="../refs/padma_purana.html" data-source="padma_purana" data-ref="" title="Padmapurāṇa">Padma-purāṇa</a>. Vide Var. 164 for Govardhana and Annakūṭaparikrama. The Dharmasindhu provides that a <em>homa</em> should be performed with the two verses 'ā <em>gāvo agman</em>' (<a class="ref" href="../refs/rigveda.html#VI.28.1" data-source="rigveda" data-ref="VI.28.1" title="Ṛgveda VI.28.1">Ṛg. VI. 28. 1</a>) and 'prāite vadantu' (<a class="ref" href="../refs/rigveda.html#X.94.1" data-source="rigveda" data-ref="X.94.1" title="Ṛgveda X.94.1">Ṛg. X. 94. 1</a>). Mukerji (pp 150–152) describes how Govardhana-pūjā is carried on in some out-of-the way rural tracts in United Provinces, though it has become altogether defunct elsewhere. Vide I. A. vol. 60 pp. 187-190 and vol. 61 pp. 1 ff and pp. 231 ff for description of the Gāyādānr festival observed in Bihar, Orissa and some other parts on Kārtika first of bright half in the afternoon in which cows gaily stamped with circular stains of red and blue on their skin and horns glistening with oil and red ochre chased a puny pig with their pointed horns and killed it.</p>
+<p class="prose" id="p-chapter-x-vijayādashāmī-and-divālī-23">In the afternoon of the pratipad (Kārtika-śukla) the tying of Mārgapālī takes place.<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-48" id="fnref-chapter-x-vijayādashāmī-and-divālī-48">48</a></sup> A rope of kuśas or kāśas (Saccharum spontaneum) should be made according to the usage of one's family and tied to a tall pole and a tree in the east; one should bow to it and offer a prayer to it with the mantra (quoted in the note 529 ) and all including the king and brāhmaṇas accompanied by cows, elephants and the like should pass by the way underneath the rope. In the same way a strong rope of kāsas or the like should be made and a tug of war should ensue, the rope being frequently pulled on one side by the princes and on the other by persons of lower caste The pulling of the rope should be done in front of a temple or the palace or where four roads meet and an equal number of strong men should be selected for each side. A line should be drawn behind each side. If the persons of lower castes succeed in drawing the other side towards them then it should be held that the king will be victorious thereafter for one year<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-49" id="fnref-chapter-x-vijayādashāmī-and-divālī-49">49</a></sup> The Nirajana ceremony by women should be performed in the morning (if the pratipad is mixed with dvitīyā) and the Mangalamālikā (a series of auspicious rites or auspicious garlands) should be performed in the evening on the 2nd tithi (if pratipad exists only for a short time and is followed by dvitīyā).<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-50" id="fnref-chapter-x-vijayādashāmī-and-divālī-50">50</a></sup></p>
+<p class="prose" id="p-chapter-x-vijayādashāmī-and-divālī-24">As shown above, the three days from Aśvina-kṛṣṇa 14th are spoken of as days of Kaumudīmahotasava.<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-51" id="fnref-chapter-x-vijayādashāmī-and-divālī-51">51</a></sup> The Bhaviṣyottara and Padma derive the word Kaumudī from 'ku' (earth) and the root 'mud' to be delighted, the meaning being ‘in which people find delight on the earth among themselves’ and then another etymology is suggested, viz. kumudas (white water lilies) are offered to Ball in this festival.</p>
+<p class="prose" id="p-chapter-x-vijayādashāmī-and-divālī-25">In the Vedic period and for some centuries thereafter certain rites were performed in the month of Aśvina or in Śarad such as the <span class="idx-term" data-def="one of the seven Pākayajnas m. by Gaut. performed on full Moon of Āśvina">Aśvayujī</span> and Āgrayaṇa or Navasasyestī. The first is one of the seven pākāyajñas mentioned by <a class="ref" href="../refs/gautama.html#VIII, 19" data-source="gautama" data-ref="VIII, 19" title="Gautama Dharmasūtra VIII, 19">Gautama-dharmasūtra (VIII, 19)</a>. The first was performed on the Full Moon day of Aśvina. Vide <a class="ref" href="../refs/hodh.html#vol. II" data-source="hodh" data-ref="vol. II" title="History of Dharmaśāstra vol. II">H of Dh vol. II</a>. p 827 for a description of Aśvayujī and pp 827-29 for Āgrayaṇa. But it is not possible to trace the Dīvālī festival to these riteṣ How the Dīvālī rites first arose cannot be stated with any approach to plausibility. In the Anušāsana parva it is said that the donor of lamps shines in the heavens like a row of lights (dīpapradah svarga-loke dīpamāleva rājate, 98 51). Some writers regard these as a reference to the Divālī. But it is not so clear as to place the matter beyond doubt In I. A. vol. 32 pp. 237-239 Mr. B. A. <span class="idx-term" data-def="B. A., work of, on ‘Hindu holidays and ceremonials’ , on Sāvitrīvrata origins, in I. A. vol. , on Diwali, on Śivarātri origin ; on Holikā, criticized">Gupte</span> contributed a paper on ‘Divali folklore’. He refers to the several legends and characteristics connected with the Divālī, viz. the killing of Narakāsura, depriving Bali of his empire, the crowning of Rāma and Vikrama in these days of Divālī and illuminations and says that the origin must be sought in the movement of the earth round the sun, the change of season, the end of the rice crop and the manuring of soil for the second crop. The connection he traces is rather remote and somewhat fantastic and I am afraid that his theory of origins will appeal to very few in these dayṣ</p>
+<p class="prose" id="p-chapter-x-vijayādashāmī-and-divālī-26">On the 2nd of the bright half of Kārtika occurs a very fine festival called Bhrātradvitīyā or Yamadvitīyā. The Bhavisya states: <sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-52" id="fnref-chapter-x-vijayādashāmī-and-divālī-52">52</a></sup> 'on the 2nd tithi of Kārtika bright half Yama was treated by Yamunā to a dinner in her house; therefore this tithi became declared in the world as Yamadvitīyā; wise men should not take mid-day meal in their own houses but they should take food from the hands of the <span class="idx-term" data-def="house of, to be visited by brother on Bhātṛdvitīyā">sister</span> through affection, as doing so increases one's welfare or prosperity. Gifts should be made to sisters; all sisters should be honoured with golden ornaments, clothes, reception and meals; but if there be no sister, one should honour a woman whom he regards as sister (uncle's or aunt's daughter or a friend's sister).' The digests add further detailṣ One should <sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-53" id="fnref-chapter-x-vijayādashāmī-and-divālī-53">53</a></sup> do worship to Yama and Yamunā and to Citragupta, and brothers and sisters should offer <em>arghya</em> (water in token of respectful reception ) to Yama. The procedure is briefly thiṣ take at mid-day a bath with scented water and unguents rubbed on his body; she along with the brother should worship Yama and Yamunā with arghya and offer handfuls of flowerṣ The arghya mantra is<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-54" id="fnref-chapter-x-vijayādashāmī-and-divālī-54">54</a></sup> ‘Come, come, O Yama, son of the Sun; you that carry in your hand a noose; accept this worship offered on Bhrātṛdvitīyā and also arghya; salutation to you!’ Then two more mantras may be addresseḍ<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-55" id="fnref-chapter-x-vijayādashāmī-and-divālī-55">55</a></sup> ‘O Dharmarāja, salutation to you, the elder brother of Yamunā; O son of the Sun, protect me along with your servants; salutation to you! O Yamunā, sister of Yama and honoured by people, always confer on me favours, O daughter of the Sun, salutation to you!’ After this she serves food to her brother with the verse ‘Brother ! I was born after you; partake of this pure food for’ pleasing Yama, particularly Yamunā’. If the sister be older than the brother she should say ‘I was born before you’. Then after the brother finishes his meal she should deck him with sandalwood paste and then herself partake of the fooḍ Some works like the Vratarāja (pp. 78-91) present a far more elaborate procedure, which is passed over here but two matters provided for by it may be mentioneḍ The first is that a person before going to his sister’s house should mutter ten names of Yama (quoted in note<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-56" id="fnref-chapter-x-vijayādashāmī-and-divālī-56">56</a></sup>). The second is that the sister is to worship images of Yama and of eight mythological personages (Mārkaṇḍeya, Bali and others) supposed to be immortal for the increase of her brother’s life.<sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-57" id="fnref-chapter-x-vijayādashāmī-and-divālī-57">57</a></sup> In modern times hardly any religious cere-mony is performed except that residents of places near or on the banks of the Yamunā river (Jumna) bathe in the Jumna and there is a <em>mela</em> on the river on this day. The only thing generally done is the brother’s visiting his sister, dining at her house, light being waved before him and his making some presents to the sister. This festival of Bhrātrdvitīyā is really an independent one, but it was probably tacked on to the three festive days of Divālī in order to lengthen out the days of fun and joy. Sisters, when after their <span class="idx-term" data-def="(vide Candrabala, child marriage Restraint Act, Gorajas, Gurvāditya, Kūṭas, Simhastha, Tārābala); anuloma marriages allowed by most Smṛtis but medieval writers changed all that by Kalivarjya ; ausp...">marriage</span> they leave their brother’s home, may not meet for years and further the sister may have become rich and the brother a poor man or vice versa. Our ancient writers evinced a keen appreciation of the bonds of disinterested affection between brothers and sisters and set apart a day in the year for their meeting to enable them to go over their sweet memories of childhood and to re-live for a day at least their early life which had gone forever. A religious tinge was added to the festival by recalling the two mythical personalities of Yama and Yamī, that figure in the famous Yama–Yamī hymn (<a class="ref" href="../refs/rigveda.html#X.10" data-source="rigveda" data-ref="X.10" title="Ṛgveda X.10">Rg. X. 10</a>). I should like to digress a little and strongly protest against the conclusion drawn by certain Western Sanskrit scholars that the marriage of a brother and a sister among ancient Aryanṣ The hymn is a purely imaginative effort ‘which bodies forth the forms of things unknown’, as in the case of <a class="ref" href="../refs/rigveda.html#X.119" data-source="rigveda" data-ref="X.119" title="Ṛgveda X.119">Rg. X. 119</a> where the poet imagines what Indra must have felt when treated to huge portions of Soma beverage. In <a class="ref" href="../refs/rigveda.html#X.10" data-source="rigveda" data-ref="X.10" title="Ṛgveda X.10">Rg. X. 10</a><sup class="fn-ref"><a href="#fn-chapter-x-vijayādashāmī-and-divālī-58" id="fnref-chapter-x-vijayādashāmī-and-divālī-58">58</a></sup> the sage makes it clear that in future ages something like what was delineated in his fantasy might occur ( namely, sisters might do unsisterly acts). <span class="idx-term" data-def="a. of 'Vedic Mythology', sometimes indulges in facile assumptions , (does not agree with Deussen about Kṣatriyas being original cherishers of">Macdonell</span> in his ‘Vedic Mythology’ (pp. 172– 173) indulges in some facile assumptionṣ Yama may be an Indo-Iranian divinity, but Yamī does not occur in the Avesta at all, as he himself admits, but only in later Parsi writingṣ Therefore, what is stated in these later writings should not be foisted upon the sages of the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a>. He supposes that the sage in <a class="ref" href="../refs/rigveda.html#X.10" data-source="rigveda" data-ref="X.10" title="Ṛgveda X.10">Rg. X. 10</a> indulges in propaganda for exonerating Yama from incest. Propaganda is well-known to Western countries in the 19th and 20th centuries A D The <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> nowhere states that the human race was produced from Yama and Yamī. There is no warrant for saying that Yamī is Indo-Iranian and consequently the myth of the human race being born from a brother and sister is not Indo-Iranian Pargiter in AIHT (p. 70) follows the ball set rolling by Macdonell and others and boldly asserts that, when the Vayu (in 93. 12) says that Nahusa had six sons born of pitṛkanyā, Virajā, the word pitṛkanyā means ‘sister’ and Nahusa married his ‘sister or half sister’. and that union between brother and sister was not unknown as <a class="ref" href="../refs/rigveda.html#X.10" data-source="rigveda" data-ref="X.10" title="Ṛgveda X.10">Ṛgveda X. 10</a> about Yama and Yamī showṣ One suspects the motives of a writer like Pargiter who held high judicial office in India, when he does not explain why ‘pitṛkanyā’ was used and not ‘svasr’, when he pays no heed to the fact that in many places in Vāyu ( 72. 5, 73. 1–2, 26, 36, 40, 45, 77 74 ) Menā, Acchodā, Pivari, Gauh, Yaśodā, Virajā herself, Narmadā and Gandhakālī are spoken of as ‘pitṛnāṁ mānasi kanyā’, that Vāyu (72), Matsya (13. 2–9) and other Purāṇas speak of seven groups of pitṛs and set out how from the mind-born daughters of pitṛs several scions were born Virajā (described as pitṛkanyā in Vāyu 93. 12 which Pargiter naively renders as father's daughter i. e. sister ) is spoken of in the same Purāṇa ( Vāyu 73. 45 ) as the ‘mind-born daughter’. of these ( i. e. of Pitṛs ) in the plural and not as ‘of the father’. Writers like Pargiter sometimes create more riddles by their so-called research than they can be said to have solveḍ</p>
+<p class="prose" id="p-chapter-x-vijayādashāmī-and-divālī-27">The Padma asserts that those who please their married sisters with presents of clothes and the like are not subject to any quarrel for a year, nor to danger from enemieṣ Both Bhāviṣyottara and Padma state ‘He who eats a meal prepared by his sister's hand on the day on which king Yama was served in this world a meal by Yamunā through affection secures wealth and the best of foods’.</p>
+<p class="prose" id="p-chapter-x-vijayādashāmī-and-divālī-28">In Vedic times and in early smṛtis like those of <a class="ref" href="../refs/manu.html#II.11" data-source="manu" data-ref="II.11" title="Manusmṛti II.11">Manu (II. 11)</a> and <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yāj.</a> (I 53) it was difficult for a brotherless maiden to get married (vide <a class="ref" href="../refs/hodh.html#vol II p 435" data-source="hodh" data-ref="vol II p 435" title="History of Dharmaśāstra vol II p 435">H of Dh vol II p 435</a> ). But from this it is a far cry to say that the Bhrātṛdvitīyā owes its origin to this idea or practice.</p>
+<aside class="footnotes-section" aria-label="Footnotes">
+<hr>
+<ol class="footnotes-list">
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-1" class="footnote-item"><span class="devanagari">तथा च मार्कडेय । छाघषे तिथिनिर्णया पत्तमाप्त्यदितो रवि । कृष्ण्णो तिथि</span>-<span class="devanagari">शार्घा पत्तमास्तमितो रविः । इति ।</span> * <span class="devanagari">तत्सर्वोत्तरविरुद्धयोर्हेश्यम् । पक्षभेदेन व्यवस्था ज्ञेया । का</span>. <span class="devanagari">नि</span> pp 231-233. 482 a. <span class="devanagari">आश्विने शुल्कपक्षे तु दशभ्याम् पूजनपरः । एकादश्याम् कुर्वति पूजने चापराजितम् ॥ हे</span>. ( on <span class="devanagari">व्रत</span> vol I p 973 ) quoting <span class="devanagari">पुराणसंग्रहव्यय</span>, <span class="devanagari">नि</span>. <span class="devanagari">सि</span> p 189 482 b. <span class="devanagari">दूर्वोत्तरनिर्णये महोत्सवे । धर्मसिन्धु</span> p. 9. <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-1" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-2" class="footnote-item"><span class="devanagari">तदुक्ते कश्यपेन । उदये दशमी किंचित्सम्पूर्णैकादशी यादि । श्रवणर्क यदा काले सा तितिर्विजयाभिधा । श्रवणर्ते ह पूर्णोयां काकृत्यः प्रत्येषो यतः । उद्धवः सीमाने सदिर्मदौ पूर्णोपराह्णे ।</span> In (on <span class="devanagari">व्रत</span>) vol. I p 973, <span class="devanagari">नि</span>. <span class="devanagari">सि</span>. p 189 The 5th, 10th and 15th tithis are called <span class="devanagari">पूर्णा</span>, vide note 176 above. <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-2" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-3" class="footnote-item"><span class="devanagari">स्थलकोशे च नारदः । ईषत्सन्ध्यामनाक्रान्ता किंचिदुद्गततारकाः । विजया नाम सा कालः सर्वकार्यार्थसिद्धये ॥ नि</span>. <span class="devanagari">सि</span>. p. 189, <span class="devanagari">स</span>. <span class="devanagari">म</span>. p 69, <span class="devanagari">चिन्तामण्यादि । आश्विनस्य सिते पक्षे दशम्या तारकोदये । स कालो विजयो ज्ञेयः सर्वकार्यप्रसिद्धये ॥ स</span>. <span class="devanagari">म</span>. p. 69. <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-3" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-4" class="footnote-item"><span class="devanagari">एकादशी मुहूर्तेपि विजया परिकीर्तितः । तस्मिन् सर्वविधासन्ध्या यात्रा विजय</span>-<span class="devanagari">कांक्षिणां ॥ भृगु</span> by <span class="devanagari">स</span>. <span class="devanagari">म</span>. p. 69. The 11th muhūrta would ordinarily be 21st and 22nd <span class="devanagari">घटिकास</span> from sunrise <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-4" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-5" class="footnote-item"><span class="devanagari">अस्यामनपि कार्याणि मासरेपक्षाण्यत्रच । चन्द्राद्याशुक्कुमानाव्येतेपानि न कुर्यात् । मास</span>-<span class="devanagari">तिथिविनिर्दिष्टानि तु नृषत्तम</span>-<span class="devanagari">चिन्तामणिमुक्त्तान्युदीरित्री न कुर्यात् । धर्मसिन्धु</span> p. 96-97; <span class="devanagari">शुभमासे सिता दशमी विजया शुभकर्मसु सिद्धिङ्करी कथिता । श्रवणर्क्षयुता ह्यपरा शुभदा । इष्यतेषु गते जपसंणिष्करी ॥ मुहूर्तचिन्तामणि ॥</span> XI. 74. <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-5" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-6" class="footnote-item">'<span class="devanagari">नगद्गुह्मस्य सीमातिघ्घर्यमपराजितापूजनं करिष्ये इति सङ्कल्प</span>: <span class="devanagari">। धर्मसिन्धु</span> p. 96. In the case of a king the <span class="devanagari">सङ्कल्प</span> should be ' <span class="devanagari">मम सद्गुह्मस्य यात्राया विजय</span>-<span class="devanagari">सिद्धयर्थमपराजिता</span>'. The <span class="devanagari">यु वि</span> (pp. 145-147) gives a more elaborate procedure for the king. The word <span class="devanagari">सीमाङ्घिन</span> has assumed the form <span class="devanagari">शिललङ्घन</span> in Marathi. <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-6" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-7" class="footnote-item"><span class="devanagari">अमङ्गलानीं शमणीं शमनीं दुष्कृतस्य च । दुःस्वप्ननाशिनीं धन्यां प्रपद्ये शमीं शुभाम् । हे</span> (on <span class="devanagari">व्रत</span>) vol. I p 971, <span class="devanagari">लि सिं</span> p. 190 The <span class="devanagari">धर्मसिन्धु</span> (p. 96), <span class="devanagari">यु वि</span> p 145 read <span class="devanagari">दुःस्वप्नशमनीम्</span> For the Viṣṇu steps, vide H. of Dh vol. II p 1083 and note 2425 <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-7" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-8" class="footnote-item">Compare <span class="devanagari">बृहस्पतिसंहिता</span> 44 21 '<span class="devanagari">शान्तिं राष्ट्रविवृद्धये कृत्वा भूयोऽभिवारेकैर्मन्त्रैः । तत्र स्थले निध १।</span> <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-8" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-9" class="footnote-item"><span class="devanagari">दशमीं यः समुल्लङ्घ्य प्रस्थानं कुरुते नृपः। तस्य संवत्सरे राज्ये न कापि विजयो भवेत् । इति । स्कन्द</span> q. by <span class="devanagari">हे</span>. (on <span class="devanagari">व्रत</span>) vol. I, p. 973, <span class="devanagari">लि स</span> p 103 <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-9" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-10" class="footnote-item"><span class="devanagari">अशाक्तौ सद्यराजानाह राजमार्तण्डः। कार्यवशात् स्वयमगने मृच्छेत् केचिद्वा</span>- <span class="devanagari">दणायनी।</span> | <span class="devanagari">छायाछत्रपादुके चैषांविकं निर्गने कुर्य्यात् । लि स</span>. p. 103. <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-10" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-11" class="footnote-item"><span class="devanagari">तथा भविष्ये । शमी शमयते पापं शमी लोहितकण्टका । धार्य्यर्जुनेनबाणानां रामस्य प्रियवादिनी । करिष्यमाणयात्रायां यथाकालं सुखं मया । तव निर्विघ्नकर्ता त्वं भव श्रीरामपूजिते</span> ! <span class="devanagari">इति । नि सि</span> p. 190, <span class="devanagari">दु चि</span> p 147, <span class="devanagari">ध सि</span> p 96 In <span class="devanagari">विराटरर्व</span> chap 5 it is stated that when the Pāṇḍavas resolved to remain incognito for a year in the capital of Virāṭa they concealed their arms (such as the famous Gāṇḍīva bow and swords ) on a big, śamī tree growing on a hill near a cemetery ‘<span class="devanagari">अथान्तश्वासत्कुलै कृतीपुत्रौ युधिष्ठिरः। आक्रोभमे शमी वीर धनुष्यानि निक्षिप्य । विराट</span> 5 28 It is also supposed that Rāma started on his invasion of Laṁkā on the tenth tithi when there was Śravaṇa nakṣatra <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-11" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-12" class="footnote-item"><span class="devanagari">अश्मन्तक महावृक्ष महादोषनिवारण । दृष्टानां दर्शनं देहि शमूणा च विनाशन्म् । इति प्रार्थयेत् । धर्मसिन्धु</span> p 96, <span class="devanagari">दु चि</span> p 147. <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-12" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-13" class="footnote-item"><span class="devanagari">सुशील</span>| <span class="devanagari">साक्षामाक्षी शमीमूलगता मृदम् । गीतवादिनिर्धोषैर्वर्तयन्त्यो गृहं प्रति । ततो भूषणवस्त्रादि धारयेत्पुनः स्वय । नीरंजनमान्नं</span>. <span class="devanagari">पुण्यामिष्टार्थि मुमङ्गलम् । नि सि</span> p 190, <span class="devanagari">दु चि</span> 147, <span class="devanagari">धर्मसिन्धु</span> 96. <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-13" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-14" class="footnote-item"><span class="devanagari">प्राहुस्ते शमीशाखानिश्लाघयन्ति तर्जितंलुद्र । धर्मसिन्धु</span> 46. <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-14" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-15" class="footnote-item"><span class="devanagari">कृष्णा नीराजने राजा बलवृद्धयै यथाचलत् । शोभनं खञ्जने पश्येजल गोष्ठसनिधौ । नीलप्रीव शुभग्रीव सर्वकामफलप्रद । पृथिव्यामवतीर्णोसि खञ्जरीट नमोस्तु ते । ति</span>. <span class="devanagari">त</span>. p. 103, <span class="devanagari">ति शि</span> 190 (first verse), <span class="devanagari">व</span>. <span class="devanagari">कि कौ</span>. p 450 (quotes from <span class="devanagari">संवत्सरप्रदीप</span> the verse <span class="devanagari">कृष्ण</span> etc.) <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-15" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-16" class="footnote-item"><span class="devanagari">यक्षरात्रि</span> along with <span class="devanagari">कौमुदीजागर</span> and others is included among sports (<span class="devanagari">क्रीडा</span>) that are to be engaged in by several people The commentary <span class="devanagari">जयमङ्गला</span> on <span class="devanagari">वात्स्यायन</span> (I. 4.42) calls it <span class="devanagari">सुखरत्रि</span> and explains '<span class="devanagari">अत्र मध्यकाले लोकस्य धूतक्रीडा</span>'. The <span class="devanagari">कृत्यतत्व</span> (p 451) and <span class="devanagari">का</span>. <span class="devanagari">त</span>. <span class="devanagari">वि</span> (p 319) quote a verse; <span class="devanagari">अमावास्या यदा रात्रौ दिवाभागे चतुर्दशी । पूजनीया तदा लक्ष्मीर्विशेषेण सुखरानिका ।। इति वचनात्</span>. Here <span class="devanagari">लक्ष्मीपूजन</span> on <span class="devanagari">अमावास्या</span> is called <span class="devanagari">सुखरानिका</span> <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-16" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-17" class="footnote-item"><span class="devanagari">उपशान्तनभमेघानादं प्रज्वलितदशाननं शमितरामम् । हर्तु वो दुरितम् ॥ भविष्योत्तर</span> 140. 71. The first half contains three phrases applicable both to <span class="devanagari">दीपदिन</span> and <span class="devanagari">रामायण उपशमिताः मेघानां नादाः यस्मिन्</span> (with <span class="devanagari">दीपदिन</span>), <span class="devanagari">उपशमित मेघानां यस्मिन्</span> (with <span class="devanagari">रामायण</span>); <span class="devanagari">प्रज्वलित दशाननं रावणः यस्मिन्</span> (with <span class="devanagari">रामायण</span>); <span class="devanagari">प्रज्वलित दशानानि यस्मिन्</span> (with <span class="devanagari">दीपदिन</span>); <span class="devanagari">शमिताः रामाः येन</span> (with <span class="devanagari">रामायण</span>); <span class="devanagari">शमिताः रामाः सुखतः यस्मिन्</span> (with <span class="devanagari">दीपदिन</span>); <span class="devanagari">शमिताः रामाः येन</span> (with <span class="devanagari">रामायण</span>). <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-17" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-18" class="footnote-item"><span class="devanagari">इषतिसप्तचतुर्दश्यादिप्रयुक्तेष्वपि दीपावली भवेत् । ऊर्जादी शान्तिसंयुक्ते सदा दीपावली भवेत् । ऊर्जादी संक्रमेष्वथ दीपावतिमप्यम् । नारदसंहिता</span> 9. by <span class="devanagari">नि</span>. <span class="devanagari">सि</span>. p. 197, <span class="devanagari">का</span>. <span class="devanagari">त</span>. <span class="devanagari">वि</span>. p. 315, <span class="devanagari">व्रतराज</span> p. 563. <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-18" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-19" class="footnote-item"><span class="devanagari">कार्तिकस्य सिते पक्षे त्रयोदश्यां निशासुखे । यमदीपं बाह्ये दद्यात् सर्वपापप्रणाशिनम् । मन्त्रस्तु</span>-<span class="devanagari">मृत्युना पाशदण्डाभ्यां कालेन इपशामया सह । त्रयोदश्यां दीपदानात् सूर्यज</span>. <span class="devanagari">प्रीयतां ममेति । पद्मपुराण</span> in <span class="devanagari">नि सि</span> p 196 from <span class="devanagari">निर्णयामृत</span> These verses occur in <span class="devanagari">पद्म</span> VI 124. 4-5 with some variations <span class="devanagari">का त वि</span> p 323 quotes these two. <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-19" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-20" class="footnote-item"><span class="devanagari">कार्तिके कृष्णपक्षे च चतुर्दश्यां दिनोदये । अभ्यङ्गदेव कर्तव्यं स्नानं नरकार्णवभीभि ॥ भविष्योत्तर</span> 1407, <span class="devanagari">नि सि</span> (p 196) reads <span class="devanagari">चतुर्दश्यां निशोदये</span> and explains ‘<span class="devanagari">हुन</span>’ <span class="devanagari">चन्द्रः</span>’ <span class="devanagari">पद्म</span> VI. 124 6 reads <span class="devanagari">विध्युदये</span> for <span class="devanagari">दिनोदये द क्रि</span> p 459 quotes it from <span class="devanagari">लिङ्‌गपुराण</span> <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-20" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-21" class="footnote-item"><span class="devanagari">हर पापमपामार्ग भ्राम्यमाणं पुन पुन । आपदं किल्बिषं चापि ममापहर सर्वश</span> ! <span class="devanagari">अपामार्गं प्रमस्तेस्तु शरीरं मम शोध्यय । भविष्योत्तर</span> 140 9 <span class="devanagari">अपामार्ग</span> (literally, that washes away or removes) is a plant called Achyranthis Aspera (in Marathi <span class="devanagari">अघाडा</span>) used in incantations, medicine etc. It is frequently mentioned in <span class="devanagari">अथर्ववेद</span> IV 17,6-8, VII. 65, 1-2, vide also <span class="devanagari">वाज सं</span>. 35 11 <span class="devanagari">अपामार्ग किल्बिषप</span>- <span class="devanagari">घ्नम्</span> <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-21" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-22" class="footnote-item">The names are differently quoted by <span class="devanagari">मद</span>. <span class="devanagari">पा</span> 296 from <span class="devanagari">वृद्धमनु</span> as <span class="devanagari">यमाय धर्मराजाय मृत्यवे चान्तकाय च । वैवस्वताय कालाय सर्वभूतक्षयाय च । औदुम्बराय दध्नाय नीलाय परमेष्ठिने । वृकोदराय चित्राय चित्रगुप्ताय वै नमः ॥ ब क्रि</span>. <span class="devanagari">कौ</span>. p 459, <span class="devanagari">नि</span>. <span class="devanagari">सि</span>. p. 199 These are <span class="devanagari">पद्म</span> VI 124 13–14. It may be noted that these are 14 names of <span class="devanagari">यम</span> corresponding to the tithi being 14th. The verse <span class="devanagari">यमाय</span>" <span class="devanagari">झायाय च</span> is <span class="devanagari">भविष्यो</span> 140 10. The verses men tio- ning 14 names of <span class="devanagari">यम</span> are quoted by <span class="devanagari">है</span> (on <span class="devanagari">व्रत</span> vol II p. 352). <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-22" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-23" class="footnote-item"><span class="devanagari">तैलै लक्ष्मीर्जले गङ्गा दीपावल्याश्चतुर्दशीम् । प्रातःस्नानं तु यः कुर्याद्यमलोक न पश्यति ॥ पद्म</span> VI 124 q. by <span class="devanagari">वि सि</span> p. 127, by <span class="devanagari">दु वि</span> pp 242-243 (from <span class="devanagari">ब्रह्मपुराण</span> ), ‘<span class="devanagari">तैलै</span> ... <span class="devanagari">दीपावलिविधौ चसेत् । अलक्ष्मीपरिहारार्थमङ्गस्नानमाचरेत् ॥ नारद</span>- <span class="devanagari">संहिता ५</span> by <span class="devanagari">का व वि</span> p. 315. <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-23" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-24" class="footnote-item"><span class="devanagari">अवोदकालस्यैव मुख्यत्वातिपादात् । केनचिन्निमित्तेनापोदयकालेऽस्मिन् चरुपोदच्चमयच्छ</span>: <span class="devanagari">कर्तव्य</span>: <span class="devanagari">। दु वि</span> p. 241, vide <span class="devanagari">धर्मसिन्धु</span> p. 104 for the same. <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-24" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-25" class="footnote-item">The <span class="devanagari">यमतरंण</span> is to be in the form ' <span class="devanagari">यमाय नम</span>: <span class="devanagari">यमं तर्पयामि</span> ' and then turning to the south one offers three añjalis of water mixed with sesame with the sacred cord in the savya or apasavya form according as the person's father is living or is deaḍ <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-25" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-26" class="footnote-item"><span class="devanagari">कन्याश्च कृष्णो जग्राह नरकस्य परिग्रहात् ।</span>... <span class="devanagari">एकाक्षिसेषं गोविन्द</span>. <span class="devanagari">काले सासां महा</span>- <span class="devanagari">भूषणेषु धर्मत</span>: <span class="devanagari">। षोडशत्रीसहस्राणि शतमेकं च शोभितम् । सासंम्नि दुने</span>: <span class="devanagari">॥ विष्णुपुराण</span> V. 29 15-18 The <span class="devanagari">भागवत</span> X, 59, 33 states that the women were 16000, <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-26" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-27" class="footnote-item"><span class="devanagari">अत्राचातुर्द्दशीशाकभक्षणं च कर्त्तव्यम् । अत्र निर्णयामृतम् । ओलं कैथक</span>-     <span class="devanagari">धास्तुष्पं</span> " <span class="devanagari">कृष्णे च भूते तिथौ ॥ तिथितत्त्व</span> p 124 and <span class="devanagari">कृत्यतत्त्व</span> pp 450-451 <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-27" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-28" class="footnote-item"><span class="devanagari">हलायुधश्च सुदर्शयौ मधोये सूतदर्शयौ</span> ! <span class="devanagari">उल्काहस्ता नराः कुर्वै पितृणा मार्ग</span>-     <span class="devanagari">दर्शनम् ॥ उल्कादानममीभिः प्रसिद्धमत्रा ये जीवद्गणा कुर्वते नरा । उज्जलज्जयोतिषा दयन्ते     चान्ते परत्रा गतिम् । यमलोकं परित्यज्य आयाता ये महालये । उज्ज्वलज्जयोतिषा चर्गे मप्रपद्ययो     यमद्दग्नि ॥ खि</span>. <span class="devanagari">की</span> p. 470-471, <span class="devanagari">ध सि</span> 104-105, <span class="devanagari">दु वि</span> p. 253, <span class="devanagari">स न</span> p. 117     (first verse only); <span class="devanagari">शूत</span> means 14th tithi here. <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-28" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-29" class="footnote-item"><span class="devanagari">चतुर्द्दश्यामभ्यङ्गतर्पणयमदीपदानोलकादीन</span>-<span class="devanagari">महाशिवाप्रीमाहारात्रिदान</span>-<span class="devanagari">शिवापूजा</span>-<span class="devanagari">महारात्रि</span>-     <span class="devanagari">पूजा</span>-<span class="devanagari">नक्कमोजनानि विहितानि । दु वि</span>. p. 243 <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-29" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-30" class="footnote-item"><span class="devanagari">हते घटे च वर्धौ च कार्तिकमास दिने । मानवो मङ्गलस्नापी नैव लक्ष्म्या वियुज्यते । भास्करोदये ५</span>. by <span class="devanagari">पृ</span>. <span class="devanagari">वि</span> 241. <span class="devanagari">लि</span>. <span class="devanagari">पि</span> p 199 has the first half. <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-30" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-31" class="footnote-item">The five trees are <span class="devanagari">अश्वत्थ</span>, <span class="devanagari">उदुम्बर</span>, <span class="devanagari">प्लक्ष</span>, <span class="devanagari">आम्र</span>, <span class="devanagari">वट</span>. <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-31" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-32" class="footnote-item"><span class="devanagari">तथा पक्षे यस्यति हु कर्तव्यं सुत्रसुस्तिका । पञ्चदश्या यथा विम तथा मे गवनं शुभु । तस्या दिवा न भोक्तव्यं बालाहारजनं विना । सूर्यं लग्नमनुप्राप्तं पूजयित्वा करीषिणम् । दीपमालापरिसिद्धे प्रदेशे तदनन्तरम् । श्वेतकुलीश भैषज्यमं हिजेन सर्वं धन्युभिक्षावापिनि ॥ नीलमपुराण</span> 505-510 page 42, mean here image of <span class="devanagari">लक्ष्मी</span> made with dried cowdung cakes, the worship of <span class="devanagari">लक्ष्मी</span> viz <span class="devanagari">ग्रन्थदुर्ग्या द्वाणा शुभुत्वयाना काना कानिष्ठीपद्रपे मियमद् ॥</span> q by <span class="devanagari">य कि को</span> p. 468 quotes a passage from the <span class="devanagari">ब्रह्मपुराण</span> which is similar to the one cited above from Bhaviṣya by Hemādri and explains <span class="devanagari">कृशागार</span> as the ploughshare and other implements are kept. <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-32" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-33" class="footnote-item">Vide Gupta's 'Hindu holidays and ceremonies' pp. 35-36 and Underhill p. 63. <span class="devanagari">आयु माण्ट्य</span> | <span class="devanagari">अमावस्या हुलादिये लक्ष्मीनिद्रा विमुच्यति । अश्विन शुले एकोनेनं धर्वणनिर्मोचनाफले । चन्दुरंधूनकपूज्य शाखा कुशलायाचैतू । पूजयेन तथा षट्हीनं लक्ष्मीमलनामिनीम् । का रि</span>. pp 403-404. The verse '<span class="devanagari">अमावास्या शुलादिये लक्ष्मीनिद्रा विमुच्यति</span>' &c, on p. 469 from <span class="devanagari">भविष्य</span>. <span class="devanagari">की</span>. p 468 and two halves from the two verses <span class="devanagari">कुलरात्रे</span> &c. . <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-33" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-34" class="footnote-item"><span class="devanagari">सवित्रे । सुप्तराश्रयां प्रदोपे हि कुबेरं पूजयन्ति हि । व</span>. <span class="devanagari">कि</span>. <span class="devanagari">कौ</span>. p. 469, '<span class="devanagari">सुप्त</span> *** <span class="devanagari">पूजयन्ति ये । इति वचनचनात् कुबेरमति पाचादिभिः पूजयदेत् । कृत्यतत्व</span> p. 452. <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-34" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-35" class="footnote-item"><span class="devanagari">चतुर्दशेऽपिदिवजनयेपि दीपावलिसंज्ञके</span> '<span class="devanagari">पत्र पंचांङ्गदिसानिधनप्रयोजयस्य तस्य माझस्यातिशयेः । धर्मसिन्धु</span> p. 106. <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-35" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-36" class="footnote-item">The mantra is '<span class="devanagari">बलिराज नमस्तभ्यं विरोचनसुत प्रभो । प्रतिथ्यताम् । भविष्योत्तर</span> 140.54, <span class="devanagari">पद्य</span> VI, 134.53. In the text the mantra is ‘<span class="devanagari">बलिराज</span>*** <span class="devanagari">डसमरराते विष्युसकिवेषदो भव ।।</span>’ as q. by <span class="devanagari">कृत्यतत्व</span> p 453, <span class="devanagari">ब्युध्यमोत्तर</span> I 126. 25 it is said that Bali would be Indra in the Sāvarṇi-manvantara (8th out of 14). <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-36" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-37" class="footnote-item"><span class="devanagari">बलिसुदेद्दिप दीपये ददानानि कुरुनन्दन । यानि साम्यशणम्यद्मेवं संगमदर्शिलम् ।। महाराणा विधिरियं बलिरज्यमवनीतिनी । ब्रह्माप्रीर्हि मिया नित्यं बालपै परिकीर्तिता</span>', <span class="devanagari">भविष्यौतर</span> 140.57 (first verse). The first is quoted by <span class="devanagari">नि</span>. <span class="devanagari">सि</span>. p. 201 and the 2nd by <span class="devanagari">त</span> p 27. <span class="devanagari">हे</span>. on <span class="devanagari">काल</span> p. 616 quotes from <span class="devanagari">ब्रह्मपुराण</span> a similar Verse ‘<span class="devanagari">महापुराणा</span> ...<span class="devanagari">राख्यप्रतीतिनी । ब्रह्माप्रीर्हि मिथा नित्यं बालपै परिकीर्तिता</span>’. <span class="devanagari">भविष्यौतर</span> I, 18.21 has the verse <span class="devanagari">महाराणा विधिरियं</span> etc.. <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-37" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-38" class="footnote-item"><span class="devanagari">पच्योपोषणवसप्रदृष्टवसुभ्योपि पूर्वविद्धायामेव कर्तव्यम् । स चोक्तो ब्रह्मपुराणे शमन</span>- <span class="devanagari">पुराणो भविव्योत्तरपुराणे च प्रपञ्चितः । अत्र माद</span>. <span class="devanagari">काले भूलादि के ब्रह्मपुराणे दर्शितम् । तत्सह पूर्वे गृह्णन्त्यभाने तन्न मानयते । इति । यद्यपि सावनमावस्था भवति य तु प्रतिपद</span>, <span class="devanagari">तथापि पूर्वैक</span>- <span class="devanagari">कल्याणायनिश्रियद्यपि मानवद</span>. <span class="devanagari">सावनमावस्याया कार्येषु मादपिदः का नि</span> P. 126. The reference in the words <span class="devanagari">पूर्वाः</span> is to p. 123 (<span class="devanagari">फा नि</span>.) where <span class="idx-term" data-def="a. of Kālanirṇaya, a. of com.on Sūtasamhita, a. of Jaiminīnyāyāyamālāvistāra">Mādhavācārya</span> quotes a text that suggests for a fast or vrata must be made in the morning though just at the time of <span class="devanagari">सङ्कल्प</span> the tithi may be amāvasyā while the vrata is for pratipad, which follows some time after, and quotes <span class="devanagari">देवळ</span> in support ‘ <span class="devanagari">या तिथि</span>- <span class="devanagari">समडकालमर्थे याति दिवाकरः । तिथिः सा सकला ज्ञेया क्षुभाड्यपनकमर्छुः । अयं ब्राह्मणवचनमवसायवति</span>-<span class="devanagari">निमित्तदेविशपवत्साहनविमथवा कार्ये इति ब्रह्मपुराण निर्देशम् ।</span>’ <span class="devanagari">का नि</span> p 123 <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-38" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-39" class="footnote-item"><span class="devanagari">स तु प्राहास्यन् विष्णुः प्रीतः ससमनसिस्वम् । रसातलपतिले च भावि घेन्द्रगर्व</span>- <span class="devanagari">चून । ब्रह्मपुराण</span> 73 54-55, <span class="devanagari">इतले नाम पाताले तन्मासाध मनोरमम् । वसाहार मनार्थेधां धर्मा</span>- <span class="devanagari">दस्त्वभिपान्द्रवत् ॥ मत्स्य</span> 246. 73 <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-39" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-40" class="footnote-item">On <span class="devanagari">वार्षिक</span> 6 of <span class="devanagari">पा</span>. III 1 26 the <span class="devanagari">महाभाष्य</span> says '<span class="devanagari">फैंसववधमाचष्टे कंसं बाल बन्धयति</span>' ; then on <span class="devanagari">वार्षिक</span> 15, the <span class="devanagari">महाभाष्य</span> says '<span class="devanagari">इह नु कर्णे वर्तमानकाला</span> '. Vide note 330 for this sentence. '<span class="devanagari">अवपि सुख्ता। कथमृ। ये मानवेदे झोभनिका नामैदे मत्यक्षं कंसं चासयति मत्यक्षं च बाल बन्धयति।</span>' <span class="devanagari">झोभनिका</span>: means actors in a dramatic representatioṇ <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-40" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-41" class="footnote-item"><span class="devanagari">वामनपुराणे बलिं प्रति विकिव्रन उवाच। वीरप्रतिपदा नाम तब भावी महोत्सव</span>:<span class="devanagari">। तब त्वर नवयादेछ वलो हुदाः खल्ळूताः। पुष्पदीपप्रदानेन अर्चविष्यति संवत्सर</span>:<span class="devanagari">।</span> q by <span class="devanagari">वै</span> on <span class="devanagari">काल</span> p. 617, <span class="devanagari">कृ</span> p. 412, <span class="devanagari">का</span>. <span class="devanagari">स</span>. <span class="devanagari">दि</span> p 321 (with slight variations), <span class="devanagari">ति स</span> p 27. The printed <span class="devanagari">भाल</span> (chap 92 56-57) reads '<span class="devanagari">दीपप्रदानाममासी तब भाषी महोत्सव</span>:<span class="devanagari">। पुष्पदीपप्रदाने</span>' etc It is likely that the true reading is <span class="devanagari">वीर प्रतिपद प्ररप्प</span> as in <span class="devanagari">का स</span>. <span class="devanagari">दि</span> p 321 (<span class="devanagari">वीर</span> being addressed to <span class="devanagari">बलि</span>). <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-41" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-42" class="footnote-item"><span class="devanagari">ब्रह्मपुराणे । कातिके शुळुपक्ष तृ मत्यमेहि सत्यवान् । जितश्च डाकुत्तस्तन जयं लभेदे त्व पार्बती। ततोऽहं झाळुष्टी ळौरी नित्यसुलोषिता । तस्माद् द्यूत प्रकर्षणं ममावे मानवैः। तस्मिन् द्यूते जयी यस्तु सख संवत्सर शुभ</span>:<span class="devanagari">। पराजयो विप्रुद्ध लामनाशकारी भवेदू।</span> q by <span class="devanagari">है</span> (on <span class="devanagari">काल</span> p. 616), <span class="devanagari">कृ</span> p. 411-12, <span class="devanagari">नि सि</span> p. 202 (from <span class="devanagari">हेमाद्रि</span>), <span class="devanagari">ति स</span> p 27. vide <span class="devanagari">रूत्खम्</span> 1. I. 54 for dice play between <span class="devanagari">शिव</span> and <span class="devanagari">पार्वती</span>. <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-42" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-43" class="footnote-item"><span class="devanagari">बलिराद्ये दीपदानात्दा लक्ष्मी स्थिरा भवेत् । दीपैर्नृपतेराज्ञया सैषा दीपावली स्मृता । बलिराज्ञये समासाद्य नैयं दीपावली कृता । तेषां गृहे कथं दीपा मञ्जिष्ठन्ति केशव ।। धर्मसिन्धु</span> p 106. <span class="devanagari">हू चि</span> pp 243-244. <span class="devanagari">बलिराज्य</span> extends over three days from the 14th <span class="devanagari">पुरा वामनरूपेण मार्गयित्वा धरामिमाम् । वदानतिथिरित्यागैस्तदनु ग्रह्यमुदाद्यता ।</span> The printed manuscript of Dharmasindhu p 315 (140 1-2) reads '<span class="devanagari">इन्द्राय वृशानुं राज्य</span> " <span class="devanagari">दैत्यपतेर्समोहाराष्ट्र तर्नृप ।।</span>' <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-43" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-44" class="footnote-item"><span class="devanagari">अष्टौ प्रतिपदि बलिपूजा दीपत्सोत्सवो गोवर्धनपूजा मार्गपालीबन्धनं वटिका</span>- <span class="devanagari">कर्णं नववस्त्राणिधारणं युतं नारीमाङ्गलिक नीराजनं मदालिका चोप्रेक्षामिति कुर्यात् । धर्मसिन्धु</span> p 106. <span class="devanagari">लक्ष्मीर्यां लोकपाला भेडरूपेण संस्थिताः । घृतं वहति पक्षाग्रं मन पापं गामिनां अत्सुरमो मे यत्त्वं मे सन्नष्ट पृष्ठ । गायो मे हृदये सन्तु गवा मम वल्लभमडम् । पद्य</span> VI. 124. 31-33 q by <span class="devanagari">धर्मसिन्धु</span> p 107. <span class="devanagari">लि</span>. <span class="devanagari">सि</span>. p 202. For praise of cows and gomati-vidyā vide H of Dh. IV p 108 and Agnipurāṇa 292, 14-20, and Vişṇudharmottara II chap. 42. <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-44" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-45" class="footnote-item"><span class="devanagari">प्रतिपद्यर्क्षयोगे कीदृशं नु गर्भं मत्स्य । परविद्धेद् यं कुर्यादाद्यं तदनम् । पा इष्ट</span>- <span class="devanagari">प्रतिपदमिश्रा तु न पूजाहेतुम् । पूजनं शोषि वर्षे मज्जा गावो महीपतीति ॥ इति देवलवचनम् । का</span>. <span class="devanagari">प्र</span>. <span class="devanagari">स</span>. 321, <span class="devanagari">लि सि</span> p 20 (taking 2nd verse from <span class="devanagari">निर्णयामृत</span>). <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-45" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-46" class="footnote-item"><span class="devanagari">श्रीकृष्णप्रीत्यर्थं गोवर्धनपूजनगोपालपूजननामकं महोत्सवं करिष्ये</span> – <span class="devanagari">इति सङ्कल्प । धर्मसिन्धु</span> p. 107 <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-46" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-47" class="footnote-item">For Govardhana, vide H. of Dh. vol. IV. pp 691 and 754. The story of Kṛṣṇa having lifted up on his little finger Govardhana for seven days to protect cowherds and their cattle against the heavy rains sent down by Indra is narrated in Viṣṇupurāṇa V. 11. 15–25, Varāha 164. <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-47" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-48" class="footnote-item">The <span class="devanagari">भविष्योत्तर</span> 140. 46–47 ‘are-<span class="devanagari">मार्गपाली अवघीष्वासदृक्समेव पादपे । दुग्धाक्तामभिक्षेत्रं सरभसैर्बहुभिक्षुभृत्</span>...<span class="devanagari">मार्गपालीनिलयेयं हयानां गजा वृपाः । राजानो राजपुरुषश्र्च ब्राह्मणा क्षुद्रजायवः । मार्गपालीं नमस्येऽत्र सर्वलोकसुखप्रदे । विवधेयैः दुग्धादाषवे पुनरेहि भवस्य मे ।</span> q by <span class="devanagari">सि</span>. <span class="devanagari">नि</span>. p. 202, <span class="devanagari">धर्मसिन्धु</span> p. 108. The first half is <span class="devanagari">बस</span> VI. 124. 44, <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-48" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-49" class="footnote-item"><span class="devanagari">कुशाशामयीं कुर्याद्रज्जुं दृढं नवाम्‌ । तामेकतौ राजपुत्रा हीनवर्णस्त्वापरायन्‌ । गृहीत्वाकर्षयेयुश्च यदीष्टां हीनजातीनां जयो राज्ञश्च तत्परम्‌ । आदित्युपुराणं</span> q by <span class="devanagari">नि</span> p 202, vide <span class="devanagari">वत्रराज</span> p. 74 which furnishes more details <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-49" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-50" class="footnote-item"><span class="devanagari">कार्तिक शुक्रमध्ये तु विधानरहितं तु सत्‌। नारीनीराजनं प्रातः साथ मङ्गलमाळिका ॥ अथ चेत्प्रतिपल्लल्पा नारीनीराजनं भवेत्‌। द्वितीयाया तदा कुर्यात्सायं मङ्गलमाळिकाम्‌ ॥ ब्रह्मपुराण</span> q by <span class="devanagari">हे</span>, (on <span class="devanagari">काल</span> p 615), <span class="devanagari">नि सि</span>. p 202, <span class="devanagari">का स वि</span> p. 322. (first verse) <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-50" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-51" class="footnote-item"><span class="devanagari">कृष्णाश्विने मही ज्ञेया हर्षां वर्ष परम्‌। भावुर्यमग्निना तेनैषा कौमुदी स्मृता ॥ को मोहयते कुर्व पश्यं भ्रामयते नरम्‌। इन्द्रस्तुता सुवनागस्तेषामेषा कौमुदी स्मृता ॥ कृष्णाम्नि नवमीचतुर्दश्या कौमुदीति च अष्टमं चाष्टमं कुर्व तेनैषा कौमुदी स्मृता ॥ भविष्योत्तर</span> 140. 61-64. <span class="devanagari">पढे</span> VI, 124. 61-64. <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-51" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-52" class="footnote-item"><span class="devanagari">कार्तिकें शुक्लपक्षस्य द्वितीयायां युधिष्ठिरः। यमो यमुनया पूर्वं भोजितः स्वगृहे स्वयम्।</span>     ... <span class="devanagari">ततो यमद्वितीयेयं प्रोक्ता लोके युधिष्ठिरः। अपूर्वं निजगृहे पार्थो न भोक्तव्यमतो बुधैः।     स्नेहेन भगिनीहस्ताद्भोकव्यं पुष्टिबर्धनम् । ददानानि च प्रदेयानि भगिनीभ्यो विधानतः। स्वर्ण</span>-     <span class="devanagari">वस्त्राहारैर्मान्यौ स्त्रियश्चानेन। क्षये भगिन्याः सपल्या अप्याले प्रतिलम्भिकाः। भविष्योत्तर</span>     14, 18-23. Almost the same verses occur in <span class="devanagari">पद्म</span> VI. 124. 88-93 and in <span class="devanagari">स्कान्द</span>     acc to <span class="devanagari">यु</span>. <span class="devanagari">चि</span>. p. 82. <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-52" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-53" class="footnote-item"><span class="devanagari">यमं च यमुनां चैव चित्रगुप्तं च पूजयेत् । अर्घ्यमान्नं प्रदातव्यं यमाय सहृदयेः।।     पु</span> by <span class="devanagari">है</span>. (on <span class="devanagari">व्रत</span> vol. I. pp 384-385), <span class="devanagari">का</span>. <span class="devanagari">वि</span>. p. 105, <span class="devanagari">यु</span>. <span class="devanagari">र</span>. 413, <span class="devanagari">व कि को</span>.     pp. 477-478, <span class="devanagari">ति</span>. <span class="devanagari">त</span>. p. 29, <span class="devanagari">नि</span>. <span class="devanagari">चि</span>. p 203, <span class="devanagari">कृत्यसरस</span> p. 425. All these contain     almost the same verses with some variationṣ <span class="devanagari">ति त</span>. p 29 quotes some of     these from <span class="devanagari">महाभारत</span>. <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-53" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-54" class="footnote-item"><span class="devanagari">अ॒र्घमंत्रस्तु । एहोहि मार्तण्डज पापाग्रस्त यमान्तकालोकोपचरामरे</span> ! <span class="devanagari">भ्रातृद्वितीया</span>-<span class="devanagari">कृतदेवपूजां गृहाण चार्घं भगवन्नमे ॥ कृत्यतत्त्व</span> p. 453, <span class="devanagari">नि सि</span> 203. <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-54" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-55" class="footnote-item"><span class="devanagari">धर्मराज नमस्तेऽस्तु यमस्ते यमप्रभुषन । पाहि मां किङ्करैः सार्धं सर्वदुख नमोऽस्तु ते ॥ यममस्तुमहेतसेस्तु यमुने लोकपूजिते । वरदा भव मे नित्यं सूर्यपुत्रि नमोऽस्तु ते ।। पु</span>. by <span class="devanagari">ब कि</span>. <span class="devanagari">को</span> p. 476, <span class="devanagari">कृत्यतत्व</span> 453 <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-55" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-56" class="footnote-item"><span class="devanagari">यमो विवस्वा पितृधर्मराजो वैवस्वतो दण्डधरश्च कालः । भूताधिपो दण्डकृताद्रसादी । कृत्यतत्व</span> pp. 79-80 <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-56" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-57" class="footnote-item"><span class="devanagari">भ्रातारुद्रप्रबुद्धार्थी भगिनीनिर्भयस्य वै । पूजनीयाः प्रयत्नेन अश्विनादित्य विधानतः । मार्कण्डेयो बलिर्व्यासो हनुमान् बिभीषण । कृपो धौमिः परशुराम सप्तैते चिरजीविन । मार्कण्डेय महाभाग सप्तकल्पान्तजीवन</span> ! <span class="devanagari">चिरजीवी यथा त्वं हि तथा मे भ्रातरं कृष ।। व्रतराज्ञ</span> p. 81. <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-57" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-vijayādashāmī-and-divālī-58" class="footnote-item"><span class="devanagari">आ घा ता गच्छादुत्तरा युगानि यत्र जामयः कृणवन्नकृण्वन्। ऋ</span>. X. 10. 10. ‘Those later ages might come when sisters might do what is not sister-like.’ H. D. 27 <a href="#fnref-chapter-x-vijayādashāmī-and-divālī-58" class="fn-back" aria-label="Back to text">↩</a></li>
+</ol>
+</aside>
+
+            <div class="chapter-nav">
+                <a href="chapter-ix-navarātra-or-durgotsava.html" class="nav-prev"><i class="fa-solid fa-chevron-left"></i> Chapter IX. Navarātra or Durgotsava</a>
+                <a href="chapter-xi-makarasankrānti-and-mahāshivarātri.html" class="nav-next">Chapter XI. Makarasankrānti and Mahāshivarātri <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </main>
+    </div>
+
+    <button class="toc-mobile-toggle" onclick="toggleMobileToc()" aria-label="Table of contents">
+        <i class="fa-solid fa-list"></i>
+    </button>
+
+    
+    <footer class="container-fluid pt-4" style="background-color:#2e4144">
+        <div class="row border-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img src="https://sanatana.in/mbta/public/images/Homepage_html/images/layer_8.png" alt="">
+            </div>
+            <div class="col-md-5 text-white">
+                <p>The divine knowledge and wisdom of our shastras is the only thing eternal,
+                   which was and which will remain ever-present in this gods creation.
+                   Our endeavours are to preserve this knowledge.</p>
+            </div>
+            <div class="col-md-1 text-white">
+                <div class="d-flex" style="height: 75px;">
+                    <div class="vr"></div>
+                </div>
+            </div>
+            <div class="col-md-3 text-white">
+                <i class="fa-solid fa-globe"></i>&emsp;
+                <a href="https://sanatanasampatti.in" class="text-light">www.sanatanasampatti.in</a><br>
+                <i class="fa-solid fa-envelope"></i>&emsp;
+                <a href="" class="text-light">sriranga.yoga@gmail.com</a>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center py-3 mb-4 align-items-center border-bottom">
+            <div class="col-md-2 text-white fs-4 text-center">Project</div>
+            <div class="col-md-2 text-white fs-4 text-center">Our Mission</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contribute</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contact Us</div>
+        </div>
+        <div class="row">
+            <p class="col-md-6 fs-6 text-start text-light">
+                <small>&copy; 2026 Sanatanasampatti</small>
+            </p>
+            <p class="col-md-6 fs-6 text-end text-light">
+                <a class="text-white" rel="nofollow" href="http://www.srirangadigital.com" target="_blank">
+                    <img src="https://sanatana.in/mbta/public/images/logo.png" alt="sriranga logo" />
+                    <small>Designed, Developed and Maintained by Sriranga Digital</small>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        const headings = [];
+        tocLinks.forEach(link => {
+            const id = link.getAttribute('href').substring(1);
+            const el = document.getElementById(id);
+            if (el) headings.push({ el: el, link: link.parentElement });
+        });
+
+        function onScroll() {
+            let current = null;
+            for (const h of headings) {
+                const rect = h.el.getBoundingClientRect();
+                if (rect.top <= 120) current = h;
+            }
+            tocLinks.forEach(l => l.parentElement.classList.remove('active'));
+            if (current) current.link.classList.add('active');
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    });
+
+    function toggleMobileToc() {
+        const toc = document.getElementById('toc');
+        if (!toc) return;
+        if (toc.style.display === 'block') {
+            toc.style.display = '';
+            toc.style.position = '';
+        } else {
+            toc.style.display = 'block';
+            toc.style.position = 'fixed';
+            toc.style.top = '0';
+            toc.style.left = '0';
+            toc.style.width = '80vw';
+            toc.style.maxWidth = '320px';
+            toc.style.height = '100vh';
+            toc.style.maxHeight = '100vh';
+            toc.style.zIndex = '2000';
+            toc.style.background = 'var(--parchment)';
+            toc.style.boxShadow = '4px 0 20px rgba(0,0,0,0.2)';
+            toc.style.padding = '24px';
+            toc.style.overflowY = 'auto';
+        }
+    }
+    </script>
+
+    <script>
+    function toggleSynopsisAudio(btn) {
+        var audio = btn.parentElement.querySelector('audio');
+        if (!audio.src) audio.src = btn.getAttribute('data-src');
+        if (audio.paused) {
+            audio.play();
+            btn.classList.add('playing');
+            btn.querySelector('i').className = 'fa-solid fa-pause';
+        } else {
+            audio.pause();
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        }
+        audio.onended = function() {
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        };
+        // Prevent click from toggling the synopsis open/close
+        event.stopPropagation();
+    }
+    </script>
+</body>
+</html>

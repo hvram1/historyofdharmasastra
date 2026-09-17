@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- MDB UI Kit -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/fonts.css?v=1.2">
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/navbar.css?v=2.4">
+
+    <title>102. Dandaviveka of Vardhamāna — Volume I: Part II — History of Dharmaśāstra</title>
+    <style>
+    :root {
+        --saffron:        #D4600A;
+        --saffron-light:  #F0924A;
+        --saffron-wash:   rgba(212, 96, 10, 0.07);
+        --indigo:         #2E5FA3;
+        --indigo-dark:    #1C3D70;
+        --maroon:         #7A1E1E;
+        --amber:          #C97A1A;
+        --ink:            #1A1209;
+        --ink-secondary:  #4A3B2A;
+        --parchment:      #FDFAF4;
+        --parchment-mid:  #F5EFE2;
+        --rule:           rgba(180, 130, 60, 0.22);
+        --shadow:         0 2px 18px rgba(90, 50, 10, 0.08);
+        --font-devanagari: 'Tiro Devanagari Sanskrit', 'Siddhanta', 'Noto Sans Devanagari', serif;
+        --font-roman:      'Junicode', Georgia, serif;
+    }
+
+    body {
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: var(--font-roman);
+    }
+
+    .devanagari {
+        font-family: var(--font-devanagari);
+    }
+
+    /* ── Navbar overrides ── */
+    .navbar-ontop { z-index: 1031; }
+    .hdclr { color: var(--saffron); }
+    .engpara { font-family: 'Open Sans', sans-serif; }
+
+    /* ── Layout ── */
+    .dh-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .dh-content {
+        flex: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        background: var(--parchment);
+        box-shadow: var(--shadow);
+        min-height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        .dh-content { padding: 24px 20px; }
+        .dh-wrapper { flex-direction: column; }
+    }
+
+    /* ── TOC Sidebar ── */
+    .toc-sidebar {
+        position: sticky;
+        top: 80px;
+        width: 280px;
+        min-width: 280px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding: 20px 16px;
+        margin-right: 24px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        scrollbar-width: thin;
+    }
+
+    .toc-title {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--saffron-light);
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list li {
+        padding: 4px 0;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-list li.toc-l3 {
+        padding-left: 16px;
+        font-size: 0.78rem;
+    }
+
+    .toc-list li a {
+        color: var(--ink-secondary);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .toc-list li a:hover { color: var(--saffron); }
+
+    .toc-list li.active {
+        border-left-color: var(--saffron);
+    }
+
+    .toc-list li.active a {
+        color: var(--saffron);
+        font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-sidebar { display: none; }
+    }
+
+    /* ── Mobile TOC Toggle ── */
+    .toc-mobile-toggle {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1050;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--saffron);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-mobile-toggle { display: block; }
+    }
+
+    /* ── Section Headings ── */
+    .section-heading {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        margin: 48px 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--rule);
+        letter-spacing: 0.5px;
+        scroll-margin-top: 80px;
+    }
+
+    h2.section-heading { font-size: 1.6rem; }
+
+    h3.section-heading {
+        font-size: 1.25rem;
+        border-left: 4px solid var(--saffron-light);
+        border-bottom: none;
+        padding: 8px 16px;
+        background: var(--saffron-wash);
+        border-radius: 0 5px 5px 0;
+    }
+
+    /* ── Prose ── */
+    .prose {
+        font-family: var(--font-roman);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+        color: var(--ink);
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    .prose em { color: var(--maroon); }
+
+    .prose:target {
+        background: rgba(212, 96, 10, 0.12);
+        border-left: 4px solid var(--saffron);
+        padding-left: 16px;
+        margin-left: -20px;
+        border-radius: 0 6px 6px 0;
+        animation: target-pulse 2s ease-out;
+    }
+
+    @keyframes target-pulse {
+        0%   { background: rgba(212, 96, 10, 0.30); }
+        100% { background: rgba(212, 96, 10, 0.12); }
+    }
+
+    /* ── Footnote References ── */
+    .fn-ref {
+        font-size: 0.75em;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    .fn-ref a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 0 2px;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: color 0.15s;
+    }
+
+    .fn-ref a:hover { color: var(--indigo); }
+
+    /* ── Synopsis Box ── */
+    .synopsis-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron-light);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .synopsis-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .synopsis-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .synopsis-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .synopsis-box.open .synopsis-toggle i {
+        transform: rotate(90deg);
+    }
+    .synopsis-body {
+        display: none;
+        padding: 0 20px 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+    }
+    .synopsis-box.open .synopsis-body { display: block; }
+    .synopsis-body p { margin: 0; }
+    .synopsis-attribution {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: var(--ink-secondary);
+        opacity: 0.7;
+        font-style: italic;
+    }
+    .synopsis-audio {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    .synopsis-play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--saffron);
+        background: none;
+        color: var(--saffron);
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: background 0.2s, color 0.2s;
+        padding: 0;
+    }
+    .synopsis-play-btn:hover {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn.playing {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn i { padding-left: 2px; }
+
+    /* ── Index Terms Panel ── */
+    .index-terms-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .index-terms-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .index-terms-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .index-terms-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .index-terms-box.open .index-terms-toggle i {
+        transform: rotate(90deg);
+    }
+    .index-terms-body {
+        display: none;
+        padding: 0 20px 16px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .index-terms-box.open .index-terms-body { display: block; }
+    .index-terms-dl {
+        margin: 0;
+        padding: 0;
+    }
+    .index-terms-dl dt {
+        font-family: var(--font-roman);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+        margin-top: 8px;
+    }
+    .index-terms-dl dd {
+        margin: 2px 0 0 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        color: var(--ink-secondary);
+        line-height: 1.5;
+    }
+    .nyaya-heading {
+        font-family: var(--font-roman);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        margin: 16px 0 4px;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+    }
+
+    /* ── Inline Index Popovers ── */
+    .idx-term {
+        border-bottom: 1px dotted var(--saffron-light);
+        cursor: help;
+        position: relative;
+    }
+    .idx-term:hover::after {
+        content: attr(data-def);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        background: rgba(44, 36, 22, 0.92);
+        color: #F5ECD8;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        max-width: 280px;
+        z-index: 100;
+        white-space: normal;
+        line-height: 1.4;
+        pointer-events: none;
+    }
+
+    /* ── Structured Version Banner ── */
+    .structured-banner {
+        margin: 0 0 28px;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, rgba(212, 96, 10, 0.06) 0%, rgba(212, 96, 10, 0.02) 100%);
+        border: 1px solid var(--saffron-light);
+        border-radius: 6px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        color: var(--ink-secondary);
+        line-height: 1.6;
+    }
+    .structured-banner i { color: var(--saffron); margin-right: 4px; }
+    .structured-banner a { color: var(--indigo); font-weight: 600; text-decoration: none; }
+    .structured-banner a:hover { text-decoration: underline; }
+
+    /* ── Footnotes Section ── */
+    .footnotes-section {
+        margin: 32px 0 48px;
+        padding: 20px 24px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .footnotes-section hr {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 0 0 16px;
+    }
+
+    .footnotes-list {
+        padding-left: 24px;
+        margin: 0;
+    }
+
+    .footnote-item {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+        scroll-margin-top: 80px;
+    }
+
+    .footnote-item:target {
+        background: rgba(212, 96, 10, 0.1);
+        border-radius: 4px;
+        padding: 4px 6px;
+        margin-left: -6px;
+    }
+
+    .fn-back {
+        color: var(--saffron-light);
+        text-decoration: none;
+        font-size: 0.85em;
+        margin-left: 4px;
+    }
+
+    .fn-back:hover { color: var(--saffron); }
+
+    /* ── Reference Links ── */
+    a.ref {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: all 0.15s;
+    }
+
+    a.ref:hover {
+        color: var(--saffron);
+        border-bottom-style: solid;
+    }
+
+    a.mbta-ext {
+        color: var(--indigo);
+        font-size: 0.7em;
+        margin-left: 2px;
+        opacity: 0.5;
+        text-decoration: none;
+        vertical-align: super;
+    }
+    a.mbta-ext:hover { opacity: 1; color: var(--saffron); }
+
+    /* ── References Panel (sidebar) ── */
+    .refs-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .refs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .refs-list li {
+        padding: 3px 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .ref-source-link {
+        font-weight: 600;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .ref-source-link:hover {
+        text-decoration: underline;
+    }
+
+    .ref-verse-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.76rem;
+    }
+
+    .ref-verse-link:hover {
+        text-decoration: underline;
+        color: var(--saffron);
+    }
+
+    .ref-verses {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Timeline panel ── */
+    .timeline-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .timeline-list li {
+        padding: 2px 0;
+        font-size: 0.76rem;
+        line-height: 1.4;
+        position: relative;
+        padding-left: 14px;
+    }
+
+    .timeline-list li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--saffron);
+    }
+
+    .timeline-list li.tl-approximate::before {
+        background: transparent;
+        border: 2px solid var(--saffron);
+        width: 4px;
+        height: 4px;
+    }
+
+    .timeline-list li.tl-century::before {
+        background: transparent;
+        border: 2px dashed var(--saffron);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+
+    .tl-dot-link {
+        text-decoration: none;
+        color: var(--ink);
+        display: block;
+    }
+
+    .tl-dot-link:hover {
+        color: var(--saffron);
+    }
+
+    .tl-year {
+        font-weight: 600;
+        color: var(--saffron);
+        font-size: 0.72rem;
+        min-width: 70px;
+        display: inline-block;
+    }
+
+    .tl-label {
+        color: var(--ink-secondary);
+        font-size: 0.72rem;
+    }
+
+    .tl-view-link, .tl-more {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.72rem;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .tl-view-link:hover, .tl-more:hover {
+        text-decoration: underline;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+
+    .breadcrumb-bar a {
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+
+    .breadcrumb-bar .sep {
+        color: var(--amber);
+        margin: 0 8px;
+    }
+
+    .breadcrumb-bar .current {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Chapter Navigation ── */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        margin-top: 48px;
+        border-top: 2px solid var(--rule);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .chapter-nav a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        transition: all 0.2s;
+        max-width: 45%;
+    }
+
+    .chapter-nav a:hover {
+        background: var(--saffron-wash);
+        border-color: var(--saffron-light);
+    }
+
+    .nav-prev { text-align: left; }
+    .nav-next { text-align: right; margin-left: auto; }
+
+    .page-range {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+    }
+
+    /* ── Volume Cards (Landing) ── */
+    .vol-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .vol-card {
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        transition: all 0.25s;
+    }
+
+    .vol-card:hover {
+        border-color: var(--saffron-light);
+        box-shadow: 0 4px 24px rgba(212, 96, 10, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .vol-num {
+        font-family: var(--font-roman);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--saffron);
+        margin-bottom: 8px;
+    }
+
+    .vol-subtitle {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        line-height: 1.5;
+        flex: 1;
+    }
+
+    .vol-chapters {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        margin-top: 12px;
+    }
+
+    /* ── Chapter Cards (Volume Index) ── */
+    .chapter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .chapter-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .chapter-card:hover {
+        border-color: var(--saffron-light);
+        background: var(--saffron-wash);
+    }
+
+    .card-num {
+        font-family: var(--font-roman);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--saffron);
+        min-width: 36px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        flex: 1;
+    }
+
+    .card-pages {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        color: var(--ink-secondary);
+    }
+
+    /* ── Landing Hero ── */
+    .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-family: var(--font-roman);
+        font-size: 2.4rem;
+        color: var(--saffron);
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .hero .devanagari-title {
+        font-family: var(--font-devanagari);
+        font-size: 1.8rem;
+        color: var(--ink);
+        margin-bottom: 16px;
+    }
+
+    .hero .author {
+        font-family: var(--font-roman);
+        font-size: 1.1rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .hero .desc {
+        font-family: var(--font-roman);
+        font-size: 1rem;
+        color: var(--ink-secondary);
+        line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer { margin-top: 48px; }
+</style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mbta/">
+      <div class="container-fluid">&emsp;&emsp;
+      <a href="../index.html" class="navbar-brand" style="text-decoration:none;">
+        <span class="devanagari ms-3" style="font-size:1.5rem; color:var(--saffron); font-weight:700;">धर्मशास्त्रम्</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="../index.html">धर्मशास्त्रम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5 active" href="../index.html">खण्डाः</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in/mbta/">महाभारतम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in">सनातनम्</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+
+    <div class="dh-wrapper container-xl">
+        <nav id="toc" class="toc-sidebar">
+<div class="refs-panel">
+<h5 class="toc-title">References</h5>
+<ul class="refs-list">
+<li><a href="../refs/arthashastra.html" class="ref-source-link">Arthaśāstra</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/brihaspati.html" class="ref-source-link">Bṛhaspati</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/kautilya.html" class="ref-source-link">Kauṭilya Arthaśāstra</a> <span class="ref-verses"><a href="../refs/kautilya.html#I.4.11-14" class="ref-verse-link">I.4.11-14</a></span></li>
+<li><a href="../refs/manu.html" class="ref-source-link">Manusmṛti</a> <span class="ref-verses"><a href="../refs/manu.html#VII.27" class="ref-verse-link">VII.27</a>, <a href="../refs/manu.html#VIII.20" class="ref-verse-link">VIII.20</a>, <a href="../refs/manu.html#VIII.120-121" class="ref-verse-link">VIII.120-121</a>, <a href="../refs/manu.html#VIII.197-198" class="ref-verse-link">VIII.197-198</a>, <a href="../refs/manu.html#VIII.272" class="ref-verse-link">VIII.272</a>, <a href="../refs/manu.html#VIII.126" class="ref-verse-link">VIII.126</a> <a href="../refs/manu.html" class="ref-verse-link">+5</a></span></li>
+<li><a href="../refs/narada.html" class="ref-source-link">Nārada</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/parasara.html" class="ref-source-link">Parāśara</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/vishnu_smriti.html" class="ref-source-link">Viṣṇu Smṛti</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/yajnavalkya.html" class="ref-source-link">Yājñavalkya</a> <span class="ref-verses"><a href="../refs/yajnavalkya.html#II.304" class="ref-verse-link">II.304</a>, <a href="../refs/yajnavalkya.html#I.366" class="ref-verse-link">I.366</a></span></li>
+<li><a href="../refs/mb_shantiparva.html" class="ref-source-link">Śāntiparva</a> <span class="ref-verses"><a href="../refs/mb_shantiparva.html#121.10" class="ref-verse-link">121.10</a>, <a href="../refs/mb_shantiparva.html#15.30" class="ref-verse-link">15.30</a></span></li>
+</ul>
+</div>
+<div class="timeline-panel">
+<h5 class="toc-title">Timeline</h5>
+<ul class="timeline-list">
+<li class="tl-century"><a href="#p-102-dandaviveka-of-vardhamāna-14" class="tl-dot-link"><span class="tl-year">1201 CE</span> <span class="tl-label">Raghunandana refers to him as </span></a></li>
+<li class="tl-century"><a href="#p-102-dandaviveka-of-vardhamāna-13" class="tl-dot-link"><span class="tl-year">1401 CE</span> <span class="tl-label">As to his date there is no muc</span></a></li>
+<li class="tl-exact"><a href="#p-102-dandaviveka-of-vardhamāna-13" class="tl-dot-link"><span class="tl-year">1496 CE</span> <span class="tl-label">As to his date there is no muc</span></a></li>
+</ul>
+<a href="102-dandaviveka-of-vardhamāna-timeline.html" class="tl-view-link">View full timeline &rarr;</a>
+</div>
+<h5 class="toc-title">Sections</h5>
+<ul class="toc-list">
+<li class="toc-l2"><a href="#102-dandaviveka-of-vardhamāna">102. Dandaviveka of Vardhamāna</a></li>
+</ul>
+</nav>
+        <main class="dh-content">
+            
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep">›</span>
+        <a href="index.html">Volume I: Part II</a>
+        <span class="sep">›</span>
+        <span class="current">102. Dandaviveka of Vardhamāna</span>
+    </div>
+    
+            <h1 class="text-center" style="font-family: var(--font-roman); font-size: 2rem; color: var(--saffron); margin-bottom: 8px;">
+                102. Dandaviveka of Vardhamāna
+            </h1>
+            <p class="text-center" style="font-family: 'Open Sans', sans-serif; color: var(--ink-secondary); font-size: 0.9rem; margin-bottom: 36px;">
+                Volume I: Part II <span class="page-range">pp. 854–860</span>
+            </p>
+
+            
+    <div class="synopsis-box" id="synopsis">
+        <button class="synopsis-toggle" onclick="this.parentElement.classList.toggle('open')"
+                aria-expanded="false" aria-controls="synopsis-body">
+            <i class="fa-solid fa-chevron-right"></i>
+            Kane's Synopsis
+        </button>
+        <div class="synopsis-audio">
+            <span class="synopsis-play-btn" role="button" tabindex="0"
+                    onclick="toggleSynopsisAudio(this)"
+                    data-src="../audio/synopsis/vol-1-part-2/vol-1-part-2_sec102.mp3" title="Listen to synopsis">
+                <i class="fa-solid fa-play"></i>
+            </span>
+            <audio preload="none"></audio>
+        </div>
+        <div class="synopsis-body" id="synopsis-body">
+            <p>The *Dandaviveka* of Vardhamāna, a pivotal text in the study of Hindu legal traditions, was first edited by Kamalākṛṣṇa Smṛtitīrtha. This work perhaps uniquely stands out as the most extensive extant Sanskrit treatise dedicated solely to the intricate domain of the law of crimes and punishments. Its scholarly rigour is evidenced by its frequent references, notably citing Halāyudha a substantial thirty-three times. The text itself commences with a profound and elaborate eulogy of *daṇḍa*, setting the philosophical framework for its detailed contents.
+
+Vardhamāna composed this significant *Viveka* during the reign of King Bhairava of Mithilā, situating its creation within a specific historical and geographical context. In developing his extensive work, he meticulously consulted numerous other scholarly works and authors of his time, reflecting a deep engagement with antecedent legal thought. His intellectual lineage is further highlighted by his gurus, who included his elder brother Gaṇḍakamiśra, as well as the esteemed scholars Śaṅkara and Vācaspati. Vardhamāna himself was a prolific author, credited with the composition of no less than nine distinct works, and is generally understood to have flourished some decades prior to 1496 A.D.</p>
+            <p class="synopsis-attribution">— Synopsis by P.V. Kane, from History of Dharmaśāstra</p>
+        </div>
+    </div>
+
+
+            
+
+            <h2 id="102-dandaviveka-of-vardhamāna" class="section-heading">102. Dandaviveka of Vardhamāna</h2>
+<p class="prose" id="p-102-dandaviveka-of-vardhamāna-1">##102. Daṇḍaviveka of Vardhamāna</p>
+<p class="prose" id="p-102-dandaviveka-of-vardhamāna-2">In the first edition of this History, Vardhamāna was not dealt with, because none of his works was then available to me in print. His Daṇḍaviveka was first published in 1931 in the Gaikwad Oriental Series ( Baroda ) edited by Mahāmahopā- 102. Vardhamāna</p>
+<p class="prose" id="p-102-dandaviveka-of-vardhamāna-3">dhyāya Kamalakarṣṇa Smṛtitīrtha of Bhatpara in West Bengal with an exhaustive Introduction in English and a brief one in Sanskrit.</p>
+<p class="prose" id="p-102-dandaviveka-of-vardhamāna-4">The work deserves special mention in this history since it is probably the only extensive extant Sanskrit work (in 356 pages) on the law of crimes and punishments alone.</p>
+<p class="prose" id="p-102-dandaviveka-of-vardhamāna-5">Smṛtis like those of <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> and <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yājñavalkya</a> deal with crimes and punishments, but the treatment is brief and mixed up with other matterṣ For example, <a class="ref" href="../refs/manu.html#VIII.20" data-source="manu" data-ref="VIII.20" title="Manusmṛti VIII.20">Manu VIII. 20</a> (=<a class="ref" href="../refs/mb_shantiparva.html#15.30" data-source="mb_shantiparva" data-ref="15.30" title="Śāntiparva 15.30">Śāntiparva 15. 30</a><a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>) states that if the king were not vigilant in awarding punishment to those who deserve to be punished, the strong would devour the weak and further the king properly awarding punishments becomes endowed with the three goals of life viz. dharma, artha and kāma (<a class="ref" href="../refs/manu.html#VII.27" data-source="manu" data-ref="VII.27" title="Manusmṛti VII.27">Manu VII. 27</a>, <a class="ref" href="../refs/mb_shantiparva.html#121.10" data-source="mb_shantiparva" data-ref="121.10" title="Śāntiparva 121.10">Śāntiparva 121. 10</a><a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>). <a class="ref" href="../refs/kautilya.html#I.4.11-14" data-source="kautilya" data-ref="I.4.11-14" title="Kauṭilya Arthaśāstra I.4.11-14">Kauṭilya (in I. 4. 11-14)</a> emphasizes the same thingṣ<sup class="fn-ref"><a href="#fn-102-dandaviveka-of-vardhamāna-1" id="fnref-102-dandaviveka-of-vardhamāna-1">1</a></sup></p>
+<p class="prose" id="p-102-dandaviveka-of-vardhamāna-6">Separate works on Vivāda (substantive law) and Vyavahāra (procedural law) were composed but those on Vyavahāra alone were few and far between viz. Vyavahāraratnākara of Cāṇḍeśvara,<sup class="fn-ref"><a href="#fn-102-dandaviveka-of-vardhamāna-2" id="fnref-102-dandaviveka-of-vardhamāna-2">2</a></sup> (vide Mitra’s Notices, vol. VI p, 66 No. 2036) and Vyavahāra-Cintāmaṇi of Vācaspati (published long ago and lately published by Dr. Rocher). Halāyudha also appears to have composed either a work dealing with both Vivāda and Vyavahāra or two works dealing with the two branches of law separately.</p>
+<p class="prose" id="p-102-dandaviveka-of-vardhamāna-7">In dozens of places the Vivādaratnākara mentions Halāyudha’s work and sometimes styles it ‘Halāyudha-nibandha’ (as on pp. 41, 44 and 50). Halāyudha appears to have also dealt with the procedural law and with crimes and punishmentṣ Vardhamāna in the Daṇḍaviveka cites Halāyudha 33 times and sometime mentions his work Halāyudha-nibandha ( as on pp. 72, 150, 275 ) and as Halāyudhīya ( pp, 119. 152 ).</p>
+<p class="prose" id="p-102-dandaviveka-of-vardhamāna-8">The Daṇḍaviveka is a large work in 355 printed pageṣ It starts with the eulogy of ‘ daṇḍa ’ contained in <a class="ref" href="../refs/manu.html#VII.14" data-source="manu" data-ref="VII.14" title="Manusmṛti VII.14">Manu VII. 14</a>, 15, 17, 18, points out by quoting <a class="ref" href="../refs/manu.html#VII.20-21" data-source="manu" data-ref="VII.20-21" title="Manusmṛti VII.20-21">Manu VII. 20-21</a> that, if the king does not punish those who deserve punishment then what is called Matsyanyāya will prevail. He further cites <a class="ref" href="../refs/manu.html#VIII.304" data-source="manu" data-ref="VIII.304" title="Manusmṛti VIII.304">Manu VIII. 304</a> that the king shares one-sixth of the merit ( dharma ) of his subjects when he properly regulates them and takes 1/6th of the sins of his subjects if he does not regulate them properly. He quotes <a class="ref" href="../refs/brihaspati.html" data-source="brihaspati" data-ref="" title="Bṛhaspati">Bṛhaspati</a> that Daṇḍa is of four levels viz. vāg-daṇḍa ( i. e. censure by saying you did an improper act ), dhig-daṇḍa ( censuring a guilty person in the words ‘ fie on you who are guilty of an unworthy act ), dhanadaṇḍa ( fine, either a fixed amount or a varying amount ), vadha-daṇḍa ( inflicting bodily pain, mutilation of a limb or limbs and death ); the circumstances on which the punishment depends such as jāti ( caste ), amount ( of property ), age ( childhood, grown up man ), time of offence ( day or night &c ). On pp. 22-30 he discusses at some length the fines in paṇas ( lowest, middling, highest &c. ) basing his remarks on Mauu VIII, 138 and <a class="ref" href="../refs/yajnavalkya.html#I.366" data-source="yajnavalkya" data-ref="I.366" title="Yājñavalkya I.366">Yāj. I. 366</a> and discusses the scale of the values of guñjā, kṛṣṇala, māṣa, suvarṇa ( &c. ) and of weights and measures called karṣa, pala, tolaka &c. and coins of copper, silver and golḍ He discusses at some length the parts of an offender’s body that are to be dealt with by way of punish- ment ( quoting <a class="ref" href="../refs/manu.html#VIII.124" data-source="manu" data-ref="VIII.124" title="Manusmṛti VIII.124">Manu VIII. 124</a> ) and states different views about bodily punishments for a brāhmaṇa offender ( pp. 46-48 ). He has a long disquisition on fines with reference to various crimes in pp. 52 ff. <a class="ref" href="../refs/manu.html#VIII.336" data-source="manu" data-ref="VIII.336" title="Manusmṛti VIII.336">Manu (VIII. 336)</a> provides that, where for an offence an ordinary person would be fined one Kārṣāpaṇa, a rājan ( king )<sup class="fn-ref"><a href="#fn-102-dandaviveka-of-vardhamāna-3" id="fnref-102-dandaviveka-of-vardhamāna-3">3</a></sup> should be fined one thousand paṇaṣ The Daṇḍa- 102. Vardhamāna viveka explains that ‘<em>rājan</em>’ in this passage means only persons who are endowed with power (landlords &c.) and not the king himself. He quotes <a class="ref" href="../refs/manu.html#VIII.126" data-source="manu" data-ref="VIII.126" title="Manusmṛti VIII.126">Manu VIII. 126</a> and Yaj. I. 368 and elaborates on theṃ He devotes pp. 88–140 to punishments for thefts of various kindṣ He deals with adultery, rape and unnatural offences on pp. 54–195 and with defamation and cognate offences in pp. 196–218, with assault and battery in pp. 219–258, miscellaneous (<em>prakīrṇaka</em>) matters which are taken up by the king him- self and not brought before the king by any person (pp. 259– 272); he devotes pp. 273–292 to the rules about property or treasure lost and found or buried treasure founḍ He has a special discussion (pp. 293–320) on <em>sāhasa</em> (of five kinds viz. killing a person, robbery, carrying away a woman by force or rape and the two kinds of <em>pārusya</em>), special rules of punishment for Śūdra guilty of certain acts such as those described in <a class="ref" href="../refs/manu.html#VIII.272" data-source="manu" data-ref="VIII.272" title="Manusmṛti VIII.272">Manu VIII. 272</a>, 281 (both verses occur in <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> also ), such as wear- ing the sacred thread and thereby earning his livelihood or (<a class="ref" href="../refs/yajnavalkya.html#II.304" data-source="yajnavalkya" data-ref="II.304" title="Yājñavalkya II.304">Yāj. II. 304</a>); cutting down trees growing near temples, burial places or on boundaries &c.; On pp. 325–33 he mentions the Vivāda- padas and details some punishments about some of them such as ‘<em>asvāmī-vikraya</em>’ (<a class="ref" href="../refs/manu.html#VIII.197-198" data-source="manu" data-ref="VIII.197-198" title="Manusmṛti VIII.197-198">Manu VIII. 197–198</a>); pp. 331–337 deal with fines arising on breach of court’s temporary orders in a proceeding such as temporary injunction not to leave one’s place of residence or not to do certain acts, pp. 337–355 are concerned with fines for members of the court (<em>sabhya</em>) in certain cases, review of judgment, fines for parties attributing faults to good witnesses, fines for false witnesses, fines for witnesses found to be false on account of being bribed (<a class="ref" href="../refs/manu.html#VIII.120-121" data-source="manu" data-ref="VIII.120-121" title="Manusmṛti VIII.120-121">Manu VIII. 120–121</a> ), fines for witnesses called upon to depose but not coming to do so without any reason &c.</p>
+<p class="prose" id="p-102-dandaviveka-of-vardhamāna-9">Vardhamāna gives about himself and his work some in- formatioṇ He wrote the Daṇḍaviveka while king Bhairava was the ruler of Mithilā and states that his elder brother was Gaṅḍakamiśra and the latter along with Śaṅkara and Vācaspati were his gurus (Intro. Verse 6). At the end he says that he wrote the Daṇḍaviveka for the sake of the king of Videha, that he was the son of Bhaveśa of the Bilvapañcaka family. He mentions at the end that he wrote the work after consulting the follow-ing works and authors viz. Kalpataru, Kāmadhenu, Halāyudha, Dharmakoṣa, Smṛtisāra, Kṛtyasāgara, Ratnākara, Pārijāta, the two Saṁhitās of <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> and <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yājñavalkya</a> with the commentaries thereon; besides Vyavahāratilaka, Pradīpikā and Pradīpa. Besides those mentioned in the verses at the end and besides the two epics, Purāṇas, Dharmasūtras and smṛtis he mentions also Kṛtya-sāra (p. 28), Graheśvaramiśra (pp 27, 134), Cāṇḍeśvara, Catur-varga-cintāmaṇi (326, 346–7), <a class="ref" href="../refs/parasara.html" data-source="parasara" data-ref="" title="Parāśara">Parāśara</a>bhāṣya (p. 279), Bhava-deva (pp. 77, 238, 347, 353), Bhūpālapaddhati (136), Balabhūṣaṇa (p. 135), Miśraḥ (i. e. Vācaspatimiśra, his guru 64, 65, 92, 195, 97, 282, 317), Vivāda-cintāmaṇi (211, 278), Samayaprakāśa (136), Smṛtisāgara (136), Śūlapāṇi (240), Harinātha (p. 251, 326), Harihara (182).</p>
+<p class="prose" id="p-102-dandaviveka-of-vardhamāna-10">It appears that he composed nine works viz. Daṇḍaviveka, Dvaitaviveka, Gaṅgākṛtyaviveka, Paribhāṣāviveka, Smṛtitatva-dīpa, Dharmapradīpa, Smṛtiparibhāṣā, Smṛtitatvāmṛta, Smṛti-tattvāmṛta-sāroddhāra (abridgement of the preceding ). For the Smṛtitatvāmṛta, vide Mitra’s Notices, Vol, VI No. 1992 pp. 12–13 on (Śāntika-Pauṣṭika) where his mother’s name is given as Gauri. The 2nd verse of that work is interesting.<sup class="fn-ref"><a href="#fn-102-dandaviveka-of-vardhamāna-5" id="fnref-102-dandaviveka-of-vardhamāna-5">5</a></sup> It says at present people’s usages differ from Śāstra; when there is a conflict Śāstra is stronger and therefore it has been accepted in this work. For Smṛtitatvāmṛta-sāroddhāra Vide Mitra’s Notices Vol. VI p. 57 (where at the end he refers to the Daṇḍaviveka his as work). On p. 76 of the Daṇḍaviveka he refers to his own Dvaitaviveka.<sup class="fn-ref"><a href="#fn-102-dandaviveka-of-vardhamāna-6" id="fnref-102-dandaviveka-of-vardhamāna-6">6</a></sup> At the end of the Smṛtitatvaviveka ( Mitra’s Notices Vol. V No. 1868 pp. 183–185 the colophon describes Vardhamāna as Mahā-dharmādhikārī ( Judge ). Vardhamāna Some of his references are interesting e. g. he quotes a prose passage of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>gupta about Rūpyamāsaka, Dharaṇa, Niṣka and a verse of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>gupta stating that 1/70th part of a suvarṇa is called ropaka and a dināra is equal to 28 ropakaṣ<sup class="fn-ref"><a href="#fn-102-dandaviveka-of-vardhamāna-7" id="fnref-102-dandaviveka-of-vardhamāna-7">7</a></sup></p>
+<p class="prose" id="p-102-dandaviveka-of-vardhamāna-11">On p. 28 he refers to another view of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>gupta on ‘Māsa’.<sup class="fn-ref"><a href="#fn-102-dandaviveka-of-vardhamāna-8" id="fnref-102-dandaviveka-of-vardhamāna-8">8</a></sup> In one place (p. 291-292) he cites some cases of conflict between Dharmaśāstra and <a class="ref" href="../refs/arthashastra.html" data-source="arthashastra" data-ref="" title="Arthaśāstra">Arthaśāstra</a> and between two dharmaśāstras also.<sup class="fn-ref"><a href="#fn-102-dandaviveka-of-vardhamāna-9" id="fnref-102-dandaviveka-of-vardhamāna-9">9</a></sup></p>
+<p class="prose" id="p-102-dandaviveka-of-vardhamāna-12">The English Introduction to the Daṇḍaviveka is an instruc-tive one. It compares the provisions in the Daṇḍaviveka with the Indian Penal Code and the modern criminal law of India and well brings out the points of agreement and difference between theṃ</p>
+<p class="prose" id="p-102-dandaviveka-of-vardhamāna-13">As to his date there is no much difficulty. He was a pupil of Vācaspatimiśra and refers to the Vivādacintāmaṇi of that great Maithila scholar and therefore was a junior contemporary of Vācaspati. He flourished under king Bhairava of Mithilā (5th Intro. verse of Daṇḍaviveka) who belonged to the Kāmeśvara dynasty. In J. A. S. B. vol. XI (New Series, p. 433) a complete list of the kings of this dynasty and the probable dates of the authors that flourished under the Karṇāṭa and Kāmeśvara dyna-sties is set out, according to which Śaṅkaramiśra (one of the gurus of Vardhamāna) flourished in the 2nd and 3rd quarters of the 15th century A. D., while Vācaspati flourished in the 3rd and 4th quarters of the same century and Vardhamāna must have flourished some decades before La. Saṃ 376 (i. e. 1496 A. D.), when a mṣ of his Gaṅgākṛtyaviveka (one of his latest works) was copied (vide J. A. S. B. Vol. XI. p. 403). Vācas- pati's Śrāddhacintāmaṇi refers to Vardhamāna's work on ‘Pari- bhāṣā’. For the Smṛti-paribhāṣā of Vardhamāna, vide Mitra's Notices, vol. V pp. 160–161.</p>
+<p class="prose" id="p-102-dandaviveka-of-vardhamāna-14">Raghunandana refers to him as Vardhamānopādhyāya or Navya-vardhamāna in order to distinguish him from another Vardhamāna, son of Gaṅgeśopādhyāya, who flourished in the 13th century. Vide Tithitattva (Vol. I, 122 ) where the Smṛti- paribhāṣikā is cited; for citations from Navya-Vardhamāna vide Smṛtitattva Vol. I, tithi pp, 19, 184, Śrāddha, 213, 224; Āhnika p. 332 (Raghu. differs), 352, 424, Māla. pp. 803, 815, 818. The Śrāddha-pradīpa of Vardhamāna is mentened by Raghu. in Śrāddhatattava (vol I) p. 414.</p>
+<p class="prose" id="p-102-dandaviveka-of-vardhamāna-15">In the Journal of Oriental Institute (Baroda), vol. II (pp. 71–85) Dr. Ludo Rocher ( Ghent University ) furnishes an analysis of all msṣ of the Daṇḍaviveka with various readingṣ</p>
+<aside class="footnotes-section" aria-label="Footnotes">
+<hr>
+<ol class="footnotes-list">
+<li id="fn-102-dandaviveka-of-vardhamāna-1" class="footnote-item"><span class="devanagari">सुविज्ञातप्रणीतो हि दण्डः प्रजा धर्मार्थकामैर्योजयति। अप्रणीतस्तु मात्स्यन्याय</span>- <span class="devanagari">मुत्थापयति। बलीयानबलं ग्रसते दण्डभयाभावे। अर्थशास्त्र</span> I, 4, 11, 13, 14; <span class="devanagari">दण्डश्चेत् प्रणीतो नित्यलोकद्विजेरणाः प्रजा। जले मत्स्यानिवाभक्षयन् दुर्बलान् बलव</span>- <span class="devanagari">तराः ।। शान्ति</span> 15. 30 and <span class="devanagari">सुप्रणीतेन दण्डेनाप्रियानप्रियानात्मा प्रजा रक्षति स सम्म्यग्धर्म एव स केवलः।। यथा ममेतद्वचनं प्रागेव मनुना पुरा। यन्मापौर्त्यालं मनुष्येण ब्राह्मणो वचनं महान् । शान्ति</span> 21 10-12 ( <span class="devanagari">चित्रशाळा</span> eḍ Poona.) <a href="#fnref-102-dandaviveka-of-vardhamāna-1" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-102-dandaviveka-of-vardhamāna-2" class="footnote-item">Vide p. 763 above on Cāṇḍeśvara where a verse is cited naming the seven works of Cāṇḍeśvara including one on Vyavahāra. <a href="#fnref-102-dandaviveka-of-vardhamāna-2" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-102-dandaviveka-of-vardhamāna-3" class="footnote-item">It may be noted here that commentators like Kullūka state     that the king in such a case should himself lay down the fine     and that he should distribute the fine among eminent vaidika     brāhmaṇas or throw it into waters, since Varuṇa is the lord     of waters and of kings, as said by Manu ( IX. 245 ). Ṛgveda     ( VII. 49. 3 ) states that Varuṇa is the lord of waters and     ( Continued on the next page ) <a href="#fnref-102-dandaviveka-of-vardhamāna-3" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-102-dandaviveka-of-vardhamāna-4" class="footnote-item">( Continued from the previous page ) notes the truth and falsehood of meṇ The Daṇḍaviveka remarks (p. 56) : <span class="devanagari">एतेदेवाभिसन्धायाह नारायणो हलायुधश्च राजदण्डस्तु सभ्यैरेव कर्तव्य इति</span>. <span class="devanagari">नारायण</span> is one of the commentators on the Manu-smṛti, whom the Daṇḍaviveka quotes profusely. H. D.—108 <a href="#fnref-102-dandaviveka-of-vardhamāna-4" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-102-dandaviveka-of-vardhamāna-5" class="footnote-item"><span class="devanagari">व्यवहारोन्यथा लोके सांप्रतं शास्त्रमन्यथा । तयोर्विरुद्धयोः शास्त्रं बलवत्त्वादिहादृतम् ॥</span> 2nd verse of <span class="devanagari">स्मृतिलत्त्वामृत</span>. <a href="#fnref-102-dandaviveka-of-vardhamāna-5" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-102-dandaviveka-of-vardhamāna-6" class="footnote-item">On a verse of Vyāsa about a murderer and his associates Vardhamāna remarks <span class="devanagari">साक्षात्प्रभृत्त्युक्तमुत्तमनिमित्तभेदात् पञ्च</span>-<span class="devanagari">विषो वधः स चास्माभिर्द्दण्डविवेके भेदप्रभेदाभ्यां विस्तरेण प्रपञ्चितः । दण्ड</span>-<span class="devanagari">विवेक</span> p. 76. <a href="#fnref-102-dandaviveka-of-vardhamāna-6" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-102-dandaviveka-of-vardhamāna-7" class="footnote-item"><span class="devanagari">रजनाधिकारे विष्णुगुप्तः। अष्टाद‌शीतिगोरसर्गैघा रूप्यमाषकस्तेषोडश षरणे निष्को वा विश्षतिरुप्यपल तद‌द्‌श षरणकम्‌। दण्डवि०</span> p. 26; <span class="devanagari">विष्णुगुप्तः। सुवर्ण</span>-<span class="devanagari">सप्ततमो भागो रोपय उच्यते दीनारो रोपेकैराष्टाविशत्या परिकीर्तितः। दण्डवि०</span> p. 27. Is Ropak the same as Rupee ? <a href="#fnref-102-dandaviveka-of-vardhamāna-7" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-102-dandaviveka-of-vardhamāna-8" class="footnote-item"><span class="devanagari">तथा कार्षापणपादः चतुःकाकिणीको मापः</span>; <span class="devanagari">वक्ष्यमाणानादरवचनात्‌। राजतश्नापरो माषो विष्णुगुप्तदर्शनात्‌। कृष्णलस्य साधारणयुक्तमेव। दण्डविवेक</span> p. 28. <a href="#fnref-102-dandaviveka-of-vardhamāna-8" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-102-dandaviveka-of-vardhamāna-9" class="footnote-item"><span class="devanagari">स्वदारनियमे शड्‌खलिखिताभ्यामुकेपि नारदेन परावररुद्धस्वदासीगोनमाज्ञुज्ञान</span>-<span class="devanagari">वत्‌ मातुष्कल्ल्याया मातुः सपिण्डत्वेन शातातपादिभिरुद्धरनप्रतिषेधये बृर्हस्पतिना मातुष्कुलन्याया मातुः सपिण्डत्वेन शातातपादिभिरुद्धरनप्रतिषेधये बृर्हस्पतिना दाक्षिणात्यानां तत्प्रतिपादनवच। दण्डविवेक</span> p. 291. <a href="#fnref-102-dandaviveka-of-vardhamāna-9" class="fn-back" aria-label="Back to text">↩</a></li>
+</ol>
+</aside>
+
+            <div class="chapter-nav">
+                <a href="101-vācaspatimiśra.html" class="nav-prev"><i class="fa-solid fa-chevron-left"></i> 101. Vācaspatimiśra</a>
+                <a href="103-nrisimhaprasāda.html" class="nav-next">103. Nrisimhaprasāda <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </main>
+    </div>
+
+    <button class="toc-mobile-toggle" onclick="toggleMobileToc()" aria-label="Table of contents">
+        <i class="fa-solid fa-list"></i>
+    </button>
+
+    
+    <footer class="container-fluid pt-4" style="background-color:#2e4144">
+        <div class="row border-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img src="https://sanatana.in/mbta/public/images/Homepage_html/images/layer_8.png" alt="">
+            </div>
+            <div class="col-md-5 text-white">
+                <p>The divine knowledge and wisdom of our shastras is the only thing eternal,
+                   which was and which will remain ever-present in this gods creation.
+                   Our endeavours are to preserve this knowledge.</p>
+            </div>
+            <div class="col-md-1 text-white">
+                <div class="d-flex" style="height: 75px;">
+                    <div class="vr"></div>
+                </div>
+            </div>
+            <div class="col-md-3 text-white">
+                <i class="fa-solid fa-globe"></i>&emsp;
+                <a href="https://sanatanasampatti.in" class="text-light">www.sanatanasampatti.in</a><br>
+                <i class="fa-solid fa-envelope"></i>&emsp;
+                <a href="" class="text-light">sriranga.yoga@gmail.com</a>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center py-3 mb-4 align-items-center border-bottom">
+            <div class="col-md-2 text-white fs-4 text-center">Project</div>
+            <div class="col-md-2 text-white fs-4 text-center">Our Mission</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contribute</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contact Us</div>
+        </div>
+        <div class="row">
+            <p class="col-md-6 fs-6 text-start text-light">
+                <small>&copy; 2026 Sanatanasampatti</small>
+            </p>
+            <p class="col-md-6 fs-6 text-end text-light">
+                <a class="text-white" rel="nofollow" href="http://www.srirangadigital.com" target="_blank">
+                    <img src="https://sanatana.in/mbta/public/images/logo.png" alt="sriranga logo" />
+                    <small>Designed, Developed and Maintained by Sriranga Digital</small>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        const headings = [];
+        tocLinks.forEach(link => {
+            const id = link.getAttribute('href').substring(1);
+            const el = document.getElementById(id);
+            if (el) headings.push({ el: el, link: link.parentElement });
+        });
+
+        function onScroll() {
+            let current = null;
+            for (const h of headings) {
+                const rect = h.el.getBoundingClientRect();
+                if (rect.top <= 120) current = h;
+            }
+            tocLinks.forEach(l => l.parentElement.classList.remove('active'));
+            if (current) current.link.classList.add('active');
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    });
+
+    function toggleMobileToc() {
+        const toc = document.getElementById('toc');
+        if (!toc) return;
+        if (toc.style.display === 'block') {
+            toc.style.display = '';
+            toc.style.position = '';
+        } else {
+            toc.style.display = 'block';
+            toc.style.position = 'fixed';
+            toc.style.top = '0';
+            toc.style.left = '0';
+            toc.style.width = '80vw';
+            toc.style.maxWidth = '320px';
+            toc.style.height = '100vh';
+            toc.style.maxHeight = '100vh';
+            toc.style.zIndex = '2000';
+            toc.style.background = 'var(--parchment)';
+            toc.style.boxShadow = '4px 0 20px rgba(0,0,0,0.2)';
+            toc.style.padding = '24px';
+            toc.style.overflowY = 'auto';
+        }
+    }
+    </script>
+
+    <script>
+    function toggleSynopsisAudio(btn) {
+        var audio = btn.parentElement.querySelector('audio');
+        if (!audio.src) audio.src = btn.getAttribute('data-src');
+        if (audio.paused) {
+            audio.play();
+            btn.classList.add('playing');
+            btn.querySelector('i').className = 'fa-solid fa-pause';
+        } else {
+            audio.pause();
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        }
+        audio.onended = function() {
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        };
+        // Prevent click from toggling the synopsis open/close
+        event.stopPropagation();
+    }
+    </script>
+</body>
+</html>

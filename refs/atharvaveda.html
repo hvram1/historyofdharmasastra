@@ -1,0 +1,1919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- MDB UI Kit -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/fonts.css?v=1.2">
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/navbar.css?v=2.4">
+
+    <title>Atharvaveda — References in History of Dharmaśāstra</title>
+    <style>
+    :root {
+        --saffron:        #D4600A;
+        --saffron-light:  #F0924A;
+        --saffron-wash:   rgba(212, 96, 10, 0.07);
+        --indigo:         #2E5FA3;
+        --indigo-dark:    #1C3D70;
+        --maroon:         #7A1E1E;
+        --amber:          #C97A1A;
+        --ink:            #1A1209;
+        --ink-secondary:  #4A3B2A;
+        --parchment:      #FDFAF4;
+        --parchment-mid:  #F5EFE2;
+        --rule:           rgba(180, 130, 60, 0.22);
+        --shadow:         0 2px 18px rgba(90, 50, 10, 0.08);
+        --font-devanagari: 'Tiro Devanagari Sanskrit', 'Siddhanta', 'Noto Sans Devanagari', serif;
+        --font-roman:      'Junicode', Georgia, serif;
+    }
+
+    body {
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: var(--font-roman);
+    }
+
+    .devanagari {
+        font-family: var(--font-devanagari);
+    }
+
+    /* ── Navbar overrides ── */
+    .navbar-ontop { z-index: 1031; }
+    .hdclr { color: var(--saffron); }
+    .engpara { font-family: 'Open Sans', sans-serif; }
+
+    /* ── Layout ── */
+    .dh-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .dh-content {
+        flex: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        background: var(--parchment);
+        box-shadow: var(--shadow);
+        min-height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        .dh-content { padding: 24px 20px; }
+        .dh-wrapper { flex-direction: column; }
+    }
+
+    /* ── TOC Sidebar ── */
+    .toc-sidebar {
+        position: sticky;
+        top: 80px;
+        width: 280px;
+        min-width: 280px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding: 20px 16px;
+        margin-right: 24px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        scrollbar-width: thin;
+    }
+
+    .toc-title {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--saffron-light);
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list li {
+        padding: 4px 0;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-list li.toc-l3 {
+        padding-left: 16px;
+        font-size: 0.78rem;
+    }
+
+    .toc-list li a {
+        color: var(--ink-secondary);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .toc-list li a:hover { color: var(--saffron); }
+
+    .toc-list li.active {
+        border-left-color: var(--saffron);
+    }
+
+    .toc-list li.active a {
+        color: var(--saffron);
+        font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-sidebar { display: none; }
+    }
+
+    /* ── Mobile TOC Toggle ── */
+    .toc-mobile-toggle {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1050;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--saffron);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-mobile-toggle { display: block; }
+    }
+
+    /* ── Section Headings ── */
+    .section-heading {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        margin: 48px 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--rule);
+        letter-spacing: 0.5px;
+        scroll-margin-top: 80px;
+    }
+
+    h2.section-heading { font-size: 1.6rem; }
+
+    h3.section-heading {
+        font-size: 1.25rem;
+        border-left: 4px solid var(--saffron-light);
+        border-bottom: none;
+        padding: 8px 16px;
+        background: var(--saffron-wash);
+        border-radius: 0 5px 5px 0;
+    }
+
+    /* ── Prose ── */
+    .prose {
+        font-family: var(--font-roman);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+        color: var(--ink);
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    .prose em { color: var(--maroon); }
+
+    .prose:target {
+        background: rgba(212, 96, 10, 0.12);
+        border-left: 4px solid var(--saffron);
+        padding-left: 16px;
+        margin-left: -20px;
+        border-radius: 0 6px 6px 0;
+        animation: target-pulse 2s ease-out;
+    }
+
+    @keyframes target-pulse {
+        0%   { background: rgba(212, 96, 10, 0.30); }
+        100% { background: rgba(212, 96, 10, 0.12); }
+    }
+
+    /* ── Footnote References ── */
+    .fn-ref {
+        font-size: 0.75em;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    .fn-ref a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 0 2px;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: color 0.15s;
+    }
+
+    .fn-ref a:hover { color: var(--indigo); }
+
+    /* ── Synopsis Box ── */
+    .synopsis-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron-light);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .synopsis-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .synopsis-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .synopsis-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .synopsis-box.open .synopsis-toggle i {
+        transform: rotate(90deg);
+    }
+    .synopsis-body {
+        display: none;
+        padding: 0 20px 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+    }
+    .synopsis-box.open .synopsis-body { display: block; }
+    .synopsis-body p { margin: 0; }
+    .synopsis-attribution {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: var(--ink-secondary);
+        opacity: 0.7;
+        font-style: italic;
+    }
+    .synopsis-audio {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    .synopsis-play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--saffron);
+        background: none;
+        color: var(--saffron);
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: background 0.2s, color 0.2s;
+        padding: 0;
+    }
+    .synopsis-play-btn:hover {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn.playing {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn i { padding-left: 2px; }
+
+    /* ── Index Terms Panel ── */
+    .index-terms-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .index-terms-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .index-terms-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .index-terms-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .index-terms-box.open .index-terms-toggle i {
+        transform: rotate(90deg);
+    }
+    .index-terms-body {
+        display: none;
+        padding: 0 20px 16px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .index-terms-box.open .index-terms-body { display: block; }
+    .index-terms-dl {
+        margin: 0;
+        padding: 0;
+    }
+    .index-terms-dl dt {
+        font-family: var(--font-roman);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+        margin-top: 8px;
+    }
+    .index-terms-dl dd {
+        margin: 2px 0 0 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        color: var(--ink-secondary);
+        line-height: 1.5;
+    }
+    .nyaya-heading {
+        font-family: var(--font-roman);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        margin: 16px 0 4px;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+    }
+
+    /* ── Inline Index Popovers ── */
+    .idx-term {
+        border-bottom: 1px dotted var(--saffron-light);
+        cursor: help;
+        position: relative;
+    }
+    .idx-term:hover::after {
+        content: attr(data-def);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        background: rgba(44, 36, 22, 0.92);
+        color: #F5ECD8;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        max-width: 280px;
+        z-index: 100;
+        white-space: normal;
+        line-height: 1.4;
+        pointer-events: none;
+    }
+
+    /* ── Structured Version Banner ── */
+    .structured-banner {
+        margin: 0 0 28px;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, rgba(212, 96, 10, 0.06) 0%, rgba(212, 96, 10, 0.02) 100%);
+        border: 1px solid var(--saffron-light);
+        border-radius: 6px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        color: var(--ink-secondary);
+        line-height: 1.6;
+    }
+    .structured-banner i { color: var(--saffron); margin-right: 4px; }
+    .structured-banner a { color: var(--indigo); font-weight: 600; text-decoration: none; }
+    .structured-banner a:hover { text-decoration: underline; }
+
+    /* ── Footnotes Section ── */
+    .footnotes-section {
+        margin: 32px 0 48px;
+        padding: 20px 24px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .footnotes-section hr {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 0 0 16px;
+    }
+
+    .footnotes-list {
+        padding-left: 24px;
+        margin: 0;
+    }
+
+    .footnote-item {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+        scroll-margin-top: 80px;
+    }
+
+    .footnote-item:target {
+        background: rgba(212, 96, 10, 0.1);
+        border-radius: 4px;
+        padding: 4px 6px;
+        margin-left: -6px;
+    }
+
+    .fn-back {
+        color: var(--saffron-light);
+        text-decoration: none;
+        font-size: 0.85em;
+        margin-left: 4px;
+    }
+
+    .fn-back:hover { color: var(--saffron); }
+
+    /* ── Reference Links ── */
+    a.ref {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: all 0.15s;
+    }
+
+    a.ref:hover {
+        color: var(--saffron);
+        border-bottom-style: solid;
+    }
+
+    a.mbta-ext {
+        color: var(--indigo);
+        font-size: 0.7em;
+        margin-left: 2px;
+        opacity: 0.5;
+        text-decoration: none;
+        vertical-align: super;
+    }
+    a.mbta-ext:hover { opacity: 1; color: var(--saffron); }
+
+    /* ── References Panel (sidebar) ── */
+    .refs-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .refs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .refs-list li {
+        padding: 3px 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .ref-source-link {
+        font-weight: 600;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .ref-source-link:hover {
+        text-decoration: underline;
+    }
+
+    .ref-verse-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.76rem;
+    }
+
+    .ref-verse-link:hover {
+        text-decoration: underline;
+        color: var(--saffron);
+    }
+
+    .ref-verses {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Timeline panel ── */
+    .timeline-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .timeline-list li {
+        padding: 2px 0;
+        font-size: 0.76rem;
+        line-height: 1.4;
+        position: relative;
+        padding-left: 14px;
+    }
+
+    .timeline-list li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--saffron);
+    }
+
+    .timeline-list li.tl-approximate::before {
+        background: transparent;
+        border: 2px solid var(--saffron);
+        width: 4px;
+        height: 4px;
+    }
+
+    .timeline-list li.tl-century::before {
+        background: transparent;
+        border: 2px dashed var(--saffron);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+
+    .tl-dot-link {
+        text-decoration: none;
+        color: var(--ink);
+        display: block;
+    }
+
+    .tl-dot-link:hover {
+        color: var(--saffron);
+    }
+
+    .tl-year {
+        font-weight: 600;
+        color: var(--saffron);
+        font-size: 0.72rem;
+        min-width: 70px;
+        display: inline-block;
+    }
+
+    .tl-label {
+        color: var(--ink-secondary);
+        font-size: 0.72rem;
+    }
+
+    .tl-view-link, .tl-more {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.72rem;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .tl-view-link:hover, .tl-more:hover {
+        text-decoration: underline;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+
+    .breadcrumb-bar a {
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+
+    .breadcrumb-bar .sep {
+        color: var(--amber);
+        margin: 0 8px;
+    }
+
+    .breadcrumb-bar .current {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Chapter Navigation ── */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        margin-top: 48px;
+        border-top: 2px solid var(--rule);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .chapter-nav a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        transition: all 0.2s;
+        max-width: 45%;
+    }
+
+    .chapter-nav a:hover {
+        background: var(--saffron-wash);
+        border-color: var(--saffron-light);
+    }
+
+    .nav-prev { text-align: left; }
+    .nav-next { text-align: right; margin-left: auto; }
+
+    .page-range {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+    }
+
+    /* ── Volume Cards (Landing) ── */
+    .vol-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .vol-card {
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        transition: all 0.25s;
+    }
+
+    .vol-card:hover {
+        border-color: var(--saffron-light);
+        box-shadow: 0 4px 24px rgba(212, 96, 10, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .vol-num {
+        font-family: var(--font-roman);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--saffron);
+        margin-bottom: 8px;
+    }
+
+    .vol-subtitle {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        line-height: 1.5;
+        flex: 1;
+    }
+
+    .vol-chapters {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        margin-top: 12px;
+    }
+
+    /* ── Chapter Cards (Volume Index) ── */
+    .chapter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .chapter-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .chapter-card:hover {
+        border-color: var(--saffron-light);
+        background: var(--saffron-wash);
+    }
+
+    .card-num {
+        font-family: var(--font-roman);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--saffron);
+        min-width: 36px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        flex: 1;
+    }
+
+    .card-pages {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        color: var(--ink-secondary);
+    }
+
+    /* ── Landing Hero ── */
+    .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-family: var(--font-roman);
+        font-size: 2.4rem;
+        color: var(--saffron);
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .hero .devanagari-title {
+        font-family: var(--font-devanagari);
+        font-size: 1.8rem;
+        color: var(--ink);
+        margin-bottom: 16px;
+    }
+
+    .hero .author {
+        font-family: var(--font-roman);
+        font-size: 1.1rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .hero .desc {
+        font-family: var(--font-roman);
+        font-size: 1rem;
+        color: var(--ink-secondary);
+        line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer { margin-top: 48px; }
+
+
+    .ref-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    .ref-table th { text-align: left; padding: 10px 12px; border-bottom: 2px solid var(--saffron);
+        font-family: 'Open Sans', sans-serif; font-size: 0.8rem; color: var(--ink-secondary);
+        text-transform: uppercase; letter-spacing: 0.5px; }
+    .ref-table td { padding: 8px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+    .ref-table tr:target { background: var(--saffron-wash); }
+    .verse-ref { font-weight: 600; color: var(--saffron); white-space: nowrap; min-width: 80px; }
+    .verse-locs a { color: var(--indigo); text-decoration: none; font-size: 0.85rem; }
+    .verse-locs a:hover { text-decoration: underline; }
+    .verse-context { color: var(--ink-secondary); font-style: italic; max-width: 400px; }
+    .verse-text { max-width: 460px; }
+    .kane-sa { font-family: 'Noto Serif Devanagari', serif; font-size: 0.95rem;
+        line-height: 1.7; color: var(--ink); }
+    .kane-note { font-size: 0.72rem; color: var(--ink-secondary); margin-top: 4px;
+        padding-left: 8px; border-left: 2px solid var(--rule, #ddd); opacity: .85; }
+    .kane-src { font-size: 0.7rem; color: var(--ink-secondary); margin-top: 3px; }
+    .kane-src a { color: var(--indigo); text-decoration: none; }
+    .kane-src a:hover { text-decoration: underline; }
+    .tier { text-transform: uppercase; letter-spacing: .06em; font-size: 0.62rem;
+        border: 1px solid currentColor; border-radius: 2px; padding: 0 3px; }
+    .tier.cited { color: #1f6b5c; }
+    .tier.sole { color: #a8730d; }
+    .kane-none { color: var(--ink-secondary); font-size: 0.75rem; opacity: .55; }
+    .source-hero { text-align: center; padding: 40px 20px 30px; max-width: 800px; margin: 0 auto; }
+    .source-hero h1 { font-family: var(--font-roman); color: var(--saffron); font-size: 2rem; }
+    .source-hero .stats { font-family: 'Open Sans', sans-serif; color: var(--ink-secondary);
+        font-size: 0.9rem; margin-top: 8px; }
+    .ext-link { color: var(--indigo); font-weight: 600; }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mbta/">
+      <div class="container-fluid">&emsp;&emsp;
+      <a href="../index.html" class="navbar-brand" style="text-decoration:none;">
+        <span class="devanagari ms-3" style="font-size:1.5rem; color:var(--saffron); font-weight:700;">धर्मशास्त्रम्</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="../index.html">धर्मशास्त्रम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5 active" href="../index.html">खण्डाः</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in/mbta/">महाभारतम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in">सनातनम्</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+
+    <div style="max-width: 1100px; margin: 0 auto; padding: 20px;">
+        <div class="breadcrumb-bar">
+            <a href="../index.html">Home</a>
+            <span class="sep">›</span>
+            <a href="index.html">References</a>
+            <span class="sep">›</span>
+            <span class="current">Atharvaveda</span>
+        </div>
+
+        <div class="source-hero">
+            <h1>Atharvaveda</h1>
+            <p class="stats">316 references across all volumes ·
+               136 distinct verses ·
+               <b>24</b> of them with the verse as Kane prints it</p>
+        </div>
+
+        <table class="ref-table">
+            <thead>
+                <tr><th>Verse</th><th>The verse, as Kane prints it</th><th>Locations</th><th>Context</th></tr>
+            </thead>
+            <tbody>
+                
+        <tr id="c">
+            <td class="verse-ref">c</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/1-meaning-of-dharma.html#p-1-meaning-of-dharma-2">vol-1-part-1 §1-meaning-of-dharma</a> · <a href="../vol-5-part-1/chapter-xiv-conception-of-kāla.html#p-chapter-xiv-conception-of-kāla-2">vol-5-part-1 §chapter-xiv-conception-of-kāla</a></td>
+            <td class="verse-context"><small>...be ‘whose regulations do not fail’. The Atharvaveda contains many of those verses in which th...</small></td>
+        </tr>
+
+        <tr id="C">
+            <td class="verse-ref">C</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/3-when-dharmashastra-works-were-first-composed.html#p-3-when-dharmashastra-works-were-first-composed-13">vol-1-part-1 §3-when-dharmashastra-works-were-first-composed</a> · <a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-50">vol-1-part-1 §32-the-two-epics</a> · <a href="../vol-1-part-2/119-conclusion.html#p-119-conclusion-44">vol-1-part-2 §119-conclusion</a></td>
+            <td class="verse-context"><small>...yaṇīyagṛhya, edited by Dr. Caland in D. A. V. College Series at Lahore in 1925 with ext...</small></td>
+        </tr>
+
+        <tr id="XIX.6">
+            <td class="verse-ref">XIX.6</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxxiv-cosmology.html#p-chapter-xxxiv-cosmology-6">vol-5-part-2 §chapter-xxxiv-cosmology</a></td>
+            <td class="verse-context"><small>..., heaven and earth were produceḍ In the Atharvaveda XIX. 6 also there are 16 verses of which the f...</small></td>
+        </tr>
+
+        <tr id="XIX.7.2-5">
+            <td class="verse-ref">XIX.7.2-5</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-1/chapter-xv-units-of-kāla.html#p-chapter-xv-units-of-kāla-9">vol-5-part-1 §chapter-xv-units-of-kāla</a></td>
+            <td class="verse-context"><small>... IV. 4.10. 1-3, Tai Br. I. 5 and III 1, Atharvaveda XIX. 7. 2-5, Kathaka saṃhitā 39 13, Maitrāyaṇī saṃh...</small></td>
+        </tr>
+
+        <tr id="XIX.71.1">
+            <td class="verse-ref">XIX.71.1</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxvi-tāntrik-doctrines-and-dharmashastra.html#p-chapter-xxvi-tāntrik-doctrines-and-dharmashastra-43">vol-5-part-2 §chapter-xxvi-tāntrik-doctrines-and-dharmashastra</a></td>
+            <td class="verse-context"><small>...(Rg. III. 62. 10 ‘tat-savitur’ &amp;c). The Atharvaveda (XIX. 71. 1) calls it Vedamātā (the mother of the Ve...</small></td>
+        </tr>
+
+        <tr id="i">
+            <td class="verse-ref">i</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/31-the-manusmriti.html#p-31-the-manusmriti-7">vol-1-part-1 §31-the-manusmriti</a> · <a href="../vol-2-part-1/chapter-ix-marriage.html#p-chapter-ix-marriage-11">vol-2-part-1 §chapter-ix-marriage</a> · <a href="../vol-2-part-2/chapter-xix-devayajna.html#p-chapter-xix-devayajna-23">vol-2-part-2 §chapter-xix-devayajna</a> · <a href="../vol-4/chapter-ix-shrāddha.html#p-chapter-ix-shrāddha-60">vol-4 §chapter-ix-shrāddha</a></td>
+            <td class="verse-context"><small>...le. He mentions the three Vedas and the Atharvaveda is spoken of as the Atharvaṅgirasi Śruti ...</small></td>
+        </tr>
+
+        <tr id="I">
+            <td class="verse-ref">I</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-viii-bala-the-army.html#p-chapter-viii-bala-the-army-6">vol-3 §chapter-viii-bala-the-army</a> · <a href="../vol-3/chapter-xxix-order-of-succession-after-the-son.html#p-chapter-xxix-order-of-succession-after-the-son-62">vol-3 §chapter-xxix-order-of-succession-after-the-son</a> · <a href="../vol-4/chapter-viii-shuddhi.html#p-chapter-viii-shuddhi-75">vol-4 §chapter-viii-shuddhi</a></td>
+            <td class="verse-context"><small>...ancient Indians knew fire-arms and that Atharvaveda I 16.4 refers to leaden balls discharged ...</small></td>
+        </tr>
+
+        <tr id="I.6.1">
+            <td class="verse-ref">I.6.1</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">शं नो देवीरभिष्टय आपो भवन्तु पीतये। शं योरभि स्रवन्तु नः॥ वाज० सं० 36. 12, तै . सं . X. 9. 4</div><div class="kane-note">अथर्व I. 6. 1, सामवेद 33. तै . ब्रा . I. 2. 1, आप . धि . 1. 2, 1.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-5-part-2/chapter-xx-vedic-meaning-and-procedure-of-shāntis.html#fn-chapter-xx-vedic-meaning-and-procedure-of-shāntis-7">vol-5-part-2 §chapter-xx-vedic-meaning-and-procedure-of-shāntis</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xvii-āhnika-and-āchāra.html#p-chapter-xvii-āhnika-and-āchāra-25">vol-2-part-1 §chapter-xvii-āhnika-and-āchāra</a></td>
+            <td class="verse-context"><small>...varṇāḥ', 'śam-no devīr', 'śam na āpaḥ' (Atharvaveda I. 6. 1 and 4) and thrice repeating Agha-marṣaṇ...</small></td>
+        </tr>
+
+        <tr id="I.11.4">
+            <td class="verse-ref">I.11.4</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-vi-samskāras.html#p-chapter-vi-samskāras-46">vol-2-part-1 §chapter-vi-samskāras</a></td>
+            <td class="verse-context"><small>...V. 78. 7) and prescribes the recital of Atharvaveda I. 11. 4 for the falling of the after-birth. Ādi...</small></td>
+        </tr>
+
+        <tr id="I.14.4">
+            <td class="verse-ref">I.14.4</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-xiv-gayā.html#p-chapter-xiv-gayā-2">vol-4 §chapter-xiv-gayā</a></td>
+            <td class="verse-context"><small>...es, which are not material here. In the Atharvaveda (I. 14.4) Gayā appears to be a wonder-worker or a...</small></td>
+        </tr>
+
+        <tr id="I.17.1">
+            <td class="verse-ref">I.17.1</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">अभातैव पुंस एति प्रतीची गर्तादुगिरव सनये धनानाम् । जायेव पत्य उशती सुवासा उषा हस्रेव निरणिते अप्सः । ऋ . I. 124. 7. The संस्कारप्रकाश p. 747 quotes this Vedic verse, Yaska's Nirukta thereon and Vaṣ also. अभातैव इव जायम - स्तिष्ठन्त इव हृतवर्चसः ।</div><div class="kane-note">अथर्व I. 17. 1. The निरुक्त (III. 4) reads अभातैव इव योषि - स्तिष्ठन्ति हृतवर्चसः and explains अभातैव इव योषिस्तिष्ठन्ति संतानकर्मणे पिण्डप्रदानाय हृतवर्चसः .</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-ix-marriage.html#fn-chapter-ix-marriage-20">vol-2-part-1 §chapter-ix-marriage</a></div></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/2-sources-of-dharma.html#p-2-sources-of-dharma-1">vol-1-part-1 §2-sources-of-dharma</a> · <a href="../vol-2-part-1/chapter-ix-marriage.html#p-chapter-ix-marriage-11">vol-2-part-1 §chapter-ix-marriage</a> · <a href="../vol-3/chapter-xxvii-dāyabhāga-partition-of-wealth.html#p-chapter-xxvii-dāyabhāga-partition-of-wealth-100">vol-3 §chapter-xxvii-dāyabhāga-partition-of-wealth</a></td>
+            <td class="verse-context"><small>...ide also Ṛgveda I. 124. 7, IV. 5. 5 and Atharvaveda I. 17. 1 and Nirukta III. 4–5. These passages co...</small></td>
+        </tr>
+
+        <tr id="I.21">
+            <td class="verse-ref">I.21</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-iii-duties-and-responsibilities-of-the-ruler.html#p-chapter-iii-duties-and-responsibilities-of-the-ruler-14">vol-3 §chapter-iii-duties-and-responsibilities-of-the-ruler</a></td>
+            <td class="verse-context"><small>...bilities-of-the-ruler-44"&gt;44&lt;/a&gt;&lt;/sup&gt; (Atharvaveda I. 21, VII. 85. 1, VII. 86. 1, VII 117.1), in...</small></td>
+        </tr>
+
+        <tr id="I.30">
+            <td class="verse-ref">I.30</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-iii-duties-and-responsibilities-of-the-ruler.html#p-chapter-iii-duties-and-responsibilities-of-the-ruler-14">vol-3 §chapter-iii-duties-and-responsibilities-of-the-ruler</a></td>
+            <td class="verse-context"><small>...(Atharvaveda 19 15), Aparājita, Āyuṣya (Atharvaveda I. 30) and Svastya- yana &lt;sup class="fn-ref"&gt;...</small></td>
+        </tr>
+
+        <tr id="I.33.1-4">
+            <td class="verse-ref">I.33.1-4</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">अथैनमभिषेक्योपशान्त्यै । सिचेन मा चक्षुषा पश्यतापः । शिवया तनुपोप सृजन्त वर्चो । मयि वर्चो बर्लोजमोर्जो निधेहि । नेतत्स्याम्बि - नर्विचनस्याज्ञाप्ता आपो वीर्यं निरर्णजिति । ऐ . ब्रा . 37. 2. The मन्त्र ‘ सिचेन मा ’ occurs in तै . सं . V. 6. 1. 2 and</div><div class="kane-note">अथर्ववेद I. 33. 4 (only the first half).</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-5-part-2/chapter-xx-vedic-meaning-and-procedure-of-shāntis.html#fn-chapter-xx-vedic-meaning-and-procedure-of-shāntis-20">vol-5-part-2 §chapter-xx-vedic-meaning-and-procedure-of-shāntis</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxviii-sannyāsa.html#p-chapter-xxviii-sannyāsa-40">vol-2-part-2 §chapter-xxviii-sannyāsa</a></td>
+            <td class="verse-context"><small>...raṇyavarṇā verses (Tai. S. V. 6. 1. 1 = Atharvaveda I. 33. 1–4) and Pāvamāni verses (Rg. IX. 1 &amp;c.). W...</small></td>
+        </tr>
+
+        <tr id="I.34.5">
+            <td class="verse-ref">I.34.5</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-14">vol-3 §chapter-v-rāshtra-the-territory-of-a-state</a></td>
+            <td class="verse-context"><small>...had been grown even in the times of the Atharvaveda (I. 34. 5). The Sukranītisāra (IV. 4. 60) remarks ...</small></td>
+        </tr>
+
+        <tr id="II">
+            <td class="verse-ref">II</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-vi-consequences-of-not-undergoing-penances.html#p-chapter-vi-consequences-of-not-undergoing-penances-2">vol-4 §chapter-vi-consequences-of-not-undergoing-penances</a></td>
+            <td class="verse-context"><small>...a house below (the earth), according to A. V. II, 14. 3. Atharva- veda V. 30. 11 asks a ...</small></td>
+        </tr>
+
+        <tr id="II.5">
+            <td class="verse-ref">II.5</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxxii-yoga-and-dharmashastra.html#p-chapter-xxxii-yoga-and-dharmashastra-2">vol-5-part-2 §chapter-xxxii-yoga-and-dharmashastra</a></td>
+            <td class="verse-context"><small>...rve slaughter by Indra is not clear. In Atharvaveda II. 5, 3 Indra is said to have killed Vṛtra a...</small></td>
+        </tr>
+
+        <tr id="II.5.3">
+            <td class="verse-ref">II.5.3</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">इन्द्रो यतीन्‌ सालानृकेभ्यः प्रायच्छत्‌ । मेधातिथि (on मनु XI. 45 ) quotes this Vide ऐ . ब्रा . 7. 28 and ताण्डयमहाब्रा . 8. 1. 4, 13. 4. 17 and</div><div class="kane-note">अथर्ववेद II. 5. 3.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-1/2-sources-of-dharma.html#fn-2-sources-of-dharma-23">vol-1-part-1 §2-sources-of-dharma</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-viii-āshramas.html#p-chapter-viii-āshramas-4">vol-2-part-1 §chapter-viii-āshramas</a></td>
+            <td class="verse-context"><small>...ads) became the kharjūras (date palms). Atharvaveda II. 5. 3. says 'Indra, who is quick in his attac...</small></td>
+        </tr>
+
+        <tr id="II.15.4">
+            <td class="verse-ref">II.15.4</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-ii-varna.html#p-chapter-ii-varna-4">vol-2-part-1 §chapter-ii-varna</a></td>
+            <td class="verse-context"><small>...ra protects the Bhārata people’. In the Atharvaveda II. 15.4 (as brahma and kṣatra entertain no fear...</small></td>
+        </tr>
+
+        <tr id="II.26">
+            <td class="verse-ref">II.26</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-iii-duties-and-responsibilities-of-the-ruler.html#p-chapter-iii-duties-and-responsibilities-of-the-ruler-14">vol-3 §chapter-iii-duties-and-responsibilities-of-the-ruler</a></td>
+            <td class="verse-context"><small>...āvya (Atharvaveda 19.1) and Saṁsiktīya (Atharvaveda II. 26), in the copper jars with the mantras c...</small></td>
+        </tr>
+
+        <tr id="III">
+            <td class="verse-ref">III</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-iii-duties-and-responsibilities-of-the-ruler.html#p-chapter-iii-duties-and-responsibilities-of-the-ruler-6">vol-3 §chapter-iii-duties-and-responsibilities-of-the-ruler</a> · <a href="../vol-4/chapter-vi-consequences-of-not-undergoing-penances.html#p-chapter-vi-consequences-of-not-undergoing-penances-2">vol-4 §chapter-vi-consequences-of-not-undergoing-penances</a></td>
+            <td class="verse-context"><small>... VIII. 4. 7, VIII 10 5, IV 30 17 In the Atharvaveda III 4 1 (may you shine forth as the sole ru...</small></td>
+        </tr>
+
+        <tr id="III.4">
+            <td class="verse-ref">III.4</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-ii-seven-angas-of-rājya.html#p-chapter-ii-seven-angas-of-rājya-11">vol-3 §chapter-ii-seven-angas-of-rājya</a></td>
+            <td class="verse-context"><small>...se of one who is already a king. In the Atharvaveda III. 4 2 there &lt;sup class="fn-ref"&gt;&lt;a href="#f...</small></td>
+        </tr>
+
+        <tr id="III.4.3">
+            <td class="verse-ref">III.4.3</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-iii-duties-and-responsibilities-of-the-ruler.html#p-chapter-iii-duties-and-responsibilities-of-the-ruler-6">vol-3 §chapter-iii-duties-and-responsibilities-of-the-ruler</a></td>
+            <td class="verse-context"><small>...esses hard each of them)’ IV 9 4 In the Atharvaveda III. 4. 3 it is said ‘May the *ugra* see a lot of...</small></td>
+        </tr>
+
+        <tr id="III.5">
+            <td class="verse-ref">III.5</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">खां विशो वृणतां राज्याय खामिमाः प्रजा देवर्वी ये राजानो राजकृतः सूता ग्रामण्यश्च ये । उपस्तीर्ण पर्णं नहां स्वं सर्वे सर्वान्कुण्वमितो जनान् ॥</div><div class="kane-note">अथर्व III. 5. 7. .</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-3/chapter-ii-seven-angas-of-rājya.html#fn-chapter-ii-seven-angas-of-rājya-21">vol-3 §chapter-ii-seven-angas-of-rājya</a></div></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-ii-seven-angas-of-rājya.html#p-chapter-ii-seven-angas-of-rājya-11">vol-3 §chapter-ii-seven-angas-of-rājya</a></td>
+            <td class="verse-context"><small>...s, the five goddesses (chose thee)’. In Atharvaveda III. 5, 6 and 7 also there is a faint allusion...</small></td>
+        </tr>
+
+        <tr id="III.5.6">
+            <td class="verse-ref">III.5.6</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxx-on-mīmāmsā-principles-and-rules-of-interpretation-in-relation-to-dha.html#p-chapter-xxx-on-mīmāmsā-principles-and-rules-of-interpretation-in-relation-to-dha-15">vol-5-part-2 §chapter-xxx-on-mīmāmsā-principles-and-rules-of-interpretation-in-relation-to-dha</a></td>
+            <td class="verse-context"><small>...athakāra*, *kulāla*, *karmāra* &amp;c. From Atharvaveda III. 5. 6 and Vāj. S. 30. 6 (medhāyai rathakāram ...</small></td>
+        </tr>
+
+        <tr id="III.5.6-7.I">
+            <td class="verse-ref">III.5.6-7.I</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxxvi-fundamental-and-leading-characteristics-of-hindu-culture-and-civil.html#p-chapter-xxxvi-fundamental-and-leading-characteristics-of-hindu-culture-and-civil-25">vol-5-part-2 §chapter-xxxvi-fundamental-and-leading-characteristics-of-hindu-culture-and-civil</a></td>
+            <td class="verse-context"><small>...a and karmāra and śūta are mentioned in Atharvaveda III. 5. 6–7. It is probable that by the time of the Ch...</small></td>
+        </tr>
+
+        <tr id="III.10.2">
+            <td class="verse-ref">III.10.2</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-ix-shrāddha.html#p-chapter-ix-shrāddha-20">vol-4 §chapter-ix-shrāddha</a></td>
+            <td class="verse-context"><small>... I. 3. 2 cites a verse occurring in the A. V. III. 10. 2 and in the Āp. M. P. II. 20. 27 as a ma...</small></td>
+        </tr>
+
+        <tr id="III.10.8">
+            <td class="verse-ref">III.10.8</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-ix-shrāddha.html#p-chapter-ix-shrāddha-20">vol-4 §chapter-ix-shrāddha</a></td>
+            <td class="verse-context"><small>... which is the wife of the Year.' In the A. V. III. 10. 8 the Ekāṣṭakā is said to have the year (...</small></td>
+        </tr>
+
+        <tr id="III.18">
+            <td class="verse-ref">III.18</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage.html#p-chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage-1">vol-2-part-1 §chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage</a></td>
+            <td class="verse-context"><small>...rences to polygamy. Rg. X. 145 (same as Atharvaveda III. 18) is a hymn meant as a charm for weaning...</small></td>
+        </tr>
+
+        <tr id="III.19.1">
+            <td class="verse-ref">III.19.1</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-ii-varna.html#p-chapter-ii-varna-4">vol-2-part-1 §chapter-ii-varna</a></td>
+            <td class="verse-context"><small>...ayer’ and ‘valour’ respectively. In the Atharvaveda III. 19.1 both words occur and probably mean the ...</small></td>
+        </tr>
+
+        <tr id="III.29.1">
+            <td class="verse-ref">III.29.1</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxv-dāna-gifts.html#p-chapter-xxv-dāna-gifts-9">vol-2-part-2 §chapter-xxv-dāna-gifts</a></td>
+            <td class="verse-context"><small>...th divine wrath’ (II. 12. 4). Vide also Atharvaveda III. 29. 1. Some- times the two components are emp...</small></td>
+        </tr>
+
+        <tr id="III.29.7">
+            <td class="verse-ref">III.29.7</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxv-dāna-gifts.html#p-chapter-xxv-dāna-gifts-58">vol-2-part-2 §chapter-xxv-dāna-gifts</a></td>
+            <td class="verse-context"><small>...with the formula ‘ka idaṁ kasmā adāt’ ( Atharvaveda III. 29. 7, Āśv. Śr. 5. 13, Āp. Śr. 14. 11. 2 ), t...</small></td>
+        </tr>
+
+        <tr id="IV">
+            <td class="verse-ref">IV</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxix-order-of-succession-after-the-son.html#p-chapter-xxix-order-of-succession-after-the-son-62">vol-3 §chapter-xxix-order-of-succession-after-the-son</a> · <a href="../vol-4/chapter-vi-consequences-of-not-undergoing-penances.html#p-chapter-vi-consequences-of-not-undergoing-penances-2">vol-4 §chapter-vi-consequences-of-not-undergoing-penances</a></td>
+            <td class="verse-context"><small>...lative' Vide Rg X 66 14, X 117 9 In the Atharvaveda IV 5 6 a man desirous of a clandestine int...</small></td>
+        </tr>
+
+        <tr id="IV.1.1">
+            <td class="verse-ref">IV.1.1</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxviii-sannyāsa.html#p-chapter-xxviii-sannyāsa-40">vol-2-part-2 §chapter-xxviii-sannyāsa</a></td>
+            <td class="verse-context"><small>...‘brahma jajñānam’ (Tai. S. IV. 2. 8. 2 =Atharvaveda IV. 1. 1). It is declared (in Vedic texts) that ...</small></td>
+        </tr>
+
+        <tr id="IV.2.5">
+            <td class="verse-ref">IV.2.5</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/list-of-tīrthas.html#p-list-of-tīrthas-71">vol-4 §list-of-tīrthas</a></td>
+            <td class="verse-context"><small>...see Himavat Himavat—In Ṛg. X. 121 4 and A V. IV. 2. 5 the plural is used (Viśve himavantaḥ) B...</small></td>
+        </tr>
+
+        <tr id="IV.3">
+            <td class="verse-ref">IV.3</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxiv-steya-theft.html#p-chapter-xxiv-steya-theft-1">vol-3 §chapter-xxiv-steya-theft</a></td>
+            <td class="verse-context"><small>...* in addition to *stena* and *taskara*. Atharvaveda IV. 3 contains charms against wolves, tigers ...</small></td>
+        </tr>
+
+        <tr id="IV.5.6">
+            <td class="verse-ref">IV.5.6</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxvi-tāntrik-doctrines-and-dharmashastra.html#p-chapter-xxvi-tāntrik-doctrines-and-dharmashastra-5">vol-5-part-2 §chapter-xxvi-tāntrik-doctrines-and-dharmashastra</a></td>
+            <td class="verse-context"><small>...a&gt;&lt;/sup&gt; which verses occur also in the Atharvaveda IV. 5. 6, 5, 1, 3 and which spell was probably e...</small></td>
+        </tr>
+
+        <tr id="IV.6.6">
+            <td class="verse-ref">IV.6.6</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-viii-bala-the-army.html#p-chapter-viii-bala-the-army-6">vol-3 §chapter-viii-bala-the-army</a></td>
+            <td class="verse-context"><small>...jra made of ayas (X. 48. 3, X. 113. 5). Atharvaveda IV. 6. 6. refers to poisoned arrows In the Athar...</small></td>
+        </tr>
+
+        <tr id="IV.7.1">
+            <td class="verse-ref">IV.7.1</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/list-of-tīrthas.html#p-list-of-tīrthas-267">vol-4 §list-of-tīrthas</a></td>
+            <td class="verse-context"><small>...asī on the western, **Varanāvatī**—(r ) Atharvaveda IV. 7.1. **Varanēśvara**—(under Narmadā) P. I. ...</small></td>
+        </tr>
+
+        <tr id="IV.11.11">
+            <td class="verse-ref">IV.11.11</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-1/chapter-xv-units-of-kāla.html#p-chapter-xv-units-of-kāla-9">vol-5-part-1 §chapter-xv-units-of-kāla</a></td>
+            <td class="verse-context"><small>... From Rg I. 161 11 and 13 and IV. 33.7, Atharvaveda IV. 11.11 it appears that the dog-star (Sirius) i...</small></td>
+        </tr>
+
+        <tr id="IV.15.13">
+            <td class="verse-ref">IV.15.13</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-1/chapter-ii-vrata-in-vedic-literature-sūtras-and-smritis-definition-and-importanc.html#p-chapter-ii-vrata-in-vedic-literature-sūtras-and-smritis-definition-and-importanc-1">vol-5-part-1 §chapter-ii-vrata-in-vedic-literature-sūtras-and-smritis-definition-and-importanc</a></td>
+            <td class="verse-context"><small>...bserving a religious vow, occurs in the Atharvaveda IV. 15. 13; Ṛg. X. 12. 5 is the same as Atharva XV...</small></td>
+        </tr>
+
+        <tr id="IV.22.1">
+            <td class="verse-ref">IV.22.1</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">आथर्वणोपथब्राह्मणे — अथ राज्ञोऽभिषेकविधिं व्याख्यास्यामः । [ विश्वंभृतेंसम्भात्सं भृत्य वोपशलकाद् ओषधीन् धिष्वानि वल्मीकस्य च मृत्तिकां सर्वाण सर्वससान सर्व - बीजानि । तच चत्वारः सौवणचारोरा राजानमत्वारस्त्वारो राजानमत्वारो नृपाः । ताम् ह्रदे सरसि षोडशिनो नामेनाम् ददद्रवकेन पूरयित्वा वेदिमुखे संस्थाप्य कुशेषु धिष्ठोयेषु वध्वाम् । सर्वाच सर्वससान सर्वबीजानि च दक्षिणापयेसराजिवराजैः , स्वस्त्यनये ससिफेौछे स राजा , संसार्थाः ससिफीच्छेय राजतेषु , भेञ्चपयेद्वोसद्दुस्यमेदु , सर्वज्ञवांगमीण्या श्नाप्तारौयैः ससिफेन च सुवर्मेषु । ततस्तावत् कलशानु गृहत्वा श्रोत्रियेः पवित्रतौ राजानं संमभिषिञ्चेत् । पृथिविमृदं च वर्षांधियां क्षत्रियं म इति ( हममिन्द्र वर्ष क्षत्रिय म इति ?) सिंहासनमारूढमभिमन्ययेत् । एवमभिषिकस्तु ससारमीणयाद् विषयदृग् द्याध्रवृच्छद्रुव सहेत्यधेयः कूर्च प्रामवरचे । विबुद्ध यज्ञः मामोति क्षुद्रवे घरा जिवतडुः सदा भवेदीति । राज - नीतिप . pp. 42-43, राजौध कौ . pp. 335-336, नीतिभूख pp 4-5. There are a few variants due to the scribes and the editors not being able to read the Mss properly. The कीणिकसत्र 17. 28 reads ' इन्ममिन्द्र वर्ष क्षत्रिय मे ' which is</div><div class="kane-note">अथर्ववेद IV. 22. 1,</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-3/chapter-iii-duties-and-responsibilities-of-the-ruler.html#fn-chapter-iii-duties-and-responsibilities-of-the-ruler-43">vol-3 §chapter-iii-duties-and-responsibilities-of-the-ruler</a></div></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-iii-duties-and-responsibilities-of-the-ruler.html#p-chapter-iii-duties-and-responsibilities-of-the-ruler-14">vol-3 §chapter-iii-duties-and-responsibilities-of-the-ruler</a></td>
+            <td class="verse-context"><small>...g seated on the throne with the mantra (Atharvaveda IV. 22. 1) 'O Indra, make this my kṣatriya prospe...</small></td>
+        </tr>
+
+        <tr id="IV.33">
+            <td class="verse-ref">IV.33</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-vii-eschatology.html#p-chapter-vii-eschatology-28">vol-4 §chapter-vii-eschatology</a></td>
+            <td class="verse-context"><small>...May evil be burnt from us,' Rg. I 97 1, A.V. IV. 33 1, Tai. Ā. VI, 10.1). The G. P. S. (II....</small></td>
+        </tr>
+
+        <tr id="IV.34.2">
+            <td class="verse-ref">IV.34.2</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">यत्र धृष्टं न दहति जातेनदा स्वर्गे लोके बहु क्षैणमेधाम् ॥ धृतवदा मधुफुलाः सुरोधिकाः सीरणां वृष्कैर्मी समारणाः ॥</div><div class="kane-note">अथर्व IV, 34.2 and 6</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-4/chapter-vi-consequences-of-not-undergoing-penances.html#fn-chapter-vi-consequences-of-not-undergoing-penances-19">vol-4 §chapter-vi-consequences-of-not-undergoing-penances</a></div></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxix-some-fundamental-doctrines-of-pūrvamīmāmsā.html#p-chapter-xxix-some-fundamental-doctrines-of-pūrvamīmāmsā-20">vol-5-part-2 §chapter-xxix-some-fundamental-doctrines-of-pūrvamīmāmsā</a></td>
+            <td class="verse-context"><small>The Atharvaveda IV. 34. 2 and 5-6 say that in heaven there are ma...</small></td>
+        </tr>
+
+        <tr id="IV.34.6">
+            <td class="verse-ref">IV.34.6</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">युवं सुराममश्विना नमुच्यासुरे सचा । विपिपाना शुभस्पती इन्द्रे कर्मखाह - तम् ॥ ऋ . X. 131. 4 quoted in तै . आ . I. 4. 2; धूमत्रा मदमुक्ताः सुरोदकाः क्षीरेण पूर्णा उदकेन दुग्धा । ... उप स्वा तिष्ठन् पुष्करिणी : समन्ताः ॥</div><div class="kane-note">अथर्व IV. 34. 6. सुरा खमसपिष्टः सोम एष मा मा हिसीः सखा योनिमाविशामत्मी । वाज . सं . 19. 7; also तै . आ . I. 4. 2 and तै . ब्रा . 37. 4.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-2/chapter-xxii-bhojana.html#fn-chapter-xxii-bhojana-83">vol-2-part-2 §chapter-xxii-bhojana</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxii-bhojana.html#p-chapter-xxii-bhojana-28">vol-2-part-2 §chapter-xxii-bhojana</a></td>
+            <td class="verse-context"><small>...his fight with the Asura Namuci. In the Atharvaveda IV. 34. 6 the reward for the performer of sacrifi...</small></td>
+        </tr>
+
+        <tr id="5">
+            <td class="verse-ref">5</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-108">vol-1-part-1 §14-arthashastra-of-kautilya</a></td>
+            <td class="verse-context"><small>...’ we get ‘sāmayācārika’ which occurs in A. V. 5 as the name of the chapter and Āp. Dh. ...</small></td>
+        </tr>
+
+        <tr id="V">
+            <td class="verse-ref">V</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-iii-duties-and-responsibilities-of-the-ruler.html#p-chapter-iii-duties-and-responsibilities-of-the-ruler-34">vol-3 §chapter-iii-duties-and-responsibilities-of-the-ruler</a> · <a href="../vol-3/chapter-xxvii-dāyabhāga-partition-of-wealth.html#p-chapter-xxvii-dāyabhāga-partition-of-wealth-1">vol-3 §chapter-xxvii-dāyabhāga-partition-of-wealth</a> · <a href="../vol-4/list-of-tīrthas.html#p-list-of-tīrthas-71">vol-4 §list-of-tīrthas</a></td>
+            <td class="verse-context"><small>...more than a meeting or meeting place In Atharvaveda V 19 15&lt;sup class="fn-ref"&gt;&lt;a href="#fn-c...</small></td>
+        </tr>
+
+        <tr id="v">
+            <td class="verse-ref">v</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxii-origin-and-development-of-purāna-literature.html#p-chapter-xxii-origin-and-development-of-purāna-literature-48">vol-5-part-2 §chapter-xxii-origin-and-development-of-purāna-literature</a> · <a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-191">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>...ol. 36 (1956) pp. 190-203, he cites the Atharvaveda verse quoted above (p. 816, n 1325 ) in w...</small></td>
+        </tr>
+
+        <tr id="V.5.8">
+            <td class="verse-ref">V.5.8</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxvii-dāyabhāga-partition-of-wealth.html#p-chapter-xxvii-dāyabhāga-partition-of-wealth-102">vol-3 §chapter-xxvii-dāyabhāga-partition-of-wealth</a></td>
+            <td class="verse-context"><small>...a* sonṣ The word *kānina* occurs in the Atharvaveda V. 5. 8 and *kumāriputra* occurs in the Vājasan...</small></td>
+        </tr>
+
+        <tr id="V.17.9">
+            <td class="verse-ref">V.17.9</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-ii-varna.html#p-chapter-ii-varna-4">vol-2-part-1 §chapter-ii-varna</a></td>
+            <td class="verse-context"><small>... occurs in the sense of kṣatriya in the Atharvaveda V. 17.9. The same remark applies to the word kṣ...</small></td>
+        </tr>
+
+        <tr id="V.17.19">
+            <td class="verse-ref">V.17.19</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-ii-varna.html#p-chapter-ii-varna-8">vol-2-part-1 §chapter-ii-varna</a></td>
+            <td class="verse-context"><small>...vol. 12 p. 309, vol. 26 p. 341). In the Atharvaveda V. 17. 19 there is an assertion of the pre-eminen...</small></td>
+        </tr>
+
+        <tr id="V.19.3">
+            <td class="verse-ref">V.19.3</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-ii-varna.html#p-chapter-ii-varna-10">vol-2-part-1 §chapter-ii-varna</a></td>
+            <td class="verse-context"><small>...ref-chapter-ii-varna-50"&gt;50&lt;/a&gt;&lt;/sup&gt; ( Atharvaveda V. 19. 3 and 8 ).</small></td>
+        </tr>
+
+        <tr id="V.21.3">
+            <td class="verse-ref">V.21.3</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">वानस्पत्यः संस्कृत उस्त्रियाभिर्विभ्वगोड्यः । मन्नाससमिश्रेण्यो यदाऽप्यनाभि - धारितः ॥</div><div class="kane-note">अथर्ववेद V. 21. 3.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-ix-marriage.html#fn-chapter-ix-marriage-111">vol-2-part-1 §chapter-ix-marriage</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-ix-marriage.html#p-chapter-ix-marriage-59">vol-2-part-1 §chapter-ix-marriage</a></td>
+            <td class="verse-context"><small>...r even in the age of the Ṛgveda. In the Atharvaveda V. 21. 3&lt;sup class="fn-ref"&gt;&lt;a href="#fn-chapter...</small></td>
+        </tr>
+
+        <tr id="V.22">
+            <td class="verse-ref">V.22</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-3">vol-3 §chapter-v-rāshtra-the-territory-of-a-state</a></td>
+            <td class="verse-context"><small>...a (V. 30 12), Vetasu (X. 49. 4). In the Atharvaveda V. 22 several peoples or countries are mentio...</small></td>
+        </tr>
+
+        <tr id="V.25">
+            <td class="verse-ref">V.25</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">अस्य शिशोराश्लेषाजननसूचितसमस्तारिष्टनिरसार्थं समस्तासु क्षान्तिं करिष्ये , इति सङ्कल्पयेत् . The गोकुलसमवशाहानि is described in the मधुरत्न (on शान्ति - पौष्टिक , folios 35 b and 36 a) and in शान्तिमयूख pp. 59-60. On a new śūrpa (winnowing basket) a red piece of cloth is spread, the new born child is placed thereon, and is covered with cotton thread from head to the soles of the feet and is put on a heap of sesame, then the child is brought near a cow's mouth. Then (pretending that) the infant is born from a cow's mouth, the child is bathed with cow's milk with the hymn ‘Viṣṇur-yonim kalpa-yatu’ (Rg. X.184. 1</div><div class="kane-note">अथर्व . V. 25. 5 and बृह . उप . VI. 4. 21). The infant should receive the touch of the cow's limbs at the hands of the priest with the mantra of Viṣṇu (Rg. X. 184. 1). The officiating priest should take the child that is (now imagined as) born from (the mouth of) the cow and ( Continued from next page )</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-5-part-2/chapter-xxi-individual-shāntis.html#fn-chapter-xxi-individual-shāntis-55">vol-5-part-2 §chapter-xxi-individual-shāntis</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-vi-samskāras.html#p-chapter-vi-samskāras-13">vol-2-part-1 §chapter-vi-samskāras</a></td>
+            <td class="verse-context"><small>... of this ceremony are found very early. Atharvaveda V. 25 appears to be a hymn intended for the g...</small></td>
+        </tr>
+
+        <tr id="5.30">
+            <td class="verse-ref">5.30</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-vii-eschatology.html#p-chapter-vii-eschatology-42">vol-4 §chapter-vii-eschatology</a></td>
+            <td class="verse-context"><small>...n in India even in very early times, as Atharvaveda 5. 30 14 (mā nu bhūmigrho bhūvat) and 18 2 34...</small></td>
+        </tr>
+
+        <tr id="V.35.4">
+            <td class="verse-ref">V.35.4</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">पञ्चमासांम निर्माािर्मवादशः संवत्सरो पञ्चाभिर्मितो द्वादशाः ।</div><div class="kane-note">अथर्व V. 35. 4.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-5-part-1/chapter-xv-units-of-kāla.html#fn-chapter-xv-units-of-kāla-8">vol-5-part-1 §chapter-xv-units-of-kāla</a></div></td>
+            <td class="verse-locs"><a href="../vol-5-part-1/chapter-xv-units-of-kāla.html#p-chapter-xv-units-of-kāla-3">vol-5-part-1 §chapter-xv-units-of-kāla</a></td>
+            <td class="verse-context"><small>...onth is not fit for religious riteṣ The Atharvaveda V. 35. 4&lt;sup class="fn-ref"&gt;&lt;a href="#fn-chapter...</small></td>
+        </tr>
+
+        <tr id="VI">
+            <td class="verse-ref">VI</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xvi-contracts.html#p-chapter-xvi-contracts-5">vol-3 §chapter-xvi-contracts</a> · <a href="../vol-5-part-1/chapter-xv-units-of-kāla.html#p-chapter-xv-units-of-kāla-5">vol-5-part-1 §chapter-xv-units-of-kāla</a> · <a href="../vol-5-part-1/chapter-xv-units-of-kāla.html#p-chapter-xv-units-of-kāla-8">vol-5-part-1 §chapter-xv-units-of-kāla</a></td>
+            <td class="verse-context"><small>...' which occurs in Rg. VIII. 47. 17. The Atharvaveda VI 117. 3 and Tai Br III 7. 9. 8 contain t...</small></td>
+        </tr>
+
+        <tr id="VI.11.3">
+            <td class="verse-ref">VI.11.3</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-1/chapter-iii-persons-entitled-to-engage-in-vratas-objects-desired-by-means-of-vra.html#p-chapter-iii-persons-entitled-to-engage-in-vratas-objects-desired-by-means-of-vra-14">vol-5-part-1 §chapter-iii-persons-entitled-to-engage-in-vratas-objects-desired-by-means-of-vra</a></td>
+            <td class="verse-context"><small>...sion on Sinīvālī and Kuhū (XI. 31). The Atharvaveda (VI. 11. 3) mentions Prajāpati, Anumati and Sinīvāl...</small></td>
+        </tr>
+
+        <tr id="VI.71.2">
+            <td class="verse-ref">VI.71.2</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">यस्मा हुतमहुतमितमाज्जाम वृत्तं पितृभिरहुतमृतं मनुषयैः । यस्मान्ने मम उद्द्विष णास्जीत्यमिद्धोता हुतं कृणोति ॥</div><div class="kane-note">अथर्ववेद VI. 71. 2.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-xviii-pancha-mahāyajnas.html#fn-chapter-xviii-pancha-mahāyajnas-8">vol-2-part-1 §chapter-xviii-pancha-mahāyajnas</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xviii-pancha-mahāyajnas.html#p-chapter-xviii-pancha-mahāyajnas-6">vol-2-part-1 §chapter-xviii-pancha-mahāyajnas</a></td>
+            <td class="verse-context"><small>...ña and pitṛtarpaṇa (pitryajña ). In the Atharvaveda VI. 71. 2 four out of these seem to be alluded to...</small></td>
+        </tr>
+
+        <tr id="VI.87">
+            <td class="verse-ref">VI.87</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-ii-seven-angas-of-rājya.html#p-chapter-ii-seven-angas-of-rājya-11">vol-3 §chapter-ii-seven-angas-of-rājya</a></td>
+            <td class="verse-context"><small>...kingship Rg X 173 (which corresponds to Atharvaveda VI. 87 and 88. 1–2) has been taken as an elect...</small></td>
+        </tr>
+
+        <tr id="VI.87.1-2">
+            <td class="verse-ref">VI.87.1-2</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-ii-seven-angas-of-rājya.html#p-chapter-ii-seven-angas-of-rājya-13">vol-3 §chapter-ii-seven-angas-of-rājya</a></td>
+            <td class="verse-context"><small>...atest gods of the Vedic pantheoṇ In the Atharvaveda VI. 87. 1–2 it is said about the king ‘May all the ...</small></td>
+        </tr>
+
+        <tr id="VI.120">
+            <td class="verse-ref">VI.120</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">यत्रा सुहादः सुकृता सहन्ति निदाय रोगं तनुः स्वाश्रो। अक्षैणुताः स्वर्गे तत्र पर्वैश्व पितरौ च पुत्रान् ॥</div><div class="kane-note">अथर्व VI, 120 3, स्वर्गे लोकमाभि नौ नयसि स जायरथा सह इष्टै . स्त्रयज्ञ ॥ अथर्व XII 3 17.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-4/chapter-vi-consequences-of-not-undergoing-penances.html#fn-chapter-vi-consequences-of-not-undergoing-penances-20">vol-4 §chapter-vi-consequences-of-not-undergoing-penances</a></div></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-vi-consequences-of-not-undergoing-penances.html#p-chapter-vi-consequences-of-not-undergoing-penances-2">vol-4 §chapter-vi-consequences-of-not-undergoing-penances</a></td>
+            <td class="verse-context"><small>...ot-undergoing-penances-19"&gt;19&lt;/a&gt;&lt;/sup&gt; Atharvaveda VI. 120,3 and other verses ex-press a yearning ...</small></td>
+        </tr>
+
+        <tr id="VII">
+            <td class="verse-ref">VII</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-iii-duties-and-responsibilities-of-the-ruler.html#p-chapter-iii-duties-and-responsibilities-of-the-ruler-34">vol-3 §chapter-iii-duties-and-responsibilities-of-the-ruler</a></td>
+            <td class="verse-context"><small>...nd sabhāpatis (presidents of sabhās) In Atharvaveda VII 12 1 ‘sabhā’ and ‘samiti’ are said to b...</small></td>
+        </tr>
+
+        <tr id="VII.17.2-3">
+            <td class="verse-ref">VII.17.2-3</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-vi-samskāras.html#p-chapter-vi-samskāras-41">vol-2-part-1 §chapter-vi-samskāras</a></td>
+            <td class="verse-context"><small>...es) ‘may Dhātṛ give to his worshipper’ (Atharvaveda VII. 17. 2–3 ), with the two verses, ‘I invoke Rākā’...</small></td>
+        </tr>
+
+        <tr id="VII.27.4-9">
+            <td class="verse-ref">VII.27.4-9</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxxvi-fundamental-and-leading-characteristics-of-hindu-culture-and-civil.html#p-chapter-xxxvi-fundamental-and-leading-characteristics-of-hindu-culture-and-civil-14">vol-5-part-2 §chapter-xxxvi-fundamental-and-leading-characteristics-of-hindu-culture-and-civil</a></td>
+            <td class="verse-context"><small>... Viṣṇu are praised in Rg. VII. 99. 1-7, Atharvaveda VII. 27.4-9) and Śiva ( Rudra of the Ṛgveda, transf...</small></td>
+        </tr>
+
+        <tr id="VII.52.2">
+            <td class="verse-ref">VII.52.2</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-3">vol-3 §chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age</a></td>
+            <td class="verse-context"><small>...n gambling’ (X. 34. 6, X. 43 5). In the Atharvaveda VII. 52. 2, 5, 6 kṛta has the same meaning Kali is...</small></td>
+        </tr>
+
+        <tr id="7.68">
+            <td class="verse-ref">7.68</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-vii-eschatology.html#p-chapter-vii-eschatology-21">vol-4 §chapter-vii-eschatology</a></td>
+            <td class="verse-context"><small>...81.39) in the cremation rite along with A. V. 7.68 1–2 and 18 3.25.</small></td>
+        </tr>
+
+        <tr id="VIII">
+            <td class="verse-ref">VIII</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-vi-consequences-of-not-undergoing-penances.html#p-chapter-vi-consequences-of-not-undergoing-penances-14">vol-4 §chapter-vi-consequences-of-not-undergoing-penances</a></td>
+            <td class="verse-context"><small>...going-penances-60"&gt;60&lt;/a&gt;&lt;/sup&gt;. In the Atharvaveda VIII, 7.3 plants are said to have destroyed ...</small></td>
+        </tr>
+
+        <tr id="VIII.1.1">
+            <td class="verse-ref">VIII.1.1</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-vii-upanayana.html#p-chapter-vii-upanayana-4">vol-2-part-1 §chapter-vii-upanayana</a> · <a href="../vol-5-part-2/chapter-xxxii-yoga-and-dharmashastra.html#p-chapter-xxxii-yoga-and-dharmashastra-50">vol-5-part-2 §chapter-xxxii-yoga-and-dharmashastra</a></td>
+            <td class="verse-context"><small>...s man (ayan puruṣaḥ )' occurring in the Atharvaveda VIII. 1. 1 and elsewhere it appears probable that ...</small></td>
+        </tr>
+
+        <tr id="VIII.2.16">
+            <td class="verse-ref">VIII.2.16</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">यत्ते वासः परिधानं यां नीविं कृणुषे स्वम् ।</div><div class="kane-note">अथर्ववेद VIII. 2. 16.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-xvii-āhnika-and-āchāra.html#fn-chapter-xvii-āhnika-and-āchāra-92">vol-2-part-1 §chapter-xvii-āhnika-and-āchāra</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xvii-āhnika-and-āchāra.html#p-chapter-xvii-āhnika-and-āchāra-35">vol-2-part-1 §chapter-xvii-āhnika-and-āchāra</a></td>
+            <td class="verse-context"><small>...to be the fee in a certain rite. In the Atharvaveda VIII. 2. 16 we have the two words ‘*vāsaḥ*’ (outer ...</small></td>
+        </tr>
+
+        <tr id="VIII.2.21">
+            <td class="verse-ref">VIII.2.21</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-3">vol-3 §chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age</a></td>
+            <td class="verse-context"><small>...a&gt;&lt;/sup&gt; ‘a long period of time’ In the Atharvaveda VIII. 2. 21 yuga appears to mean a period of severa...</small></td>
+        </tr>
+
+        <tr id="VIII.4.13">
+            <td class="verse-ref">VIII.4.13</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-ii-varna.html#p-chapter-ii-varna-4">vol-2-part-1 §chapter-ii-varna</a></td>
+            <td class="verse-context"><small>...icularly relies on Ṛg. VII. 104. 13 ( = Atharvaveda VIII. 4. 13 ) which is cited in the Vedic Index ( v...</small></td>
+        </tr>
+
+        <tr id="VIII.7.23">
+            <td class="verse-ref">VIII.7.23</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxiv-minor-grihya-and-other-rites.html#p-chapter-xxiv-minor-grihya-and-other-rites-6">vol-2-part-2 §chapter-xxiv-minor-grihya-and-other-rites</a></td>
+            <td class="verse-context"><small>...the Tai. S. cited above showṣ Vide also Atharvaveda VIII. 7. 23 and XI. 9. 16 and 24. In the Atharvaved...</small></td>
+        </tr>
+
+        <tr id="VIII.14.13-15">
+            <td class="verse-ref">VIII.14.13-15</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-1/chapter-vii-vratas-called-nāgapanchamī-manasāpūjā-rakshābandhana-krishnajanmāsht.html#p-chapter-vii-vratas-called-nāgapanchamī-manasāpūjā-rakshābandhana-krishnajanmāsht-4">vol-5-part-1 §chapter-vii-vratas-called-nāgapanchamī-manasāpūjā-rakshābandhana-krishnajanmāsht</a></td>
+            <td class="verse-context"><small>... contain salutations to serpentṣ In the Atharvaveda (VIII. 14. 13–15) there is a reference to serpents some o...</small></td>
+        </tr>
+
+        <tr id="VIII.14.14-16">
+            <td class="verse-ref">VIII.14.14-16</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxiv-minor-grihya-and-other-rites.html#p-chapter-xxiv-minor-grihya-and-other-rites-6">vol-2-part-2 §chapter-xxiv-minor-grihya-and-other-rites</a></td>
+            <td class="verse-context"><small>...III. 7. 23 and XI. 9. 16 and 24. In the Atharvaveda (VIII. 14. 14–16) the well known names of some mythical s...</small></td>
+        </tr>
+
+        <tr id="IX.5.27-28">
+            <td class="verse-ref">IX.5.27-28</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">या पूर्वे पतिं विश्वाधाम्न्यबिन्दतेपरम् । प्सौदने च तावजं वदातो न वि योषतः ॥ समानलोको भवति पुनर्भुवापरः पतिः। योऽजं प्सौदनं दक्षिणां ज्योतिषे ददाति ॥</div><div class="kane-note">अथर्ववेद IX. 5. 27–28.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-xiv-remarriage-of-widows.html#fn-chapter-xiv-remarriage-of-widows-18">vol-2-part-1 §chapter-xiv-remarriage-of-widows</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xiv-remarriage-of-widows.html#p-chapter-xiv-remarriage-of-widows-4">vol-2-part-1 §chapter-xiv-remarriage-of-widows</a></td>
+            <td class="verse-context"><small>...riage-of-widows-18"&gt;18&lt;/a&gt;&lt;/sup&gt; of the Atharvaveda (IX. 5. 27–28) is ‘whatever woman, having first marrie...</small></td>
+        </tr>
+
+        <tr id="IX.6">
+            <td class="verse-ref">IX.6</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">पदयन्तस्याश्वश्विरते पृथिव्यां पृथङ्‌नरो बहुधा मीमांसमानाः। अथर्व IX. 1. 3; स च एवं विष्ठाद्य त्रिवचक्रमशीयाध त्रिपतोऽडक्ष्मश्रीयाज मीमांसितस्य न मीमांसमानरूष।</div><div class="kane-note">अथर्व IX. 6 (2). 24.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-5-part-2/chapter-xxviii-mīmāmsā-and-dharmashastra.html#fn-chapter-xxviii-mīmāmsā-and-dharmashastra-2">vol-5-part-2 §chapter-xxviii-mīmāmsā-and-dharmashastra</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxi-nriyajna-or-manushya-yajna.html#p-chapter-xxi-nriyajna-or-manushya-yajna-1">vol-2-part-2 §chapter-xxi-nriyajna-or-manushya-yajna</a></td>
+            <td class="verse-context"><small>... S. I. 2. 10. 1 for the word *atithya*. Atharvaveda IX. 6 is an eulogy of hospitality in which th...</small></td>
+        </tr>
+
+        <tr id="X">
+            <td class="verse-ref">X</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/list-of-tīrthas.html#p-list-of-tīrthas-2">vol-4 §list-of-tīrthas</a></td>
+            <td class="verse-context"><small>...as some of their saints were born there Atharvaveda X 2. 31 and Tai, A. I 27 2 (aṣṭacakrā nav...</small></td>
+        </tr>
+
+        <tr id="X.6.32">
+            <td class="verse-ref">X.6.32</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-ix-shrāddha.html#p-chapter-ix-shrāddha-12">vol-4 §chapter-ix-shrāddha</a></td>
+            <td class="verse-context"><small>...lanation and also gives another. In the Atharvaveda X. 6. 32 the gods, pitṛs and men are mentioned i...</small></td>
+        </tr>
+
+        <tr id="X.7.42">
+            <td class="verse-ref">X.7.42</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxvi-tāntrik-doctrines-and-dharmashastra.html#p-chapter-xxvi-tāntrik-doctrines-and-dharmashastra-4">vol-5-part-2 §chapter-xxvi-tāntrik-doctrines-and-dharmashastra</a></td>
+            <td class="verse-context"><small>...age in handling ploughs and looms'. The Atharvaveda (X. 7. 42) ('tantram-eke yuvati virūpe abhyākrāmam...</small></td>
+        </tr>
+
+        <tr id="X.8.1">
+            <td class="verse-ref">X.8.1</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxxvii-future-trends.html#p-chapter-xxxvii-future-trends-71">vol-5-part-2 §chapter-xxxvii-future-trends</a></td>
+            <td class="verse-context"><small>... culled from the Vedic literature, viz. Atharvaveda X. 8.1, Rg. X. 82.3, I. 164.16, Vaj. S. 25.21,...</small></td>
+        </tr>
+
+        <tr id="X.8.16">
+            <td class="verse-ref">X.8.16</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxxiii-tarka-and-dharmashastra.html#p-chapter-xxxiii-tarka-and-dharmashastra-3">vol-5-part-2 §chapter-xxxiii-tarka-and-dharmashastra</a></td>
+            <td class="verse-context"><small>... VI. 47. 18; Katha IV. 9 is the same as Atharvaveda X. 8. 16, Praśna I. 11 is quoted from Rg. I. 164...</small></td>
+        </tr>
+
+        <tr id="X.8.43">
+            <td class="verse-ref">X.8.43</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxxi-dharmashastra-and-sānkhya.html#p-chapter-xxxi-dharmashastra-and-sānkhya-8">vol-5-part-2 §chapter-xxxi-dharmashastra-and-sānkhya</a></td>
+            <td class="verse-context"><small>..."&gt;15&lt;/a&gt;&lt;/sup&gt; But one passage from the Atharvaveda X. 8. 43 deserves notice, viz. 'the knowers of B...</small></td>
+        </tr>
+
+        <tr id="XI.2.25">
+            <td class="verse-ref">XI.2.25</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-47">vol-3 §chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age</a></td>
+            <td class="verse-context"><small>... the waters of the sea.&lt;sup&gt;9&lt;/sup&gt; The Atharvaveda XI. 2. 25 refers to eastern sea and northern sea....</small></td>
+        </tr>
+
+        <tr id="XI.4">
+            <td class="verse-ref">XI.4</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-iii-duties-and-responsibilities-of-the-ruler.html#p-chapter-iii-duties-and-responsibilities-of-the-ruler-14">vol-3 §chapter-iii-duties-and-responsibilities-of-the-ruler</a> · <a href="../vol-5-part-2/chapter-xxxiv-cosmology.html#p-chapter-xxxiv-cosmology-12">vol-5-part-2 §chapter-xxxiv-cosmology</a></td>
+            <td class="verse-context"><small>...tātīya mantras and with the Prāṇa hymn (Atharvaveda XI. 4). He should then bathe the king with (t...</small></td>
+        </tr>
+
+        <tr id="XI.6.7">
+            <td class="verse-ref">XI.6.7</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxxiii-agnishtoma.html#p-chapter-xxxiii-agnishtoma-37">vol-2-part-2 §chapter-xxxiii-agnishtoma</a></td>
+            <td class="verse-context"><small>... vessels as the moon in waters' and the Atharvaveda (XI. 6. 7) states that the god whom people call Ca...</small></td>
+        </tr>
+
+        <tr id="XI.7">
+            <td class="verse-ref">XI.7</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">ब्रह्मचारिणोऽश्शरति रोदसी उभे तस्मिन्देवाः संमनसो भवन्ति । स दधार पृथिवीं दिवं च आचार्यं तपसा पिपति ॥</div><div class="kane-note">अथर्ववेद XI. 7. 1. This verse is explained in गोपथाब्राह्मण II. 1. आचार्य उपनयमानो ब्रह्मचारिणं कृणुते गर्भमन्तः । अथर्व XI. 7. 3. the idea is found in Āp. Dh. S. I. 1. 16-18 (quoted above p. 181 f. ṇ 443) and compare शतपथब्रा . XI. 5. 4. 12 ' आचार्यो गर्भाभिर्भूतिं हस्तमाधाय शिक्षयम् । द्वितीयस्यां स जायते सावित्र्या सह ब्राह्मणः । ब्रह्मचर्येण समिधा समिद्धः काण्णी वसानी दीक्षिनो दीर्घश्मश्रुः । अथर्व XI. 7. 6.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-vii-upanayana.html#fn-chapter-vii-upanayana-7">vol-2-part-1 §chapter-vii-upanayana</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-vii-upanayana.html#p-chapter-vii-upanayana-4">vol-2-part-1 §chapter-vii-upanayana</a></td>
+            <td class="verse-context"><small>...yana and brahmacarya were. The whole of Atharvaveda XI. 7 (26 verses) is a hymn containing hyperb...</small></td>
+        </tr>
+
+        <tr id="XI.7.7-8">
+            <td class="verse-ref">XI.7.7-8</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxxv-sautrāmanī-and-other-sacrifices.html#p-chapter-xxxv-sautrāmanī-and-other-sacrifices-12">vol-2-part-2 §chapter-xxxv-sautrāmanī-and-other-sacrifices</a></td>
+            <td class="verse-context"><small>... was *utsanna* (gone out of vogue). The Atharvaveda (XI. 7. 7-8) also appears to regard the Rājasūya, Vā...</small></td>
+        </tr>
+
+        <tr id="XI.7.24, XV.6.10-11">
+            <td class="verse-ref">XI.7.24, XV.6.10-11</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/33-the-purānas.html#p-33-the-purānas-2">vol-1-part-1 §33-the-purānas</a></td>
+            <td class="verse-context"><small>...Purāṇa (a class of works) occurs in the Atharvaveda (XI. 7. 24, XV. 6. 10-11). The Śat. Br. (XI. 5.6-8) includes 'Iti...</small></td>
+        </tr>
+
+        <tr id="XII">
+            <td class="verse-ref">XII</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-vi-consequences-of-not-undergoing-penances.html#p-chapter-vi-consequences-of-not-undergoing-penances-2">vol-4 §chapter-vi-consequences-of-not-undergoing-penances</a></td>
+            <td class="verse-context"><small>...g hair in the midst of a river of blooḍ Atharvaveda XII, 4, 36 mentions 'Nāraka-loka'. In the V...</small></td>
+        </tr>
+
+        <tr id="XII.1">
+            <td class="verse-ref">XII.1</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-2">vol-3 §chapter-v-rāshtra-the-territory-of-a-state</a></td>
+            <td class="verse-context"><small>...planation of the Tai. S. passage In the Atharvaveda XII. 1 8 and 10 the earth is called mother and...</small></td>
+        </tr>
+
+        <tr id="XII.1.45">
+            <td class="verse-ref">XII.1.45</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">उत्तिष्ठत जाग्रत प्राप्य वरान्निबोधत । क्षुरस्य धारा निशिता दुरत्यया दुर्गमं पथस्त - त्कवयो वदन्ति ॥ कठोप . III. 14.</div><div class="kane-src"><span class="tier sole" title="the only Sanskrit on the only passage citing it — inferred">sole</span> <a href="../vol-5-part-2/chapter-xxxvii-future-trends.html#fn-chapter-xxxvii-future-trends-33">vol-5-part-2 §chapter-xxxvii-future-trends</a></div></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxxvii-future-trends.html#p-chapter-xxxvii-future-trends-75">vol-5-part-2 §chapter-xxxvii-future-trends</a></td>
+            <td class="verse-context"><small>...nd others (New York, 1958) p. 659. Vide Atharvaveda XII. 1.45 for universal brotherhood of all men wh...</small></td>
+        </tr>
+
+        <tr id="XII.4">
+            <td class="verse-ref">XII.4</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxii-bhojana.html#p-chapter-xxii-bhojana-13">vol-2-part-2 §chapter-xxii-bhojana</a></td>
+            <td class="verse-context"><small>... the cow is let loose by the guest. The Atharvaveda (XII. 4) fully recognises the cult of the holine...</small></td>
+        </tr>
+
+        <tr id="XIII.1.56">
+            <td class="verse-ref">XIII.1.56</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">1527. यथर्शे गर्भे पदा स्फुरति प्रत्यक्षं सूर्ये च मेहति। तस्य वृश्चामि ते मूलं न च्छायां करवोऽपरम् ॥</div><div class="kane-note">अथर्व XIII. 1. 56; मेड्याम्पूर्वरुत्सिष्ठन्मा मा हिसिपुंरीश्वरः ॥ अथर्व VII. 102 (107). 1.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-xvii-āhnika-and-āchāra.html#fn-chapter-xvii-āhnika-and-āchāra-27">vol-2-part-1 §chapter-xvii-āhnika-and-āchāra</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xvii-āhnika-and-āchāra.html#p-chapter-xvii-āhnika-and-āchāra-13">vol-2-part-1 §chapter-xvii-āhnika-and-āchāra</a></td>
+            <td class="verse-context"><small>...e given in works on dharma. Even in the Atharvaveda (XIII. 1. 56) it&lt;sup&gt;1527&lt;/sup&gt; is said ‘I cut off th...</small></td>
+        </tr>
+
+        <tr id="XIV.1">
+            <td class="verse-ref">XIV.1</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">अथाहु ह्यन्यन्ने गावौ फल्यृण्योः पर्बुद्धते । स . X. 85. 13 and</div><div class="kane-note">अथर्व XIV. 1. 13. कौशिकसूत्र 75. 5 quotes these wordṣ सुप्रभिगावौ गृह्यन्ते । फल्युमीम्यां पृथुखले । आप . गृ . 3. 1-2.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-ix-marriage.html#fn-chapter-ix-marriage-188">vol-2-part-1 §chapter-ix-marriage</a></div></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-iii-prāyashchitta-its-origin-derivation-and-meaning.html#p-chapter-iii-prāyashchitta-its-origin-derivation-and-meaning-1">vol-4 §chapter-iii-prāyashchitta-its-origin-derivation-and-meaning</a></td>
+            <td class="verse-context"><small>...e Vedas)’”. The word also occurs in the Atharvaveda XIV. 1 30, Vaj. S. 39.12 (in close proximity t...</small></td>
+        </tr>
+
+        <tr id="14.1.35-36">
+            <td class="verse-ref">14.1.35-36</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxii-bhojana.html#p-chapter-xxii-bhojana-28">vol-2-part-2 §chapter-xxii-bhojana</a></td>
+            <td class="verse-context"><small>...and wherein liquor flows like water. In Atharvaveda 14. 1. 35-36 and 15. 9. 2-3 surā is referred to. The...</small></td>
+        </tr>
+
+        <tr id="14.2.60">
+            <td class="verse-ref">14.2.60</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">यद॑स्या दुहितुर्‌ तव विकीवदप्सृदगृहे रोदेन कृण्वत्यघम्‌ । अग्निष्टद्‌ तरमादेनस : सविता च प्रमुञ्चताम्‌ ॥</div><div class="kane-note">अथर्व 14. 2. 60.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-xii-the-duties-of-a-widow-some-privileges-of-women-and-the-purda-system.html#fn-chapter-xii-the-duties-of-a-widow-some-privileges-of-women-and-the-purda-system-14">vol-2-part-1 §chapter-xii-the-duties-of-a-widow-some-privileges-of-women-and-the-purda-system</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xii-the-duties-of-a-widow-some-privileges-of-women-and-the-purda-system.html#p-chapter-xii-the-duties-of-a-widow-some-privileges-of-women-and-the-purda-system-6">vol-2-part-1 §chapter-xii-the-duties-of-a-widow-some-privileges-of-women-and-the-purda-system</a></td>
+            <td class="verse-context"><small>...Rg. X. 40. 2, Ap. M. Pāṭha I. 4. 9, and Atharvaveda 14.2. 60, Rg X. 40. 2 (cited below p. 606 ) refe...</small></td>
+        </tr>
+
+        <tr id="14.2.73">
+            <td class="verse-ref">14.2.73</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-ix-shrāddha.html#p-chapter-ix-shrāddha-14">vol-4 §chapter-ix-shrāddha</a></td>
+            <td class="verse-context"><small>... the bestowal of wealth and heroic sonṣ A. V. 14. 2. 73 says 'May the one who throng round the ...</small></td>
+        </tr>
+
+        <tr id="XV">
+            <td class="verse-ref">XV</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxxii-yoga-and-dharmashastra.html#p-chapter-xxxii-yoga-and-dharmashastra-2">vol-5-part-2 §chapter-xxxii-yoga-and-dharmashastra</a></td>
+            <td class="verse-context"><small>...922 pp. 11 ff) hold that the Vrātyas of Atharvaveda XV were ecstatics of the kṣatriya class an...</small></td>
+        </tr>
+
+        <tr id="15.1.1">
+            <td class="verse-ref">15.1.1</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-vii-upanayana.html#p-chapter-vii-upanayana-133">vol-2-part-1 §chapter-vii-upanayana</a></td>
+            <td class="verse-context"><small>... the glorification of the vrātya in the Atharvaveda 15. 1. 1 and his note is interesting, since he s...</small></td>
+        </tr>
+
+        <tr id="17.1-10">
+            <td class="verse-ref">17.1-10</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-iii-duties-and-responsibilities-of-the-ruler.html#p-chapter-iii-duties-and-responsibilities-of-the-ruler-16">vol-3 §chapter-iii-duties-and-responsibilities-of-the-ruler</a></td>
+            <td class="verse-context"><small>The Kauśikasūtra of the Atharvaveda (in 17.1-10) des- cribes the abhiṣeka (called laghu)...</small></td>
+        </tr>
+
+        <tr id="XVIII">
+            <td class="verse-ref">XVIII</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-vii-eschatology.html#p-chapter-vii-eschatology-42">vol-4 §chapter-vii-eschatology</a></td>
+            <td class="verse-context"><small>...age in the Sat Br. and other sources In A. V. XVIII 2 25 it is said, 'may the tree not oppr...</small></td>
+        </tr>
+
+        <tr id="18">
+            <td class="verse-ref">18</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-vii-eschatology.html#p-chapter-vii-eschatology-52">vol-4 §chapter-vii-eschatology</a></td>
+            <td class="verse-context"><small>...ed with the verses called Hariņis (i e. A. V. 18 2 11-18). He (the performer) deposits (...</small></td>
+        </tr>
+
+        <tr id="18.1.41-43">
+            <td class="verse-ref">18.1.41-43</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-vii-eschatology.html#p-chapter-vii-eschatology-21">vol-4 §chapter-vii-eschatology</a></td>
+            <td class="verse-context"><small>...ers to Sarasvati are almost the same as A. V. 18. 1. 41–43 and are employed by the Kauśika-sūtra (...</small></td>
+        </tr>
+
+        <tr id="18.2.10">
+            <td class="verse-ref">18.2.10</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-ix-shrāddha.html#p-chapter-ix-shrāddha-7">vol-4 §chapter-ix-shrāddha</a></td>
+            <td class="verse-context"><small>...d person to the pitṛs (Rg. X 16. 1-2, 5=A. V. 18. 2. 10, Rg X. 17. 3). In later works also (e. ...</small></td>
+        </tr>
+
+        <tr id="18.2.24">
+            <td class="verse-ref">18.2.24</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-vii-eschatology.html#p-chapter-vii-eschatology-52">vol-4 §chapter-vii-eschatology</a></td>
+            <td class="verse-context"><small>... says that the bones are collected with A. V. 18. 2. 24, 26, then they are consigned to a jar o...</small></td>
+        </tr>
+
+        <tr id="18.2.25">
+            <td class="verse-ref">18.2.25</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-vii-eschatology.html#p-chapter-vii-eschatology-52">vol-4 §chapter-vii-eschatology</a></td>
+            <td class="verse-context"><small>...root of a tree with the verse 'mā tvā' (A. V. 18. 2. 25 'May the tree not injure thee all round...</small></td>
+        </tr>
+
+        <tr id="18.3.1">
+            <td class="verse-ref">18.3.1</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xiv-remarriage-of-widows.html#p-chapter-xiv-remarriage-of-widows-5">vol-2-part-1 §chapter-xiv-remarriage-of-widows</a></td>
+            <td class="verse-context"><small>...e rise). There is another mantra in the Atharvaveda (18. 3. 1) and Tai. Ār. VI. 1 &lt;sup class="fn-ref"&gt;...</small></td>
+        </tr>
+
+        <tr id="18.3.14">
+            <td class="verse-ref">18.3.14</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">परा पात पितर आ च चाटारव पा नमो मनमा मनमदं भर्द्व वचं न सर्वोरीरे दधान।</div><div class="kane-note">अथर्ववेद 18. 3. 14</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-4/chapter-ix-shrāddha.html#fn-chapter-ix-shrāddha-28">vol-4 §chapter-ix-shrāddha</a></div></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-ix-shrāddha.html#p-chapter-ix-shrāddha-14">vol-4 §chapter-ix-shrāddha</a></td>
+            <td class="verse-context"><small>...and 11) and on his soṇ Rg X. 15. 11 and A. V. 18. 3. 14 &lt;sup class="fn-ref"&gt;&lt;a href="#fn-chapte...</small></td>
+        </tr>
+
+        <tr id="XVIII.3.52">
+            <td class="verse-ref">XVIII.3.52</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-vii-eschatology.html#p-chapter-vii-eschatology-66">vol-4 §chapter-vii-eschatology</a></td>
+            <td class="verse-context"><small>...Rg X. 18.13, 10, 11, 12 (which are also A. V. XVIII. 3.52, 49 50, 51 and Tai. A. VI.7.1). One of ...</small></td>
+        </tr>
+
+        <tr id="19">
+            <td class="verse-ref">19</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-iii-duties-and-responsibilities-of-the-ruler.html#p-chapter-iii-duties-and-responsibilities-of-the-ruler-14">vol-3 §chapter-iii-duties-and-responsibilities-of-the-ruler</a></td>
+            <td class="verse-context"><small>...en jars with the mantras called Abhaya (Atharvaveda 19 15), Aparājita, Āyuṣya (Atharvaveda I. ...</small></td>
+        </tr>
+
+        <tr id="19.1">
+            <td class="verse-ref">19.1</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-iii-duties-and-responsibilities-of-the-ruler.html#p-chapter-iii-duties-and-responsibilities-of-the-ruler-14">vol-3 §chapter-iii-duties-and-responsibilities-of-the-ruler</a></td>
+            <td class="verse-context"><small>...ars, with the mantras called saṁsrāvya (Atharvaveda 19.1) and Saṁsiktīya (Atharvaveda II. 26), i...</small></td>
+        </tr>
+
+        <tr id="19.9">
+            <td class="verse-ref">19.9</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">इमानि यानि पञ्चेन्द्रियाणि मनःषष्ठानि मे हृदि ब्रह्मणा संशितानि । यैरेव ससृजे घोरे तैरेव शान्तिरस्तु नः ॥</div><div class="kane-note">अथर्व . 19. 9. 5.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-5-part-2/chapter-xx-vedic-meaning-and-procedure-of-shāntis.html#fn-chapter-xx-vedic-meaning-and-procedure-of-shāntis-5">vol-5-part-2 §chapter-xx-vedic-meaning-and-procedure-of-shāntis</a></div></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xx-vedic-meaning-and-procedure-of-shāntis.html#p-chapter-xx-vedic-meaning-and-procedure-of-shāntis-5">vol-5-part-2 §chapter-xx-vedic-meaning-and-procedure-of-shāntis</a></td>
+            <td class="verse-context"><small>In Atharvaveda 19. 9 the word śānti occurs about 17 timeṣ In...</small></td>
+        </tr>
+
+        <tr id="19.9.9">
+            <td class="verse-ref">19.9.9</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xx-vedic-meaning-and-procedure-of-shāntis.html#p-chapter-xx-vedic-meaning-and-procedure-of-shāntis-20">vol-5-part-2 §chapter-xx-vedic-meaning-and-procedure-of-shāntis</a></td>
+            <td class="verse-context"><small>...ch are similar to Yoga-yātrā 3. 13. The Atharvaveda 19. 9. 9 refers to showers of fall-ing stars (na...</small></td>
+        </tr>
+
+        <tr id="19.71.1">
+            <td class="verse-ref">19.71.1</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">स्तुता मया वरदा वेदमाता प्रचोदयन्तां पावमानी द्विजानाम्। आयु : प्राणं प्रजां पशुं कीर्ति द्रविणं ब्रह्मवर्चसम्। मह्यं दत्वा ब्रजत ब्रह्मलोकम्‌ ॥</div><div class="kane-note">अथर्ववेद 19. 71. 1.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-vii-upanayana.html#fn-chapter-vii-upanayana-103">vol-2-part-1 §chapter-vii-upanayana</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-vii-upanayana.html#p-chapter-vii-upanayana-37">vol-2-part-1 §chapter-vii-upanayana</a></td>
+            <td class="verse-context"><small>...hapter-vii-upanayana-102"&gt;102&lt;/a&gt;&lt;/sup&gt; Atharvaveda 19. 71. 1 calls it 'vedamātā' and prays that it m...</small></td>
+        </tr>
+
+        <tr id="20.34.5">
+            <td class="verse-ref">20.34.5</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-ix-shrāddha.html#p-chapter-ix-shrāddha-18">vol-4 §chapter-ix-shrāddha</a></td>
+            <td class="verse-context"><small>...eaning For example, in Rg. II. 12. 5 (= A. V. 20. 34. 5) it is said ‘Have faith in him; O peopl...</small></td>
+        </tr>
+
+        <tr id="30.2">
+            <td class="verse-ref">30.2</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-132">vol-1-part-1 §14-arthashastra-of-kautilya</a></td>
+            <td class="verse-context"><small>...of them may be set out here. Acc. to K. A. V. 30. 2 the sacrificial priest the preceptor ( ...</small></td>
+        </tr>
+
+        <tr id="37">
+            <td class="verse-ref">37</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/general-index.html#p-general-index-1">vol-2-part-2 §general-index</a></td>
+            <td class="verse-context"><small>...e Deccan resembling Simantonnayana 226. Atharvaveda 37, 41, 43, 201, 202n, 203n, 218, 221n, 24...</small></td>
+        </tr>
+
+        <tr id="64">
+            <td class="verse-ref">64</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-4">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>...1514. Amāvasyā, addressed as a deity in Atharvaveda 64; Ait. Br. on 64; derivation of word in ...</small></td>
+        </tr>
+
+        <tr id="89">
+            <td class="verse-ref">89</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/list-of-tīrthas.html#p-list-of-tīrthas-197">vol-4 §list-of-tīrthas</a></td>
+            <td class="verse-context"><small>... 13. 30 Pitāmahasaras--same as Puskara--A V. 89 16, B Sal. 42 30 (the source of Sarasva...</small></td>
+        </tr>
+
+        <tr id="124">
+            <td class="verse-ref">124</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/list-of-tīrthas.html#p-list-of-tīrthas-173">vol-4 §list-of-tīrthas</a></td>
+            <td class="verse-context"><small>... Kaba and Pagala) V. 130 12 P. II 18 15 A V. 124 16–17 (from which the Sarayū rises), Vā...</small></td>
+        </tr>
+
+        <tr id="126">
+            <td class="verse-ref">126</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-192">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>...asaṁhitā and Ait. Br. 126; names of, in Atharvaveda 126; stone images of, under sacred trees in...</small></td>
+        </tr>
+
+        <tr id="135">
+            <td class="verse-ref">135</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/general-index.html#p-general-index-5">vol-3 §general-index</a></td>
+            <td class="verse-context"><small>...em 134, mentioned in the Ṛgveda and the Atharvaveda 135, in 10 the Brāhmaṇas 135, in by Pāṇini ...</small></td>
+        </tr>
+
+        <tr id="155">
+            <td class="verse-ref">155</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/general-index-of-vol-iv.html#p-general-index-of-vol-iv-20">vol-4 §general-index-of-vol-iv</a></td>
+            <td class="verse-context"><small>...ning of 161. nārakaloka is mentioned in Atharvaveda 155, supposed to be a place below the earth...</small></td>
+        </tr>
+
+        <tr id="242">
+            <td class="verse-ref">242</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/general-index-of-vol-iv.html#p-general-index-of-vol-iv-4">vol-4 §general-index-of-vol-iv</a></td>
+            <td class="verse-context"><small>...22-23 A D, 273, 460 Hariṇi, verses from Atharvaveda 242 Hārīta, 16, 40, 60, 83, 88, 106, 114, 1...</small></td>
+        </tr>
+
+        <tr id="498">
+            <td class="verse-ref">498</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-200">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>Sirius, star, referred to in Ṛgveda and Atharvaveda 498.</small></td>
+        </tr>
+
+        <tr id="500">
+            <td class="verse-ref">500</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-88">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>...Tai. S. and Tai. Br. and Jyeṣṭhāghni in Atharvaveda 500. - Jyotirvidābharaṇa, a fabricated work...</small></td>
+        </tr>
+
+        <tr id="559">
+            <td class="verse-ref">559</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/general-index-of-vol-iv.html#p-general-index-of-vol-iv-4">vol-4 §general-index-of-vol-iv</a></td>
+            <td class="verse-context"><small>...ly in the Purāṇas 560; mentioned in the Atharvaveda 559, spoken of as 'Garatātmā' by Kālidāsa 5...</small></td>
+        </tr>
+
+        <tr id="563">
+            <td class="verse-ref">563</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-98">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>...dēvāya) 1121. Karka and Karkin-occur in Atharvaveda 563. Karma and Punarjanma 1530-1612: (vide ...</small></td>
+        </tr>
+
+        <tr id="1035">
+            <td class="verse-ref">1035</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-114">vol-5-part-2 §index-to-vol-v</a> · <a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-212">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>...e afraid of black magic 1035; spells in Atharvaveda 1035; stories in Pali that Buddha's disciple...</small></td>
+        </tr>
+
+        <tr id="1036">
+            <td class="verse-ref">1036</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-212">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>...5 ; Kṛtyādūṣaṇa and Śatruṁdāna hymns of Atharvaveda 1036 ; Sp. similar to those in Hindu or Budd...</small></td>
+        </tr>
+
+        <tr id="1360">
+            <td class="verse-ref">1360</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-245">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>...n, 1155ṇ Yaksha, word occurs in Ṛg. and Atharvaveda 1360ṇ Yakṣakardama (unguent with five fragra...</small></td>
+        </tr>
+
+        <tr id="1387.V">
+            <td class="verse-ref">1387.V</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-245">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>...93, 122, 127, 144, 150, 153. Vrātyas in Atharvaveda 1387. Vṛddha-Atri 914. Vṛddha-Gargya 77n, 607ṇ ...</small></td>
+        </tr>
+
+        <tr id="1494-95">
+            <td class="verse-ref">1494-95</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-98">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>...a, as the First Principal or Essence in Atharvaveda 1494-95; was not neglected, as Gītā identifies ...</small></td>
+        </tr>
+
+        <tr id="1495">
+            <td class="verse-ref">1495</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-97">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>kāla as the first principle in Atharvaveda 1495.</small></td>
+        </tr>
+            </tbody>
+        </table>
+    </div>
+
+    
+    <footer class="container-fluid pt-4" style="background-color:#2e4144">
+        <div class="row border-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img src="https://sanatana.in/mbta/public/images/Homepage_html/images/layer_8.png" alt="">
+            </div>
+            <div class="col-md-5 text-white">
+                <p>The divine knowledge and wisdom of our shastras is the only thing eternal,
+                   which was and which will remain ever-present in this gods creation.
+                   Our endeavours are to preserve this knowledge.</p>
+            </div>
+            <div class="col-md-1 text-white">
+                <div class="d-flex" style="height: 75px;">
+                    <div class="vr"></div>
+                </div>
+            </div>
+            <div class="col-md-3 text-white">
+                <i class="fa-solid fa-globe"></i>&emsp;
+                <a href="https://sanatanasampatti.in" class="text-light">www.sanatanasampatti.in</a><br>
+                <i class="fa-solid fa-envelope"></i>&emsp;
+                <a href="" class="text-light">sriranga.yoga@gmail.com</a>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center py-3 mb-4 align-items-center border-bottom">
+            <div class="col-md-2 text-white fs-4 text-center">Project</div>
+            <div class="col-md-2 text-white fs-4 text-center">Our Mission</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contribute</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contact Us</div>
+        </div>
+        <div class="row">
+            <p class="col-md-6 fs-6 text-start text-light">
+                <small>&copy; 2026 Sanatanasampatti</small>
+            </p>
+            <p class="col-md-6 fs-6 text-end text-light">
+                <a class="text-white" rel="nofollow" href="http://www.srirangadigital.com" target="_blank">
+                    <img src="https://sanatana.in/mbta/public/images/logo.png" alt="sriranga logo" />
+                    <small>Designed, Developed and Maintained by Sriranga Digital</small>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+</body>
+</html>

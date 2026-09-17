@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- MDB UI Kit -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/fonts.css?v=1.2">
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/navbar.css?v=2.4">
+
+    <title>Chapter XII. The Ganges — Volume IV — History of Dharmaśāstra</title>
+    <style>
+    :root {
+        --saffron:        #D4600A;
+        --saffron-light:  #F0924A;
+        --saffron-wash:   rgba(212, 96, 10, 0.07);
+        --indigo:         #2E5FA3;
+        --indigo-dark:    #1C3D70;
+        --maroon:         #7A1E1E;
+        --amber:          #C97A1A;
+        --ink:            #1A1209;
+        --ink-secondary:  #4A3B2A;
+        --parchment:      #FDFAF4;
+        --parchment-mid:  #F5EFE2;
+        --rule:           rgba(180, 130, 60, 0.22);
+        --shadow:         0 2px 18px rgba(90, 50, 10, 0.08);
+        --font-devanagari: 'Tiro Devanagari Sanskrit', 'Siddhanta', 'Noto Sans Devanagari', serif;
+        --font-roman:      'Junicode', Georgia, serif;
+    }
+
+    body {
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: var(--font-roman);
+    }
+
+    .devanagari {
+        font-family: var(--font-devanagari);
+    }
+
+    /* ── Navbar overrides ── */
+    .navbar-ontop { z-index: 1031; }
+    .hdclr { color: var(--saffron); }
+    .engpara { font-family: 'Open Sans', sans-serif; }
+
+    /* ── Layout ── */
+    .dh-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .dh-content {
+        flex: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        background: var(--parchment);
+        box-shadow: var(--shadow);
+        min-height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        .dh-content { padding: 24px 20px; }
+        .dh-wrapper { flex-direction: column; }
+    }
+
+    /* ── TOC Sidebar ── */
+    .toc-sidebar {
+        position: sticky;
+        top: 80px;
+        width: 280px;
+        min-width: 280px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding: 20px 16px;
+        margin-right: 24px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        scrollbar-width: thin;
+    }
+
+    .toc-title {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--saffron-light);
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list li {
+        padding: 4px 0;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-list li.toc-l3 {
+        padding-left: 16px;
+        font-size: 0.78rem;
+    }
+
+    .toc-list li a {
+        color: var(--ink-secondary);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .toc-list li a:hover { color: var(--saffron); }
+
+    .toc-list li.active {
+        border-left-color: var(--saffron);
+    }
+
+    .toc-list li.active a {
+        color: var(--saffron);
+        font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-sidebar { display: none; }
+    }
+
+    /* ── Mobile TOC Toggle ── */
+    .toc-mobile-toggle {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1050;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--saffron);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-mobile-toggle { display: block; }
+    }
+
+    /* ── Section Headings ── */
+    .section-heading {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        margin: 48px 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--rule);
+        letter-spacing: 0.5px;
+        scroll-margin-top: 80px;
+    }
+
+    h2.section-heading { font-size: 1.6rem; }
+
+    h3.section-heading {
+        font-size: 1.25rem;
+        border-left: 4px solid var(--saffron-light);
+        border-bottom: none;
+        padding: 8px 16px;
+        background: var(--saffron-wash);
+        border-radius: 0 5px 5px 0;
+    }
+
+    /* ── Prose ── */
+    .prose {
+        font-family: var(--font-roman);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+        color: var(--ink);
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    .prose em { color: var(--maroon); }
+
+    .prose:target {
+        background: rgba(212, 96, 10, 0.12);
+        border-left: 4px solid var(--saffron);
+        padding-left: 16px;
+        margin-left: -20px;
+        border-radius: 0 6px 6px 0;
+        animation: target-pulse 2s ease-out;
+    }
+
+    @keyframes target-pulse {
+        0%   { background: rgba(212, 96, 10, 0.30); }
+        100% { background: rgba(212, 96, 10, 0.12); }
+    }
+
+    /* ── Footnote References ── */
+    .fn-ref {
+        font-size: 0.75em;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    .fn-ref a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 0 2px;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: color 0.15s;
+    }
+
+    .fn-ref a:hover { color: var(--indigo); }
+
+    /* ── Synopsis Box ── */
+    .synopsis-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron-light);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .synopsis-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .synopsis-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .synopsis-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .synopsis-box.open .synopsis-toggle i {
+        transform: rotate(90deg);
+    }
+    .synopsis-body {
+        display: none;
+        padding: 0 20px 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+    }
+    .synopsis-box.open .synopsis-body { display: block; }
+    .synopsis-body p { margin: 0; }
+    .synopsis-attribution {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: var(--ink-secondary);
+        opacity: 0.7;
+        font-style: italic;
+    }
+    .synopsis-audio {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    .synopsis-play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--saffron);
+        background: none;
+        color: var(--saffron);
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: background 0.2s, color 0.2s;
+        padding: 0;
+    }
+    .synopsis-play-btn:hover {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn.playing {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn i { padding-left: 2px; }
+
+    /* ── Index Terms Panel ── */
+    .index-terms-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .index-terms-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .index-terms-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .index-terms-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .index-terms-box.open .index-terms-toggle i {
+        transform: rotate(90deg);
+    }
+    .index-terms-body {
+        display: none;
+        padding: 0 20px 16px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .index-terms-box.open .index-terms-body { display: block; }
+    .index-terms-dl {
+        margin: 0;
+        padding: 0;
+    }
+    .index-terms-dl dt {
+        font-family: var(--font-roman);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+        margin-top: 8px;
+    }
+    .index-terms-dl dd {
+        margin: 2px 0 0 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        color: var(--ink-secondary);
+        line-height: 1.5;
+    }
+    .nyaya-heading {
+        font-family: var(--font-roman);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        margin: 16px 0 4px;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+    }
+
+    /* ── Inline Index Popovers ── */
+    .idx-term {
+        border-bottom: 1px dotted var(--saffron-light);
+        cursor: help;
+        position: relative;
+    }
+    .idx-term:hover::after {
+        content: attr(data-def);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        background: rgba(44, 36, 22, 0.92);
+        color: #F5ECD8;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        max-width: 280px;
+        z-index: 100;
+        white-space: normal;
+        line-height: 1.4;
+        pointer-events: none;
+    }
+
+    /* ── Structured Version Banner ── */
+    .structured-banner {
+        margin: 0 0 28px;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, rgba(212, 96, 10, 0.06) 0%, rgba(212, 96, 10, 0.02) 100%);
+        border: 1px solid var(--saffron-light);
+        border-radius: 6px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        color: var(--ink-secondary);
+        line-height: 1.6;
+    }
+    .structured-banner i { color: var(--saffron); margin-right: 4px; }
+    .structured-banner a { color: var(--indigo); font-weight: 600; text-decoration: none; }
+    .structured-banner a:hover { text-decoration: underline; }
+
+    /* ── Footnotes Section ── */
+    .footnotes-section {
+        margin: 32px 0 48px;
+        padding: 20px 24px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .footnotes-section hr {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 0 0 16px;
+    }
+
+    .footnotes-list {
+        padding-left: 24px;
+        margin: 0;
+    }
+
+    .footnote-item {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+        scroll-margin-top: 80px;
+    }
+
+    .footnote-item:target {
+        background: rgba(212, 96, 10, 0.1);
+        border-radius: 4px;
+        padding: 4px 6px;
+        margin-left: -6px;
+    }
+
+    .fn-back {
+        color: var(--saffron-light);
+        text-decoration: none;
+        font-size: 0.85em;
+        margin-left: 4px;
+    }
+
+    .fn-back:hover { color: var(--saffron); }
+
+    /* ── Reference Links ── */
+    a.ref {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: all 0.15s;
+    }
+
+    a.ref:hover {
+        color: var(--saffron);
+        border-bottom-style: solid;
+    }
+
+    a.mbta-ext {
+        color: var(--indigo);
+        font-size: 0.7em;
+        margin-left: 2px;
+        opacity: 0.5;
+        text-decoration: none;
+        vertical-align: super;
+    }
+    a.mbta-ext:hover { opacity: 1; color: var(--saffron); }
+
+    /* ── References Panel (sidebar) ── */
+    .refs-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .refs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .refs-list li {
+        padding: 3px 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .ref-source-link {
+        font-weight: 600;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .ref-source-link:hover {
+        text-decoration: underline;
+    }
+
+    .ref-verse-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.76rem;
+    }
+
+    .ref-verse-link:hover {
+        text-decoration: underline;
+        color: var(--saffron);
+    }
+
+    .ref-verses {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Timeline panel ── */
+    .timeline-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .timeline-list li {
+        padding: 2px 0;
+        font-size: 0.76rem;
+        line-height: 1.4;
+        position: relative;
+        padding-left: 14px;
+    }
+
+    .timeline-list li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--saffron);
+    }
+
+    .timeline-list li.tl-approximate::before {
+        background: transparent;
+        border: 2px solid var(--saffron);
+        width: 4px;
+        height: 4px;
+    }
+
+    .timeline-list li.tl-century::before {
+        background: transparent;
+        border: 2px dashed var(--saffron);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+
+    .tl-dot-link {
+        text-decoration: none;
+        color: var(--ink);
+        display: block;
+    }
+
+    .tl-dot-link:hover {
+        color: var(--saffron);
+    }
+
+    .tl-year {
+        font-weight: 600;
+        color: var(--saffron);
+        font-size: 0.72rem;
+        min-width: 70px;
+        display: inline-block;
+    }
+
+    .tl-label {
+        color: var(--ink-secondary);
+        font-size: 0.72rem;
+    }
+
+    .tl-view-link, .tl-more {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.72rem;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .tl-view-link:hover, .tl-more:hover {
+        text-decoration: underline;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+
+    .breadcrumb-bar a {
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+
+    .breadcrumb-bar .sep {
+        color: var(--amber);
+        margin: 0 8px;
+    }
+
+    .breadcrumb-bar .current {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Chapter Navigation ── */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        margin-top: 48px;
+        border-top: 2px solid var(--rule);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .chapter-nav a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        transition: all 0.2s;
+        max-width: 45%;
+    }
+
+    .chapter-nav a:hover {
+        background: var(--saffron-wash);
+        border-color: var(--saffron-light);
+    }
+
+    .nav-prev { text-align: left; }
+    .nav-next { text-align: right; margin-left: auto; }
+
+    .page-range {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+    }
+
+    /* ── Volume Cards (Landing) ── */
+    .vol-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .vol-card {
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        transition: all 0.25s;
+    }
+
+    .vol-card:hover {
+        border-color: var(--saffron-light);
+        box-shadow: 0 4px 24px rgba(212, 96, 10, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .vol-num {
+        font-family: var(--font-roman);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--saffron);
+        margin-bottom: 8px;
+    }
+
+    .vol-subtitle {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        line-height: 1.5;
+        flex: 1;
+    }
+
+    .vol-chapters {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        margin-top: 12px;
+    }
+
+    /* ── Chapter Cards (Volume Index) ── */
+    .chapter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .chapter-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .chapter-card:hover {
+        border-color: var(--saffron-light);
+        background: var(--saffron-wash);
+    }
+
+    .card-num {
+        font-family: var(--font-roman);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--saffron);
+        min-width: 36px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        flex: 1;
+    }
+
+    .card-pages {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        color: var(--ink-secondary);
+    }
+
+    /* ── Landing Hero ── */
+    .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-family: var(--font-roman);
+        font-size: 2.4rem;
+        color: var(--saffron);
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .hero .devanagari-title {
+        font-family: var(--font-devanagari);
+        font-size: 1.8rem;
+        color: var(--ink);
+        margin-bottom: 16px;
+    }
+
+    .hero .author {
+        font-family: var(--font-roman);
+        font-size: 1.1rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .hero .desc {
+        font-family: var(--font-roman);
+        font-size: 1rem;
+        color: var(--ink-secondary);
+        line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer { margin-top: 48px; }
+</style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mbta/">
+      <div class="container-fluid">&emsp;&emsp;
+      <a href="../index.html" class="navbar-brand" style="text-decoration:none;">
+        <span class="devanagari ms-3" style="font-size:1.5rem; color:var(--saffron); font-weight:700;">धर्मशास्त्रम्</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="../index.html">धर्मशास्त्रम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5 active" href="../index.html">खण्डाः</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in/mbta/">महाभारतम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in">सनातनम्</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+
+    <div class="dh-wrapper container-xl">
+        <nav id="toc" class="toc-sidebar">
+<div class="refs-panel">
+<h5 class="toc-title">References</h5>
+<ul class="refs-list">
+<li><a href="../refs/aitareya_br.html" class="ref-source-link">Aitareya Brāhmaṇa</a> <span class="ref-verses"><a href="../refs/aitareya_br.html#39.9" class="ref-verse-link">39.9</a></span></li>
+<li><a href="../refs/mb_anushasana.html" class="ref-source-link">Anuśāsanaparva</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/apararka.html" class="ref-source-link">Aparārka</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/gita.html" class="ref-source-link">Bhagavadgītā</a> <span class="ref-verses"><a href="../refs/gita.html#X.31" class="ref-verse-link">X.31</a></span></li>
+<li><a href="../refs/gautama.html" class="ref-source-link">Gautama Dharmasūtra</a> <span class="ref-verses"><a href="../refs/gautama.html#14" class="ref-verse-link">14</a></span></li>
+<li><a href="../refs/hodh.html" class="ref-source-link">History of Dharmaśāstra</a> <span class="ref-verses"><a href="../refs/hodh.html#vol. I p. 538" class="ref-verse-link">vol. I p. 538</a>, <a href="../refs/hodh.html#vol. II pp. 925-927" class="ref-verse-link">vol. II pp. 925-927</a>, <a href="../refs/hodh.html#vol. II" class="ref-verse-link">vol. II</a>, <a href="../refs/hodh.html#vol II" class="ref-verse-link">vol II</a>, <a href="../refs/hodh.html#vol. III" class="ref-verse-link">vol. III</a></span></li>
+<li><a href="../refs/kurma_purana.html" class="ref-source-link">Kūrmapurāṇa</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mahabharata.html" class="ref-source-link">Mahābhārata</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/manu.html" class="ref-source-link">Manusmṛti</a> <span class="ref-verses"><a href="../refs/manu.html#V.88" class="ref-verse-link">V.88</a>, <a href="../refs/manu.html#VI" class="ref-verse-link">VI</a>, <a href="../refs/manu.html#XI" class="ref-verse-link">XI</a>, <a href="../refs/manu.html#V.89" class="ref-verse-link">V.89</a></span></li>
+<li><a href="../refs/matsya_purana.html" class="ref-source-link">Matsyapurāṇa</a> <span class="ref-verses"><a href="../refs/matsya_purana.html#102" class="ref-verse-link">102</a>, <a href="../refs/matsya_purana.html#102.2-31" class="ref-verse-link">102.2-31</a>, <a href="../refs/matsya_purana.html#107.9-10" class="ref-verse-link">107.9-10</a>, <a href="../refs/matsya_purana.html#i" class="ref-verse-link">i</a>, <a href="../refs/matsya_purana.html#105.8-12" class="ref-verse-link">105.8-12</a></span></li>
+<li><a href="../refs/medhatithi.html" class="ref-source-link">Medhātithi</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mitakshara.html" class="ref-source-link">Mitākṣarā</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/narada.html" class="ref-source-link">Nārada</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/padma_purana.html" class="ref-source-link">Padmapurāṇa</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/parasara.html" class="ref-source-link">Parāśara</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/ramayana.html" class="ref-source-link">Rāmāyaṇa</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/skanda_purana.html" class="ref-source-link">Skandapurāṇa</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mb_vanaparva.html" class="ref-source-link">Vanaparva</a> <span class="ref-verses"><a href="../refs/mb_vanaparva.html#c" class="ref-verse-link">c</a>, <a href="../refs/mb_vanaparva.html#85.69-97" class="ref-verse-link">85.69-97</a>, <a href="../refs/mb_vanaparva.html#85" class="ref-verse-link">85</a>, <a href="../refs/mb_vanaparva.html#85.IV" class="ref-verse-link">85.IV</a>, <a href="../refs/mb_vanaparva.html#85.83" class="ref-verse-link">85.83</a>, <a href="../refs/mb_vanaparva.html#85.77" class="ref-verse-link">85.77</a> <a href="../refs/mb_vanaparva.html" class="ref-verse-link">+1</a></span></li>
+<li><a href="../refs/vasishtha.html" class="ref-source-link">Vasiṣṭha Dharmasūtra</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/vishnu_dh.html" class="ref-source-link">Viṣṇu Dharmasūtra</a> <span class="ref-verses"><a href="../refs/vishnu_dh.html#22" class="ref-verse-link">22</a></span></li>
+<li><a href="../refs/vishnu_smriti.html" class="ref-source-link">Viṣṇu Smṛti</a> <span class="ref-verses"><a href="../refs/vishnu_smriti.html#i" class="ref-verse-link">i</a></span></li>
+<li><a href="../refs/vishnu_purana.html" class="ref-source-link">Viṣṇupurāṇa</a> <span class="ref-verses"><a href="../refs/vishnu_purana.html#II" class="ref-verse-link">II</a></span></li>
+<li><a href="../refs/yajnavalkya.html" class="ref-source-link">Yājñavalkya</a> <span class="ref-verses"><a href="../refs/yajnavalkya.html#III" class="ref-verse-link">III</a></span></li>
+<li><a href="../refs/apastamba.html" class="ref-source-link">Āpastamba Dharmasūtra</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/shatapatha.html" class="ref-source-link">Śatapatha Brāhmaṇa</a> <span class="ref-verses"><a href="../refs/shatapatha.html#XIII.5" class="ref-verse-link">XIII.5</a>, <a href="../refs/shatapatha.html#XIII" class="ref-verse-link">XIII</a>, <a href="../refs/shatapatha.html#X.2.6.7" class="ref-verse-link">X.2.6.7</a></span></li>
+<li><a href="../refs/rigveda.html" class="ref-source-link">Ṛgveda</a> <span class="ref-verses"><a href="../refs/rigveda.html#X.75" class="ref-verse-link">X.75</a></span></li>
+</ul>
+</div>
+<div class="timeline-panel">
+<h5 class="toc-title">Timeline</h5>
+<ul class="timeline-list">
+<li class="tl-century"><a href="#p-chapter-xii-the-ganges-25" class="tl-dot-link"><span class="tl-year">~400 BCE</span> <span class="tl-label">The practice of religious suic</span></a></li>
+<li class="tl-range"><a href="#p-chapter-xii-the-ganges-21" class="tl-dot-link"><span class="tl-year">~629 CE</span> <span class="tl-label">Vanaparva</span></a></li>
+<li class="tl-approximate"><a href="#p-chapter-xii-the-ganges-22" class="tl-dot-link"><span class="tl-year">~1030 CE</span> <span class="tl-label">Viṣṇu Smṛti</span></a></li>
+<li class="tl-range"><a href="#p-chapter-xii-the-ganges-21" class="tl-dot-link"><span class="tl-year">~1110 CE</span> <span class="tl-label">Vanaparva</span></a></li>
+<li class="tl-exact"><a href="#p-chapter-xii-the-ganges-3" class="tl-dot-link"><span class="tl-year">1350 CE</span> <span class="tl-label">History of Dharmaśāstra</span></a></li>
+<li class="tl-exact"><a href="#p-chapter-xii-the-ganges-11" class="tl-dot-link"><span class="tl-year">1513 CE</span> <span class="tl-label">The three great tīrthas of Pra</span></a></li>
+<li class="tl-approximate"><a href="#p-chapter-xii-the-ganges-11" class="tl-dot-link"><span class="tl-year">~1580 CE</span> <span class="tl-label">The three great tīrthas of Pra</span></a></li>
+</ul>
+<a href="chapter-xii-the-ganges-timeline.html" class="tl-view-link">View full timeline &rarr;</a>
+</div>
+<h5 class="toc-title">Sections</h5>
+<ul class="toc-list">
+<li class="toc-l2"><a href="#chapter-xii-the-ganges">Chapter XII. The Ganges</a></li>
+</ul>
+</nav>
+        <main class="dh-content">
+            
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep">›</span>
+        <a href="index.html">Volume IV</a>
+        <span class="sep">›</span>
+        <span class="current">Chapter XII. The Ganges</span>
+    </div>
+    
+            <h1 class="text-center" style="font-family: var(--font-roman); font-size: 2rem; color: var(--saffron); margin-bottom: 8px;">
+                Chapter XII. The Ganges
+            </h1>
+            <p class="text-center" style="font-family: 'Open Sans', sans-serif; color: var(--ink-secondary); font-size: 0.9rem; margin-bottom: 36px;">
+                Volume IV <span class="page-range">pp. 585–617</span>
+            </p>
+
+            
+    <div class="synopsis-box" id="synopsis">
+        <button class="synopsis-toggle" onclick="this.parentElement.classList.toggle('open')"
+                aria-expanded="false" aria-controls="synopsis-body">
+            <i class="fa-solid fa-chevron-right"></i>
+            Kane's Synopsis
+        </button>
+        <div class="synopsis-audio">
+            <span class="synopsis-play-btn" role="button" tabindex="0"
+                    onclick="toggleSynopsisAudio(this)"
+                    data-src="../audio/synopsis/vol-4/vol-4_sec012.mp3" title="Listen to synopsis">
+                <i class="fa-solid fa-play"></i>
+            </span>
+            <audio preload="none"></audio>
+        </div>
+        <div class="synopsis-body" id="synopsis-body">
+            <p>The Ganges holds a profoundly revered position, its significance meticulously eulogised across a wide array of ancient Indian texts. This includes mentions in the venerable Ṛgveda, extensive narratives within the epic Mahābhārata, and numerous accounts in the various purāṇas, all of which underscore its sacred status. This deep veneration extends to specific pilgrimage centres located along its banks.
+
+Prominent among these sacred sites is the `Tristhalī`, a significant pilgrimage circuit encompassing Prayāga, Kāśī, and Gayā. Within this triad, Prayāga receives particularly exhaustive eulogy, highlighting its supreme spiritual importance in Hindu tradition. Consequently, various rituals are customarily performed there, such as tonsure, marking it as a crucial site for purification and spiritual rites.
+
+The chapter also delves into the historical documentation of more extreme practices, notably the practice of suicide at Prayāga, which, in certain contexts, was regarded as a path to spiritual liberation. Furthermore, Prayāga itself is not a monolithic entity but encompasses a multitude of `sub-tīrthas`, or sacred spots, within its broader sacred geography. Among these, the revered `Akṣayavaṭa`, the imperishable banyan tree, stands out as a focal point of devotion.</p>
+            <p class="synopsis-attribution">— Synopsis by P.V. Kane, from History of Dharmaśāstra</p>
+        </div>
+    </div>
+
+
+            
+
+            <h2 id="chapter-xii-the-ganges" class="section-heading">Chapter XII. The Ganges</h2>
+<p class="prose" id="p-chapter-xii-the-ganges-1"># THE GANGES</p>
+<p class="prose" id="p-chapter-xii-the-ganges-2">Since the Ganges is the holiest of rivers and since such highly esteemed tīrthas as Kanakhala, Haridvāra, Prayāga and Kāśī are situated on it, it would be most proper to begin the treatment of individual tīrthas with the Gangeṣ</p>
+<p class="prose" id="p-chapter-xii-the-ganges-3">It has been already seen (p. 556) how the Ganges is the first among the many rivers invoked in the famous Nādistutī hymn (Rg X. 75-6). In Rg <sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-1" id="fnref-chapter-xii-the-ganges-1">1</a></sup> VI 45 31 we have the word ‘Gāngyah’ which most probably means ‘growing on the Ganges’. In the <a class="ref" href="../refs/shatapatha.html#XIII" data-source="shatapatha" data-ref="XIII" title="Śatapatha Brāhmaṇa XIII">Śatapatha Brāhmaṇa XIII</a>, 5 4 11 and 13 and <a class="ref" href="../refs/aitareya_br.html#39.9" data-source="aitareya_br" data-ref="39.9" title="Aitareya Brāhmaṇa 39.9">Ait Br. 39. 9</a> the victories and sacrifices of Bharata Daussanti on the Gangā and Yamunā are mentioneḍ In <a class="ref" href="../refs/shatapatha.html#XIII.5" data-source="shatapatha" data-ref="XIII.5" title="Śatapatha Brāhmaṇa XIII.5">Śat. Br XIII. 5</a> 4 11 and 13 an ancient gāthā is quoted ‘At Nādapīt the Apsaras Śakuntalā conceived Bharata who after conquering the whole earth brought to Indra more than 1000 horses meet for sacrifice.’ The <a class="ref" href="../refs/mahabharata.html" data-source="mahabharata" data-ref="" title="Mahābhārata">Mahābhārata</a> (Anuśāsana 26. 26-103) and the Purāṇas (such as Nāradīya, Uttarārdha, chap 38-45 and 51. 1-18, Padma V. 60. 1-127, Agni chap 110, Matsya chap. 180-185, Padma, Ādikhanda chap 33-37) contain hundreds of verses eulogising the greatness and the sanctifying activity of the Gangeṣ The <a class="ref" href="../refs/skanda_purana.html" data-source="skanda_purana" data-ref="" title="Skandapurāṇa">Skandapurāṇa</a>, Kāśīkhaṇḍa, chap 29 (verses 17–168) contains one thousand names of the Gangeṣ It is not possible to reproduce here even a small fraction of what is said in these works about the Ganges To most men in India great rivers like the Ganges, great mountains like the Himālaya present a double aspect, viz the physical aspect and the spiritual aspect A great river apart from its volume of water is deemed to have a spiri-tual or divine life which animates it. Tylor (in ‘Primitive Culture’, 2nd eḍ p 477) observes ‘What we call inanimate objects-rivers, stones, trees, weapons and so forth-are treated as living intelligent beings, talked to, propitiated, punished for the harm they do. There are separate treatises devoted to the glorification of the Ganges and the pilgrimage to it such as the Gaṅgāpattalaka of Gaṇeśvara (1350 A. D.), Gaṅgāvakyāvali of Viśvādevī, queen of king Padmasimha of Mithilā, the Gaṅgābhakti-taraṅgiṇī of Gaṇapati, the Gaṅgākṛtyaviveka of Vardhamāna. Vide <a class="ref" href="../refs/hodh.html#vol. I p. 538" data-source="hodh" data-ref="vol. I p. 538" title="History of Dharmaśāstra vol. I p. 538">H. of Dh. vol. I p. 538</a> for the dates of some of these workṣ</p>
+<p class="prose" id="p-chapter-xii-the-ganges-4">The <a class="ref" href="../refs/mb_vanaparva.html" data-source="mb_vanaparva" data-ref="" title="Vanaparva">Vanaparva</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>, chap 85, has a grand eulogy of Gaṅgā in verses 88-97, some of which may be translated here<sup>1324</sup>. “The Gaṅges is equal to Kurukṣetra wherever one may take a bath in it, but there is a speciality about Kaṇakhala and in Prayāga there is the greatest and highest (holiness). If a person, after committing a hundred bad deeds, sprinkles himself with Ganges (water), the waters of the Ganges burn all of them as fire burns fuel. In the Kṛta age all (places) were holy, in Tretā age Puskara was (the holiest place), in Dvāpara Kurukṣetra and in the Kali age the Gangeṣ The Ganges, when its name is uttered, purifies a sinner, when seen it yields good fortune, when a bath is taken in it or its water is drunk it sanctifies the family up to the seventh ancestor. As long as (a particle of) the bones of a man touches Ganges water (i. e. lies inside it), so long does the man remain happy (or honoured) in heaveṇ There is no holy place equal to the Ganges, there is no god higher than Keśava. That country and that penance-grove where the Ganges flows should be known as the sacred spot of success (or perfection) since it attaches itself to the Gangeṣ” The Anuśāsana (26,26, 30-31) asserts ‘those districts and countries, those hermiatges and mountains, in the midst of which the Ganges flows are pre-eminent in puṇya (religious merit) Even those men who, after committing sinful acts in the first part of their lives, resort afterwards to the Ganges reach the highest world (or goal). That increase (in merit) which comes to men that bathe in the holy waters of the Ganges and that then become pure in spirit, cannot be secured even by the performance of hundreds of solemn Vedic sacrificeṣ<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-3" id="fnref-chapter-xii-the-ganges-3">3</a></sup></p>
+<p class="prose" id="p-chapter-xii-the-ganges-5">In the <a class="ref" href="../refs/gita.html#X.31" data-source="gita" data-ref="X.31" title="Bhagavadgītā X.31">Bhagavadgītā (X. 31)</a> Lord Kṛṣṇa says that among streams he is the Ganges (srotasāsmasmi Jāhnavī). The <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a> setting out an exordium to a witness to tell the truth indicates that the Ganges and Kurukṣetra were the most sacred spots in the age of the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a>.<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-4" id="fnref-chapter-xii-the-ganges-4">4</a></sup> Some of the Purāṇas describe the Ganges as flowing in Heaven (as Mandākinī, on the earth (as Gaṅgā) and in the nether regions or Pātāla (as Bhogavatī). Vide Padma VI. 267. 47. The <a class="ref" href="../refs/vishnu_purana.html" data-source="vishnu_purana" data-ref="" title="Viṣṇupurāṇa">Viṣṇupurāṇa</a><sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-5" id="fnref-chapter-xii-the-ganges-5">5</a></sup> and other Purāṇas state that the Ganges springs from the toe-nail of the left foot of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>. In some Purāṇas it is said that Śiva let off from his matted hair the Ganges in seven streams, three flowing towards the east (Nalinī, Hlādinī, Pāvanī), three to the west (Sītā, Cakṣus and Sindhu) and Bhāgīrathī (vide Matsya 121, 38-41, Brahmāṇḍa II. 18 39-41, Padma I. 3, 65-66). The <a class="ref" href="../refs/kurma_purana.html" data-source="kurma_purana" data-ref="" title="Kūrmapurāṇa">Kūrmapurāṇa</a> (I 46.30-31) and Varāha (chap. 82 in prose) state that the Ganges flows first in four different streams, Sītā, Alakanandā, Sucaksu and Bhadrā and that the Alakanandā flows towards the south, comes to Bhāratavarṣa and falls into the sea with seven mouthṣ<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-6" id="fnref-chapter-xii-the-ganges-6">6</a></sup> In the Brahmapurāṇa (73. 68-69) the Ganges is described as sprung from the foot of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> and as established in the matted hair of Maheśvara (Śiva).</p>
+<p class="prose" id="p-chapter-xii-the-ganges-6">The <a class="ref" href="../refs/vishnu_purana.html" data-source="vishnu_purana" data-ref="" title="Viṣṇupurāṇa">Viṣṇupurāṇa</a> eulogises<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-7" id="fnref-chapter-xii-the-ganges-7">7</a></sup> the Ganges as follows: The Ganges purifies all beings from day to day when its name is heard, when one desires to see (it), when it is seen or touched or when its waters are drunk or when one plunges into it or when one takes (or sings) its name; when people utter the name ‘Ganges’ even though living at a distance of hundreds of yojanas, their sins accumulated in three births are destroyeḍ The Bhavisyapurāna<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-8" id="fnref-chapter-xii-the-ganges-8">8</a></sup> has a similar verse ‘one becomes free from sins at once by seeing the Ganges or touching it or drinking its water and by uttering the name Gangā and also by remembering it.’<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-9" id="fnref-chapter-xii-the-ganges-9">9</a></sup> The Matsya, Kūrma, Garuda and Padma remark that the Ganges is easy of access everywhere but is difficult to reach at three places viz at Gangādvāra (Haridvāra), at Prayāga and where it joins the sea and that those who bathe therein reach heaven and that those who die there are not born agaiṇ The Nāradīyapurāna, on the other hand, says that the Ganges is difficult of access everywhere, but much more so at three placeṣ The man, whether desiring it or not, who draws near the Ganges and dies (near it) secures heaven and does not see hell (Matsya 107.4).<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-10" id="fnref-chapter-xii-the-ganges-10">10</a></sup> The <a class="ref" href="../refs/kurma_purana.html" data-source="kurma_purana" data-ref="" title="Kūrmapurāṇa">Kūrmapurāṇa</a> represents that the Ganges<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-11" id="fnref-chapter-xii-the-ganges-11">11</a></sup> is equal to all the 35 millions of holy places declared by Vāyu in the heaven, in mid region and on the earth and that all of them are represented by the Gangeṣ The <a class="ref" href="../refs/padma_purana.html" data-source="padma_purana" data-ref="" title="Padmapurāṇa">Padmapurāṇa</a> asks ‘what is the use of sacrifices rich in large wealth, what is the use of very difficult austerities, what is the use of a Ganges honoured easily and gracefully that yields Heaven and mokṣa’? A similar verse occurs in the Nāradīya-purāṇa ‘what is the use of Yoga with its eight angas, of austerities, of solemn (Vedic) sacrifices? Residence on the Ganges alone is superior to all these<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-12" id="fnref-chapter-xii-the-ganges-12">12</a></sup>. Two verses of the <a class="ref" href="../refs/matsya_purana.html" data-source="matsya_purana" data-ref="" title="Matsyapurāṇa">Matsya-purāṇa</a><sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-13" id="fnref-chapter-xii-the-ganges-13">13</a></sup> deserve mention here 'even a man of sinful deeds, on remembering the Ganges ever at a distance of thousands of yojanas, attains the highest goal. A person is delivered from sin by uttering the name (of the Ganges), on seeing it a person sees happiness; by bathing in the Ganges and drinking its water he purifies his family up to the seventh ancestor'. It is stated in the Kāśikhanda that on the banks of the glorious Ganges all times are auspicious as well as all countries, and all men are fit for receiving gifts In the Varāhapurāṇa (chap. 82) the name 'Gaṅgā' is derived as 'gām gatā' (that has gone to the earth). The <a class="ref" href="../refs/padma_purana.html" data-source="padma_purana" data-ref="" title="Padmapurāṇa">Padma-purāṇa</a> (Srstikhanda 60. 64-65) specifies the mūlamantra about the Ganges as follows: ‘Om namo Gaṅgāyai, viśvarūpiṇyai nārāyaṇyai namo namaḥ'. The <a class="ref" href="../refs/padma_purana.html" data-source="padma_purana" data-ref="" title="Padmapurāṇa">Padmapurāṇa</a> (srsti 60 35) holds that <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> represents all the gods and the Ganges represents <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>. It eulogises the Ganges as follows: Sons abandon their fathers, wives their husbands, friends and relatives abandon a friend or a rela-tive if any one of these is adulterous, or patita, or wicked or becomes a cāndāla or kills his guru, or is full of all kinds of sins and hatreds, but the Ganges does not forsake such persons<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-14" id="fnref-chapter-xii-the-ganges-14">14</a></sup>. The extent of the holy region of the Ganges is laid down in some purāṇaṣ The Nāradīya<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-15" id="fnref-chapter-xii-the-ganges-15">15</a></sup> states the region within one gavyūti from the banks of the Ganges is called kṣetra; one should reside within the kṣetra limits, but not on the bank itself; residence on the (of the Ganges) is not desireḍ The limits of the kṣetra are of the extent of one yojana between both the banks' i. e. the kṣetra extends for two krośas from each bank. The general rule is stated by Yama that forests, mountains, holy rivers and tīrthas are without an owner, these cannot be possessed (by a person as owner). The Brahmapurāṇa <sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-16" id="fnref-chapter-xii-the-ganges-16">16</a></sup> says that measuring from the flowing waters for a distance of four hastas, God Nārāyaṇa is the Lord (or owner) and no one should accept a gift in that strip even if he be on the point of death. A differ ence is made between the garbha (the inner circle) of the Gaṅgākṣetra, the tīra and the kṣetra. ‘Garbha’ extends up to that portion of the river stream which is reached on the 14th of the dark half of Bhādrapada; beyond that is the tīra (bank), which extends upto 150 hastas from garbha and kṣetra extends up to two krośas from each bank. Let us suppose that the pilgrim has come to the Ganges, Then the question is, how is he to proceed about a bath in the Gangeṣ Many of the digests contain several alternate forms of the saṅkalpa to be made at the time of Gaṅgā-snāna. For example, the Prāyaścittatattva (pp. 497-498) contains a very elaborate saṅkalpa. A simple one is quoted below from the Gangāvākyāvalī.<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-17" id="fnref-chapter-xii-the-ganges-17">17</a></sup> The mode of bathing prescribed in the <a class="ref" href="../refs/matsya_purana.html#102" data-source="matsya_purana" data-ref="102" title="Matsyapurāṇa 102">Matsyapurāṇa 102</a> is common to people of all varṇas and students of all the different recensions of the Veda. The <a class="ref" href="../refs/matsya_purana.html" data-source="matsya_purana" data-ref="" title="Matsyapurāṇa">Matsyapurāṇa</a>, chap. 102, which contains one of the earliest procedure of a religious bath, and which has been taken over by several digests such as the Gangāvākyāvalī (pp. 148–152) is summarised here. Cleanliness (of the body) and clean thoughts do not exist therefore bathing is first prescribed for making the mind pure. One may bathe with water drawn (in a vessel from a well or stream) or with water not so drawṇ A wise man should fix upon a holy spot after repeating the fundamental mantra ‘namo Nārāyaṇāya’ (reverent bow to Nārāyaṇa). A man holding darbha grass in his hand and being clean and pure should perform ācamana (ceremonial sipping of water). He should select a spot four hastas square on all sides and invoke the Ganges (to come or be present there) with the following mantras ‘you are sprung from the foot of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>, you are a devotee of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>, you worship <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>; therefore save us from sins committed from birth to death. Vāyu declared that there are three and a half crores (35 millions) of holy places in heaven, on the earth and in mid air; all these, O Ganges (daughter of Jahnu), belong to you. Your name among the gods is Nandinī (the joy-giving) and also Nalinī and there are other names of yours viz. Dakṣā, Pṛthvī, Vihagā, Viśva-kāyā, Amṛtā, Śivā, Vidyādharī, Suprasāntā, Viśva-prasādinī, Kṣemā, Jāhnavī, Śāntā, Śāntipradāyinī.<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-17" id="fnref-chapter-xii-the-ganges-17">17</a></sup> One should utter these holy names at the time of bathing; then the Ganges flowing in the three worlds would be near (even if a man bathed at home). He should, after folding his hands, cast on his head thrice, four times, five times or seven times water on which he has muttered the mantras seven timeṣ After having invoked the clay ( in the river bed ) with the mantras ‘O earth! Oh clay! you are crossed over by horses and chariots, by <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>, remove my sin which I may have committed by my evil deeds; you were brought up (from the depths of the sea) by the Boar incarnation of Kṛṣṇa with his hundred handṣ O clay! you are given (to the world) by Brahmā and you had mantras repeated over you by Kāśyapa. Occupying my limbs may you drive away all my sin! Oh clay! Give us prosperity; everything is centered in you; a bow to you, that are virtuous and the source of all worlds'. Having thus bathed and having sipped water (ācamana) according to the procedure prescribed, he should get out of the Ganges and should put on two white and pure garmentṣ Then he should perform tarpana<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-18" id="fnref-chapter-xii-the-ganges-18">18</a></sup> for the satisfaction of the three worldṣ (He should say) 'This water is being offered by me for satiating gods, yaksas, nāgas, gandharvas, apsarases, asuras, cruel snakes, eagles, trees, jackals, birds, creatures that sustain themselves on air and water or that move in the sky, all beings that are without support and those that are devoted to the dictates of dharma'. The person (performing tarpana) should wear the sacred thread in the upavīta form (when satiating gods) and then wear it in the IV] nivita<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-19" id="fnref-chapter-xii-the-ganges-19">19</a></sup> form (when satiating men). He should devotedly satiate men, the sages who were sons of Brahmā; he should say 'May Sanaka, Sananda and Sanatana, Kapila, Asuri, Vodhu, Pañcaśikha—may all these reach satiety by the water offered by me.' Then he should satiate with water and akṣata grains (the sages) Marīci, Atri, Angiras, Pulastya, Pulaha, Kratu, Pracetas, <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a>, Bhṛgu, <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>; he should satiate all these devarṣis, and brahmarṣis,<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-20" id="fnref-chapter-xii-the-ganges-20">20</a></sup> and ṛṣis with water and akṣataṣ Then wearing the sacred thread in the <em>apasavya</em> mode, bending his left knee on the ground, he satiates with water mixed with sesame and sandal-wood paste pitṛs called Agniṣvātta<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-21" id="fnref-chapter-xii-the-ganges-21">21</a></sup>, Saumya, Haviṣmat, Ūṣmapa, Sukālin, Barhiṣad and others called Āyapa. He should make a bow to Yama, Dharmarāja, Mṛtyu, Antaka, Vaivasvata, kāla, destroyer of all beings, Audumbara, Dadḥna, Nīla, Parameṣṭhin, Vṛkodara, Citra and Citragupta. With darbhas in his hand a wise man should satiate his pitṛṣ He should satiate with devotion his father and the rest by uttering their names and gotra and his maternal grandfather and others in the same way and should recite the following mantra 'May those who are my bandhus or not my bandhus or were my bandhus in some previous life reach satisfaction and also whoever desires satisfaction from me.' Then he should sip water (perform <em>ācamana</em>) in the prescribed way and draw the figure of a lotus in front of himself and offer thereon to the Sun <em>arghya</em> (respectful offering of water) with water mixed with red sandal-wood paste, flowers and akṣatas (grains of rice) and repeat the names of Sūrya (the Sun) 'Bow to thee! that are <a class="ref" href="../refs/vishnu_smriti.html#i" data-source="vishnu_smriti" data-ref="i" title="Viṣṇu Smṛti i">Viṣṇu i</a>n another form, that art the face of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>, that hast thousand rays and that art all refulgence. Bow to thee that art beneficent, the lord of the worlḍ Bow to thee that art adorned with divine sandalwood, that art seated on a lotus, adorned with ear-rings and armlets, the lord of people; that awakenest (or enlightenest) the whole world, that guest everywhere and markest the good and evil deeds; a bow to thee who art a god to all. O Bhāskara (Sun), be well disposed to me A bow to thee, Divākara (maker of day). A bow to thee, Prabhākara (source of refulgence)'. Having thus bowed to the Sun and having circumambulated thrice (the lotus drawn for representing the sun) and touching a brāhmaṇa, gold and a cow, the person (bather) should go to a temple of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> (or to his own house, according to another reading). <sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-22" id="fnref-chapter-xii-the-ganges-22">22</a></sup></p>
+<p class="prose" id="p-chapter-xii-the-ganges-7">It may be noted that the verses of the <a class="ref" href="../refs/matsya_purana.html#102.2-31" data-source="matsya_purana" data-ref="102.2-31" title="Matsyapurāṇa 102.2-31">Matsyapurāṇa (102. 2–31)</a> summarised above occur (with slight variations of a word here and there) in Padma (Pātāla-khaṇḍa 89. 12–42) and Sṛṣṭi-khaṇḍa, chap. 20. 145–176.</p>
+<p class="prose" id="p-chapter-xii-the-ganges-8">The Sṃ C. and Raghunandana in his Prāyaścittatattva (p. 502) lay down two mantras to be recited at the time of taking a bath in the Ganges <sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-23" id="fnref-chapter-xii-the-ganges-23">23</a></sup> ‘O Ganges, daughter of Jahnu! That lowest in three worlds, that art sprung from the lotus-like feet of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>, that are far-famed as devoted to Bhagīrathi! purify with your immortal waters me who am full of faith and devotion'. The mantra to be repeated at the time of the bath at the place where the Ganges falls into the ocean according to the same two works is "O god that art the lord of rivers! O goddess that art the best among rivers! Having bathed at the confluence of both I shall cast off my sins"</p>
+<p class="prose" id="p-chapter-xii-the-ganges-9">On pp. 243–244 above it has been stated that the <a class="ref" href="../refs/vishnu_dh.html" data-source="vishnu_dh" data-ref="" title="Viṣṇu Dharmasūtra">Viṣṇu Dh. S.</a> and other works recommend the casting of the ashes or charred bones of a cremated body in the Ganges at Prayāga, Kāśī or other holy place and the rites accompanying the casting of ashes have been there set out. A few words are added here. The same verse <sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-24" id="fnref-chapter-xii-the-ganges-24">24</a></sup> (with slight variations) about casting ashes in the Ganges occurs in several workṣ The Agaipurāṇa observes 'the deceased man benefits if his bones are thrown into the Ganges; a man stays in heaven as long as (even a particle of) his bone remains in the waters of the Gangeṣ No rites for the dead are performed for those who commit suicide or who are <em>patita</em>; but even in their case the fall of their bones in Ganges water is beneficial to theṃ' The Tir. C and Tir. Pr. quote two verses and a half from the Brahma- purāṇa <sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-25" id="fnref-chapter-xii-the-ganges-25">25</a></sup> which set out a briefer rite of throwing ashes than the one in the Nirnayasindhu. The verses mean: "The man carrying the ashes should take a bath, sprinkle <em>pañcagavya</em> over the ashes, should place on them a piece of gold, honey, ghee and sesame; then he should deposit them in an earthen vessel; he should then look in the southern direction, say 'salutation to Dharma,' enter the waters (of the Ganges), utter, 'may he (Dharma or <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> ?) be pleased with me' and then cast the ashes in the water; then he should bathe in the river, come out of it, cast a look at the Sun and then give a present (<em>daksinā</em>) to a brāhmaṇa; if he does so, then the state of the deceased person will be like Indra.' Vide Skanda, Kāśī-khanda 30, 42-46 where a little more elaborate procedure is prescribeḍ The importance of casting ashes in the Ganges probably owes its origin to the story of King Sagara’s sons who were reduced to ashes by the wrath of the sage Kapila and who were saved by the ashes being washed in the waters of the Ganges brought down from heaven by Bhagiratha. Vide <a class="ref" href="../refs/mb_vanaparva.html#c" data-source="mb_vanaparva" data-ref="c" title="Vanaparva c">Vanaparva c</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>hap. 107– 109, <a class="ref" href="../refs/vishnu_purana.html#II" data-source="vishnu_purana" data-ref="II" title="Viṣṇupurāṇa II">Viṣṇupurāṇa II</a>, 8–10 for the story. The Naradiya makes not only the throwing of calcined bones a source of benefit to the departed but even his nails and hair when cast in the Ganges confer the same benefit. It is stated in the Kāṣikhanda that those who, while standing on the banks of the Ganges, praise another tīrtha or do not think very highly of the Ganges go to hell.<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-25" id="fnref-chapter-xii-the-ganges-25">25</a></sup> The Kāṣikhanda further provides that there is special and excessive merit in Gaṅgāsnāna on special days e. g. the merit of bath on New Moon has one hundred times as much merit as on an ordinary day, a thousand times on a saṅkrānti, one hundred thousand on the eclipse of the sun or moon and un- limited times when a bath is taken on moon eclipse on a Monday and on sun eclipse on Sunday.<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-26" id="fnref-chapter-xii-the-ganges-26">26</a></sup></p>
+<p class="prose" id="p-chapter-xii-the-ganges-10">TRISTHALĪ</p>
+<p class="prose" id="p-chapter-xii-the-ganges-11">The three great tīrthas of Prayāga, Kāśī and Gayā are referred to as Tristhalī and the great scholar, Nārāyaṇabhaṭṭa (born in 1513 A. D.), wrote (about 1580 A. D.) in Benares a famous work called Tristhalisetu (a bridge to the Tristhalī) wherein he gives a thorough and exhaustive treatment of the pilgrimage to these three holy places <sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-27" id="fnref-chapter-xii-the-ganges-27">27</a></sup> alone. Prayāga is assigned pp. 1-72, Kāśī pp. 72-316 and Gayā pp. 316-379 (of the Ānandāśrama edition). Following with all humility the footsteps of such an illustrious and venerable scholar I shall deal with the three tīrthas in the same order.</p>
+<p class="prose" id="p-chapter-xii-the-ganges-12">PRAYĀGA</p>
+<p class="prose" id="p-chapter-xii-the-ganges-13">One of the most ancient reference to the greatness of the confluence of the Ganges and the Yamunā occurs in a khila<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-28" id="fnref-chapter-xii-the-ganges-28">28</a></sup> verse which is usually placed in <a class="ref" href="../refs/rigveda.html#X.75" data-source="rigveda" data-ref="X.75" title="Ṛgveda X.75">Rg. X. 75</a> and may be rendered as follows: “Those who take a bath at the place where the IV] Two rivers, white and dark, meet together, rise up (fly up) to heaven; those determined men who abandon their body there (i. e. commit suicide by drowning themselves) secure immortality (or mokṣa)". This must have been a comparatively early verse. The <a class="ref" href="../refs/skanda_purana.html" data-source="skanda_purana" data-ref="" title="Skandapurāṇa">Skandapurāṇa</a> refers to it as śruti. The greatness of Prayāga is dwelt upon in the <a class="ref" href="../refs/mahabharata.html" data-source="mahabharata" data-ref="" title="Mahābhārata">Mahābhārata</a> (<a class="ref" href="../refs/mb_vanaparva.html#85.69-97" data-source="mb_vanaparva" data-ref="85.69-97" title="Vanaparva 85.69-97">Vanaparva 85. 69–97</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva#P03_U07_A085_S069" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>, 87. 18–20, Anuśāsana 25. 36–38)<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-29" id="fnref-chapter-xii-the-ganges-29">29</a></sup> and in many purāṇas such as the Matsya (chapters 103–112, in all 260 verses), Kūrma I. 36–39 (verses 121), Padma (I. chap. 40–49), Skanda, Kāśī-Khaṇḍa, chap. 7. 45–65). Only a few out of the hundreds of verses on Prayāga can be cited here by way of sample. One remarkable fact is that the <a class="ref" href="../refs/ramayana.html" data-source="ramayana" data-ref="" title="Rāmāyaṇa">Rāmāyaṇa</a> does not say much about Prayāga. The confluence of the two rivers is no doubt referred to (Rāṃ II. 54.6) but from the description it appears that there was a forest at what is now Prayāga. Prayāga is called Tīrtharāja (the prince among tīrthas) in the Matsya 109. 15, Skanda (Kāśī 7. 45), Padma VI. 23. 27–35 (where the refrain at the end of each verse is 'sa tīrtharājo jayati prayāgaḥ) and elsewhere. The legend runs that Prajāpati or Pitāmaha (Brahmā) performed a sacrifice here and Prayāga is the middle one of the vedis of Brahmā, the others being Kurukṣetra in the north (uttaravedī) and Gayā in the east. It is believed that three rivers meet at Prayāga viz. Gaṅgā, Yamunā and Sarasvatī (underground between the two). It is said in the Matsya<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-30" id="fnref-chapter-xii-the-ganges-30">30</a></sup>, Kūrma and other Purāṇas that at the very sight of Prayāga, even by taking its name or by applying its clay to one’s body a man becomes free from siṇ The <a class="ref" href="../refs/kurma_purana.html" data-source="kurma_purana" data-ref="" title="Kūrmapurāṇa">Kūrmapurāṇa</a><sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-31" id="fnref-chapter-xii-the-ganges-31">31</a></sup> proclaims “it is the sacred spot of Prajāpati; those who bathe here go to heaven and those who die here are not born agaiṇ” That sacred spot is known as tīrtharāja; it is dear to Keśava The same is known as Triveṇī. The word Prayāga is employed in the neuter when connected with such words as tīrtha or kṣetra, as in Matsya (III. 14 prajāpater-idam kṣetram prayāgam-iti viśrutam), but when employed along with words (in the masculine gender) such as tirtharāja, it takes the masculine gender.</p>
+<p class="prose" id="p-chapter-xii-the-ganges-14">The word Prayāga is derived in various wayṣ The <a class="ref" href="../refs/mb_vanaparva.html" data-source="mb_vanaparva" data-ref="" title="Vanaparva">Vana-parva</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> <sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-32" id="fnref-chapter-xii-the-ganges-32">32</a></sup> appears to suggest that the word Prayāga is derived from the root 'yaj' when it says 'Brahma who is the soul of all beings performed formerly a sacrifice here; therefore it became known as Prayāga'. In the Skanda <sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-33" id="fnref-chapter-xii-the-ganges-33">33</a></sup> purāṇa also it appears to be explained by taking the two parts <em>pra</em> and <em>yāga</em> separately. “It is mentioned as Prayāga because it is superior to all sacrifices; Prayāga was the name given to it by the gods Hari, Hara and others seeing that it is superior to all sacrifices though the latter be enriched with fees and the like.” The <a class="ref" href="../refs/matsya_purana.html" data-source="matsya_purana" data-ref="" title="Matsyapurāṇa">Matsyapurāṇa</a> <sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-34" id="fnref-chapter-xii-the-ganges-34">34</a></sup> appears to lay emphasis on the part 'pra' when it says 'on account of its efficacy (or power) as compared with all other tīrthas it prevails (or is useful) far more'. The Brahmapurāṇa <sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-35" id="fnref-chapter-xii-the-ganges-35">35</a></sup> affirms “It is called prayāga on account of its eminence and it has the word 'rāja' (in Tīrtharāja) applied to it on account of its being the chief”.</p>
+<p class="prose" id="p-chapter-xii-the-ganges-15">We must distinguish between Prayāga-mandala, Prayāga and Veṇī or Triveṇī, each subsequent one being smaller and holier than each preceding one. The Matsya <sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-36" id="fnref-chapter-xii-the-ganges-36">36</a></sup> states that the sphere of Prayāga is five <em>yojanas</em> in circumference and that the moment a man enters inside this strip of land, there is an Asva-medha at every step. This has been explained by the Tristhalīsetu (p. 15) as followṣ Regarding Brahmayūpa (the sacrificial post of Brahmā) as the spike or peg, if one measures with a rope one and one half yojana long all round, that would be the Prayāgamandala of five yojanas in circumference. The boundaries of Prayāga itself are defined by <a class="ref" href="../refs/mb_vanaparva.html" data-source="mb_vanaparva" data-ref="" title="Vanaparva">Vanaparva</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>,<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-37" id="fnref-chapter-xii-the-ganges-37">37</a></sup> the <a class="ref" href="../refs/matsya_purana.html" data-source="matsya_purana" data-ref="" title="Matsyapurāṇa">Matsyapurāṇa</a> (104 5 and 106. 30) and otherṣ 'Prayāga extends from Pratisthāna up to the pool of Vāsuki and upto the two nāgas Kambala and Aśvatara and the nāga Bahumūlaka; this is known in the three worlds as the sacred spot of Prajāpati' (Matsya 104. 5), while Matsya 106. 30 provides that to the east the Samudrakūpa, which is the same as Pratisthāna. This is explained by the Tristhālisetu as followṣ The eastern boundary is the kūpa called Pratisthāna<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-38" id="fnref-chapter-xii-the-ganges-38">38</a></sup>; the northern one is the Vāsuki pool, the western limit is formed by Kambala and Aśvatara, the southern boundary is Bahumūlaka. This would be a four-cornered space which is included within Prayāga-maṇḍala. According to the <a class="ref" href="../refs/matsya_purana.html" data-source="matsya_purana" data-ref="" title="Matsyapurāṇa">Matsyapurāṇa</a> as quoted by the Kalpataru on tīrtha p. 143 the two Nāgas are on the south bank of Yamunā while the printed text has 'vipule Yamunātate' (106 27)<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-39" id="fnref-chapter-xii-the-ganges-39">39</a></sup> The printed text of Padma 1 43. 27 supports the Kalpataru reading ('Yamunā-dakṣiṇe taṭe) Venī-kṣetra is within the limits of Prayāga itself and is twenty bow lengths in extent, as stated in the Padma. There are three kūpas viz. Prayāga, Pratisthāna and Alarkapura. The Matsya and Agni say 'there are three fire kundas and the Ganges flows in their midst' It should be noted that except where special reference is made in the Purāṇas to the subtirthas, the reference to a bath at Prayāga in general means bath in the Veṇī i. e the confluence of the two rivers, as e. g in <a class="ref" href="../refs/mb_vanaparva.html#85" data-source="mb_vanaparva" data-ref="85" title="Vanaparva 85">Vanaparva 85</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva#P03_U07_A085" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> 81 and 85 and Matsya 104 16-17.<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-40" id="fnref-chapter-xii-the-ganges-40">40</a></sup> The <a class="ref" href="../refs/mb_vanaparva.html" data-source="mb_vanaparva" data-ref="" title="Vanaparva">Vanaparva</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a><sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-41" id="fnref-chapter-xii-the-ganges-41">41</a></sup> and some of the Purāṇas represent that the country between the Ganges and the Yamunā is (like) the hips and loins of the earth (i e. it is the most prosperous and plentiful part of the earth) and that Prayāga is like the inmost part of the hipṣ</p>
+<p class="prose" id="p-chapter-xii-the-ganges-16">The Narasimha-purāṇa says that <a class="ref" href="../refs/vishnu_smriti.html#i" data-source="vishnu_smriti" data-ref="i" title="Viṣṇu Smṛti i">Viṣṇu i</a>s in the form of Yogamūrti in Prayāga (65 17). It is said in the <a class="ref" href="../refs/matsya_purana.html" data-source="matsya_purana" data-ref="" title="Matsyapurāṇa">Matsya-purāṇa</a><sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-42" id="fnref-chapter-xii-the-ganges-42">42</a></sup> (111. 4–10) that when Rudra dissolves the world at the end of the Kalpa, the holy place of Prayāga is not destroyed, that Brahmā, <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> and Maheśvara (Śiva) stay in Prayāga, that to the north of Pratiṣṭhāna Brahmā stays in it under guise, that <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> stays there as Veṇī-Mādhava, that Śiva stays there as the Vaṭa (banyan tree) and that therefore the gods with the Gandharvas, the Siddhas and great sages always protect the sphere (maṇḍala) of Prayāga by guarding it against evil actionṣ The <a class="ref" href="../refs/matsya_purana.html" data-source="matsya_purana" data-ref="" title="Matsyapurāṇa">Matsyapurāṇa</a>, therefore, recommends that a pilgrim should go to Prayāga which is protected by all the gods, stay there for a month, avoid sexual intercourse, worship gods and pitṛs and thereby secure his desired objects (104. 18). The same Purāṇa highly eulogises the gift at Prayāga of a kapilā cow properly decked (105. 16–22) with clothes, ornaments and jewelṣ The <a class="ref" href="../refs/padma_purana.html" data-source="padma_purana" data-ref="" title="Padmapurāṇa">Padmapurāṇa</a> (Ādi 42 17–24) has the same verses as the Matsya on this subject. Similarly, the marriage of a daughter in the Prayāga is highly spoken of in Matsya (106. 8-9). The Matsya (105. 13-14 and 106. 10) says generally that if a man makes a gift of a cow, of gold, of precious stones, of pearls and of other things that he owns his pilgrimage becomes fruit-ful (saphala) and he collects religious merit (puṇya) and that when a man makes gifts according to his ability and wealth, the fruit of his pilgrimage increases and he remains in heaven till the end of the worlḍ The Brahmāṇḍa<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-43" id="fnref-chapter-xii-the-ganges-43">43</a></sup> assures pilgrims that whatever gifts are made according to one’s ability at Kurukṣetra, Prayāga, at the mouth of the Ganges where it falls into the sea, on the Ganges, at Puṣkara, at Setubandha, at Gaṅgādvāra and in Naimiṣa tends to confer inexhaustible rewardṣ In the <a class="ref" href="../refs/mb_vanaparva.html" data-source="mb_vanaparva" data-ref="" title="Vanaparva">Vanaparva</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> <sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-44" id="fnref-chapter-xii-the-ganges-44">44</a></sup> it is stated that this sacrificial ground (of Brahmā) is honoured even by the gods, that even a small thing donated here assumes greatness (i. e. produces the rewards of large gifts).</p>
+<p class="prose" id="p-chapter-xii-the-ganges-17">The confluence of the three rivers came to be associated with omkāra, <sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-45" id="fnref-chapter-xii-the-ganges-45">45</a></sup> the mystic syllable that stands for Brahma. It is said in a purāṇa passage (probably Brahmapurāṇa) that the three parts of om (a u m) respectively are Sarasvati, Yamunā and Gaṅgā and that the waters of three rivers represent Pradyumna, Aniruddha and Saṅkarṣaṇa Hari.</p>
+<p class="prose" id="p-chapter-xii-the-ganges-18">It may be noted, that, in spite of the fact that the Matsya, Kūrma (I. 36-39), Padma (Ādi chapters 41-49), Agni III and other Purāṇas contain several hundred verses on Prayāga, the Kalpataru (on tīrtha), the earliest extant digest on tīrthas, quotes only the Matsya (104. 1-13 and 16-20, 105. 1-22, 106. 1-48, 107. 2-21, 108. 3-5, 8-17 and 23-34, 109. 10-12, 110. 1-11, 111. 8-11, in all about 151 verses) and <a class="ref" href="../refs/mb_vanaparva.html#c" data-source="mb_vanaparva" data-ref="c" title="Vanaparva c">Vanaparva c</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>hap. 85. 79-87 and 97 and does not add a single word of explanation or discussioṇ But the other digests profusely quoting mostly from Purāṇas discuss at some length several topics and a few words must be devoted to some of those topicṣ</p>
+<p class="prose" id="p-chapter-xii-the-ganges-19">One such topic is tonsure at Prayāga. It is stated by the Gaṅgāvākyāvali (p. 293) and the Tīr Pr. (p. 335) that, though the author of the Kalpataru says nothing about tonsure at Prayāga, yet as śistas (respectable and learned people) and the writers of digests accept it as necessary, certain autho- rities would be set out. The two verses quoted by most <sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-46" id="fnref-chapter-xii-the-ganges-46">46</a></sup> writers are ‘one should tonsure the head at Prayāga, offer piṇḍas at Gayā, make gifts in Kurukṣetra and should commit (religious) suicide at Benareṣ What is the use (or necessity) of pinda offerings at Gayā or death in Kāśī, or gifts at Kurukṣetra, if one has tonsured one's head at Prayāga?". Elaborate discussions are held by all these works about the exact inten tion of the verses, about the application of the maxim of rātrisattra<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-47" id="fnref-chapter-xii-the-ganges-47">47</a></sup> to them and about the results derived from ton sure. They have to be passed over here from considerations of space. The Tristhali-setu (p. 17) holds that the verse only prai ses the rite of tonsure at Prayāga and the fruit thereof is simply the removal of siṇ The Tri. S. refutes (p. 17) the application of rātrisattra-nyāya to these verses, while Tir. C (p. 32) applies it. Some of the conclusions drawn by the Tri S. are that in one and the same yātrā at Prayāga (even if a man stays there for some days) ceremonial tonsure takes place only once, that widows have to tonsure their heads, that in the case of women whose husbands are living only two or three finger-breadths of tresses are to be cut and offered at the Triveṇī, that even<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-48" id="fnref-chapter-xii-the-ganges-48">48</a></sup> boys whose upanayana has not been performed have to undergo tonsure provided the cūḍā rite has already been performed, The Tristhalisetu (p. 22) notes that certain traditionalists,<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-49" id="fnref-chapter-xii-the-ganges-49">49</a></sup> relying on passages that aver that all sins cling to the roots of a person’s hair, say that cutting two or three tresses would be merely <em>kartana</em> and not <em>vapana</em> (tonsure), that even women whose husbands are alive must shave themselves at Prayāga, that such women should make a braid of all their hair, should deck the braid with saffron and other auspicious materials, bow to their husbands and with the husband’s permission have the head tonsured, that then they should place the cut hair in their joined hands, place thereon a golden or silver <em>veṇī</em> and pearls and coral and should cast all these into the confluence (Veṇī) of the Ganges and Jumnā after repeating the mantra ‘May all my sins be destroyed by this offering of my braided hair into the Veṇī’ may my blessedness (the auspicious state of wifehood) always increase in the lives to come’. The <em>Tri. S.</em> states that women do not tonsure their head at any <em>tīrtha</em> except at Prayāga and the only reason for this is that it is the practice of <em>śistas</em>. Vide above pp 122–124 for tonsure as expiation for sinṣ The <em>Nāradīya (Uttara)</em> 63. 106 provides the same rule as <a class="ref" href="../refs/parasara.html" data-source="parasara" data-ref="" title="Parāśara">Parāśara</a> (in note 278 above) for womeṇ The Prāyaścittatattva of Raghunandana prescribes the complete tonsure of the head for women at Prayāga.</p>
+<p class="prose" id="p-chapter-xii-the-ganges-20">It appears probable that the provision for the casting of <em>veṇī</em> (braided hair) on the part of women whose husbands were alive was suggested by the word <em>Veṇī</em> applied to the confluence of the two rivers, where the river Ganges appears to make a bend or curve for some distance.<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-50" id="fnref-chapter-xii-the-ganges-50">50</a></sup></p>
+<p class="prose" id="p-chapter-xii-the-ganges-21">One important question that very much exercised the minds of ancient and medieval Indian writers was whether and when suicide, particularly at sacred spots like the confluence of the Ganges and Jumnā or at the foot of the Akṣaya Vaṭa at Prayāga, would involve no siṇ<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-51" id="fnref-chapter-xii-the-ganges-51">51</a></sup> This matter has already been dealt with at length in <a class="ref" href="../refs/hodh.html#vol. II" data-source="hodh" data-ref="vol. II" title="History of Dharmaśāstra vol. II">H. of Dh. vol. II</a>, pp 924-928 and vol. III, pp. 939, 948-949. Only a brief treatment by way of a summary of the pages and a few notes will be added here. The general sentiment of Dharmaśāstra works is to condemn suicide or an attempt to commit suicide as a great sin (vide <a class="ref" href="../refs/hodh.html#vol II" data-source="hodh" data-ref="vol II" title="History of Dharmaśāstra vol II">H of Dh vol II</a>, page 924 for texts). The <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp. Dh. S.</a> (I 10 28 15-17) mentions the view of Hārita which condemns suicide even as prāyaścitta for committing a mahāpātaka (like incest) and puts killing another or killing oneself on the same footing <a class="ref" href="../refs/manu.html#V.89" data-source="manu" data-ref="V.89" title="Manusmṛti V.89">Manu V. 89</a> and <a class="ref" href="../refs/yajnavalkya.html#III" data-source="yajnavalkya" data-ref="III" title="Yājñavalkya III">Yāj. III</a>, 154 condemn suicide by denying after-death rites to those who commit it, but <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> allowed suicide in various ways as prāyaścitta for mahāpātakas (vide <a class="ref" href="../refs/manu.html#XI" data-source="manu" data-ref="XI" title="Manusmṛti XI">Manu XI</a>, 73, 90-91, 103-104). But exceptions to the condemnation of suicide are found in the smṛtis, epics and purāṇaṣ They may be grouped under several headṣ (1) Suicide as an exception in various ways by those guilty of mahāpātakas (viz. brāhmaṇa murder, drinking of surā, theft of brāhmaṇa's gold and incest), vide <a class="ref" href="../refs/hodh.html#vol. II" data-source="hodh" data-ref="vol. II" title="History of Dharmaśāstra vol. II">H. of Dh. vol. II</a>, pp. 924-925 for smṛti and other textṣ (2) Starting on the Great Journey (mahāprasthāna-gamana or mahāpathayātrā) by a forest hermit (<a class="ref" href="../refs/manu.html#VI" data-source="manu" data-ref="VI" title="Manusmṛti VI">Manu VI</a>, 31, <a class="ref" href="../refs/yajnavalkya.html#III" data-source="yajnavalkya" data-ref="III" title="Yājñavalkya III">Yāj. III</a>, 55) suffering from incurable diseases and unable to perform the duties of his order (3) An old man or one who cannot observe the rules of bodily purification or who is so ill as to be beyond medical skill may kill himself by throwing himself from a precipice or by fire or by drowning or fasting or start on the Great Journey into the Himālaya or by jumping from the branches of the Vaṭa tree at Prayāga (<a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> p 877 quoting Adi-purāṇa and Atri-smṛti verses 218-219 q. by <a class="ref" href="../refs/medhatithi.html" data-source="medhatithi" data-ref="" title="Medhātithi">Medhātithi</a> on <a class="ref" href="../refs/manu.html#V.88" data-source="manu" data-ref="V.88" title="Manusmṛti V.88">Manu V. 88</a> and <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> on Yāj III, 6) (4) Even a householder, otherwise all right, may resort to suicide by the means stated (in No. 3) if his life's work is done, if he has no desire for the pleasures of the world and does not desire to live, or if he is a Vedāntin<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-52" id="fnref-chapter-xii-the-ganges-52">52</a></sup> and convinced of the ephemeral nature of life and may kill himself by fast in Himālaya. (5) Religious suicide was allowed at the confluence of the two great rivers Gaṅgā and Yamunā, at the Vaṭa there and at some other tīrthas (6) A wife dying by sahagamana or anumarana. As to Satī, the Nāradīya (pūrvārdha 7. 52-53) provides that a woman should not burn herself on the funeral pyre of her husband if she has a young child or young children, if she is pregnant or if she has not attained puberty, or if she is in her monthly illness at the time. Not only did common men believe in the pro-mise of the Purāṇas that those who killed themselves at Prayāga (at the <em>saṅgama</em> or near <em>Vaṭa</em>) secured <em>mokṣa</em> (freedom from the everlasting cycle of births and deaths) which was the highest of the four <em>puruṣārathas</em> (goals of human existence), but even great poets like <em>Kālidāsa</em> held the view that, though <em>mokṣa</em> or <em>kaivalya</em> or <em>apavarga</em> requires correct knowledge and realisation of the Supreme Spirit according to the Vedānta, Sāṅkhya and Nyāya systems, death at the sacred <em>saṅgama</em> led to <em>mokṣa</em> even without 'tattvajñāna.' In <a class="ref" href="../refs/hodh.html#vol. II pp. 925-927" data-source="hodh" data-ref="vol. II pp. 925-927" title="History of Dharmaśāstra vol. II pp. 925-927">H. of Dh. vol. II pp. 925-927</a>, historical examples of kings such as Yaśaḥ-karṇadeva, Candella Dhaṅgadev and Cālukya Someśvara committing suicide at Prayāga or the Tuṅgabhadra have been giveṇ The king Kumāragupta of Magadha is said to have entered the fire of dry cowdung cakeṣ This is in accordance with the prescriptions in the <a class="ref" href="../refs/matsya_purana.html#107.9-10" data-source="matsya_purana" data-ref="107.9-10" title="Matsyapurāṇa 107.9-10">Matsya purāṇa 107. 9-10</a> (=Padma, Ādi-khaṇḍa 44.3) which states <sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-53" id="fnref-chapter-xii-the-ganges-53">53</a></sup> 'the man who, suffering from no diseases, having no deficiency as to his limbs and being in full possession of his five senses, encompasses (his death) in cowdung fire remains honoured in heaven for as many years as there are pores on the whole of his body.' <sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-54" id="fnref-chapter-xii-the-ganges-54">54</a></sup> The Rājātaraṅginī VI. 14 refers to officers entrusted with the duty of supervising suicide by fast (prāyopaveśa). The important verse on which reliance is placed for sanctioning religious suicide at Prayāga may be translated<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-55" id="fnref-chapter-xii-the-ganges-55">55</a></sup> as followṣ ‘You should not set aside (pass over) your wish about dying at Prayāga on account of the words of the Veda or 3 (=Īśāvāsyopaniṣad 3) which literally translated means ‘there are worlds of Asuras enveloped in blinding darkness, those who have killed themselves repair after death to those worlds’ This verse does not in the context appear to refer to a person committing suicide, but rather to a person who kills his soul by remaining in ignorance of the true Self. But even learned writers and poets took it to refer to suicide (vide Uttara- rāmacarita, Act IV after verse 3). Another passage of the Veda on which reliance may be placed is the one in the <a class="ref" href="../refs/shatapatha.html#X.2.6.7" data-source="shatapatha" data-ref="X.2.6.7" title="Śatapatha Brāhmaṇa X.2.6.7">Śatapatha Brāhmaṇa X. 2. 6. 7</a> ‘one ought not to yield to his own desire and pass away before the full extent of life, for it (such shortening of full life) does not make for the (heavenly) world’ By ‘the words of the people’ are meant smṛti passages condemning suicide such as <a class="ref" href="../refs/gautama.html#14" data-source="gautama" data-ref="14" title="Gautama Dharmasūtra 14">Gaut. 14</a>, 12, Vās <sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-56" id="fnref-chapter-xii-the-ganges-56">56</a></sup> 23. 14–15, <a class="ref" href="../refs/manu.html#V.88" data-source="manu" data-ref="V.88" title="Manusmṛti V.88">Manu V. 88</a> (which says that no water is to be offered to those who kill themselves), <a class="ref" href="../refs/vishnu_dh.html#22" data-source="vishnu_dh" data-ref="22" title="Viṣṇu Dharmasūtra 22">Viṣṇu Dh S 22</a>, 56 (ātmatyāginah patitāś-ca naśaucōdakabhājah ) There is no doubt that some of the smṛtis, the <a class="ref" href="../refs/mahabharata.html" data-source="mahabharata" data-ref="" title="Mahābhārata">Mahābhārata</a><sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-57" id="fnref-chapter-xii-the-ganges-57">57</a></sup> itself and some purāṇas do recommend (or at least do not condemn) suicide in certain circumstanceṣ A few purāṇa passages may be quoted here. Two verses of the Kūrma state ‘That goal (or state), which a wise man that is devoted to Yoga and that has become an ascetic (or has forsaken all actions) reaches, is secured by him who gives up life at the confluence of the Gaṅgā and Yamunā. Whoever dies in the Gaṅgā whether wilfully or unintentionally is born after death in heaven and does not see hell'.<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-58" id="fnref-chapter-xii-the-ganges-58">58</a></sup> The Kūrma is quite clear ‘Mokṣa may be secured or not after a thousand births elsewhere but in Benares mokṣa can be secured in a single birth' (1. 32. 22) The Padma<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-59" id="fnref-chapter-xii-the-ganges-59">59</a></sup> is quite emphatic 'a man who, knowingly or unknowingly, wilfully or unintenionally, dies in the Ganges secures on death heaven and 'mokṣa'. A verse of the Skanda asserts ‘He who abandons his life in this sacred place in some way or other does not incur the sin of suicide but secures his desired objectṣ' The Kūrma (1. 38 3–12) refers to four modes of suicide and promises residence in heaven and various other rewards for thousands of years, viz. by (1) burning oneself in the slow fire of dry cowdung cakes, (2) by entering the water at the confluence of Gaṅgā and Yamunā, (3) by hanging with head down in the stream and feet up and drinking The waters of the Ganges, (4) by cutting off his own flesh and giving it as food to birdṣ The famous Chinese traveller Hiouen Thsang (about 629–645 A. D.) clearly refers to this practice of religious suicide (vide Beal’s ‘Buddhist Records of the Western world,’ vol. I, pp. 232–234). The Kalpataru on tīrtha (composed about 1110–1120 A. D.) devotes a special section to Mahāpathayātrā (pp. 258–265). Gradually, the idea of securing heaven and <em>mokṣa</em> by committing suicide at Prayāga or Benāres appears to have spread to other tirthaṣ <a class="ref" href="../refs/mb_vanaparva.html" data-source="mb_vanaparva" data-ref="" title="Vanaparva">Vanaparva</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a><sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-60" id="fnref-chapter-xii-the-ganges-60">60</a></sup> speaks of suicide at Pṛthūdaka (Pehova in the Karnal district of Punjab, 14 miles from Thanesar) The Brahmapurāṇa<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-61" id="fnref-chapter-xii-the-ganges-61">61</a></sup> calls upon dvijas who are intent on securing <em>mokṣa</em> to commit suicide at Puruṣottama-kṣetra. The Lingapurāṇa<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-62" id="fnref-chapter-xii-the-ganges-62">62</a></sup> says ‘if a brāhmaṇa kills himself on Śrīśaila he destroys his sins and attains <em>mokṣa</em> as at Avimukta (Benāres); there is no doubt about this’. The Padma promises<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-63" id="fnref-chapter-xii-the-ganges-63">63</a></sup> a similar reward for suicide by fire or by fast at the confluence of Narmadā and Kāverī (a small river, not the great South Indian river).</p>
+<p class="prose" id="p-chapter-xii-the-ganges-22">Gradually there was a revulsion of feeling against suicide at Prayāga or Kāśī or starting on the Great Journey. Among the actions forbidden in the Kali age are included ‘starting on the Great Journey’ and ‘suicide of old people jumping from a precipice or by fire’ (vide <a class="ref" href="../refs/hodh.html#vol. III" data-source="hodh" data-ref="vol. III" title="History of Dharmaśāstra vol. III">H. of Dh., vol. III</a>, pp. 939, 958–59). Some of the later mediæval writers try very hard to combat the view that religious suicide is permitted<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-64" id="fnref-chapter-xii-the-ganges-64">64</a></sup>. Nīlakaṇṭha, the commentator of the <a class="ref" href="../refs/mahabharata.html" data-source="mahabharata" data-ref="" title="Mahābhārata">Mahābhārata</a>, holds that <a class="ref" href="../refs/mb_vanaparva.html#85.83" data-source="mb_vanaparva" data-ref="85.83" title="Vanaparva 85.83">Vanaparva 85. 83</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva#P03_U07_A085_S083" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> (na vedavacanañāt &c ) refers to natural death at Prayāga and not to wilful death and that the Khila verse (‘Sītāsite’ quoted above on p. 596) has the same meaning. Then he propounds two alternative interpretations of <a class="ref" href="../refs/mb_vanaparva.html#85.IV" data-source="mb_vanaparva" data-ref="85.IV" title="Vanaparva 85.IV">Vanaparva 85. IV</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>] 83, viz, that this passage allows those who are suffering from an incurable disease to commit suicide at Prayāga instead of dying by falling from a precipice and the like or that this verse does not apply to brāhmaṇas but only to the other three varṇaṣ<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-65" id="fnref-chapter-xii-the-ganges-65">65</a></sup> Both the Gangāvākyāvali (pp. 304-310) and the Tir. C (pp. 47-52) hold that all varṇas have the authority to resort to suicide at Prayāga. The Tir. Pr holds a long, learned and highly polemic discussion on the subject of religious suicide at Prayāga (pp. 346-355). Its own view appears to be that a brāhmaṇa should not commit this suicide at Prayāga on account of the prohibition contained in Kalivarjya verses and that members of the other varṇas may do so. The Tristhalisetu also enters upon a long discussion (pp. 47-55) and its conclu- sions are that in suicide at Prayāga for the attainment of mokṣa or other rewards (such as heaven) there is no sin, that thus suicide at Prayāga is not forbidden <sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-66" id="fnref-chapter-xii-the-ganges-66">66</a></sup> to brāhmaṇas as some think (since Agni 111 8 reads ‘na vedavacanād viṣa’, that persons whether seriously ill or in good health <sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-67" id="fnref-chapter-xii-the-ganges-67">67</a></sup> may resort to suicide at Prayāga, that no one has authority to commit suicide at Prayāga after abandoning to their fate one's old parents, young wife and children that require support, nor should a woman who is pregnant or who has young children or who has no permission from her husband, commit suicide at Prayāga.<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-69" id="fnref-chapter-xii-the-ganges-69">69</a></sup> It is refreshing to find Nārāyaṇabhaṭṭa, perhaps the most learned and renowned Pandit of his age steeped in all the lore of ancient India, make, in spite of the overwhelming weight of śāstric authority in favour of suicide at Prayāga, exceptions that surely appeal to reason, sentiment and common sense,<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-70" id="fnref-chapter-xii-the-ganges-70">70</a></sup> Nārāyaṇabhaṭṭa probably followed traditions several hundred years older than his timeṣ Alberuni in his work on India composed about 1030 A. D. says about religious suicide that ‘it was resorted to by those who are tired of life, who are distressed over some incurable disease, some irremovable bodily defect or old age or infirmity. This however no man of distinction does, but only vaiśyas and śūdraṣ Burning oneself is forbidden to brāhmaṇas and kṣatriyas by a special law. Therefore these if they want to kill themselves do so at the time of an eclipse in some other manner or they hire somebody to drown them in the Gangeṣ’ (tr. by Sachau, vol. II. p 170). The Tri. S. S. provides that a man desirous of committing religious suicide at Prayāga should first perform a prāyaścitta, should perform his own śrāddha upto the offering of piṇḍa if he has no relative entitled to perform it, should fast that day, should make a saṅkalpa next day preceded by a writing (to inform people of his desire to die in that way) and enter the holy waters contemplating on <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>. On his death, his relatives have to observe āśauca only for three days (and not for ten) and on the 4th day the śrāddhas of the 11th day are to be performed for hiṃ<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-71" id="fnref-chapter-xii-the-ganges-71">71</a></sup></p>
+<p class="prose" id="p-chapter-xii-the-ganges-23">The psychological background behind the religious suicide at Prayāga and other places is not difficult to realise. Centuries of philosophical thought had made a very deep impression on the minds of all people that the soul has to submit to a never-ending cycle of births and deathṣ Ancient scriptures had offered a release in two ways viz. by tattvajñāna and by suicide at a tīrtha. Death had no great terror for the pilgrim who submitted to various inconveniences and privations ungrudgingly. If one is determined to put an end to saṁsāra by taking one's life, what nobler environment could have been imagined or indicated than at Prayāga, where two mighty rivers flowing from the sacred Himālayas unite and carry on unceasingly their work of fertilizing the land and bringing prosperity and solace to millions of needy and anxious people?</p>
+<p class="prose" id="p-chapter-xii-the-ganges-24">While on this topic of religious suicide, it would not be out of place to briefly refer to the discussion in the digests about the meaning of the statement in the purāṇas that those who die at Prayāga are not born again (e. g. Matsya 180. 71 and 74). The answer is foreshadowed in the <a class="ref" href="../refs/matsya_purana.html#i" data-source="matsya_purana" data-ref="i" title="Matsyapurāṇa i">Matsyapurāṇa i</a>tself (182. 22-25) which <sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-72" id="fnref-chapter-xii-the-ganges-72">72</a></sup> says: At the time of death, when the vital parts of the human body are being shattered, memory must fail a human being that is about to be pushed on (to another body) by the vital breath (when it leaves the mortal coil). But at the time of death in Avimukta (Vārāṇasī) Lord (Śiva) himself whispers (higher knowledge) in the ears of his devotees that are about to be pushed (into new bodies) by (accumulations of their actions). A man dying near Maṇikarṇikā pool reaches the desired goal; he being guided by the Lord reaches the goal which is difficult of attainment by those whose minds are not pure.' In the Kāśīkhaṇḍa it is expressly stated that mokṣa does not directly result in these cities (viz. Kāśī &c ). But in spite of these warnings the popular belief fostered by the literal meaning of Purāṇa passages is that mokṣa results from dying at Prayāga or in Kāśīkṣetra.</p>
+<p class="prose" id="p-chapter-xii-the-ganges-25">The practice of religious suicide has a very respectable antiquity. In the 4th century B. C. Kalanos, the Indian Gymnosophist from Taxila who had accompanied Alexander from India, burnt himself alive on a funeral pyre at Sousa, when being over 70 years old, he was afflicted with a malady that made life more and more burdensome. <em>Vide</em> J W McCrindle's 'Invasion of India by Alexander the Great' (New Edition 1896) pp. 46, 301, 386-392. Strabo informs us of a gymnosophist from India named Zarmanochegas of Broach who accompanied an embassy to Augustus Caesar at Athens and consigned himself to flames (<em>vide</em> 'Invasion of India by Alexander' p. 389). Hiouen Thsang (Beal's 'Buddhist Records of the Western World' vol. I. pp. 232-234) refers to suicide at Prayāga. The Jains, while on the one hand they laid the greatest emphasis on 'ahiṁsā' (non-injury), encouraged reli-gious suicide (called 'Sallekhanā') in certain cases <sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-73" id="fnref-chapter-xii-the-ganges-73">73</a></sup>.</p>
+<p class="prose" id="p-chapter-xii-the-ganges-26">Some of the works, viz. the Kāśīmṛti-mokṣa-vicāra of Sureśvara (pp. 2-9), the Tristhālisetu (pp. 50-55) and the Tīrthaprakāśa (pp. 313-318) discuss at some length how mere death (either involuntary or voluntary) in Vārāṇasī or Prayāga would lead to mokṣa. Considerations of space prevent a complete statement of their viewṣ Their arguments are briefly as follows:—Karma is of three kinds, viz. sañcita (col-lected in former births), prārabdha (that has begun to operate by giving the soul the present body) and <em>kriyamāṇa</em> (to be done in this body and in future). The Upaniṣads and the <a class="ref" href="../refs/gita.html" data-source="gita" data-ref="" title="Bhagavadgītā">Gītā</a><sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-74" id="fnref-chapter-xii-the-ganges-74">74</a></sup> declare that, just as waters do not stick to a lotus leaf, so evil deeds do not cling to a man who knows this (knowledge of <em>brahma</em>), that the fire of knowledge reduces to ashes all <em>karma</em> and that <em>mokṣa</em> results from the realization of the Supreme Spirit (<em>Vedānta-sūtra</em> IV. 1. 13). From this it follows that a man who has realized the Highest Reality will not be affected by the acts done by him after realiza- tion and his accumulated actions (<em>sañcita</em>) will be des- troyed by that realizatioṇ The present body in which the soul realizes <em>brahma</em> was due to that part of his <em>karma</em> which had begun to operate. When the present body perishes in the case of a man who has realized <em>brahma</em> he attains final release, since no actions remain for producing effectṣ To the man who dies a natural death in Benares is given at the time of death the <em>Tāraka</em> (saving) mantra. The <em><a class="ref" href="../refs/matsya_purana.html" data-source="matsya_purana" data-ref="" title="Matsyapurāṇa">Matsyapurāṇa</a></em> says:<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-75" id="fnref-chapter-xii-the-ganges-75">75</a></sup> those who enter fire according to the rules in Avimukta (i. e. Benares) enter the mouth of Śiva and so also those determined devotees of Śiva who die by fast in Benares do not return (to this world) even after millions of <em>kalpas</em>. Therefore all those who die in any way at<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-76" id="fnref-chapter-xii-the-ganges-76">76</a></sup> Benares receive Grace from Śiva after their death. That leads to <em>tattvajñāna</em> (correct spiritual knowledge) which leads to <em>mokṣa</em>. In rare passages it is expressly stated that <em>mokṣa</em> cannot<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-77" id="fnref-chapter-xii-the-ganges-77">77</a></sup> be immediately secured (by dying) in these citieṣ The Tāraka-mantra is variously explaineḍ According to Sureśvara, Tāraka-mantra is the mystic syllable om which is a symbol of brahma as stated in the Tai. Up. (I. 1,8 Om-iti brahma) and the <a class="ref" href="../refs/gita.html" data-source="gita" data-ref="" title="Bhagavadgītā">Gītā</a> (8. 13 Om-ityekākṣaram brahma). The Tri. S. gives another explanation besides thiṣ According to Rāmatāpanīya Upaniṣad and <sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-78" id="fnref-chapter-xii-the-ganges-78">78</a></sup> the <a class="ref" href="../refs/padma_purana.html" data-source="padma_purana" data-ref="" title="Padmapurāṇa">Padmapurāṇa</a> the mantra is ‘śrī-Rāma-Rāma-Rāmeti.’</p>
+<p class="prose" id="p-chapter-xii-the-ganges-27">There are several sub-tīrthas that fall under Prayāga The most important of them is the famous Vaṭa (banyan tree) called Akṣaya-Vaṭa (the imperishable Vaṭa). The Agni (111. 13) states ‘if a man dies at the foot of the Vaṭa and in the Saṅgama he goes to the city of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>’. Special reference is made to abandoning one's life at the foot of the Vaṭa. The Kūrma<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-79" id="fnref-chapter-xii-the-ganges-79">79</a></sup> says ‘He, who abandons life at the foot of the Vaṭa, passes beyond heavenly worlds and goes to the world of Rudra’. The following are the sub-tīrthas of Prayāga and only references are given to the works in which they are described: (1) the two Nāgas called Kambala and Aśvatara which according to some are on the spacious (vipula) bank of the Jumnā and according to others on the southern bank of the Jumnā (<a class="ref" href="../refs/mb_vanaparva.html#85" data-source="mb_vanaparva" data-ref="85" title="Vanaparva 85">Vanaparva 85</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva#P03_U07_A085" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> 77, Matsya 106. 27, Padma, Ādi 39 69, Agni 111. 5, Kūrma I. 37. 19), (2) Pratiṣṭhāna on the eastern side of the Ganges, being the same as the Sāmudrakūpa (<a class="ref" href="../refs/mb_vanaparva.html#85.77" data-source="mb_vanaparva" data-ref="85.77" title="Vanaparva 85.77">Vana- parva 85. 77</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva#P03_U07_A085_S077" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>, Matsya 106. 30, Kūrma I. 37. 22, Padma, Ādi 43, 30; <a class="ref" href="../refs/mb_vanaparva.html#85.114" data-source="mb_vanaparva" data-ref="85.114" title="Vanaparva 85.114">Vanaparva 85. 114</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva#P03_U07_A085_S114" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> appears to suggest that Pratiṣṭhāna is another name of Prayāga; (3) Saṅdhyāvata (Matsya 106. 43, Kūrma I. 37. 28, Agni 111. 13); (4) Hamsaprapaṭana to the north of Pratiṣṭhāna and to the east of the Ganges (Matsya 106. 32, Kūrma I. 37, 24, Agni 111. 10, Padma, Ādi 39. 80 and 43. 32, Matsya 106. 44, Kūrma I 37. 29, Agni 111. 14, Padma, Ādi 43, 44; (5) Bhogavatī, the Vedi of Prajāpati to the north of Vāsukī (<a class="ref" href="../refs/mb_vanaparva.html#85.77" data-source="mb_vanaparva" data-ref="85.77" title="Vanaparva 85.77">Vanaparva 85. 77</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva#P03_U07_A085_S077" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>, Matsya 106. 46, Agni 111. 5, Padma, Ādi 39. 79 and 43. 46; (7) Daśāśvamedhaka (Matsya 106. 46, Padma, Ādi 39. 80; (8) Urvaśīpulina, suicide at which led to <sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-80" id="fnref-chapter-xii-the-ganges-80">80</a></sup> various rewards quoted below (Matsya 106. 34–42, <sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-81" id="fnref-chapter-xii-the-ganges-81">81</a></sup> Padma, Ādi 43. 34–43, Agni 111. 13, Kūrma I. 37. 26–27); (9) Rṇapramocana, on the northern bank of Yamunā and to the south of Prayāga (Kūrma I 38, 14, Padma, Ādi 44. 20); (10) Mānasa on the north bank of the Ganges (Matsya 107. 9, Padma, Ādi 44. 2, Agni 111 14); (11) Agnitīrtha on the southern bank of the Jumnā (Matsya 108 27, Kūrma I, 39,4, Padma, Ādi 45. 27); (12) Viraja on the north bank of Yamunā (Padma, Ādi 45. 29); (13) Anaraka <sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-82" id="fnref-chapter-xii-the-ganges-82">82</a></sup> to the west of Dharmarāja (Kūrma I. 39. 5). The Purāṇas lay down that if a man starts on a pilgrim-age, but dies on the way to Prayāga he reaps great benefits even without reaching it, provided he dies remembering Prayāga. The <a class="ref" href="../refs/matsya_purana.html#105.8-12" data-source="matsya_purana" data-ref="105.8-12" title="Matsyapurāṇa 105.8-12">Matsyapurāṇa (105. 8–12)</a> asserts: <sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-83" id="fnref-chapter-xii-the-ganges-83">83</a></sup> A man whether in his own country or house or after leaving his country dies in a forest, while remembering Prayāga, he still secures the world of Brahma; he reaches a world where the trees yield all desires, where the earth is full of gold and where there are sages and <em>munis</em> and <em>siddhas</em>; he dwells on the bank of the Ganges full of thousands of women and enjoys the company of sages, when he comes down from heaven he becomes the lord of Jambūdvīpa.</p>
+<p class="prose" id="p-chapter-xii-the-ganges-28">At most famous tīrthas the pilgrim has to perform śrāddha. The <a class="ref" href="../refs/vishnu_dh.html" data-source="vishnu_dh" data-ref="" title="Viṣṇu Dharmasūtra">Viṣṇu Dh. S.</a> (chap 85) mentions about fifty-five sacred places which are fittest for śrāddha. The Kalpataru (on tīrtha), the Gaṅgāvākyāvalī, Tīr. C. and other digests quote several verses from the Devipurāṇa, the gist of which is as follows: Śrāddha should be performed at tīrthas, but there is no offering of <em>arghya</em> and no <em>āvāhana</em> (since <em>pitṛs</em> are deemed to be always present at tīrthas, as the Kāśikhaṇḍa says) nor is the entering of the thumb of the invited brāhmaṇa into the food served done, nor is there the question about the brāhmaṇas being satiated, nor <em>vikira</em><sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-84" id="fnref-chapter-xii-the-ganges-84">84</a></sup> If one is unable to follow the complete procedure of śrāddha one should merely offer <em>piṇḍas</em> made from barley meal or may offer <em>samyāva</em> (cake of wheat flour fried with ghee and milk), rice boiled in milk, the cake of sesame (after the oil is extracted) or jaggery<sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-85" id="fnref-chapter-xii-the-ganges-85">85</a></sup> It should not be allowed to be seen by dogs, crows and vultures, it may be offered at any time after the pilgrim reaches the holy place. A śrāddha performed at a holy place gives great satisfaction to <em>pitṛs</em>. Some of the works such as the Triṣṭhalīsetusārasaṅgraha of Bhaṭṭoji provide that after performing a <em>pārvaṇaśrāddha</em> at a tīrtha and after making offerings of <em>piṇḍas</em> to one's ancestors one should offer a single <em>piṇḍa</em> to one's other relatives with the following mantra 'Here I offer <em>piṇḍa</em> to deceased persons of my father's family, and of my mother's family and to the deceased relatives of my guru and of my father-in-law, to those men of my family' who were devoid of sons or wives and so who would lose the benefit of the pinda (to be offered by the son or wife) and in the case of whom all rites after death have ceased, those who were blind from birth or were cripples, those who were malformed or died in the womb; to all these, whether known or unknown to me, may this (pinda) reach inexhaustively! (Vāyu 110. 51-52). After this he should offer another pinda for his servants, slaves, friends, dependents, pupils, persons who conferred obligations on him, cattle, trees and those with whom he came in contact in other lives (Vāyu 110. 54-55). If a person is ill or has not the time to go through this elaborate procedure, then he should make a sankalpa that he would perform śrāddha and should offer a single pinda with the mantra (in Vāyu 110 23-24) ‘I offer this pinda to my father, great-grand-father, to my mother, father’s mother, grandfather’s mother, to my maternal grandfather and to the latter’s father and grandfather. May it reach them inexhaustively!’</p>
+<p class="prose" id="p-chapter-xii-the-ganges-29">The <a class="ref" href="../refs/mb_anushasana.html" data-source="mb_anushasana" data-ref="" title="Anuśāsanaparva">Anuśāsana-parva</a><a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>, the <a class="ref" href="../refs/kurma_purana.html" data-source="kurma_purana" data-ref="" title="Kūrmapurāṇa">Kūrmapurāṇa</a>, Nāradīya (uttara) 63. 19-20 and 36-38 and others highly praise bathing at the sangama in the month of Māgha <sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-86" id="fnref-chapter-xii-the-ganges-86">86</a></sup>. Men of all castes, women and those born of mixed unions can take this bath; śūdras, women and men of mixed castes should not repeat any mantra but should bathe silently or, with the word ‘namah’ (Tri. S. p 39). Similarly, the Padma, Kūrma, Agni and other Purāṇas wax eloquent over a bath for three days in Magha saying that it is equal to the gift of three crores of cows, <sup class="fn-ref"><a href="#fn-chapter-xii-the-ganges-87" id="fnref-chapter-xii-the-ganges-87">87</a></sup> There is great divergence as to exactly what three days are meant, as pointed out by the Tri. S. p 33. The various views are the three days are the passage of the sun into Capricornus, Rathasaptami and the full moon day of Māgha; the three consecutive days including the 10th of the bright half of Māgha, the first three days of Māgha, the three consecutive days from the 13th day of the bright half of Māgha; any three days in Māgha.</p>
+<aside class="footnotes-section" aria-label="Footnotes">
+<hr>
+<ol class="footnotes-list">
+<li id="fn-chapter-xii-the-ganges-1" class="footnote-item"><span class="devanagari">अधि वृड्</span>. <span class="devanagari">पर्णीनां बपिष्ठे सूर्यंश्वयात्‌। उरु</span>. <span class="devanagari">कक्षो न गाङ्गयः॥ ऋ</span>. VI. 45 31 The last pāda means 'like a broad patch of grass or bush growing on the banks of the Ganges'. H. D. 74 <a href="#fnref-chapter-xii-the-ganges-1" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-2" class="footnote-item">1324. <span class="devanagari">कुरुक्षेत्रसता गङ्गा यत्र सत्रावगाहिता। विशेोवे वे कनखले प्रयागे परमं महद्‌ ॥ यद्यकार्याणि कार्याणि कृतं गङ्गाशतोयसेचनम्। सर्वे तस्यस्य गङ्गापो दहत्यग्निमिवेन्धनम्॥</span> 88, <span class="devanagari">सर्वे कृतयुगे पुण्ये त्रेतायां पुष्करं स्मृतम्‌। द्वापरेोपि कुरुक्षेत्रे गङ्गा कलियुगे स्मृता ॥</span>' <span class="devanagari">पुनाति कीर्तिता पापं दृष्टा सा भद्रगाऽवहा। अवगाढा च पीता च पुनात्यासप्तमं कुलम्‌॥ यावदस्थि मनुष्यस्य गङ्गायाः संस्पृशते जलम्‌। तावत्स पुरुषो राजन् स्वर्गलोके महीयते॥</span> 94. <span class="devanagari">न गङ्गासदृशं तीर्थं न देवः केशवादपरः।</span>... <span class="devanagari">यत्र गङ्गा महाराज स देशस्तपसोत्तमः। सिद्धिदेवं च तज्ज्रेयं गङ्गातीर</span>-<span class="devanagari">समास्थितम्‌॥ वनपर्व</span> 85 88-97 = <span class="devanagari">पद्म</span> I 39.81-90. <span class="devanagari">नारदीय</span>. (<span class="devanagari">उत्तर</span>) 38, 20 is <span class="devanagari">कृते च सर्वतीर्थानि वेतायां</span> • <span class="devanagari">कलो गङ्गा विशिष्यते ॥</span>. The <span class="devanagari">कूर्ग</span> I 27 37 has <span class="devanagari">कृते तु नैमिषे तीर्थे</span>, The same verse is quoted from <span class="devanagari">भविष्य</span> by <span class="devanagari">वीर्य्य</span>. p. 191. <a href="#fnref-chapter-xii-the-ganges-2" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-3" class="footnote-item"><span class="devanagari">स्नातानां शुचिमित्तीर्यैः गाड्गेयैः प्रयतात्मनाम्। खृष्टिर्मेवति या पुंसां न सा ऋतु</span>- <span class="devanagari">शत्तेरपि॥ अनुशासन</span> 26 31, <span class="devanagari">नारद</span> (<span class="devanagari">उत्तर</span>) 39 30-31 and also 40, 64. <a href="#fnref-chapter-xii-the-ganges-3" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-4" class="footnote-item"><span class="devanagari">यमो वैवस्वतो देवी यस्त्वैव हृदि स्थितः। तेन चेद्विवादस्ते मा गङ्गां मा कुरु</span>- <span class="devanagari">न्यात्</span>.<span class="devanagari">॥ मनु</span> 8. 92. <a href="#fnref-chapter-xii-the-ganges-4" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-5" class="footnote-item"><span class="devanagari">वामपादाङ्गुष्ठाग्रनखस्रोतोविनिर्गताम्। विष्णोर्विभर्ति या भक्त्या शिरसाहनिं</span>- <span class="devanagari">झं श्रुता ॥ विष्णु</span> II. 8 109. q. by <span class="devanagari">कल्परू</span> (<span class="devanagari">तीर्थ</span>) p 161 (reads <span class="devanagari">शिव</span>.), <span class="devanagari">नदी सा वैष्णवी मोक्षा विष्णुपादसमुद्‌भवा ॥ पद्म</span> V. 25. 188. <a href="#fnref-chapter-xii-the-ganges-5" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-6" class="footnote-item"><span class="devanagari">तथैवालकनन्दा च दक्षिणादेय भारतम्। प्रयाति सागरै भिम्ना सप्तभेद्रा द्विजोत्तमा ॥ कूर्म</span> I 46.31. <a href="#fnref-chapter-xii-the-ganges-6" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-7" class="footnote-item"><span class="devanagari">श्रुताभिलपिता दृष्टा स्पृष्टा पीतावगाहिता। या पावयति भूतानि कीर्तिता च दिने दिने॥ गङ्गा गङ्गेति यैर्नाम योजनानां शतैरपि। स्थितैरुच्चारितं हन्ति पापं जन्मत्रया</span>- <span class="devanagari">न्वितम्॥ विष्णु</span> II. 8 120-121 q by <span class="devanagari">भट्टवा</span> p 110, <span class="devanagari">तीर्थावि</span> p 202, <span class="devanagari">ब्रह्ममिंड०</span> I. 3.77 reads `<span class="devanagari">श्रत्तेरपि। नरो न नरकं याति किं तपा सहस्र भवेत्‌</span>." <a href="#fnref-chapter-xii-the-ganges-7" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-8" class="footnote-item"><span class="devanagari">दर्शेनात्स्पर्शनात्पानात् तथा गङ्गेति कीर्तनात्। स्मरणादेव गङ्गाया गङ्गा सद्य उपैति मनुष्यते॥ भविष्य</span> q by <span class="devanagari">तीर्थचिं</span> p. 198, <span class="devanagari">गङ्गावा</span> p. 12, <span class="devanagari">गङ्गाभः</span> p. 9. The first half is <span class="devanagari">अनुशासन</span> 26.64, <span class="devanagari">अहिग्रु</span>. 110 6, <span class="devanagari">गच्छन्तिष्टच् उपन्ययाय सूत्रम् जायत श्ववन वदनच्। य स्मरेदं सततं गङ्गां सोऽपि सुख्येत बन्धनात्॥ स्कन्द</span> (<span class="devanagari">काशीखण्ड</span>) <span class="devanagari">पूर्वाधे</span> 27 37, <span class="devanagari">नारद</span> (<span class="devanagari">उत्तर</span>) 39. 16-17. <a href="#fnref-chapter-xii-the-ganges-8" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-9" class="footnote-item"><span class="devanagari">सर्वत्र सुलभा गङ्गा त्रिषु स्थानेषु दुर्लभा। गङ्गाद्वारे प्रयागे च गङ्गासागरसङ्गमे॥ तत्र स्नात्वा दिवं यान्ति ये मृतास्तेऽपुनर्भवा॥ ॥ मत्स्य</span> 106 54, <span class="devanagari">कूर्मे</span> I 37 34, <span class="devanagari">गरुड</span> (<span class="devanagari">पूर्वं०</span>) 81. 1-2, <span class="devanagari">पद्म</span> V 60 120. The <span class="devanagari">नारदीय</span> (<span class="devanagari">उत्तर</span> 40. 26-27) reads <span class="devanagari">सर्वत्र दुर्लभा गङ्गा त्रिषु स्थानेषु चाधिका। गङ्गाद्वारे</span> • <span class="devanagari">सज्जेमा ॥ एषु स्नाता दिवं</span>...<span class="devanagari">र्भवाः॥</span> <a href="#fnref-chapter-xii-the-ganges-9" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-10" class="footnote-item"><span class="devanagari">अकामो वा सकामों वा गङ्गाया योऽभिपद्यते । मृतस्तु लभते स्वर्गं नरकं न च पश्यति ॥ मत्स्य</span> 107. 4, q. by <span class="devanagari">काल्पतरु</span> (o<span class="devanagari">न तीर्थे</span>) p 145 (reads <span class="devanagari">नो नित्यसेवते</span>). <span class="devanagari">कूर्म</span> I. 37.39 has the same verse with slight variations, compare <span class="devanagari">पद्म</span> I. 44.4. <a href="#fnref-chapter-xii-the-ganges-10" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-11" class="footnote-item"><span class="devanagari">तिष्ठ कोटयर्धकोटी च तीर्थानां गङ्गागर्मणि। द्विरे भुक्त्वर्धे च सर्वो जायते स्मृता ॥ कूर्म</span> I. 39 8, <span class="devanagari">पद्म</span> I. 47.7, V. 60 59, <span class="devanagari">मत्स्य</span>, 102. 5 (reads <span class="devanagari">भार्गवि मे मां</span>) <span class="devanagari">जाह्नवी</span> ). <a href="#fnref-chapter-xii-the-ganges-11" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-12" class="footnote-item"><span class="devanagari">कि यज्ञैर्बहुविधाढयै कि तपोग्नि सुदुष्करै । स्वर्गमोक्षप्रदा गङ्गा सुखसौभाग्य</span>-<span class="devanagari">पूजिता॥ पद्म</span> V 60 39; <span class="devanagari">किमह्यज्ञेन योगेन किं तपोग्निः किमश्वरै । वास एव हि गङ्गाया सर्वतोपि विशिष्ट्यते॥ नारदीय</span> (<span class="devanagari">उत्तर</span>) 38 38, q in <span class="devanagari">तीर्थंवि</span> p 194 (reads <span class="devanagari">गङ्गायां प्राय तत्व</span> p 498. The first verse <span class="devanagari">कि यज्ञै</span> is quoted as from <span class="devanagari">ब्रह्माण्ड</span> by <span class="devanagari">तीर्थंवि</span> p 195 (last pāda is <span class="devanagari">सुखसेव्या यतः स्थिता</span>) <a href="#fnref-chapter-xii-the-ganges-12" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-13" class="footnote-item"><span class="devanagari">योजनानां सहस्रेषु गङ्गायाः स्मरणान्नर । अपि दुष्कृतकर्भा दु लभते परमां गतिम्॥ कीर्तिनान्द्युच्यते पापा ह्य भद्राणि पद्यति । अवगाहा च पीत्वा तु पुनात्यासप्तमं कुलम्॥ मत्स्य</span> 104 14-15 q. by <span class="devanagari">कल्पतरु</span> (<span class="devanagari">तीर्थं</span>) p 160. vide also <span class="devanagari">मत्स्य</span> 108 25-26 Compare <span class="devanagari">मनुस्मृति</span> 87 93 (<span class="devanagari">पुनाति कीर्तिता</span>) quoted in n 1324. <span class="devanagari">सर्वे एव शुभ कालाः सर्वा देशास्तथा शुभ । सर्वो जनो दानपात्रं श्रीमतिजाह्नवीते ॥ काशीख</span> 27. 69. <a href="#fnref-chapter-xii-the-ganges-13" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-14" class="footnote-item"><span class="devanagari">नारजं पतितं दुष्टमनर्ज दुष्यतिनम् । सर्वद्रोहेण संयुक्तं सर्वपातक्रसंयुक्तम् ॥ त्यजन्ति पितरं पुत्रा प्रियं पत्न्य सहस्रणा । अन्ये च बान्धवा सर्वे गङ्गा ताज परित्यजेत्॥ पद्म</span> (<span class="devanagari">सृष्टिखण्ड</span> 60 25-26). <a href="#fnref-chapter-xii-the-ganges-14" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-15" class="footnote-item"><span class="devanagari">क्षीरोदपूतिमार्ग हु परित क्षेत्रमुच्यते। तीरं त्यक्त्वा बसैत्क्षेत्रे तीरे वासो न चेच्यते ॥ एकयोजनविस्तीर्णा क्षेत्रसीमा तदन्यत् । नारदीय</span> (<span class="devanagari">उत्तर</span>) 43. 119-120 The first is quoted from <span class="devanagari">स्कन्द</span> by <span class="devanagari">तीर्थंवि</span> p. 266, which remarks ‘<span class="devanagari">उभयपदे प्रत्येकं क्रोशार्द्ध क्षेत्रम्</span>'<span class="devanagari">।</span> The half verse <span class="devanagari">एक०</span> is quoted from <span class="devanagari">भविष्य</span> by <span class="devanagari">तीर्थंवि</span>. p. 267, (Continued on the next page) <a href="#fnref-chapter-xii-the-ganges-15" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-16" class="footnote-item"><span class="devanagari">प्रवाहमवधि कृत्वा यावच्चतुर्हस्तद्वयम् । अत्र नारायण स्वामी नात्स्यः स्वामी कदाचन।। न तत्र प्रतिग्रहीयात्तपये कण्ठगतैरपि ।। भाद्रशुक्लचतुर्दश्यां यावदकमान्तं जलम् । साद्र्ध विजातीयाद्वद्वदूर तीरमुच्यते । नारद</span> (<span class="devanagari">उत्तर</span>) 43 116-118 q. by <span class="devanagari">तीर्थचि</span>. p. 266 and <span class="devanagari">प्राय</span>. <span class="devanagari">सञ्च</span> p. 499 (from <span class="devanagari">ब्रह्मपुराण</span> and the verse <span class="devanagari">भाद्र०</span> from <span class="devanagari">दानधर्म</span>) and by <span class="devanagari">नारद</span> (<span class="devanagari">उत्तर</span>) 43. 118 (last half) is <span class="devanagari">गंगावा</span> p. 136 (the first verse from <span class="devanagari">ब्रह्मपुराण</span>). <span class="devanagari">नारद</span> (<span class="devanagari">उत्तर</span>) 43. <span class="devanagari">साधैदहस्तगतं यावद्द्दूरमतीरं तत परम ।।</span> The digests read <span class="devanagari">भाद्रकृष्णण</span> for <span class="devanagari">भाद्रशुक्ल</span>. <a href="#fnref-chapter-xii-the-ganges-16" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-17" class="footnote-item"><span class="devanagari">अद्याद्यके मासि अनुकूपक्षे अमुकतिथौ सपृ</span>.<span class="devanagari">पापप्रणयपूर्वक सर्वपुष्यप्रतिकाश्भो मद्राय स्नानमह करिष्ये । गङ्गावा</span> p. 141. Vide <span class="devanagari">तीर्थचि</span>. pp. 206-207 for several alternative <span class="devanagari">सङ्कल्प</span> before <span class="devanagari">गङ्गास्नान</span>. <a href="#fnref-chapter-xii-the-ganges-17" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-18" class="footnote-item">Tarpana (satiating with the offering of water) is of two kinds viz. principal (pradhāna) and subsidiary (anga). The first has to be performed every day by a twice-born person (who has finished his studies) for the gods, sages and pitrs in that order. The 2nd is performed as an anga of snāna. <span class="devanagari">नित्यं नैमित्तिकं काम्यं त्रिविधं स्नानमुच्यते । तर्पणं तु भवेत्तस्यङ्गमनुप्रकीर्तितम् ॥ ब्रह्मपुराण</span> q. by <span class="devanagari">गंगाभाष्य</span> p 162 <span class="devanagari">तर्पण</span> is an anga of bath as well as of brahma yajña. Tarpana has been described at great length in H. of Dh. vol II, pp. 668-669 and pp 689-695. Therefore it is not necessary to make any lengthy remarks on tarpana here. A few matters that deserve attention are mentioneḍ One rule is that one has to perform tarpana according to the provisions of his own recension of the Veda. The persons to whom water is to be offered and the manner in which it is to be offered are set out on p 692 of vol II of H of Dh. Another rule is that tarpana has to be done (even if the day is not auspicious) at a tīrtha, in Gayā, in pitrpalṣa (i.e. the dark half of Bhādrapada) with water mixed with sesame. <span class="devanagari">तीर्थे तिथिववेषे</span> (<span class="devanagari">तिथिविशेषे</span>?) <span class="devanagari">च गयाया मेतपर्पके । तिलमिश्रितम्॥</span> A widow also has to perform tarpana for her husband and his relatives at a sacred place. An ascetic (sannyāsin) has not to do it. A person whose father is living has not to perform tarpana, but acc. to Vișņupurāṇa he offers three bandfuls to gods, three to the sages and one to Prajāpati (in the form 'devās-trpyantām'). Another rule is the one that makes an offering in śrāddha or into fire with one hand only (the right hand) but in tarpana water is poured into the stream in which one is bathing or on land with both handṣ '<span class="devanagari">श्राद्धे हवनकाले च पाणिनेकेन दीयते । तर्पणे तुभयं कुर्यादेव विधिः स्मृतः॥ नारदीयपुराण</span> (<span class="devanagari">उत्तर</span>) 57. 62-63. If a man is not able to perform the elaborate tarpana described in vol II, he should repeat the mantras from <span class="devanagari">वायुपुराण</span> 110 21-22 set out here and offer three anjalis of water mixed with sesame and ludas, <span class="devanagari">आत्मास्त्वन्नपर्ध्न हुर्बोषमानूनाः</span>, <span class="devanagari">पुरन्धु पितरं</span>. <span class="devanagari">सर्वे मातृमातामह्मदय ॥ अतीतकुलकोटीनां सप्तद्वीपनिवासिनाम्। आ ब्रह्म</span>- <span class="devanagari">भुवनाल्लोकादिदमस्तु तिलोदकम् ॥</span> <a href="#fnref-chapter-xii-the-ganges-18" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-19" class="footnote-item"><span class="devanagari">निवीत सङ्कल्पनां प्राचीनावीते पितृणां उपवीते देवानाम् । तै सं</span>. II. 5. 11. 1. For explanation of these three modes of wearing the sacred thread, vide H. of Dh. vol II pp 287-288 and <em>apasavya</em> has been explained in this volume in note 1095. <a href="#fnref-chapter-xii-the-ganges-19" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-20" class="footnote-item">Vide Vāyu 61 80-90 for definitions and enumeration of <span class="devanagari">ब्रह्मर्षि</span>, <span class="devanagari">देवर्षि</span>, <span class="devanagari">राजर्षि</span> and also Banḍ Gr I, 7 and Devala q by <span class="devanagari">अपराक</span> pp. 442-443 for <span class="devanagari">ऋषि</span> and other terms <a href="#fnref-chapter-xii-the-ganges-20" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-21" class="footnote-item">For Agniṣvātta and other names of classes of pitṛs, vide above pp. 343-344 and Brahmāṇḍa III. 10. 53, 75, 93, 96, <a href="#fnref-chapter-xii-the-ganges-21" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-22" class="footnote-item"><span class="devanagari">धर्मराज तो चित्र</span> are the names of <span class="devanagari">यम</span> and for <span class="devanagari">चित्रगुप्त</span> vide p 160 above and <span class="devanagari">वराहपुराण</span> chap. 203–205. <a href="#fnref-chapter-xii-the-ganges-22" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-23" class="footnote-item"><span class="devanagari">विष्णुपूजादाऽनभ्यङ्गे गङ्गे त्रिपथगामिनि । धर्मेणतेति विख्याते पापे मे दुर जाह्वि ॥ ऋक्षया भक्तिसम्पन्ने</span> (<span class="devanagari">य</span>!) <span class="devanagari">श्रीमातर्देवि जाह्वि । अमृतनाऽभ्रुणा देवि भागीरथ मुनीहि माम् ॥ इति । तत्त्व</span> p. 502, <span class="devanagari">स्व देव सरिता नाथ स्वं देवि सरिता वरं । उभयो सङ्गमे स्नात्वा शुश्रामि दुरितानि वै ॥</span> <em>ibid</em>. <span class="devanagari">पद्म</span>, <span class="devanagari">सृष्टिखण्ड</span> 60, 60 is the same as the first verse and 60. 62 offers some variant readings for the seconḍ <a href="#fnref-chapter-xii-the-ganges-23" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-24" class="footnote-item"><span class="devanagari">यावदस्थि मनुष्यस्य गङ्गायाः स्थूलते जलम् । तावत्स्वर्गप्रयाति राजन्य स्वर्गलोके महीयते ॥ वनपर्व</span>, 85.94 == <span class="devanagari">पद्म</span> J. 39 87, <span class="devanagari">अनुशासन</span> 26 32 15 <span class="devanagari">यावदस्थि नरस्याथ महीयते ॥</span> = <span class="devanagari">मत्स्य</span> 106.52, <span class="devanagari">कूर्म</span> I 37.32 (reads <span class="devanagari">पुरुषस्य तु</span> !). <span class="devanagari">भागीरथीः</span> '<span class="devanagari">तावदस्थि नरस्यापि महीयते ॥</span> = <span class="devanagari">मत्स्य</span> 106.52, <span class="devanagari">कूर्म</span> I 37.32. (reads <span class="devanagari">पुरुषस्य तु</span>!). <span class="devanagari">तावत्स्वर्ग महीयते ।</span> and <span class="devanagari">नारद</span> (<span class="devanagari">उत्तर</span>) 43.109 <span class="devanagari">यावत्स्व्यस्थीनि गङ्गायां तिष्ठन्ति पुरुषस्य वै । तावत्स्वर्ग महीयते पदानि नारद</span> (<span class="devanagari">उत्तर</span>) 62.51 (reads <span class="devanagari">यावन्ति नखलोमानि महान्तोये पतानि वै ॥ तावत्स्वर्गवासश्च पुरुषस्य भवति</span> ) 15 163 ' <span class="devanagari">केशरास्थिनखदन्ताश्च भस्मापि ह्यपसर्जनैः नयन्ति विष्णुसदनं शुद्धा गङ्गेव पारिणा ॥</span>'. <a href="#fnref-chapter-xii-the-ganges-24" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-25" class="footnote-item"><span class="devanagari">स्नात्वा ततः पञ्चगवेन सिक्त्वा हिरण्यमधाज्यतिलैन योजयेत् । तत्सु चूर्णपुष्टे निधाय पश्यन् दिशि प्रेतमणेपहायम् ॥ नमोऽस्तु धर्म्मान् प्रविश्य जलं स मे प्रीत इति क्षिपेत् । स्नात्वा ततोत्तीर्य च भास्करं च दृष्ट्वा प्रेताय दद्याद् दक्षिणां तु ॥ एवं कृते प्रेतपुर</span>- <span class="devanagari">स्विमन्य गतिर्भूत्वा सयाति मोहेन्द्रतुल्या । ब्रह्मपुराण</span> q. by <span class="devanagari">तीर्थचि</span>. pp. 265–266 and <span class="devanagari">तीर्थ</span>- <span class="devanagari">प्र</span>. p. 374. The <span class="devanagari">ब्रह्मपुराण</span> p. 272 quotes these as from <span class="devanagari">ब्रह्माण्ड</span> (with slight variations, one of which is <span class="devanagari">यस्तु सर्वहितो विष्णु स मे प्रीत इति क्षिपेत् ।</span>). These verses are <span class="devanagari">नारद</span> (<span class="devanagari">उत्तर</span> chap. 43. 113–115) with slight variationṣ 1347 a. <span class="devanagari">तीर्थमन्यं प्रसंशन्ति गङ्गातीरे स्थिताश्च ये । गङ्गां न बहु मन्यन्ते ते ह्यधोरेपगामिनः ॥ स्कन्द</span>, <span class="devanagari">काशी०</span> 27. 80, <a href="#fnref-chapter-xii-the-ganges-25" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-26" class="footnote-item"><span class="devanagari">दर्शे शतं गुणाः पुण्यं सङ्क्रान्तौ च सहस्रकम् । चन्द्रसूर्यग्रहे लक्षं दत्तेऽतीपाते संम्स्वनम् ॥</span> ' <span class="devanagari">सीतेनग्रहेः सोमदिने रविवारे रवैर्ग्रहेः । तत्स्नूप्रदानिनोपवर्ग्यं तत्न स्नानम्</span> ‘ <span class="devanagari">संस्कृत्यम् ॥ स्कन्द॰ काशौ०</span> 27. 129-131. <a href="#fnref-chapter-xii-the-ganges-26" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-27" class="footnote-item"><span class="devanagari">त्रयाणां स्थलानां समाहारः त्रिस्यली।</span> <a href="#fnref-chapter-xii-the-ganges-27" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-28" class="footnote-item"><span class="devanagari">सितासिते सरिते यत्र सङ्गते यत्राप्लुतासी दिव्यमुत्प्लन्ति । ये वै तन्वं विसृजन्ति धीरास्ते जनासो अमृतत्त्वं भजन्ते॥</span> The <span class="devanagari">त्रिस्यली०</span> p 3 says it is a supplementary <span class="devanagari">श्रुति</span> text of the Āśvalāyana school, while the Tir. C p 47 quotes it as a verse of the Ṛgveda. It is quite possible to hold that the verse does not encourage religious suicide but only makes this distinction that by a bath only once a man goes to heaven and that if he dies at Prayāga he attains mokṣa even without correct metaphysical knowledge. Vide <span class="devanagari">रघुवंश</span> 13 58 ‘ <span class="devanagari">तत्त्वावबोधेन विनापि भूयसुलभ्यपवर्गा नास्ति शरीरबन्धः</span> ’ q. by <span class="devanagari">तीर्थेय</span> p 313. The <span class="devanagari">स्कन्द</span> says ‘ <span class="devanagari">त्रिवेणि परितो पत्तने सितासिते सरिदे। तत्वापुहड्डा सम्भूते भवन्तीति विनिचित्य । काशी</span>. 7. 54 q by <span class="devanagari">त्रिस्यली०</span> p 11. Vide also <span class="devanagari">काशीखण्ड</span> 7.46 for a similar verse. The verse no doubt has a vedic ring about it. The <span class="devanagari">त्रिस्यली०</span> p 4 notices another reading. The waters of the Ganges are whitish while those of the Yamunā are dark. Classical Sanskrit poets very often harp on these colours of the waters of the two riverṣ Vide <span class="devanagari">रघुवंश</span> 13 54-57. <a href="#fnref-chapter-xii-the-ganges-28" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-29" class="footnote-item"><span class="devanagari">दशतीर्थसहस्राणि तिस्रः कोट्यस्तथापराः । समागच्छन्ति माघ्यां तु प्रयागे भरतर्षभ ॥ माध्यासं प्रयागे तु नियत संस्थितव्रतः । स्नात्वा तु भरतश्रेष्ठ निर्मलः स्वर्गमा</span>- <span class="devanagari">प्नुयात् । अनुशासन</span> 25. 36-38. <a href="#fnref-chapter-xii-the-ganges-29" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-30" class="footnote-item"><span class="devanagari">दर्शनात्स्य तीर्थस्य नामसंकीर्तनादपि । मृत्तिकाल्लमभादपि नरः पापाद् विमुच्यते ॥ मत्स्य</span>. 104.12, <span class="devanagari">कूर्म</span> I. 36. 27. The <span class="devanagari">अग्नि</span> (111. 6-7) reads <span class="devanagari">स्रवनादस्य तीर्थस्य</span>; <span class="devanagari">वनपर्व</span> 85.80 reads ‘<span class="devanagari">गमागमस्य</span>... <span class="devanagari">दपि । मृत्तिकालेपमाद्वापि नरः</span> ...<span class="devanagari">च्यते</span>’ <a href="#fnref-chapter-xii-the-ganges-30" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-31" class="footnote-item"><span class="devanagari">एतत् प्रजापतेः क्षेत्रं त्रिषु लोकेषु विश्रुतम् । अत्र स्नात्वा दिवं यान्ति ये मृतास्तेऽ पुनर्भवः ॥ कूर्म</span> I. 36 20 <span class="devanagari">मत्स्य</span> (104 5 and 111. 14) and <span class="devanagari">नारद</span> (<span class="devanagari">उत्तर</span> 63.127-128) also calls it <span class="devanagari">प्रजापतिक्षेत्र</span>. <a href="#fnref-chapter-xii-the-ganges-31" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-32" class="footnote-item"><span class="devanagari">महायज्ञगुणयोगीर् सहस्रं लोकिविश्रुतम् ॥ यज्ञायजत भूतात्मा पूर्वेव पितामहः । प्रयागमिति विख्यातं तस्माद्यज्ञरतत्सनम ॥ वनपर्व</span> 87. 18-19, <span class="devanagari">तथा सर्वेषु लोकेषु प्रयागं पूज</span>- <span class="devanagari">यैष्टं मुधा । पूज्यते तीर्थराजस्तु सत्यमेव युधिष्ठिर ॥ मत्स्य</span> 109 15 <a href="#fnref-chapter-xii-the-ganges-32" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-33" class="footnote-item"><span class="devanagari">प्रकृष्टं सर्वयागेभ्य प्रदानामिति गीयते । दृष्टा प्रकृष्यते यष्टेभ्यो दक्षिणा</span>- <span class="devanagari">दिभिः । प्रयागमिति तस्मात् कृत हरिहरादिभिः ॥</span> 9 in <span class="devanagari">त्रिशली०</span> p 13. The first half <span class="devanagari">स्कन्द</span>, <span class="devanagari">काशी०</span> 7 49, 50 <span class="devanagari">प्रयाग</span> means <span class="devanagari">प्रकृष्टो यागो यत्र</span> <a href="#fnref-chapter-xii-the-ganges-33" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-34" class="footnote-item"><span class="devanagari">प्रभावात्सर्वतीर्थेभ्य प्रभवत्यधिकं विभो । मत्स्य</span> 110 11 <a href="#fnref-chapter-xii-the-ganges-34" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-35" class="footnote-item"><span class="devanagari">प्रकृष्टत्वात्प्रयागस्य प्राधान्यादराजशब्दवान् । ब्रह्माण्डपुराण</span> 9 in <span class="devanagari">त्रिशली०</span> p 1. <span class="devanagari">मत्स्य</span> 108 9-10, 111. 8, <span class="devanagari">पद्म</span> I 45 8 The <span class="devanagari">कूर्मपुराण</span> has <span class="devanagari">प्रकृष्टोऽजनविस्तीर्ण ब्राह्मण</span>- <span class="devanagari">प्रलयेऽस्ति । प्रयागं प्रपितं तीर्थं यस्य महात्म्यमीरितम् ॥</span> II 35.4. <a href="#fnref-chapter-xii-the-ganges-35" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-36" class="footnote-item"><span class="devanagari">पञ्चयोजनविस्तीर्ण प्रयागस्तु तु मण्डलम् । प्रविशेन्मात्रे तद</span>- <span class="devanagari">अश्वमेधो भवेत्पदे पदे । मत्स्य</span> 111. 8, <span class="devanagari">पद्म</span> I 45 8 The <span class="devanagari">कूर्मपुराण</span> has <span class="devanagari">प्रकृष्टोऽजनविस्तीर्ण ब्राह्मण</span>- <span class="devanagari">प्रलयेऽस्ति । प्रयागं प्रपितं तीर्थं यस्य महात्म्यमीरितम् ॥</span> II 35.4. <a href="#fnref-chapter-xii-the-ganges-36" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-37" class="footnote-item"><span class="devanagari">आर प्रयागं प्रतिष्ठानाच्युत वासुकेर्ददात् । कम्बलाश्वतरी नागौ नागश्च बहु</span>- <span class="devanagari">मूलक</span>' <span class="devanagari">।। एतत् प्रजापते</span>: <span class="devanagari">क्षेत्रं त्रिषु लोकेषु विश्रुतम्। मत्स्य</span> 104 5, <span class="devanagari">पद्म</span> I. 39. 69–70, 41 4-5 are similar <span class="devanagari">वनपर्व</span> 85 76-77 are. <span class="devanagari">प्रयागं समतिष्ठाव कम्बलाश्वतराशुभौ। तीर्थे भोग</span>- <span class="devanagari">वती चैव वेदिरेषा प्रजापते</span>: <span class="devanagari">। तत्र वेदाम्ब यज्ञाख्यं मूर्तिमन्तो युधिष्ठिर । अग्नि</span> 111 5 has the verse <span class="devanagari">प्रयागं</span>...<span class="devanagari">प्रजापते</span>: (reads <span class="devanagari">वेदी मीका</span>) <a href="#fnref-chapter-xii-the-ganges-37" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-38" class="footnote-item"><span class="devanagari">पूर्णायाचं तु गङ्गापात्रिसुषु लोकेषु भारत। कूपं चैव तु साहस्रं प्रतिष्ठानं च विश्रुतम्॥ मत्स्य</span>. 106. 3. <a href="#fnref-chapter-xii-the-ganges-38" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-39" class="footnote-item"><span class="devanagari">माघ सितासिते चित्र राजसूये</span>' <span class="devanagari">समो भवेत् । धर्द्धर्षावशिस्तीर्णं सितनीलाम्दु</span>- <span class="devanagari">सद्द्ममे ॥ इति पाद्मोमोक</span>: <span class="devanagari">। त्रिस्यली०</span> p. 75. <span class="devanagari">सितासित</span> (white and dark) means Veṇī. Vide ṇ 1337 above for <span class="devanagari">पच्</span> being equal to four hastas and 96 angulas <a href="#fnref-chapter-xii-the-ganges-39" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-40" class="footnote-item"><span class="devanagari">तत्र त्रीणिकुण्डानि येषां मध्येन जाहृवी । वनपर्व</span> 85 73, <span class="devanagari">त्रीणि चाप्यग्नि</span>- <span class="devanagari">कुण्डानि तेषां मध्ये तु जाहृवी। मत्स्य</span> 110 4 and <span class="devanagari">अग्नि</span> 111.12, <span class="devanagari">पद्म</span> I. 39, 67, I 49. 4; while <span class="devanagari">मत्स्य</span>, 104 13, <span class="devanagari">कूपं</span> (I. 36 28-29) read <span class="devanagari">पञ्च कुण्डानि</span> <a href="#fnref-chapter-xii-the-ganges-40" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-41" class="footnote-item"><span class="devanagari">महासमुद्रमोर्वैव पृथिव्या जघनं स्मृतम् । प्रयागं जघनस्यास्यमुत्तमम् विदुः ॥ वनपर्व</span> 85. 75 = <span class="devanagari">पअ</span> I 39. 69 and I. 43 19, <span class="devanagari">आदि</span> 111 4, <span class="devanagari">कूर्म</span> I. 37. 12, <span class="devanagari">मत्स्य</span> 106. 19 The idea appears to be that holy places are like the children of the earth. <a href="#fnref-chapter-xii-the-ganges-41" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-42" class="footnote-item"><span class="devanagari">प्रयागे निवसन्त्येते ब्रह्मविष्णुमहेश्वराः ।</span> ...<span class="devanagari">उत्तरेण प्रतिष्छानं ब्रह्मा निवसति । वेणीमाधवोरूपी तु भगवांस्तत्र तिष्ठति ॥ माहेश्वरौ वटौ भूत्वा तिष्ठत्यत्रांशुमत्सुतौ । समन्चचैर्गन्धर्वैः सिद्धश्च परमर्षयः । रक्षन्ति मण्ढलं नित्यं पापकर्मनिराकरणम् ।</span> Vide <span class="devanagari">कूर्म</span> I. 36 23-26, <span class="devanagari">पद्म</span>, <span class="devanagari">आदिखण्ढ</span> 41. 6-10 for similar verseṣ <a href="#fnref-chapter-xii-the-ganges-42" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-43" class="footnote-item"><span class="devanagari">कुरुक्षेत्रे प्रयागे च यद्दानसागरसङ्गमे । गङ्गायां पुलिने चैव यद्दानं दीयते शक्तया तदानन्तचाय कल्पते ॥ ब्रह्माण्ड</span> q. in <span class="devanagari">त्रिशत्पी०</span> p 24. <a href="#fnref-chapter-xii-the-ganges-43" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-44" class="footnote-item"><span class="devanagari">एषा यजनभूमिर्हि देवानामि संस्कृता । सत्र दत्ते स्वल्पमपि महद्भबति भारत ।। बनपर्व</span> 85 82 = 83 77 of the cr. ed which reads <span class="devanagari">सत्र दत्ते सूक्ष्ममपि</span> <a href="#fnref-chapter-xii-the-ganges-44" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-45" class="footnote-item"><span class="devanagari">ओंमित्येकाक्षरं ब्रह्म परमब्रह्माभिधायकम् । तदेव वेणी विजया सर्वसौख्य</span>- <span class="devanagari">रत्नजात्मक । मकारो जाह्नवी गङ्गा तत्र सङ्गर्वणो हरिः । एवं त्रिवेणी विख्याता देवबीजं प्रकीर्तिता ।।</span> q. by <span class="devanagari">त्रस्थली</span>° p. 8. <a href="#fnref-chapter-xii-the-ganges-45" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-46" class="footnote-item"><span class="devanagari">प्रयागे वपनं कुर्याद्गयायां पिण्डपातनम् । दानं दद्यात् कुरुक्षेत्रे नारायणस्य तुष्टये ।। एवमेव किं गयापिण्डदानन काष्टां वा मरणेन किम् । किं कुरुक्षेत्रेदानन प्रयाणे वपनं यदि ।।</span> q. by <span class="devanagari">मद्राण</span> p. 298, <span class="devanagari">तीर्थचिं</span>. p. 32, <span class="devanagari">त्रस्थली</span>° p. 17, <span class="devanagari">सीर्थग्र</span> p. 335. These two verses occur in <span class="devanagari">नारदीयं</span> (<span class="devanagari">उत्तर</span>) 63. 103-101 <a href="#fnref-chapter-xii-the-ganges-46" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-47" class="footnote-item"><span class="devanagari">राजिसत्रन्याय</span> occurs in <span class="devanagari">जै</span>. IV. 3 17-19. There is a passage in the <span class="devanagari">पञ्चविंशब्राह्मण</span> 23. 2. 4 ‘<span class="devanagari">प्रतिष्ठन्ति वै एता रात्रीरूपयन्ति</span> ? No fruit thereof is expressly promiseḍ The question arises whether in the absence of an express reward, heaven should be under stood as the reward (because as explained in Jai IV 3. 15-16 svarga is the reward of all sacrifices for which no express reward is mentioned) or whether <span class="devanagari">प्रतिष्ठा</span> (stable position) which occurs in the above arthavāda passage should be held to be the reward of <span class="devanagari">रात्रिसत्र</span>. The reply is that here the reward is <span class="devanagari">प्रतिष्ठा</span> and not <span class="devanagari">स्वर्ग</span> i. e. though there is no express mention of the reward in the passage about rātrisattra, the arthavāda passage should be construed as laying down the rewarḍ In the two verses, there is a vidhi in the words <span class="devanagari">प्रग्रायणे वपने कुर्वात्</span> and the second verse is an <span class="devanagari">अर्थवाद</span>. The question is what reward is promised in it. If <span class="devanagari">राजिसत्रन्याय</span> applies, then <span class="devanagari">मुण्डन</span> secures all the fruits of <span class="devanagari">गयापिण्डदान</span>, <span class="devanagari">कुरुक्षेत्रदान</span> and <span class="devanagari">काशीतृत्याग</span>. If it does not apply then the only fruit is <span class="devanagari">पापाभाव</span>. <a href="#fnref-chapter-xii-the-ganges-47" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-48" class="footnote-item"><span class="devanagari">अनुपनीतानामपि प्रग्रायणे वपनं कार्यम् । यस्तु कुत्रास्तथा बालास्तत्सापयेद्यप येथराः । प्रथत्मना तथा सर्वं दानं विनतेषु दापयेत् ॥ इति सत्यपुराणवचने तृतीयोपपाद यस्य । त्रिश्रिष्ठौ०</span> pp 23-24. <span class="devanagari">यस्तु पुत्रास्तथा०</span> 15 <span class="devanagari">मत्स्य</span> 106.6. <a href="#fnref-chapter-xii-the-ganges-48" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-49" class="footnote-item"><span class="devanagari">सौमदारिकास्तु०</span> ...<span class="devanagari">तस्मात्सम्मूलमेव केशपपनसिह स्त्रौणा० केशपवपनं किंतु बेणीं कृत्वा कुङ्कुमदिङ्गलुम्बणयालूळूता भवति नमस्कृत्त्य तवक्षता वापयेत् । न च बेणीसमीक्षी मधाय यथाशक्तिसृतां स्वर्गवर्यों रूपमयनी सा निष्पाप</span>-<span class="devanagari">वेण्यां बेणीमहानने सर्वं पापं प्रणश्यत् । जन्मान्तरेऽपि सदा सौभाग्याद्य मम वर्धताम् । पिटेन</span> | <span class="devanagari">त्रिश्रिष्ठौ०</span> p 22, <span class="devanagari">प्रथायं स्त्रीणामु० मुण्डनं न तु लक्ष्यमाणम् वचनाग्याः केशानां दृष्बुलेऽलेदमात्रम् ॥ प्रथयिषततव</span> p. 493. . <a href="#fnref-chapter-xii-the-ganges-49" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-50" class="footnote-item"><span class="devanagari">ओम् इमेकासारे यद् ब्रह्म परब्रह्माभिधायकम् । तदेव वेणी विज्ञेया सर्वसौख्य</span>- <span class="devanagari">प्रदायिनी ॥ स एष तीर्थराजोयत्र सङ्गमः । विश्वली०</span> p. 8. <a href="#fnref-chapter-xii-the-ganges-50" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-51" class="footnote-item"><span class="devanagari">प्रयागः</span> ‘<span class="devanagari">क्षुरोदके ब्रह्मपदे ब्रह्मणा च कृतो यत्नेन प्रक्षेप्यम्</span>’ ‘<span class="devanagari">वेणीमन्त्ययज्ञेन समाख्याय कृतम्</span>’ ‘<span class="devanagari">राजसूयमेधयोः</span>’ ‘<span class="devanagari">एष यज्ञः</span>’ ‘<span class="devanagari">महाजनवति भारत</span>’ <span class="devanagari">न वेदः</span>... <span class="devanagari">दर्भसंलपहाणि पट्टिकादोऽस्योपगराः । येषां सान्निध्यमेव कीर्त्ति कुर्य्यात् । क्षुरोदकं च यत्नैव ब्रह्मयज्ञेषु न वेदः । स्नात्वोदकत्विग्दाने मङ्गलपञ्चगव्ये च दर्भेषु</span> 85 79-85. After quoting the last verse and several other verses the <span class="devanagari">त्रिस्थली</span>-<span class="devanagari">सेतु</span> observes (p 30) ‘<span class="devanagari">एतेषु सर्वेषु वचनैषु यद्यपि प्रयागश्राद्धविशेषा उपदाने व्यग्रानि तदन्तर्गततौर्थश्राद्ध प्रकरणं दास्यान्तरकलासु स्थालौभ्यादीनां ज्ञानामोघे समारब्धम् उपयुज्यते प्रयागश्राद्धम्</span>’<span class="devanagari">।</span> The same verses occur in <span class="devanagari">पद्म</span> (<span class="devanagari">आदि</span> 39 72-78) <span class="devanagari">स्कन्द</span> (<span class="devanagari">काक्षी०</span> chap 7, 63 and 65) says ‘<span class="devanagari">तद्धिष्णोः परमं पदं पश्चात् सर्वे खसूणः। एषोपुण्यपदो वेडे तथामरगं दुमः। दुमः वेणी ति हि श्रेणो ब्रह्मगणे वर्गं धारयतः।</span>?, <span class="devanagari">तद्धिष्णोः</span>......, <span class="devanagari">सूरप</span>. 1–15 <span class="devanagari">ऋ</span> I 22.20. . <a href="#fnref-chapter-xii-the-ganges-51" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-52" class="footnote-item"><span class="devanagari">शरीरासुखजेतन्त्र विधिपूर्वमनाशके। अमूढं जीवितं ज्ञात्वा यो वै वेदान्तगो द्विज ॥ अभ्यस्तार्थं देवताश्च नमस्कृत्य सुमीक्षिताः। तत सिन्धो दिशं गच्छेद् ब्रह्मलोकं सनातनाम् ॥ अद्रि शासन</span> 25. 63-64, <span class="devanagari">तत्</span> refers to <span class="devanagari">हिमालय</span> as the context shows <a href="#fnref-chapter-xii-the-ganges-52" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-53" class="footnote-item"><span class="devanagari">गङ्गायमुनयोर्मध्ये कर्पाग्निं यस्तु साधयेत् । अहीनाङ्गो हारोगश्च प्रच्छिन्नद्वय</span>-<span class="devanagari">समनवितः । पाचौर्ति रोमकृपाणि तस्य गात्रेषु देहिन</span> II <span class="devanagari">तावद् वर्षसहस्राणि स्वर्गलोक महयते ॥ मत्स्य</span> 107 9, <span class="devanagari">कूर्म</span> I 38. 3-4, <span class="devanagari">नारदीय</span>, <span class="devanagari">उत्तर</span>, 63.154 (reads <span class="devanagari">कर्पार्पाग्नि तु धारयेत्</span>), <span class="devanagari">पद्म अपि यस्तु</span>) <span class="devanagari">कर्पाग्नि</span> is short for <span class="devanagari">कर्पाशाग्नि</span> for metrical reasons <span class="devanagari">कर्पाशि च साधयेत्</span>', Vide Gupta Inscriptions No. 42 p. 200, inscription of <span class="devanagari">आदित्यसेन</span> of <span class="devanagari">मगध</span>, which states that his Kumāragupta plunged himself in the slow-burning fire of dried cowdung cakes as if in water at Prayāga. <span class="devanagari">शीर्षसत्वव्रतधरी यः प्रयागमृतौ घने । अग्निमक्षीय कर्पाशाग्नौ मग्न स सुपपुजितः ॥</span> p 203 (of the text). <span class="devanagari">घने</span> means <span class="devanagari">घने सस्थापि</span>. The learned editor was probably unaware of the provisions about suicide at Prayāga by being burnt with dry cowdung cakes in the Matsya and other purāṇaṣ <a href="#fnref-chapter-xii-the-ganges-53" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-54" class="footnote-item">The Ain-i-Akbarī (tr. by Gladwin and published in 1800) speaks of the following as the meritorious kinds of suicide (vol I. p. 531 and p. 802 of the Popular edition, edited by J. Mukhopadhyaya). These are five in number viz. (1) starving; (2) covering himself with cowdung and setting it on fire and consuming himself therein, (3) burying himself in snow; (4) to plunge into water at the <em>Gaṅgāsāgara-saṅgama</em>, enumerate one's sins and pray till alligators come and devour the man, (5) cut his throat at Allahabad at the confluence of the Ganges and the Jamnā. <a href="#fnref-chapter-xii-the-ganges-54" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-55" class="footnote-item"><span class="devanagari">न वेदवचनात् न लोकवचनादपि । मतिसंकल्पाद्यत्रा प्रयागमरणं प्रति ॥ वनपर्व</span> 85.83, <span class="devanagari">नारदीय</span> (<span class="devanagari">उत्तर</span>) 63 129, <span class="devanagari">पद्म</span> (<span class="devanagari">आदि</span> 39.76 reads <span class="devanagari">न देव</span>), <span class="devanagari">अग्नि</span> 111 8 (reads <span class="devanagari">मतिसंकल्पाद्यत्नात् प्रयागे मरणं प्रति</span>) <span class="devanagari">मत्स्य</span>. 106.22 reads <span class="devanagari">न देघवचना</span> .. <span class="devanagari">पद्म</span>, <span class="devanagari">आदि</span> 43.22 reads <span class="devanagari">प्रयागमरणं प्रति</span>. The <span class="devanagari">कूर्मपुराण</span> I. 37.14 is <span class="devanagari">न मातृवचनाच्चात न</span>...<span class="devanagari">दपि । मति प्रयागमरण प्रति</span> ", <span class="devanagari">पद्म</span>, <span class="devanagari">आदि लोकवचनात् पित्रोश्च चैव गुरुवाद्गत । मतिर्न क्रमणीया स्याद्विघ्नोऽस्ति</span> entirely changes the meaning and avers that if one has a desire to go to Kāśī, one should not heed the words of one's parents or elders or of the people (dissuading him from going). <a href="#fnref-chapter-xii-the-ganges-55" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-56" class="footnote-item"><span class="devanagari">असुर्या नाम ते लोका अन्धेन तमसावृता । तांस्ते प्रेत्याभिगच्छन्ति ये के चात्महनो जनाः॥ वाज सं</span> 40.3, The <span class="devanagari">ईशावास्योप</span> reads <span class="devanagari">असूर्या</span> (sunless). Vide for the sutra of <span class="devanagari">वसिष्ठ</span> quoted below. <span class="devanagari">यो वा इमं शष्म जीवनं स हैषैद</span>- <span class="devanagari">ह न पुरायुष्यं स्वकामी प्रेवादलोक्यं हैत उ वा लोका । शतपथब्रा</span>. X 2 '6. 7 g by <span class="devanagari">मेधातिथि</span> on <span class="devanagari">मनु</span> V 88 (<span class="devanagari">आत्मनस्त्वाजिनां नाहं</span> ) and VI. 32. The printed text of <span class="devanagari">मेधातिथि</span> and <span class="devanagari">कुल्लुक</span> reads <span class="devanagari">स्व</span>'<span class="devanagari">कामी</span> (desiring heaven). 1375 a. <span class="devanagari">य आत्मत्याग्यभिशस्तो भवति सपिण्डाणां प्रेतकर्मच्छेदः । काञ्चनलोह</span>- <span class="devanagari">प्राषम प्राणान्नविवर्ज्जुमिर्य आत्मनानवसादाद्गयति स आत्मदा भवति॥ वसिष्ठ</span> 23, 14–15 <a href="#fnref-chapter-xii-the-ganges-56" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-57" class="footnote-item">Vide the references given under No. 2 and 3 of the five classes of excusable or permitted suicides on p. 604 above. The Mahābhārata has a parva called Mahāprāsthānika in which it is narrated (chap. 1. 24) that Yudhiṣṭhira with his four brothers, queen Draupadī and a faithful dog started on the Great Journey towards the Himālaya and that they fell down dead one after another, Draupadī being the first and Bhima the last. <a href="#fnref-chapter-xii-the-ganges-57" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-58" class="footnote-item"><span class="devanagari">या गतिर्गयुक्तरस्य संयस्तस्य मनीषिणः । सा गतिस्त्यजतः प्राणान् गङ्गायामुनसंगमे ॥ अकामो वा सकामौ वा गङ्गायां यो विप्पद्यते । स न पश्यति ॥ कूर्म</span>. I. 37 16, 39. The first verse is read in <span class="devanagari">गङ्गायां च मृतो मर्त्यः स्वर्ग मोक्षं सम्पद्यते । कूर्म</span>. I. 37 16, 39. The first verse is read in <span class="devanagari">पद्य</span>, <span class="devanagari">सुहितण्ड</span> 60,56 as <span class="devanagari">या गतिः सन्न्यस्तस्य मनीषिणः । सा गङ्गायां हु शारीरिणः नारद</span> (<span class="devanagari">उत्तर</span>) 43 97 is the same as <span class="devanagari">पद्म</span>. <a href="#fnref-chapter-xii-the-ganges-58" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-59" class="footnote-item"><span class="devanagari">ज्ञानतोऽज्ञानतो वापि कामतोऽकामतोऽपि वा । गङ्गायां च मृतो मर्त्यः स्वर्ग मोक्षं च विन्दति ॥ पद्म</span>, <span class="devanagari">सृष्टि</span> 60 65 q by <span class="devanagari">त्रिखली०</span> p. 47. <span class="devanagari">यथा कथञ्चिद्योगि</span>-<span class="devanagari">मर्त्य करोति यः । लम्यात्वाद्वतोपो न प्रागुयादीप्सी सिकांणि ॥ स्कन्द</span>, <span class="devanagari">काशी०</span> 22.76. The <span class="devanagari">कल्पना तीर्थ</span> p. 258 quotes from <span class="devanagari">वायुपुराण</span> ‘<span class="devanagari">यो बाहितास्त्रियरो वीराख्यान</span> (<span class="devanagari">नवानं</span>?) <span class="devanagari">गतोपि वा । सम्बधायाय मनः पूर्व मन्त्रदृश्यारचेच्छन्नैः ॥ तमनै स्कन्दसं सुधामहोदधिरखर्व सर्व साताः हिमभगीतपैरे । त्व बातिपातिसगरो यस्त्वं महिमाचीसृप पातयन् मासू ॥</span> The mantra as printed makes no sense. The editor should have separated the words properly even if the mss were unsatisfactory It appears to be Rg. II. 1. 6 (= Tai. S. I. 3 14. 1) <span class="devanagari">त्वन्नद्वे अडुरो नहो दिवस्वं शार्थी मारुतं पृष्ठ ईड़िषे । त्वं बातैरुपेण्योसि शेरादल्ये वृशा विक्षतः पासि दु स्तना ॥</span> <a href="#fnref-chapter-xii-the-ganges-59" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-60" class="footnote-item"><span class="devanagari">उत्तमं सर्वतीर्थानां यस्यप्येजेदात्मनस्तनुम्‌। पृथूदके जपयतेव श्चो मरणं सपेतेत्‌॥ गीते सनत्कुमारोप्यासेन च महात्मना ॥ वनपर्व</span> 83 146, 147 q. by <span class="devanagari">संर्षकस्तूप</span> p. 180 (reads <span class="devanagari">शृतं मे सर्व०</span>). <a href="#fnref-chapter-xii-the-ganges-60" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-61" class="footnote-item"><span class="devanagari">तस्मात्सर्बप्रयत्नेन तस्मिन्‌ क्षेत्रे द्विजोत्तमाः। देहत्यागो नरै कार्यः सम्बज्ज्ञमोक्षामिकाङ्‌क्षिभिः॥ ब्रह्मपुराण</span> 177, 25. vide also <span class="devanagari">ब्रह्मपुराण</span> 68. 72 and 177 16-17. <a href="#fnref-chapter-xii-the-ganges-61" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-62" class="footnote-item"><span class="devanagari">श्रीशैलं सुत्यजेद् देहं ब्राह्मणो दुगंतिवर्जितः। मुच्यते मात्र सन्देहो ह्यविमुक्ते यथा शुभम्‌॥ लिङ्ग</span> (<span class="devanagari">पूर्वार्ध</span> 92 168-169). <a href="#fnref-chapter-xii-the-ganges-62" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-63" class="footnote-item"><span class="devanagari">अग्निप्रवेशों वा कुर्वन्स कुर्वीतात्मनार्य। अनिवर्त्तिका गतिस्तस्य यथा मे शङ्‌करोऽब्रवीत्‌। पाद्म</span>. <span class="devanagari">आदि</span>. 16 14-15 <a href="#fnref-chapter-xii-the-ganges-63" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-64" class="footnote-item">Vide a learned paper on 'suicide at Prayāga' by Prof K. C. Chattopadhyaya in Journal of the U. P. Historical Society, Vol, X, pp. 68 ff. <a href="#fnref-chapter-xii-the-ganges-64" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-65" class="footnote-item"><span class="devanagari">शुद्राश्च क्षत्रिया वैश्या अन्त्यजाश्च तथायथाः। एते त्यजेयुः प्राणान्ने वर्जयित्वा द्विजं नृप । पतिता ब्राह्मणस्तत्र ब्रह्महा ब्रह्महा भवेत् ।</span> q. by <span class="devanagari">त्रिखली०</span> p. 52, which remarks that these verses are not found in any authoritative source and they involve a contradiction, in as much as <span class="devanagari">क्षत्रिय</span> and <span class="devanagari">वैश्य</span> are allowed to kill themselves though they are dvijaṣ This is q. also by <span class="devanagari">भडोजि</span> in <span class="devanagari">त्रि से० सा०</span> p 33 <a href="#fnref-chapter-xii-the-ganges-65" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-66" class="footnote-item"><span class="devanagari">तथा च हेमाद्रिवादिवपुराणवाक्यानि ब्राह्मणस्यापि मरणाविधायकानि । बृद्धः शौचरत्नकृत</span> - <span class="devanagari">इत्याद्युपक्रम्य गच्छेन्महापथं वापि तुपारगिरिनिम्नगा</span>- <span class="devanagari">देहत्यागं करोति वा॥ स्वय देहविनाशस्य काले प्राप्तं महामतिः । उत्तमान्मामुगर्छालकास</span> - <span class="devanagari">पापी भवेत्कचिन् ॥ एतेषामधिकारस्तु सर्वेषां सर्वजन्तुषु । नराणाम् नारीणां सर्वबंधु सर्वदा</span>” <span class="devanagari">त्रिखली०</span> p 53 <a href="#fnref-chapter-xii-the-ganges-66" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-67" class="footnote-item"><span class="devanagari">तस्मादात्ममुदेरात्मबुद्धेच सर्वस्याधिकार । कि ह वृद्धौ पितरौ तरुणी भार्या पोषयमच न विहाय नाधिकारः । एव स्त्रिया अपि गर्भिण्या बालापत्याया भर्त्रादनुज्ञाताया वा नाधिकार इत्यादि ज्ञेयम् । त्रिखली०</span> p. 55 <a href="#fnref-chapter-xii-the-ganges-67" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-68" class="footnote-item"><span class="devanagari">काइयादिमरणानुकृतिरत प्रयोजकत्वे पञ्चमी । तज्जन्यादात्मज्ञानादेत्र मोक्षोत्</span>- <span class="devanagari">पत्ति । ज्ञानेन विना मिथ्याज्ञानानिष्टेरसमभवात् ।</span> '<span class="devanagari">अत्र हि जन्तो० स्वदृष्टारकं ब्रह्म पथावदे</span>' <span class="devanagari">इयश्रुतेश्च । यदु कार्ये देशाासने रूढोपदेशेतरस्तु ज्ञानापेक्षा न तु सर्वत्र । प्रधममन्त्रादौ विसेममासाक्षात्कारमृगयगात् ।</span> ' <span class="devanagari">तद्वसतु विना ज्ञानं मिथ्याज्ञाननिवृत्तेरसमभवात् । तीर्घेम</span>. ( Continued on the next page ) <a href="#fnref-chapter-xii-the-ganges-68" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-69" class="footnote-item">( Continued from last page ). p. 313; the passage of the <span class="devanagari">जाबालोपनिषद्</span> is: <span class="devanagari">अविमुक्तं वै कुरुक्षेत्रं देवानां देवयजनं सर्वषां भूतानां ब्रह्मसदनम्। तस्माद्यत्र क्वचन गच्छति तदेव मन्येत सद्ब्रह्मविद्भवन्। इदं वै कुरुक्षेत्रं देवानां</span>...<span class="devanagari">सदनम्। अत्र हि जन्तोः प्राणेषूत्क्रममाणेषु रुद्रस्तारको ब्रह्म व्यापष्टे येना अमृतत्वमीश्वरते सोऽप्यविमुक्त इति।</span> In the Bhan Daji collection of mss at the Bombay Asiatic Society there is a mṣ called <span class="devanagari">अविमुक्तनिसार</span> (cat. No 1047) which contains 15 verses and comments thereon intended to explain the purport of the jābalopanışad passage quoted and also some other passages from the same In this work <span class="devanagari">कुरुक्षेत्र</span> occurring in <span class="devanagari">जाबालोपनिषद्</span> is explained as '<span class="devanagari">कुरुक्षेत्रं पुण्यवतीति कुरु पापं तत्स्यं क्षेपणात् इति कुरुक्षेत्रं पापनाशणनित्यर्यै</span>.' and <span class="devanagari">देवयजनं</span> as <span class="devanagari">ब्रह्मरो</span>- <span class="devanagari">पास्तृत्वात्</span> <a href="#fnref-chapter-xii-the-ganges-69" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-70" class="footnote-item"><span class="devanagari">काम्यमरणम्। अत्र</span> '<span class="devanagari">ह सर्ववर्णानामधिकारः।</span>' <span class="devanagari">गदावा</span>. p 305 anḍ It is a most remarkable thing that the treatment of <span class="devanagari">मरणमरण</span> is word for word the same, except that the <span class="devanagari">तीर्थचि</span>. quotes the verses <span class="devanagari">न वेदवचना०</span> from the <span class="devanagari">पद्मपुराण</span> while the <span class="devanagari">गङ्गावा</span> quotes them from the <span class="devanagari">मत्स्य</span>. It appears probable that the <span class="devanagari">तीर्थचि०</span> borrows from the <span class="devanagari">गङ्गावा</span>. since it appears to have been a younger contemporary of Vidyāpati who helped <span class="devanagari">विश्वासदेवी</span> in composing <span class="devanagari">गङ्गावा</span>. Both were closely connected with the queens of the <span class="devanagari">कामेश्वर</span> dynasty of Mithilā and it is difficult to assert with confidence who borrows from whoṃ In New I A. vol VII. at p. 53 Prof, G. C Basu while describing a newly found ms of a work called <span class="devanagari">व्याधिभक्तिरत्नादीणी</span> ascribed in the colophon to <span class="devanagari">विद्यापति</span> states that that work mentions the <span class="devanagari">देवतानणर्य</span> of <span class="devanagari">वाचस्पति</span>. So it is not unlikely that <span class="devanagari">विद्यापति</span> helped <span class="devanagari">विश्वासदेवी</span> by taking a part from the <span class="devanagari">तीर्थचिन्तामणि</span> of <span class="devanagari">वाचस्पति</span> Vide H. of Dh. vol. I pp. 739-740, Journal of Dept. of Letters, Calcutta University, vol, XVI, New I. A. vol. VII pp. 49 ff, I. H. Q vol. XX (1944) pp. 211 ff for the date and works of <span class="devanagari">विद्यापति</span> and H. of Dh vol. I. pp. 404-405 for the date of <span class="devanagari">वाचस्पति</span> <a href="#fnref-chapter-xii-the-ganges-70" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-71" class="footnote-item"><span class="devanagari">बुद्धः शौचस्थेदूर्ध्वम् प्रत्यस्यात्त्याभिप्रक्रिक्रियः । आत्मानं घातयेद्यस्तु ब्रह्मग्रन्थन ज्ञानादिभिः। तस्य विरात्रमाशौचं द्वितीये तत्स्प्रस्रव्ययम्। तृतीये वृदक दयेत्॥ अत्रि</span> 218-219 q by <span class="devanagari">मेघा०</span> on <span class="devanagari">मनु</span> V.89 <span class="devanagari">कल्प०</span> (on <span class="devanagari">आशौच</span> p. 87) quotes these slightly differently and remarks <span class="devanagari">वेधे तु देहव्यापने युद्धः</span>.. <span class="devanagari">माशोच कर्तव्योचा वोदक क्रिया इति वचनाद्रस्यतेनोदकदिप्रक्रिया</span>. <a href="#fnref-chapter-xii-the-ganges-71" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-72" class="footnote-item">The <span class="devanagari">स्कन्दपुराण</span>, <span class="devanagari">काशी०</span> has the following verses which repeat what the Matsya (182 22-25) says viz. Śiva whispers into the right ear of a man dying at Kāśī the knowledge of brahma that will save his soul <span class="devanagari">ब्रह्मज्ञानेन मुच्यन्ते नान्यथा जन्तव</span>. <span class="devanagari">क्वचित् । ब्रह्मज्ञानमये क्षेत्रे प्रयागे वा तनुत्यजः। काशीसंस्थितिभाविनाम। दिशामि तारकं प्रान्ते मुच्यन्ते ते तु ससृष्णा ।।</span> chap. 32, verses 115-116. <span class="devanagari">साक्षात्सोक्षो न चतासु पुरीषु प्रियभाविणि । स्कन्द</span>, <span class="devanagari">काशी०</span> 83 ( <span class="devanagari">अतारस्य</span> tells a ) verses are <span class="devanagari">अन्तकाले मनुष्याणां द्विययेषु नर्मांनु। वायुना क्रियते। अविमुक्ते हन्तकाले भक्तानानीश्वरः स्वयम्। कर्णयोः प्रैयं ब्रजति। मणिकर्ण्यां स्वजनदेहं गतिलिदा व्रजेत्। ईश्वरर्योतो याति । इष्यमानमृकसालानि</span>. <span class="devanagari">।।</span> 182 22-25 The words <span class="devanagari">अन्तकाले</span> .. <span class="devanagari">जायते</span> refer to the general rule The verses <span class="devanagari">अविमुक्ते</span> state the special case of death in Avimukta The <span class="devanagari">त्रिस्थली०</span> p. 297 quotes these verses and reads <span class="devanagari">अविमुक्ते हन्तकाले</span> <a href="#fnref-chapter-xii-the-ganges-72" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-73" class="footnote-item">Vide I A. vol II, p 322 'Jain Inscriptions at Sravana Belgola', where some verses are quoted from the Ratnalaraṇḍa of which the following one may be noteḍ <span class="devanagari">उपसग्गे दुग्गिहे जरामि रुजारा य निम्फत्ती । धम्मिय तवस्सिणो जनमाह सल्लेहणमायरणं ॥</span> . <a href="#fnref-chapter-xii-the-ganges-73" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-74" class="footnote-item"><span class="devanagari">यथा पुष्करपलाशे आपो न श्लिष्यन्त एवमेवंविविदि पापं कर्म न श्लिष्यत इति । छा उप</span> IV, 14 3. <span class="devanagari">भिद्यते हृदयग्रन्थिश्छिद्यन्ते सर्वसंशया । क्षीयन्ते चास्य कर्माणि तस्मिन् दृष्टे परावरे ॥ मुण्डकोपनिषद्</span> II 2 8 <span class="devanagari">यथैधांसि समिद्धोग्निर्भस्मसात्कुरुतेऽर्जुन । ज्ञानाग्निः सर्वकर्माणि भस्मसात्कुरुते तथा ॥ भगवद्गीता ॥</span> IV 37 <a href="#fnref-chapter-xii-the-ganges-74" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-75" class="footnote-item"><span class="devanagari">अग्निप्रवेशं ये कुर्वतेऽविमुक्ते विधानतः । प्रविशन्ति सुखं ते वे नि सन्दिग्धं वरानने ॥ कुर्वन्त्यनशनं ये तु भद्रात्मा कृतनिश्चया । न तेषां पुनरावृत्तिः कल्पकोटिशतैरपि ॥ मत्स्य</span> 183 77-78 q by <span class="devanagari">कल्पतरु</span> on <span class="devanagari">तीर्थ</span> p 21 <a href="#fnref-chapter-xii-the-ganges-75" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-76" class="footnote-item">'<span class="devanagari">ज्ञानादेव हि कैवल्यम्</span>' <span class="devanagari">इत्यादि श्रुतिस्मृतिभ्यो ज्ञानाभवे मोक्षाभावाद्विश्वेव</span>- <span class="devanagari">रात्तत्तत्प्रसादेनैव मुक्तिस्तत्त्वज्ञानेन । प्रकृतौ काशिखण्डे । ब्रह्मानेन मुख्ते नाप्यथा जन्तवः क्वचित् । ब्रह्मज्ञाने तदेहाहं काशिसंस्थितिमित्यादि । दिशामि तारकं ब्रह्म इ तल्लक्षणात् । त्रिशूरदो</span> p 292 which quotes <span class="devanagari">काशीखण्ड</span> 32 115-116 Similar statements occur in <span class="devanagari">काशीखण्ड</span> 21. 98 <span class="devanagari">विप्राणां च जन्तूनां च विश्वेश्वरः स्वयम् । कर्ण जपं प्रकुरुते कर्मनिर्मूलनक्षमम् ॥</span> and <span class="devanagari">काशीखण्ड</span> 61 117-118, 64 98. The <span class="devanagari">ब्रह्मपुराण</span> (<span class="devanagari">प्रेतखण्ड</span> 6 60-61) says '<span class="devanagari">तीर्थराजस्तातः काशी महादेवो दयानिधिः । सूतानां यत्र जन्तूना कर्ण जपति तारकम् ॥</span>'. <a href="#fnref-chapter-xii-the-ganges-76" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-77" class="footnote-item"><span class="devanagari">साक्षान्मोंक्षो न चैतासु पुरीषु नित्यं भवरपिणः । स्कन्द</span>, <span class="devanagari">काशी</span> 8 2 (<span class="devanagari">अगस्त्य</span> to <span class="devanagari">लोपामुद्रा</span>) <span class="devanagari">तारक प्रवण तारकपीति तार स्वार्थं कमभ्रस्रय । संसारसागरादुद्धारके तारकं च मदु यद्धे इति तारके बद्य उच्यते । काशीभूमिमोक्षविचार</span> p 3 <a href="#fnref-chapter-xii-the-ganges-77" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-78" class="footnote-item"><span class="devanagari">रामतापनोये तु श्रीराममन्त्रश्च एव तारकशब्दार्थ उक्तं ।</span> '<span class="devanagari">सुमूर्धोदक्षिणे कर्णे यस्य कस्यापि वा स्वयम् । उपदेशयति मन्मन्त्रं स मुक्तो भविता शिव</span> || <span class="devanagari">पदे तु श्रीरामपूर्वंकुक्षिराद्युचो रामशब्द एव तारकप्रोक्ता ।</span> '<span class="devanagari">सुमूर्धोर्मणिर्यैष्कर्णयोरर्धोर्धकुनिर्मनशिनः । अहां दिशामि ते मन्त्रं तारकं ब्रह्मवाच्यम्</span>' <span class="devanagari">श्रीरामरामेति एतच्चारकसमुच्यते ।। विस्श्ली०</span> p. 291, <a href="#fnref-chapter-xii-the-ganges-78" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-79" class="footnote-item"><span class="devanagari">वटमूले समाश्रित्य यस्तु प्राणान् परित्यजेत्। स्वर्गलोकानतिक्रम्य रुद्रलोकं स गच्छति । कृर्म</span>. I. 37.8-9 q. by <span class="devanagari">तीर्थ०</span> p. 48. The same is <span class="devanagari">पद्म</span>, <span class="devanagari">आदिखण्ड</span> 43,11 (reads <span class="devanagari">सर्वलोकान्</span>). <a href="#fnref-chapter-xii-the-ganges-79" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-80" class="footnote-item"><span class="devanagari">उद्यशशिह्ये दुणे विहुले हंसपाण्डुरे</span> ! <span class="devanagari">परित्यजति यः प्राणांस्तु रुधं तस्यापि यत्फलम् ॥ पविसंपद्सहस्राणि पद्मिषंवशतानि च । सेव्यते पितृभिः सार्धं स्वर्गलोके नराधिप ॥ उर्वशी ह्य सदा पर्येवस्गलोके नरोत्तम । पूज्यते सततं पुत्र कपिपद्मवकिनीरे ॥ तत स्वर्गत्म्प्पुवृत । उर्वशीसदृशानों तु कन्यानां लभते शतम् ॥ नखिपे नारीसहस्राणों बहुनां च पतिर्भवेत् । ददाग्रामसहस्राणो भोक्ता भवति भूरिपः ॥ काश्मीपुरशब्देन ह्यतोसि प्रदिष्ट्वते । सुकृत्त्वा तु विपुलाभोगसत्तचीर्भ लभते पुनः ॥ शुक्लाम्म्बरो नित्यं नियतं संप्र</span>- <span class="devanagari">न्द्रिय । एनं कालं तु मृज्ञानो मास भूमिपतिभवेत् ॥ सुवर्णालंड्कृतनां तु नारीणां लभते शतम् । पृथिव्यामासमुद्राणां महाभूमिनपतिर्भवेत् ॥ धनधान्यसमायुक्तो द्रात्ता भवति नित्यश</span>: <span class="devanagari">। सुकृत्त्वा तु विपुलाभोगसत्तचीर्भ लभते पुनः ॥ मत्स्य</span>. 106 34–42 = <span class="devanagari">पद्म</span>, <span class="devanagari">आदिष्ख</span> 43.34–42 with some variations The first two verses are <span class="devanagari">कृर्म</span> I.37, 26-27 and all occur <span class="devanagari">नारदीव</span> (<span class="devanagari">उ</span>) 63, 140-149. <a href="#fnref-chapter-xii-the-ganges-80" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-81" class="footnote-item">It may be noted that the rewards promised for suicide at Urvaśīpulina are sex pleasures and secular benefits like becoming a king or governor. Even suicide at the Saṅgama is promised similar pleasures of thy power and riches in Matsya 105. 1-12. <a href="#fnref-chapter-xii-the-ganges-81" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-82" class="footnote-item">In <span class="devanagari">मत्स्य</span>. 108 29 we read <span class="devanagari">तीर्थे निश्वने नाम यत्र देवाः सवासवाः</span> which appears to be a misreading <span class="devanagari">दक्षिणे धर्मराजस्य तीर्थं स्वनरकं स्मृतम् । कृर्म</span> I.39.5. ; the <span class="devanagari">आदि</span> 111 14 mentions a <span class="devanagari">तीर्थे</span> called <span class="devanagari">ज्ञानरक</span> (or <span class="devanagari">श्वासनरक</span> acc. to some msṣ ) but that seems to be a misreading of <span class="devanagari">स्वनरकं</span> (<span class="devanagari">सु</span> + <span class="devanagari">अनरकं</span>). <span class="devanagari">मत्स्य</span>. 108, 27 <span class="devanagari">तीर्थे तु अनरकं स्वनरकं</span> seems to be a misreading for <span class="devanagari">स्वनरकं</span>. Several tīrthas called <span class="devanagari">अनरक</span> are knowṇ Vide <span class="devanagari">पद्म</span>, <span class="devanagari">आदि</span> 27.56 and list. <a href="#fnref-chapter-xii-the-ganges-82" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-83" class="footnote-item"><span class="devanagari">देशात्पि यदि बारण्ये विदेशेश्योथवा गृहे । प्रयागं स्मरणागोपि यस्तु प्राणात्न् परिपजेत् ॥ ब्रह्मलोक मवामोति वदन्ति कपिपुङ्ड्मा</span>. <span class="devanagari">। सर्वकामफला वृक्षो मही यत्र हिरण्यमयी । लोके स गच्छति ॥ धीस्सरिद्धावे रम्ये मन्दाकिन्यास्तटे शुभे । मोदते कर्मणा</span>. <span class="devanagari">। तत्</span>. <span class="devanagari">स्वर्गारिश्रयो जम्रूद्धीपतिर्भवेत् । मत्स्य</span>. 105. 8-11 q. by <span class="devanagari">गङ्गावा</span> p. 310; verses from <span class="devanagari">क्षीस्सरिद्धा</span>° are quoted from <span class="devanagari">कृर्म</span> by <span class="devanagari">त्रिश्चली</span>° p. 25. . <a href="#fnref-chapter-xii-the-ganges-83" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-84" class="footnote-item"><span class="devanagari">अर्व्यमावाहनं चैव द्विजाङ्गुष्ठनिवेशनम्। तृप्तिप्रश्न च विकिरं तीर्थश्रद्धे विवर्जेयेत् ॥</span> q by <span class="devanagari">वि से सा स</span> p 18, <span class="devanagari">देवास पितरो यस्माद्धार्था सर्वदा स्थिताः। आवाहनं निषेध। कासीखण्ड</span> 28.9. <span class="devanagari">तीर्थे श्राद्धं प्रकुर्वीत फलजैन विशेषत</span>: <span class="devanagari">। आवाहनं हिरण्येन कन्दमूलफलैरेपि ॥ सुसन्तु</span> q <span class="devanagari">प वि से सा स</span> p. 20 <a href="#fnref-chapter-xii-the-ganges-84" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-85" class="footnote-item"><span class="devanagari">सक्तुभि पिण्डदान तु सम्यावै</span>: <span class="devanagari">पागसेन च। कर्तव्यम्यसमिदैर पण्याकेन सुरेन च। श्रद्ध तु कर्तव्यम्यसर्म्यावाहनवजितम् । श्रद्धाशभ्रभकालानां नैव ह्यस्ति च यत् । श्राद्धं त्तीर्थिकं प्रोक्त पितृणा श्रीतविकारकाम् । कालेष्वप्याचवाकाले तीर्थ श्राद्ध तथा नरे । मार्गेरक्ष्माधवे। पिण्डदान च तच्छदन्त पितृणामतिवल्लभम् । विल्मो नैव कलयो। पण्डाग्रण</span> V 29 212-218, q by <span class="devanagari">पृथ्वीचन्द्रोदय</span> folio 135b and 136a. The same verses are quoted from <span class="devanagari">देवीपुराण</span> by <span class="devanagari">कल्प</span> on <span class="devanagari">तीर्थ</span> p. 10 <span class="devanagari">तीर्थादि</span>. pp 10-11, <span class="devanagari">ग्रहला</span>: p 129. Vide <span class="devanagari">स्कन्द</span>, <span class="devanagari">कासीखण्ड</span> 6 58-60 for some of the verses and <span class="devanagari">नारदीय</span> (<span class="devanagari">उत्तर</span>) 62. 41-42 for last two verses <a href="#fnref-chapter-xii-the-ganges-85" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-86" class="footnote-item"><span class="devanagari">दशर्वीधसहस्राणि पष्ठिीच्यस्तथापरा । समागच्छन्ति माघ्या तु प्रयागे भरतर्षभ ।। अनुशासन</span> 25 36-37. <span class="devanagari">षष्टिीधसहस्राणि षष्ठिीर्थशततानि च । माघ्या माघुनसङ्गमे ॥ कूर्मे</span> I 38 1; <span class="devanagari">मत्स्य</span> 107.7 is very nearly the same <a href="#fnref-chapter-xii-the-ganges-86" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xii-the-ganges-87" class="footnote-item"><span class="devanagari">नरा कोडिमदावाद्यन्त् यूई स्नानस्य तत्फलम् । प्रयागे माघमासे तु एवमाहर्मनी</span>- <span class="devanagari">विण</span>. <span class="devanagari">॥ आमि</span> 111 10-11, <span class="devanagari">यद्वा शतसहस्रप्य सम्यक्स्यलस्थ यत्फलम् । प्रयागे माघमासे तु ख्यई स्नानस्य तत्फलम् ॥ पद्म</span>, <span class="devanagari">आदि</span> 44. 8, <span class="devanagari">कूर्मे</span> I. 38 2 <a href="#fnref-chapter-xii-the-ganges-87" class="fn-back" aria-label="Back to text">↩</a></li>
+</ol>
+</aside>
+
+            <div class="chapter-nav">
+                <a href="chapter-xi-tīrthayātrā-pilgrimages-to-holy-places.html" class="nav-prev"><i class="fa-solid fa-chevron-left"></i> Chapter XI. Tīrthayātrā (pilgrimages to holy places)</a>
+                <a href="chapter-xiii-kāshī.html" class="nav-next">Chapter XIII. Kāshī <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </main>
+    </div>
+
+    <button class="toc-mobile-toggle" onclick="toggleMobileToc()" aria-label="Table of contents">
+        <i class="fa-solid fa-list"></i>
+    </button>
+
+    
+    <footer class="container-fluid pt-4" style="background-color:#2e4144">
+        <div class="row border-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img src="https://sanatana.in/mbta/public/images/Homepage_html/images/layer_8.png" alt="">
+            </div>
+            <div class="col-md-5 text-white">
+                <p>The divine knowledge and wisdom of our shastras is the only thing eternal,
+                   which was and which will remain ever-present in this gods creation.
+                   Our endeavours are to preserve this knowledge.</p>
+            </div>
+            <div class="col-md-1 text-white">
+                <div class="d-flex" style="height: 75px;">
+                    <div class="vr"></div>
+                </div>
+            </div>
+            <div class="col-md-3 text-white">
+                <i class="fa-solid fa-globe"></i>&emsp;
+                <a href="https://sanatanasampatti.in" class="text-light">www.sanatanasampatti.in</a><br>
+                <i class="fa-solid fa-envelope"></i>&emsp;
+                <a href="" class="text-light">sriranga.yoga@gmail.com</a>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center py-3 mb-4 align-items-center border-bottom">
+            <div class="col-md-2 text-white fs-4 text-center">Project</div>
+            <div class="col-md-2 text-white fs-4 text-center">Our Mission</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contribute</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contact Us</div>
+        </div>
+        <div class="row">
+            <p class="col-md-6 fs-6 text-start text-light">
+                <small>&copy; 2026 Sanatanasampatti</small>
+            </p>
+            <p class="col-md-6 fs-6 text-end text-light">
+                <a class="text-white" rel="nofollow" href="http://www.srirangadigital.com" target="_blank">
+                    <img src="https://sanatana.in/mbta/public/images/logo.png" alt="sriranga logo" />
+                    <small>Designed, Developed and Maintained by Sriranga Digital</small>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        const headings = [];
+        tocLinks.forEach(link => {
+            const id = link.getAttribute('href').substring(1);
+            const el = document.getElementById(id);
+            if (el) headings.push({ el: el, link: link.parentElement });
+        });
+
+        function onScroll() {
+            let current = null;
+            for (const h of headings) {
+                const rect = h.el.getBoundingClientRect();
+                if (rect.top <= 120) current = h;
+            }
+            tocLinks.forEach(l => l.parentElement.classList.remove('active'));
+            if (current) current.link.classList.add('active');
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    });
+
+    function toggleMobileToc() {
+        const toc = document.getElementById('toc');
+        if (!toc) return;
+        if (toc.style.display === 'block') {
+            toc.style.display = '';
+            toc.style.position = '';
+        } else {
+            toc.style.display = 'block';
+            toc.style.position = 'fixed';
+            toc.style.top = '0';
+            toc.style.left = '0';
+            toc.style.width = '80vw';
+            toc.style.maxWidth = '320px';
+            toc.style.height = '100vh';
+            toc.style.maxHeight = '100vh';
+            toc.style.zIndex = '2000';
+            toc.style.background = 'var(--parchment)';
+            toc.style.boxShadow = '4px 0 20px rgba(0,0,0,0.2)';
+            toc.style.padding = '24px';
+            toc.style.overflowY = 'auto';
+        }
+    }
+    </script>
+
+    <script>
+    function toggleSynopsisAudio(btn) {
+        var audio = btn.parentElement.querySelector('audio');
+        if (!audio.src) audio.src = btn.getAttribute('data-src');
+        if (audio.paused) {
+            audio.play();
+            btn.classList.add('playing');
+            btn.querySelector('i').className = 'fa-solid fa-pause';
+        } else {
+            audio.pause();
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        }
+        audio.onended = function() {
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        };
+        // Prevent click from toggling the synopsis open/close
+        event.stopPropagation();
+    }
+    </script>
+</body>
+</html>

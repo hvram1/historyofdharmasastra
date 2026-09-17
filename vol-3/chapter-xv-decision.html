@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- MDB UI Kit -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/fonts.css?v=1.2">
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/navbar.css?v=2.4">
+
+    <title>Chapter XV. Decision — Volume III — History of Dharmaśāstra</title>
+    <style>
+    :root {
+        --saffron:        #D4600A;
+        --saffron-light:  #F0924A;
+        --saffron-wash:   rgba(212, 96, 10, 0.07);
+        --indigo:         #2E5FA3;
+        --indigo-dark:    #1C3D70;
+        --maroon:         #7A1E1E;
+        --amber:          #C97A1A;
+        --ink:            #1A1209;
+        --ink-secondary:  #4A3B2A;
+        --parchment:      #FDFAF4;
+        --parchment-mid:  #F5EFE2;
+        --rule:           rgba(180, 130, 60, 0.22);
+        --shadow:         0 2px 18px rgba(90, 50, 10, 0.08);
+        --font-devanagari: 'Tiro Devanagari Sanskrit', 'Siddhanta', 'Noto Sans Devanagari', serif;
+        --font-roman:      'Junicode', Georgia, serif;
+    }
+
+    body {
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: var(--font-roman);
+    }
+
+    .devanagari {
+        font-family: var(--font-devanagari);
+    }
+
+    /* ── Navbar overrides ── */
+    .navbar-ontop { z-index: 1031; }
+    .hdclr { color: var(--saffron); }
+    .engpara { font-family: 'Open Sans', sans-serif; }
+
+    /* ── Layout ── */
+    .dh-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .dh-content {
+        flex: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        background: var(--parchment);
+        box-shadow: var(--shadow);
+        min-height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        .dh-content { padding: 24px 20px; }
+        .dh-wrapper { flex-direction: column; }
+    }
+
+    /* ── TOC Sidebar ── */
+    .toc-sidebar {
+        position: sticky;
+        top: 80px;
+        width: 280px;
+        min-width: 280px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding: 20px 16px;
+        margin-right: 24px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        scrollbar-width: thin;
+    }
+
+    .toc-title {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--saffron-light);
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list li {
+        padding: 4px 0;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-list li.toc-l3 {
+        padding-left: 16px;
+        font-size: 0.78rem;
+    }
+
+    .toc-list li a {
+        color: var(--ink-secondary);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .toc-list li a:hover { color: var(--saffron); }
+
+    .toc-list li.active {
+        border-left-color: var(--saffron);
+    }
+
+    .toc-list li.active a {
+        color: var(--saffron);
+        font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-sidebar { display: none; }
+    }
+
+    /* ── Mobile TOC Toggle ── */
+    .toc-mobile-toggle {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1050;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--saffron);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-mobile-toggle { display: block; }
+    }
+
+    /* ── Section Headings ── */
+    .section-heading {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        margin: 48px 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--rule);
+        letter-spacing: 0.5px;
+        scroll-margin-top: 80px;
+    }
+
+    h2.section-heading { font-size: 1.6rem; }
+
+    h3.section-heading {
+        font-size: 1.25rem;
+        border-left: 4px solid var(--saffron-light);
+        border-bottom: none;
+        padding: 8px 16px;
+        background: var(--saffron-wash);
+        border-radius: 0 5px 5px 0;
+    }
+
+    /* ── Prose ── */
+    .prose {
+        font-family: var(--font-roman);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+        color: var(--ink);
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    .prose em { color: var(--maroon); }
+
+    .prose:target {
+        background: rgba(212, 96, 10, 0.12);
+        border-left: 4px solid var(--saffron);
+        padding-left: 16px;
+        margin-left: -20px;
+        border-radius: 0 6px 6px 0;
+        animation: target-pulse 2s ease-out;
+    }
+
+    @keyframes target-pulse {
+        0%   { background: rgba(212, 96, 10, 0.30); }
+        100% { background: rgba(212, 96, 10, 0.12); }
+    }
+
+    /* ── Footnote References ── */
+    .fn-ref {
+        font-size: 0.75em;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    .fn-ref a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 0 2px;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: color 0.15s;
+    }
+
+    .fn-ref a:hover { color: var(--indigo); }
+
+    /* ── Synopsis Box ── */
+    .synopsis-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron-light);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .synopsis-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .synopsis-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .synopsis-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .synopsis-box.open .synopsis-toggle i {
+        transform: rotate(90deg);
+    }
+    .synopsis-body {
+        display: none;
+        padding: 0 20px 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+    }
+    .synopsis-box.open .synopsis-body { display: block; }
+    .synopsis-body p { margin: 0; }
+    .synopsis-attribution {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: var(--ink-secondary);
+        opacity: 0.7;
+        font-style: italic;
+    }
+    .synopsis-audio {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    .synopsis-play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--saffron);
+        background: none;
+        color: var(--saffron);
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: background 0.2s, color 0.2s;
+        padding: 0;
+    }
+    .synopsis-play-btn:hover {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn.playing {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn i { padding-left: 2px; }
+
+    /* ── Index Terms Panel ── */
+    .index-terms-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .index-terms-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .index-terms-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .index-terms-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .index-terms-box.open .index-terms-toggle i {
+        transform: rotate(90deg);
+    }
+    .index-terms-body {
+        display: none;
+        padding: 0 20px 16px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .index-terms-box.open .index-terms-body { display: block; }
+    .index-terms-dl {
+        margin: 0;
+        padding: 0;
+    }
+    .index-terms-dl dt {
+        font-family: var(--font-roman);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+        margin-top: 8px;
+    }
+    .index-terms-dl dd {
+        margin: 2px 0 0 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        color: var(--ink-secondary);
+        line-height: 1.5;
+    }
+    .nyaya-heading {
+        font-family: var(--font-roman);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        margin: 16px 0 4px;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+    }
+
+    /* ── Inline Index Popovers ── */
+    .idx-term {
+        border-bottom: 1px dotted var(--saffron-light);
+        cursor: help;
+        position: relative;
+    }
+    .idx-term:hover::after {
+        content: attr(data-def);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        background: rgba(44, 36, 22, 0.92);
+        color: #F5ECD8;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        max-width: 280px;
+        z-index: 100;
+        white-space: normal;
+        line-height: 1.4;
+        pointer-events: none;
+    }
+
+    /* ── Structured Version Banner ── */
+    .structured-banner {
+        margin: 0 0 28px;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, rgba(212, 96, 10, 0.06) 0%, rgba(212, 96, 10, 0.02) 100%);
+        border: 1px solid var(--saffron-light);
+        border-radius: 6px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        color: var(--ink-secondary);
+        line-height: 1.6;
+    }
+    .structured-banner i { color: var(--saffron); margin-right: 4px; }
+    .structured-banner a { color: var(--indigo); font-weight: 600; text-decoration: none; }
+    .structured-banner a:hover { text-decoration: underline; }
+
+    /* ── Footnotes Section ── */
+    .footnotes-section {
+        margin: 32px 0 48px;
+        padding: 20px 24px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .footnotes-section hr {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 0 0 16px;
+    }
+
+    .footnotes-list {
+        padding-left: 24px;
+        margin: 0;
+    }
+
+    .footnote-item {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+        scroll-margin-top: 80px;
+    }
+
+    .footnote-item:target {
+        background: rgba(212, 96, 10, 0.1);
+        border-radius: 4px;
+        padding: 4px 6px;
+        margin-left: -6px;
+    }
+
+    .fn-back {
+        color: var(--saffron-light);
+        text-decoration: none;
+        font-size: 0.85em;
+        margin-left: 4px;
+    }
+
+    .fn-back:hover { color: var(--saffron); }
+
+    /* ── Reference Links ── */
+    a.ref {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: all 0.15s;
+    }
+
+    a.ref:hover {
+        color: var(--saffron);
+        border-bottom-style: solid;
+    }
+
+    a.mbta-ext {
+        color: var(--indigo);
+        font-size: 0.7em;
+        margin-left: 2px;
+        opacity: 0.5;
+        text-decoration: none;
+        vertical-align: super;
+    }
+    a.mbta-ext:hover { opacity: 1; color: var(--saffron); }
+
+    /* ── References Panel (sidebar) ── */
+    .refs-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .refs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .refs-list li {
+        padding: 3px 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .ref-source-link {
+        font-weight: 600;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .ref-source-link:hover {
+        text-decoration: underline;
+    }
+
+    .ref-verse-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.76rem;
+    }
+
+    .ref-verse-link:hover {
+        text-decoration: underline;
+        color: var(--saffron);
+    }
+
+    .ref-verses {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Timeline panel ── */
+    .timeline-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .timeline-list li {
+        padding: 2px 0;
+        font-size: 0.76rem;
+        line-height: 1.4;
+        position: relative;
+        padding-left: 14px;
+    }
+
+    .timeline-list li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--saffron);
+    }
+
+    .timeline-list li.tl-approximate::before {
+        background: transparent;
+        border: 2px solid var(--saffron);
+        width: 4px;
+        height: 4px;
+    }
+
+    .timeline-list li.tl-century::before {
+        background: transparent;
+        border: 2px dashed var(--saffron);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+
+    .tl-dot-link {
+        text-decoration: none;
+        color: var(--ink);
+        display: block;
+    }
+
+    .tl-dot-link:hover {
+        color: var(--saffron);
+    }
+
+    .tl-year {
+        font-weight: 600;
+        color: var(--saffron);
+        font-size: 0.72rem;
+        min-width: 70px;
+        display: inline-block;
+    }
+
+    .tl-label {
+        color: var(--ink-secondary);
+        font-size: 0.72rem;
+    }
+
+    .tl-view-link, .tl-more {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.72rem;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .tl-view-link:hover, .tl-more:hover {
+        text-decoration: underline;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+
+    .breadcrumb-bar a {
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+
+    .breadcrumb-bar .sep {
+        color: var(--amber);
+        margin: 0 8px;
+    }
+
+    .breadcrumb-bar .current {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Chapter Navigation ── */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        margin-top: 48px;
+        border-top: 2px solid var(--rule);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .chapter-nav a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        transition: all 0.2s;
+        max-width: 45%;
+    }
+
+    .chapter-nav a:hover {
+        background: var(--saffron-wash);
+        border-color: var(--saffron-light);
+    }
+
+    .nav-prev { text-align: left; }
+    .nav-next { text-align: right; margin-left: auto; }
+
+    .page-range {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+    }
+
+    /* ── Volume Cards (Landing) ── */
+    .vol-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .vol-card {
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        transition: all 0.25s;
+    }
+
+    .vol-card:hover {
+        border-color: var(--saffron-light);
+        box-shadow: 0 4px 24px rgba(212, 96, 10, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .vol-num {
+        font-family: var(--font-roman);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--saffron);
+        margin-bottom: 8px;
+    }
+
+    .vol-subtitle {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        line-height: 1.5;
+        flex: 1;
+    }
+
+    .vol-chapters {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        margin-top: 12px;
+    }
+
+    /* ── Chapter Cards (Volume Index) ── */
+    .chapter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .chapter-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .chapter-card:hover {
+        border-color: var(--saffron-light);
+        background: var(--saffron-wash);
+    }
+
+    .card-num {
+        font-family: var(--font-roman);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--saffron);
+        min-width: 36px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        flex: 1;
+    }
+
+    .card-pages {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        color: var(--ink-secondary);
+    }
+
+    /* ── Landing Hero ── */
+    .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-family: var(--font-roman);
+        font-size: 2.4rem;
+        color: var(--saffron);
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .hero .devanagari-title {
+        font-family: var(--font-devanagari);
+        font-size: 1.8rem;
+        color: var(--ink);
+        margin-bottom: 16px;
+    }
+
+    .hero .author {
+        font-family: var(--font-roman);
+        font-size: 1.1rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .hero .desc {
+        font-family: var(--font-roman);
+        font-size: 1rem;
+        color: var(--ink-secondary);
+        line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer { margin-top: 48px; }
+</style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mbta/">
+      <div class="container-fluid">&emsp;&emsp;
+      <a href="../index.html" class="navbar-brand" style="text-decoration:none;">
+        <span class="devanagari ms-3" style="font-size:1.5rem; color:var(--saffron); font-weight:700;">धर्मशास्त्रम्</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="../index.html">धर्मशास्त्रम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5 active" href="../index.html">खण्डाः</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in/mbta/">महाभारतम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in">सनातनम्</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+
+    <div class="dh-wrapper container-xl">
+        <nav id="toc" class="toc-sidebar">
+<div class="refs-panel">
+<h5 class="toc-title">References</h5>
+<ul class="refs-list">
+<li><a href="../refs/apararka.html" class="ref-source-link">Aparārka</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/baudhayana.html" class="ref-source-link">Baudhāyana Dharmasūtra</a> <span class="ref-verses"><a href="../refs/baudhayana.html#I.10" class="ref-verse-link">I.10</a></span></li>
+<li><a href="../refs/brihaspati.html" class="ref-source-link">Bṛhaspati</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/chandogya.html" class="ref-source-link">Chāndogya Upaniṣad</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/gautama.html" class="ref-source-link">Gautama Dharmasūtra</a> <span class="ref-verses"><a href="../refs/gautama.html#XII" class="ref-verse-link">XII</a>, <a href="../refs/gautama.html#XII.44" class="ref-verse-link">XII.44</a>, <a href="../refs/gautama.html#XII.43" class="ref-verse-link">XII.43</a>, <a href="../refs/gautama.html#XII.13" class="ref-verse-link">XII.13</a>, <a href="../refs/gautama.html#XII.15-16" class="ref-verse-link">XII.15-16</a>, <a href="../refs/gautama.html#XXIII.14" class="ref-verse-link">XXIII.14</a> <a href="../refs/gautama.html" class="ref-verse-link">+1</a></span></li>
+<li><a href="../refs/hodh.html" class="ref-source-link">History of Dharmaśāstra</a> <span class="ref-verses"><a href="../refs/hodh.html#vol. II p. 151" class="ref-verse-link">vol. II p. 151</a>, <a href="../refs/hodh.html#vol II" class="ref-verse-link">vol II</a></span></li>
+<li><a href="../refs/kautilya.html" class="ref-source-link">Kauṭilya Arthaśāstra</a> <span class="ref-verses"><a href="../refs/kautilya.html#III.19" class="ref-verse-link">III.19</a>, <a href="../refs/kautilya.html#IV.11" class="ref-verse-link">IV.11</a>, <a href="../refs/kautilya.html#IV.8" class="ref-verse-link">IV.8</a>, <a href="../refs/kautilya.html#IV.4" class="ref-verse-link">IV.4</a>, <a href="../refs/kautilya.html#IV.10" class="ref-verse-link">IV.10</a>, <a href="../refs/kautilya.html#i" class="ref-verse-link">i</a></span></li>
+<li><a href="../refs/katyayana.html" class="ref-source-link">Kātyāyana</a> <span class="ref-verses"><a href="../refs/katyayana.html#259-265" class="ref-verse-link">259-265</a>, <a href="../refs/katyayana.html#i" class="ref-verse-link">i</a>, <a href="../refs/katyayana.html#495" class="ref-verse-link">495</a>, <a href="../refs/katyayana.html#488-489" class="ref-verse-link">488-489</a>, <a href="../refs/katyayana.html#477-480" class="ref-verse-link">477-480</a>, <a href="../refs/katyayana.html#496" class="ref-verse-link">496</a> <a href="../refs/katyayana.html" class="ref-verse-link">+4</a></span></li>
+<li><a href="../refs/manu.html" class="ref-source-link">Manusmṛti</a> <span class="ref-verses"><a href="../refs/manu.html#VIII" class="ref-verse-link">VIII</a>, <a href="../refs/manu.html#VIII.51" class="ref-verse-link">VIII.51</a>, <a href="../refs/manu.html#IX.233" class="ref-verse-link">IX.233</a>, <a href="../refs/manu.html#IX.231" class="ref-verse-link">IX.231</a>, <a href="../refs/manu.html#VIII.287" class="ref-verse-link">VIII.287</a>, <a href="../refs/manu.html#IX.236" class="ref-verse-link">IX.236</a> <a href="../refs/manu.html" class="ref-verse-link">+28</a></span></li>
+<li><a href="../refs/matsya_purana.html" class="ref-source-link">Matsyapurāṇa</a> <span class="ref-verses"><a href="../refs/matsya_purana.html#227.200" class="ref-verse-link">227.200</a></span></li>
+<li><a href="../refs/medhatithi.html" class="ref-source-link">Medhātithi</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mitakshara.html" class="ref-source-link">Mitākṣarā</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/narada.html" class="ref-source-link">Nārada</a> <span class="ref-verses"><a href="../refs/narada.html#II.41" class="ref-verse-link">II.41</a>, <a href="../refs/narada.html#II" class="ref-verse-link">II</a>, <a href="../refs/narada.html#I" class="ref-verse-link">I</a>, <a href="../refs/narada.html#I.46" class="ref-verse-link">I.46</a>, <a href="../refs/narada.html#IV" class="ref-verse-link">IV</a>, <a href="../refs/narada.html#IV.79" class="ref-verse-link">IV.79</a></span></li>
+<li><a href="../refs/parasara.html" class="ref-source-link">Parāśara</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/taittiriya_s.html" class="ref-source-link">Taittirīya Saṃhitā</a> <span class="ref-verses"><a href="../refs/taittiriya_s.html#III.3.11.5" class="ref-verse-link">III.3.11.5</a>, <a href="../refs/taittiriya_s.html#III" class="ref-verse-link">III</a>, <a href="../refs/taittiriya_s.html#II" class="ref-verse-link">II</a></span></li>
+<li><a href="../refs/vishnu_dh.html" class="ref-source-link">Viṣṇu Dharmasūtra</a> <span class="ref-verses"><a href="../refs/vishnu_dh.html#V.153-159" class="ref-verse-link">V.153-159</a>, <a href="../refs/vishnu_dh.html#V.19" class="ref-verse-link">V.19</a>, <a href="../refs/vishnu_dh.html#44-45" class="ref-verse-link">44-45</a>, <a href="../refs/vishnu_dh.html#V.4" class="ref-verse-link">V.4</a>, <a href="../refs/vishnu_dh.html#IV.10" class="ref-verse-link">IV.10</a>, <a href="../refs/vishnu_dh.html#V.73" class="ref-verse-link">V.73</a> <a href="../refs/vishnu_dh.html" class="ref-verse-link">+10</a></span></li>
+<li><a href="../refs/vishnu_smriti.html" class="ref-source-link">Viṣṇu Smṛti</a> <span class="ref-verses"><a href="../refs/vishnu_smriti.html#V.1-8" class="ref-verse-link">V.1-8</a>, <a href="../refs/vishnu_smriti.html#V.71" class="ref-verse-link">V.71</a></span></li>
+<li><a href="../refs/yajnavalkya.html" class="ref-source-link">Yājñavalkya</a> <span class="ref-verses"><a href="../refs/yajnavalkya.html#II.8" class="ref-verse-link">II.8</a>, <a href="../refs/yajnavalkya.html#II.91" class="ref-verse-link">II.91</a>, <a href="../refs/yajnavalkya.html#II" class="ref-verse-link">II</a>, <a href="../refs/yajnavalkya.html#II.306" class="ref-verse-link">II.306</a>, <a href="../refs/yajnavalkya.html#II.31-32" class="ref-verse-link">II.31-32</a>, <a href="../refs/yajnavalkya.html#II.31" class="ref-verse-link">II.31</a> <a href="../refs/yajnavalkya.html" class="ref-verse-link">+11</a></span></li>
+<li><a href="../refs/apastamba.html" class="ref-source-link">Āpastamba Dharmasūtra</a> <span class="ref-verses"><a href="../refs/apastamba.html#II.10.27.14" class="ref-verse-link">II.10.27.14</a></span></li>
+<li><a href="../refs/sankha_likhita.html" class="ref-source-link">Śaṅkha-Likhita</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mb_shantiparva.html" class="ref-source-link">Śāntiparva</a> <span class="ref-verses"><a href="../refs/mb_shantiparva.html#c" class="ref-verse-link">c</a></span></li>
+<li><a href="../refs/rigveda.html" class="ref-source-link">Ṛgveda</a> <span class="ref-verses"><a href="../refs/rigveda.html#c" class="ref-verse-link">c</a>, <a href="../refs/rigveda.html#II.32.4" class="ref-verse-link">II.32.4</a></span></li>
+</ul>
+</div>
+<div class="timeline-panel">
+<h5 class="toc-title">Timeline</h5>
+<ul class="timeline-list">
+<li class="tl-range"><a href="#p-chapter-xv-decision-11" class="tl-dot-link"><span class="tl-year">399 CE</span> <span class="tl-label">Nārada</span></a></li>
+<li class="tl-approximate"><a href="#p-chapter-xv-decision-21" class="tl-dot-link"><span class="tl-year">~600 CE</span> <span class="tl-label">Kātyāyana</span></a></li>
+<li class="tl-exact"><a href="#p-chapter-xv-decision-2" class="tl-dot-link"><span class="tl-year">928 CE</span> <span class="tl-label">Yājñavalkya</span></a></li>
+<li class="tl-range"><a href="#p-chapter-xv-decision-16" class="tl-dot-link"><span class="tl-year">939 CE</span> <span class="tl-label">Medhātithi</span></a></li>
+<li class="tl-century"><a href="#p-chapter-xv-decision-14" class="tl-dot-link"><span class="tl-year">1201 CE</span> <span class="tl-label">Kauṭilya Arthaśāstra</span></a></li>
+<li class="tl-century"><a href="#p-chapter-xv-decision-11" class="tl-dot-link"><span class="tl-year">1701 CE</span> <span class="tl-label">Nārada</span></a></li>
+<li class="tl-century"><a href="#p-chapter-xv-decision-16" class="tl-dot-link"><span class="tl-year">1701 CE</span> <span class="tl-label">Medhātithi</span></a></li>
+<li class="tl-century"><a href="#p-chapter-xv-decision-21" class="tl-dot-link"><span class="tl-year">1701 CE</span> <span class="tl-label">Kātyāyana</span></a></li>
+<li class="tl-exact"><a href="#p-chapter-xv-decision-9" class="tl-dot-link"><span class="tl-year">1764 CE</span> <span class="tl-label">Manusmṛti</span></a></li>
+<li class="tl-exact"><a href="#p-chapter-xv-decision-16" class="tl-dot-link"><span class="tl-year">1775 CE</span> <span class="tl-label">Medhātithi</span></a></li>
+<li class="tl-exact"><a href="#p-chapter-xv-decision-2" class="tl-dot-link"><span class="tl-year">1794 CE</span> <span class="tl-label">Yājñavalkya</span></a></li>
+<li class="tl-century"><a href="#p-chapter-xv-decision-11" class="tl-dot-link"><span class="tl-year">1801 CE</span> <span class="tl-label">Nārada</span></a></li>
+</ul>
+<a href="chapter-xv-decision-timeline.html" class="tl-view-link">View full timeline &rarr;</a>
+</div>
+<h5 class="toc-title">Sections</h5>
+<ul class="toc-list">
+<li class="toc-l2"><a href="#chapter-xv-decision">Chapter XV. Decision</a></li>
+</ul>
+</nav>
+        <main class="dh-content">
+            
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep">›</span>
+        <a href="index.html">Volume III</a>
+        <span class="sep">›</span>
+        <span class="current">Chapter XV. Decision</span>
+    </div>
+    
+            <h1 class="text-center" style="font-family: var(--font-roman); font-size: 2rem; color: var(--saffron); margin-bottom: 8px;">
+                Chapter XV. Decision
+            </h1>
+            <p class="text-center" style="font-family: 'Open Sans', sans-serif; color: var(--ink-secondary); font-size: 0.9rem; margin-bottom: 36px;">
+                Volume III <span class="page-range">pp. 379–410</span>
+            </p>
+
+            
+
+            
+
+            <h2 id="chapter-xv-decision" class="section-heading">Chapter XV. Decision</h2>
+<p class="prose" id="p-chapter-xv-decision-1">The last (i. e. 4th) stage in a judicial proceeding is siddhi (<a class="ref" href="../refs/yajnavalkya.html#II.8" data-source="yajnavalkya" data-ref="II.8" title="Yājñavalkya II.8">Yāj. II. 8</a>) or nṛṇaya (decision). If pratyākalita (as defined above on p 298) is regarded as a pāda of vyavahāra (and since all are agreed that there are only four pādas) then the decision is not a pāda of a lawsuit but is the fruit thereof (V. P. p. 86). When the evidence has been led, the king (or chief justice) should with the help of the sabhyas decide upon the success or failure of the plaintiff<sup class="fn-ref"><a href="#fn-chapter-xv-decision-1" id="fnref-chapter-xv-decision-1">1</a></sup>. Nar. II. 42 says that the sabhyas should ask the parties to leave the court when they are considering their verdict or what decision was to be pronounced<sup class="fn-ref"><a href="#fn-chapter-xv-decision-2" id="fnref-chapter-xv-decision-2">2</a></sup>. It is stated by Vyāsa and Śukra IV. 5. 271 that the decision of a case is based on eight sources<sup class="fn-ref"><a href="#fn-chapter-xv-decision-3" id="fnref-chapter-xv-decision-3">3</a></sup> (6 acc to Śukra) viz. the three pramāṇas (possession, documents and witnesses), logical inference, the usages of the country, śapathas (oaths and ordeals), the king's edict and the admission of the litigantṣ Pitāmaha prescribes that, in disputes where there are no witnesses, no possession nor documents and no recourse can be had to divine proof, there the king is the final deciding factor as he is the lord of all<sup class="fn-ref"><a href="#fn-chapter-xv-decision-4" id="fnref-chapter-xv-decision-4">4</a></sup>.</p>
+<p class="prose" id="p-chapter-xv-decision-2">It is stated by <a class="ref" href="../refs/narada.html#II.41" data-source="narada" data-ref="II.41" title="Nārada II.41">Nārada II. 41</a> and 43 that, whether a party is defeated by his own admission or by his own conduct (i. e. because he adduces false witnesses or forged documents) or whether he is defeated after full trial and the adducing of proof, it is proper that the defeat should be declared by the sabhyas (the judges) and that a Jayapatra (a document of success i.e. a judgment) should be given to the successful party couched in fitting termṣ Several verses of <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> (quoted by <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> p. 684), <a class="ref" href="../refs/brihaspati.html" data-source="brihaspati" data-ref="" title="Bṛhaspati">Bṛhaspati</a> (S B. E. vol. 33 p 307 verse 19), <a class="ref" href="../refs/katyayana.html#259-265" data-source="katyayana" data-ref="259-265" title="Kātyāyana 259-265">Kāt. (259-265)</a>, (q. by <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> on Yāj II 91- and <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> p. 684) and Vyāsa (Sm C II p 57) lay down the contents of the judgment<sup class="fn-ref"><a href="#fn-chapter-xv-decision-5" id="fnref-chapter-xv-decision-5">5</a></sup>. It was to contain a brief statement of the plaint, the reply, the evidence, the depositions of witnesses, discussion thereof, arguments, the smṛti texts applicable, the opinion of the sabhyas, the decision and the relief granted, and should be signed by the chief justice and bear the royal seal. Vaṣ 19 10 refers to precedents also in the decision of cases and the award- ing of punishments (āgamād-dṛṣṭāntāc-ca). The Mit quotes a smṛti text (on <a class="ref" href="../refs/yajnavalkya.html#II" data-source="yajnavalkya" data-ref="II" title="Yājñavalkya II">Yāj. II</a> 91) that other members of the assembly (who are not judges) proficient in smṛti may also sign the judgment to show that the decision is acceptable to them also. But this was not absolutely necessary, as is made clear by the Vivādacandra p. 146. Kāt (256) applies the word paścātkāra<sup class="fn-ref"><a href="#fn-chapter-xv-decision-6" id="fnref-chapter-xv-decision-6">6</a></sup> (refutation) to a judgment containing the above particulars given after a complete contest, while he restricts the word jayapatra to a document (given by the judge) when a plaintiff becomes what is called hīnauḍi (because he makes a change in his pleading or for similar cause) and when there has been no complete trial of an action; and such a document embodies only what happeneḍ <a class="ref" href="../refs/kautilya.html#III.19" data-source="kautilya" data-ref="III.19" title="Kauṭilya Arthaśāstra III.19">Kaut. (III. 19)</a> appears to employ the word 'paścātkāra' in a somewhat different sense when he says 'the person, who, when charged with murder, does not reply to the charge that very day, stands refuted' (i. e. is found guilty)<sup class="fn-ref"><a href="#fn-chapter-xv-decision-7" id="fnref-chapter-xv-decision-7">7</a></sup>. The Mit (on <a class="ref" href="../refs/yajnavalkya.html#II.91" data-source="yajnavalkya" data-ref="II.91" title="Yājñavalkya II.91">Yāj. II. 91</a>) differing from Kat holds a <em>jayapatra</em> to be a judgment giving ‘a summary of the plaint, the reply, the evidence and the decision, while when a plaintiff is defa ted for change of pleading or for default of appearance or for non-prosecution the document stating this is called ‘<em>hīnapatrāka</em>’. It is to be regretted that ancient <em>jayapatras</em> in Sanskrit have not yet been discovereḍ In 25 Calcutta Weekly Notes pp. CXLII—III Dr. Jolly communicated the substance of a <em>jayapatra</em>, couched in ancient Javanese, engraved on a copper- plate found in the island of Java and described by Dr. Brandes in a Dutch paper. That judgment is dated <em>śake</em> 849 (928 A. D.), relates to a dispute about a debt of one <em>suvarṇa</em> in which the plaintiff failed because he did not appear at the trial. At the end there are the signatures of four witnesses and the document is styled <em>jayapatra</em> at the enḍ Vide for the same <em>jayapatra</em> J. B. O. R. S. vol. VII pp. 117 ff. The late Mr. K. P. Jayaswal published in 24 Calcutta Weekly Notes (pp. CXLIX-CLVI) a <em>jayapatra</em> (text, translation and remarks) granted by the Hindu court of Mithilā in <em>śake</em> 1716 (1794 A. D.) and in J. B. O. R. S. vol. VI pp. 246–258, which strictly conforms to the rules of procedure laid down in the <em>smṛtis</em> and <em>nibandhas</em> and is couched in dignified, technical and scrupulously formal language. It related to the ownership of a slave girl. Plaintiff at first made default in appearance; the judgment notes this and also refers to the restoration of the suit. The defendant raised an objection that a single witness to prove a matter was inadmissible. This objection was uphelḍ Then plaintiff prayed that he might be allowed to undergo an ordeal, but this request was disallowed as human proof was possible and plaintiff ultimately lost his suit. The judgment is written and signed by one Sacala- miśra, who was the chief justice, and is addressed to other members of the <em>sabhā</em>, called <em>dharmādhyakṣas</em> and <em>panditas</em>, seven of whom express their concurrence (<em>sammah</em>) at the top of the document. Vide Journal of the Bihar and Orissa Research Society vol XXVIII for 1942 for nine Sanskrit <em>jayapatras</em> from the courts of Mithilā in the 18th and 19th centurieṣ</p>
+<p class="prose" id="p-chapter-xv-decision-3">The <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> (on Yāj II. 91), and V. <em>Mātṛkā</em> p. 309 note that a <em>jayapatra</em> is given specially to prevent the same matter being agitated again, while a document given where a party is hinavādi (i. e. a hīnapatraka) serves the purpose of making that party liable later on to pay a fine When a dispute was decided by a domestic tribunal (kula &c ) there was no jayapatra but only a nīrṇaya-patra (kulādbhu nīrṇaye jayapatrābhāvān-nīrṇaya-ptram tatra kāryam parattapatramṛ yāvat, as the Vy. Nīrṇaya p. 85 says). It would be better to adopt the reading ‘vṛttapatram’ as given by one Ms</p>
+<p class="prose" id="p-chapter-xv-decision-4">The defeated party has to pay a fine to the king and the successful party was complimented (or honoured) by the king (or chief justice) and was to be put in possession of the matter that he succeeded in proving<sup class="fn-ref"><a href="#fn-chapter-xv-decision-8" id="fnref-chapter-xv-decision-8">8</a></sup>. <a class="ref" href="../refs/manu.html#VIII.51" data-source="manu" data-ref="VIII.51" title="Manusmṛti VIII.51">Manu VIII. 51</a> prescribes that in monetary matters (i. e. in civil disputes) the defeated party should be made by the king to pay the judgment debt to the successful party and also some fine to the king according to his ability, while <a class="ref" href="../refs/manu.html#VIII" data-source="manu" data-ref="VIII" title="Manusmṛti VIII">Manu VIII</a> 139 lays down that when the defendant admits in the court his liability he has to pay to the king five per cent as fine and if the defendant denied his liability altogether and was proved to be false he had to pay as fine double of that (i. e ten per cent) This is analogous to court fee, for which see above pp. 294-295. If one or both parties had laid down a stake or wager (viz. ‘if I be defeated in this suit I shall pay a hundred panas’) then he had to pay that stake to the king and a fine as above and the subject of dispute to the successful party (<a class="ref" href="../refs/yajnavalkya.html#II" data-source="yajnavalkya" data-ref="II" title="Yājñavalkya II">Yāj. II</a> 18 and <a class="ref" href="../refs/narada.html#II" data-source="narada" data-ref="II" title="Nārada II">Nār. II</a> 5)<sup class="fn-ref"><a href="#fn-chapter-xv-decision-9" id="fnref-chapter-xv-decision-9">9</a></sup>; compare <a class="ref" href="../refs/vishnu_dh.html#V.153-159" data-source="vishnu_dh" data-ref="V.153-159" title="Viṣṇu Dharmasūtra V.153-159">Viṣṇu Dh. S. V. 153-159</a> for similar ruleṣ The punishments awarded in criminal matters will be discussed immediately below.</p>
+<p class="prose" id="p-chapter-xv-decision-5">It would be necessary to see in what cases review of judgment was alloweḍ The general rule is stated by <a class="ref" href="../refs/manu.html#IX.233" data-source="manu" data-ref="IX.233" title="Manusmṛti IX.233">Manu IX. 233</a>, ‘whenever any legal proceeding has been completed (tīrita) or has been carried out so far as to recover a fine from the defeated party, a wise king shall not annul it’ (at his mere will or pleasure or through greed). The words ‘tirita’ and 'anuśiṣṭa' have been variously explained <sup>603</sup>. The word 'tirita' is very ancient and occurs in the Delhi Pillar Edict IV of Aśoka (E I. Vol. II. p. 253) as 'tilita-daṇḍanam' qualifying men imprisoned in jailṣ <a class="ref" href="../refs/medhatithi.html" data-source="medhatithi" data-ref="" title="Medhātithi">Medhātithi</a> and Kuḷḷūka explain them as 'decided according to the rules of the śāstra' and 'taken so far as to recover fine from the unsuccessful party' respectively. <a class="ref" href="../refs/katyayana.html#495" data-source="katyayana" data-ref="495" title="Kātyāyana 495">Kāt. (495)</a> defines them differently: “When a certain side is decided by the sabhyas themselves (without the examination of witnesses) to be either true or false, it is said to be tirita and that matter or side is called 'anuśiṣṭa,' which is declared (to be true or false) on the testimony of witnesseṣ” The lexcion called Vaijayantī seems to have <a class="ref" href="../refs/katyayana.html#i" data-source="katyayana" data-ref="i" title="Kātyāyana i">Kāt. i</a>n mind and defines 'tirita' as a perverse decision given by the sabhyas themselves and 'anuśiṣṭa' occurs where the evidence of witnesses makes what is true appear as false (Bhūmikāṇḍa, vaiṣyādhyāya, verses 11–12). <a class="ref" href="../refs/narada.html#II" data-source="narada" data-ref="II" title="Nārada II">Nār. II</a> 65 (S. B. E. vot 33 p 22) employs the two words, which the Mit on Yaj. II 306 respectively explains as (tirita) 'decided by reliance on documents and witnesses but not carried so far as to recover a fine', and ('anuśiṣṭa') as 'decided so far as to recover a fine from the defeated party'. Vide <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> p. 866 and V. P. p. 90 for explanationṣ</p>
+<p class="prose" id="p-chapter-xv-decision-6">According to <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kāt.</a> quoted in the Vyavahārāsāra (p 101) <sup>604</sup> the decree should provide for the successful party receiving the interest on or accretions to the movable or immovable property placed (during the pendency of the suit) in the hands of a third party (as a sort of Receiver). <a class="ref" href="../refs/katyayana.html#477-480" data-source="katyayana" data-ref="477-480" title="Kātyāyana 477-480">Kāt. (477–480)</a> points <sup>605</sup> out the various ways in which a decree may be executeḍ The king should make a brāhmaṇa debtor return the decretal debt to the judgment creditor by conciliatory words, should make other debtors return it according to the usage of the country and compel bad people to satisfy the decree by means of physical pain (i. e. imprisonment) The king should make a co- sharer or friend (of the successful party) pay the decretal debt by means of a ruse (i. e by borrowing an ornament or the like from him on a festive occasion and handing it over to the creditor) and also make traders, husbandmen and artisans (to pay) in a similar way. On finding that the debtor is un- able to return the debt in cash, the king should make the debtor, whether a kṣatriya, vaiśya, śūdra or husbandman, work (for the creditor) If he be unable to work the debtor should be sent to jail except when he is a brāhmaṇa <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> also (IX. 229) says that if the members of the three varnas other than brāh- maṇa are unable to pay the fine imposed by the king they should be made to work for the king, but a brāhmaṇa may be allowed to pay in easy and small instalmentṣ If a brāhmaṇa debtor was unable to pay, nothing could be done for recovery of the decretal debt except taking a surety from him if any one cared to be one In modern times also judgment debtors are liable to be arrested and detained in civil jail in execution of decrees under rules 55–58 of the Indian Civil Procedure code (except women in execution of a decree for the payment of money). If in ancient times state policy exempted brāhmaṇas from arrest and detention in a civil jail for monetary debts on spiritual grounds and on the ground of caste, in modern times the State in Indra exempts agriculturists from arrest or imprisonment in execution of a decree for money on economic grounds under certain legislative enactments like sec. 21 of the Deccan Agriculturists’ Relief Act (Bombay Act XVII of 1879) As regards women also <a class="ref" href="../refs/katyayana.html#488-489" data-source="katyayana" data-ref="488-489" title="Kātyāyana 488-489">Kāt. (488–489)</a> laid down certain prudent rules “Women who are not <sup class="fn-ref"><a href="#fn-chapter-xv-decision-13" id="fnref-chapter-xv-decision-13">13</a></sup> independent should not be arrested (for offences like adultery); it is the male who should be regarded as the offender; women should be punished by their lord (i e the person on whom they depend) but the king should take away for punishment the male offender Even if a woman whose husband has gone abroad be consigned to jail she should be kept imprisoned only till he returnṣ” The Sṃ C. II p 323 explains that the first verse applies to a woman who can perform the expiation for adultery and who is dependent and the adultery is not with a male of a lower caste.</p>
+<p class="prose" id="p-chapter-xv-decision-7">Nār (IL 40) lays down<sup class="fn-ref"><a href="#fn-chapter-xv-decision-14" id="fnref-chapter-xv-decision-14">14</a></sup> a qualification that when a party has been defeated by his own conduct (i. e. by his demeanour or by his having adduced manifestly false witnesses or forged documents) there is to be no retrial or review of judgment, but where a man has lost his cause through (the dishonesty of) witnesses or the sabhyas, the cause may be tried anew. There are four exceptions to the finality of the judgments of the king's court. Where a litigant either through folly or insolence<sup class="fn-ref"><a href="#fn-chapter-xv-decision-15" id="fnref-chapter-xv-decision-15">15</a></sup> thinks a decision to be wrong, he may be allowed a retrial, provided he agrees to pay double the fine inflicted on the losing party (Yāj II 306, <a class="ref" href="../refs/narada.html#I" data-source="narada" data-ref="I" title="Nārada I">Nār. I</a> 65, <a class="ref" href="../refs/katyayana.html#496" data-source="katyayana" data-ref="496" title="Kātyāyana 496">Kāt. 496</a>). Secondly, where the former judgment is obtained by fraud or force, it may be set aside (<a class="ref" href="../refs/yajnavalkya.html#II.31" data-source="yajnavalkya" data-ref="II.31" title="Yājñavalkya II.31">Yāj. II. 31</a>)<sup class="fn-ref"><a href="#fn-chapter-xv-decision-16" id="fnref-chapter-xv-decision-16">16</a></sup>. Thirdly, where the litigant was incompetent, i.e. was a woman or a minor or a lunatic or intoxicated, seriously ill or distressed by a calamity or where the proceeding was carried on by another on behalf of a litigant who did not appoint him or with whom he was not connected in any way or was held inside a house or outside a town or village (i. e. in a forest) or by an enemy, the decision may be set aside and a retrial ordered (<a class="ref" href="../refs/narada.html#I" data-source="narada" data-ref="I" title="Nārada I">Nār. I</a> 43 in S. B. E. vol. 33 p. 16, <a class="ref" href="../refs/yajnavalkya.html#II.31-32" data-source="yajnavalkya" data-ref="II.31-32" title="Yājñavalkya II.31-32">Yāj. II. 31-32</a>). Fourthly, a king could set right a former decision of his predecessor which was unjust and arrived at through ignorance (<a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> on <a class="ref" href="../refs/yajnavalkya.html#II.306" data-source="yajnavalkya" data-ref="II.306" title="Yājñavalkya II.306">Yāj. II. 306</a> )<sup class="fn-ref"><a href="#fn-chapter-xv-decision-17" id="fnref-chapter-xv-decision-17">17</a></sup>.</p>
+<p class="prose" id="p-chapter-xv-decision-8"><a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yāj.</a> (II 4 and 305) prescribes that legal proceedings that are suspected to have been wrongly decided by the sabhyas through partiality or greed or intimidation should again be tried by the king and if the suspicion turns out to be true he should levy from the sabhyas and the party who at first succeeded double the fine that is imposed on a defeated party. <a class="ref" href="../refs/narada.html#I" data-source="narada" data-ref="I" title="Nārada I">Nār. I</a> 66 (in S. B. E. vol. 33 p. 22) is similar. <a class="ref" href="../refs/manu.html#IX.231" data-source="manu" data-ref="IX.231" title="Manusmṛti IX.231">Manu IX. 231</a> (== Matsya 227. 158) and 234 prescribe that when officers appointed to administer justice cause loss to litigants by taking bribes, the king should deprive them of all their wealth and when the amātyas (ministers) or chief justice disposes of a matter wrongly (but without being bribed), the king should himself decide the matter correctly and should impose on the amātyas or chief justice a fine of 1000 panas</p>
+<p class="prose" id="p-chapter-xv-decision-9">Though there is hardly any express smṛti text for the transfer of cases from one court or judge to another court or judge, in practice this must have been done, though rarely In "Selections from Peshwa's Daftar" vol 43 p 108 there is a letter (of 12–8–1764 A. D ) written by the renowned minister Nana Phadnis to the Peshwa Madhavrao in which the former endeavours to persuade the latter to cancel his order for transfer of a case from the court of Rāmsāstrī, famed for his impartiali- ty and strict life, to another judge on the ground that one of the litigants was afraid that Rāmsāstrī showed some partiality to the other litigant. <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> (VIII 174–175) states that the king who decides the causes of people unjustly through greed is soon subjugated by his enemies, while the king who curbing his own temper and desires impartially decides causes according to the dictates of śāstra becomes of one mind with his subjects as rivers merge in the oceaṇ Br and Nār I 74 (S.B.E vol. 33 p 24) lay emphasis on both the secular and spiritual effects of doing even justice, saying that when the king gives decisions according to śāstra he spreads his fame in this world and secures Heaven<sup class="fn-ref"><a href="#fn-chapter-xv-decision-18" id="fnref-chapter-xv-decision-18">18</a></sup>.</p>
+<p class="prose" id="p-chapter-xv-decision-10">A crime may be defined as an act or omission that breaks the law and is subject to public punishment But all kinds of breaches of the law do not result in punishment; only some do. Those breaches are crimes which are deemed to be menaces to the conditions of existence of society, which society, the ruler or legislation recognises as preventible only through punishment The menace is not that of the specific action, but the abstract menace inherent in that type of actioṇ A breach that is held to be a crime at one time may even be held not to be a crime at another time or in another country. For example, adultery is a crime under the Indian Penal Code (sec 497), while it is not a crime but a civil wrong in English Law. Many crimes and wrongs were sins and entailed secular punishments and also religious sanctions (viz expiations, <em>prāyaścittas</em>). Vide <a class="ref" href="../refs/manu.html#IX.236" data-source="manu" data-ref="IX.236" title="Manusmṛti IX.236">Manu IX. 236</a>, 240, Br. (S. B. E. vol 33, p. 362, verse 22) and Paithīnasī quoted below<sup class="fn-ref"><a href="#fn-chapter-xv-decision-19" id="fnref-chapter-xv-decision-19">19</a></sup>. Maine in his ‘Ancient Law’ chap. X (3rd ed of 1866) examines ancient western systems like those of Greece and Rome and makes the generalisation (p. 370) that the ‘penal law of ancient communities is not the law of crimes; it is the law of wrongs or, to use the English technical word, of Torts The person injured proceeds against the wrong-doer by an ordinary civil action and recovers compensation in the shape of money damages if he succeeds’. Dr. Priya Nath Sen in his Tagore Law Lectures on ‘Hindu Jurisprudence’ (1918, Lecture XII) rightly points out that this generalisation is not applicable to Ancient Hindu Law. It has already been shown (on pp. 264-266) that the king could of his own motion take cognisance of many wrongs called <em>chalas, padas</em> and <em>aparādhas</em> and it is clear that in such crimes as theft, assault, adultery, rape, and manslaughter the smṛti texts do not prescribe only a money compensation to the person wronged, but corporal punishment in the first instance and monetary compensation in additioṇ Vide for example, <a class="ref" href="../refs/manu.html#VIII.287" data-source="manu" data-ref="VIII.287" title="Manusmṛti VIII.287">Manu VIII. 287</a>, <a class="ref" href="../refs/yajnavalkya.html#II" data-source="yajnavalkya" data-ref="II" title="Yājñavalkya II">Yāj. II</a> 222, Br. (SBE vol. 33 p. 358 verses 9-10), <a class="ref" href="../refs/katyayana.html#787" data-source="katyayana" data-ref="787" title="Kātyāyana 787">Kāt. (787)</a> which prescribe a punishment for causing pain to the body or the loss of a limb and also the expenses of curing the person injured and some <em>solātum</em> to him <sup class="fn-ref"><a href="#fn-chapter-xv-decision-20" id="fnref-chapter-xv-decision-20">20</a></sup> <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp. Dh S</a> (I. 9. 24. 1 and 4) lays down that the slayer of a kṣatriya should give a thousand cows in order to remove the enmity (i. e as compensation to relatives) and one bull in addition for expiatioṇ<sup class="fn-ref"><a href="#fn-chapter-xv-decision-21" id="fnref-chapter-xv-decision-21">21</a></sup> The <a class="ref" href="../refs/chandogya.html" data-source="chandogya" data-ref="" title="Chāndogya Upaniṣad">Chāndogya</a> Upaniṣad quoted above (p. 362) shows that a thief was punished with death in those early dayṣ There is a passage in the <a class="ref" href="../refs/taittiriya_s.html#II" data-source="taittiriya_s" data-ref="II" title="Taittirīya Saṃhitā II">Tai. S II</a>, 6. 10. 1 (quoted in <a class="ref" href="../refs/hodh.html#vol. II p. 151" data-source="hodh" data-ref="vol. II p. 151" title="History of Dharmaśāstra vol. II p. 151">H. of Dh. vol. II p. 151</a> ṇ 346) which states, 'He who threatens a brāhmaṇa should be made to pay a hundred, he who strikes a brāhmaṇa should be made to pay a thousand'. It is rather doubtful whether the figures stated are fines or are meant as solātum to the wronged In <a class="ref" href="../refs/rigveda.html#II.32.4" data-source="rigveda" data-ref="II.32.4" title="Ṛgveda II.32.4">Rg. II. 32. 4</a> (which also occurs in <a class="ref" href="../refs/taittiriya_s.html#III" data-source="taittiriya_s" data-ref="III" title="Taittirīya Saṃhitā III">Tai S III</a> 3 11. 5) the poet prays to Rakā <sup class="fn-ref"><a href="#fn-chapter-xv-decision-22" id="fnref-chapter-xv-decision-22">22</a></sup> (the Full Moon personified ) that she may be pleased to grant the boon of a valiant son, who would be ‘śatadāya’. Sāyaṇa's rendering of this word as ‘possessed of plentiful heritage or wealth’ appears to be the right one. The words ‘śatadāyam vīram’ in the <a class="ref" href="../refs/taittiriya_s.html#III.3.11.5" data-source="taittiriya_s" data-ref="III.3.11.5" title="Taittirīya Saṃhitā III.3.11.5">Tai S. III. 3. 11. 5</a> are translated by Prof Keith as ‘a hero whose wergild is a hundred’. This is incorrect, confounding as it does the ideas of western Germanic tribes with the <a class="ref" href="../refs/rigveda.html#c" data-source="rigveda" data-ref="c" title="Ṛgveda c">Ṛgveda c</a>omposed several millenniums earlier It would be a strange thing to pray to a goddess for a son and at the same time to have in mind or refer to the price set upon him if he happened to be killeḍ</p>
+<p class="prose" id="p-chapter-xv-decision-11">The ancient smṛti writers were quite aware of the several purposes served by punishments for crimes, <sup class="fn-ref"><a href="#fn-chapter-xv-decision-23" id="fnref-chapter-xv-decision-23">23</a></sup> though they do not develop a regular science of penology. The person wronged feels a great urge for revenge or retaliation and other men sympathise with that emotion The individual, however, could not, in civilized societies, take the law into his own hands and therefore the State saw to it that the emotion for retaliation or revenge was to some degree satisfied by the adequate punishment of the wrongdoer. <a class="ref" href="../refs/yajnavalkya.html#II.16" data-source="yajnavalkya" data-ref="II.16" title="Yājñavalkya II.16">Yāj. II. 16</a> and <a class="ref" href="../refs/narada.html#I.46" data-source="narada" data-ref="I.46" title="Nārada I.46">Nār. I. 46</a> (SBE vol. 33 p. 17) state that when a person without complaining to the king sets about to secure what is denied by the opposite side or is doubtful he becomes liable to punishment and he also cannot secure the object he wantṣ <sup class="fn-ref"><a href="#fn-chapter-xv-decision-24" id="fnref-chapter-xv-decision-24">24</a></sup> In all ancient societies the lex talionis (the law of retaliation, viz. an eye for an eye, a tooth for a tooth) prevaileḍ<sup class="fn-ref"><a href="#fn-chapter-xv-decision-25" id="fnref-chapter-xv-decision-25">25</a></sup> <a class="ref" href="../refs/manu.html#VIII.280" data-source="manu" data-ref="VIII.280" title="Manusmṛti VIII.280">Manu VIII. 280</a> (which is almost the same as <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nār.</a>, pārusya, verse 25), Yaj II. 215, <a class="ref" href="../refs/vishnu_dh.html#V.19" data-source="vishnu_dh" data-ref="V.19" title="Viṣṇu Dharmasūtra V.19">Viṣṇu Dh. S. V. 19</a> and Śankha-Likhita prescribe that with whatever limb<sup class="fn-ref"><a href="#fn-chapter-xv-decision-26" id="fnref-chapter-xv-decision-26">26</a></sup> a man of low caste offends against a brāhmaṇa, that very limb of his shall be cut off. Another and the most important purpose of punishment is deterrent. Punishment of the evil-doer serves as an example and a warning to all others that might be tempted to tread the paths of violence and crime. This aspect of punishment (danda) has already been dwelt upon in the section on rājadharma (p. 21). The end sought to be served by punishment was the protection of society and the securing of its happinesṣ The <a class="ref" href="../refs/mb_shantiparva.html" data-source="mb_shantiparva" data-ref="" title="Śāntiparva">Śāntiparva</a><a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> (15 5-6) remarks that people do not commit sins through fear of punish- ment at the hands of the king, through fear of Yama and of the next world and through fear of others (i e public opinion).<sup class="fn-ref"><a href="#fn-chapter-xv-decision-27" id="fnref-chapter-xv-decision-27">27</a></sup> Gaut XI. 28 derives the word danda from the root dam to restrain or to deter. This purpose of punishment is well brought out in the Mṛcchakațika (X) when the sentence passed on Cărudatta for the alleged murder of Vasantasenā is proclaimed to the citizens by the executionerṣ<sup class="fn-ref"><a href="#fn-chapter-xv-decision-29" id="fnref-chapter-xv-decision-29">29</a></sup> Another purpose of punishment is preventive i. e. if a culprit is imprisoned for an offence he is prevented or disabled from repeating the same offence or committing further offences for some time at least and if he be sentenced to death or transported for life or banished, the commission of offences by him is prevented for his life-time Another purpose was that of reform or redemption of the evil- doer The punishment was deemed to be a sort of expiation, which purged the man of sinful promptings and reformed his character. <a class="ref" href="../refs/manu.html#VIII" data-source="manu" data-ref="VIII" title="Manusmṛti VIII">Manu VIII</a> 318 ( = Vaṣ 19 45 ) states that men who are guilty of crimes and have been punished by the king go to heaven, becoming pure like those who perform meritorious deeds <a class="ref" href="../refs/medhatithi.html" data-source="medhatithi" data-ref="" title="Medhātithi">Medhātithi</a> remarks on this verse that this applies only where the punishment is corporal and not merely monetary It will be seen from the early sūtras like that of Gautama and from the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a> that the more ancient criminal law in India was very severe and drastic, but that from the times of <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yājñavalkya</a>, <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nār.</a> and Br. the rigour of punishments was lessened and softened and fines came to be the ordinary punishments for many crimes, as is noted by Fa Hien (399–400 A D ) in relation to middle India (Madhyadeśa) under the Guptas apparently ‘The king governs without decapitation or other corporal punishments Criminals are simply fined, lightly or heavily according to the circumstances Even in circumstances of repeated attempts at wicked rebellion they only have their right hands cut off ‘ (Legge, 1886 p 43 ). This may be contrasted with the state of things depicted by Megasthenes 700 years earlier than Fa Hien: (Fragment XXVII p. 71 ) ‘a person bearing false witness suffers mutilation of his extremitieṣ He who maims anyone not only suffers loss of the same limb but his hand also is cut off If he causes an artisan to lose his hand and eye he is put to death’. The Daśakumāracarita (II p 56) states that the Mauryas conferred a boon on traders that for certain offences they were not to be sentenced to death, but were to be deprived of all their wealth and banished The first separate Rock Edict of Aśoka at Dhauli (Corpus L I pp. 93, 97 ) shows that great Emperor's anxiety that his judicial officers should strive to see that there is no undeserved fettering or no undeserved harsh treatment In India the list of capital offences at any time was much shorter than in the West. Stephens is constrained to admit that in England ‘there can be no doubt that the legis- lation of the 18th century in criminal matters was severe to the highest degree and destitute of any sort of principle or system’ (Hiṣ of Cr. Law, vol I p 471) As stated by Dr. Hart (in ‘Way to justice’ p 94), at the beginning of the 19th century in England more than a hundred offences were [III]</p>
+<p class="prose" id="p-chapter-xv-decision-12">punishable by death. In 1832 a child was convicted at Ludgate Hill for stealing a box of paints worth two pence, was tried at the Old Bailey and hanged (vide ‘In the service of youth’, by Dr. J M. Brew, 1943 chap XV. p 208).</p>
+<p class="prose" id="p-chapter-xv-decision-13"><a class="ref" href="../refs/manu.html#VIII" data-source="manu" data-ref="VIII" title="Manusmṛti VIII">Manu VIII</a> 129, Yāj I 367 and Br. (SBE 33 p. 387 verse 5), Vṛddha-Hārīta (7 I 95) speak of four methods of punishment ( daṇḍa ) viz. by gentle admonition by severe reproof, by fine and by corporal punishment and declare that these punishments may be inflicted separately or together according to the nature of the offence.<sup class="fn-ref"><a href="#fn-chapter-xv-decision-30" id="fnref-chapter-xv-decision-30">30</a></sup> The first takes the form of saying ‘you have not done a proper thing’, the 2nd ‘fie upon you who are a wrongdoer and guilty of adharma’. Br. lays down that preceptors, purohitas and sons should be sentenced to the punishment of wordy admonition, other persons who engage in disputes should be punished with reproof or fines and those guilty of mahāpātakas should be punished with corporal punishment. That admonition and reproof were two modes of punishment shows that ancient writers were alive to the notion that among very sensitive persons or in a very sensitive society verbal condemnation would be enough to achieve the main purposes of punishment. Br. (SBE vol. 33 p. 388 verse 8 ) states that the first two are within the privilege of the brāhmaṇa (appointed as chief justice) but fines and corporal punishment are to be inflicted by the king (on the recommendation of the chief justice, prāḍvīvakamāte sthutah ). The Mṛcchakațika (IX) bears this out when the judge says ‘ We have authority only to pronounce the judgment; as to the rest the king is the final authority’ ( nirṇaye vayaṁ pramāṇaṁ śese tu rājā ) <a class="ref" href="../refs/gautama.html#XII" data-source="gautama" data-ref="XII" title="Gautama Dharmasūtra XII">Gaut. XII</a> 51, Vaṣ 19 9, <a class="ref" href="../refs/manu.html#VII.16" data-source="manu" data-ref="VII.16" title="Manusmṛti VII.16">Manu VII. 16</a>, VIII 126 and Yāj I. 368 ( = Vṛddha-Hārīta VII. 195–196 ), Bṛhat <a class="ref" href="../refs/parasara.html" data-source="parasara" data-ref="" title="Parāśara">Parāśara</a> p. 284, Kaut IV. 10 lay down that the award of punishment must be regulated by a consideration of the motive and nature of the offence, the time and place, the strength, age, conduct (or duties), learning and monetary position of the offender and by the fact whether the offence <sup class="fn-ref"><a href="#fn-chapter-xv-decision-31" id="fnref-chapter-xv-decision-31">31</a></sup> is repeateḍ This provision means that the dharmaśāstras did not hold that the same punishment must be meted out for the same offence irrespective of the antecedents, characteristics or physical and mental condition of the offender. They always took extenuating circumstances into account. Kaut (I. 4), differing from the view of the ācāryas that there is nothing like danda for bringing under one's complete control all beings, gives his own opinion that, as a king whose control and punishments are most severe makes the subjects disgusted with him and as the king who deals mild punishments is disregarded by the people, the king should distribute punishments according to the deserts of the offenders and would then command respect <sup class="fn-ref"><a href="#fn-chapter-xv-decision-32" id="fnref-chapter-xv-decision-32">32</a></sup> One reason why some of the works on dharmaśāstra prescribe mild punishments is the doctrine of karmavipāka (a man committing certain sins is born in the next life afflicted with certain diseases or bodily deficiencies or is born as a low or filthy beast or bird) Vide <a class="ref" href="../refs/manu.html#XI" data-source="manu" data-ref="XI" title="Manusmṛti XI">Manu XI</a> 49-52, Yāj III 207-216, <a class="ref" href="../refs/vishnu_dh.html#44-45" data-source="vishnu_dh" data-ref="44-45" title="Viṣṇu Dharmasūtra 44-45">Viṣṇu Dh. S 44-45</a>. This doctrine will be dealt with later on under pātaka and prāyaścitta. <a class="ref" href="../refs/gautama.html#XII" data-source="gautama" data-ref="XII" title="Gautama Dharmasūtra XII">Gaut. XII</a> 48 first provides that the king must take into account, when awarding punishment to the criminal, his physical or monetary circumstances, the nature of the crime, the fact of repetition of the crime and then adds that the king should award punishment after consulting an assembly of learned brāhmaṇas The Dandaviveka (p. 36) quotes a verse in which the considerations that should weigh in award- ing punishment are brought together viz. the offender's caste (as in <a class="ref" href="../refs/manu.html#VIII" data-source="manu" data-ref="VIII" title="Manusmṛti VIII">Manu VIII</a> 337-338 for theft ), the value of the thing, the extent or measure (as in <a class="ref" href="../refs/manu.html#VIII" data-source="manu" data-ref="VIII" title="Manusmṛti VIII">Manu VIII</a> 320), use or usefulness of the thing with regard to which an offence is committed (as in <a class="ref" href="../refs/manu.html#VIII" data-source="manu" data-ref="VIII" title="Manusmṛti VIII">Manu VIII</a> 285), the person against whom an offence is committed (such as an idol or temple or king or brāhmaṇa), age, ability (to pay), qualities, time, place, the nature of the offence (whether it is repeated or is a first offence). The Rājatarangiṇī (VIII 158) provides that in disputes where parties are in doubt as to their rights it is proper to award punishment with forbearance but where a man starts on an evil path of set purpose (the king and officers) must award severe punishment. In modern times there are controversies among several schools of criminology. Some hold that every man has freedom to act criminally or not or to act in the way he does and that each man has complete moral responsibility for his own actṣ On the other hand there are some who go to the other extreme and propound that a so-called criminal act is mostly due to biological, physiological, pathological or sociological conditions, to the upbringing and environment of the person charged with crime. They favour determinisṃ The ancient Indian writers do not enter into these speculationṣ But when they said that regard must be paid to time and place and other considerations they were faintly conscious of or were groping towards the ideas of the 2nd school.</p>
+<p class="prose" id="p-chapter-xv-decision-14">Fines are either fixed or not fixed (i. e. variable). They range from a kākaṇī to the confiscation of all wealth; fixed fines were of three kinds called prathama sāhasa, madhyama sāhasa (middling amercement) and uttama sāhasa (highest). These are variously defineḍ According to <a class="ref" href="../refs/sankha_likhita.html" data-source="sankha_likhita" data-ref="" title="Śaṅkha-Likhita">Śaṅkha-Likhita</a> the first <sup class="fn-ref"><a href="#fn-chapter-xv-decision-33" id="fnref-chapter-xv-decision-33">33</a></sup> amercement is fine from 24 panas to 91, the middling one is from 200 to 500 panas and the highest is from six hundred to 1000 panaṣ in proportion to the value of the matter in dispute or the injury caused <a class="ref" href="../refs/manu.html#VIII" data-source="manu" data-ref="VIII" title="Manusmṛti VIII">Manu VIII</a> 138 ( =<a class="ref" href="../refs/vishnu_dh.html#IV.10" data-source="vishnu_dh" data-ref="IV.10" title="Viṣṇu Dharmasūtra IV.10">Viṣṇu Dh S. IV. 10</a> ) states that the first, middling and highest fines are respectively 250, 500 and 1000 panas, while Yāj I. 366 puts these respectively at 270, 540 and 1080. The Mit explains that the lesser figures of <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> represent the fines to be awarded for offences committed without set purpose. <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nār.</a> ( sāhasa, verses 7–8 ) prescribes that 100 panas is the lowest limit of fines for the lowest kind of sāhasa, 500 is the lowest for middling sāhasa, 1000 is the lowest fine in what is called the highest amercement ( and might include death penalty, forfeiture of all property, banishment, branding and cutting off of a limb ). Fines were supposed to be lesser than corporal punishment. Kāt ( 490–493 ) lays<sup class="fn-ref"><a href="#fn-chapter-xv-decision-34" id="fnref-chapter-xv-decision-34">34</a></sup> down the follow-ing rules: Whatever figure of fine is prescribed in the smṛti texts for a wrong it is to be paid to the king in panas of copper or half of a māsa, there it is a golden māsa that is meant; when the fine is declared in māsas, they are to be understood as those of silver and where the fine is declared in kṛṣṇalas the same is to be understood; a māsa is <sup class="fn-ref"><a href="#fn-chapter-xv-decision-10" id="fnref-chapter-xv-decision-10">10</a></sup>/<sub>8</sub>th of a kārṣāpaṇa. The general rule that lesser punishment is to be inflicted on women is stated by <a class="ref" href="../refs/katyayana.html#487" data-source="katyayana" data-ref="487" title="Kātyāyana 487">Kāt. ( 487 )</a> ‘ In the case of all offences, women are to suffer half of the fine in money which is prescribed for a male offender ( of the same kind ) and when the punishment is death for a male, the punishment for a woman would be the excision of a limb.’<sup class="fn-ref"><a href="#fn-chapter-xv-decision-35" id="fnref-chapter-xv-decision-35">35</a></sup> Kaut ( III. 3 ) provideṣ ‘a woman attains ability to enter into transactions on completion of 12 years and men when they are 16; if they disobey after that ( i e after attaining majority ) the woman shall be fined twelve panas and a man twice that amount.’<sup class="fn-ref"><a href="#fn-chapter-xv-decision-36" id="fnref-chapter-xv-decision-36">36</a></sup> Aṅgiras quoted by the Mit ( on Yāj, III. 243 ) states that<sup class="fn-ref"><a href="#fn-chapter-xv-decision-37" id="fnref-chapter-xv-decision-37">37</a></sup> an old man over eighty, a boy below sixteen, women and persons suffering from diseases are to be given half prāyaścitta and Śaṅkha quoted by the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> (on the same verse) that a child less than five commits no crime nor sin by any act and is not to suffer any punishment nor to undergo a prāyaścitta<sup class="fn-ref"><a href="#fn-chapter-xv-decision-38" id="fnref-chapter-xv-decision-38">38</a></sup>. Under the Indian Penal Code, sec. 82, nothing is an offence which is done by a child under seven years of age. The severity of punishment depended on caste also. In the case of theft, <a class="ref" href="../refs/gautama.html#XII.15-16" data-source="gautama" data-ref="XII.15-16" title="Gautama Dharmasūtra XII.15-16">Gaut. XII. 15–16</a>, <a class="ref" href="../refs/manu.html#VIII" data-source="manu" data-ref="VIII" title="Manusmṛti VIII">Manu VIII</a> 338–39 prescribe that a vaiśya, a kṣatriya and a brāhmaṇa should respectively be fined twice, four times and eight times of the fine to be imposed upon a śūdra for a theft, since each of these is deemed more and more aware of the heinousness of the crime. Kāt (485) and Vyāsa state this as a general rule for all offences<sup class="fn-ref"><a href="#fn-chapter-xv-decision-39" id="fnref-chapter-xv-decision-39">39</a></sup>. In the case of abuse and defamation the scales are turned in favour of the higher castes as regards fineṣ <a class="ref" href="../refs/gautama.html#XII" data-source="gautama" data-ref="XII" title="Gautama Dharmasūtra XII">Gaut. XII</a> 1, 8–12, <a class="ref" href="../refs/manu.html#VIII.267-268" data-source="manu" data-ref="VIII.267-268" title="Manusmṛti VIII.267-268">Manu VIII. 267–268</a> (=<a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nār.</a> pāruṣya 15–16), Yāj II. 206–207 prescribe that a kṣatriya or a vaiśya or a śūdra abusing or defaming a brāhmaṇa was to be respectively punished with the fine of 100 panas, 150 panas and with corporal punishment (cutting off the tongue), while a brāhmaṇa defaming a kṣatriya, vaiśya or śūdra was to be fined 50, 25 or 12 panas respectively (nothing in the last case acc to <a class="ref" href="../refs/gautama.html#XII.13" data-source="gautama" data-ref="XII.13" title="Gautama Dharmasūtra XII.13">Gaut. XII. 13</a>). In the case of adultery and rape the caste of the offender and of the woman concerned made great difference in the punishment awardeḍ For adultery with a woman of the same caste <a class="ref" href="../refs/yajnavalkya.html#II.286" data-source="yajnavalkya" data-ref="II.286" title="Yājñavalkya II.286">Yāj. II. 286</a> prescribed the highest amercement, the middling one when the paramour was of a higher caste, but if the male be of a lower caste than the woman, the male offender was sentenced to death and the woman had her ears cut off. Corporal punishment assumes (as pointed out by the Dandaviveka p. 20) various forms according as it is meant to cause only harassment (pain) or is carried out by cutting off (or destroying) a limb or to cause death. Harassment or pain may be inflicted by imprisonment, beating, putting fetters, by making ridiculous (by the complete shaving of the head, declaring the offence by beat of drum in the presence of the convict, parading him through the streets on an ass) and marking him with signs indicative of offences like theft. <a class="ref" href="../refs/manu.html#VIII.125" data-source="manu" data-ref="VIII.125" title="Manusmṛti VIII.125">Manu (VIII. 125)</a> provides that punishment may fall upon any one (or more) of ten places in the case of the three higher castes, viz. the private parts, the belly, the tongue (either whole or half), the hands, the feet, the eyes, the nose, the ears, wealth and the whole body; but a brāhmaṇa shall depart unhurt from the country (i. e. he is to be only banished). Br. (SBE 33 p. 388 verses 9–10) speaks of fourteen places of punishment adding the neck, the thumb and index, the fore- head, the lips, the hind part, hips, one half of the feet (to <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>’s ten) and omitting wealth and the whole body there- froṃ <a class="ref" href="../refs/gautama.html#XII.43" data-source="gautama" data-ref="XII.43" title="Gautama Dharmasūtra XII.43">Gaut. XII. 43</a>, <a class="ref" href="../refs/kautilya.html#IV.8" data-source="kautilya" data-ref="IV.8" title="Kauṭilya Arthaśāstra IV.8">Kaut. IV. 8</a>, <a class="ref" href="../refs/manu.html#VIII.125, 380-381" data-source="manu" data-ref="VIII.125, 380-381" title="Manusmṛti VIII.125, 380-381">Manu (VIII. 125, 380–381)</a>, <a class="ref" href="../refs/yajnavalkya.html#II.270" data-source="yajnavalkya" data-ref="II.270" title="Yājñavalkya II.270">Yāj. II. 270</a>, <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nār.</a> (sāhasa, 9–10), <a class="ref" href="../refs/vishnu_smriti.html#V.1-8" data-source="vishnu_smriti" data-ref="V.1-8" title="Viṣṇu Smṛti V.1-8">Viṣṇu V. 1–8</a>, Br. (SBE. vol 33 p. 388 verse 11), Vṛddha-Hārita VII. 191 prescribe that a brāhmaṇa was not to be sentenced to death or corporal punishment for any offence whatever, but if he were guilty of an offence deserving the death penalty, he was to be punished by ordering his entire head to be shaved, he might be banished from the country (from the city acc. to <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nār.</a>), a mark appro- priate to the grave sin committed by him might be branded on his forehead and he might be paraded on an asṣ<sup class="fn-ref"><a href="#fn-chapter-xv-decision-40" id="fnref-chapter-xv-decision-40">40</a></sup> Yama,<sup class="fn-ref"><a href="#fn-chapter-xv-decision-41" id="fnref-chapter-xv-decision-41">41</a></sup> quoted by Sṃ C. and V. P., while providing that a brāhmaṇa was to be free from undergoing corporal punishment, allows III ] Punishments for a brāhmaṇa offender the king to keep a brāhmaṇa offender in confinement in a secret place and give him bare maintenance or the king may make him do the work of guarding cattle for a month or a fortnight or make him perform other work not fit for a decent brāhmaṇa. The <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> on Yaj. II. 270 explains that the mark of female private parts for violating guru’s bed, of a tavern for drinking the liquor called surā, a dog’s foot for theft, of a headless corpse for brāhmaṇa murder (as laid down by <a class="ref" href="../refs/manu.html#IX.237" data-source="manu" data-ref="IX.237" title="Manusmṛti IX.237">Manu IX. 237</a> and 240, <a class="ref" href="../refs/vishnu_dh.html#V.4" data-source="vishnu_dh" data-ref="V.4" title="Viṣṇu Dharmasūtra V.4">Viṣṇu Dh S. V. 4</a>) is to be made on the forehead only if the offender (whether a brāhmaṇa or not) did not perform prāyaścitta for those grave sinṣ Branding with marks appropriate to the crime committed were in vogue in Rome and in Britain up to 1699 (such as the mark of the letter M for murderers, T for thieves &c.). Vide Barnes’ ‘Story of punishment’ p. 62. The Rājatarangini (IV. 96-106) refers to a case in the reign of king Candrāpida of Kashmir when a brāhmaṇa guilty of the murder of a brāhmaṇa was exempted from death sentence because of the smṛti rule. <a class="ref" href="../refs/manu.html#IX.241" data-source="manu" data-ref="IX.241" title="Manusmṛti IX.241">Manu IX. 241</a> gives option that a brāhmaṇa (unintentionally) guilty of grave offences may be punished with the middle amercement or he may be banished from the realm keeping all his wealth. The punishments for a brāhmaṇa offender, according to <a class="ref" href="../refs/gautama.html#XII.44" data-source="gautama" data-ref="XII.44" title="Gautama Dharmasūtra XII.44">Gaut. XII. 44</a>, were preventing him from doing the same thing again, depriving him of all wealth, taking sureties from him, proclaiming him as a thief in the city, banishment, putting on his forehead the mark indicative of his crime. <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp. Dh.S.</a> (II. 10 27. 16-17)<sup class="fn-ref"><a href="#fn-chapter-xv-decision-42" id="fnref-chapter-xv-decision-42">42</a></sup> lays down that a brāhmaṇa guilty of murder, theft, forcible seizure of another’s land was to have his eyes covered with cloth for the whole of his life (while a śūdra guilty of any of the three was to receive the death sentence). Vṛddha-Hārīta (VII.209-210) says that a brāhmaṇa should be branded on the body for all those offences that entailed corporal punishment for other offenders, that he should have his head shaved, that he should be deprived of all his property and banished from the realṃ The force of popular feeling on the point of exempting a brāhmaṇa offender from the death sentence was so great that Elphinstone (Governor of Bombay) in Regu-lation 14 of 1827, sec. IV (cl. 5) exempted brāhmaṇas and women from death sentence even for murder where public feeling would be shocked <sup class="fn-ref"><a href="#fn-chapter-xv-decision-43" id="fnref-chapter-xv-decision-43">43</a></sup>. It is not to be supposed that this exemption of the brāhmaṇa from the death sentence was unanimous or universal <a class="ref" href="../refs/katyayana.html#806" data-source="katyayana" data-ref="806" title="Kātyāyana 806">Kāt. (806)</a> contains this remarkable statement. <sup class="fn-ref"><a href="#fn-chapter-xv-decision-44" id="fnref-chapter-xv-decision-44">44</a></sup> 'Even a brāhmaṇa deserves to be killed if he be guilty of The Smṛtis openly regarded the brāhmaṇa's person as sacred and saved his body. The smṛtis endeavoured to reach the ideal of the rule of law and succeeded to a great extent in doing so. They held that every man, whatever his rank or condition, was subject in the ordinary law to the realm and amenable to the jurisdiction of the ordinary tribunalṣ The only differential treatment that we find is in the appointment of judges (pp. 272-273), in the order of taking up causes of litigants (p. 298), in the punishment for perjury (<a class="ref" href="../refs/manu.html#VIII" data-source="manu" data-ref="VIII" title="Manusmṛti VIII">Manu VIII</a> 123-124), in the matter of corporal punishment, in abuse, defamation and assault (pp 395-397), in punishment for adultery, in the repayment of debts and in the punishment for theft, which was severer for a brāhmaṇa. It will be shown below that from the 13th century, as indicated by the Sṃ C., S. V. and Madanaratna, differential punishments had gone out of vogue. The smṛtis did not, like some modern freedom-loving people, declare the equality of all before the law an paper and in practice indulge in lynching. Further the smṛtis required all offenders of whatever caste to be brought before the same tribunalṣ <a class="ref" href="../refs/manu.html#VIII.335" data-source="manu" data-ref="VIII.335" title="Manusmṛti VIII.335">Manu VIII. 335</a> and <a class="ref" href="../refs/yajnavalkya.html#I" data-source="yajnavalkya" data-ref="I" title="Yājñavalkya I">Yāj. I</a> 358 emphasize that there is none who is exempt from punishment in the king's court whether the person be the king's father or teacher or friend or mother or wife or a son or a family priest or brother or father-in-law or maternal uncle. Sañkha-Likhita and <a class="ref" href="../refs/katyayana.html#481" data-source="katyayana" data-ref="481" title="Kātyāyana 481">Kāt. (481)</a> an doubt say that a king should not punish his parents, his family priest, teacher, near relatives, forest hermits, asceticṣ But, as the Sṃ C. II, p. 126 explains, the real meaning is not that the king is to allow these to escape spot-free, but that he should not inflict corporal punishments or fines on these, but should employ admonition or severe reproof towards theṃ The smṛtis do not contain rules like those in the Indian Criminal Pro. Code entitling Europeans and Americans in India to claim a jury preponderantly composed of their countrymen and claiming trial only by the High Court or like the privileges of the English Peers to be tried only by the House of lords for felonies or the doctrine of the benefit of clergy abolished in 1827. Vide H. of Db. vol. II. pp. 140-143 and 147-152 about certain privileges of brāhmaṇaṣ causing abortion, if he be a thief (of gold) or if he kills a brāhmaṇa woman with a sharp weapon or if he kills a chaste woman¹. <a class="ref" href="../refs/kautilya.html#IV.11" data-source="kautilya" data-ref="IV.11" title="Kauṭilya Arthaśāstra IV.11">Kauṭilya (IV. 11)</a> prescribes that a brāhmaṇa who aims at the kingdom or who forces entrance into the king's harem or who incites wild tribes or enemies (against his king) or who foments disaffection (or rebellion) in forts, the country or the army should be sentenced to death by drowning.<sup class="fn-ref"><a href="#fn-chapter-xv-decision-45" id="fnref-chapter-xv-decision-45">45</a></sup> The fact that Cārudatta, a brāhmaṇa, is represented as having been condemned to death by king Pālaka in the Mṛcchakaṭika indicates that the sentence of death against brāhmaṇas was not entirely unheard of. It appears from Fick's 'Social organisation' &c p. 212 that in many Jātaka passages the execution of brāhmaṇas is referred to.</p>
+<p class="prose" id="p-chapter-xv-decision-15">The <a class="ref" href="../refs/mb_shantiparva.html#c" data-source="mb_shantiparva" data-ref="c" title="Śāntiparva c">Śāntiparva c</a><a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>hap. 268 contains an interesting dialogue between king Dyumatsena and his son prince Satyavat on the subject of the punishment of death, which contains some of the arguments forcibly urged in these days by those that are opposed to capital punishment altogether. The prince pleads that punishment should be light even for grave offences, that when the sentence of death is carried out in the case of robbers,<sup class="fn-ref"><a href="#fn-chapter-xv-decision-46" id="fnref-chapter-xv-decision-46">46</a></sup> several innocent persons (such as the wife, the mother, the son of the condemned man) suffer great loss (and they may die also), that if offenders give themselves up to priests, swear before them that they will never commit sin, they may be let off after undergoing penance, that if great men go astray their punishment should be proportionate to their greatness The king replies that in former ages when people were most truthful, soft-hearted, and not hot-tempered the punishment of saying 'fie on you' sufficed, then vocal remonstrances and upbraidings sufficed, but in the later ages (of Kali) corporal punishment and death sentence have to be resorted to and that some people are not deterred even by the fear of death sentence.</p>
+<p class="prose" id="p-chapter-xv-decision-16">A few remarks will be made on each of the several modes of punishment The sentence of death was, acc. to Ksm XIV. 16, Śukra IV. 1 93, to be avoided even in the gravest offences except for the offence of subverting the state.<sup class="fn-ref"><a href="#fn-chapter-xv-decision-47" id="fnref-chapter-xv-decision-47">47</a></sup> <a class="ref" href="../refs/vishnu_dh.html#V.1" data-source="vishnu_dh" data-ref="V.1" title="Viṣṇu Dharmasūtra V.1">Viṣṇu Dh. S V. 1</a> provides that all persons except brāhmaṇas guilty of the mahāpātakas may be sentenced to death. <a class="ref" href="../refs/manu.html#IX.236" data-source="manu" data-ref="IX.236" title="Manusmṛti IX.236">Manu IX. 236</a> says that this extreme penalty was to be awarded only if they performed no prāyaścitta. Kaut (IV. 11) prescribes death sentence for causing the death of any one with a sharp weapoṇ Vrddha-Hārita (VII 190) prescribes it for incendiaries, poisoners, murderers, robbers, bad characters, rogues and those guilty of grave sinṣ The death sentence was carried out in various ways such as by giving poison or by trampling at the feet of an elephant, or by a sharp weapon (like a sword), by being burnt or drowneḍ<sup class="fn-ref"><a href="#fn-chapter-xv-decision-48" id="fnref-chapter-xv-decision-48">48</a></sup> Impalement was a punishment prescribed by <a class="ref" href="../refs/manu.html#IX.276" data-source="manu" data-ref="IX.276" title="Manusmṛti IX.276">Manu IX. 276</a> for thieves guilty of housebreaking by night (after first cutting off their hands), by Yaj II. 273 for those who made another a captive or stole horses and elephants or killed another by the use of force and by Vrddha-Hārita VII. 202 for the murderer of a brāhmaṇa or for one who killed a woman, a child or a cow. Death sentence by being trampled under the feet of an elephant continued up to the times of the Marathaṣ The Daśakumāracarita 4th Ucchvāsa shows that a thief could be trampled upon by an elephant by way of punishment. Vide ‘Selections from Peshwa's Daftar’ (edited by Mr. G. S Sardesai) vol. 43 No. 143 p 114 (dated 7-9-1775 A. D.), where out of seven dacoits of the Berad caste two were ordered to be trampled to death at the feet of an elephant<sup class="fn-ref"><a href="#fn-chapter-xv-decision-49" id="fnref-chapter-xv-decision-49">49</a></sup> and five were ordered to be simply beheaded Death sentence is said by the Dandaviveka (p. 20) to be simple śuddha), which is of two kinds, avcitra when the offender is beheaded (with a sword), and citra or vicitra (when the offender is impaled or burnt) and it is miśra (when his hands or feet or other limbs are cut off and then he is killed)<sup class="fn-ref"><a href="#fn-chapter-xv-decision-50" id="fnref-chapter-xv-decision-50">50</a></sup>. Simple death III ] is prescribed by <a class="ref" href="../refs/manu.html#IX.271" data-source="manu" data-ref="IX.271" title="Manusmṛti IX.271">Manu IX. 271</a> for those who abet thieves by giving them subsistence, instruments of house-breaking or asyluṃ If a man of a low caste had sexual intercourse with a woman of a higher caste (with or without her consent) or kidnapped a maiden he was to be sentenced to death (<a class="ref" href="../refs/manu.html#VIII.366" data-source="manu" data-ref="VIII.366" title="Manusmṛti VIII.366">Manu VIII. 366</a>, <a class="ref" href="../refs/yajnavalkya.html#II.286-288" data-source="yajnavalkya" data-ref="II.286-288" title="Yājñavalkya II.286-288">Yāj. II. 286–288</a>, 294) Vaṣ XXI. 1–5 prescribed for a śūdra, vaiśya or kṣatriya guilty of adultery with a brāhmaṇa woman the horrible punishment of being burnt to death after being respectively covered with vīraṇa grass, with red darbhas and śara leaves respectively and similar punishment for a śūdra paramour of a kṣatriya or vaiśya woman and for a vaiśya paramour of a kṣatriya womaṇ The consenting woman (adulteress) was, acc. to Vaṣ XXI 1–3, to be shaved, to have her head anointed with clarified butter and to be paraded naked on an ass and left to die on the Great Journey, while, acc. to <a class="ref" href="../refs/gautama.html#XXIII.14" data-source="gautama" data-ref="XXIII.14" title="Gautama Dharmasūtra XXIII.14">Gaut. XXIII.14</a> and <a class="ref" href="../refs/manu.html#VIII.371" data-source="manu" data-ref="VIII.371" title="Manusmṛti VIII.371">Manu VIII. 371</a>, an adulteress, vain of her charms or the wealth of her parents, was to be openly devoured by dogs, if her paramour was a man of lower caste. Śańkha <sup class="fn-ref"><a href="#fn-chapter-xv-decision-51" id="fnref-chapter-xv-decision-51">51</a></sup> prescribes this punishment (of being devoured by dogs) for a woman's paramour of a lower caste and for the erring woman death by burning. Vṛddha-Hārita VII 192 prescribes that in the case of a woman who is a confirmed adul teress or who destroys her foetus, her husband should have her ears, nose and lips cut off and then she should be banished and verses 220–221 prescribe death by being burnt with grass (katāgni) for those guilty of incest. These severe penalties for adultery were very much relaxed and softened by later smṛti writers as is shown in <a class="ref" href="../refs/hodh.html#vol II" data-source="hodh" data-ref="vol II" title="History of Dharmaśāstra vol II">H. of Dh. vol II</a>. pp. 571–573. A man who made a breach in the embankment of a lake or tank (and thereby caused it to become dry) may be sentenc ed to death by drowning (<a class="ref" href="../refs/manu.html#IX.279" data-source="manu" data-ref="IX.279" title="Manusmṛti IX.279">Manu IX. 279</a> ) or a woman who was extremely wicked (such as one who killed her own child in the womb) or who murdered a man or who destroyed the embankments of a tank may have a stone tied round her neck and be drowned, provided she be not pregnant at the time of the sentence (<a class="ref" href="../refs/yajnavalkya.html#II.278" data-source="yajnavalkya" data-ref="II.278" title="Yājñavalkya II.278">Yāj. II. 278</a>). <a class="ref" href="../refs/yajnavalkya.html#II.279" data-source="yajnavalkya" data-ref="II.279" title="Yājñavalkya II.279">Yāj. II. 279</a> ( = <a class="ref" href="../refs/matsya_purana.html#227.200" data-source="matsya_purana" data-ref="227.200" title="Matsyapurāṇa 227.200">Matsyapurāṇa 227. 200</a>) prescribes death by being gored by the horns of bulls (after the nose, lips, ears and hands are cut off) for a woman who is guilty of poisoning (the food or drink of another) or who is guilty of incendiarism or who kills her husband, elders or her own child (provided she is not pregnant)<sup class="fn-ref"><a href="#fn-chapter-xv-decision-52" id="fnref-chapter-xv-decision-52">52</a></sup> <a class="ref" href="../refs/yajnavalkya.html#II" data-source="yajnavalkya" data-ref="II" title="Yājñavalkya II">Yāj. II</a> 282 provides death by being burnt with the fire of straw for those who set fire to growing crops, houses, forests, village, pastures and threshing floors or who approach the queeṇ <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nār.</a> (pārusya, verse 31) prescribes that one who strikes with a weapon the king, even though the latter be at fault, should be impaled and roasted in fire. These examples are enough to convey an idea of the crimes for which the sentence of death was provided in some of the ancient smṛtis <a class="ref" href="../refs/manu.html#VIII" data-source="manu" data-ref="VIII" title="Manusmṛti VIII">Manu VIII</a> 272, Nār (pārusya 24), <a class="ref" href="../refs/vishnu_dh.html#V.24" data-source="vishnu_dh" data-ref="V.24" title="Viṣṇu Dharmasūtra V.24">Viṣṇu Dh. S. V. 24</a> prescribe the pouring of boiling oil in the mouth and ears of a śūdra who through insolence tries to expound dharma to brāhmaṇaṣ Cutting off limbs as a punishment (particularly hands and feet or fingers) was common in the case of thieves, pickpockets and cut-purses (<a class="ref" href="../refs/manu.html#IX.276-277" data-source="manu" data-ref="IX.276-277" title="Manusmṛti IX.276-277">Manu IX. 276-277</a>, <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nār.</a>, pariśiṣṭa verse 32, Yāj II. 274). Excision of the tongue was the sentence when a śūdra abused a brāhmaṇa or a kṣatriya by falsely charging him with some grave sin (<a class="ref" href="../refs/apastamba.html#II.10.27.14" data-source="apastamba" data-ref="II.10.27.14" title="Āpastamba Dharmasūtra II.10.27.14">Āp. Dh. S. II. 10. 27. 14</a>, <a class="ref" href="../refs/manu.html#VIII.270" data-source="manu" data-ref="VIII.270" title="Manusmṛti VIII.270">Manu VIII. 270</a>, <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>, pārusya 22), when a śūdra loudly repeated the Veda along with twice-born persons (Gaut XII. 4), when a person abused the king (<a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nār.</a>, pārusya 30), when a person repeatedly proclaimed what was disliked by the king or divulged the secret policy of the king (<a class="ref" href="../refs/yajnavalkya.html#II.302" data-source="yajnavalkya" data-ref="II.302" title="Yājñavalkya II.302">Yāj. II. 302</a>). Excision of the male organ was prescribed for a śūdra who sexually approached a woman of the three higher varṇas (Gaut XII. 2), for any one guilty of the rape of another's wife (Vṛddha-Hārīta VII. 201 and also confiscation of all property), for any one guilty of incest or intercourse with mother, mother's sister, paternal aunt, sister, the wife of an uncle, friend or pupil, daughter, daughter-in-law, teacher's wife, a woman come for refuge, the queen, an ascetic woman, a wet-nurse and any chaste woman or a woman of a higher varṇa (<a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nār.</a>, stripumsayoga 73–75) The nose, the ears and the hands were cut off in the case of an offender guilty of selling false gold or forbidden flesh such as that of a dog (<a class="ref" href="../refs/yajnavalkya.html#II.297" data-source="yajnavalkya" data-ref="II.297" title="Yājñavalkya II.297">Yāj. II. 297</a>). For branding, vide <a class="ref" href="../refs/gautama.html#XII.44" data-source="gautama" data-ref="XII.44" title="Gautama Dharmasūtra XII.44">Gaut. XII. 44</a>, Bauḍ Dh. S. I. 10. 19, <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nār.</a> (sāhasa 10), <a class="ref" href="../refs/manu.html#XI.237" data-source="manu" data-ref="XI.237" title="Manusmṛti XI.237">Manu XI. 237</a> (= Matsya 227.16), <a class="ref" href="../refs/vishnu_dh.html#V.3-7" data-source="vishnu_dh" data-ref="V.3-7" title="Viṣṇu Dharmasūtra V.3-7">Viṣṇu Dh. S. V. 3–7</a>. The Daṇḍaviveka (p. 47) states that branding was to be resorted to if the proper penance was not performed and if the offence was intentional. Yāj II. 202 provides branding for a gambler and (II. 294) for persons of the three higher varṇas having intercourse with a very low caste woman and Dakṣa VII 33 prescribes it for an ascetic giving up his dutieṣ The Rājataraṅgiṇī mentions (VI. 108–112) that king Yaśaśkara (939–948 A. D) of Kashmir branded on a brāhmaṇa's forehead the mark of dog's foot. Keśavapaṇḍita in his Daṇḍanīti-prakaraṇa (p. 6) quotes the author of the Vaijayantī (Nanda-paṇḍita) to the effect that the making of marks was to be effected with the juice of the marking nut in the case of brāhmaṇas and with a red-hot iron śalākā in the case of otherṣ In England about a hundred years ago branding for desertion from the army was practiseḍ <a class="ref" href="../refs/manu.html#VIII.370" data-source="manu" data-ref="VIII.370" title="Manusmṛti VIII.370">Manu VIII. 370</a> prescribes the shaving of the head as a punish- ment for a woman who pollutes a maiden, <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nār.</a> (sāhasa 10) pres- cribes it for a brāhmaṇa who is not sentenced to death on account of his caste, <a class="ref" href="../refs/sankha_likhita.html" data-source="sankha_likhita" data-ref="" title="Śaṅkha-Likhita">Śaṅkha-Likhita</a> (q. by <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> p 807) for one who abuses officers, brāhmaṇas and elderṣ Megasthenes (Fragment XXVII. p. 72) notes ‘ If one is guilty of a very heinous offence the king orders his hair to be cropped, this being a punishment to the last degree infamous’. Imprisonment for life is prescrib- ed by <a class="ref" href="../refs/vishnu_smriti.html#V.71" data-source="vishnu_smriti" data-ref="V.71" title="Viṣṇu Smṛti V.71">Viṣṇu V. 71</a> for striking out both eyes of a man and by Śukra IV. 1. 88 (for repeating an offence more than three times). For imprisonment with labour, vide Śukra IV. 1. 92 and 108–109. Flogging was prescribed <sup class="fn-ref"><a href="#fn-chapter-xv-decision-53" id="fnref-chapter-xv-decision-53">53</a></sup> by <a class="ref" href="../refs/vishnu_dh.html#V.105" data-source="vishnu_dh" data-ref="V.105" title="Viṣṇu Dharmasūtra V.105">Viṣṇu Dh. S. V. 105</a> for a womaṇ in her monthly course touching intentionally members of the higher casteṣ It was also prescribed for offenders who were slaves or who were dependents and for women, minors, lunatics, old men, poor men and those suffering from diseases ( Kāt ). The punishment of banishment was prescribed for brāhmaṇas guilty of the gravest offences meriting death sentence ( Gaut XII. 44, <a class="ref" href="../refs/manu.html#IX.241" data-source="manu" data-ref="IX.241" title="Manusmṛti IX.241">Manu IX. 241</a>, VIII. 380, <a class="ref" href="../refs/vishnu_dh.html#V.3" data-source="vishnu_dh" data-ref="V.3" title="Viṣṇu Dharmasūtra V.3">Viṣṇu Dh S V. 3</a> and 8, <a class="ref" href="../refs/baudhayana.html#I.10" data-source="baudhayana" data-ref="I.10" title="Baudhāyana Dharmasūtra I.10">Baud Dh. S. I. 10</a>, <a class="ref" href="../refs/yajnavalkya.html#II.270" data-source="yajnavalkya" data-ref="II.270" title="Yājñavalkya II.270">Yāj. II. 270</a> ). It was often associated with branding. Banishment is also prescribed by Yāj I 339 for officers taking bribes (and also confiscation of all wealth), for a perjured brāhmaṇa witness ( Yāj II. 81), for one who embezzles the money of a corporation or transgresses the conventions agreed upon by a guild or village &c ( <a class="ref" href="../refs/yajnavalkya.html#II.187" data-source="yajnavalkya" data-ref="II.187" title="Yājñavalkya II.187">Yāj. II. 187</a>, <a class="ref" href="../refs/manu.html#VIII.219" data-source="manu" data-ref="VIII.219" title="Manusmṛti VIII.219">Manu VIII. 219</a>, <a class="ref" href="../refs/vishnu_dh.html#V.167-168" data-source="vishnu_dh" data-ref="V.167-168" title="Viṣṇu Dharmasūtra V.167-168">Viṣṇu Dh. S. V. 167-168</a> ), for playing with false dice ( <a class="ref" href="../refs/yajnavalkya.html#II.202" data-source="yajnavalkya" data-ref="II.202" title="Yājñavalkya II.202">Yāj. II. 202</a> and <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nār.</a>, dyūtasamāhvaya 6), for a brāhmaṇa guilty of very heinous offences<sup class="fn-ref"><a href="#fn-chapter-xv-decision-54" id="fnref-chapter-xv-decision-54">54</a></sup> ( Śānti 14 116 ) Śukra (IV. 1. 98-108 ) contains a long list of offenders that deserve to be sentenced to banishment. Confiscation of all property was the punishment for several offences such as the commission of the mahāpātakas by persons other than brāhmaṇas, provided they committed them unintentionally ( <a class="ref" href="../refs/manu.html#IX.242" data-source="manu" data-ref="IX.242" title="Manusmṛti IX.242">Manu IX. 242</a>), for perjury, for taking bribes by sadhyas ( <a class="ref" href="../refs/vishnu_dh.html#V.179-180" data-source="vishnu_dh" data-ref="V.179-180" title="Viṣṇu Dharmasūtra V.179-180">Viṣṇu Dh. S V. 179-180</a>) Nār ( prakīrṇaka 10-11) provides a humane rule that even when the king orders the confiscation of all the property of an offender he should not deprive the offender of the tools of his trade or the tools of his craft, such as arms in the case of a soldier, materials of art in the case of artisans, ornaments of courtezans, musical instruments of musicians <a class="ref" href="../refs/sankha_likhita.html" data-source="sankha_likhita" data-ref="" title="Śaṅkha-Likhita">Śaṅkha-Likhita</a><sup class="fn-ref"><a href="#fn-chapter-xv-decision-55" id="fnref-chapter-xv-decision-55">55</a></sup> quoted by V. R p 656 contain a similar provision Enhanced punishment was prescribed for committing an offence agaiṇ <a class="ref" href="../refs/vishnu_dh.html#III.93" data-source="vishnu_dh" data-ref="III.93" title="Viṣṇu Dharmasūtra III.93">Viṣṇu Dh. S. III. 93</a> holds that a king should never pardon or let off a man who is guilty of a second III ] offence (though a first offender may be let off with a mere admonition). <a class="ref" href="../refs/kautilya.html#IV.10" data-source="kautilya" data-ref="IV.10" title="Kauṭilya Arthaśāstra IV.10">Kaut. IV. 10</a> states that when a person is a first offender as to theft at a holy place or as a pickpocket or house- breaking from the roof, his thumb and index finger may be cut off or he may be fined 54 panas, for a second offence all fingers may be cut or a fine of 100 panas may be levied; for a third offence the punishment is cutting of the right hand or a fine of 400 panas and for the fourth death in any way the king may direct. <a class="ref" href="../refs/manu.html#IX.277" data-source="manu" data-ref="IX.277" title="Manusmṛti IX.277">Manu IX. 277</a>, Yaj II. 274, <a class="ref" href="../refs/vishnu_dh.html#V.136" data-source="vishnu_dh" data-ref="V.136" title="Viṣṇu Dharmasūtra V.136">Viṣṇu Dh. S. V. 136</a> contain a similar rule. Vide Ap Dh. S. II. 10. 27. 11-13 for adultery. If several people conspire together and kill or injure a single man the punishment was to be double of what a single man committing the same offence would receive (<a class="ref" href="../refs/kautilya.html#III.19" data-source="kautilya" data-ref="III.19" title="Kauṭilya Arthaśāstra III.19">Kaut. III. 19</a>, Yaj. II. 221, <a class="ref" href="../refs/vishnu_dh.html#V.73" data-source="vishnu_dh" data-ref="V.73" title="Viṣṇu Dharmasūtra V.73">Viṣṇu Dh. S. V. 73</a>). As indicative of the superstitions of ancient (and even modern) times punishment for witchcraft may be mentioneḍ <a class="ref" href="../refs/kautilya.html#IV.4" data-source="kautilya" data-ref="IV.4" title="Kauṭilya Arthaśāstra IV.4">Kaut. IV. 4</a> prescribes <sup class="fn-ref"><a href="#fn-chapter-xv-decision-23" id="fnref-chapter-xv-decision-23">23</a></sup> the employment of spies to find out those who profess to use charms for securing illicit love and banish them and adds that persons who are engag- ed in witchcraft to injure others may be similarly dealt with. In the times of the Peshwas wizards <sup class="fn-ref"><a href="#fn-chapter-xv-decision-57" id="fnref-chapter-xv-decision-57">57</a></sup> and raisers of ghosts appear to have been frequent and were severely dealt with by the peo- ple themselves by being put to death, but the State generally confiscated the property or cut off the alleged wizard’s finger. Up to the beginning of the 18th century even in England wretched old women were frequently convicted as witches and hanged <sup class="fn-ref"><a href="#fn-chapter-xv-decision-58" id="fnref-chapter-xv-decision-58">58</a></sup>. <a class="ref" href="../refs/manu.html#IX.290" data-source="manu" data-ref="IX.290" title="Manusmṛti IX.290">Manu IX. 290</a> (=Matsya 227. 183) prescribes the very mild punishment of the fine of 200 panas for all incantations intended to destroy life, for magic rites and various kinds of raising ghosts and goblinṣ <a class="ref" href="../refs/medhatithi.html" data-source="medhatithi" data-ref="" title="Medhātithi">Medhātithi</a> and Kullūka say that if the magic rites are successful the punishment would be that for murder. Br. (S B E. vol. 33 p. 361 verse 16) provides banish-ment for those who practise incantations with rootṣ</p>
+<p class="prose" id="p-chapter-xv-decision-17"><a class="ref" href="../refs/kautilya.html#i" data-source="kautilya" data-ref="i" title="Kauṭilya Arthaśāstra i">Kaut. i</a>n II 5 prescribes <sup class="fn-ref"><a href="#fn-chapter-xv-decision-59" id="fnref-chapter-xv-decision-59">59</a></sup> that a jail should be constructed in the capital provided with separate accommodation for men and women kept apart and well guarded at the entranceṣ He further provides <sup class="fn-ref"><a href="#fn-chapter-xv-decision-60" id="fnref-chapter-xv-decision-60">60</a></sup> that among the duties of the nāgaraka is to let out of the jail on the day of the festival of the birth constellation of the king and on the full moon day (of every month) such persons as are young, very old, suffering from diseases and helpless, or those who are charitably disposed may pay the fines or others bind themselves by an agreement to pay in cash the fines for the offences for which the prisoners are jailed (and then the prisoners may be released). The persons jailed may be set free on their working every day or once in five days or by undergoing corporal punishment (whipping &c. ), paying fines in cash. Prisoners may be released from jail (as a favour) on the conquest of fresh territory or on the coronation of the Crown Prince or on the birth of a son to the king. In the Delhi Topra Pillar Edict No. IV (Corpus I. I. vol. I. p. 123 and E. I. vol. II. pp. 253-54) Emperor Ašoka promulgates that he gives three days' respite to prisoners on whom judgment has been passed and who have been condemned to death and in the 5th Pillar Edict of Delhi Topra (Corpus I. I. vol. I p. 126-128 and E I. vol. II. pp 258-259 ) he says that he let off prisoners 25 times in 26 years ( which is in conformity with <a class="ref" href="../refs/kautilya.html" data-source="kautilya" data-ref="" title="Kauṭilya Arthaśāstra">Kauṭilya</a>'s dictum cited above ). In the first separate Edicts at Dhauli Ašoka addresses his officers of justice in the capital (Nagaravyavahārikāḥ) that they should so act that even a single person should not unnecessarily suffer imprisonment or paiṇ In spite of this if we are to believe Yuan Chwang, Ašoka in his early career was most cruel and had constructed a jail that was called Hell-prison of Aśoka (vide Watters, vol. II. pp. 88-90). <a class="ref" href="../refs/manu.html#IX" data-source="manu" data-ref="IX" title="Manusmṛti IX">Manu IX</a> 288 requires that all jails should be so built as to abut on the royal road where the offenders suffering pain and in bad condition would be seen by all (in order to deter others from committing offences). The Śilappadikāram, one of the earliest works in Tamil, mentions the release of prisoners on the king's birthday and at the founding of a temple (pp. 38-39 of Mr Dīkshitär's translation). Kālidāsa in the Mālavikāgnimitra<sup class="fn-ref"><a href="#fn-chapter-xv-decision-61" id="fnref-chapter-xv-decision-61">61</a></sup> (Act IV) makes the Vidūsaka report to the king, 'the astrologers think that, as the constellation on which Your Majesty was born is in evil aspect now, let all prisoners be released'. Kālidāsa (in Raghu 17.19) alludes to the release of prisoners and the commutation of death sentences at the time of the coronation of king Atithi. The Brhat-saṃhitā (47-81) states that when the king takes the Pusyaśnāna (ceremonial bath on the day on which the moon is in conjunc- tion with the Pusya constellation in the month of Pausa or every month) he may order release except as to those prisoners who were convicted for offences connected with his own person or with the hareṃ<sup class="fn-ref"><a href="#fn-chapter-xv-decision-62" id="fnref-chapter-xv-decision-62">62</a></sup> In the Mṛcchakaṭika (Act X) also various occasions for the release of prisoners are mentioned by the executioner. The Harṣacarita<sup class="fn-ref"><a href="#fn-chapter-xv-decision-63" id="fnref-chapter-xv-decision-63">63</a></sup> (II. 2nd para) refers to the usage of releasing prisoners at the time of a coronation and on the birth of Harṣa (IV.). The prisoners are described in the latter passage as having long beards and as darkened by the accumulation of dirt on their bodieṣ</p>
+<p class="prose" id="p-chapter-xv-decision-18"><a class="ref" href="../refs/manu.html#IX.243" data-source="manu" data-ref="IX.243" title="Manusmṛti IX.243">Manu IX. 243</a> enjoins upon the king not to appropriate to himself the property of a man guilty of the mahāpātakas (by way of fine or confiscation) and warns that if he takes it out of greed he is tainted by the guilt of the offender. <a class="ref" href="../refs/manu.html#IX.244-45" data-source="manu" data-ref="IX.244-45" title="Manusmṛti IX.244-45">Manu (IX. 244-45)</a> recommends that such fine may be cast into water as an offering to Varuna (the Lord of waters) who wields sceptre even over kings or may be bestowed on learned and virtuous brāhmaṇas, that are lords of the whole world <a class="ref" href="../refs/manu.html#IX.246-247" data-source="manu" data-ref="IX.246-247" title="Manusmṛti IX.246-247">Manu (IX. 246-247)</a> further states that in the country where the king avoids taking the property of very wicked sinners men become long-lived, crops spring up, there is no infant mortality &c.</p>
+<p class="prose" id="p-chapter-xv-decision-19">Generally no one was allowed to take the law into his own hands except as to recovery of debts (which will be discussed below). But <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nār.</a> (pārusya<sup class="fn-ref"><a href="#fn-chapter-xv-decision-64" id="fnref-chapter-xv-decision-64">64</a></sup> 11-14) contains the following remarkable passage : ' If a śvapāka, a meda, a caṇḍāla, one devoid of a limb, one gaining livelihood by killing animals, an elephant driver, vrātya (i. e. deprived of caste for non-performance of upanayana ), a slave, one who disregards his elders or spiritual teacher—if these should transgress the limits they must observe towards their superiors, they should be punish-ed then and there by the person offended and the person so doing is not regarded as committing an offence (equal to theft) Should any such low person insult another (who is his superior) that man himself shall punish him and the king has nothing to do with the punishment. These people are like the refuse (dregs) of humanity and their property also is impure. The king is entitled to inflict bodily punishment (whipping), but he should not inflict fines on them '. The <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> on Yaj. II. 270 quotes a text of Vṛddha-<a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> of similar import and explains that the words ‘the king should avoid taking fines’ refer to cases of grave offences<sup class="fn-ref"><a href="#fn-chapter-xv-decision-65" id="fnref-chapter-xv-decision-65">65</a></sup>.</p>
+<p class="prose" id="p-chapter-xv-decision-20">Something must be said about the law of Limitatioṇ In the smṛtis and digests rules of Limitation play very little part for several reasonṣ As on spiritual grounds, will be set out under the title of rṇādāna, not only the debtor, but also his sons, grandsons and great-grandsons were liable to pay a debt ( <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> on Yaj. II. 50 ), there was no scope at all for prescribing any period of limitation so far as recovery of debts was concerned Unpaid purchase money was treated as a debt. In other matters also the smṛtis and dharmaśāstras, under the influence of religious and other-worldly considerations always lean against allowing mere lapse of time to prevent a man from asserting his just rights But rarely there -were writers who were more secular and laid down periods of limitatioṇ For example, Kaundinya <sup class="fn-ref"><a href="#fn-chapter-xv-decision-66" id="fnref-chapter-xv-decision-66">66</a></sup> ( quoted in V. Mātrakā p. 341 ) holds that a debt not claimed for ten years cannot be recovered except when the creditor was a minor or very old or was a woman or was suffer- ing from disease or there was confusion due to invasion or ( the creditor or debtor ) had left the country. Some important rules on the law of Limitation are set out here in one place : 1. <a class="ref" href="../refs/manu.html#VIII.148" data-source="manu" data-ref="VIII.148" title="Manusmṛti VIII.148">Manu VIII. 148</a>, Yaj II. 24, <a class="ref" href="../refs/gautama.html#XII" data-source="gautama" data-ref="XII" title="Gautama Dharmasūtra XII">Gaut. XII</a>, 35, Vas 16. 17, <a class="ref" href="../refs/narada.html#IV.79" data-source="narada" data-ref="IV.79" title="Nārada IV.79">Nār. IV. 79</a> and others state that enjoyment of immovable property in the presence of the real owner without protest from him causes loss of ownership and ten years’ enjoyment of movables under similar circumstances leads to the same result. There are various views on the subject which have already been indicated above ( on pp. 322–325 ). 2. An exception to the above rule is stated to be that no limitation applies to pledges boundaries, deposits, and to the property of minors, idiots, the State, women and brāhmaṇas learned in the Vedaṣ Vide <a class="ref" href="../refs/gautama.html#XII.35-36" data-source="gautama" data-ref="XII.35-36" title="Gautama Dharmasūtra XII.35-36">Gaut. XII. 35–36</a>, Vaṣ 16. 18, <a class="ref" href="../refs/manu.html#VIII" data-source="manu" data-ref="VIII" title="Manusmṛti VIII">Manu VIII</a> 149, Yaj II. 25, <a class="ref" href="../refs/narada.html#IV" data-source="narada" data-ref="IV" title="Nārada IV">Nār. IV</a> 81, Br. (S. B. E. vol. 33 p. 312 verse 21 ). 3. As the rules about deposit are extended by <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nār.</a> ( upanidhi verse 14 ) to articles borrowed or given to artisans for being worked, and to anūhita, nyāsa and pratiṇyāsa, in the case of these also there would be ordinarily no bar of limitatioṇ Vide <a class="ref" href="../refs/manu.html#VIII.145-146" data-source="manu" data-ref="VIII.145-146" title="Manusmṛti VIII.145-146">Manu VIII. 145–146</a>, Yaj II. 58, <a class="ref" href="../refs/vishnu_dh.html#VI.7-8" data-source="vishnu_dh" data-ref="VI.7-8" title="Viṣṇu Dharmasūtra VI.7-8">Viṣṇu Dh. S. VI. 7–8</a>. Here also there are dicta to the contrary. Marici ( q. in Sm C II. p 69 quoted above on p. 326 ) says that cows, beasts of burden, ornaments and the like borrowed in a friend- ly way would have to be returned ( at the latest ) in four or five years, otherwise they are lost. Acc. to Vyāsa <sup class="fn-ref"><a href="#fn-chapter-xv-decision-67" id="fnref-chapter-xv-decision-67">67</a></sup> this rule would not apply to what is lent to friends, relatives, brāhmaṇas and the servants of the king on their request 4. It appears that a period of twenty years was prescribed for avoiding a document on the ground of patent defects by one who had seen it and was affected by it Vide Kāṭ 298-300 Similarly when a thing is enjoyed for twenty years on the basis of a writing in the presence of an opponent able (to challage the enjoyment and the writing) then the writing becomes unassailable (even if the witnesses are all dead or there is no other document for comparison). Vide Kāṭ (299)<sup class="fn-ref"><a href="#fn-chapter-xv-decision-68" id="fnref-chapter-xv-decision-68">68</a></sup>. 5. A deed settling a boundary dispute becomes unassailable after twenty yearṣ Vide Kāṭ. (301)<sup class="fn-ref"><a href="#fn-chapter-xv-decision-69" id="fnref-chapter-xv-decision-69">69</a></sup> 6. No suit can lie on a document executed beyond thirty years, which has never been seen by any body nor read out (by the creditor to any body) even though the attesting witnesses may be living Vide Br. (S. B. E vol. 33 p. 308 verse 29)<sup class="fn-ref"><a href="#fn-chapter-xv-decision-70" id="fnref-chapter-xv-decision-70">70</a></sup>.</p>
+<p class="prose" id="p-chapter-xv-decision-21">In the preceding pages we have passed in review the law of judicial procedure, evidence and limitation A careful perusal will convince any unbiassed reader that the Dharma-śāstras evolved during the course of centuries an indigenous system of judicial procedure of a high order <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>, Brihas-pati and <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> represent the high water mark of ancient Indian adjective law These writers flourished before 600 A. D and the first two of them are probably older by several centuries than that date They present an orderly system providing for the appointment and duties of judges, proper pleadings, the law of evidence and limitation, decrees and their execution, crimes and punishmentṣ This system compares most favour-ably with any system of judicial procedure prevalent anywhere in the West up to the 18th century A. D.</p>
+<aside class="footnotes-section" aria-label="Footnotes">
+<hr>
+<ol class="footnotes-list">
+<li id="fn-chapter-xv-decision-1" class="footnote-item"><span class="devanagari">उत्क्रमकारणेषु स्वमतस्थापिता क्रिया । राज्ञा परीक्ष्य सभ्यैश्च स्थाप्यो जय</span>- <span class="devanagari">पराजयौ ॥ संरक्ष्यकार</span> q. by <span class="devanagari">स्मृतिच०</span> II. 120, <span class="devanagari">परा</span>. <span class="devanagari">मा</span>. III p. 199. <a href="#fnref-chapter-xv-decision-1" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-2" class="footnote-item">Dr Jolly (S B. E. vol. 33 p 35) is not right when he translates Nār II. 42 as ‘whenever the false assertions have been removed the judges shall pass a decree’. He has not also correctly rendered the coṃ of Asahāya. There is no word for ‘assertions’ in Nār. II 42. <span class="devanagari">पश्चात्सार्यं तु सभ्यैः कार्यो विनिश्चयः ।</span> on which the comment of Asahāya is: <span class="devanagari">यदा निर्णयकाले भवति लङ्घस्तदा वादिप्रतिवादिनोः पक्षोः सर्वलक्षणसमन्वयमानकोः सह द्रावयुत्सार्य सभ्यै निर्णयः कार्यः ।</span> <a href="#fnref-chapter-xv-decision-2" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-3" class="footnote-item"><span class="devanagari">प्रमाणहेतौ यस्तिः शपथेन कृपणोपाया । वादिर्समितिपूरथा वा निर्णयेरोष्ठेविधिः स्तुतः ॥ व्यास</span> in <span class="devanagari">व्यव</span>. <span class="devanagari">नि</span>. p 138, <span class="devanagari">व्य</span>. <span class="devanagari">प्र</span>. p. 86, <span class="devanagari">शुक्रमिति</span> IV. 5. 271 (reads <span class="devanagari">बद्रुविवः स्थूलः</span>). <span class="devanagari">शुक्र</span> apparently regards <span class="devanagari">प्रमाणा</span>s as one. <a href="#fnref-chapter-xv-decision-3" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-4" class="footnote-item"><span class="devanagari">लेख्यं यत्र न विद्येत न युक्तिर्न च साक्षिणः । न च दिव्यप्रतातिसेो प्रमाणं श्रव पार्थिक । निश्चेतुं ये न शक्नुयाः स्वबुद्ध्याः सन्दिग्धरूपिणः । तेषां कृपे प्रमाणं स्यात्तस्य राज्ञैव भूपतेः । पितमह</span> q. by <span class="devanagari">स्मृतिच०</span> II. 26, <span class="devanagari">परा</span>. <span class="devanagari">मा</span> III. p 93. <span class="devanagari">व्यवहारसार</span> p. 43. <span class="devanagari">मदनरत्न</span>. <a href="#fnref-chapter-xv-decision-4" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-5" class="footnote-item"><span class="devanagari">सकलपूर्वोपाङ्गं च सोत्तरं सक्रियं तथा । साधधारणिकं चैव तञ्जेयं जयपत्रकम् ॥ नारद</span> (q. by <span class="devanagari">अपरार्के</span> p 684). <span class="devanagari">यथोपन्यस्तसाध्यार्थसंयुक्तं सोत्तरंक्रियम् । साधधारणिकं चैव जयपत्रकमित्याह प्राह दिवाकाद्युद्दिष्टा हितानि राजमुद्रा च । सिद्धेऽर्थे वादिने दद्यात् जिने जयपत्रकम् ॥ बृद्ध</span> q. by <span class="devanagari">मिता०</span> on <span class="devanagari">या</span> II. 91 and <span class="devanagari">अपरार्क</span> p 684. <span class="devanagari">पूर्वनिर्दे षक्रिपापादं प्रमाणं तत्परीक्षणम् । निगदं स्मृतिवाक्यं च यथासत्म्यं विनिश्चयम् ॥ एतत्सर्वं समा सेन जयपनेऽभिलेखयेत् ॥ व्यास</span> q. by <span class="devanagari">स्मृतिच०</span> II 57; <span class="devanagari">पूर्बोत्तरक्रियायुक्तं निर्गमादं द्युपगमे लेस्यं जयपत्रं तदुच्यते ॥ बृद्ध</span> q. by <span class="devanagari">मद</span>. <span class="devanagari">भा</span>. p 309 ; <span class="devanagari">समासदभ्ये र्येण स्वविज्ञानाक्षरमुद्रा</span> | <span class="devanagari">पथा लेखयविधि द्वतस्तर्त्र जयपत्रं ॥ कात्या</span> (263) q by <span class="devanagari">स्मृतिच०</span> II. 57, <span class="devanagari">मिता</span> on <span class="devanagari">या</span> II 91 (without name ) '<span class="devanagari">जयपत्रे समग्र भाषविवादभूमिप्रसतिनिदेवं प्रयोजिका न तु पाक्षव्यपिहतश्चेत्तदशावोधि</span>' <span class="devanagari">विवादाश्रव</span> p 146 Compare Order 20 r 4 of the Indian Civil Procedure code for the contents of the judgment. <a href="#fnref-chapter-xv-decision-5" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-6" class="footnote-item"><span class="devanagari">निरस्तास्तु क्रिया यत्र प्रमाणेनैव वादिना । पश्चात्कारो भवेत्तत्र स संवादं निपी</span>- <span class="devanagari">डितं ॥ अन्यवादिप्रतिज्ञेयं इतेरेवा प्रवीदयते । प्रस्तादशावसंसिद्धं स्य स्थानपरूञ्जकं ॥ कात्या</span>. q. by <span class="devanagari">स्मृतिच०</span> II 57-58; <span class="devanagari">परा मा</span> III. 124-125, <span class="devanagari">स्मृ च</span> p 146 For <span class="devanagari">हीनवादी</span> vide above p. 303. . <a href="#fnref-chapter-xv-decision-6" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-7" class="footnote-item"><span class="devanagari">पाताभियोगप्रमतिस्ततस्त्वदुद्धरेष पश्चात्‌कार</span>: <span class="devanagari">। कौटिल्य</span> III 19. <a href="#fnref-chapter-xv-decision-7" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-8" class="footnote-item"><span class="devanagari">सिट्ठेनायेन संयोज्यो वादी सत्कारपूर्व्वकम् । लेख्यं स्वहस्तसंयुक्तं तस्मै दद्यात् प्रायिकः ॥ कात्या०</span> q by <span class="devanagari">स्मृतिचि</span>. II. p 57, <span class="devanagari">अपरार्क</span> p. 684, <span class="devanagari">स</span>. <span class="devanagari">वि</span>. p 220 The <span class="devanagari">मदनरत्न</span> (<span class="devanagari">व्यव</span>. ms ) explains ‘ <span class="devanagari">सिट्ठेनायेन साधितधनेन । लेख्यं जयपत्त्रम् । साधित धने तद्भुक्तिसिद्धिविद् दुर्गेशोऽयम् ।</span>' <a href="#fnref-chapter-xv-decision-8" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-9" class="footnote-item"><span class="devanagari">विषादे सोत्तरपणे ह्यपध्वंसस्तु हीयते । स एव हि पर्णं दाप्यो निर्वर्त्तं च पराजये ॥ नारद</span> II. 5. <a href="#fnref-chapter-xv-decision-9" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-10" class="footnote-item"><span class="devanagari">तीरतिं समाप्तिं निर्णयपर्यन्तं प्राप्तमिति यावत् ।</span> ... <span class="devanagari">अनुशिष्टिं अभिमत्यर्थिनो प्रति कथितं जयपदे चारोपयित् । व्य</span>. <span class="devanagari">प्र</span>. p. 90; <span class="devanagari">तीरतिं समाप्तं अनुशिष्टिं साक्षिभिरुक्तम् । दीपकालिका</span> on <span class="devanagari">या</span>. II. 306; <span class="devanagari">तीरतिं समाप्तिं निर्णीतमिति यावत् । अनुशिष्टिं साक्षिभि</span>- <span class="devanagari">रुक्तम् । मदनरत्न</span> (<span class="devanagari">यदा</span> ms); <span class="devanagari">सर्वज्ञवासकुले सम्प्रक्षीसि साक्षिणा ह चेत् । अनुशिष्टि</span>- <span class="devanagari">मयौ लेखौ लेख्यं दिव्यं ह दैविकाच । वैजयन्तीकोश</span>. <a href="#fnref-chapter-xv-decision-10" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-11" class="footnote-item"><span class="devanagari">मध्यस्थस्थापितं द्रव्यं चलं वा यदि वा स्थिरम् । पश्चात्तत्तोदयं दाप्यं जयिने चनुसुत्तरम् । कात्या</span>. in <span class="devanagari">व्यवहारप्रकार</span> p 101. This is ascribed to <span class="devanagari">नारद</span> in <span class="devanagari">स्मृतिच</span>. II. p 120, and <span class="devanagari">मदनरत्न</span> which reads <span class="devanagari">मध्ये यत्स्थापितं</span> and <span class="devanagari">जयिने जयपत्रकम्</span> and explains ‘ <span class="devanagari">मध्ये यत्स्थापितं विवादकाले मध्यस्थस्थापितम्</span> ’. <a href="#fnref-chapter-xv-decision-11" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-12" class="footnote-item"><span class="devanagari">राजा तु स्वामिने तस्मै साम्तवेन प्रदापयेत् । देशाचारेण वान्पास्यं दुष्टग्राह संपीडय सुग्रहम् । रिक्थिने स्युह्यै दण्डं चतुर्भागमं प्रदापयेत् । वाणिज्यं कार्यकामपि शिलिपनभावजीभू भुजा । धम्र्तदानास दुष्टदा नामोपि कर्जे सारयेत् । अशाक्तो वन्धनायवा स्वमौ ब्राह्मणते । धर्मेकालम् सभ्यसत्वस् स्वमीहात्मास दुष्यपते । कात्या</span>. q. by <span class="devanagari">मिता</span> on <span class="devanagari">या</span> II. 40 and 26, <span class="devanagari">अपारार्क</span> p. 645, <span class="devanagari">स्मृतिच</span>. II. pp. 121, 124, <span class="devanagari">परा</span>. <span class="devanagari">मा</span>. III. 200 and 209. . <a href="#fnref-chapter-xv-decision-12" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-13" class="footnote-item"><span class="devanagari">नारदस्मृतौ स्त्रियों ग्राद्याः पुनस्तत्साम्प्रदात्यपि । ग्रहणात् शासनात् राजा दण्डं नयेत् ॥ दोषितस्वामिका नारी प्रापिता यद्यपि ग्रहे । तावत्स्या बन्धने स्थाप्या यावत् प्रत्यागतः प्रभुः ॥ कात्या०</span>, q. by <span class="devanagari">स्मृतिच०</span> II. p. 323. <a href="#fnref-chapter-xv-decision-13" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-14" class="footnote-item"><span class="devanagari">साक्षिसप्तम्ववसनानां दृश्ये वर्जयेत् पुनः । स्वचर्यावासितानां तु नास्ति पौनर्भवो विधिः ॥ नारद्</span> II. 40. <a href="#fnref-chapter-xv-decision-14" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-15" class="footnote-item"><span class="devanagari">हीयते वाक्षिते वा यो मन्येत विषमर्हतः । द्विगुणं दण्डमास्थाय तत्कार्यं पुन</span>-<span class="devanagari">रुद्धरेत् ॥ नारद</span> I. 65; <span class="devanagari">कुलादिभिर्निर्मिचिष्वपि सन्तोषं न गच्छतः यः कृतं पुनरुद्धरेत् ॥ बृह०</span> and <span class="devanagari">कात्या०</span> q. by <span class="devanagari">स्म प्र</span> p. 91. <a href="#fnref-chapter-xv-decision-15" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-16" class="footnote-item"><span class="devanagari">बलोपधिविनिर्छन्नान् व्यवहारांश्चिवर्जयत् । याज्ञ</span>. II. 31 <a href="#fnref-chapter-xv-decision-16" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-17" class="footnote-item"><span class="devanagari">न्यायापेतं यदन्येन राजाज्ञानकृतं भवेत् । तदन्योन्यायविहितं पुनरन्यै निवे</span>-<span class="devanagari">शयेत् ॥ स्मृति</span> q. by <span class="devanagari">मित्ता</span>. on <span class="devanagari">या</span>. II. 306, <span class="devanagari">परा</span>. <span class="devanagari">मा</span>. III. p. 582. This is <span class="devanagari">नारद्</span>, <span class="devanagari">प्रतीक्षक</span> 9. <a href="#fnref-chapter-xv-decision-17" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-18" class="footnote-item"><span class="devanagari">एवं शास्त्रोदित राजा कुर्वन्विषयपालनम् । वित्तस्येह यदा लोके भदेन्नृपतिरा भवेद् ॥ साक्षिलेख्यानुमानेन प्रकुर्वन्कार्यनिर्णयम् । वितरत्वेदं यदा राजा श्रप्रमाद्यति रिरन्</span>- <span class="devanagari">परम् ॥ बृहस्पतिस्मृ</span>o II p 123, <span class="devanagari">परा</span>. <span class="devanagari">मा</span>. III. p. 219. <a href="#fnref-chapter-xv-decision-18" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-19" class="footnote-item"><span class="devanagari">अकार्यकारिणामेव प्रायश्चित्तं तु कल्पयेत् । यथाज्ञास्यरूपं च दण्डं घोषौ प्रकल्पयेत् ॥ पैठीनसि</span> q. by <span class="devanagari">दण्डविवेक</span> p. 76. <a href="#fnref-chapter-xv-decision-19" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-20" class="footnote-item"><span class="devanagari">देहेन्द्रियविनाशो हि यथा दण्डं प्रकल्पयेत् । तथा दृष्टिकरे देयं सहस्रस्थान च दारिद्र्यैः ॥ सहस्रस्थानपये चासौ वृदाष्टाङ्गभाविवेषणात् । कारण</span> q. by <span class="devanagari">स्मृतिच</span>. II. p. 329, <span class="devanagari">अपरार्क</span> p 816, <span class="devanagari">परा मा</span> III. pp. 419-420 ; <span class="devanagari">दण्डसमित्राद्वेय दण्डरूपणमकालितः । इते समुदायपायश्चाञ्च्छ्वरस्तोदधिकः ॥ बृद</span>. q. by <span class="devanagari">विश्वरूप</span> on <span class="devanagari">या</span>. II 226. <a href="#fnref-chapter-xv-decision-20" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-21" class="footnote-item"><span class="devanagari">क्षत्रिये हत्वा गवां सहस्रं वैरयातनाथां दद्यात् ।</span> ... <span class="devanagari">अपभ्रंशणापधिकं सर्वत्र प्रायश्चित्तायं । आप</span>. <span class="devanagari">ध</span>. I. 9. 24. 1 and 4. <span class="devanagari">हरदत्त</span> in order to bring Ap in line with Manu XI. 127 and Yāj. III. 266 explains that 1000 cows and one bull are all for expiatioṇ <a href="#fnref-chapter-xv-decision-21" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-22" class="footnote-item"><span class="devanagari">राकागूहं सुभगं सुछवो हुवे</span> ... <span class="devanagari">वदान्मे धीरं शतदायमुक्थ्यं ॥ ऋ</span> II 32.4. <a href="#fnref-chapter-xv-decision-22" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-23" class="footnote-item">The work of Harry Elmer Barnes on ‘The Study of punishment (1930, New York) may be read with great interest and profit. It will set off to great advantage the comparatively humane treatment of criminals in Ancient India as compared with the horrible and revolting methods for punishing criminals employed in the West <a href="#fnref-chapter-xv-decision-23" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-24" class="footnote-item"><span class="devanagari">अप्रायवेण तु यो राजे सन्दिश्यावैश्वर्यं प्रबर्धते । मत्तस्तस्य स विनेयः स्यात्स्या कार्याणो न सिद्धयति ॥ नारद</span> I. 46. <a href="#fnref-chapter-xv-decision-24" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-25" class="footnote-item">Vide Deut XIX. 21, Lev, XXIV. 20 for the ancient Hebrew Code (eye for eye &c.), the code of Hammurabi (about 2200 B. C.) in Babylon and the law of the Twelve Tables in Romé. In the 8th Table in Ortolan's 'History of Roman Law' (tr. by Pritchard and Nasmyth, 1871 ) p. 114 the 2od provisioo is: ‘retaliation against him who breaks the limb of another and does not offer compensation’. In Hammurabi’s Code (text tr. by C. H. W. Johns, 1903 ) sections 196 and 200 are: 'If a man has caused the loss of a gentleman’s eye, his eye one shall cause to be lost. If a man has made the tooth of a man that is his equal to fall, one shall make his tooth to fall out'. <a href="#fnref-chapter-xv-decision-25" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-26" class="footnote-item"><span class="devanagari">देन येनाङ्गनापराधं कुर्यात्तत्तस्यैव च्छेतनमन्यत्र ब्राह्मणात् । शङ्खलिखित</span> q. in <span class="devanagari">ध्</span>. <span class="devanagari">म</span>. p. 249; <span class="devanagari">येनाङ्गनापराधं ब्राह्मणस्यापराद्धयात् । तदङ्गं तस्य च्छेतव्यमेवं ह्यस्मि</span>- <span class="devanagari">न्महापापम् ॥ नारद</span> (<span class="devanagari">पारेष्य</span> 25); <span class="devanagari">हीनवर्णोऽधिकवर्णस्य येनाङ्गनापराधं कुर्यात्तदेवास्थ शातयेत् । विष्णुधर्मसूत्र</span> V. 19. <a href="#fnref-chapter-xv-decision-26" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-27" class="footnote-item"><span class="devanagari">राजदण्डभयादेके पापाः पापं न कुर्वते । यमदण्डभयादेके परलोकभयादपि । परस्परायभयादेके पापाः पापं न कुर्वते</span> ! ... <span class="devanagari">दृष्टस्वेहे भयोद्विग्ने मनुष्या धर्मीणि स्थिताः ॥ शान्ति</span> <a href="#fnref-chapter-xv-decision-27" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-28" class="footnote-item">5-6. Vide <span class="devanagari">मत्स्य</span> for almost the same words (225. 16-17). <a href="#fnref-chapter-xv-decision-28" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-29" class="footnote-item"><span class="devanagari">क्षुब्ध आयाति शष्धम् । एष</span> ... <span class="devanagari">आर्यचारुदत्तो नाम । एतेन</span> ... <span class="devanagari">वसन्तसेना मारिता</span> ... <span class="devanagari">वृक्षां राजा पाळकेन चश्मासाप्ता एवं शाषयितुम् । यद्यपर ईदृशमपलोकविरुद्धजनकार्य करोति तत्रापि राजा पालक एवमेव शासित् । मृच्छकटिक</span> X after verse 11. <a href="#fnref-chapter-xv-decision-29" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-30" class="footnote-item">The Dandaviveka of Vardhamāna (published in Gaikwad Oriental series, 1931) deals exhaustively with the subject of punishmentṣ <span class="devanagari">न सर्वज्ञं सम्यक् छलमिति निन्दा</span>, <span class="devanagari">धिक् त्वां पापीयमधर्मकारिणेति निर्भर्त्सनम्। कुण्वेदेय</span> p. 20; these are respectively <span class="devanagari">वाग्दण्ड</span> and <span class="devanagari">धिग्दण्ड</span>. <span class="devanagari">गुरुपुरोहितान्नृपपुत्रसूनुषु वाग्दण्डयेत्। विवादिनीं नराध्यक्षाध्यापकाचार्ये च दण्डयेत् ॥ महापातकानुक्ताश्च वधदण्डेन दण्डयेत्। वृह</span>. q. by <span class="devanagari">स्मृतिच</span>. II, p 126 and <span class="devanagari">व्यव</span>. <span class="devanagari">चि</span>. p. 528. <a href="#fnref-chapter-xv-decision-30" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-31" class="footnote-item"><span class="devanagari">पुरुषं चापराधं च कारणं शुष्कलाघवम् । अनुबन्धं तदात्वं च देशकालौ समीक्ष्य च ॥ १ । उत्तमार्धममध्यमं प्रदेष्टा दण्डकर्मणि । राजश्व प्रकृतीनां च कल्पयत्तराज्ञितं ॥ कौ</span>. IV. 10; <span class="devanagari">दुश्चछ देशकालधर्मपर्यादोषविज्ञानविधैौदधीनां</span>: <span class="devanagari">कल्प्यं । भसिह</span> 19. 9; <span class="devanagari">पुरुषशक्तपराधानुबन्धविज्ञानादूदण्डनियोगः । अज्ञानात् वा वेदिविस्तभावयम्</span>- <span class="devanagari">गात् । गौ</span>. XII 48-49. <span class="devanagari">अनुबन्धं परिज्ञाय देशकाली च तत्त्वतः । सारतरापराधी प्रालोक्ष्य दण्डं दण्डयोज्ञेयु पातयेत् ॥ मनु</span> 8 126. on which <span class="devanagari">मेधातिथि</span> makes the striking remark that this is the fundamental verse about all offences '<span class="devanagari">उत्पक्कृदण्डोपेखरापेक्षु प्रर्थार्धसारेण सर्वदण्डव्यक्तिः कर्तव्यया ॥</span>' <a href="#fnref-chapter-xv-decision-31" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-32" class="footnote-item"><span class="devanagari">न हीदोषैर्षि महोपवनमस्ति मुलानगा यद्या दण्ड कृत्वाप्य । नेति कौटिल्यः। हीदण्डो हि ह्णागाइद्देजोवति । मृदुदण्डः परिभूयते । यथार्थदण्डः पूज्यः । इहिकात्</span>- <span class="devanagari">प्रमीतो हि वृष्मः प्रजा धर्मार्थकामोपजियति । अयंधाज्ञ</span> I. 4. Vide Manu VII 103 (=Sānti 140. 8) which appears to be of the same opinion as the ācāryaṣ <a href="#fnref-chapter-xv-decision-32" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-33" class="footnote-item"><span class="devanagari">चतुर्विंशतिरेकनपतिः प्रथमासाहसः । द्विशतं पञ्चशतं चैव मध्यमसाहसः । षट्शतं सहस्रं चोत्तमः । यथासापकारम् । शङ्खलिखित</span> q. by <span class="devanagari">वि</span>. <span class="devanagari">र</span> p 664, <span class="devanagari">दण्डविवेक</span> p. 23. There was great divergence of views about the metal in which the fines were to be paiḍ According to Vijñāneśvara the figures of fines in such verses as Manu VIII. 378 (where no metal is specified) the paṇas are those of copper, while according to Bhāruchi (quoted in S. V. p 150) they are of golḍ The S. V. remarks that local usage is to be followeḍ The V. Mayūkha (p. 255) states that in all texts (about fines) the mention of a number without specifying the object to which it refers is to be deemed to refer to paṇas, that pana is a copper piece one karṣa in weight and that karṣa is one fourth of a pala. Br. (q. by Sm C. II p. 99) states that the tables in Manu (VIII 132-136) beginning with the dnst paṇucle in a beam and ending with karṣāpaṇa is to be followed in ordeals and fineṣ An interesting sidelight is shed on crimes and their punishments in the Inscription of Cālukya Vikramāditya V (dated śaka 934) from Gadag which provides that the fines for abuse, assanlt, for drawing out a dagger, for stabbing and for adultery by a bachelor were respectively 2 panas, 12 panas, 3 gadyāṇas, 12 gadyāṇas and 3 gadyāṇas {vide E. I. vol. 20 p. 64.} <a href="#fnref-chapter-xv-decision-33" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-34" class="footnote-item"><span class="devanagari">कलौसिद्धस्य यो दण्डस्तदपराधश्च घरनतः । पणानां सहस्रं तु स्थाप्यमूल्यं साथ राजनि ॥ मापपादो द्धिपादो वा दण्डो यत्र प्रवर्तित । अनिर्दिष्ट तु सौवर्ण मापको तत्र कल्पयेत् । यत्रोक्तो मापकर्देण्डो राजतं तत्र निर्दिशेत् । कृष्णलेख्योपमेव स्यादुद्रव्यं विज्ञेयभागस्तु ज्ञेयः कार्षापणस्य ह ॥ कात्या</span> 490–493 g .by <span class="devanagari">स्मृतिच</span> II. p 127, ( there are various readings in all these). The <span class="devanagari">स्मृत</span>, <span class="devanagari">जे</span>. <span class="devanagari">दण्डविवेक</span> p 29-30 (there are various readings in all the p 202 says <span class="devanagari">धर्मशास्त्रेषु दण्डविधानादौ संख्यामात्रे निर्दिष्टे पणानां व्यवहाराधयाणां चाथवेयं तत्र पणा एन गृहीत्वा इति ।</span> <a href="#fnref-chapter-xv-decision-34" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-35" class="footnote-item"><span class="devanagari">सप्रैषु व्यापराधेपु पुंसो योर्छदंग्मः स्मृतः । तदर्थं घोषिपते द कात्या</span> ( 487 ) q by <span class="devanagari">स्मृतिच</span> II p. 321, <span class="devanagari">स्य म</span> p 246 <a href="#fnref-chapter-xv-decision-35" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-36" class="footnote-item"><span class="devanagari">द्वादशवर्षा स्त्री मात्रव्यवहारा भवति षोडशवर्षा</span>. <span class="devanagari">पुमान् । अत एवांगिरा</span>: <span class="devanagari">स्त्रीणां व्यवहारक्षमाणां द्वादशवर्षा भवति षोडशवर्षा पुमांश्चेति ॥ कौ</span> III. 3. <a href="#fnref-chapter-xv-decision-36" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-37" class="footnote-item"><span class="devanagari">असीतिवर्षीयसर्वाणि बालौ कापुरुषोषः । प्रायश्चित्तार्धार्हीणि क्षिप्रौ व्याधित एव च ॥ अनेकादर्शवर्षपञ्चवर्षारत्यल्प वय । परैश्चक्रुः सुहृद्ये प्रायश्चित्त विहृवये ॥ अतो बालतरस्यापराधो न पातकम् । राजदण्डो न तस्यास्ति प्रायश्चित्तं न विद्यते ॥</span> q. by <span class="devanagari">हरदत्त</span> on <span class="devanagari">गौ</span> II. 6 (without name) The <span class="devanagari">मितक्ष०</span> on <span class="devanagari">या</span> III. 243 ascribes the first to <span class="devanagari">अंगिरस्</span> and the last two to <span class="devanagari">शङ्ख</span>. <a href="#fnref-chapter-xv-decision-37" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-38" class="footnote-item">Nār. IV. 85 holds that a boy is called śiśu and is like an embryo till eight and bāla or pogaṇḍa thereafter till 16. <a href="#fnref-chapter-xv-decision-38" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-39" class="footnote-item"><span class="devanagari">येन द्वेषेण शूद्रस्य दण्डो भवति धर्मतः । तेन वैश्यादिवर्णो द्विगुणो द्विगुणो भवेत ॥ कात्या</span>. 485 q by <span class="devanagari">स्मृतिच०</span> II 127, <span class="devanagari">परा मा</span> III 211 (ascribes to <span class="devanagari">पितामह</span>), <span class="devanagari">प्रायश्चित्तं च दण्डश्च स चौचो जातौ यदाक्रमम् । कल्पयेच्चक्रकृदुच्छ्रिते मयेच मयेऽधर्मममम् ॥ याज्ञ०</span> by <span class="devanagari">वि०रूप</span> on <span class="devanagari">दा</span> I. 17. <a href="#fnref-chapter-xv-decision-39" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-40" class="footnote-item"><span class="devanagari">बचाष्टादे ब्राह्मणस्य न वधो ब्राह्मणोर्हति । शिरसो मुण्डनं दण्डस्तस्य निर्वासनं पुरात् । ललाटे चाभिशस्ताङ्कः प्रयाणं गर्दभेन च ॥ नारद</span> (<span class="devanagari">साहस</span> 9-10). In these days of fasts as part of the technique of satyāgraha for redress of grievances or for justice pursued by Mahātmā Gāndhi and some of his ardent followers it is interesting to note that the widow of the murder'd brāhmaṇa referred to on p 397 had been undergoing voluntary starvation (prāyopaveśa) for four days for securing punishment of her husband s murderer (who she believed was a wizard ) and that the king himself being unable to prove the guilt of the accused began to starve himself and found proof by supernatural means (Rājataraṅgiṇī IV 82-105). <a href="#fnref-chapter-xv-decision-40" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-41" class="footnote-item"><span class="devanagari">न शारीरो ब्राह्मणस्य दण्डो भवति कर्हिचित् । कृते तु दुष्कृते यद्दत्या राजा धर्मं प्रदापयेत् । अवध्यापचयनं रक्षाकर्मं च कारयेत्परम् । मासाधर्मनास कुर्यात् कार्यं विज्ञान एव । यथापराधं वितं तु विकर्मांण्यपि कारयेत्तु । अवध्या ब्राह्मणा गावो लोकेस्मिन्नौददृष्टि मृति । यम</span> quoted by <span class="devanagari">स्मृतिच</span>. II. p. 317, <span class="devanagari">स्मृ</span>. <span class="devanagari">स</span>. p. 393 (only the first). <a href="#fnref-chapter-xv-decision-41" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-42" class="footnote-item"><span class="devanagari">पुरुषवधे स्तेये भूरूपादान इति स्मृत्यादाप वधः ब्रह्मगिरोवस्तेषु ब्राह्मणस्य। आप् ध्</span> II. 10. 27. 16–17. <a href="#fnref-chapter-xv-decision-42" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-43" class="footnote-item"><span class="devanagari">षड्गुणोक्त</span> ‘<span class="devanagari">अद्रुहयो मातापित्रो स्नातकपुरोहितौ परिक्षावमनस्थौ अन्नकर्मशत्रुघ्नीशीलाचारवान्वत्र्व</span>' <span class="devanagari">इति</span>, <span class="devanagari">यद्यपि कात्यायनेन</span> '<span class="devanagari">आचार्यस्य पितुर्मातुर्गुरणानां प्रसेव</span>' <span class="devanagari">च। एतेषांपरगपेष्ठ देणदो नैव विधीयते</span>' <span class="devanagari">इतिच्छछादीरामपेण्डयोड योर्मिषेधात्। स्मृतिचंद्र</span> II p 126 Medhātithi: on Manu VIII 125 makes it clear that the absence of a fine occurs only in the case of a brāhmaṇa who was a first offender, who did not commit the offence with forethought and who was endowed with learning, good family and character. The Sṃ C. II p. 124 relying on Manu IX 236 says that a brāhmaṇa could be imprisoned but he could not be subjected to such corporal punishment as cutting off a limb or whipping. <a href="#fnref-chapter-xv-decision-43" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-44" class="footnote-item"><span class="devanagari">हर्मस्थ पात्तने स्तैनो राष्ट्रेभ्यो शत्रघातने । अट्टुष्टा चेोषीप्त हरत्रा इन्नमृापो ब्राहणोपि नि हि ॥ फात्तया</span> q. by <span class="devanagari">विश्वरूप</span> on <span class="devanagari">या</span>. II. 281. <a href="#fnref-chapter-xv-decision-44" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-45" class="footnote-item"><span class="devanagari">राज्यप्रकाशसमन्तः पुरुप्रर्थाकनकद्वयविश्रोत्साहके दुर्गराष्ट्रण्डकोपके वा शिरो</span>- <span class="devanagari">हरप्रैषिकं घातयेत् । ब्राह्मणे मरणं प्रेषयेत् । अर्थशास्त्र</span> IV. 11 <a href="#fnref-chapter-xv-decision-45" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-46" class="footnote-item"><span class="devanagari">दस्युविद्विते व राजा भूपसोऽध्यापचागसः । भार्या माता पिता पुत्रो हन्यते दूड़षेण वै न मृलच्यत्तः कर्तव्यं</span> &c. <span class="devanagari">शान्ति</span> 268 10-11. <a href="#fnref-chapter-xv-decision-46" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-47" class="footnote-item"><span class="devanagari">महत्स्वप्यपराधेषु दण्डं प्राणांतिकं स्पजेत् । ऋते राज्यापहारिणम् अक्रुष्ट</span>. <span class="devanagari">प्रसह्यते । काम</span> XIV. 16 This is q. by g<span class="devanagari">ध</span> p 61 verse 346 <a href="#fnref-chapter-xv-decision-47" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-48" class="footnote-item"><span class="devanagari">विषेषु</span> (?) <span class="devanagari">वृत्तिविघ्यजशालनजलप्रदिभिः । पापानं प्राणहरणं वधदण्डः प्रकीर्तितः ॥ मानसोल्लास</span> II 20, verse 1287, p 144 <a href="#fnref-chapter-xv-decision-48" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-49" class="footnote-item">In 'Pandyan Kingdom' by Prof. K A Nilkant Sastri p. 224 the sentence for the murderer of a brāhmaṇa is shown to have been that of being tied to the leg of a he-buffalo and being dragged by it <a href="#fnref-chapter-xv-decision-49" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-50" class="footnote-item">The word 'śuddha-vadha' is used by Manu IX 279 and the words 'śuddha' and ‘citra’ occur in Kauṭilya IV, 11 and also in smṛti 85 22 <span class="devanagari">राज्ञो वध चिकित्सकस्य चित्रां वधो भवेत् । आदिराज्ञस्य सैनास्व नर्जन्हि कस्य च ॥</span> <a href="#fnref-chapter-xv-decision-50" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-51" class="footnote-item"><span class="devanagari">श्रेयस्तः शयनशायिनं राजा दृष्ट्वा स्वभिः खादयेन्नैनां वृहेद् वा । शङ्ख</span> quoted by <span class="devanagari">वि</span>. <span class="devanagari">र</span>. p. 396. . <a href="#fnref-chapter-xv-decision-51" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-52" class="footnote-item">The general rule was that women were not to be killed on any account. Vide H of Dh. vol II, pp. 575, 593-94. Certain offences were exceptionṣ Even as to them Vaṣ XXI. 10 and Yāj I. 72 suggest another and very mild alternative viz abandonment (tyāga), when a woman conceives from intercourse with a man of lower varṇa or when a woman was guilty of killing her husband or foetuṣ Acc to the Mit on Yāj III 268 the king appears to have had to undergo some expiation for ordering the death of a guilty womaṇ In the 18th century the famous judge of the Peshwa's court, Rāmaśāstri Prabhune, ordered a woman guilty of a brāhmaṇa's murder to undergo only the expiation of circumambulating the holy shrine and hill of Tryambakeśvara near Nasik ('Selections from Peshwa's Daftar', vol. 43 No 156 pp. 121-122). Under sec 382 of the Indian Crīminal Procedure Code 'if a woman sentenced to death is found to be pregnant, the High Court shall order the execution of the sentence to be postponed and may, if it thinks fit, commute the sentence to transportation for life'. <a href="#fnref-chapter-xv-decision-52" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-53" class="footnote-item">The punishment of whipping is allowed in England for several offences; vide ‘Laws of England’ (eḍ by Lord Hailsham, vol. IX, pp. 229–230). In India under the Prisons Act (IX of 1894) by section 46 whipping is allowed for certain prison offences and under the Whipping Act (IV of 1909) whipping is awarded for certain offences such as theft, house- breaking, dacoity, rape and for juvenile offenderṣ In modern times many persons interested in criminology and penology condemn most strongly the sentences of death and whipping <span class="devanagari">यस्सन्त्रास्तु ये केचिद् दास्यन्ते च संरक्षिता। अग्नीजास्ते तु निर्दिष्टा स्तेषां शपशुद्धाम्। औषालोन्मत्तबहुद्धानां दरीशाणां तु रोहिणूणां</span> ‘ <span class="devanagari">शिक्षापविरुद्धव्याधीनां वैषपविमर्दाम् ॥ कात्या</span>. <span class="devanagari">१</span>. <span class="devanagari">१७ व्यव</span>. <span class="devanagari">नि</span>. pp. 531–532 <a href="#fnref-chapter-xv-decision-53" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-54" class="footnote-item"><span class="devanagari">महासात्मिक विप्रं कृतादूं विप्रवासयेत् । शान्ति</span> 14. 116 <a href="#fnref-chapter-xv-decision-54" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-55" class="footnote-item"><span class="devanagari">शिल्पिभ्यः काराः सुद्धास्तेषां स्वभिचारिकैरपि शिल्पोपकरणानि स्त्रीणां स्रग्दामाद्यलङ्करणानि गणिकानां भूषणानि</span>, <span class="devanagari">वादकोपकरणानि नटानां तन्त्र्यश्च</span>, <span class="devanagari">पापप्रयोजनमपि कुर्वतां तेषामेतानि सर्वस्वहरणेऽपि नापहरेत् । दण्डनिमित्तं हि दुःखं पापपरायणेष्वपि यादृशं भवति तेन प्रायश्चित्तमात्रात् तस्मात्तत्पापापकरणमात्मनः कुर्यादित्यनाख्या हि वृत्तिर्न</span>- <span class="devanagari">वति । इतिमहो न नियमः । तैत्तिरीयष्टिः स्त्रीणां राष्ट्रभुज्यते । शङ्ग्लिखित न</span> by <span class="devanagari">दि १</span>. p. 656, which explains '<span class="devanagari">दृष्योर्बुद्धिषु सर्वस्वोपहारोऽप्येषु अपरमेषु</span>... <span class="devanagari">यद् हृदि विस्नेहमस्यात् कर्मदण्डव्यं ददाति</span>' <span class="devanagari">।</span> Compare section 60 (a, b, c) of the Indian Civil Pro. Code for the property which is not liable to attachment and sale in execution of a decree. <a href="#fnref-chapter-xv-decision-55" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-56" class="footnote-item"><span class="devanagari">यं वा मन्त्रप्रयोगमूलकर्मभिः इमाज्ञानीकैर्वा सब्र्वनकारकैर्मन्येत स सस्त्री ब्रयात् अशुष्य भाय्र्या स्तुषा दुहितर वा कामये सा मा प्रतिकामयतात्सर्बं चार्थः प्रतिगृह्णतातामिति। स चेतथा कुर्यात्सर्वंसंववनकारक इति प्रवास्थेत्। तेन कृत्यभिचारशीलो व्याख्यातो। कौटिळ्य</span> IV 4. <a href="#fnref-chapter-xv-decision-56" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-57" class="footnote-item">Vide ‘Selections from Peshwa’s records’ vol 43 pp. 25-26 about frequent witchcraft in Kolhapur territories (and a wizard of the mang caste being impaled ), p. 32 (for a woman who was killed as a witch by the Patils without Government orders) and Rao Bahadur Wad’s extracts from Peshwa’s Diaries vol II p. 7 (for confiscation of Vatan and razing to the ground the house of a ghost-raiser ) and vol. VIII p. 147 (for cutting off a finger ). <a href="#fnref-chapter-xv-decision-57" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-58" class="footnote-item">Vide e. g. 6 State Trials p. 647 (a trial of witches held in 1665 A. D. before Sir Matthew Hale C. B. who condemned them to death ) and 8 State Trials p. 1017 (in 1682) and Stephens’ ‘History of Cr. Law of England’ vol. II p. 435 for numerous cases of trials for witchcraft between 1653 to 1712 A. D. Vide Lea’s ‘Superstition and force’ (eḍ of 1878) p. 425 as to torture of heretics for extracting confessions expressly allowed by Papal Bulls and pp. 506-507 for tortnre being allowed in sorcery and witch- craft cases in England up to the 17th century. Vide a very discerning and interesting paper on ‘Witchcraft in Ancient India’ by Dr. Winternitz in Indian Antiquary, vol. 28 pp. 71-83, <a href="#fnref-chapter-xv-decision-58" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-59" class="footnote-item"><span class="devanagari">विबन्धाजीकुष्टस्यनापरतस्सुयत्सुखश्च बन्धनागार कारयेत् । कौटिल्य</span> II 5. <a href="#fnref-chapter-xv-decision-59" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-60" class="footnote-item"><span class="devanagari">बन्धनागारे च बालवृद्धव्याधितानाथानां च जातनक्षत्रीपपौर्णमासीषु विसर्ग</span>-<span class="devanagari">श्शुन्यशीलाः सम्पाद्यदा वा दोषनिष्क्रय वयुः । दिवसे पञ्चरात्रे वा बन्धनस्थावर विशो</span>-<span class="devanagari">ध्येंदू । कर्मणा कायदण्डेन हिरण्यानुग्रहेण वा ॥ अपूर्वदेशप्राप्तिपुत्रराज्याभिषेचने । पुन</span>-<span class="devanagari">जन्मानि वा मोक्षो बन्धनस्व विधोपये ॥ कौटिल्य</span> II 36. <a href="#fnref-chapter-xv-decision-60" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-61" class="footnote-item"><span class="devanagari">दैवचिन्निकोर्षितो राजा। सोपसर्गो वो नक्षचें सर्बबन्धनमोक्षः क्रियता</span>• <span class="devanagari">मिति। मालविकाग्निमित्र</span> IV after verse 5, <span class="devanagari">अन्यच्छचेष्टुं स बद्धानीं वधाहाणामसपचाय। पुर्वार्णां च धुरो मोक्षर्नाढुं चाविशद्वनाम् ॥ रघु</span>. 17. 19. <a href="#fnref-chapter-xv-decision-61" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-62" class="footnote-item"><span class="devanagari">बन्धनमोक्षं कुयाद्बन्धनस्त्परदोपक्लद्दुतॆश्च । बृहत्संहिता</span> 47. 81, on which <span class="devanagari">उत्पन्न</span> remarks '<span class="devanagari">भूपहारीरै भन्तः पुरे चा घेदोषैः कृतः</span> &c ' <a href="#fnref-chapter-xv-decision-62" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-63" class="footnote-item"><span class="devanagari">अभिनवोदितश्च सर्वस्यां पृथिव्यां सकलकुभूमध्यवन्धन</span>- <span class="devanagari">भयं । हर्षचरिते</span> II, para 2, <span class="devanagari">मलम्परममुञ्जलादिलमलानानिनि क्षारपानि मइपबः कालिकाल्स्य बाचवकुलाशौशकुठाण</span>-<span class="devanagari">पयाबस्त शुकानि बन्धनबुद्धानि। हर्षचरिते</span> IV. <a href="#fnref-chapter-xv-decision-63" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-64" class="footnote-item"><span class="devanagari">श्वपाकचण्डालमेवडुबधञ्षिमु । हस्तिपश्वप्रात्यदासाश्च शुश्रूषातिवर्तिनः सधो घात प्रवासनासनम् । न च तद्वण्डपारुष्ये स्तेयमाहुर्मनीषिणः ॥ यस्मैव संप्रवर्तन्ते नीचः सन्तं जनं बुधु । स एव विषये कुर्यात्तद्दिनत्रयमाहुः च धन्येषां मलात्मकम् ।</span> ' <span class="devanagari">अपि च पापातयेप्राजा नाथर्दण्डुेन दण्डयेत् ॥ नारद</span> ( <span class="devanagari">पारुष्य</span> 11-14) For <span class="devanagari">श्वपाक</span>, <span class="devanagari">मेद</span>, <span class="devanagari">चण्डाल</span> and <span class="devanagari">दास्य</span> vide H. of Dh. vol. II pp. 97, 92, 81, 378 respectively. <a href="#fnref-chapter-xv-decision-64" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-65" class="footnote-item"><span class="devanagari">यद्युर्नृपैर्दण्डुसमुद्युवन्</span> ‘ <span class="devanagari">अन्योर्योपात्तसर्वस्वदण्डमेषां मलात्मकम्। अतस्तान् शप्त</span>-<span class="devanagari">येप्राजा नाथर्दण्डुेन दण्डयेत् ॥</span>’ <span class="devanagari">इति संक्षुषि महापराधविषयम् । मित्ता</span>. on <span class="devanagari">या</span>. II. 270. <a href="#fnref-chapter-xv-decision-65" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-66" class="footnote-item"><span class="devanagari">दमद्रव्योपजीवित्तद्विगुणं च ब्राह्मणस्योपचयाधिपोषितवित्तं नश्येत् । कौण्डिन्य</span> quoted in <span class="devanagari">स्मृ</span>. <span class="devanagari">चं</span>. p. 341; compare the very similar words of <span class="devanagari">कौटिल्य</span> (III 16) ‘<span class="devanagari">यस्तद् द्रव्यमनुप्रेक्ष्यमाणं दशवर्षमुपेक्षेत शरीरतस्त्वन्यत्र बालवृ</span>- <span class="devanagari">द्धव्याधितप्रोषितविक्लबानासन्निकृष्टेभ्यः। निक्षिप्तनिधिवन्धमासि नादृष्टजलीन।</span> Is <span class="devanagari">कौण्डिन्य</span> a misreading for <span class="devanagari">कौटिल्य</span> in the <span class="devanagari">व्यवहारमातृका</span> ? <a href="#fnref-chapter-xv-decision-66" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-67" class="footnote-item"><span class="devanagari">याज्ञवल्क्य यदुक्तं</span> ‘<span class="devanagari">मोधिपे साधुवृद्धे । सुहृद्भिर्विनोपभोगेषि न तद्रोयेत हीयते</span>’ <span class="devanagari">व्यास</span> in <span class="devanagari">स्मृतिच०</span> II p 69 . <a href="#fnref-chapter-xv-decision-67" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-68" class="footnote-item"><span class="devanagari">द्वष्टे पने स्फुटान् दोषांल्लोक्यैकोऽपि यत् । ततो विंशतिवर्षाणि स्थितं पत्र स्थिरे भवेत् ॥ कात्या</span> (298) q by <span class="devanagari">व्य मा</span> p 340, <span class="devanagari">परा मा</span> III p. 136, <span class="devanagari">शकल्य सनिधावथ यो लेख्येन भुज्यते । वर्षाणि विंशतिं यावत्तत्पत्रं दोषवर्जितम् ॥ कात्या</span> 299 q. by <span class="devanagari">मिता</span> on <span class="devanagari">या</span>. II 24, <span class="devanagari">अपराकं</span> p 690, <span class="devanagari">व्य मा</span> p <span class="devanagari">३</span>40. <a href="#fnref-chapter-xv-decision-68" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-69" class="footnote-item"><span class="devanagari">सीमाविवादे निर्णोते सीमापत्रं विधीयते । तस्य दोषाः प्रबक्तव्या पादवर्षाणि विंशतिः ॥ कात्या</span> 301 q by <span class="devanagari">मिता</span> on <span class="devanagari">या</span> II 24, <span class="devanagari">अपराकं</span> p. 691, <span class="devanagari">परा मा</span> III p 136. <a href="#fnref-chapter-xv-decision-69" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xv-decision-70" class="footnote-item"><span class="devanagari">लेख्यं त्रिंशत्समातीतमदृष्टाभिहितं च यत् । न तत्सिद्धिमनोभाति निष्ठत्स्वपि हि साक्षिषु ॥ वृह</span>. q by <span class="devanagari">अपराने</span> p. 692, <span class="devanagari">व्य मा</span> p. 340. <a href="#fnref-chapter-xv-decision-70" class="fn-back" aria-label="Back to text">↩</a></li>
+</ol>
+</aside>
+
+            <div class="chapter-nav">
+                <a href="chapter-xiv-ordeals.html" class="nav-prev"><i class="fa-solid fa-chevron-left"></i> Chapter XIV. Ordeals</a>
+                <a href="chapter-xvi-contracts.html" class="nav-next">Chapter XVI. Contracts <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </main>
+    </div>
+
+    <button class="toc-mobile-toggle" onclick="toggleMobileToc()" aria-label="Table of contents">
+        <i class="fa-solid fa-list"></i>
+    </button>
+
+    
+    <footer class="container-fluid pt-4" style="background-color:#2e4144">
+        <div class="row border-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img src="https://sanatana.in/mbta/public/images/Homepage_html/images/layer_8.png" alt="">
+            </div>
+            <div class="col-md-5 text-white">
+                <p>The divine knowledge and wisdom of our shastras is the only thing eternal,
+                   which was and which will remain ever-present in this gods creation.
+                   Our endeavours are to preserve this knowledge.</p>
+            </div>
+            <div class="col-md-1 text-white">
+                <div class="d-flex" style="height: 75px;">
+                    <div class="vr"></div>
+                </div>
+            </div>
+            <div class="col-md-3 text-white">
+                <i class="fa-solid fa-globe"></i>&emsp;
+                <a href="https://sanatanasampatti.in" class="text-light">www.sanatanasampatti.in</a><br>
+                <i class="fa-solid fa-envelope"></i>&emsp;
+                <a href="" class="text-light">sriranga.yoga@gmail.com</a>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center py-3 mb-4 align-items-center border-bottom">
+            <div class="col-md-2 text-white fs-4 text-center">Project</div>
+            <div class="col-md-2 text-white fs-4 text-center">Our Mission</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contribute</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contact Us</div>
+        </div>
+        <div class="row">
+            <p class="col-md-6 fs-6 text-start text-light">
+                <small>&copy; 2026 Sanatanasampatti</small>
+            </p>
+            <p class="col-md-6 fs-6 text-end text-light">
+                <a class="text-white" rel="nofollow" href="http://www.srirangadigital.com" target="_blank">
+                    <img src="https://sanatana.in/mbta/public/images/logo.png" alt="sriranga logo" />
+                    <small>Designed, Developed and Maintained by Sriranga Digital</small>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        const headings = [];
+        tocLinks.forEach(link => {
+            const id = link.getAttribute('href').substring(1);
+            const el = document.getElementById(id);
+            if (el) headings.push({ el: el, link: link.parentElement });
+        });
+
+        function onScroll() {
+            let current = null;
+            for (const h of headings) {
+                const rect = h.el.getBoundingClientRect();
+                if (rect.top <= 120) current = h;
+            }
+            tocLinks.forEach(l => l.parentElement.classList.remove('active'));
+            if (current) current.link.classList.add('active');
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    });
+
+    function toggleMobileToc() {
+        const toc = document.getElementById('toc');
+        if (!toc) return;
+        if (toc.style.display === 'block') {
+            toc.style.display = '';
+            toc.style.position = '';
+        } else {
+            toc.style.display = 'block';
+            toc.style.position = 'fixed';
+            toc.style.top = '0';
+            toc.style.left = '0';
+            toc.style.width = '80vw';
+            toc.style.maxWidth = '320px';
+            toc.style.height = '100vh';
+            toc.style.maxHeight = '100vh';
+            toc.style.zIndex = '2000';
+            toc.style.background = 'var(--parchment)';
+            toc.style.boxShadow = '4px 0 20px rgba(0,0,0,0.2)';
+            toc.style.padding = '24px';
+            toc.style.overflowY = 'auto';
+        }
+    }
+    </script>
+
+    <script>
+    function toggleSynopsisAudio(btn) {
+        var audio = btn.parentElement.querySelector('audio');
+        if (!audio.src) audio.src = btn.getAttribute('data-src');
+        if (audio.paused) {
+            audio.play();
+            btn.classList.add('playing');
+            btn.querySelector('i').className = 'fa-solid fa-pause';
+        } else {
+            audio.pause();
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        }
+        audio.onended = function() {
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        };
+        // Prevent click from toggling the synopsis open/close
+        event.stopPropagation();
+    }
+    </script>
+</body>
+</html>

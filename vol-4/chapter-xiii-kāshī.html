@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- MDB UI Kit -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/fonts.css?v=1.2">
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/navbar.css?v=2.4">
+
+    <title>Chapter XIII. Kāshī — Volume IV — History of Dharmaśāstra</title>
+    <style>
+    :root {
+        --saffron:        #D4600A;
+        --saffron-light:  #F0924A;
+        --saffron-wash:   rgba(212, 96, 10, 0.07);
+        --indigo:         #2E5FA3;
+        --indigo-dark:    #1C3D70;
+        --maroon:         #7A1E1E;
+        --amber:          #C97A1A;
+        --ink:            #1A1209;
+        --ink-secondary:  #4A3B2A;
+        --parchment:      #FDFAF4;
+        --parchment-mid:  #F5EFE2;
+        --rule:           rgba(180, 130, 60, 0.22);
+        --shadow:         0 2px 18px rgba(90, 50, 10, 0.08);
+        --font-devanagari: 'Tiro Devanagari Sanskrit', 'Siddhanta', 'Noto Sans Devanagari', serif;
+        --font-roman:      'Junicode', Georgia, serif;
+    }
+
+    body {
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: var(--font-roman);
+    }
+
+    .devanagari {
+        font-family: var(--font-devanagari);
+    }
+
+    /* ── Navbar overrides ── */
+    .navbar-ontop { z-index: 1031; }
+    .hdclr { color: var(--saffron); }
+    .engpara { font-family: 'Open Sans', sans-serif; }
+
+    /* ── Layout ── */
+    .dh-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .dh-content {
+        flex: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        background: var(--parchment);
+        box-shadow: var(--shadow);
+        min-height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        .dh-content { padding: 24px 20px; }
+        .dh-wrapper { flex-direction: column; }
+    }
+
+    /* ── TOC Sidebar ── */
+    .toc-sidebar {
+        position: sticky;
+        top: 80px;
+        width: 280px;
+        min-width: 280px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding: 20px 16px;
+        margin-right: 24px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        scrollbar-width: thin;
+    }
+
+    .toc-title {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--saffron-light);
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list li {
+        padding: 4px 0;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-list li.toc-l3 {
+        padding-left: 16px;
+        font-size: 0.78rem;
+    }
+
+    .toc-list li a {
+        color: var(--ink-secondary);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .toc-list li a:hover { color: var(--saffron); }
+
+    .toc-list li.active {
+        border-left-color: var(--saffron);
+    }
+
+    .toc-list li.active a {
+        color: var(--saffron);
+        font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-sidebar { display: none; }
+    }
+
+    /* ── Mobile TOC Toggle ── */
+    .toc-mobile-toggle {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1050;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--saffron);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-mobile-toggle { display: block; }
+    }
+
+    /* ── Section Headings ── */
+    .section-heading {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        margin: 48px 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--rule);
+        letter-spacing: 0.5px;
+        scroll-margin-top: 80px;
+    }
+
+    h2.section-heading { font-size: 1.6rem; }
+
+    h3.section-heading {
+        font-size: 1.25rem;
+        border-left: 4px solid var(--saffron-light);
+        border-bottom: none;
+        padding: 8px 16px;
+        background: var(--saffron-wash);
+        border-radius: 0 5px 5px 0;
+    }
+
+    /* ── Prose ── */
+    .prose {
+        font-family: var(--font-roman);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+        color: var(--ink);
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    .prose em { color: var(--maroon); }
+
+    .prose:target {
+        background: rgba(212, 96, 10, 0.12);
+        border-left: 4px solid var(--saffron);
+        padding-left: 16px;
+        margin-left: -20px;
+        border-radius: 0 6px 6px 0;
+        animation: target-pulse 2s ease-out;
+    }
+
+    @keyframes target-pulse {
+        0%   { background: rgba(212, 96, 10, 0.30); }
+        100% { background: rgba(212, 96, 10, 0.12); }
+    }
+
+    /* ── Footnote References ── */
+    .fn-ref {
+        font-size: 0.75em;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    .fn-ref a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 0 2px;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: color 0.15s;
+    }
+
+    .fn-ref a:hover { color: var(--indigo); }
+
+    /* ── Synopsis Box ── */
+    .synopsis-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron-light);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .synopsis-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .synopsis-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .synopsis-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .synopsis-box.open .synopsis-toggle i {
+        transform: rotate(90deg);
+    }
+    .synopsis-body {
+        display: none;
+        padding: 0 20px 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+    }
+    .synopsis-box.open .synopsis-body { display: block; }
+    .synopsis-body p { margin: 0; }
+    .synopsis-attribution {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: var(--ink-secondary);
+        opacity: 0.7;
+        font-style: italic;
+    }
+    .synopsis-audio {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    .synopsis-play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--saffron);
+        background: none;
+        color: var(--saffron);
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: background 0.2s, color 0.2s;
+        padding: 0;
+    }
+    .synopsis-play-btn:hover {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn.playing {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn i { padding-left: 2px; }
+
+    /* ── Index Terms Panel ── */
+    .index-terms-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .index-terms-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .index-terms-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .index-terms-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .index-terms-box.open .index-terms-toggle i {
+        transform: rotate(90deg);
+    }
+    .index-terms-body {
+        display: none;
+        padding: 0 20px 16px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .index-terms-box.open .index-terms-body { display: block; }
+    .index-terms-dl {
+        margin: 0;
+        padding: 0;
+    }
+    .index-terms-dl dt {
+        font-family: var(--font-roman);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+        margin-top: 8px;
+    }
+    .index-terms-dl dd {
+        margin: 2px 0 0 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        color: var(--ink-secondary);
+        line-height: 1.5;
+    }
+    .nyaya-heading {
+        font-family: var(--font-roman);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        margin: 16px 0 4px;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+    }
+
+    /* ── Inline Index Popovers ── */
+    .idx-term {
+        border-bottom: 1px dotted var(--saffron-light);
+        cursor: help;
+        position: relative;
+    }
+    .idx-term:hover::after {
+        content: attr(data-def);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        background: rgba(44, 36, 22, 0.92);
+        color: #F5ECD8;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        max-width: 280px;
+        z-index: 100;
+        white-space: normal;
+        line-height: 1.4;
+        pointer-events: none;
+    }
+
+    /* ── Structured Version Banner ── */
+    .structured-banner {
+        margin: 0 0 28px;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, rgba(212, 96, 10, 0.06) 0%, rgba(212, 96, 10, 0.02) 100%);
+        border: 1px solid var(--saffron-light);
+        border-radius: 6px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        color: var(--ink-secondary);
+        line-height: 1.6;
+    }
+    .structured-banner i { color: var(--saffron); margin-right: 4px; }
+    .structured-banner a { color: var(--indigo); font-weight: 600; text-decoration: none; }
+    .structured-banner a:hover { text-decoration: underline; }
+
+    /* ── Footnotes Section ── */
+    .footnotes-section {
+        margin: 32px 0 48px;
+        padding: 20px 24px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .footnotes-section hr {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 0 0 16px;
+    }
+
+    .footnotes-list {
+        padding-left: 24px;
+        margin: 0;
+    }
+
+    .footnote-item {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+        scroll-margin-top: 80px;
+    }
+
+    .footnote-item:target {
+        background: rgba(212, 96, 10, 0.1);
+        border-radius: 4px;
+        padding: 4px 6px;
+        margin-left: -6px;
+    }
+
+    .fn-back {
+        color: var(--saffron-light);
+        text-decoration: none;
+        font-size: 0.85em;
+        margin-left: 4px;
+    }
+
+    .fn-back:hover { color: var(--saffron); }
+
+    /* ── Reference Links ── */
+    a.ref {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: all 0.15s;
+    }
+
+    a.ref:hover {
+        color: var(--saffron);
+        border-bottom-style: solid;
+    }
+
+    a.mbta-ext {
+        color: var(--indigo);
+        font-size: 0.7em;
+        margin-left: 2px;
+        opacity: 0.5;
+        text-decoration: none;
+        vertical-align: super;
+    }
+    a.mbta-ext:hover { opacity: 1; color: var(--saffron); }
+
+    /* ── References Panel (sidebar) ── */
+    .refs-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .refs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .refs-list li {
+        padding: 3px 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .ref-source-link {
+        font-weight: 600;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .ref-source-link:hover {
+        text-decoration: underline;
+    }
+
+    .ref-verse-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.76rem;
+    }
+
+    .ref-verse-link:hover {
+        text-decoration: underline;
+        color: var(--saffron);
+    }
+
+    .ref-verses {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Timeline panel ── */
+    .timeline-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .timeline-list li {
+        padding: 2px 0;
+        font-size: 0.76rem;
+        line-height: 1.4;
+        position: relative;
+        padding-left: 14px;
+    }
+
+    .timeline-list li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--saffron);
+    }
+
+    .timeline-list li.tl-approximate::before {
+        background: transparent;
+        border: 2px solid var(--saffron);
+        width: 4px;
+        height: 4px;
+    }
+
+    .timeline-list li.tl-century::before {
+        background: transparent;
+        border: 2px dashed var(--saffron);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+
+    .tl-dot-link {
+        text-decoration: none;
+        color: var(--ink);
+        display: block;
+    }
+
+    .tl-dot-link:hover {
+        color: var(--saffron);
+    }
+
+    .tl-year {
+        font-weight: 600;
+        color: var(--saffron);
+        font-size: 0.72rem;
+        min-width: 70px;
+        display: inline-block;
+    }
+
+    .tl-label {
+        color: var(--ink-secondary);
+        font-size: 0.72rem;
+    }
+
+    .tl-view-link, .tl-more {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.72rem;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .tl-view-link:hover, .tl-more:hover {
+        text-decoration: underline;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+
+    .breadcrumb-bar a {
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+
+    .breadcrumb-bar .sep {
+        color: var(--amber);
+        margin: 0 8px;
+    }
+
+    .breadcrumb-bar .current {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Chapter Navigation ── */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        margin-top: 48px;
+        border-top: 2px solid var(--rule);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .chapter-nav a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        transition: all 0.2s;
+        max-width: 45%;
+    }
+
+    .chapter-nav a:hover {
+        background: var(--saffron-wash);
+        border-color: var(--saffron-light);
+    }
+
+    .nav-prev { text-align: left; }
+    .nav-next { text-align: right; margin-left: auto; }
+
+    .page-range {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+    }
+
+    /* ── Volume Cards (Landing) ── */
+    .vol-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .vol-card {
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        transition: all 0.25s;
+    }
+
+    .vol-card:hover {
+        border-color: var(--saffron-light);
+        box-shadow: 0 4px 24px rgba(212, 96, 10, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .vol-num {
+        font-family: var(--font-roman);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--saffron);
+        margin-bottom: 8px;
+    }
+
+    .vol-subtitle {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        line-height: 1.5;
+        flex: 1;
+    }
+
+    .vol-chapters {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        margin-top: 12px;
+    }
+
+    /* ── Chapter Cards (Volume Index) ── */
+    .chapter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .chapter-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .chapter-card:hover {
+        border-color: var(--saffron-light);
+        background: var(--saffron-wash);
+    }
+
+    .card-num {
+        font-family: var(--font-roman);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--saffron);
+        min-width: 36px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        flex: 1;
+    }
+
+    .card-pages {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        color: var(--ink-secondary);
+    }
+
+    /* ── Landing Hero ── */
+    .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-family: var(--font-roman);
+        font-size: 2.4rem;
+        color: var(--saffron);
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .hero .devanagari-title {
+        font-family: var(--font-devanagari);
+        font-size: 1.8rem;
+        color: var(--ink);
+        margin-bottom: 16px;
+    }
+
+    .hero .author {
+        font-family: var(--font-roman);
+        font-size: 1.1rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .hero .desc {
+        font-family: var(--font-roman);
+        font-size: 1rem;
+        color: var(--ink-secondary);
+        line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer { margin-top: 48px; }
+</style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mbta/">
+      <div class="container-fluid">&emsp;&emsp;
+      <a href="../index.html" class="navbar-brand" style="text-decoration:none;">
+        <span class="devanagari ms-3" style="font-size:1.5rem; color:var(--saffron); font-weight:700;">धर्मशास्त्रम्</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="../index.html">धर्मशास्त्रम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5 active" href="../index.html">खण्डाः</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in/mbta/">महाभारतम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in">सनातनम्</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+
+    <div class="dh-wrapper container-xl">
+        <nav id="toc" class="toc-sidebar">
+<div class="refs-panel">
+<h5 class="toc-title">References</h5>
+<ul class="refs-list">
+<li><a href="../refs/brihadaranyaka.html" class="ref-source-link">Bṛhadāraṇyaka Upaniṣad</a> <span class="ref-verses"><a href="../refs/brihadaranyaka.html#II.1.1" class="ref-verse-link">II.1.1</a></span></li>
+<li><a href="../refs/hodh.html" class="ref-source-link">History of Dharmaśāstra</a> <span class="ref-verses"><a href="../refs/hodh.html#vol III pp. 145-146" class="ref-verse-link">vol III pp. 145-146</a></span></li>
+<li><a href="../refs/matsya_purana.html" class="ref-source-link">Matsyapurāṇa</a> <span class="ref-verses"><a href="../refs/matsya_purana.html#273" class="ref-verse-link">273</a></span></li>
+<li><a href="../refs/padma_purana.html" class="ref-source-link">Padmapurāṇa</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mb_sabhaparva.html" class="ref-source-link">Sabhāparva</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/skanda_purana.html" class="ref-source-link">Skandapurāṇa</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mb_udyogaparva.html" class="ref-source-link">Udyogaparva</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mb_vanaparva.html" class="ref-source-link">Vanaparva</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/vishnu_smriti.html" class="ref-source-link">Viṣṇu Smṛti</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/vishnu_purana.html" class="ref-source-link">Viṣṇupurāṇa</a> <span class="ref-verses"><a href="../refs/vishnu_purana.html#V.30.65" class="ref-verse-link">V.30.65</a></span></li>
+<li><a href="../refs/vayu_purana.html" class="ref-source-link">Vāyupurāṇa</a> <span class="ref-verses"><a href="../refs/vayu_purana.html#45.110" class="ref-verse-link">45.110</a></span></li>
+<li><a href="../refs/yajnavalkya.html" class="ref-source-link">Yājñavalkya</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/shatapatha.html" class="ref-source-link">Śatapatha Brāhmaṇa</a> <span class="ref-verses"><a href="../refs/shatapatha.html#XIV.3.1.22" class="ref-verse-link">XIV.3.1.22</a></span></li>
+<li><a href="../refs/rigveda.html" class="ref-source-link">Ṛgveda</a> <span class="ref-verses"><a href="../refs/rigveda.html#IV.30.20" class="ref-verse-link">IV.30.20</a>, <a href="../refs/rigveda.html#X.179.2" class="ref-verse-link">X.179.2</a></span></li>
+</ul>
+</div>
+<div class="timeline-panel">
+<h5 class="toc-title">Timeline</h5>
+<ul class="timeline-list">
+<li class="tl-century"><a href="#p-chapter-xiii-kāshī-5" class="tl-dot-link"><span class="tl-year">~500 BCE</span> <span class="tl-label">Vāyupurāṇa</span></a></li>
+<li class="tl-century"><a href="#p-chapter-xiii-kāshī-5" class="tl-dot-link"><span class="tl-year">~300 BCE</span> <span class="tl-label">Vāyupurāṇa</span></a></li>
+<li class="tl-century"><a href="#p-chapter-xiii-kāshī-2" class="tl-dot-link"><span class="tl-year">~200 BCE</span> <span class="tl-label">Udyogaparva</span></a></li>
+<li class="tl-century"><a href="#p-chapter-xiii-kāshī-2" class="tl-dot-link"><span class="tl-year">101 CE</span> <span class="tl-label">Udyogaparva</span></a></li>
+<li class="tl-exact"><a href="#p-chapter-xiii-kāshī-18" class="tl-dot-link"><span class="tl-year">150 CE</span> <span class="tl-label">Viṣṇu Smṛti</span></a></li>
+<li class="tl-century"><a href="#p-chapter-xiii-kāshī-7" class="tl-dot-link"><span class="tl-year">301 CE</span> <span class="tl-label">Viṣṇu Smṛti</span></a></li>
+<li class="tl-exact"><a href="#p-chapter-xiii-kāshī-18" class="tl-dot-link"><span class="tl-year">350 CE</span> <span class="tl-label">Viṣṇu Smṛti</span></a></li>
+<li class="tl-approximate"><a href="#p-chapter-xiii-kāshī-2" class="tl-dot-link"><span class="tl-year">~400 CE</span> <span class="tl-label">Udyogaparva</span></a></li>
+<li class="tl-exact"><a href="#p-chapter-xiii-kāshī-2" class="tl-dot-link"><span class="tl-year">413 CE</span> <span class="tl-label">Udyogaparva</span></a></li>
+<li class="tl-century"><a href="#p-chapter-xiii-kāshī-12" class="tl-dot-link"><span class="tl-year">601 CE</span> <span class="tl-label">Padmapurāṇa</span></a></li>
+<li class="tl-century"><a href="#p-chapter-xiii-kāshī-23" class="tl-dot-link"><span class="tl-year">1101 CE</span> <span class="tl-label">Matsyapurāṇa</span></a></li>
+<li class="tl-exact"><a href="#p-chapter-xiii-kāshī-23" class="tl-dot-link"><span class="tl-year">1122 CE</span> <span class="tl-label">Matsyapurāṇa</span></a></li>
+<li><a href="chapter-xiii-kāshī-timeline.html" class="tl-more">View all 20 dates &rarr;</a></li>
+</ul>
+<a href="chapter-xiii-kāshī-timeline.html" class="tl-view-link">View full timeline &rarr;</a>
+</div>
+<h5 class="toc-title">Sections</h5>
+<ul class="toc-list">
+<li class="toc-l2"><a href="#chapter-xiii-kāshī">Chapter XIII. Kāshī</a></li>
+</ul>
+</nav>
+        <main class="dh-content">
+            
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep">›</span>
+        <a href="index.html">Volume IV</a>
+        <span class="sep">›</span>
+        <span class="current">Chapter XIII. Kāshī</span>
+    </div>
+    
+            <h1 class="text-center" style="font-family: var(--font-roman); font-size: 2rem; color: var(--saffron); margin-bottom: 8px;">
+                Chapter XIII. Kāshī
+            </h1>
+            <p class="text-center" style="font-family: 'Open Sans', sans-serif; color: var(--ink-secondary); font-size: 0.9rem; margin-bottom: 36px;">
+                Volume IV <span class="page-range">pp. 618–642</span>
+            </p>
+
+            
+    <div class="synopsis-box" id="synopsis">
+        <button class="synopsis-toggle" onclick="this.parentElement.classList.toggle('open')"
+                aria-expanded="false" aria-controls="synopsis-body">
+            <i class="fa-solid fa-chevron-right"></i>
+            Kane's Synopsis
+        </button>
+        <div class="synopsis-audio">
+            <span class="synopsis-play-btn" role="button" tabindex="0"
+                    onclick="toggleSynopsisAudio(this)"
+                    data-src="../audio/synopsis/vol-4/vol-4_sec013.mp3" title="Listen to synopsis">
+                <i class="fa-solid fa-play"></i>
+            </span>
+            <audio preload="none"></audio>
+        </div>
+        <div class="synopsis-body" id="synopsis-body">
+            <p>This chapter delves into the profound significance of Kāśī, exploring its ancient history and the extensive eulogy it has received across various texts. It notes that this venerable city, commonly known as Banaras, has been identified by no fewer than five distinct names, each carrying its own historical and cultural resonance. The discussion further elucidates the precise derivation of the words Kāśī and Vārāṇasī, tracing their etymological roots and semantic evolution.
+
+Beyond its nomenclature, the chapter meticulously outlines Kāśī's sacred geography. Central to its spiritual identity are revered sites such as Viśveśvara and Maṇikarṇikā. It identifies the five essential *tīrthas* within Banaras, crucial for pilgrims seeking spiritual merit. The famed Pañcakrośī pilgrimage, a circumambulation of the sacred city, is also detailed, alongside various significant sub-*tīrthas* like Jñānavāpī. The chapter concludes by highlighting the extraordinary abundance of numerous *liṅgas* found throughout Banaras, attesting to its enduring sanctity and status as a pre-eminent centre of Hindu devotion.</p>
+            <p class="synopsis-attribution">— Synopsis by P.V. Kane, from History of Dharmaśāstra</p>
+        </div>
+    </div>
+
+
+            
+
+            <h2 id="chapter-xiii-kāshī" class="section-heading">Chapter XIII. Kāshī</h2>
+<p class="prose" id="p-chapter-xiii-kāshī-1">There is hardly any city in the world that can claim greater antiquity, greater continuity and greater popular veneration than Banaraṣ Banaras has been a holy city for at least thirty centurieṣ No city in India arouses the religious emotions of Hindus as much as Kāśī doeṣ To the Hindu mind it represents great and unbroken traditions of religious sanctity and learning. It is a miniature of Hindu life through the ages in all its great complexities and contradictionṣ Not only Hinduism with its numerous sects has flourished here for numberless centuries, but the principles of Buddhism, one of the great religions of the world, were first proclaimed here by Śākyamuni after he received Enlightenment at Bodh-Gayā under the Bodhi tree. Thousands of verses are found in the epics and purāṇas about Banaraṣ Several volumes have been written about Banaras during the last hundred yearṣ<sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-1" id="fnref-chapter-xiii-kāshī-1">1</a></sup> It would be impossible to do justice here to this vast mass of literature on Banaraṣ I shall briefly deal with the important topics relating to Banaraṣ In olden times the name was spelt as Benares, but recently as Banaras, which will be retained here (except in quotations).</p>
+<p class="prose" id="p-chapter-xiii-kāshī-2">Before proceeding further, it is necessary to dwell, however briefly, on the ancient history of Banaraṣ The <a class="ref" href="../refs/shatapatha.html" data-source="shatapatha" data-ref="" title="Śatapatha Brāhmaṇa">Śatapatha Br.</a> quotes <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-2" id="fnref-chapter-xiii-kāshī-2">2</a></sup> a Gāthā which states that Śatānika, son of Śatrājīt, carried away the sacred sacrificial horse of the Kāśīs, as Bharata did in the case of the Satvatṣ In <a class="ref" href="../refs/shatapatha.html#XIV.3.1.22" data-source="shatapatha" data-ref="XIV.3.1.22" title="Śatapatha Brāhmaṇa XIV.3.1.22">Śat. Br. XIV. 3. 1. 22</a> king Dhṛtarāṣṭra Vicitravīrya is called Kāśya. In the Gopatha Br. we have <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-3" id="fnref-chapter-xiii-kāshī-3">3</a></sup> the combination Kāśī-Kośalāḥ. The Cambridge History of India (vol. I p. 117) remarks that in the Brāhmaṇa period Kāśī, the capital of the Kāśis, was situated on the Varanāvati. In the <a class="ref" href="../refs/brihadaranyaka.html#II.1.1" data-source="brihadaranyaka" data-ref="II.1.1" title="Bṛhadāraṇyaka Upaniṣad II.1.1">Br. Up. (II. 1. 1)</a> and the Kausītakī<sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-4" id="fnref-chapter-xiii-kāshī-4">4</a></sup> Up. (IV. 1) there is the story of the proud Balāki Gārgya going to Ajātaśatru, king of Kāśī, with the assurance that the former would expound brahma to the latter. In Panini IV. 2. 116 Kāśī heads a gaṇa (Kāśyādibhyas-than-ithau'). Under Panini IV. 2. 113 we get the form 'Kāśiyah.' It is remarkable that in the Sarvānukrama the rṣi of <a class="ref" href="../refs/rigveda.html#X.179.2" data-source="rigveda" data-ref="X.179.2" title="Ṛgveda X.179.2">Rg. X. 179. 2</a> is stated to be Prātardana Kāśirāja. In tarpana, the Hir. Gr. (II, 8, 19, 6) mentions Kāśīśvara along with <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> and Rudraskanda (S. B. E. vol 30 p. 244). Divodāsa figures frequently in the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a>. In Rg I 130 7 Indra is said to have conquered ninety cities for Divodāsa, while in <a class="ref" href="../refs/rigveda.html#IV.30.20" data-source="rigveda" data-ref="IV.30.20" title="Ṛgveda IV.30.20">Rg. IV. 30. 20</a> it is stated that Indra gave 100 cities of stone to Divodāsa. From these Vedic references it may be surmised that in later works like the Epics and the purāṇas Divodāsa was naturally credited with the founding of the most sacred city in India. In the Mahābhāsya on Vārtika 4 on Pāṇ IV. 1. 54 (vol. II p 223) we find the illustration 'Kāśī-Kosaliyāḥ.' The Mahābhāśya (vol. II p 413) furnishes the interesting information that there is a difference in the price of cloth manufactured at Kāśī and that manufactured at Mathurā, though the length and breadth of the piece of cloth be the same. This shows that even so early as the 2nd century B, C, Kāśī was famous for the fine qualities of its cloth, as now.<sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-5" id="fnref-chapter-xiii-kāshī-5">5</a></sup> From the above passages it is clear that Kāśī was the name of a country long before the <a class="ref" href="../refs/shatapatha.html" data-source="shatapatha" data-ref="" title="Śatapatha Brāhmaṇa">Śatapatha Br.</a> was composed and it remained so till the 2nd century B. C. (the date of Patañjali). We have a parallel example. Avanti is the name of a country as shown by Pān IV. 1. 176 (striyām-avanti-kunti-kurubhyaś-ca) and by the Meghadūta (Prāpyāvantīn-udayana—), but Avanti or Avantikā is also the name of Ujjayinī (as in the well-known verse 'Ayodhyā...Avantikā'). Fa Hien (399 to 413 A. D.) is said to have arrived at the city of Vārānasī in the kingdom of Kāśī (Legge's tr. p 94). This shows that about 400 A. D. Kāśī was still the name of the district and Vārānasī was its capital. But from the reference in the Mahābhāśya it appears that Kāśī had then become the name of the city (and was also the name of the country) In the Anusaśana-parva (chap 30) it is said that Haryaśva, the grand-father of Divodāsa, was king of the Kāśis <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-5" id="fnref-chapter-xiii-kāshī-5">5</a></sup> and was harassed and killed by the Vitahavyas in the Doab between the Ganges and Jumna. Haryaśva's son was Sudeva who was crowned king of Kāśī (verse 13, Kāśirājos bhyasicyata) and he also met the same fate as his father diḍ Then Divodāsa, son of Sudeva, became king of the Kāśis and founded Vārānasi thickly populated with men of all varnas on the northern bank of the Gomati. This legend shows that Kāśī was the ancient name of a kingdom and the ancient belief was that Vārānasi was founded as the capital of the Kāśis by Divodāsa. In the <a class="ref" href="../refs/mb_udyogaparva.html" data-source="mb_udyogaparva" data-ref="" title="Udyogaparva">Udyogaparva</a><a href="https://sanatana.in/mbta/listing/parva/udyogaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> also Divodāsa is said to be the ruler of Kāśiṣ<sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-6" id="fnref-chapter-xiii-kāshī-6">6</a></sup></p>
+<p class="prose" id="p-chapter-xiii-kāshī-3">The Harivamśa (I. chap. 29) has a long but rather confused story about Divodāsa and Vārānasi <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-7" id="fnref-chapter-xiii-kāshī-7">7</a></sup> It deals with the dynasty of Āyus, one of the sons of Aila. One of the descendants of Āyus was Śunahotra who had three sons, Kāśa, Śala and Grtsamada From Kāśa arose a branch called Kāśayah. Dhanvantari, a descendant of Kāśa, was king of the Kāśis (verse 22). Divodāsa was great-grandson of Dhanvantari. He killed 100 sons of Bhadraśrenya, who first was Lord of Vārāṇasi. Then Śiva sent his gana Nikumbha to destroy Vārānasi which had been occupied by Divodāsa. Nikumbha cursed it to be devastated for a thousand years When it became devastated it came to be called Avimukta and Siva resided there It was again re-established (verse 68) by Durdama, a son of Bhadraśrenya, whom, because he was a child, Divodāsa had not killed Then Pratardana, son of Divo- dāsa, took it from Durdama Alarka, grandson of Divodāsa and king of Kāśis, again established Vārānasi This legend may contain some germs of truth, viz. that Vārānasi had become devastated several times and had often changed handṣ The <a class="ref" href="../refs/vayu_purana.html" data-source="vayu_purana" data-ref="" title="Vāyupurāṇa">Vāyupurāṇa</a> (chap. 92) and the Brahmapurāṇa (chap. 11) also contain the same legends of Dhanvantari, Divodāsa, and Alarka and the vicissitudes of Vārānasi</p>
+<p class="prose" id="p-chapter-xiii-kāshī-4">In the Mahābhāsya Patañjali states (vol. I. p. 380,) that Vārānasī is alongside of Gangā and on Pāṇ IV. 3. 84 (vol. II. p. 313) he informs us that traders call Vārānasī Jītvarī.</p>
+<p class="prose" id="p-chapter-xiii-kāshī-5">Ancient Buddhist works show that Banaras was, in the times of Buddha (5th Century B C. at the latest), a great and famous city like Campā, Rājagrha, Śrāvastī, Sāketa and Kauśāmbī (vide Mahāparinibbānasutta, S. B. E. vol. XI p 99 and Mahāsudassanāsutta, ibid, p. 247). The very fact that Buddha attained Enlightenment at Gayā (which was an out of the way place and on the borders, if at all, of Āryāvarta), thought it necessary to travel hundreds of miles from Gayā and preach his doctrines at Banaras in the Deer-park and set roll-ing the wheel of the kingdom of Dharma at that place, clearly indicates that Banaras had then become a very holy place and was in the centre of all Aryan activities and culture (vide S. B. E. vol. XI. p. 153 and vol. XIII p 90, Mahāvagga, S. B. E. vol. 17 p. 21). King Brahmadatta of Banaras figures in many <em>jātaka</em> storieṣ Hardly any part of the <em>jātaka</em> tales can be placed earlier than the 3rd century B. C. But it may be admitted that Banaras was well-known as the capital of Brahmadatta kings several centuries before Christ. The <a class="ref" href="../refs/matsya_purana.html#273" data-source="matsya_purana" data-ref="273" title="Matsyapurāṇa 273">Matsyapurāṇa 273</a>, while enumerating hundreds of kings bearing the same surnames, states that there were 100 Brahmadattas and 100 Kāśis and Kuśas <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-8" id="fnref-chapter-xiii-kāshī-8">8</a></sup>. But the very fact that Brahmadattas are separately mentioned from the Kāśis largely reduces the value of this piece of informatioṇ The ancient Jain works also speak of Banaras and Kāśī. In the Kalpasūtra it is said that Arhat Pārśva was born in Banaras in the month of Caitra on the 4th day of the dark fortnight (S B. E. vol. XXII p. 271) and that when Mahāvīra died the 18 confederate kings of Kāśī and Kosala along with other kings of the Licchavis and Mallakis instituted an illumination on the day of the New Moon (ibid, p. 266). Aśvaghoṣa appears to identify Vārānasī with Kāśī when he says in his Buddhacarita ‘Having entered Vārānasī, the Jina (Buddha) illuminating the city with his light filled the minds of all the inhabitants of Kāśī with excessive interest.’ <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-9" id="fnref-chapter-xiii-kāshī-9">9</a></sup> The Buddhacarita further speaks of Buddha as having gone under the shadow of a tree near Vanārā (S. B. E., vol. 49 part 1 p, 169), which is probably the Varaṇā. It is thus clear that Vārāṇasī and Kāśī had become synonyms at least sometime about the first century A. D. In the <a class="ref" href="../refs/vayu_purana.html#45.110" data-source="vayu_purana" data-ref="45.110" title="Vāyupurāṇa 45.110">Vāyupurāṇa 45. 110</a> Kāśī-kośalāḥ figure among the countries of Madhyadeśa.</p>
+<p class="prose" id="p-chapter-xiii-kāshī-6">In the <a class="ref" href="../refs/vishnu_purana.html" data-source="vishnu_purana" data-ref="" title="Viṣṇupurāṇa">Viṣṇupurāṇa</a> we have the story of Pauṇḍraka Vāsudeva who challenged Kṛṣṇa and asked the latter to surrender his Cakra and other symbolṣ He was helped by the king of Kāśī. The combined armies of Pauṇḍraka and Kāśīrāja attacked Kṛṣṇa who killed Pauṇḍraka and cut off Kāśīrāja's head (with his discus) which fell in the city of Kāśī. His son performed austerities, propitiated Śańkara and secured from him a Kṛtyā (ogress) which entered Vārāṇasī. Kṛṣṇa's discus in pursuit of her burnt the whole of Vārāṇasī together with its king, his servants and citizenṣ In this account from the <a class="ref" href="../refs/vishnu_purana.html" data-source="vishnu_purana" data-ref="" title="Viṣṇupurāṇa">Viṣṇupurāṇa</a> (V 34) the names Kāśī, Vārāṇasī and Avimukta are employed as synonyms (verses 14, 21, 25, 30, 39). The same legend occurs in the same words in Brahmapurāṇa, chap 207 and is briefly referred to in <a class="ref" href="../refs/mb_sabhaparva.html" data-source="mb_sabhaparva" data-ref="" title="Sabhāparva">Sabhāparva</a><a href="https://sanatana.in/mbta/listing/parva/sabhaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>, chap. 14 18-20 and chap. 34. 11.</p>
+<p class="prose" id="p-chapter-xiii-kāshī-7">From the above-mentioned accounts in the Epic and Purāṇas about Kāśī and Mahādeva, various conclusions <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-10" id="fnref-chapter-xiii-kāshī-10">10</a></sup> have been drawn by writers, viz. that Mahādeva was a god of the non-Aryans, that Banaras was a centre of non-Aryan worship for a long time after the advent of the Aryans and that the people of Banaras, though they ultimately turned to the Aryan religion, were more interested in the philosophic speculations of the Upaniṣadic age. I dissent from most of these conclusionṣ We are on most unsafe ground as regards these conclusionṣ None of the extant Purāṇas can claim to be older than the 3rd or 4th century A. D. Most people in India lived and even now live a humdrum, placid and unattractive life in which there is nothing to satisfy the ordinary man's appetite for the mysterious, the unusual and the horrible. The purāṇas contain stories that may be divided into several classes and that satisfied the above-mentioned cravings of the common maṇ Many of the legends contained in the purāṇas were meant for the entertain- ment of common people, just as even in these days millions in Western countries read with relish detective stories and crime club fictioṇ Some paurāṇic legends had a serious purpose in view viz emphasizing religious or philosophical dogma or moral values and standards and were clothed in a supernatural garb to make them striking and effective. Only a few legends have some historical basis, but the latter is evidently smothered in a mass of exaggerations and prejudices for or against a hero, or a caste, class, tribe or family. It is hardly fair to draw far- reaching historical conclusions from heterogeneous materials in the purāṇas about the conditions of things that prevailed several hundreds or thousands of years before they were compileḍ The purāṇas often speak of the quarrels and bickerings among high gods and sages For example, the <a class="ref" href="../refs/vishnu_purana.html#V.30.65" data-source="vishnu_purana" data-ref="V.30.65" title="Viṣṇupurāṇa V.30.65">Viṣṇupurāṇa V. 30.65</a> speaks of a fight between Indra and Kṛṣṇa. Was Kṛṣṇa a non- Aryan god originally<sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-66" id="fnref-chapter-xiii-kāshī-66">66</a></sup>? Gaṇeśa’s left tooth was shattered by the missile of Paraśurāma who comes to fight with Rāma, both being supposed to be avatāras of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>. The sage Bhrgu curses <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>, Gautama curses Indra, Māṇḍavya curses Dharma (vide for all these, Brahmāṇḍa Ḍ. 27. 21–25).</p>
+<p class="prose" id="p-chapter-xiii-kāshī-8">In several purāṇas Kāśī or Vārāṇasī has been lauded and described at great length. Vide Matsya 180–185 (411 verses), Kūrma 1.31–35 (verses 226), Liṅgapurāṇa (pūrvabhāga, chap. 92, verses 190), Padma (Āḍikhaṇḍa 33–37, verses 170), Agni 112, Skanda, Kāśīkhaṇḍa, chap 6 ff, Nāradīya (uttara, chap. 48–51). The Kāśīkhaṇḍa alone has about 15000 verses<sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-11" id="fnref-chapter-xiii-kāshī-11">11</a></sup> on Banaras and its sub-tīrthaṣ In the <a class="ref" href="../refs/padma_purana.html" data-source="padma_purana" data-ref="" title="Padmapurāṇa">Padmapurāṇa</a> the sages are said to have asked Bhrgu five questions, viz what is the greatness of Kāśī, how it is to be understood, who should resort to it, what is its extent (or boundaries) and by what means it (Kāśī) can be secureḍ In the <a class="ref" href="../refs/skanda_purana.html" data-source="skanda_purana" data-ref="" title="Skandapurāṇa">Skandapurāṇa</a>, Kāśīkhanda<sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-11" id="fnref-chapter-xiii-kāshī-11">11</a></sup> (chap. 26.2-5) the following questions are asked, viz. from what time this holy place Avimukta became highly famous, how it received the name Avimukta, how it became the way to mokṣa, how the pool of Maṇikarṇikā became an object of worship to the three worlds, what was there formerly (when) the Ganges was not there, how it came to be called Vārāṇasī, Kāśī, Rudravāsa, how it came to be Ānanda-kānana (the forest of bliss) and then Avimukta and Mahāśmaśāna (the great cemetery ).</p>
+<p class="prose" id="p-chapter-xiii-kāshī-9">Banaras has been known for centuries under five different names viz. Vārāṇasī, Kāśī, Avimukta, Ānandakānana and Śmaśāna or Mahāśmaśāna. The Kāśīkhaṇḍa states that Śankara first called it Ānandakānana and then Avimukta,<sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-13" id="fnref-chapter-xiii-kāshī-13">13</a></sup> A few words must be said about the derivation and significance of these words as gathered from the Purāṇas and other workṣ And first comes Kāśī. It is derived from the root <em>kāś</em> ‘to shine.’ The <a class="ref" href="../refs/skanda_purana.html" data-source="skanda_purana" data-ref="" title="Skandapurāṇa">Skandapurāṇa</a> <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-14" id="fnref-chapter-xiii-kāshī-14">14</a></sup> says that the city of Kāśī became famous by that name because it sheds light on (the way to) nirvāṇa (final release) or because that indescribable refulgence, viz. God Śiva shines forth there. The name Vārāṇasī is derived in several Purāṇas from the names of two streams Varaṇā <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-15" id="fnref-chapter-xiii-kāshī-15">15</a></sup> (modern Bārnā) and Asi, which are respectively the northern and southern boundaries of the modern city. From the passages quoted below from the <a class="ref" href="../refs/skanda_purana.html" data-source="skanda_purana" data-ref="" title="Skandapurāṇa">Skandapurāṇa</a> (Kāśī-khaṇḍa) it appears that Asi is the correct form of the name of the river. The names most frequently used in the Purāṇas are Vārāṇasī and Avimukta. In the Jābālopaniṣad <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-16" id="fnref-chapter-xiii-kāshī-16">16</a></sup> the words Avimukta, Varaṇā and Nāsī are brought together in an esoteric sense. “Atri asked <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yājñavalkya</a>: how is one to know the unmanifested Self? <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yājñavalkya</a> explained that he was to be worshipped in Avimukta, since the self is centered in Avimukta. Then a question was asked: in what is Avimukta centered or established? The reply is that Avimukta is established in the midst of Varaṇā and Nāsī. Varaṇā is so called because it wards off all faults due to the senses and Nāsi destroys all sins due to the senseṣ Then a question is askeḍ what is its loca- tion ( sthāna )? The reply is that it is the conjunction of the eyebrows and the nose i. e. the upāsanā ( contemplation ) of Avimukta is to be made as located in the span between the eyebrows and the root of the nose.” Here it will be seen that Varaṇā and Nāsi are the names ( and not Varana and Asi ). The Vāmanapurāṇa employs the form Asi ( 15.50-53 ). The same is the case with the Padma.</p>
+<p class="prose" id="p-chapter-xiii-kāshī-10">The name Avimukta has generally been explained as derived from the negative particle ‘na’ (for which ‘a’ is substituted) and vimukta (forsaken). Many Purāṇas say that the holy place is so called because it was never forsaken by Śiva (some- times both Śiva and his consort ) <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-17" id="fnref-chapter-xiii-kāshī-17">17</a></sup> In the Liṅgapurāṇa another derivation is suggested <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-18" id="fnref-chapter-xiii-kāshī-18">18</a></sup> “avi means ‘sin’; that holy place is devoid of sin”. The Kāśikhaṇḍa (39.74) states that originally the kṣetra was called Ānandakānana and then Avimukta because though Śiva went to stay on Mandara mountain he did not leave it entirely but left his liṅga there</p>
+<p class="prose" id="p-chapter-xiii-kāshī-11">Vārāṇasī is very dear to Śiva, it gives him joy and there- fore it is called Ānandavana or Ānandakānana. <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-19" id="fnref-chapter-xiii-kāshī-19">19</a></sup> It is also styled Śmaśāna or Mahāśmaśāna for various reasons As a belief was entertained by all people that death in Banaras freed a man from saṁsāra, and as the thoughts and aspirations of pious Hindus ran in the direction of dying on the sacred soil of Banaras, the old and decrepit crowded therein and persons seriously ill got themselves removed or were removed to the banks of the Ganges when about to die and were cremated there Cremation of corpses is always seen on the Maṇikarṇikā ghāt near the Gangeṣ A śmaśāna ( cemetery ) is considered impure but Banaras with the sacred Ganges was purest in spite of being always the cremation ground for thousands in a year. The Skanda sayṣ <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-20" id="fnref-chapter-xiii-kāshī-20">20</a></sup> ‘sma’ means a corpse and ‘śāna’ means ‘lying down’; when the end of the world comes, the great elements lie here as corpses and therefore this place is called Mahāśmaśāna.” The <a class="ref" href="../refs/padma_purana.html" data-source="padma_purana" data-ref="" title="Padmapurāṇa">Padmapurāṇa</a> <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-21" id="fnref-chapter-xiii-kāshī-21">21</a></sup> makes Śiva say: ‘Avimukta is a famous cemetery becoming the Destroyer (or the Time Spirit) I being here destroy the world’. Matsya very frequently speaks of Vāraṇasī as Śmaśāna. The Kāśīkhaṇḍa states: if a man after reaching the great cemetery dies there by fate he has never again to lie in the cemetery (i. e. he is not born again).</p>
+<p class="prose" id="p-chapter-xiii-kāshī-12">Although generally Kāśī, Vāraṇasī and Avimukta are used as synonyms in the Purāṇas, in some passages a distinction is made between these as to extent. The passages quoted above (in note 1419) show that Vāraṇasī is bounded by the Varaṇā and Asi on the north and south, <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-22" id="fnref-chapter-xiii-kāshī-22">22</a></sup> the Ganges on the east and the shrine of Vināyaka in the west. Aiṇ A. (vol II p. 158) remarks that Benares is a large city situated between the rivers Barṇā and Asi and that it is built in the form of a bow of which the Ganges forms the string. The <a class="ref" href="../refs/matsya_purana.html" data-source="matsya_purana" data-ref="" title="Matsyapurāṇa">Matsyapurāṇa</a> <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-23" id="fnref-chapter-xiii-kāshī-23">23</a></sup> states: ‘that kṣetra is two yojanas and a half east and west and half a yojana broad north and south; out of this Vāraṇasī extends up to the dry river (viz. Asi)’. The first part appears to deal with the entire Kāśīkṣetra which according to the <a class="ref" href="../refs/padma_purana.html" data-source="padma_purana" data-ref="" title="Padmapurāṇa">Padmapurāṇa</a> <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-24" id="fnref-chapter-xiii-kāshī-24">24</a></sup> comprised the tract covered by a circle the radius of which was the line joining Madhyameśvara-liṅga with the shrine of Dehali-Ganeśa. The <a class="ref" href="../refs/matsya_purana.html" data-source="matsya_purana" data-ref="" title="Matsyapurāṇa">Matsyapurāṇa</a> (in chap. 183.61-62) makes it two yojanas in extent Agni 112 6 also does the same But that is only approximate The actual distance covered by a yojana varied Vide <a class="ref" href="../refs/hodh.html#vol III pp. 145-146" data-source="hodh" data-ref="vol III pp. 145-146" title="History of Dharmaśāstra vol III pp. 145-146">H. of Dh vol III pp. 145-146</a> ṇ 185 Rhys Davids in 'Numismata Orientalia' (London, 1877) after examining 30 passages from Pāḷi texts comes to the conclusion that a yojana was equal to about 7 or 8 miles Avimukta is said to be that part of the holy place which is represented by a radius of 200 dhanus (1 e. 800 hastas or about 1200 feet) in all four directions from the shrine of Viśveśvara.<sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-25" id="fnref-chapter-xiii-kāshī-25">25</a></sup> There was no unanimity on the extent of Avimukta. In Kāśikhanda Avimukta<sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-25" id="fnref-chapter-xiii-kāshī-25">25</a></sup> is said to be five krosas in extent But there Avimukta appears to stand for Kāśī. The innermost<sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-26" id="fnref-chapter-xiii-kāshī-26">26</a></sup> circle in the holy Kāśīkṣetra is defined as that between Gokarṇeśvara to the west, the mid stream of the Ganges to the east, Bharabhūta to the north and Brahmeśvara to the south. A few more passages on the extent of the sacred place of Banaras may be cited here in one place. The Lingapurāṇa<sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-27" id="fnref-chapter-xiii-kāshī-27">27</a></sup> says 'this kṣetra is declared to be four krosas (in extent) in the four directions and also one yojana'. The Nāradīyapurāṇa<sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-28" id="fnref-chapter-xiii-kāshī-28">28</a></sup> puts the extent thus '(The kṣetra) extends over two yojanas and a half from east to west and is half a yojana wide from north to south, god Sambhu declared the extent of the kṣetra between the rivers Varuṇā and Asi (which latter is) a dried-up stream ' In the <a class="ref" href="../refs/padma_purana.html" data-source="padma_purana" data-ref="" title="Padmapurāṇa">Padmapurāṇa</a><sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-29" id="fnref-chapter-xiii-kāshī-29">29</a></sup> Brahmā is supposed to have said to Rudra ‘I have given you a ksetra of the extent of five krośas: when the best of rivers, the Ganga, will flow through this ksetra, the city will be great and holy, the Ganges, as it flows northwards (in Banaras) for two yojanas, will be holy’. If in any texts there be any differences between the extents of Avimukta, it must be supposed that there is an option, <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-30" id="fnref-chapter-xiii-kāshī-30">30</a></sup> (or, as the Tir. C. suggests, the differences refer to different kalpas i. e. ages). It is clear that Vārāṇasī was that strip of land, the four boundaries of which were the Ganges to the east, Asi to the south, the shrine of Dehali-Vināyaka to the west and the river Varaṇā to the north. In the 7th century Hiouen Thsang, the Chinese pilgrim, notes that Banaras was 18 <em>lis</em> (about 3¾ miles) in length and about 5 or 6 <em>lis</em> (a little more than a mile) in breadth. This makes it clear that the city was then bounded as now by the Varaṇā and Asi. Vide Beal’s B R. W. W (vol II p. 44).</p>
+<p class="prose" id="p-chapter-xiii-kāshī-13">Verses laudatory of the greatness and uniqueness of Vārāṇasī literally run into thousandṣ All that can be done here is to set out a few characteristic verseṣ The <a class="ref" href="../refs/mb_vanaparva.html" data-source="mb_vanaparva" data-ref="" title="Vanaparva">Vanaparva</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> observeṣ <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-31" id="fnref-chapter-xiii-kāshī-31">31</a></sup> a person coming to Avimukta and resorting to the sacred place becomes free from the sin of brāhmaṇa-murder by merely seeing the (image of the) Lord of gods (i e. Viśveśvara) and if he dies there he secures <em>mokṣa</em>. The <a class="ref" href="../refs/matsya_purana.html" data-source="matsya_purana" data-ref="" title="Matsyapurāṇa">Matsyapurāṇa</a> <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-32" id="fnref-chapter-xiii-kāshī-32">32</a></sup> contains many striking passages about the unique greatness of Banaras "Vārāṇasī is always my most secret place; it is always the cause of mokṣa for all beingṣ Mokṣa may be effected in Prayāga or in this city because I have taken it under my protection, this place is greater than even Prayāga, the foremost among tirthaṣ All the sins <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-33" id="fnref-chapter-xiii-kāshī-33">33</a></sup> that a man may have accumulated in thousands of past lives are destroyed the moment he enters Avimukta, brāhmaṇas, kṣatriyas, vaiśyas, śūdras, persons born of mixed marriages, worms, mlecchas and others born of low mixed unions, insects, ants, birds and beasts, when they succumb to death in course of time all find happiness in my auspicious city, all being endowed with a crescent of the moon on their heads, with a (third) eye on their forehead and have a bull as their conveyance." A person,<sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-34" id="fnref-chapter-xiii-kāshī-34">34</a></sup> even though his mind may be addicted to pleasures of sense and though he may have given up devotion to dharma, if he dies in this place (Banaras) he does not again enter upon the path of saṁsāra (the cycle of births and deaths); a man concentrating his mind for thousands of past lives may secure Yoga; but by dying (in Banaras) he secures the highest mokṣa in this very life. Even if a man be a sinner <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-35" id="fnref-chapter-xiii-kāshī-35">35</a></sup> or a rogue or irreligious he becomes free from all sins if he goes to Avimukta. Other women,<sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-36" id="fnref-chapter-xiii-kāshī-36">36</a></sup> that act as they like and are intently devoted to enjoyments, when they die here by lapse of time secure the highest worldṣ In this world mokṣa <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-37" id="fnref-chapter-xiii-kāshī-37">37</a></sup> cannot be secured by men without the (practice of) Yoga; but in the case of those who reside in Avimukta Yoga and mokṣa are both secureḍ For planets,<sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-38" id="fnref-chapter-xiii-kāshī-38">38</a></sup> lunar mansions and stars there is the danger of falling (from the sky) in course of time but there is no fall for those who die in Avimukta. Whatever <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-39" id="fnref-chapter-xiii-kāshī-39">39</a></sup> evil actions may have been com- mitted by an evil-minded man or woman, knowingly or unknow- IV] ingly—all those are reduced to ashes when he enters Avimukta. Even a mleccha resident in Kāśī is better, since his future will be blissful, but not one residing elsewhere, though he may be a dikṣita, because he will not be a recipient of mukti."</p>
+<p class="prose" id="p-chapter-xiii-kāshī-14">In some passages a mystic flavour is imparted to Vārāṇasī and the riverṣ For example, the Kāśīkhaṇḍa says that Asi is the Iḍā nāḍī, Vārāṇasī is the Piṅgalā nāḍī, Avimukta is susumnā and Vārāṇasī is all the three.<sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-40" id="fnref-chapter-xiii-kāshī-40">40</a></sup> The Liṅgapurāṇa, however, puts the matter somewhat differently. It holds that Asi (the dried-up river), Varaṇā and Matsyodarī (i. e. Ganges) are respectively the Piṅgalā, Iḍā and Susumnā.</p>
+<p class="prose" id="p-chapter-xiii-kāshī-15">It is time now to turn to the individual sacred spots in Banaraṣ It is stated in some of the Purāṇas<sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-41" id="fnref-chapter-xiii-kāshī-41">41</a></sup> that at every step in the Kāśīkṣetra there is a holy place and that there is not even as much space as a sesamum seed in Kāśī which has not a liṅga (emblem of Śiva). As a matter of fact the Kāśīkhaṇḍa names 64 liṅgas in chap. 10 alone. But one must look to the tīrthas that are specifically nameḍ Hiouen Thsang says that there were one hundred temples at Banaras in his day and he speaks of a temple where the copper image of Deva Maheśvara was a little less than 100 feet high (vide Beal’s B. R. W. W. vol. II. pp. 44–45). Unfortunately, the fanatical zeal and ruth- lessness of Moslem rulers demolished almost all Hindu temples at different times from 1194 to about 1670 A. D. Mosques and mausoleums were erected on their sites, and the materials of the temples thus razed were used in constructing mosques and for serving as breakwaters &c. Kutubdin Aibak destroyed about 1000 temples in 1194 A. D (vide Elliot and Dowson’s ‘History of India’, vol. II p. 222) Alauddin Khilzi boasted that he had destroyed one thousand temples in Banaras alone (vide Sherring p. 31, Havell p. 76). About 1585 A. D. Nārāyaṇa- bhaṭṭa re-established the temple of Viśvanātha with the help of Rāja Todarmal<sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-42" id="fnref-chapter-xiii-kāshī-42">42</a></sup>. Even this temple was desecrateḍ The following passage from the Ma-A'sir-i-A'lamgiri quoted by Elliot and Dowson ('History of India,' vol. VII, p 184) is instructive: "It reached the ears of his Majesty, the protector of the faith, that in the provinces of Thatta, Multan and Benares, in the latter foolish brāhmaṇas were in the habit of expounding frivolous books in their schools and that students and learners, Musalmans as well as Hindus, went there even from long distances, led by a desire to become acquainted with the wicked sciences they taught. 'The Direc- tor of the Faith' consequently issued orders to all the governors of provinces to destroy with a willing hand the schools and temples of the infidels, and they were strictly enjoined to put an entire stop to the teaching and practising of idolatrous forms of worship. On the 15th Rabiu-lakhīr (i. e. December 1669) it was reported to his religious Majesty, leader of the Unitarians, that in obedience to order, the Government officers had destroyed the temple of Bishnath at Benareṣ"</p>
+<p class="prose" id="p-chapter-xiii-kāshī-16">A mosque, which still exists, was built on the site of the Viśveśvara temple by Aurangzeb, who even changed the name of Banaras to Muḥammadabaḍ The result is that, as stated by Sherring (p. 32), it would be difficult to find twenty temples in the whole of Banaras of the age of Aurangzeb (1658-1707 A. D.). Many of the temples were built by the Maratha Chiefs and Sardars and during the British occupation many more were built. Prinsep calculated in about 1828 that there were in the Banaras city proper 1000 Hindu temples and 333 mos- ques; a more recent estimate puts the figures at 1454 temples and 272 mosques (Sherring<sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-43" id="fnref-chapter-xiii-kāshī-43">43</a></sup> pp 41-42).</p>
+<p class="prose" id="p-chapter-xiii-kāshī-17">Viśveśvara or Viśvanātha is the tutelary deity of Banaras and the principal and most holy temple in it (vide n 1429 a) It is prescribed that every resident of Kāśī must every day bathe in the Ganges and visit the temple of Viśveśvara (vide Tri S p. 214). After Aurangzeb pulled down the temple of Viśva- nātha, there was no shrine of Viśvanātha in Benares for over a hundred years The liṅga was probably removed from place to place as the vicissitudes of the times required and the pilgrims performed parts of the worship (such as <em>namaskāra</em> and <em>circumambulation</em>) at the site of the image, but they could not perform other portions of the worship such as bathing the image with Ganges water <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-44" id="fnref-chapter-xiii-kāshī-44">44</a></sup>. The present temple of Viśvanātha was built in the last quarter of the 18th century by <em>Devī Ahalyābāī Holkar</em> (Altekar, p. 57). The Tri. S. p. 183, while on the question of the appearance (<em>prādurbhāva</em>) of Viśveśvara, observes that there is no blemish in the case of the Viśveśvara- liṅga due to the touch of the untouchable, that every day Viśveśvara removes it by a bath in Maṇikarṇikā at dawn and the worship offered by Himself and quotes a verse of the <em>Sanat- kumāra-saṃhitā</em> in support <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-45" id="fnref-chapter-xiii-kāshī-45">45</a></sup>. What the Tri. S. means is: Generally great care is taken about <em>liṅgas</em>. All and sundry are not allowed to touch them but in the case of the Viśve- śvara-liṅga any one, even a great sinner, may worship it and pour Ganges water over it. Whether <em>Nārāyaṇabhatta</em> meant that even the so-called untouchables might touch it is not clear.</p>
+<p class="prose" id="p-chapter-xiii-kāshī-18">It appears that <em>Vācaspati</em> <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-45" id="fnref-chapter-xiii-kāshī-45">45</a></sup> holds that <em>Avimukteśvara liṅga</em> is the same as <em>Viśvanātha</em>, but both the <em>Tristhalī-setu</em> (p. 296) and <em>Tīr. Pr.</em> (p. 187) reject this idea. The <em><a class="ref" href="../refs/skanda_purana.html" data-source="skanda_purana" data-ref="" title="Skandapurāṇa">Skanda- purāṇa</a></em> (<em>Kāśī, 10. 93</em>) mentions <em>Viśveśvara</em> and <em>Avimukteśvara</em> as separate <em>liṅgas</em>. Besides worshipping <em>Viśvanātha</em>, every pilgrim to Benares has to visit the five <em>tīrthas</em> <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-46" id="fnref-chapter-xiii-kāshī-46">46</a></sup> (<em>Pañcatīrthī</em>). According to the <em><a class="ref" href="../refs/matsya_purana.html" data-source="matsya_purana" data-ref="" title="Matsyapurāṇa">Matsyapurāṇa</a></em> the five essential <em>tīrthas</em> in the <em>Ānandakānana</em> of <em>Viśveśvara</em> are <em>Daśāśvamedha, Lolārka</em> <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-46" id="fnref-chapter-xiii-kāshī-46">46</a></sup> Keśava, Bindumādhava and Maṇikarṇikā.<sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-47" id="fnref-chapter-xiii-kāshī-47">47</a></sup> In modern times the five essential tīrthas called Pañcatīrthī are the confluence of the Asī with the Ganges, the Daśāśvamedha ghāṭ, Maṇikarṇikā, the Pañcagangā ghāṭ and the confluence of the river Varaṇā (called Bārṇā by the common people) with the Gangeṣ This is based on the Kāśīkhaṇḍa.<sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-48" id="fnref-chapter-xiii-kāshī-48">48</a></sup> The shrine of Lolārka is situated at the confluence of the Asī (the southern boundary of Banaras) with the Gangeṣ The Kāśīkhaṇḍa<sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-49" id="fnref-chapter-xiii-kāshī-49">49</a></sup> furnishes a popular etymology for the name Lolārka, viz. that the mind of the Sun on seeing Kāśī became agitateḍ The Asī is a tolerably wide stream (about 40 feet) in the rainy season, but is dry at other timeṣ The several gigantic ghāts with their flights of stone steps are a grand sight at Banaraṣ The Ganges while passing by Banaras takes a great sweep so that its mighty current flows in a northerly direction (that is towards the Himālaya) and is therefore held to be peculiarly holy here. The Daśāśvamedha-ghāṭ has been famed for centuries, Jayaswal's interpretation of the epithets applied to the Bhāraśivas in Vākāṭaka grants should be accepted viz. the Bhāraśivas were an imperial dynasty, were crowned with the holy waters of the Ganges and took their ceremonial baths on the Ganges at the end of ten Aśvamedha sacrifices, on account of which the Daśāśvamedha-ghāṭ <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-50" id="fnref-chapter-xiii-kāshī-50">50</a></sup> at Banaras was so named (Jayaswal's ‘History of India’ 150 A. D.–350 A. D. p. 5). In order to realize the grandeur of Banaras on the side of the river one must be at The Daśāśvamedhaghaṭ at dawṇ For the eulogy of Daśāśvamedha, vide Kāśikhaṇḍa 52. 83 ff and Tri. S. p. 159. The Kāśikhaṇḍa says that formerly the tīrtha was called Rudrasaras, but as Brahmā performed ten Aśvamedhas there it came to be called Daśāśvamedha (chap 52. 66–68). The Maṇikarṇikā (also called Mukti-kṣetra) pool is the very centre of the religious life of Banaras and <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-51" id="fnref-chapter-xiii-kāshī-51">51</a></sup> is the most holy among all the Banaras tīrthaṣ The Kāśikhaṇḍa gives a phantastic story of its origin (in chapter 26 verses 51–63 quoted in Tri. S, pp. 145–146): <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> dug with his discus a puṣkariṇī, filled it with the perspiration from his own body and performed severe austerities on its bank for 1050 (or 50000) yearṣ Śiva came there and being pleased shook his head and an ear-ornament studded with jewels fell into the pool, which thenceforward came to be called Maṇikarṇikā. The word is <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-52" id="fnref-chapter-xiii-kāshī-52">52</a></sup> derived in two ways in the Kāśīkhaṇḍa. Śiva who is like the wish-yielding jewel whispers in the ear (karṇikā) of good men the Tāraka mantra at the time of death. The extent of Maṇikarṇikā north to south is said to be 105 hastas i. e. about 160 feet (Kāśikhaṇḍa 99. 54). In modern times the waters of the Maṇikarṇikā pool become foul and fetid because it is shallow (two or three feet deep), because hundreds of pilgrims cast into it flowers and money by way of worship and because the priests stir the waters with their hands and feet to find the coins dropped by pilgrimṣ Our methods of worship must be changeḍ The flowers and gifts should be placed on the banks of the pool and then taken away by the priestṣ The Tri S. p. 147 mentions several mantras (two of which are set out below) to be recited when contemplating on Maṇikarṇikā <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-53" id="fnref-chapter-xiii-kāshī-53">53</a></sup>. Near the Maṇikarṇikā pool is the temple of Tārakeśvara so named from the belief that Śiva will whisper the mantra called Tāraka in the ear of the dying man brought to the sacred pool<sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-53" id="fnref-chapter-xiii-kāshī-53">53</a></sup> (vide Kāśīkhanda 7.78, 25. 72–73 and 32. 115–116). The Pañcagaṅgā ghāṭ is so called because it is supposed that five rivers, viz the Kiraṇā,<sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-54" id="fnref-chapter-xiii-kāshī-54">54</a></sup> Dhūtāpāpā, Gaṅgā, Yamunā and Sarasvati, meet here (though four of them are invisible) This is very highly eulogised and it is said in the Nāradīyapurāṇa and the Kāśīkhanda (59. 118–133) that when a man takes a bath in the Pañcanada he is not born again in a body made up of the five elementṣ It is said that this confluence of five rivers had different names viz. Dharmanada, Dhūtāpāpaka, Bindutīrtha and Pañcanada in Kṛta and the following Yugas respectively The Kāśīkhanda in chap. 59 deals with the confluence of five rivers and gives phantastic legends as to why the rivers were called Kiraṇā (59. 108–113) and Dhūtāpāpā (59 101–106 ). The river Varaṇā is the northern boundary of Vārāṇasī and the end of the ghāṭs on the northern side is reached at the confluence of the Varaṇā with the Gangeṣ That the ghāṭs have been there for at least a thousand years can be proved from copperplates and inscrip- tionṣ The Gāhaḍvāla rulers of Kaṇoj (of whose times at least 55 copperplates and 3 inscriptions on stone were issued during the period 1097 to 1187 A. D), being devotees of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>, several times made grants at the Ādi-Keśava ghāṭ. Vide J. R A S. for 1896 p. 787 (king Madanapāla’s grant on the occasion of a Sun-eclipse after Mahārājñī Pṛthvīśrīkā took a bath), I. A. vol. 19 p. 249 (grant of Govindacandra in saṃvat 1188 l. e. 1131 A. D.), E I 14 p. 197 (Candrādityadeva, who having bathed at Adikeśava-ghaṭṭa<sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-55" id="fnref-chapter-xiii-kāshī-55">55</a></sup> at the confluence of the rivers Gaṅgā and Varaṇā bestowed on 500 brāhmaṇas 30 villages on the Aksayya-trtiyā of _samvat_ 1156). Those rulers made grants at other ghāṭs and sacred spots also For example, E. I vol. IV. pp. 97 ff (21 copperplates of Gāhadvalas, of which H in _samvat_ 1178 speaks of the grant of a village after a bath at the Kapila-mocana-ghaṭṭa at Banaras where the Ganges flows towards the north, grant L p 114 of _samvat_ 1197 made on a queen taking a bath at the ghaṭṭa of god Vedeśvara in Avimuktaksetra ; grant S. mentions god Krttivāsa; grant U. is made to the temple of Lolārka by Jayacandra in _samvat_ 1233), E. I vol. VIII p. 149 (five copperplate grants of Govindacandra in _samvat_ 1207 i, e. 1156 A. D. after a bath at Kotītīrtha on Uttarāyaṇa-saṅkrānti). The Kāśī-khaṇḍa promises Varuna-loka to those charitable people that build stone ghāṭs on the sacred rivers <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-56" id="fnref-chapter-xiii-kāshī-56">56</a></sup></p>
+<p class="prose" id="p-chapter-xiii-kāshī-19">One of the most meritorious of all pilgrimages is the Pañcakrośī by roaḍ Lakṣmīdhara in his section on Tīrthas in the Krtyakalpataru apparently takes no notice of it. The length of the Pañcakrośī road is about 50 miles and there are hundreds of shrines on the road Taking Maṇikarṇikā as the centre the whole road describes an irregular semicircle round the city of Banaras with a radius of five krośas (about ten miles) and hence it is called pañcakrośī. The word 'pañcakrośī' occurs very often in the Kāśīkhaṇḍa (as in chap 26, verses 80 and 114, chap 55 44). This pilgrimage may be very briefly described as follows --The pilgrim starts from the Maṇikarṇikā-ghāṭ and going along the bank of the Ganges arrives at the confluence of the river Asi with the Ganges and halts for the day at a village called Khāṇḍava about six miles from Maṇikarṇikā. The 2nd day's march (for eight or ten miles) ends at the village called Dhūpacandi where he offers worship to the goddess of that name. On the 3rd day the pilgrim walks 14 miles to the village Rāmeśvara. On the 4th day he walks eight miles and reaches the village Sivapura. On the 5th day he walks 6 miles and reaches the village Kapiladhārā, where the pilgrim offers oblations to his pitṛs On the 6th day he walks from Kapila-dhārā to Varanāsaṅgama and thence to Maṇikarṇikā, a dis- tance of six miles It is the practice for pilgrims to scatter grains of barley from Kapiladhārā to Maṇikarṇikā. The pil- grim bathes, pays _dakṣiṇā_ to the priest and then goes to the temple of Sākṣī-Vināyaka who is supposed to bear witness to the pilgrim's having performed the Pañcakrośī-yātra. There are numerous other sub-tīrthas in Banaras, some of which may be briefly noticed here. The Jñānavāpī may be mentioned first. The story of its origin is narrated in the Kāśīkhaṇḍa, chap. 33. The Tri. S (pp. 148-150) refers to it. It is said that when Śiva (Īśāna) saw the Viśveśvara-liṅga a desire arose in him to bathe with its cool water. He dug a kuṇḍa with his trident to the south of the temple of Viśveśvara and with the water therefrom he bathed Viśveśvara-liṅga and Viśveśvara granted the boon that the tīrtha would be superior to all tīrthas and that, as Śiva is knowledge (verse 32), the tīrtha would be called Jñānoda or Jñānavāpī. One of the most popular and the most frequented temple is that of Durgā. In chap. 72 (verses 37-65) of the Kāśīkhaṇḍa there is a Durgāstotra called Vajra-pañjara which is referred to in Tri. S. p. 161. There is a temple of Bhairavanātha about a mile to the north of the temple of Viśveśvara. He is the Koṭwal or police Magistrate of Kāśī and wields a stone cudgel (of enormous thickness). His vāhana is a dog. Vide Kāśīkhaṇḍa, chap. 30, for Bhairava. There are many temples of Gaṇeśa The Tri. S. (pp. 198-199) names 56 Gaṇeśas and indicates their locations, following Kāśīkhaṇḍa, chap 57 59-115 (sat-pañcāśad-Gaṇa makhān-etān-yah samamariṣyati). In Kāśīkhaṇḍa (57. 33) the name Dhundhi applied to Gaṇeśa is derived from the root 'dhundhi' in the sense of 'searching' (anveṣane dhudhīr-ayam prathitosti dhatuḥ). Compare the Marathi verb dhundane.</p>
+<p class="prose" id="p-chapter-xiii-kāshī-20">The Tri S. discusses at some length (pp. 98-100) the question whether sins committed in all past lives are destroyed by entering Kāśī or whether it is only the sins committed during the present life that are destroyeḍ Some hold the view that sins committed in this life only are destroyed by visiting Kāśī and by bath in the various sacred spots the sins of previous lives are destroyeḍ Others hold that by entering Kāśī the sins of all past lives are destroyed, but bath at various sacred spots brings about only the cessation of the tendency to sin in different liveṣ Nārāyaṇabhaṭṭa puts forward several other views and says that wise men should hold the view that appears proper.</p>
+<p class="prose" id="p-chapter-xiii-kāshī-21">Many of the purāṇas lay down rules about how one dwell- ing in Kāśī should act. The injunction is that in Kāśī one should not commit the slightest sin, since the punishment is far more heavy. The Matsya (chap. 185. 17-45) and Kāśīkhaṇḍa, chap. 96, narrate the story of Vyāsa, who while wandering about for alms in Kāśī, did not secure alms and being hungry and angry was on the point of cursing Kāśī in the words quoted below <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-57" id="fnref-chapter-xiii-kāshī-57">57</a></sup> when Śiva coming to know his mind assumed the form of a householder, gave him the best of food and ordered Vyāsa not to enter Kāśikṣetra as he was an irritable man, but allowed him to do so on the 8th and 14th tithis only. The Kāśikhaṇḍa 96. 12-80 and 119-180 speak at great length about how one residing in Kāśī should conduct himself.</p>
+<p class="prose" id="p-chapter-xiii-kāshī-22">Some miscellaneous matters in connection with Banaras may be set out here. Vārāṇasī being a great tīrtha, śrāddha for the benefit of ancestors should be performed there and if it is not possible to perform a śrāddha with all details, at least offerings of pindas should be made.<sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-58" id="fnref-chapter-xiii-kāshī-58">58</a></sup> The construction of mathas for those who practise penance there and endowing them with means for their maintenance are highly eulogizeḍ<sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-59" id="fnref-chapter-xiii-kāshī-59">59</a></sup></p>
+<p class="prose" id="p-chapter-xiii-kāshī-23">In the 12th century A. D. there was a Kapālamocanaghāt<sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-60" id="fnref-chapter-xiii-kāshī-60">60</a></sup> situated on the Gangeṣ In a grant published in E. I. vol. IV p. 110 dated samvat 1178 (1122 A. D.) the Emperor Govindacandra bestowed a village on a brāhmaṇa named Vyāsa after bathing at the Kapāla-mocanaghatta in Banaras where the Ganges flows to the north. The story of Kapālamocana-tīrtha is narrated in the <a class="ref" href="../refs/matsya_purana.html" data-source="matsya_purana" data-ref="" title="Matsyapurāṇa">Matsya-purāṇa</a>, chap. 183. 84-103 and a reference is made to it in Kāśikhaṇḍa 33, 116.</p>
+<p class="prose" id="p-chapter-xiii-kāshī-24">It may be noted that in the Lingapurāṇa, pūrvārdha, chap. 92 verses 67-100, in Padma,<sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-60" id="fnref-chapter-xiii-kāshī-60">60</a></sup> Ādīkhanda, chap. 34-37, Kūrma I. 32. 1-12 and I 35. 1-15 (tīrthas) and in the Kāśī- khanda, chap. 10. 86-97, chap. 33, chap. 53. 27 ff., chapters 55, 58 and 61 numerous liṅgas and tīrthas of Banaras are nameḍ The Kāśīkhanda, chap 73. 32-36 (quoted by Tri. S. pp. 264-265) mentions 14 of these as Mahāliṅgas, viz. Oṁkāra, Trilocana, Mahādeva, Kṛttivāsas, Ratneśa, Candreśvara, Kedāra, Dharmeśa, Vīreśvara, Kāmeśa, Viśvakarmśvara, Maṇikarṇīśa, Avimukta, Viśveśvara. It is provided in Kāśī- khanda 73 39 that yātrās of these main liṅgas should be celebrated every month from the 1st tithi onwards In Kāśīkhanda 73. 45-48 there is another series of fourteen great liṅgas diffe- rent from those in chap 73. 32-36. Fourteen āyatanas are named in Kāśīkhanda 73. 60-62.<sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-61" id="fnref-chapter-xiii-kāshī-61">61</a></sup> Twelve out of these are specified as liṅgas in Liṅgapurāṇa I. 92.67-107. In Kāśīkhanda chapters 83 and 84 are enumerated about 125 tīrthas of Banaras In chap. 94. 36 of the Kāśīkhanda 36 principal liṅgas are re- ferred to (14 Oṁkārādi, 8 Dakṣeśvarādi and 14 Śaileśādi). From considerations of space the other liṅgas and tīrthas are not mentioned here. But out of all these Viśveśvara is said to give quick resultṣ</p>
+<p class="prose" id="p-chapter-xiii-kāshī-25">It is laid down that every one residing in Kāśī must repair every day to the Ganges, take a bath in the Maṇikarṇikā and visit Viśveśvara.<sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-62" id="fnref-chapter-xiii-kāshī-62">62</a></sup></p>
+<p class="prose" id="p-chapter-xiii-kāshī-26">What happens if a person commits sins outside Kāśī, comes to Kāśī and then dies, or if a resident of Kāśī commits sins in Kāśī but dies either at Kāśī or outside it? The Tri. S. after quoting several verses from the Kāśīkhanda, <a class="ref" href="../refs/padma_purana.html" data-source="padma_purana" data-ref="" title="Padmapurāṇa">Padma- purāṇa</a> and Brahmavaivarta states the following conclusions (p. 268). Sins committed elsewhere are destroyed by coming to Kāśī.<sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-63" id="fnref-chapter-xiii-kāshī-63">63</a></sup> He who residing in Kāśī is always addicted to sins becomes a piśāca (goblin) for thirty thousand years, again dwells in Kāśī, secures highest knowledge and then obtains IV] mokṣa. Those who being residents of Kāśī commit sins have not to undergo the tortures of Yama whether they die in Kāśī or elsewhere. Those who after committing sins in Kāśī die there will be punished by Kālabhairava Those who die else where (after committing sins in Kāśī) first undergo torments inflicted by the ganas of Śiva called Yama, then undergo torments inflicted by Kālabhairava for thirty thousand years, are then born as mortal men, then die in Kāśī and secure release (from saṃsāra) at the enḍ</p>
+<p class="prose" id="p-chapter-xiii-kāshī-27">It is remarkable that the Kāśīkhaṇḍa <sup>1467</sup> states that a little to the north of Kāśī, <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> assigned a place for his resid ence called Dharmakṣetra and that there <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> assumed the form of Buddha. This is a clear reference to Sārnāth about five miles by road to the north of Banaras, where Buddha delivered his first sermon The general rule for ascetics is that for eight months they must move from place to place and may spend the four months of the rainy season or two months in one place; but this rule is abrogated where ascetics enter Banaras and it is laid down that they should not leave Kāśī at all. <sup>1467a</sup></p>
+<p class="prose" id="p-chapter-xiii-kāshī-28">The Kāśīkhaṇḍa remarks 'For devotees of Śiva who are full of faith there is, even in great calamities, no other remedy except the water of the feet of the image of God Incurable diseases even, whether affecting the body outside or inside, are got rid of by the touch with faith of the water of (washing the image of) the deity.' This reminds one of the miraculous cures believed to have been effected by the water of a pool at Lourdes in the first years of this century <sup>1467b</sup>.</p>
+<p class="prose" id="p-chapter-xiii-kāshī-29">It would be far beyond the scope of this section to dilate upon the great traditions of learning associated with the name of Banaraṣ It is sufficient to refer to Alberuni (vol. I. p. 173) who observed that Banaras and Kashmir were the</p>
+<aside class="footnotes-section" aria-label="Footnotes">
+<hr>
+<ol class="footnotes-list">
+<li id="fn-chapter-xiii-kāshī-1" class="footnote-item">Among modern works in English dealing with Banaras the following may be mentioned 'Benares, a handbook for the visitors' by J. Eween (Calcutta, 1886), 'The sacred city of the Hindus' by M A. Sherring with a learned Introduction by Dr. F, E Hall (London, 1886) and 110 photographs, 'Benares, the sacred city' by E B Havell (1905) with many fine illustrations, 'History of Benares' by Prof. A. S. Altekar (1937) with a few diagrams and photographs <a href="#fnref-chapter-xiii-kāshī-1" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-2" class="footnote-item"><span class="devanagari">तदेतद्ब्रह्मगिगीत्यम्। शतानौकः समन्तासु मेध्य शत्राजितो हयम्। आदत्त यद्देश काशोना भरत सत्वतामिवेति। शतपथमा</span> XIII 5 4 21. <a href="#fnref-chapter-xiii-kāshī-2" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-3" class="footnote-item"><span class="devanagari">त्रिचारी ह वै काशिय</span>. <span class="devanagari">कथयस्स्थापयर्णस्य एतौ मेधावी मीमांसकौऽदृश्यमान आ स ह स्वेणैवमानेन सायुज्य स्रष्ट नेयाय । तं सातोवाच् । त एवेतद्ब्रह्ममवोचत इमेचमहे दु कृष्यणाले</span>. <span class="devanagari">मब्द्ध मणयेषु काशीकोसलेषु</span> ...<span class="devanagari">उदीच्येश्चसमदन्हि। गोपथ</span>, <span class="devanagari">पूर्वभाग</span> 2 9. <a href="#fnref-chapter-xiii-kāshī-3" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-4" class="footnote-item"><span class="devanagari">एतस्मात्किञ्चिद्द्वानो गार्ग्य आस सद्योवाचाजाताशत्रुं काश्यं ब्रह्न ते ब्रवाणोति । वृ</span>. <span class="devanagari">उप</span>. II 1.1. <a href="#fnref-chapter-xiii-kāshī-4" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-5" class="footnote-item"><span class="devanagari">ईदं समाने आयामे विस्तारे पटसम्पान्नायां भवति काशीकौशल्योर्भाधुरय्यः । महाभाष्य</span>, vol II. p, 413 (on Pāṇ V, 3.35). <a href="#fnref-chapter-xiii-kāshī-5" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-6" class="footnote-item"><span class="devanagari">महावीर्यों महीपाल</span>. <span class="devanagari">काशनामीश्वर</span>. <span class="devanagari">भभू</span>.<span class="devanagari">। दिवोदास इति ख्यातो भीमसेनेर्न</span>- <span class="devanagari">राधिपः॥ उद्योग</span> 117.1. <a href="#fnref-chapter-xiii-kāshī-6" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-7" class="footnote-item"><span class="devanagari">क्षौदैवस्यैव काशिपो दिवोदासोन्यविच्यल</span>.<span class="devanagari">। वाराणसी महतेजा निर्ममे शाश्व</span>- <span class="devanagari">दाह्वयान् ॥ हिमवत्प्रस्थसम्बन्धा वैद्यज्यप्सरसामुपर। वेलासत्योदधौश्वर्या सन्नुदीच्यपगापगाम्। गङ्गापगा उदरे कूले वसानो राजसत्तमः। गोमत्या दक्षिणे कूले काशयेत्धामरादधीम्। अनुशासन</span> 30. 15-18. <a href="#fnref-chapter-xiii-kāshī-7" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-8" class="footnote-item"><span class="devanagari">शतमेकं धार्तराष्ट्रा हाशीतिर्नवोजयाः। शतं वै ब्रह्मदत्ताना वीराणां कुरुसंसत्सु। ततः शतं च पञ्चालाः शतं काशिशुशादयः॥ मत्स्य</span>. 273. 72-73. <a href="#fnref-chapter-xiii-kāshī-8" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-9" class="footnote-item"><span class="devanagari">वाराणसी प्रविश्याथ भासा सम्मासयन्जिनः। चकार काशिदेशीयान् कौतुकाकान्तचेतसः॥ बुद्धचरित</span> 15 101. <a href="#fnref-chapter-xiii-kāshī-9" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-10" class="footnote-item">Vide, for example, Prof. A. S. Altekar's 'History of Benares,' pp 2-7. The Nāradīya (uttara, chap. 29) states that Banaras was at first the city of Mādhava, but later on became a Śaiva-kṣetra, is there any real historical basis here? If any historical conclusion is to be drawn from this statement of the Nāradīyapurāṇa it would be exactly the opposite of what Prof. Altekar has drawn, viz, that the non-Aryans scored a cultural victory over the Aryans at Banaraṣ <a href="#fnref-chapter-xiii-kāshī-10" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-11" class="footnote-item">Dr. Fitz-Edward Hall (Introduction to Sherring's work p. XXXII ṇ 3) criticizes Dr Wilson for holding that the greater part of the Kāśīkhaṇḍa is anterior to the first attack on Banaras by Maḥmud of Gazni and holds that it is later than the Gaznivide invader Dr. Hall advances hardly any convincing reasons The work of Alberuni is definite that Sultan Maḥmud of Gazni had not spread his depredations as far as Banaras (vide Sachau, vol. 1 p. 22) 'This is the reason why Hindu Sciences ..have fled to places which our hand cannot yet reach, to Kashmir, Benares and other places' The Kalpataru on Tīrtha quotes about one hundred verses on Vārāṇasī ( Continued on the next page ) <a href="#fnref-chapter-xiii-kāshī-11" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-12" class="footnote-item"><span class="devanagari">किं माहात्म्यं कथं चैषा क्षेञेण कैश्चिद् द्विजोत्तम । परिमाणं च तस्याः किं केनो</span>-<span class="devanagari">पापेन लभ्यते॥ पत्र</span>, <span class="devanagari">पातालखण्ड १</span>. by <span class="devanagari">विस्वरणी०</span> p. 72, <span class="devanagari">अविमुक्तामिदं क्षेत्रं ब्रह्मरूपं परंतप। एषा मयि विनिष्कलं सदा ॥ माणिकर्णिका ॥ वायसीति काशीति कइँश्च दति प्रणीतं। अथाप्य नामधेयानि कथयेषामि सा पुरी। आनन्दकाननम रम्यमीश्वरेणकमनस्तरम्। महाश्मशानमिति च कथं ख्यातं तन्निखिलम्॥ स्कन्द</span>, <span class="devanagari">काशी०</span> 25 2-5. <a href="#fnref-chapter-xiii-kāshī-12" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-13" class="footnote-item"><span class="devanagari">अस्थानन्दवनं नाम पुराकारि पिनाकिना। क्षेत्रादन्यन्न देवस्य वरं देव्यस्ति भूतले॥ स्कन्द</span>, <span class="devanagari">काशी०</span> 26 34 q by <span class="devanagari">विस्वरणी०</span> p 89 (reads <span class="devanagari">निरन्तर</span>) <a href="#fnref-chapter-xiii-kāshī-13" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-14" class="footnote-item"><span class="devanagari">काशेस्तत्र यतो ज्योतिस्तदनुप्रपद्यतेश्वरं । अतो नासारं चाप्सु काशीति प्रथितं विभो ।। स्कन्द</span>, <span class="devanagari">काशी०</span> 26 67 q by <span class="devanagari">त्रिशूली०</span> p 88, <span class="devanagari">भाषायामास ततो गङ्गां देवर्षिः पुष्करम् । निर्वाणमोक्षकाशानाद्येन काशीति प्रमिता पुरी । स्कन्द</span>, <span class="devanagari">काशी०</span> 30 5, <span class="devanagari">काशी वदति देवस्यातं संवेदेति जगद्गुरुम् । अविमुक्त संदेशः काशीति ब्रह्मवादिनः ।।</span> q. by <span class="devanagari">त्रिशूली०</span> p. 88. <a href="#fnref-chapter-xiii-kāshī-14" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-15" class="footnote-item"><span class="devanagari">वरुणायास्तथा चास्या मध्ये वाराणसी पुरी । पद्म</span>, <span class="devanagari">आदि</span> 33 49, <span class="devanagari">कूर्मे</span> I 31 63 (reads <span class="devanagari">वारुण्या</span>), <span class="devanagari">वरुणाऽसी नदी यावत्सावच्छकुण्डनदी</span> (<span class="devanagari">शुष्कनदी</span> ?) <span class="devanagari">हु वै । मत्स्य</span> 183 62; <span class="devanagari">असिच वरुणा यत्र क्षेत्ररक्षाकृतो कृते । वाराणसीति विख्याता तदारभ्य महामते । अशेषं वरुणा</span>- <span class="devanagari">याश्च सङ्गमं प्राप्य काशिका । स्कन्द</span>, <span class="devanagari">काशी०</span> 30 69-70, <span class="devanagari">वरुणा च नदी नासी मध्ये वारा</span>- <span class="devanagari">णसी तयो । अधि</span>. 112 6 Nāsī appears to be a misreading for <span class="devanagari">चासी</span> In <span class="devanagari">काशिखण्ड</span> 30 18 there is a pun on the word <span class="devanagari">असि</span> (a sword, the river) ‘<span class="devanagari">असिं महासिना च प्राप्य सम्मास्खण्डनीम् ।</span>’; <span class="devanagari">दक्षिणोत्तरदिग्भागे कुलवाऽस्ति वरुणा निक्षेपात्पूर्वादिग्भागे । मध्यस्य पश्चादिग्भागे । काशिखण्ड</span> 30 20-21, <span class="devanagari">वरुणा</span> (<span class="devanagari">वरुणा</span> ?) <span class="devanagari">च असी चापि हे नद्यौ सुरसङ्गमे । अन्तरालं तयो</span>. <span class="devanagari">क्षेत्रं वध्या</span> ( <span class="devanagari">वरुण्या</span> ?) <span class="devanagari">त्वं विज्ञेयं कचिद् । पद्म</span> V 14 191 <span class="devanagari">वध्या</span> means <span class="devanagari">हृत्या</span>. The <span class="devanagari">वामनपुराण</span>, after stating that <span class="devanagari">वाराणसी</span> is between <span class="devanagari">वरुणा</span> and <span class="devanagari">आसी</span> (3 28 ff) contains a poetic description of <span class="devanagari">वाराणसी</span> with <span class="devanagari">श्लेष</span>s quite in the style of Bāṇa '<span class="devanagari">वाराणसि कुलीनत्व नेघे दुष्युत्तधियो ।</span>' (v 38). <a href="#fnref-chapter-xiii-kāshī-15" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-16" class="footnote-item"><span class="devanagari">अथ हैनमिति</span>. <span class="devanagari">पप्रच्छ याज्ञवल्क्यम् । च एषोडनन्तोऽव्यक्त आत्मा विजानातीति । सहोवाच याज्ञवल्क्यः</span>! <span class="devanagari">सोऽविमुक्त उपास्य । च एषोडनन्तोऽव्यक्त आत्मा सोऽविमुक्ते प्रतिष्ठित इति। सोऽविमुक्तं कस्मिन् प्रतिष्ठित इति । वरुणाया नास्या च मध्ये प्रति</span>- <span class="devanagari">ष्ठित इति। का वै वरुणा का च नासीति । सर्वानैन्द्रियकृतान्‌दोषांश्चारयतीति वरुणा भवति। सर्वानेन्द्रियकृतापानशाशनात्सीन्‌नासीति । कलमश्थास्य स्थान भवतीति । भ्रुवो</span>- <span class="devanagari">घ्राणस्य च य० सन्धि स एष द्यौर्लोकस्य परस्य च सन्धिर्भवंतीति। जाबालोप०</span> 2nd para, H. D.79 <a href="#fnref-chapter-xiii-kāshī-16" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-17" class="footnote-item"><span class="devanagari">मुने प्रलयकालेऽपि न तत्क्षेत्रं महाचम् । विशुद्धं हि शिरण्या यदभियुते वित्रं ॥ स्कन्द० काशी०</span> 26.27 q by <span class="devanagari">त्रिस्थली०</span> p. 69; <span class="devanagari">लिङ्गपुराण</span> (<span class="devanagari">पूर्वाधं</span>) 92. 45-46 <span class="devanagari">विश्रुतं न मया यस्मान्मोक्ष्यते वा कदाचन । मम क्षेत्रमिदं तस्मादविमुक्तमिति स्मृतम्</span>', also the same verse is <span class="devanagari">नारदीय</span> (<span class="devanagari">उत्तर</span>) 48 24 vide <span class="devanagari">मत्स्य०</span> 180 54 and 181.15, <span class="devanagari">अमि०</span> 112.2 and <span class="devanagari">लिङ्ग</span> I 92. 104 <a href="#fnref-chapter-xiii-kāshī-17" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-18" class="footnote-item"><span class="devanagari">अविमुक्तेन पापस्तु येोऽसा कल्पते द्विजैः । येन मुक्तं मुदमतिमुच्यतेन लिंग</span> (<span class="devanagari">पूर्वाधं</span>) 92 143 <a href="#fnref-chapter-xiii-kāshī-18" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-19" class="footnote-item"><span class="devanagari">यदा नित्यतया देवि मम स सर्वसुन्दरी । तथा तिव्यन्तर सर्वमनदानम्</span>' <span class="devanagari">काशीखण्ड</span> 32.111; <span class="devanagari">अविमुक्तं पर शेष जन्तूनां मुक्तिदं सदा</span>'<span class="devanagari">। येवेन यत्तत् नीरागं लिंगां रमणाधिकं ॥ लिङ्ग</span> I, 91 76. <a href="#fnref-chapter-xiii-kāshī-19" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-20" class="footnote-item"><span class="devanagari">इमशान्देन शवं प्रोक्तं</span>, <span class="devanagari">शानं शयनमुच्यते। निर्वदन्त्यभि इमशानार्थी सुते शाद्वयं</span>- <span class="devanagari">कोविदाः। महान्त्यपि च भूतानि प्रलये संहृपयिले। शेरतेत्र शवा भूत्वा इमशानं तु ततो महत्तूः। स्कन्द</span>°, <span class="devanagari">काशी</span> 30 103-4; <span class="devanagari">वाराणसीति काशीति ह्द्वावास इति द्विज। महास्मशानमित्येवं प्रोक्तमानन्दकाननम्।</span> ibid 30 111. <a href="#fnref-chapter-xiii-kāshī-20" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-21" class="footnote-item"><span class="devanagari">इमशाननेतद्विरुख्यातमाविमुक्तमिति श्रुतम्। कालो भूत्वा जगादिदं संहराम्यत्र सुन्दरी।। पद्म</span>. I. 33 14, <span class="devanagari">परं गृह्य समाख्यातं इमशानमिति संज्ञितम्। मत्स्य</span> 184.4, <span class="devanagari">क्षेत्रणाणुसृचर्यैव इमशानं ना तथाव्वं। मत्स्य</span> 184.26, vide also <span class="devanagari">मत्स्य</span> 182 6, <span class="devanagari">महाइमशानमासाद्य यदि देवादिपद्यते। पुन</span>; <span class="devanagari">इमशानशयनं न कर्षति दुमाने पुमान्। कासीखण्ड</span> 31.130. <a href="#fnref-chapter-xiii-kāshī-21" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-22" class="footnote-item"><span class="devanagari">दक्षिणोत्तरयोर्वरणासिध पूर्वांतः। जाहवी पश्चिमे चापि पाशापाणिर्गणेथरा।। पद्म</span>, <span class="devanagari">पातालखण्ड ५</span>. by <span class="devanagari">त्रिपाठी०</span> p. 100, <span class="devanagari">तीर्थप्र</span>. p 175 <a href="#fnref-chapter-xiii-kāshī-22" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-23" class="footnote-item"><span class="devanagari">द्वियोजनमध्यार्थं च तस्येजं पूर्वपश्चिमम्। अर्द्धयोजनविस्तीर्ण दक्षिणोत्तरास्तु संबुदरा।। वाराणसी तु यः शष्कुनदी</span> ( <span class="devanagari">शुष्कानदी</span>?) <span class="devanagari">धु वे। एष क्षेत्ररुप विस्तारः प्रोक्तो देवेन धीमता।। मत्स्य</span> 184 50-52 <a href="#fnref-chapter-xiii-kāshī-23" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-24" class="footnote-item"><span class="devanagari">मध्येमेश्वरमारभ्य यावद्देहलिबिंधनमथुः। सूत्रे संस्थाप्य सद्विद्धु श्रागमय्यण्डलाकृतिः। सद्यं या जायते रेखा तन्मध्ये क्षेत्रमुत्तमम्। काशीति पडुद्देडास्यमुक्तिः प्रतिष्ठिता।। काप्यर्या तु परमं क्षेत्र विशेषफलसाधनम्। वाराणसिते विख्यात सन्मानं निगदानेन ५</span>.<span class="devanagari">।। पद्म</span>, <span class="devanagari">पातालखण्ड ५</span>, by <span class="devanagari">त्रिपाठी०</span> p 100, <span class="devanagari">तीर्थप्र</span>. p 175 . <a href="#fnref-chapter-xiii-kāshī-24" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-25" class="footnote-item"><span class="devanagari">विश्वेश्वरश्चावदिग्घ धलु शलद्वगोमितम् । अविमुकाभिधे क्षेत्रे टकितस्त्र न संशय । पद्म</span>, <span class="devanagari">पातालखण्ड</span> q by <span class="devanagari">विश्वल्पी</span>° p. 101, <span class="devanagari">तीर्थपर्व</span> p 175. four <span class="devanagari">हस्त</span>s Vide note 1337 above 1429 a. <span class="devanagari">अविमुक्त महाक्षेत्रे पञ्चकोशपरिमितम् । ज्योतिर्लिङ्ग तदेक हि ज्ञेय विश्वेश्वरा</span>- <span class="devanagari">भिधम्॥ काशीखण्ड</span> 26. 31 <a href="#fnref-chapter-xiii-kāshī-25" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-26" class="footnote-item"><span class="devanagari">गोकर्णेश पश्चिमे पूर्वतश्च गङ्गामध्यस्थमुत्तरे भारभूता । ब्रह्मेशानी दक्षिणे संगदिदस्त</span>- <span class="devanagari">प्रौक्तम् ॥ पद्म</span>, <span class="devanagari">पातालखण्ड</span> q by <span class="devanagari">विश्वल्पी</span>° p 101, <span class="devanagari">काशीखण्ड</span> (74 45-46) is similar ' <span class="devanagari">पूर्वतो माणिकर्णशो ब्रह्मेशो दक्षिणे स्थित । पश्चिमे चैव गोकर्ण भारभूततरं चोत्तरे इत्येतदुत्तम क्षेत्रमविमुक्तका महाफलम्।।</span>' <a href="#fnref-chapter-xiii-kāshī-26" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-27" class="footnote-item"><span class="devanagari">चतुःक्रोशं चतुर्दिक्षु क्षेत्रमेतत्प्रकीर्तितम्। योजनं किंचि चार्धं स्यात्कृते चतुः</span>- <span class="devanagari">प्रदम्॥ लिङ्गपुराण</span>, <span class="devanagari">पूर्वार्ध</span>, 92 99-100 <span class="devanagari">तीर्थाधि</span>. p 340 and <span class="devanagari">विश्वल्पी</span>° p 103 quote this verse as from <span class="devanagari">स्कन्द</span> <a href="#fnref-chapter-xiii-kāshī-27" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-28" class="footnote-item"><span class="devanagari">द्वियोजनमथाधं च पूर्वपश्चिमं स्थितम् । अर्धयोजनविस्तीर्ण दक्षिणोत्तरतः स्थितम्॥ शम्भुनाऽत्र नदी यावदसिः शुष्कनदी शुभे। एव क्षेत्रस्य विस्तार प्रोक्तो देवेन शम्भुना॥ नारदीय</span> (<span class="devanagari">उत्तर</span> chap 48 18-19). <a href="#fnref-chapter-xiii-kāshī-28" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-29" class="footnote-item"><span class="devanagari">पञ्चक्रोशाभमानेन क्षेत्रं दत्तं सदा तव। क्षेत्रस्य मध्या गङ्गा नाम्नास्ति सरिद्वरा। तेन सा महती पुया पुरी द्वे भविष्पति। पुण्या चौसट्ठही गङ्गा यत्र यान्ती सरस्वती। उद्</span>- <span class="devanagari">खुष्की योजने द्वे गच्छन्ती जाह्नवी नदी॥</span>' <span class="devanagari">पद्म</span> (<span class="devanagari">बुद्धिखण्ड</span> 14.194-196. <a href="#fnref-chapter-xiii-kāshī-29" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-30" class="footnote-item"><span class="devanagari">अत्र लेङ्‌गस्कान्दादीलोचनया क्रुसिवाप्तमप्येभ्यवरपीधचतुवि‌षु योजनमितम</span>- <span class="devanagari">विचित्रम्‌ । पाले तु लिङ्गेश्‍वरसरस्वती षडुतप‌द्वितयम्‌। तथा चाच परिमाविंकल्पः । त्रिस्थली०</span> p. 103. <a href="#fnref-chapter-xiii-kāshī-30" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-31" class="footnote-item"><span class="devanagari">अविमुक्त समासाद्य तीर्थसेवी क्रुरु‌हे । दर्शनाद्देवदेवस्य मुच्यते ब्रह्म‌हत्यया‌ । प्राणां‌स्त्य‌ज्य तत्रैव मोक्षं प्राप्नोति मानव</span>. <span class="devanagari">।। वनपर्व</span> 84 79–80. <a href="#fnref-chapter-xiii-kāshī-31" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-32" class="footnote-item"><span class="devanagari">इद्ब मूहातम क्षेत्रं सदा वाराणसी मम । सर्वेषामेव भूताना हेमुमोक्षस्य सर्वदा‌ ।। मत्स्य</span> 180. 47 q. by <span class="devanagari">तीर्थकल्प०</span> p 12 (reads <span class="devanagari">जन्तूना</span> for <span class="devanagari">भूतानाम्‌</span>) This is the same as <span class="devanagari">लिङ्‌ग पुराण</span>, <span class="devanagari">पूर्बार्धे</span> 92. 38, <span class="devanagari">प्रयागे वा भवेन्मोक्ष इदं वा मत्संप‌रियाम्‌</span> | <span class="devanagari">मयादि‌ग्नेन महत्‌ स्मृतम्‌।। मत्स्य</span> 180. 56–57 quoted by <span class="devanagari">तीर्थकल्प</span> p 13 with some additionṣ It explains ‘<span class="devanagari">इदमेव महत्स्मृतमित्यपाय‌सेवनाच मोक्षप्राने</span>. ’. This is also <span class="devanagari">लिङ्गपुराण</span>, <span class="devanagari">पूर्बार्धे</span> 92.48. <a href="#fnref-chapter-xiii-kāshī-32" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-33" class="footnote-item"><span class="devanagari">जन्मात्तरसहस्रेण यत्पापं पूर्वसंचितम्‌ । अविमुक्ता प्रविश्य तस्त्वैवं बजन्ति क्षयम्‌ ।</span> ...<span class="devanagari">ब्राह्मणाः क्षत्रिया वैश्या</span>. <span class="devanagari">शूद्रा वै वर्षादस्तुरा</span>. <span class="devanagari">। कुत्मिच्छे‌च्चाश्व चे चाग्ये लङ्घणीयाः पापयोनयः । संलहुंते काशूं प्रिये । चन्द्राभिमेलनः सर्व ललाटाक्षा इव‌ध्वजाः । लिंडे मानव</span>. <span class="devanagari">।। मत्स्य</span> 181 17–21 = <span class="devanagari">पद्म</span> I 33 17–20, q. by <span class="devanagari">तीर्थकल्प०</span> P. 15. The verse <span class="devanagari">ब्राह्मणाः</span> occurs in <span class="devanagari">नारदीय</span> (<span class="devanagari">उत्तर</span> 48 51–52). <a href="#fnref-chapter-xiii-kāshī-33" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-34" class="footnote-item"><span class="devanagari">विषय्यासकचित्तोऽपि स्वकर्मपरिनिर। इह क्षेत्रे मृतोऽपि संसारं न पुन</span>- <span class="devanagari">विज्ञेय ॥ जन्मान्तरसहस्रेषु यज्जन्यं यौवनमुत्तमम् । तन्निश्चयैव परं मोक्षं मरणमधिगच्छति ॥ मत्स्य</span>. 180. 71 and 74. <span class="devanagari">इह क्षेत्रे</span>—refer to Banaras and <span class="devanagari">इह</span> means <span class="devanagari">अस्मिन् जन्मनि</span> These two verses occur in <span class="devanagari">लिङ्गपुराण</span>, <span class="devanagari">पूर्वार्ध</span> 92. 63 and 66 and <span class="devanagari">काशीखण्ड</span> 86. 122 is similar to the first verse. <a href="#fnref-chapter-xiii-kāshī-34" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-35" class="footnote-item"><span class="devanagari">यदि पापी यदि शठो यदि चाधर्मिको नरः । शुच्यते सर्वपापेभ्यो आविमुक्तं प्रवेधधि ॥ मत्स्य</span> 183.11, q. by <span class="devanagari">तीर्थकल्प</span> p 18 <span class="devanagari">पद्म</span> (I. 33.38) has the first half and reads the second half as <span class="devanagari">वाराणसीं समासाद्य शृणाति सकलं कुलम् ।</span> <a href="#fnref-chapter-xiii-kāshī-35" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-36" class="footnote-item"><span class="devanagari">अन्या घाः कामचारिण्यः स्त्रियो भोगपरायणाः । कालेन निधनं प्राप्ता गच्छन्ति परमं गतिम् ॥ मत्स्य</span> 184. 36. <a href="#fnref-chapter-xiii-kāshī-36" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-37" class="footnote-item"><span class="devanagari">न हि योगादृते मोक्षः प्राप्यते भुवि मानवैः । आविमुक्तके निवस्ता योगां मोक्षस्य सिद्धिपत्ति ॥ मत्स्य</span> 185. 15-16 q by <span class="devanagari">तीर्थकल्प</span> p. 17. <a href="#fnref-chapter-xiii-kāshī-37" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-38" class="footnote-item"><span class="devanagari">ग्रहमदश्चताराराणों कालेन यत्नादजायत् । आविमुक्तके भुतानां तु पततं नैव विधोते ॥ मत्स्य</span> 185. 61 = <span class="devanagari">काशीखण्ड</span> 64.96 (reads <span class="devanagari">कालेन पतन अनुभवम्</span>). <a href="#fnref-chapter-xiii-kāshī-38" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-39" class="footnote-item"><span class="devanagari">अज्ञानाज्ज्ञानतो वापि किंवा हु कृतदेण वा । यत्किचिदुष्करं कर्म कृतं चेदं छेडिणा ॥ आविमुक्तके भविष्यस्य तत्सर्वे भस्मसाद्रयतेत् । नारदीय</span> (<span class="devanagari">उत्तर</span>) 48. 33-34; <span class="devanagari">परं काशीपुरीवास्सी प्लेच्छोऽपि हि शुभपातिः । नाम्पश्रयो दीक्षितापि स हि भुकेणभजनम् ॥ काशी०</span> 85.15. <a href="#fnref-chapter-xiii-kāshī-39" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-40" class="footnote-item"><span class="devanagari">सद्योवेत्ति जाबालिरुणेऽसिसिदा नराः। वरुणा पिङ्गला नाडी तदन्तःस्व</span>-     <span class="devanagari">विमुक्ताम् सा सुषुम्णा परा नाडी ज्ञेयं वाराणसी लसोः॥ स्कन्द</span>, <span class="devanagari">काशी०</span> 5. 25, compare     <span class="devanagari">नारदीय</span> (<span class="devanagari">उत्तर</span>) 47. 22-23; <span class="devanagari">पिङ्गला नाम या नाडी आर्षी सा प्रकीर्तिता। इडाख्या सरिच्     सा ज्ञेया लोकानां यत्र तिष्ठति॥ इडानाम्नी च या नाडी सा सौम्या संपकीर्त्तिता। वरुण नाम     सा ज्ञेया केषां यत्र सन्निधौ॥ आर्षी मध्ये तु या नाडी सुषुम्णा सा प्रकीर्तिता। मत्स्योदरी     च या ज्ञेया विदुस्त तत्प्रकीर्तिनम्॥ लिङ्गपुराण</span> q. by <span class="devanagari">तीर्थचि०</span> p. 341, <span class="devanagari">त्रिशस्थली०</span> pp.     78-79. <a href="#fnref-chapter-xiii-kāshī-40" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-41" class="footnote-item"><span class="devanagari">तीर्थानि सन्ति भूयांसि काश्याम् पदे पदे। न पञ्चक्रुमणीर्धस्य कोट्यंशेन समा</span>-     <span class="devanagari">न्यपि॥ स्कन्द</span>, <span class="devanagari">काशी०</span> 59 118, <span class="devanagari">तिलान्तरापि नो काश्यां भूमिर्लिङ्गं विना क्वचित्। काशी</span>-     <span class="devanagari">ख०</span> 10. 103 <a href="#fnref-chapter-xiii-kāshī-41" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-42" class="footnote-item">Vide Altelkar pp. 47-48 and Introduction to my edition of the Vyavahāramayūkha p. VIII (Poona, 1926), where I cite a verse from the Dīvālaḥravallabhā of Divālarabhatta, a daughter's son of Nīlakaṇṭha, who was the grandson of Nārāyaṇabhaṭṭa <a href="#fnref-chapter-xiii-kāshī-42" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-43" class="footnote-item">Havell (p, 76) remarks that there are 1500 temples and that smaller shrines or images in niches of walls or the like are countlesṣ <a href="#fnref-chapter-xiii-kāshī-43" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-44" class="footnote-item"><span class="devanagari">अत्र यद्यपि विश्वेश्वरालिङ्गं किंचिदपनीयतेऽन्यदानीयेते च कालवशाच्छुष्यते</span>- <span class="devanagari">स्तथापि तत्स्थापनस्थितिमते यस्मिन्कस्मिंश्चिद्भूजादि कार्यम्।</span> ... <span class="devanagari">यदापि स्र्छच्छिद्रोद्धाराराजनवरा</span>- <span class="devanagari">सस्मिन्स्थाने किंचिदपि लिङ्गं कदाचित्स्व रुपादृ तदपि प्रदक्षिणान</span>- <span class="devanagari">भवन्त्येव । तातश्च च नित्ययात्रासिद्धौ । त्थापनादृपस्तु साधिष्टा</span>- <span class="devanagari">त्रिश्रथलीः</span> p 208, vide also <span class="devanagari">तीर्थप्रकाश</span> p. 219 (which states that there is no śāstric authority for this, but only usage of śiṣṭas). <a href="#fnref-chapter-xiii-kāshī-44" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-45" class="footnote-item"><span class="devanagari">विश्वेश्वरालिङ्गेऽस्पृश्यस्पर्शालिम्वन्यो दोषो नारित यत्सह्यं तेनैव पूजया ततिस</span>- <span class="devanagari">करण्णात् नक्तं तेन</span> (<span class="devanagari">सनत्कुमारसंहितायां</span>) <span class="devanagari">बाहे गृहे मणिर्णिकार्णिका स्नावा समाराधयति खमेव । अस्पृश्यस्पर्शविशोधनाय न चेत् सिय्ययात्रासिद्धि । स्थापनादुपस्तु साधिष्टा</span>- <span class="devanagari">नाग्ना लोकप्रसिद्धा । सीधर्ति</span> p. 360 1449 a The <em>Pañcatīrthī</em> has received the highest judicial notice in <em>Mahārāna Hemanta Kumārī</em> v. <em>Gaurī Śańkar</em> 68 I A 53 at p 57. <a href="#fnref-chapter-xiii-kāshī-45" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-46" class="footnote-item"><em>Lolārka</em> is only one of the shrines of the Sun in <em>Kāśī</em>, vide <em>Kāśīkhanda</em> 10 83 (<em>Lolārka-mukhya-sūryāmśca praṇamya ca punaḥ punaḥ</em>) and 46 45-46, where the shrines of the twelve <em>Arkas</em> in <em>Kāśī</em> are enumerated as <em><span class="devanagari">दौर्लार्क</span>, <span class="devanagari">उत्तरार्क</span>, <span class="devanagari">साधादित्य</span></em> &c. 1450 a H. D, 80 <a href="#fnref-chapter-xiii-kāshī-46" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-47" class="footnote-item"><span class="devanagari">तीर्थानां पञ्चकं सारं विश्वेशज्ञानवृन्दकानने । दशाश्वमेध लोलोर्कौ केशवो बिन्दुमाधवः। पञ्चमी तु महाश्रेष्ठा प्रोच्यते मणिकर्णिका। एभिरस्तु तीर्थैर्यश्च वष्यैर्ये व्यभिरुल्लुफम्॥ मत्स्य</span>° 185. 68-69. <a href="#fnref-chapter-xiii-kāshī-47" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-48" class="footnote-item"><span class="devanagari">प्रथमं चासिसम्भेदं तीर्थानां प्रवदं परम्। ततो दशाश्वमेधारुण सरस्तीर्थनिर्दयं। तृतीयं श्रीर्माणिकर्णिकं मनीवनवज्ञाद्धिदम्। चतुर्थी तीर्थवरुणसन्निधौ। तत्पञ्चनदपुण्यं स्नानाद्वादशीध्यात्। एतेभ्यो ऽपरं चैव तीर्थं पञ्चनदं । पञ्चनदं पुण्यं स्रातद्वयं । काशीखण्ड</span>° <span class="devanagari">।</span> 106 110 and 114 q. by <span class="devanagari">त्रिरुल्लो</span> p 261, which explains ' <span class="devanagari">यदि देवपूजनं तदा काशीमध्ये नो देहि पञ्चनदीयम्।</span> ' <span class="devanagari">गृहाति जासुच्चिकाइया प्चारयो सरुभिर्जायते। काशो॰ षष्ट्यास्य</span> : <span class="devanagari">शिव एव भवति कर्णिनिवन्धनो देहो नास्तीति भावः।</span> <a href="#fnref-chapter-xiii-kāshī-48" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-49" class="footnote-item"><span class="devanagari">तस्योर्केस्य मनो लोळं वहासतिकाशिनो । अतो लोलोर्क इत्याख्या काश्यां जाता विचक्षणः। लोलोर्कस्तुसिसम्मदे दक्षिणस्यां दिशि स्थित ॥ स्कन्द</span>°, <span class="devanagari">काशी०</span> 46. 48-49. The shrine of <span class="devanagari">लोलोर्क</span> is referred to in E. I. vol. V, p, 117 of Vikrama era 1208 (1151 A. D.), a grant of <span class="devanagari">गोविन्दचन्द्र</span> of Kanoj. <a href="#fnref-chapter-xiii-kāshī-49" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-50" class="footnote-item">'<span class="devanagari">अंसभारशशिलेशिफलोछिद्रोद्वतशिविपुगुररिहिससमुचर्यापिसिंगणभारगीरस्यमलमजूववर्य्यादिकाना। दशाश्वमेधयावृष्यननाना भारतो ।</span> E. I. vol. III, p. 258 (Dudia plates of <span class="devanagari">प्रवरसेन</span> II) and Fleet's Gupta Inscriptions (Chammak plate of <span class="devanagari">प्रवरसेन</span> II) p. 236 and p. 245 (Suwani plate of the same king). <a href="#fnref-chapter-xiii-kāshī-50" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-51" class="footnote-item"><span class="devanagari">तव तावत् सकलतीर्थैर्घिरिदायाः श्रीमन्मणिकर्णिकाया सहिबा। त्रिस्थली०</span> p. 142; <span class="devanagari">सन्मपि सर्वतीर्थानामुत्तमा मणिकर्णिका। नारदीय</span> (<span class="devanagari">उत्तर</span>) 48. 65. <a href="#fnref-chapter-xiii-kāshī-51" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-52" class="footnote-item"><span class="devanagari">शुक्लाङ्गुष्ठोपपत्तेन तवादिग्दनयापिय । तीर्थानां परमे तीर्थं मुक्तिसेविमहापीठं ॥ काशी०</span> 26. 66, q in <span class="devanagari">त्रिस्थली०</span> p 146; <span class="devanagari">ससरसिन्धुस्तोमणिरत्र यस्मातं तारकं सजन</span> • <span class="devanagari">कर्णिकायाम् । शिवोभिषेय्ये सहस्रनकाले तदीर्यतेसो मणिकर्णिकेति ॥ भुक्तिश्चैमीमहापीठ</span> • <span class="devanagari">मणिसत्परणोप्पपीः। कणिकेयं तत माहुरार्या जना मणिकर्णिकाम् ॥ काशीखण्ड</span> 7. 79-80 q. by <span class="devanagari">त्रिस्थली०</span> p 148. In the 2nd verse <span class="devanagari">मणि</span> means <span class="devanagari">श्रेष्ठ</span> and the compound <span class="devanagari">मणिसो कर्णिका च</span>, the meaning being that <span class="devanagari">मणिकर्णिका</span> is the jewel among <span class="devanagari">मुक्तिक्षेत्र</span>s and it is as it were the <span class="devanagari">कर्णिका</span> of the lotus-like feet of <span class="devanagari">मोक्षलक्ष्मी</span> <a href="#fnref-chapter-xiii-kāshī-52" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-53" class="footnote-item"><span class="devanagari">तथा चैवं मन्त्रः। औं ह्रीं श्रीं क्लीं औं मणिकर्णिकै नमः । इति। मणिकर्णिक प्रणावालिमें नमः। इति। त्रिस्थली</span> p. 147. The second <span class="devanagari">मन्त्र</span> is based on <span class="devanagari">काशीखण्ड</span> 61, 97 <a href="#fnref-chapter-xiii-kāshī-53" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-54" class="footnote-item"><span class="devanagari">किरण घूतपापा च पुण्यतोया सरस्वती । गङ्गा च यमुना चैव पञ्च नद्य प्रकी</span>- <span class="devanagari">र्तिताः ।। अतः पञ्चनदं नाम तीर्थ त्रैलोक्यविश्रुतम् । स्नानपुतो न गृहीयाद्देहा पाञ्चभौतिकीम् ॥ अश्लिष्यन्ममदीना हु सङ्गमेऽष्टौभेदतौ । स्नानमात्रात्त्वो याति मिश्रा ब्रह्मखण्डपयम् ॥ कृते धर्ममद्ग नेम चेतायो धूपामपाम् । द्वारे बिन्दुतीर्ये च कलौ पञ्चनदं स्मृतम्॥ नारदीय</span> (<span class="devanagari">उत्तर</span>) 51. 15–18 and 35–36 and <span class="devanagari">काशीखण्ड</span> 59. 115–117 (reads <span class="devanagari">देश पां पाऊभौतिकम्</span>) and 136. <a href="#fnref-chapter-xiii-kāshī-54" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-55" class="footnote-item"><span class="devanagari">देवश्रमत्वादिकेशवविष्णुमूर्ती</span> ... <span class="devanagari">अद्यावासतुगणायों हुमाद्रिमुर्ति</span>... <span class="devanagari">आवि</span>- <span class="devanagari">शैवपदे स्थत्वा</span>...<span class="devanagari">पाहदैवस्य पूजा विधाय</span>. <span class="devanagari">पिष्टिपिण्डज्युर्ह निरपि उपरि लिखियमो</span>... <span class="devanagari">गोर्कण्डगुहाप्रकृतगतलोकपूर्वम्</span>- <span class="devanagari">मद्वताः ।</span> E I 14 p. 197. For <span class="devanagari">अदृद्देविया तथापि</span> of Keśava is expressly stated by the <span class="devanagari">काशीखण्ड</span> 10 82 (<span class="devanagari">आदिकेशवग्रहणं केशवा</span>- <span class="devanagari">वाहेदृहन च</span>) Prof. Altekar observes (p. 28) that the Adikeśava-ghāt, once a royal favourite, is now in a dilapidated condition and is rarely visited by pilgrimṣ <a href="#fnref-chapter-xiii-kāshī-55" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-56" class="footnote-item"><span class="devanagari">महापुण्यानिदेश्वर्धयन्ति शिलादिभिः । सोपायसिक्षिदृध्यर्ध वे नरास्त्रेन भोगिनिः।। स्कन्द</span>, <span class="devanagari">काषी</span>. 12. 59. <a href="#fnref-chapter-xiii-kāshī-56" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-57" class="footnote-item"><span class="devanagari">तीर्थे चालीयतेन यातु नगरे ज्ञापयभ्यागम्‌ ॥ मा भुज्जिपौर्व्वी विद्या मा भुञ्जि</span>- <span class="devanagari">पौर्ध्व धनम्‌। मा भुञ्जिपौर्ध्वं स्परूपं व्यासो वाराणसौं शापनम्‌ ॥ अविमुक्ते निवसन्तां जनानां पुण्यकर्मणाम्‌। विघ्न स्रुजानि सर्वाणि येन सिद्धिर्ण विदृते ॥ मत्स्य</span> 185. 21-23, q. by <span class="devanagari">कल्प०</span> on <span class="devanagari">तीर्थे</span> { p 28} The verse <span class="devanagari">मा सूक्त०</span> is <span class="devanagari">कासीसण्ड</span> 96 125. <a href="#fnref-chapter-xiii-kāshī-57" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-58" class="footnote-item"><span class="devanagari">महच्छ्‌ये पिण्डदानादि कार्यमंत्रगात्रवे</span>. <span class="devanagari">सदा । पिण्डदानं च तत्रैव छुषुप्लैः कार्यमादरात्‌ ।</span> '<span class="devanagari">छुछ्‌न्नास्ते पितॄणां तु भवन्ति सुखदायकाः ।</span> q. by <span class="devanagari">त्रस्थली</span> p 129. <a href="#fnref-chapter-xiii-kāshī-58" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-59" class="footnote-item"><span class="devanagari">मठानापि तपस्विभिः कारयित्वा षोडशपेयम्‌। जीवनोपायसंङ्कषान्‌ सोडपि सर्वफलाभायः ॥</span> q. by <span class="devanagari">त्रस्थली</span>. p. 133. <a href="#fnref-chapter-xiii-kāshī-59" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-60" class="footnote-item">Dr Altekar (pp 28-29) notes that at present a ghāt and a tank near the Rajaghat station is known by the name Kapālamocanaghāt, that there exists a temple near this tank dedicated to Kapālamocaneśvara and that the god must have been removed from the original place to the present habitation at some time during the last 700 yearṣ 1464 a. Kūrma I. 32 3-29 about Omkāra and other Lingas are the same as Padma I 34 1-25 (with some half verses omitted) and Kūrma I. 33 is taken over bodily in Padma I. 35 and Kūrma I 34. 2-16 are the same as Padma I 37. 1-19 (with a few additions) <a href="#fnref-chapter-xiii-kāshī-60" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-61" class="footnote-item"><span class="devanagari">शैलेशा सहस्रेणाथ स्वर्लोनो मध्यमेस्वरः । हिरण्यगर्भ ईशानी गोप्रेशो वृषभ</span>- <span class="devanagari">ध्वजः । उपशान्ताशिवो ज्येष्ठो निवासेश्वर एव च । शुक्रेणो व्यामलिङ्ग जग्नेश चहर्दशम् । इमे चतुर्दशांनि महालिङ्ग्यातानि वै ॥ काशी०</span> 73. 60-63 q by <span class="devanagari">निश्चली०</span> p. 263. <a href="#fnref-chapter-xiii-kāshī-61" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-62" class="footnote-item"><span class="devanagari">यात्रादप्रयत्नेन कर्तव्यं प्रतिवासरम्। एका स्वर्गतरिश</span>- <span class="devanagari">पराः ।। काइया लिङ्ग्यानेकानि काइया तीर्थान्यनेकशः । तथापि सेव्यो विश्वेशः अनाप्तव्या मणिकर्णिकाः ।। काशीखण्ड</span> 100 101 q in <span class="devanagari">त्रिशूली०</span> p. 266 <a href="#fnref-chapter-xiii-kāshī-62" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-63" class="footnote-item"><span class="devanagari">अन्यत्र विहितं पापं नष्येत्काशीनिरीक्षणात् ।। काइया कृतानि पापं दारुणं हि यातनाः ।। काशीखण्ड</span> 33.115. Vide also <span class="devanagari">काशी०</span> 75.22 '<span class="devanagari">काइया हु यत्कृतं पापं तपोशाचयप्रद्वयम्</span>' <a href="#fnref-chapter-xiii-kāshī-63" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-64" class="footnote-item">1467. <span class="devanagari">किं चिल्कासिपापयुडींश्च गत्वा देवेन चक्रिणा । स्थलेष्वर्धै कल्पितं स्थानं धर्मक्षेत्रोत्रमिति । ततस्तु सौगतं रूपं शिक्षाया श्रीपतिः</span>. <span class="devanagari">स्कन्द</span> II ch. 58 71–72. <a href="#fnref-chapter-xiii-kāshī-64" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-65" class="footnote-item">1467 a. <span class="devanagari">अष्टौ मासा विहारस्य यतीना संयतात्मनाम् । एकत्र चतुरो मासान् मासो वा निवसेद्युनिः । अविमुक्ते प्रविष्टानां विहारस्तु न विद्यते ।</span> • <span class="devanagari">नोक्तो हासेशपत्रनं पन्नंतं तु गतस्यैव । ॥ मत्स्य</span> 184. 32–34 q. by <span class="devanagari">कल्पतरु</span> on <span class="devanagari">तीर्थे</span> p 24. The same verses (with slight variations) are <span class="devanagari">स्कन्द</span>, <span class="devanagari">काशी</span>. 86. 112–113. The general rule for an ascetic is stated in <span class="devanagari">विष्णुपुराण</span> III. 9. 28 ‘<span class="devanagari">एकरात्रंस्थितियाने परे</span>’ <a href="#fnref-chapter-xiii-kāshī-65" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-66" class="footnote-item">1467 b <span class="devanagari">श्रद्धवंतां स्वभक्तानामुपसर्ग महत्स्वपि । नोपायान्यस्ततस्त्येव विशेषचरणो दुःसाध्या बहिस्तः शरीराणां । अद्दयेवोडकस्पर्शो लब्ध्यन्तयेव । नासयथा ॥ काशीखण्ड</span> 67. 82–83. <a href="#fnref-chapter-xiii-kāshī-66" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiii-kāshī-67" class="footnote-item">'high schools of Hindu Sciences,' to Aiṇ A. vol. II, p. 158 'from time immemorial it has been the chief seat of learning in Hindustan' and to Kāśikhanda, chap. 96. 121 that states that Kāśī is the home of learning (vidyānāṁ sadanaṁ Kāśī). Vide Prof. Altekar's 'History of Benares' pp. 23-24 and I. A. vol. 41 pp. 7-13 and 245-253 for some learned families of Banaras <a href="#fnref-chapter-xiii-kāshī-67" class="fn-back" aria-label="Back to text">↩</a></li>
+</ol>
+</aside>
+
+            <div class="chapter-nav">
+                <a href="chapter-xii-the-ganges.html" class="nav-prev"><i class="fa-solid fa-chevron-left"></i> Chapter XII. The Ganges</a>
+                <a href="chapter-xiv-gayā.html" class="nav-next">Chapter XIV. Gayā <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </main>
+    </div>
+
+    <button class="toc-mobile-toggle" onclick="toggleMobileToc()" aria-label="Table of contents">
+        <i class="fa-solid fa-list"></i>
+    </button>
+
+    
+    <footer class="container-fluid pt-4" style="background-color:#2e4144">
+        <div class="row border-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img src="https://sanatana.in/mbta/public/images/Homepage_html/images/layer_8.png" alt="">
+            </div>
+            <div class="col-md-5 text-white">
+                <p>The divine knowledge and wisdom of our shastras is the only thing eternal,
+                   which was and which will remain ever-present in this gods creation.
+                   Our endeavours are to preserve this knowledge.</p>
+            </div>
+            <div class="col-md-1 text-white">
+                <div class="d-flex" style="height: 75px;">
+                    <div class="vr"></div>
+                </div>
+            </div>
+            <div class="col-md-3 text-white">
+                <i class="fa-solid fa-globe"></i>&emsp;
+                <a href="https://sanatanasampatti.in" class="text-light">www.sanatanasampatti.in</a><br>
+                <i class="fa-solid fa-envelope"></i>&emsp;
+                <a href="" class="text-light">sriranga.yoga@gmail.com</a>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center py-3 mb-4 align-items-center border-bottom">
+            <div class="col-md-2 text-white fs-4 text-center">Project</div>
+            <div class="col-md-2 text-white fs-4 text-center">Our Mission</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contribute</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contact Us</div>
+        </div>
+        <div class="row">
+            <p class="col-md-6 fs-6 text-start text-light">
+                <small>&copy; 2026 Sanatanasampatti</small>
+            </p>
+            <p class="col-md-6 fs-6 text-end text-light">
+                <a class="text-white" rel="nofollow" href="http://www.srirangadigital.com" target="_blank">
+                    <img src="https://sanatana.in/mbta/public/images/logo.png" alt="sriranga logo" />
+                    <small>Designed, Developed and Maintained by Sriranga Digital</small>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        const headings = [];
+        tocLinks.forEach(link => {
+            const id = link.getAttribute('href').substring(1);
+            const el = document.getElementById(id);
+            if (el) headings.push({ el: el, link: link.parentElement });
+        });
+
+        function onScroll() {
+            let current = null;
+            for (const h of headings) {
+                const rect = h.el.getBoundingClientRect();
+                if (rect.top <= 120) current = h;
+            }
+            tocLinks.forEach(l => l.parentElement.classList.remove('active'));
+            if (current) current.link.classList.add('active');
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    });
+
+    function toggleMobileToc() {
+        const toc = document.getElementById('toc');
+        if (!toc) return;
+        if (toc.style.display === 'block') {
+            toc.style.display = '';
+            toc.style.position = '';
+        } else {
+            toc.style.display = 'block';
+            toc.style.position = 'fixed';
+            toc.style.top = '0';
+            toc.style.left = '0';
+            toc.style.width = '80vw';
+            toc.style.maxWidth = '320px';
+            toc.style.height = '100vh';
+            toc.style.maxHeight = '100vh';
+            toc.style.zIndex = '2000';
+            toc.style.background = 'var(--parchment)';
+            toc.style.boxShadow = '4px 0 20px rgba(0,0,0,0.2)';
+            toc.style.padding = '24px';
+            toc.style.overflowY = 'auto';
+        }
+    }
+    </script>
+
+    <script>
+    function toggleSynopsisAudio(btn) {
+        var audio = btn.parentElement.querySelector('audio');
+        if (!audio.src) audio.src = btn.getAttribute('data-src');
+        if (audio.paused) {
+            audio.play();
+            btn.classList.add('playing');
+            btn.querySelector('i').className = 'fa-solid fa-pause';
+        } else {
+            audio.pause();
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        }
+        audio.onended = function() {
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        };
+        // Prevent click from toggling the synopsis open/close
+        event.stopPropagation();
+    }
+    </script>
+</body>
+</html>

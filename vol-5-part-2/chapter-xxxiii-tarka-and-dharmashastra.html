@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- MDB UI Kit -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/fonts.css?v=1.2">
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/navbar.css?v=2.4">
+
+    <title>Chapter XXXIII. Tarka and Dharmashastra — Volume V: Part II — History of Dharmaśāstra</title>
+    <style>
+    :root {
+        --saffron:        #D4600A;
+        --saffron-light:  #F0924A;
+        --saffron-wash:   rgba(212, 96, 10, 0.07);
+        --indigo:         #2E5FA3;
+        --indigo-dark:    #1C3D70;
+        --maroon:         #7A1E1E;
+        --amber:          #C97A1A;
+        --ink:            #1A1209;
+        --ink-secondary:  #4A3B2A;
+        --parchment:      #FDFAF4;
+        --parchment-mid:  #F5EFE2;
+        --rule:           rgba(180, 130, 60, 0.22);
+        --shadow:         0 2px 18px rgba(90, 50, 10, 0.08);
+        --font-devanagari: 'Tiro Devanagari Sanskrit', 'Siddhanta', 'Noto Sans Devanagari', serif;
+        --font-roman:      'Junicode', Georgia, serif;
+    }
+
+    body {
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: var(--font-roman);
+    }
+
+    .devanagari {
+        font-family: var(--font-devanagari);
+    }
+
+    /* ── Navbar overrides ── */
+    .navbar-ontop { z-index: 1031; }
+    .hdclr { color: var(--saffron); }
+    .engpara { font-family: 'Open Sans', sans-serif; }
+
+    /* ── Layout ── */
+    .dh-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .dh-content {
+        flex: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        background: var(--parchment);
+        box-shadow: var(--shadow);
+        min-height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        .dh-content { padding: 24px 20px; }
+        .dh-wrapper { flex-direction: column; }
+    }
+
+    /* ── TOC Sidebar ── */
+    .toc-sidebar {
+        position: sticky;
+        top: 80px;
+        width: 280px;
+        min-width: 280px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding: 20px 16px;
+        margin-right: 24px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        scrollbar-width: thin;
+    }
+
+    .toc-title {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--saffron-light);
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list li {
+        padding: 4px 0;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-list li.toc-l3 {
+        padding-left: 16px;
+        font-size: 0.78rem;
+    }
+
+    .toc-list li a {
+        color: var(--ink-secondary);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .toc-list li a:hover { color: var(--saffron); }
+
+    .toc-list li.active {
+        border-left-color: var(--saffron);
+    }
+
+    .toc-list li.active a {
+        color: var(--saffron);
+        font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-sidebar { display: none; }
+    }
+
+    /* ── Mobile TOC Toggle ── */
+    .toc-mobile-toggle {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1050;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--saffron);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-mobile-toggle { display: block; }
+    }
+
+    /* ── Section Headings ── */
+    .section-heading {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        margin: 48px 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--rule);
+        letter-spacing: 0.5px;
+        scroll-margin-top: 80px;
+    }
+
+    h2.section-heading { font-size: 1.6rem; }
+
+    h3.section-heading {
+        font-size: 1.25rem;
+        border-left: 4px solid var(--saffron-light);
+        border-bottom: none;
+        padding: 8px 16px;
+        background: var(--saffron-wash);
+        border-radius: 0 5px 5px 0;
+    }
+
+    /* ── Prose ── */
+    .prose {
+        font-family: var(--font-roman);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+        color: var(--ink);
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    .prose em { color: var(--maroon); }
+
+    .prose:target {
+        background: rgba(212, 96, 10, 0.12);
+        border-left: 4px solid var(--saffron);
+        padding-left: 16px;
+        margin-left: -20px;
+        border-radius: 0 6px 6px 0;
+        animation: target-pulse 2s ease-out;
+    }
+
+    @keyframes target-pulse {
+        0%   { background: rgba(212, 96, 10, 0.30); }
+        100% { background: rgba(212, 96, 10, 0.12); }
+    }
+
+    /* ── Footnote References ── */
+    .fn-ref {
+        font-size: 0.75em;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    .fn-ref a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 0 2px;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: color 0.15s;
+    }
+
+    .fn-ref a:hover { color: var(--indigo); }
+
+    /* ── Synopsis Box ── */
+    .synopsis-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron-light);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .synopsis-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .synopsis-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .synopsis-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .synopsis-box.open .synopsis-toggle i {
+        transform: rotate(90deg);
+    }
+    .synopsis-body {
+        display: none;
+        padding: 0 20px 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+    }
+    .synopsis-box.open .synopsis-body { display: block; }
+    .synopsis-body p { margin: 0; }
+    .synopsis-attribution {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: var(--ink-secondary);
+        opacity: 0.7;
+        font-style: italic;
+    }
+    .synopsis-audio {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    .synopsis-play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--saffron);
+        background: none;
+        color: var(--saffron);
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: background 0.2s, color 0.2s;
+        padding: 0;
+    }
+    .synopsis-play-btn:hover {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn.playing {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn i { padding-left: 2px; }
+
+    /* ── Index Terms Panel ── */
+    .index-terms-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .index-terms-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .index-terms-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .index-terms-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .index-terms-box.open .index-terms-toggle i {
+        transform: rotate(90deg);
+    }
+    .index-terms-body {
+        display: none;
+        padding: 0 20px 16px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .index-terms-box.open .index-terms-body { display: block; }
+    .index-terms-dl {
+        margin: 0;
+        padding: 0;
+    }
+    .index-terms-dl dt {
+        font-family: var(--font-roman);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+        margin-top: 8px;
+    }
+    .index-terms-dl dd {
+        margin: 2px 0 0 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        color: var(--ink-secondary);
+        line-height: 1.5;
+    }
+    .nyaya-heading {
+        font-family: var(--font-roman);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        margin: 16px 0 4px;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+    }
+
+    /* ── Inline Index Popovers ── */
+    .idx-term {
+        border-bottom: 1px dotted var(--saffron-light);
+        cursor: help;
+        position: relative;
+    }
+    .idx-term:hover::after {
+        content: attr(data-def);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        background: rgba(44, 36, 22, 0.92);
+        color: #F5ECD8;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        max-width: 280px;
+        z-index: 100;
+        white-space: normal;
+        line-height: 1.4;
+        pointer-events: none;
+    }
+
+    /* ── Structured Version Banner ── */
+    .structured-banner {
+        margin: 0 0 28px;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, rgba(212, 96, 10, 0.06) 0%, rgba(212, 96, 10, 0.02) 100%);
+        border: 1px solid var(--saffron-light);
+        border-radius: 6px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        color: var(--ink-secondary);
+        line-height: 1.6;
+    }
+    .structured-banner i { color: var(--saffron); margin-right: 4px; }
+    .structured-banner a { color: var(--indigo); font-weight: 600; text-decoration: none; }
+    .structured-banner a:hover { text-decoration: underline; }
+
+    /* ── Footnotes Section ── */
+    .footnotes-section {
+        margin: 32px 0 48px;
+        padding: 20px 24px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .footnotes-section hr {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 0 0 16px;
+    }
+
+    .footnotes-list {
+        padding-left: 24px;
+        margin: 0;
+    }
+
+    .footnote-item {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+        scroll-margin-top: 80px;
+    }
+
+    .footnote-item:target {
+        background: rgba(212, 96, 10, 0.1);
+        border-radius: 4px;
+        padding: 4px 6px;
+        margin-left: -6px;
+    }
+
+    .fn-back {
+        color: var(--saffron-light);
+        text-decoration: none;
+        font-size: 0.85em;
+        margin-left: 4px;
+    }
+
+    .fn-back:hover { color: var(--saffron); }
+
+    /* ── Reference Links ── */
+    a.ref {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: all 0.15s;
+    }
+
+    a.ref:hover {
+        color: var(--saffron);
+        border-bottom-style: solid;
+    }
+
+    a.mbta-ext {
+        color: var(--indigo);
+        font-size: 0.7em;
+        margin-left: 2px;
+        opacity: 0.5;
+        text-decoration: none;
+        vertical-align: super;
+    }
+    a.mbta-ext:hover { opacity: 1; color: var(--saffron); }
+
+    /* ── References Panel (sidebar) ── */
+    .refs-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .refs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .refs-list li {
+        padding: 3px 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .ref-source-link {
+        font-weight: 600;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .ref-source-link:hover {
+        text-decoration: underline;
+    }
+
+    .ref-verse-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.76rem;
+    }
+
+    .ref-verse-link:hover {
+        text-decoration: underline;
+        color: var(--saffron);
+    }
+
+    .ref-verses {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Timeline panel ── */
+    .timeline-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .timeline-list li {
+        padding: 2px 0;
+        font-size: 0.76rem;
+        line-height: 1.4;
+        position: relative;
+        padding-left: 14px;
+    }
+
+    .timeline-list li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--saffron);
+    }
+
+    .timeline-list li.tl-approximate::before {
+        background: transparent;
+        border: 2px solid var(--saffron);
+        width: 4px;
+        height: 4px;
+    }
+
+    .timeline-list li.tl-century::before {
+        background: transparent;
+        border: 2px dashed var(--saffron);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+
+    .tl-dot-link {
+        text-decoration: none;
+        color: var(--ink);
+        display: block;
+    }
+
+    .tl-dot-link:hover {
+        color: var(--saffron);
+    }
+
+    .tl-year {
+        font-weight: 600;
+        color: var(--saffron);
+        font-size: 0.72rem;
+        min-width: 70px;
+        display: inline-block;
+    }
+
+    .tl-label {
+        color: var(--ink-secondary);
+        font-size: 0.72rem;
+    }
+
+    .tl-view-link, .tl-more {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.72rem;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .tl-view-link:hover, .tl-more:hover {
+        text-decoration: underline;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+
+    .breadcrumb-bar a {
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+
+    .breadcrumb-bar .sep {
+        color: var(--amber);
+        margin: 0 8px;
+    }
+
+    .breadcrumb-bar .current {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Chapter Navigation ── */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        margin-top: 48px;
+        border-top: 2px solid var(--rule);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .chapter-nav a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        transition: all 0.2s;
+        max-width: 45%;
+    }
+
+    .chapter-nav a:hover {
+        background: var(--saffron-wash);
+        border-color: var(--saffron-light);
+    }
+
+    .nav-prev { text-align: left; }
+    .nav-next { text-align: right; margin-left: auto; }
+
+    .page-range {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+    }
+
+    /* ── Volume Cards (Landing) ── */
+    .vol-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .vol-card {
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        transition: all 0.25s;
+    }
+
+    .vol-card:hover {
+        border-color: var(--saffron-light);
+        box-shadow: 0 4px 24px rgba(212, 96, 10, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .vol-num {
+        font-family: var(--font-roman);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--saffron);
+        margin-bottom: 8px;
+    }
+
+    .vol-subtitle {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        line-height: 1.5;
+        flex: 1;
+    }
+
+    .vol-chapters {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        margin-top: 12px;
+    }
+
+    /* ── Chapter Cards (Volume Index) ── */
+    .chapter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .chapter-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .chapter-card:hover {
+        border-color: var(--saffron-light);
+        background: var(--saffron-wash);
+    }
+
+    .card-num {
+        font-family: var(--font-roman);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--saffron);
+        min-width: 36px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        flex: 1;
+    }
+
+    .card-pages {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        color: var(--ink-secondary);
+    }
+
+    /* ── Landing Hero ── */
+    .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-family: var(--font-roman);
+        font-size: 2.4rem;
+        color: var(--saffron);
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .hero .devanagari-title {
+        font-family: var(--font-devanagari);
+        font-size: 1.8rem;
+        color: var(--ink);
+        margin-bottom: 16px;
+    }
+
+    .hero .author {
+        font-family: var(--font-roman);
+        font-size: 1.1rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .hero .desc {
+        font-family: var(--font-roman);
+        font-size: 1rem;
+        color: var(--ink-secondary);
+        line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer { margin-top: 48px; }
+</style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mbta/">
+      <div class="container-fluid">&emsp;&emsp;
+      <a href="../index.html" class="navbar-brand" style="text-decoration:none;">
+        <span class="devanagari ms-3" style="font-size:1.5rem; color:var(--saffron); font-weight:700;">धर्मशास्त्रम्</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="../index.html">धर्मशास्त्रम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5 active" href="../index.html">खण्डाः</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in/mbta/">महाभारतम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in">सनातनम्</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+
+    <div class="dh-wrapper container-xl">
+        <nav id="toc" class="toc-sidebar">
+<div class="refs-panel">
+<h5 class="toc-title">References</h5>
+<ul class="refs-list">
+<li><a href="../refs/atharvaveda.html" class="ref-source-link">Atharvaveda</a> <span class="ref-verses"><a href="../refs/atharvaveda.html#X.8.16" class="ref-verse-link">X.8.16</a></span></li>
+<li><a href="../refs/gita.html" class="ref-source-link">Bhagavadgītā</a> <span class="ref-verses"><a href="../refs/gita.html#VI.29-30" class="ref-verse-link">VI.29-30</a></span></li>
+<li><a href="../refs/brihadaranyaka.html" class="ref-source-link">Bṛhadāraṇyaka Upaniṣad</a> <span class="ref-verses"><a href="../refs/brihadaranyaka.html#II.5.19" class="ref-verse-link">II.5.19</a>, <a href="../refs/brihadaranyaka.html#II.5.16-17" class="ref-verse-link">II.5.16-17</a>, <a href="../refs/brihadaranyaka.html#I.4.10" class="ref-verse-link">I.4.10</a>, <a href="../refs/brihadaranyaka.html#I.5.3" class="ref-verse-link">I.5.3</a>, <a href="../refs/brihadaranyaka.html#V.2" class="ref-verse-link">V.2</a></span></li>
+<li><a href="../refs/hodh.html" class="ref-source-link">History of Dharmaśāstra</a> <span class="ref-verses"><a href="../refs/hodh.html#vol II" class="ref-verse-link">vol II</a>, <a href="../refs/hodh.html#vol. III" class="ref-verse-link">vol. III</a>, <a href="../refs/hodh.html#Vol. II" class="ref-verse-link">Vol. II</a>, <a href="../refs/hodh.html#vol III" class="ref-verse-link">vol III</a></span></li>
+<li><a href="../refs/mahabharata.html" class="ref-source-link">Mahābhārata</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/manu.html" class="ref-source-link">Manusmṛti</a> <span class="ref-verses"><a href="../refs/manu.html#XII.91.I" class="ref-verse-link">XII.91.I</a></span></li>
+<li><a href="../refs/mitakshara.html" class="ref-source-link">Mitākṣarā</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/narada.html" class="ref-source-link">Nārada</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/yajnavalkya.html" class="ref-source-link">Yājñavalkya</a> <span class="ref-verses"><a href="../refs/yajnavalkya.html#II.192" class="ref-verse-link">II.192</a></span></li>
+<li><a href="../refs/apastamba.html" class="ref-source-link">Āpastamba Dharmasūtra</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mb_shantiparva.html" class="ref-source-link">Śāntiparva</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/rigveda.html" class="ref-source-link">Ṛgveda</a> <span class="ref-verses"><a href="../refs/rigveda.html#I.164.12" class="ref-verse-link">I.164.12</a>, <a href="../refs/rigveda.html#VI.47.18" class="ref-verse-link">VI.47.18</a>, <a href="../refs/rigveda.html#I.116.12" class="ref-verse-link">I.116.12</a>, <a href="../refs/rigveda.html#IV.26.1" class="ref-verse-link">IV.26.1</a>, <a href="../refs/rigveda.html#II.12.5" class="ref-verse-link">II.12.5</a></span></li>
+</ul>
+</div>
+<div class="timeline-panel">
+<h5 class="toc-title">Timeline</h5>
+<ul class="timeline-list">
+<li class="tl-century"><a href="#p-chapter-xxxiii-tarka-and-dharmashastra-13" class="tl-dot-link"><span class="tl-year">~300 BCE</span> <span class="tl-label">Yājñavalkya</span></a></li>
+<li class="tl-exact"><a href="#p-chapter-xxxiii-tarka-and-dharmashastra-6" class="tl-dot-link"><span class="tl-year">476 CE</span> <span class="tl-label">Ṛgveda</span></a></li>
+</ul>
+<a href="chapter-xxxiii-tarka-and-dharmashastra-timeline.html" class="tl-view-link">View full timeline &rarr;</a>
+</div>
+<h5 class="toc-title">Sections</h5>
+<ul class="toc-list">
+<li class="toc-l2"><a href="#chapter-xxxiii-tarka-and-dharmashastra">Chapter XXXIII. Tarka and Dharmashastra</a></li>
+</ul>
+</nav>
+        <main class="dh-content">
+            
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep">›</span>
+        <a href="index.html">Volume V: Part II</a>
+        <span class="sep">›</span>
+        <span class="current">Chapter XXXIII. Tarka and Dharmashastra</span>
+    </div>
+    
+            <h1 class="text-center" style="font-family: var(--font-roman); font-size: 2rem; color: var(--saffron); margin-bottom: 8px;">
+                Chapter XXXIII. Tarka and Dharmashastra
+            </h1>
+            <p class="text-center" style="font-family: 'Open Sans', sans-serif; color: var(--ink-secondary); font-size: 0.9rem; margin-bottom: 36px;">
+                Volume V: Part II <span class="page-range">pp. 1468–1482</span>
+            </p>
+
+            
+    <div class="synopsis-box" id="synopsis">
+        <button class="synopsis-toggle" onclick="this.parentElement.classList.toggle('open')"
+                aria-expanded="false" aria-controls="synopsis-body">
+            <i class="fa-solid fa-chevron-right"></i>
+            Kane's Synopsis
+        </button>
+        <div class="synopsis-body" id="synopsis-body">
+            <p>Tarka and Dharmaśāstra.</p>
+            <p class="synopsis-attribution">— Synopsis by P.V. Kane, from History of Dharmaśāstra</p>
+        </div>
+    </div>
+
+
+            
+    <div class="index-terms-box" id="index-terms">
+        <button class="index-terms-toggle" onclick="this.parentElement.classList.toggle('open')"
+                aria-expanded="false" aria-controls="index-terms-body">
+            <i class="fa-solid fa-chevron-right"></i>
+            Index Terms (83)
+        </button>
+        <div class="index-terms-body" id="index-terms-body">
+            <dl class="index-terms-dl"><dt>## Kabir ( Moslem weaver and disciple of Rāmānanda-A. D. ); his teachings</dt><dt>## Mahābhārata</dt><dd>and Sāṅkhya ; called Jaya by itself and other works , claims that it is superior to all Vedas ; contains no pas-sage giving the position of planets in relation to rāśis ; critical edition of, at Poonā ; date of ; describes itself as Dharmaśāstra, Arthaśāstra, Kāmaśāstra and Kārṣṇaveda ; dilates upon all four puruṣārthas and should be listened to by one desiring Mokṣa ; discussion in, on daiva and puruṣakāra ; emphasizes often that there is only one God and that there is no difference between Śiva and Viṣṇu ; enjoins (in Bhīṣma 5. ) that incompre-hensible matters should not be tried to be solved by Tarka ; many passages in M. where planets in relation to Nakṣatras are stated to fore-bode misfortune to people in general or to individuals ; Nīlakaṇṭha, commentator of, stated to contain the substance of the Veda and a better means of the education of the common people including Śūdras, women etc. ; words ‘ahiṁsā paramo dhar-maḥ’ o cur frequently in M. ; (spiritual or religi-ous debts ), (about sonless man )</dd><dt>## Morgan</dt><dd>E. P. edited ‘This I believe’</dd><dt>## Practices (vide under ‘changes’); even Vedic p. have been discarded from time to time by the weight of the opinion of. the masses 1267–9</dt><dd>when popular p. and opinions should be followed</dd><dt>'Khrushchev and Stalin's Ghost' (1957)</dt><dt>'neti</dt><dd>neti', but it clashed with the popular idea that a real world existed apart from the creator ; in its highest form V. is the best support for pure morality for all individuals, the greatest consolation in the sufferings of life and death , in medieval and later times by the side of sublime metaphysical tenets, there was lack of solidarity of all common people, lack of efforts to reduce poverty and dominance of brutal and alien invaders ; persons imbued with the true spirit of advaita Vedānta like Ramaṇamaharṣi are found in India even in these days ; tendency to appeal to the past, to believe that what has been is the best has been very strong in India throughout several centuries, ( Advaita V. has influenced great modern minds in the</dd><dt>*homa*</dt><dd>and *dāna* ), 1325n-26, 1328n-29n, 1634n-36n, 1638n-1640, Vol. III. — (on pp.) , ( on Manu II. 7 ) , and n, ( discussion on valid customs and usages ), ( Kumārila's explanations of transgressions by great men of antiquity ), ( adoption by Hindu widow ), 1469n-70, Vol IV3, 40n-41, 673n-4n, ( meaning of</dd><dt>*stobhas* )</dt><dd>( meaning of ' *brahmaloka* ' in VIII. 3. 2 ), ( VIII. has the idea of *pratyāhāra* of Y. S., though not the word ), ( uses the word ' *dhyāna* ' ), ( on Karma and *punarjanma* ), ( four mortal sins ), (*salokatā*, *sārṣṭitā* and *sāyujya*), ( on *cāṇḍālas* ), ( on</dd><dt>Aitareya Upaniṣad</dt><dd>(quotes Rg. IV. . 1)</dd><dt>Aśoka 493; Ahiṁsā of A. was qualified 1015; appointed officers called Mahāmātras to look after Buddhist Saṅgha</dt><dd>Brāhmaṇas, Ājīvikas and all other sects ; 12th Rock edict of, requires honour to be shown to all beliefs and sects , edict of, shows that he sent missionaries to five kings of the Near East about B. C.; edicts 2 and 5 refer to Yāvanas (Yona) ; emphasized moral endeavour, disliked sacrifices, believed in gods and desired that people should strive for heaven ; employs regal years in his edicts ; forbids festival meetings (samāja) ; his regulations about not killing birds and animals and about the sale of fish must have caused great hardships to poor people, in later life appears to gloat over the fact that gods worshipped as divinities in</dd><dt>Bhagavadgītā : ( vide under ‘Gītā</dt><dd>path, tolerance’) : , (frequent emphasis on secrecy, (path of Yoga and advaita Vedānta is most difficult and unattainable by most persons), difference between B. and Nārāyanīya section ; is styled Yogāśāstra and each chapter of it is also styled</dd><dt>Bhīṣmaparva 129</dt><dd>(images of gods trembl-ing), (portentous births)</dd><dt>Brahmāṇḍa-Purāṇa (vide note on pp. 895–96); 90n</dt><dd>(on Kalpas of Atharvaveda), (many verses identical with those of Vāyu ), (on period between Parikṣit and Nanda), ( Saptārṣis mantra ), ( three kinds of bhakti ), (list of Avatāras–different from usual one), ( Lalitāmāhātmya of ), ( has verses that are also found quoted by Śabara ), ( for word ‘ sanātana-dharma ), compiled or revised about A. D. ; probably com-posed near the source of the Godāvarī, divided into four pādas besides Lalitopā-khyāna ; is fond of etymo-logies, one of the oldest of Purāṇas, has hundreds of verses in common with Vāyu ; Skanda says there was first only one Purāṇa, viz. Brahmāṇḍa</dd><dt>Bridges</dt><dd>Robert, a. of ‘Testament of beauty’ (on what is reasonable)</dd><dt>Bṛhadāraṇyakopaniṣad</dt><dd>( on dreams ), ( emphasis on dayā ), ( on last thought ), ( explains Rg. VI. . ), ( on 72000 nāḍīs ), ( eulogy of Gāyatrī ), ( mandala of the Sun ), ( derivation of Puruṣa ), ( Yājñavalkya expounds brahman to Janaka and answers angry brāhmaṇas in his court ), ( vamśas ), ( prāṇa as symbol of brahman ), ( 'mantaryyaḥ' implies tarka ), ( frequently has the words 'apa punarmṛtyum jayati' ), ( I. 4. quotes Rg. IV. . 1 ), ( Free will and Determinism ), ( noblest prayer in ), ( sāyujya and salokatā occur ), ( on āśramas )</dd><dt>C.; universal exhibition of portraits of great Soviet leaders (some of whom were recently declared by successor leaders to be no better than murderers) proclaims the necessity of worship even in a godless society</dt><dt>Chandrasekhara S</dt><dd>a of 'Communist China today'</dd><dt>Christianity and that European civilization is dissolving; what was Christian in</dt><dt>Democracy or Democracies: in modern D. rational discussion of problems or measures comes last and vital questions are often decided by party loyalties or personality cults or by lust for power</dt><dt>Descartes</dt><dt>Doubt is a frequent and legitimate attitude of the mind as recognized in Br. Up. 1478; Descartes held that only one truth is beyond doubt</dt><dd>viz. ‘I think, therefore, I am’</dd><dt>Fausset</dt><dd>Hugh T. Anson, a. of “The Flame and the Light”</dd><dt>Galileo</dt><dd>condemned by Churchmen to imprisonment for life at for espousing the Copernican theory, and Kepler practised astrology or countenanced it</dd><dt>Gautama-dharma-sūtra</dt><dd>1544n–45</dd><dt>Hindu culture 1623; persisted in India for different cults and tenets with very rare exceptions from before Aśoka to 1200 A. D. when Moslem invaders began to overrun India 1012; striking instances (early and late) of T. of kings and people donating gifts to persons</dt><dd>shrines and institutions of different faiths ; undesirable consequences of great T. ; Yāj. Smṛti prescribes that when an Indian king</dd><dt>Hinduism</dt><dd>the pursuit of purely secular or wordly happiness is incompatible with the precepts and ideals of Hinduism</dd><dt>IV. 2.60) appears to have known the word 1205</dt><dt>James</dt><dd>William, a. of 'Varieties of religious experience' and of 'Pragmatism'</dd><dt>Jesuits : acted on the principle of ‘the end justifies the means</dt><dd>’ which latter included incitements to assassination and war</dd><dt>Jews</dt><dd>persecution of, murder of five million J. by Germans in the 2nd World War constitutes the greatest crime in world history</dd><dt>Kalivarjya</dt><dd>dharma, mimāṁsā, smṛtis ); in religious rites and usages could be made and were made if common people came to condemn or hate them, even if a few orthodox people may be opposed to change, change is the one absolute in the long history of our religious or social ideas ; examples of fundamental changes in conceptions, beliefs and practices made from ancient times to medieval times by various devices, people should be free to introduce or recognize such changes in practices as are required or have already taken place in changed circumstances and this course sanctioned even by eminent medieval works like the Mitākṣarā ; should not be merely for the sake of change or for the whims of some leader</dd><dt>Kathopaniṣad</dt><dd>(Naciketas story), (on vidyā and avidyā), (giving up tṛṣṇā), (on nāḍis of the heart, one of which penetrates the crown of the head), (five guṇas, śabda etc. of five elements mentioned), (verse quoted in), (fate of some people after death), (illustration of pure water poured into pure water), (path of mokṣa more difficult than that of bhakti)</dd><dt>Kauṣītaki Upaniṣad</dt><dd>464n–65, ( joys of heaven ), ( *Ajātaśatru* and *Bālāki Gārgya* )</dd><dt>Kumārilabhaṭṭa: ( vide under Bṛhat-ṭīkā</dt><dd>Ślokavārtikā, Smṛti, Tantravārtikā ); a of Ślokavārtikā ; a. of Tantravārtikā, in which he summarises the contents of Purāṇas, a. of Bṛhat -ṭīkā, a. of Ṭup-ṭīkā ; differs from Śabara and criticizes Śabara's bhāṣya many times as being improper or fit to be discarded and as absurd , does not apply epithets like Bhagavan or Ācārya to Jaimini and once criticizes Jaimini as having composed sūtras of little substance ; flourished about A. D. , divergence of views about the chronological position of K. and Prabhākara ; mentions Vindhyavāsin ; points of difference between K. and Prabhākara are many, relies on Manu for the usefulness of tarka ; states that Buddha's doctrine attracted śūdras and those that had lost caste ; tradition that Prabhākara was a pupil of K. ; two more works ( apart from the three published ones ) of K. are Madhyamaṭīkā and Bṛhaṭṭīkā ; waged only a polemic war against Buddhists and persecution of them by K. is held not proved by Rhys Davids ; was prepared to accept usefulness of Buddha's teaching up to a limited extent</dd><dt>Lokāyata or Laukāyatika : 1205n1206</dt><dd>Kauṭilya includes it under *Ānvīkṣikī*, along with</dd><dt>Maitrāyaṇī-Upaniṣad 569 (mentions Śani</dt><dd>Rāhu and Ketu ), (six angas only of Yoga)</dd><dt>Manusmṛti 24n</dt><dd>(units of time), (on Śiṣṭabrāhmaṇas), (virtues necessary for all varṇas ), (on Yama and Niyama), (quoted by Kulārṇava ), (appears to suggest that Veda is self-existent ), and n (many Arthavādas in ), (in III. gives several options expressly ), 1256n–58n, (on duties of Sannyāsins ), (uses word saṃsāra frequently), (on repentance ), frequently echoes the very words of the Veda ; mentions many Sāṅkhya tenets , practice of M. of stating opposite views on the same point one after another, (limits sadācāra to only certain parts of India, excluding Madhya-deśa and Āryāvarta ), (varṇa and jāti confounded ), (brāhmaṇa selling milk for more than three days became a śūdra ), (king was a divinity in human form ), (duties common to all men ); some verses are identical with those in Śāntiparva, Vanaparva and some Purāṇas , some verses of, almost identical with verses in Āp. Dh. S. ; some verses of, almost the same in Matsyapurāṇa ; some verses identical with Parāśarasmṛti ; three theories about creation in ; very eminent position assigned to M. by Bṛhaspati ; whatever Manusmṛti proclaims as dharma was already declared so in the Veda acc. to M. II 7, on which commentators differ</dd><dt>Mathews W. R. a. of ‘Christ’ ()</dt><dt>Matsyapurāṇa : 40</dt><dd>545n–6n, (on Yātrā ), (on auspicious persons and things ) , (on Śāntis ), ( nume-rous Śāntis ), ( eighteen Śāntis ), (on dreams ), (gives contents of Vāyu ), ( characteristics in addition to five ) ; ( full list of Andhra kings ), ( period between Parīkṣit and Nanda ), ( contents of Bhaviṣya ), (‘Om Namo Nārāyaṇāya’ is Mūlamantra ), ( ten Ābhīra kings ), ( ten avatāras ), ( Viṣṇu cursed by Bhṛgu ), 1023n–24, ( description of black magic rite ), (nyāsa with mantras ) , 1377n–78, (on Sāṁkhya ), (on rebi-rths for sins ), (on writers about Vāstūśāstra ); Aparārka quotes verses from it and Kalpataru about , chief among Purāṇas acc. to Vāmana , date of, about middle or end of 3rd century A. D. , glorifies both Viṣṇu and Śiva ; has verses that also occur in Yaj. Smṛti, Manusmṛti and Mahābhārata , one of the ancient Purāṇas and has per-haps the largest number of Smṛti chapters and the best preserved ; Padmapurāṇa has hundreds of verses identi-cal with those of M. ; Śaṅ-karācārya appears to quote verse ( from it ) ; story of</dd><dt>Medhātithi</dt><dd>a of bhāṣya on Manusmṛti, (Manu V. is merely an arthavāda), (on Manu III. , long note on niyama and parisaṁkhyā), (quotes his own work Smṛtiviveka), 1312n- 3n</dd><dt>Mitākṣarā of Vijñāneśvara : 29</dt><dd>(on Nādis ), ( refers to views of Guru on Līpsāsūtra ), (on Yāj. I. about marriages that are void ), ( Yāj. I. contains many paryudā-sas ), ( allows option following Jābālopaniṣad about time of becoming a Sannyāsin ), and n, ( discards Vedic usages if hateful to people ), 1273n–74, ( on Bṛhaspati about re-union ), ( prefers mother to the father as heir ), ( ūha ), ( differences on vital doctrines of Hindu Law between Mit. and Dāyabhāga )</dd><dt>Muṇḍaka Upaniṣad : 475 (names six aṅgas of Veda )</dt><dd>(on parā and aparā vidyā ), (passages of, borrowed in Purāṇas ), (q. by Tantra works ), (on dhyāna ), (verse 'dvā suparṇā' which occurs also in Ṛg. I. .20 and Śv. Up. IV. 6 ) , (illu-stration of rivers flowing into the ocean )</dd><dt>Nihśreyasa</dt><dd>meaning of, occurs in Pāṇini V. 4- and Kauṣ. Up. ; stated to be goal of the study of Nyāya and Vaiśeṣika Sūtras ; Mahābhāṣya explains it</dd><dt>Nyāyasūtra : 469</dt><dd>( defi-nes ūhā ), goal of study of, is niḥśreyasa ( Mokṣa )</dd><dt>Osborne</dt><dd>Arthur, work of, on ‘Raman Maharshi’</dd><dt>People : millions on millions of common p. are influenced to keep to the path of virtue and right by the fear of God</dt><dd>of public opinion, fear of punish-ment by the State and by the prickings of their conscience ; Vanaparva holds that what the majority of people practise is the dharma in the midst of conflicting śrutiś, smṛtis and learned men ; three classes of people viz. those who believe and worship a per-sonal god with ritual and sacri-fices, those who pray, seek God and come to realize that God is both immanent and trans-cendant, those few people, the great Masters and sages who lose the sense of ego and are ripe for entering into union with the One ; p. in several lands had conceit that they were far superior to others and had a mission to propagate like the British imperialists</dd><dt>Persecution in India (vide under Buddhism</dt><dd>Galileo, Inquisi-tion, Tolerance, Toleration Act, heretics); sporadic cases of religious P. exemplified ; followers of Judaism, Christianity and Islam did not hesitate for centuries to incul-cate their doctrines by terrible persecutions and bloody wars and this spirit shook people brought up in Hinduism or Buddhism ; harsh laws were in force in England a little over a hundred years ago against Roman Catholics and non-conformists</dd><dt>Philosophy</dt><dd>most men want to rely on something deemed higher than themselves such as Revelation and God, one of the oldest problems of P. is, Faith and Reason and there has been a constant struggle between these two, Time is first among the great problems of P. ; central point of much of Indian P. is contained in Chān. Up. VI. 1</dd><dt>Praśna-upaniṣad</dt><dd>( on om ) , ( on Devayāna and Pitṛyāṇa paths )</dd><dt>R. Mathews appear to agree with him; Christian people of Europe and America during the last four centuries achieved great wealth and prosperity by throwing to the winds the Sermon on the</dt><dt>Ramana Maharshi (1879-1950)</dt><dd>sage of Arunachala ; work on, by Arthur Osborne</dd><dt>Religion or (religions): as believed at present by most men can hardly be a panacea for the ills of the world 1480; many eminent men attribute the present difficulties to the two world wars and are busy in inviting all men back to r.</dt><dd>but the crux of the problem is what religious tenets and practices are to be inculcated among men in the present age ; most r. postulate three fundamental entities, God, individual soul and external world ; virtues preached at different times as most important have been different (such as monachism, charity, humility, social service, heroism) ; whether religion is necessary or not some worth-while ideal is necessary, acc. to Pandit Nehru ; and modern Indians with several attitudes towards reform</dd><dt>Russia before 1934</dt><dt>Russlle</dt><dd>Lord, of Liverpool; a. of ‘Scourge of the Svastika’, wherein he cites the confession of Höss that not less than three million people were put to death at Auschwitz</dd><dt>Sermon on the Mount-Christ's discourse in Gospel of Matthew</dt><dd>Chap. V-VII</dd><dt>Shastri</dt><dd>Dr. Daksinaranjan, a. of 'Short History of Indian Materialism'</dd><dt>Tantrik worship)</dt><dd>(verses of, q. by Mahānirvāṇa-tantra), (Vedic Mantras employed in T. works exemplified), (orb of Sun is called wheel), (references that are held historical), (who went to heaven and what joys were there), (Madhvācārya claims that he is referred to in Ṛg. text I. . 1-3), (mantras full of faith in God and beati-tude), and n, (quoted often by Upaniṣads), (some doubters about Indra), Ṛg.IX.82.1 explained in Tāṇḍya), (passages where word Karman occurs), (Ṛg. VII.33.10-14 about Vasiṣṭha's two births explained), (interpretation of Ṛg. X. . 3 ), (Vaiśvā-nara ), and n, (river Sindhu), (meaning of 'Kṛṇvanto Viś-vam Āryam'), (.indications of at least three Āśramas ), (shift towards oblation of cooked food or ghee as equal to animal sacrifices); (Vasiṣṭha's prayer that sins due to wine and gambling may be for-given); prayer to bestow ten songs on newly married bride) (X. . explained )</dd><dt>Tarka (ratiocination) and Dharmaśāstra 1468-1482; (vide ‘Nyāya’</dt><dd>‘people’, ‘tolerance’, ‘Upaniṣads’) ; as an aṅga of Yoga , Buddhists and Jains were declared to be heterodox not because they resorted to T. but because they did not at all acknowledge the authority of the Veda and the sacred tradition ; Manu provides that none but he who considers the dicta of (vedic) sages, the rules of dharma (in smṛtis) and takes the help of tarka not in direct conflict with Veda and śāstras knows what Dharma is and this is the position of most orthodox Sanskrit writers about Tarka, Śaṅkarācārya’s position about T. ; Smṛtis lay down that blindly following the words of śāstra would lead to loss of Dharma and that in case of conflict between two Smṛtis reasoning should be resorted to, smṛtis and ancient Sanskrit writers have been very tolerant of differing views even on fundamental matters and brought about great changes in rituals, philosophical views, social customs, without persecution ; T. alone cannot give final answers or answers acceptable to most people on such questions as the existence of God or of the individual soul, or on what happens after death ; T. favoured by or not opposed to Śruti is acceptable to Br. Up. acc. to Śaṅkarācārya ; within the limits laid down by Śaṅkarācārya and other orthodox Sanskrit writers there was room enough for an enormous and bewildering variety of convictions, rites and practices to claim orthodoxy and examples of these ; wise man who is pure should, in deciding upon dharma and adharma, act after relying on his own' intelligence (reason) ; word 'tarka' occurs in Kaṭho-paniṣad ; Yaj. Smṛti mentions Nyāya (v. l. tarka) as one of the fourteen vidyās and one of the means of knowing dharma</dd><dt>Tattvopaplava-siṁha of Jayarāśibhaṭṭa</dt><dt>Tawney</dt><dt>Tawney C. H. a. of ‘Acquisitive society’</dt><dt>Tāṇḍya Brāhmaṇa: 511n</dt><dd>(explains words of Ṛg. IX. . 1)</dd><dt>Up. 1500; hold that esoteric knowledge has to be imparted by a guru to a disciple or by father to son</dt><dd>but not to all and sundry nor in an assembly ; illustrations ( two ) to bring home to the inquiring spirit non-difference are rivers flowing into the sea and losing their names and forms and pure water poured in other pure water, most important doctrines of Up. are two (1) non-difference of individual self from supreme Self and (2) transmigration of self depends on his deeds and conduct as taught by brāhmaņa Yaj. to Janaka or by Uddālaka Āruņi to son Śvetaketu, offer very little to the common man and did not solve his problems while the Bhagavadgītā took that matter in hand, old Up. like Br. and Chān. are admitted to be earlier than Buddha ; passages of Up. fore-shadowing Sānkhya doctrines or employing technical Sānkhya words ; put the knowledge of the Highest Self as superior to the Vedas ( called aparā vidyā ) yet quote Vedic verses in support of their statements , real thought of Up. centres round the non-difference between brahman and the individual soul and the physical world, renunciation of all actions and their rewards was inculcated by Up. for a Sannyāsin who was to beg for alms till the body lasted, as even good deeds would lead to good births and put off mokṣa, several vidyās or upāsanās are described in Up. particularly in Chān. and Br. for men that are not yet far advanced on the path of brahmavidyā ; some apparent discrepancies in Up. as to what was first created and as to the order of the creation of elements, as explained by Śaṁkarācārya ; some late Up. mentioned as the basis of Śākta doctrines by late medieval works, speak of brahman, as creator, sustainer and as ultimate absorber of bhūtas ( elements or beings ) ; teach that sound moral preparation necessary before a true Vedāntic view is attained ; verse enumerating ten ancient and principal Up. ; Yoga in Up. . Upapurāņas ( vide under Hazra, Narasimhapuraṇa, Samba, Viṣṇudharma and Viṣṇudharmottara ); all chapters and even single verses of U. are suspect ; Alberuni's work shows that some U. such as Ādi, Āditya, Nanda ( Nandi!), Narasimha and Samba had been composed at least some time before A. D. ; are summaries made by sages after listening to P, began to be compiled from the 7th century and their numbers went on increasing till 13th century A. D. or even later. ; dates assigned by Prof. Hazra to Upapurāṇas not at all acceptable ; early commentaries and digests on Dharmasastra like the Mit. and Kalpataru very rarely mention U. and even the latter refers to six Up. ; Hazra (Prof.) says there are over Upapurāṇas ; Hazra admits that adherents of various sects such as Śāktas, Pāñcarātras, Sauras, interpolated chapters in Purāṇas and sometimes wrote new and independent works styled Purāṇas ; Kūrma Purāṇa mentions Brahmāṇḍa, Nāradīya Skanda, Vāmana as Up. ; Matsya names Narasimha, Nandi, Āditya and Sāmba as Up. and there is nothing to show that more than four were regarded by the Matsya as of any authority ; names of U. are set out by Devībhāgavata, Garuḍa, Kūrma, Padma, Hemādri and n; none of the U. except Devī, Narasiṁha, the Viṣṇu dharmottara, and one or two more can be held to be as old as 7th or 8th century A. D. , only a few Upapurāṇas are published and those published belie definition of Purāṇa as Pañcalakṣaṇa ; only eight U. m. by Ballalasena ; some U. bear the same names as those of principal Purāṇas, such as Skanda, Vāmana, Brahmāṇḍa and Nāradīya ; total of 4 lakhs of verses of Purāṇas excludes the verses of U.</dd><dt>Upaniṣads) ; Deussen's theory that kṣatriyas were the original cheirshers of V. thought</dt><dd>not brāhmaṇas, stated and criticized ; doctrine of the non-difference of the individual soul and even of the inanimate world from the First Principle or Essence is one of the most characteristic features of Hinduism and India's greatest contribution to the spiritual development of man , expresses advaita in such sentences as 'aham brahmāsmī' ; 'tat-tvam-asi' ; first and foremost aspect of V. was that Ātman is the only reality and that Ātman can be only described in the words</dd><dt>Utilitarianism (vide under ‘Rationalism’): criticism of this doctrine–: holds that actions are right where they tend to make for the greatest good or happiness of the greatest number etc.; is not a moral theory at all</dt><dt>Vaiśeṣikasūtra 468</dt><dd>(defines dharma), and n; goal of, is niḥśreyasa (q. v.)</dd><dt>Vallabhācārya (–</dt><dt>Vanaparva</dt><dd>(time of starting of Kṛtayuga), (on Kalisvarūpa), (names Matsyapurāṇa and a purāṇa proclaimed by Vāyu), (close agreement with Yugapurāṇa), (giving up of tṛṣṇā), (on functions of ten prāṇas)</dd><dt>Varāhamihira: (a. of Bṛhat-saṁhitā</dt><dd>Bṛhaj-jātaka, Yogayātrā, Bṛhadyogayātrā, Pañca-siddhāntikā, Laghujātaka, Ṭik-kanikā, and a few other works not yet published), (follows Gārgya on motion of Saptarṣis), (names many predecessors on astrology), (theory that a horoscope was like a plan), (importance of usages of common people), (on Āryabhaṭa's view about earth revolving round itself); date of (about A. D.) , (mentions authors of Vāstusāstra and image making; did not follow Firmicus or Manilius on Dreṣkāṇas , differences of, with Ptolemy, and n, (with Yavanēsvara), (on lords of the horās of the day), frequently refers to the views of Yavanas and in some matters differs from them ; probably identical with Buzurmihr, a minister of Nowshirwan of Persia</dd><dt>Vedas and Brāhmaṇa texts 1498n; attitude of</dt><dd>to Veda as aparā-vidyā and to sacrifices , central Up. doctrine of immanence of brahman not attacked by Buddha or early propagators of Buddhism ; describe brahman in two ways, firstly as qualified by various adjuncts (such as name and form, created objects) and secondly as devoid of all adjuncts, there being no universe outside brahman, *do sometimes say that he who knows brahman becomes brahman, but the same Up. require great moral and spiritual attainments (as in Muṇḍaka) ; emphasize the giving up of trsnā or</dd><dt>Vedāntasūtra</dt><dd>1446(n), ( on Vaiśvānara ), ( refers to Atharvaveda Brahmasūktä ), authors mentioned by</dd><dt>Viśvāmitra: and the rivers 537</dt><dd>and Śunaḥśepa ; famished V. wanted to eat dog's tail ; priest of Triśaṅku who had become a cāṇḍāla</dd><dt>Yājñavalkyasmṛti&lt;sup&gt;19&lt;/sup&gt; 1457-9</dt><dd>(follows Br. Up.), (uses word Saṁsāra), (five views m. as to what causes desirable or undesirable results), (allows intermarriages between three varṇas), (on sannyāsin), (truth and non-violence basic), declares that rise and fall of kings depends on planets 544: employs word ‘vrata’ in three senses ; hardly ever refers to vratas in the sense in which Purāṇas use the word ; mentions some Sāṅkhya tenets such as guṇas ; Viśvarūpa’s com. on, is called Bālakrīḍā</dd><dt>Āpastamba-śrautasūtra</dt><dd>and n</dd><dt>Āryabhaṭīya</dt><dd>work of Āryabhaṭṭa, (mentions Thursday), edited by W. E. Clark</dd><dt>Āryabhaṭṭa</dt><dd>born in A. D. , view of, that earth revolved round itself and that stars did not revolve round earth</dd><dt>Śaṅkarācārya (vide Abhinava-gupta</dt><dd>Devala, Śrīharṣa Tārā-nāth): 731n-2n, (Prof. Hazra misunderstands what Ś. says), (on Pañcarātra), (on V. S. I. 1. 1.), (Pūrva-mīmāṁsā and Vedānta-sūtras as one śāstra), (on Gītā . 4), and n. (on Apūrva), (quotes sūtra in which the words paryudāsa, pratiṣedha and vikalpa occurs), (Agnihotra as ārūdupakaraka in acquiring knowledge of brahma), (position as to Yoga), (on Chān. Up. I. 3. 3, mis-understood by Caland, Dumont and others), (Ś. on Bṛ. Up. I. 5. 3 and on Praśna), (explains 'asat'), 1563n-64n, doctrine of Māyā declared by Padmapurāṇa as Bauddha in disguise, holds that Bādarāyaṇa a. of V. S. is diffe-rent from Vedavyāsa, a. of Mahābhārata, horoscope of, in com. on Saundaryalahari examined ; Prapañcasaratantra, ascribed to Ś. dilates upon a mantra called Trailokyambhana for accomplishing six cruel acts ; Saundaryalahari, ascribed to Ś. ; says that Manusmṛti and Devala-dharmasūtra accept some doctrines of Sāṅkhya system ; verses quoted by Ś on V. S. I. 3. as Smṛtis, set out, identified in Śāntiparva and Purāṇas ; view that Śūdras like Vidura and Dharmavyādha had brahmajñāna and a śūdra may secure mokṣa by reading the Itihasa and Purāṇas, and Vacaknavi Gārgi, though a woman, possessed brahmajñāna</dd><dt>Śvetāśvataropaniṣad</dt><dd>(Guru's position), (Śakti as non-different from God), (Kulārṇava quotes a verse), (signs of effectiveness of Yoga practices), (is full of words of Sāṅkhya system), (dhyāna-yoga), (five elements), (verse ‘dvā suparṇā’), referred to as śruti in V. S. acc. to Śaṅkara ; states God as cause or source of creation ; bhāṣya on, attributed to Śaṅkarācārya, of doubtful authenticity and n, (fundamental questions of whence, whither and why raised)</dd><dt>Śāntiparva</dt><dd>692n-93, (auspicious nimittas ), ( the verse ‘ Guror-apyava-liptasya etc. ), ( on tṛṣṇā ), on ahiṁsā ), (pupils of Vyāsa ); (Pañcarātra-śāstra ex-pounded ), and n., (mentions Dharmaśāstras ), (high praise of Sāṅkhya ), (quoted by Yoga-bhāṣya ) (Yoga matters ), . , (on pratyāhāra ), (immortality of soul ), (Devayāna and Pitṛ-yāna paths ), (life is far more miserable than happy ), (theory of Kalpas etc. ), (souls of six colours ), (qualities necessary for being treated as brāhmaṇa ), (apotheosis of satya )</dd><dt>‘Conscience and Liberty’</dt><dt>‘Rationalism in theory and practice’ 1476n</dt><dd>(on meaning of word civilization’</dd><dt>‘Wolfe’): 1473–74; is really a form of worship i. e. worship of man or such men as Lenin and Stalin in place of the worship of God</dt><dd>catchwords and slogans of, in return for physical well-being, common people under C. bargain away several freedoms, such as thinking for themselves, freedom of expression etc. ; no secret is made by communists that they want to bring the whole world under</dd><dt>‘Yām janāh’ etc.)</dt><dd>(repeats verses of Puruṣasūkta), (hymns on Creator and creation), (Devayāna and Pitryāṇa), (relied upon in V. S.), five Kalpas of A. are Nakṣatra, Vaitāna, Saṃhitā, Aṅgirasa and Śānti</dd></dl>
+        </div>
+    </div>
+
+
+            <h2 id="chapter-xxxiii-tarka-and-dharmashastra" class="section-heading">Chapter XXXIII. Tarka and Dharmashastra</h2>
+<p class="prose" id="p-chapter-xxxiii-tarka-and-dharmashastra-1">The <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yājñavalkya</a>smṛti (I. 3) mentions Nyāya (logic)<sup class="fn-ref"><a href="#fn-chapter-xxxiii-tarka-and-dharmashastra-1" id="fnref-chapter-xxxiii-tarka-and-dharmashastra-1">1</a></sup> as one of the fourteen vidyās and as one of the means of knowing what Dharma iṣ Nyāya is rendered as 'tarkavidyā' by the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mitākṣarā</a> on <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yāj.</a> and the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> states that the fourteen vidyās are the hetu (means) of (knowing) dharma.</p>
+<p class="prose" id="p-chapter-xxxiii-tarka-and-dharmashastra-2">Both the Nyāyasūtra and the Vaiśeṣikasūtra of Kaṇāda postulate that 'niḥśreyasa' follows from the correct knowledge of the categories of the two darśanaṣ<sup class="fn-ref"><a href="#fn-chapter-xxxiii-tarka-and-dharmashastra-2" id="fnref-chapter-xxxiii-tarka-and-dharmashastra-2">2</a></sup></p>
+<p class="prose" id="p-chapter-xxxiii-tarka-and-dharmashastra-3">One of the earliest occurrences of the word tarka is in the <span class="idx-term" data-def="(Naciketas story), (on vidyā and avidyā), (giving up tṛṣṇā), (on nāḍis of the heart, one of which penetrates the crown of the head), (five guṇas, śabda etc. of five elements mentioned), (verse quot...">Kathopaniṣad</span><sup class="fn-ref"><a href="#fn-chapter-xxxiii-tarka-and-dharmashastra-3" id="fnref-chapter-xxxiii-tarka-and-dharmashastra-3">3</a></sup> where it is declared 'This knowledge (about the Self) cannot be obtained by (mere) ratiocination' and the previous verse states that the Self is subtler than the subtlest and not capable of being understood by mere inference or reasoning. The word 'mantavyah' in the passage<sup class="fn-ref"><a href="#fn-chapter-xxxiii-tarka-and-dharmashastra-4" id="fnref-chapter-xxxiii-tarka-and-dharmashastra-4">4</a></sup> 'Ātmā vā are drastavyaḥ śrotavyo mantavyo' (in Bṛ. Up. II. 4. 5 and IV. 5. 6) is held by the objector (in bhāṣya on V. S. I. 1. 2) and also by Saṅkarācārya as referring to tarka on V. S. II. 1. 4. Tarka is accepted as an aṅga of Yoga in the Maitrāyaṇī Up. (vide note 2327 above), which further quotes a passage stating that by the control of speech, mind and prāṇa one apprehends brahmaṇ with the help of tarka.<sup class="fn-ref"><a href="#fn-chapter-xxxiii-tarka-and-dharmashastra-5" id="fnref-chapter-xxxiii-tarka-and-dharmashastra-5">5</a></sup> The Gautamadharmaśūtra<sup class="fn-ref"><a href="#fn-chapter-xxxiii-tarka-and-dharmashastra-6" id="fnref-chapter-xxxiii-tarka-and-dharmashastra-6">6</a></sup> remarks 'tarka is the means for securing justice (among contending parties)'. One of the replies given by Yudhiṣṭhira to the Yakṣa guarding a lake is 'ratiocination is unstable (leads to no certain conclusions), the Vedic texts differ (among themselves), there is no single sage whose opinion is held authoritative (by people or other sages); the essence of Dharma is placed in a cave (i. e. is enveloped in darkness and cannot be seen clearly), that is the path (to be followed) by which the majority of people<sup class="fn-ref"><a href="#fn-chapter-xxxiii-tarka-and-dharmashastra-7" id="fnref-chapter-xxxiii-tarka-and-dharmashastra-7">7</a></sup> proceed'. This appears to make man in the mass the ultimate tribunal on all questions of value. In its peroration at the end, the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a> observes 'one who desires to secure the pure Dharma must know well the three viz. direct perception (or experience), inference, and śāstra based on various traditions; none but that man who considers the sayings of sages (i. e. the Veda), the instruction on Dharma (contained in the Smṛtis) with the help of reasoning that does not (directly) conflict with Veda and śāstras knows what Dharma is'.<sup class="fn-ref"><a href="#fn-chapter-xxxiii-tarka-and-dharmashastra-8" id="fnref-chapter-xxxiii-tarka-and-dharmashastra-8">8</a></sup> This is the position of most orthodox Sanskrit writers about Tarka. Their mere reason, the result would be uncertainty and anarchy. Every theorist states that his system is based on reason; but the answers arrived at on the basis of reason as to questions of vital importance to ordinary men are bewilderingly different. Thinkers brought up in different environments and of different experiences have different logics and propound even different moral lawṣ Whom should an ordinary man follow? The Vedas and Smṛtis embody the principles of conduct in all spheres of life arrived at by eminent and selfless sages during the course of thousands of years i. e. they embody the experiences and the reasonings of numerous wise meṇ Therefore, if a modern man says that reason leads him to hold opinions opposed to the Veda, most people are not prepared to accept a single man's opinion pitted against the views of numerous ancient sageṣ This point need not be elaborated further. On many important questions viz. whether there is God or a Supreme Intelligence guiding the universe, or whether there is an individual self, or what the future of a man when he dies is, the wisest among men have given widely differing answerṣ<sup class="fn-ref"><a href="#fn-chapter-xxxiii-tarka-and-dharmashastra-9" id="fnref-chapter-xxxiii-tarka-and-dharmashastra-9">9</a></sup> On such questions final answers acceptable to all or most people cannot be given by reason alone. Though the orthodox position is as stated above, it has been shown above (e. g. on pp. 1267-1269) how Vedic practices have been discarded by the weight of popular opinion from time to time. It is laid down by Smṛti writers themselves that blindly following the words of Śāstra would lead to loss of Dharma and in case of conflict between two Smṛtis reasoning should be resorted to and popular opinions and practices should be considereḍ Vide <a class="ref" href="../refs/hodh.html#vol. III" data-source="hodh" data-ref="vol. III" title="History of Dharmaśāstra vol. III">H. of Dh. vol. III</a>, pp. 866-868 for thiṣ The <a class="ref" href="../refs/mahabharata.html" data-source="mahabharata" data-ref="" title="Mahābhārata">Mahābhārata</a> enjoins <sup class="fn-ref"><a href="#fn-chapter-xxxiii-tarka-and-dharmashastra-10" id="fnref-chapter-xxxiii-tarka-and-dharmashastra-10">10</a></sup> 'one should not try to solve incomprehensible matters by ratiocinatioṇ' In the dialogue between the famished sage Viśvāmitra (who desired to eat the tail of a dog) and a caṇḍāla the great Epic winds up by saying 'therefore a learned man whose soul is pure should act after relying on his intelligence in the matter of deciding what Dharma and adharma are.'<sup class="fn-ref"><a href="#fn-chapter-xxxiii-tarka-and-dharmashastra-11" id="fnref-chapter-xxxiii-tarka-and-dharmashastra-11">11</a></sup> It should not be supposed that Śaṅkarācārya and other great Indian writers wanted to throw reasoning over-board altogether. What they emphasized was that mere reasoning of one or more men should not as a rule be followed if the conclusions arrived at by reasoning are in direct conflict with Vedic and smṛti textṣ Śankarācārya clearly states his position on V. S. II, 1, 1, and 11.<sup class="fn-ref"><a href="#fn-chapter-xxxiii-tarka-and-dharmashastra-12" id="fnref-chapter-xxxiii-tarka-and-dharmashastra-12">12</a></sup> Beliefs (such as those of Jains and Buddhists) were held to be heterodox, because they did not acknowledge the authority of the Veda and the sacred tradition, though they often observed Hindu practices and married with Hindus; but within this limit there was room enough for an enormous and bewildering variety of convictions, rites and practices that claimed to be orthodox. This may be illustrated by the attitude of some Upaniṣadṣ For example, the Muṇḍaka Up. (I. 1. 4–5) speaks of two vidyās, parā and aparā, includes under aparā the four Vedas and the six āṅgas and parā (highest) vidyā is that by which the imperishable brahman is attaineḍ In the Chāṇ Up. (VII. 1. 1–5) when <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> approached Sanatkumāra for instruction, the former recounted what he had already learnt viz. the four Vedas, Itihāsapurāṇa and other lores; then Sanatkumāra tells him that all that he has studied is mere name and then explains what Mundaka (I. 2. 7) condemns yajñas as leaky vesselṣ It is extremely surprising that the Chāṇ Up. in I. 12. 2–5 compares the procedure of the five priests and the sacrificer touching each other and creeping from the sadas towards the cātvāla where the Bahiṣpavamāna chant is to be sung with a procession of dogs, each dog holding the tail of the preceding dog in his mouth. Vide for the creeping of priests noiselessly and silently Tāṇḍya Brāhmaṇa VI. 7. 9–12 and <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> Śrauta-sūtra XII. 17. 1–4 and <a class="ref" href="../refs/hodh.html#vol II" data-source="hodh" data-ref="vol II" title="History of Dharmaśāstra vol II">H. of Dh. vol II</a>. pp. 1166 and 1169. Though this is so, the Upaniṣads are called Vedānta, are looked upon as orthodox and as the highest end of the Vedic religion and literature. Most ancient Upaniṣads, however, quote Vedic Saṃhitā texts as authoritieṣ For example, <a class="ref" href="../refs/brihadaranyaka.html#I.4.10" data-source="brihadaranyaka" data-ref="I.4.10" title="Bṛhadāraṇyaka Upaniṣad I.4.10">Br. Up. I. 4. 10</a> and Ait. Up. II. 5 quote <a class="ref" href="../refs/rigveda.html#IV.26.1" data-source="rigveda" data-ref="IV.26.1" title="Ṛgveda IV.26.1">Rg. IV. 26. 1</a> and IV. 27. 1 respectively ; <a class="ref" href="../refs/brihadaranyaka.html#II.5.16-17" data-source="brihadaranyaka" data-ref="II.5.16-17" title="Bṛhadāraṇyaka Upaniṣad II.5.16-17">Br. Up. II. 5. 16–17</a> quote <a class="ref" href="../refs/rigveda.html#I.116.12" data-source="rigveda" data-ref="I.116.12" title="Ṛgveda I.116.12">Rg. I. 116. 12</a> and I. 117. 22 and <a class="ref" href="../refs/brihadaranyaka.html#II.5.19" data-source="brihadaranyaka" data-ref="II.5.19" title="Bṛhadāraṇyaka Upaniṣad II.5.19">Br. Up. II. 5. 19</a> cites <a class="ref" href="../refs/rigveda.html#VI.47.18" data-source="rigveda" data-ref="VI.47.18" title="Ṛgveda VI.47.18">Rg. VI. 47. 18</a>; Katha IV. 9 is the same as <a class="ref" href="../refs/atharvaveda.html#X.8.16" data-source="atharvaveda" data-ref="X.8.16" title="Atharvaveda X.8.16">Atharvaveda X. 8. 16</a>, Praśna I. 11 is quoted from <a class="ref" href="../refs/rigveda.html#I.164.12" data-source="rigveda" data-ref="I.164.12" title="Ṛgveda I.164.12">Rg. I. 164. 12</a>. The Muṇḍaka III. 2. 10 provides that brahmavidyā is to be expounded to śrotriyas (those who have studied the Veda). Herein the Upaniṣads rely upon the principle of adhikārabheda.</p>
+<p class="prose" id="p-chapter-xxxiii-tarka-and-dharmashastra-4">One of the oldest philosophical problems is Authority and Reason or to put it in different words, Faith and Reason and there has been throughout the ages a constant struggle between these two. Most men want to rely on some authority, on someone deemed higher than themselveṣ For vast numbers of people this authority or the something greater than themselves is Revelation and Goḍ They have neither the leisure nor the inclination nor the intellectual ability to think for themselves rationally on such abstruse questions as the existence of God or an individual self, free will and determinism, the general principles of conduct, the final destiny of men after physical death &c. In sociological matters human judgement is often warped by prevailing dogmas and prejudices; on questions which are deemed to be religious (and in India the field of matters deemed to be religious has always been very extensive) a frank discussion is almost impossible without creating anger and rancour. Several ethical questions such as divorce and birth control often assume the position of religious dogmas and when openly discussed create great heat. In several so-called democracies of the present day rational discussion comes last and vital questions are determined by party loyalties or by personality cults or by lust for power and self-aggrandisement. It should not be supposed that ancient and medieval India had no rationalists nor atheistṣ As a matter of fact there were several rationalistṣ Vide the present author's note 875 pp. 358-359 in <a class="ref" href="../refs/hodh.html#Vol. II" data-source="hodh" data-ref="Vol. II" title="History of Dharmaśāstra Vol. II">H. of Dh. Vol. II</a>, Vol. III. pp. 46-47 note 57 on Lokāyatas and their views, <sup class="fn-ref"><a href="#fn-chapter-xxxiii-tarka-and-dharmashastra-13" id="fnref-chapter-xxxiii-tarka-and-dharmashastra-13">13</a></sup> and pp. 974-975 note 1596 above for rationalistic criticism of sacrifices, śrāddhas &c. Many rationalists hold that there is no proof of the existence of God, they deny an individual soul, they deny immortality and the existence of any intelligence in the universe higher than man's, deny that there is any design or purpose in the Universe and they believe that in all religions there is some truth mixed with a great deal of error. The case of the rationalist is that he should not be called upon to prove that there is no God ( which is a negative proposition ), that it is for theists to prove that God exists ( which is a positive proposition ) and that he is omnipotent and omniscient. They say that to attribute anger, love, pity to God is to implicitly negative God's omnipotence. The problem of evil in the world is, according to rationalists, a great stumbling block in accepting God as good, kind, all-knowing and all-powerful. The rationalist might agree with the theist that man as an individual depends on something greater than himself that is able to give directions and to punish him for the disobedience of directionṣ For the rationalist it is some kind of community or society in which men live and have their being that is greater than themselveṣ This would be substituting the worship of the human community or of collective human power for the worship of Goḍ What human community is to be in the place of God? Is it to be the whole human race ( now having over two thousand million human beings ) or some big or small groups out of these? There are now two well-defined blocks between whom there is a conflict of ideological ends, viz. the communist block represented by U. S. S. R. and China and the capitalistic block represented by U. S. A., England and several other countries of Europe, and a third unorganized block of countries professing to have no alignment with anyone of the two blockṣ</p>
+<p class="prose" id="p-chapter-xxxiii-tarka-and-dharmashastra-5">In these days Communism is really a form of worship i. e. worship of man or men in place of the worship of Goḍ It may be conceded that probably the masses of the Russian people are far better off in the matter of physical needs than they were in the regime of the Tsarṣ The masses seem to have devotion to Communisṃ But that devotion is more apparent than real, based on the hope of quick gains or the fear of prompt punishment and is the product of rigid State control of education and the environment. The communists have an attractive slogan in the words 'Workers of the world ! unite, you have nothing to lose but your chainṣ' There are also the catchwords 'Dictatorship of the proletariat.' But this ends in fact in a dictatorship of the Communist Party over the proletariat. In return for physical well-being the common people have had to bargain away several freedoms, freedom to think for themselves, freedom of expression, freedom of intercourse with foreigners, freedom to choose their occupation &c. The communists make no secret that they want to bring the whole world under Communisṃ Therefore, they pose that they are the H. D. 185 savours of common men and women throughout the world and they cannot be charged with aggression since they mean to liberate people from the bonds of capitalism or colonialism &c. Their creed is one of fanaticism, of intolerance or hatred of otherṣ The only experiment of a godless society on a large scale was made by the Soviet, but it does not appear to outsiders to have been a happy or successful one. The universal exhibition of portraits of great Soviet leaders (some of whom were declared by successor leaders to be no better than murderers) <sup class="fn-ref"><a href="#fn-chapter-xxxiii-tarka-and-dharmashastra-14" id="fnref-chapter-xxxiii-tarka-and-dharmashastra-14">14</a></sup> proclaims the necessity of worship even in a godless society. Dictators have nationalized not only all the means of the production of wealth but also all the <em>labour</em> in the country. They have established themselves in the place of God and desire to have total control over the bodies and the minds of all their subjectṣ The faith of the communists is that their country is a heaven on earth and one must accept their word for that without wanting to see for one self the real state of thingṣ The Communists have their own special versions of history, economics and science. These one must not questioṇ</p>
+<p class="prose" id="p-chapter-xxxiii-tarka-and-dharmashastra-6">The followers of Judaism, Christianity and Islam (all believing in one God and one Book) did not hesitate for centuries to inculcate their doctrines and practices by terrible persecutions and bloody warṣ This spirit is very shocking to people brought up in <span class="idx-term" data-def="the pursuit of purely secular or wordly happiness is incompatible with the precepts and ideals of Hinduism">Hinduism</span> or Buddhisṃ If Rationalists substitute blocks of humanity or the leaders of such blocks for worship and for argument that the existence of an omnipotent and omniscient Power cannot be proved to the satisfaction of the so-called rationalists, the present writer feels that it is for the good of most societies consisting of millions of common men and women that they believe in God and the individual soul. Most men are influenced to keep to the path of virtue and right by the fear of God, by the prickings of conscience (which is the inner light implanted in man by God), by the fear of public opinion, and by fear of punishment at the hands of the rulers of the State (vide <a class="ref" href="../refs/mb_shantiparva.html" data-source="mb_shantiparva" data-ref="" title="Śāntiparva"><span class="idx-term" data-def="692n-93, (auspicious nimittas ), ( the verse ‘ Guror-apyava-liptasya etc. ), ( on tṛṣṇā ), on ahiṁsā ), (pupils of Vyāsa ); (Pañcarātra-śāstra ex-pounded ), and n., (mentions Dharmaśāstras ), (high...">Śāntiparva</span></a><a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> quoted in <a class="ref" href="../refs/hodh.html#vol III" data-source="hodh" data-ref="vol III" title="History of Dharmaśāstra vol III">H. of Dh. vol III</a>, p. 389 note 619). Those who reject the first of these would have to reject the 2nd also and would have to fall back upon hedonism (the greatest pleasure for themselves) or the idea of greatest good of the greatest number or progress towards some ideal state of society painted by imaginatioṇ The pursuit of purely secular or worldly happi- ness is incompatible with the precepts and ideals of Hinduism and all higher religionṣ Rationalism accepts the postulates which science finds convenient and useful. Though these postulates work well up to certain limits, it must be said that those limits are very narrow. Science aims at establishing general rules or lawṣ From those laws we know only the behaviour of nature and how man can utilize natural forces for realizing human aims; but science does not tell us what those aims should be, it is amoral and not concerned with morals or spirituality. Rationalism appears to smother many experiences of the human mind which are beyond the present machinery of science. When the scientific method is adopted in social studies, there is little to show that it leads to increased wisdom about the values that should be pursueḍ Rationalism insists that all our beliefs ought ultimately to be based on tangible and definite grounds and that modern scientific method is the only reliable method for acquiring knowledge of all kindṣ But there are sub-conscious and non-rational impulses, beliefs and intuitions in men that are held by men to be truer or of a higher order than what is on the rationalistic level (vide W. <span class="idx-term" data-def="William, a. of 'Varieties of religious experience' and of 'Pragmatism'">James</span>' 'Varieties of religious experience' p. 74, eḍ of 1920). It should be the endeavour of leaders of thought in each generation to find out what is essential and vital in tradition (without believing in the infallibility of all traditions) and to present reasoned dogmas which, while retaining the essential elements of tradition, will meet the demands of modern thought and conditions and environment. It is not necessary to say here more about modern rationalisṃ For over two thousand years our ancient writers and smṛtis like those of <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> (XII. 105-106 which are relied upon by Kumārila himself as shown on p. 1261 above) have allowed to tarka a place in the matter of finding out what Dharma is and have been most tolerant of differing views even on fundamental matters as shown above and brought about great changes even in religious rituals, philosophical views, social customs and practices without perpetrating atrocities and indulging in wholesale persecutionṣ A man may be a monotheist, or a polytheist or an image-worshipper, an agnostci, or atheist or an idealist philo- sopher holding ‘nirguna brahma’ as the only reality, yet he may nevertheless be held to be a full Hindu, if he conforms to the general attitude towards Veda and social usageṣ A more radical tolerance than what our people showed throughout the ages is almost unthinkable. Western writers while admitting great tolerance in religious views and practices harp often on the requirements about observing caste rules in matters of food, marriage etc. But caste is more a social institution than a religious one and therefore just as in Western countries there were rules of etiquette and observance (such as the number 13 working on Sabbath and against theatre going, card playing and physical exercise except walk- ing) that had to be observed meticulously, in India caste rules had to be observeḍ Besides, even when caste rules were broken the offender had in a meeting of the caste people to admit his mistake, to pay a fine to the caste or village temple and then was restored to all privileges of the caste. As the Christian churches were extremely intolerant of the slightest departure from religious views held at particular times, there arose in Europe the emphasis on rationalism and freedom to hold opinionṣ Government could effectively mould the opinions of its subjects by controlling education, by censorship of books and by inflicting severe penalties on those who expressed opinions opposed to those espoused by theṃ The Roman Church prepared an Index of forbidden books and an Index expurgatorius (a list of passages to be expunged from books that were otherwise permitted). The first Index Librorum Prohibitorius in its latest edition (before 1949) contains 5000 titleṣ Lecky in his ‘History of the rise and influence of ration- alism in Europe’ <sup class="fn-ref"><a href="#fn-chapter-xxxiii-tarka-and-dharmashastra-15" id="fnref-chapter-xxxiii-tarka-and-dharmashastra-15">15</a></sup> points out to the extirpation of Christianity from Japan, of Protestantism from Spain, of the Huguenots from France, of most Catholics from Englanḍ The Jesuits acted on the <sup class="fn-ref"><a href="#fn-chapter-xxxiii-tarka-and-dharmashastra-16" id="fnref-chapter-xxxiii-tarka-and-dharmashastra-16">16</a></sup> principle that the end justifies the meanṣ Their end was the 'greater glory of God', which meant to them the conversion of peoples and kingdoms to Roman Catholicisṃ Their means included incitements to assassination and to war. It has been mentioned above (p. 483) how <span class="idx-term" data-def="condemned by Churchmen to imprisonment for life at for espousing the Copernican theory, and Kepler practised astrology or countenanced it">Galileo</span> was persecuted for espousing the Copernican theory in astronomy. Not much difference is made to religion whether the Sun revolves round the earth or the earth round the suṇ In this connection it may be pointed out that Āryabhaṭa (born in 476 A. D.) appears to have held the view that the stars did not revolve round the earth, but the latter revolved round itself and gave the illustration of a man sitting in a moving boat feeling that it is the stationary objects on the banks that rush past in the opposite directioṇ<sup class="fn-ref"><a href="#fn-chapter-xxxiii-tarka-and-dharmashastra-17" id="fnref-chapter-xxxiii-tarka-and-dharmashastra-17">17</a></sup> The Pañcasiddhāntikā (13. 6) of Varāhamihira refers to this view and rejects it, not on the ground that it is opposed to the Veda, but on the ground that, if that view were correct, hawks and other birds flying high up in the sky would not be able to come back to their nests without fail. He did not know that the atmosphere also goes with the earth. This was more than eleven hundred years before Galileo and there is nothing to show that Āryabhaṭa suffered in the Āryabhaṭa's view vide 'Āryabhaṭīyam' by W. E. Clark (Chicago, 1930) p. 64. As observed by Archibald Robertson the history of the Rationalist movement in Europe is to a very great extent the history of a fight for the right to hold and propagate opinions unpopular for the time being and the growth of religious toleration in Europe has in fact gone hand in hand with the decay of traditional religious beliefṣ Reason arrives at different conclusions on the same matter in different ages and even in the same age what appears reasonable to one group or people is held to be unreasonable by another people. Vide Robert <span class="idx-term" data-def="Robert, a. of ‘Testament of beauty’ (on what is reasonable)">Bridges</span>' 'Testament of Beauty' Book I lines 465-470 on what is reasonable. Millions of people saw fruits falling from tree tops to the earth, but it was only the intuition and logic of Newton that enabled him to formulate the laws of gravitatioṇ Doubt has been and is a frequent and legitimate attitude of the mind as recognised by the <a class="ref" href="../refs/brihadaranyaka.html#I.5.3" data-source="brihadaranyaka" data-ref="I.5.3" title="Bṛhadāraṇyaka Upaniṣad I.5.3">Br. Up. (I. 5. 3)</a> 'Kāmah, saṅkalpo vicikitsā śrāddha, aśraddhā, dhṛtir adhṛtir hrīr-dhīr-bhīr-etyetat sarvam mana eva' (desire, fancy, doubt, faith, want of faith, steadiness, restlessness, shame, understanding, fear, all these are aspects of mind). Even the <a class="ref" href="../refs/rigveda.html#II.12.5" data-source="rigveda" data-ref="II.12.5" title="Ṛgveda II.12.5">Ṛgveda (II. 12. 5)</a> refers to doubters about Indra (utem-āhur-naisostityenam'). In the Katha Up. Naciketas says "when a man dies there is the doubt, some saying 'he (the self) exists', others saying 'he ceases to exist'" and prays to Yama to resolve that doubt for him as the third booṇ</p>
+<p class="prose" id="p-chapter-xxxiii-tarka-and-dharmashastra-7">Descartes held that only one truth is beyond doubt viz., cogito ergo sum (I think, therefore I am). In Europe the whole of the 18th and 19th centuries were dominated as far as thought- ful men were concerned by boundless faith in reason and progresṣ But owing to the two world wars (particularly the second), their aftermath and the rise of two powerful Communist countries have greatly weakened the faith in progress guided by reason and ethics, faith in the dignity of man and in equality is on the decline and is assailed in many regions and the view that might creates or is right is gaining grounḍ</p>
+<p class="prose" id="p-chapter-xxxiii-tarka-and-dharmashastra-8">The Upaniṣads teach that a sound moral preparation must precede the acquisition of true vedāntic view. The <a class="ref" href="../refs/brihadaranyaka.html" data-source="brihadaranyaka" data-ref="" title="Bṛhadāraṇyaka Upaniṣad">Br. Up.</a> states 'therefore one who knows this, after securing quiescence, restraining his senses, being free from all hankerings, bearing with fortitude all pairs of opposites (such as heat and cold), having his mind concentrated, sees the Self in the self, looks upon everything as Ātman'; the Kathopaniṣad II. 24 says 'one who has not ceased from doing evil actions, who is not quiescent, who has not concentrated his mind nor has made his mind quiescent would not realize this Self by correct knowledge'; Prāśna I. 16 'those secure the pure world of brahman who are free from crookedness, falsehood and deceitful conduct'; Śv. Up. VI. 22 'this highly esoteric knowledge of Vedānta should not be imparted to one whose mind is not quiescent or who is not a son or disciple'. The great formula 'thou art That' teaches one to look upon all men as Ātman or as the <a class="ref" href="../refs/gita.html#VI.29-30" data-source="gita" data-ref="VI.29-30" title="Bhagavadgītā VI.29-30">Gītā (VI. 29-30)</a> puts it 'he who is endowed with Yoga and knows Ātman to be in everything and everything as abiding in Ātman, is not lost to the Lord nor is the Lord lost to him'. Compare Īśā Up. 6 and <a class="ref" href="../refs/manu.html#XII.91.I" data-source="manu" data-ref="XII.91.I" title="Manusmṛti XII.91.I">Manu XII. 91. I</a>n the Chāṇ Up. (III. 16. 1) man is symbolically represented as sacrifice and in III. 17. 4 it is stated that tapas, charity, straightforward conduct, ahimsā and truth-fulness are the dakṣiṇā (sacrificial fees).</p>
+<p class="prose" id="p-chapter-xxxiii-tarka-and-dharmashastra-9">This shows that Vedānta in its highest form is the best support of pure morality for individualṣ It is on account of this teaching that many sages cultivated these virtues in hermitage and were honoured by kings and common people in ancient times in India, but in medieval times the sages became<sup class="fn-ref"><a href="#fn-chapter-xxxiii-tarka-and-dharmashastra-18" id="fnref-chapter-xxxiii-tarka-and-dharmashastra-18">18</a></sup> rare and as regards common people they were tied down by customs and caste and very few people made strenuous efforts for solidarity of all their countrymen, for meeting their common needs and safeguarding all peoples' interests; and by the side of sublime philosophical tenets our country witnessed abject poverty among large masses of people and political domination by alien or brutal invaderṣ The tendency to rely on the Vedas, to believe and to argue that what has been in the best, and to appeal to the past has been very strong throughout our history for centurieṣ Our motto must not be 'back to the Vedas' but rather 'forward with the Vedas'. While giving due weight to the Veda and authority, we must not condemn all independence in thought.</p>
+<p class="prose" id="p-chapter-xxxiii-tarka-and-dharmashastra-10">Some Western rationalists such as Bentham, James Mill and John S. Mill put forward the theory of utilitarianism which briefly comes to this that actions are to be judged by their consequences and are right in proportion as they tend to make for the greatest good or happiness of the community or of the greatest number. This theory has great drawbacks, the most important being that it is not really a moral theory at all as it does not tell us exactly what a man or community ought to do. Religions tell their followers what they ought to do or not to do. Another difficulty is that what may appear to one man as being for the greatest good of the greatest number may not be so accepted by others and further it is difficult to define what the greatest number regards as good or happinesṣ Besides, many men care nothing at all about the happiness of otherṣ Moral, political and economic actions are confused by this doctrine. In practice, as the emphasis was put on happiness, this theory was made the excuse for epicurianism and indulgence in things material.</p>
+<p class="prose" id="p-chapter-xxxiii-tarka-and-dharmashastra-11">The present author is not at all against freedom of thought, but what he objects to is making a fetish of rationalism and making millions of common men and women waver in their faith and principles of conduct by the constant talk of the non-existence of God or of the individual soul &c. The rationalists and utilitarians hardly agree upon any values and principles of conduct to be inculcated among ordinary young men and womeṇ If God and soul be eliminated, they have not been able to put something more valuable in their place, for which the young generation that is growing up would be ready to live laborious days or to sacrifice themselveṣ Though we may not subscribe to the position that the last word of wisdom on all religious and social matters is to be found in the Veda or in the works of ancient sages and writers, even wise men may hesitate before they decide the question whether we should carry on a campaign for eradicating beliefs in God and an immortal self. The <a class="ref" href="../refs/gita.html" data-source="gita" data-ref="" title="Bhagavadgītā">Gītā</a> strikes the right note for most people when it utters the warning (III. 26) ‘let not the knowing or wise man (the jñānin or vidvān) unsettle the minds of the ignorant that are attached to (certain) actions (by habit); the enlightened man, himself doing all work in the true spirit of a yogin, should set others to do all actionṣ’</p>
+<p class="prose" id="p-chapter-xxxiii-tarka-and-dharmashastra-12">As a result of the two world wars in which unspeakable atrocities and barbarities <sup class="fn-ref"><a href="#fn-chapter-xxxiii-tarka-and-dharmashastra-19" id="fnref-chapter-xxxiii-tarka-and-dharmashastra-19">19</a></sup> were committed by highly educated and organized countries most of whose people professed Christianity, there is a revulsion of feeling and several eminent men are busy in attributing the present difficulties to the decay of religious belief and in inviting humanity to return to religioṇ But the crux of the problem is what religious beliefs and practices are to be inculcated and practised by men in the present age. It appears to the present writer that religions can hardly be a panacea for the ills of the worlḍ Very large blocks of modern educated men are dissatisfied with the tenets and practices of several current religions and their authorita-tive bookṣ The real difficulty to be grappled with is to define what must be the content of the faith that would appeal to and secure the allegiance of most or all good, intellectual and educated modern meṇ At different times different virtues (such as monachism, charity, humility, patriotism, social service or philanthropy) were preached as of supreme import- ance. The growth of the virtue of patriotism and of the feeling of nationalism in Western countries was not due to Christianity's teachings but to various other causes in Europe's political and economic history. There are religious virtues, heroic virtues, amiable virtues &c. The Christian people of Europe and America during the last four centuries achieved great wealth and prosperity by throwing to the winds the virtues preached in the Sermon on the Mount, by extending their colonial empires for exploiting vast regions, by decimating millions of unoffend- ing backward races, by hunting human beings as if they were beasts and forcing on them slavery and by preaching from the house tops the great need of competition in all spheres and worshipping it as if it were Goḍ After the holocaust of the great wars, many eminent men, not only religious men, but even those that occupy positions in Government and political life, preach the necessity of the moral sense, of benevolence and kindness towards others, restraint, unselfishness and a desire to allow others to share in the good things of life, which virtues were emphasized for all men in the <a class="ref" href="../refs/brihadaranyaka.html#V.2" data-source="brihadaranyaka" data-ref="V.2" title="Bṛhadāraṇyaka Upaniṣad V.2">Br. Up. V. 2</a>, 1-3 quoted above.<sup class="fn-ref"><a href="#fn-chapter-xxxiii-tarka-and-dharmashastra-20" id="fnref-chapter-xxxiii-tarka-and-dharmashastra-20">20</a></sup></p>
+<p class="prose" id="p-chapter-xxxiii-tarka-and-dharmashastra-13">In India Emperor Asoka in the 3rd century B. C. inculcated in his Edicts tolerance for the Brahmanic and the Buddhist faith (vide pp. 1011-12 above). Asoka does not enter into dogma of any kind, but regarding himself as the father of all his subjects enjoins on them a morality that is practical and would be acceptable to all, such as tolerance, humanity, charity to monks and also to the poor and compassionate towards dumb animalṣ Later on, it was at the most necessary to show that the doctrines put forth by reasoning were not directly opposed to the dicta of the Veda. To take only one example: though the Upaniṣads express Advaita in such Mahāvākyas ‘aham brahmāsmi’ (Ch. Up. III. 14. 1), ‘tat-tvam-asi’ (Ch. Up. VI. 8. 7), Madhvācārya could expound his thorough-going dvaita doctrine, could explain away by reasoning the above passages and claim to be the only true expounder of Veda and denounce the advaita doctrine as Buddhism in disguise without any serious persecution on either side. <a class="ref" href="../refs/yajnavalkya.html#II.192" data-source="yajnavalkya" data-ref="II.192" title="Yājñavalkya II.192">Yājñavalkya (II. 192)</a> calls upon the king to safeguard the special usages of guilds and heretics and their modes of livelihooḍ This tolerance for multiplicity of forms and practices in religion and for diametrically opposed philosophic views has had also its weakness viz. it permitted the growth of endless variations in the formulation of faith, ritual and philosophic doctrines and led in great measure to several abuses, to some unhealthy and even revolting practiceṣ</p>
+<aside class="footnotes-section" aria-label="Footnotes">
+<hr>
+<ol class="footnotes-list">
+<li id="fn-chapter-xxxiii-tarka-and-dharmashastra-1" class="footnote-item">Some works read the verse as 'Purāṇa-tarka-mīmāmsā'; vide note 1337 for the verse. <a href="#fnref-chapter-xxxiii-tarka-and-dharmashastra-1" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxiii-tarka-and-dharmashastra-2" class="footnote-item"><span class="devanagari">अथातो धर्मं व्याख्यास्यामः । यतोऽभ्युदयनिःश्रेयससिद्धिः स धर्मः । द्रव्यगुणकर्मसामान्यविशेषसमवायानां पदार्थानां साधर्म्यवैधर्म्याभ्यां तत्त्वज्ञानं नि</span>:<span class="devanagari">श्रेयसहेतुः । वैशेषिकसूत्र</span> I. 1. 2 and 4; <span class="devanagari">प्रमाणप्रमेयसंशयप्रयोजन</span>-<span class="devanagari">दृष्टान्त</span>-<span class="devanagari">सिद्धान्तावयवतर्क</span>-<span class="devanagari">निर्णय</span>-<span class="devanagari">वादजल्पवितण्डाहेत्वाभासच्छलजातिनिग्रहस्थानानां तत्त्वज्ञानान्निःश्रेयसाधिगमः । न्यायसूत्र</span> I. 1. 1. The word <span class="devanagari">नि</span>:<span class="devanagari">श्रेयस</span> occurs in '<span class="devanagari">अचक्षुरो</span>' (a long sūtra) in <span class="devanagari">प्रा</span>. and in <span class="devanagari">कौषीतकउपनिषद्</span> II. 14 and III. 2. <a href="#fnref-chapter-xxxiii-tarka-and-dharmashastra-2" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxiii-tarka-and-dharmashastra-3" class="footnote-item"><span class="devanagari">नैषा तर्केण मतिरापनेया प्रोक्तांन्येनैव सुज्ञानाय श्रेष्ठा । कठोप</span>. II. 9 q. by <span class="devanagari">शङ्कराचार्य</span> in <span class="devanagari">भाष्य</span> on <span class="devanagari">बे</span>. <span class="devanagari">सू</span>. II. 1. 6. The previous verse ends with the words '<span class="devanagari">अणीयानण्वत्तर्क्यमणुप्रमाणात्</span>.' <span class="devanagari">आपनेय</span> is an irregular form for <span class="devanagari">आपनीय ।</span> (<span class="devanagari">आपृ</span> + <span class="devanagari">अनीम्</span>) or for <span class="devanagari">अपनेय</span> (from <span class="devanagari">नी</span> with <span class="devanagari">अप्</span>). <a href="#fnref-chapter-xxxiii-tarka-and-dharmashastra-3" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxiii-tarka-and-dharmashastra-4" class="footnote-item"><span class="devanagari">अध्यात्मात्प्रभुत्वम् । अतः पराऽस्य धारणा सात्परसमाप्तिरीषणाबहुस्रानःप्राण</span>-<span class="devanagari">निरोधनाद् ब्रह्म तर्केण पश्यति । मैत्र</span>. <span class="devanagari">उप</span>. VI, 20. <a href="#fnref-chapter-xxxiii-tarka-and-dharmashastra-4" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxiii-tarka-and-dharmashastra-5" class="footnote-item"><span class="devanagari">श्रुतिरापि</span> ‘<span class="devanagari">ओत्पत्स्ये मत्स्यस्य</span>’ <span class="devanagari">इति अवश्रवणव्यतिरेकेण मनने विषयी तर्कमत्र</span>- <span class="devanagari">वादवन्यं दुर्शेर्व्याप्यते</span> (this is <span class="devanagari">पूर्वपक्ष</span> in <span class="devanagari">भाष्य</span> on <span class="devanagari">दे</span>. <span class="devanagari">सू</span>. II, I, 4); to this the <span class="devanagari">भाष्य</span> replies ‘<span class="devanagari">यदापि श्रवणव्यतिरेकेण मनने विषयी तत्कर्मणन ततकर्मणन ततकर्मणनं ततकर्मणनं लानेन निरूपण युक्तकर्तास्यात्वालाभः सम्भवति । श्रुत्वाद्गृहाणतत्त्ववा</span>- <span class="devanagari">कीयते ।</span>. The following sentence in the <span class="devanagari">भाष्य</span> cites three examples of inferences not opposed to śruti. <a href="#fnref-chapter-xxxiii-tarka-and-dharmashastra-5" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxiii-tarka-and-dharmashastra-6" class="footnote-item"><span class="devanagari">व्याप्तिनिमे तर्कोऽयगणयः । तेनाभूतं यथारथनं गमेत् । मो</span>. <span class="devanagari">अ</span>. <span class="devanagari">सू</span>. II 23-24. <a href="#fnref-chapter-xxxiii-tarka-and-dharmashastra-6" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxiii-tarka-and-dharmashastra-7" class="footnote-item"><span class="devanagari">तर्कोऽतिष्कः ।</span> … <span class="devanagari">पञ्चमाः । वनपर्व</span> 313, 117 (Chitrashala eḍ whole verse is ṇ 2072). Some mss read <span class="devanagari">नेको मुनिर्यस्य</span>. The sūtra <span class="devanagari">तर्कोऽप्रतिष्ठानः श्रुत्यादिभ्यः</span> (<span class="devanagari">दे</span>. <span class="devanagari">सू</span>. II. I.11) seems to echo the words of <span class="devanagari">वनपर्व</span>. Vide H. of Dh. vol. III. p. 860 n, 1667, where <span class="devanagari">नेकाधिपि</span> on <span class="devanagari">मनु</span>. II. 1 refers to '<span class="devanagari">मनुः</span> … <span class="devanagari">पच्यमाः</span>' as a <span class="devanagari">न्याय</span>. <a href="#fnref-chapter-xxxiii-tarka-and-dharmashastra-7" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxiii-tarka-and-dharmashastra-8" class="footnote-item"><span class="devanagari">प्रत्यक्षममानं च शास्त्रं च विविधागमाद । यै</span>- <span class="devanagari">राघे धर्मोपदेशा वा द्वेषभाषाविराधिना । यस्तर्केणानुसन्धत्ते स धर्म वेद नेतरः । मनु</span>. XII. 105, 106, relied upon by <span class="devanagari">शङ्कराचार्य</span> in <span class="devanagari">भाष्य</span> on <span class="devanagari">दे</span>. <span class="devanagari">सू</span>. II. I, 11. <a href="#fnref-chapter-xxxiii-tarka-and-dharmashastra-8" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxiii-tarka-and-dharmashastra-9" class="footnote-item">Pascal quoted in 'This I believe' edited by E. P. Morgan (London, 1953) on p. 60 says 'The heart has its reasons which reason does not understanḍ' <a href="#fnref-chapter-xxxiii-tarka-and-dharmashastra-9" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxiii-tarka-and-dharmashastra-10" class="footnote-item"><span class="devanagari">अचिन्त्याः खलु ये भावा न तांस्तर्केण योजयेत्। प्रकृतिभ्यः परं यच्च तदचिन्त्यस्य लक्षणम्। श्रीष्मपर्व</span> 5. 12, q. by <span class="devanagari">शङ्कराचार्य</span> on <span class="devanagari">वे</span>. <span class="devanagari">सू</span>. II. 1. 6. This also occurs in <span class="devanagari">मत्स्य</span> 113. 6, <span class="devanagari">पद्म</span> ( <span class="devanagari">आदि</span> I. 13. 7-8, <span class="devanagari">ब्रह्माण्ड</span> reads <span class="devanagari">तदचिन्त्यं प्रचक्षते</span> and some read <span class="devanagari">साधयेत्</span> for <span class="devanagari">योजयेत्</span>. <span class="devanagari">प्रकृति</span> would mean material cause. The <span class="devanagari">मत्स्य</span> (Anaṇ eḍ) reads <span class="devanagari">अचिन्त्याः</span> ... <span class="devanagari">तांस्तु तर्केण साधयेत्</span>, thus reversing the position adopted by otherṣ <a href="#fnref-chapter-xxxiii-tarka-and-dharmashastra-10" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxiii-tarka-and-dharmashastra-11" class="footnote-item"><span class="devanagari">तत्प्रसादोत्थेषु विद्या धर्मीधर्मविनिश्चये। दृढिभास्याथ लोकसिद्धिमार्ग ङ्कडावत्मा ॥ शान्तिपर्व</span> 141. 102 = cr, eḍ chap. 139. 94. <a href="#fnref-chapter-xxxiii-tarka-and-dharmashastra-11" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxiii-tarka-and-dharmashastra-12" class="footnote-item"><span class="devanagari">वेबरु हि निरेका सार्थ प्रामाण्यं स्वेखि स्वविषये । युक्त्यवष्टा म मूलान्तरात् । तस्माद्देवेदिके विषये स्वल्पत्वकंशोवबोध मसकृत् । न तु वाक्यादत्युत्पत्तिरुपपद्यते चेति विमत्पिः । यदि केन चित्प्रमाणकेनेव मर्यादितेन तर्कविवादतम् श्रुति सर्वेलात्किकैः परिशुद्धौ येन तदीयं मतं सम्यज्ञानामिति प्रतिपद्यते । शाङ्करभाष्य</span> on <span class="devanagari">बे</span>. <span class="devanagari">सु</span>. II, 1, 11. <a href="#fnref-chapter-xxxiii-tarka-and-dharmashastra-12" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxiii-tarka-and-dharmashastra-13" class="footnote-item">For Lokāyata or Laukāyatika, vide the work Tattvopaplava-siṁha of Jayarāśibhaṭṭa (GOS). The word Lokāyata occurs in the gaṇa Ukthādi mentioned in Pāṇini ‘Kratukthādi-sūtrāntāṭ-ṭhaq’ IV. 2. 60. Vide Dr. Dakshinaranjan <span class="idx-term" data-def="Dr. Daksinaranjan, a. of 'Short History of Indian Materialism'">Shastri</span>’s ‘Short History of Indian Materialism’ (Calcutta, 2nd eḍ of 1957) and pp. 1205-6 note 1956 above. <a href="#fnref-chapter-xxxiii-tarka-and-dharmashastra-13" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxiii-tarka-and-dharmashastra-14" class="footnote-item">Those interested in this phase of Communism should read 'Kruschev and Stalin's Ghost' by Bertram De Wolfe (1957); pp. 88-252 contain on even pages Kruschchev's secret report to 20th Congress on the night of February 24, 25 in 1956, translated into English and odd pages contain notes and commentaries by the author. On p. 91 note it is stated that Stalin placed the number of <em>Kulaks</em> disposed of at one crore. Vide 'Assignment in Utopia' by E. Lyon (1937) for the horrors in Russia before 1934 and 'Communist China to-day' by S. Chandrasekhara, Asia Publishing House, Bombay, 1961 for the present state of morals in China. <a href="#fnref-chapter-xxxiii-tarka-and-dharmashastra-14" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxiii-tarka-and-dharmashastra-15" class="footnote-item">Vide Lecky’s work, vol. II p. 5 for these instances (eḍ of 1890). The Toleration Act (1689) in England expressly excluded Catholics and Unitarians from the benefits of the Act. In 1401 the English Parliament passed the statute for the burning of heretics which was not repealed until the Stuarts came back. Vide ‘Conscience and Liberty’ by Robert S. W. Pollard (1940) pages 46-48, for harsh laws in force in England a little over one hundred years ago against non-Conformists and Roman Catholicṣ <a href="#fnref-chapter-xxxiii-tarka-and-dharmashastra-15" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxiii-tarka-and-dharmashastra-16" class="footnote-item">Vide ‘Rationalism in Theory and Practice’ by Archibald Robert- son (pub. by Watts & Co., 1954 ) p. 57 for the Jesuitṣ Vide p. 59 of the (Continued on next page) <a href="#fnref-chapter-xxxiii-tarka-and-dharmashastra-16" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxiii-tarka-and-dharmashastra-17" class="footnote-item"><span class="devanagari">अचलानि भानि अचलप्रतिमानि</span> '<span class="devanagari">स्थिरानि नक्षत्राणि ।</span>' <span class="devanagari">आर्यभटीय</span>, <span class="devanagari">गोलपाद</span> verse 9, <a href="#fnref-chapter-xxxiii-tarka-and-dharmashastra-17" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxiii-tarka-and-dharmashastra-18" class="footnote-item">Even in these days our country can produce men imbued with the true spirit of Advaita-vedānta like Raman Maharshi, the sage of Arunachala (1879-1950) about whom Arthur <span class="idx-term" data-def="Arthur, work of, on ‘Raman Maharshi’">Osborne</span> has published a very interesting and revealing work 'Raman Maharshi and the path of Self-knowledge' (Rider and Co, 1954). <a href="#fnref-chapter-xxxiii-tarka-and-dharmashastra-18" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxiii-tarka-and-dharmashastra-19" class="footnote-item">Vide ‘Scourge of the Svastika’ by Lord Russell of Liverpool p. 171 where he cites the confession of Höss that not less than three million people were put to death at Auschwitz, 2500000 of them by gas chambers and on p. 250 he remarks ‘the murder by the Germans of over five million European <span class="idx-term" data-def="persecution of, murder of five million J. by Germans in the 2nd World War constitutes the greatest crime in world history">Jews</span> constitutes the greatest crime in World History.’ <a href="#fnref-chapter-xxxiii-tarka-and-dharmashastra-19" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxiii-tarka-and-dharmashastra-20" class="footnote-item">Archibald Robertson in "Rationalism in theory and Practice" (Watts and co, London 1954) asserts (on page 41) that Christian morals have never been practised and that a society would not last for a month if run on the lines of the Sermon on the Mount. W. R. Mathews in 'Christ' (London, 1939) agrees (on page 76) with Professor Whitehead that the adop- tion of the principles of the Sermon on the Mount literally understood on any large scale would mean the sudden death of civilizatioṇ C. H. Tawney in 'Acquisitive Society' (1921) asserts that what was Christian in Christianity had largely disappeared from about 1700 A. D. (pages 12-13). H. D. 186 <a href="#fnref-chapter-xxxiii-tarka-and-dharmashastra-20" class="fn-back" aria-label="Back to text">↩</a></li>
+</ol>
+</aside>
+
+            <div class="chapter-nav">
+                <a href="chapter-xxxii-yoga-and-dharmashastra.html" class="nav-prev"><i class="fa-solid fa-chevron-left"></i> Chapter XXXII. Yoga and Dharmashastra</a>
+                <a href="chapter-xxxiv-cosmology.html" class="nav-next">Chapter XXXIV. Cosmology <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </main>
+    </div>
+
+    <button class="toc-mobile-toggle" onclick="toggleMobileToc()" aria-label="Table of contents">
+        <i class="fa-solid fa-list"></i>
+    </button>
+
+    
+    <footer class="container-fluid pt-4" style="background-color:#2e4144">
+        <div class="row border-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img src="https://sanatana.in/mbta/public/images/Homepage_html/images/layer_8.png" alt="">
+            </div>
+            <div class="col-md-5 text-white">
+                <p>The divine knowledge and wisdom of our shastras is the only thing eternal,
+                   which was and which will remain ever-present in this gods creation.
+                   Our endeavours are to preserve this knowledge.</p>
+            </div>
+            <div class="col-md-1 text-white">
+                <div class="d-flex" style="height: 75px;">
+                    <div class="vr"></div>
+                </div>
+            </div>
+            <div class="col-md-3 text-white">
+                <i class="fa-solid fa-globe"></i>&emsp;
+                <a href="https://sanatanasampatti.in" class="text-light">www.sanatanasampatti.in</a><br>
+                <i class="fa-solid fa-envelope"></i>&emsp;
+                <a href="" class="text-light">sriranga.yoga@gmail.com</a>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center py-3 mb-4 align-items-center border-bottom">
+            <div class="col-md-2 text-white fs-4 text-center">Project</div>
+            <div class="col-md-2 text-white fs-4 text-center">Our Mission</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contribute</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contact Us</div>
+        </div>
+        <div class="row">
+            <p class="col-md-6 fs-6 text-start text-light">
+                <small>&copy; 2026 Sanatanasampatti</small>
+            </p>
+            <p class="col-md-6 fs-6 text-end text-light">
+                <a class="text-white" rel="nofollow" href="http://www.srirangadigital.com" target="_blank">
+                    <img src="https://sanatana.in/mbta/public/images/logo.png" alt="sriranga logo" />
+                    <small>Designed, Developed and Maintained by Sriranga Digital</small>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        const headings = [];
+        tocLinks.forEach(link => {
+            const id = link.getAttribute('href').substring(1);
+            const el = document.getElementById(id);
+            if (el) headings.push({ el: el, link: link.parentElement });
+        });
+
+        function onScroll() {
+            let current = null;
+            for (const h of headings) {
+                const rect = h.el.getBoundingClientRect();
+                if (rect.top <= 120) current = h;
+            }
+            tocLinks.forEach(l => l.parentElement.classList.remove('active'));
+            if (current) current.link.classList.add('active');
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    });
+
+    function toggleMobileToc() {
+        const toc = document.getElementById('toc');
+        if (!toc) return;
+        if (toc.style.display === 'block') {
+            toc.style.display = '';
+            toc.style.position = '';
+        } else {
+            toc.style.display = 'block';
+            toc.style.position = 'fixed';
+            toc.style.top = '0';
+            toc.style.left = '0';
+            toc.style.width = '80vw';
+            toc.style.maxWidth = '320px';
+            toc.style.height = '100vh';
+            toc.style.maxHeight = '100vh';
+            toc.style.zIndex = '2000';
+            toc.style.background = 'var(--parchment)';
+            toc.style.boxShadow = '4px 0 20px rgba(0,0,0,0.2)';
+            toc.style.padding = '24px';
+            toc.style.overflowY = 'auto';
+        }
+    }
+    </script>
+
+    <script>
+    function toggleSynopsisAudio(btn) {
+        var audio = btn.parentElement.querySelector('audio');
+        if (!audio.src) audio.src = btn.getAttribute('data-src');
+        if (audio.paused) {
+            audio.play();
+            btn.classList.add('playing');
+            btn.querySelector('i').className = 'fa-solid fa-pause';
+        } else {
+            audio.pause();
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        }
+        audio.onended = function() {
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        };
+        // Prevent click from toggling the synopsis open/close
+        event.stopPropagation();
+    }
+    </script>
+</body>
+</html>

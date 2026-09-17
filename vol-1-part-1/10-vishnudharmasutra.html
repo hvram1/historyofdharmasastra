@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- MDB UI Kit -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/fonts.css?v=1.2">
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/navbar.css?v=2.4">
+
+    <title>10. Vishnudharmasutra — Volume I: Part I — History of Dharmaśāstra</title>
+    <style>
+    :root {
+        --saffron:        #D4600A;
+        --saffron-light:  #F0924A;
+        --saffron-wash:   rgba(212, 96, 10, 0.07);
+        --indigo:         #2E5FA3;
+        --indigo-dark:    #1C3D70;
+        --maroon:         #7A1E1E;
+        --amber:          #C97A1A;
+        --ink:            #1A1209;
+        --ink-secondary:  #4A3B2A;
+        --parchment:      #FDFAF4;
+        --parchment-mid:  #F5EFE2;
+        --rule:           rgba(180, 130, 60, 0.22);
+        --shadow:         0 2px 18px rgba(90, 50, 10, 0.08);
+        --font-devanagari: 'Tiro Devanagari Sanskrit', 'Siddhanta', 'Noto Sans Devanagari', serif;
+        --font-roman:      'Junicode', Georgia, serif;
+    }
+
+    body {
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: var(--font-roman);
+    }
+
+    .devanagari {
+        font-family: var(--font-devanagari);
+    }
+
+    /* ── Navbar overrides ── */
+    .navbar-ontop { z-index: 1031; }
+    .hdclr { color: var(--saffron); }
+    .engpara { font-family: 'Open Sans', sans-serif; }
+
+    /* ── Layout ── */
+    .dh-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .dh-content {
+        flex: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        background: var(--parchment);
+        box-shadow: var(--shadow);
+        min-height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        .dh-content { padding: 24px 20px; }
+        .dh-wrapper { flex-direction: column; }
+    }
+
+    /* ── TOC Sidebar ── */
+    .toc-sidebar {
+        position: sticky;
+        top: 80px;
+        width: 280px;
+        min-width: 280px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding: 20px 16px;
+        margin-right: 24px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        scrollbar-width: thin;
+    }
+
+    .toc-title {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--saffron-light);
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list li {
+        padding: 4px 0;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-list li.toc-l3 {
+        padding-left: 16px;
+        font-size: 0.78rem;
+    }
+
+    .toc-list li a {
+        color: var(--ink-secondary);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .toc-list li a:hover { color: var(--saffron); }
+
+    .toc-list li.active {
+        border-left-color: var(--saffron);
+    }
+
+    .toc-list li.active a {
+        color: var(--saffron);
+        font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-sidebar { display: none; }
+    }
+
+    /* ── Mobile TOC Toggle ── */
+    .toc-mobile-toggle {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1050;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--saffron);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-mobile-toggle { display: block; }
+    }
+
+    /* ── Section Headings ── */
+    .section-heading {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        margin: 48px 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--rule);
+        letter-spacing: 0.5px;
+        scroll-margin-top: 80px;
+    }
+
+    h2.section-heading { font-size: 1.6rem; }
+
+    h3.section-heading {
+        font-size: 1.25rem;
+        border-left: 4px solid var(--saffron-light);
+        border-bottom: none;
+        padding: 8px 16px;
+        background: var(--saffron-wash);
+        border-radius: 0 5px 5px 0;
+    }
+
+    /* ── Prose ── */
+    .prose {
+        font-family: var(--font-roman);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+        color: var(--ink);
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    .prose em { color: var(--maroon); }
+
+    .prose:target {
+        background: rgba(212, 96, 10, 0.12);
+        border-left: 4px solid var(--saffron);
+        padding-left: 16px;
+        margin-left: -20px;
+        border-radius: 0 6px 6px 0;
+        animation: target-pulse 2s ease-out;
+    }
+
+    @keyframes target-pulse {
+        0%   { background: rgba(212, 96, 10, 0.30); }
+        100% { background: rgba(212, 96, 10, 0.12); }
+    }
+
+    /* ── Footnote References ── */
+    .fn-ref {
+        font-size: 0.75em;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    .fn-ref a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 0 2px;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: color 0.15s;
+    }
+
+    .fn-ref a:hover { color: var(--indigo); }
+
+    /* ── Synopsis Box ── */
+    .synopsis-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron-light);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .synopsis-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .synopsis-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .synopsis-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .synopsis-box.open .synopsis-toggle i {
+        transform: rotate(90deg);
+    }
+    .synopsis-body {
+        display: none;
+        padding: 0 20px 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+    }
+    .synopsis-box.open .synopsis-body { display: block; }
+    .synopsis-body p { margin: 0; }
+    .synopsis-attribution {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: var(--ink-secondary);
+        opacity: 0.7;
+        font-style: italic;
+    }
+    .synopsis-audio {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    .synopsis-play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--saffron);
+        background: none;
+        color: var(--saffron);
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: background 0.2s, color 0.2s;
+        padding: 0;
+    }
+    .synopsis-play-btn:hover {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn.playing {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn i { padding-left: 2px; }
+
+    /* ── Index Terms Panel ── */
+    .index-terms-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .index-terms-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .index-terms-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .index-terms-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .index-terms-box.open .index-terms-toggle i {
+        transform: rotate(90deg);
+    }
+    .index-terms-body {
+        display: none;
+        padding: 0 20px 16px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .index-terms-box.open .index-terms-body { display: block; }
+    .index-terms-dl {
+        margin: 0;
+        padding: 0;
+    }
+    .index-terms-dl dt {
+        font-family: var(--font-roman);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+        margin-top: 8px;
+    }
+    .index-terms-dl dd {
+        margin: 2px 0 0 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        color: var(--ink-secondary);
+        line-height: 1.5;
+    }
+    .nyaya-heading {
+        font-family: var(--font-roman);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        margin: 16px 0 4px;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+    }
+
+    /* ── Inline Index Popovers ── */
+    .idx-term {
+        border-bottom: 1px dotted var(--saffron-light);
+        cursor: help;
+        position: relative;
+    }
+    .idx-term:hover::after {
+        content: attr(data-def);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        background: rgba(44, 36, 22, 0.92);
+        color: #F5ECD8;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        max-width: 280px;
+        z-index: 100;
+        white-space: normal;
+        line-height: 1.4;
+        pointer-events: none;
+    }
+
+    /* ── Structured Version Banner ── */
+    .structured-banner {
+        margin: 0 0 28px;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, rgba(212, 96, 10, 0.06) 0%, rgba(212, 96, 10, 0.02) 100%);
+        border: 1px solid var(--saffron-light);
+        border-radius: 6px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        color: var(--ink-secondary);
+        line-height: 1.6;
+    }
+    .structured-banner i { color: var(--saffron); margin-right: 4px; }
+    .structured-banner a { color: var(--indigo); font-weight: 600; text-decoration: none; }
+    .structured-banner a:hover { text-decoration: underline; }
+
+    /* ── Footnotes Section ── */
+    .footnotes-section {
+        margin: 32px 0 48px;
+        padding: 20px 24px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .footnotes-section hr {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 0 0 16px;
+    }
+
+    .footnotes-list {
+        padding-left: 24px;
+        margin: 0;
+    }
+
+    .footnote-item {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+        scroll-margin-top: 80px;
+    }
+
+    .footnote-item:target {
+        background: rgba(212, 96, 10, 0.1);
+        border-radius: 4px;
+        padding: 4px 6px;
+        margin-left: -6px;
+    }
+
+    .fn-back {
+        color: var(--saffron-light);
+        text-decoration: none;
+        font-size: 0.85em;
+        margin-left: 4px;
+    }
+
+    .fn-back:hover { color: var(--saffron); }
+
+    /* ── Reference Links ── */
+    a.ref {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: all 0.15s;
+    }
+
+    a.ref:hover {
+        color: var(--saffron);
+        border-bottom-style: solid;
+    }
+
+    a.mbta-ext {
+        color: var(--indigo);
+        font-size: 0.7em;
+        margin-left: 2px;
+        opacity: 0.5;
+        text-decoration: none;
+        vertical-align: super;
+    }
+    a.mbta-ext:hover { opacity: 1; color: var(--saffron); }
+
+    /* ── References Panel (sidebar) ── */
+    .refs-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .refs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .refs-list li {
+        padding: 3px 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .ref-source-link {
+        font-weight: 600;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .ref-source-link:hover {
+        text-decoration: underline;
+    }
+
+    .ref-verse-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.76rem;
+    }
+
+    .ref-verse-link:hover {
+        text-decoration: underline;
+        color: var(--saffron);
+    }
+
+    .ref-verses {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Timeline panel ── */
+    .timeline-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .timeline-list li {
+        padding: 2px 0;
+        font-size: 0.76rem;
+        line-height: 1.4;
+        position: relative;
+        padding-left: 14px;
+    }
+
+    .timeline-list li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--saffron);
+    }
+
+    .timeline-list li.tl-approximate::before {
+        background: transparent;
+        border: 2px solid var(--saffron);
+        width: 4px;
+        height: 4px;
+    }
+
+    .timeline-list li.tl-century::before {
+        background: transparent;
+        border: 2px dashed var(--saffron);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+
+    .tl-dot-link {
+        text-decoration: none;
+        color: var(--ink);
+        display: block;
+    }
+
+    .tl-dot-link:hover {
+        color: var(--saffron);
+    }
+
+    .tl-year {
+        font-weight: 600;
+        color: var(--saffron);
+        font-size: 0.72rem;
+        min-width: 70px;
+        display: inline-block;
+    }
+
+    .tl-label {
+        color: var(--ink-secondary);
+        font-size: 0.72rem;
+    }
+
+    .tl-view-link, .tl-more {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.72rem;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .tl-view-link:hover, .tl-more:hover {
+        text-decoration: underline;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+
+    .breadcrumb-bar a {
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+
+    .breadcrumb-bar .sep {
+        color: var(--amber);
+        margin: 0 8px;
+    }
+
+    .breadcrumb-bar .current {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Chapter Navigation ── */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        margin-top: 48px;
+        border-top: 2px solid var(--rule);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .chapter-nav a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        transition: all 0.2s;
+        max-width: 45%;
+    }
+
+    .chapter-nav a:hover {
+        background: var(--saffron-wash);
+        border-color: var(--saffron-light);
+    }
+
+    .nav-prev { text-align: left; }
+    .nav-next { text-align: right; margin-left: auto; }
+
+    .page-range {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+    }
+
+    /* ── Volume Cards (Landing) ── */
+    .vol-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .vol-card {
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        transition: all 0.25s;
+    }
+
+    .vol-card:hover {
+        border-color: var(--saffron-light);
+        box-shadow: 0 4px 24px rgba(212, 96, 10, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .vol-num {
+        font-family: var(--font-roman);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--saffron);
+        margin-bottom: 8px;
+    }
+
+    .vol-subtitle {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        line-height: 1.5;
+        flex: 1;
+    }
+
+    .vol-chapters {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        margin-top: 12px;
+    }
+
+    /* ── Chapter Cards (Volume Index) ── */
+    .chapter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .chapter-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .chapter-card:hover {
+        border-color: var(--saffron-light);
+        background: var(--saffron-wash);
+    }
+
+    .card-num {
+        font-family: var(--font-roman);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--saffron);
+        min-width: 36px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        flex: 1;
+    }
+
+    .card-pages {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        color: var(--ink-secondary);
+    }
+
+    /* ── Landing Hero ── */
+    .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-family: var(--font-roman);
+        font-size: 2.4rem;
+        color: var(--saffron);
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .hero .devanagari-title {
+        font-family: var(--font-devanagari);
+        font-size: 1.8rem;
+        color: var(--ink);
+        margin-bottom: 16px;
+    }
+
+    .hero .author {
+        font-family: var(--font-roman);
+        font-size: 1.1rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .hero .desc {
+        font-family: var(--font-roman);
+        font-size: 1rem;
+        color: var(--ink-secondary);
+        line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer { margin-top: 48px; }
+</style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mbta/">
+      <div class="container-fluid">&emsp;&emsp;
+      <a href="../index.html" class="navbar-brand" style="text-decoration:none;">
+        <span class="devanagari ms-3" style="font-size:1.5rem; color:var(--saffron); font-weight:700;">धर्मशास्त्रम्</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="../index.html">धर्मशास्त्रम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5 active" href="../index.html">खण्डाः</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in/mbta/">महाभारतम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in">सनातनम्</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+
+    <div class="dh-wrapper container-xl">
+        <nav id="toc" class="toc-sidebar">
+<div class="refs-panel">
+<h5 class="toc-title">References</h5>
+<ul class="refs-list">
+<li><a href="../refs/aitareya_br.html" class="ref-source-link">Aitareya Brāhmaṇa</a> <span class="ref-verses"><a href="../refs/aitareya_br.html#33.6" class="ref-verse-link">33.6</a></span></li>
+<li><a href="../refs/mb_anushasana.html" class="ref-source-link">Anuśāsanaparva</a> <span class="ref-verses"><a href="../refs/mb_anushasana.html#88.12-17" class="ref-verse-link">88.12-17</a>, <a href="../refs/mb_anushasana.html#88.11-15" class="ref-verse-link">88.11-15</a></span></li>
+<li><a href="../refs/apararka.html" class="ref-source-link">Aparārka</a> <span class="ref-verses"><a href="../refs/apararka.html#i" class="ref-verse-link">i</a></span></li>
+<li><a href="../refs/baudhayana.html" class="ref-source-link">Baudhāyana Dharmasūtra</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/gita.html" class="ref-source-link">Bhagavadgītā</a> <span class="ref-verses"><a href="../refs/gita.html#II.70.C" class="ref-verse-link">II.70.C</a>, <a href="../refs/gita.html#13.1-2" class="ref-verse-link">13.1-2</a>, <a href="../refs/gita.html#2.13" class="ref-verse-link">2.13</a></span></li>
+<li><a href="../refs/brihadaranyaka.html" class="ref-source-link">Bṛhadāraṇyaka Upaniṣad</a> <span class="ref-verses"><a href="../refs/brihadaranyaka.html#II.4.18" class="ref-verse-link">II.4.18</a></span></li>
+<li><a href="../refs/manu.html" class="ref-source-link">Manusmṛti</a> <span class="ref-verses"><a href="../refs/manu.html#III.273-74" class="ref-verse-link">III.273-74</a>, <a href="../refs/manu.html#III.274" class="ref-verse-link">III.274</a>, <a href="../refs/manu.html#V.55" class="ref-verse-link">V.55</a>, <a href="../refs/manu.html#9.138" class="ref-verse-link">9.138</a>, <a href="../refs/manu.html#5.41" class="ref-verse-link">5.41</a>, <a href="../refs/manu.html#5.131" class="ref-verse-link">5.131</a> <a href="../refs/manu.html" class="ref-verse-link">+15</a></span></li>
+<li><a href="../refs/matsya_purana.html" class="ref-source-link">Matsyapurāṇa</a> <span class="ref-verses"><a href="../refs/matsya_purana.html#204.5" class="ref-verse-link">204.5</a></span></li>
+<li><a href="../refs/medhatithi.html" class="ref-source-link">Medhātithi</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mitakshara.html" class="ref-source-link">Mitākṣarā</a> <span class="ref-verses"><a href="../refs/mitakshara.html#c" class="ref-verse-link">c</a></span></li>
+<li><a href="../refs/narada.html" class="ref-source-link">Nārada</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/padma_purana.html" class="ref-source-link">Padmapurāṇa</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/parasara.html" class="ref-source-link">Parāśara</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/vasishtha.html" class="ref-source-link">Vasiṣṭha Dharmasūtra</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/vishvarupa.html" class="ref-source-link">Viśvarūpa</a> <span class="ref-verses"><a href="../refs/vishvarupa.html#i" class="ref-verse-link">i</a></span></li>
+<li><a href="../refs/vishnu_dh.html" class="ref-source-link">Viṣṇu Dharmasūtra</a> <span class="ref-verses"><a href="../refs/vishnu_dh.html#64.21" class="ref-verse-link">64.21</a>, <a href="../refs/vishnu_dh.html#21.17" class="ref-verse-link">21.17</a>, <a href="../refs/vishnu_dh.html#73.5-14" class="ref-verse-link">73.5-14</a>, <a href="../refs/vishnu_dh.html#C" class="ref-verse-link">C</a>, <a href="../refs/vishnu_dh.html#c" class="ref-verse-link">c</a>, <a href="../refs/vishnu_dh.html#67.3" class="ref-verse-link">67.3</a></span></li>
+<li><a href="../refs/vishnu_smriti.html" class="ref-source-link">Viṣṇu Smṛti</a> <span class="ref-verses"><a href="../refs/vishnu_smriti.html#i" class="ref-verse-link">i</a>, <a href="../refs/vishnu_smriti.html#54.33" class="ref-verse-link">54.33</a>, <a href="../refs/vishnu_smriti.html#62.9" class="ref-verse-link">62.9</a>, <a href="../refs/vishnu_smriti.html#17.23" class="ref-verse-link">17.23</a>, <a href="../refs/vishnu_smriti.html#17.17" class="ref-verse-link">17.17</a>, <a href="../refs/vishnu_smriti.html#9.53" class="ref-verse-link">9.53</a> <a href="../refs/vishnu_smriti.html" class="ref-verse-link">+29</a></span></li>
+<li><a href="../refs/vayu_purana.html" class="ref-source-link">Vāyupurāṇa</a> <span class="ref-verses"><a href="../refs/vayu_purana.html#82.11" class="ref-verse-link">82.11</a></span></li>
+<li><a href="../refs/yajnavalkya.html" class="ref-source-link">Yājñavalkya</a> <span class="ref-verses"><a href="../refs/yajnavalkya.html#III.243" class="ref-verse-link">III.243</a>, <a href="../refs/yajnavalkya.html#3.93-99" class="ref-verse-link">3.93-99</a>, <a href="../refs/yajnavalkya.html#3.100-102" class="ref-verse-link">3.100-102</a>, <a href="../refs/yajnavalkya.html#3.84-90" class="ref-verse-link">3.84-90</a>, <a href="../refs/yajnavalkya.html#1.17" class="ref-verse-link">1.17</a>, <a href="../refs/yajnavalkya.html#3.209-211" class="ref-verse-link">3.209-211</a> <a href="../refs/yajnavalkya.html" class="ref-verse-link">+28</a></span></li>
+</ul>
+</div>
+<div class="timeline-panel">
+<h5 class="toc-title">Timeline</h5>
+<ul class="timeline-list">
+<li class="tl-approximate"><a href="#p-10-vishnudharmasutra-11" class="tl-dot-link"><span class="tl-year">~300 BCE</span> <span class="tl-label">Viṣṇu Smṛti</span></a></li>
+<li class="tl-exact"><a href="#p-10-vishnudharmasutra-12" class="tl-dot-link"><span class="tl-year">~300 BCE</span> <span class="tl-label">Manusmṛti</span></a></li>
+<li class="tl-exact"><a href="#p-10-vishnudharmasutra-12" class="tl-dot-link"><span class="tl-year">~100 BCE</span> <span class="tl-label">Manusmṛti</span></a></li>
+<li class="tl-exact"><a href="#p-10-vishnudharmasutra-11" class="tl-dot-link"><span class="tl-year">100 CE</span> <span class="tl-label">Viṣṇu Smṛti</span></a></li>
+<li class="tl-century"><a href="#p-10-vishnudharmasutra-12" class="tl-dot-link"><span class="tl-year">201 CE</span> <span class="tl-label">Manusmṛti</span></a></li>
+<li class="tl-century"><a href="#p-10-vishnudharmasutra-10" class="tl-dot-link"><span class="tl-year">301 CE</span> <span class="tl-label">Viṣṇu Smṛti</span></a></li>
+<li class="tl-exact"><a href="#p-10-vishnudharmasutra-12" class="tl-dot-link"><span class="tl-year">484 CE</span> <span class="tl-label">Manusmṛti</span></a></li>
+<li class="tl-century"><a href="#p-10-vishnudharmasutra-12" class="tl-dot-link"><span class="tl-year">501 CE</span> <span class="tl-label">Manusmṛti</span></a></li>
+<li class="tl-exact"><a href="#p-10-vishnudharmasutra-11" class="tl-dot-link"><span class="tl-year">600 CE</span> <span class="tl-label">Viṣṇu Smṛti</span></a></li>
+<li class="tl-century"><a href="#p-10-vishnudharmasutra-7" class="tl-dot-link"><span class="tl-year">801 CE</span> <span class="tl-label">Manusmṛti</span></a></li>
+<li class="tl-century"><a href="#p-10-vishnudharmasutra-2" class="tl-dot-link"><span class="tl-year">1101 CE</span> <span class="tl-label">Viṣṇu Smṛti</span></a></li>
+<li class="tl-range"><a href="#p-10-vishnudharmasutra-15" class="tl-dot-link"><span class="tl-year">1622 CE</span> <span class="tl-label">Viṣṇu Smṛti</span></a></li>
+</ul>
+<a href="10-vishnudharmasutra-timeline.html" class="tl-view-link">View full timeline &rarr;</a>
+</div>
+<h5 class="toc-title">Sections</h5>
+<ul class="toc-list">
+<li class="toc-l2"><a href="#10-vishnudharmasutra">10. Vishnudharmasutra</a></li>
+</ul>
+</nav>
+        <main class="dh-content">
+            
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep">›</span>
+        <a href="index.html">Volume I: Part I</a>
+        <span class="sep">›</span>
+        <span class="current">10. Vishnudharmasutra</span>
+    </div>
+    
+            <h1 class="text-center" style="font-family: var(--font-roman); font-size: 2rem; color: var(--saffron); margin-bottom: 8px;">
+                10. Vishnudharmasutra
+            </h1>
+            <p class="text-center" style="font-family: 'Open Sans', sans-serif; color: var(--ink-secondary); font-size: 0.9rem; margin-bottom: 36px;">
+                Volume I: Part I <span class="page-range">pp. 112–127</span>
+            </p>
+
+            
+    <div class="synopsis-box" id="synopsis">
+        <button class="synopsis-toggle" onclick="this.parentElement.classList.toggle('open')"
+                aria-expanded="false" aria-controls="synopsis-body">
+            <i class="fa-solid fa-chevron-right"></i>
+            Kane's Synopsis
+        </button>
+        <div class="synopsis-audio">
+            <span class="synopsis-play-btn" role="button" tabindex="0"
+                    onclick="toggleSynopsisAudio(this)"
+                    data-src="../audio/synopsis/vol-1-part-1/vol-1-part-1_sec010.mp3" title="Listen to synopsis">
+                <i class="fa-solid fa-play"></i>
+            </span>
+            <audio preload="none"></audio>
+        </div>
+        <div class="synopsis-body" id="synopsis-body">
+            <p>Despite its hundred chapters, the Viṣṇudharmasūtra is not extensive; several contain only a single sūtra and one verse. While its first and final two chapters are entirely in verse, the rest mix prose and verse. Closely connected with the Kāthakaśākhā, Dr. Jolly notes correspondences with the Kāthaka gṛhya, though the Viṣṇu is not by its author. Peculiarly, it claims divine revelation by God Viṣṇu, in an easy, diffuse style, resembling the Vas. Dh. S. The work blends old and new material; hundreds of its sūtras are prose renderings of verses from Manusmṛti, indicating direct borrowing. Verses are also shared with the Bhagavadgītā and Yajñavalkya smṛti, though Dr. Jolly's theory of Yajñavalkya borrowing anatomical sections from Viṣṇu is incorrect. Its extensive tīrtha list and use of *Jaiva* for Jupiter, absent in Yajñavalkya, establish the extant Viṣṇudharmasūtra as later than both Manusmṛti and Yajñavalkyasmṛti. The older kernel likely dates 300-100 B.C., with additions after the 3rd and before the 7th century A.D., some aligning with Nārada.
+
+Regarding its reception and cultural context, Viśvarūpa references Viṣṇu for saṃnyāsins, though not explicitly quoting its sūtras. While Mītākṣarā rarely quotes it, Aparārka and Smṛticandrikā cite it profusely, suggesting later verse additions. It mentions the seven days of the week, recommends sati, refers to pustakas, and details omens, including the sight of yellow-robed Buddhist ascetics. It prohibits speech with Mlecchas and travel to Mleccha countries, while dilating on Vāsudeva worship. The tradition also acknowledges Bṛhad Viṣṇu, Vṛddha Viṣṇu, and Laghu Viṣṇu, with commentaries by Nandapaṇḍita and likely Bhāruci, attesting to its continued scholarly engagement.</p>
+            <p class="synopsis-attribution">— Synopsis by P.V. Kane, from History of Dharmaśāstra</p>
+        </div>
+    </div>
+
+
+            
+
+            <h2 id="10-vishnudharmasutra" class="section-heading">10. Vishnudharmasutra</h2>
+<p class="prose" id="p-10-vishnudharmasutra-1">10. <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharmasūtra.</p>
+<p class="prose" id="p-10-vishnudharmasutra-2">The <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharmasūtra has been printed several times in India, viz. by Jivananda in his <em>Dharmaśāstrasaṁgraha</em> (1876 part I pp. 70-176 ) by the Bengal Asiatic Society (1881, eḍ by Dr. Jolly with extracts from the commentary Vaijayanti), by M. N. Dutt (*Dharmaśāstra texts, vol. II pp. 541-666, Calcutta, 1909) and translated by Dr. Jolly (in the S. B. E. vol. VII with an Introduction ). In the present work Dr. Jolly's edition has been useḍ The sūtra contains one hundred chapterṣ Though the number of chapters is so large, the sūtra is not very extensive. There are several chapters such as 40, 42 and 76 that contain only one sūtra and one verse. The first chapter and the last two are entirely in verse; the remaining chapters are in mixed prose and verse, the versified portion being generally at the end of each chapter. As pointed out by the Vaijayantī the sūtra is in close relation to one of the oldest schools of the Yajurveda, viz. Katha. It also stands in a peculiar relation to the extant <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a>. According to the Caraṇavyūha, Katha and Cārāyanīya are two of the twelve sub-divisions of Caraka-śākhā of the Yajurveda. Dr. Jolly (S. B. E. VII, p. XII) says that the <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharmasūtra has four chapters (21, 67, 73 and 86) and that both drew from a common source. Bühler points out (West and Bühler's digest, 3rd eḍ p. 35) that the Kāṭhakāgṛhya found in Kashmir agrees closely with the Dharmasūtra of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> and the mantras in the latter agree with the Kāṭhaka recension of the Yajurveda. But the <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>-dharmasūtra is not the work of the same author that com-posed the Kāṭhaka Śrauta or Gṛhya sūtras, nor does it appear that it formed part of the Kāṭhaka Kalpa. Dr. Jolly (r. u. S. p. 7) says that Govindarāja (12th century) in his Smṛti-mañjarī cites a passage in prose from a Kāṭhasūtrakṛt on the penance for Brāhmaṇa murder which is wanting is our <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>smṛti (vide S. B. E. Vol. 25, p. XXI n for the passage ).</p>
+<p class="prose" id="p-10-vishnudharmasutra-3">The contents of the <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>-dharma-sūtra are :— The earth, being lifted out of the surging ocean by the great Boar, went to Kāśyapa to inquire as to who would support her thereafter, and was sent by him to <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> who told her that those who would follow the duties of varṇas and āśramas would be her support, whereupon the earth pressed the great God to impart to her their duties; 2. the four varṇas and their dharmas; 3. the duties of kings (rājadharmaḥ); 4. the Kārṣāpaṇa and smaller measures ; 5. punishments for various offences ; 6. debtors and creditors, rates of interest, sureties ; 7. three kinds of documents ; 8. witnesses ; 9. general rules about ordeals; 10–14. ordeals of balance, fire, water, poison and holy water (kośa) ; 15. the twelve kinds of sons, exclusion from inheritance ; eulogy of sons; 16. offspring of mixed marriages, and mixed castes ; 17. partition, joint family and rules of inheritance to one dying sonless, re-union, strīdhana ; 18. partition among sons of a man from wives of different castes ; 19, carrying the dead body for cremation, impurity on death, praise of Brāhmaṇas ; 20. the duration of the four Yugas, Manvantara, Kalpa, Mahākalpa, passages inculcating that one should not grieve too much for the departed ; 21. the rites for the dead after period of mourning, monthly śrāddha, sapiṇḍīkaraṇa ; 22. periods of impurity on death for sapiṇḍas, rules of conduct in mourning, impurity on birth, and rules about impurity on touching various persons and objects ; 23. purification of one's body and of various sub-stances ; 24. marriage, forms of marriage, inter-marriages, guardians for marriage; <strong>25. the dharmas</strong> of women; <strong>26. precedence</strong> among wives of different castes; <strong>27. the Saṁskāras, garbhādhāna</strong> and others; <strong>28. the rules for brahmacārins</strong>; <strong>29. eulogy of ācārya</strong>; <strong>30. time</strong> for the starting of Vedic study and holidays; <strong>31. father, mother and ācārya</strong> deserve the highest reverence; <strong>32. other persons</strong> deserving of respect; <strong>33. the three sources</strong> of sin, viz. passion, anger, greed; <strong>34. kinds of atipātakas, deadliest sins</strong>; <strong>35. five mahāpātakas</strong>; <strong>36. anu-pātakas</strong>, that are as deadly as the mahāpātakas; <strong>37. numerous upapātakas</strong>; <strong>38–42. other lesser sins</strong>; <strong>43. the twenty-one hells</strong> and the duration of hell torments for various sinners; <strong>44. the various low births</strong> to which sinners are consigned for various sins; <strong>45. the various diseases</strong> suffered by sinners and the low pursuits they have to follow by way of retribution; <strong>46–48. various kinds</strong> of kṛcchras (penances), sāntapana, cāndrāyaṇa, prastiyāvaka; <strong>49. actions</strong> prescribed for a devotee of Vāsudeva and the rewards thereof; <strong>50. prāyaścitta</strong> for killing a brāhmaṇa and other human beings, for killing cows and other animals; <strong>51–53. prāyaścittas</strong> for drinking wine and other forbidden substances, for theft of gold and other articles, for incest and sexual intercourse of other kinds; <strong>54. prāyaścittas</strong> for miscellaneous acts; <strong>55. secret</strong> penances; <strong>56. holy hymns</strong> like Aghamarṣaṇa that purge sin; <strong>57. whose society</strong> should be avoided, Vratyas, unrepentant sinners, avoiding gifts; <strong>58. the pure, variegated</strong> (mixed) and dark kinds of wealth; <strong>59. The duties of house-holders, pākayajñas, the five daily mahāyajñas, honouring guests</strong>; <strong>60. the daily conduct</strong> of a householder and good breeding; <strong>61–62. rules</strong> about brushing the teeth, ācamana; <strong>63. means</strong> of livelihood for a house-holder, rules for guidance, good and evil omens on starting on journey, rule of the road; <strong>64. bathing and tarpaṇa</strong> of gods and Manes; <strong>65–67. worship</strong> of Vāsudeva flowers and other materials of worship, offering of food to deities and piṇḍas to ancestors and giving food to guests; <strong>68. rules</strong> about time and manner of taking food; <strong>69–70. sexual intercourse</strong> with wife and about sleep; <strong>71. general rules</strong> of conduct for a snātaka; <strong>72. value</strong> of self-restraint; <strong>73–86. śrāddhas, the procedure</strong> of śrāddhas, aṣṭakā śrāddha, the ancestors to whom śrāddha is to be offered, times of śrāddha, fruits of śrāddha on the several week days and the 27 nakṣatras and the tithis, materials for śrāddha, brāhmaṇas unfit to be invited at śrāddha, brāhmaṇas who are paṅktipāvana; countries unfit for śrāddha, tīrthas, letting loose of a bull; <strong>87–88. gifts</strong> of . antelope skin, or a cow; 89. kārtika-snāna; 90 eulogy of gifts of various sorts; 91-93. works of public utility such as wells, lakes, planting gardens, embankments, gifts of food, flowers &c.; difference in merit according to the recipient; 94-95 rules about forest hermit ( vānaprastha ); 96-97. anatomy of the bones, muscles, veins, arteries &c.; concentration in various ways; 98-99. praise of Vāsudeva by the Earth and of Lakṣmī; 100. rewards of studying this Dharmaśāstra.</p>
+<p class="prose" id="p-10-vishnudharmasutra-4">The <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharma-sūtra somewhat resembles the Dharma- sūtra of <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a>. Like the latter it is full of verseṣ But one feature which is peculiar to the <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>-dharmasūtra is that it professes to be a revelation by the Supreme Being. None of the other dharmasūtras so far described assumes this role. The style of the <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharmaśūtra is easy and somewhat diffuse. It presents hardly any ungrammatical formṣ The printed text is corrupt only in a few cases; the verses occur generally at the end of chapterṣ Sometimes the number of verses in a chapter is very large e. g., in chapter 20 there are 21 sūtras and 32 verses, in chapter 23 there are 24 verses, in chap. 43 there are 14, in chap. 51 there are 20 verseṣ Some of the verses are in the classical Indravajrā (19. 23-24) and the Upajāti metres (23.61 and 59. 30 ) and a few are Triṣṭubhs (29. 9-10, 30. 47, 72. 77 ). The three Triṣṭubhs (29. 9-10, 30. 41 ) are three out of four verses of the Vidyā- sūkta occurring in the Nirukta ( II. 4 ). Chap. 72.77 is <a class="ref" href="../refs/gita.html#II.70.C" data-source="gita" data-ref="II.70.C" title="Bhagavadgītā II.70.C">Bhagavadgītā II. 70. C</a>hapters 1, 99, 100 are entirely in verse. Chap. 98 contains praise of Vāsudeva by the Earth in about 91 names, some of which like Lekhya, Sapta, Kapila, Sāṁkhyācārya are rather surprising. The revelation by God <a class="ref" href="../refs/vishnu_smriti.html#i" data-source="vishnu_smriti" data-ref="i" title="Viṣṇu Smṛti i">Viṣṇu i</a>s contained in 96 chapters (2 to 97 ). The names of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> are only 94 but 98.6 ( om namas-te ) and 98.101 ( namo nama iti ) are added to 94 and thus the names of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> are squared up with 96 chapterṣ The word atha does not occur at the beginning of the first two chapters and in Dr. Jolly's edition at the beginning of some other chapters also (viz. 4, 16-20, 22-23, 26-27, 29-32 &c.). The chapters vary greatly in extent. In Chap. 34, 39 and 40 there is only one sūtra followed by one verse. There are other chapters also that are short, that is they have three or four sūtras and a verse viz. 41, 84, 88, 89, while some chapters occupy more than three printed pages such as 3, 20, 22, 23, 51, 54, 96. Chap. 5th is the longest, containing 178 sūtras and 14 verses at the enḍ Here and there <a class="ref" href="../refs/vishnu_dh.html" data-source="vishnu_dh" data-ref="" title="Viṣṇu Dharmasūtra">Viṣṇu Dh. S.</a> gives etymologies such as of the word <em>putra</em> in 15. 44 (= <a class="ref" href="../refs/manu.html#9.138" data-source="manu" data-ref="9.138" title="Manusmṛti 9.138">Manu 9. 138</a> ), of Māmśā ( in 51. 78 = <a class="ref" href="../refs/manu.html#V.55" data-source="manu" data-ref="V.55" title="Manusmṛti V.55">Manu V.55</a> ), of puruṣa ( from <em>puri śete</em> ) in 97,15, which is also given in <a class="ref" href="../refs/brihadaranyaka.html#II.4.18" data-source="brihadaranyaka" data-ref="II.4.18" title="Bṛhadāraṇyaka Upaniṣad II.4.18">Br. Up. II. 4.18</a> and Nir. I. 13 ). At the end of Chap. 78 there are two gāthās ( 52-53 ) sung by pitṛs which are quoted by Kullūka on <a class="ref" href="../refs/manu.html#III.274" data-source="manu" data-ref="III.274" title="Manusmṛti III.274">Manu III. 274</a> as <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>'s and which are similar to <a class="ref" href="../refs/manu.html#III.273-74" data-source="manu" data-ref="III.273-74" title="Manusmṛti III.273-74">Manu III. 273-74</a> and <a class="ref" href="../refs/vayu_purana.html#82.11" data-source="vayu_purana" data-ref="82.11" title="Vāyupurāṇa 82.11">Vāyu-purāṇa 82.11</a> and <a class="ref" href="../refs/matsya_purana.html#204.5" data-source="matsya_purana" data-ref="204.5" title="Matsyapurāṇa 204.5">Matsya-purāṇa 204.5</a> ( matsya gāthās 3-17 sung by the pitṛs, 10 of which begin with ‘api syāt sa kuleśmakain etc. ). Vide <a class="ref" href="../refs/mb_anushasana.html#88.12-17" data-source="mb_anushasana" data-ref="88.12-17" title="Anuśāsanaparva 88.12-17">Anuśāsana-parva 88. 12-17</a><a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> ( Ch. eḍ ). There is one verse (72.6) which has eleven letters in the first <em>pāda</em> and twelve in the remaining three.</p>
+<p class="prose" id="p-10-vishnudharmasutra-5">In determining the age of the <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharmasūtra one is confronted with a difficult probleṃ Some of the chapters undoubtedly contain material which is comparatively old and on a level with the ancient Dharmasūtras of Gautama and Āpastamba. Such are the chapters about rājadharma ( 3 and 5 ), the rules about twelve sons and the mixed castes ( 15-16 ), funeral rites and mourning ( 21 and 22 ). But there are very large portions of the work that bear a clear impress of a later date. The <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharma-sūtra and the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a> have at least 160 identical verseṣ But this is not all. There are hundreds of sūtras which are merely the prose equivalents of verses from the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a>. For example, <a class="ref" href="../refs/vishnu_smriti.html#2.3" data-source="vishnu_smriti" data-ref="2.3" title="Viṣṇu Smṛti 2.3">Viṣṇu 2.3</a> and <a class="ref" href="../refs/manu.html#2.16" data-source="manu" data-ref="2.16" title="Manusmṛti 2.16">Manu 2.16</a>, <a class="ref" href="../refs/vishnu_smriti.html#3.4" data-source="vishnu_smriti" data-ref="3.4" title="Viṣṇu Smṛti 3.4">Viṣṇu 3.4</a> and 6 and <a class="ref" href="../refs/manu.html#7.69-70" data-source="manu" data-ref="7.69-70" title="Manusmṛti 7.69-70">Manu 7. 69-70</a>, <a class="ref" href="../refs/vishnu_smriti.html#3.7-10" data-source="vishnu_smriti" data-ref="3.7-10" title="Viṣṇu Smṛti 3.7-10">Viṣṇu 3. 7-10</a> and <a class="ref" href="../refs/manu.html#7.115" data-source="manu" data-ref="7.115" title="Manusmṛti 7.115">Manu 7. 115</a>, <a class="ref" href="../refs/vishnu_smriti.html#3.11-15" data-source="vishnu_smriti" data-ref="3.11-15" title="Viṣṇu Smṛti 3.11-15">Viṣṇu 3. 11-15</a> and <a class="ref" href="../refs/manu.html#7.116-117" data-source="manu" data-ref="7.116-117" title="Manusmṛti 7.116-117">Manu 7. 116-117</a>, <a class="ref" href="../refs/vishnu_smriti.html#4.1-13" data-source="vishnu_smriti" data-ref="4.1-13" title="Viṣṇu Smṛti 4.1-13">Viṣṇu 4. 1-13</a> and <a class="ref" href="../refs/manu.html#8.132-137" data-source="manu" data-ref="8.132-137" title="Manusmṛti 8.132-137">Manu 8. 132-137</a>, <a class="ref" href="../refs/vishnu_smriti.html#5.4-7" data-source="vishnu_smriti" data-ref="5.4-7" title="Viṣṇu Smṛti 5.4-7">Viṣṇu 5. 4-7</a>, and <a class="ref" href="../refs/manu.html#9.237" data-source="manu" data-ref="9.237" title="Manusmṛti 9.237">Manu 9. 237</a>, <a class="ref" href="../refs/vishnu_smriti.html#20.1-21" data-source="vishnu_smriti" data-ref="20.1-21" title="Viṣṇu Smṛti 20.1-21">Viṣṇu 20. 1-21</a>, and <a class="ref" href="../refs/manu.html#I.67-73" data-source="manu" data-ref="I.67-73" title="Manusmṛti I.67-73">Manu I. 67-73</a>, <a class="ref" href="../refs/vishnu_smriti.html#51.7-10" data-source="vishnu_smriti" data-ref="51.7-10" title="Viṣṇu Smṛti 51.7-10">Viṣṇu 51. 7-10</a> and <a class="ref" href="../refs/manu.html#4.209-212" data-source="manu" data-ref="4.209-212" title="Manusmṛti 4.209-212">Manu 4. 209-212</a>, <a class="ref" href="../refs/vishnu_smriti.html#59.21-25" data-source="vishnu_smriti" data-ref="59.21-25" title="Viṣṇu Smṛti 59.21-25">Viṣṇu 59. 21-25</a> and <a class="ref" href="../refs/manu.html#3.70" data-source="manu" data-ref="3.70" title="Manusmṛti 3.70">Manu 3. 70</a>, <a class="ref" href="../refs/vishnu_smriti.html#62.224" data-source="vishnu_smriti" data-ref="62.224" title="Viṣṇu Smṛti 62.224">Viṣṇu 62. 224</a> and <a class="ref" href="../refs/manu.html#2.59" data-source="manu" data-ref="2.59" title="Manusmṛti 2.59">Manu 2. 59</a>, <a class="ref" href="../refs/vishnu_smriti.html#71.48-52" data-source="vishnu_smriti" data-ref="71.48-52" title="Viṣṇu Smṛti 71.48-52">Viṣṇu 71. 48-52</a> and <a class="ref" href="../refs/manu.html#4.80" data-source="manu" data-ref="4.80" title="Manusmṛti 4.80">Manu 4. 80</a>, and <a class="ref" href="../refs/vishnu_smriti.html#96.14-17" data-source="vishnu_smriti" data-ref="96.14-17" title="Viṣṇu Smṛti 96.14-17">Viṣṇu 96. 14-17</a> and <a class="ref" href="../refs/manu.html#6.46" data-source="manu" data-ref="6.46" title="Manusmṛti 6.46">Manu 6. 46</a> agree almost word for worḍ The verses that are identical in both are found in all the chapters of the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a> from the second to the last, the largest number ( about 47 , occurring in the 5th and chapters eleven, two, and three respectively contributing 25, 24, and 19 verseṣ Therefore the question whether the extant <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharmasūtra borrows from <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> or <em>vice versa</em> or whether both borrow from <sup>*</sup>a common original assumes very great importance. As the cor- 10. <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharmasūtra respondence extends over several hundred verses of the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>- smṛti, the last hypothesis of borrowing from a common original does not recommend itself to me. No such common source is known to have existed and to say that there were hundreds of floating popular verses whose authorship was unknown and which were drawn upon by both works appears to me to be an extremely gratuitous and unsatisfactory assumptioṇ In my opinion it is the extant <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharmasūtra that borrowed the verses <em>ad hoc</em> or adapted them from the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a>. There are several lines of reasoning that strengthen this hypothesiṣ There are some verses that are identical in both, in which the name of <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> occurs, which the <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharmasūtra omits by making slight verbal changeṣ For example, <a class="ref" href="../refs/vishnu_smriti.html#23.50" data-source="vishnu_smriti" data-ref="23.50" title="Viṣṇu Smṛti 23.50">Viṣṇu 23. 50</a> substitutes ‘<em>tat parikīrtitam</em>’ for ‘<em><a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>r-abravīt</em>’ in <a class="ref" href="../refs/manu.html#5.131" data-source="manu" data-ref="5.131" title="Manusmṛti 5.131">Manu 5. 131</a> ; and <a class="ref" href="../refs/vishnu_smriti.html#51.64" data-source="vishnu_smriti" data-ref="51.64" title="Viṣṇu Smṛti 51.64">Viṣṇu 51. 64</a> reads ‘<em>nānyatreti kathamcana</em>’ for <a class="ref" href="../refs/manu.html#5.41" data-source="manu" data-ref="5.41" title="Manusmṛti 5.41">Manu 5. 41</a> ‘<em>nānyatretyabravīn–<a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>ḥ</em>’ (this last occurs in Vaṣ 4. 6). The reason for these changes is obviouṣ The <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>-dharmasūtra professes to be a direct revelation from <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> and it is in keeping with this assumed role that not one human author is mentioned by name in the sūtra. Therefore where the name of <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> occurred in any verse, it was pur- posely omitteḍ Another reason why the sūtra must be presumed to be the borrower is the character of the extant work itself. It is a kind of hotchpotch and contains verses that are identical with those of other workṣ For example, several verses of the <a class="ref" href="../refs/gita.html" data-source="gita" data-ref="" title="Bhagavadgītā">Bhagavadgītā</a> occur in the <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharma- sūtra. <a class="ref" href="../refs/vishnu_smriti.html#20.48-49" data-source="vishnu_smriti" data-ref="20.48-49" title="Viṣṇu Smṛti 20.48-49">Viṣṇu 20. 48–49</a> and 51–52 are the same as <a class="ref" href="../refs/gita.html#2.13" data-source="gita" data-ref="2.13" title="Bhagavadgītā 2.13">Gītā 2. 13</a>; 23, 24, 28; <a class="ref" href="../refs/vishnu_smriti.html#72.7" data-source="vishnu_smriti" data-ref="72.7" title="Viṣṇu Smṛti 72.7">Viṣṇu 72. 7</a> and <a class="ref" href="../refs/gita.html" data-source="gita" data-ref="" title="Bhagavadgītā">Gītā</a> 2–70 are almost identical. <a class="ref" href="../refs/vishnu_smriti.html#96.97" data-source="vishnu_smriti" data-ref="96.97" title="Viṣṇu Smṛti 96.97">Viṣṇu 96. 97</a> and the first half of 93 are the same as <a class="ref" href="../refs/gita.html#13.1-2" data-source="gita" data-ref="13.1-2" title="Bhagavadgītā 13.1-2">Gītā 13. 1–2</a>, except that in keeping with its character of a revelation to the Earth, the <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharmasūtra substitutes ‘<em>vasudhe</em>’ for ‘<em>kaunteya</em>’ and ‘<em>bhāvini</em>’ for ‘<em>bhārata</em>.’ Several verses of the <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yājñavalkya</a>-smṛti are identical with those of the <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharmasūtra. For example, <a class="ref" href="../refs/vishnu_smriti.html#6.41" data-source="vishnu_smriti" data-ref="6.41" title="Viṣṇu Smṛti 6.41">Viṣṇu 6. 41</a> and <a class="ref" href="../refs/yajnavalkya.html#2.53" data-source="yajnavalkya" data-ref="2.53" title="Yājñavalkya 2.53">Yāj. 2. 53</a>, <a class="ref" href="../refs/vishnu_smriti.html#8.38" data-source="vishnu_smriti" data-ref="8.38" title="Viṣṇu Smṛti 8.38">Viṣṇu 8. 38</a> and <a class="ref" href="../refs/yajnavalkya.html#II.79" data-source="yajnavalkya" data-ref="II.79" title="Yājñavalkya II.79">Yāj. II. 79</a>, <a class="ref" href="../refs/vishnu_smriti.html#9.53" data-source="vishnu_smriti" data-ref="9.53" title="Viṣṇu Smṛti 9.53">Viṣṇu 9. 53</a> and <a class="ref" href="../refs/yajnavalkya.html#2.97" data-source="yajnavalkya" data-ref="2.97" title="Yājñavalkya 2.97">Yāj. 2. 97</a>, <a class="ref" href="../refs/vishnu_smriti.html#17.17" data-source="vishnu_smriti" data-ref="17.17" title="Viṣṇu Smṛti 17.17">Viṣṇu 17. 17</a> and <a class="ref" href="../refs/yajnavalkya.html#2.138" data-source="yajnavalkya" data-ref="2.138" title="Yājñavalkya 2.138">Yāj. 2. 138</a>, <a class="ref" href="../refs/vishnu_smriti.html#17.23" data-source="vishnu_smriti" data-ref="17.23" title="Viṣṇu Smṛti 17.23">Viṣṇu 17. 23</a> (first half) and <a class="ref" href="../refs/yajnavalkya.html#2.210" data-source="yajnavalkya" data-ref="2.210" title="Yājñavalkya 2.210">Yāj. 2. 210</a> (latter half), <a class="ref" href="../refs/vishnu_smriti.html#62.9" data-source="vishnu_smriti" data-ref="62.9" title="Viṣṇu Smṛti 62.9">Viṣṇu 62. 9</a> and <a class="ref" href="../refs/yajnavalkya.html#1.21" data-source="yajnavalkya" data-ref="1.21" title="Yājñavalkya 1.21">Yāj. 1. 21</a>, Vi. 63. 51 and <a class="ref" href="../refs/yajnavalkya.html#1.117" data-source="yajnavalkya" data-ref="1.117" title="Yājñavalkya 1.117">Yāj. 1. 117</a> are identical. Besides these, there are hundreds of prose sūtras that are identical with passages of <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yājñavalkya.</a> For example, Vi. 3. 72–74 = <a class="ref" href="../refs/yajnavalkya.html#II.1-4" data-source="yajnavalkya" data-ref="II.1-4" title="Yājñavalkya II.1-4">Yāj. II. 1–4</a>; Vi. 3. 82=<a class="ref" href="../refs/yajnavalkya.html#1.318-320" data-source="yajnavalkya" data-ref="1.318-320" title="Yājñavalkya 1.318-320">Yāj. 1. 318–320</a> (rules about land grants); Vi. 5. 65–69=<a class="ref" href="../refs/yajnavalkya.html#II.317-320" data-source="yajnavalkya" data-ref="II.317-320" title="Yājñavalkya II.317-320">Yāj. II. 317–320</a>, Vi. 5. 73=<a class="ref" href="../refs/yajnavalkya.html#II.221" data-source="yajnavalkya" data-ref="II.221" title="Yājñavalkya II.221">Yāj. II. 221</a>; Vi. 45. 3–12=<a class="ref" href="../refs/yajnavalkya.html#3.209-211" data-source="yajnavalkya" data-ref="3.209-211" title="Yājñavalkya 3.209-211">Yāj. 3. 209–211</a> (about diseases suffered by sinners) ; Vi. 60. 24=<a class="ref" href="../refs/yajnavalkya.html#1.17" data-source="yajnavalkya" data-ref="1.17" title="Yājñavalkya 1.17">Yāj. 1. 17</a>;<sup class="fn-ref"><a href="#fn-10-vishnudharmasutra-5" id="fnref-10-vishnudharmasutra-5">5</a></sup> Vi. 96. 55-79=<a class="ref" href="../refs/yajnavalkya.html#3.84-90" data-source="yajnavalkya" data-ref="3.84-90" title="Yājñavalkya 3.84-90">Yāj. 3. 84-90</a> (about 360 bones of the body) ; Vi. 96. 80-88=<a class="ref" href="../refs/yajnavalkya.html#3.100-102" data-source="yajnavalkya" data-ref="3.100-102" title="Yājñavalkya 3.100-102">Yāj. 3. 100-102</a> (about the number of arteries, veins, muscles etc. ) ; Vi. 96. 89-92=<a class="ref" href="../refs/yajnavalkya.html#3.93-99" data-source="yajnavalkya" data-ref="3.93-99" title="Yājñavalkya 3.93-99">Yāj. 3. 93-99</a>. Dr. Jolly thinks that <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yājñavalkya</a> borrows from <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> the whole of the anatomical section (vide S. B. E. vol. VII, p. XX). With great respect I differ from this opinioṇ There is nothing to show that the anatomical details were first given to the world by <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>. They must have first been embodied in works on medicine such as those of Caraka and Suśruta<sup class="fn-ref"><a href="#fn-10-vishnudharmasutra-2" id="fnref-10-vishnudharmasutra-2">2</a></sup> and were probably copied by Dharmasūtra writerṣ But, if there is any borrowing between <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> and <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yājñavalkya</a>, I think from the character of the <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharmasūtra that it is the sūtra that must be regarded as borrowing from <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yājñavalkya.</a> There are several matters in the extant <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharmasūtra which are wanting in <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yājñavalkya</a> and which induce one to place the extant sūtra later than <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yājñavalkya</a>, viz. the name 'Jaiva' for Thursday (Vi. 78. 5), the long list of tīrthas (Vi. chap. 85) which include Śrīparvata and the five rivers of the south called southern Pañcanada, the importance of the conjunction of the moon and Jupiter on a full moon day (Vi. 49. 9-10), the vague definition of Āryāvarta<sup class="fn-ref"><a href="#fn-10-vishnudharmasutra-3" id="fnref-10-vishnudharmasutra-3">3</a></sup> (Vi. 84. 4). The verse in <a class="ref" href="../refs/vishnu_smriti.html#54.33" data-source="vishnu_smriti" data-ref="54.33" title="Viṣṇu Smṛti 54.33">Viṣṇu 54. 33</a> (about half prāyaścitta for boys and old men) is ascribed to Aṅgiras by the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mitākṣarā</a> (on <a class="ref" href="../refs/yajnavalkya.html#III.243" data-source="yajnavalkya" data-ref="III.243" title="Yājñavalkya III.243">Yāj. III. 243</a>).</p>
+<p class="prose" id="p-10-vishnudharmasutra-6">Therefore, the most probable conclusion is that the extant <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharmasūtra borrows from the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a>, <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yājñavalkya</a> and other authorṣ It would be too much to assume that the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a>, the <a class="ref" href="../refs/gita.html" data-source="gita" data-ref="" title="Bhagavadgītā">Bhagavadgītā</a> and <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yājñavalkya</a> borrow from such a comparatively unimportant work as the <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharma- sūtra.</p>
+<p class="prose" id="p-10-vishnudharmasutra-7">The above conclusion is further strengthened by certain other considerationṣ The <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a> has been quoted with utmost reverence by a host of writers from at least the 4th cen- tury downwards, such as Śabara, Kumārila and Śaṅkarācārya. <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yājñavalkya</a> was commented upon by <a class="ref" href="../refs/vishvarupa.html#i" data-source="vishvarupa" data-ref="i" title="Viśvarūpa i">Viśvarūpa i</a>n the first half of the 9th century. <a class="ref" href="../refs/vishvarupa.html#i" data-source="vishvarupa" data-ref="i" title="Viśvarūpa i">Viśvarūpa i</a>n his commentary quotes scores of sūtras from Gautama, Āpastamba, <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>, <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a>, Śaṅkha and Hārita. But it is significant that <a class="ref" href="../refs/vishvarupa.html#i" data-source="vishvarupa" data-ref="i" title="Viśvarūpa i">Viśvarūpa i</a>n his commentary on yajña- valkya does not quote even a single sūtra of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> by name. It is true that <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a> ( on <a class="ref" href="../refs/yajnavalkya.html#III.66" data-source="yajnavalkya" data-ref="III.66" title="Yājñavalkya III.66">Yāj. III. 66</a> ) says that the four forms of asceticism ( <em>pārivrājya</em> ) should be under- stood from the other smṛtis like those of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>.<sup>113</sup> This probably refers to chap. 97 of the extant <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharmasūtra. <a class="ref" href="../refs/medhatithi.html" data-source="medhatithi" data-ref="" title="Medhātithi">Medhātithi</a> ( on <a class="ref" href="../refs/manu.html#3.248" data-source="manu" data-ref="3.248" title="Manusmṛti 3.248">Manu 3. 248</a> ) quotes <a class="ref" href="../refs/vishnu_smriti.html#21.12" data-source="vishnu_smriti" data-ref="21.12" title="Viṣṇu Smṛti 21.12">Viṣṇu ( 21. 12 )</a> and on <a class="ref" href="../refs/manu.html#9.76" data-source="manu" data-ref="9.76" title="Manusmṛti 9.76">Manu 9. 76</a> quotes a sūtra of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> which I could not trace in the printed <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>.<sup>114</sup> The <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mitākṣarā</a> mentions <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> about thirty timeṣ The quotations are taken from chapters 19, 21, 22, 35-42, 50, 51, 52, 75 and 79 of the <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharma- sūtra, 18 sūtras of chap. 22 ( on āśauca and kindred topics ) being quoted on <a class="ref" href="../refs/yajnavalkya.html#III.23" data-source="yajnavalkya" data-ref="III.23" title="Yājñavalkya III.23">Yāj. III. 23</a>, 24, 27, 29-30. But it is a remarkable fact that not one of the verses in the extant <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharmasūtra is cited as <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>'s in the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mitākṣarā</a>. The only exception is a verse cited as <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>'s on <a class="ref" href="../refs/yajnavalkya.html#III.265" data-source="yajnavalkya" data-ref="III.265" title="Yājñavalkya III.265">Yāj. III. 265</a>, which has the same purport as <a class="ref" href="../refs/vishnu_smriti.html#52.14" data-source="vishnu_smriti" data-ref="52.14" title="Viṣṇu Smṛti 52.14">Viṣṇu 52. 14</a> ( a verse ) and the first <em>pāda</em> of which is identical with that of the verse in the <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharmasūtra.<sup>115</sup> A few verses that are quoted as <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>'s in the <a class="ref" href="../refs/mitakshara.html#c" data-source="mitakshara" data-ref="c" title="Mitākṣarā c">Mitākṣarā c</a>ould not be traced in the extant dharmasūtra.<sup>116</sup> It is not unlikely that the sūtra first contained mostly prose sūtras based on <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> and the Kāṭhakāgṛhya and verses were tacked on later.</p>
+<p class="prose" id="p-10-vishnudharmasutra-8">Quotations from the <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharmasūtra in the Kṛtyakalpataru (no part of which had been published at the time this volume was published in 1930, but now eleven parts of which have been published in the GOS. edited by my friend the late Prof. Rangaswami Aiyangar) are made hundreds of times e. g. 132 times in Vyavahārakāṇḍa, 39 times in Śrāddha, 38 times in Niyatakāla, 35 times in Gṛhasthakāṇḍa, 30 times in Brahmacārikāṇḍa, 10 times on Rājadharma, 15 times on Dānakāṇḍa (the Dānakāṇḍa quotes on pp. 231-33 the whole of chap. 90 except the last five sūtras and a verse). One great advantage is that the Kalpataru often states that the same verse or passage occurs in <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> and other ancient writers e. g. in Vyavahārakāṇḍa on pp. 270, 613, 627, 652, 676, 678 &c. verses are cited as <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>-<a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> and cited as <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> and <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yājñavalkya</a> on pp. 150, 213, 289. <a class="ref" href="../refs/yajnavalkya.html#II.120" data-source="yajnavalkya" data-ref="II.120" title="Yājñavalkya II.120">Yāj. II. 120</a> (second half) is <a class="ref" href="../refs/vishnu_smriti.html#17.23" data-source="vishnu_smriti" data-ref="17.23" title="Viṣṇu Smṛti 17.23">Viṣṇu 17. 23</a> (first half). The whole of <a class="ref" href="../refs/vishnu_smriti.html#C" data-source="vishnu_smriti" data-ref="C" title="Viṣṇu Smṛti C">Viṣṇu C</a>hap. 49 (on Dvādaśīvrata) and <a class="ref" href="../refs/vishnu_smriti.html#C" data-source="vishnu_smriti" data-ref="C" title="Viṣṇu Smṛti C">Viṣṇu C</a>hap. 89 are quoted by Vratakāṇḍa of Kalpataru on pp. 310, 418 respectively. Among later writers of nibandhas <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> quotes <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> most profusely and the Smṛticandrikā also quotes <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> about 225 timeṣ Many of the verses found in Vi. are quoted by <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> as <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>'s e. g. Vi. 84. 4 on <a class="ref" href="../refs/yajnavalkya.html#1.2" data-source="yajnavalkya" data-ref="1.2" title="Yājñavalkya 1.2">Yāj. 1. 2</a>; 68. 46 47 on <a class="ref" href="../refs/yajnavalkya.html#1" data-source="yajnavalkya" data-ref="1" title="Yājñavalkya 1">Yāj. 1</a>, 106; 67. 33 on <a class="ref" href="../refs/yajnavalkya.html#1.107" data-source="yajnavalkya" data-ref="1.107" title="Yājñavalkya 1.107">Yāj. 1. 107</a> : 5. 183 on <a class="ref" href="../refs/yajnavalkya.html#2.60" data-source="yajnavalkya" data-ref="2.60" title="Yājñavalkya 2.60">Yāj. 2. 60</a>; 10. 9–11 on Yāj 2. 102. But there are numerous verses quoted as <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>'s by <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> which are not found in the sūtra, e. g. on <a class="ref" href="../refs/yajnavalkya.html#I.21" data-source="yajnavalkya" data-ref="I.21" title="Yājñavalkya I.21">Yāj. I. 21</a>, 53, 89, 100. Sometimeṣ <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> quotes almost whole chapters of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>, e. g. Vi. 68 on <a class="ref" href="../refs/yajnavalkya.html#I.106" data-source="yajnavalkya" data-ref="I.106" title="Yājñavalkya I.106">Yāj. I. 106</a> and 90 on <a class="ref" href="../refs/yajnavalkya.html#I.114.I" data-source="yajnavalkya" data-ref="I.114.I" title="Yājñavalkya I.114.I">Yāj. I. 114. I</a>t is to be noted that Vi. 70. 17 (a verse) is quoted by <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> as a prose sūtra on 1. 114) with slight verbal changeṣ All these facts make one feel naturally sceptical about the authenticity of most of the verses in the extant <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharmasūtra. They probably formed no part of the sūtra at the time when the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mitākṣarā</a> was composeḍ At all events it cannot be gainsaid that the verses are a very late part of the sūtra.</p>
+<p class="prose" id="p-10-vishnudharmasutra-9">The <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dhamasūtra contains quotations from all the Vedic samhitās and from the Aitareya-brāhmaṇa (as in Vi. 15. 45 ). It mentions the Vedāngas very frequently ( 30. 3 and 38, 28, 35, 83. 6 ), it speaks of Vyākaraṇa ( 83. 7 ), of itihāsa ( 3. 70, 30. 38, 83. 7 ), of Dharmaśāstras ( 3. 70, 30. 38, 73. 16, 83. 8 ), of Purāṇa ( 3. 70, 30. 38 &c ). About the close correspondence between Bauḍ III. 6 and <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>. 48 and between Vaṣ 28. 10–15 and 18–22 and <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>, chap. 56 and 87, vide remarks made above pp. 43 and 103. The sūtra quotes several verses ( called gāthās ) and says they were sung by pitrs ; vide 78. 52–53, 80. 14, 83. 21, 85. 65–67. They bear close resemblance to the gāthās sung by the pitrs quoted in the <a class="ref" href="../refs/mb_anushasana.html#88.11-15" data-source="mb_anushasana" data-ref="88.11-15" title="Anuśāsanaparva 88.11-15">Anuśāsana-parva 88. 11–15</a><a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> and a half verse ‘eṣṭavyā bahavaḥ putrā yadyekopi Gayām vrajet’ is the same in Vi. 85. 67 and Anu. 88. 14. The <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>smṛti enumerates twenty- one hells ( 43. 1–22 ), which are almost the same as yajña- valkya’s ( 3. 222–224 ). It mentions the names of the seven days of the week ( 78. 1–7 ), Thursday being called Jaiva, while <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yājñavalkya</a> mentions only the seven planets ( with Rāhu and Ketu ) in the same order ( I. 296 ). It recommends the practice of satī ( 25. 14 ), speaks of pustakas ( 18, 44, 23. 56 ), a word which is not used by the other dharmaśūtras so far describeḍ It gives a long list of good and evil omens at the time of starting on a journey ( 63. 33–39 ). Among evil omens it includes the sight of yellow-robed ascetics ( i. e. Buddhists probably ) and Kāpālikas ( 63. 36 ). It prohibits speech with Mlecchas, Antyajas ( 71. 59 ) and journeys to Mleccha countries ( 84. 2 ). It contains special directions about the worship of Vāsudeva in chap. 49 and speaks of Śvetadvīpa as the reward of devotion to Vāsudeva ( 49. 4 ). Here and there, there are eulogies of Vāsudeva ( 1. 50–57, 65. 1, 97. 10, 98 which ( last ) gives one hundred names of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> ). It speaks of the four vyūhas of Vāsudeva ( 67. 2 ) and of the Varāha incarnatioṇ It gives a vague location of Āryāvarta as a country where the four varṇas exist ( 84. 4 ). It enumerates numerous sacred places ( 85. 1–52 ), among which Śrīparvata, Saptārṣa ( modern Satara ? ), Godāvari and southern Pañcanada deserve to be specially noteḍ Though it does not specifically enumerate the eighteen titles of law just as <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yājñavalkya</a> does not, yet it contains rules (in chapters 5-6) on almost all of theṃ As <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yājñavalkya</a> enumerates <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> among the pro- pounders of dharmaśāstras, it follows that a work of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> existed in comparatively early timeṣ What matters that work embraced it is difficult to say. It probably contained the topics found in the works of Gautama, Āpastamba and otherṣ It may have included portions borrowed from the Kāṭhakagṛhya. An important question is whether the <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharmasūtra is related to the Kāṭhaka school (of the Caraka śākhā of the Kṛṣṇayajurveda). I do not propose to deal with it at great length. Nanda Paṇḍita in his Coṃ on <a class="ref" href="../refs/vishnu_dh.html#67.3" data-source="vishnu_dh" data-ref="67.3" title="Viṣṇu Dharmasūtra 67.3">Viṣṇu Dh. S. 67. 3</a> (where twelve deities are named) expressly states that the des- cription of Vaiśvadeva in that chapter follows the procedure adopted in the Kāṭhakaśākhā ‘Kāṭhaka-śākhānusāreṇa Vaiśvadevam-āha …… Agnyādibhyo dvādaśāhutirjuhuyāt’. Important evidence is furnished by the Kṛtyakalpataru, an extensive digest composed in the first half of the 12th century A. D. on Śrāddha (GOS. Eḍ). <a class="ref" href="../refs/vishnu_dh.html#c" data-source="vishnu_dh" data-ref="c" title="Viṣṇu Dharmasūtra c">Viṣṇu Dh. S. c</a>hap. 73 provides about āmaśrāddhas (śrāddhas with uncooked grains) and Kāmyaśrāddhas (śrāddhas performed on certain tithis, nakṣatras and weekdays for securing certain desired objects specified in <a class="ref" href="../refs/vishnu_dh.html#C" data-source="vishnu_dh" data-ref="C" title="Viṣṇu Dharmasūtra C">Viṣṇu Dh. S. C</a>hap. 78) a certain procedure (the original is quoted in the note) <sup class="fn-ref"><a href="#fn-10-vishnudharmasutra-6" id="fnref-10-vishnudharmasutra-6">6</a></sup> in these śrāddhaṣ during the recitation of the first pañcaka (a collection of five verses), after having offered an oblation into fire; in śrāddhas where meat is offered during the recitation of the second pañcaka; at a śrāddha on amāvāsyā (New Moon) during recitation of the last pañcaka; on the Aṣṭakas (eighth days) of the three dark halves following Agrahāyaṇī (full moon day in Mārgaśīrṣa) during the recitation of the first, second and last pañcaka respectively and likewise on the Anuvākas and śṭakās he must invite the Manes, &c. The Kṛtyakalpataru on Śrāddha (pp. 164–65) sets out <a class="ref" href="../refs/vishnu_dh.html#73.5-14" data-source="vishnu_dh" data-ref="73.5-14" title="Viṣṇu Dharmasūtra 73.5-14">Viṣṇu Dh. S. 73. 5–14</a> and remarks that the words ‘first pañcaka’ &c. have in view, according to Laugākṣigṛhya, the Anuvāka of 15 ṛks, where the first pañcaka begins with the ṛk ‘iyam-eva’ (which is the first of the pentad), the second pentad begins with ‘pañca vyuṣṭiḥ’ and the 3rd pentad begins with ‘ṛtasya dhāma’. These fifteen verses form the 10th anuvāka of 39th Sthānaka (called ‘yadakranda’ from first two words) of the Kāṭhaka-saṃhitā. The first verses of the pentad of this anuvāka in Kāṭhaka-saṃhitā is ‘Iyam-eva sā &c’, the first verse of the 2nd pentad is ‘pañca-vyuṣṭir-anu’ and the first verse of the third pañcaka is ‘ṛtasya dhāma’. The above makes it clear that the <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharmasūtra took the Kāṭhaka-saṃhitā and the Kāṭhaka-gṛhya (or Laugākṣi) as its basiṣ The words ‘prathama-pañcakena, madhyamapañcakena’ are vague and could have been understood only by those who know their relation to Kāṭhakagṛhya and Kāṭhakasaṃhitā. It follows that at least some chapters (like 21, 64, 65, 67, 73 &c.) were certainly based on the Kāṭhaka gṛhya (if not all), and the <a class="ref" href="../refs/vishnu_dh.html" data-source="vishnu_dh" data-ref="" title="Viṣṇu Dharmasūtra">Viṣṇu Dh. S.</a> was originally intended to be a Dharma-sūtra for the students of the Kāṭhaka, though in course of time it grew and included elements not connected with Kāthaka-śākhā.<sup class="fn-ref"><a href="#fn-10-vishnudharmasutra-8" id="fnref-10-vishnudharmasutra-8">8</a></sup> It may be stated that on <a class="ref" href="../refs/vishnu_dh.html#21.17" data-source="vishnu_dh" data-ref="21.17" title="Viṣṇu Dharmasūtra 21.17">Viṣṇu Dh. S. 21. 17</a> also Nanda-paṇḍita mentions the Kāṭhakagṛhya, that <a class="ref" href="../refs/vishnu_dh.html#64.21" data-source="vishnu_dh" data-ref="64.21" title="Viṣṇu Dharmasūtra 64.21">Viṣṇu Dh. S. 64. 21</a> (Drupadaṁ Sāvitrim vā) refers to ‘Kāṭhaka dādivonmumućanāh etc.). Similarly, <a class="ref" href="../refs/vishnu_smriti.html#65.2" data-source="vishnu_smriti" data-ref="65.2" title="Viṣṇu Smṛti 65.2">Viṣṇu 65. 2</a> (Aśvinoḥ prāṇastau te iti jīvadānam dattvā) mentions Kāṭhaka-saṃ 11. 17; on Vi. Dh. S. 65. 7 Nandapaṇḍita remarks that the four mantras (Kāṭhaka-saṃ 36. 29-32) are to be recited; <a class="ref" href="../refs/vishnu_smriti.html#65.11" data-source="vishnu_smriti" data-ref="65.11" title="Viṣṇu Smṛti 65.11">Viṣṇu 65. 11</a> (tejosi śukramiti dīpam) mentions a mantra from Kāṭhaka-saṃ I. 33.</p>
+<p class="prose" id="p-10-vishnudharmasutra-10">Dr. Jolly in his learned and long introduction to the translation of <a class="ref" href="../refs/vishnu_dh.html" data-source="vishnu_dh" data-ref="" title="Viṣṇu Dharmasūtra">Viṣṇu Dh. S</a> (SBE. Vol. VII, pp. IX-XXXVII) deals with several problems, some of which have been discussed already. His remarks on some problems will be briefly mentioned here. On p. XXIV (in order to establish the priority of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> to the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a>) he says that the ‘<a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>sūtra nowhere refers to South Indian nations such as the Draviḍas and Āndhras or to the Yāvanas’. That non-mention does not lead to positive conclusions is well illus-trated here. The Āndhras are mentioned even in the <a class="ref" href="../refs/aitareya_br.html#33.6" data-source="aitareya_br" data-ref="33.6" title="Aitareya Brāhmaṇa 33.6">Aitareya Brāhmaṇa (33. 6)</a>, where Viśvāmitra curses his disobedient sons that ‘their offspring will be Āudhras, Śabaras and Puṇḍras’ &c.). Aśoka in his 13th Rock edict mentions Āndhraṣ On p. XXI Dr. Jolly refers to <a class="ref" href="../refs/yajnavalkya.html#II.240-41" data-source="yajnavalkya" data-ref="II.240-41" title="Yājñavalkya II.240-41">Yāj. II. 240-41</a> where nāṇaka is mentioned and punishment is provided for one turning out a false nāṇaka or for fabricating a royal grant, while <a class="ref" href="../refs/vishnu_smriti.html#V.9" data-source="vishnu_smriti" data-ref="V.9" title="Viṣṇu Smṛti V.9">Viṣṇu V. 9</a> refers only to royal grants but not to nāṇakaṣ This is put forward by Dr. Jolly as a ground for regarding <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> as more ancient than <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yāj.</a> (p. XXI). It has been shown that the <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharmasūtra professes to be a direct revelation by God <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> to the Earth Goddess and therefore the redactor of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> knowing that the nāṇaka is of foreign origin omitted that worḍ Lastly, his view (Intro. pp. XXV, ff), following the lead of Bühler, that the extant <a class="ref" href="../refs/manu.html#i" data-source="manu" data-ref="i" title="Manusmṛti i">Manusmṛti i</a>s an improved metrical edition of the Mānava-dharmaśāstra (not now available) will be dealt with later under section 13 (Mānavadharmasūtra : did it exist?). I agree with Dr. Jolly that some devotee of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> recast the original Dharmasūtra (Intro. pp. XXVIII ff). I am in agreement with the view which Dr. Jolly holds that the original <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharmasūtra was closely connected with the Kāṭhaka saṃhitā. Not only Nandapaṇḍita, but the Kṛtya-kalpataru (of the first half of 12th century) relies on the tradition that Viṣṇu Dh, S. accords with Laugākṣi-gṛhya. Dr. Jolly (on pp. XXIX-XXXI of his Introduction) puts forward several considerations as to how and why the chapters were raised to 100, what portions may be regarded as old and what were added by the <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>ite redactor later. I do not agree with everything he says but on the whole his treatment is judiciouṣ He observes that the <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>ite editor (pp. XXXII) cannot be placed earlier than 3rd or 4th century A. D. I agree with thiṣ</p>
+<p class="prose" id="p-10-vishnudharmasutra-11">The original <a class="ref" href="../refs/vishnu_dh.html" data-source="vishnu_dh" data-ref="" title="Viṣṇu Dharmasūtra">Viṣṇu Dh. S.</a> (mostly in prose) may have to be placed about 300 B. C. to 100 A. D. and the present inflated text about 400 to 600 A. D. Vide two papers of Prof. L. Renou of Paris on <a class="ref" href="../refs/vishnu_smriti.html#i" data-source="vishnu_smriti" data-ref="i" title="Viṣṇu Smṛti i">Viṣṇu i</a>n Journal Asiatique (1961) pp. 163-172 (in French) and in Bulletin of the D. C. R. I. Vol. 20 parts 1-4 (in English) pp. 319-323.</p>
+<p class="prose" id="p-10-vishnudharmasutra-12">When Dr. Jolly says that certain chapters of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> agree closely with the Kāṭhakagṛhya, all that is meant is that some of the sūtras of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> are the same or almost the same as those of the Kāṭhakagṛhya (e. g. compare <a class="ref" href="../refs/vishnu_smriti.html#21" data-source="vishnu_smriti" data-ref="21" title="Viṣṇu Smṛti 21">Viṣṇu 21</a>, 73 and 86 with Kāṭhakagṛhya V. 12, V. 9, and V. 3 respectively). But in all these places <a class="ref" href="../refs/vishnu_smriti.html#c" data-source="vishnu_smriti" data-ref="c" title="Viṣṇu Smṛti c">Viṣṇu c</a>ontains more details than the Kāṭhakagṛhya. It may, however, be noted that in a few cases the views of the Kāṭhakagṛhya differ from those of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>. For example, <a class="ref" href="../refs/vishnu_smriti.html#30.1" data-source="vishnu_smriti" data-ref="30.1" title="Viṣṇu Smṛti 30.1">Viṣṇu (30. 1)</a> speaks of Vedic studies for 4½ months only in the year when once they are started on the full-moon day of Śrāvaṇa or Bhādrapada, while the Kāṭhakagṛhya (I. 9. 10) gives three alternatives, viz. 4½, 5 or 5½ months; <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> prescribes the 11th from conception (27. 16), while the Kāṭhaka prescribes the 9th, without specifying whether it is to be from conception or birth (IV. 1. 2); <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> enumerates eight forms of marriage (24. 18), while the Kāṭhaka (II. 3 and 4) speaks of only two, Brāhma and Āsura, and is silent about the rest; <a class="ref" href="../refs/vishnu_smriti.html#46.19-20" data-source="vishnu_smriti" data-ref="46.19-20" title="Viṣṇu Smṛti 46.19-20">Viṣṇu (46. 19-20)</a> defines Santapana and Mahā- sautapana differently from the Kāṭhaka (I. 7. 3-4), but agrees with <a class="ref" href="../refs/yajnavalkya.html#III.315-316" data-source="yajnavalkya" data-ref="III.315-316" title="Yājñavalkya III.315-316">Yājñavalkya (III. 315-316)</a>. Here the recent Lahore edition of the Kāṭhakagṛhya by Dr. Caland has been useḍ As it used Kāṭhaka mantras and borrowed from the Kāṭhakagṛhya, the dharmasūtra may have been a text-book of the Kāṭhaka school and probably originated in Kashmir and Punjab which is the home of the Kāṭhaṣ The date of the older portion of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> may be placed between 300 B. C. to 100 B. C. But this is no more than a mere conjecture. It is to be noted that Kumārila does not mention the <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharmasūtra among the sūtras studied by particular schoolṣ Then several centuries later on the whole of the sūtra was recast from the Vaiṣṇavite point of view and received large additions both in prose and verse. When these additions were made we have no exact means of determining. It is probable that they were not made very long before <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a>. At all events the additions were made long after the <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yājñavalkya</a>smṛti and after the 3rd century. The mention of the week days makes the sūtra comparatively a late work. The earliest epigraphic mention of a week-day is in the Eran inscription of 484 A. D. ( vide Fleet's Gupta inscriptions pp. 88-89 ) and Varāhamihira ( 6th century ) knew the week days well. The Brahmapurāṇa ( 28. 55 ) mentions Sunday and the <a class="ref" href="../refs/padma_purana.html" data-source="padma_purana" data-ref="" title="Padmapurāṇa">Padmapurāṇa</a> mentions Thursday ( Brahmakhaṇḍa chap. 11. 34 ). The Sūrya-siddhānta ( XII. 6 and 78 ) speaks of the lords of dayṣ Thus although the extant <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>-dharmasūtra is a late recast, it contains a few doctrines that were held in ancient timeṣ For example, it allows a Brāhmaṇa to marry a girl of anyone of the four varṇas ( 24. 1 ) and does not inveigh against niyoga as <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> doeṣ</p>
+<p class="prose" id="p-10-vishnudharmasutra-13">A few of the sūtras agree closely with <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>. Vide Vi. 7. 10–11 and <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> ( Rṇādāna verses 136–137 ).</p>
+<p class="prose" id="p-10-vishnudharmasutra-14">The <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mitākṣarā</a> quotes all the prose passages of chapters 35-42 and ascribes them to Bṛhadviṣṇu ( on <a class="ref" href="../refs/yajnavalkya.html#3.242" data-source="yajnavalkya" data-ref="3.242" title="Yājñavalkya 3.242">Yāj. 3. 242</a> ). Similarly, on <a class="ref" href="../refs/yajnavalkya.html#3.261" data-source="yajnavalkya" data-ref="3.261" title="Yājñavalkya 3.261">Yāj. 3. 261</a> it ascribes Vi. 35. 3–5 to Bṛhad-viṣṇu. Similarly, the Smṛticandrikā ( II. p. 298 ) ascribes Vi. 17. 4 ff to Bṛhad-<a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>. The <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mitākṣarā</a> ( on <a class="ref" href="../refs/yajnavalkya.html#3.267" data-source="yajnavalkya" data-ref="3.267" title="Yājñavalkya 3.267">Yāj. 3. 267</a> ) quotes a verse of Vṛddha-<a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> which summarises some sūtras of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> <sup class="fn-ref"><a href="#fn-10-vishnudharmasutra-9" id="fnref-10-vishnudharmasutra-9">9</a></sup> ( 50. 6 and 12-14 ).</p>
+<p class="prose" id="p-10-vishnudharmasutra-15">In the Ānandāśrama collection of smṛtis there is a Laghu-<a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>smṛti in five chapters and 114 verses dealing with the duties of the varṇas and the four āśramaṣ <a class="ref" href="../refs/apararka.html#i" data-source="apararka" data-ref="i" title="Aparārka i">Aparārka i</a>n his commentary on <a class="ref" href="../refs/yajnavalkya.html#3.258" data-source="yajnavalkya" data-ref="3.258" title="Yājñavalkya 3.258">Yāj. 3. 258</a> quotes four verses from Laghu-<a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>, which are not found in the Ānandāśrama text. So <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> used some other work or perhaps a larger work. The <a class="ref" href="../refs/parasara.html" data-source="parasara" data-ref="" title="Parāśara">Parāśara</a>-Mādhava often quotes gadya-<a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> and padya-<a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>. The former from a quotation in vol. I. part 2, p. 234 seems to be the <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>-dharmasūtra itself. In the Sarasvatīvilāsa numerous sūtras of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> with the explanations of Bhāruci thereon are quoted, which are not found in the printed <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>.<sup class="fn-ref"><a href="#fn-10-vishnudharmasutra-10" id="fnref-10-vishnudharmasutra-10">10</a></sup> The <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>-dharmasūtra was commented upon by Nanda-paṇḍita, author of several works on dharmaśāstra, who wrote at Benares the commentary called Vaijayantī (accord-ing to certain msṣ) in 1679 (i. e. 1622-23 A. D.) of the Vikrama era. Dr. Jolly publishes extracts from this commen-tary in his edition of the sūtra. From the fact that the Sarasvatīvilāsa quotes several times the sūtras of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> with Bhāruci's explanation, it looks probable that Bhāruci commented upon the <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharma-sūtra. For further information on Bhāruci vide sec. 61. So far only the printed and well-known dharmasūtras have been passed under review. But there were numerous other dharmasūtras which are either now extant in rare msṣ or are not yet discovered but are only to be reconstructed from quotationṣ It is now time to discuss theṃ</p>
+<aside class="footnotes-section" aria-label="Footnotes">
+<hr>
+<ol class="footnotes-list">
+<li id="fn-10-vishnudharmasutra-1" class="footnote-item">H. D.—15 . <a href="#fnref-10-vishnudharmasutra-1" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-10-vishnudharmasutra-2" class="footnote-item">Vide <span class="devanagari">चरक</span>, <span class="devanagari">शारीरस्थान</span> chap. 7 and <span class="devanagari">सुषुत</span>, <span class="devanagari">शारीरस्थान</span> chap. 5; in the <span class="devanagari">अष्टाङ्गहृदय</span> of <span class="devanagari">वाग्भट</span>, <span class="devanagari">शारीर</span> chap. 3, we find 360 bones and 700 muscleṣ <a href="#fnref-10-vishnudharmasutra-2" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-10-vishnudharmasutra-3" class="footnote-item"><span class="devanagari">चातुर्वर्ण्यव्यवस्थानं यस्मिन्देशे न विद्यते । स म्लेच्छदेशो विज्ञेय आर्यावर्ततः परः ॥</span> It is to be noted that Yāj. (I. 2) lays down dharmas for the country in which the black deer moves about, following Bauḍ I. 1. 29 and Vaṣ 1. 13. <a href="#fnref-10-vishnudharmasutra-3" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-10-vishnudharmasutra-4" class="footnote-item">( Continued on the next page ) <a href="#fnref-10-vishnudharmasutra-4" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-10-vishnudharmasutra-5" class="footnote-item">( Continued from the previous page ) <span class="devanagari">हत्वा तोषितः श्राद्धयेन गुणः । नग्मिन स्मृते न दोर्षोम्नि इयोरूद्धावणे कृते ॥</span> on Yāj. III. 227; <span class="devanagari">स्त्रीणामर्थ प्रशस्तव्यं वृद्धानां रोगिणां तथा । पादो बालषु दातव्यः सर्वोपिनर्य विधिः ॥</span> on Yāj. III. 243; <span class="devanagari">गोनस्य पञ्चगव्येन मास</span>- <span class="devanagari">मेके पलत्रयम् । प्रसहं स्थापरांको वा चान्द्रायणमथापि वा ॥</span> on Yāj.III. 263. . <a href="#fnref-10-vishnudharmasutra-5" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-10-vishnudharmasutra-6" class="footnote-item"><span class="devanagari">विष्णुधर्मसूत्र</span> (chap. 73. 1) begins: <span class="devanagari">अथ श्राद्धेपुः पूर्वेपूर्वगुर्वादृणानामन्त्रयेत्</span>. Then sūtras from 5 are: <span class="devanagari">आमश्राद्धेषु काम्यश्राद्धेषु च प्रथमपक्षश्चैकनापि हुत्वा । पशुश्राद्धेषु मध्यमपक्षश्चकेन । अमावासाभूतमनुष्यकेन । आग्रहायण्या ऊर्ध्व कृष्णष्टकासु च क्रमेणैव प्रथममध्यमोत्तमपक्षैः । अन्वष्टकासु च । विष्णुध</span>. <a href="#fnref-10-vishnudharmasutra-6" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-10-vishnudharmasutra-7" class="footnote-item">5-9 On this <span class="devanagari">कृत्यकल्पतरु</span> (<span class="devanagari">श्राद्धकाण्ड</span>) p. 165 explanis ‘<span class="devanagari">आमश्राद्धे लौगाक्षिभानुसारेण ज्योतिष्टोमादावारम्भे नान्दीमुखश्राद्धं पश्यादौ पुत्रार्थाना क्रियाणम् । प्रथमपक्षकेन इति</span> ‘<span class="devanagari">इयमेव से</span>'<span class="devanagari">ति पञ्चदशर्चानुवाकस्तीरीयं</span>- <span class="devanagari">के काठके च पठ्यते । तस्य यथाक्रमं प्रथमद्वितीयनुषकाः स्थालीपाके</span>- <span class="devanagari">नामोकरणहोमे विनियुज्यन्ते । पशुश्राद्धे समातंडद्रे ।</span> The Kāṭhaka-gṛhya (eḍ by Dr. Caland) 7. 61 runs- <span class="devanagari">तिरोडउकाः पितृदेवत्वाः । ऊर्ध्वमाग्रहायण्याष्ट्रय स्तामिळासतेष्टपष्ठीचित्प्रकाभ्याः । प्रथमो शक्तिन द्वितीयो मासेन तृतीयामापूंः ।</span> ..<span class="devanagari">इयमेव से</span>'<span class="devanagari">त्यनुवाकेन पञ्चभिः पञ्चभिरभिजुहुयात् ।</span> 1-3 and 6. <span class="devanagari">लौगाक्षिगृय</span> in the Kashmir Series of Texts (1934) is the same as Kāṭhaka-gṛhya; <span class="devanagari">देवपालभाष्य</span> on <span class="devanagari">लौगाक्षिगृय</span> explains the 15 verses at length. <a href="#fnref-10-vishnudharmasutra-7" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-10-vishnudharmasutra-8" class="footnote-item">It should be noted that these fifteen verses occur in the Kāṭhaka-Saṃhitā as well as in Tai. S. IV. 3. 11 and Maitrāyaṇī Saṃhitā II. 13. 71–85. But the latter two differ from Kāṭhaka Saṃ. in the sequence of the verses and also present different readings of a word or two. The first five verses of the Anuvāka of 15 verses in Kāṭhaka S. and Tai. S. are the same and in the same order. But, thereafter ‘pañca-vyuṣṭir-anu’ becomes 11th in Tai. S. and the first verse of the third pañcaka in Kāṭhaka is ‘Ṛtasya dhāma’ and becomes the 13th in Tai. S. The Mai. S. does not concur in having even the first five verses in the same order. <a href="#fnref-10-vishnudharmasutra-8" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-10-vishnudharmasutra-9" class="footnote-item">The verse of <span class="devanagari">वृ‌द्धविष्णु</span> is <span class="devanagari">विप्रे तु सकलँ देयं पादोने क्षत्रिये स्मृतम्‌। वैश्येर्धमेकपादस्तु शूद्राजातिषु शस्यते ॥</span> The sūtras are: <span class="devanagari">ब्राह्मणं हत्वा द्वादशसंवत्सरं कृचात्‌। पादोनं क्षत्रियवधे । अर्धं वैश्यवधे । तदर्थं शूद्रवधे ।</span> <a href="#fnref-10-vishnudharmasutra-9" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-10-vishnudharmasutra-10" class="footnote-item">e. g. para 637 : <span class="devanagari">यथाह भारुचिरितद्विष्णुवचनव्याख्यानावसरे बीजशब्दः पिण्ड</span>-<span class="devanagari">वाचीति ।</span> ( Viṣṇu's sūtra seems to have been <span class="devanagari">बीजग्रहणानुविधायमंशं गृह्णीयात्</span> ); para 719 <span class="devanagari">अत्र भारुचिः</span> ( on <span class="devanagari">विष्णु</span>'s <span class="devanagari">सूत्र</span> '<span class="devanagari">पितृव्यापितृभ्रातृ</span>-<span class="devanagari">मिञ्ण्व संगमो नाम्येः</span> ) <span class="devanagari">। वैकल्पिकीयं संसर्गविधिंरिर्ति</span> ; para 736 <span class="devanagari">अत्र भारुचिः मिश्षोदराणामिति निर्धारणे षष्ठी</span> ( on <span class="devanagari">विष्णु</span>'s <span class="devanagari">सूत्र</span> '<span class="devanagari">मिश्षोदराणां संसष्टिनी गृह्ययुः</span> ' ); para 847 contains a long sūtra of Viṣṇu '<span class="devanagari">अभिष्ये गार्भं धार्भ मेंनं वैधमाऋक्सिमादशादन्दं प्रतिभाग्यमत ऊर्ध्वं सर्वमविभाज्यमू</span> ' and para 848 contains <span class="devanagari">भारुचि</span>'s explanation of it. Vide pp. 32, 50, 165, 166, 243, 244 &c. of the recently published Mysore edition of the <span class="devanagari">सरस्वतीविलास</span> for sūtras of Viṣṇu which are not found in the printed text of Viṣṇu. It appears that the <span class="devanagari">सरस्वतीविलास</span> had a very much larger version of the sūtra before it. <a href="#fnref-10-vishnudharmasutra-10" class="fn-back" aria-label="Back to text">↩</a></li>
+</ol>
+</aside>
+
+            <div class="chapter-nav">
+                <a href="9-vasishtha-dharmasutra.html" class="nav-prev"><i class="fa-solid fa-chevron-left"></i> 9. Vasishtha-Dharmasutra</a>
+                <a href="11-the-dharmasutra-of-harita.html" class="nav-next">11. The Dharmasutra of Harita <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </main>
+    </div>
+
+    <button class="toc-mobile-toggle" onclick="toggleMobileToc()" aria-label="Table of contents">
+        <i class="fa-solid fa-list"></i>
+    </button>
+
+    
+    <footer class="container-fluid pt-4" style="background-color:#2e4144">
+        <div class="row border-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img src="https://sanatana.in/mbta/public/images/Homepage_html/images/layer_8.png" alt="">
+            </div>
+            <div class="col-md-5 text-white">
+                <p>The divine knowledge and wisdom of our shastras is the only thing eternal,
+                   which was and which will remain ever-present in this gods creation.
+                   Our endeavours are to preserve this knowledge.</p>
+            </div>
+            <div class="col-md-1 text-white">
+                <div class="d-flex" style="height: 75px;">
+                    <div class="vr"></div>
+                </div>
+            </div>
+            <div class="col-md-3 text-white">
+                <i class="fa-solid fa-globe"></i>&emsp;
+                <a href="https://sanatanasampatti.in" class="text-light">www.sanatanasampatti.in</a><br>
+                <i class="fa-solid fa-envelope"></i>&emsp;
+                <a href="" class="text-light">sriranga.yoga@gmail.com</a>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center py-3 mb-4 align-items-center border-bottom">
+            <div class="col-md-2 text-white fs-4 text-center">Project</div>
+            <div class="col-md-2 text-white fs-4 text-center">Our Mission</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contribute</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contact Us</div>
+        </div>
+        <div class="row">
+            <p class="col-md-6 fs-6 text-start text-light">
+                <small>&copy; 2026 Sanatanasampatti</small>
+            </p>
+            <p class="col-md-6 fs-6 text-end text-light">
+                <a class="text-white" rel="nofollow" href="http://www.srirangadigital.com" target="_blank">
+                    <img src="https://sanatana.in/mbta/public/images/logo.png" alt="sriranga logo" />
+                    <small>Designed, Developed and Maintained by Sriranga Digital</small>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        const headings = [];
+        tocLinks.forEach(link => {
+            const id = link.getAttribute('href').substring(1);
+            const el = document.getElementById(id);
+            if (el) headings.push({ el: el, link: link.parentElement });
+        });
+
+        function onScroll() {
+            let current = null;
+            for (const h of headings) {
+                const rect = h.el.getBoundingClientRect();
+                if (rect.top <= 120) current = h;
+            }
+            tocLinks.forEach(l => l.parentElement.classList.remove('active'));
+            if (current) current.link.classList.add('active');
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    });
+
+    function toggleMobileToc() {
+        const toc = document.getElementById('toc');
+        if (!toc) return;
+        if (toc.style.display === 'block') {
+            toc.style.display = '';
+            toc.style.position = '';
+        } else {
+            toc.style.display = 'block';
+            toc.style.position = 'fixed';
+            toc.style.top = '0';
+            toc.style.left = '0';
+            toc.style.width = '80vw';
+            toc.style.maxWidth = '320px';
+            toc.style.height = '100vh';
+            toc.style.maxHeight = '100vh';
+            toc.style.zIndex = '2000';
+            toc.style.background = 'var(--parchment)';
+            toc.style.boxShadow = '4px 0 20px rgba(0,0,0,0.2)';
+            toc.style.padding = '24px';
+            toc.style.overflowY = 'auto';
+        }
+    }
+    </script>
+
+    <script>
+    function toggleSynopsisAudio(btn) {
+        var audio = btn.parentElement.querySelector('audio');
+        if (!audio.src) audio.src = btn.getAttribute('data-src');
+        if (audio.paused) {
+            audio.play();
+            btn.classList.add('playing');
+            btn.querySelector('i').className = 'fa-solid fa-pause';
+        } else {
+            audio.pause();
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        }
+        audio.onended = function() {
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        };
+        // Prevent click from toggling the synopsis open/close
+        event.stopPropagation();
+    }
+    </script>
+</body>
+</html>

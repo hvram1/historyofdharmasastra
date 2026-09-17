@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- MDB UI Kit -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/fonts.css?v=1.2">
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/navbar.css?v=2.4">
+
+    <title>Appendix to Section VII Chap.XXX — Volume V: Part II — History of Dharmaśāstra</title>
+    <style>
+    :root {
+        --saffron:        #D4600A;
+        --saffron-light:  #F0924A;
+        --saffron-wash:   rgba(212, 96, 10, 0.07);
+        --indigo:         #2E5FA3;
+        --indigo-dark:    #1C3D70;
+        --maroon:         #7A1E1E;
+        --amber:          #C97A1A;
+        --ink:            #1A1209;
+        --ink-secondary:  #4A3B2A;
+        --parchment:      #FDFAF4;
+        --parchment-mid:  #F5EFE2;
+        --rule:           rgba(180, 130, 60, 0.22);
+        --shadow:         0 2px 18px rgba(90, 50, 10, 0.08);
+        --font-devanagari: 'Tiro Devanagari Sanskrit', 'Siddhanta', 'Noto Sans Devanagari', serif;
+        --font-roman:      'Junicode', Georgia, serif;
+    }
+
+    body {
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: var(--font-roman);
+    }
+
+    .devanagari {
+        font-family: var(--font-devanagari);
+    }
+
+    /* ── Navbar overrides ── */
+    .navbar-ontop { z-index: 1031; }
+    .hdclr { color: var(--saffron); }
+    .engpara { font-family: 'Open Sans', sans-serif; }
+
+    /* ── Layout ── */
+    .dh-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .dh-content {
+        flex: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        background: var(--parchment);
+        box-shadow: var(--shadow);
+        min-height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        .dh-content { padding: 24px 20px; }
+        .dh-wrapper { flex-direction: column; }
+    }
+
+    /* ── TOC Sidebar ── */
+    .toc-sidebar {
+        position: sticky;
+        top: 80px;
+        width: 280px;
+        min-width: 280px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding: 20px 16px;
+        margin-right: 24px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        scrollbar-width: thin;
+    }
+
+    .toc-title {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--saffron-light);
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list li {
+        padding: 4px 0;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-list li.toc-l3 {
+        padding-left: 16px;
+        font-size: 0.78rem;
+    }
+
+    .toc-list li a {
+        color: var(--ink-secondary);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .toc-list li a:hover { color: var(--saffron); }
+
+    .toc-list li.active {
+        border-left-color: var(--saffron);
+    }
+
+    .toc-list li.active a {
+        color: var(--saffron);
+        font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-sidebar { display: none; }
+    }
+
+    /* ── Mobile TOC Toggle ── */
+    .toc-mobile-toggle {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1050;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--saffron);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-mobile-toggle { display: block; }
+    }
+
+    /* ── Section Headings ── */
+    .section-heading {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        margin: 48px 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--rule);
+        letter-spacing: 0.5px;
+        scroll-margin-top: 80px;
+    }
+
+    h2.section-heading { font-size: 1.6rem; }
+
+    h3.section-heading {
+        font-size: 1.25rem;
+        border-left: 4px solid var(--saffron-light);
+        border-bottom: none;
+        padding: 8px 16px;
+        background: var(--saffron-wash);
+        border-radius: 0 5px 5px 0;
+    }
+
+    /* ── Prose ── */
+    .prose {
+        font-family: var(--font-roman);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+        color: var(--ink);
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    .prose em { color: var(--maroon); }
+
+    .prose:target {
+        background: rgba(212, 96, 10, 0.12);
+        border-left: 4px solid var(--saffron);
+        padding-left: 16px;
+        margin-left: -20px;
+        border-radius: 0 6px 6px 0;
+        animation: target-pulse 2s ease-out;
+    }
+
+    @keyframes target-pulse {
+        0%   { background: rgba(212, 96, 10, 0.30); }
+        100% { background: rgba(212, 96, 10, 0.12); }
+    }
+
+    /* ── Footnote References ── */
+    .fn-ref {
+        font-size: 0.75em;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    .fn-ref a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 0 2px;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: color 0.15s;
+    }
+
+    .fn-ref a:hover { color: var(--indigo); }
+
+    /* ── Synopsis Box ── */
+    .synopsis-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron-light);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .synopsis-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .synopsis-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .synopsis-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .synopsis-box.open .synopsis-toggle i {
+        transform: rotate(90deg);
+    }
+    .synopsis-body {
+        display: none;
+        padding: 0 20px 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+    }
+    .synopsis-box.open .synopsis-body { display: block; }
+    .synopsis-body p { margin: 0; }
+    .synopsis-attribution {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: var(--ink-secondary);
+        opacity: 0.7;
+        font-style: italic;
+    }
+    .synopsis-audio {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    .synopsis-play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--saffron);
+        background: none;
+        color: var(--saffron);
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: background 0.2s, color 0.2s;
+        padding: 0;
+    }
+    .synopsis-play-btn:hover {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn.playing {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn i { padding-left: 2px; }
+
+    /* ── Index Terms Panel ── */
+    .index-terms-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .index-terms-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .index-terms-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .index-terms-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .index-terms-box.open .index-terms-toggle i {
+        transform: rotate(90deg);
+    }
+    .index-terms-body {
+        display: none;
+        padding: 0 20px 16px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .index-terms-box.open .index-terms-body { display: block; }
+    .index-terms-dl {
+        margin: 0;
+        padding: 0;
+    }
+    .index-terms-dl dt {
+        font-family: var(--font-roman);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+        margin-top: 8px;
+    }
+    .index-terms-dl dd {
+        margin: 2px 0 0 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        color: var(--ink-secondary);
+        line-height: 1.5;
+    }
+    .nyaya-heading {
+        font-family: var(--font-roman);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        margin: 16px 0 4px;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+    }
+
+    /* ── Inline Index Popovers ── */
+    .idx-term {
+        border-bottom: 1px dotted var(--saffron-light);
+        cursor: help;
+        position: relative;
+    }
+    .idx-term:hover::after {
+        content: attr(data-def);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        background: rgba(44, 36, 22, 0.92);
+        color: #F5ECD8;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        max-width: 280px;
+        z-index: 100;
+        white-space: normal;
+        line-height: 1.4;
+        pointer-events: none;
+    }
+
+    /* ── Structured Version Banner ── */
+    .structured-banner {
+        margin: 0 0 28px;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, rgba(212, 96, 10, 0.06) 0%, rgba(212, 96, 10, 0.02) 100%);
+        border: 1px solid var(--saffron-light);
+        border-radius: 6px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        color: var(--ink-secondary);
+        line-height: 1.6;
+    }
+    .structured-banner i { color: var(--saffron); margin-right: 4px; }
+    .structured-banner a { color: var(--indigo); font-weight: 600; text-decoration: none; }
+    .structured-banner a:hover { text-decoration: underline; }
+
+    /* ── Footnotes Section ── */
+    .footnotes-section {
+        margin: 32px 0 48px;
+        padding: 20px 24px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .footnotes-section hr {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 0 0 16px;
+    }
+
+    .footnotes-list {
+        padding-left: 24px;
+        margin: 0;
+    }
+
+    .footnote-item {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+        scroll-margin-top: 80px;
+    }
+
+    .footnote-item:target {
+        background: rgba(212, 96, 10, 0.1);
+        border-radius: 4px;
+        padding: 4px 6px;
+        margin-left: -6px;
+    }
+
+    .fn-back {
+        color: var(--saffron-light);
+        text-decoration: none;
+        font-size: 0.85em;
+        margin-left: 4px;
+    }
+
+    .fn-back:hover { color: var(--saffron); }
+
+    /* ── Reference Links ── */
+    a.ref {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: all 0.15s;
+    }
+
+    a.ref:hover {
+        color: var(--saffron);
+        border-bottom-style: solid;
+    }
+
+    a.mbta-ext {
+        color: var(--indigo);
+        font-size: 0.7em;
+        margin-left: 2px;
+        opacity: 0.5;
+        text-decoration: none;
+        vertical-align: super;
+    }
+    a.mbta-ext:hover { opacity: 1; color: var(--saffron); }
+
+    /* ── References Panel (sidebar) ── */
+    .refs-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .refs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .refs-list li {
+        padding: 3px 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .ref-source-link {
+        font-weight: 600;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .ref-source-link:hover {
+        text-decoration: underline;
+    }
+
+    .ref-verse-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.76rem;
+    }
+
+    .ref-verse-link:hover {
+        text-decoration: underline;
+        color: var(--saffron);
+    }
+
+    .ref-verses {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Timeline panel ── */
+    .timeline-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .timeline-list li {
+        padding: 2px 0;
+        font-size: 0.76rem;
+        line-height: 1.4;
+        position: relative;
+        padding-left: 14px;
+    }
+
+    .timeline-list li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--saffron);
+    }
+
+    .timeline-list li.tl-approximate::before {
+        background: transparent;
+        border: 2px solid var(--saffron);
+        width: 4px;
+        height: 4px;
+    }
+
+    .timeline-list li.tl-century::before {
+        background: transparent;
+        border: 2px dashed var(--saffron);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+
+    .tl-dot-link {
+        text-decoration: none;
+        color: var(--ink);
+        display: block;
+    }
+
+    .tl-dot-link:hover {
+        color: var(--saffron);
+    }
+
+    .tl-year {
+        font-weight: 600;
+        color: var(--saffron);
+        font-size: 0.72rem;
+        min-width: 70px;
+        display: inline-block;
+    }
+
+    .tl-label {
+        color: var(--ink-secondary);
+        font-size: 0.72rem;
+    }
+
+    .tl-view-link, .tl-more {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.72rem;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .tl-view-link:hover, .tl-more:hover {
+        text-decoration: underline;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+
+    .breadcrumb-bar a {
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+
+    .breadcrumb-bar .sep {
+        color: var(--amber);
+        margin: 0 8px;
+    }
+
+    .breadcrumb-bar .current {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Chapter Navigation ── */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        margin-top: 48px;
+        border-top: 2px solid var(--rule);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .chapter-nav a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        transition: all 0.2s;
+        max-width: 45%;
+    }
+
+    .chapter-nav a:hover {
+        background: var(--saffron-wash);
+        border-color: var(--saffron-light);
+    }
+
+    .nav-prev { text-align: left; }
+    .nav-next { text-align: right; margin-left: auto; }
+
+    .page-range {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+    }
+
+    /* ── Volume Cards (Landing) ── */
+    .vol-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .vol-card {
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        transition: all 0.25s;
+    }
+
+    .vol-card:hover {
+        border-color: var(--saffron-light);
+        box-shadow: 0 4px 24px rgba(212, 96, 10, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .vol-num {
+        font-family: var(--font-roman);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--saffron);
+        margin-bottom: 8px;
+    }
+
+    .vol-subtitle {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        line-height: 1.5;
+        flex: 1;
+    }
+
+    .vol-chapters {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        margin-top: 12px;
+    }
+
+    /* ── Chapter Cards (Volume Index) ── */
+    .chapter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .chapter-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .chapter-card:hover {
+        border-color: var(--saffron-light);
+        background: var(--saffron-wash);
+    }
+
+    .card-num {
+        font-family: var(--font-roman);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--saffron);
+        min-width: 36px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        flex: 1;
+    }
+
+    .card-pages {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        color: var(--ink-secondary);
+    }
+
+    /* ── Landing Hero ── */
+    .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-family: var(--font-roman);
+        font-size: 2.4rem;
+        color: var(--saffron);
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .hero .devanagari-title {
+        font-family: var(--font-devanagari);
+        font-size: 1.8rem;
+        color: var(--ink);
+        margin-bottom: 16px;
+    }
+
+    .hero .author {
+        font-family: var(--font-roman);
+        font-size: 1.1rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .hero .desc {
+        font-family: var(--font-roman);
+        font-size: 1rem;
+        color: var(--ink-secondary);
+        line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer { margin-top: 48px; }
+</style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mbta/">
+      <div class="container-fluid">&emsp;&emsp;
+      <a href="../index.html" class="navbar-brand" style="text-decoration:none;">
+        <span class="devanagari ms-3" style="font-size:1.5rem; color:var(--saffron); font-weight:700;">धर्मशास्त्रम्</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="../index.html">धर्मशास्त्रम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5 active" href="../index.html">खण्डाः</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in/mbta/">महाभारतम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in">सनातनम्</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+
+    <div class="dh-wrapper container-xl">
+        <nav id="toc" class="toc-sidebar">
+<div class="refs-panel">
+<h5 class="toc-title">References</h5>
+<ul class="refs-list">
+<li><a href="../refs/aitareya_br.html" class="ref-source-link">Aitareya Brāhmaṇa</a> <span class="ref-verses"><a href="../refs/aitareya_br.html#I.1" class="ref-verse-link">I.1</a></span></li>
+<li><a href="../refs/hodh.html" class="ref-source-link">History of Dharmaśāstra</a> <span class="ref-verses"><a href="../refs/hodh.html#vol. IV" class="ref-verse-link">vol. IV</a>, <a href="../refs/hodh.html#vol. II" class="ref-verse-link">vol. II</a>, <a href="../refs/hodh.html#v" class="ref-verse-link">v</a>, <a href="../refs/hodh.html#vol. III" class="ref-verse-link">vol. III</a>, <a href="../refs/hodh.html#II" class="ref-verse-link">II</a>, <a href="../refs/hodh.html#vol II" class="ref-verse-link">vol II</a></span></li>
+<li><a href="../refs/mitakshara.html" class="ref-source-link">Mitākṣarā</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/taittiriya_s.html" class="ref-source-link">Taittirīya Saṃhitā</a> <span class="ref-verses"><a href="../refs/taittiriya_s.html#V.1.8" class="ref-verse-link">V.1.8</a>, <a href="../refs/taittiriya_s.html#II.5.2.5" class="ref-verse-link">II.5.2.5</a>, <a href="../refs/taittiriya_s.html#II.6.10.1-2" class="ref-verse-link">II.6.10.1-2</a></span></li>
+<li><a href="../refs/yajnavalkya.html" class="ref-source-link">Yājñavalkya</a> <span class="ref-verses"><a href="../refs/yajnavalkya.html#II.135" class="ref-verse-link">II.135</a>, <a href="../refs/yajnavalkya.html#I.81" class="ref-verse-link">I.81</a></span></li>
+</ul>
+</div>
+<h5 class="toc-title">Sections</h5>
+<ul class="toc-list">
+<li class="toc-l2"><a href="#appendix-to-section-vii-chapxxx">Appendix to Section VII Chap.XXX</a></li>
+</ul>
+</nav>
+        <main class="dh-content">
+            
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep">›</span>
+        <a href="index.html">Volume V: Part II</a>
+        <span class="sep">›</span>
+        <span class="current">Appendix to Section VII Chap.XXX</span>
+    </div>
+    
+            <h1 class="text-center" style="font-family: var(--font-roman); font-size: 2rem; color: var(--saffron); margin-bottom: 8px;">
+                Appendix to Section VII Chap.XXX
+            </h1>
+            <p class="text-center" style="font-family: 'Open Sans', sans-serif; color: var(--ink-secondary); font-size: 0.9rem; margin-bottom: 36px;">
+                Volume V: Part II <span class="page-range">pp. 1339–1351</span>
+            </p>
+
+            
+
+            
+    <div class="index-terms-box" id="index-terms">
+        <button class="index-terms-toggle" onclick="this.parentElement.classList.toggle('open')"
+                aria-expanded="false" aria-controls="index-terms-body">
+            <i class="fa-solid fa-chevron-right"></i>
+            Index Terms (17)
+        </button>
+        <div class="index-terms-body" id="index-terms-body">
+            <dl class="index-terms-dl"><dt>Abhyudiṣṭi</dt><dt>Anuśaṅgā</dt><dd>a principle about sentences, viz. extension, of a word or clause from one sentence to another or other sentences, provided all the sentences are of the same type or form ; illustrations of</dd><dt>Aruṇāyāya</dt><dd>(explained)</dd><dt>Aveṣṭi</dt><dd>is a sacrifice performed as part of the Rājāsuya-yajña that could be performed only by a kṣatriya, it is also an independent yāga that may be performed by any one belonging to the three varṇas ; Nirṇayasindhu relies upon this difference in Aveṣṭi for its conclusions about Devi-pūjā on different tithis ; word 'rājan' in 'Rājasūya' is held by PMS and Śabara to mean a kṣatriya only, while some late Dharmaśāstra works hold that the word ‘rājan’ may secondarily mean even a Vaiśya who becomes a ruler</dd><dt>Jacob</dt><dd>Colonel, a. of ‘Laukikanyāyāñjali’</dd><dt>Kuṇḍapāyinām – ayana. deals with Agnihotra for a month different from daily Agnihotra</dt><dt>Kāṇḍānusamaya method</dt><dd>explained , followed acc. to Mit. as to Vaiśvadeva brāhmaṇas in the matter of Upacāras, referred to in P. M. S. V. 2. 7-9</dd><dt>Mahāvākya 1298; word occurs in Vedāntasūtra</dt><dt>Padārthanusamaya method 1317</dt><dd>is reverse of Kāṇḍānu-samaya and is set out in P. M. S. V. 2. 1-3</dd><dt>Pratinidhi (substitute or repre-sentative); first rule that</dt><dd>if a substance prescribed for preparing an offering perishes or is lost in an obligatory rite or a kāmya rite after it is begun, another sub-stance (such as nīvāras for rice grain may be substituted ; no p. allowed for a mantra, deity, vedic fire, for kriyās like Prayājas or for the Yajamāna (except in Sattras) , substi-tute for wife of sacrificer (if she be dead) was image of her made of gold or or kuśas ; what is expressly forbidden for use in Vedic sacrifices such as māsas cannot be substitutes for mudga , (māṣamud-ganyāya); when a vedic text expressly prescribes a substi-tute for a substance (as Pūtī-kas for Soma plant) only that substance can be substituted and not another more similar, when a substitute has to be employed, the subsidiary acts of sprinkling with water, pounding etc. are to be perfor-med on the substitute and the appropriate change in wording by adaptation should be made</dd><dt>Purūravas and Urvaśī in Matsya (Chap. 24) and drama Vikramorvaśīya agree closely 900–901</dt><dd>though there are one or two points of difference. Matsyendranātha, called Luipā in Tibet , . Mattavilāsaprahasana of Pallava king Mahendravikramavarman . Mauryas, being greedy of gold, manufactured images of gods for sale . Mausalaparva , (dreams), (on Abhiras). Maxims (some Nyāyas), generally of Mīmāṁsā—vide pp. ); about nindā (condemnation) being meant to prescribe the opposite of what is condemned , Anyāyāścaneka-thatvam, explained , Anūpādhi-karaṇa or Anūpanyāya , ‘dṛṣṭe satyādṛṣṭakal-panā anyāyyā—if a seen result or purpose can be found for an act, it is improper to assign an unseen reward for it, and n, grahaikatvanyāya, explained , hetuvan-ni-gadādhikaraṇa, Holākādhikaraṇa , prādhānyena vyapā-deśā bhavanti ; rātri-sattranyāya , Rathakāra-dhikaraṇa , Sā-marthādhikaraṇa , Saṁyoga-pṛthaktva, explained and applied , Sarvaśākhāpratyaya-nyāya , (explained) or śākhā-ntarādhikaraṇanyāya ; Sthālīpulakanyāya , Udbhid-nyāya , yāvad-vacanam vāca-nikam , . Max-Müller, his date (hypotheti-cal) for the Vedic period, his date for Amara-kośa ; remarks against his dating for Veda ; a. of ‘Six Systems of Indian Phi-losophy’ , wrong translation by, . Maxwell on Interpretation of Statutes, . Maya, astrological writer m. by Varāhamihira . Maya, king of Yavanas, to whom Jyotiṣa was imparted by the Sun-god . Māyā ; Bādarāyaṇa (V. S. II. 2. ) and Śaṁkara are agreed that the ordinary physical world is different from dreams; Śaṁkarācārya employs the word Māyā to express the idea of mystery as to how the finite arises from the Infinite ; proper language for most men is not to speak about the world as Māyā (illusion) ; Upaniṣad passages like Katha II. 4. 2, Praśna I. , Chān. VIII. 3. 1–2 and Bṛ. Up. I. 3. may suggest the doct-rine of M., word M. used in V. S. III. 3. 3 has been differently interpreted by ācāyas ; word occurs in Rg. in connection with Indra about his Śakti or Śaktis</dd><dt>Uddeśya of Uddiśyamāna-means ‘subject of which something is to be predicated (vidheya) 1286; defined by Ślokavārtika 1286n</dt></dl><h4 class="nyaya-heading">Mīmāṁsā Nyāyas</h4><dl class="index-terms-dl"><dt>अपायस्थानेऽन्यकार्यत्वम्</dt><dd>जै. II. 1. 12</dd><dt>न हीकरूपं शब्दस्यानेकार्थता सत्यौ गतो न्याय्या</dt><dd>जै. VIII. 3. 22</dd><dt>पदार्थसमय</dt><dd>जै. V. 2. 1-2</dd><dt>ब्राह्मणकौडिन्यन्याय</dt><dt>सूसक्त्याख्याय</dt><dd>जै. III. 2. 16-19</dd></dl>
+        </div>
+    </div>
+
+
+            <div class="structured-banner"><i class="fa-solid fa-table-list"></i> This appendix is also available as a <a href="../appendix-vol5.html">searchable structured page</a> with Mīmāṁsā nyāyas organized as a definition list.</div>
+<h2 id="appendix-to-section-vii-chapxxx" class="section-heading">Appendix to Section VII Chap.XXX</h2>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-1">It would be helpful to the students of Pūrvamīmāṁsā and of Dharma-śāstra, if some of the important and frequently cited maxims (nyāyās) of the former, are brought together in one place with references from the P. M. S., Śabara, Kumārila, Pārthasārathi, the Mahābhāṣya of Patañjali, Śaṅkarācārya's bhāṣya on the Vedānta-sūtras, the Bhāmati on the Śaṅkara-bhāṣya and a few otherṣ Kumārila, particularly, is very fond of employing Nyāyas in the Tantravārtika e. g. on p. 415 (on Jai. II. 1, 8) he employs five different nyāyāṣ Many of these nyāyās have been explained in the history of Dharmaśāstra to which references will be furnished at the appropriate placeṣ Several of the nyāyās here mentioned occur in the Laukika-nyāyāñjali (in three parts) published by the indefatigable scholar, Col. <span class="idx-term" data-def="Colonel, a. of ‘Laukikanyāyāñjali’">Jacob</span>. In some cases his explanations are not accurate or satisfactory, but one must not forget that he wrote about half a century ago.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-2"><span class="devanagari">अशिश्रेष्यन्याय</span> – <span class="devanagari">जै</span>. VI. 2. 23-26; vide <span class="devanagari">शाबर</span> on <span class="devanagari">जै</span>. III. 4. 32. <span class="devanagari">अदृष्टुषापिविरोधन्याय</span> – <span class="devanagari">जै</span>. XII. 2. 25; vide <span class="devanagari">शाबर</span> thereon and <span class="devanagari">मी</span>. <span class="devanagari">व्या</span>. <span class="devanagari">म</span>. p. 166. <span class="devanagari">अदृष्टभूसृष्टे फलबहुसत्त्वम्</span> – <span class="devanagari">शाबर</span> on <span class="devanagari">जै</span>. X. 6. 62 and XI. 1. 15. <span class="devanagari">अकृत्तिन्याय</span> – <span class="devanagari">जै</span>. II. 2. 3-8. Vide above p. 1308 n 2146. <span class="devanagari">अकृत्स्नानी प्रधानोपकाररूपैककार्यत्वम्</span> – <span class="devanagari">जै</span>. XI. 1. 5-10. <span class="devanagari">अदुगुरापि विशेषाऽऽद्युपसात्करः</span> – vide <span class="devanagari">व्य</span>. <span class="devanagari">ग्र</span>. p. 525 and <span class="devanagari">स्य</span>. <span class="devanagari">स</span>. p. 143. <span class="devanagari">अधिकारन्याय</span> – <span class="devanagari">जै</span>. VI. 1. 1-3 and 4-5 (śāstra is meant only for human beings), but vide <span class="devanagari">जै</span>. <span class="devanagari">बृ</span>. I. 3. 26-33, where <span class="devanagari">शाबर</span> on I. 3. 26 holds that Śabara's words have no application to brahmavidyā. <span class="devanagari">अमनुष्यलम्ध्यः शास्त्रार्थः</span> – <span class="devanagari">मी</span>. <span class="devanagari">न्याय</span>. <span class="devanagari">प्र</span>. p. 92 ‘<span class="devanagari">अनाहुः</span> ! <span class="devanagari">स एव शास्त्रार्थो यः मकाराश्रयेण न लभ्यते । अनम्यस्य</span>...<span class="devanagari">र्थ इति न्याधात् ।</span>’ vide <span class="devanagari">भामती</span> on <span class="devanagari">वे</span>. <span class="devanagari">सू</span>. I. 3. 17 (<span class="devanagari">प्रतिषेध</span>). <span class="devanagari">अश्रुवकल्पन्याय</span> – <span class="devanagari">जै</span>. II. 1. 48; vide pp. 1304-1306 above and <span class="devanagari">स्मृतिष</span>. (on <span class="devanagari">आष्टृ</span> p. 381), <span class="devanagari">व्य</span>. <span class="devanagari">प्र</span>. p. 147. <span class="devanagari">अन्तरङ्‌गबहिष्करणीयोरन्तरङ्गं बलीयः</span> – vide <span class="devanagari">शाबर</span> on <span class="devanagari">जै</span>. XII. 2. 27; <span class="devanagari">महाभाष</span> (on <span class="devanagari">पा</span>. I. 1. 4, I. 1. 5) says ‘<span class="devanagari">असिद्धिं बहिरङ्गमन्तरङ्गे</span>’. <span class="devanagari">अन्तरप्रकरणन्याय</span> – <span class="devanagari">तन्त्रवा</span>. on <span class="devanagari">जै</span>. I. 3. 27 p. 282 and on III. 3. 14 p. 858, <span class="devanagari">सेशा</span>. on <span class="devanagari">मदु</span> X. 5, <span class="devanagari">शाबर</span> on <span class="devanagari">वे</span>. <span class="devanagari">सू</span>. II. 2. 30. <span class="devanagari">अपायस्थानेऽन्यकार्यत्वम्</span> – <span class="devanagari">शाबर</span> on <span class="devanagari">जै</span>. II. 1. 12 p. 410, on V. 4. 14 p. 1340. on VI. 1. 22 p. 1366, on VII. 3. 3, p. 1550; <span class="devanagari">तन्त्रवा</span>. on II. 4. 10, p. 639, <span class="devanagari">भामती</span> on <span class="devanagari">वे</span>. <span class="devanagari">सू</span>. I. 3. 17; vide <span class="devanagari">मजु</span>. <span class="devanagari">पा</span>. p. 369 and p. 1292, ṇ 2112 above. <span class="devanagari">अपच्छेदन्याय</span> – <span class="devanagari">शाबर</span> on <span class="devanagari">जै</span>. VI. 5. 49-50 defines <span class="devanagari">अपच्छेद्</span> as ‘<span class="devanagari">संयुक्तस्य हि युगपन्मयोच्छेद्भवः</span>’ and <span class="devanagari">व्यय</span>. <span class="devanagari">प्र</span>. p. 535. The word occurs in <span class="devanagari">जै</span>. VI. 5. 56. <span class="devanagari">अमाप्ते शास्त्रमर्थवत्</span> – This is part of <span class="devanagari">जै</span>. VI. 2. 18 and means ‘<span class="devanagari">विविधिना शास्त्रार्थोपदेशं विधेयं यत्प्रकाराश्रयेणोपारम्यम्</span> ?’ <span class="devanagari">मी</span>. <span class="devanagari">व्यय</span>. <span class="devanagari">प्र</span>. p. 222. <span class="devanagari">अभिमर्शन्याय</span> – <span class="devanagari">जै</span>. III. 7. 8-10; <span class="devanagari">व्यय</span>. <span class="devanagari">प्र</span>. p. 535. <strong><span class="devanagari">अग्र्यासाधिककरण</span></strong>—<span class="devanagari">जै</span>. II. 2. 2 (with reference to five Prayājas in <span class="devanagari">तै</span>. <span class="devanagari">सं</span>. II. 6. 1. 1–2). Vide <a class="ref" href="../refs/hodh.html#vol. II" data-source="hodh" data-ref="vol. II" title="History of Dharmaśāstra vol. II">H. of Dh. vol. II</a>. p. 1057 n 2368 and above p. 1306. <strong><span class="devanagari">अनुवृष्टिविषयत्व</span></strong>—<span class="devanagari">जै</span>. VI. 5. 1-9; <span class="devanagari">भिला</span><sup class="fn-ref"><a href="#fn-appendix-to-section-vii-chapxxx-1" id="fnref-appendix-to-section-vii-chapxxx-1">1</a></sup>o on <span class="devanagari">या</span><sup class="fn-ref"><a href="#fn-appendix-to-section-vii-chapxxx-2" id="fnref-appendix-to-section-vii-chapxxx-2">2</a></sup>. III. 253 and <span class="devanagari">न्ब</span><sup class="fn-ref"><a href="#fn-appendix-to-section-vii-chapxxx-3" id="fnref-appendix-to-section-vii-chapxxx-3">3</a></sup>. <span class="devanagari">प्र</span>. pp. 151-152 and notes thereon pp. 277-279 and <span class="devanagari">भासती</span> on <span class="devanagari">जै</span>. <span class="devanagari">सू</span>. III. 3. 7. <strong><span class="devanagari">अनुष्णाधिकरण</span></strong>—<span class="devanagari">जै</span>. III. 1. 12 on <span class="devanagari">तै</span>. <span class="devanagari">सं</span>. VI. 1. 6. 7 <span class="devanagari">अजकपा पिङ्गळाया क्रीणाति</span>; vide <span class="devanagari">अपराकं</span> p. 1030 on <span class="devanagari">या</span><sup class="fn-ref"><a href="#fn-appendix-to-section-vii-chapxxx-4" id="fnref-appendix-to-section-vii-chapxxx-4">4</a></sup>. III. 205, <span class="devanagari">सद्</span>. <span class="devanagari">पा</span><sup class="fn-ref"><a href="#fn-appendix-to-section-vii-chapxxx-5" id="fnref-appendix-to-section-vii-chapxxx-5">5</a></sup>. pp. 88-89, <a class="ref" href="../refs/hodh.html#vol. II" data-source="hodh" data-ref="vol. II" title="History of Dharmaśāstra vol. II">H. of Dh. vol. II</a>. p. 1142 n 2547 and above pp. 1294–5. <strong><span class="devanagari">अर्क</span><sup class="fn-ref"><a href="#fn-appendix-to-section-vii-chapxxx-6" id="fnref-appendix-to-section-vii-chapxxx-6">6</a></sup> <span class="devanagari">चेश्मनु विन्दत किमरुं प्रजेत्</span></strong>—<span class="devanagari">शाबर</span> on <span class="devanagari">जै</span>. I. 2. 4 quotes the latter half also as <span class="devanagari">इष्टस्वार्थस्य संसिद्धौ को विद्वान् यत्नमाचरेत्</span>. He explains <span class="devanagari">अर्क</span> as a plant ( <em>Calotropis Gigantea</em> ); vide also <span class="devanagari">तन्त्रवा</span><sup class="fn-ref"><a href="#fn-appendix-to-section-vii-chapxxx-7" id="fnref-appendix-to-section-vii-chapxxx-7">7</a></sup>. on <span class="devanagari">सं</span><sup class="fn-ref"><a href="#fn-appendix-to-section-vii-chapxxx-8" id="fnref-appendix-to-section-vii-chapxxx-8">8</a></sup>. V. 111, <span class="devanagari">विश्वरूप</span> on <span class="devanagari">या</span>. III. 243 (first half); <span class="devanagari">शाङ्कर</span> on <span class="devanagari">जै</span>. III. 4. 3 quotes the first half as <span class="devanagari">अ न्याय</span>. <strong><span class="devanagari">अर्धकुक्कुटिपाक</span></strong>—means the same thing as <span class="devanagari">अर्धजरतीय</span>; vide <span class="devanagari">तन्त्रब्रा</span><sup class="fn-ref"><a href="#fn-appendix-to-section-vii-chapxxx-9" id="fnref-appendix-to-section-vii-chapxxx-9">9</a></sup>o p. 720 on <span class="devanagari">जै</span>. III. 1. 13. It means 'it involves a total contradiction to say that one would cook half a hen for food and keep the other half for laying eggṣ' <strong><span class="devanagari">अर्धजरतीय</span></strong>—Vide <span class="devanagari">महाभारत</span> on <span class="devanagari">वार्षिक</span> 5 on <span class="devanagari">पा</span>. IV. 1. 78 ( <span class="devanagari">अर्ध जरस्याः कामचोदयेति</span>), <span class="devanagari">शाङ्करभाष्य</span> on <span class="devanagari">जै</span>. <span class="devanagari">सू</span>. I. 2. 8 ( <span class="devanagari">यथार्धार्थि सह शाखीयोर्थः प्रतिपन्नो न तथार्धजरतीयं लभ्यं</span>), <span class="devanagari">परा</span>. <span class="devanagari">मा</span>. II. 1. p. 702. <strong><span class="devanagari">अर्थवैशस</span></strong>—Resembles <span class="devanagari">अर्धजरतीयन्याय</span>. Vide <span class="devanagari">तन्त्रवा</span><sup class="fn-ref"><a href="#fn-appendix-to-section-vii-chapxxx-10" id="fnref-appendix-to-section-vii-chapxxx-10">10</a></sup>. pp. 170, 174, 180, 261; <span class="devanagari">शाङ्करभाष्य</span> on <span class="devanagari">जै</span>. <span class="devanagari">सू</span>. III. 3. 18. <span class="devanagari">वैशस</span> means 'destruction, rending into pieces, conflict'. The <span class="devanagari">कुमारसम्भव</span> IV. 31 employs the word in the literal sense. <strong><span class="devanagari">अर्थमनर्थमिति प्रैर्विदि</span></strong>—Vide <span class="devanagari">शाबर</span> on <span class="devanagari">जै</span>. III. 7. 14 and <span class="devanagari">तन्त्रवा</span><sup class="fn-ref"><a href="#fn-appendix-to-section-vii-chapxxx-11" id="fnref-appendix-to-section-vii-chapxxx-11">11</a></sup>. pp. 1083–84; quoted by <span class="devanagari">स</span>. <span class="devanagari">श</span><sup class="fn-ref"><a href="#fn-appendix-to-section-vii-chapxxx-12" id="fnref-appendix-to-section-vii-chapxxx-12">12</a></sup>. pp. 115, 146 and notes (by the present author) pp. 189-191 and <a class="ref" href="../refs/hodh.html#vol. II" data-source="hodh" data-ref="vol. II" title="History of Dharmaśāstra vol. II">H. of Dh. vol. II</a>. p. 1114 and vol. III, pp. 694–95. <strong><span class="devanagari">अवभ्रयसिद्धि</span>: <span class="devanagari">सहृदयासिद्धिर्वीप्यसी</span></strong>—vide <span class="devanagari">शाबर</span> on <span class="devanagari">जै</span>. VI. 7. 22. who gives <span class="devanagari">अम्बकर्ण</span> (name of a tree) with leaves like horse's ears as an instance (which has neither <span class="devanagari">अश्वत्थ</span> nor <span class="devanagari">कर्णत्व</span>), <span class="devanagari">तन्त्रवा</span>. on <span class="devanagari">जै</span>. I. 4. 11. <strong><span class="devanagari">अवैधधिकरणन्याय</span></strong>—<span class="devanagari">जै</span>. II. 3. 3 and XI. 4. 10. Vide <a class="ref" href="../refs/hodh.html#vol. III" data-source="hodh" data-ref="vol. III" title="History of Dharmaśāstra vol. III">H. of Dh. vol. III</a>, p. 38 and above pp. 1332–33 n 2201-2, <span class="devanagari">शाङ्करभाष्य</span> on <span class="devanagari">जै</span>. <span class="devanagari">सू</span>. III. 3. 50. <strong><span class="devanagari">अम्बाभिधानोन्याय</span></strong>—<span class="devanagari">इमामगृभ्णन्नशनामुतरस्यामुत्ताराधिपीन्यागवे</span>—<span class="devanagari">तै</span>. <span class="devanagari">सं</span>. V. 1. 2. 1 and the mantra occurs in <span class="devanagari">तै</span>. <span class="devanagari">सं</span>. IV. 1. 2. 1, explained in <span class="devanagari">श्री</span>. <span class="devanagari">म्या</span>. <span class="devanagari">म</span>. p. 80, <span class="devanagari">अर्थसंग्रह</span> p. 5. Vide p. 1308 n 2147. <strong><span class="devanagari">अम्बकर्णणन्याय</span></strong>—vide <span class="devanagari">दुस्पृष्टीका</span> on <span class="devanagari">जै</span>. IV. 4. 1 p. 1270. This is put forward to assert that in <span class="devanagari">राजसूय</span> the conventional meaning has to be taken and not the literal one. <strong><span class="devanagari">आकाशातुद्दिहननगन्याय</span></strong>—vide <span class="devanagari">तन्त्रवा</span><sup class="fn-ref"><a href="#fn-appendix-to-section-vii-chapxxx-13" id="fnref-appendix-to-section-vii-chapxxx-13">13</a></sup>. on <span class="devanagari">जै</span>. I. 3. 12 p. 236 (<span class="devanagari">यस्तस्मलूद्यवादयुद्दनिमावपरिगृहात्। पदं कर्तुं सम्वेिदैत स हग्याव् व्योम मुदिसि</span>), <span class="devanagari">शाङ्करभाष्य</span> on <span class="devanagari">जै</span>. <span class="devanagari">सू</span>. II. 1. 18. <strong><span class="devanagari">आकृष्टपातानामर्थनुवर्त शक्त सवकारिणी</span></strong>—<span class="devanagari">शाबर</span> on <span class="devanagari">जै</span>. I. 4. 25, <span class="devanagari">अर्थसंग्रह</span> (p. 16, calls it <span class="devanagari">अ न्याय</span>), <span class="devanagari">श्लोका</span>. (on <span class="devanagari">चौवनासूत्र</span> verse 47 p. 59), <span class="devanagari">तन्त्रवा</span><sup class="fn-ref"><a href="#fn-appendix-to-section-vii-chapxxx-14" id="fnref-appendix-to-section-vii-chapxxx-14">14</a></sup>. on <span class="devanagari">जै</span>. II. 1. 1 p. 378 (<span class="devanagari">शाङ्करः सर्वभावानां तादृशोपख्या स्वभावतः । तेन तानां वदनपर्थान् मनुहि प्रत्ययवादप</span>: II). Vide p. 1291 note 2111 above. <strong><span class="devanagari">आद्यन्तसूत्रत्व निषेधः</span></strong> — Vide <span class="devanagari">ज्ञाकर</span> on <span class="devanagari">जै</span>. V. 3. 4 and X. 5. 1, <span class="devanagari">शाबरभाष्य</span> on <span class="devanagari">जै</span>. <span class="devanagari">धृ</span>. IV. 5. 3, <a class="ref" href="../refs/hodh.html#vol. III" data-source="hodh" data-ref="vol. III" title="History of Dharmaśāstra vol. III">H. of Dh. vol. III</a>. p. 731 notes 1413-14 and <span class="devanagari">तिथितत्व</span> p. 63, <span class="devanagari">स्म</span>. <span class="devanagari">प्र</span>. p. 143. <strong><span class="devanagari">आनन्तर्यसमानकरणम्</span></strong> — Vide <span class="devanagari">एतत् पेयत्वसम्बन्धः</span> below. Vide the sūtra <span class="devanagari">आनन्तर्यसमानश्रेयत्ना</span> (<span class="devanagari">जै</span>. III. 1. 24) and <span class="devanagari">जै</span>. IV. 3. 11 a part of which is '<span class="devanagari">अर्थतो ह्यसमर्थाना</span>- <span class="devanagari">मानन्तर्यमेतयोस्म्बन्धः</span>'. <strong><span class="devanagari">आर्येधिकरणन्याय</span></strong> — <span class="devanagari">जै</span>. VI. 4. 22; <span class="devanagari">तँ</span>. <span class="devanagari">आ</span>. III. 7. 1. 7-8 <span class="devanagari">ह्यस्योभयं ह्यविरातिमात्स्यैन्</span>- <span class="devanagari">येत्</span>. Here the word <span class="devanagari">उभयं</span> is <span class="devanagari">अविवक्षित</span> and is no part of the <span class="devanagari">विधि</span>. <strong><span class="devanagari">उद्दिष्ट्रमानसन्याय</span> (or <span class="devanagari">उद्देश्यवगतृ</span>) <span class="devanagari">विशेषणमविवक्षितत्व</span></strong> — Vide above p. 1286 notes 2098-99 on <span class="devanagari">ब्रह्मे संमार्हि</span> and <span class="devanagari">द्रुष्टीका</span> on <span class="devanagari">जै</span>. VI. 4. 22 p. 1438, on VII. 1. 2 p. 1526, on IX. 1. 1 p. 1636, on X. 3, 39 p. 1882 (<span class="devanagari">उद्दिष्टमानस्य च संस्था न विवक्ष्यते प्रद्येत्व</span>) and <span class="devanagari">स्म</span>. <span class="devanagari">प्र</span>. pp. 45-46, 90, 132, 210 and <span class="devanagari">निबंधस्थ</span> on <span class="devanagari">या</span>. III. 250 (<span class="devanagari">न च लक्ष्यमानस्य विशेषणं विवक्षितमिति न्यायः</span>). <strong><span class="devanagari">उन्निष्टधिकरण</span></strong> — <span class="devanagari">जै</span>. I. 4. 1–2. <span class="devanagari">उन्दिष्ट्र</span>, <span class="devanagari">चित्रा</span>, <span class="devanagari">अग्निहोत्र</span> are names of yāgas (and not <span class="devanagari">गुणाविधि</span>) and are <span class="devanagari">प्रमाण</span>. Vide pp. 1244-45 n 2021-22 above. <strong><span class="devanagari">उपक्रोपसंहारस्थाय</span></strong> — If the <span class="devanagari">उपक्रम</span> is doubtful it is the <span class="devanagari">उपसंहार</span> that settles the same and not vice versa. Vide <span class="devanagari">भामती</span> on <span class="devanagari">ये</span>. <span class="devanagari">धृ</span>. III. 3. 17. <strong><span class="devanagari">उपसंहारन्याय</span></strong> — <span class="devanagari">जै</span>. III. 1. 26-27; <span class="devanagari">उपसंहारेण नाम सामान्यतः प्राप्तस्य विशेषो सहोपरूपो व्यापारविशेषो विधिः। मी</span>. <span class="devanagari">न्या</span>. <span class="devanagari">प्र</span>. p. 261; vide <span class="devanagari">निता</span>. on <span class="devanagari">या</span>. I. 256, <span class="devanagari">जै</span>. <span class="devanagari">मि</span>. pp. 37 and 71, <span class="devanagari">स्म</span>. <span class="devanagari">प्र</span>. p. 111 and the present author's notes to V. M. p. 179. <strong><span class="devanagari">ऋतुलिङ्गन्याय</span></strong> — This refers to the verse <span class="devanagari">यथार्तुलिङ्गानि नानारूपाणि पर्याये। द्यदृश्यन्ते तानि सान्वये यथा भावा द्युगादिवृ ॥ आविपर्वे</span> 1.39 (= cr. eḍ I. 37), <span class="devanagari">शातिकर्म</span> 210. 17 (= cr. eḍ 233. 15). This verse is quoted by <span class="devanagari">सन्त्र्या</span>. on <span class="devanagari">जै</span>. I. 3. 7 p. 202, in <span class="devanagari">शाबरभाष्य</span> on <span class="devanagari">दे</span>. <span class="devanagari">धृ</span>. I. 3. 30. It is also <span class="devanagari">नाट्यपुराण</span> 9. 65, <span class="devanagari">विष्णुपुराण</span> I. 5. 61, <span class="devanagari">मार्केण्डेय</span> 45. 43–44. <strong><span class="devanagari">एकवाक्यतान्याय</span></strong> — <span class="devanagari">जै</span>. II. 1. 46. Vide M. M. Jha's 'Pūrvamīmāmsā in its sources' pp. 192–193 for explanation and examples and <a class="ref" href="../refs/hodh.html#v" data-source="hodh" data-ref="v" title="History of Dharmaśāstra v">H. of Dh. v</a>ol; III. p. 443 note 744 and pp. 1297–98 n 2123 above. <span class="devanagari">बिन्दुरूप</span> on <span class="devanagari">या</span>. III. 248 exemplifies this <span class="devanagari">न्याय</span>. The word <span class="devanagari">एकवाक्यता</span> occurs in <span class="devanagari">जै</span>. III. 4. 24. <strong><span class="devanagari">एकवाक्यविष्यय</span></strong> — ṃ by <span class="devanagari">सन्त्र्या</span>. on II. 1. 12 p. 415. It is the same as <span class="devanagari">अवषान्याय</span> above. <strong><span class="devanagari">एकार्थात्मत्व विकल्पपरम्</span></strong> — This is part of <span class="devanagari">जै</span>. XII. 3. 10. <span class="devanagari">निता</span>. on <span class="devanagari">या</span>. III, 257 states ‘<span class="devanagari">एकार्थानामव विकल्पो हीन्द्रिययोश्च न च वृष्टतपसोरैक्यार्थात्</span>'. <strong><span class="devanagari">ऐन्द्रीम्न्याय</span></strong> — Vide pp. 1309-10 notes 1251-52 on <span class="devanagari">ऐन्द्रया गार्हपत्यमुच्यते</span>. <strong><span class="devanagari">औदुम्बरीचयिष्याय</span></strong> — If a man's name is <span class="devanagari">औदुम्बरी</span> one at once infers, without being expressly told, that he is the son of one called <span class="devanagari">उद्रेमेष</span>. Vide <span class="devanagari">शाबर</span> on <span class="devanagari">जै</span>. III. 5. 26 p. 1003 and on II. 3, 3 at p. 580 and <span class="devanagari">सन्त्र्या</span>. p. 580. <strong><span class="devanagari">ओदुम्बरराधिकरण</span></strong> — <span class="devanagari">जै</span>. I. 2. 19-25 concerning <span class="devanagari">तँ</span>. <span class="devanagari">सं</span>. II. 1. 1. 6 <span class="devanagari">ओदुम्बरो धूमो भवति</span>, <span class="devanagari">ऊर्जो उदम्बर ऊर्ध्व पश्चाः</span>, <span class="devanagari">सन्त्र्या</span>. p. 352, <span class="devanagari">मी</span>. <span class="devanagari">न्या</span>. <span class="devanagari">प्र</span>. p. 134 ff. <strong><span class="devanagari">कपालाध्याय</span> or <span class="devanagari">कपालाधिकरणन्याय</span></strong> — <span class="devanagari">जै</span>. X. 5. 1, explained in <span class="devanagari">मलमाससत्र</span> p. 779. <strong><span class="devanagari">कपिंजल न्याय</span></strong> — <span class="devanagari">जै</span>. XI. 1. 38-46 and above pp. 1288-89, n 2105. Vide <span class="devanagari">सन्त्र्या</span>. p. 415 (on <span class="devanagari">जै</span>. II. 1. 12), and p. 1004 (on <span class="devanagari">जै</span>. III. 5. 26) saying <span class="devanagari">कपिंजल</span>- <span class="devanagari">पक्ष ञिजेष बहुलश्रुतिरस्थाप्यते</span>: <span class="devanagari">परा</span>. <span class="devanagari">मा</span>. I. 2. p. 281. <span class="devanagari">कम्बलनिवर्जन्याय</span> – <span class="devanagari">शाबर</span> on <span class="devanagari">जै</span>. II. 2. 25 p. 545 ( <span class="devanagari">निर्वर्जनं कुर्वन् करोति कम्बलाद्वद्धि पादपोथं निवर्तयेत्</span> ). <span class="devanagari">कर्मपूर्वस्वत्वात्कलभृयस्यवद्</span> – Vide <span class="devanagari">स्मृतिव</span>. II. p. 264 and <span class="devanagari">परा</span>. <span class="devanagari">मा</span>. I. 1. p. 25 ( <span class="devanagari">कर्मोपस्थित्यात्कालभृयमिति न्यायसमाश्रयात्</span> ). <span class="devanagari">कालञ्जन्याय</span> – <span class="devanagari">शाबर</span> on <span class="devanagari">जै</span>. VI. 2. 19-20 on ‘<span class="devanagari">न कालञ्ज भक्षयेत्</span>’ says that this is downright prohibition ( <span class="devanagari">प्रतिषेध</span> ) and not a <span class="devanagari">पर्युदास</span>. Vide <span class="devanagari">मी</span>. <span class="devanagari">न्या</span>. <span class="devanagari">प्र</span>. pp. 248-249 and <span class="devanagari">निश्चित्तप</span>. p. 6. <span class="devanagari">कांस्यभोजिन्याय</span> – This occurs in the <span class="devanagari">पू</span>. <span class="devanagari">मी</span>. <span class="devanagari">सू</span>. XII. 2. 34 itself ( <span class="devanagari">अधिकच गुणः अजबदुक्त्रयेऽपि</span> ): <span class="devanagari">शंबर</span> explains ‘<span class="devanagari">क्षिप्रप्रस्य कांस्यपात्रभोजिनिव यमः। यदि तयोरेकस्मिन्पात्रे भोजनमापद्यते</span>, <span class="devanagari">अक्षुरुत्पापि शिष्पक्षय धर्मो नियम्येत मा मूद्र्मलोप इति</span>”. <span class="devanagari">काकंतुलनपरीक्षाध्याय</span> – Vide <span class="devanagari">सुपदीका</span> p. 1388 on <span class="devanagari">जै</span>. VI. 2. 1. Some actions such as counting the hair on the skin of an ass or the teeth of a crow are useless or profitlesṣ <span class="devanagari">काकासिगौलककन्याय</span> – Vide <span class="devanagari">तन्त्रवा</span>. p. 198 on <span class="devanagari">जै</span> I. 3. 7, <span class="devanagari">मेषा</span>. on <span class="devanagari">मनु</span> VIII. 1, <span class="devanagari">स्मृ</span>. <span class="devanagari">स</span>. p. 534, <span class="devanagari">स्मृ</span>. <span class="devanagari">स</span>. p. 95 and notes thereon at p. 135. <span class="devanagari">काण्डानुसमय</span> – <span class="devanagari">शाबर</span> on <span class="devanagari">जै</span>. V. 2. 3 pp. 1310-11. Vide <a class="ref" href="../refs/hodh.html#vol. II" data-source="hodh" data-ref="vol. II" title="History of Dharmaśāstra vol. II">H. of Dh. vol. II</a>. pp. 739-740, vol. IV. pp. 441-442 note 987 and <span class="devanagari">पदार्थानुसमय</span> below. <span class="devanagari">कारणाद्विविधकार्यन्याय</span> – <span class="devanagari">तन्त्रवा</span>. p. 245 on <span class="devanagari">जै</span>. I. 3. 16. The qualities of, the cause are found in the effect. <span class="devanagari">कृष्णपर्णाशयन्याय</span> – <span class="devanagari">जै</span>. VII. 3. 1-4. Vide <span class="devanagari">आप</span>. <span class="devanagari">श्री</span>. 23. 10. 6 ff and <a class="ref" href="../refs/hodh.html#vol. IV" data-source="hodh" data-ref="vol. IV" title="History of Dharmaśāstra vol. IV">H. of Dh. vol. IV</a>. pp. 136-137 n 312 for references and p. 1307 above. <span class="devanagari">कुशकाशावलम्बनन्याय</span> – Vide <span class="devanagari">तन्त्रवा</span>. p. 268 on <span class="devanagari">जै</span>. I. 3. 24. ( <span class="devanagari">कुश</span> is <span class="devanagari">दुर्बर्ष</span> and <span class="devanagari">काश</span> is a grassy plant with white flowers ). These are so frail that no one can support himself by means of these; so metaphorically it means “supporting by frail or hopeless argumentṣ” Vide <span class="devanagari">स्मृ</span>. <span class="devanagari">स</span>. p. 527. <span class="devanagari">कुलायचिन्तान्याय</span> – Taking up a purely hypothetical point for discussion; occurs frequently in Śābarabhāṣya, e. g. on <span class="devanagari">जै</span>. VI. 8. 43 p. 1522 ( <span class="devanagari">कुत्सा चिन्तायां प्रयोजनं वक्तव्यम्</span> ), on XI. 3. 16 p. 2175, XII. 2. 11 p. 2242; vide <span class="devanagari">तन्त्रवा</span>. p. 287 (on <span class="devanagari">जै</span>. I. 3. 27) and p 890 on <span class="devanagari">जै</span>. III. 4. 1 ( <span class="devanagari">पशु भाष्यकारे णोपंन्यस्तः कुतः स कुलायचिन्तान्यायेन</span> ). <span class="devanagari">केहुतिकन्याय</span> – The word is derived from <span class="devanagari">किहुत्</span>, used in such passages as in <span class="devanagari">काठकुमारी</span> ‘<span class="devanagari">गर्गोरल</span> ... <span class="devanagari">शक्किलं खेति महतीर्थं खलवर्णपरंपरां</span>, <span class="devanagari">सवीविनथाजामामेवैकल ज्येथामापवनं किहुतं समावःः</span>’ <sup class="fn-ref"><a href="#fn-appendix-to-section-vii-chapxxx-1" id="fnref-appendix-to-section-vii-chapxxx-1">1</a></sup> Vide <span class="devanagari">स्मृ</span>. <span class="devanagari">स</span>. p. 241 and present author's note on p. 419 of the notes to <span class="devanagari">स्मृ</span>. <span class="devanagari">स</span>. <span class="devanagari">श्लेषोहिन्याय</span> – <span class="devanagari">जै</span>. VI. 4. 17-20. If the Purodāśa to be offered in <span class="devanagari">बार्हपूर्णमास</span> is partially burnt, still one should perform the rite with the unburnt part of the cake and a prāyaścitta would be necessary only if the whole purodāśa is burnt. Vide <span class="devanagari">मिताक्षरा</span> on <span class="devanagari">या</span>. III, 243. <span class="devanagari">शालैकपोतन्याय</span> – Meaning ‘like all pigeons, young and old, simultaneously alighting on a threshing floor.’ Vide <span class="devanagari">शाबर</span> on <span class="devanagari">जै</span>. XI. 1. 16 p 2111, <span class="devanagari">मी</span>. <span class="devanagari">न्या</span>. <span class="devanagari">प्र</span>. p. 65. <span class="devanagari">सांदर्पधर्पन्याय</span> – Same as <span class="devanagari">देषींष्पन्याय</span> above. Vide <span class="devanagari">शाबर</span> on <span class="devanagari">जै</span>. III. 2. 3 and <span class="devanagari">अर्थसंग्रह</span> p. 6. . <span class="devanagari">एकात्मिकरण</span> -- <span class="devanagari">जै</span>. II. 2. 25-26 based on <span class="devanagari">वृज्जनेन्द्रियकामसूत्र</span> (<span class="devanagari">तै</span>. <span class="devanagari">ना</span>. II. 1. 5. 6), the meaning being <span class="devanagari">वृषिकरणत्वेनेन्द्रियं भावयेत्</span>. Vide <span class="devanagari">मी</span>. <span class="devanagari">न्या</span>. <span class="devanagari">प्र</span>. pp. 42-43, and 36-39 and p. 1310 above.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-3"><span class="devanagari">गुणमुख्यव्यतिक्रम न्याय</span> – This is part of <span class="devanagari">जै</span>. III. 3. 9 (<span class="devanagari">गुणमुख्यव्यतिक्रमे सवर्थ्या</span>-<span class="devanagari">मुलयेन वेदसंयोगः</span>). Vide <span class="devanagari">तन्त्रवा</span>. pp. 810 and above p. 1290 ṇ 2108; <span class="devanagari">काठूरं भाष्य</span> on <span class="devanagari">दे</span>. <span class="devanagari">सू</span>. III. 3. 33 quotes this sūtra.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-4"><span class="devanagari">गुणलोपे च मुख्यस्य</span> – This is <span class="devanagari">जै</span> X. 2. 63. The words <span class="devanagari">क्रिया स्यात्</span> (or <span class="devanagari">भवति</span>) are to be understooḍ</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-5"><span class="devanagari">गोबलीवर्द न्याय</span> — In such a sentence as <span class="devanagari">गाव आनीयन्तां बलीवदोच</span>, the separate mention of balivardas that are really included under ‘gāvah’ is due to the fact that bulls are more intractable than cows and require special attention and effort. This is often used in Dharmaśāstra workṣ Vide <span class="devanagari">मिता०</span> on <span class="devanagari">या</span>. III. 312-313, <span class="devanagari">स्मृतिच</span>. (on <span class="devanagari">व्यवहार</span>) pp. 66, 67, 102, 169, 280, 300, <span class="devanagari">कुल्लुक</span> on <span class="devanagari">मनु</span> VIII, 28, <span class="devanagari">व्य</span>. <span class="devanagari">म</span>. p. 2 and <a class="ref" href="../refs/hodh.html#vol. III" data-source="hodh" data-ref="vol. III" title="History of Dharmaśāstra vol. III">H. of Dh. vol. III</a>. p. 926 note 966.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-6"><span class="devanagari">गौणमुख्ययपोर्हेरुले कार्यसमप्रयः</span> — Vide <span class="devanagari">शबर</span> on <span class="devanagari">जै</span>. III. 2. 1. This <span class="devanagari">न्याय</span> is also cited as <span class="devanagari">मुख्यगौणयो</span>: ... <span class="devanagari">संप्रत्यय</span>: <span class="devanagari">शाङ्करभाष्य</span> on <span class="devanagari">बे</span>. <span class="devanagari">सू</span>. IV. 13. 12 cites it. <span class="devanagari">मुख्य</span> and <span class="devanagari">गौण</span> respectively mean ‘primary sense’ and ‘secondary sense.’ The <span class="devanagari">महाभाष्य</span> has the <span class="devanagari">परिभाषा</span> ‘<span class="devanagari">गौण</span> ... <span class="devanagari">संप्रत्यय</span>:’ on <span class="devanagari">वार्तिक</span> 1 on <span class="devanagari">पा</span>. I. I. 15 and on <span class="devanagari">वार्तिक</span> 4 on <span class="devanagari">पा</span>. VI. 3. 46. Vide <a class="ref" href="../refs/hodh.html#vol. III" data-source="hodh" data-ref="vol. III" title="History of Dharmaśāstra vol. III">H. of Dh. vol. III</a>. p. 725, note 1399.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-7"><span class="devanagari">प्रहैकल्याण न्याय</span> – <span class="devanagari">जै</span>. III. 1. 13-15 based on <span class="devanagari">वृक्षापविजेण ग्रहै संस्था</span> (<span class="devanagari">तै</span>. <span class="devanagari">सं</span>. III, 2. 2. 3). Vide <a class="ref" href="../refs/hodh.html#vol. II" data-source="hodh" data-ref="vol. II" title="History of Dharmaśāstra vol. II">H. of Dh. vol. II</a>. p. 589 note 1380 and above p. 1285-86 and ṇ 2098.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-8"><span class="devanagari">चतुर्थीकरण न्याय</span> – <span class="devanagari">जै</span>. III. 1. 26-27. Vide <span class="devanagari">मी</span>. <span class="devanagari">न्या</span>. <span class="devanagari">प्र</span>. p. 261, <span class="devanagari">अर्थसंग्रह</span> p. 24. Vide vol. IV, p. 670 n 1517.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-9"><span class="devanagari">छत्रिण न्याय</span> — Vide <span class="devanagari">शबर</span> on <span class="devanagari">जै</span>. I. 4. 23 (<span class="devanagari">यथा छत्रिणो गच्छन्तीत्येकन छत्रिणा सर्वे लक्ष्यन्ते</span>), <span class="devanagari">सम्रवा</span>. on I. 4. 13, p. 347, <span class="devanagari">सुष्टुटीका</span> on <span class="devanagari">जै</span>. IV. 4. 1 p. 1270 and VII. 3. 7, p. 1552 and <a class="ref" href="../refs/hodh.html#vol. II" data-source="hodh" data-ref="vol. II" title="History of Dharmaśāstra vol. II">H. of Dh. vol. II</a>. pp. 500-501. <span class="devanagari">शाङ्करभाष्य</span> on <span class="devanagari">दे</span>. <span class="devanagari">सू</span>. III. 3. 34 employs it in explaning <span class="devanagari">सतै विपन्नतो</span> (<span class="devanagari">कठोप</span>. III. 1).</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-10"><span class="devanagari">जतिर्वत्यावा जुहाटू</span> – This appears like a <span class="devanagari">विधि</span>, but it is only an <span class="devanagari">अर्थवाद</span> for praising <span class="devanagari">पयणेहोषि</span>. The vedic passage is in <span class="devanagari">तै</span>. <span class="devanagari">सं</span>. V. 4, 3, 2 and <span class="devanagari">जै</span>. X. 8. 7 deals with it. <span class="devanagari">भासली</span> on <span class="devanagari">बे</span>. <span class="devanagari">सू</span>. III 3. 18 relies on it.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-11"><span class="devanagari">जातिर्टिग्म्याय</span> – <span class="devanagari">जै</span>. IV. 3. 38-39 on <span class="devanagari">तै</span>. <span class="devanagari">सं</span>. II. 2, 5 <span class="devanagari">रैथ्याभर हारूकपाले निर्णयते जुवे जाते</span>. Though the performer of the rite is the father, the fruit accrues to the son that is borṇ Vide <span class="devanagari">मिता</span>. on <span class="devanagari">या</span>. II. 56 and III. 220, <span class="devanagari">माष</span>. <span class="devanagari">वि</span>. p. 18, <span class="devanagari">स्वध</span>. <span class="devanagari">प</span>. p. 253-54, <span class="devanagari">हर</span>. <span class="devanagari">मी</span>. p. 136 (Anaṇ ed,)</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-12"><span class="devanagari">जुह्यन्य न्याय</span> – <span class="devanagari">जै</span>. IV. 3. 1 based on passages like <span class="devanagari">वषप एर्णमपी छात्रपति न स पायं श्लोकं स्तुगोति</span> (<span class="devanagari">त सं</span>. III. 3. 7. 2). Such sentences are not <span class="devanagari">फलविधि</span>, but merely <span class="devanagari">अर्थवाद</span>.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-13"><span class="devanagari">तर्कार्दग्म्याय</span> or <span class="devanagari">भाषाशैलीचित्य न्याय</span> – Vide <span class="devanagari">तन्त्रवा</span>. p. 860 (<span class="devanagari">सृषि भाषाषेणयो दीर्णं वियवाो भेतरेषु</span>), <span class="devanagari">ष्कोक्न्य</span>. (<span class="devanagari">बचवाद</span>, verse 15). If only the words <span class="devanagari">सृषि दीर्णं वियवाो</span> were uttered, <span class="devanagari">कोपिरुष्व</span> being a <span class="devanagari">ब्राह्मण</span> would be included; but if the whole sentence be used he would be excluded from the first part. The <span class="devanagari">महाभाष्य</span> frequently cites this nyāya, e. g. on <span class="devanagari">वार्तिक</span> 4 on <span class="devanagari">पा</span>. VI. 1. 2 and <span class="devanagari">वार्तिक</span> 1 on <span class="devanagari">पा</span>, I. I. 47 and on <span class="devanagari">वार्तिक</span> 2 on <span class="devanagari">पा</span>. VI. 2. 1; vide <span class="devanagari">मिता</span>. on <span class="devanagari">या</span>. III, 237 for this maxiṃ <span class="devanagari">ततस्क्रियमाण्यध्याय</span> – <span class="devanagari">जे</span>. I. 4. 4 (<span class="devanagari">तत्कश्यं याज्ञनज्ञागम्</span>), which means <span class="devanagari">तत् पुरुषार्थम् सर्वं पापकर्म्म अध्यायाच्च भवति</span>. In <span class="devanagari">ते</span>. <span class="devanagari">सं</span>. I. 5.9.1 we read <span class="devanagari">अग्रिहोत्रं क्षमो परिमितम्</span>) and not a <span class="devanagari">शुभविधि</span>. Vide <span class="devanagari">मी</span>. <span class="devanagari">न्या</span>. <span class="devanagari">प्र</span>. p. 64, <span class="devanagari">धर्मतर्जनिर्णय</span> p. 3, <span class="devanagari">अर्षसंराह</span> pp. 4 and 20. <span class="devanagari">बहृपदेशाख्यन्याय</span> – <span class="devanagari">जे</span>. I. 4. 5. The example is <span class="devanagari">श्येनेनाभिचरन् यजेत</span>. Here the word <span class="devanagari">श्येन</span> (meaning ‘hawk’) is applied to the rite called śyena, because it resembles the bird in its swift actioṇ Vide <span class="devanagari">मी</span>. <span class="devanagari">न्या</span>. <span class="devanagari">प्र</span>. p. 238 (<span class="devanagari">तेज यन्द्यथ्यायुपपश्येति यावत्</span>) and p. 1245 above. <span class="devanagari">वृण्ढापूपिकन्याय</span> or <span class="devanagari">वृण्ढापूपिकीनीति</span> – This is very often employed in <span class="devanagari">कर्मशास्त्र</span> workṣ Vide <span class="devanagari">विश्वरूप</span> on <span class="devanagari">या</span>. I. 147 and III. 257, <span class="devanagari">मिता</span>. on <span class="devanagari">व्यवहार</span> pp. 142, 146, 242, 249, 283, 296, 301, 315, 326, <span class="devanagari">डायभाग</span> X. 30, <span class="devanagari">डायत्तस</span> p. 170, <span class="devanagari">स्य</span>. <span class="devanagari">स</span>. p. 131 (and my notes on the same at pp. 221-222). For the derivation of <span class="devanagari">वृण्ढापूपिक</span>, vide <span class="devanagari">अलङ्कारसर्वस्व</span> on <span class="devanagari">अर्थापत्ति</span> p. 196 and <span class="devanagari">जयस्थ</span> thereoṇ <span class="devanagari">द्वविंहोम्न्याय</span> – <span class="devanagari">जे</span>. VIII. 4. 1, <span class="devanagari">तन्त्रवा</span>. p 115 on <span class="devanagari">जे</span>. I. 2. 7, <span class="devanagari">मी</span>. <span class="devanagari">न्या</span>. <span class="devanagari">प्र</span>. p. 149. In this compound word <span class="devanagari">होम</span> is the principal word and the word <span class="devanagari">द्वधि</span> is <span class="devanagari">उपसर्जन</span> (or <span class="devanagari">अप्रधान</span>). Therefore <span class="devanagari">द्वविंहोम्</span> is the name of a rite. <span class="devanagari">दशाह्रन्याय</span> – Vide <span class="devanagari">प्रायश्चित्तप्रकरण</span> of <span class="devanagari">भवदेव</span> p. 18, <span class="devanagari">प्राय</span>. <span class="devanagari">विवेक</span> p. 81, <span class="devanagari">द्वदिहलक्ष</span> pp. 240-241. There is a <span class="devanagari">व्रत</span> on the 10th tithi of the bright half of Jyeṣṭha called <span class="devanagari">दशाह्रा</span>, since it removes ten sinṣ The maxim means that in certain cases, by a single performance one may be able to secure several objectṣ <span class="devanagari">हृद्द प्रयोजनबहुलस्य न शक्यमवहं कल्पयितुम्। हृद्द फले अबृहफलकल्पना अव्याप्या। हृद्द समवृहत्वकल्पनाव्याप्या।</span> Vide <span class="devanagari">शबर</span> on <span class="devanagari">जे</span>. IX. 3. 3 p. 1745, on <span class="devanagari">जे</span>. X. 2. 23 p. 1835 and on X. 2. 34 p. 838, <span class="devanagari">मी</span>. <span class="devanagari">न्या</span>. <span class="devanagari">प्र</span>. 201, <span class="devanagari">एकादशतिष्र्म</span> p. 89, <span class="devanagari">भारती</span> on <span class="devanagari">ये</span>. <span class="devanagari">सू</span>. III. 3. 14 and <a class="ref" href="../refs/hodh.html#vol. III" data-source="hodh" data-ref="vol. III" title="History of Dharmaśāstra vol. III">H. of Dh. vol. III</a>. p. 837 n 1628 and above p. 1260 note 2051. <span class="devanagari">देहळीदीपन्याया</span>–<span class="devanagari">देहळी</span> door-sill. A lamp thereon sheds light inside the room as well as outside. This is the same as <span class="devanagari">प्रासाददीपन्याय</span> below. <span class="devanagari">प्रदीपपदम्</span> occurs in <span class="devanagari">जे</span>. XI. 1. 61; vide <span class="devanagari">शबर</span> thereon, <span class="devanagari">स्य</span>. <span class="devanagari">स</span>. p. 149 explaining <span class="devanagari">पा</span>. II, 139 employs it. <span class="devanagari">द्वयोः प्रजायतिन्याय</span> – <span class="devanagari">जे</span>. VII. 3. 19-25; Relied upon and explained in <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> on <a class="ref" href="../refs/yajnavalkya.html#II.135" data-source="yajnavalkya" data-ref="II.135" title="Yājñavalkya II.135">Yāj. II. 135</a>, <span class="devanagari">डायभाग</span> XI. 5. 16 p. 194 and <span class="devanagari">स्य</span>. <span class="devanagari">स</span>. pp. 500-502 and 535; vide <a class="ref" href="../refs/hodh.html#vol. III" data-source="hodh" data-ref="vol. III" title="History of Dharmaśāstra vol. III">H. of Dh. vol. III</a>. pp. 704-705 note 1347a for explanatioṇ <span class="devanagari">छेकिकिशोरन्याय</span> – <span class="devanagari">जे</span>. VII. 4. 7 (in which the words <span class="devanagari">यथा घेनुः किशोरण</span> occur); <span class="devanagari">शबर</span> explains it clearly. <span class="devanagari">घेनुः</span> ordinarily means ‘cow’, but <span class="devanagari">किशोर</span> means in <span class="devanagari">कृष्णिणकिशोर घेनुः</span>, <span class="devanagari">घेनु</span> means ‘mare’. <span class="devanagari">न सौं करोति न सोमे</span> – <span class="devanagari">जे</span>. X. 8. 5 and XII. 1. 7. <span class="devanagari">सौ</span> refers to <span class="devanagari">आज्यभागी</span>; vide <span class="devanagari">व्यवहारसार</span> p. 231 (part of <span class="devanagari">वृत्तिसंग्रह</span>). <span class="devanagari">द</span>. <span class="devanagari">मी</span> p 182 and above p 1249. <span class="devanagari">न विधो परः शब्दार्थः</span> – means that it is not permissible to hold that in a <span class="devanagari">विधिवाक्य</span> a word therein has a meaning other than the direct one. The <span class="devanagari">कल्पतरु</span> on <span class="devanagari">भारती</span> (on <span class="devanagari">ये</span>. <span class="devanagari">सू</span>. I. 1. 1 p. 10) explains ‘<span class="devanagari">विधायक शब्दे परो लक्षः शब्दार्थो न भवति</span>’; vide <span class="devanagari">शबर</span> on IV. 4. 19 (which says <span class="devanagari">अदृहणार्थे ष लक्षणा स्य्यं न विधो</span>) and also on IV. 1. 8, where the ten <span class="devanagari">यज्ञाधुध</span> (<span class="devanagari">स्य्य</span> wooden sword etc.) mentioned in <span class="devanagari">ते</span>. <span class="devanagari">सं</span>. I, 6. 8. 2-3 are held to be an <span class="devanagari">अनुसनाव</span> and not a <span class="devanagari">विधि</span>. Vide <span class="devanagari">परा</span>. <span class="devanagari">मा</span>. I. 2. p. 298 and <span class="devanagari">सह</span>. <span class="devanagari">पा</span>. p. 372, <span class="devanagari">स्यस्य</span>. <span class="devanagari">मी</span>. p. 180. 1. <span class="devanagari">नह्यादृष्टचदधिकरणम्</span> – Vide <span class="devanagari">शाबर</span> on <span class="devanagari">जै</span>. II. 1 p. 376, <span class="devanagari">तन्त्रवार्तिक</span>. on <span class="devanagari">जै</span>. I. 2. 7 and on III. 3. 11 p. 818. This is an old <span class="devanagari">न्याय</span>. <span class="devanagari">वार्तिक</span> 16 on <span class="devanagari">पा</span>. I. 1. 50 is <span class="devanagari">संप्रयोगेण ह्या नह्यादृष्टचवद्भवत्</span> and the <span class="devanagari">महाभाष्य</span> explains '<span class="devanagari">तत्राप्यो नह्यो समाधि एयो युष्टिः उभौ संप्रयुज्यवादे इति।</span>'. <span class="devanagari">मेधा</span>. on <span class="devanagari">मनु</span> V. 51 and <span class="devanagari">भामती</span> on I. 4. p. 108 mention it. The idea is <span class="devanagari">दृष्टैरेतरोपकारकत्व</span>.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-14">2. <span class="devanagari">न हि निन्दा निन्द्यं निन्दितुं प्रयुज्यते</span>, <span class="devanagari">अपि तु विधेयं स्तोतुम्</span>—vide <a class="ref" href="../refs/hodh.html#II" data-source="hodh" data-ref="II" title="History of Dharmaśāstra II">H. of Dh. II</a>. p. 581 n 1359 and above p. 96 n 237 for passages from Sabara and Tantravārtika. The <span class="devanagari">मिता</span>. on <span class="devanagari">या</span>. III. 221 paraphrases it.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-15">3. <span class="devanagari">न हीकरूपं शब्दस्यानेकार्थता सत्यौ गतो न्याय्या</span>—Vide <span class="devanagari">शाबर</span> on <span class="devanagari">जै</span>. VIII. 3. 22 and IX. 4. 18 and the <span class="devanagari">न्याय</span> ‘<span class="devanagari">अन्यायश्चानेकार्थत्वम्</span>’ above p. 1339.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-16">4. <span class="devanagari">नागृह्यमाणविशेषाधिकरणन्याय</span> — This is often expressed in the form <span class="devanagari">नागृह्यमाणविशेषणानां</span> in <span class="devanagari">शाबर</span> on <span class="devanagari">जै</span>. VII. 2. 13) or as <span class="devanagari">न ब्राह्मणादीशे विशेषणे विशिष्टं केचन प्रत्ययेमर्हन्ति</span> (as in <span class="devanagari">शाबर</span> on <span class="devanagari">जै</span>. I. 3, 3 p. 304). Vide <span class="devanagari">तन्त्रवा</span>. pp. 304, 326, 916, <span class="devanagari">एका</span>. <span class="devanagari">तत्त्व</span> p. 15, <span class="devanagari">स्मृतिरत्न</span> p. 313, <span class="devanagari">व्य</span>. <span class="devanagari">म</span>. p. 89 (and the present author's notes thereon pp. 117-118).</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-17">5. <span class="devanagari">नास्ति वचनस्यातिभारः</span> – This <span class="devanagari">न्याय</span> occurs very frequently in <span class="devanagari">शाबर</span> and <span class="devanagari">धर्मशास्त्र</span> works in different forms, but the meaning is the same viz. 'there is nothing too heavy (i. e. impossible to prescribe) for a sacred text.' Vide <span class="devanagari">शाबर</span> on <span class="devanagari">जै</span>. II. 2. 27 (<span class="devanagari">किमिह हि वचने न कुर्याज्ञास्ति</span>...<span class="devanagari">भाष्यः</span>), on <span class="devanagari">जै</span>. III. 2. 3, X. 5. 11; the wording is ' <span class="devanagari">न हि वचनस्य किंचिदालभ्यं नाम</span>'. <span class="devanagari">शङ्करभाष्य</span> on <span class="devanagari">बे</span>. <span class="devanagari">सू</span>. III. 3. 41 and III. 4, 32 employs it. Vide <span class="devanagari">विश्वरूप</span> on <span class="devanagari">या</span>. I. 58 (referred to in <a class="ref" href="../refs/hodh.html#vol. II" data-source="hodh" data-ref="vol. II" title="History of Dharmaśāstra vol. II">H. of Dh. vol. II</a>. p. 525 n 1224), <span class="devanagari">मिता</span>. on <span class="devanagari">याज्ञ</span>. III. 298 (<a class="ref" href="../refs/hodh.html#vol. IV" data-source="hodh" data-ref="vol. IV" title="History of Dharmaśāstra vol. IV">H. of Dh. vol. IV</a>. p. 66 n 161, <span class="devanagari">परा</span>. <span class="devanagari">मा</span>. II. 1 p. 202 and II. 2 p. 64).</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-18">6. <span class="devanagari">निमित्तगतं विशेषणमविवक्षितम्</span> – Similar to <span class="devanagari">आर्थाधिकरणन्याय</span>. Vide <span class="devanagari">विश्वरूप</span> on <span class="devanagari">या</span>. III. 212.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-19">7. <span class="devanagari">निमित्तानुतौ नैमित्तिकावृत्तिः</span> – <span class="devanagari">जै</span>. VI. 2. 27-28 and 29. Such passages as <span class="devanagari">जुहोति स्क़न्ने जुहोति</span> really lay down that whenever such a <span class="devanagari">निमित्त</span> as breaking occurs a fresh homa has to be performeḍ Vide <span class="devanagari">मेधा</span>. on <span class="devanagari">मनु</span> XI. 220 (<span class="devanagari">एतत्प्रमुख्यावस्था</span> &c.) and <span class="devanagari">मिता</span>. on <span class="devanagari">या</span>. I. 81.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-20">8. <span class="devanagari">निषादस्थपतिन्याय</span> – <span class="devanagari">जै</span>. VI. 1. 51-52. Vide <a class="ref" href="../refs/hodh.html#vol. II" data-source="hodh" data-ref="vol. II" title="History of Dharmaśāstra vol. II">H. of Dh. vol. II</a>. p. 46, vol. IV. p. 24 n 58 and above pp. 1295-96 and n 2121. It is employed by <span class="devanagari">परा</span>. <span class="devanagari">मा</span>. I. 1. p. 49, <span class="devanagari">प्राय</span>. <span class="devanagari">सि</span>. p. 132, <span class="devanagari">व्य</span>, <span class="devanagari">म</span>. p. 112.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-21">9. <span class="devanagari">न्यायसाम्य</span> – <span class="devanagari">नि</span>. <span class="devanagari">सि</span>. p. 67 states that rules about <span class="devanagari">श्राद्ध</span> on a solar eclipse apply by analogy to <span class="devanagari">श्राद्ध</span> on a lunar eclipse.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-22">10. <span class="devanagari">पक्षप्रक्षालनन्याय</span> – This is expressed in the half verse '<span class="devanagari">प्रक्षालनाद्धि पङ्कस्य दूरादस्पर्शनं वरम्</span>', introduced by <span class="devanagari">विश्वरूप</span> on <span class="devanagari">या</span>. I. 210 with the words <span class="devanagari">तथा च लौकिकाः</span>. This half verse is <span class="devanagari">धनपर्व</span> 2. 49, which reads <span class="devanagari">श्रेयो न स्पशर्नाद् गुह्याद् धर्मार्थी यस्य विनयेहा वरं तस्य निषेहिता</span><sup class="fn-ref"><a href="#fn-appendix-to-section-vii-chapxxx-1" id="fnref-appendix-to-section-vii-chapxxx-1">1</a></sup>. <span class="devanagari">शाङ्करभाष्य</span> on <span class="devanagari">बे</span>. <span class="devanagari">सू</span>. III. 2. 22 quotes it.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-23">11. <span class="devanagari">पदार्थसाधन्याधिकरण</span> – <span class="devanagari">जै</span>. I. 3. 5-7 on the place of <span class="devanagari">आचमन</span> in view of the words <span class="devanagari">वेदो कृत्वा नेर्दि कुर्यात्</span> and explained by <span class="devanagari">शाबर</span> on I. 3. 7.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-24">12. <span class="devanagari">पदार्थसमय</span> – <span class="devanagari">जै</span>. V. 2. 1-2 and vide <span class="devanagari">काण्डसङ्गम</span> above p. 1342.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-25">13. <span class="devanagari">पन्नमतमतिषिद्धमुह्यसत् भवति</span>—This is like 'silence shows consent'—Vide <span class="devanagari">वृह</span>. <span class="devanagari">मी</span>. p. 82 and <a class="ref" href="../refs/hodh.html#vol. III" data-source="hodh" data-ref="vol. III" title="History of Dharmaśāstra vol. III">H. of Dh. vol. III</a>, p. 669 n 1264 and <span class="devanagari">शाङ्करभाष्य</span> on <span class="devanagari">बे</span>. <span class="devanagari">सू</span>. II. 4. 12.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-26">H, D. 169 <span class="devanagari">पर्वमीमांसा न्याय</span> – <span class="devanagari">जै</span>. III. 6. 1-8; certain passages like <span class="devanagari">यस्य पर्वमयी छुद्रभवति व यस्य पर्वं क्लोर्णो भवति</span> occur in <span class="devanagari">जै</span>. <span class="devanagari">सं</span>. III. 5. 7. 2 without express reference to any topic. They are to be applicable to the modificationṣ Vide <span class="devanagari">मी</span>. <span class="devanagari">व्या</span>. <span class="devanagari">प</span>. 117 and <span class="devanagari">भामती</span> on <span class="devanagari">जै</span>. I. 1. 4 pp. 123-124.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-27"><span class="devanagari">पशुपुण्याय</span> – <span class="devanagari">जै</span>. IV. 1. 11 and <span class="devanagari">दुष्टपूर्वीका</span> pp. 1203-5 on the Vedic text <span class="devanagari">यो घीधिशो वट्टपोलीय पंचुमालभते</span>. The emphasis is that both <span class="devanagari">एकत्व</span> and <span class="devanagari">पुलत्व</span> are to be insisted oṇ</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-28"><span class="devanagari">पशुपुरोडाश न्याय</span> – <span class="devanagari">जै</span>. XII. 1. 1-6; vide <span class="devanagari">प्रायश्चित्तप्रकरण</span> of <span class="devanagari">भवदेव</span> p. 20, <span class="devanagari">भाष</span>. <span class="devanagari">वि</span>. p. 85 and <span class="devanagari">गोविन्दानन्द</span>'s <span class="devanagari">तत्वायकौमुदी</span> on the latter and n 2205.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-29"><span class="devanagari">पिष्टपेपणन्याय</span> — Occurs in Śabara's Bhāṣya on Jai IX. 2. 3, XII. 2. 16, <span class="devanagari">सूत्रचर्चा</span>. I. 2. 31 p. 147. <span class="devanagari">पिष्टपेपण</span> — Means grinding what is already well ground and therefore unnecessary repetition ( of arguments).</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-30"><span class="devanagari">पुडाकोटिन्याय</span> — Literally means 'bending the back again and again to observe each of many objects lying on the grounḍ' Vide <span class="devanagari">शाबर</span> on <span class="devanagari">जै</span>. II. 1. 32 and <span class="devanagari">तन्त्रवा</span>. thereon p. 434. The <span class="devanagari">मिता</span>. on <span class="devanagari">या</span>. III. 216 employs it.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-31"><span class="devanagari">प्रकृतिप्रत्ययो प्रत्ययार्थ सह भूत</span>: — Vide <span class="devanagari">शाबर</span> on <span class="devanagari">जै</span> III. 4. 12 p. 922 and on <span class="devanagari">जै</span>. XI. 1. 22 p. 2013, <span class="devanagari">तन्त्रवा</span>. on <span class="devanagari">जै</span>. II. 1. 1 p. 380, III. 1. 12 p. 674, III. 4. 12 p. 902, III. 7. 10 p. 1080. It occurs in the <span class="devanagari">महाभाष्य</span> on <span class="devanagari">वार्तिक</span> 2 on <span class="devanagari">पा</span>. III. 1. 67. Vide above pp. 1235-38 n 2010.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-32"><span class="devanagari">प्रतिनिधिन्याय</span> – <span class="devanagari">जै</span>. VI. 3. 13-17, <span class="devanagari">स्मृतिचन्द्र</span>. (on <span class="devanagari">भाद्र</span> p. 460). It means <span class="devanagari">कृतद्रव्या पचारे द्रव्यान्तरे प्रतिनिघाय प्रयोगः कर्तव्यः</span>.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-33"><span class="devanagari">प्रतिनिधिनिमित्तं नैमित्तिकज्ञापनावर्तेते</span> – Vide the <span class="devanagari">न्याय</span> '<span class="devanagari">निमित्सावृषो</span>' etc. above, <span class="devanagari">मिता</span>. on <span class="devanagari">या</span>. III. 263-64 and 288 for this form of the <span class="devanagari">न्याय</span>.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-34"><span class="devanagari">प्रतिपदाधिकरण</span> — <span class="devanagari">मी</span>. <span class="devanagari">न्या</span>. <span class="devanagari">प्र</span>. p. 47. The first part of the interpretation of <span class="devanagari">जै</span>. II. 1. 1 by Śabara is so called and the 2nd part is called <span class="devanagari">भावार्थाधिकरण</span>.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-35"><span class="devanagari">प्रतिप्रधानं गुणावृत्तिः</span> – <span class="devanagari">शाबर</span> on <span class="devanagari">जै</span>. III. 3. 14 p. 844; <span class="devanagari">परा</span>. <span class="devanagari">मा</span>. I. 1. p. 391 illustrates it.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-36"><span class="devanagari">प्रधानमतिऋकने कारणाभावात्</span> – <span class="devanagari">जै</span>. X. 5. 1 and 6 (on which <span class="devanagari">शाबर</span> says <span class="devanagari">ये कामवणस आरब्ध</span>– <span class="devanagari">व्यास्ते प्रथमावृषूपकम्पितमिव</span>), <span class="devanagari">तन्त्रवा</span>. on <span class="devanagari">जै</span>. III. 2.20 p. 772 and on III. 4. 51 p. 988, <span class="devanagari">व्य</span>. <span class="devanagari">म</span>. p. 134.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-37"><span class="devanagari">प्रधानमल्लनिबर्हणन्याय</span> – Lit. ‘Crushing the principal wrestler’, the idea being that lesser champions would be regarded as vanquished if the principal wrestler is vanquisheḍ Vide <span class="devanagari">शाबरभाष्य</span> on <span class="devanagari">जै</span>. I. 4. 28 and II. 1.12.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-38"><span class="devanagari">प्रधानस्य बोधिपद्यमानस्य विशेषणविशिष्टितम्</span> – Vide <span class="devanagari">दुष्टीका</span> on <span class="devanagari">जै</span>. VII. 1. 2, p. 1526 and the <span class="devanagari">न्याय</span> ‘<span class="devanagari">उदिरेपमानस्य</span>’ etc. above.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-39"><span class="devanagari">प्रयोजनममुद्दिष्टय न मन्दोपि प्रवर्तते</span> – Vide <span class="devanagari">श्लोका</span>. (<span class="devanagari">सम्बन्ध्याक्षेप</span> verse 55 p. 653 quoted above on p. 1179 n 1917.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-40"><span class="devanagari">प्रस्तरहरणन्याय</span> – <span class="devanagari">जै</span>. III. 2. 11-15 referring to the direction in <span class="devanagari">वर्षापूर्णमास</span> ‘<span class="devanagari">सृक्त्वाकेन प्रस्तरं प्रहरति</span>’ (the priest casts the bunch of kusa grass called <em>prastara</em> into the fire to the accompaniment of Sūktavāka mantras, which thus becomes an aṅga). For <span class="devanagari">प्रस्तर</span>, vide <a class="ref" href="../refs/hodh.html#vol. II" data-source="hodh" data-ref="vol. II" title="History of Dharmaśāstra vol. II">H. of Dh. vol. II</a>, p. 1013 and for <span class="devanagari">सृक्त्वाका हन्प</span> <a class="ref" href="../refs/hodh.html#vol. II" data-source="hodh" data-ref="vol. II" title="History of Dharmaśāstra vol. II">H. of Dh. vol. II</a>, p. 1073 n 2398. <strong><span class="devanagari">प्रौसाद्वीपीयन्याय</span></strong>—same as <span class="devanagari">दधिवीपीयन्याय</span>. Vide <span class="devanagari">शाबर</span> on <span class="devanagari">जै</span>. XII. 1, 1 and 3.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-41"><strong><span class="devanagari">त्रेयङ्गुलन्याय</span></strong>—Vide <span class="devanagari">सब्र</span>. on <span class="devanagari">जै</span>. II. 1. 12, p. 415. It refers to the example cited by <span class="devanagari">शाबर</span> on <span class="devanagari">जै</span>. I. 3. 8 '<span class="devanagari">सत्र कैचिदीर्यञ्जयोदु यवशब्दं प्रयुञ्जते कैश्चिलिङ्गवद्भू ।</span>'</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-42"><strong><span class="devanagari">फलवत्सन्निधानफळे तदङ्गमम्</span></strong>—In <span class="devanagari">जै</span>. IV. 4. 34 (which is a lengthy sūtra) we have the words <span class="devanagari">तदुपसृष्टमुपलक्षणं चफलवत्सं तद्संनिधायुक्तं तदङ्गं स्यात्</span>? Vide <span class="devanagari">शाबर</span> on <span class="devanagari">जै</span>. IV. 4. 19; <span class="devanagari">कुल्लूक</span> on <span class="devanagari">मनु</span> II. 101–102 employs it and so does the Śānkara-bhāṣya on V.S. II. 1. 14. Vide <a class="ref" href="../refs/hodh.html#vol. IV" data-source="hodh" data-ref="vol. IV" title="History of Dharmaśāstra vol. IV">H. of Dh. vol. IV</a>. p. 481 ṇ 1082.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-43"><strong><span class="devanagari">बर्हिष्पन्याय</span></strong>— <span class="devanagari">जै</span>. III. 2. 1. <span class="devanagari">शाबर</span> cites the mantra <span class="devanagari">बर्हिर्दैवतं वदामि</span> {I cut off barhis as an abode for the deity) and remarks that the mukhya sense is to be taken and not gauṇa ( secondary sense, based on similarity ).</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-44"><strong><span class="devanagari">ब्राह्मणकौडिन्यन्याय</span></strong>—Vide <span class="devanagari">तककौडिन्यन्याय</span> above p. 1343. The <span class="devanagari">भिज्ञ</span>. on <span class="devanagari">भा</span>. III. 257 refers to it.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-45"><strong><span class="devanagari">ब्राह्मणपरिव्राजककन्याय</span></strong>— <span class="devanagari">शाबर</span> on <span class="devanagari">जै</span>. II. 1. 43 has '<span class="devanagari">हतो ब्राह्मणो भोज्यस्तामिति परित्राजका इति</span>'. The <span class="devanagari">भामती</span> on <span class="devanagari">बे</span>. <span class="devanagari">सू</span>. III. 1. 11 states that this nyāya means the same thing as <span class="devanagari">गोबलीवर्दन्‍याय</span>. The <span class="devanagari">शाङ्गकरभाष्य</span> mentions it on <span class="devanagari">बे</span>. <span class="devanagari">सू</span>. I. 4. 16, II. 3. 15, III. 1. 11. Vide <span class="devanagari">सुबोधिनी</span> on <span class="devanagari">या</span>. II, 96 (eḍ by Mr. Gharpure).</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-46"><strong><span class="devanagari">ब्राह्मणवसिष्ठन्याय</span></strong>—<span class="devanagari">मेधा</span>. on <span class="devanagari">मनु</span> VII. 35 employs it. <span class="devanagari">वसिष्ठ</span> also was a brāhmaṇa but he may be separately mentioned as he was most eminent in tapaṣ</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-47"><strong><span class="devanagari">भावार्थधिकरण</span></strong>— <span class="devanagari">जै</span>. II. 1. 1. <span class="devanagari">मी</span>. <span class="devanagari">न्य</span>. <span class="devanagari">प्र</span>. p. 128 and p. 1236 n 2010 above.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-48"><strong><span class="devanagari">भूतभब्यसमुच्चारणन्याय</span></strong> or <strong><span class="devanagari">भूतभव्यसमुच्चारणे भूत भव्यायोपवधत्ते</span></strong>—<span class="devanagari">शावर</span> frequently mentions it as on <span class="devanagari">जै</span>. II. 1. 4, III. 4. 40, IV. 1. 18, VI. 1. 1, IX. 1. 9. The <span class="devanagari">सुदूदीका</span> on <span class="devanagari">जै</span>. IV. 1. 18 explains '<span class="devanagari">भूतं द्रव्यं भव्यं क्रिया</span><sup class="fn-ref"><a href="#fn-appendix-to-section-vii-chapxxx-1" id="fnref-appendix-to-section-vii-chapxxx-1">1</a></sup> <span class="devanagari">निर्दिद्यवतीति क्रियातोऽङ्गम्</span>'. <span class="devanagari">व्य</span>. <span class="devanagari">म</span>. p. 111 mentions it; vide the present author's notes thereon pp. 173 ff and <a class="ref" href="../refs/hodh.html#vol. III" data-source="hodh" data-ref="vol. III" title="History of Dharmaśāstra vol. III">H. of Dh. vol. III</a>, p. 695 n 1322.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-49"><strong><span class="devanagari">भूतसामान्याय</span></strong> or <strong><span class="devanagari">भूतौ स्थात्सर्धर्मत्वम्</span></strong>—based on <span class="devanagari">जै</span>. XII. 2. 22 (<span class="devanagari">विमतिपिवद्‌धर्माणाम् असमवाये भूयसी स्यात् सधर्मेत्वम्</span>). When there is a composite sacrifice comprising several rites the various details of which present conflicts the procedure to be adopted is such as to secure the performance of the details common to the largest number; this is relied upon in <span class="devanagari">स्तुतिज्ञ</span>. (on <span class="devanagari">भाष्य</span> p. 498) and <span class="devanagari">व्यव</span>. <span class="devanagari">नि</span>. p. 202.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-50"><strong><span class="devanagari">माषबुद्गन्याय</span></strong>— <span class="devanagari">जै</span>. VI. 3 20. The rule is that if a substance prescribed for a sacrifice cannot be had, a similar substance may be used (as <span class="devanagari">पूतीक</span> for <span class="devanagari">सोम</span> mentioned by Sabara on Jai. VI. 3. 14); but where a substance is expressly forbidden it cannot be employed as a substitute, even when it is similar to the one prescribeḍ If mudga pulse cannot be had māṣa pulse cannot be used, as <a class="ref" href="../refs/taittiriya_s.html#V.1.8" data-source="taittiriya_s" data-ref="V.1.8" title="Taittirīya Saṃhitā V.1.8">Tai. S. V. 1. 8</a> declares māṣa grains to be unfit for sacrifice. Vide <span class="devanagari">भिज्ञ</span>. on <span class="devanagari">पा</span>. II. 126, <span class="devanagari">सूत्रभाष्य</span> XIII. 16 (In both this nyāya is mentioned), <span class="devanagari">भाष्य</span>. <span class="devanagari">तत्व</span> p. 482, <span class="devanagari">व्यव</span>. <span class="devanagari">म</span>. p. 555.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-51"><strong><span class="devanagari">मिथःसम्वन्धन्याय</span></strong>—same as <span class="devanagari">गार्हपत्यीण्याय</span> (<span class="devanagari">जै</span>. III. 1. 23).</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-52"><strong><span class="devanagari">मियो</span>s<span class="devanagari">सम्बन्धन्याय</span></strong>— <span class="devanagari">जै</span>. III. 1. 22. and <span class="devanagari">शाबर</span> thereon and <span class="devanagari">नह्न</span>. <span class="devanagari">पा</span>. p. 89. A gunavākya (clause laying down a subsidiary matter) is not to be taken as subsidiary to another gunavākya, as both are subsidiary to the main purpose and are of equal statuṣ There are two rites viz. Agnyādheya. and Pavamāna offerings and it is stated that one of these is subordinate to the other. Both subserve the same purpose, viz. being employed in Darśapūrṇamāsa and other sacrificeṣ A Vedic text states that vessels made of Varaṇa and Vaikankata wood are fit for sacrifices, but a vessel of Varaṇa wood is not to be used for homa while one of Vaikankata may be useḍ Both classes of vessels are subsidiary to sacrifices, but the text about not using Varaṇa vessel in homa is of a general character. Therefore, one of the two clauses is not subordinate to the other. Hence Vaikankata vessels are to be used in yāgas in which homa is requisite, but Varaṇa vessels are not to be used in such yāgaṣ</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-53"><span class="devanagari">मुख्यगौणयोष</span><sup class="fn-ref"><a href="#fn-appendix-to-section-vii-chapxxx-1" id="fnref-appendix-to-section-vii-chapxxx-1">1</a></sup> <span class="devanagari">शूत्ये संशयः झाबर</span> on <span class="devanagari">जै</span>. III. 2.1. Vide above <span class="devanagari">गौणमुख्ययोष्य</span> etc.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-54"><span class="devanagari">मुख्यपचारे</span> ( or <span class="devanagari">मुख्यालाभे</span>) <span class="devanagari">प्रातिनिधिः ज्ञार्थाः जै</span>. VI. 3. 13-17; vide <span class="devanagari">तितिवस</span> p. 13, <span class="devanagari">दस</span>. <span class="devanagari">मी</span>. p. 206.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-55"><span class="devanagari">यथाशक्तिन्याय जै</span>. VI. 3. 1-7; vide H. of Db. vol. III, p 373 and above pp. 1163-64, <span class="devanagari">धर्महेतानिनिर्णय</span> p. 105, <span class="devanagari">एका</span>. <span class="devanagari">तत्त्व</span> pp. 18, 25.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-56"><span class="devanagari">यववराहाधिकरण जै</span>. I. 3. 9 and above p. 1293 note 2116.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-57"><span class="devanagari">पश्नोभयोः पर्वागेदोषां न तमेकश्रोत्रों भवति</span> or <span class="devanagari">यवोध</span>… <span class="devanagari">नासावेकं पक्षं निवर्ययति</span> or <span class="devanagari">यवोध</span>... <span class="devanagari">नासावेकस्य वाक्यः</span> Vide <span class="devanagari">झाबर</span> on <span class="devanagari">जै</span>. VIII. 3. 7 and 14 (pp. 1616, 1619) and X. 1. 25 p. 1816.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-58"><span class="devanagari">यस्य येनाभिसम्बन्धो दूरस्थेपि स्यथापि धर्मणामानर्दमवन्मकारणद्</span> q by <span class="devanagari">न्यायसूत्रा</span> (p. 1076) on <span class="devanagari">तत्त्ववा</span>. III. 1. 27 as <span class="devanagari">बुद्धटोक</span>; <span class="devanagari">तत्त्ववा</span>. p. 744 has <span class="devanagari">यस्य</span> ... <span class="devanagari">सम्बन्ध इति न्यायपात</span>. Vide above p. 1298 n 2124. This <span class="devanagari">न्याय</span> is employed also in works on Poetics, e. g. the <span class="devanagari">व्यक्तिविवेक</span>-<span class="devanagari">व्याख्या</span> p. 39 (TSS) and by <span class="devanagari">अभिनवभारती</span> on <span class="devanagari">नाट्यशास्त्र</span> (G. O. S. vol. I. p. 210 ‘ <span class="devanagari">तथापि यस्य येनार्थसम्वन्ध इत्युक्तेश्चादरेत्तयो न शब्द इति</span>').</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-59"><span class="devanagari">पावद्वत्तं वाचानिकम्</span> Vide <span class="devanagari">झाबर</span> on <span class="devanagari">जै</span>. V. 4. 11 (<span class="devanagari">पाव</span>… <span class="devanagari">के न तत्र न्यायः क्रमते</span>) and on V. 3 12 (<span class="devanagari">पाव</span>... <span class="devanagari">कं न सहस्रमुपसंक्रामति</span>). The idea is; in the case of an authoritative text that much only is to be accepted as covered by it which is expressed by the words used and that it should not be made applicable to other cases on the ground of similarity or analogy. Vide <span class="devanagari">सन्द्रवा</span>. on <span class="devanagari">जै</span>. III. 5. 19, <span class="devanagari">भामती</span> on <span class="devanagari">वे</span>. IV. 1. 4 and on IV. 3. 4; <span class="devanagari">मेधाए</span> on <span class="devanagari">मनु</span> X. 127 applies this maxiṃ Vide H. of Db. vol. II. p. 469 n 1101.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-60"><span class="devanagari">युगपद्वृत्तिविशेशाध्य</span> One and the same word in a vidhi cannot be taken to have been used at the same time in the primary sense as well as in the secondary sense. Vide <span class="devanagari">जै</span>. III. 2 1 and <span class="devanagari">झाबर</span> thereon, <span class="devanagari">व्य</span>. <span class="devanagari">म</span>. p. 92 and notes there on by the present author (pp. 129-131), <span class="devanagari">झाबभाब</span> III. 30 p. 67 and H. of Db. vol III, p. 725 note 1399 and above pp. 1292-93 notes 2112-14.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-61"><span class="devanagari">चोर्गासद्धयधिकरण जै</span>. IV. 3. 27-28. The <span class="devanagari">ज्योतिर्होस</span> does not simultaneously bring out all the rewards but only one after another. The word occurs in sutra 28 itself and <span class="devanagari">चोर्गसद्धि</span> means <span class="devanagari">पर्योंय</span> according to <span class="devanagari">झाबर</span>. Vide <span class="devanagari">मेधा</span>. on <span class="devanagari">मनु</span> XI. 220, <span class="devanagari">दृतितत्त</span> p. 239 (for explanation), <span class="devanagari">माघ</span>. <span class="devanagari">वि</span>. p. 78 and <span class="devanagari">माच</span>. <span class="devanagari">प्रकरण की भबबेय</span> (p. 18). <span class="devanagari">रथकाराधिकरणन्यायः</span> — Vide <span class="devanagari">जै</span>. VI. 1. 44-50, <span class="devanagari">मी</span>. <span class="devanagari">न्या</span>. <span class="devanagari">प्र</span>. p. 113 and above p. 1290 n 2110 and <span class="devanagari">परा</span>. <span class="devanagari">मा</span>. I. 1. p. 48.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-62"><span class="devanagari">रात्रिसत्त्रन्यायः</span> — <span class="devanagari">जै</span>. IV. 3. 17-19 and H. of Db. vol. IV, p. 602 note 1367. and <span class="devanagari">द्रष्ट</span>. <span class="devanagari">मी</span>. p. 207, <span class="devanagari">भामती</span> on <span class="devanagari">शाङ्करभाष्य</span> on <span class="devanagari">ब्रे</span>. <span class="devanagari">सू</span>. I. 1. 4 p. 111 as part of the Pūrvapakṣa.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-63"><span class="devanagari">रूढियोगमपहारति</span> — This means that the conventional meaning of a word is to be preferred to the etymological meaning as in the case of the word ‘rathakāra’ in Jai. VI. 1. 44 ff.; vide <span class="devanagari">परा</span>. <span class="devanagari">मा</span>. I. I. p. 300. As against this one must note another nyāya sometimes relied upon viz. <span class="devanagari">यौगसम्बन्धे परिभाषाया अनुक्लत्वात्</span> (used by the <span class="devanagari">मिता</span>. on <span class="devanagari">या</span>. II. 143 about the meaning of the word <span class="devanagari">दीधिति</span>). Vide <a class="ref" href="../refs/hodh.html#vol II" data-source="hodh" data-ref="vol II" title="History of Dharmaśāstra vol II">H. of Dh. vol II</a>. p. 780 n 1508 and the <span class="devanagari">मी</span>. <span class="devanagari">न्या</span>. <span class="devanagari">प्र</span>. pp. 112-113.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-64"><span class="devanagari">रेवत्याधिकरणन्यायः</span> — <span class="devanagari">जै</span>. II. 2. 27 and <span class="devanagari">मी</span>. <span class="devanagari">न्या</span>. <span class="devanagari">प्र</span>. pp 40-42.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-65"><span class="devanagari">लक्षणा शब्दैकलक्षणाय ज्यायसी</span> — Vide <span class="devanagari">शबर</span> on <span class="devanagari">जै</span>. I. 1. p. 7 and I. 4. 2 p. 324.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-66"><span class="devanagari">वर्षौभ्याय</span> — <span class="devanagari">जै</span>. III. 8. 25-27. In <span class="devanagari">दर्शपूर्णमास</span> the adhvaryu priest recites ‘<span class="devanagari">समश्र्व वर्षो विहेवेष्वस्ति</span>’ (<span class="devanagari">मै</span>. <span class="devanagari">सं</span>. I. 4. 5). The reward, however, goes to the sacrificer and not to the adhvaryu, as the latter works for a fee.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-67"><span class="devanagari">वाजपेय न्याय</span> — <span class="devanagari">जै</span>. I. 4. 6-8. In the sentence <span class="devanagari">वाजपेयेन स्वाराज्यकामो यजेत</span>, <span class="devanagari">वाजपेय</span> is the name of a yāga and does not lay down any detail about a sacrifice; mentioned in <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> on <a class="ref" href="../refs/yajnavalkya.html#I.81" data-source="yajnavalkya" data-ref="I.81" title="Yājñavalkya I.81">Yāj. I. 81</a>.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-68"><span class="devanagari">चार्पेष्टीन्याय</span> — <span class="devanagari">जै</span>. III. 1. 23. <a class="ref" href="../refs/taittiriya_s.html#II.5.2.5" data-source="taittiriya_s" data-ref="II.5.2.5" title="Taittirīya Saṃhitā II.5.2.5">Tai. S. II. 5. 2. 5</a> lays down that the Vārtraghni and Vṛdhanvatī verses are recited on Pourṇamāsī and the Amāvāsyā These two are prescribed in relation to sacrifices that require the recitation of two anuvākyāṣ There is only one anuvākyā at the Darśa or Paurṇamāsī rite; therefore these verses cannot be used in Darśapūrṇamāsa. But two anuvākyās are known to be used in the subsidiary offerings in Darśa-Pūrṇamāsa. Therefore, the two anuvākyās ‘Vārtraghni’ and ‘Vṛdhanvatī’ are to be connected with Ājyabhāgas alone and not with the principal rite.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-69"><span class="devanagari">विविधचित्राधिकरणन्याय</span> — Vide above pp. 1239-40 note 2015; <span class="devanagari">द्वादशम</span> II. 30 (<span class="devanagari">स्वर्गवरं क्षिप्रदं</span> ... <span class="devanagari">न विकल्प</span>:) remarks ‘<span class="devanagari">कर्तव्यपदममप्राप्तार्थम्</span>’. This is a <span class="devanagari">विधि</span>, though there is no word expressing exhortatioṇ</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-70"><span class="devanagari">विश्वजिन्न्याय</span> — <span class="devanagari">जै</span>. IV. 3. 15-16. Where no fruit or reward is expressly prescribed for a sacrifice svarga is the rewarḍ This is so with the Viśvajit sacrifice in which the sacrificer had to donate all that he owned at the time of the sacrifice; mentioned by <span class="devanagari">मेघा</span>. on <span class="devanagari">मनु</span> II. 2, <span class="devanagari">परा</span>. <span class="devanagari">मा</span>. I. 1 p. 148, <span class="devanagari">एका</span>. <span class="devanagari">तत्त्र</span> p. 23.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-71"><span class="devanagari">विधौ लक्षणा अन्याख्या</span>—Vide <span class="devanagari">शबर</span> on <span class="devanagari">जै</span>. I. 2. 29, IV. 4. 19 and the <span class="devanagari">न्याय</span> ‘<span class="devanagari">न विधौ परः शब्दार्थः</span>’ above. <span class="devanagari">मलमासतत्त्व</span> (p. 760) relies on thiṣ</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-72"><span class="devanagari">वैश्वदेव न्याय</span> — <span class="devanagari">जै</span>. I. 4. 13-16. <span class="devanagari">वैश्वदेव</span> is the first parvan of the four parvans of Cāturmāsyaṣ It is a name {nāmadheya} and not a guṇavidhi. It is employed in the <span class="devanagari">बृह</span>. <span class="devanagari">मी</span>. p. 239.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-73"><span class="devanagari">श्येनज्ञानधिकरणन्याय</span> — Vide <span class="devanagari">जातेष्टिन्याय</span>.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-74"><span class="devanagari">शास्त्रावस्थारन्याय</span> — <span class="devanagari">जै</span>. II. 4. 8-33. It is the same as <span class="devanagari">सर्वेषामात्मत्वपरपर्याय</span> below. <span class="devanagari">श्रुतिलिङ्गादि</span>-<span class="devanagari">विषये च श्रुतिपोट्टा न लक्षणा</span>—Vide <span class="devanagari">झाबर</span> on IV. 1. 23, IV. 1. 46, IV. 2-30.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-75"><span class="devanagari">षोडशिग्रहणादि</span>—<span class="devanagari">जे</span>. X. 8. 6; vide above p. 1249 and 2030 on <span class="devanagari">अतिरात्रे षोडशिनि गृह्णाति</span> and <span class="devanagari">नातिरात्रे</span>... <span class="devanagari">गृह्णाति</span>, <span class="devanagari">अर्थसंग्रह</span> p. 24.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-76"><span class="devanagari">संयोगपृथक्त्वन्याय</span>—<span class="devanagari">जे</span>. IV. 3. 5–7. The word <span class="devanagari">संयोगपृथक्त्व</span> occurs in <span class="devanagari">जे</span>. IV. 3. 5 itself; vide above p. 217 note 217; <span class="devanagari">मेघा</span>. on <span class="devanagari">भहु</span> II. 107, <span class="devanagari">परा</span>. <span class="devanagari">मा</span>. I. 1. 60, <span class="devanagari">प्राय</span>. <span class="devanagari">तत्व</span>. p. 474, <span class="devanagari">एका</span>. <span class="devanagari">तत्व</span> pp. 29–30, <span class="devanagari">तिथितत्व</span> p. 44, <span class="devanagari">नि</span>. <span class="devanagari">सि</span>. p. 84.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-77"><span class="devanagari">सकृत्कृतं कृतं शाब्दार्थः</span>—Vide <span class="devanagari">झाबर</span> on <span class="devanagari">जे</span>. XI. 1. 28 and XII. 3. 10; employed in <span class="devanagari">एका</span>. <span class="devanagari">तत्व</span> p. 32 and <span class="devanagari">उदाहृतत्व</span> p. 133; it is mentioned in the <span class="devanagari">महाभाष्य</span> on <span class="devanagari">बार्तिक</span> 4 on <span class="devanagari">पा</span>. VI. 1. 84. This nyāya has a limited application and often the maxim <span class="devanagari">निमित्तसङ्गतौ</span> etc. (i. e. repetition) applieṣ</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-78"><span class="devanagari">सकृच्छ्रुतं शब्दत्वमेवार्थं गमयति</span>—Vide <span class="devanagari">दायभाग</span> III. 29–30 p. 67, <span class="devanagari">महु</span>. <span class="devanagari">पा</span>. p. 369, accepted in 6 Cal. 119. 126 (F. B.) and in L. R. 41 I. A. p. 290 at pp. 303-4.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-79"><span class="devanagari">सर्वं स्याद्भूतत्वात्</span>—This is the <span class="devanagari">पूर्वपक्षसूत्र</span> in <span class="devanagari">जे</span>. X. 3. 53-55, but it is held gene- rally applicable unless there is a special or express provision for unequal distributioṇ This is followed in <span class="devanagari">मिता</span>. on <span class="devanagari">याज्ञ</span>. II. 265, <span class="devanagari">दायभाग</span> IV. 8 p. 80 (on <span class="devanagari">स्त्रीधनविभाग</span>), <span class="devanagari">स्मृतिच</span>. (II. pp. 152 and 285), <span class="devanagari">कुल्लूक</span> on <span class="devanagari">महु</span> III. 1. (<span class="devanagari">सर्वं स्याद्भूतत्वादिति न्यायेन प्रति</span>- <span class="devanagari">द्वादशवर्षाणि व्रताचरणम्</span>), <span class="devanagari">परा</span>. <span class="devanagari">मा</span>. I. 2. p. 362, <span class="devanagari">मदनरत्न</span> (on <span class="devanagari">व्यवहार</span>) p. 204.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-80"><span class="devanagari">समवदानानियमेन्याय</span>—<span class="devanagari">जे</span>. III. 6. 9. Passages like <span class="devanagari">सतदश सामिधेनीषूच्यम्</span> in <a class="ref" href="../refs/aitareya_br.html#I.1" data-source="aitareya_br" data-ref="I.1" title="Aitareya Brāhmaṇa I.1">Ait. Br. I. 1</a> that occur without being attached to any particular sacrifice are applicable only to vikrtis and not to the model (prakrti) sacrifice; vide <span class="devanagari">मिमा</span>. on <span class="devanagari">या</span>. I. 256.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-81"><span class="devanagari">सर्वापेक्षाधिकरण</span>—<span class="devanagari">जे</span>. III. 4. 17 based on <a class="ref" href="../refs/taittiriya_s.html#II.6.10.1-2" data-source="taittiriya_s" data-ref="II.6.10.1-2" title="Taittirīya Saṃhitā II.6.10.1-2">Tai. S. II. 6. 10. 1–2</a> which pro- hibits threatening or striking a brāhmaṇa. Vide <a class="ref" href="../refs/hodh.html#vol. III" data-source="hodh" data-ref="vol. III" title="History of Dharmaśāstra vol. III">H. of Dh. vol. III</a>, p. 515 note 937-938 and <span class="devanagari">प्राय</span>. <span class="devanagari">तत्व</span> p. 479, <span class="devanagari">प्राय</span>. <span class="devanagari">वि</span>. p. 6.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-82"><span class="devanagari">सर्वशाखप्रत्ययन्याय</span>—Vide <span class="devanagari">यथाशक्तिय्याप</span> and <span class="devanagari">एका</span>. <span class="devanagari">तत्व</span> pp. 18. 26.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-83"><span class="devanagari">सर्वसामान्यन्याय</span>—<span class="devanagari">जे</span>. II. 4. 8–33. Vide <a class="ref" href="../refs/hodh.html#vol. III" data-source="hodh" data-ref="vol. III" title="History of Dharmaśāstra vol. III">H. of Dh. vol. III</a>, p. 870 note 1693, vol. IV. pp 89–90 note 211, pp. 453–55 note 1011 and <span class="devanagari">मिता</span>. on <span class="devanagari">पा</span>. III. 325, <span class="devanagari">अपरार्क</span> p. 1053, <span class="devanagari">स्मृतिच</span>. (I. p. 5), <span class="devanagari">महु</span>. <span class="devanagari">पा</span>. pp. 11 and 91, <span class="devanagari">भुजिक्षतत्व</span> pp. 378, 380 and above p. 1273 and 2074.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-84"><span class="devanagari">सामान्यविशेषविषयन्याय</span>—Vide <span class="devanagari">झाबर</span> on <span class="devanagari">जे</span>. VII. 3. 16 (<span class="devanagari">बाध्यते च सामान्यं विशेषेण</span>) and <span class="devanagari">तन्त्र</span>. <span class="devanagari">रत्ना</span>. p. 1030 on <span class="devanagari">जे</span>. III. 6. 9 ‘<span class="devanagari">तत्र नाम विशेषेण सामान्यस्य निराक्रिया। श्रप्यको यत्र सम्बन्धो विशेषेण प्रतीयते। तुल्यप्रमाणको हि विशेषो बाधको भवति न दुर्बल</span>- <span class="devanagari">प्रमाणकः</span>’ and p. 1120; vide for examples <span class="devanagari">स्मृतिच</span>. (on <span class="devanagari">व्यवहार</span> pp. 142, 299, 381) and <span class="devanagari">परा</span>. <span class="devanagari">मा</span>. I. p. 233.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-85"><span class="devanagari">सामर्थ्याधिकरण</span>—<span class="devanagari">जे</span>. I. 4. 25. Vide above p. 1291 note 2111.</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-86"><span class="devanagari">सारस्वतो भवतः</span>—<span class="devanagari">जे</span>. V. 1. 14; vide above pp. 1315–16 and 2164 and <span class="devanagari">स्मृतिच</span>. (on <span class="devanagari">व्यवहार</span> p. 297), <span class="devanagari">सुबोधिनी</span> (on <span class="devanagari">पितरों</span>) on p. 72 (text) and p. 183 (tr. by Mr. J. R. Gharpure).</p>
+<p class="prose" id="p-appendix-to-section-vii-chapxxx-87"><span class="devanagari">सार्थक्यन्याय</span>—<span class="devanagari">जे</span>. I. 2. 1 and 7; vide p. 1284 and <span class="devanagari">झाबर</span> on <span class="devanagari">जे</span>. II. 2. 6 and on III. 1. 18 (on <span class="devanagari">आनर्थक्यतदङ्गैषु</span>). <span class="devanagari">अनर्थक</span> means either 'meaningless' or 'purposeless'. <span class="devanagari">सुवर्णधारण्यान्याय</span> – <span class="devanagari">जै</span>. III. 4. 20-24. In <span class="devanagari">जै</span>. <span class="devanagari">चा</span>. II. 2. 4. 6 there is a passage not connected with any specific sacrifice viz. <span class="devanagari">सुवर्णं हिरण्यं धार्यम्</span> (one should wear bright gold). This is a puruşadharma and not a sarvaprakaraṇa-dharma. Vide <span class="devanagari">मिश्रा</span>. on <span class="devanagari">चा</span>. II. 135-136, where this is used as an argument against the view that all wealth is for yajña. <span class="devanagari">सूसक्त्याख्याय</span> – Vide <span class="devanagari">जै</span>. III. 2. 16-19 and <span class="devanagari">प्रस्तारमहरणण्याय</span> (p. 1346) for the meaning of <span class="devanagari">सूक्तवाक</span> and <span class="devanagari">प्रस्तर</span>. In these sūtras it is established that the whole <span class="devanagari">सूक्तवाक</span> is not to be recited in both Paurnamāsa-iṣṭi and Darśa-iṣṭi, but only those portions of it that refer respectively to the deities of the two iṣṭiṣ <span class="devanagari">स्थालीपुलाकन्याय</span> – The word <span class="devanagari">स्थालीपुलाक</span> occurs in Jai. VII. 4. 12 itself; vide <span class="devanagari">भाष्य</span> on <span class="devanagari">जै</span>. VIII. 1. 11 and <span class="devanagari">तन्त्रवा</span>. on <span class="devanagari">जै</span>. III. 5. 19 p. 998. The <span class="devanagari">महाभाष्य</span> knew it since it says on <span class="devanagari">वार्तिक</span> 15 to <span class="devanagari">पा</span>. I. 4. 23 '<span class="devanagari">पर्याप्तो ह्येकः पुलाकः स्थात्या निदर्शनाय</span>'<sup class="fn-ref"><a href="#fn-appendix-to-section-vii-chapxxx-1" id="fnref-appendix-to-section-vii-chapxxx-1">1</a></sup>. <span class="devanagari">स्थूणांनिखननन्याय</span> – Fixing a post firmly in the earth by frequently pushing it down and about; occurs in <span class="devanagari">शाबरभाष्य</span> on <span class="devanagari">जै</span>. VII. 2. 1 and <span class="devanagari">शास्त्रभाष्य</span> on <span class="devanagari">जै</span>. <span class="devanagari">छू</span>. II. 1. 34 and III. 3. 53. <span class="devanagari">स्वर्गकामाधिकरण</span> – <span class="devanagari">जै</span>. VI. 1. 1-3, referred to in <a class="ref" href="../refs/hodh.html#vol. IV" data-source="hodh" data-ref="vol. IV" title="History of Dharmaśāstra vol. IV">H. of Dh. vol. IV</a>. p. 169. <span class="devanagari">हेतुपत्तिगधिकरण</span> – <span class="devanagari">जै</span>. I. 2. 26-30. Vide <a class="ref" href="../refs/hodh.html#vol. III" data-source="hodh" data-ref="vol. III" title="History of Dharmaśāstra vol. III">H. of Dh. vol. III</a>. p. 676 and notes 1276–77, <span class="devanagari">सिद्धान्त</span> on <span class="devanagari">पा</span>. III. 263, <span class="devanagari">महामासंख</span> p. 760 for applicatioṇ <span class="devanagari">होकाकाधिकरण</span> – <span class="devanagari">जै</span>. I. 3. 15-23. Vide above p. 1281 n 2093 for explanatioṇ</p>
+<aside class="footnotes-section" aria-label="Footnotes">
+<hr>
+<ol class="footnotes-list">
+<li id="fn-appendix-to-section-vii-chapxxx-1" class="footnote-item"><span class="devanagari">भिला</span> <a href="#fnref-appendix-to-section-vii-chapxxx-1" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-appendix-to-section-vii-chapxxx-2" class="footnote-item"><span class="devanagari">या</span>. <a href="#fnref-appendix-to-section-vii-chapxxx-2" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-appendix-to-section-vii-chapxxx-3" class="footnote-item"><span class="devanagari">न्ब</span> <a href="#fnref-appendix-to-section-vii-chapxxx-3" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-appendix-to-section-vii-chapxxx-4" class="footnote-item"><span class="devanagari">या</span>. <a href="#fnref-appendix-to-section-vii-chapxxx-4" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-appendix-to-section-vii-chapxxx-5" class="footnote-item"><span class="devanagari">सद्</span>. <span class="devanagari">पा</span>. <a href="#fnref-appendix-to-section-vii-chapxxx-5" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-appendix-to-section-vii-chapxxx-6" class="footnote-item"><span class="devanagari">अर्क</span> <a href="#fnref-appendix-to-section-vii-chapxxx-6" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-appendix-to-section-vii-chapxxx-7" class="footnote-item"><span class="devanagari">तन्त्रवा</span> <a href="#fnref-appendix-to-section-vii-chapxxx-7" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-appendix-to-section-vii-chapxxx-8" class="footnote-item"><span class="devanagari">सं</span> <a href="#fnref-appendix-to-section-vii-chapxxx-8" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-appendix-to-section-vii-chapxxx-9" class="footnote-item"><span class="devanagari">तन्त्रब्रा</span> <a href="#fnref-appendix-to-section-vii-chapxxx-9" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-appendix-to-section-vii-chapxxx-10" class="footnote-item"><span class="devanagari">तन्त्रवा</span> <a href="#fnref-appendix-to-section-vii-chapxxx-10" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-appendix-to-section-vii-chapxxx-11" class="footnote-item"><span class="devanagari">तन्त्रवा</span> <a href="#fnref-appendix-to-section-vii-chapxxx-11" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-appendix-to-section-vii-chapxxx-12" class="footnote-item"><span class="devanagari">स</span>. <span class="devanagari">श</span>. <a href="#fnref-appendix-to-section-vii-chapxxx-12" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-appendix-to-section-vii-chapxxx-13" class="footnote-item"><span class="devanagari">तन्त्रवा</span> <a href="#fnref-appendix-to-section-vii-chapxxx-13" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-appendix-to-section-vii-chapxxx-14" class="footnote-item"><span class="devanagari">तन्त्रवा</span> <a href="#fnref-appendix-to-section-vii-chapxxx-14" class="fn-back" aria-label="Back to text">↩</a></li>
+</ol>
+</aside>
+
+            <div class="chapter-nav">
+                <a href="chapter-xxx-on-mīmāmsā-principles-and-rules-of-interpretation-in-relation-to-dha.html" class="nav-prev"><i class="fa-solid fa-chevron-left"></i> Chapter XXX. On Mīmāmsā Principles and Rules of Interpretation in Relation to Dharmashastra</a>
+                <a href="chapter-xxxi-dharmashastra-and-sānkhya.html" class="nav-next">Chapter XXXI. Dharmashastra and Sānkhya <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </main>
+    </div>
+
+    <button class="toc-mobile-toggle" onclick="toggleMobileToc()" aria-label="Table of contents">
+        <i class="fa-solid fa-list"></i>
+    </button>
+
+    
+    <footer class="container-fluid pt-4" style="background-color:#2e4144">
+        <div class="row border-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img src="https://sanatana.in/mbta/public/images/Homepage_html/images/layer_8.png" alt="">
+            </div>
+            <div class="col-md-5 text-white">
+                <p>The divine knowledge and wisdom of our shastras is the only thing eternal,
+                   which was and which will remain ever-present in this gods creation.
+                   Our endeavours are to preserve this knowledge.</p>
+            </div>
+            <div class="col-md-1 text-white">
+                <div class="d-flex" style="height: 75px;">
+                    <div class="vr"></div>
+                </div>
+            </div>
+            <div class="col-md-3 text-white">
+                <i class="fa-solid fa-globe"></i>&emsp;
+                <a href="https://sanatanasampatti.in" class="text-light">www.sanatanasampatti.in</a><br>
+                <i class="fa-solid fa-envelope"></i>&emsp;
+                <a href="" class="text-light">sriranga.yoga@gmail.com</a>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center py-3 mb-4 align-items-center border-bottom">
+            <div class="col-md-2 text-white fs-4 text-center">Project</div>
+            <div class="col-md-2 text-white fs-4 text-center">Our Mission</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contribute</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contact Us</div>
+        </div>
+        <div class="row">
+            <p class="col-md-6 fs-6 text-start text-light">
+                <small>&copy; 2026 Sanatanasampatti</small>
+            </p>
+            <p class="col-md-6 fs-6 text-end text-light">
+                <a class="text-white" rel="nofollow" href="http://www.srirangadigital.com" target="_blank">
+                    <img src="https://sanatana.in/mbta/public/images/logo.png" alt="sriranga logo" />
+                    <small>Designed, Developed and Maintained by Sriranga Digital</small>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        const headings = [];
+        tocLinks.forEach(link => {
+            const id = link.getAttribute('href').substring(1);
+            const el = document.getElementById(id);
+            if (el) headings.push({ el: el, link: link.parentElement });
+        });
+
+        function onScroll() {
+            let current = null;
+            for (const h of headings) {
+                const rect = h.el.getBoundingClientRect();
+                if (rect.top <= 120) current = h;
+            }
+            tocLinks.forEach(l => l.parentElement.classList.remove('active'));
+            if (current) current.link.classList.add('active');
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    });
+
+    function toggleMobileToc() {
+        const toc = document.getElementById('toc');
+        if (!toc) return;
+        if (toc.style.display === 'block') {
+            toc.style.display = '';
+            toc.style.position = '';
+        } else {
+            toc.style.display = 'block';
+            toc.style.position = 'fixed';
+            toc.style.top = '0';
+            toc.style.left = '0';
+            toc.style.width = '80vw';
+            toc.style.maxWidth = '320px';
+            toc.style.height = '100vh';
+            toc.style.maxHeight = '100vh';
+            toc.style.zIndex = '2000';
+            toc.style.background = 'var(--parchment)';
+            toc.style.boxShadow = '4px 0 20px rgba(0,0,0,0.2)';
+            toc.style.padding = '24px';
+            toc.style.overflowY = 'auto';
+        }
+    }
+    </script>
+
+    <script>
+    function toggleSynopsisAudio(btn) {
+        var audio = btn.parentElement.querySelector('audio');
+        if (!audio.src) audio.src = btn.getAttribute('data-src');
+        if (audio.paused) {
+            audio.play();
+            btn.classList.add('playing');
+            btn.querySelector('i').className = 'fa-solid fa-pause';
+        } else {
+            audio.pause();
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        }
+        audio.onended = function() {
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        };
+        // Prevent click from toggling the synopsis open/close
+        event.stopPropagation();
+    }
+    </script>
+</body>
+</html>

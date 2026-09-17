@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline — Chapter V. Rāshtra (The Territory of a State)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+    :root {
+        --parchment: #faf6ef;
+        --parchment-mid: #f0e6d3;
+        --saffron: #e8941a;
+        --ink: #2c1810;
+        --ink-secondary: #5a3e2b;
+        --rule: #d4c5a9;
+        --indigo: #2d5a87;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+        font-family: 'Lora', Georgia, serif;
+        background: var(--parchment);
+        color: var(--ink);
+    }
+    .navbar {
+        background: linear-gradient(135deg, #1a0f0a, #2c1810);
+        padding: 12px 24px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+    .navbar a { color: var(--parchment); text-decoration: none; }
+    .navbar .devanagari { font-size: 1.3rem; }
+    .navbar .nav-title { font-family: 'Lora', serif; font-size: 1rem; opacity: 0.9; }
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+    .breadcrumb-bar a { color: var(--saffron); text-decoration: none; }
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+    .content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 24px;
+    }
+    h1 {
+        font-size: 1.6rem;
+        margin-bottom: 8px;
+        color: var(--ink);
+    }
+    .subtitle {
+        font-size: 0.9rem;
+        color: var(--ink-secondary);
+        margin-bottom: 24px;
+    }
+    .timeline-container {
+        overflow-x: auto;
+        padding: 16px 0;
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        background: var(--parchment);
+    }
+    .timeline-svg {
+        display: block;
+        min-width: 100%;
+    }
+    .timeline-svg .tl-evt { cursor: pointer; }
+    .timeline-svg .tl-evt:hover { transform: scale(1.5); }
+    .event-list {
+        margin-top: 32px;
+    }
+    .event-list h2 {
+        font-size: 1.1rem;
+        margin-bottom: 16px;
+        color: var(--ink-secondary);
+    }
+    .event-item {
+        display: flex;
+        gap: 16px;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--rule);
+        font-size: 0.88rem;
+    }
+    .event-year {
+        min-width: 90px;
+        font-weight: 600;
+        color: var(--saffron);
+        font-family: 'Open Sans', sans-serif;
+    }
+    .event-label { font-weight: 600; }
+    .event-context {
+        color: var(--ink-secondary);
+        font-size: 0.82rem;
+        margin-top: 2px;
+    }
+    .event-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.8rem;
+    }
+    .event-link:hover { text-decoration: underline; }
+    .back-link {
+        display: inline-block;
+        margin-top: 24px;
+        color: var(--saffron);
+        text-decoration: none;
+        font-family: 'Open Sans', sans-serif;
+    }
+    .back-link:hover { text-decoration: underline; }
+    .century-group {
+        margin-bottom: 8px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        overflow: hidden;
+    }
+    .century-heading {
+        display: block;
+        padding: 10px 16px;
+        background: var(--parchment-mid);
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: var(--ink);
+    }
+    .century-heading:hover { background: #e8dcc8; }
+    .century-count {
+        font-weight: 400;
+        color: var(--ink-secondary);
+        font-size: 0.82rem;
+    }
+    .century-events {
+        padding: 8px 16px;
+    }
+    .vol-tl-link {
+        display: inline-block;
+        margin: 4px 8px 4px 0;
+        padding: 6px 14px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        color: var(--saffron);
+        text-decoration: none;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+    }
+    .vol-tl-link:hover {
+        border-color: var(--saffron);
+        background: #f5ebe0;
+    }
+    .vol-tl-count {
+        color: var(--ink-secondary);
+        font-size: 0.78rem;
+    }
+    /* ── Tab switcher ── */
+    .tl-tabs {
+        display: flex; gap: 0; margin-bottom: 20px;
+        border-bottom: 2px solid var(--rule);
+    }
+    .tl-tab {
+        padding: 10px 20px; cursor: pointer;
+        font-family: 'Open Sans', sans-serif; font-size: 0.9rem;
+        color: var(--ink-secondary); border-bottom: 2px solid transparent;
+        margin-bottom: -2px; transition: all 0.2s;
+    }
+    .tl-tab:hover { color: var(--ink); }
+    .tl-tab.active { color: var(--saffron); border-bottom-color: var(--saffron); font-weight: 600; }
+    .tl-panel { display: none; }
+    .tl-panel.active { display: block; }
+    /* ── Entity graph styles ── */
+    .eg-entity {
+        border: 1px solid var(--rule); border-radius: 6px;
+        margin-bottom: 8px; overflow: hidden; transition: border-color 0.2s;
+    }
+    .eg-entity.highlighted { border-color: var(--saffron); box-shadow: 0 0 0 1px var(--saffron); }
+    .eg-header {
+        display: flex; align-items: center; gap: 12px;
+        padding: 10px 16px; background: var(--parchment-mid);
+        cursor: pointer; font-family: 'Open Sans', sans-serif;
+    }
+    .eg-header:hover { background: #e8dcc8; }
+    .eg-name { font-weight: 600; font-size: 0.92rem; flex: 1; }
+    .eg-type {
+        font-size: 0.72rem; padding: 2px 8px; border-radius: 10px;
+        background: var(--parchment); color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .eg-claims-count {
+        font-size: 0.78rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif;
+    }
+    .eg-body { padding: 12px 16px; display: none; }
+    .eg-entity.open .eg-body { display: block; }
+    .eg-range-bar {
+        position: relative; height: 32px;
+        background: var(--parchment-mid); border-radius: 4px;
+        margin-bottom: 10px; overflow: hidden;
+    }
+    .eg-range-fill {
+        position: absolute; top: 6px; height: 20px;
+        background: var(--saffron); opacity: 0.3; border-radius: 3px;
+    }
+    .eg-range-dot {
+        position: absolute; top: 11px; width: 10px; height: 10px;
+        background: var(--saffron); border-radius: 50%;
+        transform: translateX(-5px); cursor: pointer;
+    }
+    .eg-range-dot:hover { transform: translateX(-5px) scale(1.4); }
+    .eg-range-label {
+        position: absolute; top: -2px;
+        font-size: 0.7rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif;
+        transform: translateX(-50%);
+    }
+    .eg-cooccur {
+        margin-top: 8px; padding-top: 8px;
+        border-top: 1px solid var(--rule);
+    }
+    .eg-cooccur-title {
+        font-size: 0.78rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif; margin-bottom: 6px;
+    }
+    .eg-cooccur-chip {
+        display: inline-block; margin: 2px 4px 2px 0;
+        padding: 3px 10px; background: var(--parchment-mid);
+        border: 1px solid var(--rule); border-radius: 12px;
+        font-size: 0.78rem; color: var(--ink);
+        font-family: 'Open Sans', sans-serif;
+        cursor: pointer; transition: all 0.2s;
+    }
+    .eg-cooccur-chip:hover { border-color: var(--saffron); color: var(--saffron); }
+    .eg-cooccur-weight {
+        font-size: 0.68rem; color: var(--ink-secondary); margin-left: 2px;
+    }
+    .eg-claim-list { margin-top: 8px; }
+    .eg-claim {
+        display: flex; gap: 12px; padding: 4px 0;
+        font-size: 0.82rem; border-bottom: 1px solid #f0e6d3;
+    }
+    .eg-claim-year {
+        min-width: 80px; font-weight: 600; color: var(--saffron);
+        font-family: 'Open Sans', sans-serif; font-size: 0.8rem;
+    }
+    .eg-claim-ctx { color: var(--ink-secondary); font-size: 0.78rem; }
+    .eg-claim a { color: var(--indigo); text-decoration: none; font-size: 0.76rem; }
+    .eg-claim a:hover { text-decoration: underline; }
+    .eg-stats {
+        display: flex; gap: 24px; margin-bottom: 16px;
+        font-family: 'Open Sans', sans-serif; font-size: 0.85rem;
+        color: var(--ink-secondary);
+    }
+    .eg-stat-num { font-weight: 700; color: var(--saffron); font-size: 1.1rem; }
+    .eg-sort {
+        font-family: 'Open Sans', sans-serif; font-size: 0.82rem;
+        margin-bottom: 12px; color: var(--ink-secondary);
+    }
+    .eg-sort a {
+        color: var(--indigo); text-decoration: none; cursor: pointer;
+        margin: 0 6px;
+    }
+    .eg-sort a:hover { text-decoration: underline; }
+    .eg-sort a.active { color: var(--saffron); font-weight: 600; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="../index.html"><span class="devanagari">धर्मशास्त्रम्</span></a>
+        <a href="../index.html" class="nav-title">History of Dharmaśāstra</a>
+    </div>
+    
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep"> &rsaquo; </span>
+        <a href="index.html">Volume III</a>
+        <span class="sep"> &rsaquo; </span>
+        <a href="chapter-v-rāshtra-the-territory-of-a-state.html">Chapter V. Rāshtra (The Territory of a State)</a>
+        <span class="sep"> &rsaquo; </span>
+        <span>Timeline</span>
+    </div>
+    
+    <div class="content">
+        <h1>Timeline: Chapter V. Rāshtra (The Territory of a State)</h1>
+        <p class="subtitle">23 dated references</p>
+        <div class="tl-tabs">
+            <div class="tl-tab active" data-panel="events-panel">Events</div>
+            <div class="tl-tab" data-panel="graph-panel">Entity Graph</div>
+        </div>
+        <div id="events-panel" class="tl-panel active">
+            <div class="timeline-container">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1380 280" class="timeline-svg" role="img" aria-label="Timeline for Chapter V. Rāshtra (The Territory of a State)">
+<rect width="1380" height="280" fill="#faf6ef" rx="8"/>
+<line x1="60" y1="100" x2="1340" y2="100" stroke="#c4956a" stroke-width="2"/>
+<line x1="60.0" y1="94" x2="60.0" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="60.0" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">600 BCE</text>
+<line x1="166.36954503249768" y1="94" x2="166.36954503249768" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="166.36954503249768" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">400 BCE</text>
+<line x1="285.21819870009284" y1="94" x2="285.21819870009284" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="285.21819870009284" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">200 BCE</text>
+<line x1="404.066852367688" y1="94" x2="404.066852367688" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="404.066852367688" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1 CE</text>
+<line x1="522.9155060352832" y1="94" x2="522.9155060352832" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="522.9155060352832" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">200 CE</text>
+<line x1="641.7641597028784" y1="94" x2="641.7641597028784" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="641.7641597028784" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">400 CE</text>
+<line x1="760.6128133704735" y1="94" x2="760.6128133704735" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="760.6128133704735" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">600 CE</text>
+<line x1="879.4614670380688" y1="94" x2="879.4614670380688" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="879.4614670380688" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">800 CE</text>
+<line x1="998.3101207056638" y1="94" x2="998.3101207056638" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="998.3101207056638" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1000 CE</text>
+<line x1="1117.158774373259" y1="94" x2="1117.158774373259" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="1117.158774373259" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1200 CE</text>
+<line x1="1236.0074280408544" y1="94" x2="1236.0074280408544" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="1236.0074280408544" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1400 CE</text>
+<text x="60" y="120" text-anchor="start" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">&larr; 1 earlier</text>
+<text x="1340" y="120" text-anchor="end" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1 later &rarr;</text>
+<line x1="60.0" y1="100" x2="60.0" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="60.0" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-v-rāshtra-the-territory-of-a-state-13" data-href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-13"><title>History of Dharmaśāstra</title></circle>
+<line x1="60.0" y1="106" x2="60.0" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="60.0" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">History of Dharmaśāstra</text>
+<text x="60.0" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">700 BCE</text>
+<line x1="166.36954503249768" y1="100" x2="225.79387186629526" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="196.08170844939647" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-v-rāshtra-the-territory-of-a-state-14" data-href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-14"><title>Chāndogya Upaniṣad</title></circle>
+<line x1="196.08170844939647" y1="106" x2="196.08170844939647" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="196.08170844939647" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Chāndogya Upaniṣad</text>
+<text x="196.08170844939647" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">400 BCE</text>
+<line x1="285.21819870009284" y1="100" x2="344.6425255338904" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="314.93036211699166" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-v-rāshtra-the-territory-of-a-state-8" data-href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-8"><title>Kauṭilya Arthaśāstra</title></circle>
+<line x1="314.93036211699166" y1="106" x2="314.93036211699166" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="314.93036211699166" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Kauṭilya Arthaśāstra</text>
+<text x="314.93036211699166" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">200 BCE</text>
+<line x1="314.93036211699166" y1="100" x2="344.6425255338904" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="329.78644382544104" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-v-rāshtra-the-territory-of-a-state-21" data-href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-21"><title>Matsyapurāṇa</title></circle>
+<line x1="329.78644382544104" y1="106" x2="329.78644382544104" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="329.78644382544104" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Matsyapurāṇa</text>
+<text x="329.78644382544104" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">150 BCE</text>
+<line x1="490.8263695450325" y1="100" x2="492.6090993500464" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="491.71773444753944" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-v-rāshtra-the-territory-of-a-state-21" data-href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-21"><title>Matsyapurāṇa</title></circle>
+<line x1="491.71773444753944" y1="106" x2="491.71773444753944" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="491.71773444753944" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Matsyapurāṇa</text>
+<text x="491.71773444753944" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">146 CE</text>
+<circle cx="862.8226555246055" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-chapter-v-rāshtra-the-territory-of-a-state-7" data-href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-7"><title>Kauṭilya Arthaśāstra</title></circle>
+<line x1="862.8226555246055" y1="106" x2="862.8226555246055" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="862.8226555246055" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Kauṭilya Arthaśāstra</text>
+<text x="862.8226555246055" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">772 CE</text>
+<line x1="880.0557103064067" y1="100" x2="938.8857938718662" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="909.4707520891365" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-v-rāshtra-the-territory-of-a-state-13" data-href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-13"><title>History of Dharmaśāstra</title></circle>
+<line x1="909.4707520891365" y1="106" x2="909.4707520891365" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="909.4707520891365" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">History of Dharmaśāstra</text>
+<text x="909.4707520891365" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">801 CE</text>
+<line x1="943.0454967502321" y1="100" x2="966.8152274837512" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="954.9303621169917" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-v-rāshtra-the-territory-of-a-state-13" data-href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-13"><title>History of Dharmaśāstra</title></circle>
+<line x1="954.9303621169917" y1="106" x2="954.9303621169917" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="954.9303621169917" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">History of Dharmaśāstra</text>
+<text x="954.9303621169917" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">907 CE</text>
+<circle cx="956.7130919220056" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-chapter-v-rāshtra-the-territory-of-a-state-7" data-href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-7"><title>Kauṭilya Arthaśāstra</title></circle>
+<line x1="956.7130919220056" y1="106" x2="956.7130919220056" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="956.7130919220056" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Kauṭilya Arthaśāstra</text>
+<text x="956.7130919220056" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">930 CE</text>
+<circle cx="956.7130919220056" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-chapter-v-rāshtra-the-territory-of-a-state-13" data-href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-13"><title>History of Dharmaśāstra</title></circle>
+<line x1="956.7130919220056" y1="106" x2="956.7130919220056" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="956.7130919220056" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">History of Dharmaśāstra</text>
+<text x="956.7130919220056" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">930 CE</text>
+<circle cx="958.4958217270195" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-chapter-v-rāshtra-the-territory-of-a-state-7" data-href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-7"><title>Kauṭilya Arthaśāstra</title></circle>
+<line x1="958.4958217270195" y1="106" x2="958.4958217270195" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="958.4958217270195" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Kauṭilya Arthaśāstra</text>
+<text x="958.4958217270195" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">933 CE</text>
+<line x1="998.9043639740019" y1="100" x2="1057.7344475394616" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1028.3194057567316" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-v-rāshtra-the-territory-of-a-state-3" data-href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-3"><title>Arthaśāstra</title></circle>
+<line x1="1028.3194057567316" y1="106" x2="1028.3194057567316" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1028.3194057567316" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Arthaśāstra</text>
+<text x="1028.3194057567316" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1001 CE</text>
+<line x1="998.9043639740019" y1="100" x2="1057.7344475394616" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1028.3194057567316" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-v-rāshtra-the-territory-of-a-state-13" data-href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-13"><title>History of Dharmaśāstra</title></circle>
+<line x1="1028.3194057567316" y1="106" x2="1028.3194057567316" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1028.3194057567316" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">History of Dharmaśāstra</text>
+<text x="1028.3194057567316" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1001 CE</text>
+<line x1="998.9043639740019" y1="100" x2="1057.7344475394616" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1028.3194057567316" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-v-rāshtra-the-territory-of-a-state-17" data-href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-17"><title>Manusmṛti</title></circle>
+<line x1="1028.3194057567316" y1="106" x2="1028.3194057567316" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1028.3194057567316" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Manusmṛti</text>
+<text x="1028.3194057567316" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1001 CE</text>
+<circle cx="1005.4410399257197" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-chapter-v-rāshtra-the-territory-of-a-state-13" data-href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-13"><title>History of Dharmaśāstra</title></circle>
+<line x1="1005.4410399257197" y1="106" x2="1005.4410399257197" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1005.4410399257197" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">History of Dharmaśāstra</text>
+<text x="1005.4410399257197" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1012 CE</text>
+<circle cx="1009.6007428040855" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-chapter-v-rāshtra-the-territory-of-a-state-7" data-href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-7"><title>Kauṭilya Arthaśāstra</title></circle>
+<line x1="1009.6007428040855" y1="106" x2="1009.6007428040855" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1009.6007428040855" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Kauṭilya Arthaśāstra</text>
+<text x="1009.6007428040855" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1019 CE</text>
+<circle cx="1009.6007428040855" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-chapter-v-rāshtra-the-territory-of-a-state-13" data-href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-13"><title>History of Dharmaśāstra</title></circle>
+<line x1="1009.6007428040855" y1="106" x2="1009.6007428040855" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1009.6007428040855" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">History of Dharmaśāstra</text>
+<text x="1009.6007428040855" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1019 CE</text>
+<circle cx="1011.9777158774373" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-chapter-v-rāshtra-the-territory-of-a-state-13" data-href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-13"><title>History of Dharmaśāstra</title></circle>
+<line x1="1011.9777158774373" y1="106" x2="1011.9777158774373" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1011.9777158774373" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">History of Dharmaśāstra</text>
+<text x="1011.9777158774373" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1023 CE</text>
+<circle cx="1044.0668523676882" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-chapter-v-rāshtra-the-territory-of-a-state-7" data-href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-7"><title>Kauṭilya Arthaśāstra</title></circle>
+<line x1="1044.0668523676882" y1="106" x2="1044.0668523676882" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1044.0668523676882" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Kauṭilya Arthaśāstra</text>
+<text x="1044.0668523676882" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1077 CE</text>
+<circle cx="1069.025069637883" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-chapter-v-rāshtra-the-territory-of-a-state-13" data-href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-13"><title>History of Dharmaśāstra</title></circle>
+<line x1="1069.025069637883" y1="106" x2="1069.025069637883" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1069.025069637883" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">History of Dharmaśāstra</text>
+<text x="1069.025069637883" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1119 CE</text>
+<line x1="1117.7530176415971" y1="100" x2="1176.5831012070566" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1147.1680594243269" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-v-rāshtra-the-territory-of-a-state-13" data-href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-13"><title>History of Dharmaśāstra</title></circle>
+<line x1="1147.1680594243269" y1="106" x2="1147.1680594243269" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1147.1680594243269" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">History of Dharmaśāstra</text>
+<text x="1147.1680594243269" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1201 CE</text>
+<circle cx="1233.6304549675024" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="2" stroke-dasharray="2,2" class="tl-evt" data-para="p-chapter-v-rāshtra-the-territory-of-a-state-14" data-href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-14"><title>Chāndogya Upaniṣad</title></circle>
+<line x1="1233.6304549675024" y1="106" x2="1233.6304549675024" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1233.6304549675024" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Chāndogya Upaniṣad</text>
+<text x="1233.6304549675024" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1396 CE</text>
+<line x1="1340.0" y1="100" x2="1340.0" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1340.0" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-v-rāshtra-the-territory-of-a-state-15" data-href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-15"><title>History of Dharmaśāstra</title></circle>
+<line x1="1340.0" y1="106" x2="1340.0" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1340.0" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">History of Dharmaśāstra</text>
+<text x="1340.0" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1701 CE</text>
+</svg>
+            </div>
+            <div class="event-list">
+                <h2>All Dated References</h2>
+                <div class="event-item"><span class="event-year">700 BCE</span><div><span class="event-label">History of Dharmaśāstra</span><div class="event-context">A few words must be said about local administratioṇ The word *grāma* occurs oven in the Ṛgveda. In Rg I. 114. 1 the poet...</div><a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-13" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">400 BCE</span><div><span class="event-label">Chāndogya Upaniṣad</span><div class="event-context">In numerous places rules are laid down about the qualifica-tions of the ordinary servants ( *parivāra*, *bhrtya* or *anu...</div><a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-14" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">200 BCE</span><div><span class="event-label">Kauṭilya Arthaśāstra</span><div class="event-context">##182. अटशताग्राम्या मध्ये स्थानीयं चतुश्शताग्राम्या द्रोणमुखं द्विशताग्राम्या खर्वोटिकं दशाग्रामीसंग्रहणं संभरणं स्थापय...</div><a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-8" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">150 BCE</span><div><span class="event-label">Matsyapurāṇa</span><div class="event-context">A king endowed with valour has to employ several means ( upāyas) to extend his dominions and to keep his hold on his own...</div><a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-21" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">146 CE</span><div><span class="event-label">Matsyapurāṇa</span><div class="event-context">A king endowed with valour has to employ several means ( upāyas) to extend his dominions and to keep his hold on his own...</div><a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-21" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">772 CE</span><div><span class="event-label">Kauṭilya Arthaśāstra</span><div class="event-context">According to the Amarakosa the words deśa, rāṣṭra, viṣaya and janapada are synonymṣ Epigraphic usage is not uniform abou...</div><a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-7" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">801 CE</span><div><span class="event-label">History of Dharmaśāstra</span><div class="event-context">A few words must be said about local administratioṇ The word *grāma* occurs oven in the Ṛgveda. In Rg I. 114. 1 the poet...</div><a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-13" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">907 CE</span><div><span class="event-label">History of Dharmaśāstra</span><div class="event-context">A few words must be said about local administratioṇ The word *grāma* occurs oven in the Ṛgveda. In Rg I. 114. 1 the poet...</div><a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-13" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">930 CE</span><div><span class="event-label">Kauṭilya Arthaśāstra</span><div class="event-context">According to the Amarakosa the words deśa, rāṣṭra, viṣaya and janapada are synonymṣ Epigraphic usage is not uniform abou...</div><a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-7" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">930 CE</span><div><span class="event-label">History of Dharmaśāstra</span><div class="event-context">A few words must be said about local administratioṇ The word *grāma* occurs oven in the Ṛgveda. In Rg I. 114. 1 the poet...</div><a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-13" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">933 CE</span><div><span class="event-label">Kauṭilya Arthaśāstra</span><div class="event-context">According to the Amarakosa the words deśa, rāṣṭra, viṣaya and janapada are synonymṣ Epigraphic usage is not uniform abou...</div><a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-7" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1001 CE</span><div><span class="event-label">Arthaśāstra</span><div class="event-context">According to Paurāṇic geography there are seven dvīpas, viz Jambu, Plakṣa, Śālmala, Kuśa, Krauñca, Śaka and Puṣkara (Viṣ...</div><a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-3" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1001 CE</span><div><span class="event-label">History of Dharmaśāstra</span><div class="event-context">A few words must be said about local administratioṇ The word *grāma* occurs oven in the Ṛgveda. In Rg I. 114. 1 the poet...</div><a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-13" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1001 CE</span><div><span class="event-label">Manusmṛti</span><div class="event-context">It was the special concern of the king to see that proper weights and measures were useḍ Kaut (II. 19) as stated above (...</div><a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-17" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1012 CE</span><div><span class="event-label">History of Dharmaśāstra</span><div class="event-context">A few words must be said about local administratioṇ The word *grāma* occurs oven in the Ṛgveda. In Rg I. 114. 1 the poet...</div><a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-13" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1019 CE</span><div><span class="event-label">Kauṭilya Arthaśāstra</span><div class="event-context">According to the Amarakosa the words deśa, rāṣṭra, viṣaya and janapada are synonymṣ Epigraphic usage is not uniform abou...</div><a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-7" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1019 CE</span><div><span class="event-label">History of Dharmaśāstra</span><div class="event-context">A few words must be said about local administratioṇ The word *grāma* occurs oven in the Ṛgveda. In Rg I. 114. 1 the poet...</div><a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-13" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1023 CE</span><div><span class="event-label">History of Dharmaśāstra</span><div class="event-context">A few words must be said about local administratioṇ The word *grāma* occurs oven in the Ṛgveda. In Rg I. 114. 1 the poet...</div><a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-13" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1077 CE</span><div><span class="event-label">Kauṭilya Arthaśāstra</span><div class="event-context">According to the Amarakosa the words deśa, rāṣṭra, viṣaya and janapada are synonymṣ Epigraphic usage is not uniform abou...</div><a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-7" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1119 CE</span><div><span class="event-label">History of Dharmaśāstra</span><div class="event-context">A few words must be said about local administratioṇ The word *grāma* occurs oven in the Ṛgveda. In Rg I. 114. 1 the poet...</div><a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-13" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1201 CE</span><div><span class="event-label">History of Dharmaśāstra</span><div class="event-context">A few words must be said about local administratioṇ The word *grāma* occurs oven in the Ṛgveda. In Rg I. 114. 1 the poet...</div><a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-13" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">about 1396 CE</span><div><span class="event-label">Chāndogya Upaniṣad</span><div class="event-context">In numerous places rules are laid down about the qualifica-tions of the ordinary servants ( *parivāra*, *bhrtya* or *anu...</div><a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-14" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1701 CE</span><div><span class="event-label">History of Dharmaśāstra</span><div class="event-context">It has been shown ( in H. Dh. vol. II. pp. 113, 369, 856–858 ) how it was the king's duty to support learned brāhmaṇas, ...</div><a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-15" class="event-link">View in text &rarr;</a></div></div>
+            </div>
+        </div>
+        <div id="graph-panel" class="tl-panel">
+            <div class="eg-stats">
+<div><span class="eg-stat-num">5</span> entities</div>
+<div><span class="eg-stat-num">23</span> date claims</div>
+<div><span class="eg-stat-num">4</span> debated</div>
+<div><span class="eg-stat-num">329</span> co-occurrences</div>
+</div>
+<div class="eg-sort">Sort: <a class="active" onclick="egSort('date')">by date</a><a onclick="egSort('claims')">by claims</a><a onclick="egSort('name')">by name</a></div>
+<div id="eg-entities">
+<div class="eg-entity" data-key="matsyapur-a" data-consensus="146" data-claims="2" data-name="Matsyapurāṇa"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Matsyapurāṇa</span><span class="eg-type">text</span><span class="eg-claims-count">2 claims &middot; 150 BCE to 146 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="-700" data-max="1800"><span class="eg-range-label" style="left:0;">700 BCE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1800 CE</span><div class="eg-range-fill" style="left:22.0%;width:11.8%;"></div><div class="eg-range-dot" style="left:22.0%;" title="150 BCE — latter half of 2nd century B. C."></div><div class="eg-range-dot" style="left:33.8%;" title="146 CE — 146-149 ad"></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="agnipur-a" onclick="egHighlight('agnipur-a')">Agnipurāṇa<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="mah-bh-rata" onclick="egHighlight('mah-bh-rata')">Mahābhārata<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="manusm-ti" onclick="egHighlight('manusm-ti')">Manusmṛti<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="vanaparva" onclick="egHighlight('vanaparva')">Vanaparva<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="y-j-avalkya-sm-ti" onclick="egHighlight('y-j-avalkya-sm-ti')">Yājñavalkya Smṛti<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="a-kha-likhita-dharmas-tra" onclick="egHighlight('a-kha-likhita-dharmas-tra')">Śaṅkha-Likhita Dharmasūtra<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="artha-stra" onclick="egHighlight('artha-stra')">Arthaśāstra<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="atharvaveda" onclick="egHighlight('atharvaveda')">Atharvaveda<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">150 BCE</span><div><span class="eg-claim-ctx">A king endowed with valour has to employ several means ( upāyas) to extend his dominions and to keep...</span> <a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-21">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">146 CE</span><div><span class="eg-claim-ctx">A king endowed with valour has to employ several means ( upāyas) to extend his dominions and to keep...</span> <a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-21">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="artha-stra" data-consensus="933" data-claims="7" data-name="Arthaśāstra"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Arthaśāstra</span><span class="eg-type">text</span><span class="eg-claims-count">7 claims &middot; 200 BCE to 1077 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="-700" data-max="1800"><span class="eg-range-label" style="left:0;">700 BCE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1800 CE</span><div class="eg-range-fill" style="left:20.0%;width:51.1%;"></div><div class="eg-range-dot" style="left:20.0%;" title="200 BCE — 2nd century B C"></div><div class="eg-range-dot" style="left:58.9%;" title="772 CE — śake 694"></div><div class="eg-range-dot" style="left:65.2%;" title="930 CE — śake 852 (930 A.D.)"></div><div class="eg-range-dot" style="left:65.3%;" title="933 CE — śake 855"></div><div class="eg-range-dot" style="left:68.0%;" title="1001 CE — 11th century A.D."></div><div class="eg-range-dot" style="left:68.8%;" title="1019 CE — saṁvat 1076"></div><div class="eg-range-dot" style="left:71.1%;" title="1077 CE — śake 999"></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="manusm-ti" onclick="egHighlight('manusm-ti')">Manusmṛti<span class="eg-cooccur-weight">4x</span></span><span class="eg-cooccur-chip" data-target="y-j-avalkya-sm-ti" onclick="egHighlight('y-j-avalkya-sm-ti')">Yājñavalkya Smṛti<span class="eg-cooccur-weight">3x</span></span><span class="eg-cooccur-chip" data-target="atharvaveda" onclick="egHighlight('atharvaveda')">Atharvaveda<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="b-had-ra-yaka-upani-ad" onclick="egHighlight('b-had-ra-yaka-upani-ad')">Bṛhadāraṇyaka Upaniṣad<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="baudh-yana-dharmas-tra" onclick="egHighlight('baudh-yana-dharmas-tra')">Baudhāyana Dharmasūtra<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="ch-ndogya-upani-ad" onclick="egHighlight('ch-ndogya-upani-ad')">Chāndogya Upaniṣad<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="gveda" onclick="egHighlight('gveda')">Ṛgveda<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="k-mas-tra" onclick="egHighlight('k-mas-tra')">Kāmasūtra<span class="eg-cooccur-weight">2x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">200 BCE</span><div><span class="eg-claim-ctx">##182. अटशताग्राम्या मध्ये स्थानीयं चतुश्शताग्राम्या द्रोणमुखं द्विशताग्राम्या खर्वोटिकं दशाग्रामीसं...</span> <a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-8">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">772 CE</span><div><span class="eg-claim-ctx">According to the Amarakosa the words deśa, rāṣṭra, viṣaya and janapada are synonymṣ Epigraphic usage...</span> <a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-7">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">930 CE</span><div><span class="eg-claim-ctx">According to the Amarakosa the words deśa, rāṣṭra, viṣaya and janapada are synonymṣ Epigraphic usage...</span> <a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-7">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">933 CE</span><div><span class="eg-claim-ctx">According to the Amarakosa the words deśa, rāṣṭra, viṣaya and janapada are synonymṣ Epigraphic usage...</span> <a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-7">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">1001 CE</span><div><span class="eg-claim-ctx">According to Paurāṇic geography there are seven dvīpas, viz Jambu, Plakṣa, Śālmala, Kuśa, Krauñca, Ś...</span> <a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-3">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">1019 CE</span><div><span class="eg-claim-ctx">According to the Amarakosa the words deśa, rāṣṭra, viṣaya and janapada are synonymṣ Epigraphic usage...</span> <a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-7">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">1077 CE</span><div><span class="eg-claim-ctx">According to the Amarakosa the words deśa, rāṣṭra, viṣaya and janapada are synonymṣ Epigraphic usage...</span> <a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-7">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="manusm-ti" data-consensus="1001" data-claims="1" data-name="Manusmṛti"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Manusmṛti</span><span class="eg-type">text</span><span class="eg-claims-count">1 claims &middot; 1001 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="-700" data-max="1800"><span class="eg-range-label" style="left:0;">700 BCE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1800 CE</span><div class="eg-range-dot" style="left:68.0%;" title="1001 CE — 11th century"></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="artha-stra" onclick="egHighlight('artha-stra')">Arthaśāstra<span class="eg-cooccur-weight">4x</span></span><span class="eg-cooccur-chip" data-target="mah-bh-rata" onclick="egHighlight('mah-bh-rata')">Mahābhārata<span class="eg-cooccur-weight">3x</span></span><span class="eg-cooccur-chip" data-target="vanaparva" onclick="egHighlight('vanaparva')">Vanaparva<span class="eg-cooccur-weight">3x</span></span><span class="eg-cooccur-chip" data-target="vi-u-sm-ti" onclick="egHighlight('vi-u-sm-ti')">Viṣṇu Smṛti<span class="eg-cooccur-weight">3x</span></span><span class="eg-cooccur-chip" data-target="agnipur-a" onclick="egHighlight('agnipur-a')">Agnipurāṇa<span class="eg-cooccur-weight">3x</span></span><span class="eg-cooccur-chip" data-target="y-j-avalkya-sm-ti" onclick="egHighlight('y-j-avalkya-sm-ti')">Yājñavalkya Smṛti<span class="eg-cooccur-weight">3x</span></span><span class="eg-cooccur-chip" data-target="atharvaveda" onclick="egHighlight('atharvaveda')">Atharvaveda<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="b-had-ra-yaka-upani-ad" onclick="egHighlight('b-had-ra-yaka-upani-ad')">Bṛhadāraṇyaka Upaniṣad<span class="eg-cooccur-weight">2x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">1001 CE</span><div><span class="eg-claim-ctx">It was the special concern of the king to see that proper weights and measures were useḍ Kaut (II. 1...</span> <a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-17">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="history-of-dharma-stra" data-consensus="1012" data-claims="11" data-name="History of Dharmaśāstra"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">History of Dharmaśāstra</span><span class="eg-type">text</span><span class="eg-claims-count">11 claims &middot; 700 BCE to 1701 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="-700" data-max="1800"><span class="eg-range-label" style="left:0;">700 BCE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1800 CE</span><div class="eg-range-fill" style="left:0.0%;width:96.0%;"></div><div class="eg-range-dot" style="left:0.0%;" title="700 BCE — 7th century B C"></div><div class="eg-range-dot" style="left:60.0%;" title="801 CE — 9th century "></div><div class="eg-range-dot" style="left:64.3%;" title="907 CE — 907-947 A. D."></div><div class="eg-range-dot" style="left:65.2%;" title="930 CE — śake 852"></div><div class="eg-range-dot" style="left:68.0%;" title="1001 CE — 11th century "></div><div class="eg-range-dot" style="left:68.5%;" title="1012 CE — śake 934"></div><div class="eg-range-dot" style="left:68.8%;" title="1019 CE — samvat 1076"></div><div class="eg-range-dot" style="left:68.9%;" title="1023 CE — 1023 A. D."></div><div class="eg-range-dot" style="left:72.8%;" title="1119 CE — samvat 1176"></div><div class="eg-range-dot" style="left:76.0%;" title="1201 CE — 13th century "></div><div class="eg-range-dot" style="left:96.0%;" title="1701 CE — 18th century "></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="apar-rka" onclick="egHighlight('apar-rka')">Aparārka<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="artha-stra" onclick="egHighlight('artha-stra')">Arthaśāstra<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="b-haspatism-ti" onclick="egHighlight('b-haspatism-ti')">Bṛhaspatismṛti<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="baudh-yana-dharmas-tra" onclick="egHighlight('baudh-yana-dharmas-tra')">Baudhāyana Dharmasūtra<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="gveda" onclick="egHighlight('gveda')">Ṛgveda<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="k-mas-tra" onclick="egHighlight('k-mas-tra')">Kāmasūtra<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="m-rka-eyapur-a" onclick="egHighlight('m-rka-eyapur-a')">Mārkaṇḍeyapurāṇa<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="manusm-ti" onclick="egHighlight('manusm-ti')">Manusmṛti<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">700 BCE</span><div><span class="eg-claim-ctx">A few words must be said about local administratioṇ The word *grāma* occurs oven in the Ṛgveda. In R...</span> <a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-13">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">801 CE</span><div><span class="eg-claim-ctx">A few words must be said about local administratioṇ The word *grāma* occurs oven in the Ṛgveda. In R...</span> <a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-13">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">907 CE</span><div><span class="eg-claim-ctx">A few words must be said about local administratioṇ The word *grāma* occurs oven in the Ṛgveda. In R...</span> <a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-13">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">930 CE</span><div><span class="eg-claim-ctx">A few words must be said about local administratioṇ The word *grāma* occurs oven in the Ṛgveda. In R...</span> <a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-13">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">1001 CE</span><div><span class="eg-claim-ctx">A few words must be said about local administratioṇ The word *grāma* occurs oven in the Ṛgveda. In R...</span> <a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-13">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">1012 CE</span><div><span class="eg-claim-ctx">A few words must be said about local administratioṇ The word *grāma* occurs oven in the Ṛgveda. In R...</span> <a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-13">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">1019 CE</span><div><span class="eg-claim-ctx">A few words must be said about local administratioṇ The word *grāma* occurs oven in the Ṛgveda. In R...</span> <a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-13">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">1023 CE</span><div><span class="eg-claim-ctx">A few words must be said about local administratioṇ The word *grāma* occurs oven in the Ṛgveda. In R...</span> <a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-13">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">1119 CE</span><div><span class="eg-claim-ctx">A few words must be said about local administratioṇ The word *grāma* occurs oven in the Ṛgveda. In R...</span> <a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-13">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">1201 CE</span><div><span class="eg-claim-ctx">A few words must be said about local administratioṇ The word *grāma* occurs oven in the Ṛgveda. In R...</span> <a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-13">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">1701 CE</span><div><span class="eg-claim-ctx">It has been shown ( in H. Dh. vol. II. pp. 113, 369, 856–858 ) how it was the king&#x27;s duty to support...</span> <a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-15">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="ch-ndogya-upani-ad" data-consensus="1396" data-claims="2" data-name="Chāndogya Upaniṣad"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Chāndogya Upaniṣad</span><span class="eg-type">text</span><span class="eg-claims-count">2 claims &middot; 400 BCE to 1396 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="-700" data-max="1800"><span class="eg-range-label" style="left:0;">700 BCE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1800 CE</span><div class="eg-range-fill" style="left:12.0%;width:71.8%;"></div><div class="eg-range-dot" style="left:12.0%;" title="400 BCE — 4th century B. C"></div><div class="eg-range-dot" style="left:83.8%;" title="1396 CE — about 1396 A. D."></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="artha-stra" onclick="egHighlight('artha-stra')">Arthaśāstra<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="atharvaveda" onclick="egHighlight('atharvaveda')">Atharvaveda<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="b-had-ra-yaka-upani-ad" onclick="egHighlight('b-had-ra-yaka-upani-ad')">Bṛhadāraṇyaka Upaniṣad<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="mah-bh-rata" onclick="egHighlight('mah-bh-rata')">Mahābhārata<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="manusm-ti" onclick="egHighlight('manusm-ti')">Manusmṛti<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="vanaparva" onclick="egHighlight('vanaparva')">Vanaparva<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="aitareya-br-hma-a" onclick="egHighlight('aitareya-br-hma-a')">Aitareya Brāhmaṇa<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="baudh-yana-dharmas-tra" onclick="egHighlight('baudh-yana-dharmas-tra')">Baudhāyana Dharmasūtra<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">400 BCE</span><div><span class="eg-claim-ctx">In numerous places rules are laid down about the qualifica-tions of the ordinary servants ( *parivār...</span> <a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-14">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">about 1396 CE</span><div><span class="eg-claim-ctx">In numerous places rules are laid down about the qualifica-tions of the ordinary servants ( *parivār...</span> <a href="chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-14">view</a></div></div></div></div></div>
+</div>
+<script>
+function egToggle(header) {
+    header.parentElement.classList.toggle('open');
+}
+function egHighlight(key) {
+    // Remove existing highlights
+    document.querySelectorAll('.eg-entity.highlighted').forEach(function(el) {
+        el.classList.remove('highlighted');
+    });
+    // Highlight target and scroll to it
+    var target = document.querySelector('.eg-entity[data-key="' + key + '"]');
+    if (target) {
+        target.classList.add('highlighted');
+        target.classList.add('open');
+        target.scrollIntoView({behavior: 'smooth', block: 'center'});
+    }
+}
+function egSort(mode) {
+    var container = document.getElementById('eg-entities');
+    var items = Array.from(container.querySelectorAll('.eg-entity'));
+    items.sort(function(a, b) {
+        if (mode === 'date') return parseInt(a.dataset.consensus) - parseInt(b.dataset.consensus);
+        if (mode === 'claims') return parseInt(b.dataset.claims) - parseInt(a.dataset.claims);
+        if (mode === 'name') return a.dataset.name.localeCompare(b.dataset.name);
+        return 0;
+    });
+    items.forEach(function(el) { container.appendChild(el); });
+    // Update active sort link
+    document.querySelectorAll('.eg-sort a').forEach(function(a) { a.classList.remove('active'); });
+    event.target.classList.add('active');
+}
+</script>
+        </div>
+        <a href="chapter-v-rāshtra-the-territory-of-a-state.html" class="back-link">&larr; Back to Chapter V. Rāshtra (The Territory of a State)</a>
+    </div>
+    <script>
+    document.querySelectorAll('.tl-evt').forEach(function(el) {
+        el.addEventListener('click', function() {
+            var href = this.getAttribute('data-href');
+            if (href) {
+                window.location.href = href;
+            } else {
+                var paraId = this.getAttribute('data-para');
+                if (paraId) {
+                    var target = document.getElementById(paraId);
+                    if (target) target.scrollIntoView({behavior: 'smooth'});
+                }
+            }
+        });
+    });
+    // Tab switching
+    document.querySelectorAll('.tl-tab').forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            document.querySelectorAll('.tl-tab').forEach(function(t) { t.classList.remove('active'); });
+            document.querySelectorAll('.tl-panel').forEach(function(p) { p.classList.remove('active'); });
+            tab.classList.add('active');
+            var panel = document.getElementById(tab.getAttribute('data-panel'));
+            if (panel) panel.classList.add('active');
+        });
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline — General Index</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+    :root {
+        --parchment: #faf6ef;
+        --parchment-mid: #f0e6d3;
+        --saffron: #e8941a;
+        --ink: #2c1810;
+        --ink-secondary: #5a3e2b;
+        --rule: #d4c5a9;
+        --indigo: #2d5a87;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+        font-family: 'Lora', Georgia, serif;
+        background: var(--parchment);
+        color: var(--ink);
+    }
+    .navbar {
+        background: linear-gradient(135deg, #1a0f0a, #2c1810);
+        padding: 12px 24px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+    .navbar a { color: var(--parchment); text-decoration: none; }
+    .navbar .devanagari { font-size: 1.3rem; }
+    .navbar .nav-title { font-family: 'Lora', serif; font-size: 1rem; opacity: 0.9; }
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+    .breadcrumb-bar a { color: var(--saffron); text-decoration: none; }
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+    .content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 24px;
+    }
+    h1 {
+        font-size: 1.6rem;
+        margin-bottom: 8px;
+        color: var(--ink);
+    }
+    .subtitle {
+        font-size: 0.9rem;
+        color: var(--ink-secondary);
+        margin-bottom: 24px;
+    }
+    .timeline-container {
+        overflow-x: auto;
+        padding: 16px 0;
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        background: var(--parchment);
+    }
+    .timeline-svg {
+        display: block;
+        min-width: 100%;
+    }
+    .timeline-svg .tl-evt { cursor: pointer; }
+    .timeline-svg .tl-evt:hover { transform: scale(1.5); }
+    .event-list {
+        margin-top: 32px;
+    }
+    .event-list h2 {
+        font-size: 1.1rem;
+        margin-bottom: 16px;
+        color: var(--ink-secondary);
+    }
+    .event-item {
+        display: flex;
+        gap: 16px;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--rule);
+        font-size: 0.88rem;
+    }
+    .event-year {
+        min-width: 90px;
+        font-weight: 600;
+        color: var(--saffron);
+        font-family: 'Open Sans', sans-serif;
+    }
+    .event-label { font-weight: 600; }
+    .event-context {
+        color: var(--ink-secondary);
+        font-size: 0.82rem;
+        margin-top: 2px;
+    }
+    .event-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.8rem;
+    }
+    .event-link:hover { text-decoration: underline; }
+    .back-link {
+        display: inline-block;
+        margin-top: 24px;
+        color: var(--saffron);
+        text-decoration: none;
+        font-family: 'Open Sans', sans-serif;
+    }
+    .back-link:hover { text-decoration: underline; }
+    .century-group {
+        margin-bottom: 8px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        overflow: hidden;
+    }
+    .century-heading {
+        display: block;
+        padding: 10px 16px;
+        background: var(--parchment-mid);
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: var(--ink);
+    }
+    .century-heading:hover { background: #e8dcc8; }
+    .century-count {
+        font-weight: 400;
+        color: var(--ink-secondary);
+        font-size: 0.82rem;
+    }
+    .century-events {
+        padding: 8px 16px;
+    }
+    .vol-tl-link {
+        display: inline-block;
+        margin: 4px 8px 4px 0;
+        padding: 6px 14px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        color: var(--saffron);
+        text-decoration: none;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+    }
+    .vol-tl-link:hover {
+        border-color: var(--saffron);
+        background: #f5ebe0;
+    }
+    .vol-tl-count {
+        color: var(--ink-secondary);
+        font-size: 0.78rem;
+    }
+    /* ── Tab switcher ── */
+    .tl-tabs {
+        display: flex; gap: 0; margin-bottom: 20px;
+        border-bottom: 2px solid var(--rule);
+    }
+    .tl-tab {
+        padding: 10px 20px; cursor: pointer;
+        font-family: 'Open Sans', sans-serif; font-size: 0.9rem;
+        color: var(--ink-secondary); border-bottom: 2px solid transparent;
+        margin-bottom: -2px; transition: all 0.2s;
+    }
+    .tl-tab:hover { color: var(--ink); }
+    .tl-tab.active { color: var(--saffron); border-bottom-color: var(--saffron); font-weight: 600; }
+    .tl-panel { display: none; }
+    .tl-panel.active { display: block; }
+    /* ── Entity graph styles ── */
+    .eg-entity {
+        border: 1px solid var(--rule); border-radius: 6px;
+        margin-bottom: 8px; overflow: hidden; transition: border-color 0.2s;
+    }
+    .eg-entity.highlighted { border-color: var(--saffron); box-shadow: 0 0 0 1px var(--saffron); }
+    .eg-header {
+        display: flex; align-items: center; gap: 12px;
+        padding: 10px 16px; background: var(--parchment-mid);
+        cursor: pointer; font-family: 'Open Sans', sans-serif;
+    }
+    .eg-header:hover { background: #e8dcc8; }
+    .eg-name { font-weight: 600; font-size: 0.92rem; flex: 1; }
+    .eg-type {
+        font-size: 0.72rem; padding: 2px 8px; border-radius: 10px;
+        background: var(--parchment); color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .eg-claims-count {
+        font-size: 0.78rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif;
+    }
+    .eg-body { padding: 12px 16px; display: none; }
+    .eg-entity.open .eg-body { display: block; }
+    .eg-range-bar {
+        position: relative; height: 32px;
+        background: var(--parchment-mid); border-radius: 4px;
+        margin-bottom: 10px; overflow: hidden;
+    }
+    .eg-range-fill {
+        position: absolute; top: 6px; height: 20px;
+        background: var(--saffron); opacity: 0.3; border-radius: 3px;
+    }
+    .eg-range-dot {
+        position: absolute; top: 11px; width: 10px; height: 10px;
+        background: var(--saffron); border-radius: 50%;
+        transform: translateX(-5px); cursor: pointer;
+    }
+    .eg-range-dot:hover { transform: translateX(-5px) scale(1.4); }
+    .eg-range-label {
+        position: absolute; top: -2px;
+        font-size: 0.7rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif;
+        transform: translateX(-50%);
+    }
+    .eg-cooccur {
+        margin-top: 8px; padding-top: 8px;
+        border-top: 1px solid var(--rule);
+    }
+    .eg-cooccur-title {
+        font-size: 0.78rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif; margin-bottom: 6px;
+    }
+    .eg-cooccur-chip {
+        display: inline-block; margin: 2px 4px 2px 0;
+        padding: 3px 10px; background: var(--parchment-mid);
+        border: 1px solid var(--rule); border-radius: 12px;
+        font-size: 0.78rem; color: var(--ink);
+        font-family: 'Open Sans', sans-serif;
+        cursor: pointer; transition: all 0.2s;
+    }
+    .eg-cooccur-chip:hover { border-color: var(--saffron); color: var(--saffron); }
+    .eg-cooccur-weight {
+        font-size: 0.68rem; color: var(--ink-secondary); margin-left: 2px;
+    }
+    .eg-claim-list { margin-top: 8px; }
+    .eg-claim {
+        display: flex; gap: 12px; padding: 4px 0;
+        font-size: 0.82rem; border-bottom: 1px solid #f0e6d3;
+    }
+    .eg-claim-year {
+        min-width: 80px; font-weight: 600; color: var(--saffron);
+        font-family: 'Open Sans', sans-serif; font-size: 0.8rem;
+    }
+    .eg-claim-ctx { color: var(--ink-secondary); font-size: 0.78rem; }
+    .eg-claim a { color: var(--indigo); text-decoration: none; font-size: 0.76rem; }
+    .eg-claim a:hover { text-decoration: underline; }
+    .eg-stats {
+        display: flex; gap: 24px; margin-bottom: 16px;
+        font-family: 'Open Sans', sans-serif; font-size: 0.85rem;
+        color: var(--ink-secondary);
+    }
+    .eg-stat-num { font-weight: 700; color: var(--saffron); font-size: 1.1rem; }
+    .eg-sort {
+        font-family: 'Open Sans', sans-serif; font-size: 0.82rem;
+        margin-bottom: 12px; color: var(--ink-secondary);
+    }
+    .eg-sort a {
+        color: var(--indigo); text-decoration: none; cursor: pointer;
+        margin: 0 6px;
+    }
+    .eg-sort a:hover { text-decoration: underline; }
+    .eg-sort a.active { color: var(--saffron); font-weight: 600; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="../index.html"><span class="devanagari">धर्मशास्त्रम्</span></a>
+        <a href="../index.html" class="nav-title">History of Dharmaśāstra</a>
+    </div>
+    
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep"> &rsaquo; </span>
+        <a href="index.html">Volume III</a>
+        <span class="sep"> &rsaquo; </span>
+        <a href="general-index.html">General Index</a>
+        <span class="sep"> &rsaquo; </span>
+        <span>Timeline</span>
+    </div>
+    
+    <div class="content">
+        <h1>Timeline: General Index</h1>
+        <p class="subtitle">8 dated references</p>
+        <div class="tl-tabs">
+            <div class="tl-tab active" data-panel="events-panel">Events</div>
+            <div class="tl-tab" data-panel="graph-panel">Entity Graph</div>
+        </div>
+        <div id="events-panel" class="tl-panel active">
+            <div class="timeline-container">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 280" class="timeline-svg" role="img" aria-label="Timeline for General Index">
+<rect width="800" height="280" fill="#faf6ef" rx="8"/>
+<line x1="60" y1="100" x2="760" y2="100" stroke="#c4956a" stroke-width="2"/>
+<line x1="60.0" y1="94" x2="60.0" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="60.0" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">200 BCE</text>
+<line x1="81.51041666666666" y1="94" x2="81.51041666666666" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="81.51041666666666" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1 CE</text>
+<line x1="154.42708333333331" y1="94" x2="154.42708333333331" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="154.42708333333331" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">200 CE</text>
+<line x1="227.34375" y1="94" x2="227.34375" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="227.34375" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">400 CE</text>
+<line x1="300.26041666666663" y1="94" x2="300.26041666666663" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="300.26041666666663" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">600 CE</text>
+<line x1="373.1770833333333" y1="94" x2="373.1770833333333" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="373.1770833333333" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">800 CE</text>
+<line x1="446.09374999999994" y1="94" x2="446.09374999999994" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="446.09374999999994" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1000 CE</text>
+<line x1="519.0104166666667" y1="94" x2="519.0104166666667" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="519.0104166666667" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1200 CE</text>
+<line x1="591.9270833333334" y1="94" x2="591.9270833333334" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="591.9270833333334" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1400 CE</text>
+<line x1="664.84375" y1="94" x2="664.84375" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="664.84375" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1600 CE</text>
+<line x1="737.7604166666667" y1="94" x2="737.7604166666667" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="737.7604166666667" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1800 CE</text>
+<line x1="118.33333333333333" y1="100" x2="154.42708333333331" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="136.38020833333331" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-general-index-14" data-href="general-index.html#p-general-index-14"><title>Yājñavalkya</title></circle>
+<line x1="136.38020833333331" y1="106" x2="136.38020833333331" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="136.38020833333331" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Yājñavalkya</text>
+<text x="136.38020833333331" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">101 CE</text>
+<circle cx="255.05208333333331" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-general-index-1" data-href="general-index.html#p-general-index-1"><title>Baudhāyana Dharmasūtra</title></circle>
+<line x1="255.05208333333331" y1="106" x2="255.05208333333331" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="255.05208333333331" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Baudhāyana Dharmasūtra</text>
+<text x="255.05208333333331" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">476 CE</text>
+<line x1="264.1666666666667" y1="100" x2="300.26041666666663" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="282.21354166666663" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-general-index-11" data-href="general-index.html#p-general-index-11"><title>Parāśara</title></circle>
+<line x1="282.21354166666663" y1="106" x2="282.21354166666663" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="282.21354166666663" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Parāśara</text>
+<text x="282.21354166666663" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">501 CE</text>
+<line x1="324.6875" y1="100" x2="327.2395833333333" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="325.96354166666663" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-general-index-1" data-href="general-index.html#p-general-index-1"><title>Baudhāyana Dharmasūtra</title></circle>
+<line x1="325.96354166666663" y1="106" x2="325.96354166666663" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="325.96354166666663" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Baudhāyana Dharmasūtra</text>
+<text x="325.96354166666663" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">667 CE</text>
+<circle cx="363.69791666666663" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-general-index-1" data-href="general-index.html#p-general-index-1"><title>Baudhāyana Dharmasūtra</title></circle>
+<line x1="363.69791666666663" y1="106" x2="363.69791666666663" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="363.69791666666663" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Baudhāyana Dharmasūtra</text>
+<text x="363.69791666666663" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">774 CE</text>
+<line x1="482.91666666666663" y1="100" x2="519.0104166666667" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="500.9635416666667" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-general-index-7" data-href="general-index.html#p-general-index-7"><title>Mahābhārata</title></circle>
+<line x1="500.9635416666667" y1="106" x2="500.9635416666667" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="500.9635416666667" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Mahābhārata</text>
+<text x="500.9635416666667" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1101 CE</text>
+<line x1="482.91666666666663" y1="100" x2="519.0104166666667" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="500.9635416666667" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-general-index-11" data-href="general-index.html#p-general-index-11"><title>Parāśara</title></circle>
+<line x1="500.9635416666667" y1="106" x2="500.9635416666667" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="500.9635416666667" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Parāśara</text>
+<text x="500.9635416666667" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1101 CE</text>
+<line x1="701.6666666666666" y1="100" x2="737.7604166666667" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="719.7135416666667" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-general-index-15" data-href="general-index.html#p-general-index-15"><title>Bṛhaspati</title></circle>
+<line x1="719.7135416666667" y1="106" x2="719.7135416666667" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="719.7135416666667" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Bṛhaspati</text>
+<text x="719.7135416666667" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1701 CE</text>
+</svg>
+            </div>
+            <div class="event-list">
+                <h2>All Dated References</h2>
+                <div class="event-item"><span class="event-year">101 CE</span><div><span class="event-label">Yājñavalkya</span><div class="event-context">Sri, hymn to 77. Sridhara, commentator of the Bhāga- vata Purāṇa 182n, 183, 626n, 873, 899. Srikara 324, 582, 583n, 703,...</div><a href="general-index.html#p-general-index-14" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">476 CE</span><div><span class="event-label">Baudhāyana Dharmasūtra</span><div class="event-context">558n Adam Smith 186n Ādhivedanika, a class of strīdhana 774 Adhyagni, a class of strīdhana 774 Adhyāvahanika, a kind of ...</div><a href="general-index.html#p-general-index-1" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">501 CE</span><div><span class="event-label">Parāśara</span><div class="event-context">Nrga 243, not to run away from battle 57, oppressing subjects 15 made of parts of rākṣasas 25; oppressing subjects may h...</div><a href="general-index.html#p-general-index-11" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">667 CE</span><div><span class="event-label">Baudhāyana Dharmasūtra</span><div class="event-context">558n Adam Smith 186n Ādhivedanika, a class of strīdhana 774 Adhyagni, a class of strīdhana 774 Adhyāvahanika, a kind of ...</div><a href="general-index.html#p-general-index-1" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">774 CE</span><div><span class="event-label">Baudhāyana Dharmasūtra</span><div class="event-context">558n Adam Smith 186n Ādhivedanika, a class of strīdhana 774 Adhyagni, a class of strīdhana 774 Adhyāvahanika, a kind of ...</div><a href="general-index.html#p-general-index-1" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">about 1101 CE</span><div><span class="event-label">Mahābhārata</span><div class="event-context">Death, all persons except brāhmaṇas could be condemned to sentence of, for certain grave offences 400, argu- ments again...</div><a href="general-index.html#p-general-index-7" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1101 CE</span><div><span class="event-label">Parāśara</span><div class="event-context">Nrga 243, not to run away from battle 57, oppressing subjects 15 made of parts of rākṣasas 25; oppressing subjects may h...</div><a href="general-index.html#p-general-index-11" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1701 CE</span><div><span class="event-label">Bṛhaspati</span><div class="event-context">Wad, Rao Bahadur 106, 405 War, ( see under 'battle' ), country of an enemy may be harassed in 210, fighting ceased at su...</div><a href="general-index.html#p-general-index-15" class="event-link">View in text &rarr;</a></div></div>
+            </div>
+        </div>
+        <div id="graph-panel" class="tl-panel">
+            <div class="eg-stats">
+<div><span class="eg-stat-num">5</span> entities</div>
+<div><span class="eg-stat-num">8</span> date claims</div>
+<div><span class="eg-stat-num">2</span> debated</div>
+<div><span class="eg-stat-num">322</span> co-occurrences</div>
+</div>
+<div class="eg-sort">Sort: <a class="active" onclick="egSort('date')">by date</a><a onclick="egSort('claims')">by claims</a><a onclick="egSort('name')">by name</a></div>
+<div id="eg-entities">
+<div class="eg-entity" data-key="y-j-avalkya-sm-ti" data-consensus="101" data-claims="1" data-name="Yājñavalkya Smṛti"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Yājñavalkya Smṛti</span><span class="eg-type">text</span><span class="eg-claims-count">1 claims &middot; 101 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="101" data-max="1800"><span class="eg-range-label" style="left:0;">101 CE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1800 CE</span><div class="eg-range-dot" style="left:0.0%;" title="101 CE — 2nd century A D."></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="artha-stra" onclick="egHighlight('artha-stra')">Arthaśāstra<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="gveda" onclick="egHighlight('gveda')">Ṛgveda<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="mah-bh-rata" onclick="egHighlight('mah-bh-rata')">Mahābhārata<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="manusm-ti" onclick="egHighlight('manusm-ti')">Manusmṛti<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="mit-k-ar" onclick="egHighlight('mit-k-ar')">Mitākṣarā<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="vasi-ha-dharmas-tra" onclick="egHighlight('vasi-ha-dharmas-tra')">Vasiṣṭha Dharmasūtra<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="vi-u-sm-ti" onclick="egHighlight('vi-u-sm-ti')">Viṣṇu Smṛti<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="ch-ndogya-upani-ad" onclick="egHighlight('ch-ndogya-upani-ad')">Chāndogya Upaniṣad<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">101 CE</span><div><span class="eg-claim-ctx">Sri, hymn to 77. Sridhara, commentator of the Bhāga- vata Purāṇa 182n, 183, 626n, 873, 899. Srikara ...</span> <a href="general-index.html#p-general-index-14">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="baudh-yana-dharmas-tra" data-consensus="667" data-claims="3" data-name="Baudhāyana Dharmasūtra"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Baudhāyana Dharmasūtra</span><span class="eg-type">text</span><span class="eg-claims-count">3 claims &middot; 476 CE to 774 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="101" data-max="1800"><span class="eg-range-label" style="left:0;">101 CE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1800 CE</span><div class="eg-range-fill" style="left:22.1%;width:17.5%;"></div><div class="eg-range-dot" style="left:22.1%;" title="476 CE — 476 A. D."></div><div class="eg-range-dot" style="left:33.3%;" title="667 CE — 667–674 Ad"></div><div class="eg-range-dot" style="left:39.6%;" title="774 CE — 774 Ad"></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="anu-sanaparva" onclick="egHighlight('anu-sanaparva')">Anuśāsanaparva<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="apar-rka" onclick="egHighlight('apar-rka')">Aparārka<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="artha-stra" onclick="egHighlight('artha-stra')">Arthaśāstra<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="atharvaveda" onclick="egHighlight('atharvaveda')">Atharvaveda<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="diparva" onclick="egHighlight('diparva')">Ādiparva<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="n-radasm-ti" onclick="egHighlight('n-radasm-ti')">Nāradasmṛti<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="pastamba-dharmas-tra" onclick="egHighlight('pastamba-dharmas-tra')">Āpastamba Dharmasūtra<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="r-m-ya-a" onclick="egHighlight('r-m-ya-a')">Rāmāyaṇa<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">476 CE</span><div><span class="eg-claim-ctx">558n Adam Smith 186n Ādhivedanika, a class of strīdhana 774 Adhyagni, a class of strīdhana 774 Adhyā...</span> <a href="general-index.html#p-general-index-1">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">667 CE</span><div><span class="eg-claim-ctx">558n Adam Smith 186n Ādhivedanika, a class of strīdhana 774 Adhyagni, a class of strīdhana 774 Adhyā...</span> <a href="general-index.html#p-general-index-1">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">774 CE</span><div><span class="eg-claim-ctx">558n Adam Smith 186n Ādhivedanika, a class of strīdhana 774 Adhyagni, a class of strīdhana 774 Adhyā...</span> <a href="general-index.html#p-general-index-1">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="mah-bh-rata" data-consensus="1101" data-claims="1" data-name="Mahābhārata"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Mahābhārata</span><span class="eg-type">text</span><span class="eg-claims-count">1 claims &middot; 1101 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="101" data-max="1800"><span class="eg-range-label" style="left:0;">101 CE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1800 CE</span><div class="eg-range-dot" style="left:58.9%;" title="1101 CE — about 12th century "></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="artha-stra" onclick="egHighlight('artha-stra')">Arthaśāstra<span class="eg-cooccur-weight">3x</span></span><span class="eg-cooccur-chip" data-target="manusm-ti" onclick="egHighlight('manusm-ti')">Manusmṛti<span class="eg-cooccur-weight">3x</span></span><span class="eg-cooccur-chip" data-target="gveda" onclick="egHighlight('gveda')">Ṛgveda<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="mit-k-ar" onclick="egHighlight('mit-k-ar')">Mitākṣarā<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="n-radasm-ti" onclick="egHighlight('n-radasm-ti')">Nāradasmṛti<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="vasi-ha-dharmas-tra" onclick="egHighlight('vasi-ha-dharmas-tra')">Vasiṣṭha Dharmasūtra<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="vi-u-sm-ti" onclick="egHighlight('vi-u-sm-ti')">Viṣṇu Smṛti<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="y-j-avalkya-sm-ti" onclick="egHighlight('y-j-avalkya-sm-ti')">Yājñavalkya Smṛti<span class="eg-cooccur-weight">2x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">about 1101 CE</span><div><span class="eg-claim-ctx">Death, all persons except brāhmaṇas could be condemned to sentence of, for certain grave offences 40...</span> <a href="general-index.html#p-general-index-7">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="par-arasm-ti" data-consensus="1101" data-claims="2" data-name="Parāśarasmṛti"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Parāśarasmṛti</span><span class="eg-type">text</span><span class="eg-claims-count">2 claims &middot; 501 CE to 1101 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="101" data-max="1800"><span class="eg-range-label" style="left:0;">101 CE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1800 CE</span><div class="eg-range-fill" style="left:23.5%;width:35.3%;"></div><div class="eg-range-dot" style="left:23.5%;" title="501 CE — 6th century A.D."></div><div class="eg-range-dot" style="left:58.9%;" title="1101 CE — 12th century "></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="artha-stra" onclick="egHighlight('artha-stra')">Arthaśāstra<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="ch-ndogya-upani-ad" onclick="egHighlight('ch-ndogya-upani-ad')">Chāndogya Upaniṣad<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="gautama-dharmas-tra" onclick="egHighlight('gautama-dharmas-tra')">Gautama Dharmasūtra<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="gveda" onclick="egHighlight('gveda')">Ṛgveda<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="k-rmapur-a" onclick="egHighlight('k-rmapur-a')">Kūrmapurāṇa<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="mah-bh-rata" onclick="egHighlight('mah-bh-rata')">Mahābhārata<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="manusm-ti" onclick="egHighlight('manusm-ti')">Manusmṛti<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="matsyapur-a" onclick="egHighlight('matsyapur-a')">Matsyapurāṇa<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">501 CE</span><div><span class="eg-claim-ctx">Nrga 243, not to run away from battle 57, oppressing subjects 15 made of parts of rākṣasas 25; oppre...</span> <a href="general-index.html#p-general-index-11">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">1101 CE</span><div><span class="eg-claim-ctx">Nrga 243, not to run away from battle 57, oppressing subjects 15 made of parts of rākṣasas 25; oppre...</span> <a href="general-index.html#p-general-index-11">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="b-haspatism-ti" data-consensus="1701" data-claims="1" data-name="Bṛhaspatismṛti"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Bṛhaspatismṛti</span><span class="eg-type">text</span><span class="eg-claims-count">1 claims &middot; 1701 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="101" data-max="1800"><span class="eg-range-label" style="left:0;">101 CE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1800 CE</span><div class="eg-range-dot" style="left:94.2%;" title="1701 CE — 18th century "></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="mah-bh-rata" onclick="egHighlight('mah-bh-rata')">Mahābhārata<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="manusm-ti" onclick="egHighlight('manusm-ti')">Manusmṛti<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="vi-var-pa" onclick="egHighlight('vi-var-pa')">Viśvarūpa<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="artha-stra" onclick="egHighlight('artha-stra')">Arthaśāstra<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="gveda" onclick="egHighlight('gveda')">Ṛgveda<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="k-mandaka-n-tis-ra" onclick="egHighlight('k-mandaka-n-tis-ra')">Kāmandaka Nītisāra<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="k-ty-yanasm-ti" onclick="egHighlight('k-ty-yanasm-ti')">Kātyāyanasmṛti<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="mit-k-ar" onclick="egHighlight('mit-k-ar')">Mitākṣarā<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">1701 CE</span><div><span class="eg-claim-ctx">Wad, Rao Bahadur 106, 405 War, ( see under &#x27;battle&#x27; ), country of an enemy may be harassed in 210, f...</span> <a href="general-index.html#p-general-index-15">view</a></div></div></div></div></div>
+</div>
+<script>
+function egToggle(header) {
+    header.parentElement.classList.toggle('open');
+}
+function egHighlight(key) {
+    // Remove existing highlights
+    document.querySelectorAll('.eg-entity.highlighted').forEach(function(el) {
+        el.classList.remove('highlighted');
+    });
+    // Highlight target and scroll to it
+    var target = document.querySelector('.eg-entity[data-key="' + key + '"]');
+    if (target) {
+        target.classList.add('highlighted');
+        target.classList.add('open');
+        target.scrollIntoView({behavior: 'smooth', block: 'center'});
+    }
+}
+function egSort(mode) {
+    var container = document.getElementById('eg-entities');
+    var items = Array.from(container.querySelectorAll('.eg-entity'));
+    items.sort(function(a, b) {
+        if (mode === 'date') return parseInt(a.dataset.consensus) - parseInt(b.dataset.consensus);
+        if (mode === 'claims') return parseInt(b.dataset.claims) - parseInt(a.dataset.claims);
+        if (mode === 'name') return a.dataset.name.localeCompare(b.dataset.name);
+        return 0;
+    });
+    items.forEach(function(el) { container.appendChild(el); });
+    // Update active sort link
+    document.querySelectorAll('.eg-sort a').forEach(function(a) { a.classList.remove('active'); });
+    event.target.classList.add('active');
+}
+</script>
+        </div>
+        <a href="general-index.html" class="back-link">&larr; Back to General Index</a>
+    </div>
+    <script>
+    document.querySelectorAll('.tl-evt').forEach(function(el) {
+        el.addEventListener('click', function() {
+            var href = this.getAttribute('data-href');
+            if (href) {
+                window.location.href = href;
+            } else {
+                var paraId = this.getAttribute('data-para');
+                if (paraId) {
+                    var target = document.getElementById(paraId);
+                    if (target) target.scrollIntoView({behavior: 'smooth'});
+                }
+            }
+        });
+    });
+    // Tab switching
+    document.querySelectorAll('.tl-tab').forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            document.querySelectorAll('.tl-tab').forEach(function(t) { t.classList.remove('active'); });
+            document.querySelectorAll('.tl-panel').forEach(function(p) { p.classList.remove('active'); });
+            tab.classList.add('active');
+            var panel = document.getElementById(tab.getAttribute('data-panel'));
+            if (panel) panel.classList.add('active');
+        });
+    });
+    </script>
+</body>
+</html>

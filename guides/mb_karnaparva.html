@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karṇaparva Study Guide — History of Dharmaśāstra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Open+Sans:wght@400;600&family=Tiro+Devanagari+Sanskrit&display=swap" rel="stylesheet">
+<style>
+:root {
+    --saffron: #D4600A;
+    --ink: #2C2416;
+    --parchment: #FDF6EC;
+    --parchment-dark: #F5ECD8;
+    --indigo: #2E5FA3;
+    --maroon: #8B1A1A;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: var(--parchment);
+    color: var(--ink);
+    line-height: 1.6;
+}
+.navbar {
+    background: linear-gradient(135deg, #3D2B1F 0%, #5C3D2E 100%);
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    position: sticky;
+    top: 0;
+    z-index: 1031;
+}
+.navbar a { color: #F5ECD8; text-decoration: none; font-size: 14px; }
+.navbar a:hover { color: var(--saffron); }
+.navbar .brand { font-family: 'Lora', serif; font-size: 16px; font-weight: 600; }
+.breadcrumb-bar {
+    background: var(--parchment-dark);
+    padding: 8px 24px;
+    font-size: 13px;
+    border-bottom: 1px solid #E0D5C3;
+}
+.breadcrumb-bar a { color: var(--indigo); text-decoration: none; }
+.breadcrumb-bar .sep { margin: 0 6px; color: #999; }
+.breadcrumb-bar .current { color: var(--ink); }
+.content { max-width: 900px; margin: 0 auto; padding: 30px 24px; }
+
+/* Hero */
+.parva-hero {
+    text-align: center;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 2px solid #E0D5C3;
+}
+.parva-hero .parva-number {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(212, 96, 10, 0.10);
+    color: var(--saffron);
+    font-family: 'Lora', serif;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 50px;
+    margin-bottom: 8px;
+}
+.parva-hero h1 {
+    font-family: 'Lora', serif;
+    font-size: 28px;
+    color: var(--saffron);
+    margin: 6px 0;
+}
+.parva-hero .desc {
+    font-size: 15px;
+    color: #555;
+    max-width: 600px;
+    margin: 0 auto 10px;
+}
+.parva-hero .stats {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 10px;
+}
+.ext-link {
+    display: inline-block;
+    font-size: 13px;
+    color: var(--indigo);
+    font-weight: 600;
+    text-decoration: none;
+    padding: 4px 12px;
+    border: 1px solid var(--indigo);
+    border-radius: 4px;
+    margin: 6px 4px;
+}
+.ext-link:hover { background: rgba(46, 95, 163, 0.08); }
+.ref-page-link {
+    display: inline-block;
+    font-size: 13px;
+    color: #888;
+    text-decoration: none;
+    padding: 4px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: 6px 4px;
+}
+.ref-page-link:hover { border-color: #999; color: #666; }
+.subject-tag {
+    display: inline-block;
+    font-size: 11px;
+    background: rgba(139, 26, 26, 0.08);
+    color: var(--maroon);
+    padding: 2px 8px;
+    border-radius: 3px;
+    text-decoration: none;
+    margin: 2px;
+}
+.subject-tag:hover { background: rgba(139, 26, 26, 0.15); }
+
+/* Top adhyayas */
+.top-adhyayas {
+    margin-bottom: 28px;
+    padding: 16px;
+    background: #fff;
+    border: 1px solid #E0D5C3;
+    border-radius: 8px;
+}
+.top-adhyayas h3 {
+    font-family: 'Lora', serif;
+    font-size: 15px;
+    color: var(--ink);
+    margin-bottom: 10px;
+}
+.adhyaya-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.adhyaya-chip {
+    display: inline-block;
+    font-size: 12px;
+    padding: 3px 10px;
+    background: var(--parchment-dark);
+    border: 1px solid #E0D5C3;
+    border-radius: 4px;
+    color: var(--ink);
+    text-decoration: none;
+}
+a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
+.adhyaya-chip small { color: #999; }
+
+/* Volume sections */
+.vol-section { margin-bottom: 28px; }
+.vol-heading {
+    font-family: 'Lora', serif;
+    font-size: 17px;
+    color: var(--ink);
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #E0D5C3;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.vol-count {
+    font-size: 12px;
+    font-weight: 400;
+    color: #999;
+}
+.ch-group { margin-bottom: 16px; }
+.ch-heading {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 6px;
+    padding: 4px 8px;
+    background: var(--parchment-dark);
+    border-radius: 4px;
+}
+.ch-count {
+    font-weight: 400;
+    color: #999;
+    font-size: 11px;
+    margin-left: 4px;
+}
+.snippet {
+    padding: 10px 14px;
+    margin-bottom: 6px;
+    background: #fff;
+    border: 1px solid #E0D5C3;
+    border-radius: 6px;
+    border-left: 3px solid var(--saffron);
+}
+.snippet-text {
+    font-family: 'Lora', serif;
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.65;
+}
+.snippet-meta {
+    margin-top: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.snippet-link {
+    font-size: 12px;
+    color: var(--indigo);
+    text-decoration: none;
+}
+.snippet-link:hover { text-decoration: underline; }
+.snippet-verse {
+    font-size: 11px;
+    color: #999;
+    font-style: italic;
+}
+.mbta-icon {
+    color: var(--indigo);
+    text-decoration: none;
+    font-style: normal;
+    font-size: 12px;
+}
+.overflow {
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+    padding: 6px;
+}
+</style>
+</head>
+<body>
+<nav class="navbar">
+    <a href="../index.html" class="brand">History of Dharmaśāstra</a>
+    <a href="../refs/index.html">Sources</a>
+    <a href="../topics/index.html">Topics</a>
+    <a href="../subjects/index.html">Subjects</a>
+    <a href="../timeline.html">Timeline</a>
+    <a href="../network.html">Network</a>
+</nav>
+<div class="breadcrumb-bar">
+    <a href="../index.html">Home</a>
+    <span class="sep">›</span>
+    <a href="index.html">Parva Study Guides</a>
+    <span class="sep">›</span>
+    <span class="current">Karṇaparva</span>
+</div>
+<div class="content">
+    <div class="parva-hero">
+        <div class="parva-number">8</div>
+        <h1>Karṇaparva</h1>
+        <p class="desc">The Book of Karṇa — Karṇa as commander, his fall.</p>
+        <p class="stats">22 references across 8 volumes</p>
+        <div><a href="https://sanatana.in/mbta/listing/parva/karnaparva" target="_blank" class="ext-link">Browse on MBTA ↗</a>
+            <a href="../refs/mb_karnaparva.html" class="ref-page-link">Verse reference table →</a>
+        </div>
+        <div style="margin-top:8px"></div>
+    </div>
+    
+            <div class="top-adhyayas">
+                <h3>Most-Cited Adhyāyas</h3>
+                <div class="adhyaya-chips"><a href="https://sanatana.in/mbta/listing/parva/karnaparva#P08_U01_A094_S001" target="_blank" class="adhyaya-chip">Adhyāya 94 <small>(3)</small></a><a href="https://sanatana.in/mbta/listing/parva/karnaparva#P08_U01_A088_S001" target="_blank" class="adhyaya-chip">Adhyāya 88 <small>(2)</small></a><a href="https://sanatana.in/mbta/listing/parva/karnaparva#P08_U01_A046_S001" target="_blank" class="adhyaya-chip">Adhyāya 46 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/karnaparva#P08_U01_A001_S001" target="_blank" class="adhyaya-chip">Adhyāya 1 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/karnaparva#P08_U01_A091_S001" target="_blank" class="adhyaya-chip">Adhyāya 91 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/karnaparva#P08_U01_A087_S001" target="_blank" class="adhyaya-chip">Adhyāya 87 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/karnaparva#P08_U01_A043_S001" target="_blank" class="adhyaya-chip">Adhyāya 43 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/karnaparva#P08_U01_A006_S001" target="_blank" class="adhyaya-chip">Adhyāya 6 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/karnaparva#P08_U01_A073_S001" target="_blank" class="adhyaya-chip">Adhyāya 73 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/karnaparva#P08_U01_A032_S001" target="_blank" class="adhyaya-chip">Adhyāya 32 <small>(1)</small></a></div>
+            </div>
+    
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume I: Part I
+                    <span class="vol-count">5 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">14 Arthashastra Of Kautilya <span class="ch-count">4</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...naṣ In the <strong>Karṇaparva</strong> it is said that a certain Vyūha (array of army) was arranged according to the opinion of Bṛhaspati and Uśanas (31. 12-13). Vide Karṇaparva 46. 27 for Barhaspatya Vyūha. Śalyaparva states that, acc. to Bṛhaspati’s view, a king who is weak should desire to make peace (with a stronger one) or with...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-19" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">46.27 <a href="https://sanatana.in/mbta/listing/parva/karnaparva#P08_U01_A046_S027" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...by Bṛhaspati<sup class="fn-ref"><a href="#fn-14-arthashastra-of-kautilya-17" id="fnref-14-arthashastra-of-kautilya-17">17</a></sup> and Uśanaṣ In the <strong>Karṇaparva</strong> it is said that a certain Vyūha (array of army) was arranged according to the opinion of Bṛhaspati and Uśanas (31. 12-13). Vide Karṇaparva 46. 27 for B...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-19" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">i <a href="https://sanatana.in/mbta/listing/parva/karnaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...d Nala's young son's name was Indrasena. It is therefore likely that A. is correct and the epic story was tempered with slightly later. In the extant <strong>Karṇaparva</strong> (91. 13) it is again affirmed that Nala was defeated in gambling by Puṣkara. Yudhisthira was defeated in gambling with Duryo-dhana and Śakuni (Sabhāparva, Cha...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-119" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">91.13 <a href="https://sanatana.in/mbta/listing/parva/karnaparva#P08_U01_A091_S013" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...57 and Pāṇini IV. 1. 178 ‘na prācya–Bhargādi yaudheyādibhyaḥ’. The Brhat-saṃhitā (IV. 25, XIV. 28, XVI. 21 ) refers to Yaudheyas and Arjunāyanaṣ Vide Karṇa parvan 5. 48 and Sabhā 52. 14–15 for Yaudheyaṣ Another distinctive feature of K’s work is the division of the administration into two branches, viz. the ru...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-134" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/karnaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">27 Bharadvāja And Bhāradvāja <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">... the Mahābhārata or from Vyāsa. In the Mahābhārata itself 'Ākhyāna' is frequently mentioned as the 5th Veda, as in Vanaparva 58. 9, Udyoga 43. 41-42, <strong>Karṇaparva</strong> 87. 42, Śālya 6. 14. The Arthaśāstra I. 5 14 ( Purāṇam-itivṛttam-ākhyāyikā-udāharaṇam-dharmaśāstram-arthaśāstram cetihāsaḥ ) produces a jarring note, includ...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/27-bharadvāja-and-bhāradvāja.html#p-27-bharadvāja-and-bhāradvāja-6" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">87.42 <a href="https://sanatana.in/mbta/listing/parva/karnaparva#P08_U01_A087_S042" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume I: Part II
+                    <span class="vol-count">1 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">119 Conclusion <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">.... 397; duties of ideal, in Sabhāparva, p. 399; conduct or life of, different from common men, p. 159; Bṛhaspati’s views about, as stated in Śānti and <strong>Karṇaparva</strong>ns, pp. 160–62; Uśanas on pp. 163–64; coronation of, in Rājyābhiṣeka-dī- dhiti, p. 957; deserves special honour with five others, p. 95. Kiñjalka, an ...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-2/119-conclusion.html#p-119-conclusion-553" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/karnaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume II: Part I
+                    <span class="vol-count">5 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter I The Topics Of Dharmashastra <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...bes on the north- west, the countries on the rivers of the Punjab came to be looked upon in the whirligig of time as unworthy of the Āryas to live iṇ <strong>Karṇaparva</strong> 43. 5-8 abuses those who live on the Sindhu and the five rivers of the Punjab as impure and dharmabāhya.<sup class="fn-ref"><a href="#fn-chapter-i-the-topics...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-2-part-1/chapter-i-the-topics-of-dharmashastra.html#p-chapter-i-the-topics-of-dharmashastra-10" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">43.5-8 <a href="https://sanatana.in/mbta/listing/parva/karnaparva#P08_U01_A043_S005" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Ii Varna <span class="ch-count">3</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...?) is cited by Pat. as an example derived from Ambaṣṭha (a country). It is a question whether the caste of Ambaṣṭhas derived its name from a country. <strong>Karṇaparva</strong> (6. 11) mentions a king Ambaṣṭha. In Bauḍ Dh. S. I. 9. 3, Manu X. 8, Yāj. I. 91, Uśanas 31, Nārada (stripuruṣa v. 107) Ambaṣṭha is an anuloma sprung from the...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-2-part-1/chapter-ii-varna.html#p-chapter-ii-varna-43" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">6.11 <a href="https://sanatana.in/mbta/listing/parva/karnaparva#P08_U01_A006_S011" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...4) he is a kṣatriya reduced to the status of a śūdra. Anusāsana (35.17–18) says the same about Mekalas, Drāviḍas, Lātas, Pauṇḍras, Yavanaṣ and otherṣ <strong>Karṇaparva</strong> 73. 20 speaks of kirātas as men of fiery valour. Aśvamedhika 73. 25 shows that Arjuna met kirātas, yavanaṣ and Mlecchas when proceeding to the north with th...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-2-part-1/chapter-ii-varna.html#p-chapter-ii-varna-69" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">73.20 <a href="https://sanatana.in/mbta/listing/parva/karnaparva#P08_U01_A073_S020" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...ing the king of his duties and by cooking food for hiṃ Uśanas (v. 3) also says that his business is to remind (a king) of his dutieṣ According to the <strong>Karṇaparva</strong> (32. 48) sūtas are the attendants of brāhmaṇas and kṣatriyas and the latter need not carry out what the sūta sayṣ According to the Vāyupurāṇa (vol. I. I. 33-3...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-2-part-1/chapter-ii-varna.html#p-chapter-ii-varna-180" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">32.48 <a href="https://sanatana.in/mbta/listing/parva/karnaparva#P08_U01_A032_S048" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xvi Veshyā <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...ibed as about to start for battle it is said that carts, markets and courtezans also accompanied them (Udyoga 151. 58 ). Vide also Vanaparva 239. 37, <strong>Karṇaparva</strong> 94. 26. Yāj. <sup class="fn-ref"><a href="#fn-chapter-xvi-veshyā-3" id="fnref-chapter-xvi-veshyā-3">3</a></sup> II. 290 divides concubines into two sorts, a...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-2-part-1/chapter-xvi-veshyā.html#p-chapter-xvi-veshyā-2" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">94.26 <a href="https://sanatana.in/mbta/listing/parva/karnaparva#P08_U01_A094_S026" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume II: Part II
+                    <span class="vol-count">1 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">General Index <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...ef-general-index-9">9</a></sup>. Karmakāra, a caste, 75; distinguish- ed from Karmāra in some works, 75. Karmanda, 422. Karmāra (vide karmakāra), 75. Karṇa-parva, 16<sup class="fn-ref"><a href="#fn-general-index-10" id="fnref-general-index-10">10</a></sup>, 71, 77, 88, 638. Karṇavodha, a saṁskāra, 196, 254-255...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-2-part-2/general-index.html#p-general-index-37" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/karnaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume III
+                    <span class="vol-count">6 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Viii Bala The Army <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...a, Padma and Vajra described in the work of Uśanas Kauṭilya X 6 also refers to Auśanasa and Bārhaspatya arrangements of armieṣ Droṇa 75 27, 87 22-24, <strong>Karṇaparva</strong> 11 14 and 28 mention certain vyūhas like Makara, Śakaṭa &c Vide also Mānasollāsa II. 20 verses 1170-1181 pp 134-135, Agnipurāṇa 242 7-8 and 42-73 for vy...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-viii-bala-the-army.html#p-chapter-viii-bala-the-army-3" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">11 <a href="https://sanatana.in/mbta/listing/parva/karnaparva#P08_U01_A011" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Ix Suhrit Or Mitra Ally Or Friend <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...hat a friend is of four kinds, one who has the same goal, one who comes for protec- tion or security, one who is naturally so and one who is acquireḍ <strong>Karṇaparva</strong> 88. 28 gives the four kinds somewhat differently viz. natural (sahaja), acquired by conciliatory words,</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-ix-suhrit-or-mitra-ally-or-friend.html#p-chapter-ix-suhrit-or-mitra-ally-or-friend-1" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">88.28 <a href="https://sanatana.in/mbta/listing/parva/karnaparva#P08_U01_A088_S028" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xxxiv Kalivarjya Actions Forbidden In The Kali Age <span class="ch-count">3</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...roup of statements and another from another group and then say that it is proved that the war was fought at a particular time. It is further noted in <strong>Karṇaparva</strong> 37. 4 that on Karna's death ( i. e. 17 days after the war began ), the seven planets were seen going away from the Sun <sup class="fn-ref"><a href="#fn-cha...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-27" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">37.4 <a href="https://sanatana.in/mbta/listing/parva/karnaparva#P08_U01_A037_S004" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">MERCURY— <strong>Karṇaparva</strong> 94. 49 says that on Karna's death the son of the Moon (i. e. Mercury), the white luminary, rose slantingly resembling in hue fire and the Sun The Śalyaparva...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-29" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">94.49 <a href="https://sanatana.in/mbta/listing/parva/karnaparva#P08_U01_A094_S049" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text"><strong>Karṇaparva</strong> 94. 51 says: 'Bṛhaspati having entirely covered Rohiṇī has become like the Sun and the Moon'. If at the beginning of the war Bṛhaspati was retrograde and wa...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-33" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">94.51 <a href="https://sanatana.in/mbta/listing/parva/karnaparva#P08_U01_A094_S051" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">General Index <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">..., 917–918, 920–21. Kārīri, sacrifice for bringing down rain 838 Karmavipāka, doctrine of 392 Karna 204, a kānīna son 660. Karṇadeva, a Ceḍi king 126. <strong>Karṇaparva</strong> 88<sup>n</sup>, 127, 205, 208, 209, 214, 216, 917, 918 Kārṣāpaṇa, of silver was in vogue in the Sonth 123, ordinarily means a copper piece used as a coi...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/general-index.html#p-general-index-10" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">88 <a href="https://sanatana.in/mbta/listing/parva/karnaparva#P08_U01_A088" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume IV
+                    <span class="vol-count">1 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">List Of Tīrthas <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...riplakṣa—(śrāddha most efficacious here) Br III 13 69 Tripurā—A (a very fit place for śrāddha) M 22, 43, B (capital of Bāṇāsura) P. I chapters 14-15, <strong>Karṇaparva</strong> 33 17 ff and 34 113- 114, M. chapters 129-140 (give the story of Tripurādāha at great length). Vide also Anu. 160 25-31 and an interesting paper on ‘The...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-4/list-of-tīrthas.html#p-list-of-tīrthas-264" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">33 <a href="https://sanatana.in/mbta/listing/parva/karnaparva#P08_U01_A033" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume V: Part I
+                    <span class="vol-count">1 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xvi Muhūrta <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...n the Mahābhārata there are plenty of references to the evil influence of planets, but that is restricted to nakṣatraṣ Both Rāhu and Ketu are said in <strong>Karṇaparva</strong> to rise in the sky for (i. e. portending) the destruc- tion of the world <sup>849</sup> Kauṭilya offers the curious information that a foreknowledge ...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-1/chapter-xvi-muhūrta.html#p-chapter-xvi-muhūrta-33" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/karnaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume V: Part II
+                    <span class="vol-count">2 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">Index To Vol V <span class="ch-count">2</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...la 50. **Karmaśabda**, means ‘*dhātus*’ ( verbal forms such as ‘*yajati*’, *juhoti* ), 1236. **Karmadāya** (in Y. S.) means ‘*Dharmādharman*’ 1917ṇ **<strong>Karṇaparva</strong>**, 90n, 129, 569, 744, 821, 829 ( on Yavanas ). **Karpuramañjarī** of Rājaśekhara ( about 900 A. D. ), a *prākṛt* play in which the caricature of a c...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-98" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/karnaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">**Yavanas**, composed in Sanskrit works on astrology 563, 600; described in <strong>Karṇaparva</strong> as all-knowing, valiant and different from mlecchas 829n; generously praised by Varāhamihira for proficiency in astrology but he says hardly anything...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-248" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/karnaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+</div>
+</body>
+</html>

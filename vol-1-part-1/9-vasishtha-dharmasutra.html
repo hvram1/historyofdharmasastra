@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- MDB UI Kit -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/fonts.css?v=1.2">
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/navbar.css?v=2.4">
+
+    <title>9. Vasishtha-Dharmasutra — Volume I: Part I — History of Dharmaśāstra</title>
+    <style>
+    :root {
+        --saffron:        #D4600A;
+        --saffron-light:  #F0924A;
+        --saffron-wash:   rgba(212, 96, 10, 0.07);
+        --indigo:         #2E5FA3;
+        --indigo-dark:    #1C3D70;
+        --maroon:         #7A1E1E;
+        --amber:          #C97A1A;
+        --ink:            #1A1209;
+        --ink-secondary:  #4A3B2A;
+        --parchment:      #FDFAF4;
+        --parchment-mid:  #F5EFE2;
+        --rule:           rgba(180, 130, 60, 0.22);
+        --shadow:         0 2px 18px rgba(90, 50, 10, 0.08);
+        --font-devanagari: 'Tiro Devanagari Sanskrit', 'Siddhanta', 'Noto Sans Devanagari', serif;
+        --font-roman:      'Junicode', Georgia, serif;
+    }
+
+    body {
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: var(--font-roman);
+    }
+
+    .devanagari {
+        font-family: var(--font-devanagari);
+    }
+
+    /* ── Navbar overrides ── */
+    .navbar-ontop { z-index: 1031; }
+    .hdclr { color: var(--saffron); }
+    .engpara { font-family: 'Open Sans', sans-serif; }
+
+    /* ── Layout ── */
+    .dh-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .dh-content {
+        flex: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        background: var(--parchment);
+        box-shadow: var(--shadow);
+        min-height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        .dh-content { padding: 24px 20px; }
+        .dh-wrapper { flex-direction: column; }
+    }
+
+    /* ── TOC Sidebar ── */
+    .toc-sidebar {
+        position: sticky;
+        top: 80px;
+        width: 280px;
+        min-width: 280px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding: 20px 16px;
+        margin-right: 24px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        scrollbar-width: thin;
+    }
+
+    .toc-title {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--saffron-light);
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list li {
+        padding: 4px 0;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-list li.toc-l3 {
+        padding-left: 16px;
+        font-size: 0.78rem;
+    }
+
+    .toc-list li a {
+        color: var(--ink-secondary);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .toc-list li a:hover { color: var(--saffron); }
+
+    .toc-list li.active {
+        border-left-color: var(--saffron);
+    }
+
+    .toc-list li.active a {
+        color: var(--saffron);
+        font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-sidebar { display: none; }
+    }
+
+    /* ── Mobile TOC Toggle ── */
+    .toc-mobile-toggle {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1050;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--saffron);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-mobile-toggle { display: block; }
+    }
+
+    /* ── Section Headings ── */
+    .section-heading {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        margin: 48px 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--rule);
+        letter-spacing: 0.5px;
+        scroll-margin-top: 80px;
+    }
+
+    h2.section-heading { font-size: 1.6rem; }
+
+    h3.section-heading {
+        font-size: 1.25rem;
+        border-left: 4px solid var(--saffron-light);
+        border-bottom: none;
+        padding: 8px 16px;
+        background: var(--saffron-wash);
+        border-radius: 0 5px 5px 0;
+    }
+
+    /* ── Prose ── */
+    .prose {
+        font-family: var(--font-roman);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+        color: var(--ink);
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    .prose em { color: var(--maroon); }
+
+    .prose:target {
+        background: rgba(212, 96, 10, 0.12);
+        border-left: 4px solid var(--saffron);
+        padding-left: 16px;
+        margin-left: -20px;
+        border-radius: 0 6px 6px 0;
+        animation: target-pulse 2s ease-out;
+    }
+
+    @keyframes target-pulse {
+        0%   { background: rgba(212, 96, 10, 0.30); }
+        100% { background: rgba(212, 96, 10, 0.12); }
+    }
+
+    /* ── Footnote References ── */
+    .fn-ref {
+        font-size: 0.75em;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    .fn-ref a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 0 2px;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: color 0.15s;
+    }
+
+    .fn-ref a:hover { color: var(--indigo); }
+
+    /* ── Synopsis Box ── */
+    .synopsis-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron-light);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .synopsis-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .synopsis-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .synopsis-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .synopsis-box.open .synopsis-toggle i {
+        transform: rotate(90deg);
+    }
+    .synopsis-body {
+        display: none;
+        padding: 0 20px 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+    }
+    .synopsis-box.open .synopsis-body { display: block; }
+    .synopsis-body p { margin: 0; }
+    .synopsis-attribution {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: var(--ink-secondary);
+        opacity: 0.7;
+        font-style: italic;
+    }
+    .synopsis-audio {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    .synopsis-play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--saffron);
+        background: none;
+        color: var(--saffron);
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: background 0.2s, color 0.2s;
+        padding: 0;
+    }
+    .synopsis-play-btn:hover {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn.playing {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn i { padding-left: 2px; }
+
+    /* ── Index Terms Panel ── */
+    .index-terms-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .index-terms-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .index-terms-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .index-terms-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .index-terms-box.open .index-terms-toggle i {
+        transform: rotate(90deg);
+    }
+    .index-terms-body {
+        display: none;
+        padding: 0 20px 16px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .index-terms-box.open .index-terms-body { display: block; }
+    .index-terms-dl {
+        margin: 0;
+        padding: 0;
+    }
+    .index-terms-dl dt {
+        font-family: var(--font-roman);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+        margin-top: 8px;
+    }
+    .index-terms-dl dd {
+        margin: 2px 0 0 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        color: var(--ink-secondary);
+        line-height: 1.5;
+    }
+    .nyaya-heading {
+        font-family: var(--font-roman);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        margin: 16px 0 4px;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+    }
+
+    /* ── Inline Index Popovers ── */
+    .idx-term {
+        border-bottom: 1px dotted var(--saffron-light);
+        cursor: help;
+        position: relative;
+    }
+    .idx-term:hover::after {
+        content: attr(data-def);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        background: rgba(44, 36, 22, 0.92);
+        color: #F5ECD8;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        max-width: 280px;
+        z-index: 100;
+        white-space: normal;
+        line-height: 1.4;
+        pointer-events: none;
+    }
+
+    /* ── Structured Version Banner ── */
+    .structured-banner {
+        margin: 0 0 28px;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, rgba(212, 96, 10, 0.06) 0%, rgba(212, 96, 10, 0.02) 100%);
+        border: 1px solid var(--saffron-light);
+        border-radius: 6px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        color: var(--ink-secondary);
+        line-height: 1.6;
+    }
+    .structured-banner i { color: var(--saffron); margin-right: 4px; }
+    .structured-banner a { color: var(--indigo); font-weight: 600; text-decoration: none; }
+    .structured-banner a:hover { text-decoration: underline; }
+
+    /* ── Footnotes Section ── */
+    .footnotes-section {
+        margin: 32px 0 48px;
+        padding: 20px 24px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .footnotes-section hr {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 0 0 16px;
+    }
+
+    .footnotes-list {
+        padding-left: 24px;
+        margin: 0;
+    }
+
+    .footnote-item {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+        scroll-margin-top: 80px;
+    }
+
+    .footnote-item:target {
+        background: rgba(212, 96, 10, 0.1);
+        border-radius: 4px;
+        padding: 4px 6px;
+        margin-left: -6px;
+    }
+
+    .fn-back {
+        color: var(--saffron-light);
+        text-decoration: none;
+        font-size: 0.85em;
+        margin-left: 4px;
+    }
+
+    .fn-back:hover { color: var(--saffron); }
+
+    /* ── Reference Links ── */
+    a.ref {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: all 0.15s;
+    }
+
+    a.ref:hover {
+        color: var(--saffron);
+        border-bottom-style: solid;
+    }
+
+    a.mbta-ext {
+        color: var(--indigo);
+        font-size: 0.7em;
+        margin-left: 2px;
+        opacity: 0.5;
+        text-decoration: none;
+        vertical-align: super;
+    }
+    a.mbta-ext:hover { opacity: 1; color: var(--saffron); }
+
+    /* ── References Panel (sidebar) ── */
+    .refs-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .refs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .refs-list li {
+        padding: 3px 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .ref-source-link {
+        font-weight: 600;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .ref-source-link:hover {
+        text-decoration: underline;
+    }
+
+    .ref-verse-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.76rem;
+    }
+
+    .ref-verse-link:hover {
+        text-decoration: underline;
+        color: var(--saffron);
+    }
+
+    .ref-verses {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Timeline panel ── */
+    .timeline-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .timeline-list li {
+        padding: 2px 0;
+        font-size: 0.76rem;
+        line-height: 1.4;
+        position: relative;
+        padding-left: 14px;
+    }
+
+    .timeline-list li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--saffron);
+    }
+
+    .timeline-list li.tl-approximate::before {
+        background: transparent;
+        border: 2px solid var(--saffron);
+        width: 4px;
+        height: 4px;
+    }
+
+    .timeline-list li.tl-century::before {
+        background: transparent;
+        border: 2px dashed var(--saffron);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+
+    .tl-dot-link {
+        text-decoration: none;
+        color: var(--ink);
+        display: block;
+    }
+
+    .tl-dot-link:hover {
+        color: var(--saffron);
+    }
+
+    .tl-year {
+        font-weight: 600;
+        color: var(--saffron);
+        font-size: 0.72rem;
+        min-width: 70px;
+        display: inline-block;
+    }
+
+    .tl-label {
+        color: var(--ink-secondary);
+        font-size: 0.72rem;
+    }
+
+    .tl-view-link, .tl-more {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.72rem;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .tl-view-link:hover, .tl-more:hover {
+        text-decoration: underline;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+
+    .breadcrumb-bar a {
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+
+    .breadcrumb-bar .sep {
+        color: var(--amber);
+        margin: 0 8px;
+    }
+
+    .breadcrumb-bar .current {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Chapter Navigation ── */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        margin-top: 48px;
+        border-top: 2px solid var(--rule);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .chapter-nav a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        transition: all 0.2s;
+        max-width: 45%;
+    }
+
+    .chapter-nav a:hover {
+        background: var(--saffron-wash);
+        border-color: var(--saffron-light);
+    }
+
+    .nav-prev { text-align: left; }
+    .nav-next { text-align: right; margin-left: auto; }
+
+    .page-range {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+    }
+
+    /* ── Volume Cards (Landing) ── */
+    .vol-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .vol-card {
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        transition: all 0.25s;
+    }
+
+    .vol-card:hover {
+        border-color: var(--saffron-light);
+        box-shadow: 0 4px 24px rgba(212, 96, 10, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .vol-num {
+        font-family: var(--font-roman);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--saffron);
+        margin-bottom: 8px;
+    }
+
+    .vol-subtitle {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        line-height: 1.5;
+        flex: 1;
+    }
+
+    .vol-chapters {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        margin-top: 12px;
+    }
+
+    /* ── Chapter Cards (Volume Index) ── */
+    .chapter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .chapter-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .chapter-card:hover {
+        border-color: var(--saffron-light);
+        background: var(--saffron-wash);
+    }
+
+    .card-num {
+        font-family: var(--font-roman);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--saffron);
+        min-width: 36px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        flex: 1;
+    }
+
+    .card-pages {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        color: var(--ink-secondary);
+    }
+
+    /* ── Landing Hero ── */
+    .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-family: var(--font-roman);
+        font-size: 2.4rem;
+        color: var(--saffron);
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .hero .devanagari-title {
+        font-family: var(--font-devanagari);
+        font-size: 1.8rem;
+        color: var(--ink);
+        margin-bottom: 16px;
+    }
+
+    .hero .author {
+        font-family: var(--font-roman);
+        font-size: 1.1rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .hero .desc {
+        font-family: var(--font-roman);
+        font-size: 1rem;
+        color: var(--ink-secondary);
+        line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer { margin-top: 48px; }
+</style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mbta/">
+      <div class="container-fluid">&emsp;&emsp;
+      <a href="../index.html" class="navbar-brand" style="text-decoration:none;">
+        <span class="devanagari ms-3" style="font-size:1.5rem; color:var(--saffron); font-weight:700;">धर्मशास्त्रम्</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="../index.html">धर्मशास्त्रम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5 active" href="../index.html">खण्डाः</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in/mbta/">महाभारतम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in">सनातनम्</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+
+    <div class="dh-wrapper container-xl">
+        <nav id="toc" class="toc-sidebar">
+<div class="refs-panel">
+<h5 class="toc-title">References</h5>
+<ul class="refs-list">
+<li><a href="../refs/aitareya_br.html" class="ref-source-link">Aitareya Brāhmaṇa</a> <span class="ref-verses"><a href="../refs/aitareya_br.html#33.2-6" class="ref-verse-link">33.2-6</a></span></li>
+<li><a href="../refs/apararka.html" class="ref-source-link">Aparārka</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/baudhayana.html" class="ref-source-link">Baudhāyana Dharmasūtra</a> <span class="ref-verses"><a href="../refs/baudhayana.html#IV.4.9" class="ref-verse-link">IV.4.9</a></span></li>
+<li><a href="../refs/brihadaranyaka.html" class="ref-source-link">Bṛhadāraṇyaka Upaniṣad</a> <span class="ref-verses"><a href="../refs/brihadaranyaka.html#IV.5.15" class="ref-verse-link">IV.5.15</a></span></li>
+<li><a href="../refs/gautama.html" class="ref-source-link">Gautama Dharmasūtra</a> <span class="ref-verses"><a href="../refs/gautama.html#16.5" class="ref-verse-link">16.5</a>, <a href="../refs/gautama.html#28.3-8" class="ref-verse-link">28.3-8</a>, <a href="../refs/gautama.html#I.6" class="ref-verse-link">I.6</a>, <a href="../refs/gautama.html#15.3" class="ref-verse-link">15.3</a>, <a href="../refs/gautama.html#15.28" class="ref-verse-link">15.28</a>, <a href="../refs/gautama.html#22.18" class="ref-verse-link">22.18</a> <a href="../refs/gautama.html" class="ref-verse-link">+4</a></span></li>
+<li><a href="../refs/hodh.html" class="ref-source-link">History of Dharmaśāstra</a> <span class="ref-verses"><a href="../refs/hodh.html#Vol. II" class="ref-verse-link">Vol. II</a></span></li>
+<li><a href="../refs/kautilya.html" class="ref-source-link">Kauṭilya Arthaśāstra</a> <span class="ref-verses"><a href="../refs/kautilya.html#III.2.1-9" class="ref-verse-link">III.2.1-9</a></span></li>
+<li><a href="../refs/manu.html" class="ref-source-link">Manusmṛti</a> <span class="ref-verses"><a href="../refs/manu.html#III.185.V" class="ref-verse-link">III.185.V</a>, <a href="../refs/manu.html#2.157" class="ref-verse-link">2.157</a>, <a href="../refs/manu.html#12.114" class="ref-verse-link">12.114</a>, <a href="../refs/manu.html#3.225" class="ref-verse-link">3.225</a>, <a href="../refs/manu.html#3.125-26" class="ref-verse-link">3.125-26</a>, <a href="../refs/manu.html#9.3" class="ref-verse-link">9.3</a> <a href="../refs/manu.html" class="ref-verse-link">+29</a></span></li>
+<li><a href="../refs/medhatithi.html" class="ref-source-link">Medhātithi</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mitakshara.html" class="ref-source-link">Mitākṣarā</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/padma_purana.html" class="ref-source-link">Padmapurāṇa</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/parasara.html" class="ref-source-link">Parāśara</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/taittiriya_s.html" class="ref-source-link">Taittirīya Saṃhitā</a> <span class="ref-verses"><a href="../refs/taittiriya_s.html#VI.3.10.5" class="ref-verse-link">VI.3.10.5</a>, <a href="../refs/taittiriya_s.html#II.5.1-6" class="ref-verse-link">II.5.1-6</a>, <a href="../refs/taittiriya_s.html#II.5.1.1-6" class="ref-verse-link">II.5.1.1-6</a></span></li>
+<li><a href="../refs/taittiriya_ar.html" class="ref-source-link">Taittirīya Āraṇyaka</a> <span class="ref-verses"><a href="../refs/taittiriya_ar.html#i" class="ref-verse-link">i</a>, <a href="../refs/taittiriya_ar.html#X.24.1" class="ref-verse-link">X.24.1</a></span></li>
+<li><a href="../refs/mb_vanaparva.html" class="ref-source-link">Vanaparva</a> <span class="ref-verses"><a href="../refs/mb_vanaparva.html#200.128" class="ref-verse-link">200.128</a>, <a href="../refs/mb_vanaparva.html#2.36" class="ref-verse-link">2.36</a></span></li>
+<li><a href="../refs/vasishtha.html" class="ref-source-link">Vasiṣṭha Dharmasūtra</a> <span class="ref-verses"><a href="../refs/vasishtha.html#ci" class="ref-verse-link">ci</a>, <a href="../refs/vasishtha.html#i" class="ref-verse-link">i</a>, <a href="../refs/vasishtha.html#c" class="ref-verse-link">c</a>, <a href="../refs/vasishtha.html#18.4" class="ref-verse-link">18.4</a>, <a href="../refs/vasishtha.html#I.32" class="ref-verse-link">I.32</a>, <a href="../refs/vasishtha.html#I.28-36" class="ref-verse-link">I.28-36</a> <a href="../refs/vasishtha.html" class="ref-verse-link">+2</a></span></li>
+<li><a href="../refs/vishvarupa.html" class="ref-source-link">Viśvarūpa</a> <span class="ref-verses"><a href="../refs/vishvarupa.html#ci" class="ref-verse-link">ci</a></span></li>
+<li><a href="../refs/vishnu_dh.html" class="ref-source-link">Viṣṇu Dharmasūtra</a> <span class="ref-verses"><a href="../refs/vishnu_dh.html#90.10" class="ref-verse-link">90.10</a></span></li>
+<li><a href="../refs/vishnu_smriti.html" class="ref-source-link">Viṣṇu Smṛti</a> <span class="ref-verses"><a href="../refs/vishnu_smriti.html#51.64" class="ref-verse-link">51.64</a></span></li>
+<li><a href="../refs/yajnavalkya.html" class="ref-source-link">Yājñavalkya</a> <span class="ref-verses"><a href="../refs/yajnavalkya.html#III.256" class="ref-verse-link">III.256</a>, <a href="../refs/yajnavalkya.html#III" class="ref-verse-link">III</a>, <a href="../refs/yajnavalkya.html#III.309" class="ref-verse-link">III.309</a>, <a href="../refs/yajnavalkya.html#III.297" class="ref-verse-link">III.297</a>, <a href="../refs/yajnavalkya.html#III.323" class="ref-verse-link">III.323</a>, <a href="../refs/yajnavalkya.html#III.310" class="ref-verse-link">III.310</a></span></li>
+<li><a href="../refs/apastamba.html" class="ref-source-link">Āpastamba Dharmasūtra</a> <span class="ref-verses"><a href="../refs/apastamba.html#I.1.2.19" class="ref-verse-link">I.1.2.19</a>, <a href="../refs/apastamba.html#II.5.11.9" class="ref-verse-link">II.5.11.9</a>, <a href="../refs/apastamba.html#II.6.13.5" class="ref-verse-link">II.6.13.5</a>, <a href="../refs/apastamba.html#II.8.17.22" class="ref-verse-link">II.8.17.22</a>, <a href="../refs/apastamba.html#I.9.25.1-2" class="ref-verse-link">I.9.25.1-2</a>, <a href="../refs/apastamba.html#I.5.15.16" class="ref-verse-link">I.5.15.16</a> <a href="../refs/apastamba.html" class="ref-verse-link">+8</a></span></li>
+<li><a href="../refs/shatapatha.html" class="ref-source-link">Śatapatha Brāhmaṇa</a> <span class="ref-verses"><a href="../refs/shatapatha.html#I.4.2.2" class="ref-verse-link">I.4.2.2</a>, <a href="../refs/shatapatha.html#V.4.4.5" class="ref-verse-link">V.4.4.5</a>, <a href="../refs/shatapatha.html#III.1.2.21" class="ref-verse-link">III.1.2.21</a>, <a href="../refs/shatapatha.html#V.4.2.3" class="ref-verse-link">V.4.2.3</a>, <a href="../refs/shatapatha.html#i" class="ref-verse-link">i</a></span></li>
+<li><a href="../refs/mb_shantiparva.html" class="ref-source-link">Śāntiparva</a> <span class="ref-verses"><a href="../refs/mb_shantiparva.html#174" class="ref-verse-link">174</a></span></li>
+<li><a href="../refs/rigveda.html" class="ref-source-link">Ṛgveda</a> <span class="ref-verses"><a href="../refs/rigveda.html#X.88" class="ref-verse-link">X.88</a>, <a href="../refs/rigveda.html#I.164" class="ref-verse-link">I.164</a>, <a href="../refs/rigveda.html#VII.18.21" class="ref-verse-link">VII.18.21</a>, <a href="../refs/rigveda.html#VII.33.11" class="ref-verse-link">VII.33.11</a>, <a href="../refs/rigveda.html#X.9.1" class="ref-verse-link">X.9.1</a>, <a href="../refs/rigveda.html#I.124.7" class="ref-verse-link">I.124.7</a> <a href="../refs/rigveda.html" class="ref-verse-link">+4</a></span></li>
+</ul>
+</div>
+<div class="timeline-panel">
+<h5 class="toc-title">Timeline</h5>
+<ul class="timeline-list">
+<li class="tl-range"><a href="#p-9-vasishtha-dharmasutra-11" class="tl-dot-link"><span class="tl-year">~300 BCE</span> <span class="tl-label">Gautama Dharmasūtra</span></a></li>
+<li class="tl-century"><a href="#p-9-vasishtha-dharmasutra-11" class="tl-dot-link"><span class="tl-year">601 CE</span> <span class="tl-label">Gautama Dharmasūtra</span></a></li>
+<li class="tl-century"><a href="#p-9-vasishtha-dharmasutra-11" class="tl-dot-link"><span class="tl-year">776 CE</span> <span class="tl-label">Gautama Dharmasūtra</span></a></li>
+<li class="tl-century"><a href="#p-9-vasishtha-dharmasutra-6" class="tl-dot-link"><span class="tl-year">801 CE</span> <span class="tl-label">Vasiṣṭha Dharmasūtra</span></a></li>
+</ul>
+<a href="9-vasishtha-dharmasutra-timeline.html" class="tl-view-link">View full timeline &rarr;</a>
+</div>
+<h5 class="toc-title">Sections</h5>
+<ul class="toc-list">
+<li class="toc-l2"><a href="#9-vasishtha-dharmasutra">9. Vasishtha-Dharmasutra</a></li>
+</ul>
+</nav>
+        <main class="dh-content">
+            
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep">›</span>
+        <a href="index.html">Volume I: Part I</a>
+        <span class="sep">›</span>
+        <span class="current">9. Vasishtha-Dharmasutra</span>
+    </div>
+    
+            <h1 class="text-center" style="font-family: var(--font-roman); font-size: 2rem; color: var(--saffron); margin-bottom: 8px;">
+                9. Vasishtha-Dharmasutra
+            </h1>
+            <p class="text-center" style="font-family: 'Open Sans', sans-serif; color: var(--ink-secondary); font-size: 0.9rem; margin-bottom: 36px;">
+                Volume I: Part I <span class="page-range">pp. 94–112</span>
+            </p>
+
+            
+    <div class="synopsis-box" id="synopsis">
+        <button class="synopsis-toggle" onclick="this.parentElement.classList.toggle('open')"
+                aria-expanded="false" aria-controls="synopsis-body">
+            <i class="fa-solid fa-chevron-right"></i>
+            Kane's Synopsis
+        </button>
+        <div class="synopsis-audio">
+            <span class="synopsis-play-btn" role="button" tabindex="0"
+                    onclick="toggleSynopsisAudio(this)"
+                    data-src="../audio/synopsis/vol-1-part-1/vol-1-part-1_sec009.mp3" title="Listen to synopsis">
+                <i class="fa-solid fa-play"></i>
+            </span>
+            <audio preload="none"></audio>
+        </div>
+        <div class="synopsis-body" id="synopsis-body">
+            <p>The various editions of the Vāsiṣṭha-Dharmasūtra exhibit differing chapter counts. Kumārila’s assertion that this text was specially studied by Ṛgvedins prompts an examination, yet nothing inherently special within the Vāsiṣṭha-Dharmasūtra itself directly connects it to the Ṛgveda. Its style closely resembles that of Gautama, with many sūtras being identical to those found in both Gautama and Baudhāyana. The overall form of the Vāsiṣṭha-Dharmasūtra also bears a resemblance to the Baudhāyana-dharmasūtra. Medhātithi, Mitākṣarā, and Viśvarūpa frequently quote from almost all chapters of the extant Vāsiṣṭha, indicating its significant recognition. Vāsiṣṭha was aware of a broad range of literature and notably prohibits the learning of the language of Mlecchas, while also naming several authors on dharmaśāstra.
+
+Vāsiṣṭha's references to the views of Manu are made with respect to a work almost identical to the present Manusmṛti, and these do not necessitate the postulation of a separate Mānavadharmaśūtra. Bühler's interpretation of Vas. Dh. S. 4.8 as a quotation from a Mānavadharmaśūtra is therefore contestable. Only in Vas. Dh. S. 12.16 and 19.37, where Manu is quoted, do we find no corresponding verses in the extant Manusmṛti. Conversely, over forty verses are entirely common to Vāsiṣṭha and the present Manusmṛti, leading to the conclusion that Vāsiṣṭha contains borrowings from the present Manusmṛti or its prototype in verse. Vas. Dh. S. 22 is notably identical to Gautama 19, while Dr. Jolly's view that Vas. Dh. S. 28. 10-15 and 18-22 are borrowed from Viṣṇudharmasūtra or its original, the Kāṭhakadharmasūtra, appears incorrect. Bühler's speculation on Vāsiṣṭha’s home being north of the Narmadā lacks definitive evidence. The earliest reference to Vasiṣṭha as a writer on dharma appears in Manu 8.140, placing the age of Vas. Dh. S. between 300 and 100 B.C.
+
+Vāsiṣṭha’s views are ancient, particularly concerning secondary sons, the Dattaka son, niyoga, and remarriage. He enumerates only six forms of marriage, though his stance on matters such as adoption and documents differs from Gautama or Baudhāyana. The possibility that Vas. 18.4 (Rāmaka, or Romaka as a variant reading) contains a reference to the Romans has been considered. The author of the extant Vāsiṣṭha-Dharmasūtra appears to be eclectic, and the text itself seems to be a re-hash of the Āpastamba-dharmasūtra, Baudhāyana-dharmasūtra, and Manu. Passages quoted from or referred to in the Saṃhitās and Brāhmaṇas significantly outnumber those from the Ṛgveda, suggesting that Vāsiṣṭha-Dharmasūtra did not initially align itself with the Ṛgveda. Dr. Ram Gopal's remarks regarding the passages of Vāsiṣṭha and the three Gṛhya sūtras attached to the Ṛgveda are thus misleading. Other compilations include a Vṛddha-Vasiṣṭha, an early compilation, as well as a Bṛhad Vasiṣṭha and a Jyotir Vasiṣṭha. Yajñavāmin is known to have commented upon the Vāsiṣṭha-Dharmasūtra.</p>
+            <p class="synopsis-attribution">— Synopsis by P.V. Kane, from History of Dharmaśāstra</p>
+        </div>
+    </div>
+
+
+            
+
+            <h2 id="9-vasishtha-dharmasutra" class="section-heading">9. Vasishtha-Dharmasutra</h2>
+<p class="prose" id="p-9-vasishtha-dharmasutra-1">in the Hiranyakesi school; e. g. he comments on padūnām', on 'adhāsanaśāyi' for ardhasanaśāyi (the reading of the sūtra), on 'ātmasvastyayanārthena' (<a class="ref" href="../refs/apastamba.html#II.5.11.9" data-source="apastamba" data-ref="II.5.11.9" title="Āpastamba Dharmasūtra II.5.11.9">Āp. II. 5. 11. 9</a>) for 'svastyayanārthena' of the mṣ of Hir. The explanations of the two writers sometimes differ, as for example on 'ācāryādhinas syād-anyatra pataniyebhyaḥ' (<a class="ref" href="../refs/apastamba.html#I.1.2.19" data-source="apastamba" data-ref="I.1.2.19" title="Āpastamba Dharmasūtra I.1.2.19">Āp. I. 1. 2. 19</a><sup class="fn-ref"><a href="#fn-9-vasishtha-dharmasutra-1" id="fnref-9-vasishtha-dharmasutra-1">1</a></sup>). One more circumstance that is worthy of note is that the Ujjvalā of Haradatta does not contain many quotations from Smṛtis as compared with his commentary on the <a class="ref" href="../refs/gautama.html" data-source="gautama" data-ref="" title="Gautama Dharmasūtra">Gautama dharmasūtra</a>. Although one may be inclined to hold that it is Mahādeva who borrows, it must be clearly recognized that there is hardly any positive evidence in support of such a view. There is a commentary called Vaijayantī on the Hiranyakesi-śrauta-sūtra. This Mahādeva is very likely identical with the Mahādeva who commented upon the dharmasūtra.</p>
+<p class="prose" id="p-9-vasishtha-dharmasutra-2">9. <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha-dharmasūtra</a>.</p>
+<p class="prose" id="p-9-vasishtha-dharmasutra-3">This dharmasūtra has been printed several timeṣ The collection of Jīvananda (part II, pp. 456-496) contains only 20 chapters and a portion of the 21st and so does the collection of Mr M. N. Dutt (Calcutta 1908). The Ānandāśrama collection of Smṛtis (1905, pp. 187-231) and the edition of Dr. Führer in the B. E. S. series (1916) contain thirty chapterṣ According to Dr Jolly ( R. u s, p. 6 ) some msṣ give only six or ten chapterṣ The Vasisthadharmasūtra with the commentary called Vidvanmodinī was printed at Benareṣ In the following Dr. Führer's edition has been useḍ</p>
+<p class="prose" id="p-9-vasishtha-dharmasutra-4">Kumārila (vide note 55 above) tells us that the dharmasūtra of <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> was specially studied by the students of the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a>, but that along with other dharmasūtras it is authoritative for all caraṇaṣ No śrauta and gṛhya sūtras of <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a>, if they ever existed, have come down to uṣ We have therefore to fall back upon one of two hypotheses, viz. either the dharmasūtra of <a class="ref" href="../refs/vasishtha.html#i" data-source="vasishtha" data-ref="i" title="Vasiṣṭha Dharmasūtra i">Vasiṣṭha i</a>s the solitary remnant of a school that might have once possessed a complete kalpa or that it was composed as an independent work on dharma and was subsequently seized upon by the students of the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a>, who had only śrauta and gṛhya sūtras of Āśvalāyana. For reasons given elsewhere I incline to the latter view. The dharmasūtra of <a class="ref" href="../refs/vasishtha.html#ci" data-source="vasishtha" data-ref="ci" title="Vasiṣṭha Dharmasūtra ci">Vasiṣṭha ci</a>tes quotations from all Vedas and beyond the name <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> there is hardly anything special in the dharmasūtra to connect it with the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a>. It is true that in the 17th chap. several verses of the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> (such as I. 21. 5, I. 124. 7, V. 4. 10 which occur in sūtras 3, 16 and 4 respectively ) and several passages from the story of Śunaḥśepa in the Aitareya-brāhmaṇa are quoted by the sūtra and that several hymns of the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a>, such as the asyavāmīya (<a class="ref" href="../refs/rigveda.html#I.164" data-source="rigveda" data-ref="I.164" title="Ṛgveda I.164">Ṛg. I. 164</a> ), haviṣpāntiya (<a class="ref" href="../refs/rigveda.html#X.88" data-source="rigveda" data-ref="X.88" title="Ṛgveda X.88">Ṛg. X. 88</a>), Aghamarṣaṇa (X. 190), are referred to in the 26th chap. But there is nothing remarkable in this as some of the verses and sūktas are mentioned in the <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyanadharmasūtra</a> also. Besides, the Vaṣ Dh. S. quotes several passages from the Taittirīyasaṁhitā ( as in Vaṣ V. 7–9, which quote <a class="ref" href="../refs/taittiriya_s.html#II.5.1-6" data-source="taittiriya_s" data-ref="II.5.1-6" title="Taittirīya Saṃhitā II.5.1-6">Tai. S. II. 5. 1-6</a> and Vaṣ XI. 48 which quotes <a class="ref" href="../refs/taittiriya_s.html#VI.3.10.5" data-source="taittiriya_s" data-ref="VI.3.10.5" title="Taittirīya Saṃhitā VI.3.10.5">Tai. S. VI. 3. 10. 5</a>), the Śatapatha-brāhmaṇa, the Maitrāyaniya-saṃhitā (in Vaṣ I. 37 ).</p>
+<p class="prose" id="p-9-vasishtha-dharmasutra-5">The contents of the Vaṣ Dh. S. are:— I. Definition of Dharma, limits of Āryāvarta, who are sinners, the mortal sins, a brāhmaṇa can marry a girl of any of the three higher castes, six forms of marriage, the king was to regulate the conduct of people and to take the sixth part of wealth as a tax ; II. The four varṇas, greatness of ācārya, before upanayana there is no authority for religious rites, the privileges and duties of the four castes, in distress a Brāhmaṇa could subsist by resorting to the calling of a Kṣatriya or Vaiśya ; a Brāhmaṇa was forbidden to sell certain things, usury condemned, rates of interest allowed ; III. Censure of illiterate Brāhmaṇa, rules on finding treasure-trove, who are ātatāyins, when they could be killed in self-defence, pāṅktipāvanas, constitution of a pariṣad, rules about ācamana, śauca and purification of various substances ; IV. The constitution of the four castes is based upon birth and the performance of saṁskāras, the duties common to all castes, honouring guests, madhuparka, impurity on birth and death ; V. dependence of women, rules of conduct for a rajasvalā ; VI. usage is transcen- dental dharma, praise of ācāra, rules about answering calls of nature, moral characteristics of a brāhmaṇa and the peculiar characteristics of a śūdra, censure of partaking food at the houses of śūdras, rules of etiquette and good breeding ; VII the four āśramas, and the duties of a student ; VIII. Duties of an householder, honouring guests ; IX. rules for forest hermits ; rules for saṁnyāsins ; XI. six persons who deserve special honour, viz. the priest at the sacrifice, son-in-law, king, paternal and maternal uncles and a snātaka ; order of precedence in serving food, guests, rules about śrāddha, times for it, the brāhmaṇas to be invited at it, rules about agnihotra, upanayana, the proper time, staff, girdle &c. for it; method of begging for almṣ prāyaścitta for those whose upanayana is not performed; XII. rules of conduct for a snātaka; XIII. rules about the beginning of Vedic study, rules about holidays for Vedic studies, rules about falling at the feet of guru and others, guiding principles in precedence as regards respect (learning, wealth, age, relation- ship, avocation, each prior deserving more consideration than each succeeding one), rule of the road; XIV. rules about forbidden and permitted food, rules about the flesh of certain birds and animals; XV. rules of adoption, about excommunication of those who revile the Vedas or perform sacrifice for śūdras and for other sins; XVI. About administration of justice, king as guardian of minors, threefold pramāṇas, viz. documents, witnesses and possession; rules about adverse possession and about king's advisers; qualifications of witnesses; perjury condoned in certain cases; XVII. praise of aurasa son; conflicting views about kṣetraja son, viz. whether he belongs to the begetter or to him on whose wife he is begotten; twelve kinds of sons; partition between brothers, grounds of exclusion from partition, rules of niyoga, rules about grown-up unmarried girl, rules of inheri- tance, king as ultimate heir; XVIII. pratiloma castes such as caṇḍāla, no Vedic studies for śūdras or in their presence; XIX. king's duty to protect and to punish; importance of purohita, XX. about prāyaścittas for various acts unknowingly or knowingly done; XXI. prāyaścitta for adultery by śūdra and others with women of the Brāhmaṇa caste or for cow-killing: XXII. prāyaścitta for eating forbidden food, sacred texts that purify in case of sins; XXIII. penances for Brahmacārin having sexual intercourse, for drinking wine &c.; XXIV. Kṛcchra and Atikṛcchra; XXV. secret penances and penances for lesser sins; XXVI-VII. virtues of prāṇāyāma, Vedic hymns and Gāyatrī as purifiers; XXVIII. praise of women, eulogy on Vedic mantras like Aghamarṣaṇa and of gifts; XXIX. rewards of gifts, brahmacarya, tapas &c. ; XXX. eulogy of dharma, truth and brāhmaṇa.</p>
+<p class="prose" id="p-9-vasishtha-dharmasutra-6">The Vaṣ Dh. S. resembles in several respects the other dharmasūtras described above. It contains almost the same subjects and is similarly composed in prose interspersed with verseṣ The Vaṣ Dh. S. is in style like the <a class="ref" href="../refs/gautama.html" data-source="gautama" data-ref="" title="Gautama Dharmasūtra">Gautamadharmasūtra</a> and has many sūtras identical with or closely resembling those of the latter. Vide. p. 18 above. It has also several sūtras closely corresponding with the sūtras of <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>. Grave doubts have been entertained about the authenticity of the whole of the text of the Vaṣ Dh. S. as the msṣ contain varying numbers of chapters from 6 to 30, and as the text is hopelessly corrupt in several places (e. g. vide note 108 below). The Vaṣ Dh. S. contains many verses which bear the impress of a comparatively late age. Chapters 25–28 are entirely in verse, while there are other chapters (like III. 2–12, VI. 1–13, XI. 20–42) which contain many verses interpcsed between prose passageṣ In this respect <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a>'s work is on a par with <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>'s, in the fourth praśna of which there are chapters entirely consisting of verseṣ It has therefore been argued that the text of <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> was tampered with freely, particularly as regards the chapters at the enḍ But as shown below it will have to be admitted that the interpolations, whatever they may be, were made at a very early perioḍ The <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mitākṣarā</a> quotes Vaṣ by name about 80 times and the quotations are taken from almost every chapter from the first to the last. For example, <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> quotes Vaṣ 27. 1 on <a class="ref" href="../refs/yajnavalkya.html#III.310" data-source="yajnavalkya" data-ref="III.310" title="Yājñavalkya III.310">Yāj. III. 310</a>, Vaṣ 27. 21 on <a class="ref" href="../refs/yajnavalkya.html#III.323" data-source="yajnavalkya" data-ref="III.323" title="Yājñavalkya III.323">Yāj. III. 323</a>, Vaṣ 28. 7 on <a class="ref" href="../refs/yajnavalkya.html#III.297" data-source="yajnavalkya" data-ref="III.297" title="Yājñavalkya III.297">Yāj. III. 297</a>, Vaṣ 28. 18, 19 and 22 on <a class="ref" href="../refs/yajnavalkya.html#III.309" data-source="yajnavalkya" data-ref="III.309" title="Yājñavalkya III.309">Yāj. III. 309</a>. Even <a class="ref" href="../refs/medhatithi.html" data-source="medhatithi" data-ref="" title="Medhātithi">Medhātithi</a> quotes <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> over twenty timeṣ The quotations are mostly taken from the first chapter to the 21st. Only one quotation from the last few chapters (viz. 27. 16) has been found in <a class="ref" href="../refs/medhatithi.html" data-source="medhatithi" data-ref="" title="Medhātithi">Medhātithi</a> (on <a class="ref" href="../refs/manu.html#XI.211" data-source="manu" data-ref="XI.211" title="Manusmṛti XI.211">Manu XI. 211</a>) and that too is not quoted as <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a>'s, but is ascribed to ‘ otherṣ ’ <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a>, who flourished about the first quarter of the 9th century quotes Vaṣ about thirty times in his commentary on the ācāra and vyavahāra sections of <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yāj.</a> These quotations hardly differ in any respect from the text of Dr. Führer's edition and are scattered over almost all chapters from the 1st to the 17th, six quotations being taken from chapters 3 and 17 each. In the prāyaścitta section <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a> quotes Vaṣ even more frequently. Besides several sūtras from the 1st, 4th, 10th and 11th chapters, he quotes here no less than 22 sūtras of the 20th chap. and 9 of the 21st. More- over sūtras 37 and 39 of the 23rd chap. are quoted (on <a class="ref" href="../refs/yajnavalkya.html#III" data-source="yajnavalkya" data-ref="III" title="Yājñavalkya III">Yāj. III</a> 281-282). What is more remarkable is that two verses (2-3) of the 28th chapter are ascribed to <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> and explained in detail (on <a class="ref" href="../refs/yajnavalkya.html#III.256" data-source="yajnavalkya" data-ref="III.256" title="Yājñavalkya III.256">Yāj. III. 256</a>), while Vaṣ 28. 4 is quoted without the author's name. These facts make it certain that the Vaṣ Dh. S. contained in <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a>'s day all the chapters from the first to the 28th and also the 28th. Śaṅkara in his bhāṣya in <a class="ref" href="../refs/brihadaranyaka.html" data-source="brihadaranyaka" data-ref="" title="Bṛhadāraṇyaka Upaniṣad">Br. Up</a>a- niṣad (III. 5. 1) quotes Vaṣ X. 4 and on <a class="ref" href="../refs/brihadaranyaka.html#IV.5.15" data-source="brihadaranyaka" data-ref="IV.5.15" title="Bṛhadāraṇyaka Upaniṣad IV.5.15">Br. Up. IV. 5. 15</a> he H. D.—13 quotes Vaṣ VII. 3. The Vaṣ Dh. S. quotes numerous verses preceded by the words “athāpyudāharanti”, which is the case with <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> also. The word ‘Udāharanti’ or ‘athāpyudāharanti’ occur in Vaṣ about 42 timeṣ In Chap. 14 alone the words ‘api hyatra Prajāpatyān ślokān-udāharanti’ occur thrice viz., once before verses 16–19 (of which verses 16 and 18 are the same as <a class="ref" href="../refs/manu.html#IV.248-49" data-source="manu" data-ref="IV.248-49" title="Manusmṛti IV.248-49">Manu IV. 248–49</a> and are quoted from a Purāṇa in <a class="ref" href="../refs/apastamba.html#I.6.19.13" data-source="apastamba" data-ref="I.6.19.13" title="Āpastamba Dharmasūtra I.6.19.13">Āp. Dh. S. I. 6. 19. 13</a>); again before verses 24–27 of which 24 is the same as <a class="ref" href="../refs/manu.html#V.137" data-source="manu" data-ref="V.137" title="Manusmṛti V.137">Manu V. 137</a> and Bauḍ Dh. S. I. 5. 56); and a third time before Vaṣ 14. 30–32. The words ‘ Mānavam ślokamudāharanti’ occur four times in Vaṣ viz. in 3. 2 (same as <a class="ref" href="../refs/manu.html#II.168" data-source="manu" data-ref="II.168" title="Manusmṛti II.168">Manu II. 168</a> ), in Vaṣ 19. 37 (which is in Indravajrā metre), in Vaṣ 20. 18 (same as <a class="ref" href="../refs/manu.html#11.151" data-source="manu" data-ref="11.151" title="Manusmṛti 11.151">Manu 11. 151</a> with slight variations). In some cases where the word ‘udāharanti’ is used in Vaṣ the verse occurs in Vaṣ, Bauḍ Dh. S. and <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> also. For example, Vaṣ I. 22 = <a class="ref" href="../refs/manu.html#11.180" data-source="manu" data-ref="11.180" title="Manusmṛti 11.180">Manu 11. 180</a> = Bauḍ Dh. S. II. 1. 62; Vaṣ 2.30 = <a class="ref" href="../refs/manu.html#10.91" data-source="manu" data-ref="10.91" title="Manusmṛti 10.91">Manu 10. 91</a> = Bauḍ Dh. S. II. 1. 52; Vaṣ 5. 3 = <a class="ref" href="../refs/manu.html#9.3" data-source="manu" data-ref="9.3" title="Manusmṛti 9.3">Manu 9. 3</a> = Bauḍ Dh. S. II. 2. 46; Vaṣ 11. 27–28 = <a class="ref" href="../refs/manu.html#3.125-26" data-source="manu" data-ref="3.125-26" title="Manusmṛti 3.125-26">Manu 3. 125–26</a> = Bauḍ Dh. S. II. 8. 21–22; Vaṣ 11.25 = <a class="ref" href="../refs/manu.html#3.225" data-source="manu" data-ref="3.225" title="Manusmṛti 3.225">Manu 3. 225</a> = Bauḍ Dh. II. 8. 14 (with slight variation). In <a class="ref" href="../refs/apastamba.html#II.6.13.6" data-source="apastamba" data-ref="II.6.13.6" title="Āpastamba Dharmasūtra II.6.13.6">Āp. Dh. S. II. 6. 13. 6</a> (the verse apramattā rakṣatha &c), Bauḍ Dh. S. II. 2. 36, Vaṣ 17. 9 the same verse occurs preceded by ‘udāharanti’. Some verses, though not introduced with the words ‘athāpyudāharanti’ or with ‘udāharanti’ occur in all three e. g. Vaṣ 3. 5, 6 and 11 are same as <a class="ref" href="../refs/manu.html#12.114" data-source="manu" data-ref="12.114" title="Manusmṛti 12.114">Manu 12. 114</a>, 115 and <a class="ref" href="../refs/manu.html#2.157" data-source="manu" data-ref="2.157" title="Manusmṛti 2.157">Manu 2. 157</a> respectively, and as Bauḍ Dh. I. 1. 10, 12 and 11 respectively. The same verses are sometimes found in three different sūtra workṣ For example, <a class="ref" href="../refs/apastamba.html#II.4.9.13" data-source="apastamba" data-ref="II.4.9.13" title="Āpastamba Dharmasūtra II.4.9.13">Āp. Dh. S. II. 4. 9. 13</a> = Bauḍ Dh. S. II. 7. 22–23 (both works introduce with ‘athāpyudāharanti’) = Vaṣ 6. 20–21 (without āthāpyu. &c ). In many cases <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp. Dh. S.</a> and Vaṣ have great verbal agreement in their sūtras e. g. compare <a class="ref" href="../refs/apastamba.html#I.4.12.8" data-source="apastamba" data-ref="I.4.12.8" title="Āpastamba Dharmasūtra I.4.12.8">Āp. I. 4. 12. 8</a> and Vaṣ I. 7; <a class="ref" href="../refs/apastamba.html#I.5.15.16" data-source="apastamba" data-ref="I.5.15.16" title="Āpastamba Dharmasūtra I.5.15.16">Āp. I. 5. 15. 16</a> with Vaṣ 23. 33; <a class="ref" href="../refs/apastamba.html#I.9.25.1-2" data-source="apastamba" data-ref="I.9.25.1-2" title="Āpastamba Dharmasūtra I.9.25.1-2">Āp. I. 9. 25. 1–2</a>, Gautama 23. 9. 11 with Vaṣ 20. 13; <a class="ref" href="../refs/apastamba.html#II.8.17.22" data-source="apastamba" data-ref="II.8.17.22" title="Āpastamba Dharmasūtra II.8.17.22">Āp. II. 8. 17. 22</a> (on ‘pańktīpāvana’) with Vaṣ 3. 19, <a class="ref" href="../refs/gautama.html#15.28" data-source="gautama" data-ref="15.28" title="Gautama Dharmasūtra 15.28">Gaut. 15. 28</a>, <a class="ref" href="../refs/manu.html#III.185.V" data-source="manu" data-ref="III.185.V" title="Manusmṛti III.185.V">Manu III. 185. V</a>aṣ quotes a verse (gāthā ) from the Nidāna (work) of the Bhāllavins (a Sāmaveda Śākhā ). <sup class="fn-ref"><a href="#fn-9-vasishtha-dharmasutra-2" id="fnref-9-vasishtha-dharmasutra-2">2</a></sup> Compare <a class="ref" href="../refs/apastamba.html#II.6.13.5" data-source="apastamba" data-ref="II.6.13.5" title="Āpastamba Dharmasūtra II.6.13.5">Āp. Dh. S. II. 6. 13. 5</a> (utpādayituḥ putra iti Brāhmaṇam) with Vaṣ 17. 63 (aniyuktāyām-utpanna utpādayituḥ putro bhavati- tyāhuḥ). Vaṣ has many sūtras on several topics very similar in language to Gautama. Compare Vaṣ XI. 16 and 14 with <a class="ref" href="../refs/gautama.html#15.3" data-source="gautama" data-ref="15.3" title="Gautama Dharmasūtra 15.3">Gaut. 15. 3</a> and 5 (on śrāddha); Vaṣ XI. 49–51, 71–73 with <a class="ref" href="../refs/gautama.html#I.6" data-source="gautama" data-ref="I.6" title="Gautama Dharmasūtra I.6">Gaut. I. 6</a>, 12–14; Vaṣ 17. 42–45 with <a class="ref" href="../refs/gautama.html#28.3-8" data-source="gautama" data-ref="28.3-8" title="Gautama Dharmasūtra 28.3-8">Gaut. 28. 3–8</a>; Vaṣ 13. 8 ff with <a class="ref" href="../refs/gautama.html#16.5" data-source="gautama" data-ref="16.5" title="Gautama Dharmasūtra 16.5">Gaut. 16.5</a> ff (on anadhyāya). Chapters VI–IX of Gautama have many sūtras very similar to <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a>’ṣ</p>
+<p class="prose" id="p-9-vasishtha-dharmasutra-7">But the relation between Vaṣ and the <a class="ref" href="../refs/manu.html#i" data-source="manu" data-ref="i" title="Manusmṛti i">Manusmṛti i</a>s most important ; at least 61 verses of the extant <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a> are identical with <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a>’s (except for a word or a letter or two in a few cases). Of these some expressly mention the quotation as ‘Mānavam <sup class="fn-ref"><a href="#fn-9-vasishtha-dharmasutra-3" id="fnref-9-vasishtha-dharmasutra-3">3</a></sup>, or ‘Mānavam ślokam’ (vide above), or use the word ‘udāharanti’ about seventeen times, leaving no doubt as to whether they are quotationṣ Vaṣ IV. 5 and XVI. 30 are in prose but use the very words of the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>-smṛti viz. <a class="ref" href="../refs/manu.html#5.22" data-source="manu" data-ref="5.22" title="Manusmṛti 5.22">Manu 5. 22</a>, 32, 42 and <a class="ref" href="../refs/manu.html#8.68" data-source="manu" data-ref="8.68" title="Manusmṛti 8.68">Manu 8. 68</a> respectively. Some of the verses quoted in Vaṣ contain the word (<a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>) as in IV. 6. There are at least five verses in Vaṣ three pādas of which are the same as in the verses of the extant <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> (compare Vaṣ 3. 59 and M. 5. 123, Vaṣ 6. 43 and M. 12.109, Vaṣ 26. 14 and M. 4. 146, Vaṣ 30. 7 and <a class="ref" href="../refs/manu.html#7.84" data-source="manu" data-ref="7.84" title="Manusmṛti 7.84">Manu 7. 84</a> and six passages that contain half verses that are common to Vaṣ and <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> (Vaṣ 3. 8 and M. III. 128. Vaṣ 6. 11 and M. 4. 52, Vaṣ 8. 8 and M. 3. 103 and Vaṣ 10. 5 and M. 2. 83, Vaṣ 13. 16 (Mānava-śloka) and <a class="ref" href="../refs/manu.html#4.117" data-source="manu" data-ref="4.117" title="Manusmṛti 4.117">Manu 4. 117</a>, Vaṣ 18. 10 (Pārāśavo...tyāhuḥ) and M. 9. 178. Several verses occur without these words being prefixed, but most of them seem to be quotations (e. g. Vaṣ II. 3 which combines <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>. II. 169 and 170, IV. 6 which is <a class="ref" href="../refs/manu.html#5.41" data-source="manu" data-ref="5.41" title="Manusmṛti 5.41">Manu 5. 41</a>, VI. 6 and 8 which is <a class="ref" href="../refs/manu.html#IV.157" data-source="manu" data-ref="IV.157" title="Manusmṛti IV.157">Manu IV. 157</a> and 158). Some of these verses introduced with the words ‘athāpi’ &c. as well as some of those not so introduced are in the regular classical Upajāti, Upendravajrā or Indravajrā (vide. I. 38, X. 20 for verses with athāpi &c. and VI. 9 and 25, X, 17, XVI. 36 for verses without them). Some of the verses are in the ancient Triṣṭubh form (e. g. VI. 3 and 30, VIII. 17, XVII. 71). In one verse (VI. 5) there are twelve letters in the first pāda and eleven in the rest. One quotation with words “athāpi” &c. is in prose (II. 5). There are a few un-Pāṇinean forms like ‘Vivadanti’ in XIV. 47 (vide Pāṇini I. 3. 47). It looks as if the dharma- sūtra once ended with the 24th chapter, where we have an injunction (in sūtra 6) against imparting the dharmasūtra to one who is not a son or pupil. The same sūtra occurs in <a class="ref" href="../refs/baudhayana.html#IV.4.9" data-source="baudhayana" data-ref="IV.4.9" title="Baudhāyana Dharmasūtra IV.4.9">Baudhāyana Dh. S. IV. 4. 9</a> and the succeeding sūtra is the same in both. But the words 'prāyaścitta has been described in the rahasya sections for playing false to the husband' (in Vaṣ V. 4) apparently refer either to chapters 25-28 (which contain rahasya penances ) or to some prototype of those chapters now lost.</p>
+<p class="prose" id="p-9-vasishtha-dharmasutra-8">The Vaṣ Dh. S. quotes largely from the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> and other Vedic Samhitāṣ Among the Brāhmaṇas, the Aitareya and Śatapatha are frequently citeḍ The Vājasaneyaka (Vaṣ 12. 31 and 23. 13) and the Kāṭhaka (Vaṣ 12. 24 and 30. 5) are menti- oned by name. The <a class="ref" href="../refs/taittiriya_ar.html#i" data-source="taittiriya_ar" data-ref="i" title="Taittirīya Āraṇyaka i">Tai. Āraṇyaka i</a>s quoted in Vaṣ 23. 23. The Upaniṣads and Vedānta occur in 22. 9. <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> quotes a gāthā of the Bhāllavins from their Nidāna work about the extent of the home of Brahmanism, which is quoted by Baudhā- yana also (Dh. S. I. 1. 27). He speaks of the aṅgas of the Veda (3. 23 and 13. 7) and gives their number as six (3. 19). Itihāsa and Purāṇa are mentioned in 27. 6. The science of words (grammar), of omens and portents, and of astrology and astronomy (Nakṣatravidyā) are referred to in 10. 20-21. He prohibits the learning of the language of the Mlecchas (in 6. 41). Vaṣ quotes a verse that states that the view holding the aprāmāṇya of the Vedas leads to perdition (12. 41). In Vaṣ II. 8-11 occurs the Vidyāsūkta in four verses that we meet with in the Nirukta (II. 4). <a class="ref" href="../refs/vasishtha.html#c" data-source="vasishtha" data-ref="c" title="Vasiṣṭha Dharmasūtra c">Vasiṣṭha c</a>alls his own work dharmaśāstra (in 24. 6) and probably refers to other works on dharma in the words 'one who studies dharmas' (in 3. 19). The study of dharmaśāstra as a penance for even mortal sins is spoken of in 27. 19. Vaṣ quotes several authors on dharmaśāstra. He quotes a verse from Hārīta (in II. 6) which occurs in <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> also with slight variations (Bauḍ Dh. S. I. 2. 7), though without the author's name. The two halves of this verse are almost the same as the latter halves of <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>. 2. 171-172. Bühler is there- fore not quite accurate when he says without qualification that the verse attributed to Hārīta occurs in <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> (p. XX, S. B. E. vol. XIV). Vaṣ quotes Gautama twice (in 4. 35 and 37) about impurity on death, the first corresponding to Gautama (14. 41), while there is nothing in Gautama to correspond to the 2nḍ Vaṣ quotes a verse (11. 20) which mentions Yama by name 9. <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> Dharmasūtra and embodies the latter's viewṣ Vaṣ (18. 13–15) quotes three ślokas sung by Yama, one of which (14) is the same as <a class="ref" href="../refs/manu.html#4.80" data-source="manu" data-ref="4.80" title="Manusmṛti 4.80">Manu 4. 80</a> and another (15) is very similar to <a class="ref" href="../refs/manu.html#4.81" data-source="manu" data-ref="4.81" title="Manusmṛti 4.81">Manu 4. 81</a>. Another śloka of Yama is quoted by Vaṣ (19. 48) which is almost the same as <a class="ref" href="../refs/manu.html#5.93" data-source="manu" data-ref="5.93" title="Manusmṛti 5.93">Manu 5. 93</a>. From these facts and others Bühler draws the conclusion (S. B. E. vol. XIV, p. XX) that these verses were taken from the Mānavadharmasūtra, which occupied the same position in <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a>'s day as the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a> does at present. I demur to this conclusion, which will be discussed later on in detail (under <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a>). Vaṣ (14. 30–32) quotes ślokas of Prajāpati, the first of which mentions Yama by name<sup class="fn-ref"><a href="#fn-9-vasishtha-dharmasutra-4" id="fnref-9-vasishtha-dharmasutra-4">4</a></sup>. Vaṣ 14. 16–19 and 24–27 are quoted as ślokas of Prajāpati, three of which (14. 16, 18 and 24) are practically the same as <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>. 4. 248, 249 and 5. 127. Vaṣ 14. 19 contains a <em>pāda</em> which occurs in <a class="ref" href="../refs/manu.html#4.212.I" data-source="manu" data-ref="4.212.I" title="Manusmṛti 4.212.I">Manu 4. 212. I</a>t is remarkable that the Vaṣ Dh. S. cites <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> himself with great reverence (as <em>bhagavān</em>) in 2. 50 (about the rate of interest), 24. 5 (about Kṛcchra penance), 30. 11. In numerous places the Vaṣ Dh. S. either refers to <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> by name or quotes the views of <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> (under the form ‘ <em>iti Mānavam</em> ’) or a śloka of <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> (with words ‘ Mānavam <em>ślokam</em> ’). All these passages have an important bearing on the age of the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a> and on the supposed existence of a Mānavadharmasūtra. They therefore deserve to be carefully examineḍ Vaṣ I. 17 is in prose (about local, family or caste usages) and summarises the views of <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>. The absence of the word ‘ <em>iti</em> ’ before abravin ‘ <em><a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>ḥ</em> ’ and the form of the sūtra itself clearly establish that Vaṣ is not directly quoting a sūtra of <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>. That sūtra is only a summary of our <a class="ref" href="../refs/manu.html#I.118.V" data-source="manu" data-ref="I.118.V" title="Manusmṛti I.118.V">Manu I. 118. V</a>aṣ 3. 2 (which is preceded by the words ‘ Mānavaṃ ślokam ’ is <a class="ref" href="../refs/manu.html#II.168" data-source="manu" data-ref="II.168" title="Manusmṛti II.168">Manu II. 168</a>. And so are Vaṣ 13. 16, 20. 18, which are <a class="ref" href="../refs/manu.html#4.117" data-source="manu" data-ref="4.117" title="Manusmṛti 4.117">Manu 4. 117</a> and 11. 151 (with very slight variations). That the latter existed in <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a>’s text is vouched for by <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> (p. 1075). Vaṣ 4. 5 is in prose and cites the view that animals may be sacrificed only for worshipping and honouring the manes, deities and guests <sup class="fn-ref"><a href="#fn-9-vasishtha-dharmasutra-5" id="fnref-9-vasishtha-dharmasutra-5">5</a></sup>. There is hardly anything to show that it is a direct quotation from <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> and not a summary of <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>’s viewṣ The sūtra briefly summaries the views that we find expressed in our <a class="ref" href="../refs/manu.html#5.22" data-source="manu" data-ref="5.22" title="Manusmṛti 5.22">Manu 5. 22</a>, 32, 41 and 42 (the words of 42 ‘eṣvartheṣu paśuṁ hiṁsan’ are interesting and bear a close resemblance to ‘paśuṁ hiṁsyād’ in Vaṣ). That sūtra is followed by a verse which is the same as <a class="ref" href="../refs/manu.html#5.41.I" data-source="manu" data-ref="5.41.I" title="Manusmṛti 5.41.I">Manu 5. 41. I</a>t is to be noted that the same verse occurs in the dharmasūtra of <a class="ref" href="../refs/vishnu_smriti.html#51.64" data-source="vishnu_smriti" data-ref="51.64" title="Viṣṇu Smṛti 51.64">Viṣṇu (51. 64)</a> which reads ‘ nānyatretī kathamcana ’ for ‘nānyathety bravin <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>ḥ’. This change appears to have been purposely made to keep up the impression that the <a class="ref" href="../refs/vishnu_dh.html" data-source="vishnu_dh" data-ref="" title="Viṣṇu Dharmasūtra">Viṣṇu Dh. S.</a> emanated from <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> himself and so could not have borrowed from a human author. Vaṣ 4. 7 is very similar to <a class="ref" href="../refs/manu.html#5.48" data-source="manu" data-ref="5.48" title="Manusmṛti 5.48">Manu 5. 48</a>. Bühler (S. B. E. Vol. 25, P. XXXI) is wrong in taking Vaṣ 4. 8 as a quotation from the Mānavadharmasūtra. There is nothing to show that it is so takeṇ It is more probably a quotation from or a summary of a Brāhmaṇa passage (compare a quotation in <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> on Yaj. 1. 109, which is similar). Vas 23. 43 (where <a class="ref" href="../refs/manu.html#i" data-source="manu" data-ref="i" title="Manusmṛti i">Manu i</a>s referred to as prescribing an easy penance called Śiśukṛcchra for children and old men) corresponds more or less with <a class="ref" href="../refs/manu.html#11.211" data-source="manu" data-ref="11.211" title="Manusmṛti 11.211">Manu 11. 211</a> and 219 and Vaṣ 26. 8 has evidently <a class="ref" href="../refs/manu.html#11.260" data-source="manu" data-ref="11.260" title="Manusmṛti 11.260">Manu 11. 260</a> in view. There are only two places in <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> where the name of <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> occurs for which it is not possible to point out a corresponding verse in the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a>. They are Vaṣ 12. 16 and 19. 37. The latter is cited as a Mānava- śloka and is in the Upajāti metre. <sup class="fn-ref"><a href="#fn-9-vasishtha-dharmasutra-6" id="fnref-9-vasishtha-dharmasutra-6">6</a></sup> Because this is not found in our <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>, Bühler and other Western scholars seem to think that the verse is taken from the Mānavadharmasūtra which once existed in mixed prose and verse and is now lost. But, as will be shown elsewhere, this hypothesis is based, to say the least, on very slender foundationṣ Besides these two that are not found in our <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>, there are about forty verses that are common to the Vaṣ Dh. S. and the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a> and about a dozen verses which, though not strictly identical, are more or less similar. There are several prose sūtras of Vaṣ which correspond to the verses of <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> almost word for worḍ<sup class="fn-ref"><a href="#fn-9-vasishtha-dharmasutra-7" id="fnref-9-vasishtha-dharmasutra-7">7</a></sup> The hypothesis that commends itself to me is that Vaṣ contains borrowings from the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a> or its purer ancient original in verse.</p>
+<p class="prose" id="p-9-vasishtha-dharmasutra-9">In the words ‘Śrāmaṇakenāgnimādhāya’ (Vaṣ 9. 10), the sūtra of Vikhanas seems to be referred to. Gautama (Dh. S. 3. 26 ) contains the same wordṣ <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a>'s 22nd chap. is the same as Gautama's 19th and <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>'s tenth in the 3rd praśna and seems to have been borrowed from Gautama. <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> refers to the views of others in the words 'eke' or 'anye' (Vaṣ 1. 12, 13, 25 ; 4. 10 ; 17. 66 ; 20. 2 ). Dr. Jolly (S. B. E. vol. VII, p. XVIII ) thinks that Vaṣ 28. 10-15 and 18-22 are borrowed from the <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharmasūtra chap. LVI and LXXXVII or its original the Kāṭhakadharmasūtra. Dr. Jolly is not right with regard to both the placeṣ Bühler has already pointed out his mistake as to the second passage (S. B. E. vol. XIV p. XXII ). The verses in Vaṣ 28. 10-15 occur in several smṛtis (vide Śaṅkhasmṛti, 10th chap. in Jīvananda's eḍ part II. pp. 356-357 for the same verses ). <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a>, chap. 28, verses 1-6 occur in Atriṣmṛti VI. 1-6 ( Ānaṇ collection of Smṛtis) with slight variations of which the first five are quoted as Atri's by the Gṛhastharatnākara p. 245 and verse 6 ('agnerepatyam' occurs in <a class="ref" href="../refs/padma_purana.html" data-source="padma_purana" data-ref="" title="Padmapurāṇa">Padmapurāṇa</a>, <a class="ref" href="../refs/mb_vanaparva.html#200.128" data-source="mb_vanaparva" data-ref="200.128" title="Vanaparva 200.128">Vanaparva 200. 128</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva#P03_U12_A200_S128" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> (Ch. eḍ), Saṁvarta (77) Inscriptionṣ Vide <a class="ref" href="../refs/hodh.html#Vol. II" data-source="hodh" data-ref="Vol. II" title="History of Dharmaśāstra Vol. II">H. of Dh. Vol. II</a>. p. 1272, No. 5 (in some cases the third pāda of ‘Agnerepatyam’ is different). Verses 18-22 of Vaṣ 28 occur in the Atri Smṛti VI. 7-11 and in <a class="ref" href="../refs/vishnu_dh.html" data-source="vishnu_dh" data-ref="" title="Viṣṇu Dharmasūtra">Viṣṇu Dh. S.</a>, chap. 87 (last two verses are the same as Vaṣ 28. 21–22 ) and <a class="ref" href="../refs/vishnu_dh.html#90.10" data-source="vishnu_dh" data-ref="90.10" title="Viṣṇu Dharmasūtra 90.10">Viṣṇu Dh. S. 90. 10</a> (in prose) is nearly the same as Vaṣ 28. 18-19. Besides Vaṣ 28. 11 occurs in Bauḍ Dh. S. IV. 3. 7. Hence it is hardly proper for any scholar to make the dogmatic assertion that one particular smṛti must have borrowed from any other. The rather very corrupt passage in <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> (16. 21-23 <sup class="fn-ref"><a href="#fn-9-vasishtha-dharmasutra-8" id="fnref-9-vasishtha-dharmasutra-8">8</a></sup>) very closely resembles a passage of Śaṅkha, which is cited by <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a> on Yaj. I. 305 and by the Kṛtya-kalpataru.</p>
+<p class="prose" id="p-9-vasishtha-dharmasutra-10">Bühler is of opinion that the home of the school to which the Vaṣ Dh. S. belonged lay to the north of the Narmadā and the Vindhya (S. B. E. vol. XIV p. XVI). When it is extremely problematical whether the Vaṣ Dh. S. was the product of a school, it is idle to speculate as to the home of the Vaṣ Dh. S. Bühler’s is no more than a mere conjecture and it is better to admit that we know nothing positive at present on the point.</p>
+<p class="prose" id="p-9-vasishtha-dharmasutra-11">The earliest work to refer to <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> as an authority on dharma is our <a class="ref" href="../refs/manu.html#8.140" data-source="manu" data-ref="8.140" title="Manusmṛti 8.140">Manu (8. 140)</a>, saying that Vaṣ allowed 1/80th of the principal as interest per month. This appears to refer to the rule in Vaṣ 2. 50. We saw above that Vaṣ borrows from the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a>, which in its turn quotes a rule of <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a>. The explanation of this is twofolḍ Both the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a> and Vaṣ have received later additions and further it is possible that the present Vaṣ Dh. S. is the work of some one who had received the teachings of Vaṣ through a succession of teachers and discipleṣ <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yāj.</a> mentions (1.4) <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> as a writer on dharma. The Tantravārtika as seen above (note 55) remarks that the Vaṣ Dh. S. was studied by Ṛgvedinṣ The same work when speaking of works on dharma puts <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>, Gautama and <a class="ref" href="../refs/vasishtha.html#i" data-source="vasishtha" data-ref="i" title="Vasiṣṭha Dharmasūtra i">Vasiṣṭha i</a>n the forefront.<sup class="fn-ref"><a href="#fn-9-vasishtha-dharmasutra-8" id="fnref-9-vasishtha-dharmasutra-8">8</a></sup> It appears that Śabara on P. M. S. VI. 1. 10 quotes or summarizes Vaṣ I.32 and 36 when he says ‘Vikrayoṣpi śrūyate, śatamadhiratham duhitṛmate dadyāt, ārṣe gomithunamiti’. <a class="ref" href="../refs/vasishtha.html#I.32" data-source="vasishtha" data-ref="I.32" title="Vasiṣṭha Dharmasūtra I.32">Vasiṣṭha I.32</a> and 36 are ‘gomithunena cārṣaḥ tasmādduhitṛmate’dhiratham śatam deyam-itiha krayo vijñāyate.’ The words 'tasmāḍ..deyam' do occur in <a class="ref" href="../refs/apastamba.html#II.6.13.11" data-source="apastamba" data-ref="II.6.13.11" title="Āpastamba Dharmasūtra II.6.13.11">Āp. Dh. S. II. 6. 13. 11</a> but not in the definitions of the forms of marriage in Vaṣ The words 'adhiratham śatam duhitṛmate' occur in Sāṇ Gr. I. 8. 36, but not in connection with any form of marriage (both do not enumerate the forms of marriage). <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a>, <a class="ref" href="../refs/medhatithi.html" data-source="medhatithi" data-ref="" title="Medhātithi">Medhātithi</a> and other early commentators largely quote from Vaṣ The verse 'agnerapatyam' (Vaṣ 28.16) occurs in the Ragim copperplate of Tivaradeva of the last quarter of the 8th century (Fleet's Gupta Inscription No. 81.). Therefore the existence of a work of <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> on dharma at least in the first centuries of the Christian era is vouched for with certainty and the authenticity of its text is supported by eminent writers from the 7th century downwardṣ <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> quotes passages from the Bhaviṣyapurāṇa which have in view the present text of Vaṣ <sup class="fn-ref"><a href="#fn-9-vasishtha-dharmasutra-9" id="fnref-9-vasishtha-dharmasutra-9">9</a></sup> Some of the views held by <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> are very ancient. For example, he speaks of the twelve secondary sons, assigns a very inferior position to the Dattaka son (17th chapter), allows niyoga (17. 56 ff) and the remarriage of child widows (17. 74). Like Āpastamba he mentions only six forms of marriage (1. 28–29), brāhma, daiva, ārṣa, gāndharva, kṣātra and mānuṣa. In some respects his views are different from those of early writers like Gautama and <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>. He prohibits the marriage of a Brāhmaṇa with a śūdra woman (I. 25–26 ). Vide Bauḍ Dh. S. I. 8. 2 for the contrary view. He elaborates rules of adoption (15th chapter) which are not found in <a class="ref" href="../refs/gautama.html" data-source="gautama" data-ref="" title="Gautama Dharmasūtra">Gaut.</a> or Bauḍ or Āpastamba. He speaks of documents as one of the three means of proof (Vaṣ 16. 10–15), while Gautama, Āpa-stamba and <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> are silent on the point, though in Gautama (13. 4) there appears to be a reference to documentṣ Taking all these things into consideration it may be said that <a class="ref" href="../refs/vasishtha.html#i" data-source="vasishtha" data-ref="i" title="Vasiṣṭha Dharmasūtra i">Vasiṣṭha i</a>s later than Gautama, Āpastamba and <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>, but much earlier than the beginnings of the Christian era and may tentatively be assigned to the period between 300–100 B. C. It has been asserted by an eminent authority (Cambridge History of India vol. I, p. 249 ) that <a class="ref" href="../refs/vasishtha.html#18.4" data-source="vasishtha" data-ref="18.4" title="Vasiṣṭha Dharmasūtra 18.4">Vasiṣṭha 18. 4</a> (vaiśyena brāhmaṇyām-utpanno Rāmako bhavatītyāhuḥ) probably contains a reference to the Romanṣ This assumption is gratuitous and does not deserve serious consideratioṇ The reading Romaka (on which the learned writer relies) is not supported by the best msṣ and it is most hazardous to seize with avidity on a variant reading and to build an imposing structure of chronology thereoṇ The offspring of a Vaiśya male from a brāhmaṇa woman is designated Rāmaka by <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a>, while Kṛta (4. 15) and Bauḍ Dh. S. (I. 9. 7) calls such an offspring Vaidehaka; so Rāmaka has as much to do with the Romans as with Rameseṣ In the nibandhas there are several quotations ascribed to <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> which are not found in the printed Dharmasūtra. For example, Haradatta on <a class="ref" href="../refs/gautama.html#22.18" data-source="gautama" data-ref="22.18" title="Gautama Dharmasūtra 22.18">Gaut. (22. 18)</a> quotes a verse in the Upajāti metre which is not found in the present text <sup class="fn-ref"><a href="#fn-9-vasishtha-dharmasutra-10" id="fnref-9-vasishtha-dharmasutra-10">10</a></sup></p>
+<p class="prose" id="p-9-vasishtha-dharmasutra-12">The author of the extant Vaṣ Dh. S. appears to have been eclectic. His sūtra contains dozens of verses that occur in the extant <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a>. Similarly, many of the verses quoted by him in the words ‘athāpyudāharaṇti’ or the word ‘udāharaṇti’ occur also in the <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp. Dh. S.</a> and more often in Bauḍ Dh. S., which latter just like Vaṣ employs the words ‘athāpyudāharaṇti’ over forty timeṣ Towards the end of the present text (edition of Vaṣ, chap. 30. 9-10) occurs the verse ‘yā dustyajā’ &c., which is found in <a class="ref" href="../refs/mb_vanaparva.html#2.36" data-source="mb_vanaparva" data-ref="2.36" title="Vanaparva 2.36">Vanaparva 2. 36</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva#P03_U01_A002_S036" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>, <a class="ref" href="../refs/mb_shantiparva.html#174" data-source="mb_shantiparva" data-ref="174" title="Śāntiparva 174">Śānti-parva 174</a><a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>, 55 and 276. 12 and Anuśāsana 7. 21. The last sūtra (of <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha Dh. S.</a>) contains an obeisance to <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> who is described as the son of Mitrāvaruņa from Urvaśī and as Śatayātu (who possessed hundred magic spells or against whom a hundred magic speels were employed). <a class="ref" href="../refs/rigveda.html#VII.33.11" data-source="rigveda" data-ref="VII.33.11" title="Ṛgveda VII.33.11">Rg. VII. 33. 11</a> refers to the birth of <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> from Urvaśī and calls him Maitrāvaruṇa and in <a class="ref" href="../refs/rigveda.html#VII.18.21" data-source="rigveda" data-ref="VII.18.21" title="Ṛgveda VII.18.21">Rg. VII. 18. 21</a> we have the half verse ‘Pra ye gṛhāda- madus-tvayā <a class="ref" href="../refs/parasara.html" data-source="parasara" data-ref="" title="Parāśara">Parāśara</a>ḥ Śatayātur-<a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a>ḥ’. Sāyana takes ‘Śatayātuḥ’ as meant for Śakti, son of <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a>.</p>
+<p class="prose" id="p-9-vasishtha-dharmasutra-13">If we rely on the number of verses common to <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> and <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> or on references to ‘Mānavam’ (Vaṣ IV. 5.) or ‘Mānava-śloka’ 13. 16, 20. 18 or simply ‘<a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>’ (Vaṣ I. 17, IV. 6, XI. 23, XII. 16) and also consider the very large number of verses and passages common to the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a>, Vaṣ Dh. S. and <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp. Dh. S.</a>, it would have to be held that the extant Vaṣ Dh. S. is a re-hash of the <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp. Dh. S.</a>, Bauḍ Dh. S. and <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> (as it existed before it was remodelled about the beginning of the Christian era or a century or two earlier). It would not be irrelevant, if most of the passages from <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> that are based on or refer to Vedic works are referred to here and examineḍ First, as to the Ṛgvedic Literature. Vaṣ IV. 2 mentions Purusasūkta (<a class="ref" href="../refs/rigveda.html#X.90" data-source="rigveda" data-ref="X.90" title="Ṛgveda X.90">Ṛg. X. 90</a>), Vaṣ 17. 3-4 quote portions of <a class="ref" href="../refs/rigveda.html#I.21.5" data-source="rigveda" data-ref="I.21.5" title="Ṛgveda I.21.5">Ṛg. I. 21. 5</a> and <a class="ref" href="../refs/rigveda.html#V.4.10" data-source="rigveda" data-ref="V.4.10" title="Ṛgveda V.4.10">Ṛg. V. 4. 10</a> (last pāda, Vaṣ 17. 16. (praticīnam gacchāti putratvam) refers to <a class="ref" href="../refs/rigveda.html#I.124.7" data-source="rigveda" data-ref="I.124.7" title="Ṛgveda I.124.7">Ṛg. I. 124. 7</a> and Nirukta 3. 5; Vaṣ 15. 20 refers to making a person bathe with water from a holy lake or stream with the Vedic verses beginning with ‘Āpo hi ṣṭhā’ (<a class="ref" href="../refs/rigveda.html#X.9.1" data-source="rigveda" data-ref="X.9.1" title="Ṛgveda X.9.1">Ṛg. X. 9. 1</a> ff); Vaṣ 17. 1-2 quote from <a class="ref" href="../refs/aitareya_br.html" data-source="aitareya_br" data-ref="" title="Aitareya Brāhmaṇa">Ait. Br.</a> (adhyāya 33. 1) and Vaṣ 17. 31-35 refer to the story of Śunaḥśepa (in <a class="ref" href="../refs/aitareya_br.html#33.2-6" data-source="aitareya_br" data-ref="33.2-6" title="Aitareya Brāhmaṇa 33.2-6">Ait. Br. 33. 2-6</a>). As to the <a class="ref" href="../refs/taittiriya_s.html" data-source="taittiriya_s" data-ref="" title="Taittirīya Saṃhitā">Tai. S.</a>, Vaṣ 5. 8 quotes a long passage from <a class="ref" href="../refs/taittiriya_s.html#II.5.1.1-6" data-source="taittiriya_s" data-ref="II.5.1.1-6" title="Taittirīya Saṃhitā II.5.1.1-6">Tai. S. II. 5. 1. 1-6</a> (the transfer of Indra's sin of killing Tvaṣṭra <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a> to women); Vaṣ 11. 48 3. 10. 5 (for the theory of three inherited obligations of brāhmaṇas which is also mentioned in <a class="ref" href="../refs/shatapatha.html" data-source="shatapatha" data-ref="" title="Śatapatha Brāhmaṇa">Śatapatha Br.</a> ); Vaṣ I. 37 quotes Mai. S. I. 10. 11 (‘anṛtam vā eṣā karoti yā patyuḥ kṛtā satyathānyaīṣ-carati’ &c) which also occurs in Kāthaka saṃhitā, Sthanaka 36. 5. The Kāthaka is mentioned by name twice by Vaṣ (in 12. 24 and 30. 5) and the Vājasane-yaka (meaning <a class="ref" href="../refs/shatapatha.html" data-source="shatapatha" data-ref="" title="Śatapatha Brāhmaṇa">Śat. Br.</a>) is mentioned thrice (Vaṣ 12. 31, 14. 46 and 23. 13 );<sup class="fn-ref"><a href="#fn-9-vasishtha-dharmasutra-11" id="fnref-9-vasishtha-dharmasutra-11">11</a></sup>. Vaṣ 2. 34 quotes Vāj. saṃhitā (XII. 71); Vaṣ 18. 17 quotes the words ‘nāgnim citvā rāmām upeyāt’ from the Kāthaka and in 18. 18 explains the meaning of Rāmā, which appears to be taken from the Nirukta XII. 13. Among the Brāhmaṇa works the <a class="ref" href="../refs/shatapatha.html#i" data-source="shatapatha" data-ref="i" title="Śatapatha Brāhmaṇa i">Śatapatha Br. i</a>s the one that is often quoted; Vaṣ I. 45 quotes <a class="ref" href="../refs/shatapatha.html#V.4.2.3" data-source="shatapatha" data-ref="V.4.2.3" title="Śatapatha Brāhmaṇa V.4.2.3">Śat. Br. V. 4. 2. 3</a> (‘brāhmaṇo vedam-ādhyam’ &c), Vaṣ 14. 46 refers to <a class="ref" href="../refs/shatapatha.html#III.1.2.21" data-source="shatapatha" data-ref="III.1.2.21" title="Śatapatha Brāhmaṇa III.1.2.21">Śat. Br. III. 1. 2. 21</a>; Vaṣ 19. 4 (vijñāyate brahmapurohitam rāṣṭram-ṛdhnotīti), which is similar to <a class="ref" href="../refs/gautama.html#XI.13-14" data-source="gautama" data-ref="XI.13-14" title="Gautama Dharmasūtra XI.13-14">Gaut. Dh. S. XI. 13-14</a> and is based on <a class="ref" href="../refs/shatapatha.html#V.4.4.5" data-source="shatapatha" data-ref="V.4.4.5" title="Śatapatha Brāhmaṇa V.4.4.5">Śat. Br. V. 4. 4. 5</a>; Vaṣ 30. 3 ‘Agnir-vai brāhmaṇa iti śruteḥ’ (this is <a class="ref" href="../refs/shatapatha.html#I.4.2.2" data-source="shatapatha" data-ref="I.4.2.2" title="Śatapatha Brāhmaṇa I.4.2.2">Śat. Br. I. 4. 2. 2</a>); ‘Vaṣ 23. 23 mentions the mantra beginning with ‘Agniśca mā manyuśca’ from <a class="ref" href="../refs/taittiriya_ar.html#X.24.1" data-source="taittiriya_ar" data-ref="X.24.1" title="Taittirīya Āraṇyaka X.24.1">Tai. Ār. X. 24. 1</a>; Vaṣ XI. 13 quotes Kathopanisad I. 7 (‘Vaiśvānarah praviśatyatithir-brāhmaṇo gṛhān’).</p>
+<p class="prose" id="p-9-vasishtha-dharmasutra-14">I might have omitted through oversight a few vedic passageṣ But those examined above show that passages from the Saṁhitās and Brāhmaṇas of Vedas other than the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> and its Brāhmaṇas outnumber those from the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> and its Brāhmaṇaṣ Then the question naturally arises, why was it adopted by Ṛgvedins as their Dharmasūtra (as stated by Kumārila). The answer is obviouṣ <a class="ref" href="../refs/vasishtha.html#i" data-source="vasishtha" data-ref="i" title="Vasiṣṭha Dharmasūtra i">Vasiṣṭha i</a>s mentioned by name in the Dharmasūtra several times (vide above). The sūtra does rely on the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> and its Brāhmaṇa in a few passageṣ <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a>'s is the greatest and most famous name among the ancient sages of the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a>. The whole of the 7th maṇḍala contains 104 sūktas out of 1028 in the whole of the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a>, is ascribed to <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> (Maitrāvaruṇī). Maṇḍalas I, IX and X have more sūktas than maṇḍala VII, but every one of the three maṇḍalas is held to have been composed by several sages (and not by one for each of them). One aspect of the <a class="ref" href="../refs/vasishtha.html#vi" data-source="vasishtha" data-ref="vi" title="Vasiṣṭha Dharmasūtra vi">Vasiṣṭha Dh. S. vi</a>z. that different msṣ of it state that it ends with different adhyāyas is very significant. If it had been from the beginning a sūtra of the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a>, then its text would have been at least as well preserved as the text of such gṛhya or dharma sūtras, as those of Āśvalāyana and Āpa- stamba. Besides, there is one remarkable circumstance. The Āśv. gr. (II. 6) which is affiliated to the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛg.</a> names and briefly defines eight forms of marriage viz. Brāhma, Daiva, Prājāpatya, Ārṣa, Gāndharva, Āsura, Paiśāca and Rākṣasa. The Śānkhāyana-gṛhya (I. 12-14) only describes the religious part of the marriage ceremony and altogether omits the mention of eight forms of marriage and their definitionṣ So does the Kauśītaka-gṛhya (I. 8). The <a class="ref" href="../refs/gautama.html#IV.4-11" data-source="gautama" data-ref="IV.4-11" title="Gautama Dharmasūtra IV.4-11">Gaut. Dh. S. IV. 4-11</a>, Bauḍ Dh. S. I. 11. 1-9, <a class="ref" href="../refs/manu.html#III" data-source="manu" data-ref="III" title="Manusmṛti III">Manu III</a> 21 and 27-34, <a class="ref" href="../refs/kautilya.html#III.2.1-9" data-source="kautilya" data-ref="III.2.1-9" title="Kauṭilya Arthaśāstra III.2.1-9">Kauṭilya III. 2. 1-9</a> name and define the same eight forms of marriage, as Āśv. Gr. doeṣ But <a class="ref" href="../refs/vasishtha.html#I.28-36" data-source="vasishtha" data-ref="I.28-36" title="Vasiṣṭha Dharmasūtra I.28-36">Vasiṣṭha (I. 28-36)</a> mentions and defines only six forms of marriage viz. Brāhma, Daiva, Ārṣa, Gāndharva, kṣātra and Mānuṣa. In this he seems to follow <a class="ref" href="../refs/apastamba.html#II.5.11" data-source="apastamba" data-ref="II.5.11" title="Āpastamba Dharmasūtra II.5.11">Āp. Dh. S. II. 5. 11</a>, 17-20-II. 5. 12. 1-2). If Vaṣ Dh. S. had been from the first affiliated to the <a class="ref" href="../refs/rigveda.html#i" data-source="rigveda" data-ref="i" title="Ṛgveda i">Ṛgveda i</a>t should have either treated the subject in the same way as Āśvalāyana or followed the Āśv. gr. and enumerated eight forms or should have been silent about the several forms of marriage (as Śāṅk. and Kauś. gr. are). This circumstance very much strengthens the theory that Vaṣ Dh. S. is eclectic and therefore followed <a class="ref" href="../refs/apastamba.html#i" data-source="apastamba" data-ref="i" title="Āpastamba Dharmasūtra i">Āp. Dh. S. i</a>n the number of forms of marriage. There is a further circumstance. Vaṣ Dh. S. differs from Āśv. Gr. not only in the number of the forms of marriage but also in the nomenclature. His Kṣātra is the same as Rākṣasa and his Mānuṣa is the same as Āsura. These two terms were probably borrowed by <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> from Hārita-Dharmasūtra (vide Viramitrodaya, Saṃskāra prakāśa, p. 84). As <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> says (III, 34), the Paiśāca form (in which a man has sexual intercourse secretly while the woman is asleep or intoxicated or unconscious, is the worst and most sinful forṃ <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> omitted it and Prājāpatya was probably going out of vogue. Therefore, these two were omitted by <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a>. The Āsura and the Rākṣasa are declared by Bauḍ Dh. S. I 11. 12 to be in accordance with the characterstic conduct of Kṣatriyas viz. they rely principally on force either of wealth or of arms (‘atrāpi sasthāṣaptamau Kṣātra-dharmānugatau tat-pratyāyatvāt-kṣatrasya). Therefore, the Rākṣasa form which consists mainly of carrying away a girl by force (<a class="ref" href="../refs/manu.html#3.33" data-source="manu" data-ref="3.33" title="Manusmṛti 3.33">Manu 3. 33</a> prasahyā kanyā-haraṇam) is called kṣātra by Vaṣ <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> might have been moved by such sentiments as are expressed by Devapāla on Kāṭhakagṛhya XV ‘prasahyāpahārād-rākṣaso vivāhaḥ, tatra kim prakārābhīdhānena, evamasaṃvijñātopagamāt Paiśācopi prakāravacanam nārhati pāpatvāt’. <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> (in 8. 165, 168 declares that all transactions brought about by force or fraud should be held invalid (akṛta). There are also other points on which Vaṣ differs from all three gṛhyasūtras of the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> or from Śāṅ. Gr. and Kauṣ Gr. On even such a simple matter as the age of a Brāhmaṇa boy at Upanayana, Vaṣ differs from all three. They all agree that the Upanayana of a Brāhmaṇa boy may be performed from the 8th year to the 16th (Vaṣ XI. 49 and 71, Āśv. Gr. I. 19. 1–2 and 5, Śāṅ. Gr. II. I. 1, 3 and 6, Kauṣ Gr. II. I. 2, 5), they differ on the most commendable year for it. Vaṣ (XI. 49) commends the eighth year from conception, Āśv. the eighth year from birth or conception (I. 19. 1, 2), Śāṅ. Gr. (II. 1. 1 and 3) commends either the 8th year or 10th year from conception and the Kauṣ Gr. does the same. So far as I know no other Gr. or Dh. S. gives an option between the 8th or 10th year as the most commendable year for Upanayana. <a class="ref" href="../refs/gautama.html#I.6, 8" data-source="gautama" data-ref="I.6, 8" title="Gautama Dharmasūtra I.6, 8">Gaut. (I. 6, 8)</a>, <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> Dh. (I. 1. 19), Bauḍ Dh. (I. 2. 8), <a class="ref" href="../refs/manu.html#II.36" data-source="manu" data-ref="II.36" title="Manusmṛti II.36">Manu (II. 36 )</a> prescribe as most favoured the 8th year from conceptioṇ It follows that Vaṣ did not agree with any of the three schools of Ṛgvedins, viz. Āśvalāyana, Śāṅkhāyana and Kauṣītaka and struck an independent course and his work on Dharma was later on affiliated to the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a>, when it became a fashion to have a complete set of Kalpasūtras (in three parts ) for each Veda or its recensionṣ</p>
+<p class="prose" id="p-9-vasishtha-dharmasutra-15">The above mentioned parallelisms and quotations and their extent are more than enough to lead to the conclusion that <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a>’s Dh. S. was originally an eclectic work of an indepen- dent character and that it did not at first attach itself to the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a>.</p>
+<p class="prose" id="p-9-vasishtha-dharmasutra-16">Dr. Ram Gopal in his work (on pp. 59-60) does not agree with my conclusion and, though he has to admit (p. 59) that <a class="ref" href="../refs/vasishtha.html#i" data-source="vasishtha" data-ref="i" title="Vasiṣṭha Dharmasūtra i">Vasiṣṭha Dh. S. i</a>s not known to have formed part of a Ṛgvedic Kalpa, he holds (p. 60) on the ground of close agreement of Vaṣ with the three gṛhyasūtras of Śāṇ, Āśv. and Kauṣ on the topics of upanayana, arādhyāya, snātaka and five Mahāyajñas that <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a>’s work was from the first affiliated to the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a>. In support of his theory he draws attention on p. 67 (note 31) to twelve passages from Śānk. Gr., five from Āśv. Gr. and five from Kaus Gr. (in all 22). I do not want to enter upon a lengthy discussioṇ If about 75 passages quoted from <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> and numerous passages quoted with ‘udāharanti,’ the presence of chapters on adoption, vyavahāra, inheritance, partition, rājadharma and prāyaścittas, which are not shown to have been included in a Vedic Kalpa of the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> do not induce a writer to admit the independent origin of Vaṣ there is no use in arguing with hiṃ It is, however, necessary to show clearly what value should be attached to his argumentṣ His contention briefly put is that the 22 passages he cites from Śāṇ Āśv. and Kauṣ gṛhya very closely agree with Vaṣ Dh. passages and therefore Vaṣ must be held to be affiliated to the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> from the beginning. He cites Vaṣ IV. 6 as equal to Śāṇ G. S. II. 16. 1 (viz. the verse ‘madhuparke ca etc.). But this verse is <a class="ref" href="../refs/manu.html#V.41" data-source="manu" data-ref="V.41" title="Manusmṛti V.41">Manu V. 41</a> and both Vaṣ and Śāṇ might have borrowed it from <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> (and what is most important <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>’s name occurs in the verse itself). Dr. Ram Gopal cites Vaṣ VI: 21 (āhitāgniranad- vāṁśca &c) as equal to Śāṇ II. 16. 5. Therefore he concludes that Vaṣ is indebted to Śāṇ It is very fine research indeeḍ There are two verses ‘Aṣṭau grāsā’ &c. and ‘āhi- &c’ in Vaṣ VI. 20-21. Both of these are cited in Bauḍ Dh. S. II. 7. 22-23 and <a class="ref" href="../refs/apastamba.html#II.4.9.13" data-source="apastamba" data-ref="II.4.9.13" title="Āpastamba Dharmasūtra II.4.9.13">Āp. Dh. S. II. 4. 9. 13</a> (in both those verses occur with the caption ‘athāpyudāharanti’). It is noteworthy that the Kalpataru (Brahmacārikāṇḍa p. 124) cites ‘aparimitam brahmacāriṇaḥ (part of the verse ‘astau grāsā’) and the verse ‘anadvān brahmacārī ca āhitāgniśca &c as from <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a>, Āpastamba, Hārīta and Yama. Śāṇ Gr. II. 16 cites only one of these two verses and that too in a modified form (as ‘Anadvān agnihotram ca’ ( this is a bad reading and the verse becomes ungrammatical). Therefore, this ‘proves that Śāṇ gr borrows one of two ancient verses quoted by both <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> and Bauḍ and Vaṣ borrows both. Sāṇ Gr. II. 16 has six verses, of which the first ('madhuparke' &c) is <a class="ref" href="../refs/manu.html#V.41" data-source="manu" data-ref="V.41" title="Manusmṛti V.41">Manu V. 41</a> (reads 'yajñe' for 'some'). The 3rd verse (Naikagrāmiņa &c') is <a class="ref" href="../refs/manu.html#III.103" data-source="manu" data-ref="III.103" title="Manusmṛti III.103">Manu III. 103</a> (the 4th pāda in Sāṇ is different which is rather obscure in <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>). Sāṇ Gr. II. 16. 5 has been dealt with above.<sup class="fn-ref"><a href="#fn-9-vasishtha-dharmasutra-12" id="fnref-9-vasishtha-dharmasutra-12">12</a></sup> Upākarma is a very common rite even up to this day. So the provisions in the texts on this rite agree. Dr. Ram Gopal cites Vaṣ 13. 5 as agreeing with Sāṇ Gr. IV. 6. 7-8. There is not much verbal agreement between the two as the note will show<sup class="fn-ref"><a href="#fn-9-vasishtha-dharmasutra-13" id="fnref-9-vasishtha-dharmasutra-13">13</a></sup> but there is at least as much or more verbal agreement with <a class="ref" href="../refs/gautama.html" data-source="gautama" data-ref="" title="Gautama Dharmasūtra">Gaut.</a> and <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>. A thorough examination of all the twenty-two equations in Dr. Ram Gopal's work (p. 67) would cover about a dozen pageṣ The domestic rites and their subsidiary matters being common to dvijas, there is a good deal of uniformity as well as some difference in details in the sūtras connected with different Vedic Śākhāṣ For example, compare Bauḍ Dh. S. I. 2. 14-16 with <a class="ref" href="../refs/apastamba.html#I.2" data-source="apastamba" data-ref="I.2" title="Āpastamba Dharmasūtra I.2">Āp. Dh. S. I. 2</a> 33-38, also with <a class="ref" href="../refs/gautama.html#I.15-23" data-source="gautama" data-ref="I.15-23" title="Gautama Dharmasūtra I.15-23">Gaut. I. 15-23</a>. Mere agreement of a few sūtras with others on simple and common matters relating to Upanayana, Anadhyāya and the like hardly proves anything about their affiliation with any particular Veda or Vedic caraṇa. I regret to say that Dr. Ram's remarks on the passages of Vaṣ and the three Gr. sūtras attached to the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> are misleading and also incapable of proving his thesiṣ</p>
+<p class="prose" id="p-9-vasishtha-dharmasutra-17">So early a writer as <a class="ref" href="../refs/vishvarupa.html#ci" data-source="vishvarupa" data-ref="ci" title="Viśvarūpa ci">Viśvarūpa ci</a>tes (on Yaj. I. 19) the views of a writer called Vṛddha-<a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a>. The <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> on Yaj. (II. 91) quotes the definition of a <em>jayapatra</em> (judgment) from Vṛddha-<a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> and on III. 20 quotes him about impurity on miscarriage. On Yaj. III. 310 the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> quotes <a class="ref" href="../refs/vasishtha.html#27.4" data-source="vasishtha" data-ref="27.4" title="Vasiṣṭha Dharmasūtra 27.4">Vasiṣṭha 27. 4</a> and then in the very next verse quotes a long passage from Vṛddhavasiṣṭha in prose and verse setting forth an expiatioṇ The same passage occurs also in <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> on the same verse. <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> quotes in all 18 verses (two of which define the form and contents of a <em>jayapatra</em> (of a court of justice) and one prose passage. The Kalpataru profusely quotes <a class="ref" href="../refs/vasishtha.html#i" data-source="vasishtha" data-ref="i" title="Vasiṣṭha Dharmasūtra i">Vasiṣṭha i</a>n Gṛhastkakāṇḍa (41 times), in Vyavahārakāṇḍa (37 times) and Brahmacārikāṇḍa (15 times), yet never quotes Vṛddha <a class="ref" href="../refs/vasishtha.html#i" data-source="vasishtha" data-ref="i" title="Vasiṣṭha Dharmasūtra i">Vasiṣṭha i</a>n these three. In Dānakanda (p. 189) it quotes two verses on <em>gocarma</em> and the reward of gifts of land of the extent of <em>gocarma</em> from Vṛddha-<a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a><sup class="fn-ref"><a href="#fn-9-vasishtha-dharmasutra-10" id="fnref-9-vasishtha-dharmasutra-10">10</a></sup>. The Smṛticandrikā quotes about 20 verses from Vṛddha-<a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> on <em>āhnika</em> and <em>śrāddha</em>; Bhaṭṭoji in his gloss on the Caturviṁśatimata (p. 12) seems to quote a prose passage from Vṛddha-<a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a>. From the above it follows that Vṛddha-<a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> was an early compilation and dealt with almost all such topics (including Vyavahāra) as are dealt with by <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yāj.</a> The <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> also quotes on <a class="ref" href="../refs/yajnavalkya.html#III" data-source="yajnavalkya" data-ref="III" title="Yājñavalkya III">Yāj. III</a> 287 a Bṛhad-<a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a>. The Smṛticandrikā (III. p. 300) quotes a few verses from a Jyotir-<a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a>. The I. O. catalogue (No. 1339 p. 392) speaks of a <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a>-smṛti in ten *adhyāya*s about the religious observances and duties enjoined on devotees of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>.</p>
+<p class="prose" id="p-9-vasishtha-dharmasutra-18">That Yajñavālmin wrote a commentary on the Vaṣ Dh. S. follows from Govindasvāmin's comment on Bauḍ Dh. S. (II. 2. 51), where he quotes Vaṣ 21. 13 and Yajñavālmin's comment thereoṇ</p>
+<aside class="footnotes-section" aria-label="Footnotes">
+<hr>
+<ol class="footnotes-list">
+<li id="fn-9-vasishtha-dharmasutra-1" class="footnote-item"><span class="devanagari">हरदत्त</span> explains ' <span class="devanagari">आचार्याधीनो भवेत्पुत्रपनाम्ने यत्संशासनं तस्मिन्नेवाचार्याधीनोऽप्युच्यते</span>', while <span class="devanagari">महादेव</span> makes it a <span class="devanagari">विधि</span> ' <span class="devanagari">आचार्याधीनकरण स्वाबामिति विधि</span>: '. <a href="#fnref-9-vasishtha-dharmasutra-1" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-9-vasishtha-dharmasutra-2" class="footnote-item"><span class="devanagari">अथापि भार्गविणां निदानं गाथाभ्यामुदाहरन्ति । पश्चात्सिंहविश्वधारी सूर्यश्चोदयन्नुपरः पुः। यावत्कृष्णी विभावाति तावद्ब्रह्मवर्चसम् ॥ इति । वसिष्ठ</span> I. 14-15, <span class="devanagari">बी</span>. <span class="devanagari">ध</span>. I. 1. 27 (28) reads <span class="devanagari">अथाप्यध्म</span>, omits the word <span class="devanagari">निदानं</span>, reads <span class="devanagari">विसरणी</span>, <span class="devanagari">कृष्णा विभावाति</span>, <span class="devanagari">तावद्भि</span>. <a href="#fnref-9-vasishtha-dharmasutra-2" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-9-vasishtha-dharmasutra-3" class="footnote-item">‘Mānavam’ does not mean Mānava-dharma-sūtra. That is a gratuitous assumptioṇ Kumārila (650-700 A. D.) quotes the extant Manusmṛti as Mānavam on P. M. S. I. 3.2 (p. 167 of Ānan, eḍ); <span class="devanagari">तथा च मानवेष्वभिनन्दनम् । प्रवक्ष्याम्यनुमानं च।</span>...<span class="devanagari">समीक्षता ॥</span>. This is Manu 12.105; vide also note above for Mānava. <a href="#fnref-9-vasishtha-dharmasutra-3" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-9-vasishtha-dharmasutra-4" class="footnote-item">Vasiṣṭha 14.16-19 and 24-27 are quoted as ślokas of Prajāpati. Several of them are quoted in different works and ascribed to other sourceṣ For example, Vaṣ 14.16 and 18 are quoted from a Purāṇa in Āp. Dh. S. I. 6. 19. 13, and these two are practically the same as Manu IV. 248-249 and Viṣṇu Dh. S. 57. 11-12, Vaṣ 14. 19 is almost the same as Āp. Dh. S. I. 6. 19. 14 and a part of it is Manu IV. 212; Vaṣ 14. 24 is the same as Manu V. 127, Bauḍ Dh. S. I. 5. 56, Anuśāsanaparva 104. 40, Viṣṇu 23. 47. It may be pointed out that Aparārka (p. 1322 on Yāj. III. 311) quotes Vaṣ 28. 10-11 and a prose passage (of 6 lines) in which the Aghamarṣaṇa hymn, Ṛg. X. 189 (<em>āyam gauḥ</em> &c), Ṛg. IV. 40. 5 (Ham̃saḥ śuciṣad) and the Gāyatrī are prescribed as expiationṣ Vaṣ 28. 10-15 occur in Viṣṇu Dh. S. chap. 56, and 28. 11-15 in Smṛticandrikā (Ānaṇ) X. 1-5 (with slight variations) and Vaṣ 28. 11 (aghamarṣaṇam &c.) also occurs in Bauḍ Dh. S. IV. 3. 7 (4th <em>pāda</em> being different) preceded by ‘ <em>athāpyudāharanti</em> ’. Vaṣ 28. 10-13 are quoted as Vasiṣṭha's in Sṃ C. I. p. 187 (Gharpure's edition). <a href="#fnref-9-vasishtha-dharmasutra-4" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-9-vasishtha-dharmasutra-5" class="footnote-item"><span class="devanagari">पितृदेवतातिथिपूजायामप्येव पशुं हिंस्यादिति मानवम् । वसिष्ठ</span> 4. 5; <span class="devanagari">वसिष्ठ</span> 4. 8 is <span class="devanagari">अथापि ब्राह्मणाय वा राजन्याय वाम्यताय महोक्षणं वा महाजं वा पंचदेवसमा आतित्थेयं कुर्व्वीतेति ।</span> <a href="#fnref-9-vasishtha-dharmasutra-5" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-9-vasishtha-dharmasutra-6" class="footnote-item"><span class="devanagari">शुक्ले चेचपि मानवं श्लोकमुदाहरति</span> — <span class="devanagari">न भिष्क्कार्पणार्णमस्ति शुक्ले न निलपूतव्लो न मेक्षलन्धचे न हृतवशेषे न श्रोत्रिये न प्रव्रजिते न यज्ञे ॥</span> The <span class="devanagari">वि</span>. <span class="devanagari">र</span> (p. 305) says ' <span class="devanagari">वसिष्ठः शुक्ले चेपि मानवं श्लोकमुदाहरति न भिष्ष</span>' &c. The verse quoted by the Mat. on Yaj I. 263. Even later writers quote the verses of Manu as ‘Mānava-śloka, e. g. Aparārka on Yaj. III. 255 quotes (p. 1075) Manu XI.151 as Mānava-śloka which is cited by Vasiṣṭha (20. 18). <a href="#fnref-9-vasishtha-dharmasutra-6" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-9-vasishtha-dharmasutra-7" class="footnote-item"><span class="devanagari">वसिष्ठ</span> 7. 3. ‘<span class="devanagari">तेषां वेदमधीत्य वेदो वेदान्विविशीर्णहृदयो यस्मिन्नैवसमासेत्</span>’<span class="devanagari">।</span> compare <span class="devanagari">मनु</span> 3. 2 ; <span class="devanagari">वसिष्ठ</span> 13. 61 ‘<span class="devanagari">तृणभूम्यदकवाक्चतुष्टयाय भूमेस्तुष्याद्यन्नं संप्रदीयते नित्यं</span>’<span class="devanagari">। तृणभूम्यदकवाक्चतुष्टयाय तस्मै प्रदीयते</span>’<span class="devanagari">।</span> ‘<span class="devanagari">तृणभूय्मद्यकुदवाक्चतुष्टयाय भूमेस्तुष्यादन्नं संप्रदीयते नित्यं नित्यं तृणभूम्यदकवाक्चतुष्टयाय</span>’<span class="devanagari">। नोच्छिद्येत् कदाचन</span>’<span class="devanagari">।</span> compare <span class="devanagari">मनु</span> 3. 101; <span class="devanagari">वसिष्ठ</span> 16. 30 ‘<span class="devanagari">शीर्णा सन्तः शुद्धाश्चिराद् ज्ञानिनां सहसा द्विजाः। शुद्धाश्चिरान्नायमानाध्ययनेयः</span>’<span class="devanagari">।</span> compare <span class="devanagari">मनु</span> 3. 68 ‘<span class="devanagari">शीर्णां साश्श्रयं प्रियः कुर्युर्ज्ञानानां सहसा द्विजाः। शुद्धाश्चिरान्नायमानामध्ययनेयः</span> ’<span class="devanagari">।।</span> <a href="#fnref-9-vasishtha-dharmasutra-7" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-9-vasishtha-dharmasutra-8" class="footnote-item">The printed Vaṣ reads ‘<span class="devanagari">वेधसो वा राजा श्रेयान् गृध्रपरिवारं स्यात्‌। गृध्रपरिवारं वा राजा श्रेयान्‌। गृध्रपरिवारं स्यात्तू गृध्रो गृध्रपरिवारं स्यात्‌</span>’ This hardly makes any sense. The <span class="devanagari">कृत्यकल्पतरु</span> presents a good reading (from <span class="devanagari">शङ्खलिखित</span>) ‘<span class="devanagari">न ह्यमो गृध्रो राजा श्रेयान्‌ हेंसपरिवारः। परितारान्नि दोषाः प्रादुर्भवन्ति । तेऽडल विनाशाय ।</span>’ <span class="devanagari">राजधर्मकाण्ड</span> p. 30; <span class="devanagari">विश्वरूप</span> on (Yaj. I. 305) quotes Śaṅkha as ‘<span class="devanagari">न ह्यमो गृध्रपरिवारः कामे तु गृध्रो हेंसपरिवारः स्यात्‌।</span>’ 108 a. '<span class="devanagari">प्रायेषु मङ्गलग्रहसंनिष्ठादिदर्गणीताः समानवेषेभ्यु धर्मसंस्थिताः एव श्रुतयः स्वष्ठुमानाः । न च व्याकरणरुप तामिः समानार्थयत्‌।</span>' <span class="devanagari">सन्धवार्तिक</span> on <span class="devanagari">जैमिनि</span> I. 3. 24. <a href="#fnref-9-vasishtha-dharmasutra-8" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-9-vasishtha-dharmasutra-9" class="footnote-item">'<span class="devanagari">वसिष्ठेन समाख्यात ब्रह्महत्यापोह्मम्। द्वादशराजम् ऋषयो द्वादशराजमुपसेवते॥</span>' <span class="devanagari">अप</span>- <span class="devanagari">रार्क</span> p. 1067 (this is <span class="devanagari">वसिष्ठ</span> 23. 38 ); '<span class="devanagari">वसिष्ठेन तथोक्तं वै प्रायश्चित्तं खुराधिप । कामतो मद्यपाने तु न सुरायाः कदाचन।।</span>' <span class="devanagari">अपराइटं</span> p. 1075 (this is <span class="devanagari">वसिष्ठ</span> 20. 19). H. D.—14 <a href="#fnref-9-vasishtha-dharmasutra-9" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-9-vasishtha-dharmasutra-10" class="footnote-item">The verse is: <span class="devanagari">न नालिकेरेश न शाणवालने नापि मौजने न बभ्रुवृतेः । एतेषां गपो न निष्पन्नीया बद्धुबुद्धिरेषु परशु मनुज्ञा ॥</span> The same verse is quoted in the <span class="devanagari">मिताक्षरा</span> (on <span class="devanagari">याज्ञ</span>. III. 264) without the author's name and is read as <span class="devanagari">बहुवृक्षा तु</span>. <a href="#fnref-9-vasishtha-dharmasutra-10" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-9-vasishtha-dharmasutra-11" class="footnote-item"><span class="devanagari">आर्या सह नाभिश्र्वादिवर्षपर्ययं भवतीति वाजनसेयके विज्ञाने ॥ वसिष्ठ</span> 12,31; this is <span class="devanagari">ज्ञातपथ</span> X.5,2.9; <span class="devanagari">भक्ष्यो तु घेनन्नुहे मेभ्यो वा</span> 14.16. This refers to <span class="devanagari">ज्ञातपथ</span> and compare Āp. Dh. S. I.5.17. 30-31 and <span class="devanagari">ज्ञातपथ</span> '<span class="devanagari">तस्मादेन्द्राग्नडुहोर्ननिघातलु होवाच याज्ञवल्गयेवमसंले चेद्वपसीति।</span> <a href="#fnref-9-vasishtha-dharmasutra-11" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-9-vasishtha-dharmasutra-12" class="footnote-item">The editor of Sāṇ Gr. Dr. S. R. Sehgal has not identified the two verses in Sāṇ Gr. II.16.3 and 5, though he has identified the first. <a href="#fnref-9-vasishtha-dharmasutra-12" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-9-vasishtha-dharmasutra-13" class="footnote-item"><span class="devanagari">अर्धपञ्चमान्मासानर्धषष्ठान् वा। वसिष्ठ</span> 13.5; <span class="devanagari">छन्दांसि विश्रामगम्यर्धसप्तमान् मासान्। अर्धषष्ठान् वा। सां</span>. <span class="devanagari">गृ</span>. IV.6.7-8; <span class="devanagari">अर्धपञ्चमान्मासन्न पञ्च दक्षिणापनं वा। गो</span>. XVI.2; <span class="devanagari">आनयन्मौञ्जयावुपोपक्रमय यथानिधि। युक्तच्छन्दोर्धषधीयत मासान् विप्रोर्धपञ्चमान्॥ मनु</span> IV.95. <a href="#fnref-9-vasishtha-dharmasutra-13" class="fn-back" aria-label="Back to text">↩</a></li>
+</ol>
+</aside>
+
+            <div class="chapter-nav">
+                <a href="8-hiranyakesi-dharmasutra.html" class="nav-prev"><i class="fa-solid fa-chevron-left"></i> 8. Hiranyakesi-dharmasutra</a>
+                <a href="10-vishnudharmasutra.html" class="nav-next">10. Vishnudharmasutra <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </main>
+    </div>
+
+    <button class="toc-mobile-toggle" onclick="toggleMobileToc()" aria-label="Table of contents">
+        <i class="fa-solid fa-list"></i>
+    </button>
+
+    
+    <footer class="container-fluid pt-4" style="background-color:#2e4144">
+        <div class="row border-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img src="https://sanatana.in/mbta/public/images/Homepage_html/images/layer_8.png" alt="">
+            </div>
+            <div class="col-md-5 text-white">
+                <p>The divine knowledge and wisdom of our shastras is the only thing eternal,
+                   which was and which will remain ever-present in this gods creation.
+                   Our endeavours are to preserve this knowledge.</p>
+            </div>
+            <div class="col-md-1 text-white">
+                <div class="d-flex" style="height: 75px;">
+                    <div class="vr"></div>
+                </div>
+            </div>
+            <div class="col-md-3 text-white">
+                <i class="fa-solid fa-globe"></i>&emsp;
+                <a href="https://sanatanasampatti.in" class="text-light">www.sanatanasampatti.in</a><br>
+                <i class="fa-solid fa-envelope"></i>&emsp;
+                <a href="" class="text-light">sriranga.yoga@gmail.com</a>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center py-3 mb-4 align-items-center border-bottom">
+            <div class="col-md-2 text-white fs-4 text-center">Project</div>
+            <div class="col-md-2 text-white fs-4 text-center">Our Mission</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contribute</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contact Us</div>
+        </div>
+        <div class="row">
+            <p class="col-md-6 fs-6 text-start text-light">
+                <small>&copy; 2026 Sanatanasampatti</small>
+            </p>
+            <p class="col-md-6 fs-6 text-end text-light">
+                <a class="text-white" rel="nofollow" href="http://www.srirangadigital.com" target="_blank">
+                    <img src="https://sanatana.in/mbta/public/images/logo.png" alt="sriranga logo" />
+                    <small>Designed, Developed and Maintained by Sriranga Digital</small>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        const headings = [];
+        tocLinks.forEach(link => {
+            const id = link.getAttribute('href').substring(1);
+            const el = document.getElementById(id);
+            if (el) headings.push({ el: el, link: link.parentElement });
+        });
+
+        function onScroll() {
+            let current = null;
+            for (const h of headings) {
+                const rect = h.el.getBoundingClientRect();
+                if (rect.top <= 120) current = h;
+            }
+            tocLinks.forEach(l => l.parentElement.classList.remove('active'));
+            if (current) current.link.classList.add('active');
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    });
+
+    function toggleMobileToc() {
+        const toc = document.getElementById('toc');
+        if (!toc) return;
+        if (toc.style.display === 'block') {
+            toc.style.display = '';
+            toc.style.position = '';
+        } else {
+            toc.style.display = 'block';
+            toc.style.position = 'fixed';
+            toc.style.top = '0';
+            toc.style.left = '0';
+            toc.style.width = '80vw';
+            toc.style.maxWidth = '320px';
+            toc.style.height = '100vh';
+            toc.style.maxHeight = '100vh';
+            toc.style.zIndex = '2000';
+            toc.style.background = 'var(--parchment)';
+            toc.style.boxShadow = '4px 0 20px rgba(0,0,0,0.2)';
+            toc.style.padding = '24px';
+            toc.style.overflowY = 'auto';
+        }
+    }
+    </script>
+
+    <script>
+    function toggleSynopsisAudio(btn) {
+        var audio = btn.parentElement.querySelector('audio');
+        if (!audio.src) audio.src = btn.getAttribute('data-src');
+        if (audio.paused) {
+            audio.play();
+            btn.classList.add('playing');
+            btn.querySelector('i').className = 'fa-solid fa-pause';
+        } else {
+            audio.pause();
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        }
+        audio.onended = function() {
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        };
+        // Prevent click from toggling the synopsis open/close
+        event.stopPropagation();
+    }
+    </script>
+</body>
+</html>

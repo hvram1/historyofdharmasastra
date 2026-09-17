@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline — 101. Vācaspatimiśra</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+    :root {
+        --parchment: #faf6ef;
+        --parchment-mid: #f0e6d3;
+        --saffron: #e8941a;
+        --ink: #2c1810;
+        --ink-secondary: #5a3e2b;
+        --rule: #d4c5a9;
+        --indigo: #2d5a87;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+        font-family: 'Lora', Georgia, serif;
+        background: var(--parchment);
+        color: var(--ink);
+    }
+    .navbar {
+        background: linear-gradient(135deg, #1a0f0a, #2c1810);
+        padding: 12px 24px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+    .navbar a { color: var(--parchment); text-decoration: none; }
+    .navbar .devanagari { font-size: 1.3rem; }
+    .navbar .nav-title { font-family: 'Lora', serif; font-size: 1rem; opacity: 0.9; }
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+    .breadcrumb-bar a { color: var(--saffron); text-decoration: none; }
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+    .content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 24px;
+    }
+    h1 {
+        font-size: 1.6rem;
+        margin-bottom: 8px;
+        color: var(--ink);
+    }
+    .subtitle {
+        font-size: 0.9rem;
+        color: var(--ink-secondary);
+        margin-bottom: 24px;
+    }
+    .timeline-container {
+        overflow-x: auto;
+        padding: 16px 0;
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        background: var(--parchment);
+    }
+    .timeline-svg {
+        display: block;
+        min-width: 100%;
+    }
+    .timeline-svg .tl-evt { cursor: pointer; }
+    .timeline-svg .tl-evt:hover { transform: scale(1.5); }
+    .event-list {
+        margin-top: 32px;
+    }
+    .event-list h2 {
+        font-size: 1.1rem;
+        margin-bottom: 16px;
+        color: var(--ink-secondary);
+    }
+    .event-item {
+        display: flex;
+        gap: 16px;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--rule);
+        font-size: 0.88rem;
+    }
+    .event-year {
+        min-width: 90px;
+        font-weight: 600;
+        color: var(--saffron);
+        font-family: 'Open Sans', sans-serif;
+    }
+    .event-label { font-weight: 600; }
+    .event-context {
+        color: var(--ink-secondary);
+        font-size: 0.82rem;
+        margin-top: 2px;
+    }
+    .event-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.8rem;
+    }
+    .event-link:hover { text-decoration: underline; }
+    .back-link {
+        display: inline-block;
+        margin-top: 24px;
+        color: var(--saffron);
+        text-decoration: none;
+        font-family: 'Open Sans', sans-serif;
+    }
+    .back-link:hover { text-decoration: underline; }
+    .century-group {
+        margin-bottom: 8px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        overflow: hidden;
+    }
+    .century-heading {
+        display: block;
+        padding: 10px 16px;
+        background: var(--parchment-mid);
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: var(--ink);
+    }
+    .century-heading:hover { background: #e8dcc8; }
+    .century-count {
+        font-weight: 400;
+        color: var(--ink-secondary);
+        font-size: 0.82rem;
+    }
+    .century-events {
+        padding: 8px 16px;
+    }
+    .vol-tl-link {
+        display: inline-block;
+        margin: 4px 8px 4px 0;
+        padding: 6px 14px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        color: var(--saffron);
+        text-decoration: none;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+    }
+    .vol-tl-link:hover {
+        border-color: var(--saffron);
+        background: #f5ebe0;
+    }
+    .vol-tl-count {
+        color: var(--ink-secondary);
+        font-size: 0.78rem;
+    }
+    /* ── Tab switcher ── */
+    .tl-tabs {
+        display: flex; gap: 0; margin-bottom: 20px;
+        border-bottom: 2px solid var(--rule);
+    }
+    .tl-tab {
+        padding: 10px 20px; cursor: pointer;
+        font-family: 'Open Sans', sans-serif; font-size: 0.9rem;
+        color: var(--ink-secondary); border-bottom: 2px solid transparent;
+        margin-bottom: -2px; transition: all 0.2s;
+    }
+    .tl-tab:hover { color: var(--ink); }
+    .tl-tab.active { color: var(--saffron); border-bottom-color: var(--saffron); font-weight: 600; }
+    .tl-panel { display: none; }
+    .tl-panel.active { display: block; }
+    /* ── Entity graph styles ── */
+    .eg-entity {
+        border: 1px solid var(--rule); border-radius: 6px;
+        margin-bottom: 8px; overflow: hidden; transition: border-color 0.2s;
+    }
+    .eg-entity.highlighted { border-color: var(--saffron); box-shadow: 0 0 0 1px var(--saffron); }
+    .eg-header {
+        display: flex; align-items: center; gap: 12px;
+        padding: 10px 16px; background: var(--parchment-mid);
+        cursor: pointer; font-family: 'Open Sans', sans-serif;
+    }
+    .eg-header:hover { background: #e8dcc8; }
+    .eg-name { font-weight: 600; font-size: 0.92rem; flex: 1; }
+    .eg-type {
+        font-size: 0.72rem; padding: 2px 8px; border-radius: 10px;
+        background: var(--parchment); color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .eg-claims-count {
+        font-size: 0.78rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif;
+    }
+    .eg-body { padding: 12px 16px; display: none; }
+    .eg-entity.open .eg-body { display: block; }
+    .eg-range-bar {
+        position: relative; height: 32px;
+        background: var(--parchment-mid); border-radius: 4px;
+        margin-bottom: 10px; overflow: hidden;
+    }
+    .eg-range-fill {
+        position: absolute; top: 6px; height: 20px;
+        background: var(--saffron); opacity: 0.3; border-radius: 3px;
+    }
+    .eg-range-dot {
+        position: absolute; top: 11px; width: 10px; height: 10px;
+        background: var(--saffron); border-radius: 50%;
+        transform: translateX(-5px); cursor: pointer;
+    }
+    .eg-range-dot:hover { transform: translateX(-5px) scale(1.4); }
+    .eg-range-label {
+        position: absolute; top: -2px;
+        font-size: 0.7rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif;
+        transform: translateX(-50%);
+    }
+    .eg-cooccur {
+        margin-top: 8px; padding-top: 8px;
+        border-top: 1px solid var(--rule);
+    }
+    .eg-cooccur-title {
+        font-size: 0.78rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif; margin-bottom: 6px;
+    }
+    .eg-cooccur-chip {
+        display: inline-block; margin: 2px 4px 2px 0;
+        padding: 3px 10px; background: var(--parchment-mid);
+        border: 1px solid var(--rule); border-radius: 12px;
+        font-size: 0.78rem; color: var(--ink);
+        font-family: 'Open Sans', sans-serif;
+        cursor: pointer; transition: all 0.2s;
+    }
+    .eg-cooccur-chip:hover { border-color: var(--saffron); color: var(--saffron); }
+    .eg-cooccur-weight {
+        font-size: 0.68rem; color: var(--ink-secondary); margin-left: 2px;
+    }
+    .eg-claim-list { margin-top: 8px; }
+    .eg-claim {
+        display: flex; gap: 12px; padding: 4px 0;
+        font-size: 0.82rem; border-bottom: 1px solid #f0e6d3;
+    }
+    .eg-claim-year {
+        min-width: 80px; font-weight: 600; color: var(--saffron);
+        font-family: 'Open Sans', sans-serif; font-size: 0.8rem;
+    }
+    .eg-claim-ctx { color: var(--ink-secondary); font-size: 0.78rem; }
+    .eg-claim a { color: var(--indigo); text-decoration: none; font-size: 0.76rem; }
+    .eg-claim a:hover { text-decoration: underline; }
+    .eg-stats {
+        display: flex; gap: 24px; margin-bottom: 16px;
+        font-family: 'Open Sans', sans-serif; font-size: 0.85rem;
+        color: var(--ink-secondary);
+    }
+    .eg-stat-num { font-weight: 700; color: var(--saffron); font-size: 1.1rem; }
+    .eg-sort {
+        font-family: 'Open Sans', sans-serif; font-size: 0.82rem;
+        margin-bottom: 12px; color: var(--ink-secondary);
+    }
+    .eg-sort a {
+        color: var(--indigo); text-decoration: none; cursor: pointer;
+        margin: 0 6px;
+    }
+    .eg-sort a:hover { text-decoration: underline; }
+    .eg-sort a.active { color: var(--saffron); font-weight: 600; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="../index.html"><span class="devanagari">धर्मशास्त्रम्</span></a>
+        <a href="../index.html" class="nav-title">History of Dharmaśāstra</a>
+    </div>
+    
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep"> &rsaquo; </span>
+        <a href="index.html">Volume I: Part II</a>
+        <span class="sep"> &rsaquo; </span>
+        <a href="101-vācaspatimiśra.html">101. Vācaspatimiśra</a>
+        <span class="sep"> &rsaquo; </span>
+        <span>Timeline</span>
+    </div>
+    
+    <div class="content">
+        <h1>Timeline: 101. Vācaspatimiśra</h1>
+        <p class="subtitle">12 dated references</p>
+        <div class="tl-tabs">
+            <div class="tl-tab active" data-panel="events-panel">Events</div>
+            <div class="tl-tab" data-panel="graph-panel">Entity Graph</div>
+        </div>
+        <div id="events-panel" class="tl-panel active">
+            <div class="timeline-container">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 280" class="timeline-svg" role="img" aria-label="Timeline for 101. Vācaspatimiśra">
+<rect width="800" height="280" fill="#faf6ef" rx="8"/>
+<line x1="60" y1="100" x2="760" y2="100" stroke="#c4956a" stroke-width="2"/>
+<line x1="60.0" y1="94" x2="60.0" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="60.0" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">600 CE</text>
+<line x1="66.16740088105728" y1="94" x2="66.16740088105728" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="66.16740088105728" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">700 CE</text>
+<line x1="117.56240822320117" y1="94" x2="117.56240822320117" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="117.56240822320117" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">800 CE</text>
+<line x1="168.95741556534506" y1="94" x2="168.95741556534506" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="168.95741556534506" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">900 CE</text>
+<line x1="220.352422907489" y1="94" x2="220.352422907489" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="220.352422907489" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1000 CE</text>
+<line x1="271.7474302496329" y1="94" x2="271.7474302496329" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="271.7474302496329" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1100 CE</text>
+<line x1="323.1424375917768" y1="94" x2="323.1424375917768" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="323.1424375917768" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1200 CE</text>
+<line x1="374.5374449339207" y1="94" x2="374.5374449339207" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="374.5374449339207" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1300 CE</text>
+<line x1="425.93245227606457" y1="94" x2="425.93245227606457" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="425.93245227606457" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1400 CE</text>
+<line x1="477.3274596182085" y1="94" x2="477.3274596182085" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="477.3274596182085" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1500 CE</text>
+<line x1="528.7224669603524" y1="94" x2="528.7224669603524" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="528.7224669603524" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1600 CE</text>
+<line x1="580.1174743024964" y1="94" x2="580.1174743024964" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="580.1174743024964" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1700 CE</text>
+<line x1="631.5124816446403" y1="94" x2="631.5124816446403" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="631.5124816446403" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1800 CE</text>
+<line x1="682.9074889867842" y1="94" x2="682.9074889867842" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="682.9074889867842" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1900 CE</text>
+<line x1="734.3024963289281" y1="94" x2="734.3024963289281" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="734.3024963289281" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">2000 CE</text>
+<line x1="118.07635829662262" y1="100" x2="143.25991189427313" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="130.66813509544787" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-101-vācaspatimiśra-16" data-href="101-vācaspatimiśra.html#p-101-vācaspatimiśra-16"><title>This Vācaspati, who flourished in Mithil</title></circle>
+<line x1="130.66813509544787" y1="106" x2="130.66813509544787" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="130.66813509544787" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">This Vācaspati, who flour</text>
+<text x="130.66813509544787" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">801 CE</text>
+<line x1="375.05139500734214" y1="100" x2="425.93245227606457" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="400.49192364170335" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-101-vācaspatimiśra-15" data-href="101-vācaspatimiśra.html#p-101-vācaspatimiśra-15"><title>Vide Inḍ Ant. vol. XIV. p. 196 for a det</title></circle>
+<line x1="400.49192364170335" y1="106" x2="400.49192364170335" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="400.49192364170335" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Vide Inḍ Ant. vol. XIV. p</text>
+<text x="400.49192364170335" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1301 CE</text>
+<circle cx="405.37444933920705" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="2" stroke-dasharray="2,2" class="tl-evt" data-para="p-101-vācaspatimiśra-15" data-href="101-vācaspatimiśra.html#p-101-vācaspatimiśra-15"><title>Vide Inḍ Ant. vol. XIV. p. 196 for a det</title></circle>
+<line x1="405.37444933920705" y1="106" x2="405.37444933920705" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="405.37444933920705" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Vide Inḍ Ant. vol. XIV. p</text>
+<text x="405.37444933920705" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1360 CE</text>
+<circle cx="437.7533039647577" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-101-vācaspatimiśra-13" data-href="101-vācaspatimiśra.html#p-101-vācaspatimiśra-13"><title>Prasannakumar Tagore assigned 1423 A. D.</title></circle>
+<line x1="437.7533039647577" y1="106" x2="437.7533039647577" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="437.7533039647577" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Prasannakumar Tagore assi</text>
+<text x="437.7533039647577" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1423 CE</text>
+<circle cx="438.7812041116006" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="2" stroke-dasharray="2,2" class="tl-evt" data-para="p-101-vācaspatimiśra-15" data-href="101-vācaspatimiśra.html#p-101-vācaspatimiśra-15"><title>Vide Inḍ Ant. vol. XIV. p. 196 for a det</title></circle>
+<line x1="438.7812041116006" y1="106" x2="438.7812041116006" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="438.7812041116006" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Vide Inḍ Ant. vol. XIV. p</text>
+<text x="438.7812041116006" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1425 CE</text>
+<circle cx="467.0484581497797" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-101-vācaspatimiśra-15" data-href="101-vācaspatimiśra.html#p-101-vācaspatimiśra-15"><title>Vide Inḍ Ant. vol. XIV. p. 196 for a det</title></circle>
+<line x1="467.0484581497797" y1="106" x2="467.0484581497797" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="467.0484581497797" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Vide Inḍ Ant. vol. XIV. p</text>
+<text x="467.0484581497797" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1480 CE</text>
+<line x1="474.2437591776799" y1="100" x2="474.75770925110135" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="474.5007342143906" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-101-vācaspatimiśra-15" data-href="101-vācaspatimiśra.html#p-101-vācaspatimiśra-15"><title>Vide Inḍ Ant. vol. XIV. p. 196 for a det</title></circle>
+<line x1="474.5007342143906" y1="106" x2="474.5007342143906" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="474.5007342143906" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Vide Inḍ Ant. vol. XIV. p</text>
+<text x="474.5007342143906" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1494 CE</text>
+<circle cx="482.98091042584434" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-101-vācaspatimiśra-15" data-href="101-vācaspatimiśra.html#p-101-vācaspatimiśra-15"><title>Vide Inḍ Ant. vol. XIV. p. 196 for a det</title></circle>
+<line x1="482.98091042584434" y1="106" x2="482.98091042584434" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="482.98091042584434" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Vide Inḍ Ant. vol. XIV. p</text>
+<text x="482.98091042584434" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1511 CE</text>
+<circle cx="497.88546255506606" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-101-vācaspatimiśra-15" data-href="101-vācaspatimiśra.html#p-101-vācaspatimiśra-15"><title>Vide Inḍ Ant. vol. XIV. p. 196 for a det</title></circle>
+<line x1="497.88546255506606" y1="106" x2="497.88546255506606" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="497.88546255506606" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Vide Inḍ Ant. vol. XIV. p</text>
+<text x="497.88546255506606" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1540 CE</text>
+<line x1="580.6314243759177" y1="100" x2="605.8149779735683" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="593.223201174743" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-101-vācaspatimiśra-16" data-href="101-vācaspatimiśra.html#p-101-vācaspatimiśra-16"><title>This Vācaspati, who flourished in Mithil</title></circle>
+<line x1="593.223201174743" y1="106" x2="593.223201174743" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="593.223201174743" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">This Vācaspati, who flour</text>
+<text x="593.223201174743" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1701 CE</text>
+<circle cx="678.7958883994127" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-101-vācaspatimiśra-2" data-href="101-vācaspatimiśra.html#p-101-vācaspatimiśra-2"><title>Mitākṣarā</title></circle>
+<line x1="678.7958883994127" y1="106" x2="678.7958883994127" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="678.7958883994127" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Mitākṣarā</text>
+<text x="678.7958883994127" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1892 CE</text>
+<line x1="701.9236417033774" y1="100" x2="702.4375917767989" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="702.1806167400881" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-101-vācaspatimiśra-4" data-href="101-vācaspatimiśra.html#p-101-vācaspatimiśra-4"><title>Manusmṛti</title></circle>
+<line x1="702.1806167400881" y1="106" x2="702.1806167400881" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="702.1806167400881" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Manusmṛti</text>
+<text x="702.1806167400881" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1937 CE</text>
+</svg>
+            </div>
+            <div class="event-list">
+                <h2>All Dated References</h2>
+                <div class="event-item"><span class="event-year">801 CE</span><div><span class="event-label">This Vācaspati, who flourished in Mithilā in the latter half of the fifteenth ce</span><div class="event-context">This Vācaspati, who flourished in Mithilā in the latter half of the fifteenth century, is very often confounded with oth...</div><a href="101-vācaspatimiśra.html#p-101-vācaspatimiśra-16" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1301 CE</span><div><span class="event-label">Vide Inḍ Ant. vol. XIV. p. 196 for a detailed pedigree gathered from Pāñjas of M</span><div class="event-context">Vide Inḍ Ant. vol. XIV. p. 196 for a detailed pedigree gathered from Pāñjas of Mithila (though somewhat confused) and In...</div><a href="101-vācaspatimiśra.html#p-101-vācaspatimiśra-15" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">about 1360 CE</span><div><span class="event-label">Vide Inḍ Ant. vol. XIV. p. 196 for a detailed pedigree gathered from Pāñjas of M</span><div class="event-context">Vide Inḍ Ant. vol. XIV. p. 196 for a detailed pedigree gathered from Pāñjas of Mithila (though somewhat confused) and In...</div><a href="101-vācaspatimiśra.html#p-101-vācaspatimiśra-15" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1423 CE</span><div><span class="event-label">Prasannakumar Tagore assigned 1423 A. D. as the time of the Vivādacintāmaṇi (vid</span><div class="event-context">Prasannakumar Tagore assigned 1423 A. D. as the time of the Vivādacintāmaṇi (vide preface p. xxvIII). Ghose in his Hindu...</div><a href="101-vācaspatimiśra.html#p-101-vācaspatimiśra-13" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">about 1425 CE</span><div><span class="event-label">Vide Inḍ Ant. vol. XIV. p. 196 for a detailed pedigree gathered from Pāñjas of M</span><div class="event-context">Vide Inḍ Ant. vol. XIV. p. 196 for a detailed pedigree gathered from Pāñjas of Mithila (though somewhat confused) and In...</div><a href="101-vācaspatimiśra.html#p-101-vācaspatimiśra-15" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1480 CE</span><div><span class="event-label">Vide Inḍ Ant. vol. XIV. p. 196 for a detailed pedigree gathered from Pāñjas of M</span><div class="event-context">Vide Inḍ Ant. vol. XIV. p. 196 for a detailed pedigree gathered from Pāñjas of Mithila (though somewhat confused) and In...</div><a href="101-vācaspatimiśra.html#p-101-vācaspatimiśra-15" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1494 CE</span><div><span class="event-label">Vide Inḍ Ant. vol. XIV. p. 196 for a detailed pedigree gathered from Pāñjas of M</span><div class="event-context">Vide Inḍ Ant. vol. XIV. p. 196 for a detailed pedigree gathered from Pāñjas of Mithila (though somewhat confused) and In...</div><a href="101-vācaspatimiśra.html#p-101-vācaspatimiśra-15" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1511 CE</span><div><span class="event-label">Vide Inḍ Ant. vol. XIV. p. 196 for a detailed pedigree gathered from Pāñjas of M</span><div class="event-context">Vide Inḍ Ant. vol. XIV. p. 196 for a detailed pedigree gathered from Pāñjas of Mithila (though somewhat confused) and In...</div><a href="101-vācaspatimiśra.html#p-101-vācaspatimiśra-15" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1540 CE</span><div><span class="event-label">Vide Inḍ Ant. vol. XIV. p. 196 for a detailed pedigree gathered from Pāñjas of M</span><div class="event-context">Vide Inḍ Ant. vol. XIV. p. 196 for a detailed pedigree gathered from Pāñjas of Mithila (though somewhat confused) and In...</div><a href="101-vācaspatimiśra.html#p-101-vācaspatimiśra-15" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1701 CE</span><div><span class="event-label">This Vācaspati, who flourished in Mithilā in the latter half of the fifteenth ce</span><div class="event-context">This Vācaspati, who flourished in Mithilā in the latter half of the fifteenth century, is very often confounded with oth...</div><a href="101-vācaspatimiśra.html#p-101-vācaspatimiśra-16" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1892 CE</span><div><span class="event-label">Mitākṣarā</span><div class="event-context">The Acāracintāmaṇi deals with the daily rites of Vājasaneyinṣ<sup class="fn-ref"><a href="#fn-101-vācaspatimiśra-3" id="...</div><a href="101-vācaspatimiśra.html#p-101-vācaspatimiśra-2" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1937 CE</span><div><span class="event-label">Manusmṛti</span><div class="event-context">The Dvaitanirṇaya of Vācaspatimiśra is one of his famous workṣ It has been published in the Śāstramālā Series of Benares...</div><a href="101-vācaspatimiśra.html#p-101-vācaspatimiśra-4" class="event-link">View in text &rarr;</a></div></div>
+            </div>
+        </div>
+        <div id="graph-panel" class="tl-panel">
+            <div class="eg-stats">
+<div><span class="eg-stat-num">2</span> entities</div>
+<div><span class="eg-stat-num">2</span> date claims</div>
+<div><span class="eg-stat-num">0</span> debated</div>
+<div><span class="eg-stat-num">1</span> co-occurrences</div>
+</div>
+<div class="eg-sort">Sort: <a class="active" onclick="egSort('date')">by date</a><a onclick="egSort('claims')">by claims</a><a onclick="egSort('name')">by name</a></div>
+<div id="eg-entities">
+<div class="eg-entity" data-key="mit-k-ar" data-consensus="1892" data-claims="1" data-name="Mitākṣarā"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Mitākṣarā</span><span class="eg-type">text</span><span class="eg-claims-count">1 claims &middot; 1892 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="1892" data-max="1938"><span class="eg-range-label" style="left:0;">1892 CE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1938 CE</span><div class="eg-range-dot" style="left:0.0%;" title="1892 CE — śake 1814"></div></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">1892 CE</span><div><span class="eg-claim-ctx">The Acāracintāmaṇi deals with the daily rites of Vājasaneyinṣ&lt;sup class=&quot;fn-ref&quot;&gt;&lt;a href=&quot;#fn-101-vā...</span> <a href="101-vācaspatimiśra.html#p-101-vācaspatimiśra-2">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="manusm-ti" data-consensus="1937" data-claims="1" data-name="Manusmṛti"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Manusmṛti</span><span class="eg-type">text</span><span class="eg-claims-count">1 claims &middot; 1937 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="1892" data-max="1938"><span class="eg-range-label" style="left:0;">1892 CE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1938 CE</span><div class="eg-range-dot" style="left:45.0%;" title="1937 CE — 1937–38 A. D."></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="history-of-dharma-stra" onclick="egHighlight('history-of-dharma-stra')">History of Dharmaśāstra<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">1937 CE</span><div><span class="eg-claim-ctx">The Dvaitanirṇaya of Vācaspatimiśra is one of his famous workṣ It has been published in the Śāstramā...</span> <a href="101-vācaspatimiśra.html#p-101-vācaspatimiśra-4">view</a></div></div></div></div></div>
+</div>
+<script>
+function egToggle(header) {
+    header.parentElement.classList.toggle('open');
+}
+function egHighlight(key) {
+    // Remove existing highlights
+    document.querySelectorAll('.eg-entity.highlighted').forEach(function(el) {
+        el.classList.remove('highlighted');
+    });
+    // Highlight target and scroll to it
+    var target = document.querySelector('.eg-entity[data-key="' + key + '"]');
+    if (target) {
+        target.classList.add('highlighted');
+        target.classList.add('open');
+        target.scrollIntoView({behavior: 'smooth', block: 'center'});
+    }
+}
+function egSort(mode) {
+    var container = document.getElementById('eg-entities');
+    var items = Array.from(container.querySelectorAll('.eg-entity'));
+    items.sort(function(a, b) {
+        if (mode === 'date') return parseInt(a.dataset.consensus) - parseInt(b.dataset.consensus);
+        if (mode === 'claims') return parseInt(b.dataset.claims) - parseInt(a.dataset.claims);
+        if (mode === 'name') return a.dataset.name.localeCompare(b.dataset.name);
+        return 0;
+    });
+    items.forEach(function(el) { container.appendChild(el); });
+    // Update active sort link
+    document.querySelectorAll('.eg-sort a').forEach(function(a) { a.classList.remove('active'); });
+    event.target.classList.add('active');
+}
+</script>
+        </div>
+        <a href="101-vācaspatimiśra.html" class="back-link">&larr; Back to 101. Vācaspatimiśra</a>
+    </div>
+    <script>
+    document.querySelectorAll('.tl-evt').forEach(function(el) {
+        el.addEventListener('click', function() {
+            var href = this.getAttribute('data-href');
+            if (href) {
+                window.location.href = href;
+            } else {
+                var paraId = this.getAttribute('data-para');
+                if (paraId) {
+                    var target = document.getElementById(paraId);
+                    if (target) target.scrollIntoView({behavior: 'smooth'});
+                }
+            }
+        });
+    });
+    // Tab switching
+    document.querySelectorAll('.tl-tab').forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            document.querySelectorAll('.tl-tab').forEach(function(t) { t.classList.remove('active'); });
+            document.querySelectorAll('.tl-panel').forEach(function(p) { p.classList.remove('active'); });
+            tab.classList.add('active');
+            var panel = document.getElementById(tab.getAttribute('data-panel'));
+            if (panel) panel.classList.add('active');
+        });
+    });
+    </script>
+</body>
+</html>

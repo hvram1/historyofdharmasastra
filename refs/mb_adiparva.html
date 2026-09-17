@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- MDB UI Kit -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/fonts.css?v=1.2">
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/navbar.css?v=2.4">
+
+    <title>Ādiparva — References in History of Dharmaśāstra</title>
+    <style>
+    :root {
+        --saffron:        #D4600A;
+        --saffron-light:  #F0924A;
+        --saffron-wash:   rgba(212, 96, 10, 0.07);
+        --indigo:         #2E5FA3;
+        --indigo-dark:    #1C3D70;
+        --maroon:         #7A1E1E;
+        --amber:          #C97A1A;
+        --ink:            #1A1209;
+        --ink-secondary:  #4A3B2A;
+        --parchment:      #FDFAF4;
+        --parchment-mid:  #F5EFE2;
+        --rule:           rgba(180, 130, 60, 0.22);
+        --shadow:         0 2px 18px rgba(90, 50, 10, 0.08);
+        --font-devanagari: 'Tiro Devanagari Sanskrit', 'Siddhanta', 'Noto Sans Devanagari', serif;
+        --font-roman:      'Junicode', Georgia, serif;
+    }
+
+    body {
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: var(--font-roman);
+    }
+
+    .devanagari {
+        font-family: var(--font-devanagari);
+    }
+
+    /* ── Navbar overrides ── */
+    .navbar-ontop { z-index: 1031; }
+    .hdclr { color: var(--saffron); }
+    .engpara { font-family: 'Open Sans', sans-serif; }
+
+    /* ── Layout ── */
+    .dh-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .dh-content {
+        flex: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        background: var(--parchment);
+        box-shadow: var(--shadow);
+        min-height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        .dh-content { padding: 24px 20px; }
+        .dh-wrapper { flex-direction: column; }
+    }
+
+    /* ── TOC Sidebar ── */
+    .toc-sidebar {
+        position: sticky;
+        top: 80px;
+        width: 280px;
+        min-width: 280px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding: 20px 16px;
+        margin-right: 24px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        scrollbar-width: thin;
+    }
+
+    .toc-title {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--saffron-light);
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list li {
+        padding: 4px 0;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-list li.toc-l3 {
+        padding-left: 16px;
+        font-size: 0.78rem;
+    }
+
+    .toc-list li a {
+        color: var(--ink-secondary);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .toc-list li a:hover { color: var(--saffron); }
+
+    .toc-list li.active {
+        border-left-color: var(--saffron);
+    }
+
+    .toc-list li.active a {
+        color: var(--saffron);
+        font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-sidebar { display: none; }
+    }
+
+    /* ── Mobile TOC Toggle ── */
+    .toc-mobile-toggle {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1050;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--saffron);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-mobile-toggle { display: block; }
+    }
+
+    /* ── Section Headings ── */
+    .section-heading {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        margin: 48px 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--rule);
+        letter-spacing: 0.5px;
+        scroll-margin-top: 80px;
+    }
+
+    h2.section-heading { font-size: 1.6rem; }
+
+    h3.section-heading {
+        font-size: 1.25rem;
+        border-left: 4px solid var(--saffron-light);
+        border-bottom: none;
+        padding: 8px 16px;
+        background: var(--saffron-wash);
+        border-radius: 0 5px 5px 0;
+    }
+
+    /* ── Prose ── */
+    .prose {
+        font-family: var(--font-roman);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+        color: var(--ink);
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    .prose em { color: var(--maroon); }
+
+    .prose:target {
+        background: rgba(212, 96, 10, 0.12);
+        border-left: 4px solid var(--saffron);
+        padding-left: 16px;
+        margin-left: -20px;
+        border-radius: 0 6px 6px 0;
+        animation: target-pulse 2s ease-out;
+    }
+
+    @keyframes target-pulse {
+        0%   { background: rgba(212, 96, 10, 0.30); }
+        100% { background: rgba(212, 96, 10, 0.12); }
+    }
+
+    /* ── Footnote References ── */
+    .fn-ref {
+        font-size: 0.75em;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    .fn-ref a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 0 2px;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: color 0.15s;
+    }
+
+    .fn-ref a:hover { color: var(--indigo); }
+
+    /* ── Synopsis Box ── */
+    .synopsis-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron-light);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .synopsis-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .synopsis-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .synopsis-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .synopsis-box.open .synopsis-toggle i {
+        transform: rotate(90deg);
+    }
+    .synopsis-body {
+        display: none;
+        padding: 0 20px 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+    }
+    .synopsis-box.open .synopsis-body { display: block; }
+    .synopsis-body p { margin: 0; }
+    .synopsis-attribution {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: var(--ink-secondary);
+        opacity: 0.7;
+        font-style: italic;
+    }
+    .synopsis-audio {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    .synopsis-play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--saffron);
+        background: none;
+        color: var(--saffron);
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: background 0.2s, color 0.2s;
+        padding: 0;
+    }
+    .synopsis-play-btn:hover {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn.playing {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn i { padding-left: 2px; }
+
+    /* ── Index Terms Panel ── */
+    .index-terms-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .index-terms-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .index-terms-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .index-terms-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .index-terms-box.open .index-terms-toggle i {
+        transform: rotate(90deg);
+    }
+    .index-terms-body {
+        display: none;
+        padding: 0 20px 16px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .index-terms-box.open .index-terms-body { display: block; }
+    .index-terms-dl {
+        margin: 0;
+        padding: 0;
+    }
+    .index-terms-dl dt {
+        font-family: var(--font-roman);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+        margin-top: 8px;
+    }
+    .index-terms-dl dd {
+        margin: 2px 0 0 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        color: var(--ink-secondary);
+        line-height: 1.5;
+    }
+    .nyaya-heading {
+        font-family: var(--font-roman);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        margin: 16px 0 4px;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+    }
+
+    /* ── Inline Index Popovers ── */
+    .idx-term {
+        border-bottom: 1px dotted var(--saffron-light);
+        cursor: help;
+        position: relative;
+    }
+    .idx-term:hover::after {
+        content: attr(data-def);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        background: rgba(44, 36, 22, 0.92);
+        color: #F5ECD8;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        max-width: 280px;
+        z-index: 100;
+        white-space: normal;
+        line-height: 1.4;
+        pointer-events: none;
+    }
+
+    /* ── Structured Version Banner ── */
+    .structured-banner {
+        margin: 0 0 28px;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, rgba(212, 96, 10, 0.06) 0%, rgba(212, 96, 10, 0.02) 100%);
+        border: 1px solid var(--saffron-light);
+        border-radius: 6px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        color: var(--ink-secondary);
+        line-height: 1.6;
+    }
+    .structured-banner i { color: var(--saffron); margin-right: 4px; }
+    .structured-banner a { color: var(--indigo); font-weight: 600; text-decoration: none; }
+    .structured-banner a:hover { text-decoration: underline; }
+
+    /* ── Footnotes Section ── */
+    .footnotes-section {
+        margin: 32px 0 48px;
+        padding: 20px 24px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .footnotes-section hr {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 0 0 16px;
+    }
+
+    .footnotes-list {
+        padding-left: 24px;
+        margin: 0;
+    }
+
+    .footnote-item {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+        scroll-margin-top: 80px;
+    }
+
+    .footnote-item:target {
+        background: rgba(212, 96, 10, 0.1);
+        border-radius: 4px;
+        padding: 4px 6px;
+        margin-left: -6px;
+    }
+
+    .fn-back {
+        color: var(--saffron-light);
+        text-decoration: none;
+        font-size: 0.85em;
+        margin-left: 4px;
+    }
+
+    .fn-back:hover { color: var(--saffron); }
+
+    /* ── Reference Links ── */
+    a.ref {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: all 0.15s;
+    }
+
+    a.ref:hover {
+        color: var(--saffron);
+        border-bottom-style: solid;
+    }
+
+    a.mbta-ext {
+        color: var(--indigo);
+        font-size: 0.7em;
+        margin-left: 2px;
+        opacity: 0.5;
+        text-decoration: none;
+        vertical-align: super;
+    }
+    a.mbta-ext:hover { opacity: 1; color: var(--saffron); }
+
+    /* ── References Panel (sidebar) ── */
+    .refs-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .refs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .refs-list li {
+        padding: 3px 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .ref-source-link {
+        font-weight: 600;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .ref-source-link:hover {
+        text-decoration: underline;
+    }
+
+    .ref-verse-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.76rem;
+    }
+
+    .ref-verse-link:hover {
+        text-decoration: underline;
+        color: var(--saffron);
+    }
+
+    .ref-verses {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Timeline panel ── */
+    .timeline-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .timeline-list li {
+        padding: 2px 0;
+        font-size: 0.76rem;
+        line-height: 1.4;
+        position: relative;
+        padding-left: 14px;
+    }
+
+    .timeline-list li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--saffron);
+    }
+
+    .timeline-list li.tl-approximate::before {
+        background: transparent;
+        border: 2px solid var(--saffron);
+        width: 4px;
+        height: 4px;
+    }
+
+    .timeline-list li.tl-century::before {
+        background: transparent;
+        border: 2px dashed var(--saffron);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+
+    .tl-dot-link {
+        text-decoration: none;
+        color: var(--ink);
+        display: block;
+    }
+
+    .tl-dot-link:hover {
+        color: var(--saffron);
+    }
+
+    .tl-year {
+        font-weight: 600;
+        color: var(--saffron);
+        font-size: 0.72rem;
+        min-width: 70px;
+        display: inline-block;
+    }
+
+    .tl-label {
+        color: var(--ink-secondary);
+        font-size: 0.72rem;
+    }
+
+    .tl-view-link, .tl-more {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.72rem;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .tl-view-link:hover, .tl-more:hover {
+        text-decoration: underline;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+
+    .breadcrumb-bar a {
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+
+    .breadcrumb-bar .sep {
+        color: var(--amber);
+        margin: 0 8px;
+    }
+
+    .breadcrumb-bar .current {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Chapter Navigation ── */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        margin-top: 48px;
+        border-top: 2px solid var(--rule);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .chapter-nav a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        transition: all 0.2s;
+        max-width: 45%;
+    }
+
+    .chapter-nav a:hover {
+        background: var(--saffron-wash);
+        border-color: var(--saffron-light);
+    }
+
+    .nav-prev { text-align: left; }
+    .nav-next { text-align: right; margin-left: auto; }
+
+    .page-range {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+    }
+
+    /* ── Volume Cards (Landing) ── */
+    .vol-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .vol-card {
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        transition: all 0.25s;
+    }
+
+    .vol-card:hover {
+        border-color: var(--saffron-light);
+        box-shadow: 0 4px 24px rgba(212, 96, 10, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .vol-num {
+        font-family: var(--font-roman);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--saffron);
+        margin-bottom: 8px;
+    }
+
+    .vol-subtitle {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        line-height: 1.5;
+        flex: 1;
+    }
+
+    .vol-chapters {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        margin-top: 12px;
+    }
+
+    /* ── Chapter Cards (Volume Index) ── */
+    .chapter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .chapter-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .chapter-card:hover {
+        border-color: var(--saffron-light);
+        background: var(--saffron-wash);
+    }
+
+    .card-num {
+        font-family: var(--font-roman);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--saffron);
+        min-width: 36px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        flex: 1;
+    }
+
+    .card-pages {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        color: var(--ink-secondary);
+    }
+
+    /* ── Landing Hero ── */
+    .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-family: var(--font-roman);
+        font-size: 2.4rem;
+        color: var(--saffron);
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .hero .devanagari-title {
+        font-family: var(--font-devanagari);
+        font-size: 1.8rem;
+        color: var(--ink);
+        margin-bottom: 16px;
+    }
+
+    .hero .author {
+        font-family: var(--font-roman);
+        font-size: 1.1rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .hero .desc {
+        font-family: var(--font-roman);
+        font-size: 1rem;
+        color: var(--ink-secondary);
+        line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer { margin-top: 48px; }
+
+
+    .ref-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    .ref-table th { text-align: left; padding: 10px 12px; border-bottom: 2px solid var(--saffron);
+        font-family: 'Open Sans', sans-serif; font-size: 0.8rem; color: var(--ink-secondary);
+        text-transform: uppercase; letter-spacing: 0.5px; }
+    .ref-table td { padding: 8px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+    .ref-table tr:target { background: var(--saffron-wash); }
+    .verse-ref { font-weight: 600; color: var(--saffron); white-space: nowrap; min-width: 80px; }
+    .verse-locs a { color: var(--indigo); text-decoration: none; font-size: 0.85rem; }
+    .verse-locs a:hover { text-decoration: underline; }
+    .verse-context { color: var(--ink-secondary); font-style: italic; max-width: 400px; }
+    .verse-text { max-width: 460px; }
+    .kane-sa { font-family: 'Noto Serif Devanagari', serif; font-size: 0.95rem;
+        line-height: 1.7; color: var(--ink); }
+    .kane-note { font-size: 0.72rem; color: var(--ink-secondary); margin-top: 4px;
+        padding-left: 8px; border-left: 2px solid var(--rule, #ddd); opacity: .85; }
+    .kane-src { font-size: 0.7rem; color: var(--ink-secondary); margin-top: 3px; }
+    .kane-src a { color: var(--indigo); text-decoration: none; }
+    .kane-src a:hover { text-decoration: underline; }
+    .tier { text-transform: uppercase; letter-spacing: .06em; font-size: 0.62rem;
+        border: 1px solid currentColor; border-radius: 2px; padding: 0 3px; }
+    .tier.cited { color: #1f6b5c; }
+    .tier.sole { color: #a8730d; }
+    .kane-none { color: var(--ink-secondary); font-size: 0.75rem; opacity: .55; }
+    .source-hero { text-align: center; padding: 40px 20px 30px; max-width: 800px; margin: 0 auto; }
+    .source-hero h1 { font-family: var(--font-roman); color: var(--saffron); font-size: 2rem; }
+    .source-hero .stats { font-family: 'Open Sans', sans-serif; color: var(--ink-secondary);
+        font-size: 0.9rem; margin-top: 8px; }
+    .ext-link { color: var(--indigo); font-weight: 600; }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mbta/">
+      <div class="container-fluid">&emsp;&emsp;
+      <a href="../index.html" class="navbar-brand" style="text-decoration:none;">
+        <span class="devanagari ms-3" style="font-size:1.5rem; color:var(--saffron); font-weight:700;">धर्मशास्त्रम्</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="../index.html">धर्मशास्त्रम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5 active" href="../index.html">खण्डाः</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in/mbta/">महाभारतम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in">सनातनम्</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+
+    <div style="max-width: 1100px; margin: 0 auto; padding: 20px;">
+        <div class="breadcrumb-bar">
+            <a href="../index.html">Home</a>
+            <span class="sep">›</span>
+            <a href="index.html">References</a>
+            <span class="sep">›</span>
+            <span class="current">Ādiparva</span>
+        </div>
+
+        <div class="source-hero">
+            <h1>Ādiparva</h1>
+            <p class="stats">117 references across all volumes ·
+               67 distinct verses ·
+               <b>13</b> of them with the verse as Kane prints it · <a href="https://sanatana.in/mbta/listing/parva/adiparva" target="_blank" class="ext-link">Read text →</a></p>
+        </div>
+
+        <table class="ref-table">
+            <thead>
+                <tr><th>Verse</th><th>The verse, as Kane prints it</th><th>Locations</th><th>Context</th></tr>
+            </thead>
+            <tbody>
+                
+        <tr id="c">
+            <td class="verse-ref">c <a href="https://sanatana.in/mbta/listing/parva/adiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-32">vol-1-part-1 §32-the-two-epics</a> · <a href="../vol-2-part-1/chapter-vii-upanayana.html#p-chapter-vii-upanayana-107">vol-2-part-1 §chapter-vii-upanayana</a> · <a href="../vol-2-part-1/chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage.html#p-chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage-27">vol-2-part-1 §chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage</a> · <a href="../vol-2-part-2/chapter-xxviii-sannyāsa.html#p-chapter-xxviii-sannyāsa-3">vol-2-part-2 §chapter-xxviii-sannyāsa</a> · <a href="../vol-3/chapter-ii-seven-angas-of-rājya.html#p-chapter-ii-seven-angas-of-rājya-24">vol-3 §chapter-ii-seven-angas-of-rājya</a></td>
+            <td class="verse-context"><small>...hich is only a supplement to the Epic ( Ādiparva chap. 2.82–83 ) reference is made to the ...</small></td>
+        </tr>
+
+        <tr id="i">
+            <td class="verse-ref">i <a href="https://sanatana.in/mbta/listing/parva/adiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-1/chapter-xiv-conception-of-kāla.html#p-chapter-xiv-conception-of-kāla-7">vol-5-part-1 §chapter-xiv-conception-of-kāla</a></td>
+            <td class="verse-context"><small>...the theme of Kāla time and again In the Ādiparva it is said ‘Kāla creates beings and Kāla ...</small></td>
+        </tr>
+
+        <tr id="2.13">
+            <td class="verse-ref">2.13 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U02_A002_S013" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">अन्ये च संग्राते कलियुगापरभूतम् । समनपन्नेषु दुःखं कुरुपाण्डवेनयोः ॥</div><div class="kane-note">आदि 2. 13. प्राप कलियुगं विद्धि । शल्य 60. 25. एतत्कलियुग नामविराध्यवन्तते वनपर्व 149. 38.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#fn-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-30">vol-3 §chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age</a></div></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxix-some-fundamental-doctrines-of-pūrvamīmāmsā.html#p-chapter-xxix-some-fundamental-doctrines-of-pūrvamīmāmsā-26">vol-5-part-2 §chapter-xxix-some-fundamental-doctrines-of-pūrvamīmāmsā</a></td>
+            <td class="verse-context"><small>...ar was fought between Dvāpara and Kali (Ādiparva 2. 13) and Kaliyuga was about to start at the...</small></td>
+        </tr>
+
+        <tr id="3.32">
+            <td class="verse-ref">3.32 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U03_A003_S032" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/31-the-manusmriti.html#p-31-the-manusmriti-26">vol-1-part-1 §31-the-manusmriti</a></td>
+            <td class="verse-context"><small>...; Vanaparva 207. 83, 293. 35, 313. 105; Ādiparva 3. 32 and 77 etc. ) The only place where a sū...</small></td>
+        </tr>
+
+        <tr id="7">
+            <td class="verse-ref">7 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U04_A007" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/general-index.html#p-general-index-1">vol-2-part-2 §general-index</a></td>
+            <td class="verse-context"><small>...essions in, are recited inaudibly 1121ṇ Ādiparva 7, 41, 74, 88, 154n, 155n, 215, 322, 427m...</small></td>
+        </tr>
+
+        <tr id="8.16">
+            <td class="verse-ref">8.16 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U04_A008_S016" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-ix-marriage.html#p-chapter-ix-marriage-91">vol-2-part-1 §chapter-ix-marriage</a></td>
+            <td class="verse-context"><small>...e on a nakṣatra presided over by Bhaga (Ādiparva 8. 16). The Kauśika sūtra (75. 2-4) makes an ...</small></td>
+        </tr>
+
+        <tr id="10">
+            <td class="verse-ref">10 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U04_A010" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/general-index.html#p-general-index-1">vol-3 §general-index</a></td>
+            <td class="verse-context"><small>...āvahanika, a kind of strīdhana 774, 775 Ādiparva 10, 22n, 30, 37, 42n, 43, 49, 59, 68, 78, ...</small></td>
+        </tr>
+
+        <tr id="28.3-4">
+            <td class="verse-ref">28.3-4 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U05_A028_S003" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">अग्निदिक्कर्मो विश्वं शब्दं विप्रो भवति कोपितः । गुरुर्हि सर्वभूतानां ब्राह्मणः परिकीर्तितः ॥</div><div class="kane-note">आदिपर्व 28. 3-4 ; vide आदि० 81. 23 and 25 and मत्स्यपुराण 30. 23 and 25 for a similar idea.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-iii-the-duties-disabilities-and-privileges-of-varnas.html#fn-chapter-iii-the-duties-disabilities-and-privileges-of-varnas-87">vol-2-part-1 §chapter-iii-the-duties-disabilities-and-privileges-of-varnas</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-iii-the-duties-disabilities-and-privileges-of-varnas.html#p-chapter-iii-the-duties-disabilities-and-privileges-of-varnas-25">vol-2-part-1 §chapter-iii-the-duties-disabilities-and-privileges-of-varnas</a></td>
+            <td class="verse-context"><small>... in very frequent eulogies of brāhmaṇaṣ Ādiparva (28. 3-4) says&lt;sup class="fn-ref"&gt;&lt;a href="#fn-ch...</small></td>
+        </tr>
+
+        <tr id="29.34">
+            <td class="verse-ref">29.34 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U05_A029_S034" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">कार्योर्पायध कुष्माण्डघण्टाचूर्णप्रदाम्बरो मर्पादिराविर्णनशत केशादिस - ध्याविता । कासीनाम्यधतजब्ध्यकुणपाहतगृहापकृष्टशक्तिकाया हृतद्रव्यम् - ध्यातघ्नम्णा " बुद्व्योगयात्रा 27 6, योगयात्रा XIII 14, टिकात्रयात्रा 9 15 (variant readings in all ) q. by श्रीधरधारा on सु वि XI 99-100 ( from बृहद्योगयात्रा ) These agree closely with the inauspicious things and persons mentioned in मलधयुरण chap 243. 1-8 Vide also</div><div class="kane-note">आदिपर्व 29. 34. नारदस्मृति ( मसीर्षक 54 ) and under 'Mangala' on p. 365 above</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-5-part-1/chapter-xvii-muhūrtas-for-religious-rites.html#fn-chapter-xvii-muhūrtas-for-religious-rites-57">vol-5-part-1 §chapter-xvii-muhūrtas-for-religious-rites</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xvii-āhnika-and-āchāra.html#p-chapter-xvii-āhnika-and-āchāra-47">vol-2-part-1 §chapter-xvii-āhnika-and-āchāra</a></td>
+            <td class="verse-context"><small>...rived from the cow as auspiciouṣ *Vide* Ādiparva 29. 34, Droṇaparva 127. 14 (for touching eight...</small></td>
+        </tr>
+
+        <tr id="41.31">
+            <td class="verse-ref">41.31 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U05_A041_S031" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/31-the-manusmriti.html#p-31-the-manusmriti-26">vol-1-part-1 §31-the-manusmriti</a></td>
+            <td class="verse-context"><small>...Vanaparva 32. 39, Udyogaparva 40. 9-10, Ādiparva 41. 31, 74. 39). The words ‘Manor-anuśāsanam’ ...</small></td>
+        </tr>
+
+        <tr id="44.6">
+            <td class="verse-ref">44.6 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U05_A044_S006" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-ii-seven-angas-of-rājya.html#p-chapter-ii-seven-angas-of-rājya-11">vol-3 §chapter-ii-seven-angas-of-rājya</a></td>
+            <td class="verse-context"><small>...tāraḥ') here and in chap. 79. 1. In the Ādiparva 44. 6 it is stated that all the citizens of t...</small></td>
+        </tr>
+
+        <tr id="49.11">
+            <td class="verse-ref">49.11 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U05_A049_S011" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-iii-duties-and-responsibilities-of-the-ruler.html#p-chapter-iii-duties-and-responsibilities-of-the-ruler-3">vol-3 §chapter-iii-duties-and-responsibilities-of-the-ruler</a></td>
+            <td class="verse-context"><small>...a III. 65, Matsya 215. 62, Agni 225 25, Ādiparva 49. 11, Sabhā 18. 24, Virāțaparva 18. 24, Śānt...</small></td>
+        </tr>
+
+        <tr id="60.13-14">
+            <td class="verse-ref">60.13-14 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U06_A060_S013" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-x-madhuparka-and-other-usages.html#p-chapter-x-madhuparka-and-other-usages-3">vol-2-part-1 §chapter-x-madhuparka-and-other-usages</a></td>
+            <td class="verse-context"><small>... such other things were recommendeḍ The Ādiparva (60. 13-14) refers to Janamejaya's reception of Vyā...</small></td>
+        </tr>
+
+        <tr id="63.1-29">
+            <td class="verse-ref">63.1-29 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U06_A063_S001" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxiv-minor-grihya-and-other-rites.html#p-chapter-xxiv-minor-grihya-and-other-rites-9">vol-2-part-2 §chapter-xxiv-minor-grihya-and-other-rites</a></td>
+            <td class="verse-context"><small>...r in portents like an earth-quake. From Ādiparva 63. 1–29 it appears&lt;sup class="fn-ref"&gt;&lt;a href="...</small></td>
+        </tr>
+
+        <tr id="63.20">
+            <td class="verse-ref">63.20 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U06_A063_S020" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-38">vol-1-part-1 §32-the-two-epics</a></td>
+            <td class="verse-context"><small>...āṇkoli' (a bird) in Mahārāṣṭrabhāṣā; on Ādiparva 63.20 he explains 'piṭakaih' as 'petyā iti bh...</small></td>
+        </tr>
+
+        <tr id="63.89-90">
+            <td class="verse-ref">63.89-90 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U06_A063_S089" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">वदन् वयायामास महाभारतपञ्चमान् । सुमन्तुं जैमिनिं पैलं शुकं चैव स्वमात्मजम् । प्रभुर्वरो वैशम्पायनमेव च ।। संहितस्तेः पृथक्त्वेन भारतस्य प्रकाशिताः ।</div><div class="kane-note">आदि 63. 89-90.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-1/32-the-two-epics.html#fn-32-the-two-epics-6">vol-1-part-1 §32-the-two-epics</a></div></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-2">vol-1-part-1 §32-the-two-epics</a></td>
+            <td class="verse-context"><small>...of the upākhyānas ( Ādi. 1.101–2 ). The Ādiparva (63.89-90) states that Vyāsa&lt;sup class="fn-ref"&gt;&lt;a...</small></td>
+        </tr>
+
+        <tr id="63.96-97">
+            <td class="verse-ref">63.96-97 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U06_A063_S096" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxxvi-fundamental-and-leading-characteristics-of-hindu-culture-and-civil.html#p-chapter-xxxvi-fundamental-and-leading-characteristics-of-hindu-culture-and-civil-32">vol-5-part-2 §chapter-xxxvi-fundamental-and-leading-characteristics-of-hindu-culture-and-civil</a></td>
+            <td class="verse-context"><small>...38 points out that śūdras like Vidura ( Ādiparva 63. 96–97 and 114, 106. 24–28, Udyogaparva 41. 5 ...</small></td>
+        </tr>
+
+        <tr id="70.40">
+            <td class="verse-ref">70.40 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A070_S040" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-81">vol-1-part-1 §14-arthashastra-of-kautilya</a></td>
+            <td class="verse-context"><small>...s that Ānvīkṣikī is ‘ tarkavidyā. ’ The Ādiparva ( 70. 40 ) states that in Kanva's hermitage there ...</small></td>
+        </tr>
+
+        <tr id="70.46">
+            <td class="verse-ref">70.46 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A070_S046" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">वृतोपययनद्वयीमान्वोक्षिकी च शिष्टेभ्यो वार्त्ताभ्यश्चैभ्यो दण्डनीतिभ्यो वक्तृ - प्रयोक्तृभ्यश्च । अर्थ० I. 5. 8 ; compare मनु VII. 43, Matsya 215. 54 ( same as Manu ), या . I. 311. गौ . ध . सू . XI. 3 ( त्रय्यामान्वोक्षिकीं बाविमिनीतिः । ). †. नानाशालेषु मुख्येषु शुश्राव स्वनमीरितम् । लोकायतिकमुद्देस्य सम्मतादनु - नादितम् ॥</div><div class="kane-note">आदिपर्व 70. 46. The commentator Nīlakaṇṭha explains ‘ लोके एवायतन्ते ते लोकायतिक : । तेषु लोकरञ्जनेषु मुख्यै : । ’ This is not accurate. लोकायतिक is derived from लोकयत् acc. to ‘ कतृ - कथादि सूत्रात्ताडडू ’ पा . IV. 2. 60 and it occurs in the उक्थादिगण .</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#fn-14-arthashastra-of-kautilya-82">vol-1-part-1 §14-arthashastra-of-kautilya</a></div></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-17">vol-1-part-1 §32-the-two-epics</a></td>
+            <td class="verse-context"><small>...ed to and also in Āśvamedhika 49. 2. In Ādiparva 70. 46 it is stated that in Kaṇva's hermi take...</small></td>
+        </tr>
+
+        <tr id="70.49">
+            <td class="verse-ref">70.49 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A070_S049" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xix-devayajna.html#p-chapter-xix-devayajna-3">vol-2-part-2 §chapter-xix-devayajna</a></td>
+            <td class="verse-context"><small>... an image with a long or high nose. The Ādiparva 70. 49, Anuśāsana 10. 20–21, Aśvamedhika 70. 1...</small></td>
+        </tr>
+
+        <tr id="71.31-33">
+            <td class="verse-ref">71.31-33 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A071_S031" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxxii-practices-of-shistas-conflict-among-shruti-smriti-and-sadāchāra-an.html#p-chapter-xxxii-practices-of-shistas-conflict-among-shruti-smriti-and-sadāchāra-an-10">vol-3 §chapter-xxxii-practices-of-shistas-conflict-among-shruti-smriti-and-sadāchāra-an</a></td>
+            <td class="verse-context"><small>...t had become a cāṇḍāla through a curse (Ādiparva 71. 31–33); (7) Yudhiṣṭhira who took Draupadī as ...</small></td>
+        </tr>
+
+        <tr id="73.8-9">
+            <td class="verse-ref">73.8-9 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A073_S008" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-ix-marriage.html#p-chapter-ix-marriage-98">vol-2-part-1 §chapter-ix-marriage</a></td>
+            <td class="verse-context"><small>...6-13, Bauḍ Dh. S. I. 11, Manu III. 21 = Ādi-parva 73. 8-9), Viṣṇu Dh. S. 24.18-19, Yāj. I. 58, Nā...</small></td>
+        </tr>
+
+        <tr id="73.9">
+            <td class="verse-ref">73.9 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A073_S009" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/31-the-manusmriti.html#p-31-the-manusmriti-26">vol-1-part-1 §31-the-manusmriti</a></td>
+            <td class="verse-context"><small>...nuśāsana 114. 12, Vanaparva 180. 34-35, Ādiparva 73. 9, 110. 32-36, Udyogaparva 37. 1-6). In m...</small></td>
+        </tr>
+
+        <tr id="74.12">
+            <td class="verse-ref">74.12 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A074_S012" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">नारीणां चिरवासो हि बान्धवेषु न रोचते । कीर्तिचारित्रधर्मज्ञप्रसक्त्यापजय मा चिरम् ॥</div><div class="kane-note">आदिपर्व 74. 12; compare ‘ ससीमपि ज्ञातिनकुलैकसंश्रयां जनोन्यथा वर्तयति पिढग्गृहे । शाकुन्तल V. 17 .</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage.html#fn-polyandry-28">vol-2-part-1 §chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage.html#p-chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage-11">vol-2-part-1 §chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage</a></td>
+            <td class="verse-context"><small>...strangers—these six spoil married womeṇ Ādiparva 74. 12 gives&lt;sup class="fn-ref"&gt;&lt;a href="#fn-p...</small></td>
+        </tr>
+
+        <tr id="74.28-29">
+            <td class="verse-ref">74.28-29 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A074_S028" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-i-the-topics-of-dharmashastra.html#p-chapter-i-the-topics-of-dharmashastra-7">vol-2-part-1 §chapter-i-the-topics-of-dharmashastra</a></td>
+            <td class="verse-context"><small>....54 and Manu VIII. 85, 91–92. Vide also Ādi- parva 74. 28-29, Manu VIII. 86, Anūśāsana 2. 73–74. The...</small></td>
+        </tr>
+
+        <tr id="74.30">
+            <td class="verse-ref">74.30 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A074_S030" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/54-shat-trimshan-mata.html#p-54-shat-trimshan-mata-4">vol-1-part-1 §54-shat-trimshan-mata</a></td>
+            <td class="verse-context"><small>...ra to be employed in ordeals) occurs in Ādiparva 74. 30. No. 140 of the collection by Dr. Ghosh...</small></td>
+        </tr>
+
+        <tr id="74.103">
+            <td class="verse-ref">74.103 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A074_S103" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/appendix-note-191.html#p-appendix-note-191-71">vol-3 §appendix-note-191</a></td>
+            <td class="verse-context"><small>...and Vaṣ 16, 34; verse 11 is the same as Ādiparva 74. 103, Śāntiparva 162. 26 and Anusasana 75. 2...</small></td>
+        </tr>
+
+        <tr id="74.140-152">
+            <td class="verse-ref">74.140-152 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A074" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage.html#p-chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage-23">vol-2-part-1 §chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage</a></td>
+            <td class="verse-context"><small>... 28. 1-9, Atri vv. 140-141 and 193-198, Ādiparva 74. 140-152, Śāntiparva 144. 6 and 12-17, Anuśāsana...</small></td>
+        </tr>
+
+        <tr id="75.18-22">
+            <td class="verse-ref">75.18-22 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A075_S018" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-119">vol-1-part-1 §14-arthashastra-of-kautilya</a></td>
+            <td class="verse-context"><small>...was cursed by great sages and perished (Ādiparva 75. 18-22). That Yudhisthira and Nala engaged in ...</small></td>
+        </tr>
+
+        <tr id="75.44">
+            <td class="verse-ref">75.44 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A075_S044" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxiii-brief-notes-on-individual-purānas-and-upapurānas.html#p-chapter-xxiii-brief-notes-on-individual-purānas-and-upapurānas-44">vol-5-part-2 §chapter-xxiii-brief-notes-on-individual-purānas-and-upapurānas</a></td>
+            <td class="verse-context"><small>...y that all borrow from the Mahābhārata, Ādiparva 75. 44 ff., 85. 9 ff. and Anuśāsana 7. 21 ff. ...</small></td>
+        </tr>
+
+        <tr id="75.50-53">
+            <td class="verse-ref">75.50-53 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A075_S050" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">‘ न पृथिव्यां त्रीहियवं हिरण्यं पशवः स्त्रियः । नालमेकस्य तत्सर्वमिति मत्त्वा शं व्रजेत् ॥ The Ch. eḍ reads this as ‘ पृथिवीरत्लसम्पूर्णा हिरण्यं ... व्रजेत् ’ (</div><div class="kane-note">आदि 75. 51); आश्रमा विहिताः सर्वे वर्जयित्वा निरामिषम् । शान्ति 63. 13.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-1/32-the-two-epics.html#fn-32-the-two-epics-49">vol-1-part-1 §32-the-two-epics</a></div></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxii-origin-and-development-of-purāna-literature.html#p-chapter-xxii-origin-and-development-of-purāna-literature-37">vol-5-part-2 §chapter-xxii-origin-and-development-of-purāna-literature</a></td>
+            <td class="verse-context"><small>...g by Yayāti, most of which occur in the Ādiparva 75. 50–53 and 85. 12–15, Brahmāṇḍa III. 68. 96–10...</small></td>
+        </tr>
+
+        <tr id="76.6">
+            <td class="verse-ref">76.6 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A076_S006" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/17-ushanas.html#p-17-ushanas-3">vol-1-part-1 §17-ushanas</a></td>
+            <td class="verse-context"><small>... after making an alliance (sandhi). The Ādiparva (76. 6) says that Kāvya was the purohita of the...</small></td>
+        </tr>
+
+        <tr id="76.19">
+            <td class="verse-ref">76.19 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A076_S019" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-17">vol-1-part-1 §14-arthashastra-of-kautilya</a></td>
+            <td class="verse-context"><small>...spati is said to be the son of Aṅgiras (Ādiparva 76. 19). The Sabhāparva (55. 6) men-tions the ...</small></td>
+        </tr>
+
+        <tr id="76-77">
+            <td class="verse-ref">76-77 <a href="https://sanatana.in/mbta/listing/parva/adiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxii-bhojana.html#p-chapter-xxii-bhojana-30">vol-2-part-2 §chapter-xxii-bhojana</a></td>
+            <td class="verse-context"><small>...&gt;94&lt;/a&gt;&lt;/sup&gt; The Mahābhārata narrates (Ādiparva 76-77) the story of Śukra, his daughter Devay...</small></td>
+        </tr>
+
+        <tr id="82.16">
+            <td class="verse-ref">82.16 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A082_S016" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxxii-yoga-and-dharmashastra.html#p-chapter-xxxii-yoga-and-dharmashastra-40">vol-5-part-2 §chapter-xxxii-yoga-and-dharmashastra</a></td>
+            <td class="verse-context"><small>... (vide Gautama 23. 29, Vasiṣṭha 16. 36, Ādiparva 82. 16, Śānti-parva 34. 25 and 165. 30, quoted...</small></td>
+        </tr>
+
+        <tr id="83.21">
+            <td class="verse-ref">83.21 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A083_S021" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/23-devala.html#p-23-devala-4">vol-1-part-1 §23-devala</a></td>
+            <td class="verse-context"><small>...myam sarvārtheṣvabravin Manuḥ'. Compare Ādiparva 83. 21, Udyogaparva 33. 64 and Manu VIII. 416.</small></td>
+        </tr>
+
+        <tr id="85">
+            <td class="verse-ref">85 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A085" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/appendix-note-191.html#p-appendix-note-191-14">vol-3 §appendix-note-191</a></td>
+            <td class="verse-context"><small>...e qualifications of a ‘pratihāra’. Vide Ādiparva 85, 28-29, Viṣṇudharmottara II. 24. 12, Śu...</small></td>
+        </tr>
+
+        <tr id="85.34">
+            <td class="verse-ref">85.34 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A085_S034" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-48">vol-3 §chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age</a></td>
+            <td class="verse-context"><small>...p 16). It has to be remembered that the Ādiparva (85. 34) states that mlecchas and yavanas sprang...</small></td>
+        </tr>
+
+        <tr id="86.1">
+            <td class="verse-ref">86.1 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A086_S001" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxvii-vānaprastha-forest-hermit.html#p-chapter-xxvii-vānaprastha-forest-hermit-22">vol-2-part-2 §chapter-xxvii-vānaprastha-forest-hermit</a></td>
+            <td class="verse-context"><small>...s said to have become a forest hermit ( Ādiparva 86. 1 ) where he practised various austeritie...</small></td>
+        </tr>
+
+        <tr id="91.12">
+            <td class="verse-ref">91.12 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A091_S012" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxviii-sannyāsa.html#p-chapter-xxviii-sannyāsa-8">vol-2-part-2 §chapter-xxviii-sannyāsa</a></td>
+            <td class="verse-context"><small>...VI. 38 and 43, Āp. Dh. S. I. 9. 21. 10, Ādiparva 91. 12 ).</small></td>
+        </tr>
+
+        <tr id="95.8">
+            <td class="verse-ref">95.8 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A095_S008" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-9">vol-1-part-1 §32-the-two-epics</a></td>
+            <td class="verse-context"><small>...tathā jagau). For Ānuvaṁśa ślokas, vide Ādiparva 95. 8 (for sons&lt;sup class="fn-ref"&gt;&lt;a href="#...</small></td>
+        </tr>
+
+        <tr id="102.12-15">
+            <td class="verse-ref">102.12-15 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A102_S012" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-ix-marriage.html#p-chapter-ix-marriage-98">vol-2-part-1 §chapter-ix-marriage</a></td>
+            <td class="verse-context"><small>...8-39), Kauṭilya III. 1, 59th prakaraṇa, Ādi-parva 102. 12-15 (they are described but not named) ; so...</small></td>
+        </tr>
+
+        <tr id="104.6">
+            <td class="verse-ref">104.6 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A104_S006" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">उत्पत्वादपिष्ठः पुत्र इति हि ब्राह्मणम् । आप . ध . सू . II. 6. 13. 5; पाणिग्रा‌हस्यैव तनय इति चेवेदु नियन्त्रम् ।</div><div class="kane-note">आदिपर्व 104. 6.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-xiii-niyoga.html#fn-chapter-xiii-niyoga-21">vol-2-part-1 §chapter-xiii-niyoga</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xiii-niyoga.html#p-chapter-xiii-niyoga-6">vol-2-part-1 §chapter-xiii-niyoga</a></td>
+            <td class="verse-context"><small>...atter. Vide Gaut. 18. 10-11, Vaṣ 17. 8, Ādiparva 104. 6.&lt;sup class="fn-ref"&gt;&lt;a href="#fn-chapte...</small></td>
+        </tr>
+
+        <tr id="104.34-37">
+            <td class="verse-ref">104.34-37 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A104_S034" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xiv-remarriage-of-widows.html#p-chapter-xiv-remarriage-of-widows-2">vol-2-part-1 §chapter-xiv-remarriage-of-widows</a></td>
+            <td class="verse-context"><small>...oved ). It is said in the Mahābhārata ( Ādiparva 104. 34-37 ) that Dirghatamas forbade remarriage a...</small></td>
+        </tr>
+
+        <tr id="104.35">
+            <td class="verse-ref">104.35 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A104_S035" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">कर्थं तर्हि द्रौपद्याः पञ्च पाण्डवा मारिषायाश्च दशा प्राचेतसा इद्धानीतिनाम्नां नीचानां च द्विारावयः पतयो दृश्यन्ते इति चेन्न देवचरितं चरेदिति न्यायेन देवताकल्पेषु पर्युपयोगेनाणीतानां नीचानां पशुवृषभाणां चाचारस्याप्रामाण्याच्च अधिकारिविषयत्वाच्च नियो - गस्य। नीलकण्ठ on</div><div class="kane-note">आदिपर्व 104. 35.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage.html#fn-polyandry-8">vol-2-part-1 §chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage.html#p-chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage-3">vol-2-part-1 §chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage</a></td>
+            <td class="verse-context"><small>...mentator of the Mahābhārata, raises (on Ādiparva 104. 35) the question about Draupadī’s marrying...</small></td>
+        </tr>
+
+        <tr id="107.9">
+            <td class="verse-ref">107.9 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A107_S009" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-121">vol-1-part-1 §14-arthashastra-of-kautilya</a></td>
+            <td class="verse-context"><small>...hat he remained silent when questioned (Ādiparva 107.9). He is also referred to in Ādi 63. 92–...</small></td>
+        </tr>
+
+        <tr id="109.25">
+            <td class="verse-ref">109.25 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A109_S025" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">धृतराष्ट्रश्चक्षुषाऽदात्तं न प्रत्यपद्यत ।</div><div class="kane-note">आदिपर्व 109. 25 quoted by राज - धर्मको p. 235.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-3/chapter-ii-seven-angas-of-rājya.html#fn-chapter-ii-seven-angas-of-rājya-35">vol-3 §chapter-ii-seven-angas-of-rājya</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-ii-varna.html#p-chapter-ii-varna-115">vol-2-part-1 §chapter-ii-varna</a></td>
+            <td class="verse-context"><small>Paraśava. Vide nisāda above. In the Ādiparva 109. 25 Vidura is called pāraśava and he is sai...</small></td>
+        </tr>
+
+        <tr id="115.39">
+            <td class="verse-ref">115.39 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A115_S039" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">गांधारी क्षिय्यमानायाधृतराष्ट्रेण विवधर्ता । धृतराष्ट्र महाराजं वेड्या पपर्चर् - स्किळ ॥</div><div class="kane-note">आदि 115. 39.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-xvi-veshyā.html#fn-chapter-xvi-veshyā-2">vol-2-part-1 §chapter-xvi-veshyā</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xvi-veshyā.html#p-chapter-xvi-veshyā-2">vol-2-part-1 §chapter-xvi-veshyā</a></td>
+            <td class="verse-context"><small>...zans are an established institutioṇ The Ādiparva (115. 39) narrates how a veśyā waited upon Dhṛtar...</small></td>
+        </tr>
+
+        <tr id="115.43">
+            <td class="verse-ref">115.43 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A115_S043" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-ii-varna.html#p-chapter-ii-varna-58">vol-2-part-1 §chapter-ii-varna</a></td>
+            <td class="verse-context"><small>...cchivi?), Naṭa, Karaṇa, Khāśa, Draviḍa. Ādiparva 115. 43 tells us that Dhṛtarāṣṭra had from a va...</small></td>
+        </tr>
+
+        <tr id="120">
+            <td class="verse-ref">120 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A120" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxvii-dāyabhāga-partition-of-wealth.html#p-chapter-xxvii-dāyabhāga-partition-of-wealth-88">vol-3 §chapter-xxvii-dāyabhāga-partition-of-wealth</a></td>
+            <td class="verse-context"><small>...50), Viṣṇu Dh. S. 15 1-30, Mahābhārata (Ādiparva 120 31-34), Brahma-purāṇa (q. by Aparārka p...</small></td>
+        </tr>
+
+        <tr id="120.17-20">
+            <td class="verse-ref">120.17-20 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A120_S017" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xvi-contracts.html#p-chapter-xvi-contracts-5">vol-3 §chapter-xvi-contracts</a></td>
+            <td class="verse-context"><small>...d to this theory of spiritual debtṣ The Ādiparva (120. 17-20) holds that men owe four debts, viz. the...</small></td>
+        </tr>
+
+        <tr id="123.6">
+            <td class="verse-ref">123.6 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A123_S006" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-1/chapter-xvi-muhūrta.html#p-chapter-xvi-muhūrta-4">vol-5-part-1 §chapter-xvi-muhūrta</a></td>
+            <td class="verse-context"><small>..., Sāvitra, Maitra, Bala and Vijaya. The Ādiparva (123. 6) states that Yudhiṣṭhira was born when t...</small></td>
+        </tr>
+
+        <tr id="128.12-13">
+            <td class="verse-ref">128.12-13 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A128_S012" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxvii-vānaprastha-forest-hermit.html#p-chapter-xxvii-vānaprastha-forest-hermit-22">vol-2-part-2 §chapter-xxvii-vānaprastha-forest-hermit</a></td>
+            <td class="verse-context"><small>...olved to undergo severe austeritieṣ The Ādiparva ( 128. 12–13 ) narrates that, on the death of Pāṇḍu, S...</small></td>
+        </tr>
+
+        <tr id="130.61-62">
+            <td class="verse-ref">130.61-62 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A130_S061" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-76">vol-1-part-1 §14-arthashastra-of-kautilya</a></td>
+            <td class="verse-context"><small>...-ṛtvigbhyaḥ pradadau mahim ।; vide also Ādi- parva 130. 61–62, Droṇaparva 70. 15–19, Śalyaparva 49. 7...</small></td>
+        </tr>
+
+        <tr id="132">
+            <td class="verse-ref">132 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A132" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-vii-upanayana.html#p-chapter-vii-upanayana-63">vol-2-part-1 §chapter-vii-upanayana</a></td>
+            <td class="verse-context"><small>... to him for attaining proficiency (vide Ādiparva 132 for the story and also Droṇaparva 181. ...</small></td>
+        </tr>
+
+        <tr id="140">
+            <td class="verse-ref">140 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A140" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-i-preliminary.html#p-chapter-i-preliminary-12">vol-3 §chapter-i-preliminary</a></td>
+            <td class="verse-context"><small>...rules of fair deal-ing and morality. In Ādiparva 140 we have a discourse by Kanika said to h...</small></td>
+        </tr>
+
+        <tr id="140.63">
+            <td class="verse-ref">140.63 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A140_S063" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-101">vol-1-part-1 §14-arthashastra-of-kautilya</a></td>
+            <td class="verse-context"><small>...in the sense of heretical sect or monk. Ādiparva 140. 63, Vana- parva 188. 49, Anuśāsanaparva 23...</small></td>
+        </tr>
+
+        <tr id="160.12">
+            <td class="verse-ref">160.12 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U10_A160_S012" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">उत्सूक्ष्ममपि भूमो प्रार्थयन्ति यथा खगाः। प्रार्थयन्ति जनाः सर्वे पतिहीनां तथा श्रियम् ॥</div><div class="kane-note">आदिपर्व 160. 12; सर्वापि विधवा नारी बहुपुत्रपि शोचते ॥ शान्तिपर्व 148. 2.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-xii-the-duties-of-a-widow-some-privileges-of-women-and-the-purda-system.html#fn-chapter-xii-the-duties-of-a-widow-some-privileges-of-women-and-the-purda-system-8">vol-2-part-1 §chapter-xii-the-duties-of-a-widow-some-privileges-of-women-and-the-purda-system</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xii-the-duties-of-a-widow-some-privileges-of-women-and-the-purda-system.html#p-chapter-xii-the-duties-of-a-widow-some-privileges-of-women-and-the-purda-system-4">vol-2-part-1 §chapter-xii-the-duties-of-a-widow-some-privileges-of-women-and-the-purda-system</a></td>
+            <td class="verse-context"><small>...ing meal in a vessel of bell-metal. The Ādiparva (160. 12) says ‘just as birds flock to a piece of...</small></td>
+        </tr>
+
+        <tr id="161.14">
+            <td class="verse-ref">161.14 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U10_A161_S014" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-ii-means-of-reducing-consequences-of-sins.html#p-chapter-ii-means-of-reducing-consequences-of-sins-14">vol-4 §chapter-ii-means-of-reducing-consequences-of-sins</a></td>
+            <td class="verse-context"><small>...at power of mantras is mentioned in the Ādiparva (161. 14) by Kunti. The Nṛsimha-purāṇa in chap.18...</small></td>
+        </tr>
+
+        <tr id="166-467">
+            <td class="verse-ref">166-467 <a href="https://sanatana.in/mbta/listing/parva/adiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-98">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>...troys beings and is invincible, acc. to Ādiparva 166-467; Purāṇas on K. hold that time is withou...</small></td>
+        </tr>
+
+        <tr id="179.20">
+            <td class="verse-ref">179.20 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U11_A179_S020" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxvii-vānaprastha-forest-hermit.html#p-chapter-xxvii-vānaprastha-forest-hermit-23">vol-2-part-2 §chapter-xxvii-vānaprastha-forest-hermit</a></td>
+            <td class="verse-context"><small>...ouls of those who kill them- selveṣ The Ādiparva (179. 20) declares that one who commits suicide d...</small></td>
+        </tr>
+
+        <tr id="213.9">
+            <td class="verse-ref">213.9 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U15_A213_S009" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-ii-seven-angas-of-rājya.html#p-chapter-ii-seven-angas-of-rājya-19">vol-3 §chapter-ii-seven-angas-of-rājya</a></td>
+            <td class="verse-context"><small>...āsa echoes this in the Śakuntala II. 13 Ādiparva 213. 9 looks upon the king who takes the sixth...</small></td>
+        </tr>
+
+        <tr id="219.17-18">
+            <td class="verse-ref">219.17-18 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U16_A219_S017" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-ix-marriage.html#p-chapter-ix-marriage-36">vol-2-part-1 §chapter-ix-marriage</a></td>
+            <td class="verse-context"><small>...aying that although in the Mahābhārata (Ādiparva 219. 17-18) Subhadrā is described as the daughter ...</small></td>
+        </tr>
+
+        <tr id="221.46">
+            <td class="verse-ref">221.46 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U17_A221_S046" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-xv-kurukshetra-and-some-other-famous-tīrthas.html#p-chapter-xv-kurukshetra-and-some-other-famous-tīrthas-10">vol-4 §chapter-xv-kurukshetra-and-some-other-famous-tīrthas</a></td>
+            <td class="verse-context"><small>...uryapura (S. B. E. vol. 45 p. 112). The Ādiparva (221. 46) indicates that Mathurā was famed for ex...</small></td>
+        </tr>
+
+        <tr id="221.72-74">
+            <td class="verse-ref">221.72-74 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U17_A221_S072" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-ii-seven-angas-of-rājya.html#p-chapter-ii-seven-angas-of-rājya-28">vol-3 §chapter-ii-seven-angas-of-rājya</a></td>
+            <td class="verse-context"><small>...cret doctrine and in Dhanurveda. In the Ādiparva 221. 72-74 Abhimanyu is said to have learned from ...</small></td>
+        </tr>
+
+        <tr id="229.14">
+            <td class="verse-ref">229.14 <a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U19_A229_S014" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">श्रूयते हि पुरा तात श्रुतिर्गीता यशस्विना । गयेन यजमानेन गयेष्वेव पितृन् प्रति । पुंनाम्नो नरकाद्यस्मात् पितरं त्रायते सुतः । तस्मात्पुत्र इति प्रोक्तः पितृभिः पाति सर्वतः ॥ एष्वद्या बद्धः पुत्रा गुणवन्तो बहुश्रुताः । तेषां वै समवेताना - मपि कश्चिदयां व्रजेत् । अयोध्या 107. 11-13. The first verse ( पुंनाम्नो ) occurs in Manu IX. 138 (last pāda is स्वयमेव स्वयंभुवा</div><div class="kane-note">आदिपर्व 229. 14 (first half), विष्णुधर्मे० 15. 44; part of the 2nd verse occurs in वनपर्व 87. 10.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-1/32-the-two-epics.html#fn-32-the-two-epics-77">vol-1-part-1 §32-the-two-epics</a></div></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxvii-dāyabhāga-partition-of-wealth.html#p-chapter-xxvii-dāyabhāga-partition-of-wealth-86">vol-3 §chapter-xxvii-dāyabhāga-partition-of-wealth</a> · <a href="../vol-4/chapter-vi-consequences-of-not-undergoing-penances.html#p-chapter-vi-consequences-of-not-undergoing-penances-3">vol-4 §chapter-vi-consequences-of-not-undergoing-penances</a></td>
+            <td class="verse-context"><small>...&lt;/a&gt;&lt;/sup&gt; as stated by Manu IX. 138 ( =Ādiparva 229. 14 = Viṣṇu Dh. S. 15. 44 ). The son's clos...</small></td>
+        </tr>
+
+        <tr id="416">
+            <td class="verse-ref">416 <a href="https://sanatana.in/mbta/listing/parva/adiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/general-index.html#p-general-index-7">vol-3 §general-index</a></td>
+            <td class="verse-context"><small>...rva 416, four d owed by all men, acc to Ādiparva 416, grandson's and great-grandson's liabil...</small></td>
+        </tr>
+            </tbody>
+        </table>
+    </div>
+
+    
+    <footer class="container-fluid pt-4" style="background-color:#2e4144">
+        <div class="row border-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img src="https://sanatana.in/mbta/public/images/Homepage_html/images/layer_8.png" alt="">
+            </div>
+            <div class="col-md-5 text-white">
+                <p>The divine knowledge and wisdom of our shastras is the only thing eternal,
+                   which was and which will remain ever-present in this gods creation.
+                   Our endeavours are to preserve this knowledge.</p>
+            </div>
+            <div class="col-md-1 text-white">
+                <div class="d-flex" style="height: 75px;">
+                    <div class="vr"></div>
+                </div>
+            </div>
+            <div class="col-md-3 text-white">
+                <i class="fa-solid fa-globe"></i>&emsp;
+                <a href="https://sanatanasampatti.in" class="text-light">www.sanatanasampatti.in</a><br>
+                <i class="fa-solid fa-envelope"></i>&emsp;
+                <a href="" class="text-light">sriranga.yoga@gmail.com</a>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center py-3 mb-4 align-items-center border-bottom">
+            <div class="col-md-2 text-white fs-4 text-center">Project</div>
+            <div class="col-md-2 text-white fs-4 text-center">Our Mission</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contribute</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contact Us</div>
+        </div>
+        <div class="row">
+            <p class="col-md-6 fs-6 text-start text-light">
+                <small>&copy; 2026 Sanatanasampatti</small>
+            </p>
+            <p class="col-md-6 fs-6 text-end text-light">
+                <a class="text-white" rel="nofollow" href="http://www.srirangadigital.com" target="_blank">
+                    <img src="https://sanatana.in/mbta/public/images/logo.png" alt="sriranga logo" />
+                    <small>Designed, Developed and Maintained by Sriranga Digital</small>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+</body>
+</html>

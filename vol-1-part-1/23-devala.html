@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- MDB UI Kit -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/fonts.css?v=1.2">
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/navbar.css?v=2.4">
+
+    <title>23. Devala — Volume I: Part I — History of Dharmaśāstra</title>
+    <style>
+    :root {
+        --saffron:        #D4600A;
+        --saffron-light:  #F0924A;
+        --saffron-wash:   rgba(212, 96, 10, 0.07);
+        --indigo:         #2E5FA3;
+        --indigo-dark:    #1C3D70;
+        --maroon:         #7A1E1E;
+        --amber:          #C97A1A;
+        --ink:            #1A1209;
+        --ink-secondary:  #4A3B2A;
+        --parchment:      #FDFAF4;
+        --parchment-mid:  #F5EFE2;
+        --rule:           rgba(180, 130, 60, 0.22);
+        --shadow:         0 2px 18px rgba(90, 50, 10, 0.08);
+        --font-devanagari: 'Tiro Devanagari Sanskrit', 'Siddhanta', 'Noto Sans Devanagari', serif;
+        --font-roman:      'Junicode', Georgia, serif;
+    }
+
+    body {
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: var(--font-roman);
+    }
+
+    .devanagari {
+        font-family: var(--font-devanagari);
+    }
+
+    /* ── Navbar overrides ── */
+    .navbar-ontop { z-index: 1031; }
+    .hdclr { color: var(--saffron); }
+    .engpara { font-family: 'Open Sans', sans-serif; }
+
+    /* ── Layout ── */
+    .dh-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .dh-content {
+        flex: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        background: var(--parchment);
+        box-shadow: var(--shadow);
+        min-height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        .dh-content { padding: 24px 20px; }
+        .dh-wrapper { flex-direction: column; }
+    }
+
+    /* ── TOC Sidebar ── */
+    .toc-sidebar {
+        position: sticky;
+        top: 80px;
+        width: 280px;
+        min-width: 280px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding: 20px 16px;
+        margin-right: 24px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        scrollbar-width: thin;
+    }
+
+    .toc-title {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--saffron-light);
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list li {
+        padding: 4px 0;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-list li.toc-l3 {
+        padding-left: 16px;
+        font-size: 0.78rem;
+    }
+
+    .toc-list li a {
+        color: var(--ink-secondary);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .toc-list li a:hover { color: var(--saffron); }
+
+    .toc-list li.active {
+        border-left-color: var(--saffron);
+    }
+
+    .toc-list li.active a {
+        color: var(--saffron);
+        font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-sidebar { display: none; }
+    }
+
+    /* ── Mobile TOC Toggle ── */
+    .toc-mobile-toggle {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1050;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--saffron);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-mobile-toggle { display: block; }
+    }
+
+    /* ── Section Headings ── */
+    .section-heading {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        margin: 48px 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--rule);
+        letter-spacing: 0.5px;
+        scroll-margin-top: 80px;
+    }
+
+    h2.section-heading { font-size: 1.6rem; }
+
+    h3.section-heading {
+        font-size: 1.25rem;
+        border-left: 4px solid var(--saffron-light);
+        border-bottom: none;
+        padding: 8px 16px;
+        background: var(--saffron-wash);
+        border-radius: 0 5px 5px 0;
+    }
+
+    /* ── Prose ── */
+    .prose {
+        font-family: var(--font-roman);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+        color: var(--ink);
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    .prose em { color: var(--maroon); }
+
+    .prose:target {
+        background: rgba(212, 96, 10, 0.12);
+        border-left: 4px solid var(--saffron);
+        padding-left: 16px;
+        margin-left: -20px;
+        border-radius: 0 6px 6px 0;
+        animation: target-pulse 2s ease-out;
+    }
+
+    @keyframes target-pulse {
+        0%   { background: rgba(212, 96, 10, 0.30); }
+        100% { background: rgba(212, 96, 10, 0.12); }
+    }
+
+    /* ── Footnote References ── */
+    .fn-ref {
+        font-size: 0.75em;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    .fn-ref a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 0 2px;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: color 0.15s;
+    }
+
+    .fn-ref a:hover { color: var(--indigo); }
+
+    /* ── Synopsis Box ── */
+    .synopsis-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron-light);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .synopsis-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .synopsis-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .synopsis-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .synopsis-box.open .synopsis-toggle i {
+        transform: rotate(90deg);
+    }
+    .synopsis-body {
+        display: none;
+        padding: 0 20px 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+    }
+    .synopsis-box.open .synopsis-body { display: block; }
+    .synopsis-body p { margin: 0; }
+    .synopsis-attribution {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: var(--ink-secondary);
+        opacity: 0.7;
+        font-style: italic;
+    }
+    .synopsis-audio {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    .synopsis-play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--saffron);
+        background: none;
+        color: var(--saffron);
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: background 0.2s, color 0.2s;
+        padding: 0;
+    }
+    .synopsis-play-btn:hover {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn.playing {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn i { padding-left: 2px; }
+
+    /* ── Index Terms Panel ── */
+    .index-terms-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .index-terms-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .index-terms-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .index-terms-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .index-terms-box.open .index-terms-toggle i {
+        transform: rotate(90deg);
+    }
+    .index-terms-body {
+        display: none;
+        padding: 0 20px 16px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .index-terms-box.open .index-terms-body { display: block; }
+    .index-terms-dl {
+        margin: 0;
+        padding: 0;
+    }
+    .index-terms-dl dt {
+        font-family: var(--font-roman);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+        margin-top: 8px;
+    }
+    .index-terms-dl dd {
+        margin: 2px 0 0 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        color: var(--ink-secondary);
+        line-height: 1.5;
+    }
+    .nyaya-heading {
+        font-family: var(--font-roman);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        margin: 16px 0 4px;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+    }
+
+    /* ── Inline Index Popovers ── */
+    .idx-term {
+        border-bottom: 1px dotted var(--saffron-light);
+        cursor: help;
+        position: relative;
+    }
+    .idx-term:hover::after {
+        content: attr(data-def);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        background: rgba(44, 36, 22, 0.92);
+        color: #F5ECD8;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        max-width: 280px;
+        z-index: 100;
+        white-space: normal;
+        line-height: 1.4;
+        pointer-events: none;
+    }
+
+    /* ── Structured Version Banner ── */
+    .structured-banner {
+        margin: 0 0 28px;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, rgba(212, 96, 10, 0.06) 0%, rgba(212, 96, 10, 0.02) 100%);
+        border: 1px solid var(--saffron-light);
+        border-radius: 6px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        color: var(--ink-secondary);
+        line-height: 1.6;
+    }
+    .structured-banner i { color: var(--saffron); margin-right: 4px; }
+    .structured-banner a { color: var(--indigo); font-weight: 600; text-decoration: none; }
+    .structured-banner a:hover { text-decoration: underline; }
+
+    /* ── Footnotes Section ── */
+    .footnotes-section {
+        margin: 32px 0 48px;
+        padding: 20px 24px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .footnotes-section hr {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 0 0 16px;
+    }
+
+    .footnotes-list {
+        padding-left: 24px;
+        margin: 0;
+    }
+
+    .footnote-item {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+        scroll-margin-top: 80px;
+    }
+
+    .footnote-item:target {
+        background: rgba(212, 96, 10, 0.1);
+        border-radius: 4px;
+        padding: 4px 6px;
+        margin-left: -6px;
+    }
+
+    .fn-back {
+        color: var(--saffron-light);
+        text-decoration: none;
+        font-size: 0.85em;
+        margin-left: 4px;
+    }
+
+    .fn-back:hover { color: var(--saffron); }
+
+    /* ── Reference Links ── */
+    a.ref {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: all 0.15s;
+    }
+
+    a.ref:hover {
+        color: var(--saffron);
+        border-bottom-style: solid;
+    }
+
+    a.mbta-ext {
+        color: var(--indigo);
+        font-size: 0.7em;
+        margin-left: 2px;
+        opacity: 0.5;
+        text-decoration: none;
+        vertical-align: super;
+    }
+    a.mbta-ext:hover { opacity: 1; color: var(--saffron); }
+
+    /* ── References Panel (sidebar) ── */
+    .refs-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .refs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .refs-list li {
+        padding: 3px 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .ref-source-link {
+        font-weight: 600;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .ref-source-link:hover {
+        text-decoration: underline;
+    }
+
+    .ref-verse-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.76rem;
+    }
+
+    .ref-verse-link:hover {
+        text-decoration: underline;
+        color: var(--saffron);
+    }
+
+    .ref-verses {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Timeline panel ── */
+    .timeline-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .timeline-list li {
+        padding: 2px 0;
+        font-size: 0.76rem;
+        line-height: 1.4;
+        position: relative;
+        padding-left: 14px;
+    }
+
+    .timeline-list li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--saffron);
+    }
+
+    .timeline-list li.tl-approximate::before {
+        background: transparent;
+        border: 2px solid var(--saffron);
+        width: 4px;
+        height: 4px;
+    }
+
+    .timeline-list li.tl-century::before {
+        background: transparent;
+        border: 2px dashed var(--saffron);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+
+    .tl-dot-link {
+        text-decoration: none;
+        color: var(--ink);
+        display: block;
+    }
+
+    .tl-dot-link:hover {
+        color: var(--saffron);
+    }
+
+    .tl-year {
+        font-weight: 600;
+        color: var(--saffron);
+        font-size: 0.72rem;
+        min-width: 70px;
+        display: inline-block;
+    }
+
+    .tl-label {
+        color: var(--ink-secondary);
+        font-size: 0.72rem;
+    }
+
+    .tl-view-link, .tl-more {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.72rem;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .tl-view-link:hover, .tl-more:hover {
+        text-decoration: underline;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+
+    .breadcrumb-bar a {
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+
+    .breadcrumb-bar .sep {
+        color: var(--amber);
+        margin: 0 8px;
+    }
+
+    .breadcrumb-bar .current {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Chapter Navigation ── */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        margin-top: 48px;
+        border-top: 2px solid var(--rule);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .chapter-nav a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        transition: all 0.2s;
+        max-width: 45%;
+    }
+
+    .chapter-nav a:hover {
+        background: var(--saffron-wash);
+        border-color: var(--saffron-light);
+    }
+
+    .nav-prev { text-align: left; }
+    .nav-next { text-align: right; margin-left: auto; }
+
+    .page-range {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+    }
+
+    /* ── Volume Cards (Landing) ── */
+    .vol-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .vol-card {
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        transition: all 0.25s;
+    }
+
+    .vol-card:hover {
+        border-color: var(--saffron-light);
+        box-shadow: 0 4px 24px rgba(212, 96, 10, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .vol-num {
+        font-family: var(--font-roman);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--saffron);
+        margin-bottom: 8px;
+    }
+
+    .vol-subtitle {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        line-height: 1.5;
+        flex: 1;
+    }
+
+    .vol-chapters {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        margin-top: 12px;
+    }
+
+    /* ── Chapter Cards (Volume Index) ── */
+    .chapter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .chapter-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .chapter-card:hover {
+        border-color: var(--saffron-light);
+        background: var(--saffron-wash);
+    }
+
+    .card-num {
+        font-family: var(--font-roman);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--saffron);
+        min-width: 36px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        flex: 1;
+    }
+
+    .card-pages {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        color: var(--ink-secondary);
+    }
+
+    /* ── Landing Hero ── */
+    .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-family: var(--font-roman);
+        font-size: 2.4rem;
+        color: var(--saffron);
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .hero .devanagari-title {
+        font-family: var(--font-devanagari);
+        font-size: 1.8rem;
+        color: var(--ink);
+        margin-bottom: 16px;
+    }
+
+    .hero .author {
+        font-family: var(--font-roman);
+        font-size: 1.1rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .hero .desc {
+        font-family: var(--font-roman);
+        font-size: 1rem;
+        color: var(--ink-secondary);
+        line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer { margin-top: 48px; }
+</style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mbta/">
+      <div class="container-fluid">&emsp;&emsp;
+      <a href="../index.html" class="navbar-brand" style="text-decoration:none;">
+        <span class="devanagari ms-3" style="font-size:1.5rem; color:var(--saffron); font-weight:700;">धर्मशास्त्रम्</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="../index.html">धर्मशास्त्रम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5 active" href="../index.html">खण्डाः</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in/mbta/">महाभारतम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in">सनातनम्</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+
+    <div class="dh-wrapper container-xl">
+        <nav id="toc" class="toc-sidebar">
+<div class="refs-panel">
+<h5 class="toc-title">References</h5>
+<ul class="refs-list">
+<li><a href="../refs/apararka.html" class="ref-source-link">Aparārka</a> <span class="ref-verses"><a href="../refs/apararka.html#ci" class="ref-verse-link">ci</a></span></li>
+<li><a href="../refs/baudhayana.html" class="ref-source-link">Baudhāyana Dharmasūtra</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/gita.html" class="ref-source-link">Bhagavadgītā</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/brihaspati.html" class="ref-source-link">Bṛhaspati</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/hodh.html" class="ref-source-link">History of Dharmaśāstra</a> <span class="ref-verses"><a href="../refs/hodh.html#Vol. V" class="ref-verse-link">Vol. V</a></span></li>
+<li><a href="../refs/katyayana.html" class="ref-source-link">Kātyāyana</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mahabharata.html" class="ref-source-link">Mahābhārata</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/manu.html" class="ref-source-link">Manusmṛti</a> <span class="ref-verses"><a href="../refs/manu.html#VIII.416" class="ref-verse-link">VIII.416</a>, <a href="../refs/manu.html#i" class="ref-verse-link">i</a></span></li>
+<li><a href="../refs/medhatithi.html" class="ref-source-link">Medhātithi</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mitakshara.html" class="ref-source-link">Mitākṣarā</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/narada.html" class="ref-source-link">Nārada</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mb_sabhaparva.html" class="ref-source-link">Sabhāparva</a> <span class="ref-verses"><a href="../refs/mb_sabhaparva.html#59.9-11" class="ref-verse-link">59.9-11</a></span></li>
+<li><a href="../refs/mb_udyogaparva.html" class="ref-source-link">Udyogaparva</a> <span class="ref-verses"><a href="../refs/mb_udyogaparva.html#33.64" class="ref-verse-link">33.64</a></span></li>
+<li><a href="../refs/vishvarupa.html" class="ref-source-link">Viśvarūpa</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/vishnu_smriti.html" class="ref-source-link">Viṣṇu Smṛti</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/yajnavalkya.html" class="ref-source-link">Yājñavalkya</a> <span class="ref-verses"><a href="../refs/yajnavalkya.html#III.227" class="ref-verse-link">III.227</a>, <a href="../refs/yajnavalkya.html#III.290" class="ref-verse-link">III.290</a>, <a href="../refs/yajnavalkya.html#III" class="ref-verse-link">III</a>, <a href="../refs/yajnavalkya.html#III.315-324" class="ref-verse-link">III.315-324</a>, <a href="../refs/yajnavalkya.html#I" class="ref-verse-link">I</a>, <a href="../refs/yajnavalkya.html#I.126" class="ref-verse-link">I.126</a></span></li>
+<li><a href="../refs/mb_adiparva.html" class="ref-source-link">Ādiparva</a> <span class="ref-verses"><a href="../refs/mb_adiparva.html#83.21" class="ref-verse-link">83.21</a></span></li>
+<li><a href="../refs/mb_shantiparva.html" class="ref-source-link">Śāntiparva</a> <span class="ref-verses"><a href="../refs/mb_shantiparva.html#230.I" class="ref-verse-link">230.I</a></span></li>
+</ul>
+</div>
+<h5 class="toc-title">Sections</h5>
+<ul class="toc-list">
+<li class="toc-l2"><a href="#23-devala">23. Devala</a></li>
+</ul>
+</nav>
+        <main class="dh-content">
+            
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep">›</span>
+        <a href="index.html">Volume I: Part I</a>
+        <span class="sep">›</span>
+        <span class="current">23. Devala</span>
+    </div>
+    
+            <h1 class="text-center" style="font-family: var(--font-roman); font-size: 2rem; color: var(--saffron); margin-bottom: 8px;">
+                23. Devala
+            </h1>
+            <p class="text-center" style="font-family: 'Open Sans', sans-serif; color: var(--ink-secondary); font-size: 0.9rem; margin-bottom: 36px;">
+                Volume I: Part I <span class="page-range">pp. 279–284</span>
+            </p>
+
+            
+    <div class="synopsis-box" id="synopsis">
+        <button class="synopsis-toggle" onclick="this.parentElement.classList.toggle('open')"
+                aria-expanded="false" aria-controls="synopsis-body">
+            <i class="fa-solid fa-chevron-right"></i>
+            Kane's Synopsis
+        </button>
+        <div class="synopsis-audio">
+            <span class="synopsis-play-btn" role="button" tabindex="0"
+                    onclick="toggleSynopsisAudio(this)"
+                    data-src="../audio/synopsis/vol-1-part-1/vol-1-part-1_sec023.mp3" title="Listen to synopsis">
+                <i class="fa-solid fa-play"></i>
+            </span>
+            <audio preload="none"></audio>
+        </div>
+        <div class="synopsis-body" id="synopsis-body">
+            <p>Devala frequently occurs in the Mahābhārata, and is notably referred to by Śaṅkarācārya as a figure relying on Sāṅkhya tenets. It is understood that a *dharmasūtra* attributed to Devala once existed, indicating his early significance in the tradition.
+
+Leading commentaries and legal treatises, such as the Mitākṣarā, Kalpataru, and Smṛticandrikā, among other works, incorporate numerous quotations in verse ascribed to Devala. These verses extensively cover diverse aspects of dharma, encompassing ācāra, vyavahāra, and śrāddha. However, this collection of quoted material is generally considered to be a later compilation.
+
+Similarly, the *Devalasmṛti*, a text of approximately ninety verses focused primarily on purifications, is also deemed a late work. The jurist Devala, whose contributions are thus evident across different textual strata, is believed to have flourished approximately at the same time as other prominent legal authorities like Bṛhaspati and Kātyāyana.</p>
+            <p class="synopsis-attribution">— Synopsis by P.V. Kane, from History of Dharmaśāstra</p>
+        </div>
+    </div>
+
+
+            
+
+            <h2 id="23-devala" class="section-heading">23. Devala</h2>
+<p class="prose" id="p-23-devala-1">23. Devala</p>
+<p class="prose" id="p-23-devala-2">The name Devala as that of a sage frequently occurs in the <a class="ref" href="../refs/mahabharata.html" data-source="mahabharata" data-ref="" title="Mahābhārata">Mahābhārata</a> and is closely connected with Asita. Vide <a class="ref" href="../refs/mb_sabhaparva.html#59.9-11" data-source="mb_sabhaparva" data-ref="59.9-11" title="Sabhāparva 59.9-11">Sabhāparva 59. 9-11</a><a href="https://sanatana.in/mbta/listing/parva/sabhaparva#P02_U09_A059_S009" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>, Śalya 50 and <a class="ref" href="../refs/mb_shantiparva.html#230.I" data-source="mb_shantiparva" data-ref="230.I" title="Śāntiparva 230.I">Śāntiparva 230. I</a><a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>n Sabhā ( 72. 5 ) it is stated that Devala declared that a man has three lights viz. sun, actions and correct knowledge. In the <a class="ref" href="../refs/gita.html" data-source="gita" data-ref="" title="Bhagavadgītā">Gītā</a> also ( in X. 13 ) Arjuna says ‘all the sages, the Devarṣi <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>, Asita, Devala and Vyāsa speak of you as done in X. 12’. Śaṅkarācārya in his bhāṣya on Vedāntasūtra I. 4. 28 states that the Sāṅkhya system is nearer to Vedānta than other systems like the atomic theory, since it espouses the doctrine of the non-difference between cause and effect and adds that some writers of Dharmasūtras such as Devala do rely on it in their workṣ So Devala-dharmasūtra was not only earlier than Śankarācārya, but was also regarded as early as ( if not earlier than ) the sūtras based purely on logic or the atomic theory. In vol. V (of Hiṣ of Dh.) pp. 380–81, 1439 ṇ 2363, 1445, 1458 note 2390, 1458 note 2398 some passages have already been cited from Devala (as quoted in works on Dharmaśāstra ). They will not be repeated here. But a few more passages quoted from Devala by the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> , <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a>, Kalpataru and others will be set out or referred to. In the first edition also some references were given where passages of Devala are referred to but hardly any quotations in Sanskrit from Devala-dharmasūtra were set out. It may be stated here that early extant commentators like <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a> and <a class="ref" href="../refs/medhatithi.html" data-source="medhatithi" data-ref="" title="Medhātithi">Medhātithi</a> do not quote prose passages from the Devala Dharmasūtra relating to Sāṅkhya and Yoga. But <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> quotes profusely from Devala (about 130 verses and prose passages 15 times ). Some of the prose passages may be pointed out. On p. 72 a long prose passage is cited about the rules to be observed by one who has decided to be a perpetual student.</p>
+<p class="prose" id="p-23-devala-3">In the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> there are several prose passages quoted from Devala, e. g. on Yaj. I. 120 there is a sūtra on the dharmas of the śūdra and the avocations open to him; <sup class="fn-ref"><a href="#fn-23-devala-2" id="fnref-23-devala-2">2</a></sup> on Yaj. I. 128 there is a sūtra dividing householders into Yāyāvara and Śālina and describing each of theṃ<sup class="fn-ref"><a href="#fn-23-devala-3" id="fnref-23-devala-3">3</a></sup> In <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> and the Smṛticandrikā there are several prose quotations from Devala. On Yaj. III. 58 <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> quotes a long prose passage on the rules of conduct for a yati ; on Yaj.<sup class="fn-ref"><a href="#fn-23-devala-4" id="fnref-23-devala-4">4</a></sup> III. 109 <a class="ref" href="../refs/apararka.html#ci" data-source="apararka" data-ref="ci" title="Aparārka ci">Aparārka ci</a>tes a very long passage, in which Sāṅkhya and Yoga are defined, reference is made to extensive Tantras on the two systems and a brief résumé is given of the Sāṅkhya system, which greatly resembles the Sāṅkhya-kārikā and the Tattvasamāsa. On <a class="ref" href="../refs/yajnavalkya.html#III.227" data-source="yajnavalkya" data-ref="III.227" title="Yājñavalkya III.227">Yāj. III. 227</a> <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> has a prose quotation from Devala about <em>patitas</em>. In the Smṛticandrikā (I. p. 63) there is a lengthy passage from Devala on the daily duties of the <em>brahmacārin</em>, a sūtra (I. p. 52) is quoted about <em>brahma-carya</em> for 48 years and in another place there is a prose passage about the wife's dutieṣ<sup class="fn-ref"><a href="#fn-23-devala-5" id="fnref-23-devala-5">5</a></sup></p>
+<p class="prose" id="p-23-devala-4">Śaṅkarācārya<sup class="fn-ref"><a href="#fn-23-devala-6" id="fnref-23-devala-6">6</a></sup> (in his bhāṣya on Vedāntasūtra I. 4. 28) states that Devala, author of a Dharmasūtra, accepted the Sāṅkhya tenet of <em>Pradhāna</em> being the cause of the worlḍ Devala is very profusely quoted in the several kāṇḍas of the Kalpataru of Lakṣmīdhara e. g. he is quoted 40 times in Śrāddha, 21 times in Vyavahāra of which only two are in prose, 22 times on Brahmacārī, 32 times on Mokṣa, 27 times in Niyatakāla, 35 times in Gṛhastha. In the Tīrthakāṇḍa (pp. 249 ff) rivers from Sarasvatī to Godāvarī, Kāverī, Tāmraparṇī are mentioneḍ On p. 72 of Śrāddhakāṇḍa there are two verses in which <a class="ref" href="../refs/manu.html#i" data-source="manu" data-ref="i" title="Manusmṛti i">Manu i</a>s named as an authority on Śrāddhakalpa. On Dānakāṇḍa (pp. 5–9) there is one sūtra and 36 verses in explanation of that sūtra and the verses are quoted on eight kinds of <em>brāhmaṇas</em> (on pp. 30–32). In Vyavahāra ou p. 393 there are two verses of Devala, in the 2nd of which the opinion of <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> on <em>asvāmya</em> (non-ownership) of women and slaves is mentioned viz. ‘patyau jīvati nāriņām daśānām svāmini sthite tadvan-niyatam-asvāmyam sarvārtheṣvabravin <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>ḥ'. Compare <a class="ref" href="../refs/mb_adiparva.html#83.21" data-source="mb_adiparva" data-ref="83.21" title="Ādiparva 83.21">Ādiparva 83. 21</a><a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A083_S021" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>, <a class="ref" href="../refs/mb_udyogaparva.html#33.64" data-source="mb_udyogaparva" data-ref="33.64" title="Udyogaparva 33.64">Udyogaparva 33. 64</a><a href="https://sanatana.in/mbta/listing/parva/udyogaparva#P05_U03_A033_S064" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> and <a class="ref" href="../refs/manu.html#VIII.416" data-source="manu" data-ref="VIII.416" title="Manusmṛti VIII.416">Manu VIII. 416</a>.</p>
+<p class="prose" id="p-23-devala-5">The Sṃ C. quotes Devala 86 times on Āhnika, 71 times on Śrāddha, 26 times on Vyavahāra. On p. 22 of Kalpataru on Śrāddha occurs the verse 'Mānavah śrāddhakalpoyam <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>nā samudāhṛtaḥ'. On pp. 272-273 of the Brahmacārī-kāṇḍa there is a long prose passage on 'brahmacārīdharma', while on pp. 208-210 of Śrāddha-kāṇḍa twenty-two verses are quoted from Devala on 'piṇḍavidhāna'. On pp. 811-12 of Vyavahāra-kāṇḍa there is a prose passage on four anulomas and 6 pratilomas and four verses explaining them and stating that the son of a brāhmaṇa from a kṣatriya wife are assimilated to the father; on p. 7 of Mokṣakāṇḍa there is a blending of the Sāṅkhya with advaita doctrines; on p. 100-101 of the same kāṇḍa the Sāṅkhya doctr.ne of 'Mūlaprakṛti', seven prakṛtivikṛtis, 16 vikāras is set out at length.</p>
+<p class="prose" id="p-23-devala-6">In the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a>, in Haradatta. <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> and the Smṛticandrikā there are numerous quotations in verse from Devala on ācāra. vyavahāra, śrāddha, prāyaścitta and other topicṣ That seems to have been an independent work. In the Ānandāśrama collection of smṛtis there is a Devalasmṛti in 90 verses dealing with purification and prāyaścittas for contact with Mlecchaṣ This appears to be a late compilatioṇ Some of the verses contained therein are ascribed to other authors, e. g. verses 17-22 are ascribed to Āpastamba by <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> ( on <a class="ref" href="../refs/yajnavalkya.html#III" data-source="yajnavalkya" data-ref="III" title="Yājñavalkya III">Yāj. III</a>. p. 1200 ) and verses 30-31 are ascribed by the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> (on <a class="ref" href="../refs/yajnavalkya.html#III.290" data-source="yajnavalkya" data-ref="III.290" title="Yājñavalkya III.290">Yāj. III. 290</a>) and <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> to <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>.</p>
+<p class="prose" id="p-23-devala-7">It is to be noted that verses 82-90 at the end of this Devalasmṛti are the same as <a class="ref" href="../refs/yajnavalkya.html#III.315-324" data-source="yajnavalkya" data-ref="III.315-324" title="Yājñavalkya III.315-324">Yāj. III. 315-324</a> ( with slight variations ). Devala himself is named in verses 25 and 72 and Vyāsa in verse 68.</p>
+<p class="prose" id="p-23-devala-8">The Dharmasūtra of Devala, to judge from the quotations in the Kṛtyakalpataru, <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a>, Smṛticandrikā and other early digests, appears to have been an extensive one and to have dealt with most of the topics that are discussed in the Dharmasūtras of Gautama, Āpastamba, <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>, Hārita and Yoga. The above works contain large prose extracts from it on topics of dharmaśāstra. A few examples may be cited here. In the Brahmacāri-kāṇḍa of the Kalpataru on pp. 30 and 100 there are prose passages on the Vedāṅgas and itihāsa and on pp. 272–73 a long prose passage on the duties and other observances of a brahmacārin; in the Śrāddha-kāṇḍa there is a very long prose passage (covering one page) on the persons to be avoided in Śrāddha (pp. 78–79), but most of the other quotations are in verse; in the Gṛhastha-kāṇḍa (p. 119) occurs a long prose passage on the seven pākayajñas, seven haviryajñas and seven soma-yajñas; on pp. 254–255 a long prose passage on Kṣatradharma and on pp. 304, 309, 312 prose passage on hiṁsā, anṛta (falsehood) and steya (theft) respectively. In the Niyatakāla section (p. 142), the setting up of sacred smārta fire after marriage is provided in a prose passage; in the Vyavahārakāṇḍa (pp. 811–812) there is a prose passage naming four kinds of anuloma castes, six pratiloma castes and 6 anturāla castes and on p. 834 of the same kāṇḍa are set out in prose the duties binding on all men including cāṇḍālaṣ It is clear that the Devala Dharmasūtra was not all in prose; it contained numerous verses also; for example, on pp. 387–393 of the Gṛhastha-kāṇḍa in a prose passage referring to sinful taunts of three kinds (viz. mental, vocal and bodily) several verses are quoted describing separately the doṣas of these three kindṣ Therefore, the Devala Dharmasūtra contained verses also. But the present author is not prepared to hold that the several hundred verses ascribed to or quoted from Devala in several works (e.g. <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> quotes about 120 verses from Devala) and in other digests are part of the Devala Dharmasūtra; many of them are very probably taken from a Devalasmṛti in verse. Hardly any other Dharmasūtra deals with Yoga and its technical terms like prāṇāyāma, pratyāhāra, dhāraṇā at such length as Devala does (vide <a class="ref" href="../refs/hodh.html#Vol. V" data-source="hodh" data-ref="Vol. V" title="History of Dharmaśāstra Vol. V">H. of Dh. Vol. V</a>. pp. 1380–81, notes 2263–64 ) for Sāṅkhya technique, p. 1409 ṇ 2314 on definit.on of Yoga, p. 1435 note 2356 (on prāṇa and apāna), p. 1439 note 2363 on prāṇāyāma, p 1445 ṇ 2375 on pratyāhāra ), p. 1447 ṇ 2380 (on Dhāraṇā), 1453 (ṇ 2390 on Siddhis), p. 1458 ṇ 2398 (on ahaṅkāra and mamatva). It may be noted that prose quotations from Devala are only a few (namely those on <a class="ref" href="../refs/yajnavalkya.html#I.126" data-source="yajnavalkya" data-ref="I.126" title="Yājñavalkya I.126">Yāj. I. 126</a>, III. 58 and 256), while about two dozen verses of Devala are quoted on several other verses of <a class="ref" href="../refs/yajnavalkya.html#I" data-source="yajnavalkya" data-ref="I" title="Yājñavalkya I">Yāj. I</a>t would be a great service if some scholar put together in one volume all the passages of Devala occurring in Kalpataru, <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a>, and other early nibandhas with notes about parallel passages &c.</p>
+<p class="prose" id="p-23-devala-9">The <a class="ref" href="../refs/mahabharata.html" data-source="mahabharata" data-ref="" title="Mahābhārata">Mahābhārata</a> ascribes the view to Devala that in man there are three <em>jyotis</em>, viz. offspring, <em>karma</em>, and learning.<sup class="fn-ref"><a href="#fn-23-devala-7" id="fnref-23-devala-7">7</a></sup></p>
+<p class="prose" id="p-23-devala-10"><a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> and the Smṛticandrikā cite verses from Devala on partition, inheritance, on woman's power over strīdhana. These show that Devala, the jurist, flourished about the same time as the great jurists <a class="ref" href="../refs/brihaspati.html" data-source="brihaspati" data-ref="" title="Bṛhaspati">Bṛhaspati</a> and <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>.</p>
+<aside class="footnotes-section" aria-label="Footnotes">
+<hr>
+<ol class="footnotes-list">
+<li id="fn-23-devala-1" class="footnote-item"><span class="devanagari">प्रेतेभ्यो ददाति जीवन्तरितनि जीवन्तिहितेपि । जीवपितृकस्य होमान्मम् । अनारम्भो वा । न व्येते जातुकार्यः । न जीवन्तमतिददातिति श्रुतेः । कात्या</span>. <span class="devanagari">श्रौ</span>. <span class="devanagari">सू</span>. IV. 1. 23-27. Compare two verses of Hārīta quoted by Kalpataru on Śrāddha on p. 237 on the same point. <a href="#fnref-23-devala-1" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-23-devala-2" class="footnote-item"><span class="devanagari">तानि च देवलोकानि । शूद्रधर्मो द्विजातिगुणगुणा पापवर्जने कल्यादिविपर्णकर्षणपुणगुलनमारोद्रहनपण्यव्यवहारचित्रकर्मनृत्यगीणासुरमर्ददण्डवारनान्दीनि ।</span> <a href="#fnref-23-devala-2" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-23-devala-3" class="footnote-item"><span class="devanagari">यथा हि देवलः । द्विविधो गृहस्थो यायावरः शालीनश्च । तयोर्यायावरः प्रवरः याजनाध्यापनप्रतिग्रहादिरिकथसंचयवर्जनात् । षट्कर्माभिधिष्ठितः प्रेष्यचतुष्टयगृह्यसामधनाधान्ययुक्तो लोकानुनुवर्ती शालीन इति ।</span> <a href="#fnref-23-devala-3" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-23-devala-4" class="footnote-item"><span class="devanagari">देवलः । देवमाअनुपूर्वोद्धिर्विधः पुरुषार्थः अभ्युदयो निःश्रेयसमिति । तयोरभ्युदयः पुनएकः । द्विविधं निःश्रेयस्</span>–<span class="devanagari">सांख्ययोगामिति । पञ्चविंशतितत्त्वज्ञानं सांख्यम् । विषयोभ्यो निवर्त्याप्रितेऽर्थे मनसोऽवस्थापनं योगः । उभयत्रापवर्गः</span> ( Continued on the next page ) <a href="#fnref-23-devala-4" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-23-devala-5" class="footnote-item"><span class="devanagari">पतिक्षुश्रूषा सहधर्मचर्या तत्पूज्यमानपूजनम् ।</span> <a href="#fnref-23-devala-5" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-23-devala-6" class="footnote-item">‘<span class="devanagari">ईक्षेतेर्नाशब्दम्</span>’ <span class="devanagari">इत्यारभ्य प्रधानकारणवादः सूत्रैरेव पनः पुनराशङ्क्य निराकृतः।</span>...<span class="devanagari">स च कार्यकारणानन्यत्वाभ्युपगमात्प्रत्यासन्नो वेदान्तवादस्य देवं ग्रभ्यतिभिश्च कैश्चिदर्मसूत्रकारैः स्वग्रन्थेष्वारिितः</span>, <span class="devanagari">तेन तत्प्रतिषेधे यलोऽस्तीव कृतो नाप्यादकारणवादे। शाहरभाष्य</span> on <span class="devanagari">वे</span>. <span class="devanagari">सू</span>. I. 4. 28.     ₹. P.–36 <a href="#fnref-23-devala-6" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-23-devala-7" class="footnote-item"><span class="devanagari">त्रीणि ज्योतिपि पुरुषे इति वै देवलोक्त्रीन्। अपत्यं कर्म विद्या च यतः सूक्ष्माः प्रजास्ततः ॥ सभापर्व</span> 72. 5. <a href="#fnref-23-devala-7" class="fn-back" aria-label="Back to text">↩</a></li>
+</ol>
+</aside>
+
+            <div class="chapter-nav">
+                <a href="22-jātūkarnya.html" class="nav-prev"><i class="fa-solid fa-chevron-left"></i> 22. Jātūkarnya</a>
+                <a href="24-paithīnasi.html" class="nav-next">24. Paithīnasi <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </main>
+    </div>
+
+    <button class="toc-mobile-toggle" onclick="toggleMobileToc()" aria-label="Table of contents">
+        <i class="fa-solid fa-list"></i>
+    </button>
+
+    
+    <footer class="container-fluid pt-4" style="background-color:#2e4144">
+        <div class="row border-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img src="https://sanatana.in/mbta/public/images/Homepage_html/images/layer_8.png" alt="">
+            </div>
+            <div class="col-md-5 text-white">
+                <p>The divine knowledge and wisdom of our shastras is the only thing eternal,
+                   which was and which will remain ever-present in this gods creation.
+                   Our endeavours are to preserve this knowledge.</p>
+            </div>
+            <div class="col-md-1 text-white">
+                <div class="d-flex" style="height: 75px;">
+                    <div class="vr"></div>
+                </div>
+            </div>
+            <div class="col-md-3 text-white">
+                <i class="fa-solid fa-globe"></i>&emsp;
+                <a href="https://sanatanasampatti.in" class="text-light">www.sanatanasampatti.in</a><br>
+                <i class="fa-solid fa-envelope"></i>&emsp;
+                <a href="" class="text-light">sriranga.yoga@gmail.com</a>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center py-3 mb-4 align-items-center border-bottom">
+            <div class="col-md-2 text-white fs-4 text-center">Project</div>
+            <div class="col-md-2 text-white fs-4 text-center">Our Mission</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contribute</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contact Us</div>
+        </div>
+        <div class="row">
+            <p class="col-md-6 fs-6 text-start text-light">
+                <small>&copy; 2026 Sanatanasampatti</small>
+            </p>
+            <p class="col-md-6 fs-6 text-end text-light">
+                <a class="text-white" rel="nofollow" href="http://www.srirangadigital.com" target="_blank">
+                    <img src="https://sanatana.in/mbta/public/images/logo.png" alt="sriranga logo" />
+                    <small>Designed, Developed and Maintained by Sriranga Digital</small>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        const headings = [];
+        tocLinks.forEach(link => {
+            const id = link.getAttribute('href').substring(1);
+            const el = document.getElementById(id);
+            if (el) headings.push({ el: el, link: link.parentElement });
+        });
+
+        function onScroll() {
+            let current = null;
+            for (const h of headings) {
+                const rect = h.el.getBoundingClientRect();
+                if (rect.top <= 120) current = h;
+            }
+            tocLinks.forEach(l => l.parentElement.classList.remove('active'));
+            if (current) current.link.classList.add('active');
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    });
+
+    function toggleMobileToc() {
+        const toc = document.getElementById('toc');
+        if (!toc) return;
+        if (toc.style.display === 'block') {
+            toc.style.display = '';
+            toc.style.position = '';
+        } else {
+            toc.style.display = 'block';
+            toc.style.position = 'fixed';
+            toc.style.top = '0';
+            toc.style.left = '0';
+            toc.style.width = '80vw';
+            toc.style.maxWidth = '320px';
+            toc.style.height = '100vh';
+            toc.style.maxHeight = '100vh';
+            toc.style.zIndex = '2000';
+            toc.style.background = 'var(--parchment)';
+            toc.style.boxShadow = '4px 0 20px rgba(0,0,0,0.2)';
+            toc.style.padding = '24px';
+            toc.style.overflowY = 'auto';
+        }
+    }
+    </script>
+
+    <script>
+    function toggleSynopsisAudio(btn) {
+        var audio = btn.parentElement.querySelector('audio');
+        if (!audio.src) audio.src = btn.getAttribute('data-src');
+        if (audio.paused) {
+            audio.play();
+            btn.classList.add('playing');
+            btn.querySelector('i').className = 'fa-solid fa-pause';
+        } else {
+            audio.pause();
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        }
+        audio.onended = function() {
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        };
+        // Prevent click from toggling the synopsis open/close
+        event.stopPropagation();
+    }
+    </script>
+</body>
+</html>

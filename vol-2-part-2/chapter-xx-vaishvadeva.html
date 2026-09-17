@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- MDB UI Kit -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/fonts.css?v=1.2">
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/navbar.css?v=2.4">
+
+    <title>Chapter XX. Vaishvadeva — Volume II: Part II — History of Dharmaśāstra</title>
+    <style>
+    :root {
+        --saffron:        #D4600A;
+        --saffron-light:  #F0924A;
+        --saffron-wash:   rgba(212, 96, 10, 0.07);
+        --indigo:         #2E5FA3;
+        --indigo-dark:    #1C3D70;
+        --maroon:         #7A1E1E;
+        --amber:          #C97A1A;
+        --ink:            #1A1209;
+        --ink-secondary:  #4A3B2A;
+        --parchment:      #FDFAF4;
+        --parchment-mid:  #F5EFE2;
+        --rule:           rgba(180, 130, 60, 0.22);
+        --shadow:         0 2px 18px rgba(90, 50, 10, 0.08);
+        --font-devanagari: 'Tiro Devanagari Sanskrit', 'Siddhanta', 'Noto Sans Devanagari', serif;
+        --font-roman:      'Junicode', Georgia, serif;
+    }
+
+    body {
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: var(--font-roman);
+    }
+
+    .devanagari {
+        font-family: var(--font-devanagari);
+    }
+
+    /* ── Navbar overrides ── */
+    .navbar-ontop { z-index: 1031; }
+    .hdclr { color: var(--saffron); }
+    .engpara { font-family: 'Open Sans', sans-serif; }
+
+    /* ── Layout ── */
+    .dh-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .dh-content {
+        flex: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        background: var(--parchment);
+        box-shadow: var(--shadow);
+        min-height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        .dh-content { padding: 24px 20px; }
+        .dh-wrapper { flex-direction: column; }
+    }
+
+    /* ── TOC Sidebar ── */
+    .toc-sidebar {
+        position: sticky;
+        top: 80px;
+        width: 280px;
+        min-width: 280px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding: 20px 16px;
+        margin-right: 24px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        scrollbar-width: thin;
+    }
+
+    .toc-title {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--saffron-light);
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list li {
+        padding: 4px 0;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-list li.toc-l3 {
+        padding-left: 16px;
+        font-size: 0.78rem;
+    }
+
+    .toc-list li a {
+        color: var(--ink-secondary);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .toc-list li a:hover { color: var(--saffron); }
+
+    .toc-list li.active {
+        border-left-color: var(--saffron);
+    }
+
+    .toc-list li.active a {
+        color: var(--saffron);
+        font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-sidebar { display: none; }
+    }
+
+    /* ── Mobile TOC Toggle ── */
+    .toc-mobile-toggle {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1050;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--saffron);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-mobile-toggle { display: block; }
+    }
+
+    /* ── Section Headings ── */
+    .section-heading {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        margin: 48px 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--rule);
+        letter-spacing: 0.5px;
+        scroll-margin-top: 80px;
+    }
+
+    h2.section-heading { font-size: 1.6rem; }
+
+    h3.section-heading {
+        font-size: 1.25rem;
+        border-left: 4px solid var(--saffron-light);
+        border-bottom: none;
+        padding: 8px 16px;
+        background: var(--saffron-wash);
+        border-radius: 0 5px 5px 0;
+    }
+
+    /* ── Prose ── */
+    .prose {
+        font-family: var(--font-roman);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+        color: var(--ink);
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    .prose em { color: var(--maroon); }
+
+    .prose:target {
+        background: rgba(212, 96, 10, 0.12);
+        border-left: 4px solid var(--saffron);
+        padding-left: 16px;
+        margin-left: -20px;
+        border-radius: 0 6px 6px 0;
+        animation: target-pulse 2s ease-out;
+    }
+
+    @keyframes target-pulse {
+        0%   { background: rgba(212, 96, 10, 0.30); }
+        100% { background: rgba(212, 96, 10, 0.12); }
+    }
+
+    /* ── Footnote References ── */
+    .fn-ref {
+        font-size: 0.75em;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    .fn-ref a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 0 2px;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: color 0.15s;
+    }
+
+    .fn-ref a:hover { color: var(--indigo); }
+
+    /* ── Synopsis Box ── */
+    .synopsis-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron-light);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .synopsis-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .synopsis-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .synopsis-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .synopsis-box.open .synopsis-toggle i {
+        transform: rotate(90deg);
+    }
+    .synopsis-body {
+        display: none;
+        padding: 0 20px 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+    }
+    .synopsis-box.open .synopsis-body { display: block; }
+    .synopsis-body p { margin: 0; }
+    .synopsis-attribution {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: var(--ink-secondary);
+        opacity: 0.7;
+        font-style: italic;
+    }
+    .synopsis-audio {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    .synopsis-play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--saffron);
+        background: none;
+        color: var(--saffron);
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: background 0.2s, color 0.2s;
+        padding: 0;
+    }
+    .synopsis-play-btn:hover {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn.playing {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn i { padding-left: 2px; }
+
+    /* ── Index Terms Panel ── */
+    .index-terms-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .index-terms-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .index-terms-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .index-terms-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .index-terms-box.open .index-terms-toggle i {
+        transform: rotate(90deg);
+    }
+    .index-terms-body {
+        display: none;
+        padding: 0 20px 16px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .index-terms-box.open .index-terms-body { display: block; }
+    .index-terms-dl {
+        margin: 0;
+        padding: 0;
+    }
+    .index-terms-dl dt {
+        font-family: var(--font-roman);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+        margin-top: 8px;
+    }
+    .index-terms-dl dd {
+        margin: 2px 0 0 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        color: var(--ink-secondary);
+        line-height: 1.5;
+    }
+    .nyaya-heading {
+        font-family: var(--font-roman);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        margin: 16px 0 4px;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+    }
+
+    /* ── Inline Index Popovers ── */
+    .idx-term {
+        border-bottom: 1px dotted var(--saffron-light);
+        cursor: help;
+        position: relative;
+    }
+    .idx-term:hover::after {
+        content: attr(data-def);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        background: rgba(44, 36, 22, 0.92);
+        color: #F5ECD8;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        max-width: 280px;
+        z-index: 100;
+        white-space: normal;
+        line-height: 1.4;
+        pointer-events: none;
+    }
+
+    /* ── Structured Version Banner ── */
+    .structured-banner {
+        margin: 0 0 28px;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, rgba(212, 96, 10, 0.06) 0%, rgba(212, 96, 10, 0.02) 100%);
+        border: 1px solid var(--saffron-light);
+        border-radius: 6px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        color: var(--ink-secondary);
+        line-height: 1.6;
+    }
+    .structured-banner i { color: var(--saffron); margin-right: 4px; }
+    .structured-banner a { color: var(--indigo); font-weight: 600; text-decoration: none; }
+    .structured-banner a:hover { text-decoration: underline; }
+
+    /* ── Footnotes Section ── */
+    .footnotes-section {
+        margin: 32px 0 48px;
+        padding: 20px 24px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .footnotes-section hr {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 0 0 16px;
+    }
+
+    .footnotes-list {
+        padding-left: 24px;
+        margin: 0;
+    }
+
+    .footnote-item {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+        scroll-margin-top: 80px;
+    }
+
+    .footnote-item:target {
+        background: rgba(212, 96, 10, 0.1);
+        border-radius: 4px;
+        padding: 4px 6px;
+        margin-left: -6px;
+    }
+
+    .fn-back {
+        color: var(--saffron-light);
+        text-decoration: none;
+        font-size: 0.85em;
+        margin-left: 4px;
+    }
+
+    .fn-back:hover { color: var(--saffron); }
+
+    /* ── Reference Links ── */
+    a.ref {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: all 0.15s;
+    }
+
+    a.ref:hover {
+        color: var(--saffron);
+        border-bottom-style: solid;
+    }
+
+    a.mbta-ext {
+        color: var(--indigo);
+        font-size: 0.7em;
+        margin-left: 2px;
+        opacity: 0.5;
+        text-decoration: none;
+        vertical-align: super;
+    }
+    a.mbta-ext:hover { opacity: 1; color: var(--saffron); }
+
+    /* ── References Panel (sidebar) ── */
+    .refs-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .refs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .refs-list li {
+        padding: 3px 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .ref-source-link {
+        font-weight: 600;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .ref-source-link:hover {
+        text-decoration: underline;
+    }
+
+    .ref-verse-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.76rem;
+    }
+
+    .ref-verse-link:hover {
+        text-decoration: underline;
+        color: var(--saffron);
+    }
+
+    .ref-verses {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Timeline panel ── */
+    .timeline-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .timeline-list li {
+        padding: 2px 0;
+        font-size: 0.76rem;
+        line-height: 1.4;
+        position: relative;
+        padding-left: 14px;
+    }
+
+    .timeline-list li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--saffron);
+    }
+
+    .timeline-list li.tl-approximate::before {
+        background: transparent;
+        border: 2px solid var(--saffron);
+        width: 4px;
+        height: 4px;
+    }
+
+    .timeline-list li.tl-century::before {
+        background: transparent;
+        border: 2px dashed var(--saffron);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+
+    .tl-dot-link {
+        text-decoration: none;
+        color: var(--ink);
+        display: block;
+    }
+
+    .tl-dot-link:hover {
+        color: var(--saffron);
+    }
+
+    .tl-year {
+        font-weight: 600;
+        color: var(--saffron);
+        font-size: 0.72rem;
+        min-width: 70px;
+        display: inline-block;
+    }
+
+    .tl-label {
+        color: var(--ink-secondary);
+        font-size: 0.72rem;
+    }
+
+    .tl-view-link, .tl-more {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.72rem;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .tl-view-link:hover, .tl-more:hover {
+        text-decoration: underline;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+
+    .breadcrumb-bar a {
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+
+    .breadcrumb-bar .sep {
+        color: var(--amber);
+        margin: 0 8px;
+    }
+
+    .breadcrumb-bar .current {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Chapter Navigation ── */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        margin-top: 48px;
+        border-top: 2px solid var(--rule);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .chapter-nav a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        transition: all 0.2s;
+        max-width: 45%;
+    }
+
+    .chapter-nav a:hover {
+        background: var(--saffron-wash);
+        border-color: var(--saffron-light);
+    }
+
+    .nav-prev { text-align: left; }
+    .nav-next { text-align: right; margin-left: auto; }
+
+    .page-range {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+    }
+
+    /* ── Volume Cards (Landing) ── */
+    .vol-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .vol-card {
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        transition: all 0.25s;
+    }
+
+    .vol-card:hover {
+        border-color: var(--saffron-light);
+        box-shadow: 0 4px 24px rgba(212, 96, 10, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .vol-num {
+        font-family: var(--font-roman);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--saffron);
+        margin-bottom: 8px;
+    }
+
+    .vol-subtitle {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        line-height: 1.5;
+        flex: 1;
+    }
+
+    .vol-chapters {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        margin-top: 12px;
+    }
+
+    /* ── Chapter Cards (Volume Index) ── */
+    .chapter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .chapter-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .chapter-card:hover {
+        border-color: var(--saffron-light);
+        background: var(--saffron-wash);
+    }
+
+    .card-num {
+        font-family: var(--font-roman);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--saffron);
+        min-width: 36px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        flex: 1;
+    }
+
+    .card-pages {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        color: var(--ink-secondary);
+    }
+
+    /* ── Landing Hero ── */
+    .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-family: var(--font-roman);
+        font-size: 2.4rem;
+        color: var(--saffron);
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .hero .devanagari-title {
+        font-family: var(--font-devanagari);
+        font-size: 1.8rem;
+        color: var(--ink);
+        margin-bottom: 16px;
+    }
+
+    .hero .author {
+        font-family: var(--font-roman);
+        font-size: 1.1rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .hero .desc {
+        font-family: var(--font-roman);
+        font-size: 1rem;
+        color: var(--ink-secondary);
+        line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer { margin-top: 48px; }
+</style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mbta/">
+      <div class="container-fluid">&emsp;&emsp;
+      <a href="../index.html" class="navbar-brand" style="text-decoration:none;">
+        <span class="devanagari ms-3" style="font-size:1.5rem; color:var(--saffron); font-weight:700;">धर्मशास्त्रम्</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="../index.html">धर्मशास्त्रम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5 active" href="../index.html">खण्डाः</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in/mbta/">महाभारतम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in">सनातनम्</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+
+    <div class="dh-wrapper container-xl">
+        <nav id="toc" class="toc-sidebar">
+<div class="refs-panel">
+<h5 class="toc-title">References</h5>
+<ul class="refs-list">
+<li><a href="../refs/mb_anushasana.html" class="ref-source-link">Anuśāsanaparva</a> <span class="ref-verses"><a href="../refs/mb_anushasana.html#97.16-18" class="ref-verse-link">97.16-18</a>, <a href="../refs/mb_anushasana.html#97.22-23" class="ref-verse-link">97.22-23</a></span></li>
+<li><a href="../refs/apararka.html" class="ref-source-link">Aparārka</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mahabharata.html" class="ref-source-link">Mahābhārata</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/manu.html" class="ref-source-link">Manusmṛti</a> <span class="ref-verses"><a href="../refs/manu.html#V.7" class="ref-verse-link">V.7</a>, <a href="../refs/manu.html#III.121" class="ref-verse-link">III.121</a>, <a href="../refs/manu.html#III.84-86" class="ref-verse-link">III.84-86</a>, <a href="../refs/manu.html#III.108" class="ref-verse-link">III.108</a>, <a href="../refs/manu.html#II.28" class="ref-verse-link">II.28</a>, <a href="../refs/manu.html#III.87-93" class="ref-verse-link">III.87-93</a> <a href="../refs/manu.html" class="ref-verse-link">+3</a></span></li>
+<li><a href="../refs/medhatithi.html" class="ref-source-link">Medhātithi</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mitakshara.html" class="ref-source-link">Mitākṣarā</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/parasara.html" class="ref-source-link">Parāśara</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mb_vanaparva.html" class="ref-source-link">Vanaparva</a> <span class="ref-verses"><a href="../refs/mb_vanaparva.html#II.59" class="ref-verse-link">II.59</a></span></li>
+<li><a href="../refs/vishnu_dh.html" class="ref-source-link">Viṣṇu Dharmasūtra</a> <span class="ref-verses"><a href="../refs/vishnu_dh.html#59.13" class="ref-verse-link">59.13</a>, <a href="../refs/vishnu_dh.html#67.1-3" class="ref-verse-link">67.1-3</a></span></li>
+<li><a href="../refs/yajnavalkya.html" class="ref-source-link">Yājñavalkya</a> <span class="ref-verses"><a href="../refs/yajnavalkya.html#I.103" class="ref-verse-link">I.103</a>, <a href="../refs/yajnavalkya.html#I.121" class="ref-verse-link">I.121</a></span></li>
+<li><a href="../refs/apastamba.html" class="ref-source-link">Āpastamba Dharmasūtra</a> <span class="ref-verses"><a href="../refs/apastamba.html#II.4.9.5-6" class="ref-verse-link">II.4.9.5-6</a>, <a href="../refs/apastamba.html#II.2.3.15" class="ref-verse-link">II.2.3.15</a>, <a href="../refs/apastamba.html#II.2.3.10-11" class="ref-verse-link">II.2.3.10-11</a></span></li>
+<li><a href="../refs/rigveda.html" class="ref-source-link">Ṛgveda</a> <span class="ref-verses"><a href="../refs/rigveda.html#I.114.8" class="ref-verse-link">I.114.8</a>, <a href="../refs/rigveda.html#IV.58.3" class="ref-verse-link">IV.58.3</a>, <a href="../refs/rigveda.html#I.76.2" class="ref-verse-link">I.76.2</a>, <a href="../refs/rigveda.html#V.4.5" class="ref-verse-link">V.4.5</a>, <a href="../refs/rigveda.html#X.117.6" class="ref-verse-link">X.117.6</a>, <a href="../refs/rigveda.html#X.16.10" class="ref-verse-link">X.16.10</a></span></li>
+</ul>
+</div>
+<h5 class="toc-title">Sections</h5>
+<ul class="toc-list">
+<li class="toc-l2"><a href="#chapter-xx-vaishvadeva">Chapter XX. Vaishvadeva</a></li>
+</ul>
+</nav>
+        <main class="dh-content">
+            
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep">›</span>
+        <a href="index.html">Volume II: Part II</a>
+        <span class="sep">›</span>
+        <span class="current">Chapter XX. Vaishvadeva</span>
+    </div>
+    
+            <h1 class="text-center" style="font-family: var(--font-roman); font-size: 2rem; color: var(--saffron); margin-bottom: 8px;">
+                Chapter XX. Vaishvadeva
+            </h1>
+            <p class="text-center" style="font-family: 'Open Sans', sans-serif; color: var(--ink-secondary); font-size: 0.9rem; margin-bottom: 36px;">
+                Volume II: Part II <span class="page-range">pp. 741–748</span>
+            </p>
+
+            
+    <div class="synopsis-box" id="synopsis">
+        <button class="synopsis-toggle" onclick="this.parentElement.classList.toggle('open')"
+                aria-expanded="false" aria-controls="synopsis-body">
+            <i class="fa-solid fa-chevron-right"></i>
+            Kane's Synopsis
+        </button>
+        <div class="synopsis-audio">
+            <span class="synopsis-play-btn" role="button" tabindex="0"
+                    onclick="toggleSynopsisAudio(this)"
+                    data-src="../audio/synopsis/vol-2-part-2/vol-2-part-2_sec020.mp3" title="Listen to synopsis">
+                <i class="fa-solid fa-play"></i>
+            </span>
+            <audio preload="none"></audio>
+        </div>
+        <div class="synopsis-body" id="synopsis-body">
+            <p>The daily ritual of Vaiśvadeva is understood by some authoritative texts to comprise three distinct *yajñas*: one dedicated to the gods, another to the *bhūtas*, and a third to the *pitṛs*. This chapter meticulously identifies the specific deities invoked during Vaiśvadeva, further noting that the performance of this ritual is generally prescribed to occur only once, specifically at noon. The text then proceeds to describe, in detail, the precise procedure for executing Vaiśvadeva, laying out the steps involved in its proper observance.
+
+Beyond the practicalities of its performance, the chapter delves into the nuanced views regarding Vaiśvadeva's relationship with the more elaborate *śrāddha* ceremonies, exploring how these two significant rituals are differentiated or intertwined. A fundamental component elucidated is *Baliharaṇa*, also known as *bhūtayajña*, which forms an integral part of the daily offerings. Concluding this exposition, the text also addresses the daily *pitṛ-yajña*, clarifying its specific role and integration within the broader framework of these domestic rites.</p>
+            <p class="synopsis-attribution">— Synopsis by P.V. Kane, from History of Dharmaśāstra</p>
+        </div>
+    </div>
+
+
+            
+
+            <h2 id="chapter-xx-vaishvadeva" class="section-heading">Chapter XX. Vaishvadeva</h2>
+<p class="prose" id="p-chapter-xx-vaishvadeva-1">VAISVADEVA Vaiśvadeva.—( offering of cooked food to all Gods ). Dakṣa ( II. 56 ) says that in the 5th part of the day a house- holder has to allow distribution of food according to his ability to the gods, Manes, men and even insectṣ Vaiśvadeva is to be offered according to Sātātapa ( quoted by <a class="ref" href="../refs/medhatithi.html" data-source="medhatithi" data-ref="" title="Medhātithi">Medhātithi</a> on <a class="ref" href="../refs/manu.html#V.7" data-source="manu" data-ref="V.7" title="Manusmṛti V.7">Manu V. 7</a> and by <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> p. 142 ) in the gṛhya fire if one has preserved it, or in the ordinary fire. If no fire is available one may offer it even in water or on the bare grounḍ Laghu- Vyāsa II. 52 says the same.</p>
+<p class="prose" id="p-chapter-xx-vaishvadeva-2">Some medieval works like the Smṛtyarthasāra and the <a class="ref" href="../refs/parasara.html" data-source="parasara" data-ref="" title="Parāśara">Par.</a> M. ( I. part 1, p. 389 ) state that vaiśvadeva really com- prises the three daily sacrifices viz. devayajña, bhūtayajña and pitṛyajña. The rite is so called because in it sacrifice is offered to all the gods or because food is cooked therein for all the godṣ<sup class="fn-ref"><a href="#fn-chapter-xx-vaishvadeva-1" id="fnref-chapter-xx-vaishvadeva-1">1</a></sup> But in the ancient gṛhyasūtras the three yajñas are kept distinct. In the Āśv. gr. III. 1 the five daily sacrifices are enumerated, but only one, the brahmayajña, is thereafter described in detail and we have to understand that Vaiśvadeva has already been dealt with under homa in Āśv. gr I. 2. 1–2 and that I. 2. 3–10 is concerned with bhūtayajña or baliharaṇa, out of which the 7th sūtra contemplates an offering to Viśve-devas and sūtra 10 an offering of cooked food to pitṛṣ The Śāṅ. gr. II. 14 speaks of Vaiśvadeva, while Gobhila gr. I. 4. 1–15, Khādira gr. I. 5. 22–35 speak of baliharaṇa only. Pāṇini VI. 2. 39 teaches the accent of 'kṣullaka-vaiśvadeva' ( as a compound ). Vaik.<sup class="fn-ref"><a href="#fn-chapter-xx-vaishvadeva-2" id="fnref-chapter-xx-vaishvadeva-2">2</a></sup> VI. 17 expressly says that devayajña is the homa to the gods offered with cooked food meant for all the godṣ According to Gautama ( V. 9 ) the deities of vaiśvadeva are Agni, Dhanvantarī, Viśve-devas, Prajāpati and Sviṣṭakṛt (Agni). According<sup class="fn-ref"><a href="#fn-chapter-xx-vaishvadeva-3" id="fnref-chapter-xx-vaishvadeva-3">3</a></sup> to <a class="ref" href="../refs/manu.html#III.84-86" data-source="manu" data-ref="III.84-86" title="Manusmṛti III.84-86">Manu (III. 84-86)</a> the deities are Agni, Soma, Agniṣoma, the Viśve-devas, Dhanvantari, Kuhū, Anumati, Prajāpati, Dyāvāpṛthivī, ( Agni ) Sviṣṭakṛt. The Sāṇ gr. II. 14. 4 gives the names of ten deities that are slightly different from the list of <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>. According to Pār. gr. II. 9 the deities are Brahmā, Prajāpati, Gṛhyā, Kaśyapa and Anumati; while the <a class="ref" href="../refs/vishnu_dh.html#67.1-3" data-source="vishnu_dh" data-ref="67.1-3" title="Viṣṇu Dharmasūtra 67.1-3">Viṣṇu Dh. S. 67. 1–3</a> ( quoted in the Gṛ. R. p. 278 ) states that Vaiśvadeva is to be offered to Vāsudeva, Saṅkarṣaṇa, Aniruddha, Puruṣa, Satya, Acyuta, Agni, Soma, Mitra, Varuṇa, Indra, Indrāgni, Viśve-devas, Prajāpati, Anumati, Dhanvantari, Vāstoṣpati, ( Agni ) Sviṣṭakṛt. Vide Bhār. gr. III. 12, Mānava gr. II. 12. 1–2, Kāṭhaka gr. 54, Vaik. III. 7 for other lists of deities in Vaiśvadeva. It is on account of this divergence that digests like the Madanapārijāta ( p. 317 ) say that Vaiśva- deva is of two kinds, viz. what is common to all smṛtis like that of <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> and secondly what is stated in one’s own gṛhyasūtra. The Sṃ C. ( I. p. 212 )<sup class="fn-ref"><a href="#fn-chapter-xx-vaishvadeva-4" id="fnref-chapter-xx-vaishvadeva-4">4</a></sup> says the same. All ancient smṛtis say that Vaiśvadeva is to be performed twice, once in the morning and then in the evening. Vide Āśv. gr. I. 2. 1, Vaṣ Dh. S. XI. 3, <a class="ref" href="../refs/manu.html#III.121" data-source="manu" data-ref="III.121" title="Manusmṛti III.121">Manu III. 121</a>, <a class="ref" href="../refs/vishnu_dh.html#59.13" data-source="vishnu_dh" data-ref="59.13" title="Viṣṇu Dharmasūtra 59.13">Viṣṇu Dh. S. 59. 13</a>, Gobhila II. 34. But in later times it came to be performed only once in the morning and the saṃkalpa includes both in one statement.<sup class="fn-ref"><a href="#fn-chapter-xx-vaishvadeva-5" id="fnref-chapter-xx-vaishvadeva-5">5</a></sup> The verses ‘ juṣṭo damūnā ’ ( <a class="ref" href="../refs/rigveda.html#V.4.5" data-source="rigveda" data-ref="V.4.5" title="Ṛgveda V.4.5">Rg. V. 4. 5</a> ) and ‘ ehyagna ’ ( <a class="ref" href="../refs/rigveda.html#I.76.2" data-source="rigveda" data-ref="I.76.2" title="Ṛgveda I.76.2">Rg. I. 76. 2</a> ) are used in invoking Agni, then the verse ‘ catvāri śṛṅgā ’ ( <a class="ref" href="../refs/rigveda.html#IV.58.3" data-source="rigveda" data-ref="IV.58.3" title="Ṛgveda IV.58.3">Rg. IV. 58. 3</a> ) and several ordinary verses describing the characteristics of Agni are employed for the dhyāna ( contemplation ) of Agni. From the food cooked for one’s meal, a portion is taken out in another vessel, and covered with clarified butter; it is then divided into three partṣ Then one places one’s left hand on one’s heart and with the right hand takes up from one portion of the food morsels equal to a ripe myrobalan fruit, presses it with one’s right thumb and offers it with the right hand to Sūrya, Prajāpati, Soma Vanaspati, Agni-soma, Indrāgni, Dyāvāpṛthivi, Dhanvantari, Indra, Viśve Devas, Brahmā. Then holy ashes are taken from the fire with the mantra ‘ mā nastoke ’ ( <a class="ref" href="../refs/rigveda.html#I.114.8" data-source="rigveda" data-ref="I.114.8" title="Ṛgveda I.114.8">Rg. I. 114. 8</a> ) and ashes are applied to the forehead, the throat, the navel, the right and left shoulders and the head with certain mantras and a concluding prayer is offered to Agni to bestow intelligence, memory, fame &c. as set out below.<sup class="fn-ref"><a href="#fn-chapter-xx-vaishvadeva-6" id="fnref-chapter-xx-vaishvadeva-6">6</a></sup></p>
+<p class="prose" id="p-chapter-xx-vaishvadeva-3">Medieval digests like the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> ( on Yaj. I. 103 ) discuss the question whether vaiśvadeva is puruṣārtha only ( i. e. recommend- ed to men for effecting some beneficent consequence to them) or whether it is puruṣārtha as well as a rite for effecting a saṁskāra (unseen or spiritual result) of the food cookeḍ In the latter case food will be pradhāna (the principal matter) and vaiśvadeva will be secondary; but in the former case ( i. e. if it were only puruṣārtha ) food will be secondary and Vaiśva- deva principal. Relying <sup class="fn-ref"><a href="#fn-chapter-xx-vaishvadeva-7" id="fnref-chapter-xx-vaishvadeva-7">7</a></sup> on Āśv. gr. I. 2. 1 some say that vaiśvadeva is meant as a saṁskāra of food and relying on Āśv. gr. III. 1. 1 and 4 others say that it is puruṣārtha. The <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> declares that vaiśvadeva is puruṣārtha only, as <a class="ref" href="../refs/manu.html#II.28" data-source="manu" data-ref="II.28" title="Manusmṛti II.28">Manu ( II. 28 )</a> holds that the human body is rendered fit for spiritual know- ledge by the daily yajñas and by other sacrifices and that if vaiśvadeva is not puruṣārtha alone, each time food is cooked in the day ( on account of the sudden advent of many guests) vaiśvadeva would have to be performed several times in the day; but <a class="ref" href="../refs/manu.html#III.108" data-source="manu" data-ref="III.108" title="Manusmṛti III.108">Manu III. 108</a> forbids a fresh vaiśvadeva in such a case. Sṃ C. ( I. p. 213 ) and <a class="ref" href="../refs/parasara.html" data-source="parasara" data-ref="" title="Parāśara">Par.</a> M. ( I. 1. p. 390 ) hold the same view. The Smṛtyarthasāra p. 46 and Laghu-Āśvalāyana I. 116 hold the view that vaiśvadeva is both for the saṁskāra of the householder and also of the fooḍ<sup class="fn-ref"><a href="#fn-chapter-xx-vaishvadeva-8" id="fnref-chapter-xx-vaishvadeva-8">8</a></sup></p>
+<p class="prose" id="p-chapter-xx-vaishvadeva-4">There was divergence of view on other questions viz. whether vaiśvadeva was to be performed before śrāddha or after it and whether food for vaiśvadeva was to be separately cooked for śrāddha. <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> p. 462 sets out the conflicting views on the first question and says that for vaiśva- deva there are three options, viz. it may be performed immediately after food is ready, or it may be offered after baliharaṇa or it may be performed after śrāddha is finisheḍ The Madana- pārijāta p. 320 and Bṛhat-<a class="ref" href="../refs/parasara.html" data-source="parasara" data-ref="" title="Parāśara">Parāśara</a> p. 156 hold that vaiśvadeva must be performed before śrāddha. <em>Vide Smṛtimuktāphala</em> (āhnika pp. 406-407) also; on the other hand <a class="ref" href="../refs/mb_anushasana.html#97.16-18" data-source="mb_anushasana" data-ref="97.16-18" title="Anuśāsanaparva 97.16-18">Anusāsana-parva (97. 16-18)</a><a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> directs that on śrāddha day, pitṛ-tarpana comes first, then offering of bali, and then vaiśvadeva. The Madanapārijāta p. 318 says that the food for the vaiśvadeva must be separately cooked from what is meant for śrāddha. In the case of a joint family of father and sons or of several brothers, the father alone performs vaiśvadeva or the eldest brother; but if the father or eldest brother is unable to do it himself, a son or younger brother may offer it at his bidding (Laghu-Āśvalāyana I. 117-119 ).</p>
+<p class="prose" id="p-chapter-xx-vaishvadeva-5">The food to be offered should be sprinkled over with ghee or with curds or milk but not with oil or salt. <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp. Dh. S.</a><sup class="fn-ref"><a href="#fn-chapter-xx-vaishvadeva-9" id="fnref-chapter-xx-vaishvadeva-9">9</a></sup> II. 6. 15. 12-14 prescribes that there is to be no homa of kṣāra and lavana (vide note 723 above) and also of food that is mixed up with inferior food (like <em>kulattha</em> &c.); but if one is compelled to offer inferior food in vaiśvadeva (owing to poverty &c.) he should take some hot ashes from the gṛhya or ordinary fire towards the north of the fire and offer the food in the asheṣ The Smṛtyarthasāra<sup class="fn-ref"><a href="#fn-chapter-xx-vaishvadeva-10" id="fnref-chapter-xx-vaishvadeva-10">10</a></sup> p. 47 states that cereals like gram and māṣa beans are not to be used in vaiśvadeva fooḍ Even when a man was not going to eat on a particular day he had to offer vaiśvadeva (<a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> p. 145 ). If he could afford no food, he was to offer fruits, roots or even water.<sup class="fn-ref"><a href="#fn-chapter-xx-vaishvadeva-11" id="fnref-chapter-xx-vaishvadeva-11">11</a></sup> He who has no gṛhya fire may offer vaiśvadeva food into the ordinary fire with only the vyāhṛtis and the rest may be left for crowṣ</p>
+<p class="prose" id="p-chapter-xx-vaishvadeva-6"><a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp. Dh. S.</a> (II. 2. 3. 1 and 4) says that vaiśvadeva food should be cooked by āryas (persons of the twice-born classes) that are purified (by bathing &c. ), or śūdras supervised by āryas may cook the fooḍ<sup class="fn-ref"><a href="#fn-chapter-xx-vaishvadeva-12" id="fnref-chapter-xx-vaishvadeva-12">12</a></sup> Medieval writers remarked, as usual, that the latter rule about śūdras being cooks applied only to another age.<sup class="fn-ref"><a href="#fn-chapter-xx-vaishvadeva-13" id="fnref-chapter-xx-vaishvadeva-13">13</a></sup> <a class="ref" href="../refs/apastamba.html#II.2.3.10-11" data-source="apastamba" data-ref="II.2.3.10-11" title="Āpastamba Dharmasūtra II.2.3.10-11">Āp. Dh. S. (II. 2. 3. 10–11)</a> further says that when the food is ready i.e. cooked, the cook should announce while standing, to the owner of the house 'it is ready' and the owner should reply 'it (food) is auspiciously ready, it is food that gives supremacy ; may it not be lost.' If no vaiśvadeva is performed on any day, the householder had to fast the day and night (Gobhila-smṛti III. 120). Dakṣa II. 62 and Yama condemn to hell him who takes his own meal without offering vaiśvadeva, when he is not himself in distress or difficulty.<sup class="fn-ref"><a href="#fn-chapter-xx-vaishvadeva-14" id="fnref-chapter-xx-vaishvadeva-14">14</a></sup> It has been stated above (p.158) that the śūdra was to offer all the five yajñas without Vedic or Paurāṇic mantras, but only with the word 'namaḥ' and he was to use uncooked food for vaiśvadeva. Vide <a class="ref" href="../refs/yajnavalkya.html#I.121" data-source="yajnavalkya" data-ref="I.121" title="Yājñavalkya I.121">Yāj. I. 121</a> and the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> thereon and Āhnikaprakāśa, p. 401. Baliharaṇa or Bhūtayajña :—Here also there is some diver- gence between the ancient gṛhya-sūtras and medieval and modern practice. The Āśv. gṛ. I. 2. 3-11 deals with thiṣ The deities to whom bali (or part of the food taken out when per- forming vaiśvadeva) is offered are: to the same deities to whom the devayajña is offered as stated above, to the waters, to herbs and trees, to the house, to the domestic deities, to the deities of the ground (on which the house is built), to Indra and Indra’s men, to Yama and Yama’s men, to Varuṇa and Varuṇa’s men, to Soma and Soma’s men (these are offered in the several quarters<sup class="fn-ref"><a href="#fn-chapter-xx-vaishvadeva-15" id="fnref-chapter-xx-vaishvadeva-15">15</a></sup>), to Brahman and Brahman’s men in the middle, to the Viśve-devas, to all day-walking beings, to the Rākṣases- towards the north ; svadhā to the pitṛs (Manes)—with these words he should pour out the remnant of the food to the south, while wearing the sacred thread suspended over the right shoulder. Āśv. adds that if baliharaṇa is performed by night then the words 'to all night-walking beings' are used instead of 'to all day-walking beings'. Gobhila gṛ. I. 4. 5-15, Pār. gṛ. II. 9 and other gṛhya sūtras, Ap. Dh. S. II. 2. 3. 15-II. 2. 4. 9, Gautama V. 10-15, differ considerably from the above in several respectṣ But for want of space no reference can be made to these differenceṣ In bhūtayajña, bali is to be <sup class="fn-ref"><a href="#fn-chapter-xx-vaishvadeva-16" id="fnref-chapter-xx-vaishvadeva-16">16</a></sup> offered not into fire but on the ground, which is to be wiped with the hand and sprinkled with water, and then the bali is to be put down and water is poured on it thereafter. <em>Vide</em> <a class="ref" href="../refs/apastamba.html#II.2.3.15" data-source="apastamba" data-ref="II.2.3.15" title="Āpastamba Dharmasūtra II.2.3.15">Āp. Dh. S. II. 2. 3. 15</a>. The <a class="ref" href="../refs/apastamba.html#II.4.9.5-6" data-source="apastamba" data-ref="II.4.9.5-6" title="Āpastamba Dharmasūtra II.4.9.5-6">Āp. Dh. S. (II. 4. 9. 5–6 )</a> prescribes that one should make all including dogs and cāṇḍālas participators in the food cooked for vaiśvadeva and adds the view of some (which he disapproves) that one should not give food to the undeserving.<sup class="fn-ref"><a href="#fn-chapter-xx-vaishvadeva-17" id="fnref-chapter-xx-vaishvadeva-17">17</a></sup> <a class="ref" href="../refs/manu.html#III.87-93" data-source="manu" data-ref="III.87-93" title="Manusmṛti III.87-93">Manu III. 87–93</a> says that after performing vaiśvadeva one should offer balis in all directions to Indra, Yama, Varuṇa, Soma and their followers, a bali to Maruts on the door, to waters a bali in water, a bali to the trees in mortar and pestle, a bali to Śrī on the top of the house, to Bhadrakālī at the foot of the house, to Brahmā and Vāstospati in the midst of the house; a bali may be thrown up in the sky to Viśve Devas, to the day-walking beings (when baliharaṇa is done by day) and to night-walking beings (by night); a bali should be offered to the prosperity of all on the first floor<sup class="fn-ref"><a href="#fn-chapter-xx-vaishvadeva-18" id="fnref-chapter-xx-vaishvadeva-18">18</a></sup> and all the remaining portion of the food for balis should be offered to the manes towards the south; the householder should lightly (so that no dust will get mixed with it) offer on the ground some food to dogs, to outcasts, to cāṇḍālas, to those suffering from loathsome diseases (such as leprosy), to crows and insectṣ <a class="ref" href="../refs/yajnavalkya.html#I.103" data-source="yajnavalkya" data-ref="I.103" title="Yājñavalkya I.103">Yāj. I. 103</a> calls upon the householder to throw food to dogs, cāṇḍālas and crows on the grounḍ<sup class="fn-ref"><a href="#fn-chapter-xx-vaishvadeva-19" id="fnref-chapter-xx-vaishvadeva-19">19</a></sup></p>
+<p class="prose" id="p-chapter-xx-vaishvadeva-7">These directions to give food even to outcasts, dogs and birds were the outcome of the noble sentiment of universal kindliness and charity, the idea that One Spirit pervades and illumines the meanest of creatures and binds all together. The Śāṅ. gr. (II. 14)<sup class="fn-ref"><a href="#fn-chapter-xx-vaishvadeva-20" id="fnref-chapter-xx-vaishvadeva-20">20</a></sup> winds up its vaiśvadeva section with this fine exhortation “let him throw food to dogs, to śvapācas (eaters of dog-flesh), to birds on the ground; let him eat nothing without having cut off a portion (to be offered as a bali); let him not eat alone, nor before others (relatives and guests), since the mantra says 'the fool gets food in vain' (<a class="ref" href="../refs/rigveda.html#X.117.6" data-source="rigveda" data-ref="X.117.6" title="Ṛgveda X.117.6">Rg. X. 117. 6</a>).' The <a class="ref" href="../refs/mahabharata.html" data-source="mahabharata" data-ref="" title="Mahābhārata">Mahābhārata</a> (<a class="ref" href="../refs/mb_vanaparva.html#II.59" data-source="mb_vanaparva" data-ref="II.59" title="Vanaparva II.59">Vanaparva II. 59</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>) says that offering food to dogs, śvapacas and birds on the ground is known as vaiśvadeva, which is performed in the morning and evening. The same verse occurs at <a class="ref" href="../refs/mb_anushasana.html#97.22-23" data-source="mb_anushasana" data-ref="97.22-23" title="Anuśāsanaparva 97.22-23">Anuśāsanaparva 97. 22-23</a><a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>. <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> p. 145 says that vaiśvadeva comprises all actions from the offering into fire oblations of food up to the throwing of food to dogs and the like in the morning and the evening.</p>
+<p class="prose" id="p-chapter-xx-vaishvadeva-8">In modern times the way in which balis are offered and their number are set out in the diagram below. The one drawn is for the morning baliharaṇa. For the evening one the only change necessary would be to put 'agnaye svāhā' (No. 1) in place of 'sūryāya svāhā' and 'naktam-cāribhyaḥ' for 'divā-cāribhyaḥ' in No. 27. The word 'svāhā' is not repeated in the diagram after each name<sup class="fn-ref"><a href="#fn-chapter-xx-vaishvadeva-21" id="fnref-chapter-xx-vaishvadeva-21">21</a></sup> for the sake of space. <a class="ref" href="../refs/manu.html#III.121" data-source="manu" data-ref="III.121" title="Manusmṛti III.121">Manu III. 121</a> prescribes that bali is offered in the evening by the wife but without mantras (i. e. she is not to repeat the mantras) 'Indrāya svāhā' &c., but only to contemplate on the several deitieṣ</p>
+<p class="prose" id="p-chapter-xx-vaishvadeva-9">1.  <span class="devanagari">सूर्याय स्वाहा</span> 2.  <span class="devanagari">प्रजापतये सोमाय</span> 3.  <span class="devanagari">सोमाय</span> 4.  <span class="devanagari">विश्वेभ्यो देवेभ्यः</span> 5.  <span class="devanagari">धन्वन्तरि</span> 6.  <span class="devanagari">ब्रह्माय</span> 7.  <span class="devanagari">ध्रुवाय</span> 8.  <span class="devanagari">कुमाराय</span> 9.  <span class="devanagari">वैश्रवणाय</span> 10. <span class="devanagari">वासुदेवाय</span> 11. <span class="devanagari">विश्वेभ्यो देवेभ्यः</span> 12. <span class="devanagari">ओषधिवनस्पतिभ्यः</span> 13. <span class="devanagari">गृहदेवेभ्यः</span> 14. <span class="devanagari">वास्तुदेवताभ्यः</span> 15. <span class="devanagari">वासुदेवताभ्यः</span> 16. <span class="devanagari">इन्द्राय स्वाहा</span> 17. <span class="devanagari">इन्द्रपुरुषेभ्यः</span> 18. <span class="devanagari">यमाय</span> 19. <span class="devanagari">यमपुरुषेभ्यः</span> 20. <span class="devanagari">वरुणाय</span> 21. <span class="devanagari">वरुणपुरुषेभ्यः</span> 22. <span class="devanagari">सोमाय</span> 23. <span class="devanagari">उत्तर सोमपुरुषेभ्यः</span> 24. <span class="devanagari">ब्रह्मणे</span> 25. <span class="devanagari">ब्रह्मपुरुषेभ्यः</span> 26. <span class="devanagari">विश्वेभ्यो देवेभ्यः</span> 27. <span class="devanagari">सर्वेभ्यो भूतेभ्यो दिवाचारिभ्यः</span> 28. <span class="devanagari">रक्षोभ्यः</span> 29. <span class="devanagari">स्वधापिृभ्यः</span> 30. <span class="devanagari">श्यामाय</span> 31. <span class="devanagari">शबलाय</span> 32. <span class="devanagari">सनकादिमुनिभ्यो हन्त</span> Pitryajña :—The word occurs in <a class="ref" href="../refs/rigveda.html#X.16.10" data-source="rigveda" data-ref="X.16.10" title="Ṛgveda X.16.10">Rg. X. 16. 10</a>, but its exact meaning is not certaiṇ Pitryajña may be performed in either of three ways as stated above ( on p. 700 ) viz. by tarpaņa ( <a class="ref" href="../refs/manu.html#III.70" data-source="manu" data-ref="III.70" title="Manusmṛti III.70">Manu III. 70</a> and 283 ), or by performing baliharaņa in which remnants of bali food are to be offered to the pitṛs (<a class="ref" href="../refs/manu.html#III.91" data-source="manu" data-ref="III.91" title="Manusmṛti III.91">Manu III. 91</a> and Āśv. gr. I. 2. 11) or by performing śrāddha daily with food on inviting at least one brāhmaṇa for dinner ( <a class="ref" href="../refs/manu.html#III.82-83" data-source="manu" data-ref="III.82-83" title="Manusmṛti III.82-83">Manu III. 82-83</a> ). Śrāddhas will be dealt with later and the other two ( tarpaņa and baliharaņa ) have already been dealt with. In this daily śrāddha<sup class="fn-ref"><a href="#fn-chapter-xx-vaishvadeva-22" id="fnref-chapter-xx-vaishvadeva-22">22</a></sup> there is no offering of pindas ( balls of rice ) and the several strict rules and procedure of the pūrvaņa śrāddha do not apply.</p>
+<aside class="footnotes-section" aria-label="Footnotes">
+<hr>
+<ol class="footnotes-list">
+<li id="fn-chapter-xx-vaishvadeva-1" class="footnote-item"><span class="devanagari">एते देवयज्ञभृतयज्ञपितृयज्ञा वैश्वदेव उच्यन्ते । स्मृत्यर्थसार</span> p. 47; <span class="devanagari">त एते देवयज्ञ</span>-     <span class="devanagari">भृतयज्ञपितृयज्ञनामधेया वैश्वदेवाख्येनोच्यन्ते । यत्र विश्वे देवा इज्यन्ते तदेध्वन्नदिकं कर्म । देव</span>-     <span class="devanagari">यज्ञे च एतत्कर्म मुख्यम् । पितृयज्ञे छिन्नन्यायेन । परा</span>. <span class="devanagari">मा</span>. I. part 1 p. 389. <a href="#fnref-chapter-xx-vaishvadeva-1" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xx-vaishvadeva-2" class="footnote-item"><span class="devanagari">एकेनानेन पैश्वदेवेन देवेभ्यो होमो देवयज्ञः । वैखानसस्मार्ते</span> VI. 17. <a href="#fnref-chapter-xx-vaishvadeva-2" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xx-vaishvadeva-3" class="footnote-item">In offering food one will have to say <span class="devanagari">अग्नये स्वाहा</span>, <span class="devanagari">सोमाय स्वाहा</span>,     <span class="devanagari">अग्नीषोमाभ्यां स्वाहा</span>, ...<span class="devanagari">अग्नये स्त्रिष्टकृते स्वाहा</span>. In modern times the formula is     <span class="devanagari">अग्नये स्वाहा अग्नय इदं न मम</span> and so oṇ <a href="#fnref-chapter-xx-vaishvadeva-3" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xx-vaishvadeva-4" class="footnote-item"><span class="devanagari">वैश्वदेवे प्रकुर्वीत स्वशाखाविहितं यथा । व्यास</span> quoted in <span class="devanagari">स्मृतिच॰</span> I. p.212. <a href="#fnref-chapter-xx-vaishvadeva-4" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xx-vaishvadeva-5" class="footnote-item">The <span class="devanagari">संकल्प</span> in modern times is <span class="devanagari">मनोपासकपुत्रित्यद्वारा श्रीपरमेश्वर</span>- <span class="devanagari">प्रीत्यर्थममात्मजानसंस्कारपन्चसूनाजलिदोपपरिहारार्थं मार्तण्डेवँ सायंप्रर्वेदेवे व सह सम्बोव करिष्पे ।</span> <a href="#fnref-chapter-xx-vaishvadeva-5" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xx-vaishvadeva-6" class="footnote-item"><span class="devanagari">उपाशुषं जमदग्नेरिति ललाटे । कश्यपस्य उपांशुषमिति कण्ठे । अगस्त्यस्य उपांशु</span>- <span class="devanagari">षमिति नाभौ । वधेषामां उपांशुषमिति दक्षिणस्कन्धे । शम्मे अस्तु उपांशुषमिति वामस्कन्धे । सर्व</span>- <span class="devanagari">मस्तु शतायुषमिति शिरसि । ओं च मे स्वश्ध मे यज्ञोप्य च ते नमश्ध । यजे न्युनं तहमे ते उप यत्क्षिणीतरे तस्मै ते नमः । अग्ग्रेये नमः । स्वस्ति । श्रद्धा मेधां प्रजां विद्यां बुद्धिं श्रियं कीर्तिं बलम् । आयुष्व तेज आरोग्यं देहि मे हव्यवाहन ।</span> The words <span class="devanagari">ओ घ मे</span> ...... <span class="devanagari">तस्मै ते नमः</span> occur in <span class="devanagari">आश्र</span>. <span class="devanagari">गृ</span>. I. 11. 15. <a href="#fnref-chapter-xx-vaishvadeva-6" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xx-vaishvadeva-7" class="footnote-item"><span class="devanagari">अथ सायंमातः सिञ्जरध हविष्यन्नमुपहृयात् । आश्र</span>. <span class="devanagari">गृ</span>. I. 2. 1.; <span class="devanagari">अधातः पञ्च यज्ञाः । तानिबाहतहः कुर्वीत । आश्र</span>. <span class="devanagari">गृ</span>. III. 1. 1 and 4. <a href="#fnref-chapter-xx-vaishvadeva-7" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xx-vaishvadeva-8" class="footnote-item"><span class="devanagari">गृहस्थो वैश्वदेवारूयं कर्म प्रारम्भे द्विषा । अङ्गत्त्र चालनमन्यैव हसंस्कारार्थ</span>- <span class="devanagari">सिध्यते ॥ स्मृत्यथेंसार</span> p. 46 ; <span class="devanagari">गृह्यधर्मे चालमानोडप्य वैश्वदेवेन संमिश्रयेत् । लधाश्र</span>- <span class="devanagari">लापन</span> I. 116. <a href="#fnref-chapter-xx-vaishvadeva-8" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xx-vaishvadeva-9" class="footnote-item"><span class="devanagari">न क्षारलवणहोमों विद्यते । तथाधाराजसंयुहस्य । अहिविणस्य होम उदीचीनं हत्वा भस्मोपोहा तस्मिन्नुच्छुष्यात्पन्नममृतं चात्तो भवति । आप</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. II. 6. 15. 12-14. <a href="#fnref-chapter-xx-vaishvadeva-9" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xx-vaishvadeva-10" class="footnote-item"><span class="devanagari">कोटद्रवं चणकं माषे मसूरं च कुलित्थकम् । क्षारं च लवणं सर्वे वैश्वदेवे विवर्ज</span>-<span class="devanagari">येत् । स्मृत्यर्थसार</span> p. 47. <a href="#fnref-chapter-xx-vaishvadeva-10" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xx-vaishvadeva-11" class="footnote-item"><span class="devanagari">अत्लामे चेन केनापि फलशाकादकोदकादिभिः । धृता तत</span> quoted by <span class="devanagari">स्मृतिष्व</span>. I p. 212 and <span class="devanagari">स्मृतिवृद्ध</span> ( <span class="devanagari">आद्दिक</span> p. 398 ). <a href="#fnref-chapter-xx-vaishvadeva-11" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xx-vaishvadeva-12" class="footnote-item"><span class="devanagari">आर्याः प्रथता वैश्वदेवेसंस्कारतः स्वः । आर्याधिविष्ठा वा शूद्राः संस्कार्यः । आप</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. II. 2. 3. 1 and 4. <a href="#fnref-chapter-xx-vaishvadeva-12" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xx-vaishvadeva-13" class="footnote-item"><span class="devanagari">यत्तु तेनोक्तं</span>-<span class="devanagari">आर्याधिष्ठिता</span> ... <span class="devanagari">संस्कार्याः स्त्रः</span>-<span class="devanagari">इति तद्युगास्तरविषयम् । ब्राह्मणादिषु शूद्रस्य पचनादिविनियधा वै इति कलियुगनिषिद्धप्रभेंदं मध्ये स्मरणात् । स्मृतिवॄ</span>. ( <span class="devanagari">आद्दिक</span> p. 399 ). <a href="#fnref-chapter-xx-vaishvadeva-13" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xx-vaishvadeva-14" class="footnote-item"><span class="devanagari">अकृत्वा वैश्वदेवं तु यो भुङ्क्तेऽनापदि द्विजः । स भुङ्क्ते नरकं याति कालसूत्रम्</span>- <span class="devanagari">वाक्यपुराणें ॥ यम</span> quoted in <span class="devanagari">स्मृतिच</span>° I. p. 213. <a href="#fnref-chapter-xx-vaishvadeva-14" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xx-vaishvadeva-15" class="footnote-item"><span class="devanagari">इन्द्र</span>, <span class="devanagari">यम</span>, <span class="devanagari">वरुण</span> and <span class="devanagari">सोम</span> are the presiding deities of the east, south, west and north respectively. <a href="#fnref-chapter-xx-vaishvadeva-15" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xx-vaishvadeva-16" class="footnote-item"><span class="devanagari">बलीनां तस्य तस्य देतो संस्कारो हस्तेन परिमृज्योदकेन प्रक्षाल्य पश्चादपेक्षिष्येत । आप</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. II. 2. 3. 15; <span class="devanagari">देवयज्ञकृतशेषेण शुचिदेशमनुष्य तत्र कुर्यात् । स्मृतिचन्द्रिका</span> p. 47. <a href="#fnref-chapter-xx-vaishvadeva-16" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xx-vaishvadeva-17" class="footnote-item"><span class="devanagari">सर्वाभ्यश्च देवेभ्यो भागिनः कुर्वीताश्वण्डाल्योभ्यः । नानर्हेभ्यो वृथादिभ्योके । आप</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. II. 4. 9. 5–6. <a href="#fnref-chapter-xx-vaishvadeva-17" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xx-vaishvadeva-18" class="footnote-item">Some hold that bali is to be offered on the ground at the top (where the head lies) of the bed of the house-holder and at the other end of the beḍ <span class="devanagari">गृह्यास्तु</span> in Manu III. 91 is explained p. 279 as the latrine and privy at the back of the house. <a href="#fnref-chapter-xx-vaishvadeva-18" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xx-vaishvadeva-19" class="footnote-item"><span class="devanagari">देवेभ्यश्च हुतादद्याच्छाण्णाल्भ्यश्च बलि हरेत् । अग्रं भूमौ श्वचाण्डालवायसेभ्यश्च निक्षिपेत् ॥ या</span>. I. 103. <a href="#fnref-chapter-xx-vaishvadeva-19" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xx-vaishvadeva-20" class="footnote-item"><span class="devanagari">स्वय्यः स्वपन्नोभ्यश्च वयोभ्यश्च वपेयु भूसमातिपिि नावोपमर्ज बिन्दुते अमचेता इति । शां</span>. <span class="devanagari">गृ</span>. II. 14. 22-26. Rg. X. 117. 6 is <span class="devanagari">मौपमर्ज विन्दते अमचेताः सद्यो भवीमि धष इत्प्त तस्य । भायभणे पुष्यति नो सखाणं केवलो भवति केवलादी ॥</span> With the last quarter may be compared the <span class="devanagari">भगवद्गीता</span> III. 13 <span class="devanagari">भुञ्जते ते त्वघं पापा ये पचन्त्यात्मकारणात् ।</span>. Vide also Manu III. 118 and Viṣṇu Dh. S. 67. 43 for the same idea. <a href="#fnref-chapter-xx-vaishvadeva-20" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xx-vaishvadeva-21" class="footnote-item"><span class="devanagari">इन्द्राय स्वाहा</span> 16 <span class="devanagari">इन्द्रपुरुषेभ्यः</span> 17 <a href="#fnref-chapter-xx-vaishvadeva-21" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xx-vaishvadeva-22" class="footnote-item"><span class="devanagari">नित्यश्राद्धे तु गन्धौदकाद्युपयं शक्तिः । सर्वांन् पितृगणान् सम्यक् सवैषीद्विप्रान् भोजयेत् । आवाहनं स्वधाकारं पिण्डाप्रौकरणादिकम् । वैश्वास्यशेषम्</span> ) <span class="devanagari">नित्यश्राद्धे स्वचेवेताम् भोजमच॑ प्रकल्पयेत् । व्यास</span> in <span class="devanagari">स्मृतिः</span>. ( <span class="devanagari">आह्निक</span> p. 402 ). <a href="#fnref-chapter-xx-vaishvadeva-22" class="fn-back" aria-label="Back to text">↩</a></li>
+</ol>
+</aside>
+
+            <div class="chapter-nav">
+                <a href="chapter-xix-devayajna.html" class="nav-prev"><i class="fa-solid fa-chevron-left"></i> Chapter XIX. Devayajna</a>
+                <a href="chapter-xxi-nriyajna-or-manushya-yajna.html" class="nav-next">Chapter XXI. Nriyajna or Manushya-yajna <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </main>
+    </div>
+
+    <button class="toc-mobile-toggle" onclick="toggleMobileToc()" aria-label="Table of contents">
+        <i class="fa-solid fa-list"></i>
+    </button>
+
+    
+    <footer class="container-fluid pt-4" style="background-color:#2e4144">
+        <div class="row border-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img src="https://sanatana.in/mbta/public/images/Homepage_html/images/layer_8.png" alt="">
+            </div>
+            <div class="col-md-5 text-white">
+                <p>The divine knowledge and wisdom of our shastras is the only thing eternal,
+                   which was and which will remain ever-present in this gods creation.
+                   Our endeavours are to preserve this knowledge.</p>
+            </div>
+            <div class="col-md-1 text-white">
+                <div class="d-flex" style="height: 75px;">
+                    <div class="vr"></div>
+                </div>
+            </div>
+            <div class="col-md-3 text-white">
+                <i class="fa-solid fa-globe"></i>&emsp;
+                <a href="https://sanatanasampatti.in" class="text-light">www.sanatanasampatti.in</a><br>
+                <i class="fa-solid fa-envelope"></i>&emsp;
+                <a href="" class="text-light">sriranga.yoga@gmail.com</a>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center py-3 mb-4 align-items-center border-bottom">
+            <div class="col-md-2 text-white fs-4 text-center">Project</div>
+            <div class="col-md-2 text-white fs-4 text-center">Our Mission</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contribute</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contact Us</div>
+        </div>
+        <div class="row">
+            <p class="col-md-6 fs-6 text-start text-light">
+                <small>&copy; 2026 Sanatanasampatti</small>
+            </p>
+            <p class="col-md-6 fs-6 text-end text-light">
+                <a class="text-white" rel="nofollow" href="http://www.srirangadigital.com" target="_blank">
+                    <img src="https://sanatana.in/mbta/public/images/logo.png" alt="sriranga logo" />
+                    <small>Designed, Developed and Maintained by Sriranga Digital</small>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        const headings = [];
+        tocLinks.forEach(link => {
+            const id = link.getAttribute('href').substring(1);
+            const el = document.getElementById(id);
+            if (el) headings.push({ el: el, link: link.parentElement });
+        });
+
+        function onScroll() {
+            let current = null;
+            for (const h of headings) {
+                const rect = h.el.getBoundingClientRect();
+                if (rect.top <= 120) current = h;
+            }
+            tocLinks.forEach(l => l.parentElement.classList.remove('active'));
+            if (current) current.link.classList.add('active');
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    });
+
+    function toggleMobileToc() {
+        const toc = document.getElementById('toc');
+        if (!toc) return;
+        if (toc.style.display === 'block') {
+            toc.style.display = '';
+            toc.style.position = '';
+        } else {
+            toc.style.display = 'block';
+            toc.style.position = 'fixed';
+            toc.style.top = '0';
+            toc.style.left = '0';
+            toc.style.width = '80vw';
+            toc.style.maxWidth = '320px';
+            toc.style.height = '100vh';
+            toc.style.maxHeight = '100vh';
+            toc.style.zIndex = '2000';
+            toc.style.background = 'var(--parchment)';
+            toc.style.boxShadow = '4px 0 20px rgba(0,0,0,0.2)';
+            toc.style.padding = '24px';
+            toc.style.overflowY = 'auto';
+        }
+    }
+    </script>
+
+    <script>
+    function toggleSynopsisAudio(btn) {
+        var audio = btn.parentElement.querySelector('audio');
+        if (!audio.src) audio.src = btn.getAttribute('data-src');
+        if (audio.paused) {
+            audio.play();
+            btn.classList.add('playing');
+            btn.querySelector('i').className = 'fa-solid fa-pause';
+        } else {
+            audio.pause();
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        }
+        audio.onended = function() {
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        };
+        // Prevent click from toggling the synopsis open/close
+        event.stopPropagation();
+    }
+    </script>
+</body>
+</html>

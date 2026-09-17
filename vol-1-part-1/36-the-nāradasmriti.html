@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- MDB UI Kit -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/fonts.css?v=1.2">
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/navbar.css?v=2.4">
+
+    <title>36. The Nāradasmriti — Volume I: Part I — History of Dharmaśāstra</title>
+    <style>
+    :root {
+        --saffron:        #D4600A;
+        --saffron-light:  #F0924A;
+        --saffron-wash:   rgba(212, 96, 10, 0.07);
+        --indigo:         #2E5FA3;
+        --indigo-dark:    #1C3D70;
+        --maroon:         #7A1E1E;
+        --amber:          #C97A1A;
+        --ink:            #1A1209;
+        --ink-secondary:  #4A3B2A;
+        --parchment:      #FDFAF4;
+        --parchment-mid:  #F5EFE2;
+        --rule:           rgba(180, 130, 60, 0.22);
+        --shadow:         0 2px 18px rgba(90, 50, 10, 0.08);
+        --font-devanagari: 'Tiro Devanagari Sanskrit', 'Siddhanta', 'Noto Sans Devanagari', serif;
+        --font-roman:      'Junicode', Georgia, serif;
+    }
+
+    body {
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: var(--font-roman);
+    }
+
+    .devanagari {
+        font-family: var(--font-devanagari);
+    }
+
+    /* ── Navbar overrides ── */
+    .navbar-ontop { z-index: 1031; }
+    .hdclr { color: var(--saffron); }
+    .engpara { font-family: 'Open Sans', sans-serif; }
+
+    /* ── Layout ── */
+    .dh-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .dh-content {
+        flex: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        background: var(--parchment);
+        box-shadow: var(--shadow);
+        min-height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        .dh-content { padding: 24px 20px; }
+        .dh-wrapper { flex-direction: column; }
+    }
+
+    /* ── TOC Sidebar ── */
+    .toc-sidebar {
+        position: sticky;
+        top: 80px;
+        width: 280px;
+        min-width: 280px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding: 20px 16px;
+        margin-right: 24px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        scrollbar-width: thin;
+    }
+
+    .toc-title {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--saffron-light);
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list li {
+        padding: 4px 0;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-list li.toc-l3 {
+        padding-left: 16px;
+        font-size: 0.78rem;
+    }
+
+    .toc-list li a {
+        color: var(--ink-secondary);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .toc-list li a:hover { color: var(--saffron); }
+
+    .toc-list li.active {
+        border-left-color: var(--saffron);
+    }
+
+    .toc-list li.active a {
+        color: var(--saffron);
+        font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-sidebar { display: none; }
+    }
+
+    /* ── Mobile TOC Toggle ── */
+    .toc-mobile-toggle {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1050;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--saffron);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-mobile-toggle { display: block; }
+    }
+
+    /* ── Section Headings ── */
+    .section-heading {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        margin: 48px 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--rule);
+        letter-spacing: 0.5px;
+        scroll-margin-top: 80px;
+    }
+
+    h2.section-heading { font-size: 1.6rem; }
+
+    h3.section-heading {
+        font-size: 1.25rem;
+        border-left: 4px solid var(--saffron-light);
+        border-bottom: none;
+        padding: 8px 16px;
+        background: var(--saffron-wash);
+        border-radius: 0 5px 5px 0;
+    }
+
+    /* ── Prose ── */
+    .prose {
+        font-family: var(--font-roman);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+        color: var(--ink);
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    .prose em { color: var(--maroon); }
+
+    .prose:target {
+        background: rgba(212, 96, 10, 0.12);
+        border-left: 4px solid var(--saffron);
+        padding-left: 16px;
+        margin-left: -20px;
+        border-radius: 0 6px 6px 0;
+        animation: target-pulse 2s ease-out;
+    }
+
+    @keyframes target-pulse {
+        0%   { background: rgba(212, 96, 10, 0.30); }
+        100% { background: rgba(212, 96, 10, 0.12); }
+    }
+
+    /* ── Footnote References ── */
+    .fn-ref {
+        font-size: 0.75em;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    .fn-ref a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 0 2px;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: color 0.15s;
+    }
+
+    .fn-ref a:hover { color: var(--indigo); }
+
+    /* ── Synopsis Box ── */
+    .synopsis-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron-light);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .synopsis-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .synopsis-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .synopsis-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .synopsis-box.open .synopsis-toggle i {
+        transform: rotate(90deg);
+    }
+    .synopsis-body {
+        display: none;
+        padding: 0 20px 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+    }
+    .synopsis-box.open .synopsis-body { display: block; }
+    .synopsis-body p { margin: 0; }
+    .synopsis-attribution {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: var(--ink-secondary);
+        opacity: 0.7;
+        font-style: italic;
+    }
+    .synopsis-audio {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    .synopsis-play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--saffron);
+        background: none;
+        color: var(--saffron);
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: background 0.2s, color 0.2s;
+        padding: 0;
+    }
+    .synopsis-play-btn:hover {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn.playing {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn i { padding-left: 2px; }
+
+    /* ── Index Terms Panel ── */
+    .index-terms-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .index-terms-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .index-terms-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .index-terms-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .index-terms-box.open .index-terms-toggle i {
+        transform: rotate(90deg);
+    }
+    .index-terms-body {
+        display: none;
+        padding: 0 20px 16px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .index-terms-box.open .index-terms-body { display: block; }
+    .index-terms-dl {
+        margin: 0;
+        padding: 0;
+    }
+    .index-terms-dl dt {
+        font-family: var(--font-roman);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+        margin-top: 8px;
+    }
+    .index-terms-dl dd {
+        margin: 2px 0 0 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        color: var(--ink-secondary);
+        line-height: 1.5;
+    }
+    .nyaya-heading {
+        font-family: var(--font-roman);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        margin: 16px 0 4px;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+    }
+
+    /* ── Inline Index Popovers ── */
+    .idx-term {
+        border-bottom: 1px dotted var(--saffron-light);
+        cursor: help;
+        position: relative;
+    }
+    .idx-term:hover::after {
+        content: attr(data-def);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        background: rgba(44, 36, 22, 0.92);
+        color: #F5ECD8;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        max-width: 280px;
+        z-index: 100;
+        white-space: normal;
+        line-height: 1.4;
+        pointer-events: none;
+    }
+
+    /* ── Structured Version Banner ── */
+    .structured-banner {
+        margin: 0 0 28px;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, rgba(212, 96, 10, 0.06) 0%, rgba(212, 96, 10, 0.02) 100%);
+        border: 1px solid var(--saffron-light);
+        border-radius: 6px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        color: var(--ink-secondary);
+        line-height: 1.6;
+    }
+    .structured-banner i { color: var(--saffron); margin-right: 4px; }
+    .structured-banner a { color: var(--indigo); font-weight: 600; text-decoration: none; }
+    .structured-banner a:hover { text-decoration: underline; }
+
+    /* ── Footnotes Section ── */
+    .footnotes-section {
+        margin: 32px 0 48px;
+        padding: 20px 24px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .footnotes-section hr {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 0 0 16px;
+    }
+
+    .footnotes-list {
+        padding-left: 24px;
+        margin: 0;
+    }
+
+    .footnote-item {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+        scroll-margin-top: 80px;
+    }
+
+    .footnote-item:target {
+        background: rgba(212, 96, 10, 0.1);
+        border-radius: 4px;
+        padding: 4px 6px;
+        margin-left: -6px;
+    }
+
+    .fn-back {
+        color: var(--saffron-light);
+        text-decoration: none;
+        font-size: 0.85em;
+        margin-left: 4px;
+    }
+
+    .fn-back:hover { color: var(--saffron); }
+
+    /* ── Reference Links ── */
+    a.ref {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: all 0.15s;
+    }
+
+    a.ref:hover {
+        color: var(--saffron);
+        border-bottom-style: solid;
+    }
+
+    a.mbta-ext {
+        color: var(--indigo);
+        font-size: 0.7em;
+        margin-left: 2px;
+        opacity: 0.5;
+        text-decoration: none;
+        vertical-align: super;
+    }
+    a.mbta-ext:hover { opacity: 1; color: var(--saffron); }
+
+    /* ── References Panel (sidebar) ── */
+    .refs-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .refs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .refs-list li {
+        padding: 3px 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .ref-source-link {
+        font-weight: 600;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .ref-source-link:hover {
+        text-decoration: underline;
+    }
+
+    .ref-verse-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.76rem;
+    }
+
+    .ref-verse-link:hover {
+        text-decoration: underline;
+        color: var(--saffron);
+    }
+
+    .ref-verses {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Timeline panel ── */
+    .timeline-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .timeline-list li {
+        padding: 2px 0;
+        font-size: 0.76rem;
+        line-height: 1.4;
+        position: relative;
+        padding-left: 14px;
+    }
+
+    .timeline-list li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--saffron);
+    }
+
+    .timeline-list li.tl-approximate::before {
+        background: transparent;
+        border: 2px solid var(--saffron);
+        width: 4px;
+        height: 4px;
+    }
+
+    .timeline-list li.tl-century::before {
+        background: transparent;
+        border: 2px dashed var(--saffron);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+
+    .tl-dot-link {
+        text-decoration: none;
+        color: var(--ink);
+        display: block;
+    }
+
+    .tl-dot-link:hover {
+        color: var(--saffron);
+    }
+
+    .tl-year {
+        font-weight: 600;
+        color: var(--saffron);
+        font-size: 0.72rem;
+        min-width: 70px;
+        display: inline-block;
+    }
+
+    .tl-label {
+        color: var(--ink-secondary);
+        font-size: 0.72rem;
+    }
+
+    .tl-view-link, .tl-more {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.72rem;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .tl-view-link:hover, .tl-more:hover {
+        text-decoration: underline;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+
+    .breadcrumb-bar a {
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+
+    .breadcrumb-bar .sep {
+        color: var(--amber);
+        margin: 0 8px;
+    }
+
+    .breadcrumb-bar .current {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Chapter Navigation ── */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        margin-top: 48px;
+        border-top: 2px solid var(--rule);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .chapter-nav a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        transition: all 0.2s;
+        max-width: 45%;
+    }
+
+    .chapter-nav a:hover {
+        background: var(--saffron-wash);
+        border-color: var(--saffron-light);
+    }
+
+    .nav-prev { text-align: left; }
+    .nav-next { text-align: right; margin-left: auto; }
+
+    .page-range {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+    }
+
+    /* ── Volume Cards (Landing) ── */
+    .vol-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .vol-card {
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        transition: all 0.25s;
+    }
+
+    .vol-card:hover {
+        border-color: var(--saffron-light);
+        box-shadow: 0 4px 24px rgba(212, 96, 10, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .vol-num {
+        font-family: var(--font-roman);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--saffron);
+        margin-bottom: 8px;
+    }
+
+    .vol-subtitle {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        line-height: 1.5;
+        flex: 1;
+    }
+
+    .vol-chapters {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        margin-top: 12px;
+    }
+
+    /* ── Chapter Cards (Volume Index) ── */
+    .chapter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .chapter-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .chapter-card:hover {
+        border-color: var(--saffron-light);
+        background: var(--saffron-wash);
+    }
+
+    .card-num {
+        font-family: var(--font-roman);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--saffron);
+        min-width: 36px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        flex: 1;
+    }
+
+    .card-pages {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        color: var(--ink-secondary);
+    }
+
+    /* ── Landing Hero ── */
+    .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-family: var(--font-roman);
+        font-size: 2.4rem;
+        color: var(--saffron);
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .hero .devanagari-title {
+        font-family: var(--font-devanagari);
+        font-size: 1.8rem;
+        color: var(--ink);
+        margin-bottom: 16px;
+    }
+
+    .hero .author {
+        font-family: var(--font-roman);
+        font-size: 1.1rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .hero .desc {
+        font-family: var(--font-roman);
+        font-size: 1rem;
+        color: var(--ink-secondary);
+        line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer { margin-top: 48px; }
+</style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mbta/">
+      <div class="container-fluid">&emsp;&emsp;
+      <a href="../index.html" class="navbar-brand" style="text-decoration:none;">
+        <span class="devanagari ms-3" style="font-size:1.5rem; color:var(--saffron); font-weight:700;">धर्मशास्त्रम्</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="../index.html">धर्मशास्त्रम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5 active" href="../index.html">खण्डाः</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in/mbta/">महाभारतम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in">सनातनम्</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+
+    <div class="dh-wrapper container-xl">
+        <nav id="toc" class="toc-sidebar">
+<div class="refs-panel">
+<h5 class="toc-title">References</h5>
+<ul class="refs-list">
+<li><a href="../refs/agni_purana.html" class="ref-source-link">Agnipurāṇa</a> <span class="ref-verses"><a href="../refs/agni_purana.html#c" class="ref-verse-link">c</a></span></li>
+<li><a href="../refs/aitareya_br.html" class="ref-source-link">Aitareya Brāhmaṇa</a> <span class="ref-verses"><a href="../refs/aitareya_br.html#VII.3" class="ref-verse-link">VII.3</a></span></li>
+<li><a href="../refs/apararka.html" class="ref-source-link">Aparārka</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/arthashastra.html" class="ref-source-link">Arthaśāstra</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/brihaspati.html" class="ref-source-link">Bṛhaspati</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/kautilya.html" class="ref-source-link">Kauṭilya Arthaśāstra</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/katyayana.html" class="ref-source-link">Kātyāyana</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mahabharata.html" class="ref-source-link">Mahābhārata</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/manu.html" class="ref-source-link">Manusmṛti</a> <span class="ref-verses"><a href="../refs/manu.html#I.35" class="ref-verse-link">I.35</a>, <a href="../refs/manu.html#IX.256" class="ref-verse-link">IX.256</a>, <a href="../refs/manu.html#i" class="ref-verse-link">i</a>, <a href="../refs/manu.html#9.76" class="ref-verse-link">9.76</a>, <a href="../refs/manu.html#8" class="ref-verse-link">8</a>, <a href="../refs/manu.html#8.47" class="ref-verse-link">8.47</a> <a href="../refs/manu.html" class="ref-verse-link">+12</a></span></li>
+<li><a href="../refs/medhatithi.html" class="ref-source-link">Medhātithi</a> <span class="ref-verses"><a href="../refs/medhatithi.html#ci" class="ref-verse-link">ci</a></span></li>
+<li><a href="../refs/mitakshara.html" class="ref-source-link">Mitākṣarā</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/narada.html" class="ref-source-link">Nārada</a> <span class="ref-verses"><a href="../refs/narada.html#i" class="ref-verse-link">i</a>, <a href="../refs/narada.html#c" class="ref-verse-link">c</a>, <a href="../refs/narada.html#l" class="ref-verse-link">l</a>, <a href="../refs/narada.html#IV.325" class="ref-verse-link">IV.325</a>, <a href="../refs/narada.html#cl" class="ref-verse-link">cl</a>, <a href="../refs/narada.html#ci" class="ref-verse-link">ci</a> <a href="../refs/narada.html" class="ref-verse-link">+1</a></span></li>
+<li><a href="../refs/parasara.html" class="ref-source-link">Parāśara</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mb_udyogaparva.html" class="ref-source-link">Udyogaparva</a> <span class="ref-verses"><a href="../refs/mb_udyogaparva.html#49.22" class="ref-verse-link">49.22</a>, <a href="../refs/mb_udyogaparva.html#35.33-34" class="ref-verse-link">35.33-34</a></span></li>
+<li><a href="../refs/vasishtha.html" class="ref-source-link">Vasiṣṭha Dharmasūtra</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/vishvarupa.html" class="ref-source-link">Viśvarūpa</a> <span class="ref-verses"><a href="../refs/vishvarupa.html#c" class="ref-verse-link">c</a></span></li>
+<li><a href="../refs/vishnu_smriti.html" class="ref-source-link">Viṣṇu Smṛti</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/yajnavalkya.html" class="ref-source-link">Yājñavalkya</a> <span class="ref-verses"><a href="../refs/yajnavalkya.html#I.4-5" class="ref-verse-link">I.4-5</a>, <a href="../refs/yajnavalkya.html#i" class="ref-verse-link">i</a>, <a href="../refs/yajnavalkya.html#II.230.I" class="ref-verse-link">II.230.I</a>, <a href="../refs/yajnavalkya.html#II.182" class="ref-verse-link">II.182</a>, <a href="../refs/yajnavalkya.html#II.199" class="ref-verse-link">II.199</a>, <a href="../refs/yajnavalkya.html#III.252" class="ref-verse-link">III.252</a> <a href="../refs/yajnavalkya.html" class="ref-verse-link">+8</a></span></li>
+<li><a href="../refs/mb_shalyaparva.html" class="ref-source-link">Śalyaparva</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mb_shantiparva.html" class="ref-source-link">Śāntiparva</a> <span class="ref-verses"><a href="../refs/mb_shantiparva.html#29.13" class="ref-verse-link">29.13</a></span></li>
+</ul>
+</div>
+<div class="timeline-panel">
+<h5 class="toc-title">Timeline</h5>
+<ul class="timeline-list">
+<li class="tl-exact"><a href="#p-36-the-nāradasmriti-16" class="tl-dot-link"><span class="tl-year">~207 BCE</span> <span class="tl-label">Nārada</span></a></li>
+<li class="tl-range"><a href="#p-36-the-nāradasmriti-16" class="tl-dot-link"><span class="tl-year">~100 CE</span> <span class="tl-label">Nārada</span></a></li>
+<li class="tl-century"><a href="#p-36-the-nāradasmriti-16" class="tl-dot-link"><span class="tl-year">101 CE</span> <span class="tl-label">Nārada</span></a></li>
+<li class="tl-century"><a href="#p-36-the-nāradasmriti-16" class="tl-dot-link"><span class="tl-year">201 CE</span> <span class="tl-label">Nārada</span></a></li>
+<li class="tl-exact"><a href="#p-36-the-nāradasmriti-16" class="tl-dot-link"><span class="tl-year">300 CE</span> <span class="tl-label">Nārada</span></a></li>
+<li class="tl-century"><a href="#p-36-the-nāradasmriti-16" class="tl-dot-link"><span class="tl-year">301 CE</span> <span class="tl-label">Nārada</span></a></li>
+<li class="tl-century"><a href="#p-36-the-nāradasmriti-16" class="tl-dot-link"><span class="tl-year">401 CE</span> <span class="tl-label">Nārada</span></a></li>
+<li class="tl-approximate"><a href="#p-36-the-nāradasmriti-19" class="tl-dot-link"><span class="tl-year">~600 CE</span> <span class="tl-label">The time when Bhavasvāmin flou</span></a></li>
+<li class="tl-range"><a href="#p-36-the-nāradasmriti-21" class="tl-dot-link"><span class="tl-year">~700 CE</span> <span class="tl-label">Nārada</span></a></li>
+<li class="tl-century"><a href="#p-36-the-nāradasmriti-15" class="tl-dot-link"><span class="tl-year">701 CE</span> <span class="tl-label">Nārada</span></a></li>
+<li class="tl-century"><a href="#p-36-the-nāradasmriti-22" class="tl-dot-link"><span class="tl-year">701 CE</span> <span class="tl-label">Viśvarūpa</span></a></li>
+<li class="tl-century"><a href="#p-36-the-nāradasmriti-7" class="tl-dot-link"><span class="tl-year">801 CE</span> <span class="tl-label">Nārada</span></a></li>
+<li><a href="36-the-nāradasmriti-timeline.html" class="tl-more">View all 18 dates &rarr;</a></li>
+</ul>
+<a href="36-the-nāradasmriti-timeline.html" class="tl-view-link">View full timeline &rarr;</a>
+</div>
+<h5 class="toc-title">Sections</h5>
+<ul class="toc-list">
+<li class="toc-l2"><a href="#36-the-nāradasmriti">36. The Nāradasmriti</a></li>
+</ul>
+</nav>
+        <main class="dh-content">
+            
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep">›</span>
+        <a href="index.html">Volume I: Part I</a>
+        <span class="sep">›</span>
+        <span class="current">36. The Nāradasmriti</span>
+    </div>
+    
+            <h1 class="text-center" style="font-family: var(--font-roman); font-size: 2rem; color: var(--saffron); margin-bottom: 8px;">
+                36. The Nāradasmriti
+            </h1>
+            <p class="text-center" style="font-family: 'Open Sans', sans-serif; color: var(--ink-secondary); font-size: 0.9rem; margin-bottom: 36px;">
+                Volume I: Part I <span class="page-range">pp. 467–483</span>
+            </p>
+
+            
+    <div class="synopsis-box" id="synopsis">
+        <button class="synopsis-toggle" onclick="this.parentElement.classList.toggle('open')"
+                aria-expanded="false" aria-controls="synopsis-body">
+            <i class="fa-solid fa-chevron-right"></i>
+            Kane's Synopsis
+        </button>
+        <div class="synopsis-audio">
+            <span class="synopsis-play-btn" role="button" tabindex="0"
+                    onclick="toggleSynopsisAudio(this)"
+                    data-src="../audio/synopsis/vol-1-part-1/vol-1-part-1_sec036.mp3" title="Listen to synopsis">
+                <i class="fa-solid fa-play"></i>
+            </span>
+            <audio preload="none"></audio>
+        </div>
+        <div class="synopsis-body" id="synopsis-body">
+            <p>The Nāradasmṛti, primarily focusing on *vyavahāra*, exists in both smaller and larger versions. Dr. Jolly’s edition incorporates Asahāya’s commentary, revised by Kalyāṇabhaṭṭa. Nārada is not listed among dharma expounders by Yājñavalkya or Parāśara, though Manu (I. 35) identifies him as one of the ten Prajāpatis, and he is a prominent figure in the Mahābhārata. Structurally, the text typically begins with three introductory chapters on judicial procedure and *sabhā*, followed by eighteen *vyavahārapadas*, and an appendix on theft, from a Nepal manuscript. The printed Nārada contains 1028 verses, with some 700 quoted in digests; quotations by Viśvarūpa and Medhātithi align with the printed text. A significant relationship with the Manusmṛti is evident, with 50 identical verses and many more closely corresponding, indicating Nārada's reliance on an extant Manu, despite certain differences. Some verses also agree with the Mahābhārata and Kauṭilya.
+
+Nārada distinguishes itself through numerous subdivisions and unique topics, such as fourteen kinds of impotent persons, three *punarbhūs*, and four *svairiņīs*. It also propounds several juristic and political principles, including fixing the period of minority at sixteen years. Chronologically, Nārada is placed somewhat later than Yājñavalkya and definitively earlier than the 8th century, a timeframe supported by Bāṇa's reference to Nāradīya. Its mention of 'dināra' places it between 100-300 A.D., challenging Dr. Jolly's later dating based on this. Verses on *ācāra*, *śrāddha*, and *prāyaścitta* quoted elsewhere likely stem from a different Nārada. Bhavasvāmin, a Brāhmaṇa *bhāsyakara* from Kerala, commented on it, though his precise date is uncertain. Its home remains unascertained, with Dr. Jolly’s Nepal theory deemed speculative. The Mahābhārata quotes Nārada's views on flesh-eating and *utpātas*, while other texts like Jyotir-Nārada also exist.</p>
+            <p class="synopsis-attribution">— Synopsis by P.V. Kane, from History of Dharmaśāstra</p>
+        </div>
+    </div>
+
+
+            
+
+            <h2 id="36-the-nāradasmriti" class="section-heading">36. The Nāradasmriti</h2>
+<p class="prose" id="p-36-the-nāradasmriti-1">36. The <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nāradasmṛti</a></p>
+<p class="prose" id="p-36-the-nāradasmriti-2">There are two versions of <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> on Vyavahāra, a smaller and a larger one. The smaller version was translated by Dr. Jolly in 1876 (Trübner & Co., London). The text of the liotheca Indica series (1885) and was translated by him in the Sacred Books of the East Series (vol. 33). The edition of the text is accompanied up to verse 21 of the 5th title ‘abhyu-petyāśuśrūṣā’ by extracts from the commentary of Asahāya as revised by Kalyāṇabhaṭṭa, who was encouraged in the task of revision by Keśavabhaṭṭa.</p>
+<p class="prose" id="p-36-the-nāradasmriti-3">From verse 22 of the same title the printed text is the same as the smaller versioṇ A verse quoted as <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>’s by Ksirasvāmin is not found in the larger version but is found in the smaller versioṇ<sup class="fn-ref"><a href="#fn-36-the-nāradasmriti-1" id="fnref-36-the-nāradasmriti-1">1</a></sup> An ancient Mṣ of <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> from Nepal dated 1407 A. D. contains two additional chapters on theft and ordealṣ Dr. Jolly includes the first as an appendix and omits that on ordeals on the ground that it is not authentic. One of the colophons of the Nepalese Mṣ describes it as ‘iti Mānava-dharmasāstre <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>proktāyām samhitāyām &c. This corroborates what was said above (pp. 149, 156) as to the close connection between <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> and <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>.</p>
+<p class="prose" id="p-36-the-nāradasmriti-4"><a class="ref" href="../refs/narada.html#i" data-source="narada" data-ref="i" title="Nārada i">Nārada i</a>s not mentioned by <a class="ref" href="../refs/yajnavalkya.html#i" data-source="yajnavalkya" data-ref="i" title="Yājñavalkya i">Yājñavalkya i</a>n the list of ancient writers on dharma, nor does <a class="ref" href="../refs/parasara.html" data-source="parasara" data-ref="" title="Parāśara">Parāśara</a> mention hiṃ <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a>, however, quotes a verse of Vṛddha-<a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yājñavalkya</a> (on <a class="ref" href="../refs/yajnavalkya.html#I.4-5" data-source="yajnavalkya" data-ref="I.4-5" title="Yājñavalkya I.4-5">Yāj. I. 4-5</a>), where <a class="ref" href="../refs/narada.html#i" data-source="narada" data-ref="i" title="Nārada i">Nārada i</a>s the first among ten expounders of dharma enumerated thereiṇ ‘<a class="ref" href="../refs/narada.html#i" data-source="narada" data-ref="i" title="Nārada i">Nārada i</a>s a very ancient name. The <a class="ref" href="../refs/manu.html#I.35" data-source="manu" data-ref="I.35" title="Manusmṛti I.35">Manusmṛti (I. 35)</a> mentions <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> as one of the ten primeval Prajāpatiṣ In the <a class="ref" href="../refs/mahabharata.html" data-source="mahabharata" data-ref="" title="Mahābhārata">Mahābhārata</a> sage <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> figures frequently. In <a class="ref" href="../refs/mb_udyogaparva.html#49.22" data-source="mb_udyogaparva" data-ref="49.22" title="Udyogaparva 49.22">Udyogaparva (49. 22)</a><a href="https://sanatana.in/mbta/listing/parva/udyogaparva#P05_U05_A049_S022" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> he is said to have told the Vṛṣṇis to do their duties (tasmāt-kar-maiva kartavyam--iti hovāca <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>ḥ<span class="devanagari">।</span> etad-hi sarvamācaṣṭa Vṛṣṇicakrasya vedavit). Śānti (30.6) says that <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> was the maternal uncle of Parvata. In <a class="ref" href="../refs/mb_shantiparva.html#29.13" data-source="mb_shantiparva" data-ref="29.13" title="Śāntiparva 29.13">Śāntiparva 29. 13</a><a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> ff it is stated that <a class="ref" href="../refs/narada.html#c" data-source="narada" data-ref="c" title="Nārada c">Nārada c</a>omforted Yudhisthira on the death of his many relatives and warriors by dilating upon the stories of sixteen ancient kings and heroes who had also similar sorrowṣ In <a class="ref" href="../refs/mb_shalyaparva.html" data-source="mb_shalyaparva" data-ref="" title="Śalyaparva">Śalyaparva</a><a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>, <a class="ref" href="../refs/narada.html#i" data-source="narada" data-ref="i" title="Nārada i">Nārada i</a>s said to have informed Balarāma that his his two disciples Bhīma and Duryodhana were going to fight with maceṣ There <a class="ref" href="../refs/narada.html#i" data-source="narada" data-ref="i" title="Nārada i">Nārada i</a>s described as holding a fine Vīṇā as an expert in dance and song and as stirring up feuds and always fond of quarrels (prakarṭā- kalahānām ca nityam ca kalahapriyaḥ) in chap. 54. 18–20. According to the Mahābhāṣya on Vārtika 15 on Pāṇ. (VIII. 1. 15, Kielhorn eḍ III. p. 371), <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> and Parvata may be spoken of as ‘dvandvam <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>parvatau as they are a famous pair that is ‘atyantasahacarita’ (not even Yudhiṣṭhira and Arjuna are so).</p>
+<p class="prose" id="p-36-the-nāradasmriti-5">The printed <a class="ref" href="../refs/narada.html#c" data-source="narada" data-ref="c" title="Nārada c">Nārada c</a>ontains three introductory chapters on the principles of judicial procedure ( Vyavahāra-mātr̥kā ) and on the judicial assembly ( sabhā ). Then the following titles of law are dealt with with one after another :— r̥ṇādāna ( recovery of debts ), upanidhi ( deposit, lending,—bailment ), sambhūya-samutthāna ( partnership ), dattaprādānika ( gifts and resumption thereof ), abhyupetya-aśuśrūṣa ( breach of contract of service ), vetanasya-anapākarma ( non-payment of wages ), asvāmivikraya ( sale without ownership ), vikriyā- sampradāna ( non-delivery after sale ), krītānuśaya ( rescis- sion of purchase ), samayasya-anapākarma ( violation of conven- tions of corporations, guilds &c. ); sīmābandha ( settlement of boundaries ); strīpuṁyoga ( marital relation ); dāyabhāga ( partition and inheritance ); sāhasāh ( offences in which force is the principal element ), such as homicide, robbery, rape &c. ; vākpārusya ( defamation and abuse ) and daṇḍapārusya ( hurt of various kinds ); prakīrṇaka ( miscellaneous wrongs ). The appendix deals with theft ; a few remarks are made on that topic under the title of ‘sāhasa’.</p>
+<p class="prose" id="p-36-the-nāradasmriti-6">It will be noticed that <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> follows the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>smr̥ti to a considerable extent in the nomenclature and the arrange- ment of the eighteen titleṣ Some of the titles are differently named by <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>, e. g. he speaks of upanidhi, while <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> employs the word nikṣepa. <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> seems to have included the ‘svāmipālāvivāda’ of <a class="ref" href="../refs/manu.html#i" data-source="manu" data-ref="i" title="Manusmṛti i">Manu i</a>n ‘vetanasya-anapākarma’. He makes one title of dyūta and samāhvaya. <a class="ref" href="../refs/narada.html#i" data-source="narada" data-ref="i" title="Nārada i">Nārada i</a>ncludes strīsamgrahaṇa under sāhasa and adds three titles, viz. abhyupetya-aśuśrūṣa, vikriyāsampradāna and prakīrṇaka. The Smr̥ticandrikā expressly<sup class="fn-ref"><a href="#fn-36-the-nāradasmriti-2" id="fnref-36-the-nāradasmriti-2">2</a></sup> says that it follows the work of <a class="ref" href="../refs/narada.html#i" data-source="narada" data-ref="i" title="Nārada i">Nārada i</a>n preference to that of <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> as regards the nomenclature and the sequence of the titles of law. <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> follows <a class="ref" href="../refs/manu.html#i" data-source="manu" data-ref="i" title="Manusmṛti i">Manu i</a>n speaking of witnesses in the section on rṇādāna and in treating of theft after the eighteen titles have been dealt with ( vide <a class="ref" href="../refs/manu.html#IX.256" data-source="manu" data-ref="IX.256" title="Manusmṛti IX.256">Manu IX. 256</a> ff. ).</p>
+<p class="prose" id="p-36-the-nāradasmriti-7">The printed <a class="ref" href="../refs/narada.html#c" data-source="narada" data-ref="c" title="Nārada c">Nārada c</a>ontains 1028 verses (including 61 on theft in the appendix). About seven hundred of these verses occur in various nibandhas as quotationṣ Up to the 21st verse of the section ‘abhyupetyāśuśrūṣā’ the commen- tary of Asahāya furnishes a valuable check for the authenticity of the text. For the remaining portion, there are important data as to its authenticity, sequence and readingṣ <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a>, who belongs to the first half of the 9th century, quotes about fifty verses of <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> (generally by name). The text that he had before him was essentially the same as that of the printed edition except in a very few caseṣ Out of the seven verses of <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> on ‘samayasya-anapākarma’ <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a> quotes five (on <a class="ref" href="../refs/yajnavalkya.html#II.190" data-source="yajnavalkya" data-ref="II.190" title="Yājñavalkya II.190">Yāj. II. 190</a> and 196) and expressly states that <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> wound up his chapter on that topic with the verse ‘dosavat karaṇam &c.’ as the printed text doeṣ On <a class="ref" href="../refs/yajnavalkya.html#II.226" data-source="yajnavalkya" data-ref="II.226" title="Yājñavalkya II.226">Yāj. II. 226</a> <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a> distinctly says that the verse ‘yameva hyativarteran’ &c. is followed immediately by ‘malā hyete manuṣyeṣu’. This is the case with the printed text also (dyūtasamāhvaya, verses 13–14). On <a class="ref" href="../refs/yajnavalkya.html#III.252" data-source="yajnavalkya" data-ref="III.252" title="Yājñavalkya III.252">Yāj. III.252</a> <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a> quotes a verse of <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> about the three kinds of wealth, viz. śukla, śabala and kṛṣṇa, which does not occur in that form in <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>, though the latter contains similar dicta.<sup class="fn-ref"><a href="#fn-36-the-nāradasmriti-3" id="fnref-36-the-nāradasmriti-3">3</a></sup> <a class="ref" href="../refs/vishvarupa.html#c" data-source="vishvarupa" data-ref="c" title="Viśvarūpa c">Viśvarūpa c</a>ontains no quotation from <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> on the topics of ācāra or prāyaścitta. The same is the case with Medhā- tithi and the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mitākṣarā</a>. <a class="ref" href="../refs/medhatithi.html" data-source="medhatithi" data-ref="" title="Medhātithi">Medhātithi</a> somewhat inaccurately summarises the introductory words (in prose) of <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> (vide note 269 above). <a class="ref" href="../refs/medhatithi.html" data-source="medhatithi" data-ref="" title="Medhātithi">Medhātithi</a> frequently quotes <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> particularly from the sections on rṇādāna (vide on <a class="ref" href="../refs/manu.html#8.47" data-source="manu" data-ref="8.47" title="Manusmṛti 8.47">Manu 8. 47</a>, 155, 149) and dāyabhāga (on <a class="ref" href="../refs/manu.html#8" data-source="manu" data-ref="8" title="Manusmṛti 8">Manu 8</a>, 28, 29, and 207, 209 and 143). On <a class="ref" href="../refs/manu.html#8" data-source="manu" data-ref="8" title="Manusmṛti 8">Manu 8</a>, 349 he quotes <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> on partnership (verse 10), on 8. 216 he quotes <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> (vetanasya-anapā- karma, verse 5). In some cases <a class="ref" href="../refs/medhatithi.html#ci" data-source="medhatithi" data-ref="ci" title="Medhātithi ci">Medhātithi ci</a>tes <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>’s verses without naming him e. g. on <a class="ref" href="../refs/manu.html#9.76" data-source="manu" data-ref="9.76" title="Manusmṛti 9.76">Manu 9. 76</a> he quotes the well-known verse ‘naṣṭe mṛte pravrajite &c.’ (<a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> on marital relation, verse 97) as ‘smṛtyantara’. It was shown above (p. 172) that the vyavahāra section of the <a class="ref" href="../refs/agni_purana.html#c" data-source="agni_purana" data-ref="c" title="Agnipurāṇa c">Agnipurāṇa c</a>ontains thirty verses of the extant <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nāradasmṛti</a>, viz. Agni 253. 1b-9a = <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> (vyavahāra-mātṛkā chap. I. 8-15); Agni 253. 9b-12 = <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> (vyavahāra-mātṛkā chap. I. 26-29a); Agni 253. 13-30 are the verses defining the eighteen titles from ṛṇādāna to prakīrṇaka contained in <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> and occur in the same order in both. The readings preserved in the <a class="ref" href="../refs/agni_purana.html" data-source="agni_purana" data-ref="" title="Agnipurāṇa">Agni- purāṇa</a> deserve some discussioṇ Agni (253. 3-4) reads ‘dharmaśca vyavahāraśca...uttaraḥ pūrvasādhakaḥ’ while <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> has ‘pūrvabādhakaḥ.’ Agni reads ‘caritraṁ saṁ- grave puṁsāṁ rājñājñāyāṁ tu sādhanam’ (253.5), while <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> has ‘caritraṁ pustakaraṇe rājājñāyāṁ tu śāsanaṃ’ Agni (253.15) reads ‘dattvādravyam ca samyag-yaḥ,’ while <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> (dattāpradānika I) reads ‘dattvā dravyamasamyag- yaḥ.’ The Agni (253. 11) reads ‘śaṅkā sadbhīṣṭu saṁsargāt tattvaṁ śodhabhidarśanāt’ and avoids the rare word ‘hoḍ- hābhi-’ in <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> ‘śaṅkāsatāṁ tu saṁsargāt tattvaṁ hoḍhā- bhidarśanāt’ (Vyavahāramātṛkā I. 27). For <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>’s ‘ak- ṣarādhnasalākādyair &c.’ (dyūtasamāhvaya I) Agni reads ‘Akṣavajra &c.’ (253. 29). The <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> (on <a class="ref" href="../refs/yajnavalkya.html#II.199" data-source="yajnavalkya" data-ref="II.199" title="Yājñavalkya II.199">Yāj. II. 199</a>) and Vir. (p. 718) follow printed <a class="ref" href="../refs/narada.html#i" data-source="narada" data-ref="i" title="Nārada i">Nārada i</a>n the last case and also in the other caseṣ The <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> quotes more than 240 verses of <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>, sometimes in large groupṣ For example, it quotes over eleven verses in its Introduction to <a class="ref" href="../refs/yajnavalkya.html#II.182" data-source="yajnavalkya" data-ref="II.182" title="Yājñavalkya II.182">Yāj. II. 182</a>, nine verses more on <a class="ref" href="../refs/yajnavalkya.html#II.182" data-source="yajnavalkya" data-ref="II.182" title="Yājñavalkya II.182">Yāj. II. 182</a> itself and seven verses in introducing the topic of Sāhasa in <a class="ref" href="../refs/yajnavalkya.html#II.230.I" data-source="yajnavalkya" data-ref="II.230.I" title="Yājñavalkya II.230.I">Yāj. II. 230. I</a>n the Smṛtican- drikā, Hemādri, <a class="ref" href="../refs/parasara.html" data-source="parasara" data-ref="" title="Parāśara">Parāśara</a>mādhavīya and other later niban- dhas numerous verses of <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> are quoted on topics of ācāra śrāddha, prāyaścitta. For example, Hemādri (caturvarga°, vol. III. part 2, pp. 159, 183, 185, 223, 235) quotes several verses of <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> on Ekādaśī and a verse of <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> about the astrological yoga called padmaka. The Smṛticandrikā (I. pp. 198–199) quotes 26 verses on the worship of Nārāyaṇa, the last of which is the well-known verse ‘dhyeyaḥ sadā savitṛmaṇḍala-madhyavartī &c.’ and the same work (on śrāddha p. 354) quotes a verse of <a class="ref" href="../refs/narada.html#i" data-source="narada" data-ref="i" title="Nārada i">Nārada i</a>n which Sunday and Saṁkrānti are mentioneḍ The question arises whether these quotations of <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> on ācāra and prāyaścitta and alli- ed topics are the work of the same <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> that wrote on Vyavahāra. From the fact that early writers like <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a>, <a class="ref" href="../refs/medhatithi.html" data-source="medhatithi" data-ref="" title="Medhātithi">Medhātithi</a> and Vijñāneśvara do not contain a single quota- tion of <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> on topics other than that of vyavahāra, it appears probable that the quotations on ācāra and prāyaś- citta belong to a later date than the <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nāradasmṛti</a> on vyava- hāra and either did not exist in the days of <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a> and <a class="ref" href="../refs/medhatithi.html" data-source="medhatithi" data-ref="" title="Medhātithi">Medhātithi</a> or had not attained canonical authority in those dayṣ There is in the India Office Library a mṣ of <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>- smṛti in three chapters and 322 verses dealing exclusively with ācāra and prāyaścitta (vide Jolly's Introduction p. 5 to edition of text ).</p>
+<p class="prose" id="p-36-the-nāradasmriti-8">The <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nāradasmṛti</a>, excluding the introductory passage in prose about the successive abridgments of the original work of <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> by <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>, Mārkaṇḍeya and Sumati Bhārgava, is written in the śloka metre except in the case of two verses (verse 38 of the 2nd chap. of vyavahāra-mātṛkā and the last verse of the chapter on sabhā ). <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> himself is mentioned by name in connection with the ordeals ( ṛṇādāna verse 253 ).<sup class="fn-ref"><a href="#fn-36-the-nāradasmriti-4" id="fnref-36-the-nāradasmriti-4">4</a></sup> The first person also occurs in ‘ataḥ param prava- kṣyāmi’ ( ṛṇādāna 343 ). Ācāryas are cited in ‘dattāpradā- nikā’ (verse 5). Dharmaśāstra and <a class="ref" href="../refs/arthashastra.html" data-source="arthashastra" data-ref="" title="Arthaśāstra">Arthaśāstra</a> are mentioned ( Vyavahāramātṛkā, chap. I, 37 and 39 ) and <a class="ref" href="../refs/narada.html#l" data-source="narada" data-ref="l" title="Nārada l">Nārada l</a>ays down the rule as in Yaj. ( II. 21 ) that in a conflict between the two the former should furnish the rule of conduct.<sup class="fn-ref"><a href="#fn-36-the-nāradasmriti-5" id="fnref-36-the-nāradasmriti-5">5</a></sup> <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> refers to <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a>'s rule about interest ( ṛṇādāna 99 ). Two verses are quoted from a Purāṇa.<sup class="fn-ref"><a href="#fn-36-the-nāradasmriti-6" id="fnref-36-the-nāradasmriti-6">6</a></sup> <a class="ref" href="../refs/manu.html#i" data-source="manu" data-ref="i" title="Manusmṛti i">Manu i</a>s named in several places (ṛṇādāna verses 250, 251, 326 ).<sup class="fn-ref"><a href="#fn-36-the-nāradasmriti-7" id="fnref-36-the-nāradasmriti-7">7</a></sup> The first passage about <a class="ref" href="../refs/manu.html#i" data-source="manu" data-ref="i" title="Manusmṛti i">Manu i</a>s quoted by <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a> on <a class="ref" href="../refs/yajnavalkya.html#II.98" data-source="yajnavalkya" data-ref="II.98" title="Yājñavalkya II.98">Yāj. ( II. 98 )</a> and corresponds closely with the teaching of <a class="ref" href="../refs/manu.html#8.113" data-source="manu" data-ref="8.113" title="Manusmṛti 8.113">Manu ( 8. 113 )</a>. But the other passages crediting <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> with dividing ordeals into five kinds and giving his view about poison ordeal have no corresponding passage in the extant <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>. Therefore, <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> had a version of <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> before him that was somewhat different in certain respects from our <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> or <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> may be referring to Vṛddha or Bṛhat <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>. Besides this, there is one remarkable fact to be noted about the relation of <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> and <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>. There are about 50 verses that are common to <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> and <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>. <a class="ref" href="../refs/manu.html#8.12-14" data-source="manu" data-ref="8.12-14" title="Manusmṛti 8.12-14">Manu 8. 12–14</a> and 18–19 are <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> ( sabhā, verses 8–10 and 12–13 in a different order ), <a class="ref" href="../refs/manu.html#8.140-141" data-source="manu" data-ref="8.140-141" title="Manusmṛti 8.140-141">Manu 8. 140–141</a> =N. ( ṛṇādāna 99–100), <a class="ref" href="../refs/manu.html#8.148-149" data-source="manu" data-ref="8.148-149" title="Manusmṛti 8.148-149">Manu 8. 148–149</a>=N. ( ṛṇādāna 80–81), M. 8. 143=N. ( ṛṇ. 129, M. 8. 64=N. ( r. 177), M. 8. 72=N. ( r. 189 ), M. 8. 93 and 113=N. (r. 199, 201 ), M.98–99 = N(r. 208, 209 and <a class="ref" href="../refs/mb_udyogaparva.html#35.33-34" data-source="mb_udyogaparva" data-ref="35.33-34" title="Udyogaparva 35.33-34">Udyogaparva 35. 33–34</a><a href="https://sanatana.in/mbta/listing/parva/udyogaparva#P05_U03_A035_S033" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> ), M. 8. 89=N. ( r. 225 ), M. 8. 186–187, 189 191=N. ( upanidhi 10–13 ), M. 8. 232–233, 235=N. ( vetanasya-anapākarmā 14–16 in a diffe rent order ), M. 9. 47=N. ( marital relation, verse 28 ), M. 8. 224–225=N. ( marital-relation, 33–34 ), M. 9. 357–358=N. ( marital relation, 65–66 in reverse order ), M. 9.3=N. ( dāya bhāga 31 ), M. 9. 216=N. ( dāyabhāga 44), M. 8. 267–269=N. ( vākpāruṣya 15–17 ), M. 9. 270–272=N. ( vākpāruṣya 22–24 ), M. 8. 281–284=N. ( daṇḍa-pāruṣya (26–29 ), M. 4. 87=N ( prakirṇaka 44 ).</p>
+<p class="prose" id="p-36-the-nāradasmriti-9"><a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>, ṛṇādāna 158, ‘śrotriyās-tapasā vṛddhā ye ca pravrajitā narāḥ | asākṣinas-te vacanān nātra heturudāhṛtāḥ’ has probably <a class="ref" href="../refs/manu.html#8.65" data-source="manu" data-ref="8.65" title="Manusmṛti 8.65">Manu 8.65</a> in view where we read ‘na sākṣi...na śrotriyo na liṅgastho na saṅgebhyo vinirgataḥ’.</p>
+<p class="prose" id="p-36-the-nāradasmriti-10">Besides these, there are several cases where <a class="ref" href="../refs/narada.html#cl" data-source="narada" data-ref="cl" title="Nārada cl">Nārada cl</a>osely agrees with <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> though the verses are not identical, e. g. <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> ( sāhasa 19 ) may be compared with <a class="ref" href="../refs/manu.html#9.271" data-source="manu" data-ref="9.271" title="Manusmṛti 9.271">Manu 9. 271</a> and <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> ( appendix on theft, verses 1–4 ) may be compared with <a class="ref" href="../refs/manu.html#9.256-260" data-source="manu" data-ref="9.256-260" title="Manusmṛti 9.256-260">Manu ( 9. 256–260 )</a>. These facts establish that <a class="ref" href="../refs/narada.html#i" data-source="narada" data-ref="i" title="Nārada i">Nārada i</a>s based on a version of <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> that was essentially the same as the extant text of <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>, though there was some difference here and there. <a class="ref" href="../refs/narada.html#c" data-source="narada" data-ref="c" title="Nārada c">Nārada c</a>ontains several verses that occur in the <a class="ref" href="../refs/mahabharata.html" data-source="mahabharata" data-ref="" title="Mahābhārata">Mahābhārata</a>. For example, Śānti III. 66=N. ( vyavahāra mātṛkā 72 ),<sup class="fn-ref"><a href="#fn-36-the-nāradasmriti-8" id="fnref-36-the-nāradasmriti-8">8</a></sup> Udyoga 35.58=N. ( sabhā, verse 18 ), Udyoga 35.31–32=N. (r. 202-203). The well-known verse of the Mahā- bhārata on the greatness of speaking the truth (Śānti, 162.26) occurs in <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>, verse 211 on p. 104 (SBE Vol. 33 p. 93 ). There are several cases where the text of <a class="ref" href="../refs/kautilya.html" data-source="kautilya" data-ref="" title="Kauṭilya Arthaśāstra">Kauṭilya</a> agrees with <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>.<sup class="fn-ref"><a href="#fn-36-the-nāradasmriti-9" id="fnref-36-the-nāradasmriti-9">9</a></sup> In some of these cases the agree- ment is almost word for worḍ<sup class="fn-ref"><a href="#fn-36-the-nāradasmriti-10" id="fnref-36-the-nāradasmriti-10">10</a></sup> A half verse on poison-ordeal (viz. 'Tvam viṣa...vyavasthitaḥ') is the same in both Yaj. II. 110 and <a class="ref" href="../refs/narada.html#IV.325" data-source="narada" data-ref="IV.325" title="Nārada IV.325">Nārada IV. 325</a> p. 124 (SBE. vol. 33 pp. 115–116 ).</p>
+<p class="prose" id="p-36-the-nāradasmriti-11">Though <a class="ref" href="../refs/narada.html#i" data-source="narada" data-ref="i" title="Nārada i">Nārada i</a>s based on <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>, he differs in several essential matters from <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>. We have seen the difference between them in the nomenclature of the titles of law. <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> only casually mentions the ordeals of fire and water (8.114 ), while <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> enumerates five kinds of ordeals, describes them at length and adds two more viz. taṇḍula-bhakṣaṇa and taptamāṣa (rṇādāna, verses 259–348 ). He allows Niyoga (marital relation, verses 80–88 ), while <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> strongly con- demns it. He allows remarriage of women (<a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>, marital relation, 97), while <a class="ref" href="../refs/manu.html#i" data-source="manu" data-ref="i" title="Manusmṛti i">Manu i</a>s against it. <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> men- tions seven kinds of slaves (8. 415), while <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> raises their number to fifteen (abhyupetyāśuśrūṣā, verses 26–28) ; <a class="ref" href="../refs/manu.html#c" data-source="manu" data-ref="c" title="Manusmṛti c">Manu c</a>ondemns gambling outright (9, 221–228 ), while <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> allows it under state control and as a source of re- venue; <a class="ref" href="../refs/narada.html#i" data-source="narada" data-ref="i" title="Nārada i">Nārada i</a>s further far more systematic than <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> and is full of divisions and sub-divisions; for example, he divides property into three kinds, each of which is again subdivided into seven varieties (rṇādāna 44–47); <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> divides the law of gifts into four sections, which are further subdivided into 32; he subdivides the eighteen titles into 132 (vyavahāra- mātṛkā I. 25 ).</p>
+<p class="prose" id="p-36-the-nāradasmriti-12">There are a few points which are almost peculiar to <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> such as the fourteen kinds of impotent persons (stri- puṁsayoga 11–13 ), the three kinds of punarbhūs and four kinds of svairiṇīs (ibiḍ verses 45–52 ). <a class="ref" href="../refs/narada.html#i" data-source="narada" data-ref="i" title="Nārada i">Nārada i</a>s probably later than <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yājñavalkya.</a> <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yāj.</a> mentions only five kinds of ordeals, while <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> knows seven and the former's treatment of them is not so exhaustive as <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>'ṣ The rules of judicial procedure in <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> are more systematic and exhaustive than those of <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yāj.</a> <a class="ref" href="../refs/narada.html#i" data-source="narada" data-ref="i" title="Nārada i">Nārada i</a>s more conservative than <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yāj.</a> For example, <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> nowhere recognises the right of the widow to succeed to her deceased husbanḍ <a class="ref" href="../refs/narada.html#ci" data-source="narada" data-ref="ci" title="Nārada ci">Nārada ci</a>tes more definitions than <a class="ref" href="../refs/yajnavalkya.html#I" data-source="yajnavalkya" data-ref="I" title="Yājñavalkya I">Yāj. I</a>n some respects, however, <a class="ref" href="../refs/narada.html#i" data-source="narada" data-ref="i" title="Nārada i">Nārada i</a>s more reticent than <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yāj.</a> ; <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> gives no rules about the succession of <em>gotrajas</em> and <em>bandhus</em> as <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yāj.</a> doeṣ In a few res-pects <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> agrees with the views of <a class="ref" href="../refs/manu.html#i" data-source="manu" data-ref="i" title="Manusmṛti i">Manu i</a>nstead of with <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yāj.</a>, such as allowing a <em>brāhmaṇa</em> to marry a <em>śūdra</em> womaṇ <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> regards sexual intercourse with a <em>pravrajitā</em> (female ascetic) as a mortal sin (<em>stripumsayoga</em> 74-75), while both <a class="ref" href="../refs/manu.html#8.363" data-source="manu" data-ref="8.363" title="Manusmṛti 8.363">Manu (8. 363)</a> and <a class="ref" href="../refs/yajnavalkya.html#II.293" data-source="yajnavalkya" data-ref="II.293" title="Yājñavalkya II.293">Yāj. (II. 293)</a> treat it lightly. Taking all these things into consideration it may be said that <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> flourished nearly at the same time as or somewhat later than <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yāj.</a></p>
+<p class="prose" id="p-36-the-nāradasmriti-13">It may be noted that in an Inscription from Campā dated about śaka 1092 (i. e. 1170 A. D.) a king is described as ' versed in all the Dharmaśāstras, notably the Nāradīya and Bhārgavīya'; vide Dr. R. C. Majumdar's ' Ancient Indian Colonies', vol. I at end p. 199 No. 81.</p>
+<p class="prose" id="p-36-the-nāradasmriti-14"><a class="ref" href="../refs/narada.html#c" data-source="narada" data-ref="c" title="Nārada c">Nārada c</a>ontains several rare words such as “hodha” (in <em>vyavahāramātṛkā</em> I.27, meaning ‘one’s property when lost or stolen’). He gives expression to certain principles of law and politics, such as that a man is master of his own house, in other words, a man's house is his castle; <sup class="fn-ref"><a href="#fn-36-the-nāradasmriti-11" id="fnref-36-the-nāradasmriti-11">11</a></sup> he highly eulogises the office of the king, almost assigning it a divine origin and exhorts the people to obey and honour even a weak and undeserving king.<sup class="fn-ref"><a href="#fn-36-the-nāradasmriti-12" id="fnref-36-the-nāradasmriti-12">12</a></sup> Mr. Jayasval sees in this and in the fact that <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> speaks of <em>dināra</em> while the <em>Mṛcchakaṭika</em> speaks of <em>nāṇaka</em> indications that <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> belongs to the fourth cen-tury, is later than the drama, is propping up the authority of a new dynasty and flourished under the Imperial Guptas (C. W. N. vol. 17, p. CCLXXXV). He regards a person as minor till the sixteenth year.<sup class="fn-ref"><a href="#fn-36-the-nāradasmriti-13" id="fnref-36-the-nāradasmriti-13">13</a></sup> This limit was probably first fixed by <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>. <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> further boldly says that in case of conflict between <em>dharmaśāstra</em> and usages, the latter have to be followed, as they are directly observeḍ<sup class="fn-ref"><a href="#fn-36-the-nāradasmriti-14" id="fnref-36-the-nāradasmriti-14">14</a></sup></p>
+<p class="prose" id="p-36-the-nāradasmriti-15">As <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>’s is regarded as an authoritative <em>smṛti</em> by Viś- varūpa, <a class="ref" href="../refs/medhatithi.html" data-source="medhatithi" data-ref="" title="Medhātithi">Medhātithi</a> and other later writers and as Asahāya, who is mentioned by name in the commentary of <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a>, wrote a comment on <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>, the <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nāradasmṛti</a> must be older by some centuries than the 8th century, the latest date to which Asahāya can be assigneḍ Bāṇa in his <em>Kādambarī</em> com- pares the royal palace to Nāradīya.<sup class="fn-ref"><a href="#fn-36-the-nāradasmriti-15" id="fnref-36-the-nāradasmriti-15">15</a></sup> Ordinarily Nāradīya standing by itself would denote the <em><a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>purāṇa</em> (compare <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>-purāṇa 3.6. 21 where we have the form Nāradīya for the <em>purāṇa</em>). The <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>-purāṇa (Venkateśvara Press edition, Bombay) contains, however, no treatment of <em>rājadharma</em>. Bāṇa may have intended a violent pun, meaning ‘the palace where the duties of kings were being expounded (<em>āvarṇya- māna</em> ), like the Nāradīya in which <em>rājadharma</em> has not been set forth (<em>avarṇyamāna</em> ).’ European scholars like Dr. Jolly and Bühler hold that Bāṇa refers to the extant <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nāradasmṛti</a>. But on this explanation also the difficulty is not entirely got over. The extant <a class="ref" href="../refs/narada.html#c" data-source="narada" data-ref="c" title="Nārada c">Nārada c</a>an hardly be described as a treatise on <em>rājadharma</em>. It deals only in an indirect way with one aspect of the king’s duties and is rather concerned with <em>vya- vahāra</em> and the duties of the subjects towards each other from the strictly legal point of view. If we turn to the <em>Mahābhā- rata</em> and other works, we shall find that <em>rājadharma</em> meant something different from what is treated of in the <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>- smṛti. Therefore Bāṇa’s reference to the Nāradīya is of a doubtful character. The <em>Rājanīti-ratnākara</em> of Cāṇḍeśvara frequently quotes <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> on politics (pp. 3, 13, 79). These quotations are not traced in the printed <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>. Therefore it is highly probable that Bāṇa refers to a distinct work of <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> on politics which has not yet been recovereḍ From the Rājanītiratnākara of Cāṇḍeśvara published for the BORS of Patna (1924) by Mr. K. P. Jayaswal it appears that Cāṇḍeśvara knew a work of <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> on Rājāadharma. On p. 3<sup class="fn-ref"><a href="#fn-36-the-nāradasmriti-16" id="fnref-36-the-nāradasmriti-16">16</a></sup> of that work <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> on Rājanīti is cited for dilating upon three grades of rulers viz. Samrāṭ (an emperor to whom other kings pay tribute) also called 'cakravartin' and 'Śakara' and 'akara' rulerṣ On p. 75 Cāṇḍeśvara quotes the words of Hārita and <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> to the effect that a king should transmit his kingdom to the eldest son after providing for the maintenance of other sons if he has several sonṣ The Vṛddha Hārita-smṛti<sup class="fn-ref"><a href="#fn-36-the-nāradasmriti-17" id="fnref-36-the-nāradasmriti-17">17</a></sup> in the Ānandāśrama collection of Smṛtis (1905 A. D.) says that <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>, <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>, <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yājñavalkya</a> and <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> described at length the rājadharmas which he himself dealt with.</p>
+<p class="prose" id="p-36-the-nāradasmriti-16">The Vyavahāramātṛkā of Jīmūtavāhana and the Parā- śara-Mādhavīya (vol. III, part I, p. 203) quote a verse from <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>, the latter half of which is the same as the latter half of a verse in the Vikramorvaśīya.<sup class="fn-ref"><a href="#fn-36-the-nāradasmriti-18" id="fnref-36-the-nāradasmriti-18">18</a></sup> The doctrine attributed to <a class="ref" href="../refs/narada.html#i" data-source="narada" data-ref="i" title="Nārada i">Nārada i</a>s found in <a class="ref" href="../refs/yajnavalkya.html#II.20" data-source="yajnavalkya" data-ref="II.20" title="Yājñavalkya II.20">Yāj. (II. 20)</a> and the <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharma- sūtra (6. 22) but not in the same wordṣ Unfortunately the date of Kālidāsa is far from being universally accepted, but the fourth or first half of the 5th century is often accepted as the probable date. There is further difficulty in the fact that the text of the Vikramorvaśīya has been largely tampered with. If the verse is a genuine part of the drama, it seems natural to suppose that Kālidāsa turns a well-known legal maxim to a somewhat humorous use. It is hard to suppose that <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> would borrow the words of a dramatist for sett- ing forth a legal maxiṃ This would push back the date of <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> far beyond the 5th century. <a class="ref" href="../refs/narada.html#i" data-source="narada" data-ref="i" title="Nārada i">Nārada i</a>n two places uses the word “dināra,” <sup class="fn-ref"><a href="#fn-36-the-nāradasmriti-19" id="fnref-36-the-nāradasmriti-19">19</a></sup> once in the sense of a golden orna- ment and again as a coin or unit of value also called “suvarna.” In this last case he says that “dināra is equal to 48 kārṣā- paṇas or twelve dhānakaṣ” Jolly ( R. u. S. p. 23 ) thinks that Indian dināras can scarcely be older than the 2nd century A. D., although in the times of the Indo-Scythian kings coins of the weight of dināra occur. Therefore Jolly is of opinion that <a class="ref" href="../refs/narada.html#i" data-source="narada" data-ref="i" title="Nārada i">Nārada i</a>s later than 300 A. D. Winternitz ( History of Indian Literature, vol. II. p. 216 ṇ 4 ) follows him in this assumption that all Sanskrit works in which the word dīnāra occurs must be later than the 2nd or 3rd century A. D. It may be that the golden dināras most numerously found in India belong to the 2nd and 3rd centuries A. D. But as Keith points out ( J. R. A. S. 1915 p. 504 ) Jolly’s assumption is wrong and the introduction of dināras into India need not be later than the beginning of the Christian era. Golden dināras were first coined in Rome in 207 B. C. and the oldest Indian pieces corresponding in weight to the Roman Denarius were struck by Indo-Scythian kings who reigned from the first century B. C. ( W. B. p. 44 ). Therefore there is nothing to prevent us from holding that <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> flourished in the first centuries of the Christian era, i. e. between 100 and 300 A. D. Mr. Jayasval assigns him to the 4th century A. D. and after the Mṛcchakaṭikā. Most scholars would not be prepared to assign to the Mṛcchakaṭikā so early a date as the 3rd century A. D. Besides Mr. Jayasval builds his theory on very slend- er foundationṣ Because the drama employs the word nānaka and <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> speaks of dināra only, no chronological conclusion as to the priority of the one to the other can be drawṇ After both words became current in the language, one author, though later, may employ one word, while another, though earlier, may employ the other.</p>
+<p class="prose" id="p-36-the-nāradasmriti-17">While the first volume was in the Press, an edition of the Nāradīya <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>-saṃhitā with the bhāṣya of Bhavasvāmin was published in 1929 in the Trivandrum Sanskrit Series, edited by K. Sambasiva Sastri (based on four Mss). The work claims to be a version of the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a> by <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>. Prof. T. R. Chintamani contributed a lengthy paper on this version of the <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nāradasmṛti</a> to the Kunhan Raja Presentation volume, published by the Adyar Library, Madras (in 1946) pp. 153–196. He points out that the main differences between the longer and shorter versions of <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> published by Prof. Jolly are these: the shorter text omits the section on thefts, does not cite the verses on ordeals in a separate chapter and omits the chapter on legal procedure. The longer version has 1028 verses including an appendix on thefts (of 61 verses). The shorter version has 870 verses and the text on which Bhavasvāmin comments has 877½ verseṣ The edition with Bhavasvāmibhāṣya has at the end a chapter on five ordeals dealt with in 46½ verses (the five being Dhata, Agni, Udaka, Viṣa and Kośa). There are many variations between the Smṛti as published by Dr. Jolly and that published with Bhavasvāmin’s bhāṣya. On pp. 159–193 Prof. Chintamani sets out the numerous (nearly a thousand) differences (small and also large) in the Smṛti as published by Dr. Jolly and as found in the Nāradīya <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>sarhitā. And on pp. 193–196 Prof. Chintamani prints the text of the 2nd Appendix (on five ordeals with 46 verses) in the Nepalese Ms held to be spurious by Jolly and contained in the version of Bhavasvāmin after the section called Prakirņaka.</p>
+<p class="prose" id="p-36-the-nāradasmriti-18">The editor of Bhavasvāmin’s bhāṣya surmises (on p. 4 of his English Introduction) from the fact that all the Msṣ of the bhāṣya were found only in the Kerala country and the fact that many of the brāhmaṇas that officiate as sacrificial priests in central Kerala bear the name Bhavasvāmin, that the bhāṣyakāra of <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> was a brāhmaṇa from Kerala. North India suffered greatly from the ravages of foreign invasions from the early centuries of the Christian era onwards by Hūņas and others for several centuries, while South India was much better off during those centurieṣ Therefore, the Msṣ of the works of comparatively early writers of the North are often not found in North India but only in South India (Bhāmaha’s work on Poetics being a well-known instance). Prof. Chintamani cites passages where Bhavasvāmin refers to transactions at Mathurā and Kānyakubja.<sup class="fn-ref"><a href="#fn-36-the-nāradasmriti-20" id="fnref-36-the-nāradasmriti-20">20</a></sup> On prakīrṇaka verse 116 Bhavasvāmin refers to the fact that Kārṣāpaṇa is current in Draviḍa country while here (i. e. where he resided) transactions are carried on with dīnāraṣ It appears from verse 5, he refers to the changes in the price of saffroṇ These passages indicate that Bhavasvāmin was familiar with Mathurā and Kanoj and also knew transactions in Kashmir and was acquainted with dīnāras as coins there. The Amara- kośa refers to both dīnāra and niṣka ( Dinārepi ca niṣkostri ). The Rājataraṅgiṇī (VII. 950)<sup class="fn-ref"><a href="#fn-36-the-nāradasmriti-21" id="fnref-36-the-nāradasmriti-21">21</a></sup> refers, to dīnāras of gold, silver and copper. In the ‘Indische studied’, vol. XVIII pp. 289–412 a mṣ of Lokaprakāśa of Kṣemendra (latter half of 11th century A.D.) is discussed in which the word dīnāra is frequently used (e. g. on pp. 339, 391 ) and we have a formula forward- ing a ‘dīnāra-huṇḍikā’ (on p. 342 ). Huṇḍikā stands for ‘Huṇḍi’ used by travellerṣ</p>
+<p class="prose" id="p-36-the-nāradasmriti-19">The time when Bhavasvāmin flourished is not free from doubt. Prof. Chintamani concludes (on p. 157 of Kunhan Raja volume) that Bhavasvāmin flourished in the early centuries of the Christian era. I demur to this conclusion which is based mainly on Dr. Altekar’s view quoted in a note on p. 157 that ‘it is very unlikely that gold dīnāras were in circulation after 600 A. D. in the Mathurā and Kanoj area.’ But it is clear that in the 11th century gold coins called Dīnāras were current in Kashmir and if Bhavasvāmin was a Kashmir- ian or had travelled and stayed there for some time he would easily have known them and referred to theṃ Therefore, Dr. Altekar’s opinion about Bhavasvāmin’s date is worth little.</p>
+<p class="prose" id="p-36-the-nāradasmriti-20">Bhavasvāmin refers several times to other explanations of <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>’s verses with the words ‘anya āha’ as on ‘rṇādāna’ v. 195, ‘Stripuṃsayoga’ v. 30, Dāyavibhāga verses 13, 14, prakīrṇaka v. 80. He refers here and there to different read- ings in <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> as on Rṇādāna verses 67, 153, Vikriyāsampradāna, verse 12, Stripuṃsayoga, verses 2, 3, 15, 16, 29, 83. He quotes about two dozen verses of <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>. His commentary ex- plains the words of <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>’s verses, is generally concise, and makes no show of learning. He cites a few sūtras of Pāṇini a few passages as Śruti (as on rṇādāna 53, 97). It is remarkable that he cites (on rṇādāna 190 ) ‘nāputrasya lokostiti’ as Smṛti, which is really <a class="ref" href="../refs/aitareya_br.html#VII.3" data-source="aitareya_br" data-ref="VII.3" title="Aitareya Brāhmaṇa VII.3">Ait. Br. (VII. 3)</a>. He quotes Vaṣ Dharmasūtra on rṇādāna verse 94 and on Vāg- Daṇḍapārusya verse 20. It is noteworthy that he speaks of the present <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a> as Bhṛgu-Saṃhitā<sup class="fn-ref"><a href="#fn-36-the-nāradasmriti-22" id="fnref-36-the-nāradasmriti-22">22</a></sup> or Bhārgavi- saṃhitā; for example, on Stripumsayoga verse 111 he quotes <a class="ref" href="../refs/manu.html#X.19" data-source="manu" data-ref="X.19" title="Manusmṛti X.19">Manu X. 19</a> as Bhārgavi-saṃhitā and on <a class="ref" href="../refs/manu.html#VIII.274" data-source="manu" data-ref="VIII.274" title="Manusmṛti VIII.274">Manu VIII. 274</a> as Bhrgusamhitā on ‘Vāgdandapārusya’<sup class="fn-ref"><a href="#fn-36-the-nāradasmriti-23" id="fnref-36-the-nāradasmriti-23">23</a></sup> v. 20. He quotes Vālmiki and Vyāsa on Rṇādāna <sup class="fn-ref"><a href="#fn-36-the-nāradasmriti-23" id="fnref-36-the-nāradasmriti-23">23</a></sup> verse 32. He quotes a Śārdūlavikrīdita verse on ‘krodha’ (anger) and a verse on ‘unmāda’ (delirium, or madness) due to five causes on Dattāpradanika 8–10. On Rṇādāna verse 31 he quotes an ārya on the importance of Gāṇita. On ‘Rṇādāna verse 72 Bhavasvāmin quotes a verse of Vararuci explaining the meaning of the words ‘pogaṇḍa, kuṇi’ and ‘paṅgu’.<sup class="fn-ref"><a href="#fn-36-the-nāradasmriti-24" id="fnref-36-the-nāradasmriti-24">24</a></sup></p>
+<p class="prose" id="p-36-the-nāradasmriti-21">As in Bhavasvāmin’s day various readings had already arisen in the <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nāradasmṛti</a> and as he refers several times to the explanations of previous commentators, Bhavasvāmin would have to be placed ( conjecturally ) some centuries after <a class="ref" href="../refs/narada.html#i" data-source="narada" data-ref="i" title="Nārada i">Nārada i</a>. e. between 700 and 1000 A. D.</p>
+<p class="prose" id="p-36-the-nāradasmriti-22">The late Prof. Rangaswami Aiyangar in his Introduction to <a class="ref" href="../refs/brihaspati.html" data-source="brihaspati" data-ref="" title="Bṛhaspati">Bṛhaspati</a> assigns Bhavasvāmin to the 8th century A. D. and in the footnote 4 on that page he asserts ‘Bhavasvāmin, like Mādhavasvāmin and Skandasvāmin, belongs to a period long anterior to <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a> ( circa A. D. 800 ) and refers in support to Journal of Oriental Research V. 325’. The reference to the journal appears to be wrong.</p>
+<p class="prose" id="p-36-the-nāradasmriti-23">It may be noted that <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a> quotes hardly any verses of <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> on two epics not pertaining to Vyavahāra except one verse on <a class="ref" href="../refs/yajnavalkya.html#I.34" data-source="yajnavalkya" data-ref="I.34" title="Yājñavalkya I.34">Yāj. I. 34</a> where he speaks of three kinds of ‘ṛtviks’. But the same cannot be said about the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mitākṣarā</a>. A few verses not strictly related to Vyavahāra topics are mentioned by it as occurring in <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>’s work. For example, on <a class="ref" href="../refs/yajnavalkya.html#III.39" data-source="yajnavalkya" data-ref="III.39" title="Yājñavalkya III.39">Yāj. III. 39</a> the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> quotes a verse of <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> that allows a brāhmaṇa to sell sesame in exchange of food-grains for securing medicine when he is ill or for the purpose of a Yajña. This occurs in the section on Rṇādāna ( 66 ). <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> also quotes this verse (p. 933). Probably it was part of the king’s duty to remind a brāhmaṇa of the restrictions laid down on him by śāstra. <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> ( p. 29 ) cites 2½ verses on the actions that are comprehended under <em>iṣṭa</em> and <em>pūrta</em>. But the Smṛticandrikā quotes from <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> at least 50 verses on āhnika and at least 16 on śrāddha-kāṇḍa, one of which refers to Sunday and Saṅkrānti and on the selection of Ekādaśī for a fast when joined to the 10th or 12th tithi.</p>
+<p class="prose" id="p-36-the-nāradasmriti-24">It is likely that non-Vyavahāra topics came to be added as <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>'s a century or two before 1000 A. D., since the Smṛticandrikā (1150–1225) A. D. contains numerous verses of <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> on non-Vyavahāra matterṣ<sup class="fn-ref"><a href="#fn-36-the-nāradasmriti-25" id="fnref-36-the-nāradasmriti-25">25</a></sup></p>
+<p class="prose" id="p-36-the-nāradasmriti-25">It is difficult to say anything as to the home of <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>. In the appendix on theft <a class="ref" href="../refs/narada.html#i" data-source="narada" data-ref="i" title="Nārada i">Nārada i</a>n one place says that in the south a silver kārṣāpaṇa is current, that in the east it is equal to twenty paṇas and that he does not follow the standard of kārṣāpaṇa current in the land of the five riverṣ<sup class="fn-ref"><a href="#fn-36-the-nāradasmriti-26" id="fnref-36-the-nāradasmriti-26">26</a></sup> From these data and from the fact that the oldest msṣ of <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> and that an old commentary on <a class="ref" href="../refs/narada.html#i" data-source="narada" data-ref="i" title="Nārada i">Nārada i</a>n Newārī was composed in Nepal, Dr. Jolly conjectures that <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>'s home was to be sought in Nepal. This is all pure guess-work. There is no reason why <a class="ref" href="../refs/narada.html#c" data-source="narada" data-ref="c" title="Nārada c">Nārada c</a>ould not have hailed from Central India. The places where the oldest and best msṣ of a work are found can hardly ever be indications common consent a Kashmirian writer on Poetics, but most of the msṣ of his work so far found come from Southern India.</p>
+<p class="prose" id="p-36-the-nāradasmriti-26">Prof D. R. Bhandarkar (Carmichael Lectures 1918, p. 90), probably following the Nāyacandrikā, hazards the conjecture that the writer called Piśuna cited in the Kauṭiliya is another name of <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>. Beyond the bare fact that <a class="ref" href="../refs/narada.html#i" data-source="narada" data-ref="i" title="Nārada i">Nārada i</a>s often credited in the Purāṇas with the role of instigating feuds and quarrels and that the word <em>piśuna</em> means “wicked, back-biter”, there is nothing to support this identificatioṇ</p>
+<p class="prose" id="p-36-the-nāradasmriti-27">A Jyotir-<a class="ref" href="../refs/narada.html#i" data-source="narada" data-ref="i" title="Nārada i">Nārada i</a>s quoted by Bhaṭṭoji in his commentary on the Caturvimśatīmata (p. 11). A Bṛhan-<a class="ref" href="../refs/narada.html#i" data-source="narada" data-ref="i" title="Nārada i">Nārada i</a>s quoted by Raghunandana and a Laghu-<a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> by the Nirņaya- sindhu and the Saṁskāra-Kaustubha.</p>
+<p class="prose" id="p-36-the-nāradasmriti-28">In the <a class="ref" href="../refs/mahabharata.html" data-source="mahabharata" data-ref="" title="Mahābhārata">Mahābhārata</a> several opinions are attributed to <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>. One of them condemns the eating of flesh.<sup class="fn-ref"><a href="#fn-36-the-nāradasmriti-27" id="fnref-36-the-nāradasmriti-27">27</a></sup> The first half of the last verse is the same as <a class="ref" href="../refs/manu.html#5.52" data-source="manu" data-ref="5.52" title="Manusmṛti 5.52">Manu 5.52</a>. <a class="ref" href="../refs/narada.html#i" data-source="narada" data-ref="i" title="Nārada i">Nārada i</a>s credited with having divided utpātas (portents) into three varietieṣ<sup class="fn-ref"><a href="#fn-36-the-nāradasmriti-28" id="fnref-36-the-nāradasmriti-28">28</a></sup> <a class="ref" href="../refs/narada.html#i" data-source="narada" data-ref="i" title="Nārada i">Nārada i</a>s said to have held the view that one must always be active.<sup class="fn-ref"><a href="#fn-36-the-nāradasmriti-29" id="fnref-36-the-nāradasmriti-29">29</a></sup> It appears that all these views are probably taken from some work or works from <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>. The first is probably taken from <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>’s version of the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a> of which the purāṇas speak as stated above (note 270).</p>
+<p class="prose" id="p-36-the-nāradasmriti-29">The Introductory prose passages of the <a class="ref" href="../refs/narada.html#I.1-5" data-source="narada" data-ref="I.1-5" title="Nārada I.1-5">Nāradasmṛti (I. 1–5)</a> are interesting and are therefore set out in the note below.<sup class="fn-ref"><a href="#fn-36-the-nāradasmriti-30" id="fnref-36-the-nāradasmriti-30">30</a></sup></p>
+<p class="prose" id="p-36-the-nāradasmriti-30">For Asahāya, the commentator of <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>, vide section 59 below.</p>
+<aside class="footnotes-section" aria-label="Footnotes">
+<hr>
+<ol class="footnotes-list">
+<li id="fn-36-the-nāradasmriti-1" class="footnote-item"><span class="devanagari">क्षीरस्वामी</span> on Amarakośa ‘<span class="devanagari">शुद्राश्रावरणणार्थं वृषलाश्च जघन्याः</span>’ quotes ‘ <span class="devanagari">नारदस्तु</span>-<span class="devanagari">वृतो हि भगवान्धर्मतस्तस्य यः कुरुते लवम् ।</span> ‘ <span class="devanagari">वृषलं तं विजानीयात्</span>.’ This first half is Manu 8. 16 (<span class="devanagari">वृषो</span>...<span class="devanagari">हालम्</span>) and <span class="devanagari">शान्तिपर्व</span> 90. 15. <a href="#fnref-36-the-nāradasmriti-1" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-36-the-nāradasmriti-2" class="footnote-item"><span class="devanagari">नारदीयोद्देशकमानुसारिणश्च वयमित्यनवद्यमिहाभिधानम् ।</span> <a href="#fnref-36-the-nāradasmriti-2" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-36-the-nāradasmriti-3" class="footnote-item"><span class="devanagari">शुक्रं च शबलं चैव कृष्णं च त्रिविधं धनम् । शुक्रं न्यायार्जितं धर्म्यमितरद व्यावहारिकम् ।। तत्पुनस्त्रिविधं ज्ञेयं शुक्लं शबलमेव च । कृष्णं च तस्य विज्ञेयाः प्रभेदाः सतता पृथक्क् ।।</span> ( <span class="devanagari">नारद</span>, <span class="devanagari">ऋणादान</span> 44 ). <a href="#fnref-36-the-nāradasmriti-3" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-36-the-nāradasmriti-4" class="footnote-item"><span class="devanagari">सन्दग्धिर्यभियुक्तानां विशुद्धद्रव्यं दुरात्मनाम् । प्रोक्तानि नारदेनेह सत्यानृत</span>- <span class="devanagari">विशुद्धये ॥</span> <a href="#fnref-36-the-nāradasmriti-4" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-36-the-nāradasmriti-5" class="footnote-item"><span class="devanagari">यत्र विप्रतिपत्तिः स्याद्धर्मशास्त्रार्थशास्त्रयोः । अर्थशास्त्रोक्तमुत्सृज्य धर्मशास्त्रोक्त</span>- <span class="devanagari">माचरेत् ॥</span> <a href="#fnref-36-the-nāradasmriti-5" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-36-the-nāradasmriti-6" class="footnote-item"><span class="devanagari">पुराणोक्तो द्वौ श्लोकौ भवतः । यः परार्थे प्रहिणुयात्स्वां वाचं पुरुषोत्तमः । आत्माथें किं न कुर्यात्स पापो नरकनिर्मयः ॥ वाच्यर्धा नियताः सर्वे वाङ्मुला वागविनिर्गताः । यो हि तां स्तेनयेद्वाचं स सर्वस्तेयकृन्नरः ॥ नारद</span> ( <span class="devanagari">ऋणादान</span> 227-228 ). <a href="#fnref-36-the-nāradasmriti-6" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-36-the-nāradasmriti-7" class="footnote-item"><span class="devanagari">सत्यं वाहनशस्त्राणि गोबीजकनकादि च ।</span> ...<span class="devanagari">इत्येते शपथाः प्रोक्ता मनुना स्वल्प</span>- <span class="devanagari">कारणे । ऋणादान</span> 248, 250; <span class="devanagari">दैव पञ्चविधं ज्ञेयमित्याह भगवान्मनुः । ऋणादान</span> 251; <span class="devanagari">छायानिवेशितो रक्ष्यो दिनशेपभोजनः । विषवेगकृतातीतः शुद्धोऽसौ मनुब्रवीत् ॥ ऋणादान</span> 326. <a href="#fnref-36-the-nāradasmriti-7" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-36-the-nāradasmriti-8" class="footnote-item"><span class="devanagari">तलवद् दृश्यते व्योम स्र्योतो हव्यवाड़िव । न तले विद्यते व्योम्नि न स्र्योतिते हुताशनः ॥</span> <a href="#fnref-36-the-nāradasmriti-8" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-36-the-nāradasmriti-9" class="footnote-item">Compare <span class="devanagari">कौटिल्य</span>, <span class="devanagari">धर्मस्थीय</span>, chap. I, verses at the end with <span class="devanagari">नारद</span>, <span class="devanagari">व्यवहारमातृका</span> 1st chap., verses 2, 10–11, 39–40. <a href="#fnref-36-the-nāradasmriti-9" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-36-the-nāradasmriti-10" class="footnote-item"><span class="devanagari">धर्मश्च व्यवहारश्च चरित्रं राजशासनम् । चतुष्पाद् व्यवहारोयमुत्तरः पूर्वबाधकः॥ तत्र सत्ये स्थितो धर्मो व्यवहारस्तु साक्षिषु । चरित्रं पुस्तककरणे राजाज्ञायां तु शासनम् ॥ नारद</span>, <span class="devanagari">व्यवहारमातृका</span> I. 10–11; the first half in each verse is the same in <span class="devanagari">कौटिल्य</span>. H, D.–60 <a href="#fnref-36-the-nāradasmriti-10" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-36-the-nāradasmriti-11" class="footnote-item"><span class="devanagari">त्रयः स्वतन्त्रा लोकेस्मिन्‌राजचार्यस्तथैव च । प्रतिवर्ण च सर्वेषां वर्णानां स्वे गृहे गृही ॥ ऋणादान</span> 32. This idea occurs in <span class="devanagari">शान्तिपर्व</span> 321. 147 ‘<span class="devanagari">सर्वे</span>: <span class="devanagari">स्वे स्वे गृही राजा</span>'. <a href="#fnref-36-the-nāradasmriti-11" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-36-the-nāradasmriti-12" class="footnote-item">Vide <span class="devanagari">प्रकीर्णक</span> verses 20-22 <span class="devanagari">राजेति संचरत्स्येव भूमौ साक्षात्‌सहस्रदृक्‌ । न तस्याज्ञामाक्रम्य संतिष्ठेन्न प्रजाः क्वचित्‌ ॥</span>...<span class="devanagari">निर्बलोपि यथा क्षीणो पूज्य एव पति</span>: <span class="devanagari">सदा । प्रजानां विगुणोष्येवं पूज्य एव प्रजापति</span>: <span class="devanagari">॥</span> . <a href="#fnref-36-the-nāradasmriti-12" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-36-the-nāradasmriti-13" class="footnote-item"><span class="devanagari">बाल आ षोडशाद् वर्षात् पोण्ड इति शस्यते । परतो व्यवहारज्ञः स्वतन्त्रः पितरौ विना ।। ऋणादान</span> 35-36. <a href="#fnref-36-the-nāradasmriti-13" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-36-the-nāradasmriti-14" class="footnote-item"><span class="devanagari">धर्मशास्त्रविरोधे तु युक्तियुक्तो विधिः स्मृतः । व्यवहारो हि बलवान्धर्म्मस्तेनाव</span>- <span class="devanagari">हीयते ।। व्यवहारमातृका</span> 40. <a href="#fnref-36-the-nāradasmriti-14" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-36-the-nāradasmriti-15" class="footnote-item">‘<span class="devanagari">नारदीयमिवावर्ष्यमानराजधर्म्म</span>’ (<span class="devanagari">राजकुलं</span> ) p. 91 of Peterson's eḍ <a href="#fnref-36-the-nāradasmriti-15" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-36-the-nāradasmriti-16" class="footnote-item"><span class="devanagari">राजा त्रिविधः सम्राट् सकरोडकरच्य । तदाह नीतौ नारदः ।</span> p. 3 of <span class="devanagari">राजनिति</span>- <span class="devanagari">रत्नाकर</span>; p. 75 <span class="devanagari">यदा राजा जरायुत्को</span>.... <span class="devanagari">सप्ताङ्गानि च राज्यानि ज्येष्टपुत्राय दापयेत् ।। दापयेत् दयात् । विधाय वृत्तिं व्युहूनो राज्यं ज्येष्ठाय दापयेत्</span>-<span class="devanagari">इति राजनितौ हारीतनारदवचनेभ्यः ।</span> p. 79: <span class="devanagari">राजनीति नारदः । ज्येष्ठो नरक</span>- <span class="devanagari">निस्तारो लोकपूज्यतमः स्मृतः । ज्येष्ठो रत्नाकरः प्रोक्तो राज्याहों ज्येष्ठ एव हि ।।</span> <a href="#fnref-36-the-nāradasmriti-16" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-36-the-nāradasmriti-17" class="footnote-item"><span class="devanagari">राजधर्मोऽयमित्येवं प्रसङ्गात्कथितो मया । कात्यायनेन मनुना याज्ञवल्क्येन धीमता । नारदेन च संप्रोक्तं विस्तरादिदमेव हि ।। वृद्धहारीत</span> VII. 270-71<span class="devanagari">०</span> <a href="#fnref-36-the-nāradasmriti-17" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-36-the-nāradasmriti-18" class="footnote-item"><span class="devanagari">अनेकार्थाभियुकेन सर्वद्रव्यापलापिना । विभावितैकदेशेन देयं यदभियुज्यते ।। अपरार्क</span> ( on <span class="devanagari">याज्ञ</span>. II. 20 ); <span class="devanagari">व्यवहारमातृका</span> of <span class="devanagari">जी०</span> pp. 310-11; <span class="devanagari">हंस प्रमण्ड से कान्तर्गतिस्थस्या हता । विभावितै</span>...<span class="devanagari">युज्यते ।। विक्रमौर्वशीय</span> IV. 17 (Pandit's ed ). <a href="#fnref-36-the-nāradasmriti-18" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-36-the-nāradasmriti-19" class="footnote-item"><span class="devanagari">मण्यः पद्मरागाद्या दीनादि हिरण्मयम् । मुक्ताविद्रुमशङ्खाद्याः प्रदुष्ठाः स्वामि</span>-     <span class="devanagari">गामिनः ॥ नारद</span>, <span class="devanagari">व्यवहारमातृका</span> II. 34; <span class="devanagari">कार्षापणौण्डिका नेया ताम्रतन्त्वस्तु     धानकः । तद्द्वादश सुवर्णस्तु दीनाराख्यः स एव च ॥ परिशिष्ट</span> verse 60. <a href="#fnref-36-the-nāradasmriti-19" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-36-the-nāradasmriti-20" class="footnote-item">On <span class="devanagari">औपनिधिक</span> verse 7 p. 84 <span class="devanagari">भवस्वामिन्</span> gives the following illustra- tion ‘ <span class="devanagari">तथया। मथुरायाः कश्चित स्वार्थं कन्याकुब्जं प्रस्थितः । तस्य हस्ते कन्याकुब्जस्थम् द्रव्यमिदमस्मदृहे देहीति समर्पितम् । तत्रापि साक्षिदादि</span>- <span class="devanagari">रेण एव विधिः ।</span>” On <span class="devanagari">दत्ताप्रदानिक</span> verse 4 (<span class="devanagari">अन्वाहितं याचितकमाधि</span>- <span class="devanagari">साधारणं च यत्</span> ) <span class="devanagari">भवस्वामिन्</span> says <span class="devanagari">अन्वाहितं मथुरायां प्रस्थितस्त्रस्थस्थ पूर्वगृहीतंतं तस्मै दत्वा पश्चादिदं मम पुत्राय कन्याकुब्जगतो देहीति यत्समर्पितम् । कार्षापणो दक्षिणस्यां दिशि रूढः प्रवर्तते । भवस्वामिन्</span> comments <span class="devanagari">कार्षा</span>- <span class="devanagari">पणो दक्षिणस्या दिशि द्रविडविषयादौ रूढ एव लोहे</span>: <span class="devanagari">कृतः</span> ... <span class="devanagari">यथेह दीनारकेण व्यवहारः प्रवर्तते । दीनारस्य पक्षपलं कृत्वा कुदुम्बं ददामीति दृव्यं गृहीत्वा कुट्टमे गृहीते पक्षपले वर्तमानें तस्मिन् काले अददत् दीनारस्य पक्षपले द्वेये जाते पक्षपलेनैवाधर्येण सद्रदिकं दद्यात् ।</span>.. <span class="devanagari">काश्मीर्रेषु दशपलः कुङ्कुमाधो वर्तते । तेनाध्र्येण तदेव ददामीति तत्र गतस्य पक्षपलौर्ये जात</span>: <span class="devanagari">। तत्र दशपलाधोर्ये पण्यं द्रा</span>...<span class="devanagari">।</span> pp. 108–109 on <span class="devanagari">विकीयांसप्रदान</span> V. 5. <a href="#fnref-36-the-nāradasmriti-20" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-36-the-nāradasmriti-21" class="footnote-item"><span class="devanagari">रौक्मेख राजतैश्चासीद् व्यवहारस्तदा धनः । मण्डले विरलामुष्मिन् दीनारै</span>- <span class="devanagari">स्ताप्रजे</span>: <span class="devanagari">पुनः ॥ राजतरङ्गिणी</span> VII. 950. This is said with reference to Harṣa, king of Kashmir ( who ruled between 1089–1101 A. D. ). Gold and silver Dināras of Harṣa have, actually been found ; vide Cunningham’s ‘Coins of medieval India p. 36 and plates 21–23. Vide also the English translation of Rājat. VII 926 (note) for gold coins of Harṣa bearing his name. Vide note H in tr. of Rājata. on IV. 495 on ‘the term Dināra and monetary system of Kashmir’ vol. II. pp. 308–328 (Stein ). In ‘Gupta Inscriptions’ (by Fleet) p. 29 of Gupta year 93 i.e. 412 A. D. there is a permanent donation of 25 dināras, from the interest of which one bhiksu was to be fed every year and on p. 261 there is another Inscription of Gupta year 131 (i.e. 450–91 A. D.) which mentions Dināraṣ So Dināras were current in India long before the 4th century A. D. and coins called Dināras continued to be used till at least the beginning of the 12th century A. D. as the Rājataraṅgiṇī on Harṣa shows, <a href="#fnref-36-the-nāradasmriti-21" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-36-the-nāradasmriti-22" class="footnote-item"><span class="devanagari">उम्रातु जात</span>: <span class="devanagari">क्षतायां</span>...<span class="devanagari">वेन उच्यते ॥ इति भार्गव्यां संहितायां विस्तर उक्त</span>- <span class="devanagari">स्तत एव द्रष्टव्य</span>: <span class="devanagari">।</span> on <span class="devanagari">स्त्रीपुंसयो</span>: III. 7. This is Manu X. 19; <span class="devanagari">भृगुसंहिता</span>- <span class="devanagari">यामपि</span>-<span class="devanagari">काणं वाच्यथवा खञ्जमन्यं यापीयनन्तरं वाक्पारुष्यप्रकरणे पठितं केषांविदास्त्थेव ।</span>; <span class="devanagari">काणं०</span> is <span class="devanagari">मनु</span> VIII. 274. If may be noted that the extant Manusmṛti declares that Bhrgu learnt the śāstra from Manu and taught it to the sageṣ <a href="#fnref-36-the-nāradasmriti-22" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-36-the-nāradasmriti-23" class="footnote-item"><span class="devanagari">कल्पच्छन्दोविचितिगृहचारुपुराणवास्तुविद्यासु । सम्यङ् नयति सिद्धिं गणिता</span>- <span class="devanagari">मुत्ते लोकयात्रायाः ।।</span> on <span class="devanagari">ऋणादान</span> v. 32. <a href="#fnref-36-the-nāradasmriti-23" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-36-the-nāradasmriti-24" class="footnote-item"><span class="devanagari">वररुचिनाप्युक्तम् । शरीरपाणिचरणैरनिर्माणं शरीरिणः । विकलाः सदिरुच्यन्ते पोगण्ड</span>-<span class="devanagari">कुणि</span>-<span class="devanagari">पङ्गुवः ।। इति ।</span> on <span class="devanagari">ऋणादान</span> 72. <span class="devanagari">वररुचि</span> here seems to be a lexicographer. H. D. – 61 <a href="#fnref-36-the-nāradasmriti-24" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-36-the-nāradasmriti-25" class="footnote-item"><span class="devanagari">भानुवारसमेतेन तथा संक्रान्तिसंयुता । एकादशी सदोपोष्या पुत्रपौत्रप्रवर्धनी ॥ स्मृतिचन्द्रिका</span> ( <span class="devanagari">श्राद्धकाण्ड</span> p. 354 ). <a href="#fnref-36-the-nāradasmriti-25" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-36-the-nāradasmriti-26" class="footnote-item"><span class="devanagari">कार्षापणो दक्षिणस्यां दिशि रौप्यः प्रवर्तते । पगोर्निबद्धः पूर्वस्यां विंशतिस्तु पणाः स तु ॥</span> ... <span class="devanagari">पाञ्चनद्याः प्रदेशे तु संज्ञा या व्यावहारिकौ । कार्षापणप्रमाणं तु निबद्धामेह नेतया ॥ चौर्यप्रतिषेधप्रकरण</span> 57 and 59. <a href="#fnref-36-the-nāradasmriti-26" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-36-the-nāradasmriti-27" class="footnote-item"><span class="devanagari">स्वमांसं परमांसेन यो वर्धयितुमिच्छति । नारदः प्राह धर्मोत्मा नियतं सोवसी</span>- <span class="devanagari">दति ॥ अनुशासन</span> 115. 14. <a href="#fnref-36-the-nāradasmriti-27" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-36-the-nāradasmriti-28" class="footnote-item"><span class="devanagari">उत्पातास्त्रिविधान् प्राह नारदो भगवन्ऋषिः । दिव्यांत्रेवान्तरिक्षांश्च पार्थािवषांश्च पितामहः ॥ सगो</span> 46. 8-9. <a href="#fnref-36-the-nāradasmriti-28" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-36-the-nāradasmriti-29" class="footnote-item"><span class="devanagari">तस्मात्कर्तव्य मेवमिति होवाच नारदः । उद्योगपर्व</span> 49. <a href="#fnref-36-the-nāradasmriti-29" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-36-the-nāradasmriti-30" class="footnote-item"><span class="devanagari">इह हि भगवान्मभुः प्रथमं सर्वभूतानुमग्राहार्थमाचारस्थित हेतुभूतं शास्त्रं चकार । यत्र लोकसृष्टिः भूत्प्रतिविभागः</span> ‘ <span class="devanagari">संदेशप्रमाणं पर्वलक्षणं</span> ' <span class="devanagari">वेदेदशृङ्गयविधिमा</span>- <span class="devanagari">नमाचारो व्यवहारः कष्टकशोधनं राजवृत्तं वर्णाश्रमविभागौ विवाहजन्यः स्त्री</span>- <span class="devanagari">पुंसविकल्पो दायानुक्रमः श्राद्धविधानं शौचाचारविकल्पो भक्ष्याभक्ष्यलक्षणं विकेयाविक्रयमीमांसा पातकभेदाः । स्वर्गनरकानुदर्शनं प्रायश्चित्त्य नुपनिषदो रहस्यस्थानानि । एवं चतुर्विंशतिप्रप्रकरणानि ॥ १ ॥ तदेतदत्र श्लोकशतसहस्रेण साशीतिनाध्यायसहस्रेण च भगवान् मनुरुपनिबध्य देवर्षये नारदाय प्रायच्छत् । स च तस्मादधीत्य महत्वाग्रायं ग्रन्थः सुकरो मनु</span>- <span class="devanagari">ष्यैरेव धारयितुमिति द्वाराभिः सहस्रैः संक्षिप्यंत च महर्षये मार्केण्डेयाय प्रायच्छत् ॥ २ ॥ स च तस्मादधीत्य तथैवायुः शक्तिमपेक्ष्य मनुष्याणामृषिभिः सहस्रैः संक्षिप्य । तं सुमतये मार्गवाय प्रायच्छत् ॥ ३ ॥ सुमतिरपि भार्गवस्तस्मादधीत्य तथैवायुर्गुणाद्वाप्यासी शक्तिर्मनुष्याणामिति चतुभिः सहस्रैः । संक्षिप्य ॥ ४ ॥ तदेतत्पितृमनुष्पा धारयन्ते विस्तरेण शतसहस्रं देवगन्धर्वाद्यः । तन्नायभावः श्लोकः । आसीदिदं तमोभूत्तं न प्राज्ञायत किंचन । ततः स्वयम्भूभगवा नादुरासी</span>- <span class="devanagari">च्चतुर्मुखः ॥</span> <a href="#fnref-36-the-nāradasmriti-30" class="fn-back" aria-label="Back to text">↩</a></li>
+</ol>
+</aside>
+
+            <div class="chapter-nav">
+                <a href="35-the-parāshara-smriti.html" class="nav-prev"><i class="fa-solid fa-chevron-left"></i> 35. The Parāshara Smriti</a>
+                <a href="37-brihaspati.html" class="nav-next">37. Brihaspati <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </main>
+    </div>
+
+    <button class="toc-mobile-toggle" onclick="toggleMobileToc()" aria-label="Table of contents">
+        <i class="fa-solid fa-list"></i>
+    </button>
+
+    
+    <footer class="container-fluid pt-4" style="background-color:#2e4144">
+        <div class="row border-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img src="https://sanatana.in/mbta/public/images/Homepage_html/images/layer_8.png" alt="">
+            </div>
+            <div class="col-md-5 text-white">
+                <p>The divine knowledge and wisdom of our shastras is the only thing eternal,
+                   which was and which will remain ever-present in this gods creation.
+                   Our endeavours are to preserve this knowledge.</p>
+            </div>
+            <div class="col-md-1 text-white">
+                <div class="d-flex" style="height: 75px;">
+                    <div class="vr"></div>
+                </div>
+            </div>
+            <div class="col-md-3 text-white">
+                <i class="fa-solid fa-globe"></i>&emsp;
+                <a href="https://sanatanasampatti.in" class="text-light">www.sanatanasampatti.in</a><br>
+                <i class="fa-solid fa-envelope"></i>&emsp;
+                <a href="" class="text-light">sriranga.yoga@gmail.com</a>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center py-3 mb-4 align-items-center border-bottom">
+            <div class="col-md-2 text-white fs-4 text-center">Project</div>
+            <div class="col-md-2 text-white fs-4 text-center">Our Mission</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contribute</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contact Us</div>
+        </div>
+        <div class="row">
+            <p class="col-md-6 fs-6 text-start text-light">
+                <small>&copy; 2026 Sanatanasampatti</small>
+            </p>
+            <p class="col-md-6 fs-6 text-end text-light">
+                <a class="text-white" rel="nofollow" href="http://www.srirangadigital.com" target="_blank">
+                    <img src="https://sanatana.in/mbta/public/images/logo.png" alt="sriranga logo" />
+                    <small>Designed, Developed and Maintained by Sriranga Digital</small>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        const headings = [];
+        tocLinks.forEach(link => {
+            const id = link.getAttribute('href').substring(1);
+            const el = document.getElementById(id);
+            if (el) headings.push({ el: el, link: link.parentElement });
+        });
+
+        function onScroll() {
+            let current = null;
+            for (const h of headings) {
+                const rect = h.el.getBoundingClientRect();
+                if (rect.top <= 120) current = h;
+            }
+            tocLinks.forEach(l => l.parentElement.classList.remove('active'));
+            if (current) current.link.classList.add('active');
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    });
+
+    function toggleMobileToc() {
+        const toc = document.getElementById('toc');
+        if (!toc) return;
+        if (toc.style.display === 'block') {
+            toc.style.display = '';
+            toc.style.position = '';
+        } else {
+            toc.style.display = 'block';
+            toc.style.position = 'fixed';
+            toc.style.top = '0';
+            toc.style.left = '0';
+            toc.style.width = '80vw';
+            toc.style.maxWidth = '320px';
+            toc.style.height = '100vh';
+            toc.style.maxHeight = '100vh';
+            toc.style.zIndex = '2000';
+            toc.style.background = 'var(--parchment)';
+            toc.style.boxShadow = '4px 0 20px rgba(0,0,0,0.2)';
+            toc.style.padding = '24px';
+            toc.style.overflowY = 'auto';
+        }
+    }
+    </script>
+
+    <script>
+    function toggleSynopsisAudio(btn) {
+        var audio = btn.parentElement.querySelector('audio');
+        if (!audio.src) audio.src = btn.getAttribute('data-src');
+        if (audio.paused) {
+            audio.play();
+            btn.classList.add('playing');
+            btn.querySelector('i').className = 'fa-solid fa-pause';
+        } else {
+            audio.pause();
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        }
+        audio.onended = function() {
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        };
+        // Prevent click from toggling the synopsis open/close
+        event.stopPropagation();
+    }
+    </script>
+</body>
+</html>

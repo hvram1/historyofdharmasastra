@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- MDB UI Kit -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/fonts.css?v=1.2">
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/navbar.css?v=2.4">
+
+    <title>5. The Dharmasutra of Gautama — Volume I: Part I — History of Dharmaśāstra</title>
+    <style>
+    :root {
+        --saffron:        #D4600A;
+        --saffron-light:  #F0924A;
+        --saffron-wash:   rgba(212, 96, 10, 0.07);
+        --indigo:         #2E5FA3;
+        --indigo-dark:    #1C3D70;
+        --maroon:         #7A1E1E;
+        --amber:          #C97A1A;
+        --ink:            #1A1209;
+        --ink-secondary:  #4A3B2A;
+        --parchment:      #FDFAF4;
+        --parchment-mid:  #F5EFE2;
+        --rule:           rgba(180, 130, 60, 0.22);
+        --shadow:         0 2px 18px rgba(90, 50, 10, 0.08);
+        --font-devanagari: 'Tiro Devanagari Sanskrit', 'Siddhanta', 'Noto Sans Devanagari', serif;
+        --font-roman:      'Junicode', Georgia, serif;
+    }
+
+    body {
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: var(--font-roman);
+    }
+
+    .devanagari {
+        font-family: var(--font-devanagari);
+    }
+
+    /* ── Navbar overrides ── */
+    .navbar-ontop { z-index: 1031; }
+    .hdclr { color: var(--saffron); }
+    .engpara { font-family: 'Open Sans', sans-serif; }
+
+    /* ── Layout ── */
+    .dh-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .dh-content {
+        flex: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        background: var(--parchment);
+        box-shadow: var(--shadow);
+        min-height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        .dh-content { padding: 24px 20px; }
+        .dh-wrapper { flex-direction: column; }
+    }
+
+    /* ── TOC Sidebar ── */
+    .toc-sidebar {
+        position: sticky;
+        top: 80px;
+        width: 280px;
+        min-width: 280px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding: 20px 16px;
+        margin-right: 24px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        scrollbar-width: thin;
+    }
+
+    .toc-title {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--saffron-light);
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list li {
+        padding: 4px 0;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-list li.toc-l3 {
+        padding-left: 16px;
+        font-size: 0.78rem;
+    }
+
+    .toc-list li a {
+        color: var(--ink-secondary);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .toc-list li a:hover { color: var(--saffron); }
+
+    .toc-list li.active {
+        border-left-color: var(--saffron);
+    }
+
+    .toc-list li.active a {
+        color: var(--saffron);
+        font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-sidebar { display: none; }
+    }
+
+    /* ── Mobile TOC Toggle ── */
+    .toc-mobile-toggle {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1050;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--saffron);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-mobile-toggle { display: block; }
+    }
+
+    /* ── Section Headings ── */
+    .section-heading {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        margin: 48px 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--rule);
+        letter-spacing: 0.5px;
+        scroll-margin-top: 80px;
+    }
+
+    h2.section-heading { font-size: 1.6rem; }
+
+    h3.section-heading {
+        font-size: 1.25rem;
+        border-left: 4px solid var(--saffron-light);
+        border-bottom: none;
+        padding: 8px 16px;
+        background: var(--saffron-wash);
+        border-radius: 0 5px 5px 0;
+    }
+
+    /* ── Prose ── */
+    .prose {
+        font-family: var(--font-roman);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+        color: var(--ink);
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    .prose em { color: var(--maroon); }
+
+    .prose:target {
+        background: rgba(212, 96, 10, 0.12);
+        border-left: 4px solid var(--saffron);
+        padding-left: 16px;
+        margin-left: -20px;
+        border-radius: 0 6px 6px 0;
+        animation: target-pulse 2s ease-out;
+    }
+
+    @keyframes target-pulse {
+        0%   { background: rgba(212, 96, 10, 0.30); }
+        100% { background: rgba(212, 96, 10, 0.12); }
+    }
+
+    /* ── Footnote References ── */
+    .fn-ref {
+        font-size: 0.75em;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    .fn-ref a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 0 2px;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: color 0.15s;
+    }
+
+    .fn-ref a:hover { color: var(--indigo); }
+
+    /* ── Synopsis Box ── */
+    .synopsis-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron-light);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .synopsis-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .synopsis-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .synopsis-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .synopsis-box.open .synopsis-toggle i {
+        transform: rotate(90deg);
+    }
+    .synopsis-body {
+        display: none;
+        padding: 0 20px 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+    }
+    .synopsis-box.open .synopsis-body { display: block; }
+    .synopsis-body p { margin: 0; }
+    .synopsis-attribution {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: var(--ink-secondary);
+        opacity: 0.7;
+        font-style: italic;
+    }
+    .synopsis-audio {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    .synopsis-play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--saffron);
+        background: none;
+        color: var(--saffron);
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: background 0.2s, color 0.2s;
+        padding: 0;
+    }
+    .synopsis-play-btn:hover {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn.playing {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn i { padding-left: 2px; }
+
+    /* ── Index Terms Panel ── */
+    .index-terms-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .index-terms-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .index-terms-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .index-terms-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .index-terms-box.open .index-terms-toggle i {
+        transform: rotate(90deg);
+    }
+    .index-terms-body {
+        display: none;
+        padding: 0 20px 16px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .index-terms-box.open .index-terms-body { display: block; }
+    .index-terms-dl {
+        margin: 0;
+        padding: 0;
+    }
+    .index-terms-dl dt {
+        font-family: var(--font-roman);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+        margin-top: 8px;
+    }
+    .index-terms-dl dd {
+        margin: 2px 0 0 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        color: var(--ink-secondary);
+        line-height: 1.5;
+    }
+    .nyaya-heading {
+        font-family: var(--font-roman);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        margin: 16px 0 4px;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+    }
+
+    /* ── Inline Index Popovers ── */
+    .idx-term {
+        border-bottom: 1px dotted var(--saffron-light);
+        cursor: help;
+        position: relative;
+    }
+    .idx-term:hover::after {
+        content: attr(data-def);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        background: rgba(44, 36, 22, 0.92);
+        color: #F5ECD8;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        max-width: 280px;
+        z-index: 100;
+        white-space: normal;
+        line-height: 1.4;
+        pointer-events: none;
+    }
+
+    /* ── Structured Version Banner ── */
+    .structured-banner {
+        margin: 0 0 28px;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, rgba(212, 96, 10, 0.06) 0%, rgba(212, 96, 10, 0.02) 100%);
+        border: 1px solid var(--saffron-light);
+        border-radius: 6px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        color: var(--ink-secondary);
+        line-height: 1.6;
+    }
+    .structured-banner i { color: var(--saffron); margin-right: 4px; }
+    .structured-banner a { color: var(--indigo); font-weight: 600; text-decoration: none; }
+    .structured-banner a:hover { text-decoration: underline; }
+
+    /* ── Footnotes Section ── */
+    .footnotes-section {
+        margin: 32px 0 48px;
+        padding: 20px 24px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .footnotes-section hr {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 0 0 16px;
+    }
+
+    .footnotes-list {
+        padding-left: 24px;
+        margin: 0;
+    }
+
+    .footnote-item {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+        scroll-margin-top: 80px;
+    }
+
+    .footnote-item:target {
+        background: rgba(212, 96, 10, 0.1);
+        border-radius: 4px;
+        padding: 4px 6px;
+        margin-left: -6px;
+    }
+
+    .fn-back {
+        color: var(--saffron-light);
+        text-decoration: none;
+        font-size: 0.85em;
+        margin-left: 4px;
+    }
+
+    .fn-back:hover { color: var(--saffron); }
+
+    /* ── Reference Links ── */
+    a.ref {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: all 0.15s;
+    }
+
+    a.ref:hover {
+        color: var(--saffron);
+        border-bottom-style: solid;
+    }
+
+    a.mbta-ext {
+        color: var(--indigo);
+        font-size: 0.7em;
+        margin-left: 2px;
+        opacity: 0.5;
+        text-decoration: none;
+        vertical-align: super;
+    }
+    a.mbta-ext:hover { opacity: 1; color: var(--saffron); }
+
+    /* ── References Panel (sidebar) ── */
+    .refs-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .refs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .refs-list li {
+        padding: 3px 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .ref-source-link {
+        font-weight: 600;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .ref-source-link:hover {
+        text-decoration: underline;
+    }
+
+    .ref-verse-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.76rem;
+    }
+
+    .ref-verse-link:hover {
+        text-decoration: underline;
+        color: var(--saffron);
+    }
+
+    .ref-verses {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Timeline panel ── */
+    .timeline-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .timeline-list li {
+        padding: 2px 0;
+        font-size: 0.76rem;
+        line-height: 1.4;
+        position: relative;
+        padding-left: 14px;
+    }
+
+    .timeline-list li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--saffron);
+    }
+
+    .timeline-list li.tl-approximate::before {
+        background: transparent;
+        border: 2px solid var(--saffron);
+        width: 4px;
+        height: 4px;
+    }
+
+    .timeline-list li.tl-century::before {
+        background: transparent;
+        border: 2px dashed var(--saffron);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+
+    .tl-dot-link {
+        text-decoration: none;
+        color: var(--ink);
+        display: block;
+    }
+
+    .tl-dot-link:hover {
+        color: var(--saffron);
+    }
+
+    .tl-year {
+        font-weight: 600;
+        color: var(--saffron);
+        font-size: 0.72rem;
+        min-width: 70px;
+        display: inline-block;
+    }
+
+    .tl-label {
+        color: var(--ink-secondary);
+        font-size: 0.72rem;
+    }
+
+    .tl-view-link, .tl-more {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.72rem;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .tl-view-link:hover, .tl-more:hover {
+        text-decoration: underline;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+
+    .breadcrumb-bar a {
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+
+    .breadcrumb-bar .sep {
+        color: var(--amber);
+        margin: 0 8px;
+    }
+
+    .breadcrumb-bar .current {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Chapter Navigation ── */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        margin-top: 48px;
+        border-top: 2px solid var(--rule);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .chapter-nav a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        transition: all 0.2s;
+        max-width: 45%;
+    }
+
+    .chapter-nav a:hover {
+        background: var(--saffron-wash);
+        border-color: var(--saffron-light);
+    }
+
+    .nav-prev { text-align: left; }
+    .nav-next { text-align: right; margin-left: auto; }
+
+    .page-range {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+    }
+
+    /* ── Volume Cards (Landing) ── */
+    .vol-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .vol-card {
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        transition: all 0.25s;
+    }
+
+    .vol-card:hover {
+        border-color: var(--saffron-light);
+        box-shadow: 0 4px 24px rgba(212, 96, 10, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .vol-num {
+        font-family: var(--font-roman);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--saffron);
+        margin-bottom: 8px;
+    }
+
+    .vol-subtitle {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        line-height: 1.5;
+        flex: 1;
+    }
+
+    .vol-chapters {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        margin-top: 12px;
+    }
+
+    /* ── Chapter Cards (Volume Index) ── */
+    .chapter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .chapter-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .chapter-card:hover {
+        border-color: var(--saffron-light);
+        background: var(--saffron-wash);
+    }
+
+    .card-num {
+        font-family: var(--font-roman);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--saffron);
+        min-width: 36px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        flex: 1;
+    }
+
+    .card-pages {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        color: var(--ink-secondary);
+    }
+
+    /* ── Landing Hero ── */
+    .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-family: var(--font-roman);
+        font-size: 2.4rem;
+        color: var(--saffron);
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .hero .devanagari-title {
+        font-family: var(--font-devanagari);
+        font-size: 1.8rem;
+        color: var(--ink);
+        margin-bottom: 16px;
+    }
+
+    .hero .author {
+        font-family: var(--font-roman);
+        font-size: 1.1rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .hero .desc {
+        font-family: var(--font-roman);
+        font-size: 1rem;
+        color: var(--ink-secondary);
+        line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer { margin-top: 48px; }
+</style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mbta/">
+      <div class="container-fluid">&emsp;&emsp;
+      <a href="../index.html" class="navbar-brand" style="text-decoration:none;">
+        <span class="devanagari ms-3" style="font-size:1.5rem; color:var(--saffron); font-weight:700;">धर्मशास्त्रम्</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="../index.html">धर्मशास्त्रम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5 active" href="../index.html">खण्डाः</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in/mbta/">महाभारतम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in">सनातनम्</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+
+    <div class="dh-wrapper container-xl">
+        <nav id="toc" class="toc-sidebar">
+<div class="refs-panel">
+<h5 class="toc-title">References</h5>
+<ul class="refs-list">
+<li><a href="../refs/apararka.html" class="ref-source-link">Aparārka</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/arthashastra.html" class="ref-source-link">Arthaśāstra</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/baudhayana.html" class="ref-source-link">Baudhāyana Dharmasūtra</a> <span class="ref-verses"><a href="../refs/baudhayana.html#I.1" class="ref-verse-link">I.1</a>, <a href="../refs/baudhayana.html#II.6.17" class="ref-verse-link">II.6.17</a>, <a href="../refs/baudhayana.html#III.10" class="ref-verse-link">III.10</a></span></li>
+<li><a href="../refs/gautama.html" class="ref-source-link">Gautama Dharmasūtra</a> <span class="ref-verses"><a href="../refs/gautama.html#c" class="ref-verse-link">c</a>, <a href="../refs/gautama.html#19.13" class="ref-verse-link">19.13</a>, <a href="../refs/gautama.html#i" class="ref-verse-link">i</a>, <a href="../refs/gautama.html#14.5-7" class="ref-verse-link">14.5-7</a>, <a href="../refs/gautama.html#1.28" class="ref-verse-link">1.28</a>, <a href="../refs/gautama.html#1.45-46" class="ref-verse-link">1.45-46</a> <a href="../refs/gautama.html" class="ref-verse-link">+12</a></span></li>
+<li><a href="../refs/hodh.html" class="ref-source-link">History of Dharmaśāstra</a> <span class="ref-verses"><a href="../refs/hodh.html#Vol. I" class="ref-verse-link">Vol. I</a>, <a href="../refs/hodh.html#Vol. IV pp. 511" class="ref-verse-link">Vol. IV pp. 511</a>, <a href="../refs/hodh.html#Vol. V" class="ref-verse-link">Vol. V</a></span></li>
+<li><a href="../refs/kautilya.html" class="ref-source-link">Kauṭilya Arthaśāstra</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/katyayana.html" class="ref-source-link">Kātyāyana</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mahabharata.html" class="ref-source-link">Mahābhārata</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/manu.html" class="ref-source-link">Manusmṛti</a> <span class="ref-verses"><a href="../refs/manu.html#II.176" class="ref-verse-link">II.176</a>, <a href="../refs/manu.html#XI.104-105" class="ref-verse-link">XI.104-105</a>, <a href="../refs/manu.html#11.89" class="ref-verse-link">11.89</a>, <a href="../refs/manu.html#21.7" class="ref-verse-link">21.7</a>, <a href="../refs/manu.html#II.6" class="ref-verse-link">II.6</a>, <a href="../refs/manu.html#XI.146" class="ref-verse-link">XI.146</a> <a href="../refs/manu.html" class="ref-verse-link">+1</a></span></li>
+<li><a href="../refs/medhatithi.html" class="ref-source-link">Medhātithi</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mitakshara.html" class="ref-source-link">Mitākṣarā</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/parasara.html" class="ref-source-link">Parāśara</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/taittiriya_ar.html" class="ref-source-link">Taittirīya Āraṇyaka</a> <span class="ref-verses"><a href="../refs/taittiriya_ar.html#11.18" class="ref-verse-link">11.18</a></span></li>
+<li><a href="../refs/vasishtha.html" class="ref-source-link">Vasiṣṭha Dharmasūtra</a> <span class="ref-verses"><a href="../refs/vasishtha.html#i" class="ref-verse-link">i</a></span></li>
+<li><a href="../refs/vishvarupa.html" class="ref-source-link">Viśvarūpa</a> <span class="ref-verses"><a href="../refs/vishvarupa.html#i" class="ref-verse-link">i</a></span></li>
+<li><a href="../refs/yajnavalkya.html" class="ref-source-link">Yājñavalkya</a> <span class="ref-verses"><a href="../refs/yajnavalkya.html#1.5" class="ref-verse-link">1.5</a></span></li>
+<li><a href="../refs/apastamba.html" class="ref-source-link">Āpastamba Dharmasūtra</a> <span class="ref-verses"><a href="../refs/apastamba.html#II.6.15.25" class="ref-verse-link">II.6.15.25</a></span></li>
+<li><a href="../refs/mb_ashvamedhika.html" class="ref-source-link">Āśvamedhikaparva</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mb_shantiparva.html" class="ref-source-link">Śāntiparva</a> <span class="ref-verses"><a href="../refs/mb_shantiparva.html#207.43" class="ref-verse-link">207.43</a></span></li>
+<li><a href="../refs/rigveda.html" class="ref-source-link">Ṛgveda</a> <span class="ref-verses"><a href="../refs/rigveda.html#IV.4.11" class="ref-verse-link">IV.4.11</a>, <a href="../refs/rigveda.html#I.61.14" class="ref-verse-link">I.61.14</a>, <a href="../refs/rigveda.html#I.62.13" class="ref-verse-link">I.62.13</a>, <a href="../refs/rigveda.html#I.64.1" class="ref-verse-link">I.64.1</a>, <a href="../refs/rigveda.html#VIII" class="ref-verse-link">VIII</a>, <a href="../refs/rigveda.html#I" class="ref-verse-link">I</a> <a href="../refs/rigveda.html" class="ref-verse-link">+2</a></span></li>
+</ul>
+</div>
+<div class="timeline-panel">
+<h5 class="toc-title">Timeline</h5>
+<ul class="timeline-list">
+<li class="tl-century"><a href="#p-5-the-dharmasutra-of-gautama-16" class="tl-dot-link"><span class="tl-year">~600 BCE</span> <span class="tl-label">Śāntiparva</span></a></li>
+<li class="tl-range"><a href="#p-5-the-dharmasutra-of-gautama-17" class="tl-dot-link"><span class="tl-year">~600 BCE</span> <span class="tl-label">Gautama Dharmasūtra</span></a></li>
+<li class="tl-century"><a href="#p-5-the-dharmasutra-of-gautama-16" class="tl-dot-link"><span class="tl-year">~400 BCE</span> <span class="tl-label">Śāntiparva</span></a></li>
+<li class="tl-exact"><a href="#p-5-the-dharmasutra-of-gautama-15" class="tl-dot-link"><span class="tl-year">~320 BCE</span> <span class="tl-label">Vasiṣṭha Dharmasūtra</span></a></li>
+<li class="tl-exact"><a href="#p-5-the-dharmasutra-of-gautama-3" class="tl-dot-link"><span class="tl-year">~300 BCE</span> <span class="tl-label">Arthaśāstra</span></a></li>
+<li class="tl-exact"><a href="#p-5-the-dharmasutra-of-gautama-16" class="tl-dot-link"><span class="tl-year">~300 BCE</span> <span class="tl-label">Śāntiparva</span></a></li>
+<li class="tl-century"><a href="#p-5-the-dharmasutra-of-gautama-16" class="tl-dot-link"><span class="tl-year">101 CE</span> <span class="tl-label">Śāntiparva</span></a></li>
+<li class="tl-exact"><a href="#p-5-the-dharmasutra-of-gautama-3" class="tl-dot-link"><span class="tl-year">300 CE</span> <span class="tl-label">Arthaśāstra</span></a></li>
+<li class="tl-range"><a href="#p-5-the-dharmasutra-of-gautama-3" class="tl-dot-link"><span class="tl-year">~650 CE</span> <span class="tl-label">Arthaśāstra</span></a></li>
+<li class="tl-approximate"><a href="#p-5-the-dharmasutra-of-gautama-15" class="tl-dot-link"><span class="tl-year">~700 CE</span> <span class="tl-label">Vasiṣṭha Dharmasūtra</span></a></li>
+<li class="tl-range"><a href="#p-5-the-dharmasutra-of-gautama-19" class="tl-dot-link"><span class="tl-year">900 CE</span> <span class="tl-label">Kātyāyana</span></a></li>
+<li class="tl-approximate"><a href="#p-5-the-dharmasutra-of-gautama-19" class="tl-dot-link"><span class="tl-year">~1100 CE</span> <span class="tl-label">Kātyāyana</span></a></li>
+</ul>
+<a href="5-the-dharmasutra-of-gautama-timeline.html" class="tl-view-link">View full timeline &rarr;</a>
+</div>
+<h5 class="toc-title">Sections</h5>
+<ul class="toc-list">
+<li class="toc-l2"><a href="#5-the-dharmasutra-of-gautama">5. The Dharmasutra of Gautama</a></li>
+</ul>
+</nav>
+        <main class="dh-content">
+            
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep">›</span>
+        <a href="index.html">Volume I: Part I</a>
+        <span class="sep">›</span>
+        <span class="current">5. The Dharmasutra of Gautama</span>
+    </div>
+    
+            <h1 class="text-center" style="font-family: var(--font-roman); font-size: 2rem; color: var(--saffron); margin-bottom: 8px;">
+                5. The Dharmasutra of Gautama
+            </h1>
+            <p class="text-center" style="font-family: 'Open Sans', sans-serif; color: var(--ink-secondary); font-size: 0.9rem; margin-bottom: 36px;">
+                Volume I: Part I <span class="page-range">pp. 22–38</span>
+            </p>
+
+            
+    <div class="synopsis-box" id="synopsis">
+        <button class="synopsis-toggle" onclick="this.parentElement.classList.toggle('open')"
+                aria-expanded="false" aria-controls="synopsis-body">
+            <i class="fa-solid fa-chevron-right"></i>
+            Kane's Synopsis
+        </button>
+        <div class="synopsis-audio">
+            <span class="synopsis-play-btn" role="button" tabindex="0"
+                    onclick="toggleSynopsisAudio(this)"
+                    data-src="../audio/synopsis/vol-1-part-1/vol-1-part-1_sec005.mp3" title="Listen to synopsis">
+                <i class="fa-solid fa-play"></i>
+            </span>
+            <audio preload="none"></audio>
+        </div>
+        <div class="synopsis-body" id="synopsis-body">
+            <p>Gautama's is distinguished as the oldest extant dharmasūtra, bearing a close connection to the Sāmaveda and specifically studied by its followers. He belonged to the Rānāyaṇīya school of Sāmaveda, being one of its nine subdivisions, and the text itself frequently alludes to the author's own previous dicta. Comprising twenty-eight chapters, the entire work is presented in prose. Notably, Gautama's language exhibits greater agreement with Pāṇini's grammatical rules than that of Āpastamba, a linguistic characteristic that Haradatta, among others, preferred in his readings of Gautama's text. Intriguingly, certain sūtras attributed to Gautama are quoted in significant later works like the Mitākṣarā, yet remain absent from the extant version of his text. While Gautama's own work reveals a knowledge of extensive literature, Manu is the sole author named within it; the term ‘ācāryāh’ is often employed to cite other scholarly views.
+
+The Baudhāyana-dharmasūtra offers the earliest direct references to Gautama on dharma, with Baudhāyana (III.10) borrowing chapter 19 and many other sūtras showing close correspondence. Vasiṣṭha (4.35 and 37) likewise refers to Gautama's views, with his 22nd chapter paralleling Gautama's 19th and many sūtras being identical. Gautama's enduring authority is attested by later references from Manu (identifying him as son of Utathya), Yājñavalkya, Bhaviṣyapurāṇa, Kumārila, Śaṁkarācārya, and Medhātithi. His mention of Yavana places its probable age between 600–400 B.C. The work's significance is underscored by commentaries from Haradatta, Maskarin, and Asahāya. It also presents special matters, occasionally incorporating śloka, requiring a distinction between Gautama and Vṛddha-Gautama.</p>
+            <p class="synopsis-attribution">— Synopsis by P.V. Kane, from History of Dharmaśāstra</p>
+        </div>
+    </div>
+
+
+            
+
+            <h2 id="5-the-dharmasutra-of-gautama" class="section-heading">5. The Dharmasutra of Gautama</h2>
+<p class="prose" id="p-5-the-dharmasutra-of-gautama-1">5. The Dharmasūtra of Gautama.</p>
+<p class="prose" id="p-5-the-dharmasutra-of-gautama-2">This has been printed several times (there is Dr. Stenzler’s edition of 1876, the Calcutta edition of 1876, the Ānadāśrama edition with the commentary of Haradatta, and the Mysore Government edition with the bhāṣya of Maskarin; it was trans- lated by Bühler in S. B. E., Vol. II. with an introduction ). The Ānadāśrama edition of 1910 which is incorrect in a few places (e. g. 21. 7) has been used in this work. This dharmasūtra is, as we shall see, the oldest of those we have. The <a class="ref" href="../refs/gautama.html" data-source="gautama" data-ref="" title="Gautama Dharmasūtra">Gautama- dharmasūtra</a> was specially studied by followers of the Sāmaveda ( see note 55 above ). The commentary on the Caraṇavyūha tells us that Gautama was one of the nine sub-divisions of the Rāṇāyaṇīya school of the Sāmaveda. A teacher Gautama is mentioned frequently in the Lāṭyāyanasrautasūtra (e. g. I. 3. 3 and I. 4. 17) and in the Drāhyāyaṇasrauta (e. g. IX. 3. 15) of the Sāmaveda. The Gobhilagṛhya (III. 10. 6) which belongs to the Sāmaveda cites Gautama as an authority. There- fore it is not improbable that a complete Gautamasūtra embody- ing Śrauta, Gṛhya and Dharma doctrines once existeḍ There are other indications pointing to the close connection of the <a class="ref" href="../refs/gautama.html" data-source="gautama" data-ref="" title="Gautama Dharmasūtra">Gautamadharmasūtra</a> with the Sāmaveda. Chapter 26 of the dharmasūtra about Kṛcchra penance is the same, almost word for word, as the Sāmavidhāna<sup class="fn-ref"><a href="#fn-5-the-dharmasutra-of-gautama-1" id="fnref-5-the-dharmasutra-of-gautama-1">1</a></sup> Brāhmaṇa (I. 2, Burnell’s eḍ ). Among the purificatory texts (21 in number) mentioned in Gau. Dh. S. (19. 12) there are nine that are Sāmanṣ The mention of the five utterances ('Vyāhṛtis') resembles the number in the Vyāhṛtisāma<sup class="fn-ref"><a href="#fn-5-the-dharmasutra-of-gautama-4" id="fnref-5-the-dharmasutra-of-gautama-4">4</a></sup> though the order is different. It is, however, to be noted that Gautama is a generic name. In the Kathopaniṣad, both Naciketas (II. 4. 15, II. 5. 6) and his father are styled Gautama. In the Chāndogyopaniṣad there is a teacher Hāridrumata Gautama (IV. 4. 3).</p>
+<p class="prose" id="p-5-the-dharmasutra-of-gautama-3">Dr. Ram Gopal in his Ph. D. thesis ‘India of Vedic Kalpa-sūtras’ (1959) charges me (on p. 53) with being inconsistent as regards the <a class="ref" href="../refs/gautama.html" data-source="gautama" data-ref="" title="Gautama Dharmasūtra">Gautama-dharmasūtra</a>. This book is probably his first serious work on ancient Sanskrit literature and society and I am afraid that he is more dogmatic in several conclusions of his than the facts warrant. About Gautama Dharmasūtra I made (in the first edition of the <a class="ref" href="../refs/hodh.html#Vol. I" data-source="hodh" data-ref="Vol. I" title="History of Dharmaśāstra Vol. I">H. of Dh. Vol. I </a>published so far back as 1930) two points viz. (1) that it was originally an independent work and not attached to any particular Vedic Śākhā; (2) that it was subsequently adopted by Sāmavedins as their Dharmasūtra probably because it contained a few indi-cations of leanings towards the Sāmaveda. I pointed out some of those indications, but also showed that Gautama’s name was connected with the Kathas of the Kṛṣṇa Yajurveda also, as in the Kathopaniṣad both Naciketas and his father are referred to as Gautama and because the Tantravārtika (about 650-700 A. D.) asserted that <a class="ref" href="../refs/gautama.html" data-source="gautama" data-ref="" title="Gautama Dharmasūtra">Gaut. Dh. S.</a> was accepted or adopted by the Sāma-vedins as their Dharmasūtra. I could have added many other matters in support of my theory but thought that it was unnecessary to do so. The duty of all scholars when dealing with ancient works or matters more than a thousand years old is to marshall the necessary or available facts with honesty and, if they do not all point to the same conclusion, to declare, if possible, one’s opinion in favour of one probability as against another. There is no inconsistency in doing this and it is always possible that different scholars may hold widely divergent views about the age and other matters relating to a writer or work (particularly an ancient one). I need cite only one example. The <a class="ref" href="../refs/arthashastra.html" data-source="arthashastra" data-ref="" title="Arthaśāstra">Arthaśāstra</a> of <a class="ref" href="../refs/kautilya.html" data-source="kautilya" data-ref="" title="Kauṭilya Arthaśāstra">Kauṭilya</a> has been available in print for half a century. There are hundreds of papers and books on various aspects of the <a class="ref" href="../refs/arthashastra.html" data-source="arthashastra" data-ref="" title="Arthaśāstra">Arthaśāstra</a>. Yet on the question of the age of the <a class="ref" href="../refs/arthashastra.html" data-source="arthashastra" data-ref="" title="Arthaśāstra">Arthaśāstra</a> depending on the same materials there are at least two divergent views, some scholars assigning it to 300 B. C. (Jacobi, Sham Shastry and Jayaswal), while others like Jolly and Winternitz bring down the work to 300 A. D.</p>
+<p class="prose" id="p-5-the-dharmasutra-of-gautama-4">Now that the charge of inconsistency has been made against me, I should like to say something more here. Gotama is a famous ṛṣi in the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a>. The name occurs at least eighteen times in the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> mantras and is employed in almost all cases (from nominative to vocative). Rahūgaṇa Gotama is the ṛṣi of <a class="ref" href="../refs/rigveda.html#I.74-93" data-source="rigveda" data-ref="I.74-93" title="Ṛgveda I.74-93">Ṛgveda I. 74-93</a> and the word Rahūgaṇāḥ (plural) occurs in <a class="ref" href="../refs/rigveda.html#I.78.5" data-source="rigveda" data-ref="I.78.5" title="Ṛgveda I.78.5">Ṛg. I. 78. 5</a>. Nodhā Gautama is the ṛṣi of hymns 58-64 of <a class="ref" href="../refs/rigveda.html#I" data-source="rigveda" data-ref="I" title="Ṛgveda I">Ṛgveda I</a> and of hymn 88 of <a class="ref" href="../refs/rigveda.html#VIII" data-source="rigveda" data-ref="VIII" title="Ṛgveda VIII">Ṛg. VIII</a>. Nodhāḥ (vocative) occurs in <a class="ref" href="../refs/rigveda.html#I.64.1" data-source="rigveda" data-ref="I.64.1" title="Ṛgveda I.64.1">Ṛg. I. 64. 1</a>. Nodhāḥ Gotama occurs in <a class="ref" href="../refs/rigveda.html#I.62.13" data-source="rigveda" data-ref="I.62.13" title="Ṛgveda I.62.13">Ṛg. I. 62.13</a> and Nodhāḥ (noṃ sing.) in <a class="ref" href="../refs/rigveda.html#I.61.14" data-source="rigveda" data-ref="I.61.14" title="Ṛgveda I.61.14">Ṛg. I. 61. 14</a>, I. 124. 4. Vāmadeva Gautama is the sage of almost all hymns in <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a>-maṇḍala IV (viz. hymns 1-41 and 45-48). In <a class="ref" href="../refs/rigveda.html#IV.4.11" data-source="rigveda" data-ref="IV.4.11" title="Ṛgveda IV.4.11">Ṛg. IV. 4. 11</a> Vāmadeva speaks of Gotama as his father. It is well-known that the verses of the Sāmaveda are taken from the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> (except about 75). In the Index of the Sāmaveda, prepared and published in the Nirnaya-sāgara Press by the Swamis Vishveshvarananda and Nityananda in 1908, the words Gotama, Gautama, Nodhas, Vāmadeva and Rahūgaṇa do not occur at all. In the two Vaṁśas attached to Bṛ. Up. II. 6. 1 and IV. 6. 2, the name of Gautama occurs thrice among the 60 generations or so from Brahman (ṇ) to Pautimāṣya. It is rather remarkable that Śvetaketu Āruṇeya’s father is addressed as Gautama by Pravāhaṇa Jaivali in Bṛ. Up. VI. 2. 4-13. It may further be noted that in the daily tarpaṇa (satiating with water) of gods, sages and pitṛs, (as required by <a class="ref" href="../refs/manu.html#II.176" data-source="manu" data-ref="II.176" title="Manusmṛti II.176">Manu II. 176</a> also ), the Āśv. Gṛ. III. 1. 5. mentions several <sup class="fn-ref"><a href="#fn-5-the-dharmasutra-of-gautama-5" id="fnref-5-the-dharmasutra-of-gautama-5">5</a></sup> sages among whom Gautama is mentioneḍ But in the tarpana for Sāmavedins now followed the sages to whom water is offered are only thirteen viz. Rāṇāyana, Śātyamugra, Vyāsa, Bhāguri, Auluṇdi, Gaulgulavi, Bhānumāṇaupamanyava, Kārāti, Māśaka Gārgya, Vārsagaṇya, Kuthuma, Śālihotra, Jaimini; and it ends 'trayodaśaite me Sāmagācāryāḥ svasti kurvantu tarpitāḥ'; vide Sanskrit Intro. to Śrī Satavlekar's edition of Sāmaveda saṃhitā p. 6. It would be noticed that, though Jaimini is mentioned in it, Gautama is not.</p>
+<p class="prose" id="p-5-the-dharmasutra-of-gautama-5">As compared with the number of Śrautasūtras and Grhyasūtras of the Vedas there is a paucity of Dharmasūtraṣ It is well-known that at present there are only a few Vaidikas of the Sāmaveda in the whole of India and some large tracts of India have no Vaidikas of Sāmaveda at all. Probably the Sāmavedin Vaidikas must have been much less in numbers even in ancient and medieval times as compared with tha Vaidikas of the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> and the Yajurveda. Even supposing that there was some Dharmasūtra of the Sāmaveda composed some centuries before Christ, gradually it might have faded out and the small number of Sāmavedins that still existed in scattered parts of India adopted the Gautama Dharmasūtra which as shown above shows some Sāmaveda connectionṣ</p>
+<p class="prose" id="p-5-the-dharmasutra-of-gautama-6">The Gautama Dharmasūtra appears to have been held in high esteem by Kumārila, as in his Tantravārtika he quotes or clearly refers to <a class="ref" href="../refs/gautama.html" data-source="gautama" data-ref="" title="Gautama Dharmasūtra">Gautama Dh. S.</a> at least a dozen times, but quotes <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp. Dh. S.</a> and <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana Dh. S.</a> only a few times; vide the author's paper on 'Tantra-vārtika and Dharmaśāstra Works' in JBBRAS, New Series Vol. I. (1925) pp. 95–102. Kumārila remarks that the two Sūtras (P. M. S. I. 3. 15-16 ) <sup class="fn-ref"><a href="#fn-5-the-dharmasutra-of-gautama-6" id="fnref-5-the-dharmasutra-of-gautama-6">6</a></sup> deal with the question whether the ( several ) Grhyasūtras and Gautama and other ( Dharmasūtras ) are restricted in application or are all-embracing and then comes the passage set out in note 55 above, where after excluding Purāṇas, Mānava (i. e. the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a>) and Itihāsa (i. e. <a class="ref" href="../refs/mahabharata.html" data-source="mahabharata" data-ref="" title="Mahābhārata">Mahābhārata</a>) he starts with Gautama as the first in enumerating the Dharmasūtras and remarks that Gautamiya (Dharmasūtra) and Gobhiliya (i. e. Gobhila- gṛhyasūtra) are accepted or adopted by the Chandogas (i. e. Sāmavedins). The word ‘parigṛhita’ employed by Kumārila is very suggestive. One is said to adopt or accept what was at one time not one’s owṇ Adoption of a son is called ‘Putraparigraha’ and marriage is called ‘dāraparigraha.’</p>
+<p class="prose" id="p-5-the-dharmasutra-of-gautama-7">Not only Kumārila but an earlier famous writer on Logic and Philosophy viz. Dharmakīrti in his Nyāyabindu appears to suggest that Gautama was chief among the exponents of dharmaśāstra.<sup class="fn-ref"><a href="#fn-5-the-dharmasutra-of-gautama-7" id="fnref-5-the-dharmasutra-of-gautama-7">7</a></sup></p>
+<p class="prose" id="p-5-the-dharmasutra-of-gautama-8">Dr. Ram Gopal relies (on p. 52) mainly on two circumstances, viz (1) that chapter 26 of <a class="ref" href="../refs/gautama.html" data-source="gautama" data-ref="" title="Gautama Dharmasūtra">Gaut. Dh. S.</a> dealing with expiations called Kṛcchras is identical with Sāmavidhāna Br. I. 2 and argues that it is not unreasonable to assume that the Gautama-dharma-sūtra borrowed it from that Brāhmaṇa; (2) that the majority of the purificatory texts prescribed in <a class="ref" href="../refs/gautama.html#19.13" data-source="gautama" data-ref="19.13" title="Gautama Dharmasūtra 19.13">Gaut. Dh. S. (19. 13)</a> belong to the Sāmaveda. I shall discuss the first point first. The relevant sūtra is set out in the note in transliteration and with explanations in some caseṣ<sup class="fn-ref"><a href="#fn-5-the-dharmasutra-of-gautama-4" id="fnref-5-the-dharmasutra-of-gautama-4">4</a></sup> The most important matter about this passage is that the whole of <a class="ref" href="../refs/gautama.html#c" data-source="gautama" data-ref="c" title="Gautama Dharmasūtra c">Gaut. Dh. S. c</a>hap. 19 (not merely one sūtra or sentence beginning with the word ‘Upanisadah’) is identical with Bauḍ Dh. S. III. 4 (except a few variations) and also with Vaṣ Dh. S., Chap. 22 (except a few items). It may be argued that all three borrow from a common source and that such borrowing of a whole chapter cannot alter the character of the three sūtra workṣ We have to find that source–that is all; but even if we find it, the Bauḍ Dh. S. still belongs to the Krṣṇa Yajurveda and Vaṣ Dh. S. is the Dh. S. for Rgvedins according to Kumārila. In view of the fact that Bauḍ Dh. S. (I. 1.25 ) mentions Gautama’s views as set out a little later it is most likely that Bauḍ Dh. borrows from <a class="ref" href="../refs/gautama.html" data-source="gautama" data-ref="" title="Gautama Dharmasūtra">Gaut. Dh. S.</a> the passage about expiationṣ</p>
+<p class="prose" id="p-5-the-dharmasutra-of-gautama-9">Dr. Ram Gopal is rather inaccurate when he says (p. 52) that the majority of the purificatory texts are from the Sāmaveda. Restricting oneself only to the number of texts specified (which are 21) there are only ten texts that are Sāmavedic (essentially nine only as Rathantara and Brhat are two consecutive verses of the Sāmaveda, Pūrvārcika). But there are other important details of this sūtra that deserve consideratioṇ The first purificatory text is Upaniṣads, which are enormous in extent as compared with the Sāman texts and all the Vedic Samhitās are several thousand times more extensive than all the specified Sāmanṣ Therefore, this argument comes practically to nothing as proof of the assertion that the <a class="ref" href="../refs/gautama.html" data-source="gautama" data-ref="" title="Gautama Dharmasūtra">Gaut. Dh. S.</a> was from the first affiliated to the Sāmaveda. The other argument about one chapter (26) being borrowed from Sāmavidhāna Br. leads nowhere. If the <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana Dh. S.</a> even after borrowing a chapter from another source, does not cease to be a sūtra of the Kr. Yajurveda, there is no reason why the same reasoning cannot hold good as to the <a class="ref" href="../refs/gautama.html" data-source="gautama" data-ref="" title="Gautama Dharmasūtra">Gaut. Dh. S.</a> Dr. Ram Gopal refers (on p. 53) to passages from Lāṭyāyana (I. 3. 3, I. 4. 7) and Drāhyāyana (II. 3. 15) Śrautasūtras that speak of Gautama and from Gobhila Gr. (in III. 10. 6 refers to Gautama's views on Astakā Śrāddhas) and that certain sūtras of Gobhila Gr. agree closely with Gautama's (p. 53 and notes p. 56).</p>
+<p class="prose" id="p-5-the-dharmasutra-of-gautama-10">From these two circumstances it does not follow at all that Gautama (of the Dharmasūtra ) belonged to the Sāmaveda. That would be begging the questioṇ Gobhila's is comparatively a rare name among ancient sages connected with Vedic Litera- ture, while the name Gautama is a very ancient one, has been closely connected with the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> and the Kṛṣṇa Yajurveda occurs in the tarpaṇa for Ṛgvedins, is quoted by <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> Ś. S. (I. 3. 33) and Bauḍ Dh. S. Therefore, one may say with good reason that Gobhila, Lāṭyāyana and others refer to or follow the views of Gautama, one of the most famous and ancient sageṣ</p>
+<p class="prose" id="p-5-the-dharmasutra-of-gautama-11">It should be noted that Gautama's views are mentioned twice in the Āś. Ś. S. The first passage refers to the controversial question of śrāddha in honour of three paternal ancestors of a person when one or two of the three are alive. This subject has been dealt with in <a class="ref" href="../refs/hodh.html#Vol. IV pp. 511" data-source="hodh" data-ref="Vol. IV pp. 511" title="History of Dharmaśāstra Vol. IV pp. 511">H. of Dh. Vol. IV pp. 511</a> ff. The author of Āś. Śr. S. in II. 6. 16-23 states the differing views of Gaṇagāri, Taulyali and Gautama, and states his own conclusionṣ Similarly, Āś. Śr. S. in V. 6. 22 refers to the view of Gautama that it is the hotṛ priest that first partakes of camasa oblations in the hotṛ's vasatkāra. <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> Śr. sūtra (I. 3. 11) refers to the view of Gautama. These passages may lead one to conjecture that Gautama had composed a śrautasūtra also, which is not now available. We have many such instances where out of the three classes of the sūtras of a Vedic caraṇa (viz. Śrauta, Gṛhya and Dharma ) often one or even two are wanting or not available. There is no Lāṭyāyana Gṛhya nor Dharma sūtra, though Lāṭyāyana Śr. S. exists, there is the Gobhila G. S. and the Khādira Gṛhya sūtra but no Gobhila or Khādira Ś. S. nor Dharmasūtra. We have Āśv. Ś. S. and G. S., Mānava Ś. S. and G. S., Drāhyāyana and Jaiminīya Ś. S. and Gr. S. but no Dharmasūtra belong- ing to these caraṇaṣ In the case of Gautama, we may make several conjectures viz. that all three classes of sūtras composed by or attributed to Gautama once existed but two of them are now not available, or that Gautama Dharmasūtra was an inde- pendent work or that the Gautama mentioned in some Śrauta- sūtras is different from the author of the Dharmasūtra. One thing is clear that Gautama being a gotra name was borne by many persons from the times of the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> and that some of such persons were Ṛgvedinṣ One solid fact is that Gautama's is the earliest of the extant Dharmasūtras (though some sūtras may be of doubtful authenticity) and the view in the present state of our knowledge that his was an independent Dharmasūtra has the greatest probability. This view would explain why the <a class="ref" href="../refs/gautama.html" data-source="gautama" data-ref="" title="Gautama Dharmasūtra">Gaut. Dh. S.</a>, though the oldest of Dharmasūtras conforms with Pāṇini's grammar far more than the <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āpastamba Dh. S.</a> and Bauḍ Dh. S. do. The latter two, being a compact part of the Kalpasūtra and transmitted orally from one generation to another, retained many un-Pāṇinian forms while the <a class="ref" href="../refs/gautama.html" data-source="gautama" data-ref="" title="Gautama Dharmasūtra">Gaut. Dh. S.</a> being originally unconnected with any definite school could be easily amended according to the requirements of those memorizing or reading it. Besides, there is no direct evidence before Kumārila that Gautama was adopted by the Sāmavedins and as to how many centuries before hiṃ<sup class="fn-ref"><a href="#fn-5-the-dharmasutra-of-gautama-4" id="fnref-5-the-dharmasutra-of-gautama-4">4</a></sup> My view is that the author of <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āpastamba Dh. S.</a> was a southerner and wrote either at a time when Pāṇini's work was not composed at all or before it spread throughout India</p>
+<p class="prose" id="p-5-the-dharmasutra-of-gautama-12">Writers of Sūtras sometimes refer to or quote sūtras of other schoolṣ For example, Gautama's view (stated in XI. 20 ) is mentioned in the <a class="ref" href="../refs/baudhayana.html#I.1" data-source="baudhayana" data-ref="I.1" title="Baudhāyana Dharmasūtra I.1">Baudhāyana Dh. S. I. 1</a>, 25. Bauḍ Dh. S. stated five differences in the usages of the peoples of the south and of one region ) if he followed the practice of another region would incur sin and that the custom in a country ( southern or northern ) would be authoritative in that country alone and notes that Gautama holds this latter view to be wrong. This establishes that <a class="ref" href="../refs/gautama.html#c" data-source="gautama" data-ref="c" title="Gautama Dharmasūtra c">Gautama Dh. S. c</a>ame before Bauḍ Dh. S. ( and before the earliest part of it. ).<sup class="fn-ref"><a href="#fn-5-the-dharmasutra-of-gautama-4" id="fnref-5-the-dharmasutra-of-gautama-4">4</a></sup> According to Haradatta the dharmasūtra has 28 chapterṣ The Calcutta edition adds one chapter on Karmavipāka after chapter 19. In many places Gautama unmistakably refers to his own previous dicta; e. g. Yathoktam vā (23. 16) refers to 23. 10; 23. 26 refers to 17. 8–26; 17. 18 refers to 15. 18. The following are briefly the contents of the Gautamadarmasūtra:—1. Sources of dharma, rules about interpretation of texts, time of Upanayana for the varnas, the appropriate girdle, deer skin, cloth and staff for each varṇa, rules about śauca and ācamana, method of approaching the teacher; 2 rules about those not invested with sacred thread, rules for the brahmacārin, control of pupils, period of study; 3 The four āśramas, the duties of brahmacārin, bhikṣu, and vaikhūnasa; 4 rules about the house-holder, marriage, age at time of marriage, eight forms of marriage, sub-castes; 5 rules about sexual intercourse on marriage, the five great daily sacrifices, the rewards of gifts, madhuparka, method of honouring guests of the several castes; 6 rules about showing respect to parents, relatives (male and female) and teachers, rules of the road; 7 rules about the avocations of a brāhmaṇa, avocations for him in distress, what articles a brāhmaṇa could not sell or deal in; 8 the forty saṁskāras and the eight spiritual qualities (such as dayā, forbearance &c.); 9 the observances for a snātaka and householder; 10 the peculiar duties of the four castes, the responsibilities of the king, taxation, sources of ownership, treasure-trove, guardianship of minor’s wealth; 11 Rājadharma, the qualities of the king’s purohita; 12 punishments for libel, abuse, assault, hurt, adultery and rape, theft in the case of the several varnas and rules about money-lending and usury and adverse possession, special privileges of brāhmaṇas as to punishments; payment of debts, deposits; 13 rules about witnesses, falsehoods when excusable; 14 rules of impurity on birth and death; 15 Śrāddha of five kinds, persons not fit to be invited at Śrāddha; 16 Upākarma, period of Vedic study in the year, holidays and occasions for them; 17 rules about food allowed and forbidden to brāhmaṇas and other castes; 18 the duties of women, niyoga and its conditions, discussion about the son born of <em>niyoga</em>; 19 the causes and occasions, of <em>prāyaścitta</em>, five things that remove sin (<em>japa, tapas, homa, fasting, gifts</em>), purifi-catory Vedic prayers, holy food for one who practises <em>japa</em>, various kinds of <em>tapas</em> and gifts, appropriate times and places for <em>japa</em> &c.; 20 abandoning a sinner who does not undergo <em>prāyaścitta</em> and the way of doing it; 21 sinners of various grades, <em>mahāpātakas, upapātakas</em> &c. ; 22 <em>prāyaścittas</em> for various sins such as <em>brahmahatyā</em>, adult-ery, killing a <em>Kṣatriya, Vaiśya, Śūdra</em>, cow and other animals &c. ; 23 <em>prāyaścittas</em> for drinking wine and nasty things, for incest and un-natural offences, and for several transgressions by <em>brahma-cārin</em>; 24 secret <em>prāyaścittas</em> for <em>mahāpātakas</em> and <em>upapātakas</em>; 26 the penances called <em>Kṛcchra</em> and <em>Atikṛcchra</em> : 27 the penance call-ed <em>Cāndrāyaṇa</em> ; 28 partition, <em>strīdhana</em>, re-union, twelve kinds of sons, inheritance.</p>
+<p class="prose" id="p-5-the-dharmasutra-of-gautama-13">The <a class="ref" href="../refs/gautama.html#i" data-source="gautama" data-ref="i" title="Gautama Dharmasūtra i">Gautama-dharmasūtra i</a>s written entirely in prose and it contains no verses either quoted or composed by the author him-self, as is the case with the other <em>dharmasūtras</em>. Here and there occur <em>sūtras</em> that look like portions of Anuṣṭubh verses e. g. 23.276<sup class="fn-ref"><a href="#fn-5-the-dharmasutra-of-gautama-16" id="fnref-5-the-dharmasutra-of-gautama-16">16</a></sup>. The language of Gautama agrees far more closely with the standard set up by Pāṇini than the <em>dharmasūtras</em> of <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> and Āpastamba. It is not very easy to account for this differ-ence. It is obvious that commentators and generations of students that were brought up in the tradition of the Pāṇinean grammar tampered with the text and improved it in accordance with their notions of correct Sanskrit. But why this process should not have been carried out to the same extent in the case of Āpastamba it is difficult to say. A conjecture may be hazarded that the Ap. Dh. S. being a well-knit component of the Ap. <em>Kalpa</em> and being studied as such was less liable to being tampered with than the <a class="ref" href="../refs/gautama.html" data-source="gautama" data-ref="" title="Gautama Dharmasūtra">Gautama Dh. S.</a>, which probably did not in its origin belong to any particular <em>kalpa</em>. The same commentator, Haradatta, explained both Gautama and Āpastamba. Haradatta, who, as will be seen later on, was a great grammarian, shows in several places that the current reading was ungrammatical from the Pāṇinean stand-point and that he preferred readings that were in consonance with Pāṇini’s rules<sup class="fn-ref"><a href="#fn-5-the-dharmasutra-of-gautama-18" id="fnref-5-the-dharmasutra-of-gautama-18">18</a></sup>. There are still a few un-Pāṇinean words, e. g. in 1. 14 ('<em>dvāviṁśateḥ</em> for <em>dvāvim-</em> sāt') and 9. 52 (kulainkula). The Tantravārtika (p. 99) appears to discuss the various readings in Gautama (I. 4563). A few sūtras quoted from Gautama in the Mīmāṁsāra (e. g. the sūtra 'utpatyaiva arthsvāmitvam labhante), the Smṛticandrikā (dvyamśam vā pūrvajaḥ syāt ) and other works are not found in the extant text. This fact along with the fact of an interpola- tion of one chapter makes it clear that the present text of Gautama is of somewhat doubtful authority. The literature known to the <a class="ref" href="../refs/gautama.html" data-source="gautama" data-ref="" title="Gautama Dharmasūtra">Gautama-dharmasūtra</a> was extensive. Besides the Vedic saṁhitās and Brāhmaṇas it mentions the following works; Upaniṣads (19. 13), the Vedāṅgas (8. 5 and 11.19), Vākovākya<sup class="fn-ref"><a href="#fn-5-the-dharmasutra-of-gautama-20" id="fnref-5-the-dharmasutra-of-gautama-20">20</a></sup> and Itihāsa (8.6.), Purāṇa (8. 6 and 11.19),Up veda (11.19), dharmaśāstra (11.19). That he borrows a chapter from the Sāmavīdhāna-brāhmaṇa has been mentioned above. He borrows the first six sūtras of the 25th chapter from the <a class="ref" href="../refs/taittiriya_ar.html#11.18" data-source="taittiriya_ar" data-ref="11.18" title="Taittirīya Āraṇyaka 11.18">Taittirīya Āraṇyaka (11. 18)</a>. The Śramanaka (in Gautama III. 26 ) is, according to Haradatta, the Vaikhānasa-śāstra (either composed by Vikhanas or treating of the duties of hermits). Gautama refers to Ānvīkṣikī (11. 3). The only teacher of dharma he quotes by name in <a class="ref" href="../refs/manu.html#21.7" data-source="manu" data-ref="21.7" title="Manusmṛti 21.7">Manu (in 21. 7)</a>, who is cited for the proposition that there is no expiation for the three sins of brahmahatyā, drinking wine and violation of the bed of the guru. Haradatta says that in the extant <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a> the same propo- sitions are laid down about brahmahatyā and surāpāna (in <a class="ref" href="../refs/manu.html#11.89" data-source="manu" data-ref="11.89" title="Manusmṛti 11.89">Manu 11. 89</a> and 146 respectively ), but that as to violation of guru- talpa a passage from the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a> has to be searched out (i. e. such a passage is not found there ). From this Bühler drew the conclusion that Gautama refers to the dharmasūtra attributed to <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> (and not to any versified <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>-smṛti). But Bühler is not right in drawing this inference. In the first place in spite of what Haradatta says there are verses in the extant <a class="ref" href="../refs/manu.html#XI.104-105" data-source="manu" data-ref="XI.104-105" title="Manusmṛti XI.104-105">Manusmṛti (XI. 104-105 )</a> which say that death is the expiation for violation of the guru's beḍ In the second place, there is nothing to show, even if Haradatta were correct, that Gautama refers only to a dharmasūtra of <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> and not to a versified work. Besides <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>, Gautama frequently quotes certain views ascribed to the 'Ācāryas' (e. g. III. 35, IV. 18). What teachers are meant by the word ‘Ācāryāḥ’ (which occurs in the Nirukta, in <a class="ref" href="../refs/kautilya.html" data-source="kautilya" data-ref="" title="Kauṭilya Arthaśāstra">Kauṭilya</a> and various other works), it is difficult to say. Probably the word means ‘the general traditional view of most writers in that particular śāstra on a particular point.’ Vide the author’s paper on ‘Ācāryāḥ’ in ABORI Vol 23 pp. 206–213. In numerous places Gautama refers to the views of his predecessors in the words ‘eke’ (2. 15, 40 and 56, 3. 1, 4. 17, 7. 23 &c.,) and ‘ekeṣām’ (28. 17 and 38). This proves that Gautama was preceded by great literary activity in the sphere of dharmaśāstra. Gautama 11. 28 seems to be a reminiscence of the Nirukta (II. 3)<sup class="fn-ref"><a href="#fn-5-the-dharmasutra-of-gautama-21" id="fnref-5-the-dharmasutra-of-gautama-21">21</a></sup>.</p>
+<p class="prose" id="p-5-the-dharmasutra-of-gautama-14">The earliest reference to Gautama as an author on dharma occurs in the <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyanadharmasūtra</a>. <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> discusses the authoritativeness of usages peculiar to the north or the south and quotes Gautama as saying that it is wrong to hold that certain customs must be held authoritative in certain countries (even though opposed to Vedic tradition and smṛti). This refers to G. Dh. S. 11. 20. In another place <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> gives it as his view that a Brāhmaṇa, if he cannot make a living by teaching, officiat- ing as a priest or by gifts, should earn his livelihood as a Kṣatriya and quotes the views of Gautama as opposed to this<sup class="fn-ref"><a href="#fn-5-the-dharmasutra-of-gautama-22" id="fnref-5-the-dharmasutra-of-gautama-22">22</a></sup>. The extant Gautama on the other hand teaches the same view as that of <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a><sup class="fn-ref"><a href="#fn-5-the-dharmasutra-of-gautama-23" id="fnref-5-the-dharmasutra-of-gautama-23">23</a></sup>. Buhler made the plausible suggestion that the sūtra in the extant Gautama is an interpolatioṇ Govindasvāmī, the commentator of <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>, suggests that another Gautama is referred to by <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>. It is possible to suggest that in the Mṣ of Gautama used by <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> the sūtra about living as a Kṣatriya did not occur and the next sūtra about living as a Vaiśya alone occurreḍ Chapter 19 of the <a class="ref" href="../refs/gautama.html" data-source="gautama" data-ref="" title="Gautama Dharmasūtra">Gautamadharmasūtra</a> which forms an introduction to prāyaścittas in Gautama seems to have been borrowed wholesale by <a class="ref" href="../refs/baudhayana.html#III.10" data-source="baudhayana" data-ref="III.10" title="Baudhāyana Dharmasūtra III.10">Baudhāyana (III. 10)</a> with slight changeṣ That <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> borrows follows from the fact that the chapter in <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> occurs in the middle of the discussion about prāyaścittas and not as an introduction, which is the case in Gautama. <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> treats of penances in several places (II. 1, III. 5. 10 and VI. 1. 4 ). There are, besides, many sūtras in both Gautama and <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> that exhibit a close correspondence, e. g. Gautama III. 25-34 and <a class="ref" href="../refs/baudhayana.html#II.6.17" data-source="baudhayana" data-ref="II.6.17" title="Baudhāyana Dharmasūtra II.6.17">Baudhāyana II. 6. 17</a> about Vaikhānasa, <a class="ref" href="../refs/gautama.html#3.3" data-source="gautama" data-ref="3.3" title="Gautama Dharmasūtra 3.3">Gaut. 3. 3</a> and 35 and Bauḍ II. 6. 29, <a class="ref" href="../refs/gautama.html#15.29" data-source="gautama" data-ref="15.29" title="Gautama Dharmasūtra 15.29">Gaut. 15. 29</a> and Bauḍ II. 8. 2, <a class="ref" href="../refs/gautama.html#23.8-10" data-source="gautama" data-ref="23.8-10" title="Gautama Dharmasūtra 23.8-10">Gaut. 23. 8-10</a> and Bauḍ II. I. 12-14, <a class="ref" href="../refs/gautama.html#24.2" data-source="gautama" data-ref="24.2" title="Gautama Dharmasūtra 24.2">Gaut. 24. 2</a> and Bauḍ II. 3. 8. The <a class="ref" href="../refs/apastamba.html#II.6.15.25" data-source="apastamba" data-ref="II.6.15.25" title="Āpastamba Dharmasūtra II.6.15.25">Āp. Dh. S. II. 6. 15. 25</a> speaks of Smṛti as laying down that up to <em>upanayana</em> there is no <em>adhikāra</em> for <em>homa</em>. This probably refers to Gautama II. 1-3. The Vasisthadharmasūtra also quotes the views of Gautama in two places ( 4. 35 and 37, impurity on death ). The first refers to Gautama 14. 41 but the second cannot be traced in the extant Gautama. Chapter 22 of <a class="ref" href="../refs/vasishtha.html#i" data-source="vasishtha" data-ref="i" title="Vasiṣṭha Dharmasūtra i">Vasiṣṭha i</a>s borrowed from the <a class="ref" href="../refs/gautama.html" data-source="gautama" data-ref="" title="Gautama Dharmasūtra">Gautamadharmasūtra</a>, chapter 19. There are besides many sūtras that are the same or almost the same in Gautama and <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a>, e. g. Gautama 3. 31-33 and Vaṣ 9. 1-3, <a class="ref" href="../refs/gautama.html#3.26" data-source="gautama" data-ref="3.26" title="Gautama Dharmasūtra 3.26">Gaut. 3.26</a> and Vaṣ 9, 10, <a class="ref" href="../refs/gautama.html#1.44" data-source="gautama" data-ref="1.44" title="Gautama Dharmasūtra 1.44">Gaut. 1. 44</a> and Vaṣ3. 37, <a class="ref" href="../refs/gautama.html#1.40" data-source="gautama" data-ref="1.40" title="Gautama Dharmasūtra 1.40">Gaut. 1. 40</a> and Vaṣ 3. 38, <a class="ref" href="../refs/gautama.html#1.45-46" data-source="gautama" data-ref="1.45-46" title="Gautama Dharmasūtra 1.45-46">Gaut. 1. 45-46</a> and Vaṣ 3. 48, <a class="ref" href="../refs/gautama.html#1.28" data-source="gautama" data-ref="1.28" title="Gautama Dharmasūtra 1.28">Gaut. 1. 28</a> and Vaṣ 3. 49, <a class="ref" href="../refs/gautama.html#14.5-7" data-source="gautama" data-ref="14.5-7" title="Gautama Dharmasūtra 14.5-7">Gaut. 14. 5-7</a> and Vaṣ 4. 24-26. Gautama is referred to in the <a class="ref" href="../refs/manu.html#III.16" data-source="manu" data-ref="III.16" title="Manusmṛti III.16">Manusmṛti (III. 16)</a> as the son of Utathya. Gautama is one of the authors of <em>dharmasūtras</em> enumerated in <a class="ref" href="../refs/yajnavalkya.html#1.5" data-source="yajnavalkya" data-ref="1.5" title="Yājñavalkya 1.5">Yājñavalkya (1. 5)</a>. <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> quotes a verse from the Bhavisya-purāṇa which speaks of Gautama's prohibition about drinking.<sup class="fn-ref"><a href="#fn-5-the-dharmasutra-of-gautama-24" id="fnref-5-the-dharmasutra-of-gautama-24">24</a></sup> Similarly, Kullūka (on <a class="ref" href="../refs/manu.html#XI.146" data-source="manu" data-ref="XI.146" title="Manusmṛti XI.146">Manu XI. 146</a>) quotes a verse from the same Purāṇa which refers to Gautama 23. 2. Kumārila in his Tantravārtika quotes over a dozen sūtras from Gautama which present the same text as we have<sup class="fn-ref"><a href="#fn-5-the-dharmasutra-of-gautama-25" id="fnref-5-the-dharmasutra-of-gautama-25">25</a></sup>. Gautama 11. 29 and 12. 4 are quoted by Śamkara in his <em>bhāṣya</em> on Vedāntasūtra III. 1. 8 and I. 3. 38 respectively. <a class="ref" href="../refs/vishvarupa.html#i" data-source="vishvarupa" data-ref="i" title="Viśvarūpa i">Viśvarūpa i</a>n his commentary on <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yājñavalkya</a> quotes numerous sūtras from Gautama. In <a class="ref" href="../refs/medhatithi.html" data-source="medhatithi" data-ref="" title="Medhātithi">Medhātithi</a>'s <em>bhāṣya</em> on <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> the writer more frequently quoted than any other is Gautama (e. g. on <a class="ref" href="../refs/manu.html#II.6" data-source="manu" data-ref="II.6" title="Manusmṛti II.6">Manu II. 6</a>, VIII. 125 &c. ).</p>
+<p class="prose" id="p-5-the-dharmasutra-of-gautama-15">The foregoing discussion about the literature known to the <a class="ref" href="../refs/gautama.html" data-source="gautama" data-ref="" title="Gautama Dharmasūtra">Gautama Dh. S.</a> and the authors and works that mention Gautama or quote the <em>dharmasūtra</em> helps us in arriving at the approximate age of the <em>dharmasūtra</em>. He is separated by a long interval from the Sāmavidhāna Brāhmaṇa. He is later than Yāska and wrote at a time when Pāṇini's system was either not in existence or had not attained a pre-eminent positioṇ The extant text was known to <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> and <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> and was in the same state long before 700 A. D. The sūtra betrays no knowledge of the onslaught delivered on Brahma- nism by Buddha and his followerṣ He uses the term bhikṣu ( 3. 10 ) instead of the term parivrājaka that occurs in Baudhā- yana, Āpastamba and other sūtra works and lays down that a bhiķṣu is to stay in one place in the rains, which reminds one of the Buddhist ‘bhikkhu’ and ‘Vasso’.<sup class="fn-ref"><a href="#fn-5-the-dharmasutra-of-gautama-26" id="fnref-5-the-dharmasutra-of-gautama-26">26</a></sup> Gautama cites the opinion of some that Yavana is the offspring of a Kṣatriya male and a Śūdra female ( 4. 17 ). It is supposed by many scholars that the Yavanas became known to the Indians only at the time of Alexander’s invasion and hence every work in which the word <em>yavana</em> occurs must be later than 320 B. C. Bühler ( S. B. E. vol. II. Intro. LVI. ) seems to suggest that the sūtra where the word Yavana occurs in Gautama may be an interpolatioṇ This is not a satisfactory explanatioṇ</p>
+<p class="prose" id="p-5-the-dharmasutra-of-gautama-16">Dr. Ram Gopal ( on p. 54 ) finds fault with me for my criti- cism of Dr. Bühler. Unfortunately, he appears to have not correctly grasped the situatioṇ <a class="ref" href="../refs/gautama.html#4.17" data-source="gautama" data-ref="4.17" title="Gautama Dharmasūtra 4.17">Gaut. Dh. S. 4. 17</a> ( tebhya eva ...<em>pārāśava-yavana-karaṇa-śūdrān-śūdretșyeke</em> ) does not express Gautama’s view but only states the view of some writers that if a śūdra woman has union with a brāhmaṇa, a kṣatriya, vaiśya or a śūdra the child begotten would respectively be a Pārāśava, a Yavana, a Karaṇa, a Śūdra. Bühler tried to show that this was an interpolatioṇ At the time when Bühler first wrote his intro- duction to Vol. II. of the S. B. E. almost all Western writers regarded the occurrence of the word ‘Yavana’ in a Sanskrit work as enough ground for relegating it to 300 B. C. or to a later date. Bühler’s words on p. LVI of the edition of 1879 ( SBE Vol. II ) are “<em>As there is no historical evidence</em> to show that the Indians became acquainted with the Greeks before the invasion of Alexander in the 4th century B. C. it has been held that works containing the word Yavana cannot have been composed before 300 B. C.” Then he refers to Gautama’s text not being trust- worthy and then to Rudradāman’s inscription ( <em>vide</em> E. I. Vol. VIII at p. 43 ) in which Tuśāṣpa is described as Yavanarāja and asserts that Tuśāṣpa was not a Greek but a Persiaṇ Supposing Tuśāṣpa had been a Persian there is no reason why he could not have been called or described as Yavanarāja in Kathiawad in the 2nd century A. D. <em>Vide</em> <a class="ref" href="../refs/hodh.html#Vol. V" data-source="hodh" data-ref="Vol. V" title="History of Dharmaśāstra Vol. V">H. of Dh. S. Vol. V</a>. p. 516 note 743 where it is shown that Yavana is an exact reproduction of the word Ionian ( from Ionia, which was originally a strip of mountainous coast in Asia Minor in which Miletus was in the 6th century B. C. the richest city in the Greek worlḍ Even the M. B. (<a class="ref" href="../refs/mb_shantiparva.html#207.43" data-source="mb_shantiparva" data-ref="207.43" title="Śāntiparva 207.43">Śāntiparva 207. 43</a><a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>, Ch. eḍ) has 'Yauna-Kāmboja-Gandhārāḥ Kirātā Barbaraiḥ saha) and Aśoka in his 5th Rock Edict has 'Yona-Kāmboja-Gandhārānāṃ' If Bühler had even then held the view which he sets forth in his Introduction in the second edition, he could have easily said in the Introduction to his first edition that even if the Sūtra in which the word 'Yavana' occurs was not an interpolation, the date of Gautama need not be affected by the mere occurrence of the word 'Yavana' in a sūtra that embodies the view of otherṣ Bühler avoided in the Introduction to his first edition being definite about the age of Gautama owing to the word 'Yavana' in Gautama, because he had not the courage at that time to differ from the current of western opinioṇ Dr. Ram Gopal in a research thesis shirks the important task of determining which sūtras of Gautama are spurious and yet devotes nearly one page to thiṣ I had only the first edition in the library I useḍ It would have been enough if he had simply said that Dr. Bühler later expressed his views about the occurrence of the word 'Yavana' definitely in the Introduction to the 2nd edition, though he did not do so in the Introduction to the first editioṇ</p>
+<p class="prose" id="p-5-the-dharmasutra-of-gautama-17">One may ask, if Bühler believes that the Indians borrowed their alphabet centuries before Alexander from the neighbours of the Greeks, why it is improbable that the Indians may not have heard of the word Yavana centuries before Alexander and why Yavanas may not have resided in India long before that date. Taking all these things into consideration the <a class="ref" href="../refs/gautama.html#c" data-source="gautama" data-ref="c" title="Gautama Dharmasūtra c">Gautama-dharmasūtra c</a>annot be placed later than the period between 600-400 B. C.</p>
+<p class="prose" id="p-5-the-dharmasutra-of-gautama-18">Haradatta wrote a learned commentary on the <a class="ref" href="../refs/gautama.html#c" data-source="gautama" data-ref="c" title="Gautama Dharmasūtra c">Gautama-dharmasūtra c</a>alled <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mitākṣarā</a>. For an account <em>ride sec. 87 below</em>. In numerous places he quotes the explanations of other commentators of Gautama (e. g. 9. 53 ; 10. 12, 56, 66 ; 11. 17 ; 12. 32; 21. 9 &c. )</p>
+<p class="prose" id="p-5-the-dharmasutra-of-gautama-19">The Bhāṣya of Maskarin, son of Vāmana, is a learned one. It has been published in Mysore Govt. Oriental Library Serieṣ The Kṛtyakalpataru of Lakṣmīdhara in its several parts refers to Maskarin e. g. on <a class="ref" href="../refs/gautama.html#III.10-24" data-source="gautama" data-ref="III.10-24" title="Gautama Dharmasūtra III.10-24">Gaut. Dh. S. III. 10–24</a> (anicayo bhikṣuḥ... anārambhī ) the Mokṣakāṇḍa of Kalpataru quotes the views of Bhartṛyajña, Asahāya, and Maskariṇ The Naiyatakāla-kāṇḍa mentions in several pages the views of Maskarin on Gautama’s sūtras (vide pp. 23, 248, 257). In the Gṛhastharatnākara of Cāṇḍeśvara (p. 330) ācārya Maskarin on <a class="ref" href="../refs/gautama.html#IX.57" data-source="gautama" data-ref="IX.57" title="Gautama Dharmasūtra IX.57">Gaut. Dh. S. IX. 57</a> is mentioneḍ Therefore, the bhāṣya of Maskarin is certainly not later than 1100 A. D. and may be assigned to the period 900–1100 A. D. This bhāṣya is far more extensive than Haradatta’s commentary, and it is not unlikely that being much earlier has been made use of by Haradatta. But, as there were other early bhāṣyas of Bhartṛyajña and Asahāya (which are not yet available in print) it is difficult to say whether Haradatta borrows from the older ones or from Maskariṇ For example, on <a class="ref" href="../refs/gautama.html#I.6" data-source="gautama" data-ref="I.6" title="Gautama Dharmasūtra I.6">Gaut. I. 6</a> (tulya-balavirodho vikalpaḥ) the bhāṣya extends to three printed pageṣ The same is the case with regard to <a class="ref" href="../refs/gautama.html#III.1" data-source="gautama" data-ref="III.1" title="Gautama Dharmasūtra III.1">Gaut. III. 1</a> (bhāṣya of four printed pages), III. 11 (three printed pages on anicayo bhikṣuḥ) V. I. (ṛtūpeyat, three pages), IX. 1 (three pages), XI. 29 (varṇāśramāḥ svasvadharmā etc.), XXIII. 27 and 28 (five pages on each).<sup class="fn-ref"><a href="#fn-5-the-dharmasutra-of-gautama-27" id="fnref-5-the-dharmasutra-of-gautama-27">27</a></sup> Maskarin quotes profusely from at least thirty Smṛtis, being both in prose and verse such as Uśanas, Kaṇva, <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>, Jātūkarṇin, Paithinasi, Prajāpati, Bhārgava, Lokākṣi, Vyāghra</p>
+<p class="prose" id="p-5-the-dharmasutra-of-gautama-20">Asahāya seems to have written a bhāṣya on Gautama; vide sec. 59 below.</p>
+<p class="prose" id="p-5-the-dharmasutra-of-gautama-21">Some special matters presented by <a class="ref" href="../refs/gautama.html" data-source="gautama" data-ref="" title="Gautama Dharmasūtra">Gaut. Dh. S.</a> may be briefly stated here: (1) He attaches the greatest importance to the eight moral qualities (Dayā etc.) specified in VIII. 23–24 and declares that he who has undergone the forty saṁskāras (mentioned in VIII. 14–22) but is not endowed with the eight ‘ātmaguṇas’ does not attain Sāyujya and Sālokya with brahman, while he who possesses the eight qualities attains Sāyujya and Sālokya even though he may be endowed with only a fraction of the forty saṁskāras; (2) He emphasizes (11. 20) that only such usages of countries, castes and families are valid and authoritative as are not opposed to the Vedas; (3) Women are not independent as regards the performance of religious duties, that a woman is to be married before the appearances of menses, that a guardian who does not arrange for a girl’s marriage incurs sin and that a girl after waiting for three menstrual periods should herself choose her husband possessing the requisite qualities and when she does so she should return the ornaments given to her by her father’s family; (4) That an offender if a brāhmaṇa was not to receive bodily punishment (XII. 43); (5) he allowed niyoga if the husband died childless (XVIII. 4-8).</p>
+<p class="prose" id="p-5-the-dharmasutra-of-gautama-22">The <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mitākṣarā</a>, the Smṛticandrikā, Hemādri, Mādhava and other writers quote a śloka-Gautama. Vide <a class="ref" href="../refs/parasara.html" data-source="parasara" data-ref="" title="Parāśara">Parāśara</a>-Mādhavīya, vol. I, part I, p. 7. <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a>, Hemādri and Mādhava quote Vṛddha-Gautama, while the Dattakamīmāṃsā (p. 72) quotes Vṛddha-<a class="ref" href="../refs/gautama.html" data-source="gautama" data-ref="" title="Gautama Dharmasūtra">Gaut.</a> and Bṛhad-<a class="ref" href="../refs/gautama.html" data-source="gautama" data-ref="" title="Gautama Dharmasūtra">Gaut.</a> side by side on the same point. These are later workṣ Jīvānanda publishes a smṛti of Vṛddha-Gautama in 22 chapters and about 1700 verses (part II, pp. 497-636), where it is said that Yudhiṣṭhira asked Kṛṣṇa about the dharmas of the four casteṣ This smṛti seems to have been originally taken from the <a class="ref" href="../refs/mb_ashvamedhika.html" data-source="mb_ashvamedhika" data-ref="" title="Āśvamedhikaparva">Āśvamedhikaparva</a><a href="https://sanatana.in/mbta/listing/parva/ashwamedhikaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> of the <a class="ref" href="../refs/mahabharata.html" data-source="mahabharata" data-ref="" title="Mahābhārata">Mahābhārata</a>, as Mādhava and others cite verses occurring in it as from that parva (vide <a class="ref" href="../refs/parasara.html" data-source="parasara" data-ref="" title="Parāśara">Parāśara</a>mādhavīya vol. I, part I, pp. 108-110).</p>
+<aside class="footnotes-section" aria-label="Footnotes">
+<hr>
+<ol class="footnotes-list">
+<li id="fn-5-the-dharmasutra-of-gautama-1" class="footnote-item">There are, however, considerable divergences; e. g. <span class="devanagari">गौ</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. 26.10-12 are ‘<span class="devanagari">आपो हि ष्ठेति तिसृभिः पवित्रवतीभिर्मार्जयेत् हिरण्यवर्णीः शुचयः पावका इत्यष्टाभिः। अथोदकत्तर्पणम् । नमोह्माय</span> &c. while the <span class="devanagari">सामाविधान</span> is ‘<span class="devanagari">आपो</span> ( Continued on next page ) <a href="#fnref-5-the-dharmasutra-of-gautama-1" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-5-the-dharmasutra-of-gautama-2" class="footnote-item">( Continued from last page ) <a href="#fnref-5-the-dharmasutra-of-gautama-2" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-5-the-dharmasutra-of-gautama-3" class="footnote-item"><span class="devanagari">हिश्रीयाभिरशोदकदर्पणं नमोहमाय</span>'. <span class="devanagari">गौ</span>. <span class="devanagari">ध सू</span>. 26. 12 contains many additionṣ Wherever there is divergence, it is generally Gautama that amplifies the passages found in the <span class="devanagari">सामविधान</span>. <a href="#fnref-5-the-dharmasutra-of-gautama-3" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-5-the-dharmasutra-of-gautama-4" class="footnote-item"><span class="devanagari">गौ</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. I. 52 <span class="devanagari">ओंपूर्वा व्याहृत्यः पञ्च सत्यान्ताः</span>; again in <span class="devanagari">गौ</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. 25. 8 we have <span class="devanagari">प्रतिषिव्दद्वाइमनसापचारे व्याहृत्यः पञ्च सत्यान्ताः</span>; and in <span class="devanagari">गौ</span>. 28. 8 the five <span class="devanagari">व्याहृति</span>s seem to be <span class="devanagari">भूः</span>, <span class="devanagari">भुवः</span>, <span class="devanagari">स्वः</span>, <span class="devanagari">तपः सत्यं</span>. As <span class="devanagari">हरदत्त</span> remarks the five <span class="devanagari">व्याहृति</span>s in <span class="devanagari">व्याहृतिसाम</span> are <span class="devanagari">भूः</span>, <span class="devanagari">भुवः</span>, <span class="devanagari">स्वः</span>, <span class="devanagari">सत्यं</span>, <span class="devanagari">पुरुषः</span>. The <span class="devanagari">व्याहृति</span>s are gene-rally declared to be seven (<span class="devanagari">तै</span>. <span class="devanagari">आ</span>. 10. 28. 1), the first three being styled <span class="devanagari">महाव्याहृति</span>s (vide <span class="devanagari">मनु</span> II. 81.) <a href="#fnref-5-the-dharmasutra-of-gautama-4" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-5-the-dharmasutra-of-gautama-5" class="footnote-item">The ṛṣis (in tarpaṇa) are mentioned in Āśv. Gṛ. III by groups; one is that of the reputed sages of the Maṇḍalas of Ṛgveda and then comes another group in the words—‘ Sumantu-Jaimini...Dharmacāryāśtrpyantu’, Then there is another group ‘Jānanti-Bīhavi-Gārgya-Gautama-Sākalya-Bābhrāvya-Māṇḍavya-Māṇḍukeyās-tṛpyantu’. Vide H. of Dh. Vol. II. pp 689–695 for tarpaṇa in detail. <a href="#fnref-5-the-dharmasutra-of-gautama-5" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-5-the-dharmasutra-of-gautama-6" class="footnote-item"><span class="devanagari">आर्य सूत्रद्वयं यावदिदमुपपन्नम् । गृह्य</span>-<span class="devanagari">गौतमसूत्रद्विव्यवस्था</span>-<span class="devanagari">सर्वागमिति । तन्त्रवा०</span> Vol. I pp. 243-244 (Ānaṇ eḍ) and <span class="devanagari">कुमारिल</span> proceeds '<span class="devanagari">पुराण</span>-<span class="devanagari">मानवैतिहासव्यतिरिक्त</span>-<span class="devanagari">गौतम</span>-<span class="devanagari">वसिष्ठ</span>-<span class="devanagari">शङ्खलिखित</span>-<span class="devanagari">हारीत</span>-<span class="devanagari">आपस्तम्ब</span>-<span class="devanagari">बौधायनादि</span>-<span class="devanagari">धर्मशास्त्राणां गृह्यग्रन्थानां</span>' etc. <a href="#fnref-5-the-dharmasutra-of-gautama-6" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-5-the-dharmasutra-of-gautama-7" class="footnote-item"><span class="devanagari">सन्दिग्धसाधनव्यतिरेको यथा</span>-<span class="devanagari">न त्रयीविदा ब्राह्मणेन ग्राह्यावचनः कश्चित्तुरशो रागादिमत्वात् । अत्र वैधर्म्योदाहरणम् । ये प्राबवचना न ते रागादिमन्तः । तथा च गौतमादिभ्यो धर्मशास्त्राणां प्रणेतार इति गौतमादिभ्यो रागादिमत्त्वस्य साधनधर्मस्य व्यावृत्तिः । न्यायबिन्दु</span> (3rd pariccheda p. 127) pub. in the Kashi S. Series, 1924 and also in the Bibliotheca Buddhica, vol. VII No 132 (1918), eḍ by Paṇḍit Rāhula Sāṁkṛtyāyana, who in his Intro. p. VIII to the Vādanyāya of Dharmakīrti published in J. B. O. R. S. vol XXI holds that 625 A. D. is the latest date for Dharmakīrti. 60ḍ (1) Upaniṣads, (2) Vedāntāḥ, (3) Sarva-chandssu Saṁhitāḥ (saṃhitā texts of all the Vedas), (4) Madhūni (either Tai. Ār. X. 38' brabma metu mām' or the three verses beginning with 'Madhu vātā' in Rg. I. 90. 6-8 and in Tai. S. IV. 2. 9 and Vāj. S. XIII. 27–29), (5) Aghamarṣaṇa i. e. Rg. X. 90. 1-3; (6) Atharvaśiras (a small Upaniṣad of about four printed pages) beginning with 'devā ha vai svargam lokam-āyan &c) ; (7) Rudrāḥ, eleven anuvākas of Tai. S. IV. 5. 1-11 beginning with 'namas-te Rudra manyave'); (8) Puruṣasūkta (Rg. X. 90); (9)–(10) Rājata (v. l. Rājana) and Raubīņa Sāmans which are sung on the Ṛk ‘Indram naro’ Rg. VII. 21. 1, Sāmaveda Pūrvārcika 233); (11–12) Bṛhat-sāma and Rathantar, which are respectively sung on 'tvām-iddhi havāmahe' (Rg. VI. 46. 1' Pūrvārcika 234) and on ‘Abhi tvā śūra’ (Rg. VII. 32. 22, Pūrvārcika 233); (13) Puruṣagati sung on the Ṛk ‘ahamasmī prathamajā’ (Sāmaveda, Āraṇyakāṇḍa 594); (14) Mahānāmnī verses (verses beginning with ‘Vidā maghavan vidā’ (Ait. Āraṇyaka IV, 1 ff and Sāmaveda, Mahānāmnyārcika, 641-650) ; (15) Mahāvairāja ( Continued on next page ) <a href="#fnref-5-the-dharmasutra-of-gautama-7" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-5-the-dharmasutra-of-gautama-8" class="footnote-item">Mahādivākīrtya (sung on Rg. X. 170 1, Sāmaveda, Aranya 628); <a href="#fnref-5-the-dharmasutra-of-gautama-8" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-5-the-dharmasutra-of-gautama-9" class="footnote-item">One of the Jyeṣṭhasāmans (various r̥k verses are put forward on which they are to be sung); <a href="#fnref-5-the-dharmasutra-of-gautama-9" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-5-the-dharmasutra-of-gautama-10" class="footnote-item">Bahiṣpavamāna (sung on Rg. IX. 11. 1, Sāmaveda, Uttarārcika 651); <a href="#fnref-5-the-dharmasutra-of-gautama-10" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-5-the-dharmasutra-of-gautama-11" class="footnote-item">Kūṣmāṇḍāni (mantras from Tai. Ār. II. 3–5); <a href="#fnref-5-the-dharmasutra-of-gautama-11" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-5-the-dharmasutra-of-gautama-12" class="footnote-item">Pāvamānyaḥ (verses from 9th Maṇḍala of the Ṛgveda); <a href="#fnref-5-the-dharmasutra-of-gautama-12" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-5-the-dharmasutra-of-gautama-13" class="footnote-item">Sāvitrī ( Ṛg. III. 62. 10). For further details about these 21 texts, vide H. of Dh. Vol. IV pp. 45–46 note 107. Vaṣ Dh. S. 22 omits Noṣ 11–18 and Bauḍ Dh. S. omits No. 18. <a href="#fnref-5-the-dharmasutra-of-gautama-13" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-5-the-dharmasutra-of-gautama-14" class="footnote-item">A grant renewed by king Bhāskaravarman of Kāmārupa originally made by his great-great-grandfather is published in E. I. Vol. 19 pp. 248–250 where the donees are named and their gotras are mentioned, such as Gautama, Kauṭilya, Maudgalya &c. The original grant must have been made in the 5th or 6th century A. D. In the same E. I. Vol. at p. 75 there is a grant of the Haihaya king Pṛthvideva I, which is the oldest dated Haihaya grant (corresponding to 1079 A. D.) a donee of the Bahvṛca Śākhā is said to have belonged to the Āṅgirasa-gotra and to have three pravaras ( Ucathya-Gautama-Vasiṣṭheti triprav- arīya on p. 102 ). Vide E. I. Vol. 14 pp. 202 ff for a grant of Samvat 1150 (i. e. 1093–94 A. D.) that gives the names of about 500 donees with their gotras,the Gautamagotra being mentioned at least thirty timeṣ <a href="#fnref-5-the-dharmasutra-of-gautama-14" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-5-the-dharmasutra-of-gautama-15" class="footnote-item"><span class="devanagari">पश्चा विप्रातिपत्तिदक्षीणतस्तयोरतरतः।</span>...<span class="devanagari">इतरदितरास्मन् कुर्वन् दुष्यतीतरदितरस्मन्।</span> ( Continued from next page ) <a href="#fnref-5-the-dharmasutra-of-gautama-15" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-5-the-dharmasutra-of-gautama-16" class="footnote-item">( Continued from last page ) <span class="devanagari">तत्र तत्र देशप्रामाण्यमेव स्यात् । मिथ्यैतदिति गौतमः। उमयं चैव नाद्रियेत शिष्यस्तुति</span>-<span class="devanagari">विरोधदर्शनात् । बौ</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. I. 2. 19, 23-26. Compare <span class="devanagari">गौ</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. '<span class="devanagari">देशजाति</span>-<span class="devanagari">कुलधर्माश्चाम्नायैरविरुद्धाः प्रमाणम्</span>' XI. 20, which is quoted by <span class="devanagari">कुमारिल</span> in the words ‘‘<span class="devanagari">स्मृतिकाराश्च</span> '<span class="devanagari">आचारखैव साधूनां</span>', '<span class="devanagari">देशजाति</span>...<span class="devanagari">प्रामाण्यम् इति वेदाविरुद्धाननाचाराणां सामान्यतः प्रामाण्यमनुमन्यन्ते ।</span>’’ <span class="devanagari">तन्त्रवा</span>. p. 205; the words <span class="devanagari">आचारखैव साधूनां</span> are <span class="devanagari">मनु</span> II. 6. <a href="#fnref-5-the-dharmasutra-of-gautama-16" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-5-the-dharmasutra-of-gautama-17" class="footnote-item"><span class="devanagari">आखोशातुर्नृहित्रासु त्रिरात्रं परमे तपः ।</span> <a href="#fnref-5-the-dharmasutra-of-gautama-17" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-5-the-dharmasutra-of-gautama-18" class="footnote-item">e. g. on <span class="devanagari">गौ</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. 16. 21 (<span class="devanagari">ऋच्युजुर्षं च सामशब्दौ यावत्</span>) he says ‘<span class="devanagari">ऋच्व गुजुष ऋग्युजुषम् । अनुत्तेरेत्यादिना निपातः । षष्ठचन्तपाठस्तु</span> (i. e. <span class="devanagari">ऋग्युजुषां</span>) <span class="devanagari">नास्मभ्यं रोचते</span>;’ on <span class="devanagari">गौ</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. 25. 8 (<span class="devanagari">प्रतिषिद्धवाद्विमनसापचारो</span>) he says ‘<span class="devanagari">वाड्मनसोरिति पाठोस्मभ्यं न रोचते । अनुत्तरिति समासान्ताविधिप्रसङ्गात् ।</span>’ <a href="#fnref-5-the-dharmasutra-of-gautama-18" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-5-the-dharmasutra-of-gautama-19" class="footnote-item">It follows from the discussion in the <span class="devanagari">तन्त्रवार्तिक</span> that the ancint pātha in its day was ‘ <span class="devanagari">लेपगन्यापकषणै शौचममेध्यलिस्यु</span>’ while the present text has ‘ <span class="devanagari">॰शौचममेध्यस्य</span>’. Vide <span class="devanagari">वसिष्ठधर्मसूत्र</span> III. 48 which reads ‘ <span class="devanagari">॰कर्षणे शौचम</span>- <span class="devanagari">मेध्यलिस्यु</span>’ etc. <a href="#fnref-5-the-dharmasutra-of-gautama-19" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-5-the-dharmasutra-of-gautama-20" class="footnote-item">The word 'Vākovākya' occurs several times in the Chāndogya Upaniṣad (VII. 1. 49. VII. 2. 1, VII. 7. 1). <a href="#fnref-5-the-dharmasutra-of-gautama-20" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-5-the-dharmasutra-of-gautama-21" class="footnote-item">‘<span class="devanagari">दण्डो दमनादित्याहुरतेनादात्तान्दमयेत्</span>.’ The <span class="devanagari">निरुक</span> has <span class="devanagari">दण्डो ददते</span>…<span class="devanagari">दमना</span>- <span class="devanagari">दियौपमन्यवः</span>'. <a href="#fnref-5-the-dharmasutra-of-gautama-21" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-5-the-dharmasutra-of-gautama-22" class="footnote-item"><span class="devanagari">अध्यापनाध्ययनप्रतिग्रहेशक्त्रः क्षत्रधर्मेण जीवेत्प्रत्यनन्तरत्वात् । नेति गौतमोत्युभो हि धर्ममो ब्राह्मणस्य । बौ</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. II. 2. 69-70. <a href="#fnref-5-the-dharmasutra-of-gautama-22" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-5-the-dharmasutra-of-gautama-23" class="footnote-item"><span class="devanagari">याजनाध्यापनप्रतिग्रहाः सर्वेषाम् । पूर्वेः पूर्वेः गुरुः । तदलाभे क्षत्रवृत्तिः । तदलाभे वैश्यवृत्तिः । गौ</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. 7. 4-7. H, D. – 5 <a href="#fnref-5-the-dharmasutra-of-gautama-23" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-5-the-dharmasutra-of-gautama-24" class="footnote-item"><span class="devanagari">प्रतिषेधः सुरापाने मद्यस्य च नराधिप । द्विजातीनां नराणां तु गौतमादिभिः । भविष्यपुराण</span> quoted by <span class="devanagari">अपराकं</span> p. 1076. <a href="#fnref-5-the-dharmasutra-of-gautama-24" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-5-the-dharmasutra-of-gautama-25" class="footnote-item">Vide JBBRAŚ vol. I (new series) for 1925, pp. 66–67. <a href="#fnref-5-the-dharmasutra-of-gautama-25" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-5-the-dharmasutra-of-gautama-26" class="footnote-item">The fact that Gautama quotes by name only one predecessor viz. Manu, while the Āp. Dh. S. quotes many authors by name has a great bearing on the date of Gautama. . <a href="#fnref-5-the-dharmasutra-of-gautama-26" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-5-the-dharmasutra-of-gautama-27" class="footnote-item">On <span class="devanagari">मुण्डः शिखी वा</span> (<span class="devanagari">गो</span>. 3. 21) <span class="devanagari">मोक्षकाण्ड</span> p. 49 comments ‘<span class="devanagari">सर्वमुण्ड</span>: <span class="devanagari">शिखावर्जं मुण्डो वा । जटिलत्वनिवृत्त्यर्थोऽयम्यमारम्भ इति भर्तृयज्ञासहायमस्करिणः</span>. It is clear that the three are mentioned in chronological order. The word should be Maskarin and not Maskari. Pāṇini states that Maskarin means 'parivrājaka' (VI. 1. 154 <span class="devanagari">मस्करमस्करिणौ वेणु</span>-<span class="devanagari">परिव्राजकयोः</span>') The <span class="devanagari">महाभाष्य</span> explains '<span class="devanagari">न वै मस्करोडस्यास्तीति मस्करी परिव्राजकः</span>. <span class="devanagari">किं तह्यै मा कृत कर्मणि मा कृत कर्मणि शान्तिव</span>: <span class="devanagari">श्रेयसीत्याहातो मस्करी परिव्राजक</span>:. On Gaut. 23. 27 the bhāṣyakāra himself adds '<span class="devanagari">अल्मातिवाचालतया प्रस्तुतं व्यास्यास्यामः</span>. On <span class="devanagari">गो</span>. 26. 18. he quotes 31 verses beginning with <span class="devanagari">यतालमनोपमत्तस</span> etc. and adds <span class="devanagari">अल्मतिप्रसङ्गेन</span>'. <a href="#fnref-5-the-dharmasutra-of-gautama-27" class="fn-back" aria-label="Back to text">↩</a></li>
+</ol>
+</aside>
+
+            <div class="chapter-nav">
+                <a href="4-the-dharmasutras.html" class="nav-prev"><i class="fa-solid fa-chevron-left"></i> 4. The Dharmasutras</a>
+                <a href="6-the-baudhāyana-dharmasutra.html" class="nav-next">6. The Baudhāyana Dharmasutra <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </main>
+    </div>
+
+    <button class="toc-mobile-toggle" onclick="toggleMobileToc()" aria-label="Table of contents">
+        <i class="fa-solid fa-list"></i>
+    </button>
+
+    
+    <footer class="container-fluid pt-4" style="background-color:#2e4144">
+        <div class="row border-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img src="https://sanatana.in/mbta/public/images/Homepage_html/images/layer_8.png" alt="">
+            </div>
+            <div class="col-md-5 text-white">
+                <p>The divine knowledge and wisdom of our shastras is the only thing eternal,
+                   which was and which will remain ever-present in this gods creation.
+                   Our endeavours are to preserve this knowledge.</p>
+            </div>
+            <div class="col-md-1 text-white">
+                <div class="d-flex" style="height: 75px;">
+                    <div class="vr"></div>
+                </div>
+            </div>
+            <div class="col-md-3 text-white">
+                <i class="fa-solid fa-globe"></i>&emsp;
+                <a href="https://sanatanasampatti.in" class="text-light">www.sanatanasampatti.in</a><br>
+                <i class="fa-solid fa-envelope"></i>&emsp;
+                <a href="" class="text-light">sriranga.yoga@gmail.com</a>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center py-3 mb-4 align-items-center border-bottom">
+            <div class="col-md-2 text-white fs-4 text-center">Project</div>
+            <div class="col-md-2 text-white fs-4 text-center">Our Mission</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contribute</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contact Us</div>
+        </div>
+        <div class="row">
+            <p class="col-md-6 fs-6 text-start text-light">
+                <small>&copy; 2026 Sanatanasampatti</small>
+            </p>
+            <p class="col-md-6 fs-6 text-end text-light">
+                <a class="text-white" rel="nofollow" href="http://www.srirangadigital.com" target="_blank">
+                    <img src="https://sanatana.in/mbta/public/images/logo.png" alt="sriranga logo" />
+                    <small>Designed, Developed and Maintained by Sriranga Digital</small>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        const headings = [];
+        tocLinks.forEach(link => {
+            const id = link.getAttribute('href').substring(1);
+            const el = document.getElementById(id);
+            if (el) headings.push({ el: el, link: link.parentElement });
+        });
+
+        function onScroll() {
+            let current = null;
+            for (const h of headings) {
+                const rect = h.el.getBoundingClientRect();
+                if (rect.top <= 120) current = h;
+            }
+            tocLinks.forEach(l => l.parentElement.classList.remove('active'));
+            if (current) current.link.classList.add('active');
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    });
+
+    function toggleMobileToc() {
+        const toc = document.getElementById('toc');
+        if (!toc) return;
+        if (toc.style.display === 'block') {
+            toc.style.display = '';
+            toc.style.position = '';
+        } else {
+            toc.style.display = 'block';
+            toc.style.position = 'fixed';
+            toc.style.top = '0';
+            toc.style.left = '0';
+            toc.style.width = '80vw';
+            toc.style.maxWidth = '320px';
+            toc.style.height = '100vh';
+            toc.style.maxHeight = '100vh';
+            toc.style.zIndex = '2000';
+            toc.style.background = 'var(--parchment)';
+            toc.style.boxShadow = '4px 0 20px rgba(0,0,0,0.2)';
+            toc.style.padding = '24px';
+            toc.style.overflowY = 'auto';
+        }
+    }
+    </script>
+
+    <script>
+    function toggleSynopsisAudio(btn) {
+        var audio = btn.parentElement.querySelector('audio');
+        if (!audio.src) audio.src = btn.getAttribute('data-src');
+        if (audio.paused) {
+            audio.play();
+            btn.classList.add('playing');
+            btn.querySelector('i').className = 'fa-solid fa-pause';
+        } else {
+            audio.pause();
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        }
+        audio.onended = function() {
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        };
+        // Prevent click from toggling the synopsis open/close
+        event.stopPropagation();
+    }
+    </script>
+</body>
+</html>

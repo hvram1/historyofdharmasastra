@@ -1,0 +1,2136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- MDB UI Kit -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/fonts.css?v=1.2">
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/navbar.css?v=2.4">
+
+    <title>Śatapatha Brāhmaṇa — References in History of Dharmaśāstra</title>
+    <style>
+    :root {
+        --saffron:        #D4600A;
+        --saffron-light:  #F0924A;
+        --saffron-wash:   rgba(212, 96, 10, 0.07);
+        --indigo:         #2E5FA3;
+        --indigo-dark:    #1C3D70;
+        --maroon:         #7A1E1E;
+        --amber:          #C97A1A;
+        --ink:            #1A1209;
+        --ink-secondary:  #4A3B2A;
+        --parchment:      #FDFAF4;
+        --parchment-mid:  #F5EFE2;
+        --rule:           rgba(180, 130, 60, 0.22);
+        --shadow:         0 2px 18px rgba(90, 50, 10, 0.08);
+        --font-devanagari: 'Tiro Devanagari Sanskrit', 'Siddhanta', 'Noto Sans Devanagari', serif;
+        --font-roman:      'Junicode', Georgia, serif;
+    }
+
+    body {
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: var(--font-roman);
+    }
+
+    .devanagari {
+        font-family: var(--font-devanagari);
+    }
+
+    /* ── Navbar overrides ── */
+    .navbar-ontop { z-index: 1031; }
+    .hdclr { color: var(--saffron); }
+    .engpara { font-family: 'Open Sans', sans-serif; }
+
+    /* ── Layout ── */
+    .dh-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .dh-content {
+        flex: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        background: var(--parchment);
+        box-shadow: var(--shadow);
+        min-height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        .dh-content { padding: 24px 20px; }
+        .dh-wrapper { flex-direction: column; }
+    }
+
+    /* ── TOC Sidebar ── */
+    .toc-sidebar {
+        position: sticky;
+        top: 80px;
+        width: 280px;
+        min-width: 280px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding: 20px 16px;
+        margin-right: 24px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        scrollbar-width: thin;
+    }
+
+    .toc-title {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--saffron-light);
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list li {
+        padding: 4px 0;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-list li.toc-l3 {
+        padding-left: 16px;
+        font-size: 0.78rem;
+    }
+
+    .toc-list li a {
+        color: var(--ink-secondary);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .toc-list li a:hover { color: var(--saffron); }
+
+    .toc-list li.active {
+        border-left-color: var(--saffron);
+    }
+
+    .toc-list li.active a {
+        color: var(--saffron);
+        font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-sidebar { display: none; }
+    }
+
+    /* ── Mobile TOC Toggle ── */
+    .toc-mobile-toggle {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1050;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--saffron);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-mobile-toggle { display: block; }
+    }
+
+    /* ── Section Headings ── */
+    .section-heading {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        margin: 48px 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--rule);
+        letter-spacing: 0.5px;
+        scroll-margin-top: 80px;
+    }
+
+    h2.section-heading { font-size: 1.6rem; }
+
+    h3.section-heading {
+        font-size: 1.25rem;
+        border-left: 4px solid var(--saffron-light);
+        border-bottom: none;
+        padding: 8px 16px;
+        background: var(--saffron-wash);
+        border-radius: 0 5px 5px 0;
+    }
+
+    /* ── Prose ── */
+    .prose {
+        font-family: var(--font-roman);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+        color: var(--ink);
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    .prose em { color: var(--maroon); }
+
+    .prose:target {
+        background: rgba(212, 96, 10, 0.12);
+        border-left: 4px solid var(--saffron);
+        padding-left: 16px;
+        margin-left: -20px;
+        border-radius: 0 6px 6px 0;
+        animation: target-pulse 2s ease-out;
+    }
+
+    @keyframes target-pulse {
+        0%   { background: rgba(212, 96, 10, 0.30); }
+        100% { background: rgba(212, 96, 10, 0.12); }
+    }
+
+    /* ── Footnote References ── */
+    .fn-ref {
+        font-size: 0.75em;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    .fn-ref a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 0 2px;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: color 0.15s;
+    }
+
+    .fn-ref a:hover { color: var(--indigo); }
+
+    /* ── Synopsis Box ── */
+    .synopsis-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron-light);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .synopsis-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .synopsis-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .synopsis-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .synopsis-box.open .synopsis-toggle i {
+        transform: rotate(90deg);
+    }
+    .synopsis-body {
+        display: none;
+        padding: 0 20px 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+    }
+    .synopsis-box.open .synopsis-body { display: block; }
+    .synopsis-body p { margin: 0; }
+    .synopsis-attribution {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: var(--ink-secondary);
+        opacity: 0.7;
+        font-style: italic;
+    }
+    .synopsis-audio {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    .synopsis-play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--saffron);
+        background: none;
+        color: var(--saffron);
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: background 0.2s, color 0.2s;
+        padding: 0;
+    }
+    .synopsis-play-btn:hover {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn.playing {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn i { padding-left: 2px; }
+
+    /* ── Index Terms Panel ── */
+    .index-terms-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .index-terms-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .index-terms-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .index-terms-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .index-terms-box.open .index-terms-toggle i {
+        transform: rotate(90deg);
+    }
+    .index-terms-body {
+        display: none;
+        padding: 0 20px 16px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .index-terms-box.open .index-terms-body { display: block; }
+    .index-terms-dl {
+        margin: 0;
+        padding: 0;
+    }
+    .index-terms-dl dt {
+        font-family: var(--font-roman);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+        margin-top: 8px;
+    }
+    .index-terms-dl dd {
+        margin: 2px 0 0 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        color: var(--ink-secondary);
+        line-height: 1.5;
+    }
+    .nyaya-heading {
+        font-family: var(--font-roman);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        margin: 16px 0 4px;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+    }
+
+    /* ── Inline Index Popovers ── */
+    .idx-term {
+        border-bottom: 1px dotted var(--saffron-light);
+        cursor: help;
+        position: relative;
+    }
+    .idx-term:hover::after {
+        content: attr(data-def);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        background: rgba(44, 36, 22, 0.92);
+        color: #F5ECD8;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        max-width: 280px;
+        z-index: 100;
+        white-space: normal;
+        line-height: 1.4;
+        pointer-events: none;
+    }
+
+    /* ── Structured Version Banner ── */
+    .structured-banner {
+        margin: 0 0 28px;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, rgba(212, 96, 10, 0.06) 0%, rgba(212, 96, 10, 0.02) 100%);
+        border: 1px solid var(--saffron-light);
+        border-radius: 6px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        color: var(--ink-secondary);
+        line-height: 1.6;
+    }
+    .structured-banner i { color: var(--saffron); margin-right: 4px; }
+    .structured-banner a { color: var(--indigo); font-weight: 600; text-decoration: none; }
+    .structured-banner a:hover { text-decoration: underline; }
+
+    /* ── Footnotes Section ── */
+    .footnotes-section {
+        margin: 32px 0 48px;
+        padding: 20px 24px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .footnotes-section hr {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 0 0 16px;
+    }
+
+    .footnotes-list {
+        padding-left: 24px;
+        margin: 0;
+    }
+
+    .footnote-item {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+        scroll-margin-top: 80px;
+    }
+
+    .footnote-item:target {
+        background: rgba(212, 96, 10, 0.1);
+        border-radius: 4px;
+        padding: 4px 6px;
+        margin-left: -6px;
+    }
+
+    .fn-back {
+        color: var(--saffron-light);
+        text-decoration: none;
+        font-size: 0.85em;
+        margin-left: 4px;
+    }
+
+    .fn-back:hover { color: var(--saffron); }
+
+    /* ── Reference Links ── */
+    a.ref {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: all 0.15s;
+    }
+
+    a.ref:hover {
+        color: var(--saffron);
+        border-bottom-style: solid;
+    }
+
+    a.mbta-ext {
+        color: var(--indigo);
+        font-size: 0.7em;
+        margin-left: 2px;
+        opacity: 0.5;
+        text-decoration: none;
+        vertical-align: super;
+    }
+    a.mbta-ext:hover { opacity: 1; color: var(--saffron); }
+
+    /* ── References Panel (sidebar) ── */
+    .refs-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .refs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .refs-list li {
+        padding: 3px 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .ref-source-link {
+        font-weight: 600;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .ref-source-link:hover {
+        text-decoration: underline;
+    }
+
+    .ref-verse-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.76rem;
+    }
+
+    .ref-verse-link:hover {
+        text-decoration: underline;
+        color: var(--saffron);
+    }
+
+    .ref-verses {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Timeline panel ── */
+    .timeline-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .timeline-list li {
+        padding: 2px 0;
+        font-size: 0.76rem;
+        line-height: 1.4;
+        position: relative;
+        padding-left: 14px;
+    }
+
+    .timeline-list li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--saffron);
+    }
+
+    .timeline-list li.tl-approximate::before {
+        background: transparent;
+        border: 2px solid var(--saffron);
+        width: 4px;
+        height: 4px;
+    }
+
+    .timeline-list li.tl-century::before {
+        background: transparent;
+        border: 2px dashed var(--saffron);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+
+    .tl-dot-link {
+        text-decoration: none;
+        color: var(--ink);
+        display: block;
+    }
+
+    .tl-dot-link:hover {
+        color: var(--saffron);
+    }
+
+    .tl-year {
+        font-weight: 600;
+        color: var(--saffron);
+        font-size: 0.72rem;
+        min-width: 70px;
+        display: inline-block;
+    }
+
+    .tl-label {
+        color: var(--ink-secondary);
+        font-size: 0.72rem;
+    }
+
+    .tl-view-link, .tl-more {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.72rem;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .tl-view-link:hover, .tl-more:hover {
+        text-decoration: underline;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+
+    .breadcrumb-bar a {
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+
+    .breadcrumb-bar .sep {
+        color: var(--amber);
+        margin: 0 8px;
+    }
+
+    .breadcrumb-bar .current {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Chapter Navigation ── */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        margin-top: 48px;
+        border-top: 2px solid var(--rule);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .chapter-nav a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        transition: all 0.2s;
+        max-width: 45%;
+    }
+
+    .chapter-nav a:hover {
+        background: var(--saffron-wash);
+        border-color: var(--saffron-light);
+    }
+
+    .nav-prev { text-align: left; }
+    .nav-next { text-align: right; margin-left: auto; }
+
+    .page-range {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+    }
+
+    /* ── Volume Cards (Landing) ── */
+    .vol-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .vol-card {
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        transition: all 0.25s;
+    }
+
+    .vol-card:hover {
+        border-color: var(--saffron-light);
+        box-shadow: 0 4px 24px rgba(212, 96, 10, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .vol-num {
+        font-family: var(--font-roman);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--saffron);
+        margin-bottom: 8px;
+    }
+
+    .vol-subtitle {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        line-height: 1.5;
+        flex: 1;
+    }
+
+    .vol-chapters {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        margin-top: 12px;
+    }
+
+    /* ── Chapter Cards (Volume Index) ── */
+    .chapter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .chapter-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .chapter-card:hover {
+        border-color: var(--saffron-light);
+        background: var(--saffron-wash);
+    }
+
+    .card-num {
+        font-family: var(--font-roman);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--saffron);
+        min-width: 36px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        flex: 1;
+    }
+
+    .card-pages {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        color: var(--ink-secondary);
+    }
+
+    /* ── Landing Hero ── */
+    .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-family: var(--font-roman);
+        font-size: 2.4rem;
+        color: var(--saffron);
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .hero .devanagari-title {
+        font-family: var(--font-devanagari);
+        font-size: 1.8rem;
+        color: var(--ink);
+        margin-bottom: 16px;
+    }
+
+    .hero .author {
+        font-family: var(--font-roman);
+        font-size: 1.1rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .hero .desc {
+        font-family: var(--font-roman);
+        font-size: 1rem;
+        color: var(--ink-secondary);
+        line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer { margin-top: 48px; }
+
+
+    .ref-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    .ref-table th { text-align: left; padding: 10px 12px; border-bottom: 2px solid var(--saffron);
+        font-family: 'Open Sans', sans-serif; font-size: 0.8rem; color: var(--ink-secondary);
+        text-transform: uppercase; letter-spacing: 0.5px; }
+    .ref-table td { padding: 8px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+    .ref-table tr:target { background: var(--saffron-wash); }
+    .verse-ref { font-weight: 600; color: var(--saffron); white-space: nowrap; min-width: 80px; }
+    .verse-locs a { color: var(--indigo); text-decoration: none; font-size: 0.85rem; }
+    .verse-locs a:hover { text-decoration: underline; }
+    .verse-context { color: var(--ink-secondary); font-style: italic; max-width: 400px; }
+    .verse-text { max-width: 460px; }
+    .kane-sa { font-family: 'Noto Serif Devanagari', serif; font-size: 0.95rem;
+        line-height: 1.7; color: var(--ink); }
+    .kane-note { font-size: 0.72rem; color: var(--ink-secondary); margin-top: 4px;
+        padding-left: 8px; border-left: 2px solid var(--rule, #ddd); opacity: .85; }
+    .kane-src { font-size: 0.7rem; color: var(--ink-secondary); margin-top: 3px; }
+    .kane-src a { color: var(--indigo); text-decoration: none; }
+    .kane-src a:hover { text-decoration: underline; }
+    .tier { text-transform: uppercase; letter-spacing: .06em; font-size: 0.62rem;
+        border: 1px solid currentColor; border-radius: 2px; padding: 0 3px; }
+    .tier.cited { color: #1f6b5c; }
+    .tier.sole { color: #a8730d; }
+    .kane-none { color: var(--ink-secondary); font-size: 0.75rem; opacity: .55; }
+    .source-hero { text-align: center; padding: 40px 20px 30px; max-width: 800px; margin: 0 auto; }
+    .source-hero h1 { font-family: var(--font-roman); color: var(--saffron); font-size: 2rem; }
+    .source-hero .stats { font-family: 'Open Sans', sans-serif; color: var(--ink-secondary);
+        font-size: 0.9rem; margin-top: 8px; }
+    .ext-link { color: var(--indigo); font-weight: 600; }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mbta/">
+      <div class="container-fluid">&emsp;&emsp;
+      <a href="../index.html" class="navbar-brand" style="text-decoration:none;">
+        <span class="devanagari ms-3" style="font-size:1.5rem; color:var(--saffron); font-weight:700;">धर्मशास्त्रम्</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="../index.html">धर्मशास्त्रम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5 active" href="../index.html">खण्डाः</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in/mbta/">महाभारतम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in">सनातनम्</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+
+    <div style="max-width: 1100px; margin: 0 auto; padding: 20px;">
+        <div class="breadcrumb-bar">
+            <a href="../index.html">Home</a>
+            <span class="sep">›</span>
+            <a href="index.html">References</a>
+            <span class="sep">›</span>
+            <span class="current">Śatapatha Brāhmaṇa</span>
+        </div>
+
+        <div class="source-hero">
+            <h1>Śatapatha Brāhmaṇa</h1>
+            <p class="stats">313 references across all volumes ·
+               167 distinct verses ·
+               <b>32</b> of them with the verse as Kane prints it</p>
+        </div>
+
+        <table class="ref-table">
+            <thead>
+                <tr><th>Verse</th><th>The verse, as Kane prints it</th><th>Locations</th><th>Context</th></tr>
+            </thead>
+            <tbody>
+                
+        <tr id="ci">
+            <td class="verse-ref">ci</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-vii-upanayana.html#p-chapter-vii-upanayana-63">vol-2-part-1 §chapter-vii-upanayana</a></td>
+            <td class="verse-context"><small>...quotations from the Atharvaveda and the Śat. Br. cited above (f. ṇ 622 and 625 ). In the be...</small></td>
+        </tr>
+
+        <tr id="c">
+            <td class="verse-ref">c</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxii-bhojana.html#p-chapter-xxii-bhojana-28">vol-2-part-2 §chapter-xxii-bhojana</a></td>
+            <td class="verse-context"><small>... the surā offered in the sacrifice. The Śat. Br. contrasts soma and of surā by saying ‘som...</small></td>
+        </tr>
+
+        <tr id="i">
+            <td class="verse-ref">i</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/9-vasishtha-dharmasutra.html#p-9-vasishtha-dharmasutra-13">vol-1-part-1 §9-vasishtha-dharmasutra</a> · <a href="../vol-1-part-1/34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-3">vol-1-part-1 §34-the-yājnavalkya-smriti</a> · <a href="../vol-2-part-1/chapter-ix-marriage.html#p-chapter-ix-marriage-80">vol-2-part-1 §chapter-ix-marriage</a> · <a href="../vol-2-part-2/chapter-xxxv-sautrāmanī-and-other-sacrifices.html#p-chapter-xxxv-sautrāmanī-and-other-sacrifices-27">vol-2-part-2 §chapter-xxxv-sautrāmanī-and-other-sacrifices</a> · <a href="../vol-2-part-2/chapter-xxxv-sautrāmanī-and-other-sacrifices.html#p-chapter-xxxv-sautrāmanī-and-other-sacrifices-27">vol-2-part-2 §chapter-xxxv-sautrāmanī-and-other-sacrifices</a></td>
+            <td class="verse-context"><small>...a XII. 13. Among the Brāhmaṇa works the Śatapatha Br. is the one that is often quoted; Vaṣ I. 4...</small></td>
+        </tr>
+
+        <tr id="I">
+            <td class="verse-ref">I</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-vii-eschatology.html#p-chapter-vii-eschatology-69">vol-4 §chapter-vii-eschatology</a> · <a href="../vol-5-part-1/chapter-xvi-muhūrta.html#p-chapter-xvi-muhūrta-2">vol-5-part-1 §chapter-xvi-muhūrta</a></td>
+            <td class="verse-context"><small>...n in the ancient procedure found in the Śat Br. It is only possible to say that in some c...</small></td>
+        </tr>
+
+        <tr id="1">
+            <td class="verse-ref">1</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/list-of-tīrthas.html#p-list-of-tīrthas-31">vol-4 §list-of-tīrthas</a></td>
+            <td class="verse-context"><small>...aid to have been rejuvenated by Aśvins, Śat. Br. 1 5.1-16 (SBE vol. 26 pp 272-276 he marri...</small></td>
+        </tr>
+
+        <tr id="I.1.4.5">
+            <td class="verse-ref">I.1.4.5</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxx-darsha-pūrnamāsa.html#p-chapter-xxx-darsha-pūrnamāsa-18">vol-2-part-2 §chapter-xxx-darsha-pūrnamāsa</a></td>
+            <td class="verse-context"><small>...&gt; skin with its neck portion westwards (Śat. Br. I. 1. 4. 5 ) and its hairy portion upwards with "t...</small></td>
+        </tr>
+
+        <tr id="I.1.4.12">
+            <td class="verse-ref">I.1.4.12</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">अङ्गीना अश्रोत्रियषण्डशूद्रवर्जम् । कात्या . श्रौ . सू . I. 4. 5; coṃ आषावेति शूद्रस्य मस्तु शूद्रस्येति सोमे पयोव्रतस्थाने। अहीवद्रवं शूद्रस्येति पितृमेधे । The first is</div><div class="kane-note">शतपथ I. 1. 4. 12 and the last is शतपथ XIII. 8. 3. 11.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-iii-the-duties-disabilities-and-privileges-of-varnas.html#fn-chapter-iii-the-duties-disabilities-and-privileges-of-varnas-152">vol-2-part-1 §chapter-iii-the-duties-disabilities-and-privileges-of-varnas</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-iii-the-duties-disabilities-and-privileges-of-varnas.html#p-chapter-iii-the-duties-disabilities-and-privileges-of-varnas-45">vol-2-part-1 §chapter-iii-the-duties-disabilities-and-privileges-of-varnas</a></td>
+            <td class="verse-context"><small>...d the adhikāra for Vedic rites e. g. in Śat. Br. I. 1. 4. 12 (S. B. E. vol. XII. p. 28 ) it is said ...</small></td>
+        </tr>
+
+        <tr id="I.2.3.9">
+            <td class="verse-ref">I.2.3.9</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxii-bhojana.html#p-chapter-xxii-bhojana-13">vol-2-part-2 §chapter-xxii-bhojana</a></td>
+            <td class="verse-context"><small>...and their flesh should not be eateṇ The Śat. Br. I. 2. 3. 9 contains a similar prohibitioṇ The Śat....</small></td>
+        </tr>
+
+        <tr id="I.2.5.1">
+            <td class="verse-ref">I.2.5.1</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xix-devayajna.html#p-chapter-xix-devayajna-14">vol-2-part-2 §chapter-xix-devayajna</a> · <a href="../vol-5-part-2/chapter-xxiv-influence-of-purānas-on-dharmashastra.html#p-chapter-xxiv-influence-of-purānas-on-dharmashastra-77">vol-5-part-2 §chapter-xxiv-influence-of-purānas-on-dharmashastra</a></td>
+            <td class="verse-context"><small>...ter-xix-devayajna-36"&gt;36&lt;/a&gt;&lt;/sup&gt; Vide Śat. Br. I. 2. 5. 1 for the Dwarf incarnatioṇ In the Chāndo...</small></td>
+        </tr>
+
+        <tr id="I.4.2">
+            <td class="verse-ref">I.4.2</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-ix-marriage.html#p-chapter-ix-marriage-64">vol-2-part-1 §chapter-ix-marriage</a></td>
+            <td class="verse-context"><small>...iṣṭuta &amp;c.' (vide Tai. S. II. 5. 9. and Śat. Br. I. 4. 2, Aśv. Śr. I. 2. 27-I. 3. 6). In the oth...</small></td>
+        </tr>
+
+        <tr id="I.4.2.2">
+            <td class="verse-ref">I.4.2.2</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/9-vasishtha-dharmasutra.html#p-9-vasishtha-dharmasutra-13">vol-1-part-1 §9-vasishtha-dharmasutra</a></td>
+            <td class="verse-context"><small>...Agnir-vai brāhmaṇa iti śruteḥ’ (this is Śat. Br. I. 4. 2. 2); ‘Vaṣ 23. 23 mentions the mantra begin...</small></td>
+        </tr>
+
+        <tr id="I.4.2.3-4">
+            <td class="verse-ref">I.4.2.3-4</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">अथोर्ध्वे प्रवृतिंते । ..... परस्ताद्वार्क् प्रवृतिंते परस्ताद्वार्ध्यः प्रजाः प्रजा - यंन्ते । ज्यायसस्य उ चैवैनं निहुते । इदं हि पित्रेवायेऽथ पुत्रोथ पौत्रस्तस्मान्परस्ताद्वार्क् प्रवृणुंते।</div><div class="kane-note">शतपथ I. 4. 2. 3-4 ; compare कात्यायनश्रौत III. 2. 7-11 अथ प्रवृणुतेऽ - त्रिर्वेवा दैयो होता देवावाम्श्र्द्धिक्षिरिद्धिकिस्त्वाल्मयुष्ण्वद्रतवसूवदवस्यू परस्ताद्वार्क्। यावन्तो वा मन्त्रकृतः । पुरोहितायेऽथ वा । क्षत्रियवैश्ययोश्च नित्यम्। मनुवदिति वा सर्वषाम्।</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-ix-marriage.html#fn-chapter-ix-marriage-134">vol-2-part-1 §chapter-ix-marriage</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-ix-marriage.html#p-chapter-ix-marriage-64">vol-2-part-1 §chapter-ix-marriage</a></td>
+            <td class="verse-context"><small>...ar passage in the Ait. Br. (35. 5). The Śat. Br. I. 4. 2. 3–4&lt;sup class="fn-ref"&gt;&lt;a href="#fn-chapter...</small></td>
+        </tr>
+
+        <tr id="I.6.3">
+            <td class="verse-ref">I.6.3</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">मन्त्री हीनः स्वरतो वर्णतो वा मिथ्याप्रयुक्तो न तमर्थमाह । स वाग्वज्रो यजमानं हिनस्ति यथेन्द्रशत्रुः स्वरतोपराधात् ॥ verse 52 of the पाणिनीयशिक्षा ; गीती शीघ्री शिरः कम्पौ तथा लिखितपाठका । अनर्थज्ञोऽल्पकण्ठश्च षडेते पाठकाधमाः । पाणिनीयशिक्षा verse 32. The legend is narrated in the तै . सं . II. 4. 12. 1 and the</div><div class="kane-note">शतपथ I. 6. 3. 8. Tvaṣṭṛ wanted to pronounce the word इन्द्रशत्रुः (meaning 'destroyer of Indra') as a Tatpuruṣa compound (in which the last syllable of the of Indra') as a Tatpuruṣa compound (in which the last syllable of the compound has the udātta accent), while he actually pronounced the word ‘whose killer would be Indra’), in which case the first word of the compound has the udātta accent (as in इन्द्रशत्रुः ). Vide पाणिणि VI. 1. 223 and VI. 2. 1.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-vii-upanayana.html#fn-chapter-vii-upanayana-229">vol-2-part-1 §chapter-vii-upanayana</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxii-bhojana.html#p-chapter-xxii-bhojana-28">vol-2-part-2 §chapter-xxii-bhojana</a></td>
+            <td class="verse-context"><small>...na-84"&gt;84&lt;/a&gt;&lt;/sup&gt; S. II. 5. 1 ff, the Śat. Br. I. 6. 3 and V. 5. 4 there is a legend of Viśvar...</small></td>
+        </tr>
+
+        <tr id="I.7.2.11">
+            <td class="verse-ref">I.7.2.11</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">जायमानो वै ब्राह्मणस्त्रिभिॠणैर्ऋणवा जायते ब्रह्मचर्येण ऋषीभ्यो यज्ञेन देवेभ्यः प्रजया पितृभ्य एव वा अनृणो यः पुत्री यज्वा ब्रह्मचारिवासी । तै . सं . VI. 3. 10. 5; ऋणे ह जायते योऽसौ स जायमान एव द्वैधं ऋषयः पितृभ्यो मनुष्येभ्यः ।</div><div class="kane-note">शतपथ I. 7. 2. 11; कारणमन्तरस्यात्मनस्तस्य वै गच्छति । पिता पुत्रस्य जातस्य पश्येच्चेज्जीवतो सुखम् । ...... नापुत्रस्य लोकोऽस्तीति तत्सर्वे पशवो विदुः । ऐ . ब्रा . 33. 1. वसिष्ठधर्मसूत्र XI. 47 quotes the first passage.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage.html#fn-polyandry-20">vol-2-part-1 §chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage.html#p-chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage-9">vol-2-part-1 §chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage</a> · <a href="../vol-3/chapter-xvi-contracts.html#p-chapter-xvi-contracts-5">vol-3 §chapter-xvi-contracts</a></td>
+            <td class="verse-context"><small>...-20"&gt;20&lt;/a&gt;&lt;/sup&gt; Tai. S. VI. 3. 10. 5, Śat. Br. I. 7.2.11, Ait. Br. 33.1. The last very succinctl...</small></td>
+        </tr>
+
+        <tr id="I.7.4.1">
+            <td class="verse-ref">I.7.4.1</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxxii-practices-of-shistas-conflict-among-shruti-smriti-and-sadāchāra-an.html#p-chapter-xxxii-practices-of-shistas-conflict-among-shruti-smriti-and-sadāchāra-an-10">vol-3 §chapter-xxxii-practices-of-shistas-conflict-among-shruti-smriti-and-sadāchāra-an</a></td>
+            <td class="verse-context"><small>... to have approached Usas, his daughter (Śat. Br. I. 7. 4. 1 or Ait. Br. 13 9); (2) Indra, who is de...</small></td>
+        </tr>
+
+        <tr id="I.7.4.17">
+            <td class="verse-ref">I.7.4.17</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-viii-shuddhi.html#p-chapter-viii-shuddhi-75">vol-4 §chapter-viii-shuddhi</a></td>
+            <td class="verse-context"><small>...ter-viii-shuddhi-123"&gt;123&lt;/a&gt;&lt;/sup&gt; The Śat. Br. I. 7. 4. 17 (S. B. E. vol. 12 p. 213) states ‘water...</small></td>
+        </tr>
+
+        <tr id="I.8.1.14-15">
+            <td class="verse-ref">I.8.1.14-15</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxx-darsha-pūrnamāsa.html#p-chapter-xxx-darsha-pūrnamāsa-39">vol-2-part-2 §chapter-xxx-darsha-pūrnamāsa</a></td>
+            <td class="verse-context"><small>...’ respectively (Āśv. I. 7. 1-2; compare Śat. Br. I. 8. 1. 14-15). He touches water. The adhvaryu turns ...</small></td>
+        </tr>
+
+        <tr id="I.8.3.6">
+            <td class="verse-ref">I.8.3.6</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">समान एव कर्मन् व्याक्रियेते तस्मात्समानादेव पुरुषादचा चायश्च जायते इदं हि चतुर्थे पुरुषे तृतीये संगच्छामहे इति वि देयं दीक्ष्यमाना जाया आस्ते। एतस्माद् तन् ।</div><div class="kane-note">शतपथ I. 8. 3. 6; उत हि तृतीये पुरुषे इरद्याह । अनेन दौहित्रपौत्रयोर्मूलपुरुषेणोपवेषेयी - परिगणनमुक्तं भवति । तयोः कृदस्त्वमाय्य तृतीयात् । संगच्छामे विवाहमेदे इद्रर्थः । स्मृतिच० I. p. 72.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-ix-marriage.html#fn-chapter-ix-marriage-77">vol-2-part-1 §chapter-ix-marriage</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-ix-marriage.html#p-chapter-ix-marriage-37">vol-2-part-1 §chapter-ix-marriage</a></td>
+            <td class="verse-context"><small>...pon two Vedic passages; one is from the Śat. Br. I. 8. 3. 6 (S. B. E. vol. XII. p. 238) “thus the s...</small></td>
+        </tr>
+
+        <tr id="I.9.3.1-2">
+            <td class="verse-ref">I.9.3.1-2</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">द्वे सृती ... इमन्ती हे वाव सृती इतराद्युद्गूर्वान्वा वै देवाः पितृणां चेति । शतपथ . XII. 8. 1. 21; मर्त्यानां मनुष्येणां द्वे सृती मार्गो सुक्तरानसि तमोंर्मध्ये एका पितृलोकभाजिका द्वितीया च देवलोकभाजिका। Coṃ of द्विवेदगङ्ग (Weber's eḍ p. 1165); यो यजते देवलोकं याति देवयानैवाभिप्रयाति तदुद्द्युत्सौ दक्षिणा यं यजमानः स एष देवयानो वा पितृयाणो वा पन्थाः ।</div><div class="kane-note">शतपथ I. 9. 3. 1–2.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-5-part-2/chapter-xxxv-the-doctrine-of-karma-and-punarjanma-transmigration-or-metempsychos.html#fn-chapter-xxxv-the-doctrine-of-karma-and-punarjanma-transmigration-or-metempsychos-35">vol-5-part-2 §chapter-xxxv-the-doctrine-of-karma-and-punarjanma-transmigration-or-metempsychos</a></div></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxxv-the-doctrine-of-karma-and-punarjanma-transmigration-or-metempsychos.html#p-chapter-xxxv-the-doctrine-of-karma-and-punarjanma-transmigration-or-metempsychos-29">vol-5-part-2 §chapter-xxxv-the-doctrine-of-karma-and-punarjanma-transmigration-or-metempsychos</a></td>
+            <td class="verse-context"><small>...e first half in the same way. Vide also Śat. Br. I. 9. 3. 1–2. Devayāna is sometimes used in the plur...</small></td>
+        </tr>
+
+        <tr id="II">
+            <td class="verse-ref">II</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-ii-means-of-reducing-consequences-of-sins.html#p-chapter-ii-means-of-reducing-consequences-of-sins-5">vol-4 §chapter-ii-means-of-reducing-consequences-of-sins</a></td>
+            <td class="verse-context"><small>...sed to the existence of a paramour, the Śat. Br. II 5 2. 20 states that she made an offerin...</small></td>
+        </tr>
+
+        <tr id="II.1.2">
+            <td class="verse-ref">II.1.2</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-1/chapter-xv-units-of-kāla.html#p-chapter-xv-units-of-kāla-12">vol-5-part-1 §chapter-xv-units-of-kāla</a></td>
+            <td class="verse-context"><small>...f the sacred fires (Agnyādhāna). In the Śatapatha Brāhmaṇa ( II. 1. 2 ) reference is made to several nakṣatras ...</small></td>
+        </tr>
+
+        <tr id="II.1.2.11">
+            <td class="verse-ref">II.1.2.11</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">अर्जुनो ह वै नामेन्द्रो यदस्य गुह्यं नामाऽर्जुन्यो वै नामैतत्तत् परोक्षमाचक्षते फाल्गुन्य इति ।</div><div class="kane-note">शतपथ II. 1. 2. 11.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-vi-samskāras.html#fn-chapter-vi-samskāras-116">vol-2-part-1 §chapter-vi-samskāras</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-vi-samskāras.html#p-chapter-vi-samskāras-70">vol-2-part-1 §chapter-vi-samskāras</a></td>
+            <td class="verse-context"><small>...ter-vi-samskāras-115"&gt;115&lt;/a&gt;&lt;/sup&gt; The Śat. Br. (II. 1. 2. 11) says 'Arjuna is the secret name of Indr...</small></td>
+        </tr>
+
+        <tr id="II.1.2.17">
+            <td class="verse-ref">II.1.2.17</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxix-shrauta-vedic-sacrifices.html#p-chapter-xxix-shrauta-vedic-sacrifices-12">vol-2-part-2 §chapter-xxix-shrauta-vedic-sacrifices</a></td>
+            <td class="verse-context"><small>...in results ( V. 3. 3-14 ). According to Śat. Br. II. 1. 2. 17 and Āp. V. 3. 13 a kṣatriya should cons...</small></td>
+        </tr>
+
+        <tr id="II.1.3.2">
+            <td class="verse-ref">II.1.3.2</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-1/chapter-xv-units-of-kāla.html#p-chapter-xv-units-of-kāla-4">vol-5-part-1 §chapter-xv-units-of-kāla</a></td>
+            <td class="verse-context"><small>In the Śatapatha Brāhmaṇa (II. 1. 3. 2)&lt;sup class="fn-ref"&gt;&lt;a href="#fn-chapter...</small></td>
+        </tr>
+
+        <tr id="II.2.3">
+            <td class="verse-ref">II.2.3</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">आदिपुरुषैव सर्व ऋतवः । यदैवोदेथ सङ्गो यदा संगवोथ श्रीमयो यदा मध्यन्दिनो यदा संपातोथ शरद्धं यदैवोपतस्तस्माद्य मध्यन्दिन एकादशाः पीताः स्तोमोऽथ लोकस्य नेदीयं भवति ।</div><div class="kane-note">शतपथ II. 2.3.9, quoted by स्मृतिचि . ( ब्रा p 363)</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-4/chapter-ix-shrāddha.html#fn-chapter-ix-shrāddha-100">vol-4 §chapter-ix-shrāddha</a></div></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-ix-shrāddha.html#p-chapter-ix-shrāddha-44">vol-4 §chapter-ix-shrāddha</a></td>
+            <td class="verse-context"><small>...apter-ix-shrāddha-100"&gt;100&lt;/a&gt;&lt;/sup&gt; on Śat. Br. II. 2. 3 9. The five parts are called prātaḥ, sa...</small></td>
+        </tr>
+
+        <tr id="II.2.10.6">
+            <td class="verse-ref">II.2.10.6</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxv-dāna-gifts.html#p-chapter-xxv-dāna-gifts-5">vol-2-part-2 §chapter-xxv-dāna-gifts</a></td>
+            <td class="verse-context"><small>The Śat. Br. (II. 2. 10. 6) says ‘there are two kinds of devas, the...</small></td>
+        </tr>
+
+        <tr id="II.3">
+            <td class="verse-ref">II.3</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">स प्रजोड़पायनात्तौ देवेषु तर्हि भवति । “ “ अत्र दक्षिणावर्त्ते पितृषु तर्हि भवति ।</div><div class="kane-note">शतपथ II. 3. 2 3.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-5-part-1/chapter-xv-units-of-kāla.html#fn-chapter-xv-units-of-kāla-14">vol-5-part-1 §chapter-xv-units-of-kāla</a></div></td>
+            <td class="verse-locs"><a href="../vol-5-part-1/chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-30">vol-5-part-1 §chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc</a></td>
+            <td class="verse-context"><small>...āyāhna, which five are mentioned in the Śatapatha Br. II. 3 2 9 Both ‘prātah’ (morning) and ‘sāyam’...</small></td>
+        </tr>
+
+        <tr id="II.3.1.14-16">
+            <td class="verse-ref">II.3.1.14-16</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxix-shrauta-vedic-sacrifices.html#p-chapter-xxix-shrauta-vedic-sacrifices-27">vol-2-part-2 §chapter-xxix-shrauta-vedic-sacrifices</a></td>
+            <td class="verse-context"><small>...oint or should only be simply hot (vide Śat. Br. II. 3. 1. 14-16 and coṃ on Kāt. IV. 14. 5). Then the po...</small></td>
+        </tr>
+
+        <tr id="II.3.4.9-41">
+            <td class="verse-ref">II.3.4.9-41</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxix-shrauta-vedic-sacrifices.html#p-chapter-xxix-shrauta-vedic-sacrifices-28">vol-2-part-2 §chapter-xxix-shrauta-vedic-sacrifices</a></td>
+            <td class="verse-context"><small>...sapra mantras ( Vāj. S. III. 11. 36 and Śat. Br. II. 3. 4. 9-41 ) is optional and the householder may s...</small></td>
+        </tr>
+
+        <tr id="II, 4, 2">
+            <td class="verse-ref">II, 4, 2</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">ततो देवा यज्ञोपवीतिनो भूत्वा दक्षिणं जान्वाच्योपसीदन्तमब्रवीद्यज्ञो वोऽन्नममृतं वः शूषं सूर्यो वो ज्योतिरिति । अथैनं पितरः प्राचीनावीतिनः सव्यं जान्वाच्य ... ... अथैनं मनुष्याः प्रावृता उपस्थं कृत्वापोपसीदन् ।</div><div class="kane-note">शतपथ II. 4. 2. 1.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-vii-upanayana.html#fn-chapter-vii-upanayana-61">vol-2-part-1 §chapter-vii-upanayana</a></div></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-ix-shrāddha.html#p-chapter-ix-shrāddha-87">vol-4 §chapter-ix-shrāddha</a></td>
+            <td class="verse-context"><small>...pter-ix-shrāddha-222"&gt;222&lt;/a&gt;&lt;/sup&gt; The Śat. Br. (II, 4, 2) contains the following somewhat fuller ...</small></td>
+        </tr>
+
+        <tr id="II.4.2.2">
+            <td class="verse-ref">II.4.2.2</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-ix-shrāddha.html#p-chapter-ix-shrāddha-12">vol-4 §chapter-ix-shrāddha</a></td>
+            <td class="verse-context"><small>...hapter-ix-shrāddha-25"&gt;25&lt;/a&gt;&lt;/sup&gt; The Śat Br. II. 4. 2.2 narrates that the pitṛs wearing the sac...</small></td>
+        </tr>
+
+        <tr id="II.4.2.6">
+            <td class="verse-ref">II.4.2.6</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxii-bhojana.html#p-chapter-xxii-bhojana-3">vol-2-part-2 §chapter-xxii-bhojana</a></td>
+            <td class="verse-context"><small>...day' says the Tai. Br. I. 4. 9. and the Śat. Br. II. 4. 2. 6. There were certain taboos about articl...</small></td>
+        </tr>
+
+        <tr id="II.4.2.12-13">
+            <td class="verse-ref">II.4.2.12-13</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-ix-shrāddha.html#p-chapter-ix-shrāddha-110">vol-4 §chapter-ix-shrāddha</a></td>
+            <td class="verse-context"><small>...rom very ancient timeṣ According to the Śat. Br. II. 4. 2. 12-13 the āhutis were only &lt;sup class="fn-ref...</small></td>
+        </tr>
+
+        <tr id="II.4.2.16">
+            <td class="verse-ref">II.4.2.16</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-ix-shrāddha.html#p-chapter-ix-shrāddha-115">vol-4 §chapter-ix-shrāddha</a></td>
+            <td class="verse-context"><small>.... I 3. 10, II. 6. 16, Vāj. S. 19 36-37, Śat. Br. II. 4. 2. 16, in all of which the only persons expre...</small></td>
+        </tr>
+
+        <tr id="II.4.2.24">
+            <td class="verse-ref">II.4.2.24</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-ix-marriage.html#p-chapter-ix-marriage-58">vol-2-part-1 §chapter-ix-marriage</a></td>
+            <td class="verse-context"><small>...t in the Tai. S. II. 3. 8. 2 and in the Śat. Br. II. 4. 2. 24 the word piṇḍa means ‘ball of rice’ off...</small></td>
+        </tr>
+
+        <tr id="II.5.1">
+            <td class="verse-ref">II.5.1</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxxi-chāturmāsyas-seasonal-sacrifices.html#p-chapter-xxxi-chāturmāsyas-seasonal-sacrifices-5">vol-2-part-2 §chapter-xxxi-chāturmāsyas-seasonal-sacrifices</a></td>
+            <td class="verse-context"><small>...saparvaṇ Kāt. ( V. 1. 25-26 ) following Śat. Br. ( II. 5. 1 ) says that barhis ( sacred grass to be s...</small></td>
+        </tr>
+
+        <tr id="II.5.1.21">
+            <td class="verse-ref">II.5.1.21</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxxi-chāturmāsyas-seasonal-sacrifices.html#p-chapter-xxxi-chāturmāsyas-seasonal-sacrifices-5">vol-2-part-2 §chapter-xxxi-chāturmāsyas-seasonal-sacrifices</a></td>
+            <td class="verse-context"><small>...and Sunāśīrīya parvanṣ According to the Śat. Br. (II. 5. 1. 21 ) the dakṣiṇā in this rite is the first b...</small></td>
+        </tr>
+
+        <tr id="II.5.2.1">
+            <td class="verse-ref">II.5.2.1</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxxi-chāturmāsyas-seasonal-sacrifices.html#p-chapter-xxxi-chāturmāsyas-seasonal-sacrifices-7">vol-2-part-2 §chapter-xxxi-chāturmāsyas-seasonal-sacrifices</a></td>
+            <td class="verse-context"><small>...d is always employed in the plural. The Śat. Br. (II. 5. 2. 1) gives a fanciful etymology viz. that ya...</small></td>
+        </tr>
+
+        <tr id="II.5.2.20">
+            <td class="verse-ref">II.5.2.20</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage.html#p-chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage-23">vol-2-part-1 §chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage</a> · <a href="../vol-4/chapter-i-sin-in-rigveda-conception-of-rita-enumeration-and-classification-of-si.html#p-chapter-i-sin-in-rigveda-conception-of-rita-enumeration-and-classification-of-si-43">vol-4 §chapter-i-sin-in-rigveda-conception-of-rita-enumeration-and-classification-of-si</a></td>
+            <td class="verse-context"><small>...n the sacrifice. Vide Tai. Br. I. 6. 5, Śat. Br. II. 5. 2. 20, Kātyāyana Śr. V. 6–10.</small></td>
+        </tr>
+
+        <tr id="II.6.2.1-17">
+            <td class="verse-ref">II.6.2.1-17</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxxi-chāturmāsyas-seasonal-sacrifices.html#p-chapter-xxxi-chāturmāsyas-seasonal-sacrifices-12">vol-2-part-2 §chapter-xxxi-chāturmāsyas-seasonal-sacrifices</a></td>
+            <td class="verse-context"><small>...Traiyambaka homa. Vide Tai. S. I. 8. 6, Śat Br. II. 6. 2. 1-17, Āśv. II. 19. 37-40, Āp. VIII. 17-19, B...</small></td>
+        </tr>
+
+        <tr id="II.6.3.2">
+            <td class="verse-ref">II.6.3.2</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxxi-chāturmāsyas-seasonal-sacrifices.html#p-chapter-xxxi-chāturmāsyas-seasonal-sacrifices-15">vol-2-part-2 §chapter-xxxi-chāturmāsyas-seasonal-sacrifices</a></td>
+            <td class="verse-context"><small>...Vāyu and Āditya respectively; while the Śat. Br. II. 6. 3. 2 appears to hold that śuna means prosper...</small></td>
+        </tr>
+
+        <tr id="III">
+            <td class="verse-ref">III</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/list-of-tīrthas.html#p-list-of-tīrthas-264">vol-4 §list-of-tīrthas</a></td>
+            <td class="verse-context"><small>...ere- from), Mauṣrayanī saṃhitā III 6 3, Śat Br III 1. 3 12 (all these mention Trikaludha o...</small></td>
+        </tr>
+
+        <tr id="III.1.2.19">
+            <td class="verse-ref">III.1.2.19</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxix-shrauta-vedic-sacrifices.html#p-chapter-xxix-shrauta-vedic-sacrifices-12">vol-2-part-2 §chapter-xxix-shrauta-vedic-sacrifices</a></td>
+            <td class="verse-context"><small>...s in spring ' ( Tai. Br. I. 1. 2 ). The Śat. Br. ( III. 1. 2. 19 ) appears to condemn the setting up of fi...</small></td>
+        </tr>
+
+        <tr id="III.1.2.21">
+            <td class="verse-ref">III.1.2.21</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/9-vasishtha-dharmasutra.html#p-9-vasishtha-dharmasutra-13">vol-1-part-1 §9-vasishtha-dharmasutra</a> · <a href="../vol-2-part-2/chapter-xxii-bhojana.html#p-chapter-xxii-bhojana-13">vol-2-part-2 §chapter-xxii-bhojana</a></td>
+            <td class="verse-context"><small>...vedam-ādhyam’ &amp;c), Vaṣ 14. 46 refers to Śat. Br. III. 1. 2. 21; Vaṣ 19. 4 (vijñāyate brahmapurohitam r...</small></td>
+        </tr>
+
+        <tr id="III.2.1.22">
+            <td class="verse-ref">III.2.1.22</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">स इदं देवेभ्यो हविः संस्कृत साधु संस्कृतं संस्कृतविर्वैदेवाह । शतपथ I. 1. 4. 10; तस्मादु स्त्री पुमांसं संस्कृते तिष्ठन्तभ्यैति ।</div><div class="kane-note">शतपथ III. 2. 1. 22</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-vi-samskāras.html#fn-chapter-vi-samskāras-8">vol-2-part-1 §chapter-vi-samskāras</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-vi-samskāras.html#p-chapter-vi-samskāras-3">vol-2-part-1 §chapter-vi-samskāras</a></td>
+            <td class="verse-context"><small>...ng) offering (havis) for the godṣ So in Śat. Br. III. 2. 1. 22 ‘therefore a woman approaches a man who...</small></td>
+        </tr>
+
+        <tr id="III.3.12">
+            <td class="verse-ref">III.3.12</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxxiii-agnishtoma.html#p-chapter-xxxiii-agnishtoma-2">vol-2-part-2 §chapter-xxxiii-agnishtoma</a></td>
+            <td class="verse-context"><small>... for receiving spiritual influenceṣ The Śat. Br. III. 3. 12 states ‘he who is consecrated becomes a...</small></td>
+        </tr>
+
+        <tr id="III.4.4.3-4">
+            <td class="verse-ref">III.4.4.3-4</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxxiii-agnishtoma.html#p-chapter-xxxiii-agnishtoma-9">vol-2-part-2 §chapter-xxxiii-agnishtoma</a></td>
+            <td class="verse-context"><small>...erted here it is difficult to say. Vide Śat. Br. III. 4. 4. 3–4 (for the cities and their siege). Āp. X...</small></td>
+        </tr>
+
+        <tr id="III.5.1.24-30">
+            <td class="verse-ref">III.5.1.24-30</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">तस्माद्देवान्ने निर्गुल्तदक्षिणां प्रतिगृह्णीयात्पुचा पुत्वा वित्वादिति । यदि चेनां प्रतिगृह्णीयाद्रियिषेपिणैवाभ्युपद्यात्तराय देव भवति । ऐ . ब्रा . 30. 9; the</div><div class="kane-note">शतपथ III. 5. 1. 25 also has the words तस्मात्सिद्ध ... गृहीयात् and it adds रिंही हैने भूत्वा क्षिणोति .</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-2/chapter-xxv-dāna-gifts.html#fn-chapter-xxv-dāna-gifts-9">vol-2-part-2 §chapter-xxv-dāna-gifts</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxxii-pashubandha-or-nirūdhapaśubandha-immolation-of-an-animal-sacrifice.html#p-chapter-xxxii-pashubandha-or-nirūdhapaśubandha-immolation-of-an-animal-sacrifice-4">vol-2-part-2 §chapter-xxxii-pashubandha-or-nirūdhapaśubandha-immolation-of-an-animal-sacrifice</a></td>
+            <td class="verse-context"><small>...to the north side of the mahāvedi (vide Śat. Br. III. 5. 1. 24–30). The earth dug up is heaped on the utt...</small></td>
+        </tr>
+
+        <tr id="III.6.2.15">
+            <td class="verse-ref">III.6.2.15</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">तस्माद् ब्रह्मचारिण आचार्य गोपापयन्ति गृहान्पशूंश्चोपदराजनिति ।</div><div class="kane-note">शतपथ III. 6. 2. 15.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-vii-upanayana.html#fn-chapter-vii-upanayana-12">vol-2-part-1 §chapter-vii-upanayana</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-vii-upanayana.html#p-chapter-vii-upanayana-4">vol-2-part-1 §chapter-vii-upanayana</a></td>
+            <td class="verse-context"><small>...tra) 2. 3 and Bauḍ Dh. S. I. 2. 53. The Śat. Br. (III. 6. 2. 15) further says 'therefore brahmacārins pr...</small></td>
+        </tr>
+
+        <tr id="III.8.1.5">
+            <td class="verse-ref">III.8.1.5</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxxii-pashubandha-or-nirūdhapaśubandha-immolation-of-an-animal-sacrifice.html#p-chapter-xxxii-pashubandha-or-nirūdhapaśubandha-immolation-of-an-animal-sacrifice-7">vol-2-part-2 §chapter-xxxii-pashubandha-or-nirūdhapaśubandha-immolation-of-an-animal-sacrifice</a></td>
+            <td class="verse-context"><small>...words ‘let this edge be marked by you’ (Śat. Br. III. 8. 1. 5). The animal when killed is cut up by t...</small></td>
+        </tr>
+
+        <tr id="III.8.2">
+            <td class="verse-ref">III.8.2</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage.html#p-chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage-6">vol-2-part-1 §chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage</a></td>
+            <td class="verse-context"><small>...washing the slaughtered animal (compare Śat. Br. III. 8. 2 and Gobhila gr III. 10. 29), looking at...</small></td>
+        </tr>
+
+        <tr id="III.9.2.8-9">
+            <td class="verse-ref">III.9.2.8-9</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxxiii-agnishtoma.html#p-chapter-xxxiii-agnishtoma-12">vol-2-part-2 §chapter-xxxiii-agnishtoma</a></td>
+            <td class="verse-context"><small>... Vāj. S. VI. 23, Tai. S. I. 3. 12. 1 ). Śat. Br. III. 9. 2. 8-9, Kāt. VIII. 9. 8-10 and Āp. XI. 20. 10-...</small></td>
+        </tr>
+
+        <tr id="IV.I.1.25">
+            <td class="verse-ref">IV.I.1.25</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxvii-nyāsas-mudrās-yantra-chakra-mandala-etc.html#p-chapter-xxvii-nyāsas-mudrās-yantra-chakra-mandala-etc-19">vol-5-part-2 §chapter-xxvii-nyāsas-mudrās-yantra-chakra-mandala-etc</a></td>
+            <td class="verse-context"><small>...rcular bricks (maṇḍalāṣṭakā); vide also Śat. Br. IV. I. 1. 25. The orb of the Sun is also called the ...</small></td>
+        </tr>
+
+        <tr id="IV.1.5.13">
+            <td class="verse-ref">IV.1.5.13</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-xv-kurukshetra-and-some-other-famous-tīrthas.html#p-chapter-xv-kurukshetra-and-some-other-famous-tīrthas-1">vol-4 §chapter-xv-kurukshetra-and-some-other-famous-tīrthas</a></td>
+            <td class="verse-context"><small>...ukṣetra had become a very holy lanḍ The Śat. Br. (IV. 1. 5. 13) narrates the legend that the gods perfo...</small></td>
+        </tr>
+
+        <tr id="IV.3.3.6">
+            <td class="verse-ref">IV.3.3.6</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxiv-minor-grihya-and-other-rites.html#p-chapter-xxiv-minor-grihya-and-other-rites-8">vol-2-part-2 §chapter-xxiv-minor-grihya-and-other-rites</a></td>
+            <td class="verse-context"><small>...tree, because there is a Vedic passage (Śat. Br. IV. 3. 3. 6)&lt;sup class="fn-ref"&gt;&lt;a href="#fn-chapte...</small></td>
+        </tr>
+
+        <tr id="IV.3.4">
+            <td class="verse-ref">IV.3.4</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxxiii-agnishtoma.html#p-chapter-xxxiii-agnishtoma-29">vol-2-part-2 §chapter-xxxiii-agnishtoma</a></td>
+            <td class="verse-context"><small>...aced to the south of the mahāvedi. Vide Śat. Br. IV. 3. 4 about dakṣiṇā (derived from 'daksay' to...</small></td>
+        </tr>
+
+        <tr id="IV.4.5.8">
+            <td class="verse-ref">IV.4.5.8</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxxiii-agnishtoma.html#p-chapter-xxxiii-agnishtoma-37">vol-2-part-2 §chapter-xxxiii-agnishtoma</a></td>
+            <td class="verse-context"><small>.... II. 12. 1). It is ‘agniṣṭapati’ (vide Śat. Br. IV. 4. 5. 8 and Drāhyāyaṇā śr. VI. 4. 1). When the ...</small></td>
+        </tr>
+
+        <tr id="IV.5.2.16">
+            <td class="verse-ref">IV.5.2.16</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxiv-minor-grihya-and-other-rites.html#p-chapter-xxiv-minor-grihya-and-other-rites-8">vol-2-part-2 §chapter-xxiv-minor-grihya-and-other-rites</a></td>
+            <td class="verse-context"><small>...s a bali to the Maruts; for Śruti says (Śat. Br. IV. 5. 2. 16) 'the maruts are the eaters of ahuta ';...</small></td>
+        </tr>
+
+        <tr id="IV.5.7.1">
+            <td class="verse-ref">IV.5.7.1</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-iii-prāyashchitta-its-origin-derivation-and-meaning.html#p-chapter-iii-prāyashchitta-its-origin-derivation-and-meaning-1">vol-4 §chapter-iii-prāyashchitta-its-origin-derivation-and-meaning</a></td>
+            <td class="verse-context"><small>... niskrti), in the Ait. Br. V 27, in the Śat. Br. IV. 5. 7.1, VII. 1,4 9, XI. 5.3 8, XII. 4.1 6 and ...</small></td>
+        </tr>
+
+        <tr id="IV.5.10">
+            <td class="verse-ref">IV.5.10</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxxiii-agnishtoma.html#p-chapter-xxxiii-agnishtoma-37">vol-2-part-2 §chapter-xxxiii-agnishtoma</a></td>
+            <td class="verse-context"><small>...able, in the times of the Brāhmaṇaṣ The Śat. Br. IV. 5. 10 mentions several substitutes for soma, ...</small></td>
+        </tr>
+
+        <tr id="IV.6.3.3">
+            <td class="verse-ref">IV.6.3.3</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxxiv-other-soma-sacrifices.html#p-chapter-xxxiv-other-soma-sacrifices-1">vol-2-part-2 §chapter-xxxiv-other-soma-sacrifices</a></td>
+            <td class="verse-context"><small>... mentioned as forms of Jyotiṣṭoma (vide Śat. Br. IV. 6. 3. 3, Tai. Br. I. 3. 2 and 4, which last men...</small></td>
+        </tr>
+
+        <tr id="IV.6.4.2">
+            <td class="verse-ref">IV.6.4.2</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxxv-sautrāmanī-and-other-sacrifices.html#p-chapter-xxxv-sautrāmanī-and-other-sacrifices-19">vol-2-part-2 §chapter-xxxv-sautrāmanī-and-other-sacrifices</a></td>
+            <td class="verse-context"><small>...ā-vrata means ‘anna’ (Tāṇḍya IV. 10. 2, Śat. Br. IV. 6. 4. 2). In this a mahāvratīya cup of soma is ...</small></td>
+        </tr>
+
+        <tr id="IV.6.9.7">
+            <td class="verse-ref">IV.6.9.7</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxxv-sautrāmanī-and-other-sacrifices.html#p-chapter-xxxv-sautrāmanī-and-other-sacrifices-17">vol-2-part-2 §chapter-xxxv-sautrāmanī-and-other-sacrifices</a></td>
+            <td class="verse-context"><small>...dy their Veda and to fetch fuel-sticks (Śat. Br. IV. 6. 9. 7, Kāt. XII. 4. 1 and 3). On the tenth da...</small></td>
+        </tr>
+
+        <tr id="V">
+            <td class="verse-ref">V</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-iv-ministers.html#p-chapter-iv-ministers-4">vol-3 §chapter-iv-ministers</a> · <a href="../vol-3/chapter-iv-ministers.html#p-chapter-iv-ministers-4">vol-3 §chapter-iv-ministers</a></td>
+            <td class="verse-context"><small>... also Tai S I 8 9 1-2. It is clear from Śat Br V 3 2 2 and 4 that some of these jewels l...</small></td>
+        </tr>
+
+        <tr id="V.1">
+            <td class="verse-ref">V.1</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">‘ न वै ब्राह्मणो राज्यायालम् ’</div><div class="kane-note">शतपथ V. 1. 1.12; S. B. E. vol. 41 p. 4. न वै ब्राह्मणो श्री रमते इति ब्राह्मणांगोंन्यो गायेदाञ्जपौयोः । तै . ब्रा . III. 9. 14</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-ii-varna.html#fn-chapter-ii-varna-39">vol-2-part-1 §chapter-ii-varna</a></div></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-i-sin-in-rigveda-conception-of-rita-enumeration-and-classification-of-si.html#p-chapter-i-sin-in-rigveda-conception-of-rita-enumeration-and-classification-of-si-25">vol-4 §chapter-i-sin-in-rigveda-conception-of-rita-enumeration-and-classification-of-si</a></td>
+            <td class="verse-context"><small>...rā (e. g. in Tai S II 5 11, Vāj S, 197, Śat Br. V. 1 5 28). The last furnishes the striking ...</small></td>
+        </tr>
+
+        <tr id="V.1.3">
+            <td class="verse-ref">V.1.3</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-ii-seven-angas-of-rājya.html#p-chapter-ii-seven-angas-of-rājya-13">vol-3 §chapter-ii-seven-angas-of-rājya</a></td>
+            <td class="verse-context"><small>...crifice. But passages like the last and Śat. Br V. 1. 3 4, V. 1. 4. 2, V. 2. 2. 14 should *not ...</small></td>
+        </tr>
+
+        <tr id="V.1.5.14">
+            <td class="verse-ref">V.1.5.14</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-ii-seven-angas-of-rājya.html#p-chapter-ii-seven-angas-of-rājya-13">vol-3 §chapter-ii-seven-angas-of-rājya</a></td>
+            <td class="verse-context"><small>...and may you uphold the kingdom’. In the Śatapatha Brāhmaṇa V. 1. 5. 14 (when describing the shooting of arrows...</small></td>
+        </tr>
+
+        <tr id="V.1.5.17">
+            <td class="verse-ref">V.1.5.17</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-vii-upanayana.html#p-chapter-vii-upanayana-4">vol-2-part-1 §chapter-vii-upanayana</a></td>
+            <td class="verse-context"><small>...ho dwells near a teacher) occurs in the Śat. Br. V. 1. 5. 17 and in the Tai. Up. I. 11. The Śat. Br....</small></td>
+        </tr>
+
+        <tr id="V.2.1.8">
+            <td class="verse-ref">V.2.1.8</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xvii-āhnika-and-āchāra.html#p-chapter-xvii-āhnika-and-āchāra-35">vol-2-part-1 §chapter-xvii-āhnika-and-āchāra</a></td>
+            <td class="verse-context"><small>...n of the black deer is mentioneḍ In the Śat. Br. V. 2. 1. 8 it is said that when the Nestṛ&lt;sup clas...</small></td>
+        </tr>
+
+        <tr id="V.2.1.10">
+            <td class="verse-ref">V.2.1.10</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-ix-marriage.html#p-chapter-ix-marriage-3">vol-2-part-1 §chapter-ix-marriage</a></td>
+            <td class="verse-context"><small>...e wife as a son ( Ait. Br. 33. 1 ). The Śat. Br. V. 2. 1. 10 says ‘the wife&lt;sup class="fn-ref"&gt;&lt;a hr...</small></td>
+        </tr>
+
+        <tr id="V.2.4.7">
+            <td class="verse-ref">V.2.4.7</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxxiv-cosmology.html#p-chapter-xxxiv-cosmology-6">vol-5-part-2 §chapter-xxxiv-cosmology</a></td>
+            <td class="verse-context"><small>...appears, there was a firm belief (as in Śat. Br. V. 2. 4. 7, VI. 1. 1. 3 and Tai. S. VII. 4. 2. 1) ...</small></td>
+        </tr>
+
+        <tr id="V.4.2.3">
+            <td class="verse-ref">V.4.2.3</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">सोमोऽस्माकं ब्राह्मणानां राजा ।</div><div class="kane-note">शतपथ V. 4. 2. 3; तस्माद् ब्राह्मणोऽद्यनाद्य सोमराजा हि भवति । शतपथ IX. 4. 3. 16.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-iii-the-duties-disabilities-and-privileges-of-varnas.html#fn-chapter-iii-the-duties-disabilities-and-privileges-of-varnas-96">vol-2-part-1 §chapter-iii-the-duties-disabilities-and-privileges-of-varnas</a></div></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/9-vasishtha-dharmasutra.html#p-9-vasishtha-dharmasutra-13">vol-1-part-1 §9-vasishtha-dharmasutra</a></td>
+            <td class="verse-context"><small>... that is often quoted; Vaṣ I. 45 quotes Śat. Br. V. 4. 2. 3 (‘brāhmaṇo vedam-ādhyam’ &amp;c), Vaṣ 14. 4...</small></td>
+        </tr>
+
+        <tr id="V.4.3">
+            <td class="verse-ref">V.4.3</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-ii-seven-angas-of-rājya.html#p-chapter-ii-seven-angas-of-rājya-13">vol-3 §chapter-ii-seven-angas-of-rājya</a></td>
+            <td class="verse-context"><small>...the representative of Prajāpati. In the Śat. Br V. 4. 3 4 the sacrificer in the Rājasūya is ide...</small></td>
+        </tr>
+
+        <tr id="V.4.4.5">
+            <td class="verse-ref">V.4.4.5</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">एष च श्रोत्रियश्चैतो है वै द्वौ मनुष्येषु ध्रुवतत्तौ ।</div><div class="kane-note">शतपथ V. 4. 4. 5.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-1/2-sources-of-dharma.html#fn-2-sources-of-dharma-24">vol-1-part-1 §2-sources-of-dharma</a></div></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/9-vasishtha-dharmasutra.html#p-9-vasishtha-dharmasutra-13">vol-1-part-1 §9-vasishtha-dharmasutra</a></td>
+            <td class="verse-context"><small>... Gaut. Dh. S. XI. 13-14 and is based on Śat. Br. V. 4. 4. 5; Vaṣ 30. 3 ‘Agnir-vai brāhmaṇa iti śrut...</small></td>
+        </tr>
+
+        <tr id="V.4.4.6">
+            <td class="verse-ref">V.4.4.6</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-3">vol-3 §chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age</a></td>
+            <td class="verse-context"><small>...en he moves about he becomes Kṛta'. The Śat. Br. V. 4. 4. 6 speaks of Kali&lt;sup class="fn-ref"&gt;&lt;a hr...</small></td>
+        </tr>
+
+        <tr id="V.4.4.15-19">
+            <td class="verse-ref">V.4.4.15-19</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">यो वै राजा ब्राह्मणावृत्तीयनान्मिश्रेभ्यो वै स यलीयान् भवति।</div><div class="kane-note">शतपथ V.4.4.15.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-ii-varna.html#fn-chapter-ii-varna-49">vol-2-part-1 §chapter-ii-varna</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-ii-varna.html#p-chapter-ii-varna-14">vol-2-part-1 §chapter-ii-varna</a></td>
+            <td class="verse-context"><small>...s on whose support the king dependṣ The Śat. Br. V. 4. 4. 15–19 arranges brāhmaṇa, king, king's brother...</small></td>
+        </tr>
+
+        <tr id="V.5.4">
+            <td class="verse-ref">V.5.4</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxxv-sautrāmanī-and-other-sacrifices.html#p-chapter-xxxv-sautrāmanī-and-other-sacrifices-3">vol-2-part-2 §chapter-xxxv-sautrāmanī-and-other-sacrifices</a></td>
+            <td class="verse-context"><small>... the Sautrāmaṇī is given below from the Śat. Br. V. 5. 4, XII. 7. 2, Kāt. XV. 9. 28-30, XIX. 1-2...</small></td>
+        </tr>
+
+        <tr id="V.5.4.21">
+            <td class="verse-ref">V.5.4.21</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxii-bhojana.html#p-chapter-xxii-bhojana-28">vol-2-part-2 §chapter-xxii-bhojana</a></td>
+            <td class="verse-context"><small>...h, misery, darkness’ (V. 1. 5. 28). The Śat. Br. V. 5. 4. 21 expresses dread&lt;sup class="fn-ref"&gt;&lt;a h...</small></td>
+        </tr>
+
+        <tr id="V.5.6-9">
+            <td class="verse-ref">V.5.6-9</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxxiv-other-soma-sacrifices.html#p-chapter-xxxiv-other-soma-sacrifices-18">vol-2-part-2 §chapter-xxxiv-other-soma-sacrifices</a></td>
+            <td class="verse-context"><small>...acrifices-23"&gt;23&lt;/a&gt;&lt;/sup&gt; According to Śat. Br. V. 5. 6-9 in place of the Udavasānīyā there was t...</small></td>
+        </tr>
+
+        <tr id="Vi">
+            <td class="verse-ref">Vi</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/appendix-note-191.html#p-appendix-note-191-2">vol-3 §appendix-note-191</a></td>
+            <td class="verse-context"><small>...e 'ratnins' mentioned in the Tai. S and Śat Br. Vide H. of Dh. vol. II. p. 1216 and above ...</small></td>
+        </tr>
+
+        <tr id="VI.1.1">
+            <td class="verse-ref">VI.1.1</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxxiv-cosmology.html#p-chapter-xxxiv-cosmology-14">vol-5-part-2 §chapter-xxxiv-cosmology</a></td>
+            <td class="verse-context"><small>...sages only can be referred to here. The Śat. Br. (in VI. 1. 1) starts by saying that 'in the beginning...</small></td>
+        </tr>
+
+        <tr id="VI.4.2.10">
+            <td class="verse-ref">VI.4.2.10</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-ix-shrāddha.html#p-chapter-ix-shrāddha-20">vol-4 §chapter-ix-shrāddha</a></td>
+            <td class="verse-context"><small>...any month after the Full Moon day (vide Śat. Br. VI. 4. 2. 10). The Śat. Br. states &lt;sup class="fn-re...</small></td>
+        </tr>
+
+        <tr id="VII">
+            <td class="verse-ref">VII</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-ix-shrāddha.html#p-chapter-ix-shrāddha-76">vol-4 §chapter-ix-shrāddha</a></td>
+            <td class="verse-context"><small>...usāṣ A few words may be added here. The Śat. Br. VII, 2, 3, 2 states that the waters that lo...</small></td>
+        </tr>
+
+        <tr id="8">
+            <td class="verse-ref">8</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/general-index-of-vol-iv.html#p-general-index-of-vol-iv-36">vol-4 §general-index-of-vol-iv</a></td>
+            <td class="verse-context"><small>...r dying man 184 Sarvarājñāh (rcah) 203n Śatapatha-Brāhmaṇa 8, 10, 20, 37, 39 44, 54, 57, 58, 62n, 70...</small></td>
+        </tr>
+
+        <tr id="VIII.6.3.7-11">
+            <td class="verse-ref">VIII.6.3.7-11</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxxv-sautrāmanī-and-other-sacrifices.html#p-chapter-xxxv-sautrāmanī-and-other-sacrifices-31">vol-2-part-2 §chapter-xxxv-sautrāmanī-and-other-sacrifices</a></td>
+            <td class="verse-context"><small>...omes the gārhapatya for the Fire-altar (Śat. Br. VIII. 6. 3. 7-11, Kāt. XVII. 12. 18-21). Seven pieces of...</small></td>
+        </tr>
+
+        <tr id="IX.I.2.35">
+            <td class="verse-ref">IX.I.2.35</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxxv-sautrāmanī-and-other-sacrifices.html#p-chapter-xxxv-sautrāmanī-and-other-sacrifices-31">vol-2-part-2 §chapter-xxxv-sautrāmanī-and-other-sacrifices</a></td>
+            <td class="verse-context"><small>..., Rathantara and other sāmans are sung (Śat. Br. IX. I. 2. 35 ff, Kāt. XVIII. 3. 1 ff). Then follow n...</small></td>
+        </tr>
+
+        <tr id="IX.3.1.26">
+            <td class="verse-ref">IX.3.1.26</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxiv-minor-grihya-and-other-rites.html#p-chapter-xxiv-minor-grihya-and-other-rites-8">vol-2-part-2 §chapter-xxiv-minor-grihya-and-other-rites</a></td>
+            <td class="verse-context"><small>...rihya-and-other-rites-14"&gt;14&lt;/a&gt;&lt;/sup&gt; (Śat. Br. IX. 3. 1. 26). He repeats the mantra ‘Indram daivir’...</small></td>
+        </tr>
+
+        <tr id="IX.3.4.8">
+            <td class="verse-ref">IX.3.4.8</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxxiv-other-soma-sacrifices.html#p-chapter-xxxiv-other-soma-sacrifices-13">vol-2-part-2 §chapter-xxxiv-other-soma-sacrifices</a></td>
+            <td class="verse-context"><small>...after Vājapeya (Aśv. IX. 9. 19). In the Śat. Br. IX. 3. 4. 8 it is said 'by performing the Rājasūya ...</small></td>
+        </tr>
+
+        <tr id="IX.5.1.38">
+            <td class="verse-ref">IX.5.1.38</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-1/chapter-iii-persons-entitled-to-engage-in-vratas-objects-desired-by-means-of-vra.html#p-chapter-iii-persons-entitled-to-engage-in-vratas-objects-desired-by-means-of-vra-14">vol-5-part-1 §chapter-iii-persons-entitled-to-engage-in-vratas-objects-desired-by-means-of-vra</a></td>
+            <td class="verse-context"><small>...a heroic soṇ In the Tai S I 8. 8. 1 and Śat. Br. IX. 5. 1. 38 mention is made of these four, viz of A...</small></td>
+        </tr>
+
+        <tr id="IX.5.2.15-16">
+            <td class="verse-ref">IX.5.2.15-16</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxxv-sautrāmanī-and-other-sacrifices.html#p-chapter-xxxv-sautrāmanī-and-other-sacrifices-27">vol-2-part-2 §chapter-xxxv-sautrāmanī-and-other-sacrifices</a></td>
+            <td class="verse-context"><small>...who received it from Prajāpati himself (Śat. Br. IX. 5. 2. 15–16, X. 4. 1. 11, X. 6. 5. 9 &amp;c. ).</small></td>
+        </tr>
+
+        <tr id="X.2.6.7">
+            <td class="verse-ref">X.2.6.7</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-xii-the-ganges.html#p-chapter-xii-the-ganges-21">vol-4 §chapter-xii-the-ganges</a></td>
+            <td class="verse-context"><small>...eliance may be placed is the one in the Śatapatha Brāhmaṇa X. 2. 6. 7 ‘one ought not to yield to his own desi...</small></td>
+        </tr>
+
+        <tr id="X.4.2.18">
+            <td class="verse-ref">X.4.2.18</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-1/chapter-xvi-muhūrta.html#p-chapter-xvi-muhūrta-3">vol-5-part-1 §chapter-xvi-muhūrta</a></td>
+            <td class="verse-context"><small>...nother meaning of the word 'muhūrta' in Śat. Br. X. 4. 2. 18 and XII 3. 2. 5 where it is said that t...</small></td>
+        </tr>
+
+        <tr id="X.4.2.22-23">
+            <td class="verse-ref">X.4.2.22-23</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxxiv-cosmology.html#p-chapter-xxxiv-cosmology-18">vol-5-part-2 §chapter-xxxiv-cosmology</a></td>
+            <td class="verse-context"><small>It is stated in the Śat. Br. X. 4. 2. 22-23 that Prajāpati arranged the Ṛgveda in s...</small></td>
+        </tr>
+
+        <tr id="X.5.2.9">
+            <td class="verse-ref">X.5.2.9</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxii-bhojana.html#p-chapter-xxii-bhojana-4">vol-2-part-2 §chapter-xxii-bhojana</a></td>
+            <td class="verse-context"><small>...d born has no strength as stated in the Śat. Br. X. 5. 2. 9. Kullūka and some other commentators on...</small></td>
+        </tr>
+
+        <tr id="XI">
+            <td class="verse-ref">XI</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-vi-consequences-of-not-undergoing-penances.html#p-chapter-vi-consequences-of-not-undergoing-penances-2">vol-4 §chapter-vi-consequences-of-not-undergoing-penances</a></td>
+            <td class="verse-context"><small>...se in this passage of the Vāj S. In the Śat. Br. XI, 6. 1 4 we find a reference to torments...</small></td>
+        </tr>
+
+        <tr id="XI.1.6.1">
+            <td class="verse-ref">XI.1.6.1</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxxiv-cosmology.html#p-chapter-xxxiv-cosmology-40">vol-5-part-2 §chapter-xxxiv-cosmology</a></td>
+            <td class="verse-context"><small>...ticularly verses 1-3) with those in the Śat. Br. XI. 1. 6. 1 and Chāṇ Up. III. 19. 1-2 (about the go...</small></td>
+        </tr>
+
+        <tr id="XI.1.6.9">
+            <td class="verse-ref">XI.1.6.9</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-9">vol-1-part-1 §32-the-two-epics</a></td>
+            <td class="verse-context"><small>...2-the-two-epics-17"&gt;17&lt;/a&gt;&lt;/sup&gt; in the Śatapatha-Brāhmaṇa (XI. 1. 6. 9), in the Bṛhadāraṇyaka and Chāndogya Upa...</small></td>
+        </tr>
+
+        <tr id="XI.3.3.2">
+            <td class="verse-ref">XI.3.3.2</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">दीर्घसत्रं वा एष , उपैति यो ब्रह्मचर्यमुपैति ।</div><div class="kane-note">शतपथ XI. 3. 3. 2. This is quoted in Bauḍ Dh. S. I. 2.52. The words ' अपोडज्ञान् ' refer to sipping water before and after bhojana respectively with the words 'amṛtopastarapamasi svāhā' and 'amṛtāpidhānam-asi svāhā.' Vide संस्कारतत्त्व p. 893. These two mantras occur in आप . म . पा . II. 10. 3-4.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-vii-upanayana.html#fn-chapter-vii-upanayana-11">vol-2-part-1 §chapter-vii-upanayana</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-vii-upanayana.html#p-chapter-vii-upanayana-4">vol-2-part-1 §chapter-vii-upanayana</a></td>
+            <td class="verse-context"><small>...1. 5. 17 and in the Tai. Up. I. 11. The Śat. Br. (XI. 3. 3. 2) says&lt;sup class="fn-ref"&gt;&lt;a href="#fn-ch...</small></td>
+        </tr>
+
+        <tr id="XI.3.3.7">
+            <td class="verse-ref">XI.3.3.7</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-vii-upanayana.html#p-chapter-vii-upanayana-163">vol-2-part-1 §chapter-vii-upanayana</a></td>
+            <td class="verse-context"><small>... his own family'. On the other hand the Śat. Br. (XI. 3. 3. 7) says ‘that one&lt;sup class="fn-ref"&gt;&lt;a hr...</small></td>
+        </tr>
+
+        <tr id="XI.5.1-8">
+            <td class="verse-ref">XI.5.1-8</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">अध्ययनमभिव्याहरति । ब्रह्मचर्यमागामुप मा नयस्व ब्रह्मचारी भवानि देवेन सवित्रा प्रसूतः । हिरण्य . गृ . I. 5. 2 (S. B. E. vol. 30 p. 150); ब्रह्मचर्यमागामि चेति वाचस्पति ब्रह्मचर्यायेति च । पार . गृ II 2; vide गोभिलगृह्य II. 10. 21 (S. B. E. vol. 30 p. 65 ). The phrases ब्रह्मचर्यमागाम् and ब्रह्मचर्यसानि occur in the</div><div class="kane-note">शतपथ XI. 5. 4. 1; vide आप . म . प्रा . II. 3. 26 for ' ब्रह्मचर्य .... प्रसूतः विश्वरूप on या . उपनयनाद्याचार्यसमीपनयनमुपनयनं तदेवोपनायनामिस्युक्तं छन्दोहोरा - धातुं । तदर्थं वा कर्मे ' । Vide माद्भूत on हिरण्यकेशिगृ . I. 1. 1.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-vii-upanayana.html#fn-chapter-vii-upanayana-1">vol-2-part-1 §chapter-vii-upanayana</a></div></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxxii-practices-of-shistas-conflict-among-shruti-smriti-and-sadāchāra-an.html#p-chapter-xxxii-practices-of-shistas-conflict-among-shruti-smriti-and-sadāchāra-an-10">vol-3 §chapter-xxxii-practices-of-shistas-conflict-among-shruti-smriti-and-sadāchāra-an</a></td>
+            <td class="verse-context"><small>...eing devoured by wolves (Rg. X. 95. 14, Śat. Br. XI. 5. 1–8) when separated from Urvaśī; (6) Viśvām...</small></td>
+        </tr>
+
+        <tr id="XI.5.4.c">
+            <td class="verse-ref">XI.5.4.c</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-vii-upanayana.html#p-chapter-vii-upanayana-4">vol-2-part-1 §chapter-vii-upanayana</a></td>
+            <td class="verse-context"><small>...acher away from his father's place. The Śat. Br. XI. 5. 4. contains many and almost complete details...</small></td>
+        </tr>
+
+        <tr id="XI.5.6.3-8">
+            <td class="verse-ref">XI.5.6.3-8</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xviii-pancha-mahāyajnas.html#p-chapter-xviii-pancha-mahāyajnas-7">vol-2-part-1 §chapter-xviii-pancha-mahāyajnas</a></td>
+            <td class="verse-context"><small>...scription of this is to be found in the Śat. Br. XI. 5. 6. 3–8. That Brāhmaṇa, after stating that brah...</small></td>
+        </tr>
+
+        <tr id="XI.5.6-8">
+            <td class="verse-ref">XI.5.6-8</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/33-the-purānas.html#p-33-the-purānas-2">vol-1-part-1 §33-the-purānas</a></td>
+            <td class="verse-context"><small>...arvaveda (XI. 7. 24, XV. 6. 10-11). The Śat. Br. (XI. 5.6-8) includes 'Itihāsapurāṇam' among 'Svādhy...</small></td>
+        </tr>
+
+        <tr id="XI.5.6.8">
+            <td class="verse-ref">XI.5.6.8</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">अथाहुतवो ह वा एता देवानां यद्दक्षशासनानि विद्या वाकोवाक्येतिहासपुराणं गाथा नाराशंसीरित्युरंहः स्वाध्यायमधीते ।</div><div class="kane-note">शतपथ XI. 5. 6. 8; अथाद्वेयैहन् । ““ मत्स्यमथ मत्स्यह्यनोपसमेता भवन्ति । तासुपुराणैादितिहासो वेद्यः सोयमिति किञ्चित्पुराणमाचष्टीत । शतपथ XIII.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-5-part-2/chapter-xxii-origin-and-development-of-purāna-literature.html#fn-chapter-xxii-origin-and-development-of-purāna-literature-3">vol-5-part-2 §chapter-xxii-origin-and-development-of-purāna-literature</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-vii-upanayana.html#p-chapter-vii-upanayana-65">vol-2-part-1 §chapter-vii-upanayana</a> · <a href="../vol-2-part-1/chapter-xviii-pancha-mahāyajnas.html#p-chapter-xviii-pancha-mahāyajnas-7">vol-2-part-1 §chapter-xviii-pancha-mahāyajnas</a></td>
+            <td class="verse-context"><small>...(svādhyāya) is austerities and also the Śat. Br. XI. 5. 6. 8. The Mahābhāṣya (vol. I. p. 1) quotes a...</small></td>
+        </tr>
+
+        <tr id="XI.5.7">
+            <td class="verse-ref">XI.5.7</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">प्रजा वर्धमाना चतुरो धर्मान् ब्राह्मणमभिनिष्पादयति ब्राह्मण्यं प्रतिरूपचर्यं यशो लोकपक्ति लोकः पूज्यमानश्चतुर्भिर्धर्मैः ब्राह्मणं पुनरुत्कर्षय वा दानेन चाज्येयतया चावकल्पत या च ।</div><div class="kane-note">शतपथ XI. 5. 7. 1.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-ii-varna.html#fn-chapter-ii-varna-40">vol-2-part-1 §chapter-ii-varna</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-vii-upanayana.html#p-chapter-vii-upanayana-65">vol-2-part-1 §chapter-vii-upanayana</a> · <a href="../vol-5-part-2/chapter-xxxii-yoga-and-dharmashastra.html#p-chapter-xxxii-yoga-and-dharmashastra-40">vol-5-part-2 §chapter-xxxii-yoga-and-dharmashastra</a></td>
+            <td class="verse-context"><small>... was to be learnt by every dvijāti. The Śat. Br. XI. 5. 7 contains a eulogy of Veda study (svādhy...</small></td>
+        </tr>
+
+        <tr id="XI.6.1">
+            <td class="verse-ref">XI.6.1</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxxiv-cosmology.html#p-chapter-xxxiv-cosmology-24">vol-5-part-2 §chapter-xxxiv-cosmology</a></td>
+            <td class="verse-context"><small>...ten again in the other worlḍ' Vide also Śat. Br. XI. 6. 1. But when we come to the Upaniṣads, the...</small></td>
+        </tr>
+
+        <tr id="XI.6.1.3">
+            <td class="verse-ref">XI.6.1.3</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">ते होचुरियँ वा इमे अस्मानमुष्मिँल्लोके असत्स्यन्त तात्पर्यमिदमिह प्रतिसखा मह इति ।</div><div class="kane-note">शतपथ XI. 6. 1. 3.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-2/chapter-xxii-bhojana.html#fn-chapter-xxii-bhojana-48">vol-2-part-2 §chapter-xxii-bhojana</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxii-bhojana.html#p-chapter-xxii-bhojana-13">vol-2-part-2 §chapter-xxii-bhojana</a></td>
+            <td class="verse-context"><small>... and explained (vide p. 677 above). The Śat. Br. XI. 6. 1. 3&lt;sup class="fn-ref"&gt;&lt;a href="#fn-chapter...</small></td>
+        </tr>
+
+        <tr id="XI.6.21.5">
+            <td class="verse-ref">XI.6.21.5</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-iii-the-duties-disabilities-and-privileges-of-varnas.html#p-chapter-iii-the-duties-disabilities-and-privileges-of-varnas-3">vol-2-part-1 §chapter-iii-the-duties-disabilities-and-privileges-of-varnas</a></td>
+            <td class="verse-context"><small>...xample, Yājñavalkya learnt from Janaka (Śat. Br. XI. 6. 21. 5), Bālāki Gārgya from Ajātaśatru, king o...</small></td>
+        </tr>
+
+        <tr id="XI.7.1.3">
+            <td class="verse-ref">XI.7.1.3</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxii-bhojana.html#p-chapter-xxii-bhojana-13">vol-2-part-2 §chapter-xxii-bhojana</a></td>
+            <td class="verse-context"><small>...3. 9 contains a similar prohibitioṇ The Śat. Br. XI. 7. 1. 3 declares that ‘meat is the best kind of...</small></td>
+        </tr>
+
+        <tr id="XI.7.4.1">
+            <td class="verse-ref">XI.7.4.1</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxxii-pashubandha-or-nirūdhapaśubandha-immolation-of-an-animal-sacrifice.html#p-chapter-xxxii-pashubandha-or-nirūdhapaśubandha-immolation-of-an-animal-sacrifice-2">vol-2-part-2 §chapter-xxxii-pashubandha-or-nirūdhapaśubandha-immolation-of-an-animal-sacrifice</a></td>
+            <td class="verse-context"><small>...is and Āp. (VII. 2. 17) also quotes the Śat. Br. (XI. 7. 4. 1) that the yūpa in nirūdha- paśubandha is...</small></td>
+        </tr>
+
+        <tr id="XI.8.1">
+            <td class="verse-ref">XI.8.1</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-ii-varna.html#p-chapter-ii-varna-14">vol-2-part-1 §chapter-ii-varna</a></td>
+            <td class="verse-context"><small>...ker in wicker-work), `kaṇṭakakāra`. The Śatapatha Br. XI. 8.1. speaks of `kaulāla-cakra` (the potter'...</small></td>
+        </tr>
+
+        <tr id="XII">
+            <td class="verse-ref">XII</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-vi-consequences-of-not-undergoing-penances.html#p-chapter-vi-consequences-of-not-undergoing-penances-10">vol-4 §chapter-vi-consequences-of-not-undergoing-penances</a></td>
+            <td class="verse-context"><small>...sils of yajña directly reaches Heaven' (Śat. Br. XII 5 2 8 )&lt;sup&gt;401&lt;/sup&gt;, 'one who desires...</small></td>
+        </tr>
+
+        <tr id="XII.1.1.10">
+            <td class="verse-ref">XII.1.1.10</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-vii-upanayana.html#p-chapter-vii-upanayana-163">vol-2-part-1 §chapter-vii-upanayana</a></td>
+            <td class="verse-context"><small>... after taking the ceremonial bath’. The Śat. Br. (XII. 1. 1. 10) distinguishes&lt;sup class="fn-ref"&gt;&lt;a hre...</small></td>
+        </tr>
+
+        <tr id="XII.3.2.5">
+            <td class="verse-ref">XII.3.2.5</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">स पञ्चदशज्ञो रूप्यापयपदा ' ननसत्रो मुहुर्ता लोकम्पूणा . पञ्चदशेव रानेस्तव - ' मुहुर्ता यासन्तो मुहूर्तानि पञ्चदशान्यप दिशानि पापानि शिराणि भवन्ति पञ्चदशकुल पयर्तधीनि &amp;c ।</div><div class="kane-note">शतपथ XII. 3. 2. 5. मुहूर्ता are so called because 'they straight- way save'.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-5-part-1/chapter-xvi-muhūrta.html#fn-chapter-xvi-muhūrta-3">vol-5-part-1 §chapter-xvi-muhūrta</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xvii-āhnika-and-āchāra.html#p-chapter-xvii-āhnika-and-āchāra-7">vol-2-part-1 §chapter-xvii-āhnika-and-āchāra</a></td>
+            <td class="verse-context"><small>... was divided into thirty muhūrtas; vide Śat. Br. XII. 3. 2. 5, S. B. E. vol. 44, p. 169 where the yea...</small></td>
+        </tr>
+
+        <tr id="XII.4.1.1">
+            <td class="verse-ref">XII.4.1.1</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">एते सर्वेऽत्र्यं सत्रं यदग्निहोत्रम् ।</div><div class="kane-note">शतपथ XII. 4. 1. 1; कुर्वन्रेवेह कर्माणि जिजीविषेच्छतं समाः । ईशावास्योप० 2.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-viii-āshramas.html#fn-chapter-viii-āshramas-22">vol-2-part-1 §chapter-viii-āshramas</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-viii-āshramas.html#p-chapter-viii-āshramas-8">vol-2-part-1 §chapter-viii-āshramas</a> · <a href="../vol-2-part-2/chapter-xxix-shrauta-vedic-sacrifices.html#p-chapter-xxix-shrauta-vedic-sacrifices-26">vol-2-part-2 §chapter-xxix-shrauta-vedic-sacrifices</a></td>
+            <td class="verse-context"><small>...) that lasts till one dies by old age’ (Śat. Br. XII. 4. 1. 1), ‘one should desire to live a hundred ...</small></td>
+        </tr>
+
+        <tr id="XII.4.1.4">
+            <td class="verse-ref">XII.4.1.4</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">त्रयो ह त्वाव पशवोऽमेध्याः । दुर्बराह एककः श्वा । तेषां यद्यविधिसृतमिहेऽतरेण कथिस्तत्सरंके तत्र कर्म का तत्र प्रायश्चित्तिरिति ।</div><div class="kane-note">शतपथ XII. 4. 1. 4.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-iv-untouchability.html#fn-chapter-iv-untouchability-3">vol-2-part-1 §chapter-iv-untouchability</a></div></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/7-dharmasutra-of-āpastamba.html#p-7-dharmasutra-of-āpastamba-24">vol-1-part-1 §7-dharmasutra-of-āpastamba</a> · <a href="../vol-2-part-1/chapter-iv-untouchability.html#p-chapter-iv-untouchability-3">vol-2-part-1 §chapter-iv-untouchability</a></td>
+            <td class="verse-context"><small>...ee unclean (*amedhya*) animals acc. to *Śat. Br. XII. 4. 1. 4*. *Edaka* is the 2nd word in ‘*ajādi-ga...</small></td>
+        </tr>
+
+        <tr id="XII.4.3.1">
+            <td class="verse-ref">XII.4.3.1</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxvii-dāyabhāga-partition-of-wealth.html#p-chapter-xxvii-dāyabhāga-partition-of-wealth-86">vol-3 §chapter-xxvii-dāyabhāga-partition-of-wealth</a></td>
+            <td class="verse-context"><small>...ncient societies almost everywhere. The Śat. Br. XII. 4. 3. 1 (S. B. E. vol. 44 p 157) states 'the fa...</small></td>
+        </tr>
+
+        <tr id="XII.5.1.13-14">
+            <td class="verse-ref">XII.5.1.13-14</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-vii-eschatology.html#p-chapter-vii-eschatology-38">vol-4 §chapter-vii-eschatology</a></td>
+            <td class="verse-context"><small>If an āhitāgni died away from home, the Śat. Br. (XII. 5.1.13-14) provides that, having brought his bones...</small></td>
+        </tr>
+
+        <tr id="XII.5.2.14">
+            <td class="verse-ref">XII.5.2.14</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-vii-eschatology.html#p-chapter-vii-eschatology-27">vol-4 §chapter-vii-eschatology</a></td>
+            <td class="verse-context"><small>The Śat. Br. XII. 5. 2. 14 first states that sacrificial imple- me...</small></td>
+        </tr>
+
+        <tr id="XII.7.3.1-4">
+            <td class="verse-ref">XII.7.3.1-4</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xix-devayajna.html#p-chapter-xix-devayajna-14">vol-2-part-2 §chapter-xix-devayajna</a></td>
+            <td class="verse-context"><small>...th the fist, or with staff or bow &amp;c. ( Śat. Br. XII. 7. 3. 1-4, S. B. E. vol. 44, pp. 222-223 ). Śat. ...</small></td>
+        </tr>
+
+        <tr id="XII.7.3.4">
+            <td class="verse-ref">XII.7.3.4</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xix-devayajna.html#p-chapter-xix-devayajna-14">vol-2-part-2 §chapter-xix-devayajna</a> · <a href="../vol-2-part-2/chapter-xxii-bhojana.html#p-chapter-xxii-bhojana-28">vol-2-part-2 §chapter-xxii-bhojana</a></td>
+            <td class="verse-context"><small>.... 1-4, S. B. E. vol. 44, pp. 222-223 ). Śat. Br. XII. 7. 3. 4 quotes Rg. VIII. 14. 13 which narrates ...</small></td>
+        </tr>
+
+        <tr id="XII.7.3.5">
+            <td class="verse-ref">XII.7.3.5</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxii-bhojana.html#p-chapter-xxii-bhojana-28">vol-2-part-2 §chapter-xxii-bhojana</a></td>
+            <td class="verse-context"><small>...iquor) was prepared is described in the Śat. Br. XII. 7. 3. 5 and in Kātyāyana śr. 19. 1. 20–27 (vide...</small></td>
+        </tr>
+
+        <tr id="XII.7.3.7">
+            <td class="verse-ref">XII.7.3.7</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxxv-sautrāmanī-and-other-sacrifices.html#p-chapter-xxxv-sautrāmanī-and-other-sacrifices-2">vol-2-part-2 §chapter-xxxv-sautrāmanī-and-other-sacrifices</a></td>
+            <td class="verse-context"><small>...and V. 4. 12). Some held (as is done by Śat. Br. XII. 7. 3. 7) there were two vedis behind which two ...</small></td>
+        </tr>
+
+        <tr id="XII.8.1">
+            <td class="verse-ref">XII.8.1</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-ix-shrāddha.html#p-chapter-ix-shrāddha-15">vol-4 §chapter-ix-shrāddha</a></td>
+            <td class="verse-context"><small>...the formula ‘this here is for thee.’ In Śat. Br. XII. 8. 1, 7 the three immediate paternal ancesto...</small></td>
+        </tr>
+
+        <tr id="XII.8.1.21">
+            <td class="verse-ref">XII.8.1.21</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">द्वे सृती ... इमन्ती हे वाव सृती इतराद्युद्गूर्वान्वा वै देवाः पितृणां चेति ।</div><div class="kane-note">शतपथ . XII. 8. 1. 21; मर्त्यानां मनुष्येणां द्वे सृती मार्गो सुक्तरानसि तमोंर्मध्ये एका पितृलोकभाजिका द्वितीया च देवलोकभाजिका। Coṃ of द्विवेदगङ्ग (Weber's eḍ p. 1165); यो यजते देवलोकं याति देवयानैवाभिप्रयाति तदुद्द्युत्सौ दक्षिणा यं यजमानः स एष देवयानो वा पितृयाणो वा पन्थाः । शतपथ I. 9. 3. 1–2.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-5-part-2/chapter-xxxv-the-doctrine-of-karma-and-punarjanma-transmigration-or-metempsychos.html#fn-chapter-xxxv-the-doctrine-of-karma-and-punarjanma-transmigration-or-metempsychos-35">vol-5-part-2 §chapter-xxxv-the-doctrine-of-karma-and-punarjanma-transmigration-or-metempsychos</a></div></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxxv-the-doctrine-of-karma-and-punarjanma-transmigration-or-metempsychos.html#p-chapter-xxxv-the-doctrine-of-karma-and-punarjanma-transmigration-or-metempsychos-29">vol-5-part-2 §chapter-xxxv-the-doctrine-of-karma-and-punarjanma-transmigration-or-metempsychos</a></td>
+            <td class="verse-context"><small>...as pathṣ This verse is explained in the Śat. Br. XII. 8. 1. 21 &lt;sup class="fn-ref"&gt;&lt;a href="#fn-chapte...</small></td>
+        </tr>
+
+        <tr id="XIII">
+            <td class="verse-ref">XIII</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-xii-the-ganges.html#p-chapter-xii-the-ganges-3">vol-4 §chapter-xii-the-ganges</a></td>
+            <td class="verse-context"><small>...y means ‘growing on the Ganges’. In the Śatapatha Brāhmaṇa XIII, 5 4 11 and 13 and Ait Br. 39. 9 the vi...</small></td>
+        </tr>
+
+        <tr id="13">
+            <td class="verse-ref">13</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/list-of-tīrthas.html#p-list-of-tīrthas-103">vol-4 §list-of-tīrthas</a></td>
+            <td class="verse-context"><small>... to be along the bank of the Mālinī, in Śat. Br 13 5 4 13 we read ‘ Śakuntalā Nādapityapsa...</small></td>
+        </tr>
+
+        <tr id="XIII.1.3.5">
+            <td class="verse-ref">XIII.1.3.5</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxxv-sautrāmanī-and-other-sacrifices.html#p-chapter-xxxv-sautrāmanī-and-other-sacrifices-9">vol-2-part-2 §chapter-xxxv-sautrāmanī-and-other-sacrifices</a></td>
+            <td class="verse-context"><small>...beginning with ‘himkārāya svāhā’). Vide Śat. Br. XIII. 1. 3. 5, Tai. S. VII. 1. 19. In this way the Sā...</small></td>
+        </tr>
+
+        <tr id="XIII.1-5">
+            <td class="verse-ref">XIII.1-5</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">यथा वै राजोऽराजानो राजकृतः क्षत्त्रग्रामण्यः ।</div><div class="kane-note">शतपथ XIII. 2. 2. 18.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-ii-varna.html#fn-chapter-ii-varna-59">vol-2-part-1 §chapter-ii-varna</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxxv-sautrāmanī-and-other-sacrifices.html#p-chapter-xxxv-sautrāmanī-and-other-sacrifices-8">vol-2-part-2 §chapter-xxxv-sautrāmanī-and-other-sacrifices</a></td>
+            <td class="verse-context"><small>This rite is described in the Śat. Br. XIII. 1-5, Tai. Br. III. 8-9, in which several an...</small></td>
+        </tr>
+
+        <tr id="XIII.1.5.6">
+            <td class="verse-ref">XIII.1.5.6</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxxv-sautrāmanī-and-other-sacrifices.html#p-chapter-xxxv-sautrāmanī-and-other-sacrifices-9">vol-2-part-2 §chapter-xxxv-sautrāmanī-and-other-sacrifices</a></td>
+            <td class="verse-context"><small>...player also sang three laudatory songs (Śat. Br. XIII. 1. 5. 6, Āp. XX. 6. 14 ) referring to the battl...</small></td>
+        </tr>
+
+        <tr id="XIII.2.9">
+            <td class="verse-ref">XIII.2.9</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">शूद्रा यद्वद्‌यजारा न पोषणाय धनायतीति तस्मादेतद्विजुन्नं नाभिमिवृत्ति ।</div><div class="kane-note">शतपथ XIII. 2. 9. 8. This verse has been quoted above in note 83.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-ix-marriage.html#fn-chapter-ix-marriage-51">vol-2-part-1 §chapter-ix-marriage</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxxv-sautrāmanī-and-other-sacrifices.html#p-chapter-xxxv-sautrāmanī-and-other-sacrifices-10">vol-2-part-2 §chapter-xxxv-sautrāmanī-and-other-sacrifices</a></td>
+            <td class="verse-context"><small>...with their young female attendantṣ Vide Śat. Br. XIII. 2. 9 and Lāṭ. IX. 10. 3-6. The attendant pri...</small></td>
+        </tr>
+
+        <tr id="XIII.3.1.1">
+            <td class="verse-ref">XIII.3.1.1</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-iii-the-duties-disabilities-and-privileges-of-varnas.html#p-chapter-iii-the-duties-disabilities-and-privileges-of-varnas-36">vol-2-part-1 §chapter-iii-the-duties-disabilities-and-privileges-of-varnas</a></td>
+            <td class="verse-context"><small>...ngs ran him down as ‘brahmahan’. In the Śat. Br. XIII. 3. 1. 1 we read (S. B. E. vol. 44 p. 328) ‘ther...</small></td>
+        </tr>
+
+        <tr id="XIII.3.3.6">
+            <td class="verse-ref">XIII.3.3.6</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxxv-sautrāmanī-and-other-sacrifices.html#p-chapter-xxxv-sautrāmanī-and-other-sacrifices-12">vol-2-part-2 §chapter-xxxv-sautrāmanī-and-other-sacrifices</a></td>
+            <td class="verse-context"><small>... been rare. The Tai. S. V. 4. 12. 3 and Śat. Br. XIII. 3. 3. 6 both state that the Aśvamedha was a sac...</small></td>
+        </tr>
+
+        <tr id="XIII.4.1">
+            <td class="verse-ref">XIII.4.1</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">चतस्रो जाया उपक्लृप्ता भवन्ति महिषी वावाता परिवृक्ता पालागली।</div><div class="kane-note">शतपथ XIII. 4. 1. 9. In रामायण बालकाण्ड 14. 35 the first three out of these four are mentioned in connection with अश्वमेध ‘ होताश्वर्युस्तद्भोदवा इयेन समये - जयन्। महिष्या परिवृत्त्या च वावातामपरा तथा ’ । In Rg. X. 102. 11 the word परिवृक्ता occurs which probably means the discarded wife.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage.html#fn-chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage-6">vol-2-part-1 §chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxxv-sautrāmanī-and-other-sacrifices.html#p-chapter-xxxv-sautrāmanī-and-other-sacrifices-10">vol-2-part-2 §chapter-xxxv-sautrāmanī-and-other-sacrifices</a></td>
+            <td class="verse-context"><small>... (days on which soma was pressed). Vide Śat. Br. XIII. 4. 1. Āśv. X. 8. 1, Lāṭ. IX. 9. 17. After th...</small></td>
+        </tr>
+
+        <tr id="XIII.4.1.5">
+            <td class="verse-ref">XIII.4.1.5</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-ii-varna.html#p-chapter-ii-varna-14">vol-2-part-1 §chapter-ii-varna</a></td>
+            <td class="verse-context"><small>...officers of state and not casteṣ In the Śat. Br. XIII. 4. 1. 5 among the guards of the horse let loose...</small></td>
+        </tr>
+
+        <tr id="XIII.4.2.4">
+            <td class="verse-ref">XIII.4.2.4</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxxv-sautrāmanī-and-other-sacrifices.html#p-chapter-xxxv-sautrāmanī-and-other-sacrifices-9">vol-2-part-2 §chapter-xxxv-sautrāmanī-and-other-sacrifices</a></td>
+            <td class="verse-context"><small>...the horse's colour and other qualities (Śat. Br. XIII. 4. 2. 4, Kāt. XX. 1. 29-35, Lāt. IX. 9. 4). The...</small></td>
+        </tr>
+
+        <tr id="XIII.4.2.8-14">
+            <td class="verse-ref">XIII.4.2.8-14</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxxv-sautrāmanī-and-other-sacrifices.html#p-chapter-xxxv-sautrāmanī-and-other-sacrifices-9">vol-2-part-2 §chapter-xxxv-sautrāmanī-and-other-sacrifices</a></td>
+            <td class="verse-context"><small>... thrice a day after the iṣṭi to Savitṛ (Śat. Br. XIII. 4. 2. 8–14, Tai. Br. III. 9. 14 ). A kṣatriya lute...</small></td>
+        </tr>
+
+        <tr id="XIII.4.3">
+            <td class="verse-ref">XIII.4.3</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxxv-sautrāmanī-and-other-sacrifices.html#p-chapter-xxxv-sautrāmanī-and-other-sacrifices-9">vol-2-part-2 §chapter-xxxv-sautrāmanī-and-other-sacrifices</a></td>
+            <td class="verse-context"><small>...7, 1-10) sets out what the Pāriplava iṣ Śat. Br. XIII. 4. 3 and Śāṅ. XVI. 2 also deal at length wit...</small></td>
+        </tr>
+
+        <tr id="XIII.4.5">
+            <td class="verse-ref">XIII.4.5</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-27">vol-1-part-1 §32-the-two-epics</a></td>
+            <td class="verse-context"><small>...ya are well-known in the Vedic age. The Śat. Br. XIII. 4. 5 and Ait. Br. 35. 1 mention Pārikṣita Ja...</small></td>
+        </tr>
+
+        <tr id="XIII.5">
+            <td class="verse-ref">XIII.5</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-xii-the-ganges.html#p-chapter-xii-the-ganges-3">vol-4 §chapter-xii-the-ganges</a></td>
+            <td class="verse-context"><small>...n the Gangā and Yamunā are mentioneḍ In Śat. Br XIII. 5 4 11 and 13 an ancient gāthā is quoted ...</small></td>
+        </tr>
+
+        <tr id="XIII.5.2.23">
+            <td class="verse-ref">XIII.5.2.23</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxxv-sautrāmanī-and-other-sacrifices.html#p-chapter-xxxv-sautrāmanī-and-other-sacrifices-10">vol-2-part-2 §chapter-xxxv-sautrāmanī-and-other-sacrifices</a></td>
+            <td class="verse-context"><small>...ntum is offered and the other after it (Śat. Br. XIII. 5. 2. 23 referring to Vāj. S. XXIII. 2, Aśv. X. ...</small></td>
+        </tr>
+
+        <tr id="XIII.5.4.1">
+            <td class="verse-ref">XIII.5.4.1</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-2">vol-1-part-1 §32-the-two-epics</a> · <a href="../vol-2-part-1/chapter-vi-samskāras.html#p-chapter-vi-samskāras-71">vol-2-part-1 §chapter-vi-samskāras</a></td>
+            <td class="verse-context"><small>...&gt;&lt;/sup&gt; it. He is mentioned also in the Śatapatha Br. XIII. 5. 4. 1). What became of the other Samhitās sai...</small></td>
+        </tr>
+
+        <tr id="XIII.6.2.9-10">
+            <td class="verse-ref">XIII.6.2.9-10</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-3">vol-3 §chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age</a></td>
+            <td class="verse-context"><small>...-the-kali-age-5"&gt;5&lt;/a&gt;&lt;/sup&gt; and in the Śat. Br. XIII. 6. 2. 9-10 (S. B. E. vol. 44 p. 416). In later lit...</small></td>
+        </tr>
+
+        <tr id="XIII.7.1.13-15">
+            <td class="verse-ref">XIII.7.1.13-15</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">भूर्मिहे जगाविबुद्ध्याहारनि । न मा मर्त्य : कथन दातुमर्हति विश्वकर्मन्भौवन सलिअस्य मध्ये मोक्ष्यस्त एव कश्यपायास सयुष्त्र : । इति । ऐ . ब्रा . 39. 7; in the (</div><div class="kane-note">शतपथ XIII. 7. 1. 15) the words are तदपि भूमिः श्लोकं प्रगी । न मा ... भौवन मन्द आक्षिध । उपसंवेद्यति इया सलिअसय मध्ये ते सदुह कश्यपाथ । इति ।</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-2/chapter-xxv-dāna-gifts.html#fn-chapter-xxv-dāna-gifts-12">vol-2-part-2 §chapter-xxv-dāna-gifts</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxv-dāna-gifts.html#p-chapter-xxv-dāna-gifts-5">vol-2-part-2 §chapter-xxv-dāna-gifts</a></td>
+            <td class="verse-context"><small>...in the Ait. Br. (39. 7) and also in the Śat. Br. (XIII. 7. 1. 13–15 ) that when he desired to make a gift of ...</small></td>
+        </tr>
+
+        <tr id="XIII.8.1.5">
+            <td class="verse-ref">XIII.8.1.5</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxxv-the-doctrine-of-karma-and-punarjanma-transmigration-or-metempsychos.html#p-chapter-xxxv-the-doctrine-of-karma-and-punarjanma-transmigration-or-metempsychos-29">vol-5-part-2 §chapter-xxxv-the-doctrine-of-karma-and-punarjanma-transmigration-or-metempsychos</a></td>
+            <td class="verse-context"><small>..., righteous and full of austeritieṣ The Śat. Br. (XIII. 8. 1. 5) states that the door to the world of th...</small></td>
+        </tr>
+
+        <tr id="XIII.8.4.5">
+            <td class="verse-ref">XIII.8.4.5</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-vii-eschatology.html#p-chapter-vii-eschatology-27">vol-4 §chapter-vii-eschatology</a></td>
+            <td class="verse-context"><small>...barley, sesame seeds and water. Compare Śat. Br. XIII. 8. 4. 5 for bath and offering of water by relat...</small></td>
+        </tr>
+
+        <tr id="XIV.1.1.3">
+            <td class="verse-ref">XIV.1.1.3</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-vii-upanayana.html#p-chapter-vii-upanayana-114">vol-2-part-1 §chapter-vii-upanayana</a></td>
+            <td class="verse-context"><small>...; they have the hearts of hyaenas’. The Śat. Br. XIV. 1. 1. 3 exhorts a person studying the Madhu-vid...</small></td>
+        </tr>
+
+        <tr id="XIV.1.2.11">
+            <td class="verse-ref">XIV.1.2.11</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">इयती ह वा इयमग्रे पृथिव्यासं तानेतदूध्रति वराह उद्जधान सोऽस्याः पतिः प्रजापतिः ।</div><div class="kane-note">शतपथ XIV. 1. 2. 11; उद्घृतासि वराहेण कृष्णेन शत - बाहुणा । भूमिमुद्दधरेणी लोकधारिणी । तै . आ . X. 1. वराह may in the Ṛg. mean ‘a boar-like cloud demon’ or ‘a boar’. Vide निरुक्त V. 4.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-2/chapter-xix-devayajna.html#fn-chapter-xix-devayajna-33">vol-2-part-2 §chapter-xix-devayajna</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xix-devayajna.html#p-chapter-xix-devayajna-14">vol-2-part-2 §chapter-xix-devayajna</a> · <a href="../vol-5-part-2/chapter-xxiv-influence-of-purānas-on-dharmashastra.html#p-chapter-xxiv-influence-of-purānas-on-dharmashastra-77">vol-5-part-2 §chapter-xxiv-influence-of-purānas-on-dharmashastra</a></td>
+            <td class="verse-context"><small>...ttom of the ocean, is alluded to in the Śat. Br. XIV. 1. 2. 11 (S. B. E. vol. 44, p. 451) ‘a boar call...</small></td>
+        </tr>
+
+        <tr id="XIV.1-4">
+            <td class="verse-ref">XIV.1-4</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">The Sat. Br. XIV. 1. 1. 10-11 explains by a legend the names gharma, pravargya, mahāvīra and samrāt. तत् ( भिष्णोः शिरः ) षुष्किमिति पपात् । तस्मादेतस्मादमृतं सुष्वमाचरत् तद्यद्यत् प्रापन्न एतद् द्विपदिष्वमन्यथाकरोद् यत्तपस्यमृष्यत तस्मात्तत् तपः। ये देवा अनुवन्। ब्रह्मा ह्येष को वैर्येतदमृतं। तस्मान्नास्यममस्त्यस्य यद् एषो व्यक्षरत् पाणिभिः संभृक्तस्तस्मात् सम्राट !</div><div class="kane-note">शतपथ XIV. 1. 1. 10-11. The Sat. Br. further on (XIV. 1. 1. 18ff) says that Dadhyan Ātharvaṇa knew the doctrine of Pravargya ( called Madhu ) and imparted it to Aśvins and refers to Rg. I. 116. 12.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-2/chapter-xxxiii-agnishtoma.html#fn-chapter-xxxiii-agnishtoma-31">vol-2-part-2 §chapter-xxxiii-agnishtoma</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxxiii-agnishtoma.html#p-chapter-xxxiii-agnishtoma-7">vol-2-part-2 §chapter-xxxiii-agnishtoma</a></td>
+            <td class="verse-context"><small>...ne life and light. Vide Ait. Br. IV. 1, Śat. Br. XIV. 1–4, Tai. Ār. IV. 1–42, V. 1–12; and Haug’s...</small></td>
+        </tr>
+
+        <tr id="XIV.3.1.22">
+            <td class="verse-ref">XIV.3.1.22</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-2">vol-4 §chapter-xiii-kāshī</a></td>
+            <td class="verse-context"><small>...arata did in the case of the Satvatṣ In Śat. Br. XIV. 3. 1. 22 king Dhṛtarāṣṭra Vicitravīrya is called...</small></td>
+        </tr>
+
+        <tr id="XIV.3.1.32">
+            <td class="verse-ref">XIV.3.1.32</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxxiii-agnishtoma.html#p-chapter-xxxiii-agnishtoma-8">vol-2-part-2 §chapter-xxxiii-agnishtoma</a></td>
+            <td class="verse-context"><small>...his food (Āp. XV. 12. 13). According to Śat. Br. XIV. 3. 1. 32 ff the gold plate goes to the brahmā, t...</small></td>
+        </tr>
+
+        <tr id="XIV.5.2.6">
+            <td class="verse-ref">XIV.5.2.6</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-ix-marriage.html#p-chapter-ix-marriage-63">vol-2-part-1 §chapter-ix-marriage</a></td>
+            <td class="verse-context"><small>...t is stated in the Br. Up. II. 2. 3-4 (=Śat. Br. XIV. 5. 2. 6 ) where these very seven sages are enum...</small></td>
+        </tr>
+
+        <tr id="XIV.7.1.32-33">
+            <td class="verse-ref">XIV.7.1.32-33</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxix-some-fundamental-doctrines-of-pūrvamīmāmsā.html#p-chapter-xxix-some-fundamental-doctrines-of-pūrvamīmāmsā-20">vol-5-part-2 §chapter-xxix-some-fundamental-doctrines-of-pūrvamīmāmsā</a></td>
+            <td class="verse-context"><small>...and there are lotus ponds all rounḍ The Śatapatha Br. (XIV. 7. 1. 32-33) states that the joys of heaven are 100 ...</small></td>
+        </tr>
+
+        <tr id="21">
+            <td class="verse-ref">21</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/general-index.html#p-general-index-13">vol-3 §general-index</a></td>
+            <td class="verse-context"><small>...n, 844n, 850n, 852n, 853. Śataghnī 213. Śatapatha Brāhmaṇa 21, 26, 32, 41, 65-66, 111-12, 153, 180, 4...</small></td>
+        </tr>
+
+        <tr id="65">
+            <td class="verse-ref">65</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-190">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>...tsara**: identified with Pra- jāpati in Śat. Br. 65; years of Bṛhaspatya type were so calle...</small></td>
+        </tr>
+
+        <tr id="130">
+            <td class="verse-ref">130</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-4">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>.... Agnyādhāna, laid down by Tai. Br. and Śat. Br. 130; proper nakṣatras and seasons for, 506-...</small></td>
+        </tr>
+
+        <tr id="353">
+            <td class="verse-ref">353</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/general-index.html#p-general-index-1">vol-2-part-2 §general-index</a></td>
+            <td class="verse-context"><small>...Atharvāṅgirasah, as subject of study in Śatapatha Br. 353. Atheists, touch of, required bath for ...</small></td>
+        </tr>
+
+        <tr id="431-432">
+            <td class="verse-ref">431-432</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/general-index-of-vol-iv.html#p-general-index-of-vol-iv-20">vol-4 §general-index-of-vol-iv</a></td>
+            <td class="verse-context"><small>...mes are clearly brought out even in the Śatapatha Brāhmaṇa 431-432, names and gotras of the ancestors shou...</small></td>
+        </tr>
+
+        <tr id="489">
+            <td class="verse-ref">489</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-88">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>...evice of, 662; said to be of 35 days in Śat. Br. 489n; two intercalary months in five years ...</small></td>
+        </tr>
+
+        <tr id="507">
+            <td class="verse-ref">507</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-99">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>... Kṛta 696. Kṛttikās : are many, acc. to Śatapatha Br. 507; do not swerve from the east, while oth...</small></td>
+        </tr>
+
+        <tr id="566">
+            <td class="verse-ref">566</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-159">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>...hit 498; fit for *Agnyā- dhāna* acc. to Śat. Br. 566; ṇ from Kṛttikā to Viśākhā are called D...</small></td>
+        </tr>
+
+        <tr id="645">
+            <td class="verse-ref">645</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/general-index.html#p-general-index-38">vol-2-part-2 §general-index</a></td>
+            <td class="verse-context"><small>...a, 600; day divided into 30 muhūrtas in Śat. Br. 645; equal to two nāḍikās, 645n; names of</small></td>
+        </tr>
+
+        <tr id="690">
+            <td class="verse-ref">690</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-98">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>...es of years of, suggested by figures in Śat. Br. 690; Inscriptions dated in K. era 649, 650n...</small></td>
+        </tr>
+
+        <tr id="740">
+            <td class="verse-ref">740</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-212">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>...Lord of plants and king of brāhmaṇas in Śat. Br. 740n ; S. sacrifice, person resolving to pe...</small></td>
+        </tr>
+
+        <tr id="815">
+            <td class="verse-ref">815</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-88">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>...hāsa-purāṇa, meaning of, acc. to coṃ on Śat. Br. 815; in Atharvaveda, Śat. Br. and Śrauta-sū...</small></td>
+        </tr>
+
+        <tr id="992">
+            <td class="verse-ref">992</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-21">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>...93; conception of, may be traced to the Śat. Br. 992; conception of a. increased Dharmaśāstr...</small></td>
+        </tr>
+
+        <tr id="1416">
+            <td class="verse-ref">1416</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-214">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>...ya, means memorization of Veda, acc. to Śat. Br. 1416, acc. to Yogabhāṣya means japa of om an...</small></td>
+        </tr>
+            </tbody>
+        </table>
+    </div>
+
+    
+    <footer class="container-fluid pt-4" style="background-color:#2e4144">
+        <div class="row border-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img src="https://sanatana.in/mbta/public/images/Homepage_html/images/layer_8.png" alt="">
+            </div>
+            <div class="col-md-5 text-white">
+                <p>The divine knowledge and wisdom of our shastras is the only thing eternal,
+                   which was and which will remain ever-present in this gods creation.
+                   Our endeavours are to preserve this knowledge.</p>
+            </div>
+            <div class="col-md-1 text-white">
+                <div class="d-flex" style="height: 75px;">
+                    <div class="vr"></div>
+                </div>
+            </div>
+            <div class="col-md-3 text-white">
+                <i class="fa-solid fa-globe"></i>&emsp;
+                <a href="https://sanatanasampatti.in" class="text-light">www.sanatanasampatti.in</a><br>
+                <i class="fa-solid fa-envelope"></i>&emsp;
+                <a href="" class="text-light">sriranga.yoga@gmail.com</a>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center py-3 mb-4 align-items-center border-bottom">
+            <div class="col-md-2 text-white fs-4 text-center">Project</div>
+            <div class="col-md-2 text-white fs-4 text-center">Our Mission</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contribute</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contact Us</div>
+        </div>
+        <div class="row">
+            <p class="col-md-6 fs-6 text-start text-light">
+                <small>&copy; 2026 Sanatanasampatti</small>
+            </p>
+            <p class="col-md-6 fs-6 text-end text-light">
+                <a class="text-white" rel="nofollow" href="http://www.srirangadigital.com" target="_blank">
+                    <img src="https://sanatana.in/mbta/public/images/logo.png" alt="sriranga logo" />
+                    <small>Designed, Developed and Maintained by Sriranga Digital</small>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+</body>
+</html>

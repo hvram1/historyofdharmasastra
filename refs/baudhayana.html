@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- MDB UI Kit -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/fonts.css?v=1.2">
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/navbar.css?v=2.4">
+
+    <title>Baudhāyana Dharmasūtra — References in History of Dharmaśāstra</title>
+    <style>
+    :root {
+        --saffron:        #D4600A;
+        --saffron-light:  #F0924A;
+        --saffron-wash:   rgba(212, 96, 10, 0.07);
+        --indigo:         #2E5FA3;
+        --indigo-dark:    #1C3D70;
+        --maroon:         #7A1E1E;
+        --amber:          #C97A1A;
+        --ink:            #1A1209;
+        --ink-secondary:  #4A3B2A;
+        --parchment:      #FDFAF4;
+        --parchment-mid:  #F5EFE2;
+        --rule:           rgba(180, 130, 60, 0.22);
+        --shadow:         0 2px 18px rgba(90, 50, 10, 0.08);
+        --font-devanagari: 'Tiro Devanagari Sanskrit', 'Siddhanta', 'Noto Sans Devanagari', serif;
+        --font-roman:      'Junicode', Georgia, serif;
+    }
+
+    body {
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: var(--font-roman);
+    }
+
+    .devanagari {
+        font-family: var(--font-devanagari);
+    }
+
+    /* ── Navbar overrides ── */
+    .navbar-ontop { z-index: 1031; }
+    .hdclr { color: var(--saffron); }
+    .engpara { font-family: 'Open Sans', sans-serif; }
+
+    /* ── Layout ── */
+    .dh-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .dh-content {
+        flex: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        background: var(--parchment);
+        box-shadow: var(--shadow);
+        min-height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        .dh-content { padding: 24px 20px; }
+        .dh-wrapper { flex-direction: column; }
+    }
+
+    /* ── TOC Sidebar ── */
+    .toc-sidebar {
+        position: sticky;
+        top: 80px;
+        width: 280px;
+        min-width: 280px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding: 20px 16px;
+        margin-right: 24px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        scrollbar-width: thin;
+    }
+
+    .toc-title {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--saffron-light);
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list li {
+        padding: 4px 0;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-list li.toc-l3 {
+        padding-left: 16px;
+        font-size: 0.78rem;
+    }
+
+    .toc-list li a {
+        color: var(--ink-secondary);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .toc-list li a:hover { color: var(--saffron); }
+
+    .toc-list li.active {
+        border-left-color: var(--saffron);
+    }
+
+    .toc-list li.active a {
+        color: var(--saffron);
+        font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-sidebar { display: none; }
+    }
+
+    /* ── Mobile TOC Toggle ── */
+    .toc-mobile-toggle {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1050;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--saffron);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-mobile-toggle { display: block; }
+    }
+
+    /* ── Section Headings ── */
+    .section-heading {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        margin: 48px 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--rule);
+        letter-spacing: 0.5px;
+        scroll-margin-top: 80px;
+    }
+
+    h2.section-heading { font-size: 1.6rem; }
+
+    h3.section-heading {
+        font-size: 1.25rem;
+        border-left: 4px solid var(--saffron-light);
+        border-bottom: none;
+        padding: 8px 16px;
+        background: var(--saffron-wash);
+        border-radius: 0 5px 5px 0;
+    }
+
+    /* ── Prose ── */
+    .prose {
+        font-family: var(--font-roman);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+        color: var(--ink);
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    .prose em { color: var(--maroon); }
+
+    .prose:target {
+        background: rgba(212, 96, 10, 0.12);
+        border-left: 4px solid var(--saffron);
+        padding-left: 16px;
+        margin-left: -20px;
+        border-radius: 0 6px 6px 0;
+        animation: target-pulse 2s ease-out;
+    }
+
+    @keyframes target-pulse {
+        0%   { background: rgba(212, 96, 10, 0.30); }
+        100% { background: rgba(212, 96, 10, 0.12); }
+    }
+
+    /* ── Footnote References ── */
+    .fn-ref {
+        font-size: 0.75em;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    .fn-ref a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 0 2px;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: color 0.15s;
+    }
+
+    .fn-ref a:hover { color: var(--indigo); }
+
+    /* ── Synopsis Box ── */
+    .synopsis-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron-light);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .synopsis-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .synopsis-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .synopsis-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .synopsis-box.open .synopsis-toggle i {
+        transform: rotate(90deg);
+    }
+    .synopsis-body {
+        display: none;
+        padding: 0 20px 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+    }
+    .synopsis-box.open .synopsis-body { display: block; }
+    .synopsis-body p { margin: 0; }
+    .synopsis-attribution {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: var(--ink-secondary);
+        opacity: 0.7;
+        font-style: italic;
+    }
+    .synopsis-audio {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    .synopsis-play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--saffron);
+        background: none;
+        color: var(--saffron);
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: background 0.2s, color 0.2s;
+        padding: 0;
+    }
+    .synopsis-play-btn:hover {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn.playing {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn i { padding-left: 2px; }
+
+    /* ── Index Terms Panel ── */
+    .index-terms-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .index-terms-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .index-terms-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .index-terms-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .index-terms-box.open .index-terms-toggle i {
+        transform: rotate(90deg);
+    }
+    .index-terms-body {
+        display: none;
+        padding: 0 20px 16px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .index-terms-box.open .index-terms-body { display: block; }
+    .index-terms-dl {
+        margin: 0;
+        padding: 0;
+    }
+    .index-terms-dl dt {
+        font-family: var(--font-roman);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+        margin-top: 8px;
+    }
+    .index-terms-dl dd {
+        margin: 2px 0 0 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        color: var(--ink-secondary);
+        line-height: 1.5;
+    }
+    .nyaya-heading {
+        font-family: var(--font-roman);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        margin: 16px 0 4px;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+    }
+
+    /* ── Inline Index Popovers ── */
+    .idx-term {
+        border-bottom: 1px dotted var(--saffron-light);
+        cursor: help;
+        position: relative;
+    }
+    .idx-term:hover::after {
+        content: attr(data-def);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        background: rgba(44, 36, 22, 0.92);
+        color: #F5ECD8;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        max-width: 280px;
+        z-index: 100;
+        white-space: normal;
+        line-height: 1.4;
+        pointer-events: none;
+    }
+
+    /* ── Structured Version Banner ── */
+    .structured-banner {
+        margin: 0 0 28px;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, rgba(212, 96, 10, 0.06) 0%, rgba(212, 96, 10, 0.02) 100%);
+        border: 1px solid var(--saffron-light);
+        border-radius: 6px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        color: var(--ink-secondary);
+        line-height: 1.6;
+    }
+    .structured-banner i { color: var(--saffron); margin-right: 4px; }
+    .structured-banner a { color: var(--indigo); font-weight: 600; text-decoration: none; }
+    .structured-banner a:hover { text-decoration: underline; }
+
+    /* ── Footnotes Section ── */
+    .footnotes-section {
+        margin: 32px 0 48px;
+        padding: 20px 24px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .footnotes-section hr {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 0 0 16px;
+    }
+
+    .footnotes-list {
+        padding-left: 24px;
+        margin: 0;
+    }
+
+    .footnote-item {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+        scroll-margin-top: 80px;
+    }
+
+    .footnote-item:target {
+        background: rgba(212, 96, 10, 0.1);
+        border-radius: 4px;
+        padding: 4px 6px;
+        margin-left: -6px;
+    }
+
+    .fn-back {
+        color: var(--saffron-light);
+        text-decoration: none;
+        font-size: 0.85em;
+        margin-left: 4px;
+    }
+
+    .fn-back:hover { color: var(--saffron); }
+
+    /* ── Reference Links ── */
+    a.ref {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: all 0.15s;
+    }
+
+    a.ref:hover {
+        color: var(--saffron);
+        border-bottom-style: solid;
+    }
+
+    a.mbta-ext {
+        color: var(--indigo);
+        font-size: 0.7em;
+        margin-left: 2px;
+        opacity: 0.5;
+        text-decoration: none;
+        vertical-align: super;
+    }
+    a.mbta-ext:hover { opacity: 1; color: var(--saffron); }
+
+    /* ── References Panel (sidebar) ── */
+    .refs-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .refs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .refs-list li {
+        padding: 3px 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .ref-source-link {
+        font-weight: 600;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .ref-source-link:hover {
+        text-decoration: underline;
+    }
+
+    .ref-verse-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.76rem;
+    }
+
+    .ref-verse-link:hover {
+        text-decoration: underline;
+        color: var(--saffron);
+    }
+
+    .ref-verses {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Timeline panel ── */
+    .timeline-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .timeline-list li {
+        padding: 2px 0;
+        font-size: 0.76rem;
+        line-height: 1.4;
+        position: relative;
+        padding-left: 14px;
+    }
+
+    .timeline-list li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--saffron);
+    }
+
+    .timeline-list li.tl-approximate::before {
+        background: transparent;
+        border: 2px solid var(--saffron);
+        width: 4px;
+        height: 4px;
+    }
+
+    .timeline-list li.tl-century::before {
+        background: transparent;
+        border: 2px dashed var(--saffron);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+
+    .tl-dot-link {
+        text-decoration: none;
+        color: var(--ink);
+        display: block;
+    }
+
+    .tl-dot-link:hover {
+        color: var(--saffron);
+    }
+
+    .tl-year {
+        font-weight: 600;
+        color: var(--saffron);
+        font-size: 0.72rem;
+        min-width: 70px;
+        display: inline-block;
+    }
+
+    .tl-label {
+        color: var(--ink-secondary);
+        font-size: 0.72rem;
+    }
+
+    .tl-view-link, .tl-more {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.72rem;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .tl-view-link:hover, .tl-more:hover {
+        text-decoration: underline;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+
+    .breadcrumb-bar a {
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+
+    .breadcrumb-bar .sep {
+        color: var(--amber);
+        margin: 0 8px;
+    }
+
+    .breadcrumb-bar .current {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Chapter Navigation ── */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        margin-top: 48px;
+        border-top: 2px solid var(--rule);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .chapter-nav a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        transition: all 0.2s;
+        max-width: 45%;
+    }
+
+    .chapter-nav a:hover {
+        background: var(--saffron-wash);
+        border-color: var(--saffron-light);
+    }
+
+    .nav-prev { text-align: left; }
+    .nav-next { text-align: right; margin-left: auto; }
+
+    .page-range {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+    }
+
+    /* ── Volume Cards (Landing) ── */
+    .vol-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .vol-card {
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        transition: all 0.25s;
+    }
+
+    .vol-card:hover {
+        border-color: var(--saffron-light);
+        box-shadow: 0 4px 24px rgba(212, 96, 10, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .vol-num {
+        font-family: var(--font-roman);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--saffron);
+        margin-bottom: 8px;
+    }
+
+    .vol-subtitle {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        line-height: 1.5;
+        flex: 1;
+    }
+
+    .vol-chapters {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        margin-top: 12px;
+    }
+
+    /* ── Chapter Cards (Volume Index) ── */
+    .chapter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .chapter-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .chapter-card:hover {
+        border-color: var(--saffron-light);
+        background: var(--saffron-wash);
+    }
+
+    .card-num {
+        font-family: var(--font-roman);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--saffron);
+        min-width: 36px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        flex: 1;
+    }
+
+    .card-pages {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        color: var(--ink-secondary);
+    }
+
+    /* ── Landing Hero ── */
+    .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-family: var(--font-roman);
+        font-size: 2.4rem;
+        color: var(--saffron);
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .hero .devanagari-title {
+        font-family: var(--font-devanagari);
+        font-size: 1.8rem;
+        color: var(--ink);
+        margin-bottom: 16px;
+    }
+
+    .hero .author {
+        font-family: var(--font-roman);
+        font-size: 1.1rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .hero .desc {
+        font-family: var(--font-roman);
+        font-size: 1rem;
+        color: var(--ink-secondary);
+        line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer { margin-top: 48px; }
+
+
+    .ref-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    .ref-table th { text-align: left; padding: 10px 12px; border-bottom: 2px solid var(--saffron);
+        font-family: 'Open Sans', sans-serif; font-size: 0.8rem; color: var(--ink-secondary);
+        text-transform: uppercase; letter-spacing: 0.5px; }
+    .ref-table td { padding: 8px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+    .ref-table tr:target { background: var(--saffron-wash); }
+    .verse-ref { font-weight: 600; color: var(--saffron); white-space: nowrap; min-width: 80px; }
+    .verse-locs a { color: var(--indigo); text-decoration: none; font-size: 0.85rem; }
+    .verse-locs a:hover { text-decoration: underline; }
+    .verse-context { color: var(--ink-secondary); font-style: italic; max-width: 400px; }
+    .verse-text { max-width: 460px; }
+    .kane-sa { font-family: 'Noto Serif Devanagari', serif; font-size: 0.95rem;
+        line-height: 1.7; color: var(--ink); }
+    .kane-note { font-size: 0.72rem; color: var(--ink-secondary); margin-top: 4px;
+        padding-left: 8px; border-left: 2px solid var(--rule, #ddd); opacity: .85; }
+    .kane-src { font-size: 0.7rem; color: var(--ink-secondary); margin-top: 3px; }
+    .kane-src a { color: var(--indigo); text-decoration: none; }
+    .kane-src a:hover { text-decoration: underline; }
+    .tier { text-transform: uppercase; letter-spacing: .06em; font-size: 0.62rem;
+        border: 1px solid currentColor; border-radius: 2px; padding: 0 3px; }
+    .tier.cited { color: #1f6b5c; }
+    .tier.sole { color: #a8730d; }
+    .kane-none { color: var(--ink-secondary); font-size: 0.75rem; opacity: .55; }
+    .source-hero { text-align: center; padding: 40px 20px 30px; max-width: 800px; margin: 0 auto; }
+    .source-hero h1 { font-family: var(--font-roman); color: var(--saffron); font-size: 2rem; }
+    .source-hero .stats { font-family: 'Open Sans', sans-serif; color: var(--ink-secondary);
+        font-size: 0.9rem; margin-top: 8px; }
+    .ext-link { color: var(--indigo); font-weight: 600; }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mbta/">
+      <div class="container-fluid">&emsp;&emsp;
+      <a href="../index.html" class="navbar-brand" style="text-decoration:none;">
+        <span class="devanagari ms-3" style="font-size:1.5rem; color:var(--saffron); font-weight:700;">धर्मशास्त्रम्</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="../index.html">धर्मशास्त्रम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5 active" href="../index.html">खण्डाः</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in/mbta/">महाभारतम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in">सनातनम्</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+
+    <div style="max-width: 1100px; margin: 0 auto; padding: 20px;">
+        <div class="breadcrumb-bar">
+            <a href="../index.html">Home</a>
+            <span class="sep">›</span>
+            <a href="index.html">References</a>
+            <span class="sep">›</span>
+            <span class="current">Baudhāyana Dharmasūtra</span>
+        </div>
+
+        <div class="source-hero">
+            <h1>Baudhāyana Dharmasūtra</h1>
+            <p class="stats">378 references across all volumes ·
+               53 distinct verses ·
+               <b>7</b> of them with the verse as Kane prints it</p>
+        </div>
+
+        <table class="ref-table">
+            <thead>
+                <tr><th>Verse</th><th>The verse, as Kane prints it</th><th>Locations</th><th>Context</th></tr>
+            </thead>
+            <tbody>
+                
+        <tr id="ci">
+            <td class="verse-ref">ci</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/7-dharmasutra-of-āpastamba.html#p-7-dharmasutra-of-āpastamba-5">vol-1-part-1 §7-dharmasutra-of-āpastamba</a> · <a href="../vol-2-part-2/chapter-xix-devayajna.html#p-chapter-xix-devayajna-24">vol-2-part-2 §chapter-xix-devayajna</a></td>
+            <td class="verse-context"><small>...idhi (vide Ap. Dh. S. II. 6. 14. 6-13). Baudhāyana cites both the texts of the Tai. S. about ...</small></td>
+        </tr>
+
+        <tr id="l">
+            <td class="verse-ref">l</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xvii-āhnika-and-āchāra.html#p-chapter-xvii-āhnika-and-āchāra-3">vol-2-part-1 §chapter-xvii-āhnika-and-āchāra</a></td>
+            <td class="verse-context"><small>...stra writers represented by Gautama and Baudhāyana looked upon the stage of householder as t...</small></td>
+        </tr>
+
+        <tr id="i">
+            <td class="verse-ref">i</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/6-the-baudhāyana-dharmasutra.html#p-6-the-baudhāyana-dharmasutra-1">vol-1-part-1 §6-the-baudhāyana-dharmasutra</a> · <a href="../vol-1-part-1/6-the-baudhāyana-dharmasutra.html#p-6-the-baudhāyana-dharmasutra-1">vol-1-part-1 §6-the-baudhāyana-dharmasutra</a> · <a href="../vol-1-part-1/6-the-baudhāyana-dharmasutra.html#p-6-the-baudhāyana-dharmasutra-3">vol-1-part-1 §6-the-baudhāyana-dharmasutra</a> · <a href="../vol-1-part-1/6-the-baudhāyana-dharmasutra.html#p-6-the-baudhāyana-dharmasutra-4">vol-1-part-1 §6-the-baudhāyana-dharmasutra</a> · <a href="../vol-1-part-1/6-the-baudhāyana-dharmasutra.html#p-6-the-baudhāyana-dharmasutra-5">vol-1-part-1 §6-the-baudhāyana-dharmasutra</a></td>
+            <td class="verse-context"><small>... 3. 13 as Kāṇvāyana. In the dharmasūtra Baudhāyana is himself cited as an authority several ...</small></td>
+        </tr>
+
+        <tr id="I">
+            <td class="verse-ref">I</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o.html#p-chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o-41">vol-3 §chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o</a> · <a href="../vol-3/chapter-xxiv-steya-theft.html#p-chapter-xxiv-steya-theft-5">vol-3 §chapter-xxiv-steya-theft</a> · <a href="../vol-4/chapter-iii-prāyashchitta-its-origin-derivation-and-meaning.html#p-chapter-iii-prāyashchitta-its-origin-derivation-and-meaning-18">vol-4 §chapter-iii-prāyashchitta-its-origin-derivation-and-meaning</a> · <a href="../vol-4/list-of-tīrthas.html#p-list-of-tīrthas-185">vol-4 §list-of-tīrthas</a></td>
+            <td class="verse-context"><small>...witnesses, the sabhyas and the king The Baud Dh S I.'10 30-31, Manu VIII 18-19, Nar (III 12...</small></td>
+        </tr>
+
+        <tr id="I.1">
+            <td class="verse-ref">I.1</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">उपविष्टो धर्मः प्रतिवेदम् । ... स्मार्तो द्वितीयः । तृतीयः शिष्टानाम् ।</div><div class="kane-note">बौ . ध . सू . I. 1. 1-4.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-i-the-topics-of-dharmashastra.html#fn-chapter-i-the-topics-of-dharmashastra-3">vol-2-part-1 §chapter-i-the-topics-of-dharmashastra</a></div></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/5-the-dharmasutra-of-gautama.html#p-5-the-dharmasutra-of-gautama-12">vol-1-part-1 §5-the-dharmasutra-of-gautama</a></td>
+            <td class="verse-context"><small>...(stated in XI. 20 ) is mentioned in the Baudhāyana Dh. S. I. 1, 25. Bauḍ Dh. S. stated five difference...</small></td>
+        </tr>
+
+        <tr id="I.1.4-9">
+            <td class="verse-ref">I.1.4-9</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxxiii-customs-and-dharmashastra-works.html#p-chapter-xxxiii-customs-and-dharmashastra-works-12">vol-3 §chapter-xxxiii-customs-and-dharmashastra-works</a></td>
+            <td class="verse-context"><small>...wn by the Tai. Up., Gaut. (28. 48, 51), Baud Dh. S. I. 1. 4-9, Manu XII. 108-109, Vaṣ I. 6, the ācāra...</small></td>
+        </tr>
+
+        <tr id="I.1.19">
+            <td class="verse-ref">I.1.19</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/64-medhātithi.html#p-64-medhātithi-5">vol-1-part-1 §64-medhātithi</a></td>
+            <td class="verse-context"><small>...nduct)’. This is clearly a reference to Baudhāyana Dh. S. (I. 1. 19) according to which ‘mātulasutā-pariṇaya...</small></td>
+        </tr>
+
+        <tr id="I.1.19-24">
+            <td class="verse-ref">I.1.19-24</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/6-the-baudhāyana-dharmasutra.html#p-6-the-baudhāyana-dharmasutra-5">vol-1-part-1 §6-the-baudhāyana-dharmasutra</a></td>
+            <td class="verse-context"><small>...adition ) stand refuted by the words of Baudhāyana (I. 1. 19-24) who cites only such censured usages as ...</small></td>
+        </tr>
+
+        <tr id="I.1.19-26">
+            <td class="verse-ref">I.1.19-26</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxix-some-fundamental-doctrines-of-pūrvamīmāmsā.html#p-chapter-xxix-some-fundamental-doctrines-of-pūrvamīmāmsā-71">vol-5-part-2 §chapter-xxix-some-fundamental-doctrines-of-pūrvamīmāmsā</a></td>
+            <td class="verse-context"><small>...justified (pp. 183–184) on I. 3. 3. The Baudhāyana Dh. S. (I. 1. 19–26) sets out five practices peculiar to the...</small></td>
+        </tr>
+
+        <tr id="I.1.20">
+            <td class="verse-ref">I.1.20</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-iii-the-duties-disabilities-and-privileges-of-varnas.html#p-chapter-iii-the-duties-disabilities-and-privileges-of-varnas-13">vol-2-part-1 §chapter-iii-the-duties-disabilities-and-privileges-of-varnas</a></td>
+            <td class="verse-context"><small>...hould pursue the avocation of a vaiśya. Baudhāyana ( I. 1. 20 ) notes that the profession of arms was p...</small></td>
+        </tr>
+
+        <tr id="I.1.25">
+            <td class="verse-ref">I.1.25</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/12-the-dharmasutra-of-sankha-likhita.html#p-12-the-dharmasutra-of-sankha-likhita-8">vol-1-part-1 §12-the-dharmasutra-of-sankha-likhita</a></td>
+            <td class="verse-context"><small>...vīra and to the west of Kāmpilya ) than Baudhāyana (I. 1. 25) or Vasiṣṭha (I. 8-9 ). The style of Śaṅ...</small></td>
+        </tr>
+
+        <tr id="I.1.29">
+            <td class="verse-ref">I.1.29</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/6-the-baudhāyana-dharmasutra.html#p-6-the-baudhāyana-dharmasutra-6">vol-1-part-1 §6-the-baudhāyana-dharmasutra</a></td>
+            <td class="verse-context"><small>...s against this we have to remember that Baudhāyana (I. 1. 29) quotes with approval a verse in which t...</small></td>
+        </tr>
+
+        <tr id="I.2.1">
+            <td class="verse-ref">I.2.1</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">अथाचलावशिष्ठोपरि वेदमग्रहणार्थ्यचरणं जात्यपुत्रः कृष्णकेशोऽक्षीणावद्योतो यत्किञ्चिज्जोडयोत्पादनं विल्वजिादक इति ' तस्माद्वादीषीचये संसिध्यते । यज्ञस्येतिकृत्याभिप्रायवत्वेन विनिगच्छन् । शाबर on I.3.2</div><div class="kane-note">बौ . ध . सू . I. 2. 1 is अथाचलावशिष्ठोपरि वेदमग्रहणार्थ्यचरणं जात्यपुत्रः कृष्णकेशोऽक्षीणावद्योतो यत्किञ्चिज्जोडयोत्पादनं विल्वजिादक इति ' तस्माद्वादीषीचये संसिध्यते । यज्ञस्येतिकृत्याभिप्रायवत्वेन विनिगच्छन् । बौ . ध . सू . I. 6. 18. 16 and 23 are सद्गमयोज्य । दीर्घसिद्धोऽपि । Manu X. 89 forbids the sale of horses and other animals that are ekāṣapha, while Tai. S. II. 3. 12. 1 stating that Varuṇa seizes him who accepts the gift of a horse practically forbids it. The Ṛgveda highly praises donors of horses e. g. in X. 107. 2 उ॒जा दिवि दक्षिणावन्तो अश्वयुवो ' अश्वदा ले ते 'Pūrvamīmāmsā in its sources' Sir, G. Jha translates 'giving and accepting in gift and buying and selling of lions, horses &amp;c.' केसरिम् means 'lion' and also as an adjective 'having a mane' qualifying 'horses'; vide H. of Dh, vol, III. p. 850 ṇ 1647 criticizsing this translatioṇ H, D, 158</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-5-part-2/chapter-xxix-some-fundamental-doctrines-of-pūrvamīmāmsā.html#fn-chapter-xxix-some-fundamental-doctrines-of-pūrvamīmāmsā-94">vol-5-part-2 §chapter-xxix-some-fundamental-doctrines-of-pūrvamīmāmsā</a></div></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/6-the-baudhāyana-dharmasutra.html#p-6-the-baudhāyana-dharmasutra-5">vol-1-part-1 §6-the-baudhāyana-dharmasutra</a></td>
+            <td class="verse-context"><small>...e regarded as referring to the words of Baudhāyana (I. 2. 1). Śabara uses the same word “Vedabrahmac...</small></td>
+        </tr>
+
+        <tr id="I.2.47">
+            <td class="verse-ref">I.2.47</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/38-kātyāyana.html#p-38-kātyāyana-3">vol-1-part-1 §38-kātyāyana</a></td>
+            <td class="verse-context"><small>... Kātya is quoted as an authority in the Baudhāyana- dharmasūtra (I. 2. 47). A Śrautasūtra and Śrāddhakalpa of the ...</small></td>
+        </tr>
+
+        <tr id="I.4.2">
+            <td class="verse-ref">I.4.2</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">मार्जारमक्षिका कीटभूदण्डकूर्मिदंष्ट्राः । मेध्यामेध्ये स्पृशन्तश्च नोच्छिष्ट्यान्नम दुन्न - मश्वबीत् ।। There are two more endings with नोच्छिष्टम् ... ब्रवीत् . प्रभासादीनि तीर्थानि गङ्गायाः सरितस्तथा । विप्रस्य दक्षिणे कर्णे सानिध्यं मनुरब्रवीत् ।। पराशर chap. 7; compare</div><div class="kane-note">बौ . ध . सू . I. 4. 2. for the last,</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-1/35-the-parāshara-smriti.html#fn-35-the-parāshara-smriti-4">vol-1-part-1 §35-the-parāshara-smriti</a></div></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/13-manavadharmasutra-did-it-exist.html#p-13-manavadharmasutra-did-it-exist-5">vol-1-part-1 §13-manavadharmasutra-did-it-exist</a></td>
+            <td class="verse-context"><small>...g verses bear a close correspondence to Baudhāyana Dh. S. I. 4. 2. Similarly, Bühler’s argument about Mān...</small></td>
+        </tr>
+
+        <tr id="I.5">
+            <td class="verse-ref">I.5</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">Compare ' नात्रायुगणितिथिविद्गाणस्य ' (quoted in वीर० , आहिक० , p. 452) with गौ . ध . सू . 5. 39-42; ' दन्तवदन्तल्मेषु ' (quoted by अपरार्क on याज्ञ . I. 195 ) with गौ . ध . सू . I. 41-43; ' न तिष्ठन्न प्रणतो नाहूगुलिभिः ' ( चतुर्वर्ग० III. 1, p. 977) with</div><div class="kane-note">बौ . ध . सू . I. 5. 15.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-1/12-the-dharmasutra-of-sankha-likhita.html#fn-12-the-dharmasutra-of-sankha-likhita-5">vol-1-part-1 §12-the-dharmasutra-of-sankha-likhita</a></div></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xiii-witnesses-sākshinah.html#p-chapter-xiii-witnesses-sākshinah-7">vol-3 §chapter-xiii-witnesses-sākshinah</a></td>
+            <td class="verse-context"><small>... and Vivādacandra p 127 Manu VIII 102 (=Baud Dh. S I. 5 95 ) is careful to point out that the e...</small></td>
+        </tr>
+
+        <tr id="I.5.47">
+            <td class="verse-ref">I.5.47</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/6-the-baudhāyana-dharmasutra.html#p-6-the-baudhāyana-dharmasutra-5">vol-1-part-1 §6-the-baudhāyana-dharmasutra</a></td>
+            <td class="verse-context"><small>.... 12. Medhātithi on Manu. V. 117 quotes Baudhāyana I. 5. 47 and on IV. 36 quotes Bauḍ I. 4. 2 (whic...</small></td>
+        </tr>
+
+        <tr id="I.5.79">
+            <td class="verse-ref">I.5.79</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/11-the-dharmasutra-of-harita.html#p-11-the-dharmasutra-of-harita-7">vol-1-part-1 §11-the-dharmasutra-of-harita</a></td>
+            <td class="verse-context"><small>... 177) as Hārita’s is almost the same as Baudhāyana (I. 5. 79) and Vasiṣṭha&lt;sup&gt;122&lt;/sup&gt; (2. 42). A v...</small></td>
+        </tr>
+
+        <tr id="I.5.123">
+            <td class="verse-ref">I.5.123</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-viii-shuddhi.html#p-chapter-viii-shuddhi-40">vol-4 §chapter-viii-shuddhi</a></td>
+            <td class="verse-context"><small>...ends in three days after the first endṣ Baud Dh. S. I. 5. 123 appears to be similar to Gaut, 14 5-6 M...</small></td>
+        </tr>
+
+        <tr id="I.8.6">
+            <td class="verse-ref">I.8.6</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/12-the-dharmasutra-of-sankha-likhita.html#p-12-the-dharmasutra-of-sankha-likhita-9">vol-1-part-1 §12-the-dharmasutra-of-sankha-likhita</a></td>
+            <td class="verse-context"><small>... mixed marriages differed from those of Baudhāyana (I. 8. 6 ) and Manu (X. 6 ) and were inter- mediat...</small></td>
+        </tr>
+
+        <tr id="I.8.7-12">
+            <td class="verse-ref">I.8.7-12</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">प्रतिलोमास्त्वार्योग्रवमागत्वम्षद्येवेहचण्डाला : । निषादात्तु तृतीयायाः कुक्कुट : । विपर्यये कुक्कुट : ।</div><div class="kane-note">बौ . ध . सू . I. 8.8, 11-12; शूद्रायां निषाद्यां कुक्कुट : । बौ . ध . सू . I. 9. 15.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-ii-varna.html#fn-chapter-ii-varna-139">vol-2-part-1 §chapter-ii-varna</a></div></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/7-dharmasutra-of-āpastamba.html#p-7-dharmasutra-of-āpastamba-25">vol-1-part-1 §7-dharmasutra-of-āpastamba</a></td>
+            <td class="verse-context"><small>...r *sūtrakāras*. Gautama (IV. 14-17) and Baudhāyana (I. 8. 7-12) give long lists of mixed castes and Gau...</small></td>
+        </tr>
+
+        <tr id="I.10">
+            <td class="verse-ref">I.10</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xv-decision.html#p-chapter-xv-decision-16">vol-3 §chapter-xv-decision</a></td>
+            <td class="verse-context"><small>... 241, VIII. 380, Viṣṇu Dh S V. 3 and 8, Baud Dh. S. I. 10, Yāj. II. 270 ). It was often associate...</small></td>
+        </tr>
+
+        <tr id="I.10.1">
+            <td class="verse-ref">I.10.1</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-vii-kosha-treasury-or-finance.html#p-chapter-vii-kosha-treasury-or-finance-2">vol-3 §chapter-vii-kosha-treasury-or-finance</a> · <a href="../vol-5-part-1/chapter-xv-units-of-kāla.html#p-chapter-xv-units-of-kāla-39">vol-5-part-1 §chapter-xv-units-of-kāla</a></td>
+            <td class="verse-context"><small>... that effect. Vide Śānti 67 and 70. 10, Baud Dh. S. I. 10. 1, Nār. 18. 48, Kaut. I 13 (quoted on p 2...</small></td>
+        </tr>
+
+        <tr id="I.10.30">
+            <td class="verse-ref">I.10.30</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/11-the-dharmasutra-of-harita.html#p-11-the-dharmasutra-of-harita-7">vol-1-part-1 §11-the-dharmasutra-of-harita</a> · <a href="../vol-1-part-2/78-the-kalpataru-of-lakshmīdhara.html#p-78-the-kalpataru-of-lakshmīdhara-46">vol-1-part-2 §78-the-kalpataru-of-lakshmīdhara</a></td>
+            <td class="verse-context"><small>...tva of Raghunandana as found in Hārita, Baudhāyana (I. 10. 30) and Manu (8. 18–19). A verse quoted by ...</small></td>
+        </tr>
+
+        <tr id="I.11.1">
+            <td class="verse-ref">I.11.1</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/6-the-baudhāyana-dharmasutra.html#p-6-the-baudhāyana-dharmasutra-7">vol-1-part-1 §6-the-baudhāyana-dharmasutra</a></td>
+            <td class="verse-context"><small>...ndemns it (II. 6. 13. 1–9). Gautama and Baudhāyana (I. 11. 1) speak of eight forms of marriage, while...</small></td>
+        </tr>
+
+        <tr id="II">
+            <td class="verse-ref">II</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-13">vol-3 §chapter-v-rāshtra-the-territory-of-a-state</a> · <a href="../vol-3/chapter-xvi-contracts.html#p-chapter-xvi-contracts-27">vol-3 §chapter-xvi-contracts</a> · <a href="../vol-3/chapter-xxvii-dāyabhāga-partition-of-wealth.html#p-chapter-xxvii-dāyabhāga-partition-of-wealth-57">vol-3 §chapter-xxvii-dāyabhāga-partition-of-wealth</a> · <a href="../vol-4/chapter-v-names-of-all-prāyashchittas.html#p-chapter-v-names-of-all-prāyashchittas-43">vol-4 §chapter-v-names-of-all-prāyashchittas</a> · <a href="../vol-4/chapter-ix-shrāddha.html#p-chapter-ix-shrāddha-78">vol-4 §chapter-ix-shrāddha</a></td>
+            <td class="verse-context"><small>...asture lands to be preserved round theṃ Baudhāyana Dh S II 3. 58 and 60 condemns residence in a ci...</small></td>
+        </tr>
+
+        <tr id="II.1.25-26">
+            <td class="verse-ref">II.1.25-26</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/7-dharmasutra-of-āpastamba.html#p-7-dharmasutra-of-āpastamba-5">vol-1-part-1 §7-dharmasutra-of-āpastamba</a></td>
+            <td class="verse-context"><small>... by Śruti, seems to be directed against Baudhāyana (II. 1. 25-26). Although Āpastamba does not expressly ...</small></td>
+        </tr>
+
+        <tr id="II.1.35-43">
+            <td class="verse-ref">II.1.35-43</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-iv-penances-for-particular-sins.html#p-chapter-iv-penances-for-particular-sins-34">vol-4 §chapter-iv-penances-for-particular-sins</a></td>
+            <td class="verse-context"><small>...āhā'. Gaut 23. 17-19, Manu XI, 118-123, Baud Dh. S II. 1. 35-43; Yāj. III. 280, Agnipurāṇa 169. 15-18, ...</small></td>
+        </tr>
+
+        <tr id="II.1.50">
+            <td class="verse-ref">II.1.50</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">अथ पतनीयानि। सहदसंथानन्द् । ब्रह्मवन्न्यासपाहरुणम्। शून्यचूतम्। सर्व - वच्चनम्। शूद्राभोजननम्। तदुपसृत्य च । ... अयोचोपपातकानि। अयम्यामगनं शून्नैःवी सुत्रुर्सरीमपणार्षा प्रतिर्षा गत्वा मेपजकरुणं मांच्यार्यता गोमोहिपरहरणं यज्ञाद्वव्योदयेषु कं कन्यादूषणमिति । ... अथाशुचिकाशरणं । घतमामेचारोराऽनाहितनरेणदयुति तो समाश्रुतस्य भैक्षचर्या तस्य चैव शुष्ककुले वास अर्घ चतुम्मो मामेप्प्रस्तय व्यप्पनं नद्माजिनिर्दशयेद्गोषिौ।</div><div class="kane-note">बौ . ध . सू . II, 1.50-56, 60-61, 63-64,</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-4/chapter-i-sin-in-rigveda-conception-of-rita-enumeration-and-classification-of-si.html#fn-chapter-i-sin-in-rigveda-conception-of-rita-enumeration-and-classification-of-si-28">vol-4 §chapter-i-sin-in-rigveda-conception-of-rita-enumeration-and-classification-of-si</a></div></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/7-dharmasutra-of-āpastamba.html#p-7-dharmasutra-of-āpastamba-5">vol-1-part-1 §7-dharmasutra-of-āpastamba</a></td>
+            <td class="verse-context"><small>...s are cited so frequently, is quoted by Baudhāyana (II. 1. 50) and also by Vasiṣṭha (II. 6. ). From th...</small></td>
+        </tr>
+
+        <tr id="II.1.64">
+            <td class="verse-ref">II.1.64</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-iii-the-duties-disabilities-and-privileges-of-varnas.html#p-chapter-iii-the-duties-disabilities-and-privileges-of-varnas-24">vol-2-part-1 §chapter-iii-the-duties-disabilities-and-privileges-of-varnas</a></td>
+            <td class="verse-context"><small>...e same words and Viṣṇu Dh. S. 3. 79-80. Baud Dh. S. II. 1. 64 includes begging by one who has finishe...</small></td>
+        </tr>
+
+        <tr id="II, I.95-99">
+            <td class="verse-ref">II, I.95-99</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-iv-penances-for-particular-sins.html#p-chapter-iv-penances-for-particular-sins-41">vol-4 §chapter-iv-penances-for-particular-sins</a></td>
+            <td class="verse-context"><small>...ct) and that have studied the Veda. The Baud Dh S. (II, I. 95–99) prescribes that in a *krecchra* penance...</small></td>
+        </tr>
+
+        <tr id="II.2.4-6">
+            <td class="verse-ref">II.2.4-6</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">तस्माज्ज्येष्ठ पुत्रं धनेन निरवसाययन्ति । तै . सं . II. 5. 2. 7. This passage is referred to by आप . ध . सू . II. 6. 14. 12 and</div><div class="kane-note">बौ . ध . सू . II. 2. 5.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-1/2-sources-of-dharma.html#fn-2-sources-of-dharma-19">vol-1-part-1 §2-sources-of-dharma</a></div></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/6-the-baudhāyana-dharmasutra.html#p-6-the-baudhāyana-dharmasutra-7">vol-1-part-1 §6-the-baudhāyana-dharmasutra</a></td>
+            <td class="verse-context"><small>... (II. 5. 11. 17–20 and II. 5. 12. 1–2). Baudhāyana (II. 2. 4–6) allowed a larger share to the eldest so...</small></td>
+        </tr>
+
+        <tr id="II.2.8">
+            <td class="verse-ref">II.2.8</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxvii-dāyabhāga-partition-of-wealth.html#p-chapter-xxvii-dāyabhāga-partition-of-wealth-25">vol-3 §chapter-xxvii-dāyabhāga-partition-of-wealth</a></td>
+            <td class="verse-context"><small>... 4, Āp Dh. S. II. 6. 14. 1, Gaut. 28 2, Baud Dh.S. II. 2.8, Yaj II. 114, Nār. dāyabhāga 4. Another...</small></td>
+        </tr>
+
+        <tr id="II.2.16">
+            <td class="verse-ref">II.2.16</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/6-the-baudhāyana-dharmasutra.html#p-6-the-baudhāyana-dharmasutra-5">vol-1-part-1 §6-the-baudhāyana-dharmasutra</a></td>
+            <td class="verse-context"><small>...which, as said above, is very doubtful. Baudhāyana II. 2. 16 (about the efficacy of *Aghamarṣaṇa*) c...</small></td>
+        </tr>
+
+        <tr id="II.2.17, 62">
+            <td class="verse-ref">II.2.17, 62</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/6-the-baudhāyana-dharmasutra.html#p-6-the-baudhāyana-dharmasutra-7">vol-1-part-1 §6-the-baudhāyana-dharmasutra</a></td>
+            <td class="verse-context"><small>...Āpastamba is silent about theṃ Gautama, Baudhāyana (II. 2. 17, 62), Vasiṣṭha and even Viṣṇu approve of the...</small></td>
+        </tr>
+
+        <tr id="II.2.77">
+            <td class="verse-ref">II.2.77</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-iii-the-duties-disabilities-and-privileges-of-varnas.html#p-chapter-iii-the-duties-disabilities-and-privileges-of-varnas-13">vol-2-part-1 §chapter-iii-the-duties-disabilities-and-privileges-of-varnas</a></td>
+            <td class="verse-context"><small>... of the vaiśya in similar circumstanceṣ Baudhāyana Dh. S. ( II. 2. 77 ) says the same and then it adds ( II. 2....</small></td>
+        </tr>
+
+        <tr id="II.3.24">
+            <td class="verse-ref">II.3.24</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-iii-the-duties-disabilities-and-privileges-of-varnas.html#p-chapter-iii-the-duties-disabilities-and-privileges-of-varnas-12">vol-2-part-1 §chapter-iii-the-duties-disabilities-and-privileges-of-varnas</a></td>
+            <td class="verse-context"><small>...-varnas-30"&gt;30&lt;/a&gt;&lt;/sup&gt; (V. 19–20) and Baudhāyana II. 3. 24 further make it obligatory to give outs...</small></td>
+        </tr>
+
+        <tr id="II.3.28">
+            <td class="verse-ref">II.3.28</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/6-the-baudhāyana-dharmasutra.html#p-6-the-baudhāyana-dharmasutra-5">vol-1-part-1 §6-the-baudhāyana-dharmasutra</a></td>
+            <td class="verse-context"><small>...sage which bears a close resemblance to Baudhāyana (II. 3. 28)&lt;sup class="fn-ref"&gt;&lt;a href="#fn-6-the-b...</small></td>
+        </tr>
+
+        <tr id="II.5.21">
+            <td class="verse-ref">II.5.21</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-24">vol-1-part-1 §34-the-yājnavalkya-smriti</a></td>
+            <td class="verse-context"><small>...hat position had to be given up. In the Baudhāyanadharmasūtra ( II. 5. 21 ) we have Vināyaka and his several appell...</small></td>
+        </tr>
+
+        <tr id="II.6.17">
+            <td class="verse-ref">II.6.17</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/5-the-dharmasutra-of-gautama.html#p-5-the-dharmasutra-of-gautama-14">vol-1-part-1 §5-the-dharmasutra-of-gautama</a></td>
+            <td class="verse-context"><small>...spondence, e. g. Gautama III. 25-34 and Baudhāyana II. 6. 17 about Vaikhānasa, Gaut. 3. 3 and 35 and...</small></td>
+        </tr>
+
+        <tr id="II.6.30">
+            <td class="verse-ref">II.6.30</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/6-the-baudhāyana-dharmasutra.html#p-6-the-baudhāyana-dharmasutra-5">vol-1-part-1 §6-the-baudhāyana-dharmasutra</a></td>
+            <td class="verse-context"><small>...kable piece of information contained in Baudhāyana (II. 6. 30 ) is that he quotes from a work (of the B...</small></td>
+        </tr>
+
+        <tr id="III">
+            <td class="verse-ref">III</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-ii-means-of-reducing-consequences-of-sins.html#p-chapter-ii-means-of-reducing-consequences-of-sins-4">vol-4 §chapter-ii-means-of-reducing-consequences-of-sins</a></td>
+            <td class="verse-context"><small>...tar) and fasting constitute austeritieṣ Baud Dh S III 10 13 adds to these ‘ahiṁsā’ (non-injur...</small></td>
+        </tr>
+
+        <tr id="III.8.33">
+            <td class="verse-ref">III.8.33</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-v-names-of-all-prāyashchittas.html#p-chapter-v-names-of-all-prāyashchittas-12">vol-4 §chapter-v-names-of-all-prāyashchittas</a></td>
+            <td class="verse-context"><small>...r in the middle and large at the ends). Baud Dh S. III. 8. 33 names these two varietieṣ According to ...</small></td>
+        </tr>
+
+        <tr id="III.10">
+            <td class="verse-ref">III.10</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/5-the-dharmasutra-of-gautama.html#p-5-the-dharmasutra-of-gautama-14">vol-1-part-1 §5-the-dharmasutra-of-gautama</a></td>
+            <td class="verse-context"><small>...eems to have been borrowed wholesale by Baudhāyana (III. 10) with slight changeṣ That Baudhāyana bor...</small></td>
+        </tr>
+
+        <tr id="IV">
+            <td class="verse-ref">IV</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-ii-means-of-reducing-consequences-of-sins.html#p-chapter-ii-means-of-reducing-consequences-of-sins-10">vol-4 §chapter-ii-means-of-reducing-consequences-of-sins</a> · <a href="../vol-4/chapter-v-names-of-all-prāyashchittas.html#p-chapter-v-names-of-all-prāyashchittas-3">vol-4 §chapter-v-names-of-all-prāyashchittas</a> · <a href="../vol-4/chapter-v-names-of-all-prāyashchittas.html#p-chapter-v-names-of-all-prāyashchittas-16">vol-4 §chapter-v-names-of-all-prāyashchittas</a> · <a href="../vol-4/chapter-v-names-of-all-prāyashchittas.html#p-chapter-v-names-of-all-prāyashchittas-30">vol-4 §chapter-v-names-of-all-prāyashchittas</a></td>
+            <td class="verse-context"><small>.... 11 (=Vas 28 10–15), Saṁvarta 227–228, Baud Dh. S IV 2 4–5, IV. 3 8, IV. 4 2–5, Yaj III 302–...</small></td>
+        </tr>
+
+        <tr id="IV.4.9">
+            <td class="verse-ref">IV.4.9</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/9-vasishtha-dharmasutra.html#p-9-vasishtha-dharmasutra-7">vol-1-part-1 §9-vasishtha-dharmasutra</a></td>
+            <td class="verse-context"><small>... son or pupil. The same sūtra occurs in Baudhāyana Dh. S. IV. 4. 9 and the succeeding sūtra is the same in...</small></td>
+        </tr>
+
+        <tr id="IV.5">
+            <td class="verse-ref">IV.5</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-v-names-of-all-prāyashchittas.html#p-chapter-v-names-of-all-prāyashchittas-44">vol-4 §chapter-v-names-of-all-prāyashchittas</a></td>
+            <td class="verse-context"><small>ŚIŚU-CĀNDRĀYANA—Manu XI. 219, Baud Dh. S IV. 5 19, Agnipurāṇa 171.5 state that when a ...</small></td>
+        </tr>
+
+        <tr id="IV.5.20">
+            <td class="verse-ref">IV.5.20</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-v-names-of-all-prāyashchittas.html#p-chapter-v-names-of-all-prāyashchittas-40">vol-4 §chapter-v-names-of-all-prāyashchittas</a></td>
+            <td class="verse-context"><small>... all sins YATICĀNDRĀYANA—Manu XI 218 (= Baud Dh. S. IV. 5.20), Agnipurāṇa 171. 4, Viṣṇu Dh. S. 47. 7...</small></td>
+        </tr>
+
+        <tr id="14">
+            <td class="verse-ref">14</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/general-index-of-vol-iv.html#p-general-index-of-vol-iv-40">vol-4 §general-index-of-vol-iv</a></td>
+            <td class="verse-context"><small>...ce while fasting 107, what are u acc to Baud Dh S 14</small></td>
+        </tr>
+
+        <tr id="82">
+            <td class="verse-ref">82</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/general-index-of-vol-iv.html#p-general-index-of-vol-iv-41">vol-4 §general-index-of-vol-iv</a></td>
+            <td class="verse-context"><small>...thern India but con- demned by Manu and Baudhāyana 82, to be considered in giviṅ deci- sions ...</small></td>
+        </tr>
+
+        <tr id="99">
+            <td class="verse-ref">99</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-31">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>Baudhāyana 99</small></td>
+        </tr>
+
+        <tr id="606">
+            <td class="verse-ref">606</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/general-index.html#p-general-index-17">vol-3 §general-index</a></td>
+            <td class="verse-context"><small>...nce acc to certain writers that rely on Baudhāyana 606, 712, not to be arrested and jailed in ...</small></td>
+        </tr>
+
+        <tr id="1159">
+            <td class="verse-ref">1159</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-131">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>...Rājarāja 1159–60; Kṛtakoṭibhāṣya of, by Baudhāyana 1159; coṃ of Upavarṣa 1159; coṃ of Devasvāmi...</small></td>
+        </tr>
+            </tbody>
+        </table>
+    </div>
+
+    
+    <footer class="container-fluid pt-4" style="background-color:#2e4144">
+        <div class="row border-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img src="https://sanatana.in/mbta/public/images/Homepage_html/images/layer_8.png" alt="">
+            </div>
+            <div class="col-md-5 text-white">
+                <p>The divine knowledge and wisdom of our shastras is the only thing eternal,
+                   which was and which will remain ever-present in this gods creation.
+                   Our endeavours are to preserve this knowledge.</p>
+            </div>
+            <div class="col-md-1 text-white">
+                <div class="d-flex" style="height: 75px;">
+                    <div class="vr"></div>
+                </div>
+            </div>
+            <div class="col-md-3 text-white">
+                <i class="fa-solid fa-globe"></i>&emsp;
+                <a href="https://sanatanasampatti.in" class="text-light">www.sanatanasampatti.in</a><br>
+                <i class="fa-solid fa-envelope"></i>&emsp;
+                <a href="" class="text-light">sriranga.yoga@gmail.com</a>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center py-3 mb-4 align-items-center border-bottom">
+            <div class="col-md-2 text-white fs-4 text-center">Project</div>
+            <div class="col-md-2 text-white fs-4 text-center">Our Mission</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contribute</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contact Us</div>
+        </div>
+        <div class="row">
+            <p class="col-md-6 fs-6 text-start text-light">
+                <small>&copy; 2026 Sanatanasampatti</small>
+            </p>
+            <p class="col-md-6 fs-6 text-end text-light">
+                <a class="text-white" rel="nofollow" href="http://www.srirangadigital.com" target="_blank">
+                    <img src="https://sanatana.in/mbta/public/images/logo.png" alt="sriranga logo" />
+                    <small>Designed, Developed and Maintained by Sriranga Digital</small>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+</body>
+</html>

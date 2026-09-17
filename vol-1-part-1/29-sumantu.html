@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- MDB UI Kit -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/fonts.css?v=1.2">
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/navbar.css?v=2.4">
+
+    <title>29. Sumantu — Volume I: Part I — History of Dharmaśāstra</title>
+    <style>
+    :root {
+        --saffron:        #D4600A;
+        --saffron-light:  #F0924A;
+        --saffron-wash:   rgba(212, 96, 10, 0.07);
+        --indigo:         #2E5FA3;
+        --indigo-dark:    #1C3D70;
+        --maroon:         #7A1E1E;
+        --amber:          #C97A1A;
+        --ink:            #1A1209;
+        --ink-secondary:  #4A3B2A;
+        --parchment:      #FDFAF4;
+        --parchment-mid:  #F5EFE2;
+        --rule:           rgba(180, 130, 60, 0.22);
+        --shadow:         0 2px 18px rgba(90, 50, 10, 0.08);
+        --font-devanagari: 'Tiro Devanagari Sanskrit', 'Siddhanta', 'Noto Sans Devanagari', serif;
+        --font-roman:      'Junicode', Georgia, serif;
+    }
+
+    body {
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: var(--font-roman);
+    }
+
+    .devanagari {
+        font-family: var(--font-devanagari);
+    }
+
+    /* ── Navbar overrides ── */
+    .navbar-ontop { z-index: 1031; }
+    .hdclr { color: var(--saffron); }
+    .engpara { font-family: 'Open Sans', sans-serif; }
+
+    /* ── Layout ── */
+    .dh-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .dh-content {
+        flex: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        background: var(--parchment);
+        box-shadow: var(--shadow);
+        min-height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        .dh-content { padding: 24px 20px; }
+        .dh-wrapper { flex-direction: column; }
+    }
+
+    /* ── TOC Sidebar ── */
+    .toc-sidebar {
+        position: sticky;
+        top: 80px;
+        width: 280px;
+        min-width: 280px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding: 20px 16px;
+        margin-right: 24px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        scrollbar-width: thin;
+    }
+
+    .toc-title {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--saffron-light);
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list li {
+        padding: 4px 0;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-list li.toc-l3 {
+        padding-left: 16px;
+        font-size: 0.78rem;
+    }
+
+    .toc-list li a {
+        color: var(--ink-secondary);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .toc-list li a:hover { color: var(--saffron); }
+
+    .toc-list li.active {
+        border-left-color: var(--saffron);
+    }
+
+    .toc-list li.active a {
+        color: var(--saffron);
+        font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-sidebar { display: none; }
+    }
+
+    /* ── Mobile TOC Toggle ── */
+    .toc-mobile-toggle {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1050;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--saffron);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-mobile-toggle { display: block; }
+    }
+
+    /* ── Section Headings ── */
+    .section-heading {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        margin: 48px 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--rule);
+        letter-spacing: 0.5px;
+        scroll-margin-top: 80px;
+    }
+
+    h2.section-heading { font-size: 1.6rem; }
+
+    h3.section-heading {
+        font-size: 1.25rem;
+        border-left: 4px solid var(--saffron-light);
+        border-bottom: none;
+        padding: 8px 16px;
+        background: var(--saffron-wash);
+        border-radius: 0 5px 5px 0;
+    }
+
+    /* ── Prose ── */
+    .prose {
+        font-family: var(--font-roman);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+        color: var(--ink);
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    .prose em { color: var(--maroon); }
+
+    .prose:target {
+        background: rgba(212, 96, 10, 0.12);
+        border-left: 4px solid var(--saffron);
+        padding-left: 16px;
+        margin-left: -20px;
+        border-radius: 0 6px 6px 0;
+        animation: target-pulse 2s ease-out;
+    }
+
+    @keyframes target-pulse {
+        0%   { background: rgba(212, 96, 10, 0.30); }
+        100% { background: rgba(212, 96, 10, 0.12); }
+    }
+
+    /* ── Footnote References ── */
+    .fn-ref {
+        font-size: 0.75em;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    .fn-ref a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 0 2px;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: color 0.15s;
+    }
+
+    .fn-ref a:hover { color: var(--indigo); }
+
+    /* ── Synopsis Box ── */
+    .synopsis-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron-light);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .synopsis-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .synopsis-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .synopsis-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .synopsis-box.open .synopsis-toggle i {
+        transform: rotate(90deg);
+    }
+    .synopsis-body {
+        display: none;
+        padding: 0 20px 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+    }
+    .synopsis-box.open .synopsis-body { display: block; }
+    .synopsis-body p { margin: 0; }
+    .synopsis-attribution {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: var(--ink-secondary);
+        opacity: 0.7;
+        font-style: italic;
+    }
+    .synopsis-audio {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    .synopsis-play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--saffron);
+        background: none;
+        color: var(--saffron);
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: background 0.2s, color 0.2s;
+        padding: 0;
+    }
+    .synopsis-play-btn:hover {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn.playing {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn i { padding-left: 2px; }
+
+    /* ── Index Terms Panel ── */
+    .index-terms-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .index-terms-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .index-terms-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .index-terms-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .index-terms-box.open .index-terms-toggle i {
+        transform: rotate(90deg);
+    }
+    .index-terms-body {
+        display: none;
+        padding: 0 20px 16px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .index-terms-box.open .index-terms-body { display: block; }
+    .index-terms-dl {
+        margin: 0;
+        padding: 0;
+    }
+    .index-terms-dl dt {
+        font-family: var(--font-roman);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+        margin-top: 8px;
+    }
+    .index-terms-dl dd {
+        margin: 2px 0 0 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        color: var(--ink-secondary);
+        line-height: 1.5;
+    }
+    .nyaya-heading {
+        font-family: var(--font-roman);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        margin: 16px 0 4px;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+    }
+
+    /* ── Inline Index Popovers ── */
+    .idx-term {
+        border-bottom: 1px dotted var(--saffron-light);
+        cursor: help;
+        position: relative;
+    }
+    .idx-term:hover::after {
+        content: attr(data-def);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        background: rgba(44, 36, 22, 0.92);
+        color: #F5ECD8;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        max-width: 280px;
+        z-index: 100;
+        white-space: normal;
+        line-height: 1.4;
+        pointer-events: none;
+    }
+
+    /* ── Structured Version Banner ── */
+    .structured-banner {
+        margin: 0 0 28px;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, rgba(212, 96, 10, 0.06) 0%, rgba(212, 96, 10, 0.02) 100%);
+        border: 1px solid var(--saffron-light);
+        border-radius: 6px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        color: var(--ink-secondary);
+        line-height: 1.6;
+    }
+    .structured-banner i { color: var(--saffron); margin-right: 4px; }
+    .structured-banner a { color: var(--indigo); font-weight: 600; text-decoration: none; }
+    .structured-banner a:hover { text-decoration: underline; }
+
+    /* ── Footnotes Section ── */
+    .footnotes-section {
+        margin: 32px 0 48px;
+        padding: 20px 24px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .footnotes-section hr {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 0 0 16px;
+    }
+
+    .footnotes-list {
+        padding-left: 24px;
+        margin: 0;
+    }
+
+    .footnote-item {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+        scroll-margin-top: 80px;
+    }
+
+    .footnote-item:target {
+        background: rgba(212, 96, 10, 0.1);
+        border-radius: 4px;
+        padding: 4px 6px;
+        margin-left: -6px;
+    }
+
+    .fn-back {
+        color: var(--saffron-light);
+        text-decoration: none;
+        font-size: 0.85em;
+        margin-left: 4px;
+    }
+
+    .fn-back:hover { color: var(--saffron); }
+
+    /* ── Reference Links ── */
+    a.ref {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: all 0.15s;
+    }
+
+    a.ref:hover {
+        color: var(--saffron);
+        border-bottom-style: solid;
+    }
+
+    a.mbta-ext {
+        color: var(--indigo);
+        font-size: 0.7em;
+        margin-left: 2px;
+        opacity: 0.5;
+        text-decoration: none;
+        vertical-align: super;
+    }
+    a.mbta-ext:hover { opacity: 1; color: var(--saffron); }
+
+    /* ── References Panel (sidebar) ── */
+    .refs-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .refs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .refs-list li {
+        padding: 3px 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .ref-source-link {
+        font-weight: 600;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .ref-source-link:hover {
+        text-decoration: underline;
+    }
+
+    .ref-verse-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.76rem;
+    }
+
+    .ref-verse-link:hover {
+        text-decoration: underline;
+        color: var(--saffron);
+    }
+
+    .ref-verses {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Timeline panel ── */
+    .timeline-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .timeline-list li {
+        padding: 2px 0;
+        font-size: 0.76rem;
+        line-height: 1.4;
+        position: relative;
+        padding-left: 14px;
+    }
+
+    .timeline-list li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--saffron);
+    }
+
+    .timeline-list li.tl-approximate::before {
+        background: transparent;
+        border: 2px solid var(--saffron);
+        width: 4px;
+        height: 4px;
+    }
+
+    .timeline-list li.tl-century::before {
+        background: transparent;
+        border: 2px dashed var(--saffron);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+
+    .tl-dot-link {
+        text-decoration: none;
+        color: var(--ink);
+        display: block;
+    }
+
+    .tl-dot-link:hover {
+        color: var(--saffron);
+    }
+
+    .tl-year {
+        font-weight: 600;
+        color: var(--saffron);
+        font-size: 0.72rem;
+        min-width: 70px;
+        display: inline-block;
+    }
+
+    .tl-label {
+        color: var(--ink-secondary);
+        font-size: 0.72rem;
+    }
+
+    .tl-view-link, .tl-more {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.72rem;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .tl-view-link:hover, .tl-more:hover {
+        text-decoration: underline;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+
+    .breadcrumb-bar a {
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+
+    .breadcrumb-bar .sep {
+        color: var(--amber);
+        margin: 0 8px;
+    }
+
+    .breadcrumb-bar .current {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Chapter Navigation ── */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        margin-top: 48px;
+        border-top: 2px solid var(--rule);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .chapter-nav a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        transition: all 0.2s;
+        max-width: 45%;
+    }
+
+    .chapter-nav a:hover {
+        background: var(--saffron-wash);
+        border-color: var(--saffron-light);
+    }
+
+    .nav-prev { text-align: left; }
+    .nav-next { text-align: right; margin-left: auto; }
+
+    .page-range {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+    }
+
+    /* ── Volume Cards (Landing) ── */
+    .vol-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .vol-card {
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        transition: all 0.25s;
+    }
+
+    .vol-card:hover {
+        border-color: var(--saffron-light);
+        box-shadow: 0 4px 24px rgba(212, 96, 10, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .vol-num {
+        font-family: var(--font-roman);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--saffron);
+        margin-bottom: 8px;
+    }
+
+    .vol-subtitle {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        line-height: 1.5;
+        flex: 1;
+    }
+
+    .vol-chapters {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        margin-top: 12px;
+    }
+
+    /* ── Chapter Cards (Volume Index) ── */
+    .chapter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .chapter-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .chapter-card:hover {
+        border-color: var(--saffron-light);
+        background: var(--saffron-wash);
+    }
+
+    .card-num {
+        font-family: var(--font-roman);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--saffron);
+        min-width: 36px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        flex: 1;
+    }
+
+    .card-pages {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        color: var(--ink-secondary);
+    }
+
+    /* ── Landing Hero ── */
+    .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-family: var(--font-roman);
+        font-size: 2.4rem;
+        color: var(--saffron);
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .hero .devanagari-title {
+        font-family: var(--font-devanagari);
+        font-size: 1.8rem;
+        color: var(--ink);
+        margin-bottom: 16px;
+    }
+
+    .hero .author {
+        font-family: var(--font-roman);
+        font-size: 1.1rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .hero .desc {
+        font-family: var(--font-roman);
+        font-size: 1rem;
+        color: var(--ink-secondary);
+        line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer { margin-top: 48px; }
+</style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mbta/">
+      <div class="container-fluid">&emsp;&emsp;
+      <a href="../index.html" class="navbar-brand" style="text-decoration:none;">
+        <span class="devanagari ms-3" style="font-size:1.5rem; color:var(--saffron); font-weight:700;">धर्मशास्त्रम्</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="../index.html">धर्मशास्त्रम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5 active" href="../index.html">खण्डाः</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in/mbta/">महाभारतम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in">सनातनम्</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+
+    <div class="dh-wrapper container-xl">
+        <nav id="toc" class="toc-sidebar">
+<div class="refs-panel">
+<h5 class="toc-title">References</h5>
+<ul class="refs-list">
+<li><a href="../refs/apararka.html" class="ref-source-link">Aparārka</a> <span class="ref-verses"><a href="../refs/apararka.html#i" class="ref-verse-link">i</a>, <a href="../refs/apararka.html#c" class="ref-verse-link">c</a></span></li>
+<li><a href="../refs/atharvaveda.html" class="ref-source-link">Atharvaveda</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/gautama.html" class="ref-source-link">Gautama Dharmasūtra</a> <span class="ref-verses"><a href="../refs/gautama.html#22.13" class="ref-verse-link">22.13</a></span></li>
+<li><a href="../refs/hodh.html" class="ref-source-link">History of Dharmaśāstra</a> <span class="ref-verses"><a href="../refs/hodh.html#Vol. II" class="ref-verse-link">Vol. II</a></span></li>
+<li><a href="../refs/mitakshara.html" class="ref-source-link">Mitākṣarā</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/parasara.html" class="ref-source-link">Parāśara</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/vishvarupa.html" class="ref-source-link">Viśvarūpa</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/yajnavalkya.html" class="ref-source-link">Yājñavalkya</a> <span class="ref-verses"><a href="../refs/yajnavalkya.html#III.261" class="ref-verse-link">III.261</a>, <a href="../refs/yajnavalkya.html#III.253-54" class="ref-verse-link">III.253-54</a>, <a href="../refs/yajnavalkya.html#III.252" class="ref-verse-link">III.252</a>, <a href="../refs/yajnavalkya.html#III.250" class="ref-verse-link">III.250</a>, <a href="../refs/yajnavalkya.html#III.237" class="ref-verse-link">III.237</a>, <a href="../refs/yajnavalkya.html#II.21" class="ref-verse-link">II.21</a> <a href="../refs/yajnavalkya.html" class="ref-verse-link">+3</a></span></li>
+<li><a href="../refs/mb_shantiparva.html" class="ref-source-link">Śāntiparva</a> <span class="ref-verses"><a href="../refs/mb_shantiparva.html#341.19" class="ref-verse-link">341.19</a></span></li>
+</ul>
+</div>
+<h5 class="toc-title">Sections</h5>
+<ul class="toc-list">
+<li class="toc-l2"><a href="#29-sumantu">29. Sumantu</a></li>
+</ul>
+</nav>
+        <main class="dh-content">
+            
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep">›</span>
+        <a href="index.html">Volume I: Part I</a>
+        <span class="sep">›</span>
+        <span class="current">29. Sumantu</span>
+    </div>
+    
+            <h1 class="text-center" style="font-family: var(--font-roman); font-size: 2rem; color: var(--saffron); margin-bottom: 8px;">
+                29. Sumantu
+            </h1>
+            <p class="text-center" style="font-family: 'Open Sans', sans-serif; color: var(--ink-secondary); font-size: 0.9rem; margin-bottom: 36px;">
+                Volume I: Part I <span class="page-range">pp. 296–299</span>
+            </p>
+
+            
+    <div class="synopsis-box" id="synopsis">
+        <button class="synopsis-toggle" onclick="this.parentElement.classList.toggle('open')"
+                aria-expanded="false" aria-controls="synopsis-body">
+            <i class="fa-solid fa-chevron-right"></i>
+            Kane's Synopsis
+        </button>
+        <div class="synopsis-audio">
+            <span class="synopsis-play-btn" role="button" tabindex="0"
+                    onclick="toggleSynopsisAudio(this)"
+                    data-src="../audio/synopsis/vol-1-part-1/vol-1-part-1_sec029.mp3" title="Listen to synopsis">
+                <i class="fa-solid fa-play"></i>
+            </span>
+            <audio preload="none"></audio>
+        </div>
+        <div class="synopsis-body" id="synopsis-body">
+            <p>A sūtra work on ācāra and prāyaścitta is traditionally ascribed to Sumantu. This important figure is recognised by Paithināsi, who includes him among the thirty-six eminent expounders of Dharmaśāstra. His authority is further evidenced by extensive quotations found in significant commentaries by scholars such as Viśvarūpa, Kalpataru, and Aparārka. Interestingly, however, both Yājñavalkya and Parāśara do not enumerate Sumantu among their lists of dharma expounders. Beyond the Dharmaśāstra tradition, Sumantu finds mention in epic and puranic literature, appearing in the Mahābhārata and the Bhāgavata.
+
+It appears that more than one work may be attributed to Sumantu. Aparārka, for instance, cites verses on dharma from a Sumantu text, which is distinctly noted as a different work from the sūtra mentioned earlier. Furthermore, the Sarasvatīvilāsa quotes numerous verses attributed to Sumantu, specifically focusing on aspects of vyavahāra. The fragments and references to Sumantu's contributions to Dharmaśāstra have been a subject of scholarly interest, leading to a notable reconstruction of his work by Prof. T. R. Chintamani.</p>
+            <p class="synopsis-attribution">— Synopsis by P.V. Kane, from History of Dharmaśāstra</p>
+        </div>
+    </div>
+
+
+            
+
+            <h2 id="29-sumantu" class="section-heading">29. Sumantu</h2>
+<p class="prose" id="p-29-sumantu-1"><strong>29. Sumantu</strong></p>
+<p class="prose" id="p-29-sumantu-2">For a Dharmasūtra of Sumantu vide Madras Tri. Cat. of Sanskrit Msṣ (1919–22) pp. 5160–62.</p>
+<p class="prose" id="p-29-sumantu-3">From <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a>, Haradatta and <a class="ref" href="../refs/apararka.html#i" data-source="apararka" data-ref="i" title="Aparārka i">Aparārka i</a>t follows that Sumantu composed a sūtra work on <em>dharma</em>, particularly on <em>ācāra</em> and <em>prāyaścitta</em>. <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a> quotes prose passages from Sumantu on <em>upapātakas</em>,<sup class="fn-ref"><a href="#fn-29-sumantu-1" id="fnref-29-sumantu-1">1</a></sup> on prāyaścitta for Brāh-maṇa-murder ( on <a class="ref" href="../refs/yajnavalkya.html#III.237" data-source="yajnavalkya" data-ref="III.237" title="Yājñavalkya III.237">Yāj. III. 237</a> ), for drinking wine ( on <a class="ref" href="../refs/yajnavalkya.html#III.250" data-source="yajnavalkya" data-ref="III.250" title="Yājñavalkya III.250">Yāj. III. 250</a> ), for theft of gold ( on <a class="ref" href="../refs/yajnavalkya.html#III.252" data-source="yajnavalkya" data-ref="III.252" title="Yājñavalkya III.252">Yāj. III. 252</a> ), for incest ( on <a class="ref" href="../refs/yajnavalkya.html#III.253-54" data-source="yajnavalkya" data-ref="III.253-54" title="Yājñavalkya III.253-54">Yāj. III. 253–54</a> ), for killing a cow and about <em>ātātayin</em> (on <a class="ref" href="../refs/yajnavalkya.html#III.261" data-source="yajnavalkya" data-ref="III.261" title="Yājñavalkya III.261">Yāj. III. 261</a> ). In one quotation from Sumantu cited by <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a> the views of ācāryas and of Āṅgirasa are men-tioneḍ<sup class="fn-ref"><a href="#fn-29-sumantu-2" id="fnref-29-sumantu-2">2</a></sup> The prāyaścittas for Brāhmaṇa-murder and for killing a cow contained in <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a> occur in Haradatta ( on <a class="ref" href="../refs/gautama.html#22.13" data-source="gautama" data-ref="22.13" title="Gautama Dharmasūtra 22.13">Gaut. 22. 13</a> and 18 ). Most of the quotations cited by Viśva-rūpa occur in <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> also. The Hāralatā ( p. 68 ) quotes sūtras of Sumantu on āśauca. One well-known sūtra of Suma-ntu is 'no prāyaścitta (or blame) is incurred by killing an ātātāyin, except cows and brāhmaṇas : <sup class="fn-ref"><a href="#fn-29-sumantu-3" id="fnref-29-sumantu-3">3</a></sup> <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> quotes sūtras from Sumantu condemning marriage with maternal uncle's or paternal aunt's daughter and recommending the abandonment of a young wife in certain circumstanceṣ<sup class="fn-ref"><a href="#fn-29-sumantu-4" id="fnref-29-sumantu-4">4</a></sup> In the Sarasvatīvilāsa a prose passage of Sumantu is cited on the seven constituents of rājya.<sup class="fn-ref"><a href="#fn-29-sumantu-5" id="fnref-29-sumantu-5">5</a></sup></p>
+<p class="prose" id="p-29-sumantu-4">Paithinasi includes Sumantu among the thirty-six sages, expounders of Dharmaśāstra. Kalpataru ( Br. K. p. 22) enumerates the means of settling ( doubts on ) points of Dharma viz. Veda, Vedānga, Itihāsa-purāṇa, Tarka, Mīmāṁsā and Dharma-śāstras and also the practices of families, gaṇa, country, caste and varṇa, and also the usages of heretical sects, of the āśramas and of those learned in the Vedaṣ On p. 76 of the Br. kāṇḍa Sumantu provides that all Brāhmaṇas, Kṣatriyas and Vaiśyas have to undergo the saṁskāras from Garbhādhāna to Vivāha and Yajñaṣ The Vratakāṇḍa ( Kal- pa°) quotes from Sumantu numerous verses on Kṣīrapratipad Vrata ( pp. 36-38 ) and on Aśūnyaśayana-vrata ( pp. 41-44 ). It is possible that some of the verses ascribed to Sumantu in these cases are the compositions of some Sumantu other than the author of the prose sūtraṣ e. g. the verse 'a householder that does not offer śrāddha, when the sun is in Virgo, how can he have wealth and sons' &c. ( q. by <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> on Yaj. I. 217 p. 424 ). Kalpataru ( on śrāddha ) pp. 90-91 quotes a long prose passage from Sumantu on persons that are apāṅkteya ( not fit to dine in the same row with others invited at Śrād- dha ). <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> quotes numerous prose passages of Suma- ntu on prāyaścitta. A much discussed dictum of Sumantu (q. by <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> on <a class="ref" href="../refs/yajnavalkya.html#II.21" data-source="yajnavalkya" data-ref="II.21" title="Yājñavalkya II.21">Yāj. II. 21</a> and by <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> on p. 1043 on <a class="ref" href="../refs/yajnavalkya.html#III.227" data-source="yajnavalkya" data-ref="III.227" title="Yājñavalkya III.227">Yāj. III. 227</a> ) is ‘there is no blame ( or sin ) in killing an <em>ātatāyin</em>, except in the case of a cow or a brāhmaṇa that is <em>ātatāyin</em>). For a discussion of this dictum vide <a class="ref" href="../refs/hodh.html#Vol. II" data-source="hodh" data-ref="Vol. II" title="History of Dharmaśāstra Vol. II">H. of Dh. Vol. II</a>. pp. 148–151 and III. pp. 517–18, and the paper ‘<em>Ātatāyivadha</em>’ by Prof. Rangasvami Aiyangar in C. K. Raja presentation vol. pp. 197–232. The <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> quotes several prose passages of Suma-ntu on <a class="ref" href="../refs/yajnavalkya.html#II.21" data-source="yajnavalkya" data-ref="II.21" title="Yājñavalkya II.21">Yāj. II. 21</a>, III. 6, 37, 250, 258, 260.</p>
+<p class="prose" id="p-29-sumantu-5">These quotations from <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a> and others establish that a prose work on dharma by Sumantu existed early enough. It appears, however, that the work was not a very ancient one. Neither <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yājñavalkya</a> nor <a class="ref" href="../refs/parasara.html" data-source="parasara" data-ref="" title="Parāśara">Parāśara</a> mentions Sumantu among the propounders of <em>dharma</em>. On the other hand the name of Sumantu is an ancient one. In the Bhāga-vatapurāṇa ( XII. 6. 75 and 7. 1 ) Sumantu is said to have been a pupil of Jaimini and a promulgator of the <a class="ref" href="../refs/atharvaveda.html" data-source="atharvaveda" data-ref="" title="Atharvaveda">Atharvaveda</a>. Vide <a class="ref" href="../refs/mb_shantiparva.html#341.19" data-source="mb_shantiparva" data-ref="341.19" title="Śāntiparva 341.19">Śāntiparva 341. 19</a><a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> for Sumantu and other pupils of Vyāsa and Sabhā 4. 11. In the daily <em>tarpaṇa</em> the name of Sumantu occurs along with Jaimini, Vaiśampāyana, Paila.</p>
+<p class="prose" id="p-29-sumantu-6">Numerous verses on dharma are also cited from Sumantu by <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a>, the Smṛticandrikā and other workṣ This may probably be a different work from the sūtra work of Sumantu. In one verse of Sumantu ( <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> on <a class="ref" href="../refs/yajnavalkya.html#I.223" data-source="yajnavalkya" data-ref="I.223" title="Yājñavalkya I.223">Yāj. I. 223</a> ) occur the words ‘<em>Śaṅkhasya vacanam yathā</em>’ and in another (<a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> on <a class="ref" href="../refs/yajnavalkya.html#I.217-218" data-source="yajnavalkya" data-ref="I.217-218" title="Yājñavalkya I.217-218">Yāj. I. 217–218</a> ) the Kanyā sign of the zodiac is refer-red to.</p>
+<p class="prose" id="p-29-sumantu-7">It is remarkable that the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> and <a class="ref" href="../refs/apararka.html#c" data-source="apararka" data-ref="c" title="Aparārka c">Aparārka c</a>ontain no verses of Sumantu on <em>vyavahāra</em>. The Sarasvatī-vilāsa is rich in quotations from Sumantu on <em>vyavahāra</em>. A compro-mise, exchange or partition, if fair, could be annulled up to the tenth day, but if unfair up to the 9th year ( vide note 293 above ). ‘If even as much as a <em>māṣa</em> went from the buyer to the seller, that would support the sale of the land ( sold ) just as a small dose of poison permeates the whole body and when no purchase-money is paid or only a portion is paid, then the purchase is called <em>avakraya</em> and is liable to be set aside if the price is not paid in (good time)’.<sup class="fn-ref"><a href="#fn-29-sumantu-6" id="fnref-29-sumantu-6">6</a></sup> Sumantu prescribes a fine for selling and purchasing land without the consent of the neighbouring members of the family and says that in case of preemptioṇ the neighbours on the east are preferred to all and those on the south come last.<sup class="fn-ref"><a href="#fn-29-sumantu-7" id="fnref-29-sumantu-7">7</a></sup> Sumantu defines a mortgage by conditional sale (called ‘uktalibhakraya’) and a sale for arrears of revenue by the king’s orders (called ājñā-kraya ).<sup class="fn-ref"><a href="#fn-29-sumantu-8" id="fnref-29-sumantu-8">8</a></sup></p>
+<p class="prose" id="p-29-sumantu-8">Vide reconstruction of Sumanta by Prof. T. R. Chintamani in JOR ( Madras ) vol. VIII. pp. 75 ff.</p>
+<aside class="footnotes-section" aria-label="Footnotes">
+<hr>
+<ol class="footnotes-list">
+<li id="fn-29-sumantu-1" class="footnote-item"><span class="devanagari">एवं सुमन्तुः</span> ‘<span class="devanagari">स्त्रीरजगौस्तेन्यं गोघ्नं नागर्नकं भस्ममृतं क्षत्रियवैश्ययोग्यता परिवित्तिताकप्रीतिा प्रतिरूपकवित्रैल्पयुगलपाकानि</span> ' <span class="devanagari">इति । विश्वरूप</span> on <span class="devanagari">याज्ञ</span> III. 229–236. <a href="#fnref-29-sumantu-1" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-29-sumantu-2" class="footnote-item"><span class="devanagari">न ब्राह्मणस्य पतनमिच्छन्त्याचार्याः किल्विषुभ्यगतः पातव्य इत्याङ्गिरसः</span>— <span class="devanagari">इति । विश्वरूप</span> on <span class="devanagari">याज्ञ</span>. III. 237. <a href="#fnref-29-sumantu-2" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-29-sumantu-3" class="footnote-item"><span class="devanagari">विश्वरूप</span> on <span class="devanagari">याज्ञ</span>. III. 262 quotes it as ‘ <span class="devanagari">नाततायिवधे प्रायश्चित्तमन्यत्र गोब्राह्मणेभ्यः</span>’; while the <span class="devanagari">मिता</span>. on <span class="devanagari">याज्ञ</span>. II. 21 quotes it as ‘ <span class="devanagari">नात</span>- <span class="devanagari">तायिवधे दोषोन्यत्र गोब्राह्मणात्</span>’; the <span class="devanagari">स्मृतिमञ्जरी</span> of <span class="devanagari">गोविन्दराज</span> ( I. O. mṣ No. 1736 ) has ‘ <span class="devanagari">आततायिवधे दोषोऽन्यत्र गोब्राह्मणेभ्यः</span>’. <a href="#fnref-29-sumantu-3" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-29-sumantu-4" class="footnote-item"><span class="devanagari">मातुलसुतां पैतृष्वसेयीं समानार्षगोत्रां च परणीय चान्द्रायणं चरेत् परित्यज्यैनां विप्रयात् । अपरार्के</span> on <span class="devanagari">याज्ञ</span>. I. 53; ‘ <span class="devanagari">कन्या कुत्सितजातिकर्मशीला व्याध्रुगृता परिणीता यद्यक्षतयोनिः स्यात्परित्यज्य कन्या</span>’ <span class="devanagari">अपरार्के</span> on <span class="devanagari">याज्ञ</span>. I. 65. <a href="#fnref-29-sumantu-4" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-29-sumantu-5" class="footnote-item"><span class="devanagari">अनः सप्ताङ्गानि सर्वा संलक्षणीयाण्याह सुमन्तुः</span> ‘<span class="devanagari">स्वाम्यमात्मना संरक्षणम् । अमात्यान् संमानेन । वर्णान् स्वकेन जतम् । वर्णधर्मरञ्जनेन । दुर्गं धनधान्यादि</span>- <span class="devanagari">समृद्धया । कोशमुचितव्ययेन । दण्डं स्वधर्मेण । इति ।</span>’ <span class="devanagari">सरस्वती ०</span> p. 46. H. D.—38 <a href="#fnref-29-sumantu-5" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-29-sumantu-6" class="footnote-item"><span class="devanagari">माषमात्रमपि द्रव्यं क्रयविक्रेतरि स्थितम् । व्याप्नोति सकलां भूमिं कायमल्यं विषं यथा ॥ अर्धेतरतमस्तं तु क्रयमाहुरवक्रयम् । अवक्रयो निवर्तते यदि काले न दीयते ॥ सरस्वती०</span> p. 321. <a href="#fnref-29-sumantu-6" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-29-sumantu-7" class="footnote-item"><span class="devanagari">ज्ञात्यादीनमनुज्ञाप्य समी स्थानतन्द्रिनाम । क्रयविक्रयकर्त्तारौ तत्समं दण्डमर्हतः ॥ सरस्वती०</span> p. 322 ; ‘<span class="devanagari">चतुःसामन्तसंनिधये प्राची दिग्वलतरा । उदीची च प्रतीची च सर्वभावे तु दक्षिण ॥</span> p. 323. <a href="#fnref-29-sumantu-7" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-29-sumantu-8" class="footnote-item"><span class="devanagari">किंचिच्च द्रव्यमादाय काले दास्यामि ते क्रचित् । नो चेन्मूलमिदं त्यक्तं केदार</span>-<span class="devanagari">स्थेति यः क्रयः ॥ स उक्तलाभ इत्युक्त उत्कललेपनार्णम् ॥ सरस्वती०</span> p. 324 ; <span class="devanagari">मूल्यस्य पादमधं वा मूल्यमाज्ञाक्ये स्थितम् । मूल्यं तदासंखिले दत्त्वा क्षेत्रं समामुयात् ॥ आ त्रिभोगात् ततः केतुः परतो दृढताभियात् ।</span> p. 323. <a href="#fnref-29-sumantu-8" class="fn-back" aria-label="Back to text">↩</a></li>
+</ol>
+</aside>
+
+            <div class="chapter-nav">
+                <a href="28-shātātapa.html" class="nav-prev"><i class="fa-solid fa-chevron-left"></i> 28. Shātātapa</a>
+                <a href="30-the-smritis.html" class="nav-next">30. The Smritis <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </main>
+    </div>
+
+    <button class="toc-mobile-toggle" onclick="toggleMobileToc()" aria-label="Table of contents">
+        <i class="fa-solid fa-list"></i>
+    </button>
+
+    
+    <footer class="container-fluid pt-4" style="background-color:#2e4144">
+        <div class="row border-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img src="https://sanatana.in/mbta/public/images/Homepage_html/images/layer_8.png" alt="">
+            </div>
+            <div class="col-md-5 text-white">
+                <p>The divine knowledge and wisdom of our shastras is the only thing eternal,
+                   which was and which will remain ever-present in this gods creation.
+                   Our endeavours are to preserve this knowledge.</p>
+            </div>
+            <div class="col-md-1 text-white">
+                <div class="d-flex" style="height: 75px;">
+                    <div class="vr"></div>
+                </div>
+            </div>
+            <div class="col-md-3 text-white">
+                <i class="fa-solid fa-globe"></i>&emsp;
+                <a href="https://sanatanasampatti.in" class="text-light">www.sanatanasampatti.in</a><br>
+                <i class="fa-solid fa-envelope"></i>&emsp;
+                <a href="" class="text-light">sriranga.yoga@gmail.com</a>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center py-3 mb-4 align-items-center border-bottom">
+            <div class="col-md-2 text-white fs-4 text-center">Project</div>
+            <div class="col-md-2 text-white fs-4 text-center">Our Mission</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contribute</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contact Us</div>
+        </div>
+        <div class="row">
+            <p class="col-md-6 fs-6 text-start text-light">
+                <small>&copy; 2026 Sanatanasampatti</small>
+            </p>
+            <p class="col-md-6 fs-6 text-end text-light">
+                <a class="text-white" rel="nofollow" href="http://www.srirangadigital.com" target="_blank">
+                    <img src="https://sanatana.in/mbta/public/images/logo.png" alt="sriranga logo" />
+                    <small>Designed, Developed and Maintained by Sriranga Digital</small>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        const headings = [];
+        tocLinks.forEach(link => {
+            const id = link.getAttribute('href').substring(1);
+            const el = document.getElementById(id);
+            if (el) headings.push({ el: el, link: link.parentElement });
+        });
+
+        function onScroll() {
+            let current = null;
+            for (const h of headings) {
+                const rect = h.el.getBoundingClientRect();
+                if (rect.top <= 120) current = h;
+            }
+            tocLinks.forEach(l => l.parentElement.classList.remove('active'));
+            if (current) current.link.classList.add('active');
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    });
+
+    function toggleMobileToc() {
+        const toc = document.getElementById('toc');
+        if (!toc) return;
+        if (toc.style.display === 'block') {
+            toc.style.display = '';
+            toc.style.position = '';
+        } else {
+            toc.style.display = 'block';
+            toc.style.position = 'fixed';
+            toc.style.top = '0';
+            toc.style.left = '0';
+            toc.style.width = '80vw';
+            toc.style.maxWidth = '320px';
+            toc.style.height = '100vh';
+            toc.style.maxHeight = '100vh';
+            toc.style.zIndex = '2000';
+            toc.style.background = 'var(--parchment)';
+            toc.style.boxShadow = '4px 0 20px rgba(0,0,0,0.2)';
+            toc.style.padding = '24px';
+            toc.style.overflowY = 'auto';
+        }
+    }
+    </script>
+
+    <script>
+    function toggleSynopsisAudio(btn) {
+        var audio = btn.parentElement.querySelector('audio');
+        if (!audio.src) audio.src = btn.getAttribute('data-src');
+        if (audio.paused) {
+            audio.play();
+            btn.classList.add('playing');
+            btn.querySelector('i').className = 'fa-solid fa-pause';
+        } else {
+            audio.pause();
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        }
+        audio.onended = function() {
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        };
+        // Prevent click from toggling the synopsis open/close
+        event.stopPropagation();
+    }
+    </script>
+</body>
+</html>

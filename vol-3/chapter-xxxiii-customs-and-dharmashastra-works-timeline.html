@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline — Chapter XXXIII. Customs and Dharmashastra Works</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+    :root {
+        --parchment: #faf6ef;
+        --parchment-mid: #f0e6d3;
+        --saffron: #e8941a;
+        --ink: #2c1810;
+        --ink-secondary: #5a3e2b;
+        --rule: #d4c5a9;
+        --indigo: #2d5a87;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+        font-family: 'Lora', Georgia, serif;
+        background: var(--parchment);
+        color: var(--ink);
+    }
+    .navbar {
+        background: linear-gradient(135deg, #1a0f0a, #2c1810);
+        padding: 12px 24px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+    .navbar a { color: var(--parchment); text-decoration: none; }
+    .navbar .devanagari { font-size: 1.3rem; }
+    .navbar .nav-title { font-family: 'Lora', serif; font-size: 1rem; opacity: 0.9; }
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+    .breadcrumb-bar a { color: var(--saffron); text-decoration: none; }
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+    .content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 24px;
+    }
+    h1 {
+        font-size: 1.6rem;
+        margin-bottom: 8px;
+        color: var(--ink);
+    }
+    .subtitle {
+        font-size: 0.9rem;
+        color: var(--ink-secondary);
+        margin-bottom: 24px;
+    }
+    .timeline-container {
+        overflow-x: auto;
+        padding: 16px 0;
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        background: var(--parchment);
+    }
+    .timeline-svg {
+        display: block;
+        min-width: 100%;
+    }
+    .timeline-svg .tl-evt { cursor: pointer; }
+    .timeline-svg .tl-evt:hover { transform: scale(1.5); }
+    .event-list {
+        margin-top: 32px;
+    }
+    .event-list h2 {
+        font-size: 1.1rem;
+        margin-bottom: 16px;
+        color: var(--ink-secondary);
+    }
+    .event-item {
+        display: flex;
+        gap: 16px;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--rule);
+        font-size: 0.88rem;
+    }
+    .event-year {
+        min-width: 90px;
+        font-weight: 600;
+        color: var(--saffron);
+        font-family: 'Open Sans', sans-serif;
+    }
+    .event-label { font-weight: 600; }
+    .event-context {
+        color: var(--ink-secondary);
+        font-size: 0.82rem;
+        margin-top: 2px;
+    }
+    .event-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.8rem;
+    }
+    .event-link:hover { text-decoration: underline; }
+    .back-link {
+        display: inline-block;
+        margin-top: 24px;
+        color: var(--saffron);
+        text-decoration: none;
+        font-family: 'Open Sans', sans-serif;
+    }
+    .back-link:hover { text-decoration: underline; }
+    .century-group {
+        margin-bottom: 8px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        overflow: hidden;
+    }
+    .century-heading {
+        display: block;
+        padding: 10px 16px;
+        background: var(--parchment-mid);
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: var(--ink);
+    }
+    .century-heading:hover { background: #e8dcc8; }
+    .century-count {
+        font-weight: 400;
+        color: var(--ink-secondary);
+        font-size: 0.82rem;
+    }
+    .century-events {
+        padding: 8px 16px;
+    }
+    .vol-tl-link {
+        display: inline-block;
+        margin: 4px 8px 4px 0;
+        padding: 6px 14px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        color: var(--saffron);
+        text-decoration: none;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+    }
+    .vol-tl-link:hover {
+        border-color: var(--saffron);
+        background: #f5ebe0;
+    }
+    .vol-tl-count {
+        color: var(--ink-secondary);
+        font-size: 0.78rem;
+    }
+    /* ── Tab switcher ── */
+    .tl-tabs {
+        display: flex; gap: 0; margin-bottom: 20px;
+        border-bottom: 2px solid var(--rule);
+    }
+    .tl-tab {
+        padding: 10px 20px; cursor: pointer;
+        font-family: 'Open Sans', sans-serif; font-size: 0.9rem;
+        color: var(--ink-secondary); border-bottom: 2px solid transparent;
+        margin-bottom: -2px; transition: all 0.2s;
+    }
+    .tl-tab:hover { color: var(--ink); }
+    .tl-tab.active { color: var(--saffron); border-bottom-color: var(--saffron); font-weight: 600; }
+    .tl-panel { display: none; }
+    .tl-panel.active { display: block; }
+    /* ── Entity graph styles ── */
+    .eg-entity {
+        border: 1px solid var(--rule); border-radius: 6px;
+        margin-bottom: 8px; overflow: hidden; transition: border-color 0.2s;
+    }
+    .eg-entity.highlighted { border-color: var(--saffron); box-shadow: 0 0 0 1px var(--saffron); }
+    .eg-header {
+        display: flex; align-items: center; gap: 12px;
+        padding: 10px 16px; background: var(--parchment-mid);
+        cursor: pointer; font-family: 'Open Sans', sans-serif;
+    }
+    .eg-header:hover { background: #e8dcc8; }
+    .eg-name { font-weight: 600; font-size: 0.92rem; flex: 1; }
+    .eg-type {
+        font-size: 0.72rem; padding: 2px 8px; border-radius: 10px;
+        background: var(--parchment); color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .eg-claims-count {
+        font-size: 0.78rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif;
+    }
+    .eg-body { padding: 12px 16px; display: none; }
+    .eg-entity.open .eg-body { display: block; }
+    .eg-range-bar {
+        position: relative; height: 32px;
+        background: var(--parchment-mid); border-radius: 4px;
+        margin-bottom: 10px; overflow: hidden;
+    }
+    .eg-range-fill {
+        position: absolute; top: 6px; height: 20px;
+        background: var(--saffron); opacity: 0.3; border-radius: 3px;
+    }
+    .eg-range-dot {
+        position: absolute; top: 11px; width: 10px; height: 10px;
+        background: var(--saffron); border-radius: 50%;
+        transform: translateX(-5px); cursor: pointer;
+    }
+    .eg-range-dot:hover { transform: translateX(-5px) scale(1.4); }
+    .eg-range-label {
+        position: absolute; top: -2px;
+        font-size: 0.7rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif;
+        transform: translateX(-50%);
+    }
+    .eg-cooccur {
+        margin-top: 8px; padding-top: 8px;
+        border-top: 1px solid var(--rule);
+    }
+    .eg-cooccur-title {
+        font-size: 0.78rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif; margin-bottom: 6px;
+    }
+    .eg-cooccur-chip {
+        display: inline-block; margin: 2px 4px 2px 0;
+        padding: 3px 10px; background: var(--parchment-mid);
+        border: 1px solid var(--rule); border-radius: 12px;
+        font-size: 0.78rem; color: var(--ink);
+        font-family: 'Open Sans', sans-serif;
+        cursor: pointer; transition: all 0.2s;
+    }
+    .eg-cooccur-chip:hover { border-color: var(--saffron); color: var(--saffron); }
+    .eg-cooccur-weight {
+        font-size: 0.68rem; color: var(--ink-secondary); margin-left: 2px;
+    }
+    .eg-claim-list { margin-top: 8px; }
+    .eg-claim {
+        display: flex; gap: 12px; padding: 4px 0;
+        font-size: 0.82rem; border-bottom: 1px solid #f0e6d3;
+    }
+    .eg-claim-year {
+        min-width: 80px; font-weight: 600; color: var(--saffron);
+        font-family: 'Open Sans', sans-serif; font-size: 0.8rem;
+    }
+    .eg-claim-ctx { color: var(--ink-secondary); font-size: 0.78rem; }
+    .eg-claim a { color: var(--indigo); text-decoration: none; font-size: 0.76rem; }
+    .eg-claim a:hover { text-decoration: underline; }
+    .eg-stats {
+        display: flex; gap: 24px; margin-bottom: 16px;
+        font-family: 'Open Sans', sans-serif; font-size: 0.85rem;
+        color: var(--ink-secondary);
+    }
+    .eg-stat-num { font-weight: 700; color: var(--saffron); font-size: 1.1rem; }
+    .eg-sort {
+        font-family: 'Open Sans', sans-serif; font-size: 0.82rem;
+        margin-bottom: 12px; color: var(--ink-secondary);
+    }
+    .eg-sort a {
+        color: var(--indigo); text-decoration: none; cursor: pointer;
+        margin: 0 6px;
+    }
+    .eg-sort a:hover { text-decoration: underline; }
+    .eg-sort a.active { color: var(--saffron); font-weight: 600; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="../index.html"><span class="devanagari">धर्मशास्त्रम्</span></a>
+        <a href="../index.html" class="nav-title">History of Dharmaśāstra</a>
+    </div>
+    
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep"> &rsaquo; </span>
+        <a href="index.html">Volume III</a>
+        <span class="sep"> &rsaquo; </span>
+        <a href="chapter-xxxiii-customs-and-dharmashastra-works.html">Chapter XXXIII. Customs and Dharmashastra Works</a>
+        <span class="sep"> &rsaquo; </span>
+        <span>Timeline</span>
+    </div>
+    
+    <div class="content">
+        <h1>Timeline: Chapter XXXIII. Customs and Dharmashastra Works</h1>
+        <p class="subtitle">2 dated references</p>
+        <div class="tl-tabs">
+            <div class="tl-tab active" data-panel="events-panel">Events</div>
+            <div class="tl-tab" data-panel="graph-panel">Entity Graph</div>
+        </div>
+        <div id="events-panel" class="tl-panel active">
+            <div class="timeline-container">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 280" class="timeline-svg" role="img" aria-label="Timeline for Chapter XXXIII. Customs and Dharmashastra Works">
+<rect width="800" height="280" fill="#faf6ef" rx="8"/>
+<line x1="60" y1="100" x2="760" y2="100" stroke="#c4956a" stroke-width="2"/>
+<line x1="60.0" y1="94" x2="60.0" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="60.0" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">200 CE</text>
+<line x1="274.375" y1="94" x2="274.375" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="274.375" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">300 CE</text>
+<line x1="711.875" y1="94" x2="711.875" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="711.875" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">400 CE</text>
+<line x1="278.75" y1="100" x2="711.875" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="495.3125" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-xxxiii-customs-and-dharmashastra-works-21" data-href="chapter-xxxiii-customs-and-dharmashastra-works.html#p-chapter-xxxiii-customs-and-dharmashastra-works-21"><title>Nārada</title></circle>
+<line x1="495.3125" y1="106" x2="495.3125" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="495.3125" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Nārada</text>
+<text x="495.3125" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">301 CE</text>
+<circle cx="541.25" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-chapter-xxxiii-customs-and-dharmashastra-works-20" data-href="chapter-xxxiii-customs-and-dharmashastra-works.html#p-chapter-xxxiii-customs-and-dharmashastra-works-20"><title>Kauṭilya Arthaśāstra</title></circle>
+<line x1="541.25" y1="106" x2="541.25" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="541.25" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Kauṭilya Arthaśāstra</text>
+<text x="541.25" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">361 CE</text>
+</svg>
+            </div>
+            <div class="event-list">
+                <h2>All Dated References</h2>
+                <div class="event-item"><span class="event-year">301 CE</span><div><span class="event-label">Nārada</span><div class="event-context">Compared to Western Christian countries very great religious tolerance prevailed in ancient India. Vide H. of Dh. vol. I...</div><a href="chapter-xxxiii-customs-and-dharmashastra-works.html#p-chapter-xxxiii-customs-and-dharmashastra-works-21" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">361 CE</span><div><span class="event-label">Kauṭilya Arthaśāstra</span><div class="event-context">Numerous caste customs have been recognized from ancient times to these dayṣ Gaut. XI. 20, Vas I. 17, Manu I. 118, VIII....</div><a href="chapter-xxxiii-customs-and-dharmashastra-works.html#p-chapter-xxxiii-customs-and-dharmashastra-works-20" class="event-link">View in text &rarr;</a></div></div>
+            </div>
+        </div>
+        <div id="graph-panel" class="tl-panel">
+            <div class="eg-stats">
+<div><span class="eg-stat-num">2</span> entities</div>
+<div><span class="eg-stat-num">2</span> date claims</div>
+<div><span class="eg-stat-num">0</span> debated</div>
+<div><span class="eg-stat-num">17</span> co-occurrences</div>
+</div>
+<div class="eg-sort">Sort: <a class="active" onclick="egSort('date')">by date</a><a onclick="egSort('claims')">by claims</a><a onclick="egSort('name')">by name</a></div>
+<div id="eg-entities">
+<div class="eg-entity" data-key="n-radasm-ti" data-consensus="301" data-claims="1" data-name="Nāradasmṛti"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Nāradasmṛti</span><span class="eg-type">text</span><span class="eg-claims-count">1 claims &middot; 301 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="301" data-max="400"><span class="eg-range-label" style="left:0;">301 CE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">400 CE</span><div class="eg-range-dot" style="left:0.0%;" title="301 CE — 4th century A. D."></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="b-haspatism-ti" onclick="egHighlight('b-haspatism-ti')">Bṛhaspatismṛti<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="bhagavadg-t" onclick="egHighlight('bhagavadg-t')">Bhagavadgītā<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="gautama-dharmas-tra" onclick="egHighlight('gautama-dharmas-tra')">Gautama Dharmasūtra<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="history-of-dharma-stra" onclick="egHighlight('history-of-dharma-stra')">History of Dharmaśāstra<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="manusm-ti" onclick="egHighlight('manusm-ti')">Manusmṛti<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">301 CE</span><div><span class="eg-claim-ctx">Compared to Western Christian countries very great religious tolerance prevailed in ancient India. V...</span> <a href="chapter-xxxiii-customs-and-dharmashastra-works.html#p-chapter-xxxiii-customs-and-dharmashastra-works-21">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="artha-stra" data-consensus="361" data-claims="1" data-name="Arthaśāstra"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Arthaśāstra</span><span class="eg-type">text</span><span class="eg-claims-count">1 claims &middot; 361 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="301" data-max="400"><span class="eg-range-label" style="left:0;">301 CE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">400 CE</span><div class="eg-range-dot" style="left:60.0%;" title="361 CE — 361 ad"></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="gautama-dharmas-tra" onclick="egHighlight('gautama-dharmas-tra')">Gautama Dharmasūtra<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="manusm-ti" onclick="egHighlight('manusm-ti')">Manusmṛti<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">361 CE</span><div><span class="eg-claim-ctx">Numerous caste customs have been recognized from ancient times to these dayṣ Gaut. XI. 20, Vas I. 17...</span> <a href="chapter-xxxiii-customs-and-dharmashastra-works.html#p-chapter-xxxiii-customs-and-dharmashastra-works-20">view</a></div></div></div></div></div>
+</div>
+<script>
+function egToggle(header) {
+    header.parentElement.classList.toggle('open');
+}
+function egHighlight(key) {
+    // Remove existing highlights
+    document.querySelectorAll('.eg-entity.highlighted').forEach(function(el) {
+        el.classList.remove('highlighted');
+    });
+    // Highlight target and scroll to it
+    var target = document.querySelector('.eg-entity[data-key="' + key + '"]');
+    if (target) {
+        target.classList.add('highlighted');
+        target.classList.add('open');
+        target.scrollIntoView({behavior: 'smooth', block: 'center'});
+    }
+}
+function egSort(mode) {
+    var container = document.getElementById('eg-entities');
+    var items = Array.from(container.querySelectorAll('.eg-entity'));
+    items.sort(function(a, b) {
+        if (mode === 'date') return parseInt(a.dataset.consensus) - parseInt(b.dataset.consensus);
+        if (mode === 'claims') return parseInt(b.dataset.claims) - parseInt(a.dataset.claims);
+        if (mode === 'name') return a.dataset.name.localeCompare(b.dataset.name);
+        return 0;
+    });
+    items.forEach(function(el) { container.appendChild(el); });
+    // Update active sort link
+    document.querySelectorAll('.eg-sort a').forEach(function(a) { a.classList.remove('active'); });
+    event.target.classList.add('active');
+}
+</script>
+        </div>
+        <a href="chapter-xxxiii-customs-and-dharmashastra-works.html" class="back-link">&larr; Back to Chapter XXXIII. Customs and Dharmashastra Works</a>
+    </div>
+    <script>
+    document.querySelectorAll('.tl-evt').forEach(function(el) {
+        el.addEventListener('click', function() {
+            var href = this.getAttribute('data-href');
+            if (href) {
+                window.location.href = href;
+            } else {
+                var paraId = this.getAttribute('data-para');
+                if (paraId) {
+                    var target = document.getElementById(paraId);
+                    if (target) target.scrollIntoView({behavior: 'smooth'});
+                }
+            }
+        });
+    });
+    // Tab switching
+    document.querySelectorAll('.tl-tab').forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            document.querySelectorAll('.tl-tab').forEach(function(t) { t.classList.remove('active'); });
+            document.querySelectorAll('.tl-panel').forEach(function(p) { p.classList.remove('active'); });
+            tab.classList.add('active');
+            var panel = document.getElementById(tab.getAttribute('data-panel'));
+            if (panel) panel.classList.add('active');
+        });
+    });
+    </script>
+</body>
+</html>

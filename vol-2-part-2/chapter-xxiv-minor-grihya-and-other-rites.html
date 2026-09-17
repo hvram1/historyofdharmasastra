@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- MDB UI Kit -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/fonts.css?v=1.2">
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/navbar.css?v=2.4">
+
+    <title>Chapter XXIV. Minor Grihya and Other Rites — Volume II: Part II — History of Dharmaśāstra</title>
+    <style>
+    :root {
+        --saffron:        #D4600A;
+        --saffron-light:  #F0924A;
+        --saffron-wash:   rgba(212, 96, 10, 0.07);
+        --indigo:         #2E5FA3;
+        --indigo-dark:    #1C3D70;
+        --maroon:         #7A1E1E;
+        --amber:          #C97A1A;
+        --ink:            #1A1209;
+        --ink-secondary:  #4A3B2A;
+        --parchment:      #FDFAF4;
+        --parchment-mid:  #F5EFE2;
+        --rule:           rgba(180, 130, 60, 0.22);
+        --shadow:         0 2px 18px rgba(90, 50, 10, 0.08);
+        --font-devanagari: 'Tiro Devanagari Sanskrit', 'Siddhanta', 'Noto Sans Devanagari', serif;
+        --font-roman:      'Junicode', Georgia, serif;
+    }
+
+    body {
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: var(--font-roman);
+    }
+
+    .devanagari {
+        font-family: var(--font-devanagari);
+    }
+
+    /* ── Navbar overrides ── */
+    .navbar-ontop { z-index: 1031; }
+    .hdclr { color: var(--saffron); }
+    .engpara { font-family: 'Open Sans', sans-serif; }
+
+    /* ── Layout ── */
+    .dh-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .dh-content {
+        flex: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        background: var(--parchment);
+        box-shadow: var(--shadow);
+        min-height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        .dh-content { padding: 24px 20px; }
+        .dh-wrapper { flex-direction: column; }
+    }
+
+    /* ── TOC Sidebar ── */
+    .toc-sidebar {
+        position: sticky;
+        top: 80px;
+        width: 280px;
+        min-width: 280px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding: 20px 16px;
+        margin-right: 24px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        scrollbar-width: thin;
+    }
+
+    .toc-title {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--saffron-light);
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list li {
+        padding: 4px 0;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-list li.toc-l3 {
+        padding-left: 16px;
+        font-size: 0.78rem;
+    }
+
+    .toc-list li a {
+        color: var(--ink-secondary);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .toc-list li a:hover { color: var(--saffron); }
+
+    .toc-list li.active {
+        border-left-color: var(--saffron);
+    }
+
+    .toc-list li.active a {
+        color: var(--saffron);
+        font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-sidebar { display: none; }
+    }
+
+    /* ── Mobile TOC Toggle ── */
+    .toc-mobile-toggle {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1050;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--saffron);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-mobile-toggle { display: block; }
+    }
+
+    /* ── Section Headings ── */
+    .section-heading {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        margin: 48px 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--rule);
+        letter-spacing: 0.5px;
+        scroll-margin-top: 80px;
+    }
+
+    h2.section-heading { font-size: 1.6rem; }
+
+    h3.section-heading {
+        font-size: 1.25rem;
+        border-left: 4px solid var(--saffron-light);
+        border-bottom: none;
+        padding: 8px 16px;
+        background: var(--saffron-wash);
+        border-radius: 0 5px 5px 0;
+    }
+
+    /* ── Prose ── */
+    .prose {
+        font-family: var(--font-roman);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+        color: var(--ink);
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    .prose em { color: var(--maroon); }
+
+    .prose:target {
+        background: rgba(212, 96, 10, 0.12);
+        border-left: 4px solid var(--saffron);
+        padding-left: 16px;
+        margin-left: -20px;
+        border-radius: 0 6px 6px 0;
+        animation: target-pulse 2s ease-out;
+    }
+
+    @keyframes target-pulse {
+        0%   { background: rgba(212, 96, 10, 0.30); }
+        100% { background: rgba(212, 96, 10, 0.12); }
+    }
+
+    /* ── Footnote References ── */
+    .fn-ref {
+        font-size: 0.75em;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    .fn-ref a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 0 2px;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: color 0.15s;
+    }
+
+    .fn-ref a:hover { color: var(--indigo); }
+
+    /* ── Synopsis Box ── */
+    .synopsis-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron-light);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .synopsis-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .synopsis-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .synopsis-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .synopsis-box.open .synopsis-toggle i {
+        transform: rotate(90deg);
+    }
+    .synopsis-body {
+        display: none;
+        padding: 0 20px 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+    }
+    .synopsis-box.open .synopsis-body { display: block; }
+    .synopsis-body p { margin: 0; }
+    .synopsis-attribution {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: var(--ink-secondary);
+        opacity: 0.7;
+        font-style: italic;
+    }
+    .synopsis-audio {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    .synopsis-play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--saffron);
+        background: none;
+        color: var(--saffron);
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: background 0.2s, color 0.2s;
+        padding: 0;
+    }
+    .synopsis-play-btn:hover {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn.playing {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn i { padding-left: 2px; }
+
+    /* ── Index Terms Panel ── */
+    .index-terms-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .index-terms-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .index-terms-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .index-terms-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .index-terms-box.open .index-terms-toggle i {
+        transform: rotate(90deg);
+    }
+    .index-terms-body {
+        display: none;
+        padding: 0 20px 16px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .index-terms-box.open .index-terms-body { display: block; }
+    .index-terms-dl {
+        margin: 0;
+        padding: 0;
+    }
+    .index-terms-dl dt {
+        font-family: var(--font-roman);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+        margin-top: 8px;
+    }
+    .index-terms-dl dd {
+        margin: 2px 0 0 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        color: var(--ink-secondary);
+        line-height: 1.5;
+    }
+    .nyaya-heading {
+        font-family: var(--font-roman);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        margin: 16px 0 4px;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+    }
+
+    /* ── Inline Index Popovers ── */
+    .idx-term {
+        border-bottom: 1px dotted var(--saffron-light);
+        cursor: help;
+        position: relative;
+    }
+    .idx-term:hover::after {
+        content: attr(data-def);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        background: rgba(44, 36, 22, 0.92);
+        color: #F5ECD8;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        max-width: 280px;
+        z-index: 100;
+        white-space: normal;
+        line-height: 1.4;
+        pointer-events: none;
+    }
+
+    /* ── Structured Version Banner ── */
+    .structured-banner {
+        margin: 0 0 28px;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, rgba(212, 96, 10, 0.06) 0%, rgba(212, 96, 10, 0.02) 100%);
+        border: 1px solid var(--saffron-light);
+        border-radius: 6px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        color: var(--ink-secondary);
+        line-height: 1.6;
+    }
+    .structured-banner i { color: var(--saffron); margin-right: 4px; }
+    .structured-banner a { color: var(--indigo); font-weight: 600; text-decoration: none; }
+    .structured-banner a:hover { text-decoration: underline; }
+
+    /* ── Footnotes Section ── */
+    .footnotes-section {
+        margin: 32px 0 48px;
+        padding: 20px 24px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .footnotes-section hr {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 0 0 16px;
+    }
+
+    .footnotes-list {
+        padding-left: 24px;
+        margin: 0;
+    }
+
+    .footnote-item {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+        scroll-margin-top: 80px;
+    }
+
+    .footnote-item:target {
+        background: rgba(212, 96, 10, 0.1);
+        border-radius: 4px;
+        padding: 4px 6px;
+        margin-left: -6px;
+    }
+
+    .fn-back {
+        color: var(--saffron-light);
+        text-decoration: none;
+        font-size: 0.85em;
+        margin-left: 4px;
+    }
+
+    .fn-back:hover { color: var(--saffron); }
+
+    /* ── Reference Links ── */
+    a.ref {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: all 0.15s;
+    }
+
+    a.ref:hover {
+        color: var(--saffron);
+        border-bottom-style: solid;
+    }
+
+    a.mbta-ext {
+        color: var(--indigo);
+        font-size: 0.7em;
+        margin-left: 2px;
+        opacity: 0.5;
+        text-decoration: none;
+        vertical-align: super;
+    }
+    a.mbta-ext:hover { opacity: 1; color: var(--saffron); }
+
+    /* ── References Panel (sidebar) ── */
+    .refs-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .refs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .refs-list li {
+        padding: 3px 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .ref-source-link {
+        font-weight: 600;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .ref-source-link:hover {
+        text-decoration: underline;
+    }
+
+    .ref-verse-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.76rem;
+    }
+
+    .ref-verse-link:hover {
+        text-decoration: underline;
+        color: var(--saffron);
+    }
+
+    .ref-verses {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Timeline panel ── */
+    .timeline-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .timeline-list li {
+        padding: 2px 0;
+        font-size: 0.76rem;
+        line-height: 1.4;
+        position: relative;
+        padding-left: 14px;
+    }
+
+    .timeline-list li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--saffron);
+    }
+
+    .timeline-list li.tl-approximate::before {
+        background: transparent;
+        border: 2px solid var(--saffron);
+        width: 4px;
+        height: 4px;
+    }
+
+    .timeline-list li.tl-century::before {
+        background: transparent;
+        border: 2px dashed var(--saffron);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+
+    .tl-dot-link {
+        text-decoration: none;
+        color: var(--ink);
+        display: block;
+    }
+
+    .tl-dot-link:hover {
+        color: var(--saffron);
+    }
+
+    .tl-year {
+        font-weight: 600;
+        color: var(--saffron);
+        font-size: 0.72rem;
+        min-width: 70px;
+        display: inline-block;
+    }
+
+    .tl-label {
+        color: var(--ink-secondary);
+        font-size: 0.72rem;
+    }
+
+    .tl-view-link, .tl-more {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.72rem;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .tl-view-link:hover, .tl-more:hover {
+        text-decoration: underline;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+
+    .breadcrumb-bar a {
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+
+    .breadcrumb-bar .sep {
+        color: var(--amber);
+        margin: 0 8px;
+    }
+
+    .breadcrumb-bar .current {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Chapter Navigation ── */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        margin-top: 48px;
+        border-top: 2px solid var(--rule);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .chapter-nav a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        transition: all 0.2s;
+        max-width: 45%;
+    }
+
+    .chapter-nav a:hover {
+        background: var(--saffron-wash);
+        border-color: var(--saffron-light);
+    }
+
+    .nav-prev { text-align: left; }
+    .nav-next { text-align: right; margin-left: auto; }
+
+    .page-range {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+    }
+
+    /* ── Volume Cards (Landing) ── */
+    .vol-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .vol-card {
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        transition: all 0.25s;
+    }
+
+    .vol-card:hover {
+        border-color: var(--saffron-light);
+        box-shadow: 0 4px 24px rgba(212, 96, 10, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .vol-num {
+        font-family: var(--font-roman);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--saffron);
+        margin-bottom: 8px;
+    }
+
+    .vol-subtitle {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        line-height: 1.5;
+        flex: 1;
+    }
+
+    .vol-chapters {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        margin-top: 12px;
+    }
+
+    /* ── Chapter Cards (Volume Index) ── */
+    .chapter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .chapter-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .chapter-card:hover {
+        border-color: var(--saffron-light);
+        background: var(--saffron-wash);
+    }
+
+    .card-num {
+        font-family: var(--font-roman);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--saffron);
+        min-width: 36px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        flex: 1;
+    }
+
+    .card-pages {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        color: var(--ink-secondary);
+    }
+
+    /* ── Landing Hero ── */
+    .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-family: var(--font-roman);
+        font-size: 2.4rem;
+        color: var(--saffron);
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .hero .devanagari-title {
+        font-family: var(--font-devanagari);
+        font-size: 1.8rem;
+        color: var(--ink);
+        margin-bottom: 16px;
+    }
+
+    .hero .author {
+        font-family: var(--font-roman);
+        font-size: 1.1rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .hero .desc {
+        font-family: var(--font-roman);
+        font-size: 1rem;
+        color: var(--ink-secondary);
+        line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer { margin-top: 48px; }
+</style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mbta/">
+      <div class="container-fluid">&emsp;&emsp;
+      <a href="../index.html" class="navbar-brand" style="text-decoration:none;">
+        <span class="devanagari ms-3" style="font-size:1.5rem; color:var(--saffron); font-weight:700;">धर्मशास्त्रम्</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="../index.html">धर्मशास्त्रम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5 active" href="../index.html">खण्डाः</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in/mbta/">महाभारतम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in">सनातनम्</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+
+    <div class="dh-wrapper container-xl">
+        <nav id="toc" class="toc-sidebar">
+<div class="refs-panel">
+<h5 class="toc-title">References</h5>
+<ul class="refs-list">
+<li><a href="../refs/apararka.html" class="ref-source-link">Aparārka</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/atharvaveda.html" class="ref-source-link">Atharvaveda</a> <span class="ref-verses"><a href="../refs/atharvaveda.html#VIII.14.14-16" class="ref-verse-link">VIII.14.14-16</a>, <a href="../refs/atharvaveda.html#VIII.7.23" class="ref-verse-link">VIII.7.23</a></span></li>
+<li><a href="../refs/gautama.html" class="ref-source-link">Gautama Dharmasūtra</a> <span class="ref-verses"><a href="../refs/gautama.html#VIII.19" class="ref-verse-link">VIII.19</a></span></li>
+<li><a href="../refs/mahabharata.html" class="ref-source-link">Mahābhārata</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/manu.html" class="ref-source-link">Manusmṛti</a> <span class="ref-verses"><a href="../refs/manu.html#IV.27" class="ref-verse-link">IV.27</a></span></li>
+<li><a href="../refs/matsya_purana.html" class="ref-source-link">Matsyapurāṇa</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/taittiriya_s.html" class="ref-source-link">Taittirīya Saṃhitā</a> <span class="ref-verses"><a href="../refs/taittiriya_s.html#I.2.13.3" class="ref-verse-link">I.2.13.3</a>, <a href="../refs/taittiriya_s.html#V.7.2.4" class="ref-verse-link">V.7.2.4</a>, <a href="../refs/taittiriya_s.html#ci" class="ref-verse-link">ci</a>, <a href="../refs/taittiriya_s.html#IV.2.8.3" class="ref-verse-link">IV.2.8.3</a>, <a href="../refs/taittiriya_s.html#IV.5.1" class="ref-verse-link">IV.5.1</a></span></li>
+<li><a href="../refs/vishnu_smriti.html" class="ref-source-link">Viṣṇu Smṛti</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/vajasaneya.html" class="ref-source-link">Vājasaneya Saṃhitā</a> <span class="ref-verses"><a href="../refs/vajasaneya.html#17.86" class="ref-verse-link">17.86</a>, <a href="../refs/vajasaneya.html#17.80-85" class="ref-verse-link">17.80-85</a>, <a href="../refs/vajasaneya.html#16" class="ref-verse-link">16</a></span></li>
+<li><a href="../refs/yajnavalkya.html" class="ref-source-link">Yājñavalkya</a> <span class="ref-verses"><a href="../refs/yajnavalkya.html#I.147" class="ref-verse-link">I.147</a></span></li>
+<li><a href="../refs/mb_adiparva.html" class="ref-source-link">Ādiparva</a> <span class="ref-verses"><a href="../refs/mb_adiparva.html#63.1-29" class="ref-verse-link">63.1-29</a></span></li>
+<li><a href="../refs/apastamba.html" class="ref-source-link">Āpastamba Dharmasūtra</a> <span class="ref-verses"><a href="../refs/apastamba.html#II.1.1.4-5" class="ref-verse-link">II.1.1.4-5</a></span></li>
+<li><a href="../refs/shatapatha.html" class="ref-source-link">Śatapatha Brāhmaṇa</a> <span class="ref-verses"><a href="../refs/shatapatha.html#IX.3.1.26" class="ref-verse-link">IX.3.1.26</a>, <a href="../refs/shatapatha.html#IV.3.3.6" class="ref-verse-link">IV.3.3.6</a>, <a href="../refs/shatapatha.html#IV.5.2.16" class="ref-verse-link">IV.5.2.16</a></span></li>
+<li><a href="../refs/rigveda.html" class="ref-source-link">Ṛgveda</a> <span class="ref-verses"><a href="../refs/rigveda.html#IX.94.4" class="ref-verse-link">IX.94.4</a>, <a href="../refs/rigveda.html#VII.38.7" class="ref-verse-link">VII.38.7</a>, <a href="../refs/rigveda.html#I.189.1-4" class="ref-verse-link">I.189.1-4</a>, <a href="../refs/rigveda.html#VI.28" class="ref-verse-link">VI.28</a>, <a href="../refs/rigveda.html#I.22.16" class="ref-verse-link">I.22.16</a>, <a href="../refs/rigveda.html#I.22.15" class="ref-verse-link">I.22.15</a> <a href="../refs/rigveda.html" class="ref-verse-link">+7</a></span></li>
+</ul>
+</div>
+<h5 class="toc-title">Sections</h5>
+<ul class="toc-list">
+<li class="toc-l2"><a href="#chapter-xxiv-minor-grihya-and-other-rites">Chapter XXIV. Minor Grihya and Other Rites</a></li>
+</ul>
+</nav>
+        <main class="dh-content">
+            
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep">›</span>
+        <a href="index.html">Volume II: Part II</a>
+        <span class="sep">›</span>
+        <span class="current">Chapter XXIV. Minor Grihya and Other Rites</span>
+    </div>
+    
+            <h1 class="text-center" style="font-family: var(--font-roman); font-size: 2rem; color: var(--saffron); margin-bottom: 8px;">
+                Chapter XXIV. Minor Grihya and Other Rites
+            </h1>
+            <p class="text-center" style="font-family: 'Open Sans', sans-serif; color: var(--ink-secondary); font-size: 0.9rem; margin-bottom: 36px;">
+                Volume II: Part II <span class="page-range">pp. 819–836</span>
+            </p>
+
+            
+    <div class="synopsis-box" id="synopsis">
+        <button class="synopsis-toggle" onclick="this.parentElement.classList.toggle('open')"
+                aria-expanded="false" aria-controls="synopsis-body">
+            <i class="fa-solid fa-chevron-right"></i>
+            Kane's Synopsis
+        </button>
+        <div class="synopsis-audio">
+            <span class="synopsis-play-btn" role="button" tabindex="0"
+                    onclick="toggleSynopsisAudio(this)"
+                    data-src="../audio/synopsis/vol-2-part-2/vol-2-part-2_sec024.mp3" title="Listen to synopsis">
+                <i class="fa-solid fa-play"></i>
+            </span>
+            <audio preload="none"></audio>
+        </div>
+        <div class="synopsis-body" id="synopsis-body">
+            <p>The discussion encompasses a range of minor Gṛhya and other rites, opening with an elucidation of the Pārvana sthalīpāka. It then proceeds to cover seasonal observances such as Caitrī, and details the Sītāyajña. The chapter further elaborates on the Śrāvaṇī and Sarpabali, providing context for the latter by noting the continuous tradition of serpent-worship evident from ancient times in Hindu practice.
+
+Subsequently, the overview describes a festival held in honour of Indra, followed by an analysis of the Āśvayujī rites. The Āgrayana iṣṭi, a significant offering, is then examined, leading into the Āgrahāyaṇī observances. The Śūlagava, also designated as Īśānabali, receives due attention. The chapter concludes with a comprehensive study of Vāstupratiṣṭhā, outlining its forms and evolving significance from ancient practices to its modern iterations.</p>
+            <p class="synopsis-attribution">— Synopsis by P.V. Kane, from History of Dharmaśāstra</p>
+        </div>
+    </div>
+
+
+            
+
+            <h2 id="chapter-xxiv-minor-grihya-and-other-rites" class="section-heading">Chapter XXIV. Minor Grihya and Other Rites</h2>
+<p class="prose" id="p-chapter-xxiv-minor-grihya-and-other-rites-1">The grhyasūtras speak of certain other rites performed on certain fixed days in the year. Most of them have ceased to be performed in modern times, though vestiges of some of them appear even now. Gautama (VIII. 19) enumerates the seven pākayajñasamsthās among his forty samskāraṣ Out of these seven pākayajñas, aṣṭakā, pārvaṇa and śrāddha will be dealt with under śrāddha later oṇ The seven havīryajñas and the seven somasamsthās will be treated of in the note on Śrauta. A few of the other rites are briefly described below.</p>
+<p class="prose" id="p-chapter-xxiv-minor-grihya-and-other-rites-2">Pārvaṇa sthālīpāka:—Among the seven pākayajñasamsthās mentioned by <a class="ref" href="../refs/gautama.html#VIII.19" data-source="gautama" data-ref="VIII.19" title="Gautama Dharmasūtra VIII.19">Gaut. (VIII.19)</a> is the pārvaṇa sthālīpāka. When a person is married and returns to his house after marriage he causes the newly married bride to sacrifice a mess of cooked fooḍ The wife husks the rice grains of which that sthālīpāka is prepareḍ She cooks the mess, sprinkles ājya on it, takes it from the fire. Then he sacrifices to the deities of the Vedic Darśa-Pūrṇamāsa and then to Agni Sviṣṭakṛt. With the remnants of the cooked food he feeds a learned brāhmaṇa and makes the present of a bull to that brāhmaṇa. From that time the householder constantly sacrifices on the days of the full moon and of the new moon a similar mess of cooked food sacred to Agni. In the case of one who has not kindled the three Vedic fires, the sthālīpāka is meant for Agni (it is Agneya). In the case of an householder who keeps the three Vedic fires the sthālīpāka at Full moon is Āgnīṣomīya and Aindra or Māhendra or Aindrāgna on the New moon day (Khādira gr. II. 2, 1-3, Āśv. Śr. I. 3. 8-12). Both the householder and his wife fast on the days of the full and new moon or they eat only once in the morning on those days (<a class="ref" href="../refs/apastamba.html#II.1.1.4-5" data-source="apastamba" data-ref="II.1.1.4-5" title="Āpastamba Dharmasūtra II.1.1.4-5">Āp. Dh. S. II. 1. 1. 4-5</a>, Āśv. gr. I. 10. 2). This is briefly the pārvaṇa sthālīpāka. It is begun on the first full moon day after marriage and is continued throughout the lives of the husband and wife. In the sthālīpākas performed throughout life on the full moon and new moon there is no dakṣiṇā (of a bull).<sup class="fn-ref"><a href="#fn-chapter-xxiv-minor-grihya-and-other-rites-1" id="fnref-chapter-xxiv-minor-grihya-and-other-rites-1">1</a></sup> Vide for details Āśv. gr. I. 10 and <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> gr. 7. 1–19 (among the sūtras) and Saṁskāra-kaustubha pp. 823 ff and Saṁskāraprakāśa pp. 904–906 among later digestṣ</p>
+<p class="prose" id="p-chapter-xxiv-minor-grihya-and-other-rites-3">Caitrī:—According to Haradatta on <a class="ref" href="../refs/gautama.html#VIII.19" data-source="gautama" data-ref="VIII.19" title="Gautama Dharmasūtra VIII.19">Gaut. VIII. 19</a> the caitrī rite is the same as śūlagava, known as īśānabali to the students of the Āpastamba sūtra (<a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> gr. 19, 13 ff.) and this rite called Caitrī was performed on the full moon day of the month of Caitra. In the Śāṅ. gr. IV. 19 it is said that this rite takes place on the full moon day of Caitra and there is a brief description of it which is rather obscure (vide S. B. E. vol. 29, p. 132). The Vaik. IV. 8 describes it as follows: On the full moon day of Caitra the house is cleaned and decorated ; the husband and wife deck themselves in new garments (lower and upper) and with flowers etc. ; after two āghāras<sup class="fn-ref"><a href="#fn-chapter-xxiv-minor-grihya-and-other-rites-2" id="fnref-chapter-xxiv-minor-grihya-and-other-rites-2">2</a></sup> are made in fire and rice is cooked in a vessel for the deities, offerings are made of clarified butter, with the mantras ‘griṣmo hemanta’ (<a class="ref" href="../refs/taittiriya_s.html#V.7.2.4" data-source="taittiriya_s" data-ref="V.7.2.4" title="Taittirīya Saṃhitā V.7.2.4">Tai. S. V. 7. 2. 4</a>) ‘ūrṇam me pūryatām,’ ‘śriye jātāh’ (<a class="ref" href="../refs/rigveda.html#IX.94.4" data-source="rigveda" data-ref="IX.94.4" title="Ṛgveda IX.94.4">Rg. IX. 94. 4</a> ), ‘Vaiṣṇavam ’ (<a class="ref" href="../refs/taittiriya_s.html#I.2.13.3" data-source="taittiriya_s" data-ref="I.2.13.3" title="Taittirīya Saṃhitā I.2.13.3">Tai. S. I. 2. 13. 3</a> ) and having offered oblations of boiled rice mixed with ghee to Madhu,<sup class="fn-ref"><a href="#fn-chapter-xxiv-minor-grihya-and-other-rites-3" id="fnref-chapter-xxiv-minor-grihya-and-other-rites-3">3</a></sup> Mādhava, Śukra, Śuci, Nabhas, Nabhasya, Iṣa, Ūrja, Sahas, Sahasya, Tapas, Tapasya, to the deities of Ṛtus, to herbs, to the lords of herbs, to Śrī (goddess of wealth), to the lord of Śrī, to <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> ; having worshipped to the west of the fire the goddess Śrī and the god Śrīpati whose face is turned eastwards, he announces the havis (sacrificial food ) and having served to the recitation of the hymn to anna (food) the brāhmaṇas with cooked caitrya food he should himself eat in the company of his sapiṇḍaṣ</p>
+<p class="prose" id="p-chapter-xxiv-minor-grihya-and-other-rites-4">Sitāyajña (sacrifice to ploughed land):—In the Gobhila gr. IV. 4. 27 there<sup class="fn-ref"><a href="#fn-chapter-xxiv-minor-grihya-and-other-rites-4" id="fnref-chapter-xxiv-minor-grihya-and-other-rites-4">4</a></sup> is a brief description of the sacrifice performed at the time of ploughing by one who kept the smārta or aupāsana fire: ‘on an auspicious constellation he should cook a mess of sacrificial food and should offer oblations to the following deities, viz. Indra, Maruts, Parjanya (rains), Aśani (thunderbolt), Bhaga. And he should also offer (clarified butter) to Sītā, Āśā, Aradā, Anaghā.’ In Pār. gr. II. 17 this rite is des- cribed in greater detail. But for want of space it is not set out here. The Pār. gr. in II. 13 speaks of a different rite to be performed at the time of taking out the plough and using it for ploughing.</p>
+<p class="prose" id="p-chapter-xxiv-minor-grihya-and-other-rites-5">Śrāvaṇī or Śrāvaṇākarma and Sarpabalī :—Āśv. gr. II. 1.1–15, Pār. gr. II. 14, Gobhila gr. III. 7. 1–23, Śāṅ. gr.IV. 15, Bhār. gr. II. 1, <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> gr. 18. 5–12 and others describe these two rites which are performed on the full moon day of Śrāvaṇa, whether the moon be in conjunction with the constellation of Śrāvaṇa or not. Āśv. gr. describes it as follows :<sup class="fn-ref"><a href="#fn-chapter-xxiv-minor-grihya-and-other-rites-5" id="fnref-chapter-xxiv-minor-grihya-and-other-rites-5">5</a></sup> ‘Having filled a new jar with the flour of unbroken grains of barley he places it on a new śikya (an arrangement of strings for holding pots etc.) along with a spoon for making offerings (bali). Having got ready fried barley grains he smears<sup class="fn-ref"><a href="#fn-chapter-xxiv-minor-grihya-and-other-rites-6" id="fnref-chapter-xxiv-minor-grihya-and-other-rites-6">6</a></sup> half of them with clarified butter. At sunset he prepares a mess of cooked food and a cake on one potsherd and offers oblations (of cooked food) with the four verses ‘O Agni ! lead us to wealth by a good path &c.’ (<a class="ref" href="../refs/rigveda.html#I.189.1-4" data-source="rigveda" data-ref="I.189.1-4" title="Ṛgveda I.189.1-4">Rg. I. 189. 1–4</a>) verse by verse and offers with one hand the cake prepared on one potsherd with the mantra ‘to the constant one, the Earth demon, svāhā.’ The cake should have been completely submerged in clarified butter or its top may be visible ; with the verse ‘Agni, do not hand us over to evil’ (<a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Rg.</a>I.189.5) he sacrifices over the entire cake the clarified butter in which the cake had been submergeḍ Reciting the verse ‘may the steeds bring bliss to us in our invocations’ (<a class="ref" href="../refs/rigveda.html#VII.38.7" data-source="rigveda" data-ref="VII.38.7" title="Ṛgveda VII.38.7">Rg. VII. 38. 7</a>) he sacrifices into the fire the fried grains with his joined handṣ<sup class="fn-ref"><a href="#fn-chapter-xxiv-minor-grihya-and-other-rites-7" id="fnref-chapter-xxiv-minor-grihya-and-other-rites-7">7</a></sup> He should give the other (not smeared with clarified butter) fried grains to his people (sons &c.). Out of the jar he fills the spoon with barley flour, goes out of the house with his face towards the east, pours down water on a pure spot and offers sacrifice with the mantra ‘to the divine <sup class="fn-ref"><a href="#fn-chapter-xxiv-minor-grihya-and-other-rites-8" id="fnref-chapter-xxiv-minor-grihya-and-other-rites-8">8</a></sup> hosts of snakes, svāhā' and makes an obeisance to them with joined hands in the words 'the serpents that are terrestrial,<sup class="fn-ref"><a href="#fn-chapter-xxiv-minor-grihya-and-other-rites-9" id="fnref-chapter-xxiv-minor-grihya-and-other-rites-9">9</a></sup> that are aerial, that dwell in the several directions—to them I have brought this <em>bali</em>; to them I make ready this bali. Having gone round the <em>bali</em> with the right hand turned towards it, he sits down to the west of the <em>bali</em> ( and recites the <em>mantra</em> ) 'thou art a serpent; thou art the lord of serpents that creep; by food thou protectest men and by a cake the serpents, by sacrifice the gods, me who am in thee ( i. e. who seek thy favour and protection ) may not the serpents who also are in thee do any harm; I give over the Dhruvā ( spoon ) to thee.' Then with the words 'O firm one, I give over this one, this one to thee' he gives his people ( son, unmarried daughter, wife ) one by one. With the words 'O firm one, I give myself over to thee' he gives himself over at the enḍ Let no one pass between the sacrificer ( and the <em>bali</em> ) up till the rite of giving in charge ( <em>paridāna</em> ).<sup class="fn-ref"><a href="#fn-chapter-xxiv-minor-grihya-and-other-rites-10" id="fnref-chapter-xxiv-minor-grihya-and-other-rites-10">10</a></sup> 'To the divine hosts of serpents svāhā'—with these words let him offer a <em>bali</em> in the evening and in the morning till Pratyavarohaṇa. Some count the days till Pratyavarohaṇa <sup class="fn-ref"><a href="#fn-chapter-xxiv-minor-grihya-and-other-rites-11" id="fnref-chapter-xxiv-minor-grihya-and-other-rites-11">11</a></sup> ( from Śrāvaṇa full moon ) and offer the same number of balis on that very day ( on which the <em>śrāvaṇa</em> rite takes place )." The Śāṇ gr. IV. 15 has a similar ceremony called Śravaṇākarma; however it practically contains nothing beyond rules about the <em>bali</em> to serpents and it is worthy of note that some of the 16 <em>upacāras</em> associated with honouring a guest and with <em>devapūjā</em> are employed ( in it and in <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> gr. &c. ) for honouring the serpents viz. offering a comb, unguents, flowers, thread ( <em>vastra</em> ), collyrium, mirror. The Pār. gr. II. 14 is more elaborate as to <em>sarpabali</em> and the deities to whom the oblations of cooked food are offered are '<a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>, Śravaṇa ( <em>nakṣatra</em> ), the Full moon day of Śrāvaṇa and the rainy seasoṇ' In Pār. gr. also, a comb, ointment, collyrium, garlands are offered to the serpentṣ <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> gr. 18. 5–12, Hir. gr. II. 16 ( S. B. E. vol. 30, pp. 237–239 ), Gobhila gr. III. 7. 1–23, Bhār. gr. II. 1, Bauḍ gr. III. 10, Mānava gr. II. 16 and others contain similar elaborate rules about sarpabali, the Hir. gr. and <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> gr. requiring that the flowers used should be of the kimśuka tree. It appears that when the husband was absent the wife was to offer the bali during the four monthṣ The Mānava gr. II. 16. 6 adds that even the śūdra wife of a brāhmaṇa should silently offer the bali after washing her handṣ Vide Sāṇ gr. IV. 15. 20 also for the wife doing it silently.</p>
+<p class="prose" id="p-chapter-xxiv-minor-grihya-and-other-rites-6">Serpent worship arose from the fears entertained about the deadly effects of snake-biteṣ The serpent cult is very ancient as the quotation from the <a class="ref" href="../refs/taittiriya_s.html#ci" data-source="taittiriya_s" data-ref="ci" title="Taittirīya Saṃhitā ci">Tai. S. ci</a>ted above showṣ Vide also <a class="ref" href="../refs/atharvaveda.html#VIII.7.23" data-source="atharvaveda" data-ref="VIII.7.23" title="Atharvaveda VIII.7.23">Atharvaveda VIII. 7. 23</a> and XI. 9. 16 and 24. In the <a class="ref" href="../refs/atharvaveda.html#VIII.14.14-16" data-source="atharvaveda" data-ref="VIII.14.14-16" title="Atharvaveda VIII.14.14-16">Atharvaveda (VIII. 14. 14–16)</a> the well known names of some mythical serpents viz. Takṣaka, Dhṛtarāṣṭra and Airāvata occur. The dangers from snakes must have intensified in the rainy season when serpents sought shelter in human habitations owing to vast areas being flooded and in search of their prey, viz. mice and frogs &c. Therefore the rite of offering a bali to serpents was performed on the full moon day of Śrāvaṇa and a bali was offered every day to serpents for four months till the full moon of Mārgaśīrṣa on which day took place the Pratyavarohaṇa (re-descent) i. e. discarding the use of cots for sleeping on and using the ground for that purpose. Fergusson in his famous work ‘Tree and Serpent worship’ (1868) traces serpent worship in the nations of antiquity, such as in Egypt, Judea, Greece &c. In the <a class="ref" href="../refs/mahabharata.html" data-source="mahabharata" data-ref="" title="Mahābhārata">Mahābhārata</a> nāgas figure very frequently. Vide Adi. 35 and 123. 71, Udyoga 103, 9–16; Anuśāsana 150. 41 (where the names of seven nāgas that support the earth such as Vāsuki, Ananta &c. are specified). In Anuśāsana 14. 55 Śiva is said to have snakes on his body like yajñopavita. The purāṇas are full of the stories of nāgaṣ Serpent worship continues to this day particularly in South India, but now serpents are worship- ped on the 5th of the bright half of Śrāvaṇa instead of on the full moon day of Śrāvaṇa as in the times of the sūtraṣ This day is now called Nāgapañcamī and some account of it will be given later on under vrataṣ India possesses more varieties of serpents than any single country in the world and the toll of life taken by snake bites is very heavy as compared with any other country.</p>
+<p class="prose" id="p-chapter-xxiv-minor-grihya-and-other-rites-7">In certain medieval digests like the Saṁskāra-kaustubha (p. 122) a rite called Nāgabali is describeḍ It is performed on Sinīvālī (a day on which the moon is seen, but there is amāvāsyā thereafter) or full moon day or on the 5th or on the 9th when the moon is in Āśleṣā (of which serpents are the presiding deity). Its object is two-fold viz. to expiate the sin of having killed a snake or snakes and to remove the obstacle to progeny (supposed to arise from the wrath of serpents killed by a person). In this a figure of a serpent is made of the flour of rice or wheat or sesame which is then placed in a śūrpa (winnowing basket), then it is worshipped with the 16 upacāras (described above) and a bali of pāyasa (rice-milk) is offered to it; then after washing the hands and feet and sipping water a homa is performed with ordinary fire (but there is no sviṣṭakṛt offering); an oblation of clarified butter is offered with om and all the three vyāhṛtis into the mouth of the serpent figure and the rest of the ājya is sprinkled on its body, the serpent is praised with the mantras quoted above from <a class="ref" href="../refs/taittiriya_s.html#IV.2.8.3" data-source="taittiriya_s" data-ref="IV.2.8.3" title="Taittirīya Saṃhitā IV.2.8.3">Tai. S. IV. 2. 8. 3</a> and certain Purāṇa verses are repeated and the figure is thrown into the fire; then impurity (āśauca) is observed by the sacrificer and his wife for three days or one day; then eight brāhmaṇas are invited, they are supposed to stand in the place of the burnt effigy and upacāras are offered to them, they are fed and gifts are given to them; then a golden image of a serpent is put into the kalaśa (water-pot ) and prayer is offered to it, and the golden image or its value or a cow is gifted to a brāhmaṇa.</p>
+<p class="prose" id="p-chapter-xxiv-minor-grihya-and-other-rites-8">The Pār. gr. (II. 15) describes a rite called Indrayajña on the full moon day of Prosthapada (i. e. Bhādrapada). It is briefly as follows: Having cooked pāyasa (rice cooked in milk) for Indra<sup class="fn-ref"><a href="#fn-chapter-xxiv-minor-grihya-and-other-rites-12" id="fnref-chapter-xxiv-minor-grihya-and-other-rites-12">12</a></sup> and cakes and having placed (four) cakes round the fire, and having offered the two ājyabhāgas he offers milk rice to Indra; he offers the ājya oblations to Indra, Indrāṇī (Indra's wife ), Aja Ekapād, Ahirbudhnya and to the Prosthapadas; he offers milk-rice to Indra; after he has eaten (a portion of the sacrificial food ) he offers a bali to the Maruts; for Śruti says (<a class="ref" href="../refs/shatapatha.html#IV.5.2.16" data-source="shatapatha" data-ref="IV.5.2.16" title="Śatapatha Brāhmaṇa IV.5.2.16">Śat. Br. IV. 5. 2. 16</a>) 'the maruts are the eaters of ahuta ';<sup class="fn-ref"><a href="#fn-chapter-xxiv-minor-grihya-and-other-rites-13" id="fnref-chapter-xxiv-minor-grihya-and-other-rites-13">13</a></sup> the bali (to Maruts) is offered on leaves of the Aśvatthā tree, because there is a Vedic passage (<a class="ref" href="../refs/shatapatha.html#IV.3.3.6" data-source="shatapatha" data-ref="IV.3.3.6" title="Śatapatha Brāhmaṇa IV.3.3.6">Śat. Br. IV. 3. 3. 6</a>)<sup class="fn-ref"><a href="#fn-chapter-xxiv-minor-grihya-and-other-rites-16" id="fnref-chapter-xxiv-minor-grihya-and-other-rites-16">16</a></sup> the Maruts stayed in the Aśvatthā tree. He offers the bali with the passage ‘Śukra-jyotir’ (<a class="ref" href="../refs/vajasaneya.html#17.80-85" data-source="vajasaneya" data-ref="17.80-85" title="Vājasaneya Saṃhitā 17.80-85">Vāj. S. 17. 80–85</a>) mantra by mantra and with the mantra called vimukha which latter is to be revolved in the mind only (and not to be uttered loudly), for the śruti says ‘these are their names’ <sup class="fn-ref"><a href="#fn-chapter-xxiv-minor-grihya-and-other-rites-14" id="fnref-chapter-xxiv-minor-grihya-and-other-rites-14">14</a></sup> (<a class="ref" href="../refs/shatapatha.html#IX.3.1.26" data-source="shatapatha" data-ref="IX.3.1.26" title="Śatapatha Brāhmaṇa IX.3.1.26">Śat. Br. IX. 3. 1. 26</a>). He repeats the mantra ‘Indram daivir’ (<a class="ref" href="../refs/vajasaneya.html#17.86" data-source="vajasaneya" data-ref="17.86" title="Vājasaneya Saṃhitā 17.86">Vāj. S. 17. 86</a>); then follows the feeding of a brāhmaṇa.</p>
+<p class="prose" id="p-chapter-xxiv-minor-grihya-and-other-rites-9">The Kauśika sūtra ( 140 ) describes the procedure of a festival in honour of Indra for kingṣ It is begun on the eighth day in the bright half of Bhādrapada or Aśvina in which a banner is raised on Śravaṇa nakṣatra. <a class="ref" href="../refs/yajnavalkya.html#I.147" data-source="yajnavalkya" data-ref="I.147" title="Yājñavalkya I.147">Yāj. I. 147</a> declares a holiday for one day on the day on which the banner in honour of Indra is raised and when it is taken dowṇ <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> (p. 190) quotes Garga to the effect that the banner is raised by the king on the 12th of the bright half of Bhādrapada, when the moon is in conjunction either with Uttarāṣāḍhā, Śravaṇa or Dhaniṣṭhā and adds that it is taken down on the Bharaṇī nakṣatra after the full moon day of Bhādrapada. The Kṛtya-ratnākara (pp. 292–93) adds that during the days of the festival worship is offered to figures of Indra and his wife Śacī and son Jayanta made from pieces of sugarcane stalks and that it is not raised on Saturday or Tuesday or in periods of impurity due to birth or mourning or in portents like an earth-quake. From <a class="ref" href="../refs/mb_adiparva.html#63.1-29" data-source="mb_adiparva" data-ref="63.1-29" title="Ādiparva 63.1-29">Ādiparva 63. 1–29</a><a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U06_A063_S001" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> it appears<sup class="fn-ref"><a href="#fn-chapter-xxiv-minor-grihya-and-other-rites-15" id="fnref-chapter-xxiv-minor-grihya-and-other-rites-15">15</a></sup> that the festival (called Indramaha) was started by Uparicara Vasu. It is stated there-in that when that king was prevailed upon by Indra to desist from being a hermit in a forest and to rule over the country called Cedi, Indra gave him a bamboo staff as an affectionate gift and in honour of Indra the king planted it in the earth and since that time when the year ended a bamboo staff was raised by kings (and also other humbler persons ) and next day it was decked with baskets full of fragrant substances and ornaments, and garlands were suspended from it. It is possible that the raising of a bamboo staff on the first day of Caitra every year in the Deccan and other places is reminiscent of this ancient festival in honour of Indra. The Brhatsamhitā (chap. 43) describes the origin of the Indramaha festival and devotes over sixty verses to the elucidation of the method of celebrating it. <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> gave to Indra a flag-staff to frighten asuras; in verse 8 it refers to Uparicara Vasu as the originator of the Indra festival, states on what auspicious conjunctions a carpenter and an astrologer should go to a forest and gives directions as to the tree to be selected (Arjuna tree being the best ); then the tree is to be felled the next day and brought to the capital by the king on the eighth of the bright half of Bhādra-pada with a retinue of citizens, ministers and brāhmaṇas; the city should be decorated with fine patākas ( flags ) and toraṇas ( festival arches ); on the 11th there was to be a vigil, the trunk of the tree should be pared and chiselled and it should be placed on a yantra (a mechanical contrivance to raise it up), homa is to be offered; then it is to be raised up erect on the 12th of the bright half of Bhādrapada when the moon is in Śravaṇa nakṣatra or even without that being so; five or seven wooden figures ( called śakrakumāris ) are also to be placed near it (to enhance the charm of the staff) and two smaller staffs (one ¼ and the other ⅓ of the length of the principal staff) are also to be raised called Nanda and Upananda; another staff also is to be raised as Indra’s mother; the staff was to be decked with several ornaments, baskets were to be hung round the staff, each one above the other and smaller in size, on the 4th day (from 12th tithi) verses in praise are to be recited and on the 5th day (from the 12th i. e. on 1st of the dark half ) the staff is to be bidden farewell to. The Āśv. gr. II. 2. 1-3 describes<sup class="fn-ref"><a href="#fn-chapter-xxiv-minor-grihya-and-other-rites-17" id="fnref-chapter-xxiv-minor-grihya-and-other-rites-17">17</a></sup> the rite as follows: ‘on the full moon day of Āśvayuja (i. e. Āśvina) the Āśvayujī rite ( is performed ). Having adorned the house, having bathed and put on clean ( white ) garments, they should take out a mess of cooked food for Paśupati and should offer it with the formula ‘to Paśupati, to Śiva, to Śaṁkara, to Pṛṣātaka, svāhā.’ He should sacrifice with his joined hands a mixture of milk and clarified butter with the formula ‘may what is deficient in me be made complete ( or full ); may what is complete not deteriorate in me. To Pṛṣātaka, svāhā.’</p>
+<p class="prose" id="p-chapter-xxiv-minor-grihya-and-other-rites-10">The Śāṁ. gr. (IV. 16) requires that in this rite oblations of clarified butter should be offered to Aśvins, to the two stars of Āśvayuj nakṣatra, to the full moon of Āśvina; to Śarad (autumn) and to Paśupati and the mixture of milk and ājya is offered with the hymn <a class="ref" href="../refs/rigveda.html#VI.28" data-source="rigveda" data-ref="VI.28" title="Ṛgveda VI.28">Ṛg. VI. 28</a> (ā gāvo agman) and that on that night the calves are allowed to join their motherṣ Pār. gr. II. 16 calls this rite Pṛṣātakāḥ, but it prescribes the cooking of pāyasa (milk-rice) for Indra and offerings of that mixture with curds, honey and ghee are made to Indra, Indrāṇī, the Aśvins, to the full moon of Āśvina and Śarad (autumn). The Gobhila gr. III. 8. 1 also calls this rite Pṛṣātaka and it adds the tying to the arms &c. of amulets made of lac together with all sorts of herbs for the sake of prosperity. Vide also Khādira gr. III. 3. 1-5, Vaik. IV. 9 for this rite.</p>
+<p class="prose" id="p-chapter-xxiv-minor-grihya-and-other-rites-11">In most of the gṛhyasūtras another rite called Āgrayaṇa is described immediately after Āśvayujī. Haradatta on <a class="ref" href="../refs/gautama.html#VIII.19" data-source="gautama" data-ref="VIII.19" title="Gautama Dharmasūtra VIII.19">Gaut. VIII. 19</a> explains that in the Āśvayujī rite mentioned by <a class="ref" href="../refs/gautama.html" data-source="gautama" data-ref="" title="Gautama Dharmasūtra">Gaut.</a> both the Āśvayujī described above from Āśv. gr. and Āgrayaṇa are includeḍ Āgrayaṇa is also called ‘Navayajñā’ in Gobhila-smṛti ( in verse III. 103 ) and Navasasyēṣṭi in <a class="ref" href="../refs/manu.html#IV.27" data-source="manu" data-ref="IV.27" title="Manusmṛti IV.27">Manu IV. 27</a>. Āgrayaṇa iṣṭi is prescribed in the Āśv. śrauta sūtra II. 9 and other śrauta sūtras for those who have consecrated the three vedic fires (i. e. āhitāgnis). According to Nārā- yaṇa an āhitāgni is to perform this āgrayaṇa sacrifice of fresh corn according to the śrauta sūtra, but in case of difficulties he may do so in accordance with Āśv. gr. II. 2. 4 in the Tretā fires and that one who has not conse- crated the three fires may offer the sacrifice in the śālā (i. e. aupāsana) fire. This āgrayaṇa rite is required even by the śrauta sūtra as to crops of rice, barley and śyāmāka <sup class="fn-ref"><a href="#fn-chapter-xxiv-minor-grihya-and-other-rites-18" id="fnref-chapter-xxiv-minor-grihya-and-other-rites-18">18</a></sup> only and no one was to make use of fresh corn of these three kinds without offering this sacrifice, but there was no restriction as to the use of other kinds of corn or as to vege- tables &c. The word Āgrayaṇa is explained as <sup class="fn-ref"><a href="#fn-chapter-xxiv-minor-grihya-and-other-rites-19" id="fnref-chapter-xxiv-minor-grihya-and-other-rites-19">19</a></sup> 'that rite in which fresh fruits are first offered to gods' or 'that rite in which fresh corn is first offered or eaten'. The deities of the śrauta Āgrayaṇa are three, viz. Indrāgni (or AgnIndrau), Viśvedevas, Dyāvāpṛthivī (heaven and earth), but in the gṛhya Āgrayaṇa, Agni Sviṣṭakṛt is added as the fourth (Śāṅ. gr. III. 8. 1, <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> gr. 19. 7). Āśv. gr. (II. 2. 4-5) gives a very brief description 'united <sup class="fn-ref"><a href="#fn-chapter-xxiv-minor-grihya-and-other-rites-20" id="fnref-chapter-xxiv-minor-grihya-and-other-rites-20">20</a></sup> with the seasons, united with the manners, united with Indra and Agni, svāhā; uniteḍ..with Viśvedevas, svāhā; uniteḍ..with Heaven and earth, svāhā'- with these formulas a mess of cooked food is offered at the Āgrayaṇa by one who has set up the śrauta fires; also by one who has not set up the śrauta fires, (the same offerings are made) in the domestic (gṛhya) fire. Ap. gr. 19. (6-7) also is concise '(Now follows the description of) Āgrayaṇa for one who has not set up the śrauta fireṣ Having prepared a mess of cooked food with fresh corn, he offers oblations to the deities of the (Śrauta) Āgrayaṇa with Sviṣṭakṛt (Agni) as the fourth, he fills his mouth with grains of rice, swallows them, takes ācamana and having rolled up a lump of rice (from the mess of cooked rice) he throws it up on to the top of the dwelling with the next yajus (Ap. M. P. II. 18. 1). This rite is also described in Śāṇ gr. III. 8, Pār. gr. III. 1, Gobhila gr. III. 8. 9–24, Khādira gr. III. 3. 6–15, Vaik. IV. 2, Mānava gr. II. 3. 9–14 &c. There is one peculiarity in Vaik. viz. that it connects the Pitrs also with this rite. According to Mānava gr. the Āgra- yaṇa is performed on a parva day in Vasanta (spring) with fresh barley that is (then) harvested and with rice in śarad (autumn). Vaik. VI. 19 prescribes the prāyaścitta of pādakṛcchra or a fast for using first fruits without performing Āgrayaṇa rite. In modern times some vestige of this Navayajña (sacrifice of first fruits) still remainṣ The full moon day of Āśvina is still called in the Deccan 'navyācī paurṇimā' and a few ears of growing crops are picked up, are woven with flowers and tastefully arranged and the whole is suspended from the entrance door or its lintel. Āgrahāyaṇī :—This is one of the seven pākayajñas men- tioned by Gautama (VIII. 19) among his forty saṁskāraṣ The full moon day of Mārgaśīrṣa is called Āgrahāyaṇī; the rite <sup class="fn-ref"><a href="#fn-chapter-xxiv-minor-grihya-and-other-rites-21" id="fnref-chapter-xxiv-minor-grihya-and-other-rites-21">21</a></sup> performed on that day is also called by the same name on account of association with it. Pratyavarohaṇa is a rite performed to signalise the giving up of the use of cots and high couches, recommended from the full moon of Śrāvaṇa for fear of snakes (as in Śāṇ gr. IV. 15. 22). Some describe two rites separately, one on the full moon day of Mārgaśīrṣa and another called Pratyavarohaṇa on the first night of Hemanta (vide Ap. gr. 19. 3–5 and 8–12). There is some divergence as to the time and the exact procedure of this rite. Some (like Āśv. gr. II. 3. 1–2) hold that it may be performed on the 14th day of the bright half or the full moon day of Mārgaśīrṣa. Others restrict it to the full moon day. Very elaborate descriptions are given in Pār. gr. III. 2, Gobhila gr. III. 9. 1-23. As this rite has entirely gone out of vogue a brief description from the Āśv. gr. alone is appended<sup class="fn-ref"><a href="#fn-chapter-xxiv-minor-grihya-and-other-rites-22" id="fnref-chapter-xxiv-minor-grihya-and-other-rites-22">22</a></sup> here. “Having again (after Āśvayuji) renovated the house with plaster (of paint or cow-dung) and by levelling (the floor), they should offer after sunset oblations of pāyasa (milk-rice) with the mantras ‘strike aside,’<sup class="fn-ref"><a href="#fn-chapter-xxiv-minor-grihya-and-other-rites-23" id="fnref-chapter-xxiv-minor-grihya-and-other-rites-23">23</a></sup> O white one, with thy foot, with the front and back portions of the foot these seven women (daughters) of Varuna and all (females) that belong to the tribes of the king (of serpents). Inside the house the white one the serpent did not kill any thing, adoration to the white one, the son of Vidārva, svāhā.’ Here no oblation is offered to (Agni) Sviṣṭakṛt. While gazing fixedly at the fire he repeats in a low voice ‘may there be no harm to us from the progeny<sup class="fn-ref"><a href="#fn-chapter-xxiv-minor-grihya-and-other-rites-24" id="fnref-chapter-xxiv-minor-grihya-and-other-rites-24">24</a></sup> of Prajāpati.’ He should think in his mind of Hemanta (winter) saying ‘be auspicious and well-disposed towards uṣ’ To the west of the fire a well-spread layer of grass should be prepared; he should sit down on it and having recited in a low voice ‘Be blissful, O Earth’ (<a class="ref" href="../refs/rigveda.html#I.22.15" data-source="rigveda" data-ref="I.22.15" title="Ṛgveda I.22.15">Ṛg. I. 22. 15</a>) he should lie down on that layer with his people (sons &c.) with the head towards the east and face turned towards the north. The others may lie down according as space permits or each should lie down one after another, the elder one before the one next to him in yearṣ Those (of the sacrificer’s sons &c.) who know the mantras should murmur them (<a class="ref" href="../refs/rigveda.html#I.22.15" data-source="rigveda" data-ref="I.22.15" title="Ṛgveda I.22.15">Ṛg. I. 22. 15</a> and the mantras referred to in sūtra 12 below). Getting up from the layer they should three times recite the mantra ‘from that place may the gods protect us’ (<a class="ref" href="../refs/rigveda.html#I.22.16" data-source="rigveda" data-ref="I.22.16" title="Ṛgveda I.22.16">Ṛg. I. 22. 16</a>); the same verse (they should repeat) a fourth time turning their faces to the south, to the west and the north.<sup class="fn-ref"><a href="#fn-chapter-xxiv-minor-grihya-and-other-rites-25" id="fnref-chapter-xxiv-minor-grihya-and-other-rites-25">25</a></sup> Having gathered together they should repeat in a low tone the mantras sacred to the sun and the Svastyayana<sup class="fn-ref"><a href="#fn-chapter-xxiv-minor-grihya-and-other-rites-25" id="fnref-chapter-xxiv-minor-grihya-and-other-rites-25">25</a></sup> mantras, cook food and feed the brāhmaṇas and make the latter pronounce auspicious wordṣ” In the Pāli work called Aṅguttara-nikāya there is a section called Paccoro-hanivagga in which the Pratyavarohaņa observed by brāhmaṇas is describeḍ Vide Aṅguttara vol. V. (eḍ by Hardy) p. 233 CXIX. and Z. D. M. G. vol. 52 pp. 149-151. Āgrahāyaṇī has been described also in Khādira gr. III. 3. 1–26, Gobhila gr. III. 9, Mānava gr. II. 7. 1–5, Bhār. gr. II. 2, <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> gr. 19. 3–5, Kāthaka gr. 60. 1 ff., Kauśika sūtra 24. 24–36 Hir. gr. II. 17. 1 (where Mātrdatta says that Āgrahāyaṇī is also styled Pratyavarohaņa). Bauḍ gr. II. 10 speaks of a rite called Pratyavarohaņa to be performed at the beginning of each of the six ṛtus (seasons) and the intercalary month (if any). This is a different rite. Śūlagava or Īśānabali:—This was originally an offering of the flesh of an ox to Śiva. There was some difference of opinion as to the time. Aśv. gr. IV. 9. 2 states that it was to be perform-ed in Śarad (autumn) or in Vasanta (spring) under the constel-lation of Ārdrā. The Bauḍ gr. II. 7. 1–3 says that every year it was to be performed on the full moon day of Mārgaśīrṣa or on the Ārdrā nakṣatra<sup class="fn-ref"><a href="#fn-chapter-xxiv-minor-grihya-and-other-rites-27" id="fnref-chapter-xxiv-minor-grihya-and-other-rites-27">27</a></sup> in that month or whenever cattle suffer from some pest or disease. The Kāthaka gr. (52. 2–3) declares that the Śūlagava may be performed from various desires in śarad or vasanta and that according to some ācāryas there is no restriction as to seasoṇ The Bhār. gr. II. 8 and Hir. gr. II. 3. 2 say that it may be performed in the bright half of a month and on an auspicious nakṣatra. Various explanations are given why this rite was called Śūlagava. Nārāyaṇa<sup class="fn-ref"><a href="#fn-chapter-xxiv-minor-grihya-and-other-rites-28" id="fnref-chapter-xxiv-minor-grihya-and-other-rites-28">28</a></sup> says Śūla here means one who has a spit ( or pointed rod ) i. e. Śiva who is called Śulin and that this sacrifice is offered to Rudra Śulin with the ox as a sacrificial animal. Haradatta explains that here the ox is marked with the rod ( of Śiva ).</p>
+<p class="prose" id="p-chapter-xxiv-minor-grihya-and-other-rites-12">This rite is most elaborately described in Āśv. gr. IV. 9, Bauḍ gr. II. 7, Hir. gr. II. 8–9, Bhār. gr. II. 8–10, Pār. gr. III. 8. It appears that even in the times of the gṛhya sūtras there were many who did not like the rite of ox-flesh. The Bauḍ gr. (II. 7. 26–27) says<sup class="fn-ref"><a href="#fn-chapter-xxiv-minor-grihya-and-other-rites-29" id="fnref-chapter-xxiv-minor-grihya-and-other-rites-29">29</a></sup> that if a person cannot secure an ox he may sacrifice with a goat or ram or he may cook a mess of cooked food for Īśāna and with that he does everything that is to be done by means of an ox. The commentator Devapāla on Kāṭhaka<sup class="fn-ref"><a href="#fn-chapter-xxiv-minor-grihya-and-other-rites-30" id="fnref-chapter-xxiv-minor-grihya-and-other-rites-30">30</a></sup> gr. 52. 1 says that only a goat is offered and the bull is let off as the people are opposed to the idea of the sacrifice of an ox.</p>
+<p class="prose" id="p-chapter-xxiv-minor-grihya-and-other-rites-13">As this rite has totally gone out of practice only a brief description of it from the Mānava gṛhya<sup class="fn-ref"><a href="#fn-chapter-xxiv-minor-grihya-and-other-rites-31" id="fnref-chapter-xxiv-minor-grihya-and-other-rites-31">31</a></sup> ( which is the briefest of all on this rite ) is given here. ‘Śulagava is to be performed in Śarad for ( propitiating ) Rudra. In the north-east of the village and not near it ( it is to be performed ) at night and there is to be a sacrificial post, not chiselled ( into an octagonal shape as in other sacrifices ), in the midst of oxeṇ Before the ( final offering ) to Agni Sviṣṭakṛt ( i. e. after perform- ing the usual homa with boiled rice up to this point ) he should fill eight vessels made of leaves with blood and offer them in the principal quarters and the intermediate quarters with the eight anuvākas (<a class="ref" href="../refs/taittiriya_s.html#IV.5.1" data-source="taittiriya_s" data-ref="IV.5.1" title="Taittirīya Saṃhitā IV.5.1">Tai. S. IV. 5. 1</a> ff. and <a class="ref" href="../refs/vajasaneya.html#16" data-source="vajasaneya" data-ref="16" title="Vājasaneya Saṃhitā 16">Vāj. S. 16</a>th adhyāya ) beginning with ‘adoration to thee, O Rudra, who are Manyu ( wrath ).’ He should not bring the uncooked offerings into the village. He should bury into the ground the rest ( of the animal offered ) and its skin also. Some ācāryas say that in the pākāyajñas in which animals are sacrificed there is no sacri- ficial post.’ Vāstu-pratiṣṭhā :-( construction and occupation of a new house ).</p>
+<p class="prose" id="p-chapter-xxiv-minor-grihya-and-other-rites-14">The Aśv. gṛ. II. 7–9, āṇ gṛ. III. 2–4, Pār. gṛ. III. 4, <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> gṛ. 17. 1–13, Khādira gṛ. IV. 2. 6–22 and other gṛhya works deal with the matter of building a new house. Aśv. gṛ. ( II. 7 ) says that one who intends to build a house should first examine the ground, which must be non-salinous, which should have herbs and trees, much kuśa and vīraṇa grass growing on it; that one should dig out thorny plants and plants having milky juice with their roots and remove them and also certain other plants like apāmārga, tilvaka, etc. He should select a spot where the waters coming together from all sides to the centre of it flow round the resting place having the latter on their right side and then are discharged off to the east without noise. Such a spot possesses all auspicious qualitieṣ He should ( Aśv. gṛ. II. 8 ) also dig a pit knee-deep in the ground to be examined and then fill the pit again with the earth taken out. If the earth taken out fills the entire pit and some earth remains, then the plot is excellent for building a house on; if all the earth dug out just fills the pit, it is of middle quality ; if the earth is not enough to fill the pit the plot is to be rejecteḍ Another method is to fill the pit with water and leave it there through the night. If in the morning there is water in the pit the ground is excellent; if it is moist only, the ground is of middle quality; if it is found dry in the morning the plot is to be rejecteḍ The three dvijātis should respectively select white, red and yellow ground as a site for their house. The plot should be square or rectangular and the owner should draw a thousand furrows on it. <sup class="fn-ref"><a href="#fn-chapter-xxiv-minor-grihya-and-other-rites-32" id="fnref-chapter-xxiv-minor-grihya-and-other-rites-32">32</a></sup> With a śamī or udumbara branch he sprinkles the ground with water, going thrice round it with his right hand towards it and recites the Śāntātīya hymṇ <sup class="fn-ref"><a href="#fn-chapter-xxiv-minor-grihya-and-other-rites-32" id="fnref-chapter-xxiv-minor-grihya-and-other-rites-32">32</a></sup> He does this thrice pouring out water without interruption with the three verses ‘āpo hi ṣṭhā’ ( <a class="ref" href="../refs/rigveda.html#X.9.1-3" data-source="rigveda" data-ref="X.9.1-3" title="Ṛgveda X.9.1-3">Ṛg. X. 9. 1–3</a> ). Under the divisions of the bamboo which rests on the chief posts he should have the single rooms constructeḍ Into the pits in which the posts are to stand he should have an avakā and the water plant called śīpālā put dowṇ Having put the plant into the pit in which the middle post is to stand he should spread on it east-ward pointed and north-ward pointed kuśa grass and should sprinkle on the kuśas water into which rice and barley have been thrown with the words ‘to the steady one, the earth demon, svāhā.’ He should when the middle post is being erected repeat over it the two verses ‘stand here &c.’ and ‘to thee the young child may come &c.’ Over the bamboo staff when it is placed on the middle post he recites the hemistich ‘rightly ascend the post &c.’ On four stones on which dūrvā grass has been spread he should establish the water barrel with the words ‘arise on the earth’ or with the verse ‘the araṅgara sounds &c.’ He then should pour water into it with the verse ‘hither may king Varuṇa come &c.’ He then appeases it as follows : he puts gold into water in which rice and barley have been put and with that water he sprinkles it three times, going round it with his right turned towards it with the Śāntātīya hymṇ This he does three times pouring water without interruption with the three verses ‘āpo hi sthā’ (<a class="ref" href="../refs/rigveda.html#X.9.1-3" data-source="rigveda" data-ref="X.9.1-3" title="Ṛgveda X.9.1-3">Ṛg. X. 9. 1-3</a>). In the middle of the house he should cook a mess of food, sacrifice from it with the four verses ‘Vāstospate prati’ (<a class="ref" href="../refs/rigveda.html#VII.54.1-3" data-source="rigveda" data-ref="VII.54.1-3" title="Ṛgveda VII.54.1-3">Ṛg. VII. 54. 1-3</a> and VII. 55. 1) verse by verse, <sup class="fn-ref"><a href="#fn-chapter-xxiv-minor-grihya-and-other-rites-33" id="fnref-chapter-xxiv-minor-grihya-and-other-rites-33">33</a></sup> should cook food which should be given to the brāhmaṇas to eat, whom he should cause to say ‘lucky is the grounḍ’</p>
+<p class="prose" id="p-chapter-xxiv-minor-grihya-and-other-rites-15">The <a class="ref" href="../refs/matsya_purana.html" data-source="matsya_purana" data-ref="" title="Matsyapurāṇa">Matsyapurāṇa</a> (chap. 252-257) deals at length with Vāstuśāstra, the construction of a house of various dimensions, its posts, the timber to be employed, the rites to be performed when laying the foundation and at later stages, the rite for Vāstuśānti (propitiatory rite for averting evil).</p>
+<p class="prose" id="p-chapter-xxiv-minor-grihya-and-other-rites-16">The <a class="ref" href="../refs/matsya_purana.html" data-source="matsya_purana" data-ref="" title="Matsyapurāṇa">Matsyapurāṇa</a> <sup class="fn-ref"><a href="#fn-chapter-xxiv-minor-grihya-and-other-rites-34" id="fnref-chapter-xxiv-minor-grihya-and-other-rites-34">34</a></sup> (256. 10-11) states that a vāstu- yajña has to be performed five times in relation to a house, viz. when laying down the foundation (lit. using the measuring line), when fixing the first post, when raising the first door frame, when entering the house (gṛhapraveśa) and when vāstu- śānti is to be performed (for averting evil or on seeing portents). It briefly describes Vāstuyajña as follows (chap. 256. 5-9): On an auspicious day and moment, the stone should be laid over jewels and all seeds; similarly the post is to be worshipped at the hands of four brāhmaṇas; the priest who should wear white garments should be master of the Veda and should be accompanied by the artizans, should fix the post that is washed with water mixed with all herbs (or herbs called sarvauṣadhi) and covered with many whole rice and decked with clothes and ornaments to the accompaniment of Vedic mantras and the tunes of auspicious music; he should perform a homa with honey and clarified butter and should repeat the mantra ‘vāstoṣpate prati’ (<a class="ref" href="../refs/rigveda.html#VII.54.1" data-source="rigveda" data-ref="VII.54.1" title="Ṛgveda VII.54.1">Rg. VII. 54. 1</a>); then the owner should feed brāhmaṇas with a dish of rice-milk. The <a class="ref" href="../refs/matsya_purana.html" data-source="matsya_purana" data-ref="" title="Matsyapurāṇa">Matsyapurāṇa</a> notes that the foundation should be laid in the north-east corner and the first post fixed in the south-east. The <a class="ref" href="../refs/matsya_purana.html" data-source="matsya_purana" data-ref="" title="Matsyapurāṇa">Matsyapurāṇa</a> (chap. 268) describes the procedure of Vāstuśānti and remarks (verses 33–35) that it should be performed when beginning the construction of a temple or a house or a public park or when entering a town or one’s house for the first time for averting all evil and it should also be performed every year in one’s house. In that rite he should make the brāhmaṇas repeat the Rākṣoghna hymn and a hymn to Pavamāna Soma (one from <a class="ref" href="../refs/rigveda.html#IX" data-source="rigveda" data-ref="IX" title="Ṛgveda IX">Rg. IX</a>. or IX. 1).</p>
+<p class="prose" id="p-chapter-xxiv-minor-grihya-and-other-rites-17">In modern times the ceremony of entering a newly built house is an important one, is an extensive affair and marked by great éclat. A very auspicious day is required for this ceremony and numerous astrological considerations enter into the choosing of a proper day. The ceremony of an entrance is preceded on the same day or on the previous day by a vāstuśānti (propitiatory rite) of which grahamakha (a rite for propitiating the planets) forms a part and the usual rites of worship of Gaṇeśa and the like (mentioned at pp. 213–218) have also to be performeḍ A few salient features are mentioned here. A maṇḍala is drawn divided into 81 squares, 62 devatās are invoked to be present in the maṇḍala, then a homa is offered to the nine planets with 28 oblations of fuel sticks, sesame and ājya to each planet and oblations are offered to other deities, the performer and his wife have holy water sprinkled over their heads from auspicious jars, the house is surrounded thrice with thread beginning from the east to the accompaniment of Rākṣoghna (<a class="ref" href="../refs/rigveda.html#IV.4.1-15" data-source="rigveda" data-ref="IV.4.1-15" title="Ṛgveda IV.4.1-15">Rg. IV. 4. 1–15</a> or X. 87. 1–25) and Pavamāna (<a class="ref" href="../refs/rigveda.html#IX.1.1-10" data-source="rigveda" data-ref="IX.1.1-10" title="Ṛgveda IX.1.1-10">Rg. IX. 1. 1–10</a>) mantras and round the house water is continuously poured in a stream from a jar with the same two hymnṣ A pit is dug in the south-east corner of the house which is cowdunged, worshipped with flowers and sandalwood paste and a baked brick box containing seven kinds of corn, moss, flowers &c. is lowered into it and the pit is filled up. Then the house is entered to the accompaniment of music by the owner who is accompanied by his wife, sons and brāhmaṇas and who holds in his folded hands an auspicious jar filled with water and having fresh sprouts, dūrvā grass thereon and marked with sandalwood paste and flowers and covered with cloth. The svasti hymn (vide note 1963 above) and the hymn beginning with ‘kraṇikradat’ (<a class="ref" href="../refs/rigveda.html#II.42.1-3" data-source="rigveda" data-ref="II.42.1-3" title="Ṛgveda II.42.1-3">Rg. II. 42. 1-3</a>) are recited and the auspicious jar is put down on a heap of corṇ Then the brāhmaṇas perform puṇyāhavācana (vide note 503 above), they are honoured and utter ‘may the house be lucky’, dinner is given to the brāhmaṇas who pronounce benedictions, and the owner then takes his meal with his friendṣ<sup class="fn-ref"><a href="#fn-chapter-xxiv-minor-grihya-and-other-rites-35" id="fnref-chapter-xxiv-minor-grihya-and-other-rites-35">35</a></sup></p>
+<aside class="footnotes-section" aria-label="Footnotes">
+<hr>
+<ol class="footnotes-list">
+<li id="fn-chapter-xxiv-minor-grihya-and-other-rites-1" class="footnote-item"><span class="devanagari">एकमत्त अवर्ध दक्षिणावर्धजीपोपिताम्बा परं कार्यः। आप</span>. <span class="devanagari">गृ</span>. 7. 17. <a href="#fnref-chapter-xxiv-minor-grihya-and-other-rites-1" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxiv-minor-grihya-and-other-rites-2" class="footnote-item">For āghāras see note 489 above. <a href="#fnref-chapter-xxiv-minor-grihya-and-other-rites-2" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxiv-minor-grihya-and-other-rites-3" class="footnote-item">Madhu to Tapasya are the ancient twelve names of the months of the year mentioned in Tai. S. I. 4. 14. 1, Vāj. S. VII. 30. <a href="#fnref-chapter-xxiv-minor-grihya-and-other-rites-3" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxiv-minor-grihya-and-other-rites-4" class="footnote-item"><span class="devanagari">अधासो हलाभिर्योगः । पुण्ये नक्षत्रे स्थालीपाकौ देवयत्नो । खुड्डापविधाय भक्तदृश्यः पर्जन्यपाशाभ्यश्च भगय । ससीसामामाश्मरछामनयो च यजेत । गोभिलगृह्य</span> IV. 4. 27–29. <a href="#fnref-chapter-xxiv-minor-grihya-and-other-rites-4" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxiv-minor-grihya-and-other-rites-5" class="footnote-item">Vide appendix for the text. <a href="#fnref-chapter-xxiv-minor-grihya-and-other-rites-5" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxiv-minor-grihya-and-other-rites-6" class="footnote-item">‘smears’—Nārāyaṇa explains that this should be done in the day and what follows is to be done after sunset. <a href="#fnref-chapter-xxiv-minor-grihya-and-other-rites-6" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxiv-minor-grihya-and-other-rites-7" class="footnote-item">‘joined hands’—When the sacrificer joins his hands the applying of butter (upastaraṇa) and the putting of butter over the havis are done by another persoṇ <a href="#fnref-chapter-xxiv-minor-grihya-and-other-rites-7" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxiv-minor-grihya-and-other-rites-8" class="footnote-item">The words <span class="devanagari">सर्पदेवजनेभ्यः स्वाहा</span> may mean ‘the serpents and the divine hosts’. In the Śat. Br. (S. B. E. vol. 44, pp. 367–368) ‘Sarpavidyā and Devajanavidyā’ are separate subjects of study. But as the rite is for propitiating the serpents, it is better to take the words to mean ‘serpents that are a divine host.’ <a href="#fnref-chapter-xxiv-minor-grihya-and-other-rites-8" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxiv-minor-grihya-and-other-rites-9" class="footnote-item">'The serpents that are terrestrial'. Note <span class="devanagari">नमोऽस्तु सर्पेभ्यो ये केचन पृथिवीमनु । येऽन्तरिक्षे ये दिवि तेभ्यः सर्पेभ्यो नमः । ये धामी रोचने दिवो ये सूर्यरश्मिषु । येषामोषधयो मर्म तेभ्यः सर्पेभ्यो नमः । या इषवो यातुधानानां ये वा वनस्पतीननु । ते वासुदेव तेभ्यो नमः सर्पेभ्यो नमः ॥ तै</span>. <span class="devanagari">सं</span>. IV. 2. 8. 3, <span class="devanagari">काठकसंहि</span>. 16. 15, <span class="devanagari">वाज</span>. <span class="devanagari">सं</span>. 13. 6–8 ( same verses in all in almost the same words ). <a href="#fnref-chapter-xxiv-minor-grihya-and-other-rites-9" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxiv-minor-grihya-and-other-rites-10" class="footnote-item">Each son, daughter and wife are to be separately named and to be given in charge ( of the serpent deity )—says Nārāyaṇa. Dhruva is the lord of serpents ( Sudarśana ). <a href="#fnref-chapter-xxiv-minor-grihya-and-other-rites-10" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxiv-minor-grihya-and-other-rites-11" class="footnote-item">For Pratyavarohaṇa, vide below. <a href="#fnref-chapter-xxiv-minor-grihya-and-other-rites-11" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxiv-minor-grihya-and-other-rites-12" class="footnote-item"><span class="devanagari">कर्क</span> says '<span class="devanagari">ऐन्द्रग्रहणादिन्द्राय स्वाहेति होमो लभ्यते ।</span>' <span class="devanagari">आज्यावृत्तयस्ते न होमः । ततः स्विसृकुदादिः ।</span> The <span class="devanagari">स्विसृकृत्</span> is to be performed with the remains of <span class="devanagari">पायस</span>. <a href="#fnref-chapter-xxiv-minor-grihya-and-other-rites-12" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxiv-minor-grihya-and-other-rites-13" class="footnote-item">The <span class="devanagari">शतपथब्राह्मण</span> I.10 has the verse <span class="devanagari">हुतोमिष्ठोमेनाहतो बलिकर्मणा । मरुतः पितुष्कर्मणा प्रशिंतो ब्रह्मणे हुतः ॥</span>'; vide Manu III. 74 quoted above. <span class="devanagari">बलि</span> is <span class="devanagari">अहुत</span> and so Maruts are called <span class="devanagari">अहुतादः</span>. The <span class="devanagari">शतपथ</span> passages are ' <span class="devanagari">अहुताद्दो वै देवाणां मरुतः</span>' (IV. 5. 2. 16), '<span class="devanagari">मरुतो वा हस्यत्युपक्रम्य तस्युः क्षर्मे वा इम्रो बिषो मरुतः</span>' (IV. 3. 3. 6). . <a href="#fnref-chapter-xxiv-minor-grihya-and-other-rites-13" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxiv-minor-grihya-and-other-rites-14" class="footnote-item">In Vāj. S. 17. 80–85 there are names of Marutṣ They are said (in 17. 86) to be the divine hosts that follow Indra. The <span class="devanagari">शतपथ</span> ( IX. 3. 1. 26 ) says <span class="devanagari">शुक्रज्योतिष विश्वज्योतिष सत्यज्योतिष ज्योतिष्याश्रेति नामान्ये</span>- <span class="devanagari">पामेतानि</span>. All the commentators of Pār. gr. say that <span class="devanagari">विमुख</span> is the mantra ‘<span class="devanagari">उग्रश्च भीमश्च बलब्रश्च धूतश्च सालाङ्काभिभुग्वश्च विषिश्रयः स्वाहा ॥</span>’ which is Vāj. S. 39. 7. But Oldenberg (in SBE vol. 29. p. 332) says in a note that the first part of Vāj. S. XVII. 86 is called ‘Vimukha’. <a href="#fnref-chapter-xxiv-minor-grihya-and-other-rites-14" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxiv-minor-grihya-and-other-rites-15" class="footnote-item"><span class="devanagari">पच्छि च वैगर्भी तस्सै दद्वौ दुवनिरृतुनः । इदम्प्रभानुसुदिष शिष्ठानां प्रतिपालि</span>- <span class="devanagari">भीम् ॥ तस्याः शाकप्र पूजाथं भुमौ धूनिपतिर्रतदा । प्रवेशं कारयामास गते संवत्सरे तदा ॥ ततः प्रवृत्ति बाधापि पदेः क्षितिसत्तभैः । प्रवेश क्रियते राजम्पथा तेन प्रवर्तितः ॥</span> ....... <span class="devanagari">भगव</span>- <span class="devanagari">न्मुरपरेण बाध हेसकेणेन चेन्थचः ॥ स्वयमेव गृहीतेन वसैः प्रष्टेण महात्मनः । आ दिपर्व</span> 63. 17–19, 21–22. <span class="devanagari">नीलकण्ठ</span> notices in the last verse another reading <span class="devanagari">हस्तेण पात्स्थचः</span>, while the cr. eḍ of the <span class="devanagari">महाभारत</span> prefers <span class="devanagari">हारूपेण शङ्करः</span> (chap. 57. 21).
+ H. D. 104 <a href="#fnref-chapter-xxiv-minor-grihya-and-other-rites-15" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxiv-minor-grihya-and-other-rites-16" class="footnote-item">Āśvayujī:—Gaut. VIII. 19 mentions Āśvayujī among the seven Pākayajñas as included in his 40 saṁskāraṣ <a href="#fnref-chapter-xxiv-minor-grihya-and-other-rites-16" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxiv-minor-grihya-and-other-rites-17" class="footnote-item"><span class="devanagari">आश्वयुज्यामाश्वयुजीकर्म । निवेशमलंकृत्य स्नाता शुचिवससः । पशुपतये स्थालीपाकं निरूप्य जुहुयुः पशुपतये शिवाय शङ्कराय पृषातकाय स्वाहेति । पृषातकमाञ्जलिना जुहुयात्</span>, <span class="devanagari">ऊनं मे पूर्यतां पूर्णं मे मोपसदत् पृषातकाय स्वाहेति । आश्व</span>. <span class="devanagari">गृ</span>. II. 2. 1-3. Nārāyaņa explains that ‘they’ mean the sacrificer and his sons and other male descendants ( who touch him ). The word ‘ni-rūpya’ means that on the mess of cooked food, the two operations of nirūpa (taking out a por-tion from the whole with the mantra <span class="devanagari">पशुपतये स्वा जुष्टं निर्वपामि</span>) and prokṣaņa are to be performed and that the rest of the mess is to be eaten by the sacrificer and his family. <span class="devanagari">पृषातक</span> means ‘milk mixed with clarified butter’. This is taken out with the sruva ladle. There is an offering to Sviṣṭakṛt Agni of the mess and of pṛṣātaka. <span class="devanagari">कपिञ्जलस्मृति</span> III. 3. 3 says <span class="devanagari">पयस्यघृतपयोहृदयं तत्पृषातकम्</span>; vide also <span class="devanagari">गोभिलस्मृति</span> (in verse) III. 106. <a href="#fnref-chapter-xxiv-minor-grihya-and-other-rites-17" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxiv-minor-grihya-and-other-rites-18" class="footnote-item"><span class="devanagari">आश्व</span>. <span class="devanagari">श्रौ</span>. II. 9.1 expressly says '<span class="devanagari">आग्रयणं ब्रीहियवामाष्यामाकशाखान्</span>' and <span class="devanagari">जयराम</span> on <span class="devanagari">पारस्करगृह्य</span> quotes <span class="devanagari">शूद्रसंग्रहकार</span> ‘<span class="devanagari">नवयज्ञाधिकारस्याः श्यामाका ब्रीहियो यवाः । नास्मीयतासानुरध्येवमन्येष्वेव नियमः स्मृतः ॥</span>’. The <span class="devanagari">मानगृह्य</span> II. 3. 9 has <span class="devanagari">नाग्रयणेन नवसस्यराशान्नात् ।</span> <a href="#fnref-chapter-xxiv-minor-grihya-and-other-rites-18" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxiv-minor-grihya-and-other-rites-19" class="footnote-item"><span class="devanagari">सुदर्शन</span> on <span class="devanagari">आप</span>. <span class="devanagari">गृ</span>. 19. 6 says '<span class="devanagari">येन कर्मणा अर्द्ध नवद्रव्यं देवान्नमप्यापयतीति यत्कर्म कृतेश्व प्राययणे नवान्नमाशनाभिप्रसवतीति ।</span>'; <span class="devanagari">हरदत्त</span> on the same says <span class="devanagari">एतत्प्र प्राशानार्थः</span>. <a href="#fnref-chapter-xxiv-minor-grihya-and-other-rites-19" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxiv-minor-grihya-and-other-rites-20" class="footnote-item"><span class="devanagari">सज्जूर्ऋतुभिः सज्जूर्विधाभिः सज्जूरिन्द्राग्निभ्यां स्वाहा । सज्जूर्विश्वैः</span>... <span class="devanagari">सजू</span>- <span class="devanagari">र्विश्वेभ्यो देवेभ्यः स्वाहा । सजू</span>- ..<span class="devanagari">सजू द्यावापृथिवीभ्यां स्वाहेत्याहितेराग्रयणम्</span> ; <span class="devanagari">स्थालीपाकः । अनाहिताग्नेरपि शालाग्रौ । आश्व</span>. <span class="devanagari">गृ</span>. II. 2. 4-5; <span class="devanagari">अनाहिताग्नेराग्रयणम् । नवानां स्थाली</span>- <span class="devanagari">पाकं अपयित्वाग्रयणदेवताभ्यः स्विष्ठकृद्धयोम्यो हुत्वा तण्डुलान् हुत्वा पूर्वेणा ग्रहीत्वा स्थालीपाकं संस्रावोपयोगेण पयसि संसृज्य उदुपहरेत् । आप</span>. <span class="devanagari">गृ</span>. 19. 6-7. The <span class="devanagari">मन्त्र</span> is <span class="devanagari">तण्डूलानवेदिं परमां मा सिञ्चन्नरूप</span> (<span class="devanagari">आप</span>. <span class="devanagari">ध</span>. II. 18. 1). Sudarśana notes that some held that uncooked grains of fresh rice were to be swallowed while others held that one was to partake of a portion of the boiled rice cooked for sacrificing. <a href="#fnref-chapter-xxiv-minor-grihya-and-other-rites-20" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxiv-minor-grihya-and-other-rites-21" class="footnote-item"><span class="devanagari">आग्रहायणी मार्गशीर्षी पौर्णमासी तत्पूजा या क्रिया सापि तथोदाहृतायणी</span>- <span class="devanagari">शब्द्यते । भवत्यवरोहणमिति का अपरेषां मन्येन्ते । ऋतुवत्स</span> on <span class="devanagari">हिरण्य</span>. <span class="devanagari">गृ</span>. II. 17. 1. Vide Tilak's ' Orion' (1693) pp. 73–90 for a learned and penetrating dis- course on the word 'Āgrahāyaṇī. <a href="#fnref-chapter-xxiv-minor-grihya-and-other-rites-21" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxiv-minor-grihya-and-other-rites-22" class="footnote-item">Vide appendix for text. <a href="#fnref-chapter-xxiv-minor-grihya-and-other-rites-22" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxiv-minor-grihya-and-other-rites-23" class="footnote-item">The two mantras <span class="devanagari">अप श्वेत पश जाहि</span> and <span class="devanagari">न वै श्वेतस्या०</span> occur in <span class="devanagari">आश्व</span>. <span class="devanagari">ग्र</span>. II. 17. 26-27, Pār. gr. II. 14 (in Śravaṇā-karma), Śāṁ. gr. IV. 18. 1, Mānava gr. II. 7. 1 (in all with variations). <a href="#fnref-chapter-xxiv-minor-grihya-and-other-rites-23" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxiv-minor-grihya-and-other-rites-24" class="footnote-item">Serpents are said to be the progeny of Kaśyapa, a Prajāpati; vide <span class="devanagari">महाभारत</span> 11. 18-19 where Kaśyapa is stated to be one of the Prajāpatis and Ādiparva 16, where it is said that from Kadrū one of the wives of Kaśyapa the snakes were borṇ <a href="#fnref-chapter-xxiv-minor-grihya-and-other-rites-24" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxiv-minor-grihya-and-other-rites-25" class="footnote-item">Ṛg. I. 22. 16 is to be repeated thrice while facing the east and then each pāda of that verse is to be repeated while the face is turned to the south, the west and the north (the verse has only three pādas, being in the Gāyatrī metre). <a href="#fnref-chapter-xxiv-minor-grihya-and-other-rites-25" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxiv-minor-grihya-and-other-rites-26" class="footnote-item">According to Nārāyaṇa Rg. X. 158., Rg. I. 50. 1–9, I. 115. 1, and X. 37. 1 are called Saurya verses; while <span class="devanagari">स्वस्त्ययनानि</span> are the verses that contain the word svasti or a benediction, viz. Rg. I. 89. 1, V. 51. 11, X. 63. 1. Nārāyaṇa follows Aśv. Śr. Sūtra VI. 5. 18 as to Saurya hymns; but it is doubtful whether he is right as to the svastyayana verseṣ According to the Bṛhad-devatā VIII. 77, Rg. X. 178 is a svastyayana hymṇ <a href="#fnref-chapter-xxiv-minor-grihya-and-other-rites-26" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxiv-minor-grihya-and-other-rites-27" class="footnote-item">Rudra is the presiding deity of Ārdrā. Vide note 563 above. <a href="#fnref-chapter-xxiv-minor-grihya-and-other-rites-27" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxiv-minor-grihya-and-other-rites-28" class="footnote-item"><span class="devanagari">शूलोगस्त्यातिथिं शूल</span>: <span class="devanagari">अशाआबिमषोड्भू। शूलीत्स्यर्थः। शूलिनो वैषाय गोपू</span>- <span class="devanagari">जाना याग</span>: <span class="devanagari">स शूलगवः। नारायण</span> on <span class="devanagari">आश्</span>. <span class="devanagari">गृ</span>. IV. 9. 1; <span class="devanagari">शूलाद्भिमो गौः शूलगव</span>: <span class="devanagari">सद्योगात्कर्मणि वृत्तिः। हरदत्त</span> on same. <a href="#fnref-chapter-xxiv-minor-grihya-and-other-rites-28" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxiv-minor-grihya-and-other-rites-29" class="footnote-item"><span class="devanagari">अथ यदि गां न लभते मेषमजं पालभते । ईशानाय स्थालीपाकं वा अपयति तस्मात्सर्वसमें करोति यदुवा कार्यम् । बौ</span>. <span class="devanagari">गृ</span>. II. 7. 26-27. <a href="#fnref-chapter-xxiv-minor-grihya-and-other-rites-29" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxiv-minor-grihya-and-other-rites-30" class="footnote-item"><span class="devanagari">अवदानेहोमासन्तत्वं च छागपक्ष एव । गोः पुनरुत्सर्ग एव लोकाविरोधात् । देवपाल</span> on <span class="devanagari">काठकगृध</span> 52. 1. <a href="#fnref-chapter-xxiv-minor-grihya-and-other-rites-30" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxiv-minor-grihya-and-other-rites-31" class="footnote-item"><span class="devanagari">रोधः शरदि शूलगवः। प्राङ्घीच्यां दिशि ग्रामस्याकाशे निशि गवां मध्येऽ तक्ष्णं यूपः। प्राक् स्विष्कृत्तोऽहो शोणितपुडात्र पूरयित्वा नमस्ये षडू मन्यव इति प्रवृत्तिमिर</span>- <span class="devanagari">निरुद्वाक्याभिर्व्रष्योपहरेत् । नानुत्थं ग्राममाहरेत् । शेषं भूमौ निनिखेदपि चर्मं । अमू</span>- <span class="devanagari">पाकेके पाकपज्ञपशूनामुः ॥ मानवगृह्य</span> II. 5. 1-6. <a href="#fnref-chapter-xxiv-minor-grihya-and-other-rites-31" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxiv-minor-grihya-and-other-rites-32" class="footnote-item">This is Ṛg. VII. 35. 1–15 in which all verses (except 14 and 15) commence with the word ‘śam’ and also have the same word several timeṣ <a href="#fnref-chapter-xxiv-minor-grihya-and-other-rites-32" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxiv-minor-grihya-and-other-rites-33" class="footnote-item">The hymn Ṛg. VII. 54 has only three verses but four obla- tions are directeḍ Therefore the 4th oblation is to be offered with Ṛg. VII. 55. 1 which also is addressed to Vāstospati. <a href="#fnref-chapter-xxiv-minor-grihya-and-other-rites-33" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxiv-minor-grihya-and-other-rites-34" class="footnote-item"><span class="devanagari">सूत्रपते तथा कार्यमेधं सम्बोधयेत् पुनः । द्वारधीशोच्यते तद्वत् प्रवेशसमये तथा ॥ वास्तुप्रहाणामे तद्धवास्तुयज्ञस्तु पञ्चधा। ईशाने सूत्रपातः स्यादाधारे स्तंभरोपणम् ॥ मत्स्य</span>. 256, 10–11. <a href="#fnref-chapter-xxiv-minor-grihya-and-other-rites-34" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxiv-minor-grihya-and-other-rites-35" class="footnote-item">The saṅkalpa is ‘<span class="devanagari">अमुकगोत्रस्यामुकशर्मणे मम सपरिवारस्यास्मिन्वास्तो चिर</span>-<span class="devanagari">कालसुखनिवासपूर्वकमखिलरोगविनाशायुष्कामसमृद्ध्यारोग्यपुत्रपौत्रधनधान्यादिसमृद्धिवीरजि</span>-<span class="devanagari">तार्थमियुक्थासिद्धिद्वारा श्रीपरमेश्वरप्रीत्यर्थमत्र वास्तुः शुभासिसंमद्ध्यां वास्तुकर्मिणमं कारयिषे</span>’. <a href="#fnref-chapter-xxiv-minor-grihya-and-other-rites-35" class="fn-back" aria-label="Back to text">↩</a></li>
+</ol>
+</aside>
+
+            <div class="chapter-nav">
+                <a href="chapter-xxiii-upākarma-or-upākarana-and-utsarjana-or-utsarga.html" class="nav-prev"><i class="fa-solid fa-chevron-left"></i> Chapter XXIII. Upākarma or Upākarana and Utsarjana or Utsarga</a>
+                <a href="chapter-xxv-dāna-gifts.html" class="nav-next">Chapter XXV. Dāna (Gifts) <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </main>
+    </div>
+
+    <button class="toc-mobile-toggle" onclick="toggleMobileToc()" aria-label="Table of contents">
+        <i class="fa-solid fa-list"></i>
+    </button>
+
+    
+    <footer class="container-fluid pt-4" style="background-color:#2e4144">
+        <div class="row border-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img src="https://sanatana.in/mbta/public/images/Homepage_html/images/layer_8.png" alt="">
+            </div>
+            <div class="col-md-5 text-white">
+                <p>The divine knowledge and wisdom of our shastras is the only thing eternal,
+                   which was and which will remain ever-present in this gods creation.
+                   Our endeavours are to preserve this knowledge.</p>
+            </div>
+            <div class="col-md-1 text-white">
+                <div class="d-flex" style="height: 75px;">
+                    <div class="vr"></div>
+                </div>
+            </div>
+            <div class="col-md-3 text-white">
+                <i class="fa-solid fa-globe"></i>&emsp;
+                <a href="https://sanatanasampatti.in" class="text-light">www.sanatanasampatti.in</a><br>
+                <i class="fa-solid fa-envelope"></i>&emsp;
+                <a href="" class="text-light">sriranga.yoga@gmail.com</a>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center py-3 mb-4 align-items-center border-bottom">
+            <div class="col-md-2 text-white fs-4 text-center">Project</div>
+            <div class="col-md-2 text-white fs-4 text-center">Our Mission</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contribute</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contact Us</div>
+        </div>
+        <div class="row">
+            <p class="col-md-6 fs-6 text-start text-light">
+                <small>&copy; 2026 Sanatanasampatti</small>
+            </p>
+            <p class="col-md-6 fs-6 text-end text-light">
+                <a class="text-white" rel="nofollow" href="http://www.srirangadigital.com" target="_blank">
+                    <img src="https://sanatana.in/mbta/public/images/logo.png" alt="sriranga logo" />
+                    <small>Designed, Developed and Maintained by Sriranga Digital</small>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        const headings = [];
+        tocLinks.forEach(link => {
+            const id = link.getAttribute('href').substring(1);
+            const el = document.getElementById(id);
+            if (el) headings.push({ el: el, link: link.parentElement });
+        });
+
+        function onScroll() {
+            let current = null;
+            for (const h of headings) {
+                const rect = h.el.getBoundingClientRect();
+                if (rect.top <= 120) current = h;
+            }
+            tocLinks.forEach(l => l.parentElement.classList.remove('active'));
+            if (current) current.link.classList.add('active');
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    });
+
+    function toggleMobileToc() {
+        const toc = document.getElementById('toc');
+        if (!toc) return;
+        if (toc.style.display === 'block') {
+            toc.style.display = '';
+            toc.style.position = '';
+        } else {
+            toc.style.display = 'block';
+            toc.style.position = 'fixed';
+            toc.style.top = '0';
+            toc.style.left = '0';
+            toc.style.width = '80vw';
+            toc.style.maxWidth = '320px';
+            toc.style.height = '100vh';
+            toc.style.maxHeight = '100vh';
+            toc.style.zIndex = '2000';
+            toc.style.background = 'var(--parchment)';
+            toc.style.boxShadow = '4px 0 20px rgba(0,0,0,0.2)';
+            toc.style.padding = '24px';
+            toc.style.overflowY = 'auto';
+        }
+    }
+    </script>
+
+    <script>
+    function toggleSynopsisAudio(btn) {
+        var audio = btn.parentElement.querySelector('audio');
+        if (!audio.src) audio.src = btn.getAttribute('data-src');
+        if (audio.paused) {
+            audio.play();
+            btn.classList.add('playing');
+            btn.querySelector('i').className = 'fa-solid fa-pause';
+        } else {
+            audio.pause();
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        }
+        audio.onended = function() {
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        };
+        // Prevent click from toggling the synopsis open/close
+        event.stopPropagation();
+    }
+    </script>
+</body>
+</html>

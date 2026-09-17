@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strīparva Study Guide — History of Dharmaśāstra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Open+Sans:wght@400;600&family=Tiro+Devanagari+Sanskrit&display=swap" rel="stylesheet">
+<style>
+:root {
+    --saffron: #D4600A;
+    --ink: #2C2416;
+    --parchment: #FDF6EC;
+    --parchment-dark: #F5ECD8;
+    --indigo: #2E5FA3;
+    --maroon: #8B1A1A;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: var(--parchment);
+    color: var(--ink);
+    line-height: 1.6;
+}
+.navbar {
+    background: linear-gradient(135deg, #3D2B1F 0%, #5C3D2E 100%);
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    position: sticky;
+    top: 0;
+    z-index: 1031;
+}
+.navbar a { color: #F5ECD8; text-decoration: none; font-size: 14px; }
+.navbar a:hover { color: var(--saffron); }
+.navbar .brand { font-family: 'Lora', serif; font-size: 16px; font-weight: 600; }
+.breadcrumb-bar {
+    background: var(--parchment-dark);
+    padding: 8px 24px;
+    font-size: 13px;
+    border-bottom: 1px solid #E0D5C3;
+}
+.breadcrumb-bar a { color: var(--indigo); text-decoration: none; }
+.breadcrumb-bar .sep { margin: 0 6px; color: #999; }
+.breadcrumb-bar .current { color: var(--ink); }
+.content { max-width: 900px; margin: 0 auto; padding: 30px 24px; }
+
+/* Hero */
+.parva-hero {
+    text-align: center;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 2px solid #E0D5C3;
+}
+.parva-hero .parva-number {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(212, 96, 10, 0.10);
+    color: var(--saffron);
+    font-family: 'Lora', serif;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 50px;
+    margin-bottom: 8px;
+}
+.parva-hero h1 {
+    font-family: 'Lora', serif;
+    font-size: 28px;
+    color: var(--saffron);
+    margin: 6px 0;
+}
+.parva-hero .desc {
+    font-size: 15px;
+    color: #555;
+    max-width: 600px;
+    margin: 0 auto 10px;
+}
+.parva-hero .stats {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 10px;
+}
+.ext-link {
+    display: inline-block;
+    font-size: 13px;
+    color: var(--indigo);
+    font-weight: 600;
+    text-decoration: none;
+    padding: 4px 12px;
+    border: 1px solid var(--indigo);
+    border-radius: 4px;
+    margin: 6px 4px;
+}
+.ext-link:hover { background: rgba(46, 95, 163, 0.08); }
+.ref-page-link {
+    display: inline-block;
+    font-size: 13px;
+    color: #888;
+    text-decoration: none;
+    padding: 4px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: 6px 4px;
+}
+.ref-page-link:hover { border-color: #999; color: #666; }
+.subject-tag {
+    display: inline-block;
+    font-size: 11px;
+    background: rgba(139, 26, 26, 0.08);
+    color: var(--maroon);
+    padding: 2px 8px;
+    border-radius: 3px;
+    text-decoration: none;
+    margin: 2px;
+}
+.subject-tag:hover { background: rgba(139, 26, 26, 0.15); }
+
+/* Top adhyayas */
+.top-adhyayas {
+    margin-bottom: 28px;
+    padding: 16px;
+    background: #fff;
+    border: 1px solid #E0D5C3;
+    border-radius: 8px;
+}
+.top-adhyayas h3 {
+    font-family: 'Lora', serif;
+    font-size: 15px;
+    color: var(--ink);
+    margin-bottom: 10px;
+}
+.adhyaya-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.adhyaya-chip {
+    display: inline-block;
+    font-size: 12px;
+    padding: 3px 10px;
+    background: var(--parchment-dark);
+    border: 1px solid #E0D5C3;
+    border-radius: 4px;
+    color: var(--ink);
+    text-decoration: none;
+}
+a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
+.adhyaya-chip small { color: #999; }
+
+/* Volume sections */
+.vol-section { margin-bottom: 28px; }
+.vol-heading {
+    font-family: 'Lora', serif;
+    font-size: 17px;
+    color: var(--ink);
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #E0D5C3;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.vol-count {
+    font-size: 12px;
+    font-weight: 400;
+    color: #999;
+}
+.ch-group { margin-bottom: 16px; }
+.ch-heading {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 6px;
+    padding: 4px 8px;
+    background: var(--parchment-dark);
+    border-radius: 4px;
+}
+.ch-count {
+    font-weight: 400;
+    color: #999;
+    font-size: 11px;
+    margin-left: 4px;
+}
+.snippet {
+    padding: 10px 14px;
+    margin-bottom: 6px;
+    background: #fff;
+    border: 1px solid #E0D5C3;
+    border-radius: 6px;
+    border-left: 3px solid var(--saffron);
+}
+.snippet-text {
+    font-family: 'Lora', serif;
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.65;
+}
+.snippet-meta {
+    margin-top: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.snippet-link {
+    font-size: 12px;
+    color: var(--indigo);
+    text-decoration: none;
+}
+.snippet-link:hover { text-decoration: underline; }
+.snippet-verse {
+    font-size: 11px;
+    color: #999;
+    font-style: italic;
+}
+.mbta-icon {
+    color: var(--indigo);
+    text-decoration: none;
+    font-style: normal;
+    font-size: 12px;
+}
+.overflow {
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+    padding: 6px;
+}
+</style>
+</head>
+<body>
+<nav class="navbar">
+    <a href="../index.html" class="brand">History of Dharmaśāstra</a>
+    <a href="../refs/index.html">Sources</a>
+    <a href="../topics/index.html">Topics</a>
+    <a href="../subjects/index.html">Subjects</a>
+    <a href="../timeline.html">Timeline</a>
+    <a href="../network.html">Network</a>
+</nav>
+<div class="breadcrumb-bar">
+    <a href="../index.html">Home</a>
+    <span class="sep">›</span>
+    <a href="index.html">Parva Study Guides</a>
+    <span class="sep">›</span>
+    <span class="current">Strīparva</span>
+</div>
+<div class="content">
+    <div class="parva-hero">
+        <div class="parva-number">11</div>
+        <h1>Strīparva</h1>
+        <p class="desc">The Book of the Women — lamentation on the battlefield.</p>
+        <p class="stats">16 references across 7 volumes</p>
+        <div><a href="https://sanatana.in/mbta/listing/parva/striparva" target="_blank" class="ext-link">Browse on MBTA ↗</a>
+            <a href="../refs/mb_striparva.html" class="ref-page-link">Verse reference table →</a>
+        </div>
+        <div style="margin-top:8px"><a href="../subjects/shraddha.html" class="subject-tag">Śrāddha and Death Rites</a></div>
+    </div>
+    
+            <div class="top-adhyayas">
+                <h3>Most-Cited Adhyāyas</h3>
+                <div class="adhyaya-chips"><a href="https://sanatana.in/mbta/listing/parva/striparva#P11_U02_A022_S001" target="_blank" class="adhyaya-chip">Adhyāya 22 <small>(2)</small></a><a href="https://sanatana.in/mbta/listing/parva/striparva#P11_U01_A013_S001" target="_blank" class="adhyaya-chip">Adhyāya 13 <small>(2)</small></a><a href="https://sanatana.in/mbta/listing/parva/striparva#P11_U03_A026_S001" target="_blank" class="adhyaya-chip">Adhyāya 26 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/striparva#P11_U01_A007_S001" target="_blank" class="adhyaya-chip">Adhyāya 7 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/striparva#P11_U01_A009_S001" target="_blank" class="adhyaya-chip">Adhyāya 9 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/striparva#P11_U01_A002_S001" target="_blank" class="adhyaya-chip">Adhyāya 2 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/striparva" target="_blank" class="adhyaya-chip">Adhyāya 204 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/striparva" target="_blank" class="adhyaya-chip">Adhyāya 223 <small>(1)</small></a></div>
+            </div>
+    
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume I: Part I
+                    <span class="vol-count">2 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">32 The Two Epics <span class="ch-count">2</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...śāsana 44-46.                                     | | Upavāsa—Anuśāsana 106-107.                                                            | Śrāddha—<strong>Strīparva</strong> 26-27, Anuśāsana 87-92.                   | | Tīrthas—Vanaparva 82 ff, Anuśāsana 25-26, Śalya 35-54.                                |                      ...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-5" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">26-27 <a href="https://sanatana.in/mbta/listing/parva/striparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...of king Bhāga-bhadra. The last portion in Prakrit words is ‘dama, cāga, appamāda ’ ( dama, tyāga and apramāda ), which occur in Udyogaparva 43.22 and <strong>Strīparva</strong> 7. 23. It has been shown above that the Āsv. gr. sūtra, which represents the last phase of Vedic literature, includes the ācāryas of Bhārata, Mahābhārata and ...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-7" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">7.23.I <a href="https://sanatana.in/mbta/listing/parva/striparva#P11_U01_A007_S023" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume II: Part I
+                    <span class="vol-count">4 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Ii Varna <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...bhā, 32. 16-17, Vanaparva 254. 18 (as inhabiting the west ), Udyoga 19. 21, Bhīṣma 20. 13, Droṇa 93. 42 and 121. 13, Karna 73. 19, Śānti 65. 13. From <strong>Strīparva</strong> 22. 11 it appears that Jayadratha (king of the countries of Sindhu and Sauvīra) had Kāmboja and Yavana women in his hareṃ Pāṇini (IV. 1. 59) derives the wor...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-2-part-1/chapter-ii-varna.html#p-chapter-ii-varna-149" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">22.11 <a href="https://sanatana.in/mbta/listing/parva/striparva#P11_U02_A022_S011" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Vii Upanayana <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">... are mentioned as one group fighting against Sātyaki. In Droṇa 119. 47-48 they are referred to as dasyus and as having long and flowing beardṣ In the <strong>Strīparva</strong> 22. 11 Jayadratha is said to have had Kamboja and Yavana women in his hareṃ The word Yavana is generally taken as referring to the Greekṣ But there are diss...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-2-part-1/chapter-vii-upanayana.html#p-chapter-vii-upanayana-130" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">22.11 <a href="https://sanatana.in/mbta/listing/parva/striparva#P11_U02_A022_S011" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xii The Duties Of A Widow Some Privileges Of Women And The Purda System <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...n the sun did not see in their palaces were seen by the common people who had come to the capital. *Vide* also Sabhāparva 97. 4–7, Śalyaparva 19. 63, <strong>Strīparva</strong> 9. 9–10, Āśrama-vāsi-parva 15. 13. In the Harṣacarita (IV) princess Rājyaśrī, whom the intended bride-groom Grahavarmā came to see just before marriage, is d...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-2-part-1/chapter-xii-the-duties-of-a-widow-some-privileges-of-women-and-the-purda-system.html#p-chapter-xii-the-duties-of-a-widow-some-privileges-of-women-and-the-purda-system-17" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">9.9-10 <a href="https://sanatana.in/mbta/listing/parva/striparva#P11_U01_A009_S009" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xv Satī Self Immolation Of Widows <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...up class="fn-ref"><a href="#fn-chapter-xv-satī-self-immolation-of-widows-8" id="fnref-chapter-xv-satī-self-immolation-of-widows-8">8</a></sup> In the <strong>Strīparva</strong> ( chap. 26 ) the Great Epic describes the death ceremonies performed for the fallen Kauravas, but no mention is made of any widow immolating herself ...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-2-part-1/chapter-xv-satī-self-immolation-of-widows.html#p-chapter-xv-satī-self-immolation-of-widows-2" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/striparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume II: Part II
+                    <span class="vol-count">1 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">General Index <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text"><strong>Strīparva</strong>, 93, 589, 598, 626.</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-2-part-2/general-index.html#p-general-index-85" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/striparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume III
+                    <span class="vol-count">3 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Iii Duties And Responsibilities Of The Ruler <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...mises heaven as the reward for kings who die fighting in battle Yāj I 324 holds forth the same reward for all soldiers who are killed in battle. Vide <strong>Strīparva</strong> 2 16 and 18 and 11. 8-9. The Bhagavadgītā (II. 31-37) most solemnly declares that there is nothing higher for a kṣatriya than a righteous war, that a k...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-iii-duties-and-responsibilities-of-the-ruler.html#p-chapter-iii-duties-and-responsibilities-of-the-ruler-2" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">2 <a href="https://sanatana.in/mbta/listing/parva/striparva#P11_U01_A002" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xxxiii Customs And Dharmashastra Works <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">... so those smṛtis obviously knew several Purāṇas and Medhātithi notes that they were composed by Vyāsa and described the creation of the world &c. The <strong>Strīparva</strong> (13. 2) also employs the plural and the Svargārohaṇikaparva (5. 46-47) speaks of Kṛṣṇa Dvaipāyana as the author of 18 Purāṇaṣ The Ādiparva<sup class="fn-ref"...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-xxxiii-customs-and-dharmashastra-works.html#p-chapter-xxxiii-customs-and-dharmashastra-works-11" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">13.2 <a href="https://sanatana.in/mbta/listing/parva/striparva#P11_U01_A013_S002" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">General Index <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...ession to, varies acc as woman is unmarried or married or married in an approved form and acc to species of s 789; succession to ṣ and uochasuty 801. <strong>Strīparva</strong> 204, 872 Studeot, (see uoder 'śisya') either upakorvāṇa or naiṣṭhika 962 Subandhu, author of Vāsavadattā 53. Subdivisions, of State with the oomber of vi...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/general-index.html#p-general-index-14" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">204 <a href="https://sanatana.in/mbta/listing/parva/striparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume IV
+                    <span class="vol-count">3 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Vii Eschatology <span class="ch-count">2</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...eld over the body, Kaurava women fanned the body with fans, sāmans were sung); of Vasudeva in Mauśalaparva 7. 19-25; of killed warriors in general in <strong>Strīparva</strong>, chap. 26. 28-43 and of Kuntī, Dhṛtarāṣṭra and Gāndhārī in Āśramavāsikaparva, chap. 39. In the Rāmāyaṇa (Ayodhyā, chap 76 verses 16-20 ), it is said ...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-4/chapter-vii-eschatology.html#p-chapter-vii-eschatology-37" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/striparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...ndicants, carrying the dead body to the bank of the Ganges on a charming sylvan spot, bathing the body, applying sandalwood paste to it), of Droṇa in <strong>Strīparva</strong>, chap 23.38-42 (three Sāmans were sung, his pupils with Droṇa's wife in front went round the funeral pyre, going to the Ganges); of Bhīṣma in Anuśāsa...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-4/chapter-vii-eschatology.html#p-chapter-vii-eschatology-37" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/striparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">General Index Of Vol Iv <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...he point of cursing Kāśī, was ordered by Śiva who had assumed the form of an householder not to enter Kāśī except on the 8th and 14tn tithis, 638–639 <strong>Strīparva</strong> 223 Sudarsana, commentator of Āp gr 472 Śuddhi (re-conversion) modern movement of, for taking back those converted by force, fraud or otherwise, 118 Śudd...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-4/general-index-of-vol-iv.html#p-general-index-of-vol-iv-37" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">223 <a href="https://sanatana.in/mbta/listing/parva/striparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume V: Part I
+                    <span class="vol-count">1 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xiv Conception Of Kāla <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...educes all people and again sends them forth; Kāla is (the only one) awake when all are asleep (i.e. dead or liberated), for Kāla is invincible'. The <strong>Strīparva</strong> has the following 'Kāla cooks all beings and Kāla destroys people; Kāla is invincible'. The Śāntiparva <sup class="fn-ref"><a href="#fn-chapter-xiv-c...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-1/chapter-xiv-conception-of-kāla.html#p-chapter-xiv-conception-of-kāla-7" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/striparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume V: Part II
+                    <span class="vol-count">2 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xxii Origin And Development Of Purāna Literature <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">.... 52, Udyoga 178. 47–48, Karṇa 34. 44, Śānti 208. 5, Anuśāsana 22. 12, 102. 21) and sometimes Purāṇas in the plural (as in Ādi 109. 20, Virāṭa 51.10, <strong>Strīparva</strong> 13. 2, Śānti 339. 106, Svargārohaṇa 5. 46–47 (which refers to Purāṇas as 18).<sup class="fn-ref"><a href="#fn-chapter-xxii-origin-and-development-of-purāna...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-2/chapter-xxii-origin-and-development-of-purāna-literature.html#p-chapter-xxii-origin-and-development-of-purāna-literature-6" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">13.2 <a href="https://sanatana.in/mbta/listing/parva/striparva#P11_U01_A013_S002" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Index To Vol V <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...tions embassy from a king Pandion to the West and to Augustus 599ṇ -   **Streeter, B. H.** and others, writers of essays on ‘Immortality’ 1604. -   **<strong>Strīparva</strong>**, 466n, 467, 821. -   **Stutterheim, W. F.**, a of ‘Indian influences in Balinese Art’ 1657. -   **Subhadrā**, though a maternal uncle’s daughter, w...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-212" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/striparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+</div>
+</body>
+</html>

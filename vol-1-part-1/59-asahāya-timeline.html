@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline — 59. Asahāya</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+    :root {
+        --parchment: #faf6ef;
+        --parchment-mid: #f0e6d3;
+        --saffron: #e8941a;
+        --ink: #2c1810;
+        --ink-secondary: #5a3e2b;
+        --rule: #d4c5a9;
+        --indigo: #2d5a87;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+        font-family: 'Lora', Georgia, serif;
+        background: var(--parchment);
+        color: var(--ink);
+    }
+    .navbar {
+        background: linear-gradient(135deg, #1a0f0a, #2c1810);
+        padding: 12px 24px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+    .navbar a { color: var(--parchment); text-decoration: none; }
+    .navbar .devanagari { font-size: 1.3rem; }
+    .navbar .nav-title { font-family: 'Lora', serif; font-size: 1rem; opacity: 0.9; }
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+    .breadcrumb-bar a { color: var(--saffron); text-decoration: none; }
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+    .content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 24px;
+    }
+    h1 {
+        font-size: 1.6rem;
+        margin-bottom: 8px;
+        color: var(--ink);
+    }
+    .subtitle {
+        font-size: 0.9rem;
+        color: var(--ink-secondary);
+        margin-bottom: 24px;
+    }
+    .timeline-container {
+        overflow-x: auto;
+        padding: 16px 0;
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        background: var(--parchment);
+    }
+    .timeline-svg {
+        display: block;
+        min-width: 100%;
+    }
+    .timeline-svg .tl-evt { cursor: pointer; }
+    .timeline-svg .tl-evt:hover { transform: scale(1.5); }
+    .event-list {
+        margin-top: 32px;
+    }
+    .event-list h2 {
+        font-size: 1.1rem;
+        margin-bottom: 16px;
+        color: var(--ink-secondary);
+    }
+    .event-item {
+        display: flex;
+        gap: 16px;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--rule);
+        font-size: 0.88rem;
+    }
+    .event-year {
+        min-width: 90px;
+        font-weight: 600;
+        color: var(--saffron);
+        font-family: 'Open Sans', sans-serif;
+    }
+    .event-label { font-weight: 600; }
+    .event-context {
+        color: var(--ink-secondary);
+        font-size: 0.82rem;
+        margin-top: 2px;
+    }
+    .event-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.8rem;
+    }
+    .event-link:hover { text-decoration: underline; }
+    .back-link {
+        display: inline-block;
+        margin-top: 24px;
+        color: var(--saffron);
+        text-decoration: none;
+        font-family: 'Open Sans', sans-serif;
+    }
+    .back-link:hover { text-decoration: underline; }
+    .century-group {
+        margin-bottom: 8px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        overflow: hidden;
+    }
+    .century-heading {
+        display: block;
+        padding: 10px 16px;
+        background: var(--parchment-mid);
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: var(--ink);
+    }
+    .century-heading:hover { background: #e8dcc8; }
+    .century-count {
+        font-weight: 400;
+        color: var(--ink-secondary);
+        font-size: 0.82rem;
+    }
+    .century-events {
+        padding: 8px 16px;
+    }
+    .vol-tl-link {
+        display: inline-block;
+        margin: 4px 8px 4px 0;
+        padding: 6px 14px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        color: var(--saffron);
+        text-decoration: none;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+    }
+    .vol-tl-link:hover {
+        border-color: var(--saffron);
+        background: #f5ebe0;
+    }
+    .vol-tl-count {
+        color: var(--ink-secondary);
+        font-size: 0.78rem;
+    }
+    /* ── Tab switcher ── */
+    .tl-tabs {
+        display: flex; gap: 0; margin-bottom: 20px;
+        border-bottom: 2px solid var(--rule);
+    }
+    .tl-tab {
+        padding: 10px 20px; cursor: pointer;
+        font-family: 'Open Sans', sans-serif; font-size: 0.9rem;
+        color: var(--ink-secondary); border-bottom: 2px solid transparent;
+        margin-bottom: -2px; transition: all 0.2s;
+    }
+    .tl-tab:hover { color: var(--ink); }
+    .tl-tab.active { color: var(--saffron); border-bottom-color: var(--saffron); font-weight: 600; }
+    .tl-panel { display: none; }
+    .tl-panel.active { display: block; }
+    /* ── Entity graph styles ── */
+    .eg-entity {
+        border: 1px solid var(--rule); border-radius: 6px;
+        margin-bottom: 8px; overflow: hidden; transition: border-color 0.2s;
+    }
+    .eg-entity.highlighted { border-color: var(--saffron); box-shadow: 0 0 0 1px var(--saffron); }
+    .eg-header {
+        display: flex; align-items: center; gap: 12px;
+        padding: 10px 16px; background: var(--parchment-mid);
+        cursor: pointer; font-family: 'Open Sans', sans-serif;
+    }
+    .eg-header:hover { background: #e8dcc8; }
+    .eg-name { font-weight: 600; font-size: 0.92rem; flex: 1; }
+    .eg-type {
+        font-size: 0.72rem; padding: 2px 8px; border-radius: 10px;
+        background: var(--parchment); color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .eg-claims-count {
+        font-size: 0.78rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif;
+    }
+    .eg-body { padding: 12px 16px; display: none; }
+    .eg-entity.open .eg-body { display: block; }
+    .eg-range-bar {
+        position: relative; height: 32px;
+        background: var(--parchment-mid); border-radius: 4px;
+        margin-bottom: 10px; overflow: hidden;
+    }
+    .eg-range-fill {
+        position: absolute; top: 6px; height: 20px;
+        background: var(--saffron); opacity: 0.3; border-radius: 3px;
+    }
+    .eg-range-dot {
+        position: absolute; top: 11px; width: 10px; height: 10px;
+        background: var(--saffron); border-radius: 50%;
+        transform: translateX(-5px); cursor: pointer;
+    }
+    .eg-range-dot:hover { transform: translateX(-5px) scale(1.4); }
+    .eg-range-label {
+        position: absolute; top: -2px;
+        font-size: 0.7rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif;
+        transform: translateX(-50%);
+    }
+    .eg-cooccur {
+        margin-top: 8px; padding-top: 8px;
+        border-top: 1px solid var(--rule);
+    }
+    .eg-cooccur-title {
+        font-size: 0.78rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif; margin-bottom: 6px;
+    }
+    .eg-cooccur-chip {
+        display: inline-block; margin: 2px 4px 2px 0;
+        padding: 3px 10px; background: var(--parchment-mid);
+        border: 1px solid var(--rule); border-radius: 12px;
+        font-size: 0.78rem; color: var(--ink);
+        font-family: 'Open Sans', sans-serif;
+        cursor: pointer; transition: all 0.2s;
+    }
+    .eg-cooccur-chip:hover { border-color: var(--saffron); color: var(--saffron); }
+    .eg-cooccur-weight {
+        font-size: 0.68rem; color: var(--ink-secondary); margin-left: 2px;
+    }
+    .eg-claim-list { margin-top: 8px; }
+    .eg-claim {
+        display: flex; gap: 12px; padding: 4px 0;
+        font-size: 0.82rem; border-bottom: 1px solid #f0e6d3;
+    }
+    .eg-claim-year {
+        min-width: 80px; font-weight: 600; color: var(--saffron);
+        font-family: 'Open Sans', sans-serif; font-size: 0.8rem;
+    }
+    .eg-claim-ctx { color: var(--ink-secondary); font-size: 0.78rem; }
+    .eg-claim a { color: var(--indigo); text-decoration: none; font-size: 0.76rem; }
+    .eg-claim a:hover { text-decoration: underline; }
+    .eg-stats {
+        display: flex; gap: 24px; margin-bottom: 16px;
+        font-family: 'Open Sans', sans-serif; font-size: 0.85rem;
+        color: var(--ink-secondary);
+    }
+    .eg-stat-num { font-weight: 700; color: var(--saffron); font-size: 1.1rem; }
+    .eg-sort {
+        font-family: 'Open Sans', sans-serif; font-size: 0.82rem;
+        margin-bottom: 12px; color: var(--ink-secondary);
+    }
+    .eg-sort a {
+        color: var(--indigo); text-decoration: none; cursor: pointer;
+        margin: 0 6px;
+    }
+    .eg-sort a:hover { text-decoration: underline; }
+    .eg-sort a.active { color: var(--saffron); font-weight: 600; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="../index.html"><span class="devanagari">धर्मशास्त्रम्</span></a>
+        <a href="../index.html" class="nav-title">History of Dharmaśāstra</a>
+    </div>
+    
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep"> &rsaquo; </span>
+        <a href="index.html">Volume I: Part I</a>
+        <span class="sep"> &rsaquo; </span>
+        <a href="59-asahāya.html">59. Asahāya</a>
+        <span class="sep"> &rsaquo; </span>
+        <span>Timeline</span>
+    </div>
+    
+    <div class="content">
+        <h1>Timeline: 59. Asahāya</h1>
+        <p class="subtitle">4 dated references</p>
+        <div class="tl-tabs">
+            <div class="tl-tab active" data-panel="events-panel">Events</div>
+            <div class="tl-tab" data-panel="graph-panel">Entity Graph</div>
+        </div>
+        <div id="events-panel" class="tl-panel active">
+            <div class="timeline-container">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 280" class="timeline-svg" role="img" aria-label="Timeline for 59. Asahāya">
+<rect width="800" height="280" fill="#faf6ef" rx="8"/>
+<line x1="60" y1="100" x2="760" y2="100" stroke="#c4956a" stroke-width="2"/>
+<line x1="60.0" y1="94" x2="60.0" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="60.0" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">400 CE</text>
+<line x1="116.9461827284105" y1="94" x2="116.9461827284105" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="116.9461827284105" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">500 CE</text>
+<line x1="204.55569461827284" y1="94" x2="204.55569461827284" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="204.55569461827284" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">600 CE</text>
+<line x1="292.16520650813516" y1="94" x2="292.16520650813516" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="292.16520650813516" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">700 CE</text>
+<line x1="379.7747183979975" y1="94" x2="379.7747183979975" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="379.7747183979975" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">800 CE</text>
+<line x1="467.38423028785985" y1="94" x2="467.38423028785985" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="467.38423028785985" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">900 CE</text>
+<line x1="554.9937421777222" y1="94" x2="554.9937421777222" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="554.9937421777222" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1000 CE</text>
+<line x1="642.6032540675844" y1="94" x2="642.6032540675844" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="642.6032540675844" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1100 CE</text>
+<line x1="730.2127659574469" y1="94" x2="730.2127659574469" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="730.2127659574469" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1200 CE</text>
+<line x1="117.82227784730914" y1="100" x2="204.55569461827284" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="161.188986232791" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-59-asahāya-7" data-href="59-asahāya.html#p-59-asahāya-7"><title>Medhātithi</title></circle>
+<line x1="161.188986232791" y1="106" x2="161.188986232791" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="161.188986232791" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Medhātithi</text>
+<text x="161.188986232791" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">501 CE</text>
+<line x1="205.43178973717147" y1="100" x2="292.16520650813516" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="248.7984981226533" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-59-asahāya-7" data-href="59-asahāya.html#p-59-asahāya-7"><title>Medhātithi</title></circle>
+<line x1="248.7984981226533" y1="106" x2="248.7984981226533" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="248.7984981226533" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Medhātithi</text>
+<text x="248.7984981226533" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">601 CE</text>
+<circle cx="335.96996245306633" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="2" stroke-dasharray="2,2" class="tl-evt" data-para="p-59-asahāya-7" data-href="59-asahāya.html#p-59-asahāya-7"><title>Medhātithi</title></circle>
+<line x1="335.96996245306633" y1="106" x2="335.96996245306633" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="335.96996245306633" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Medhātithi</text>
+<text x="335.96996245306633" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">750 CE</text>
+<circle cx="702.1777221526909" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="2" stroke-dasharray="2,2" class="tl-evt" data-para="p-59-asahāya-4" data-href="59-asahāya.html#p-59-asahāya-4"><title>Viśvarūpa</title></circle>
+<line x1="702.1777221526909" y1="106" x2="702.1777221526909" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="702.1777221526909" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Viśvarūpa</text>
+<text x="702.1777221526909" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1168 CE</text>
+</svg>
+            </div>
+            <div class="event-list">
+                <h2>All Dated References</h2>
+                <div class="event-item"><span class="event-year">501 CE</span><div><span class="event-label">Medhātithi</span><div class="event-context">As Viśvarūpa and Medhātithi both name Asahāya, his lowest limit is about 750 A. D. How much earlier he flourish- ed it i...</div><a href="59-asahāya.html#p-59-asahāya-7" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">601 CE</span><div><span class="event-label">Medhātithi</span><div class="event-context">As Viśvarūpa and Medhātithi both name Asahāya, his lowest limit is about 750 A. D. How much earlier he flourish- ed it i...</div><a href="59-asahāya.html#p-59-asahāya-7" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">about 750 CE</span><div><span class="event-label">Medhātithi</span><div class="event-context">As Viśvarūpa and Medhātithi both name Asahāya, his lowest limit is about 750 A. D. How much earlier he flourish- ed it i...</div><a href="59-asahāya.html#p-59-asahāya-7" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">about 1168 CE</span><div><span class="event-label">Viśvarūpa</span><div class="event-context">The Kalpataru ( on Mokṣa pp. 48-49 ) quotes Gautama Dh. S. III. 10-24 from ‘ Anicayo bhikṣuḥ’ to ‘ Anārambhī’ and cites ...</div><a href="59-asahāya.html#p-59-asahāya-4" class="event-link">View in text &rarr;</a></div></div>
+            </div>
+        </div>
+        <div id="graph-panel" class="tl-panel">
+            <div class="eg-stats">
+<div><span class="eg-stat-num">2</span> entities</div>
+<div><span class="eg-stat-num">4</span> date claims</div>
+<div><span class="eg-stat-num">1</span> debated</div>
+<div><span class="eg-stat-num">12</span> co-occurrences</div>
+</div>
+<div class="eg-sort">Sort: <a class="active" onclick="egSort('date')">by date</a><a onclick="egSort('claims')">by claims</a><a onclick="egSort('name')">by name</a></div>
+<div id="eg-entities">
+<div class="eg-entity" data-key="medh-tithi" data-consensus="601" data-claims="3" data-name="Medhātithi"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Medhātithi</span><span class="eg-type">person</span><span class="eg-claims-count">3 claims &middot; 501 CE to 750 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="501" data-max="1168"><span class="eg-range-label" style="left:0;">501 CE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1168 CE</span><div class="eg-range-fill" style="left:0.0%;width:37.3%;"></div><div class="eg-range-dot" style="left:0.0%;" title="501 CE — 6th century"></div><div class="eg-range-dot" style="left:15.0%;" title="601 CE — 7th century "></div><div class="eg-range-dot" style="left:37.3%;" title="750 CE — about 750 A. D."></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="mit-k-ar" onclick="egHighlight('mit-k-ar')">Mitākṣarā<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="n-radasm-ti" onclick="egHighlight('n-radasm-ti')">Nāradasmṛti<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="vi-var-pa" onclick="egHighlight('vi-var-pa')">Viśvarūpa<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">501 CE</span><div><span class="eg-claim-ctx">As Viśvarūpa and Medhātithi both name Asahāya, his lowest limit is about 750 A. D. How much earlier ...</span> <a href="59-asahāya.html#p-59-asahāya-7">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">601 CE</span><div><span class="eg-claim-ctx">As Viśvarūpa and Medhātithi both name Asahāya, his lowest limit is about 750 A. D. How much earlier ...</span> <a href="59-asahāya.html#p-59-asahāya-7">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">about 750 CE</span><div><span class="eg-claim-ctx">As Viśvarūpa and Medhātithi both name Asahāya, his lowest limit is about 750 A. D. How much earlier ...</span> <a href="59-asahāya.html#p-59-asahāya-7">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="vi-var-pa" data-consensus="1168" data-claims="1" data-name="Viśvarūpa"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Viśvarūpa</span><span class="eg-type">person</span><span class="eg-claims-count">1 claims &middot; 1168 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="501" data-max="1168"><span class="eg-range-label" style="left:0;">501 CE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1168 CE</span><div class="eg-range-dot" style="left:100.0%;" title="1168 CE — about 1168 A. D."></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="a-kha-likhita-dharmas-tra" onclick="egHighlight('a-kha-likhita-dharmas-tra')">Śaṅkha-Likhita Dharmasūtra<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="gautama-dharmas-tra" onclick="egHighlight('gautama-dharmas-tra')">Gautama Dharmasūtra<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="manusm-ti" onclick="egHighlight('manusm-ti')">Manusmṛti<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="medh-tithi" onclick="egHighlight('medh-tithi')">Medhātithi<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="mit-k-ar" onclick="egHighlight('mit-k-ar')">Mitākṣarā<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="n-radasm-ti" onclick="egHighlight('n-radasm-ti')">Nāradasmṛti<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">about 1168 CE</span><div><span class="eg-claim-ctx">The Kalpataru ( on Mokṣa pp. 48-49 ) quotes Gautama Dh. S. III. 10-24 from ‘ Anicayo bhikṣuḥ’ to ‘ A...</span> <a href="59-asahāya.html#p-59-asahāya-4">view</a></div></div></div></div></div>
+</div>
+<script>
+function egToggle(header) {
+    header.parentElement.classList.toggle('open');
+}
+function egHighlight(key) {
+    // Remove existing highlights
+    document.querySelectorAll('.eg-entity.highlighted').forEach(function(el) {
+        el.classList.remove('highlighted');
+    });
+    // Highlight target and scroll to it
+    var target = document.querySelector('.eg-entity[data-key="' + key + '"]');
+    if (target) {
+        target.classList.add('highlighted');
+        target.classList.add('open');
+        target.scrollIntoView({behavior: 'smooth', block: 'center'});
+    }
+}
+function egSort(mode) {
+    var container = document.getElementById('eg-entities');
+    var items = Array.from(container.querySelectorAll('.eg-entity'));
+    items.sort(function(a, b) {
+        if (mode === 'date') return parseInt(a.dataset.consensus) - parseInt(b.dataset.consensus);
+        if (mode === 'claims') return parseInt(b.dataset.claims) - parseInt(a.dataset.claims);
+        if (mode === 'name') return a.dataset.name.localeCompare(b.dataset.name);
+        return 0;
+    });
+    items.forEach(function(el) { container.appendChild(el); });
+    // Update active sort link
+    document.querySelectorAll('.eg-sort a').forEach(function(a) { a.classList.remove('active'); });
+    event.target.classList.add('active');
+}
+</script>
+        </div>
+        <a href="59-asahāya.html" class="back-link">&larr; Back to 59. Asahāya</a>
+    </div>
+    <script>
+    document.querySelectorAll('.tl-evt').forEach(function(el) {
+        el.addEventListener('click', function() {
+            var href = this.getAttribute('data-href');
+            if (href) {
+                window.location.href = href;
+            } else {
+                var paraId = this.getAttribute('data-para');
+                if (paraId) {
+                    var target = document.getElementById(paraId);
+                    if (target) target.scrollIntoView({behavior: 'smooth'});
+                }
+            }
+        });
+    });
+    // Tab switching
+    document.querySelectorAll('.tl-tab').forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            document.querySelectorAll('.tl-tab').forEach(function(t) { t.classList.remove('active'); });
+            document.querySelectorAll('.tl-panel').forEach(function(p) { p.classList.remove('active'); });
+            tab.classList.add('active');
+            var panel = document.getElementById(tab.getAttribute('data-panel'));
+            if (panel) panel.classList.add('active');
+        });
+    });
+    </script>
+</body>
+</html>

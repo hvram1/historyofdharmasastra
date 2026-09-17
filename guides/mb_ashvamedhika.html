@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Āśvamedhikaparva Study Guide — History of Dharmaśāstra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Open+Sans:wght@400;600&family=Tiro+Devanagari+Sanskrit&display=swap" rel="stylesheet">
+<style>
+:root {
+    --saffron: #D4600A;
+    --ink: #2C2416;
+    --parchment: #FDF6EC;
+    --parchment-dark: #F5ECD8;
+    --indigo: #2E5FA3;
+    --maroon: #8B1A1A;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: var(--parchment);
+    color: var(--ink);
+    line-height: 1.6;
+}
+.navbar {
+    background: linear-gradient(135deg, #3D2B1F 0%, #5C3D2E 100%);
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    position: sticky;
+    top: 0;
+    z-index: 1031;
+}
+.navbar a { color: #F5ECD8; text-decoration: none; font-size: 14px; }
+.navbar a:hover { color: var(--saffron); }
+.navbar .brand { font-family: 'Lora', serif; font-size: 16px; font-weight: 600; }
+.breadcrumb-bar {
+    background: var(--parchment-dark);
+    padding: 8px 24px;
+    font-size: 13px;
+    border-bottom: 1px solid #E0D5C3;
+}
+.breadcrumb-bar a { color: var(--indigo); text-decoration: none; }
+.breadcrumb-bar .sep { margin: 0 6px; color: #999; }
+.breadcrumb-bar .current { color: var(--ink); }
+.content { max-width: 900px; margin: 0 auto; padding: 30px 24px; }
+
+/* Hero */
+.parva-hero {
+    text-align: center;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 2px solid #E0D5C3;
+}
+.parva-hero .parva-number {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(212, 96, 10, 0.10);
+    color: var(--saffron);
+    font-family: 'Lora', serif;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 50px;
+    margin-bottom: 8px;
+}
+.parva-hero h1 {
+    font-family: 'Lora', serif;
+    font-size: 28px;
+    color: var(--saffron);
+    margin: 6px 0;
+}
+.parva-hero .desc {
+    font-size: 15px;
+    color: #555;
+    max-width: 600px;
+    margin: 0 auto 10px;
+}
+.parva-hero .stats {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 10px;
+}
+.ext-link {
+    display: inline-block;
+    font-size: 13px;
+    color: var(--indigo);
+    font-weight: 600;
+    text-decoration: none;
+    padding: 4px 12px;
+    border: 1px solid var(--indigo);
+    border-radius: 4px;
+    margin: 6px 4px;
+}
+.ext-link:hover { background: rgba(46, 95, 163, 0.08); }
+.ref-page-link {
+    display: inline-block;
+    font-size: 13px;
+    color: #888;
+    text-decoration: none;
+    padding: 4px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: 6px 4px;
+}
+.ref-page-link:hover { border-color: #999; color: #666; }
+.subject-tag {
+    display: inline-block;
+    font-size: 11px;
+    background: rgba(139, 26, 26, 0.08);
+    color: var(--maroon);
+    padding: 2px 8px;
+    border-radius: 3px;
+    text-decoration: none;
+    margin: 2px;
+}
+.subject-tag:hover { background: rgba(139, 26, 26, 0.15); }
+
+/* Top adhyayas */
+.top-adhyayas {
+    margin-bottom: 28px;
+    padding: 16px;
+    background: #fff;
+    border: 1px solid #E0D5C3;
+    border-radius: 8px;
+}
+.top-adhyayas h3 {
+    font-family: 'Lora', serif;
+    font-size: 15px;
+    color: var(--ink);
+    margin-bottom: 10px;
+}
+.adhyaya-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.adhyaya-chip {
+    display: inline-block;
+    font-size: 12px;
+    padding: 3px 10px;
+    background: var(--parchment-dark);
+    border: 1px solid #E0D5C3;
+    border-radius: 4px;
+    color: var(--ink);
+    text-decoration: none;
+}
+a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
+.adhyaya-chip small { color: #999; }
+
+/* Volume sections */
+.vol-section { margin-bottom: 28px; }
+.vol-heading {
+    font-family: 'Lora', serif;
+    font-size: 17px;
+    color: var(--ink);
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #E0D5C3;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.vol-count {
+    font-size: 12px;
+    font-weight: 400;
+    color: #999;
+}
+.ch-group { margin-bottom: 16px; }
+.ch-heading {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 6px;
+    padding: 4px 8px;
+    background: var(--parchment-dark);
+    border-radius: 4px;
+}
+.ch-count {
+    font-weight: 400;
+    color: #999;
+    font-size: 11px;
+    margin-left: 4px;
+}
+.snippet {
+    padding: 10px 14px;
+    margin-bottom: 6px;
+    background: #fff;
+    border: 1px solid #E0D5C3;
+    border-radius: 6px;
+    border-left: 3px solid var(--saffron);
+}
+.snippet-text {
+    font-family: 'Lora', serif;
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.65;
+}
+.snippet-meta {
+    margin-top: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.snippet-link {
+    font-size: 12px;
+    color: var(--indigo);
+    text-decoration: none;
+}
+.snippet-link:hover { text-decoration: underline; }
+.snippet-verse {
+    font-size: 11px;
+    color: #999;
+    font-style: italic;
+}
+.mbta-icon {
+    color: var(--indigo);
+    text-decoration: none;
+    font-style: normal;
+    font-size: 12px;
+}
+.overflow {
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+    padding: 6px;
+}
+</style>
+</head>
+<body>
+<nav class="navbar">
+    <a href="../index.html" class="brand">History of Dharmaśāstra</a>
+    <a href="../refs/index.html">Sources</a>
+    <a href="../topics/index.html">Topics</a>
+    <a href="../subjects/index.html">Subjects</a>
+    <a href="../timeline.html">Timeline</a>
+    <a href="../network.html">Network</a>
+</nav>
+<div class="breadcrumb-bar">
+    <a href="../index.html">Home</a>
+    <span class="sep">›</span>
+    <a href="index.html">Parva Study Guides</a>
+    <span class="sep">›</span>
+    <span class="current">Āśvamedhikaparva</span>
+</div>
+<div class="content">
+    <div class="parva-hero">
+        <div class="parva-number">14</div>
+        <h1>Āśvamedhikaparva</h1>
+        <p class="desc">The Book of the Horse Sacrifice — Yudhiṣṭhira's aśvamedha.</p>
+        <p class="stats">26 references across 7 volumes</p>
+        <div><a href="https://sanatana.in/mbta/listing/parva/ashwamedhikaparva" target="_blank" class="ext-link">Browse on MBTA ↗</a>
+            <a href="../refs/mb_ashvamedhika.html" class="ref-page-link">Verse reference table →</a>
+        </div>
+        <div style="margin-top:8px"><a href="../subjects/yajna.html" class="subject-tag">Yajña (Sacrifice and Ritual)</a></div>
+    </div>
+    
+            <div class="top-adhyayas">
+                <h3>Most-Cited Adhyāyas</h3>
+                <div class="adhyaya-chips"><a href="https://sanatana.in/mbta/listing/parva/ashwamedhikaparva" target="_blank" class="adhyaya-chip">Adhyāya 90 <small>(3)</small></a><a href="https://sanatana.in/mbta/listing/parva/ashwamedhikaparva" target="_blank" class="adhyaya-chip">Adhyāya 4 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/ashwamedhikaparva" target="_blank" class="adhyaya-chip">Adhyāya 46 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/ashwamedhikaparva" target="_blank" class="adhyaya-chip">Adhyāya 72 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/ashwamedhikaparva" target="_blank" class="adhyaya-chip">Adhyāya 77 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/ashwamedhikaparva" target="_blank" class="adhyaya-chip">Adhyāya 62 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/ashwamedhikaparva" target="_blank" class="adhyaya-chip">Adhyāya 28 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/ashwamedhikaparva" target="_blank" class="adhyaya-chip">Adhyāya 54 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/ashwamedhikaparva" target="_blank" class="adhyaya-chip">Adhyāya 19 <small>(1)</small></a></div>
+            </div>
+    
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume I: Part I
+                    <span class="vol-count">7 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">5 The Dharmasutra Of Gautama <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">... 497-636), where it is said that Yudhiṣṭhira asked Kṛṣṇa about the dharmas of the four casteṣ This smṛti seems to have been originally taken from the <strong>Āśvamedhikaparva</strong> of the Mahābhārata, as Mādhava and others cite verses occurring in it as from that parva (vide Parāśaramādhavīya vol. I, part I, pp. 108-110).</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/5-the-dharmasutra-of-gautama.html#p-5-the-dharmasutra-of-gautama-22" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/ashwamedhikaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">14 Arthashastra Of Kautilya <span class="ch-count">2</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...nated a Brāhmaṇa's cow by mistake and became a chameleon because he did not speedily deal with the dispute, is nar- rated in Anuśāsanaparva 6. 38 and Āśvamedhika-parva 90. 99–100 and in the Rāmāyaṇa, Uttarakāṇḍa, chap. 53. 6-26. Not only in the epics, but in some of the Purāṇas also Rājadharma is treated at some length. For ex...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-22" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">90.99-100 <a href="https://sanatana.in/mbta/listing/parva/ashwamedhikaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">... and, though the whole earth was his, he donated it to others several timeṣ For doing this he must have lived long. Ambarīṣa also is mentioned in the <strong>Āśvamedhikaparva</strong> ( chap. 31 ) as reciting gāthās ( 7–12 ) expressing the idea that Lobha was the greatest enemy. Ambarīṣa is mentioned as a great king in the Ṛgveda I...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-76" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/ashwamedhikaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">31 The Manusmriti <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">..., as having brought (or established) Fire, as a semi-divine being who received from God himself the laws and regulations, as a king in the Kṛta yuga (Aśvamedhika- parva 4. 2), as the author of a work on Arthaśāstra (Droṇa- parva 7.1). The Manusmṛti (VII. 42) itself states that Manu became king by his disciplined behaviour...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/31-the-manusmriti.html#p-31-the-manusmriti-4" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">4.2 <a href="https://sanatana.in/mbta/listing/parva/ashwamedhikaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">32 The Two Epics <span class="ch-count">3</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...yodhyā ), his son Kakustha, his son Anenas, whose son was Pṛthu-whose son was Viśvagaśva, whose son was Adri whose son was Yuvanāśva and so oṇ In the <strong>Āśvamedhikaparva</strong> ( chap. 4 ) the genealogy is (in Kṛtayuga ) Manu-son Prasan- dhi-son Kṣupa-son Ikṣvāku (chap. 4.3–14). If we now turn to the Rāmāyaṇa, chap. 110 of t...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-43" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/ashwamedhikaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...it is probable that the part of Sundarkāṇḍa which mentions the names of six *pativratas*, the stories about whom occur at length in the Vanaparva and Aśvamedhika-parva, is probably later than the *parvans* (Vanaparva and Aśvamedhika) which are held by several scholars to be later than earlier *parvans* of the great ...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-58" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/ashwamedhikaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...amedha horse near sage Kapila and wanted to apprehend Kapila as the thief. The story of Uttaṅka, a devoted pupil of Gautama, is narrated at length in <strong>Āśvamedhikaparva</strong> chap. 55-58 and in Vanaparva chap. 132-33. He married the daughter of Gau- tama and requested Ahalya, Gautama's wife, to accept some present as Gurudak...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-58" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">c <a href="https://sanatana.in/mbta/listing/parva/ashwamedhikaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume II: Part I
+                    <span class="vol-count">2 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xi Polygamy Polyandry And Rights And Duties On Marriage <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...dry-26" id="fnref-polyandry-26">26</a></sup> The Anuśāsana parva 146. 55 says ‘the husband is the god of a woman, her (sole) relative, her goal’; the Aśvamedhika-parva 90. 51 declares ‘the husband is the highest deity.’ ‘The father gives only what is limited, the brother and the son do the same; what woman would not worshi...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-2-part-1/chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage.html#p-chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage-10" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">90.51 <a href="https://sanatana.in/mbta/listing/parva/ashwamedhikaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xvii Āhnika And Āchāra <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">... made to the sixth part of the day as a somewhat late hour for taking one's meal (and as making one hungry). Vide Vanaparva 179. 16, 180. 16, 293. 9, Aśvamedhika parva 90. 26-27.<sup class="fn-ref"><a href="#fn-chapter-xvii-āhnika-and-āchāra-17" id="fnref-chapter-xvii-āhnika-and-āchāra-17">17</a></sup> The principal matters t...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-2-part-1/chapter-xvii-āhnika-and-āchāra.html#p-chapter-xvii-āhnika-and-āchāra-9" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">90.26-27 <a href="https://sanatana.in/mbta/listing/parva/ashwamedhikaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume II: Part II
+                    <span class="vol-count">3 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xxvii Vānaprastha Forest Hermit <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">... Vaṣ Dh. S. IX, Manu VI. 1-32, Yāj. III. 45-55, Viṣṇu Dh. S. 95, Vaik. X. 5, Śaṅkha-smṛti VI. 1-7 (in verse), Śāntiparva 245. 1-14 and Anuśāsana 142, Aśvamedhika-parva 46. 9-16, Laghu-Viṣṇu III, Kūrmapurāṇa (uttarārdha chap. 27) contain numerous rules about forest hermitṣ The principal points are stated below with a few refe...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-2-part-2/chapter-xxvii-vānaprastha-forest-hermit.html#p-chapter-xxvii-vānaprastha-forest-hermit-4" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">46.9-16 <a href="https://sanatana.in/mbta/listing/parva/ashwamedhikaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xxxv Sautrāmanī And Other Sacrifices <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">In the Aśvamedhika parva of the Mahābhārata Aśvamedha is described at some length. It is probable that in the epic only the popular elements and a few of the religious rites ...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-2-part-2/chapter-xxxv-sautrāmanī-and-other-sacrifices.html#p-chapter-xxxv-sautrāmanī-and-other-sacrifices-13" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/ashwamedhikaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">General Index <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...n; procedure of 1229-1236; sin removed by persons bathing in the water in which the king bathed at the end of Aśvamedha 1236; yūpas were 21 in, 1233. <strong>Āśvamedhikaparva</strong> 72, 77, 88, 361, 439, 562, 643, 645, 710, 847n, 923 &c.; describes Aśvamedha at great length 1237-38. Aśvapati Kekaya, declared that in his kingdom ther...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-2-part-2/general-index.html#p-general-index-1" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">72 <a href="https://sanatana.in/mbta/listing/parva/ashwamedhikaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume III
+                    <span class="vol-count">1 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xxxiv Kalivarjya Actions Forbidden In The Kali Age <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">... that the Moon and the Sun are seized (i.e. eclipsed) at an unusual season (apartaṇī) or simultaneously by Rāhu (vide Bhīṣmaparva 3. 28 and 32-33 and <strong>Āśvamedhikaparva</strong> 77. 15)<sup class="fn-ref"><a href="#fn-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-38" id="fnref-chapter-xxxiv-kalivarjya-actions-forbidden-...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-20" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">77.15 <a href="https://sanatana.in/mbta/listing/parva/ashwamedhikaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume IV
+                    <span class="vol-count">2 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter X Ekoddista And Other Shrāddhas <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">....’<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-55" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-55">55</a></sup> The Āśvamedhika-parva (62. 2-5) states that Vāsudeva offered śrāddha to his sister’s son Abhimanyu and donated to sixty thousand brāhmaṇas, gold, cows, bed-steads, clothes and fed t...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-4/chapter-x-ekoddista-and-other-shrāddhas.html#p-chapter-x-ekoddista-and-other-shrāddhas-22" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">62.2-5 <a href="https://sanatana.in/mbta/listing/parva/ashwamedhikaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">General Index Of Vol Iv <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">... sin and after permission 94, 131, to be performed only by a king 91, 131, verses recited at time of making crowned queen get up from dead horse 200ṇ <strong>Āśvamedhikaparva</strong> 535 Aśvapati Kekaya, a king, boasts that no drinker of madya dwelt in his kingdom 20 Atharvans, a class of pitṛs 192 Atharvaśiras, purifies from sins 45,...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-4/general-index-of-vol-iv.html#p-general-index-of-vol-iv-2" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">535 <a href="https://sanatana.in/mbta/listing/parva/ashwamedhikaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume V: Part I
+                    <span class="vol-count">3 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Vii Vratas Called Nāgapanchamī Manasāpūjā Rakshābandhana Krishnajanmāsht <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...juna who had come to Manipura for protecting the Aśvamedha horse, was killed by Babhruvāhana and restored to life with the help of a Sañjīvana jewel (<strong>Āśvamedhikaparva</strong> chap. 79–81). Serpents came to be associated with both Viṣṇu and Śiva. Viṣṇu is said to sleep on the hoods of Śeṣa-nāga (Vanaparva 203. 12 and 272. 38–...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-1/chapter-vii-vratas-called-nāgapanchamī-manasāpūjā-rakshābandhana-krishnajanmāsht.html#p-chapter-vii-vratas-called-nāgapanchamī-manasāpūjā-rakshābandhana-krishnajanmāsht-5" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">c <a href="https://sanatana.in/mbta/listing/parva/ashwamedhikaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xiv Conception Of Kāla <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...nd pain), remarks that the 20th *guṇa* beyond the nineteenth is Kāla and that one should know these twenty to be the source and end of all beingṣ The Aśvamedhika-parva describes (chap. 45) the wheel of Time in an elaborate metaphorical way (verses 1-9) and remarks that the man who well knows the action of Kāla and i...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-1/chapter-xiv-conception-of-kāla.html#p-chapter-xiv-conception-of-kāla-7" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/ashwamedhikaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xviii Calendar Eras Various Reckonings About Years Months Etc <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...ing out the order of the weekdays instead of 24 divisions systeṃ The Indians did not calculate their day from noon or night but from the morning. The Aśvamedhika- parva<sup class="fn-ref"><a href="#fn-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-89" id="fnref-chapter-xviii-calendar-eras-vario...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-1/chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-37" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/ashwamedhikaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume V: Part II
+                    <span class="vol-count">8 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xxiv Influence Of Purānas On Dharmashastra <span class="ch-count">2</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...est dharma) occur very frequently in the Mahābhārata <sup>1523</sup> (e. g. in Droṇaparva 192. 38, Śānti 265. 6, 329. 18, Anuśāsana 115, 25, 116. 38, <strong>Āśvamedhikaparva</strong> 28. 16-18, 43. 21). Śāntiparva (296. 22-24) enumerates thirteen virtues common to all men, of which freedom from cruelty and ahimsā are the first two. Vasiṣṭha...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-2/chapter-xxiv-influence-of-purānas-on-dharmashastra.html#p-chapter-xxiv-influence-of-purānas-on-dharmashastra-33" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">28.16-18 <a href="https://sanatana.in/mbta/listing/parva/ashwamedhikaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...truction of evil-doers and the establishment of piety'. The same idea occurs in some of the *parvans* of the Mahābhārata, as in Vanaparva 272. 71 and Aśvamedhika-parva 54. 13. None of the ten avatāras, except those of Kṛṣṇa and probably Rāma, ('Rāmaḥ śastrabhr̥tām-ahaṁ', Gītā X. 31) are, however, mentioned by name in the B...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-2/chapter-xxiv-influence-of-purānas-on-dharmashastra.html#p-chapter-xxiv-influence-of-purānas-on-dharmashastra-79" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">54.13 <a href="https://sanatana.in/mbta/listing/parva/ashwamedhikaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xxxii Yoga And Dharmashastra <span class="ch-count">2</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">... to Sānkhya and no spiritual power equal to Yoga; it further says that Yoga is eightfold (verse 7) and in verse 9 mentions Dhāraṇā and Prāṇāyāma. The <strong>Āśvamedhikaparva</strong> 19. 17 (Ch. eḍ) appears to refer to pratyāhāra.<sup class="fn-ref"><a href="#fn-chapter-xxxii-yoga-and-dharmashastra-32" id="fnref-chapter-xxxii-yoga-and-dh...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-2/chapter-xxxii-yoga-and-dharmashastra.html#p-chapter-xxxii-yoga-and-dharmashastra-24" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">19.17 <a href="https://sanatana.in/mbta/listing/parva/ashwamedhikaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...mashastra-110">110</a></sup> and is in accordance with the plural 'dhāraṇāsu ca yogyatā manasaḥ' (in Y. S. II. 53) employed by Patañjali himself. The <strong>Āśvamedhikaparva</strong> also employs the plural 'dhāraṇāsu'. Vide the Śāntiparva (cr. eḍ 188. 8-12 = Ch. eḍ 195.8). The Yājñavalkyasmṛti <sup class="fn-ref"><a href="#fn-cha...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-2/chapter-xxxii-yoga-and-dharmashastra.html#p-chapter-xxxii-yoga-and-dharmashastra-65" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/ashwamedhikaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Index To Vol V <span class="ch-count">4</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...ces performed by Puṣya- mitra, Bhāvanāga, Pravarasena I, Samudragupta and other kings 1028–29; supposed to remove the consequences of all sins, 1589ṇ <strong>Āśvamedhikaparva</strong>, 127, 467, 683, 744, 945 (on ahiṁsā), 994, 1371, 1401, 1446, 1519, 1537n, 1571. Aśvapati Kaikeya, boast of, in Chāṇ Up. 943, 1584n; ex- pounds Vaiśvā...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-20" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/ashwamedhikaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">kāla ( vide under Kalpa, Man-vantara, pralaya, Rudra, measures of Time, yuga); <strong>Āśvamedhikaparva</strong> has an elaborate metaphorical description of wheel of K. 467; Bhagavad-gītā identifies K. with Kṛṣṇa 467; derived from root ‘Kal’ in Bhagavad-gītā, 4...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-98" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/ashwamedhikaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...an image) 1024; Paurāṇika proce-dure to be followed in 1024. *Pratyāhāra*, 5th aṅga of Yoga 1444–5; derivation of the word 1444n; in Yogasūtra and in <strong>Āśvamedhikaparva</strong> 1401; means withdrawal of senses from sense objects on account of restraint of mind .1444; several definitions of 1444–5. Pravāhaṇa Jaivali, a *rājanya*, ...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-168" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">1401 <a href="https://sanatana.in/mbta/listing/parva/ashwamedhikaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...of views about the number of the aṅgas of yoga, 1419 and n; discipline of the mind known to Āp. Dh. S. 1390; doctrine of Y. dilated upon in Śānti and Aśvamedhika parvan 1399-1405; eightfold Y. acc. to Śāntiparva 1400; first signs of the effectiveness of Y. practice acc. to Śv. Up. 1111; five bhūmis (conditions or st...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-251" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/ashwamedhikaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+</div>
+</body>
+</html>

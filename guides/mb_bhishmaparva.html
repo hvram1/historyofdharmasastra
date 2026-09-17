@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bhīṣmaparva Study Guide — History of Dharmaśāstra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Open+Sans:wght@400;600&family=Tiro+Devanagari+Sanskrit&display=swap" rel="stylesheet">
+<style>
+:root {
+    --saffron: #D4600A;
+    --ink: #2C2416;
+    --parchment: #FDF6EC;
+    --parchment-dark: #F5ECD8;
+    --indigo: #2E5FA3;
+    --maroon: #8B1A1A;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: var(--parchment);
+    color: var(--ink);
+    line-height: 1.6;
+}
+.navbar {
+    background: linear-gradient(135deg, #3D2B1F 0%, #5C3D2E 100%);
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    position: sticky;
+    top: 0;
+    z-index: 1031;
+}
+.navbar a { color: #F5ECD8; text-decoration: none; font-size: 14px; }
+.navbar a:hover { color: var(--saffron); }
+.navbar .brand { font-family: 'Lora', serif; font-size: 16px; font-weight: 600; }
+.breadcrumb-bar {
+    background: var(--parchment-dark);
+    padding: 8px 24px;
+    font-size: 13px;
+    border-bottom: 1px solid #E0D5C3;
+}
+.breadcrumb-bar a { color: var(--indigo); text-decoration: none; }
+.breadcrumb-bar .sep { margin: 0 6px; color: #999; }
+.breadcrumb-bar .current { color: var(--ink); }
+.content { max-width: 900px; margin: 0 auto; padding: 30px 24px; }
+
+/* Hero */
+.parva-hero {
+    text-align: center;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 2px solid #E0D5C3;
+}
+.parva-hero .parva-number {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(212, 96, 10, 0.10);
+    color: var(--saffron);
+    font-family: 'Lora', serif;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 50px;
+    margin-bottom: 8px;
+}
+.parva-hero h1 {
+    font-family: 'Lora', serif;
+    font-size: 28px;
+    color: var(--saffron);
+    margin: 6px 0;
+}
+.parva-hero .desc {
+    font-size: 15px;
+    color: #555;
+    max-width: 600px;
+    margin: 0 auto 10px;
+}
+.parva-hero .stats {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 10px;
+}
+.ext-link {
+    display: inline-block;
+    font-size: 13px;
+    color: var(--indigo);
+    font-weight: 600;
+    text-decoration: none;
+    padding: 4px 12px;
+    border: 1px solid var(--indigo);
+    border-radius: 4px;
+    margin: 6px 4px;
+}
+.ext-link:hover { background: rgba(46, 95, 163, 0.08); }
+.ref-page-link {
+    display: inline-block;
+    font-size: 13px;
+    color: #888;
+    text-decoration: none;
+    padding: 4px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: 6px 4px;
+}
+.ref-page-link:hover { border-color: #999; color: #666; }
+.subject-tag {
+    display: inline-block;
+    font-size: 11px;
+    background: rgba(139, 26, 26, 0.08);
+    color: var(--maroon);
+    padding: 2px 8px;
+    border-radius: 3px;
+    text-decoration: none;
+    margin: 2px;
+}
+.subject-tag:hover { background: rgba(139, 26, 26, 0.15); }
+
+/* Top adhyayas */
+.top-adhyayas {
+    margin-bottom: 28px;
+    padding: 16px;
+    background: #fff;
+    border: 1px solid #E0D5C3;
+    border-radius: 8px;
+}
+.top-adhyayas h3 {
+    font-family: 'Lora', serif;
+    font-size: 15px;
+    color: var(--ink);
+    margin-bottom: 10px;
+}
+.adhyaya-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.adhyaya-chip {
+    display: inline-block;
+    font-size: 12px;
+    padding: 3px 10px;
+    background: var(--parchment-dark);
+    border: 1px solid #E0D5C3;
+    border-radius: 4px;
+    color: var(--ink);
+    text-decoration: none;
+}
+a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
+.adhyaya-chip small { color: #999; }
+
+/* Volume sections */
+.vol-section { margin-bottom: 28px; }
+.vol-heading {
+    font-family: 'Lora', serif;
+    font-size: 17px;
+    color: var(--ink);
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #E0D5C3;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.vol-count {
+    font-size: 12px;
+    font-weight: 400;
+    color: #999;
+}
+.ch-group { margin-bottom: 16px; }
+.ch-heading {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 6px;
+    padding: 4px 8px;
+    background: var(--parchment-dark);
+    border-radius: 4px;
+}
+.ch-count {
+    font-weight: 400;
+    color: #999;
+    font-size: 11px;
+    margin-left: 4px;
+}
+.snippet {
+    padding: 10px 14px;
+    margin-bottom: 6px;
+    background: #fff;
+    border: 1px solid #E0D5C3;
+    border-radius: 6px;
+    border-left: 3px solid var(--saffron);
+}
+.snippet-text {
+    font-family: 'Lora', serif;
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.65;
+}
+.snippet-meta {
+    margin-top: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.snippet-link {
+    font-size: 12px;
+    color: var(--indigo);
+    text-decoration: none;
+}
+.snippet-link:hover { text-decoration: underline; }
+.snippet-verse {
+    font-size: 11px;
+    color: #999;
+    font-style: italic;
+}
+.mbta-icon {
+    color: var(--indigo);
+    text-decoration: none;
+    font-style: normal;
+    font-size: 12px;
+}
+.overflow {
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+    padding: 6px;
+}
+</style>
+</head>
+<body>
+<nav class="navbar">
+    <a href="../index.html" class="brand">History of Dharmaśāstra</a>
+    <a href="../refs/index.html">Sources</a>
+    <a href="../topics/index.html">Topics</a>
+    <a href="../subjects/index.html">Subjects</a>
+    <a href="../timeline.html">Timeline</a>
+    <a href="../network.html">Network</a>
+</nav>
+<div class="breadcrumb-bar">
+    <a href="../index.html">Home</a>
+    <span class="sep">›</span>
+    <a href="index.html">Parva Study Guides</a>
+    <span class="sep">›</span>
+    <span class="current">Bhīṣmaparva</span>
+</div>
+<div class="content">
+    <div class="parva-hero">
+        <div class="parva-number">6</div>
+        <h1>Bhīṣmaparva</h1>
+        <p class="desc">The Book of Bhīṣma — the Bhagavadgītā, the first ten days of battle.</p>
+        <p class="stats">29 references across 6 volumes</p>
+        <div><a href="https://sanatana.in/mbta/listing/parva/bhishmaparva" target="_blank" class="ext-link">Browse on MBTA ↗</a>
+            <a href="../refs/mb_bhishmaparva.html" class="ref-page-link">Verse reference table →</a>
+        </div>
+        <div style="margin-top:8px"><a href="../subjects/karma-cosmology.html" class="subject-tag">Karma, Cosmology, and Rebirth</a></div>
+    </div>
+    
+            <div class="top-adhyayas">
+                <h3>Most-Cited Adhyāyas</h3>
+                <div class="adhyaya-chips"><a href="https://sanatana.in/mbta/listing/parva/bhishmaparva#P06_U01_A003_S001" target="_blank" class="adhyaya-chip">Adhyāya 3 <small>(4)</small></a><a href="https://sanatana.in/mbta/listing/parva/bhishmaparva#P06_U03_A017_S001" target="_blank" class="adhyaya-chip">Adhyāya 17 <small>(2)</small></a><a href="https://sanatana.in/mbta/listing/parva/bhishmaparva#P06_U01_A001_S001" target="_blank" class="adhyaya-chip">Adhyāya 1 <small>(2)</small></a><a href="https://sanatana.in/mbta/listing/parva/bhishmaparva#P06_U03_A020_S001" target="_blank" class="adhyaya-chip">Adhyāya 20 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/bhishmaparva#P06_U01_A006_S001" target="_blank" class="adhyaya-chip">Adhyāya 6 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/bhishmaparva#P06_U04_A120_S001" target="_blank" class="adhyaya-chip">Adhyāya 120 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/bhishmaparva#P06_U01_A010_S001" target="_blank" class="adhyaya-chip">Adhyāya 10 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/bhishmaparva#P06_U04_A058_S001" target="_blank" class="adhyaya-chip">Adhyāya 58 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/bhishmaparva#P06_U01_A002_S001" target="_blank" class="adhyaya-chip">Adhyāya 2 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/bhishmaparva" target="_blank" class="adhyaya-chip">Adhyāya 129 <small>(1)</small></a></div>
+            </div>
+    
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume I: Part I
+                    <span class="vol-count">3 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">14 Arthashastra Of Kautilya <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...one-third than one's own army.<sup class="fn-ref"><a href="#fn-14-arthashastra-of-kautilya-15" id="fnref-14-arthashastra-of-kautilya-15">15</a></sup> Bhīsma-parva quotes the dictum of Bṛhaspati that one who has a small army should present a compact front, while one who has a large army should spread it out<sup ...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-17" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/bhishmaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">32 The Two Epics <span class="ch-count">2</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...Viṣṇusahasranāma and on Udyoga 42.1 he refers to the commentary of Bhāsyakāra on Sanatsujātiya; he refers to the Saṅkṣepaśārīraka on Udyoga 43.42; On <strong>Bhīṣmaparva</strong> 3.13 and 31 he quotes a work called Narapativijaya on astrology; on Sānti 306.8 he mentions a work on Yoga called Yogacintā-maṇi and Bhoja’s work on Poeti...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-37" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">3.13 <a href="https://sanatana.in/mbta/listing/parva/bhishmaparva#P06_U01_A003_S013" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...wers of Lakṣmaṇa who was the ornament of a family of persons well-versed in knowledge of brahman explains that verse differently. At the beginning of <strong>Bhīṣmaparva</strong>, chap. 25 (i.e. the Bhagavadgītā ) he performs an obeisance to Śrīdhara and others as ‘sadgurūn’. This Śrīdhara is, it appears, the commentator of th...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-37" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/bhishmaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume II: Part II
+                    <span class="vol-count">1 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">General Index <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...ra was Vaiyaghra-padya, 494; forcibly carried off three daughters of king of Kāśī, 501n, 523; refused to raise issue from widows of Vicitravīrya 603. <strong>Bhīṣmaparva</strong>, 138n, 139, 710. Bhīṣmatarpaṇa, 494, 695. Bhoja, a caste, 90. Bhojana (see under ‘food,’ ‘pāṅkti’) 757–799; about removing plates after, 769; ācamana...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-2-part-2/general-index.html#p-general-index-2" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/bhishmaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume III
+                    <span class="vol-count">13 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Iii Duties And Responsibilities Of The Ruler <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...t is a sinful act for a kṣatriya to die in his house from some disease; the ancient code of conduct for him is that he should meet death from steel’ (<strong>Bhīṣmaparva</strong> 17 11) The same idea is presented in Śalyaparva 5 32, Śānti 97 23 and 25</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-iii-duties-and-responsibilities-of-the-ruler.html#p-chapter-iii-duties-and-responsibilities-of-the-ruler-2" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">17 <a href="https://sanatana.in/mbta/listing/parva/bhishmaparva#P06_U03_A017" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Viii Bala The Army <span class="ch-count">5</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...hariots and the other arms of an army are described everywhere. In the Virāṭaparva (65. 6) Vikarṇa was seated on an elephant when he attacked Arjuna; <strong>Bhīṣmaparva</strong> 20. 7 refers to Duryodhana as riding an elephant and (95. 32-33) Bhagadatta is described as seated on an elephant when he attacked Bhīma. In this respect t...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-viii-bala-the-army.html#p-chapter-viii-bala-the-army-2" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">20.7 <a href="https://sanatana.in/mbta/listing/parva/bhishmaparva#P06_U03_A020_S007" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...42-73 for vyūhas Though Kauṭilya recommends all sorts of tricks and treachery for securing a victory, the III] Mahābhārata holds up a high ideal. The <strong>Bhīṣmaparva</strong> <sup class="fn-ref"><a href="#fn-chapter-viii-bala-the-army-15" id="fnref-chapter-viii-bala-the-army-15">15</a></sup> 21. 10 remarks that conquerors ...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-viii-bala-the-army.html#p-chapter-viii-bala-the-army-3" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/bhishmaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...r-viii-bala-the-army-14">14</a></sup> Each commander had some distinguishing device as his banner e. g Bhīṣma had a golden tāla tree as his standard (<strong>Bhīṣmaparva</strong> VI 17 18, tālena mahatā Bhīṣmaḥ pañcatāreņa ketunā). In X 6 Kauṭilya speaks of several formations (vyūhas) called danda, bhoga, mandala, asanihata and t...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-viii-bala-the-army.html#p-chapter-viii-bala-the-army-3" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">VI <a href="https://sanatana.in/mbta/listing/parva/bhishmaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...couraging words <sup class="fn-ref"><a href="#fn-chapter-viii-bala-the-army-13" id="fnref-chapter-viii-bala-the-army-13">13</a></sup> (Kaut X. 3) The <strong>Bhīṣmaparva</strong> 120 55 also states that doctors well-versed in extracting splinters or arrow-heads (from the body) approached with their surgical instruments to extract ...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-viii-bala-the-army.html#p-chapter-viii-bala-the-army-3" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">120 <a href="https://sanatana.in/mbta/listing/parva/bhishmaparva#P06_U04_A120" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">In the <strong>Bhīṣmaparva</strong> (I. 27–32) certain rules of war agreed upon between the Kauravas and the Pāṇḍavas are set out, such as one should fight only with one similarly equipped (i e. a...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-viii-bala-the-army.html#p-chapter-viii-bala-the-army-4" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">I.27-32 <a href="https://sanatana.in/mbta/listing/parva/bhishmaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xxxiv Kalivarjya Actions Forbidden In The Kali Age <span class="ch-count">6</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...n-in-the-kali-age-5">5</a></sup> and in the Śat. Br. XIII. 6. 2. 9-10 (S. B. E. vol. 44 p. 416). In later literature Kali is also called Tisya (as in <strong>Bhīṣmaparva</strong> 10. 3). In the Tai Br. III. 4. 16 the word Kali is used<sup class="fn-ref"><a href="#fn-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-6" id="f...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-3" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">10.3 <a href="https://sanatana.in/mbta/listing/parva/bhishmaparva#P06_U01_A010_S003" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...lanets, were so clumsy as to allow a mistake of two tithis to occur in their calendar with respect to the occurrence of a solar eclipse. The words in <strong>Bhīṣmaparva</strong> 3. 28 and 32-33 appear to be a mere exaggerated statement of portentṣ If real observed eclipses are meant they would have to be taken in the order of the w...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-20" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">3.28 <a href="https://sanatana.in/mbta/listing/parva/bhishmaparva#P06_U01_A003_S028" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...ereon); it is several times said that the Moon and the Sun are seized (i.e. eclipsed) at an unusual season (apartaṇī) or simultaneously by Rāhu (vide <strong>Bhīṣmaparva</strong> 3. 28 and 32-33 and Āśvamedhikaparva 77. 15)<sup class="fn-ref"><a href="#fn-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-38" id="fnref-chapt...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-20" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">3.28 <a href="https://sanatana.in/mbta/listing/parva/bhishmaparva#P06_U01_A003_S028" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...Śalya 34.6 the war commenced when the moon was in or near Mrgaśirsa (18 naksatras before Śravana). This would be in direct conflict with a passage in <strong>Bhīṣmaparva</strong> 17.2 that <sup class="fn-ref"><a href="#fn-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-49" id="fnref-chapter-xxxiv-kalivarjya-actions-forbi...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-23" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">17.2 <a href="https://sanatana.in/mbta/listing/parva/bhishmaparva#P06_U03_A017_S002" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...hinī and also the sun and the moon’. The description of the Ketu called Śveta in Brhat- saṃhitā 11 39 agrees very closely with the description in the <strong>Bhīṣmaparva</strong> and Parāśara quoted by Utpala thereon states that the Ketu called ‘Śveta’ becomes visible after 115 years and portends the destruction of two-thirds ...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-26" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/bhishmaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...solar eclipse, that there was a fortnight of 13 days which was looked upon as very unusual and a very evil omeṇ Vide Bhisma 3 28 quoted in n 1767. In <strong>Bhīṣmaparva</strong> 3 31–32 Vyāsa is reported as saying, 'I have known amāvāsyā occurring on the 14th, 15th or 16th day (of a pakṣa), but I do not know an amāvāsyā occurri...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-26" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">3 <a href="https://sanatana.in/mbta/listing/parva/bhishmaparva#P06_U01_A003" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">General Index <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...72, 203, 210, 232, 937. Bhīṣma 79, advice of, to soldiers 58, had a golden tāla tree as flagstaff 208, performed Aśvamedha, though not married 845-46 <strong>Bhīṣmaparva</strong> 58, 135, 203, 205, 208-9, 211, 903, 905, 906, 908n, 909, 912, 915, 918-920, 922. Bhoja, author of Yuktikalpataru 13 Bhoja, see under Dāndakya 52 Bhojaka...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/general-index.html#p-general-index-2" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">58 <a href="https://sanatana.in/mbta/listing/parva/bhishmaparva#P06_U04_A058" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume IV
+                    <span class="vol-count">2 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xvi List Of Tīrthas <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...s list. The Brahmāpurāṇa (chap. 26 verses 8-83) contains a string of over 520 tīrthas without hardly any certain indication of their location and the <strong>Bhīṣmaparva</strong> in chap. 9 mentions about 160 rivers with practically no indication about their location in most caseṣ Similarly, the Garuḍa (I. 81. 1-31) enumerates a...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-4/chapter-xvi-list-of-tīrthas.html#p-chapter-xvi-list-of-tīrthas-1" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">i <a href="https://sanatana.in/mbta/listing/parva/bhishmaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Abbreviations Employed In This List Alone <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...ological Survey of India Reportṣ B.—Brahmapurāṇa. Bār. S.—Bārhaspatya-sūtra edited by Dr. F. W. Thomaṣ Bh.—Bhāgavatapurāṇa. Bhav.—Bhaviṣyapurāṇa. Bhī—<strong>Bhīṣmaparva</strong> of the Mahā- bhārata. Bom G—Bombay Gazetteer volumeṣ Br.—Brahmāṇḍapurāṇa. Br. S—Bṛhatsaṁhitā with Utpala's coṃ, edited by Sudhākara Dwivedi. BV.—Brah...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-4/abbreviations-employed-in-this-list-alone.html#p-abbreviations-employed-in-this-list-alone-1" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/bhishmaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume V: Part I
+                    <span class="vol-count">2 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xv Units Of Kāla <span class="ch-count">2</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...23 for consideration of the astronomical data in the Mahābhārata. Here we are concerned only with the beliefs about certain omens and portentṣ In the Bhisma-parva we read<sup class="fn-ref"><a href="#fn-chapter-xv-units-of-kāla-87" id="fnref-chapter-xv-units-of-kāla-87">87</a></sup> 'a white celestial body stan...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-1/chapter-xv-units-of-kāla.html#p-chapter-xv-units-of-kāla-36" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/bhishmaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...e Udyogaparva says 'Mars having been retrograde in Jyeṣṭhā seeks (to reach or afflict?) Anūrādhā presided over by Mitra, as if bringing death'; while Bhisma-parva remarks 'Mars is retrograde in Maghā and Jupiter is in Śrāvaṇa and Saturn afflicts the nakṣatra presided over by Bhaga (i. e. Pūrvā Phalguni). About ...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-1/chapter-xv-units-of-kāla.html#p-chapter-xv-units-of-kāla-37" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/bhishmaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume V: Part II
+                    <span class="vol-count">8 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xx Vedic Meaning And Procedure Of Shāntis <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...used in a wider sense as in Gītā (I. 31) ('nimittāni ca paśyāmi viparītāni Keśava' 'O Keśava! I see adverse omens), Rāmāyaṇa, Ayodhyākāṇḍa. 4. 17–19, Bhīṣma-parva 2. 16–17, Virāṭa 46. 30, Atharva-pariśiṣṭa LXIV (Utpāta-lakṣaṇa) 10. 9–10. <sup class="fn-ref"><a href="#fn-chapter-xx-vedic-meaning-and-procedure-of-shāntis-...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-2/chapter-xx-vedic-meaning-and-procedure-of-shāntis.html#p-chapter-xx-vedic-meaning-and-procedure-of-shāntis-28" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">2.16-17 <a href="https://sanatana.in/mbta/listing/parva/bhishmaparva#P06_U01_A002_S016" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xxi Individual Shāntis <span class="ch-count">2</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...emādri on Vrata vol. II (pp. 1078-79) and Madanaratna (on śānti, folio 54b) is the trembling, dancing, laughing and weeping of the images of godṣ The <strong>Bhīṣmaparva</strong><sup>1243</sup> refers to the images in the temples of the Kaurava king doing these actṣ In the encounter of Hiraṇyakaśipu with the Man-lion form of V...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-2/chapter-xxi-individual-shāntis.html#p-chapter-xxi-individual-shāntis-24" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/bhishmaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...ts destruction of the country or family'. The Matsyapurāṇa 235. 1-3 and Viṣṇudharmottara II. 140. 1-3 have identical verses similar to the above. The <strong>Bhīṣmaparva</strong><sup class="fn-ref"><a href="#fn-chapter-xxi-individual-shāntis-58" id="fnref-chapter-xxi-individual-shāntis-58">58</a></sup> (chap. 3. 2-7) refers to...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-2/chapter-xxi-individual-shāntis.html#p-chapter-xxi-individual-shāntis-27" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/bhishmaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xxvi Tāntrik Doctrines And Dharmashastra <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...shastra-25" id="fnref-chapter-xxvi-tāntrik-doctrines-and-dharmashastra-25">25</a></sup> viz. in Virāṭaparva (chap. 6) by Yudhiṣṭhira and the other in <strong>Bhīṣmaparva</strong> (chap. 23) by Arjuna, but they are discarded as apocryphal in the Poona critical editioṇ The Gaṅgādhara stone inscription of Viśvavarman of 480 of th...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-2/chapter-xxvi-tāntrik-doctrines-and-dharmashastra.html#p-chapter-xxvi-tāntrik-doctrines-and-dharmashastra-13" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/bhishmaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xxxiv Cosmology <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...rated in Viṣṇu II, 3. 15-18, Vāyu 45. 109-136, Brahmāṇḍa II. 16. 40-68, Matsya 114. 34-56, Mārkaṇḍeya 54, Padma (Ādi 6. 34-59), Vāmana 13. 36 ff. The <strong>Bhīṣmaparva</strong> (chap. 9) mentions countries and peopleṣ In the Nakṣatrakūrmādhyāya of the Bṛhatsaṁhitā of Varāhmihira (chap. 14. 1-33) numerous names and countries ...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-2/chapter-xxxiv-cosmology.html#p-chapter-xxxiv-cosmology-61" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/bhishmaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Index To Vol V <span class="ch-count">3</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...69ṇ Bhīma, fight of, with Duryod- hana 767. Bhīmaparākrama, a work of king Bhoja, 62n, 710, 762. Bhīṣma, though unmarried, per-formed Aśvamedha 1280. <strong>Bhīṣmaparva</strong> 129, 532n, 743–44, 769 (images of gods trembling), 774 (portentous births), 900n, 1470n, 1528. Bhoja, king of Dhārā (1st half of 11th century A. D.); com...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-46" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">129 <a href="https://sanatana.in/mbta/listing/parva/bhishmaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...Geraldine, a. of 'Yoga and Western Psychology' 1394, 1427, 1455. Countries, ṃ in the Upaniṣads 1522-23; ṃ in Purāṇas 1527-28; ṃ by Pāṇini 1528n; ṃ in <strong>Bhīṣmaparva</strong> and nakṣatra-kūrmādhyāya of Brhat-saṃhitā 1527-28; Ptolemy's treatment of, 555. Cows, honoured on certain tithis called Yugādi, Yugāntya etc. 293-94;...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-54" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/bhishmaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">**Durgā**, antiquity of pūjā of, 185-86; Arjuṇa's and Yudhisthira's praise of D. in <strong>Bhīṣmaparva</strong> and Virāṭaparva, 85, 1046<sup class="fn-ref"><a href="#fn-index-to-vol-v-10" id="fnref-index-to-vol-v-10">10</a></sup>; killed Śumbha and Niśumbha 18...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-60" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/bhishmaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- MDB UI Kit -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/fonts.css?v=1.2">
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/navbar.css?v=2.4">
+
+    <title>Chapter X. Ekoddista and Other Shrāddhas — Volume IV — History of Dharmaśāstra</title>
+    <style>
+    :root {
+        --saffron:        #D4600A;
+        --saffron-light:  #F0924A;
+        --saffron-wash:   rgba(212, 96, 10, 0.07);
+        --indigo:         #2E5FA3;
+        --indigo-dark:    #1C3D70;
+        --maroon:         #7A1E1E;
+        --amber:          #C97A1A;
+        --ink:            #1A1209;
+        --ink-secondary:  #4A3B2A;
+        --parchment:      #FDFAF4;
+        --parchment-mid:  #F5EFE2;
+        --rule:           rgba(180, 130, 60, 0.22);
+        --shadow:         0 2px 18px rgba(90, 50, 10, 0.08);
+        --font-devanagari: 'Tiro Devanagari Sanskrit', 'Siddhanta', 'Noto Sans Devanagari', serif;
+        --font-roman:      'Junicode', Georgia, serif;
+    }
+
+    body {
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: var(--font-roman);
+    }
+
+    .devanagari {
+        font-family: var(--font-devanagari);
+    }
+
+    /* ── Navbar overrides ── */
+    .navbar-ontop { z-index: 1031; }
+    .hdclr { color: var(--saffron); }
+    .engpara { font-family: 'Open Sans', sans-serif; }
+
+    /* ── Layout ── */
+    .dh-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .dh-content {
+        flex: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        background: var(--parchment);
+        box-shadow: var(--shadow);
+        min-height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        .dh-content { padding: 24px 20px; }
+        .dh-wrapper { flex-direction: column; }
+    }
+
+    /* ── TOC Sidebar ── */
+    .toc-sidebar {
+        position: sticky;
+        top: 80px;
+        width: 280px;
+        min-width: 280px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding: 20px 16px;
+        margin-right: 24px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        scrollbar-width: thin;
+    }
+
+    .toc-title {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--saffron-light);
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list li {
+        padding: 4px 0;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-list li.toc-l3 {
+        padding-left: 16px;
+        font-size: 0.78rem;
+    }
+
+    .toc-list li a {
+        color: var(--ink-secondary);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .toc-list li a:hover { color: var(--saffron); }
+
+    .toc-list li.active {
+        border-left-color: var(--saffron);
+    }
+
+    .toc-list li.active a {
+        color: var(--saffron);
+        font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-sidebar { display: none; }
+    }
+
+    /* ── Mobile TOC Toggle ── */
+    .toc-mobile-toggle {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1050;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--saffron);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-mobile-toggle { display: block; }
+    }
+
+    /* ── Section Headings ── */
+    .section-heading {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        margin: 48px 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--rule);
+        letter-spacing: 0.5px;
+        scroll-margin-top: 80px;
+    }
+
+    h2.section-heading { font-size: 1.6rem; }
+
+    h3.section-heading {
+        font-size: 1.25rem;
+        border-left: 4px solid var(--saffron-light);
+        border-bottom: none;
+        padding: 8px 16px;
+        background: var(--saffron-wash);
+        border-radius: 0 5px 5px 0;
+    }
+
+    /* ── Prose ── */
+    .prose {
+        font-family: var(--font-roman);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+        color: var(--ink);
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    .prose em { color: var(--maroon); }
+
+    .prose:target {
+        background: rgba(212, 96, 10, 0.12);
+        border-left: 4px solid var(--saffron);
+        padding-left: 16px;
+        margin-left: -20px;
+        border-radius: 0 6px 6px 0;
+        animation: target-pulse 2s ease-out;
+    }
+
+    @keyframes target-pulse {
+        0%   { background: rgba(212, 96, 10, 0.30); }
+        100% { background: rgba(212, 96, 10, 0.12); }
+    }
+
+    /* ── Footnote References ── */
+    .fn-ref {
+        font-size: 0.75em;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    .fn-ref a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 0 2px;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: color 0.15s;
+    }
+
+    .fn-ref a:hover { color: var(--indigo); }
+
+    /* ── Synopsis Box ── */
+    .synopsis-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron-light);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .synopsis-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .synopsis-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .synopsis-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .synopsis-box.open .synopsis-toggle i {
+        transform: rotate(90deg);
+    }
+    .synopsis-body {
+        display: none;
+        padding: 0 20px 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+    }
+    .synopsis-box.open .synopsis-body { display: block; }
+    .synopsis-body p { margin: 0; }
+    .synopsis-attribution {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: var(--ink-secondary);
+        opacity: 0.7;
+        font-style: italic;
+    }
+    .synopsis-audio {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    .synopsis-play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--saffron);
+        background: none;
+        color: var(--saffron);
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: background 0.2s, color 0.2s;
+        padding: 0;
+    }
+    .synopsis-play-btn:hover {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn.playing {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn i { padding-left: 2px; }
+
+    /* ── Index Terms Panel ── */
+    .index-terms-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .index-terms-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .index-terms-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .index-terms-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .index-terms-box.open .index-terms-toggle i {
+        transform: rotate(90deg);
+    }
+    .index-terms-body {
+        display: none;
+        padding: 0 20px 16px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .index-terms-box.open .index-terms-body { display: block; }
+    .index-terms-dl {
+        margin: 0;
+        padding: 0;
+    }
+    .index-terms-dl dt {
+        font-family: var(--font-roman);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+        margin-top: 8px;
+    }
+    .index-terms-dl dd {
+        margin: 2px 0 0 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        color: var(--ink-secondary);
+        line-height: 1.5;
+    }
+    .nyaya-heading {
+        font-family: var(--font-roman);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        margin: 16px 0 4px;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+    }
+
+    /* ── Inline Index Popovers ── */
+    .idx-term {
+        border-bottom: 1px dotted var(--saffron-light);
+        cursor: help;
+        position: relative;
+    }
+    .idx-term:hover::after {
+        content: attr(data-def);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        background: rgba(44, 36, 22, 0.92);
+        color: #F5ECD8;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        max-width: 280px;
+        z-index: 100;
+        white-space: normal;
+        line-height: 1.4;
+        pointer-events: none;
+    }
+
+    /* ── Structured Version Banner ── */
+    .structured-banner {
+        margin: 0 0 28px;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, rgba(212, 96, 10, 0.06) 0%, rgba(212, 96, 10, 0.02) 100%);
+        border: 1px solid var(--saffron-light);
+        border-radius: 6px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        color: var(--ink-secondary);
+        line-height: 1.6;
+    }
+    .structured-banner i { color: var(--saffron); margin-right: 4px; }
+    .structured-banner a { color: var(--indigo); font-weight: 600; text-decoration: none; }
+    .structured-banner a:hover { text-decoration: underline; }
+
+    /* ── Footnotes Section ── */
+    .footnotes-section {
+        margin: 32px 0 48px;
+        padding: 20px 24px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .footnotes-section hr {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 0 0 16px;
+    }
+
+    .footnotes-list {
+        padding-left: 24px;
+        margin: 0;
+    }
+
+    .footnote-item {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+        scroll-margin-top: 80px;
+    }
+
+    .footnote-item:target {
+        background: rgba(212, 96, 10, 0.1);
+        border-radius: 4px;
+        padding: 4px 6px;
+        margin-left: -6px;
+    }
+
+    .fn-back {
+        color: var(--saffron-light);
+        text-decoration: none;
+        font-size: 0.85em;
+        margin-left: 4px;
+    }
+
+    .fn-back:hover { color: var(--saffron); }
+
+    /* ── Reference Links ── */
+    a.ref {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: all 0.15s;
+    }
+
+    a.ref:hover {
+        color: var(--saffron);
+        border-bottom-style: solid;
+    }
+
+    a.mbta-ext {
+        color: var(--indigo);
+        font-size: 0.7em;
+        margin-left: 2px;
+        opacity: 0.5;
+        text-decoration: none;
+        vertical-align: super;
+    }
+    a.mbta-ext:hover { opacity: 1; color: var(--saffron); }
+
+    /* ── References Panel (sidebar) ── */
+    .refs-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .refs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .refs-list li {
+        padding: 3px 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .ref-source-link {
+        font-weight: 600;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .ref-source-link:hover {
+        text-decoration: underline;
+    }
+
+    .ref-verse-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.76rem;
+    }
+
+    .ref-verse-link:hover {
+        text-decoration: underline;
+        color: var(--saffron);
+    }
+
+    .ref-verses {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Timeline panel ── */
+    .timeline-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .timeline-list li {
+        padding: 2px 0;
+        font-size: 0.76rem;
+        line-height: 1.4;
+        position: relative;
+        padding-left: 14px;
+    }
+
+    .timeline-list li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--saffron);
+    }
+
+    .timeline-list li.tl-approximate::before {
+        background: transparent;
+        border: 2px solid var(--saffron);
+        width: 4px;
+        height: 4px;
+    }
+
+    .timeline-list li.tl-century::before {
+        background: transparent;
+        border: 2px dashed var(--saffron);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+
+    .tl-dot-link {
+        text-decoration: none;
+        color: var(--ink);
+        display: block;
+    }
+
+    .tl-dot-link:hover {
+        color: var(--saffron);
+    }
+
+    .tl-year {
+        font-weight: 600;
+        color: var(--saffron);
+        font-size: 0.72rem;
+        min-width: 70px;
+        display: inline-block;
+    }
+
+    .tl-label {
+        color: var(--ink-secondary);
+        font-size: 0.72rem;
+    }
+
+    .tl-view-link, .tl-more {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.72rem;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .tl-view-link:hover, .tl-more:hover {
+        text-decoration: underline;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+
+    .breadcrumb-bar a {
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+
+    .breadcrumb-bar .sep {
+        color: var(--amber);
+        margin: 0 8px;
+    }
+
+    .breadcrumb-bar .current {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Chapter Navigation ── */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        margin-top: 48px;
+        border-top: 2px solid var(--rule);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .chapter-nav a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        transition: all 0.2s;
+        max-width: 45%;
+    }
+
+    .chapter-nav a:hover {
+        background: var(--saffron-wash);
+        border-color: var(--saffron-light);
+    }
+
+    .nav-prev { text-align: left; }
+    .nav-next { text-align: right; margin-left: auto; }
+
+    .page-range {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+    }
+
+    /* ── Volume Cards (Landing) ── */
+    .vol-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .vol-card {
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        transition: all 0.25s;
+    }
+
+    .vol-card:hover {
+        border-color: var(--saffron-light);
+        box-shadow: 0 4px 24px rgba(212, 96, 10, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .vol-num {
+        font-family: var(--font-roman);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--saffron);
+        margin-bottom: 8px;
+    }
+
+    .vol-subtitle {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        line-height: 1.5;
+        flex: 1;
+    }
+
+    .vol-chapters {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        margin-top: 12px;
+    }
+
+    /* ── Chapter Cards (Volume Index) ── */
+    .chapter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .chapter-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .chapter-card:hover {
+        border-color: var(--saffron-light);
+        background: var(--saffron-wash);
+    }
+
+    .card-num {
+        font-family: var(--font-roman);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--saffron);
+        min-width: 36px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        flex: 1;
+    }
+
+    .card-pages {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        color: var(--ink-secondary);
+    }
+
+    /* ── Landing Hero ── */
+    .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-family: var(--font-roman);
+        font-size: 2.4rem;
+        color: var(--saffron);
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .hero .devanagari-title {
+        font-family: var(--font-devanagari);
+        font-size: 1.8rem;
+        color: var(--ink);
+        margin-bottom: 16px;
+    }
+
+    .hero .author {
+        font-family: var(--font-roman);
+        font-size: 1.1rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .hero .desc {
+        font-family: var(--font-roman);
+        font-size: 1rem;
+        color: var(--ink-secondary);
+        line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer { margin-top: 48px; }
+</style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mbta/">
+      <div class="container-fluid">&emsp;&emsp;
+      <a href="../index.html" class="navbar-brand" style="text-decoration:none;">
+        <span class="devanagari ms-3" style="font-size:1.5rem; color:var(--saffron); font-weight:700;">धर्मशास्त्रम्</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="../index.html">धर्मशास्त्रम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5 active" href="../index.html">खण्डाः</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in/mbta/">महाभारतम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in">सनातनम्</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+
+    <div class="dh-wrapper container-xl">
+        <nav id="toc" class="toc-sidebar">
+<div class="refs-panel">
+<h5 class="toc-title">References</h5>
+<ul class="refs-list">
+<li><a href="../refs/mb_anushasana.html" class="ref-source-link">Anuśāsanaparva</a> <span class="ref-verses"><a href="../refs/mb_anushasana.html#57.28-29" class="ref-verse-link">57.28-29</a></span></li>
+<li><a href="../refs/apararka.html" class="ref-source-link">Aparārka</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/baudhayana.html" class="ref-source-link">Baudhāyana Dharmasūtra</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/brihadaranyaka.html" class="ref-source-link">Bṛhadāraṇyaka Upaniṣad</a> <span class="ref-verses"><a href="../refs/brihadaranyaka.html#VI" class="ref-verse-link">VI</a></span></li>
+<li><a href="../refs/brihaspati.html" class="ref-source-link">Bṛhaspati</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/garuda_purana.html" class="ref-source-link">Garuḍapurāṇa</a> <span class="ref-verses"><a href="../refs/garuda_purana.html#I" class="ref-verse-link">I</a>, <a href="../refs/garuda_purana.html#I, 220, 6" class="ref-verse-link">I, 220, 6</a>, <a href="../refs/garuda_purana.html#i" class="ref-verse-link">i</a></span></li>
+<li><a href="../refs/hodh.html" class="ref-source-link">History of Dharmaśāstra</a> <span class="ref-verses"><a href="../refs/hodh.html#vol. III" class="ref-verse-link">vol. III</a>, <a href="../refs/hodh.html#vol. II pp. 217–218" class="ref-verse-link">vol. II pp. 217–218</a>, <a href="../refs/hodh.html#vol III pp 690-697" class="ref-verse-link">vol III pp 690-697</a></span></li>
+<li><a href="../refs/katyayana.html" class="ref-source-link">Kātyāyana</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/kurma_purana.html" class="ref-source-link">Kūrmapurāṇa</a> <span class="ref-verses"><a href="../refs/kurma_purana.html#II.22.27" class="ref-verse-link">II.22.27</a></span></li>
+<li><a href="../refs/manu.html" class="ref-source-link">Manusmṛti</a> <span class="ref-verses"><a href="../refs/manu.html#III.257" class="ref-verse-link">III.257</a>, <a href="../refs/manu.html#IX.183" class="ref-verse-link">IX.183</a>, <a href="../refs/manu.html#V.89-90" class="ref-verse-link">V.89-90</a>, <a href="../refs/manu.html#IX.132" class="ref-verse-link">IX.132</a>, <a href="../refs/manu.html#IV.140" class="ref-verse-link">IV.140</a>, <a href="../refs/manu.html#IV.85-86" class="ref-verse-link">IV.85-86</a> <a href="../refs/manu.html" class="ref-verse-link">+2</a></span></li>
+<li><a href="../refs/matsya_purana.html" class="ref-source-link">Matsyapurāṇa</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mitakshara.html" class="ref-source-link">Mitākṣarā</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/markandeya.html" class="ref-source-link">Mārkaṇḍeyapurāṇa</a> <span class="ref-verses"><a href="../refs/markandeya.html#28.12-18" class="ref-verse-link">28.12-18</a>, <a href="../refs/markandeya.html#28.6" class="ref-verse-link">28.6</a>, <a href="../refs/markandeya.html#i" class="ref-verse-link">i</a></span></li>
+<li><a href="../refs/padma_purana.html" class="ref-source-link">Padmapurāṇa</a> <span class="ref-verses"><a href="../refs/padma_purana.html#c" class="ref-verse-link">c</a>, <a href="../refs/padma_purana.html#V.9.98" class="ref-verse-link">V.9.98</a></span></li>
+<li><a href="../refs/parasara.html" class="ref-source-link">Parāśara</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/ramayana.html" class="ref-source-link">Rāmāyaṇa</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/skanda_purana.html" class="ref-source-link">Skandapurāṇa</a> <span class="ref-verses"><a href="../refs/skanda_purana.html#VI" class="ref-verse-link">VI</a>, <a href="../refs/skanda_purana.html#VI.218.12-14" class="ref-verse-link">VI.218.12-14</a></span></li>
+<li><a href="../refs/taittiriya_br.html" class="ref-source-link">Taittirīya Brāhmaṇa</a> <span class="ref-verses"><a href="../refs/taittiriya_br.html#I.4.2.3" class="ref-verse-link">I.4.2.3</a></span></li>
+<li><a href="../refs/taittiriya_s.html" class="ref-source-link">Taittirīya Saṃhitā</a> <span class="ref-verses"><a href="../refs/taittiriya_s.html#IV" class="ref-verse-link">IV</a>, <a href="../refs/taittiriya_s.html#V.6.1.1-2" class="ref-verse-link">V.6.1.1-2</a>, <a href="../refs/taittiriya_s.html#I" class="ref-verse-link">I</a>, <a href="../refs/taittiriya_s.html#V.7.2.3" class="ref-verse-link">V.7.2.3</a>, <a href="../refs/taittiriya_s.html#I.5" class="ref-verse-link">I.5</a></span></li>
+<li><a href="../refs/taittiriya_ar.html" class="ref-source-link">Taittirīya Āraṇyaka</a> <span class="ref-verses"><a href="../refs/taittiriya_ar.html#X" class="ref-verse-link">X</a>, <a href="../refs/taittiriya_ar.html#X.10.2" class="ref-verse-link">X.10.2</a></span></li>
+<li><a href="../refs/vasishtha.html" class="ref-source-link">Vasiṣṭha Dharmasūtra</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/vishnu_dh.html" class="ref-source-link">Viṣṇu Dharmasūtra</a> <span class="ref-verses"><a href="../refs/vishnu_dh.html#21.23" class="ref-verse-link">21.23</a>, <a href="../refs/vishnu_dh.html#21.20" class="ref-verse-link">21.20</a>, <a href="../refs/vishnu_dh.html#21.14" class="ref-verse-link">21.14</a></span></li>
+<li><a href="../refs/vishnu_smriti.html" class="ref-source-link">Viṣṇu Smṛti</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/vishnu_purana.html" class="ref-source-link">Viṣṇupurāṇa</a> <span class="ref-verses"><a href="../refs/vishnu_purana.html#III.13.27" class="ref-verse-link">III.13.27</a>, <a href="../refs/vishnu_purana.html#III.13.2-7" class="ref-verse-link">III.13.2-7</a></span></li>
+<li><a href="../refs/vajasaneya.html" class="ref-source-link">Vājasaneya Saṃhitā</a> <span class="ref-verses"><a href="../refs/vajasaneya.html#19.45-46" class="ref-verse-link">19.45-46</a>, <a href="../refs/vajasaneya.html#XX.14-16" class="ref-verse-link">XX.14-16</a>, <a href="../refs/vajasaneya.html#8" class="ref-verse-link">8</a>, <a href="../refs/vajasaneya.html#31.1-18" class="ref-verse-link">31.1-18</a></span></li>
+<li><a href="../refs/vayu_purana.html" class="ref-source-link">Vāyupurāṇa</a> <span class="ref-verses"><a href="../refs/vayu_purana.html#83.16-42" class="ref-verse-link">83.16-42</a></span></li>
+<li><a href="../refs/yajnavalkya.html" class="ref-source-link">Yājñavalkya</a> <span class="ref-verses"><a href="../refs/yajnavalkya.html#I.256" class="ref-verse-link">I.256</a>, <a href="../refs/yajnavalkya.html#III.22" class="ref-verse-link">III.22</a>, <a href="../refs/yajnavalkya.html#I.255" class="ref-verse-link">I.255</a>, <a href="../refs/yajnavalkya.html#I.253-254" class="ref-verse-link">I.253-254</a>, <a href="../refs/yajnavalkya.html#I.254" class="ref-verse-link">I.254</a>, <a href="../refs/yajnavalkya.html#III.6" class="ref-verse-link">III.6</a> <a href="../refs/yajnavalkya.html" class="ref-verse-link">+1</a></span></li>
+<li><a href="../refs/mb_ashramavasika.html" class="ref-source-link">Āśramavāsikaparva</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mb_ashvamedhika.html" class="ref-source-link">Āśvamedhikaparva</a> <span class="ref-verses"><a href="../refs/mb_ashvamedhika.html#62.2-5" class="ref-verse-link">62.2-5</a></span></li>
+<li><a href="../refs/mb_shantiparva.html" class="ref-source-link">Śāntiparva</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/rigveda.html" class="ref-source-link">Ṛgveda</a> <span class="ref-verses"><a href="../refs/rigveda.html#X.191.2-4" class="ref-verse-link">X.191.2-4</a>, <a href="../refs/rigveda.html#I.90.6-8" class="ref-verse-link">I.90.6-8</a>, <a href="../refs/rigveda.html#X.191.4" class="ref-verse-link">X.191.4</a>, <a href="../refs/rigveda.html#IX.11.1-5" class="ref-verse-link">IX.11.1-5</a>, <a href="../refs/rigveda.html#X.15.1-13" class="ref-verse-link">X.15.1-13</a>, <a href="../refs/rigveda.html#X.9.4-8" class="ref-verse-link">X.9.4-8</a> <a href="../refs/rigveda.html" class="ref-verse-link">+6</a></span></li>
+</ul>
+</div>
+<div class="timeline-panel">
+<h5 class="toc-title">Timeline</h5>
+<ul class="timeline-list">
+<li class="tl-century"><a href="#p-chapter-x-ekoddista-and-other-shrāddhas-39" class="tl-dot-link"><span class="tl-year">1901 CE</span> <span class="tl-label">Padmapurāṇa</span></a></li>
+</ul>
+</div>
+<h5 class="toc-title">Sections</h5>
+<ul class="toc-list">
+<li class="toc-l2"><a href="#chapter-x-ekoddista-and-other-shrāddhas">Chapter X. Ekoddista and Other Shrāddhas</a></li>
+</ul>
+</nav>
+        <main class="dh-content">
+            
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep">›</span>
+        <a href="index.html">Volume IV</a>
+        <span class="sep">›</span>
+        <span class="current">Chapter X. Ekoddista and Other Shrāddhas</span>
+    </div>
+    
+            <h1 class="text-center" style="font-family: var(--font-roman); font-size: 2rem; color: var(--saffron); margin-bottom: 8px;">
+                Chapter X. Ekoddista and Other Shrāddhas
+            </h1>
+            <p class="text-center" style="font-family: 'Open Sans', sans-serif; color: var(--ink-secondary); font-size: 0.9rem; margin-bottom: 36px;">
+                Volume IV <span class="page-range">pp. 516–551</span>
+            </p>
+
+            
+    <div class="synopsis-box" id="synopsis">
+        <button class="synopsis-toggle" onclick="this.parentElement.classList.toggle('open')"
+                aria-expanded="false" aria-controls="synopsis-body">
+            <i class="fa-solid fa-chevron-right"></i>
+            Kane's Synopsis
+        </button>
+        <div class="synopsis-audio">
+            <span class="synopsis-play-btn" role="button" tabindex="0"
+                    onclick="toggleSynopsisAudio(this)"
+                    data-src="../audio/synopsis/vol-4/vol-4_sec010.mp3" title="Listen to synopsis">
+                <i class="fa-solid fa-play"></i>
+            </span>
+            <audio preload="none"></audio>
+        </div>
+        <div class="synopsis-body" id="synopsis-body">
+            <p>The chapter initiates its discussion with a comprehensive examination of Ekoddiṣṭa and various other śrāddhas, including the specific practices of hema-śrāddha. It then systematically outlines the elaborate procedure of sapiṇḍīkaraṇa, also frequently referred to as sapiṇḍana, an essential ritual for integrating the deceased ancestor into the collective lineage. A significant portion is dedicated to the ābhyudayikaśrāddha, where its specific occasions are meticulously detailed, alongside a thorough description of its ceremonial conduct.
+
+Further expanding on ancestral rites, the text elucidates other pivotal observances such as the pratisaṃvatsarika śrāddha, performed annually, and the widely observed mahālayāśrāddha, dedicated to all ancestors. The mātāmahāśrāddha, specifically for maternal ancestors, also receives due attention. Complementing these śrāddhas are discussions on associated rituals, notably the symbolic act of letting loose of a bull and the meritorious practice of the gift of a cow. The chapter concludes by transitioning into Section IV, providing an overview of Tīrthayātrā, encompassing pilgrimages to various holy places.</p>
+            <p class="synopsis-attribution">— Synopsis by P.V. Kane, from History of Dharmaśāstra</p>
+        </div>
+    </div>
+
+
+            
+
+            <h2 id="chapter-x-ekoddista-and-other-shrāddhas" class="section-heading">Chapter X. Ekoddista and Other Shrāddhas</h2>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-1">EKODDISTA AND OTHER ŚRĀDDHAS Having dealt at great length with Pārvaṇaśrāddha which is the model of all śrāddhas it is now time to speak of Ekoddiśta śrāddha that is a modification of Pārvaṇaśrāddha <sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-1" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-1">1</a></sup> The word Ekoddiśta means ‘that in which only one deceased person<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-2" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-2">2</a></sup> is intended (to be invoked or benefited)’. The Pārvaṇa- śrāddha is intended for three paternal ancestors and is thus distinguished from Ekoddiśta. In Sān gr. IV. 2, Bauḍ gr. III. 12.6, the Śrāddhasūtra of <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> (kaṇḍikā 4), and Yaj. I. 251-252, the points of difference between the two are clearly set out.<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-3" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-3">3</a></sup> In this śrāddha only one arghya is offered, there is only one pavitra and only one pinda is offered, there is no āvāhana (as there is in Pārvaṇa), no agnau- kāraṇa, there are no brāhmaṇas invited to represent the Viśve-devas; the question about being satiated by the dinner is to be asked in the word ‘svaditam’ (did it taste well) and the brāhmaṇas reply with ‘susvaditam’ (it had excellent taste); instead of saying ‘may it be in- exhaustible,’ the formula here used is ‘May it approach’ (or wait upon the deceased person), when the brāhmaṇas are sent away at the end of the dinner the word used is ‘be satisfied (or delighted)’ and they reply ‘we are delighteḍ’ The <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>- purāṇa (III 13. 23-26) and Mārkaṇḍeya (28 8-11) closely follow the Śrāddhasūtra and Yaj. According to Sān gr. (IV. 2. 7),<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-4" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-4">4</a></sup> <a class="ref" href="../refs/manu.html#III.257" data-source="manu" data-ref="III.257" title="Manusmṛti III.257">Manu III. 257</a>, Mārkaṇḍeya (28. 11), <a class="ref" href="../refs/yajnavalkya.html#I.256" data-source="yajnavalkya" data-ref="I.256" title="Yājñavalkya I.256">Yāj. I. 256</a> and others, for one year after the death of a twice-born person till the sapindīkaraṇa śrāddha is performed this is the way in which śrāddha is to be performed for the preta every month. The <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharmasūtra 21. 2 provides that suitable changes (ūha) should be made in the mantras employed (e. g. instead of ‘atra pitarmādayadhvam’ the mantra should be ‘atra pitarmādayasva’ (O father <sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-5" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-5">5</a></sup> regale thyself here). In Ekoddiṣṭa such a formula as ‘ye ca tvām-anu’ (those that come after thee) can-not be employed and the word ‘pitṛ’ is not to be employed (till sapindīkaraṇa is performed), but the word ‘preta’ (<a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> p. 525 quoting Śaunaka-gṛhyapariśiṣṭa).<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-6" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-6">6</a></sup></p>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-2">As seen above (p 262, note 591a) Ekoddiṣṭa śrāddhas are of three kinds, nava, navamiśra and purāṇa. Navaśrāddhas are those that are performed till the 10th or-11th day after death, navamiśras (or miśras) are those that are performed after the 11th day till one year (or six months, according to some) after death. <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> quotes a verse from Vyāghra <sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-7" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-7">7</a></sup> that Ekoddiṣṭa-śrāddha is performed on the 11th day, on the 4th day, at the end of each month for a year after death and every year on the day of death and a verse of <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> that Ekoddiṣṭa) śrāddha should be performed for one who had kept sacred fires on the 11th day after the day of cremation and that the Dhruva śrāddhas should always be performed on the day of death. <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> explains ‘Dhruvāṇi’ as meaning those that are performed after three fortnights from death. About the navaśrāddha there is again a divergence of viewṣ One meaning has already been given above on p 262 note 593. The <a class="ref" href="../refs/skanda_purana.html#VI" data-source="skanda_purana" data-ref="VI" title="Skandapurāṇa VI">Skandapurāṇa VI</a> (Nāgarakhaṇḍa) 205. 1-4 and <a class="ref" href="../refs/garuda_purana.html" data-source="garuda_purana" data-ref="" title="Garuḍapurāṇa">Garuḍapurāṇa</a> (pretakhaṇḍa 5. 67-69) state that navaśrāddhas are nine viz. the three performed where a man died, where the funeral pro-cession rested on the way and where the burnt bones were collected and six more performed on the 5th, 7th, 8th, 9th, 10th, and 11th days after death. Numerous works lay down that there are sixteen śrāddhas which must be performed for a deceased person and that if these are not performed then his spirit is not freed from the condition of being a preta and a piśāca.<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-8" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-8">8</a></sup> There is a great deal of diver- gence of views about what these sixteen śrāddhas are, some works including sapiṇḍīkaraṇa among the 16, others excluding it therefroṃ Gobhilasmṛti III. 67 enumerates<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-9" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-9">9</a></sup> the 16 as follows: The twelve monthly śrāddhas (performed every month on the tithi of death), the first (i. e. the śrāddha on the 11th day), two śrāddhas on (a day prior to the expiry of) every six months from the tithi of death and sapiṇḍīkaraṇa are the sixteen śrāddhaṣ The <a class="ref" href="../refs/garuda_purana.html" data-source="garuda_purana" data-ref="" title="Garuḍapurāṇa">Garuḍapurāṇa</a><sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-10" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-10">10</a></sup> refers to three groups of which one enumerates the 16 śrāddhas as those performed on the 12th day (after death), after three fort- nights, after six months, after every month and at the end of the year, while the <a class="ref" href="../refs/padma_purana.html" data-source="padma_purana" data-ref="" title="Padmapurāṇa">Padmapurāṇa</a><sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-11" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-11">11</a></sup> enumerates them as sixteen śrāddhas are those performed on the 4th day after death, at the end of three fortnights, after six months, after a year and twelve śrāddhas performed each month (on the tithi of death). The Kalpataru p. 25 and Brahma- purāṇa q. by <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> (p. 523) state that the 16 śrāddhas are those performed on 4th, 5th, 9th and 11th days after death and the twelve monthly śrāddhas (on the tithi of death<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-12" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-12">12</a></sup>). Laugākṣi and others say that after performing the 16 śrāddhas according to the procedure for Ekoddista śrāddhas sapindana should be performeḍ<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-13" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-13">13</a></sup> The Madanapārijāta (p. 615), the Nirnaya- sindhu (III. p. 599) and others say that in this conflict of views one should follow the usage of one’s country, Vedic Śākhā or family. There were two views about the śrāddha on the 11th day. It should be remembered that <a class="ref" href="../refs/yajnavalkya.html#III.22" data-source="yajnavalkya" data-ref="III.22" title="Yājñavalkya III.22">Yāj. III. 22</a> laid down impurity on death for 10, 12, 15 and 30 days respectively for the four varnaṣ One view espoused by Śankha and Paithi- nasi was that in spite of the days of impurity not being over śrāddha must be performed on the 11th day (and for the moment the performer becomes pure for that purpose). The other view was that of the <a class="ref" href="../refs/matsya_purana.html" data-source="matsya_purana" data-ref="" title="Matsyapurāṇa">Matsyapurāṇa</a> and Viśnudharmasūtra 21.1 that the first śrāddha (ekoddista) was to be performed on the expiry of āśauca.</p>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-3">In the case of ascetics dying it is provided by Uśanas<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-14" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-14">14</a></sup> that by the fact of their taking to the order of sannyāsa (of the ekadandi kind in the Kaliyuga) they have not to undergo the condition of being preta, no Ekoddista nor Sapindikarana should be performed for them by their son or other relative but only pārvaṇaśrāddha on the 11th day and every year thereafter. Śatātapa provides<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-15" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-15">15</a></sup> that no Ekoddista, no water, no pinda and no cremation rites should be observed, but pārvaṇa-śrāddha should be performeḍ Pracetas quoted by <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> on <a class="ref" href="../refs/yajnavalkya.html#I.256" data-source="yajnavalkya" data-ref="I.256" title="Yājñavalkya I.256">Yāj. I. 256</a> states that no ekoddista is to be performed for an ascetic nor sapindi- karaṇa, but only pārvaṇa on the day of death every year in Bhādrapada dark half. The Śivapurāṇa (Kailāsa-saṃhitā) chapters 22 and 23 deal with the rites to be performed on an ascetic’s death on the 11th and 12th dayṣ</p>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-4">In the Navaśrāddhas no incense, no lamps are employeḍ All mantras having the words 'pitṛ' and 'svadhā namah' are omitted and so is the word ‘anu’ omitted and there is no japa and no recital of mantras in the hearing of the brāhmaṇas, As stated in the Brahmapurāṇa, the śrāddhas performed in the house at the end of impurity on the 12th day, at the end of a month etc. are called ekoddiṣṭa. It follows that the rites called navaśrāddhas offered during the days of impurity are per- formed at the place of death or in the cemetery or at a place where water and piṇḍa are offered (and not in the house), vide Sṃ C. (aśauca p. 176). In the navamīśra śrāddha mantras are employed according to some. In former times and now also all the 16 śrāddhas are performed on the 11th day. Hardly any one waits for one year to perform Sapiṇḍīkaraṇa. In former times it was laid down (e. g. by the Mit) that in times of difficulty, Sapiṇḍīkaraṇa should be performed even before a year elapses after performing the sixteen śrāddhaṣ But now this exception has become the rule.</p>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-5">Sapiṇḍīkaraṇa or Sapiṇḍana is the reception of a deceased person into the community of pitṛs to whom piṇḍas are offereḍ Several times were prescribed by ancient works for thiṣ Acc to the Kauśitaki gr. IV, 2 this śrāddha could be performed after the death of the deceased at the end of a year or at the end of three fortnights or on the happening of a lucky event (like the birth of a son or a marriage). The Bhāradvāja<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-16" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-16">16</a></sup> gr (III 17) allowed it at the end of a year (after death) or in the 11th or 6th or 4th month or on the 12th day. The Bauḍ Pitṛmedhasūtra II. 12.1 mentions five times for sapiṇḍīkaraṇa viz one year, 11th, 6th or 4th month or 12th day. The <a class="ref" href="../refs/garuda_purana.html" data-source="garuda_purana" data-ref="" title="Garuḍapurāṇa">Garuḍapurāṇa</a> (Pretakhaṇḍa 6 53-54) states the time of Sapiṇḍīkaraṇa to be one year, six months, three fortnights, the 12th day or on a lucky occasioṇ The <a class="ref" href="../refs/vishnu_purana.html" data-source="vishnu_purana" data-ref="" title="Viṣṇupurāṇa">Viṣṇupurāṇa</a> (III. 13. 26ff) makes similar provisions about sapiṇḍīkaraṇa (which is an ekoddiṣṭa śrāddha). <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> (p. 540) after a long discussion holds that there are three times for a performer who is an āhitāgni viz 12th day, some day between the end of āśauca and the first amāvāsyā (after death) or the first amāvāsyā after āśauca ends and prescribes four times for one who has not kept sacred fires, viz a year, six months, three fortnights or when a lucky event occurṣ The Madanapārijāta quotes a verse of Vyāsa that the 12th day is commended (for the sapindana śrāddha) because family usages are innumerable, because man's life is short and because the body is evanescent. The <a class="ref" href="../refs/vishnu_dh.html#21.20" data-source="vishnu_dh" data-ref="21.20" title="Viṣṇu Dharmasūtra 21.20">Viṣṇu Dh S. (21.20)</a> provides that for śūdras 12th day after death is the only day for Sapindi- karana (but without Vedic mantras). Gobhila laid down that after Sapindikarana was performed, there was to be no per- formance of śrāddhas every month, but Gautama (or Śaunaka, according to <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> p 543) held the view that they may be performed according to the procedure of ekoddiṣṭa śrāddhaṣ Bhattoji says <sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-17" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-17">17</a></sup> that when Sapindikarana is performed before the end of the year, then all the sixteen śrāddhas must be per- formed before Sapindikarana, yet the monthly śrāddhas should again be performed at their proper times for one year. <a class="ref" href="../refs/yajnavalkya.html#I.255" data-source="yajnavalkya" data-ref="I.255" title="Yājñavalkya I.255">Yāj. I. 255</a> and <a class="ref" href="../refs/vishnu_dh.html#21.23" data-source="vishnu_dh" data-ref="21.23" title="Viṣṇu Dharmasūtra 21.23">Viṣṇu Dh. S. 21. 23</a> prescribe that even if Sapindi- karana is performed for a deceased person within less than a year from death still for one year food and a jar of water should be given to a brāhmaṇa for the whole year (for the benefit of the deceased). Uśanas provides that even if the heirs of a deceased person are divided in wealth, still the navaśrāddhas, the sixteen śrāddhas, and sapindikarana must be performed by one alone <sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-18" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-18">18</a></sup> (e. g. the eldest son), but Pracetas provides that when a year has (elapsed) śrāddha may be performed separately by each heir <sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-19" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-19">19</a></sup>.</p>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-6">The procedure of Sapindana or Sapindikarana is des- cribed in numerous works such as the Śāṇ gr. V. 9, Kausi- take gr. IV. 2, Baud Pitṛmedhasūtra III. 12.12, Śrāddha-sūtra of <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> (kaṇḍikā 5), <a class="ref" href="../refs/yajnavalkya.html#I.253-254" data-source="yajnavalkya" data-ref="I.253-254" title="Yājñavalkya I.253-254">Yāj. I. 253-254</a>, <a class="ref" href="../refs/vishnu_purana.html#III.13.27" data-source="vishnu_purana" data-ref="III.13.27" title="Viṣṇupurāṇa III.13.27">Viṣṇupurāṇa III. 13.27</a> ff, Vișnu Dh. S. 21. 12-33, Padma (Sṛṣṭikhaṇḍa 10. 22-33), <a class="ref" href="../refs/markandeya.html#28.12-18" data-source="markandeya" data-ref="28.12-18" title="Mārkaṇḍeyapurāṇa 28.12-18">Mārkaṇḍeya-purāṇa 28. 12-18</a>, Garuda-purāṇa I 220, <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>- dharmottara II. 77, Smṛtyarthasāra pp. 57-58, Nirṇayasindhu (III. p. 614). It is briefly set out here. <sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-20" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-20">20</a></sup> As said by Bauḍ Pitrmedhasutra III, 12,12, in this śrāddha there is invitation to the brāhmaṇas the previous day, there is agnaukarana, there is the recital of Vedic texts when the brāhmaṇas are engaged in eating, Vaiśvadeva brāhmaṇas are honoured, the Viśvedevas are Kāma and Kāla (vide ṇ 1018), there is the presentation of incense and lamp, there is svadhā and also namaskāra. Four vessels for arghya should be got ready and filled with sandal-wood paste, water and sesamum grains, one being for the deceased (the preta) and three for his paternal ancestors, two daiva brāhmaṇas should be invited, one to represent the preta and three to represent the three paternal ancestors of the preta; if a man is unable to invite so many brāhmaṇas, he should invite three, one for Viśvedevas, one for the preta and one for the three paternal ancestorṣ He should request 'I shall unite the vessel for the preta with the vessels for his three paternal ancestors' When permitted in the words 'do unite', he should cast the kuśas in the vessel for the preta into the vessels for his three paternal ancestors, should keep a little water mixed with kuśas in the vessel for the preta and distribute the rest of the water from the preta vessel into the three vessels for his ancestors with the two mantras<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-21" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-21">21</a></sup> 'ye samānā' (<a class="ref" href="../refs/vajasaneya.html#19.45-46" data-source="vajasaneya" data-ref="19.45-46" title="Vājasaneya Saṃhitā 19.45-46">Vāj. S. 19. 45-46</a>) Arghya is offered to the brāhmaṇa representing the preta with the water that remains in the preta vessel, arghya is offered to the three pitrya brāhmaṇas from the three pitrya vesselṣ Four pindas should be prepared, one for the preta and three for his ancestors and then the performer requests 'I shall unite the pretapinda with the pindas for the three ancestors of his'; when permitted in the words 'do unite', the performer divides the pretapinda into three parts and puts each third into each of the three pindas with the same two mantras (<a class="ref" href="../refs/vajasaneya.html#19.45-46" data-source="vajasaneya" data-ref="19.45-46" title="Vājasaneya Saṃhitā 19.45-46">Vāj. S 19. 45-46</a>). The <a class="ref" href="../refs/garuda_purana.html#I, 220, 6" data-source="garuda_purana" data-ref="I, 220, 6" title="Garuḍapurāṇa I, 220, 6">Garuḍapurāṇa (I, 220,6)</a> strikes a discordant note in that it states that the pretapinda is to be divided in two parts, each of which is to be placed inside the pindas for pitāmaha and prapitāmaha only. Sapinḍīkaraṇa partakes of the character of both ekoddiṣṭa and pārvaṇa, the first applying to the preta and the 2nd to the three ancestors of the preta, so that in it two kinds of śrāddhas are combineḍ When the sapinḍīkaraṇa rite is completed by the giving of dakṣiṇā to the brāhmaṇas, then the preta ceases to be so and himself becomes a pitṛ. The status of being a preta involves the experiencing of great torments due to hunger and thirst and becoming a pitṛ means being brought in contact with the śrāddha devatās called Vasu, Rudra and Āditya.<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-22" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-22">22</a></sup> The word preta has two meanings, (1) a person who is dead and (2) one who being dead has not the sapinḍīkaraṇa performed for hiṃ The result of sapiṇḍana is that the <sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-23" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-23">23</a></sup> great-grandfather of the deceased whose sapinḍana is performed drops out from the list of pitṛs entitled to pinda and becomes one called 'lepabhāk' (entitled to only wipings of the hand) and the former preta becomes one of the pitṛs and entitled to participate in the pindas offered at a pārvaṇaśrāddha thereafter. As stated in the <a class="ref" href="../refs/garuda_purana.html#I" data-source="garuda_purana" data-ref="I" title="Garuḍapurāṇa I">Garuḍapurāṇa I</a> 220. 2 the sapiṇḍīkaraṇa-śrāddha is to be performed like the pārvaṇa in the afternooṇ</p>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-7">It may be noted that in some works the mantras recited at the time of pouring the water from the preta vessel into the pitṛ vessels are different. For example, the <a class="ref" href="../refs/vishnu_dh.html#21.14" data-source="vishnu_dh" data-ref="21.14" title="Viṣṇu Dharmasūtra 21.14">Viṣṇu Dh. S. 21. 14</a> says<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-24" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-24">24</a></sup> the mantras are 'Samsṛjatu tvā pṛthivi' (May the earth unite thee) and 'samānī vā ākutiḥ' (<a class="ref" href="../refs/rigveda.html#X.191.4" data-source="rigveda" data-ref="X.191.4" title="Ṛgveda X.191.4">Rg. X. 191. 4</a>), while the Grhya-pariśiṣṭa <sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-25" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-25">25</a></sup> of Āśv. employs the three Madhumati verses (<a class="ref" href="../refs/rigveda.html#I.90.6-8" data-source="rigveda" data-ref="I.90.6-8" title="Ṛgveda I.90.6-8">Rg. I. 90.6–8</a>) and the three fine verses at the end of the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> beginning with ‘sangacchadhvam’ (<a class="ref" href="../refs/rigveda.html#X.191.2-4" data-source="rigveda" data-ref="X.191.2-4" title="Ṛgveda X.191.2-4">Ṛg. X. 191. 2-4</a>, ‘May you unite’ &c.).</p>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-8"><a class="ref" href="../refs/yajnavalkya.html#I.254" data-source="yajnavalkya" data-ref="I.254" title="Yājñavalkya I.254">Yāj. (I. 254)</a> and Mārkaṇḍeya (28. 17-18) provide that Ekoddiṣṭa and Sapinḍīkaraṇa śrāddhas are performed for women also (but, not pārvaṇa nor abhyudayika). About the Sapinḍīkaraṇa of the mother there are somewhat conflicting dicta. If a woman dies sonless and her husband is alive, her sapinḍana is effected with her mother-in-law (Gobhilasmṛti II, 102). If a woman dies leaving no son and the husband also is dead, then no sapindana can be performed for her. If she died either on the funeral pyre of her husband <sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-26" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-26">26</a></sup> or afterwards (as a Satī) then her son should perform her sapindana with her husband (i. e. the son’s father) and there is no separate sapin- dāna for her. If she was married in the āsura form or she was made a putrikā, then the son should perform his mother’s sapin- dāna with his maternal grandfather; while a son born of a woman married in the Brāhma and three other proper forms may perform her sapindana with her husband or the paternal grandmother or the maternal grandfather. In the case of these three alternatives if there is a certain family usage that should be followed; otherwise there is an optioṇ If a woman has a step-son, the latter should perform her sapindana with his father, as <a class="ref" href="../refs/manu.html#IX.183" data-source="manu" data-ref="IX.183" title="Manusmṛti IX.183">Manu IX. 183</a> (= Vaṣ 17. 11) indicateṣ Vide the Mit on Yāj I. 253-254 and Sṃ C. (on āśauca p 169) for discus- sion of these points and for various alternatives <sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-27" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-27">27</a></sup></p>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-9">The Nirnayasindhu (III, p. 388) says that there is no sapindana for one whose upanayana was not performed when IV] Sapindikarana he died, but if he was more than five years old then the 16 śrāddhas are performed for him (though not sapindana) and pinda is offered on bare grounḍ It may be noted that no auspicious rite like marriage in which ābhyudayika is necessary can be performed until the sapindana of a deceased person of the family has been effected (except in the case of such absolutely necessary ceremonies as simantonnayana).</p>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-10"><a class="ref" href="../refs/manu.html#V.89-90" data-source="manu" data-ref="V.89-90" title="Manusmṛti V.89-90">Manu (V. 89-90)</a> prescribes that no water and other rites like sapindikarana are offered and performed for those who had left off their faith, who were born of condemned mixed marriages, who entered ascetic orders, who had committed suicide (by hanging, poison &c.), who had embraced heretical doctrines, for women that wilfully seek illicit connection with men, that did harm to their foetus or husband (were guilty of abortion and murder of husband) and that were addicted to drinking surā. <a class="ref" href="../refs/yajnavalkya.html#III.6" data-source="yajnavalkya" data-ref="III.6" title="Yājñavalkya III.6">Yāj. III. 6</a> contains similar provisionṣ It has to be noted that every kind of suicide is not condemned by the ancient smṛtis Vide <a class="ref" href="../refs/hodh.html#vol. III" data-source="hodh" data-ref="vol. III" title="History of Dharmaśāstra vol. III">H. of Dh. vol. III</a>, pp. 939, 958-9 for cases where suicide was not condemneḍ Except in those cases Yama (q by the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> on <a class="ref" href="../refs/yajnavalkya.html#III.6" data-source="yajnavalkya" data-ref="III.6" title="Yājñavalkya III.6">Yāj. III. 6</a>) provides that in the case of the persons mentioned in <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> and <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yāj.</a> there is to be no āśauca observed, no water offered, no tears shed, no cremation and no last riteṣ The <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> (on <a class="ref" href="../refs/yajnavalkya.html#III.6" data-source="yajnavalkya" data-ref="III.6" title="Yājñavalkya III.6">Yāj. III. 6</a>) quotes Vṛddha <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yājñavalkya</a> and Chāgaleya that in the case of those who are guilty of condemned suicide the procedure of Nārāyaṇabali should be resorted to after a year and then śrāddha may be offered to theṃ Then the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> describes at length the procedure of Nārāyaṇabali. Vide note 838 b p. 370 above for the <a class="ref" href="../refs/skanda_purana.html" data-source="skanda_purana" data-ref="" title="Skandapurāṇa">Skandapurāṇa</a>, Nāgarakhanda 219, 19–21 on the view that śrāddha may be performed on the 14th of the dark half for persons who committed suicide or who met a violent death.</p>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-11">The Ābhyudayika-śrāddha is to be now describeḍ Āśv. gr. IV. 7 mentions in one place only four śrāddhas viz. Pārvaṇa, Kāmya, Ābhyudayika and Ekoddiṣṭa (note 966 above). Many of the sūtras such as Āśv. gr. II. 5. 13-15, Sāṅ. gr. IV. 4, Gobhila gr. IV. 3. 35-37, Kauśitaki gr. IV. 4, Bauḍ gr. III. 12. 2-5, the Śrāddhasūtra of <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> (kandikā 6) briefly describe this śrāddha. According to most of these sūtras this śrāddha is performed when there is a lucky event such as the birth of a son, or his caula, upanayana or marriage or there is the commencement of a charitable (pūrta) act (such as the dedication of a well or a tank or a park to the public). Āśv. gr. and Gobhila gr. are very brief. They say that in this śrāddha performed on auspicious occasions or on the undertaking of meritorious acts an even number of brāhmaṇas is to be fed, that the rite is to be performed from left to right and that yavas (barley) are to be used instead of sesamum grainṣ As this śrāddha is only a modification (vikṛti) of pārvana (as said by <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> p. 514) all rules of the latter will be applicable to the former except where special directions are giveṇ The Āśv. gr. pariśiṣṭa II. 19, Smṛtyarthasāra (p. 56), Pitṛdayitā pp. 62-71 give a compact but tolerably full description of this śrāddha.</p>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-12">In this śrāddha which is to be performed in the morning (except on the birth of a son when it is to be done at once) the Viśve-devas are called Satya and Vasu, it is performed in the forenoon, the brāhmaṇas to be invited must be even in number, the darbhas are to be straight (and not doublefolded) and are not to be with their roots; the performer wears his sacred thread in the usual form (and not in the prācīnāvīta form), all actions are to be done from left to right (pradakṣiṇam and not prasavyam); the word svadhā is not to be used; yava grains are to be employed instead of sesamum grains, he invites them with the words 'find time to attend Nāndīśrāddha'. The brāhmaṇas say 'be it so'. He says 'May you two come (to my house)'; they reply 'we two shall come'. The performer faces the east or north (but never the south); the mantra about yavas is 'yavoṣi' (vide note 966)<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-28" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-28">28</a></sup> he requests 'I shall invoke the pitṛs called Nāndīmukha'.<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-29" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-29">29</a></sup> When permitted by the brāhmaṇas in the words 'do invoke' he says 'may the Nāndīmukha pitṛs be pleased'; he offers arghya only once with the words 'O Nāndīmukha pitṛs! this is the arghya for you'. Sandalwood paste, incense, lamp are to be given twice; the homa is made on the hand of the brāhmaṇa, the two mantras being 'to Agni, the bearer of kavyal svāhā' and 'to Soma accompanied by the pitṛs! svāhā'. While the brāhmaṇas are eating the dinner, the Rākṣoghna mantras and mantras addressed to Indra and propitiatory mantras may be recited but not the mantras addressed to pitṛs (viz. <a class="ref" href="../refs/rigveda.html#X.15.1-13" data-source="rigveda" data-ref="X.15.1-13" title="Ṛgveda X.15.1-13">Rg. X. 15. 1-13</a>); when he sees that the brāhmaṇas are satiated, he recites the five verses (<a class="ref" href="../refs/rigveda.html#IX.11.1-5" data-source="rigveda" data-ref="IX.11.1-5" title="Ṛgveda IX.11.1-5">Rg. IX. 11. 1-5</a>) beginning with ‘upāsmiai gāyatā narāḥ’ (O men! sing for this soma) instead of the Madhumati verses (viz. <a class="ref" href="../refs/rigveda.html#I.90.6-8" data-source="rigveda" data-ref="I.90.6-8" title="Ṛgveda I.90.6-8">Rg. I. 90. 6-8</a>) and at the end he makes the brāhmaṇas hear the mantra ‘the pitṛs have partaken (of the food), they have regaled themselves’. The performer should ask ‘I shall request the nāndīmukha pitṛs to utter benedictions’ at the stage where (in Pārvana) ‘akṣayyodaka’ is asked for, to which the brāhmaṇas respond with the words ‘do request.’ The performer employs the word ‘sampannam’ (was it perfect) in asking about the gratification of the brāhmaṇas, who reply with the word ‘susampannam’ (it was quite perfect). On the brāhmaṇas sipping water after their dinner, he cowdungs the places where the dinner was taken, strews darbha grass thereon with their tips turned towards the east and offers thereon two piṇḍas for (each of the ancestors) made with the food that remains after the brāhmaṇas have eaten mixed with curds, jujube fruit and prsadājya <sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-30" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-30">30</a></sup> (mixture of curds and clarified butter). The piṇḍas are offered to the mātṛs, to the three paternal ancestors and the three maternal ancestors (viz. mother’s father, mother’s paternal grandfather and her maternal great-grandfather). Some do not offer piṇḍas in this śrāddha (as stated by Āśv. gr. parisista II. 19). The Pitṛdayitā and Śrāddha-tattva (Jiv. p. 297) say that no mātṛśrāddha is to be performed in Abhyudayikāśrāddha by the followers of the Sāmaveda. It is possible that the śrāddha for the mother, paternal grandmother and paternal great-grandmother was inspired by the Anvastakya śrāddha, as the sūtras from Āśv. gr. quoted below will indicate.<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-30" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-30">30</a></sup></p>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-13">The words Nandiśrāddha and Vṛddhiśrāddha are synonymouṣ When Yaj I, 250 says<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-31" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-31">31</a></sup> that the Nāndimukha pitṛs should be worshipped with piṇḍas when there is vṛddhi (a lucky or auspicious event), he indicates that Nandiśrāddha and Vṛddhi- śrāddha mean the same thing. As noted by the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> on Yaj. I. 250 quoting Śātātapa this śrāddha is made of three parts, viz. mātṛ-śrāddha, pitṛśrāddha and mātāmahaśrāddha.<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-32" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-32">32</a></sup> On the other hand the Bhavisya-purāṇa I, 185. 15 states that there are two śrāddhas in this viz Mātṛ-śrāddha and Nandimukha-pitṛśrāddha. Abhyudayika-śrāddha and Vṛddhiśrāddha are treated as synonyms in some works such as the <a class="ref" href="../refs/padma_purana.html" data-source="padma_purana" data-ref="" title="Padmapurāṇa">Padmapurāṇa</a>,<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-33" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-33">33</a></sup> though it may be said that Abhyudayika śrāddha is wider in import than Vṛddhiśrāddha, since it is also applicable to śrāddha performed on the commencement of a pūrta act.</p>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-14">The <a class="ref" href="../refs/vishnu_purana.html#III.13.2-7" data-source="vishnu_purana" data-ref="III.13.2-7" title="Viṣṇupurāṇa III.13.2-7">Viṣṇupurāṇa III. 13. 2–7</a>, Mārkaṇḍeya 28. 4–7, <a class="ref" href="../refs/padma_purana.html" data-source="padma_purana" data-ref="" title="Padmapurāṇa">Padma-purāṇa</a> (sṛṣṭi 9. 194–199), Bhavisyapurāṇa I 185. 5–13, the <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharmottara I. 142. 13–18 describe briefly the procedure of Nāndīśrāddha and also the occasions on which it is to be performeḍ The occasions specified are<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-34" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-34">34</a></sup>: on the marriages of sons and daughters, on entering a new house, on naming a child, at the time of Cūḍākarma, at Sīmantonnayana, on the birth of a son, a householder should honour the group of pitṛs called Nāndī-mukha. The <a class="ref" href="../refs/markandeya.html#28.6" data-source="markandeya" data-ref="28.6" title="Mārkaṇḍeyapurāṇa 28.6">Mārkaṇḍeya-purāṇa 28. 6</a> notes that some desire that this śrāddha should not have Vaiśvadeva brāhmaṇas, but the <a class="ref" href="../refs/padma_purana.html" data-source="padma_purana" data-ref="" title="Padmapurāṇa">Padmapurāṇa</a> (sṛṣṭikhaṇḍa 9.195) says that in this Vṛddhi-śrāddha the mothers are to be first honoured, then the fathers, then the mātāmahas and then the Viśve-devas Hemādri (śr. p. 107) quotes two verses from the Brahmapurāṇa to the effect that the father, paternal grandfather and paternal great-grand-father are called asrumukha pitrs, while the three paternal ancestors beyond the great-grandfather are called Nāndimukha pitrṣ<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-35" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-35">35</a></sup> The Kalpataru (on śrāddha p 270) explains these verses as meaning no more than this that in case the three paternal ancestors of a man are living and there is a lucky event, then the devatās for Nāndīśrāddha in his case would be the three paternal ancestors beyond the great-grandfather. The Bhavisya-purāṇa notes that according to family usage some did not offer pindas in Vṛddhiśrāddha.<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-36" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-36">36</a></sup></p>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-15">The word mātaraḥ' has two meaningṣ Gobhilasmṛti<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-37" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-37">37</a></sup> prescribes that at the beginning of all rites the Mātrs together with Gaṇeśa have to be worshipped and it names fourteen mātṛs such as Gaurī, Padma, Śacī (I 11–12),<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-38" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-38">38</a></sup> In the <a class="ref" href="../refs/markandeya.html" data-source="markandeya" data-ref="" title="Mārkaṇḍeyapurāṇa">Mārkaṇḍeya-purāṇa</a> (88,11–20 and 38) they are said to be seven viz Brahmāṇī and otherṣ Vide <a class="ref" href="../refs/hodh.html#vol. II pp. 217–218" data-source="hodh" data-ref="vol. II pp. 217–218" title="History of Dharmaśāstra vol. II pp. 217–218">H. of Dh. vol. II pp. 217–218</a> for the Mātrs and their worship.<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-39" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-39">39</a></sup> <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> (p. 517) quotes verses to the effect that in Vṛddhiśrāddha one must offer worship to the seven mātṛs (Brahmāṇī and others), then to one's mother, paternal grandmother, and paternal great-grandmother, then to the Nāndīmukha pitṛs and then to the mātāmahas together with their wives The Śrāddhaprakāśa (of Viramitrodaya) quotes Vṛddha-<a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> to the effect that in the Mātṛśrāddha (as part of Vṛddhi-śrāddha) if a sufficient number of brāhmaṇas be not available then for the groups of mātṛs and of mātāmahīs four women (for each group) whose husbands are living and who have a son or sons should be invited to dinner <sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-40" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-40">40</a></sup> and honoureḍ</p>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-16">The Pratsaṁatsarka or Pratyābdika śrāddha has already been described above at great length. It is to be performed every year on the day of death (Gobhilasmṛti III, 66). It is laid down that in the case of one's parents this śrāddha par-takes of the character of pūrvana.<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-39" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-39">39</a></sup> The Bhavisya-purāṇa and Skanda state that the Sāṁvatsarika śrāddha is the most eminent among śrāddhas and that if a son does not perform the yearly śrāddha of his parents on the day of death he goes to the horrible Hell called Tāmisra and then is born as a pig in a towṇ<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-41" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-41">41</a></sup> In connection with this, if the tithi or month of death or both are not known then <a class="ref" href="../refs/brihaspati.html" data-source="brihaspati" data-ref="" title="Bṛhaspati">Bṛhaspati</a>, the <a class="ref" href="../refs/skanda_purana.html" data-source="skanda_purana" data-ref="" title="Skandapurāṇa">Skandapurāṇa</a>, Padma and Bhavisyapurāna lay down certain rules, viz.<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-42" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-42">42</a></sup> (1) if the tithi is known but the month is not known, then the śrāddha should be performed on that tithi in the month of Mārgaśīrsa or Māgha; (2) if the month is known but the tithi is not known, then the śrāddha should be performed on the amāvāsyā of the month; (3) if both the tithi and the month are not known, then one should take the tithi and the month when the deceased started from home; (4) if even the day and month of starting be not known, then the tithi and month in which a person hears of the death of a relative should be takeṇ It is to be noted that the month in pitrya rites is lunar and the words 'dina, ahah, vāsara' in connection with pitrya rites mean 'tithi' (<a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> p. 545). There is no pratyabdika śrāddha in an intercalary month (Skanda VII. 1. 206. 59).</p>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-17">A few words may now be said about some other śrāddhaṣ</p>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-18">A well-known śrāddha is the Mahālayāśrāddha. Some of the purāṇas deal with thiṣ The <a class="ref" href="../refs/padma_purana.html" data-source="padma_purana" data-ref="" title="Padmapurāṇa">Padmapurāṇa</a> (Srsti-khanda) says 'In the fifth fortnight (paksa) beginning from the Full Moon day of Āsādha, one should perform a śrāddha, whether the Sun is by that time in the zodiacal sign of Kanyā (Virgo) or not. The sixteen days when the Sun is in Kanyā are equal to the solemn sacrifices which are completed with the gift of the best of dakṣiṇāṣ If it is not possible to perform the śrāddha in the dark half (when the Sun is in Kanyā), one may perform it when the Sun is in Tulā (Balance). When the Sun enters the sign of Scorpion (without a śrāddha being performed), the Fathers go away losing all hope and after pronouncing a terrible curse (on their descendants) they return to their abode.<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-43" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-43">43</a></sup> The fifth fortnight from the Full Moon day of Āṣādha is the dark half of Bhādrapada. The dark half is the preserve of pitṛṣ In Bhādrapada the Sun is in the middle of its apparent motion in dakṣiṇāyana. Therefore the dark half of Bhādrapada is specially chosen as the best period for śrāddha to the pitṛs i. e. for the Mahālaya The śrāddha performed in Bhādrapada dark half is called Mahālaya-śrāddha, since that fortnight is the abode (<em>ālaya</em>) as it were of the <em>maha</em> (i. e. festival day) for pitṛṣ The real idea is that the dark half of Bhādrapada is specially to be welcomed for a śrāddha when the Sun is in Kanyā during that fortnight and that even if the Sun is not in Kanyā the dark half of Bhādrapada is still a good time for a śrāddha to the pitṛṣ The <a class="ref" href="../refs/skanda_purana.html" data-source="skanda_purana" data-ref="" title="Skandapurāṇa">Skandapurāṇa</a><sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-44" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-44">44</a></sup> also says 'In the fifth fortnight from the Full Moon of Āṣādha, when the Sun occupies the sign of Kanyā, the pitṛs of him who offers a śrāddha on the tithi of the death (of one's father) certainly derive gratification for one year thereafter.' The Kalpataru quotes the Bhaviṣyapurāṇa to the effect that if a man has not performed śrāddha in Mahālaya (i. e. in the dark fortnight of Bhādrapada when the Sun is in the sign of Kanyā) he should offer it on the 15th day (of the dark half of Āśvina) on which, it is well-known, lamps are lighteḍ<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-45" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-45">45</a></sup> The Śrāddha-sāra (p. 113) and the Smṛtimukta-phala (on śrāddha p. 745) quote Vṛddha-manu to the effect that the latter half of Bhādrapada when the Sun is in Kanyā is called Mahālaya and also Gajacchāyā. Various views are held on the question of the exact day on which the Mahālayaśrāddha is to be performed, viz. it may be performed on any day from the first tithi of the dark half of Bhādrapada to the amāvāsyā or from the fifth of the dark half to the amāvāsyā of Bhādrapada or from the 8th or 10th of the dark half to amāvāsyā or from the 5th of the dark half of Bhādrapada to the 5th of the next fort-night or on any day on which the Sun is in Kanyā or on any day till the Sun enters Scorpioṇ<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-46" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-46">46</a></sup> Prajāpati states that there are numerous śrāddhas described by the Purāṇas, all of them yield rewards but the Mahālaya (śrāddha) is the most eminent among theṃ<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-47" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-47">47</a></sup></p>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-19">The Mahālayaśrāddha is to be performed, as stated by the <a class="ref" href="../refs/markandeya.html" data-source="markandeya" data-ref="" title="Mārkaṇḍeyapurāṇa">Mārkaṇḍeyapurāṇa</a>, in accordance with the procedure of Pārva-ṇaśrāddha.<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-48" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-48">48</a></sup> The Smṛtyarthasāra states that if it is not possible to perform all śrāddhas (except sapiṇḍīkaraṇa) according to the detailed procedure of Pārvaṇaśrāddha they should be performed by the procedure called ‘Saṅkalpavidhi’, which consists in performing the details laid down for Pārvaṇa as far as possible except the details of āvāhana, arghya, homa and piṇḍadāna.<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-49" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-49">49</a></sup> The Madanapārijāta (pp 609-610) also states that when a man has to perform a ‘saṅkalpa-śrāddha’ he need not go through the details of arghyadāna, vikira and there is no āvāhana, no agnaukaraṇa and no piṇḍadāna even, but he has simply to feed a brāhmaṇa or brāhmaṇas In the Mahālayāśrāddha the Viśvedevas are Dhuri and Locana. This śrāddha is performed for the benefit not only of the paternal and maternal ancestors with their wives, but also for other relatives and persons that are dead (together with their wives, sons and husbands if these be dead) viz one's step-mother, one's wife, son, daughter, paternal uncle, maternal uncle, brother, paternal aunt and maternal aunt, sister, paternal uncle's son, son-in-law, sister's son, father-in-law, mother-in-law, ācārya, upādhyāya, guru, friend, pupil and any other relative.<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-50" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-50">50</a></sup> Some perform only for the paternal ancestors with their wives and the maternal ancestors with their wiveṣ The day on which the moon is in Bharani nakṣatra in the dark half of Bhādrapada is called Mahābharaṇī and śrāddha performed on that day is said to be equal to Gayāśrāddha (<a class="ref" href="../refs/matsya_purana.html" data-source="matsya_purana" data-ref="" title="Matsyapurāṇa">Matsyapurāṇa</a> q. by Śr. K. L p 99) The Mahālaya-śrāddha is to be performed on the 12th tithi of Bhādrapada dark half in the case of a sannyāsin and on no other tithi and his yearly śrāddha is to be performed by his son according to pārvana method as in the case of householderṣ The dvādaśī is sacred to <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> and yatis always repeat the words ‘namo Nārāyaṇāya ’ and therefore the 12th is the special tithi for the mahālaya-śrāddha of yatiṣ The Mahālayāśrāddha is not to be performed in an intercalary month (malamāsa).</p>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-20">Two more śrāddhas that are performed even to this day may be mentioned here. One is called ‘Mātāmahāśrāddha’ or ‘Dauhitra-pratipad-śrāddha’. A daughter's son whose parents are alive can alone perform a śrāddha for his maternal grand-father (together with the maternal grand-mother if she also be dead) on the first tithi of the bright half of Āśvina <sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-51" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-51">51</a></sup>. A daughter's son can perform it even if his maternal grand-father has a son or sons living It may be performed with or without piṇḍadāna (generally without it) and it may be performed even if the daughter's son has not been invested with the sacred threaḍ The Śrāddhasāra notes that the mātāmaha-śrāddha is based only on the usage of śiṣṭas (p. 24).</p>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-21">Another is the ‘Avidhavānavamīśrāddha’, which is performed for one's mother or other women of the family who died while the husbands were alive. It is performed on the 9th of the dark half of Bhādrapada. It ceases to be performed when the husband dies after the woman's death. The Nirnayasindhu notices several views about this and says that one should follow the usage of one's country <sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-52" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-52">52</a></sup>. According to the <a class="ref" href="../refs/markandeya.html#i" data-source="markandeya" data-ref="i" title="Mārkaṇḍeyapurāṇa i">Mārkaṇḍeyapurāṇa i</a>n this śrāddha not only a brāhmaṇa but also a woman whose husband is alive is to be fed and presents of a girdle, a garland and bangles are to be made to her.</p>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-22">It will have been seen from the translation of Āśv. gr., Yaj and the <a class="ref" href="../refs/padma_purana.html" data-source="padma_purana" data-ref="" title="Padmapurāṇa">Padmapurāṇa</a> that dakṣiṇā, according to one's ability, has to be given in each śrāddha towards the end of the rite. The <a class="ref" href="../refs/skanda_purana.html#VI.218.12-14" data-source="skanda_purana" data-ref="VI.218.12-14" title="Skandapurāṇa VI.218.12-14">Skandapurāṇa (VI. 218. 12-14)</a> provides that whatever is wanting in mantras or the proper time or in procedure becomes perfect by dakṣiṇā. Śrāddha without dakṣiṇā is like rain on an arid place or like dancing in the dark or like singing before a deaf person, that he who desires the permanent gratification of himself and his Manes should not offer a śrāddha without dakṣiṇā. The <a class="ref" href="../refs/ramayana.html" data-source="ramayana" data-ref="" title="Rāmāyaṇa">Rāmāyaṇa</a> shows how on the 12th day after the death of king Daśaratha gifts of jewels, of hundreds of cows, wealth, food in abundance and vehicles, of male and female slaves, of spacious houses were made to the brāhmaṇaṣ <sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-53" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-53">53</a></sup> The <a class="ref" href="../refs/mb_ashramavasika.html" data-source="mb_ashramavasika" data-ref="" title="Āśramavāsikaparva">Āśramavāsikaparva</a><a href="https://sanatana.in/mbta/listing/parva/ashramavasikaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> (14 3-4) recounts the valuable gifts to brāhmaṇas in honour of Bhīṣma, Droṇa, Duryodhana and other fallen warriors, adding that persons of all varṇas were treated to profuse food and drink. The <a class="ref" href="../refs/vayu_purana.html" data-source="vayu_purana" data-ref="" title="Vāyupurāṇa">Vāyupurāṇa</a> (chapter 80) propounds in great detail the rewards of various kinds of gifts made in śrāddhaṣ From considerations of space those descriptions are passed over here and only a brief eulogy of the gift of cooked food is given in the note below. <sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-54" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-54">54</a></sup> The <a class="ref" href="../refs/mb_shantiparva.html" data-source="mb_shantiparva" data-ref="" title="Śāntiparva">Śāntiparva</a><a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> (chap 42. 7) states that while Yudhisthira performed the after-death ceremonies of the fallen heroes he erected sabhās, prapās, water reservoirs and the like intending them for each separately. Devala stateṣ ‘when the brāhmaṇas have sipped water after dinner, dakṣiṇā is to be given’ and <a class="ref" href="../refs/brihaspati.html" data-source="brihaspati" data-ref="" title="Bṛhaspati">Bṛhaspati</a> prescribes ‘Dakṣiṇā should be given to all the brāhmaṇas according to the learning of them by means of (gifts of) cows, land, gold, clotheṣ He should do this in such a way that they feel satisfied, one who is well-off should do this specially.’<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-55" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-55">55</a></sup> The <a class="ref" href="../refs/mb_ashvamedhika.html#62.2-5" data-source="mb_ashvamedhika" data-ref="62.2-5" title="Āśvamedhikaparva 62.2-5">Āśvamedhika-parva (62. 2-5)</a><a href="https://sanatana.in/mbta/listing/parva/ashwamedhikaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> states that Vāsudeva offered śrāddha to his sister’s son Abhimanyu and donated to sixty thousand brāhmaṇas, gold, cows, bed-steads, clothes and fed theṃ A special rule was provided by <a class="ref" href="../refs/brihaspati.html" data-source="brihaspati" data-ref="" title="Bṛhaspati">Bṛhaspati</a> that the clothes, ornaments, bed-stead and the like, the horse and the like that were used by the father during his lifetime should be presented to the brāhmaṇa invited for śrāddha after honouring him with sandalwood paste and flowerṣ<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-56" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-56">56</a></sup> The <a class="ref" href="../refs/mb_anushasana.html" data-source="mb_anushasana" data-ref="" title="Anuśāsanaparva">Anuśāsana-parva</a><a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> (chap. 96) states the origin of the practice of giving an umbrella and sandals on the completion of a śrāddha.</p>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-23">Something must be said about the gift of the bed-stead (śayyā) used by the deceased on the 11th or 12th day after death. The <a class="ref" href="../refs/garuda_purana.html" data-source="garuda_purana" data-ref="" title="Garuḍapurāṇa">Garuḍapurāṇa</a> (Pretakhaṇḍa 34. 69-89 ), Padma (sṛṣṭikhaṇḍa 10. 12 ), the <a class="ref" href="../refs/matsya_purana.html" data-source="matsya_purana" data-ref="" title="Matsyapurāṇa">Matsyapurāṇa</a> highly eulogise the gift of śayyā to a brāhmaṇa and his wife. The <a class="ref" href="../refs/matsya_purana.html" data-source="matsya_purana" data-ref="" title="Matsyapurāṇa">Matsyapurāṇa</a> states that on the 2nd day after the end of impurity on death the performer (of śrāddha) should donate a bed-stead possessing special characteristics; on it the golden image of the deceased should be placed and also fruits and clotheṣ After honouring a brāhmaṇa couple with many ornaments this should be done; then a bull should be let loose (for the benefit of the deceased) and the gift of a dark brown cow should also be made.<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-57" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-57">57</a></sup> The <a class="ref" href="../refs/garuda_purana.html" data-source="garuda_purana" data-ref="" title="Garuḍapurāṇa">Garuḍapurāṇa</a> (Pretakhaṇḍa 34. 73-82 ) gives a more elaborate description which appears to be almost identical with the verses of the Bhavisya quoted by Hemādri. The Bhavisya-purāṇa quoted by Hemādri ( and from Hemādri by the Nirnaya-sindhu p. 596 ) states the mantra to be recited viz ‘just as the bed-stead of Kṛṣṇa is never devoid of Lakṣmī, the daughter of the ocean, similarly my bed may not be empty in each birth that I may have to undergo.’<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-58" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-58">58</a></sup> Acceptance of the gift of a śayyā was looked down upon in former times and even how it is only the poor brāhmaṇas ( that are not generally learned ) that accept this gift The <a class="ref" href="../refs/padma_purana.html#c" data-source="padma_purana" data-ref="c" title="Padmapurāṇa c">Padmapurāṇa c</a>ondemns the accept-ance of the gift of śayyā in no measured termṣ It says ‘when a brāhmaṇa accepts the gift of a bed-stead, he should have to undergo the ceremony of upanayana agaiṇ In the Veda as well as in the Purāṇa ( the gift of ) a bed-stead is everywhere condemned and all those who accept the gift go to hell.’<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-59" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-59">59</a></sup></p>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-24">Certain other matters connected with śrāddhas may be briefly touched upoṇ In very ancient times twelve kinds of sons were recognized out of whom the kṣetraja,<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-60" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-60">60</a></sup> the putrikā-putra and dattaka were most important All these were the sons of two fatherṣ The question mooted was : to whom were they to offer pindas ? The Madanapārijāta (pp 607-608) quotes a passage from the Hārīta-dharmasūtra <sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-61" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-61">61</a></sup> and explains it. Harita sayṣ 'seed does not grow without a field Since it is seen that both are necessary the child born is the child of both. Out of the two ( fathers ) the procreator is to be first invoked (and then the kṣetrin ). He (the son) may offer two piṇḍas to each grade of the ancestors or he may offer a single piṇḍa (to the father and) may repeat the names of both (fathers) as to that single piṇḍa. The son (of the son of two fathers) may repeat two names as to the 2nd piṇḍa (i. e. the piṇḍa for paternal great-grandfather); the grand-son (of the son of two fathers) may do the same as to the third piṇḍa (viz. the piṇḍa for paternal great-grandfather ).’ <a class="ref" href="../refs/manu.html#IV.140" data-source="manu" data-ref="IV.140" title="Manusmṛti IV.140">Manu IV. 140</a> and Gobhila-smṛti II. 105 say about the putrikāputra <sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-62" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-62">62</a></sup> that he presents the first piṇḍa to his mother (as she was appointed as a son), the 2nd to her father and the third to his father’s father. This appears to be one order in which piṇḍas are to be offered by the putrikāputra, while <a class="ref" href="../refs/manu.html#IX.132" data-source="manu" data-ref="IX.132" title="Manusmṛti IX.132">Manu IX. 132</a> sets out another method since it says that a putrikāputra inherits the entire wealth of his own father if he is sonless and he gives two piṇḍas (i. e. performs two śrāddhas) for his own father and for his maternal grandfather. The Śāṇ Śr. S. provides <sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-63" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-63">63</a></sup> that if there be two fathers, the son should recite the names of both (bījin and kṣetrin) with reference to the same piṇḍa. Even <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yāj.</a> says ‘The son procreated according to the rules of niyoga by a sonless man on the wife of another inherits the wealth of both and offers piṇḍa to both.’ <sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-64" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-64">64</a></sup> The <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> adds that if a person appointed to procreate a son on another’s wife has a son, then the son so begotten becomes the son of the kṣetrin alone and not of the bījiṇ As the kṣetraja and putrikā- putra have become obsolete for several centuries the subject has only an academic interest now. But the dattaka is still in vogue and a few words must be said here about the persons to whom the dattaka offers piṇḍaṣ The Kalpataru quotes from the Pravarādhyāya a passage on this point which is as follows:<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-65" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-65">65</a></sup> ‘If these (i. e. those who are bijin) have no issue born of their own wives, (the sons begotten by niyoga or given in adoption) should inherit their wealth and offer piṇḍas to them up to three ancestors; if both (the bijin and kṣetrin or the giver and taker in adoption) should offer piṇḍa to both, in one and the same śrāddha they should repeat (the names of) the two ancestors respectively (of the acceptor and that of the begetter) after having separately intended the same piṇḍa for both up to the third ancestor.' The Bauḍ Dh. S, <sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-66" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-66">66</a></sup> quotes a verse as follows ‘The son of two fathers shall give the piṇḍa (to his two fathers and pronounce) two names with each piṇḍa; three piṇḍas will thus serve for six persons (ancestors).' It would be seen from the passage quoted above from Hārīta that some authorities allowed two separate piṇḍas for each degree of 142 lays down ‘the son given should not take the gotra and wealth of his natural father, the piṇḍa follows the gotra and wealth; the svadhā (obsequies) of him who gives (his son in adoption) cease or fail (so far as that son is concerned).' This verse has been so interpreted by some decisions of the High Courts and of the Privy Council as to mean that the son adopted becomes totally severed from the family of his birth. This subject has been discussed at great length in <a class="ref" href="../refs/hodh.html#vol III pp 690-697" data-source="hodh" data-ref="vol III pp 690-697" title="History of Dharmaśāstra vol III pp 690-697">H. of Dh. vol III pp 690-697</a> and it is established there that the severance of the son given in adoption is only partial, that the gotra of natural family persists even after adoption into another family for purposes of marriage and āśauca and that the Nirṇayasindhu, <sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-67" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-67">67</a></sup> the Dharma-sindhu and the Dattaka-candrikā declare that the son given away in adoption into another family can perform the śrāddha of his natural father, if the latter has no son at the time of his death and can also take his wealth.</p>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-25">Vrsotsarga (the letting loose of a bull). This topic has been dealt with by several sūtra works such as the Śāṇ gr. III. 11, the Kauśitakī gr. III 11 (in Benaras S. S. and III. 6 in Madras University Series), Kāthaka gr. 59, 1 ff., Pāraskara gr. III, 9, <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>-dharmasūtra, chap. 86. 1–20. In numerous works some verses called gāthās sung by the pitṛs are set out one of which expresses the yearning of the pitṛs as follows: <sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-68" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-68">68</a></sup> ‘one should desire to have many sons; since if even one (of the sons) goes to Gayā (and offers śrāddha after his father’s death) or if he performs a solemn horse sacrifice or lets loose a dark-coloured bull (the man having such a son will secure final release)’. The description in the <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharmasūtra being tolerably full is set out here; <sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-69" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-69">69</a></sup> “(This ceremony) takes place on the full moon day in Kārtika or Āśvina In this rite he must first examine the bull The bull must be the offspring of a milch cow having young ones living, he must have all auspicious marks (i. e. must not be deficient in any limb), must be dark- coloured <sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-70" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-70">70</a></sup> or red but having a white mouth, white tail, white feet and white horns, he must be one that can protect the herd (or that throws into the background by his height all the herd). Then after having kindled a blazing fire among the cows (in the cowpen) and having strewn kuśa grass around it let him boil with milk a dish sacred to Pūṣan and offer (two oblations) with the mantra ‘May Pūṣan follow our cows’ (<a class="ref" href="../refs/rigveda.html#VI" data-source="rigveda" data-ref="VI" title="Ṛgveda VI">Rg. VI</a> 54,5) and the mantra ‘here is pleasure’ (<a class="ref" href="../refs/vajasaneya.html#8" data-source="vajasaneya" data-ref="8" title="Vājasaneya Saṃhitā 8">Vāj. S. 8</a>,51); a blacksmith should then mark the bull, on one flank with a discus and on the other flank <sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-70" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-70">70</a></sup> with a trident. Let him wash the bull after he is marked with four mantras beginning with ‘the golden-coloured’ (<a class="ref" href="../refs/taittiriya_s.html#V.6.1.1-2" data-source="taittiriya_s" data-ref="V.6.1.1-2" title="Taittirīya Saṃhitā V.6.1.1-2">Tai. S. V. 6.1. 1-2</a>) and with the (five) mantras beginning with ‘May the divine (waters) bring us happiness’ (<a class="ref" href="../refs/rigveda.html#X.9.4-8" data-source="rigveda" data-ref="X.9.4-8" title="Ṛgveda X.9.4-8">Rg. X. 9. 4-8</a>). Having washed and decked the bull he should bring him together with four young cows which also should have been washed and decked and mutter the Rudras (<a class="ref" href="../refs/taittiriya_s.html#IV" data-source="taittiriya_s" data-ref="IV" title="Taittirīya Saṃhitā IV">Tai S. IV</a> 5.1-11), the Puruṣasūkta (Rg 10. 90. 1-16) and the Kūṣmāṇḍīs (<a class="ref" href="../refs/vajasaneya.html#XX.14-16" data-source="vajasaneya" data-ref="XX.14-16" title="Vājasaneya Saṃhitā XX.14-16">Vāj S. XX. 14-16</a>, <a class="ref" href="../refs/taittiriya_ar.html#X" data-source="taittiriya_ar" data-ref="X" title="Taittirīya Āraṇyaka X">Tai Ā. X</a>, 3-5). Then let him recite in the right ear of the bull the mantra <sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-72" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-72">72</a></sup> ‘father of calves’ and the following mantras ‘The holy dharma <sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-73" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-73">73</a></sup> is a bull and is declared to have four feet; I choose him with devo- tion (as the object of worship); may he protect me on all sideṣ This young bull I give you as husband (O young cows!), roam about sportingly with him as your lover. May we not lack progeny, O king Soma, nor physical fitness and may we not succumb to our enemy'. He must drive away the bull together with the young cows in the north-eastern direction and give a pair of garments, gold and a vessel of bell metal to the hotr (officiating priest). The blacksmith should be given wages as desired by him and food seasoned with a good deal of clarified butter should be served to (three) brāhmaṇas (at least). That <sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-74" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-74">74</a></sup> pool at which a bull let loose (in honour of a deceased person by his son or the like) drinks water.serves (reaches) the maneṣ Wherever a bull (let loose) exulting in his strength scratches (or digs up) the earth, that earth becoming abundant food and water waits upon the maneṣ” <sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-75" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-75">75</a></sup> In the <a class="ref" href="../refs/mb_anushasana.html" data-source="mb_anushasana" data-ref="" title="Anuśāsanaparva">Anuśāsanaparva</a><a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> the pitrs are represented as saying that by letting loose a dark-coloured bull, by offering water mixed with sesame and by lighting lamps in the rains a man becomes free from the debt he owes to the pitrs (chap. 125. 73-74).</p>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-26">In the <a class="ref" href="../refs/garuda_purana.html#i" data-source="garuda_purana" data-ref="i" title="Garuḍapurāṇa i">Garuḍapurāṇa i</a>t is stated that the deceased person for whom a bull is not let loose on the 11th day after death permanently remains a preta, even if hundreds of śrāddhas are offered for hiṃ The same purāṇa further provides that if a bull be not available on the 11th day, then the effigy of a bull made of darbhas and flour or clay should be symbolically let loose.<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-76" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-76">76</a></sup> In the Bhaviṣyapurāņa the 12th day after death is prescribed for the letting loose of a bull (N. S. III, p. 505). The Nirņayasindhu says that the making of an effigy of a bull with clay, darbhas and flour is without authority. Even at present people let loose a bull but owing to the rise in the prices of bulls this is becoming less frequent. Several medieval digests such as the Pitrdayitā (pp. 84, 94), Śrāddhaviveka of Rudradhara (pp. 69-77), Nirņayasindhu (III pp. 595-596), Śuddhiprakāśa pp. 225-230, Antyeṣṭipaddhati of Nārāyaṇabhaṭṭa present a far more elaborate description, but from considerations of space they are passed over here. It is provided in these and other digests that such a bull should not be seized by anyone nor made to draw a vehicle and the cow or cows let loose along with him should not be milked nor confined in a cow-peṇ A bull is not let loose for a deceased woman, but a cow may be donated together with its calf without being branded and after being decked with sandal-wood paste.<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-77" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-77">77</a></sup></p>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-27">What is the idea underlying the letting loose of a bull after the death of a person? If a conjecture may be hazarded, it appears to have been thought that if a bull were freed from toil (that is the lot of most bulls) and placed in the midst of pleasant surroundings, that act of the relatives of the deceased may in a vicarious manner conduce to the happiness of the departed spirit in the other worlḍ</p>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-28">One remarkable matter about śrāddhas is yet to be mentioneḍ The Bauḍ gṛhyasūtra III, 19, the Liṅgapurāṇa (II 45. 8-90, some of which are quoted by Śr. Pr. pp 363-364), the Kalpataru (on śrāddha pp. 277-279), Hemādri (Śr. pp.1704-1717), the Śrāddhaprakāśa (pp. 361-371) and a few other digests describe the procedure of Jīvat-śrāddha or Jīva-śrāddha, which a man was allowed to perform for the benefit of his own soul, while he was himself alive. <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>'s being probably the most ancient extant description it is briefly set out here. ‘A man who desires his own highest happiness should fast on the 13th tithi of the dark half and bring together materials on the same day, which are required in the funeral rites of deceased persons, viz. six garments, a golden needle, a goad, a noose made of (cotton) threads, a ragged garment, a stalk of palāśa leaves, a chair of udumbara wood, jars and other materials also. On the next day he bathes; after standing in the midst of water he comes out and makes (the brāhmaṇas) pronounce ‘this is an auspicious day, may there be happiness and prosperity (for you)'; he makes a gift of garments, a ring and dakṣiṇā and facing the south eats rice boiled in milk and mixed with ghee. He kindles the fire according to the general <sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-78" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-78">78</a></sup> procedure laid down for homa, spreads round it darbhas, cooks food on the fire and offers from the cooked food four oblations of food into the fire; the first is made after first reciting the Puronuvākyā <sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-79" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-79">79</a></sup> (invitatory prayer) 'catvāri sṛṅgā' ('Agni has four horns', <a class="ref" href="../refs/rigveda.html#IV.58.3" data-source="rigveda" data-ref="IV.58.3" title="Ṛgveda IV.58.3">Rg. IV. 58. 3</a>, <a class="ref" href="../refs/taittiriya_ar.html#X.10.2" data-source="taittiriya_ar" data-ref="X.10.2" title="Taittirīya Āraṇyaka X.10.2">Tai. Ā X. 10. 2</a>) and offers the oblation with the Yājyā (offering prayer) 'tridhā hitam' (placed in three plates, <a class="ref" href="../refs/rigveda.html#IV.58.4" data-source="rigveda" data-ref="IV.58.4" title="Ṛgveda IV.58.4">Rg. IV. 58. 4</a>) The Puronuvākyā and Yājyā of the 2nd oblation of rice are 'tatsavitur vareṇyam' (<a class="ref" href="../refs/rigveda.html#III.62.10" data-source="rigveda" data-ref="III.62.10" title="Ṛgveda III.62.10">Rg. III. 62. 10</a>, <a class="ref" href="../refs/taittiriya_s.html#I.5" data-source="taittiriya_s" data-ref="I.5" title="Taittirīya Saṃhitā I.5">Tai. S. I. 5</a> 6 4) and 'yojayitṛī sūnṛtānām'. Of the third oblation the Puronuvākyā and Yājyā are respectively 'ye catvāraḥ' (<a class="ref" href="../refs/taittiriya_s.html#V.7.2.3" data-source="taittiriya_s" data-ref="V.7.2.3" title="Taittirīya Saṃhitā V.7.2.3">Tai. S. V. 7. 2. 3</a>) and 'Dve śruti' (<a class="ref" href="../refs/rigveda.html#X.88.15" data-source="rigveda" data-ref="X.88.15" title="Ṛgveda X.88.15">Rg. X. 88. 15</a>, <a class="ref" href="../refs/taittiriya_br.html#I.4.2.3" data-source="taittiriya_br" data-ref="I.4.2.3" title="Taittirīya Brāhmaṇa I.4.2.3">Tai Br. I. 4. 2. 3</a>); the Puronuvākyā and Yājyā of the 4th oblation are respectively 'agne naya' (Rg I 189 1, <a class="ref" href="../refs/taittiriya_s.html#I" data-source="taittiriya_s" data-ref="I" title="Taittirīya Saṃhitā I">Tai. S. I</a> 114. 3) and 'yā tiraści' (<a class="ref" href="../refs/brihadaranyaka.html#VI" data-source="brihadaranyaka" data-ref="VI" title="Bṛhadāraṇyaka Upaniṣad VI">Br. Up. VI</a> 3 1) <sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-80" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-80">80</a></sup>. Then he offers oblations of clarified butter with the Purusasūkta of 18 verses (<a class="ref" href="../refs/vajasaneya.html#31.1-18" data-source="vajasaneya" data-ref="31.1-18" title="Vājasaneya Saṃhitā 31.1-18">Vāj. S. 31. 1–18</a>, <a class="ref" href="../refs/taittiriya_ar.html" data-source="taittiriya_ar" data-ref="" title="Taittirīya Āraṇyaka">Tai. Ā</a>, III 12) and 1008, 108 or 28 oblations of clarified butter with the Gāyatrī verse. Then he goes to a spot where four roads meet, makes a gift of the needle, goad, ragged garment, the rope to a short-statured brāhmaṇa who has a dark skin and having made him repeat the words 'May the servants of Yama be gratified' he places the jars on grains of rice. Having wound round the jars that are full of water threads he prepares an effigy of a human being, three threads for the head, three for the mouth, 21 for the neck, 4 for the body, two on each arm, one for the male organ, five for each of the feet with the words 'May the revered Yama be pleaseḍ' Then making ready the chair, washing it with pañcagavya, he makes the effigy of a human being on black antelope skin with palāśa stalks, he establishes the prāṇas in the effigy made on the jar and placing his body on the body made with stalks he should sleep. When he rises, he should himself bathe his body with (the water in) the jars with verses of Purusaśukta and with pañcagavya and pure water and eat in the evening food mixed with sesamum grains together with clarified butter. He should give dinner to brāhmaṇas for the gratification of the servants of Yama. On the 4th day he burns (the effigy) with mantraṣ He should offer water, and piṇḍa with the words 'piṇḍa to me of such and such a gotra for benefit in the next world, svadhā namah.' With these words he should bring to a close the rite. He should observe impurity for ten days for himself, but his agnates have not to observe impurity for hiṃ On the 11th day he performs ekoddiṣṭa. They also cite the following verse 'one who is in distress, a woman and a śūdra having burnt one's body (i. e. effigy) with mantras should perform all rites on that very day. This is the revela- tioṇ' In the case of women the rite is performed silently or with (?) Vedic mantraṣ In this way he should perform his own śrāddha every month for a year and at the end of each year up to twelve yearṣ And then he should stop. When he is not able to do all these (himself) his son and the like may perform theṃ They also recite the following verse: 'Although heirs may be alive one may perform one's śrāddha while alive, having quickly set about doing everything according to the rules, except Sapindana. One should not make delay as to the time specified above, since life is evanescent'."</p>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-29">It may be noted that the Bauḍ gṛhyaśesasūtra III, 22 contains a very brief procedure of the same rite, but therein two verses of Kanva and one of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> are quoteḍ It appears that this is a later additioṇ The text of Bauḍ gṛhyaśesasūtra III, 19 is quoted by Śr. Pr. pp. 361-363. But the Śrāddha- prakāśa also quotes a long passage from the Lingapurāṇa and explains it (pp. 363-368). The procedure in the Lingapurāṇa, however, materially differs from that of <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>. It is passed over here from considerations of space. The Śrāddha- mayūkha also gives an elaborate descriptioṇ Some of its provisions are stated here. In Jīvat-śrāddha the word preta should nowhere be useḍ An effigy of the person is made with fifty kuśas and is to be burnt by another with the mantra 'kravyādam-agnim' (<a class="ref" href="../refs/rigveda.html#X.16" data-source="rigveda" data-ref="X.16" title="Ṛgveda X.16">Rg. X. 16</a>, 9 ). The person has to kindle fire on the banks of a river with his face to the south with his gṛhya fire or ordinary fire and has to dig up a pit and make a prayer to the earth as in the case of an actual death.</p>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-30">In the Bombay University Library there is a Mṣ of Jīvat- śrāddha ascribed to Śaunaka in the Bhadkamkar Collectioṇ It contains a far more elaborate procedure than that of <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> and is in prose. It contains many of the provisions of <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>. Further details are passed over here.</p>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-31">The provision of a śrāddha for a living person offered by himself is a perversion of the ancient idea of śrāddha. The basic and fundamental conception of a śrāddha was to gratify the spirits of deceased ancestorṣ People had gone crazy with the idea of śrāddhas and invented this new mode to satisfy that craze. I have known persons that performed Jīvat-śrāddha, though they had sons, younger brothers and nephews who would have certainly performed śrāddhas for them on their death.</p>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-32">It is customary to make a gift of a cow with a calf to a brāhmaṇa, preferably a kapilā cow, on the 2nd day after the period of āśauca. Often times this is the only cow given, and the cow called Vaitaraṇī referred to above (p.183, note 427) is rarely donated in the midst of the sorrow and turmoil immediately on the death of a dear and near relative. A declaration is first made that a gift of a cow will be made and then water is poured on the hand of a brāhmaṇa. Then holding kuśas in his hand the donor makes a gift of the cow with a formula noted below <sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-81" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-81">81</a></sup>. The donee replies with the words 'om svasti' (Yes, may it be well!). Then dakṣiṇā (in gold or silver coins) is given and the brāhmaṇa says 'om svasti', holds the tail of the cow and repeats a Kāmastuti (eulogy of Kāma) <sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-82" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-82">82</a></sup> according to the recension of the Veda he has studieḍ The <a class="ref" href="../refs/mb_anushasana.html#57.28-29" data-source="mb_anushasana" data-ref="57.28-29" title="Anuśāsanaparva 57.28-29">Anuśāsana parva (57. 28–29 )</a><a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> eulogises the gift of a kapilā cow with the calf, given with a milking pail of bell-metal, whose horn tips are decked with gold, by stating that such a gift not only saves the donor in the other world but also his sons, grandsons and family for seven generationṣ The <a class="ref" href="../refs/mb_anushasana.html" data-source="mb_anushasana" data-ref="" title="Anuśāsanaparva">Anuśāsanaparva</a><a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> (77.10 ff) sets out a legend why the kapilā cow is the best of all cowṣ</p>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-33">The Purāṇas and digests devote a good deal of space to śrāddhas at tīrthas and at Gayā. Vide Atri 55–58, <a class="ref" href="../refs/vayu_purana.html#83.16-42" data-source="vayu_purana" data-ref="83.16-42" title="Vāyupurāṇa 83.16-42">Vāyupurāṇa 83. 16–42</a>, Hemādri (on Śr.) pp. 1568 ff and 1575 ff. This subject will be briefly dealt with in the section on tīrthaṣ</p>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-34">may be performed in the intercalary month, but if there be none such then in the ordinary month of the same name. When the tithi for performing a śrāddha comes and there is then an intercalary month, Vṛddha-<a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> says that śrāddha should be performed in both monthṣ<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-83" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-83">83</a></sup></p>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-35">Further discussion about what may be done in Malamāsa and what is prohibited therein will be taken up in the section on <em>Kāla</em>. The question as to the day on which a śrāddha is to be performed if the <em>tithi</em> is spread over two days or if there is a <em>kṣaya</em> of the <em>tithi</em> will also be discussed in that sectioṇ</p>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-36">Some of the works on śrāddha such as the Pṛthvī-candro-daya deal with what is called ‘saṅghāta-śrāddha’.<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-84" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-84">84</a></sup> When on the same day several persons die, but not at the same time, then the śrāddhas for them should be performed, as said by Rṣyaśṛṅga, in the order in which they dieḍ But if five or six persons die at the same time on the same day (as when a vessel sinks in the sea or a market is burnt down all at once), then the order in which śrāddhas are to be performed is determined by the nearness of relationship to the performer of śrāddha in the case of each. For example, if a person’s wife, son, brother and paternal uncle meet death at the same time, then the order should be this that the śrāddha of the wife is performed first, then of the son, then of the brother and then of the uncle. If the parents die at the same time by accident, then the father’s cremation or other rites should be first performed and then of the mother.</p>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-37">Provision is made if the performance of a śrāddha is rendered impossible by some obstacle. Rṣyaśṛṅga provides <sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-85" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-85">85</a></sup> 'If impurity (on death) intervenes when a śrāddha is to be offered to the pitṛs, śrāddha should be offered at the end of the period of impurity. If an obstacle arises at the time when an ekoddiṣṭa is to be performed, the śrāddha should be performed in another month on the same tithi<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-86" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-86">86</a></sup>. This last refers to a monthly śrāddha. If any of the sixteen śrāddhas fails owing to an obstacle it should be performed on the amāvāsyā or better still on the 11th day of the dark half. If there is an obstacle owing to impurity on death in the performance of a monthly śrāddha or yearly śrāddha it should be performed at the end of the impurity or on amāvāsyā.<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-86" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-86">86</a></sup> The <a class="ref" href="../refs/padma_purana.html" data-source="padma_purana" data-ref="" title="Padmapurāṇa">Padmapurāṇa</a> (Pātālakhaṇḍa 101. 68–70) provides similar ruleṣ If the obstacle is the performer’s illness or his inability to collect materials or his wife being in her monthly illness, he may offer śrāddha described above.</p>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-38">It may be noted that while great emphasis was laid on inviting a very learned brāhmaṇa at a śrāddha, that object was often frustrated in practice by the provisions made in certain smṛtis that one<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-87" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-87">87</a></sup> should not partake of śrāddha food for three years after sapiṇḍana (which is often one year after death) and that by dining at a śrāddha in the first year one eats the bones and marrow of the deceased, in the second year his flesh, in the third year his blood and śrāddha in the 4th year is (somewhat) pure. Vide <a class="ref" href="../refs/parasara.html" data-source="parasara" data-ref="" title="Parāśara">Par.</a> M. vol II part 1 p 423, where smṛti passages prescribing prāyaścittas for partaking of food at various śrāddhas including sāmvatsarika are set out. Hārīta says: one partaking of food at Navaśrāddha should undergo Candrāyaṇa, the Prājāpatya for dining at a monthly śrāddha and fast for one day for dining at a pratyābdika śrāddha. This is on the same lines as acceptance of giftṣ A donor collected merit by making gifts, but it was for the acceptor to decide whether he should accept giftṣ The ideal IV ] placed before brāhmaṇas was that one, though entitled to accept gifts on account of his Vedic learning and tapas, should not accept gifts, if he desires to secure the highest world (<a class="ref" href="../refs/yajnavalkya.html#I.213" data-source="yajnavalkya" data-ref="I.213" title="Yājñavalkya I.213">Yāj. I. 213</a>), while <a class="ref" href="../refs/manu.html#IV.186" data-source="manu" data-ref="IV.186" title="Manusmṛti IV.186">Manu IV. 186</a> affirms<sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-88" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-88">88</a></sup> that though entitled to accept gifts a brāhmaṇa should not again and again resort to that method, since the spiritual power that he acquires by Vedic study is lost by accepting giftṣ <a class="ref" href="../refs/manu.html#IV.85-86" data-source="manu" data-ref="IV.85-86" title="Manusmṛti IV.85-86">Manu IV. 85–86</a> (= Padma V. 19. 236–237) say that acceptance of a gift from the king is terrible (in its consequences) and Padma warns that gift appears sweet like honey but is like poison (i. e. deadly in its effects). This reasoning applied with greater force to officiating and dining at a śrāddha, where not only gifts are to be received, but also sumptuous food that will please the palate is served in abundance.</p>
+<p class="prose" id="p-chapter-x-ekoddista-and-other-shrāddhas-39">It has been seen above how the most ancient' literary monument, viz the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a>, shows that the funeral rites per- formed immediately after death were prompted by affectionate concern for the departed spirit mingled with some element of fear, that the object of those rites was to provide sustenance to the departed spirit and to endow it with an intermediate body before it became one of the pitṛṣ It has also been found that in the most ancient times of which we have literary evidence, there were rites for the worship of ancestors, being the Piṇḍa- pitṛyajña performed every month on amāvāsyā, the Mahāpitṛ- yajña performed in the Śākamedha and the Aṣṭakā śrāddhaṣ Gradually the rites for deceased ancestors became more and more frequent, all-inclusive and elaborate, so that ultimately an exaggerated importance came to be attached to the cult of śrāddhas over which there was an enormous expenditure of time, effort and wealth. The question now arises what Indians of the 20th century should do about śrāddhaṣ One finds that in these days when many brāhmaṇas even do not engage in any of the five daily obligatory yajñas (the pañca-yajñas), they are so- licitous to offer śrāddha at least once a year to their ancestorṣ The following may be therefore suggested as a <em>via media</em> for all kinds of people. Those who have faith in the duty of performing śrāddhas and their efficacy for the benefit of the dead may perform them on a small scale, bearing in mind the emphatic admonition of <a class="ref" href="../refs/manu.html#III.125-126" data-source="manu" data-ref="III.125-126" title="Manusmṛti III.125-126">Manu (III. 125–126)</a>, the <a class="ref" href="../refs/kurma_purana.html#II.22.27" data-source="kurma_purana" data-ref="II.22.27" title="Kūrmapurāṇa II.22.27">Kūrmapurāṇa II. 22. 27</a>, <a class="ref" href="../refs/padma_purana.html#V.9.98" data-source="padma_purana" data-ref="V.9.98" title="Padmapurāṇa V.9.98">Padmapurāṇa V. 9. 98</a><sup class="fn-ref"><a href="#fn-chapter-x-ekoddista-and-other-shrāddhas-89" id="fnref-chapter-x-ekoddista-and-other-shrāddhas-89">89</a></sup> that one should desist from extravagance in the matter of śrāddhas, particularly in the number of brāhmaṇas to be inviteḍ Those whose faith is shaken or shattered by the onrush of modern ideas and English education or firm belief in the doctrines of karma and punarjanma should also remember one thing. The main underlying conception of śrāddha is certainly admirable, viz., a tender and affectionate regard for one’s near and dear relativeṣ It is a good practice to set apart at least one day in a year for the remembrance of one’s near and dear relatives that are no more, to invite relatives, friends, and learned people to a dinner in memory of the dead and to bestow monetary gifts on poor but learned persons of character and devoted to the practice of plain living and high thinking. This will be in keeping with our past traditions and will also give a new orientation to and infuse new life into practices and usages that have become lifeless and meaningless to many people. From very ancient times one of the fundamental conceptions of our faith has been the idea of three debts owed to sages, gods and pitṛṣ The debt owed to the ancestors is paid off by the procreation of a son who would offer piṇḍas to his (and therefore also to his father’s) ancestorṣ This is a grand conceptioṇ Nothing can be more sublime than the formula which one has to repeat at the time of offering piṇḍas and water (with sesame) at Gayā ‘may those of my ancestors that are in the form of pretas be all satiated by means of the (balls made) of barley flour mixed with sesame and may everything, whether moving or immoveable from Brahmā up to blades of grass derive satisfaction from the water offered by me.’ If the implication of this formula be thoroughly understood and IV] implemented by actual practice, it will make the whole world kiṇ Therefore, while discarding the heavy accretions accum- ulated through ages, we Hindus of these days must see to it that we do not throw overboard the gold that lies buried under the crust of ritual and ill-understood ceremonieṣ<sup>*</sup></p>
+<aside class="footnotes-section" aria-label="Footnotes">
+<hr>
+<ol class="footnotes-list">
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-1" class="footnote-item"><span class="devanagari">अथैत्यनेनैकोद्दिष्टस्य पार्वणान्तरयोर्मिधानं तयोः प्रकृतिकृतेर्वतिले सूचयति। श्राद्धतत्त्व</span> p. 244. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-1" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-2" class="footnote-item"><span class="devanagari">एक उद्दिष्टो यस्मिन् श्राद्धे तदेकोद्दिष्टमिति कर्मनामधेयम् । मिता</span> on <span class="devanagari">यत्र</span> I 251. elsewhere it says ‘<span class="devanagari">तत्र त्रिपुरुषोद्देशेन यत् क्रियते तत्पार्वणम्</span>, <span class="devanagari">एकपुरुषोद्देशेन क्रियमाणमेकोद्दिष्टम्</span>’ <span class="devanagari">मिता</span>. on <span class="devanagari">या</span> I. 217. <span class="devanagari">हलायुध</span> (folo 32b) on <span class="devanagari">श्राद्धसूत्र</span> says '<span class="devanagari">एकोत्र संप्रदानत्वेनोद्दिष्ट इति ।</span>'. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-2" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-3" class="footnote-item"><span class="devanagari">अथैकोद्दिष्टेषु नाग्निकरणं नाभिश्रावणं न पूर्व निमन्त्रणं न वैश्व न धूप न दीप न स्वधा न नमस्कारो नात्रामन्त्रणम् । बौ</span>. <span class="devanagari">गृ</span>. <span class="devanagari">सू</span>. III. 12. 6. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-3" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-4" class="footnote-item"><span class="devanagari">अथैकोद्दिष्टेषु । एकार्थमर्ध एकं पवित्रमेकः पिण्डो नावाहनं नाग्निकरणं नाज विप्रै</span>- <span class="devanagari">देवाः स्वदितमिति प्रश्नः सुस्वदितमित्युत्तरम् भूयसीमिषत्त्वक्षय्यतामित्यत्र स्वान्नमिष्टमस्मा</span>- <span class="devanagari">भिर्विप्रैर्यत्मिन्मा इदम् इतरीते। श्राद्धसूत्र</span> 4 (<span class="devanagari">कात्यायनीय</span>) Almost the same words occur in <span class="devanagari">कौपीतिगृह्यसूत्र</span> 4. 2 (Benares S. Series). The <span class="devanagari">यजुर्वैदिविश्वाद्धसूत्र</span> (JIV. II. p. 495) explains '<span class="devanagari">एक एकदलक्षस्य परिवेषम् ।</span>'. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-4" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-5" class="footnote-item"><span class="devanagari">एकवचनमन्त्रार्द्धहोहिदे। विष्णुध सू</span> 21. 2 On this the <span class="devanagari">दीपकलिका</span> explains “<span class="devanagari">अत्र पितरो मादयध्वमिति बहुवचनान्तेषु अत्र पितरंमादयस्व इति एकवचनेमोहः कार्य</span> ” . <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-5" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-6" class="footnote-item"><span class="devanagari">ये च त्वामइ इत्यादि मन्त्रो न युज्यते। पितृशब्द न कुर्वीत नमो वः पितर इत्यादि मन्त्रं न पठेत् । कल्पतरु</span> ( <span class="devanagari">श</span> ) p 246. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-6" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-7" class="footnote-item"><span class="devanagari">तन्न व्याघ्रः। एकादशे चतुर्थे च मासि मासि च वत्सरम् । प्रतिसंवत्सरं चैव</span>-<span class="devanagari">मेकोद्दिष्टं सुनादृषि ॥ कात्यायन</span>. <span class="devanagari">। श्राद्धमग्निमत</span>. <span class="devanagari">कार्यं द्वादशादेकादशेऽह्नि । ध्रुवाणि तु प्रकुर्वीत मरणाह्नि सर्वदा ॥ अपरार्क</span> p. 521 This last is <span class="devanagari">गोभिलस्मृति</span> III. 66 which reads <span class="devanagari">प्रसूत्यादिषु प्रकुर्वीत</span>. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-7" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-8" class="footnote-item"><span class="devanagari">चत्वारिंशे न दीयते येषामान्नेन पोडश । पिण्डार्बुदं ध्रुवं सर्वे तद्दे आद</span>- <span class="devanagari">शरीरिणम् च न</span> q by <span class="devanagari">स्मृ</span>. <span class="devanagari">चिं</span>. <span class="devanagari">कौ</span>. p 362 The same verse occurs in <span class="devanagari">गरुड़पुराण</span> (<span class="devanagari">प्रेतखण्ड</span> 5. 50-51), <span class="devanagari">तिलिसदृष्टि</span> 16 (reads <span class="devanagari">चत्वारिआने न कुर्य्यात् एकोदिष्ठानि</span>), <span class="devanagari">लघुशङ्ख</span> 13 (with variations), <span class="devanagari">पत्स</span> (<span class="devanagari">चण्डिलद</span> 47. 272 reads <span class="devanagari">न सन्ति यथाशक्यं च अद्रवा</span>) The verse is quoted by the <span class="devanagari">मिता</span> on <span class="devanagari">या</span>. I. 254 (reading <span class="devanagari">न दृश्यानि</span> and <span class="devanagari">प्रेतत्वं शूरयति</span>) <span class="devanagari">प्रेतलोके तु यसविदुणा वर्ष प्रकीर्तित्वा । शुश्रूणे मन्ये तत्न भवेता धुयनन्दन । नाकर्षणीयः</span> q by <span class="devanagari">मिता</span>. on <span class="devanagari">या</span>. I. 253 <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-8" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-9" class="footnote-item"><span class="devanagari">द्वादश प्रतिमासकानि आद्यषण्मासिके तथा । सपिण्डीकरणं चैव पतर्द आद</span>- <span class="devanagari">पोडशमः गोभिलस्मृति</span> III 67. The word <span class="devanagari">आद्य</span> has been explained by <span class="devanagari">या</span> I 256 as '<span class="devanagari">तृतोयैव प्रकर्तव्यं प्रतिमासं तु वत्सरम् । प्रतिसंत्तसंरं चैवमाद्यमेकादशेऽहनि।</span>' on which the <span class="devanagari">मिता</span> says ‘<span class="devanagari">आद्यं सर्वोददिष्टप्रकृतिभूतमेकोदिष्ठमेकादशेऽहनि</span>’, <span class="devanagari">गरुड</span> (<span class="devanagari">प्रेत</span> 5. 51) says: <span class="devanagari">एकादशे द्वादशे वा दिने आद्यं प्रकीर्तितम् ।</span> But <span class="devanagari">अपरार्क</span> p. 543 explains <span class="devanagari">आद्य</span> differently '<span class="devanagari">आद्यशब्देन नवश्राद्धान्युरुच्यन्ते ।</span>', <span class="devanagari">षाण्मासिके</span> is explained by <span class="devanagari">गोभिलस्मृति</span> III 68 as '<span class="devanagari">एकाहेन तु पण्मासा वदा ह्यभिरूषि वा विधि । न्यूनैः संवत्सरस्रावेण स्यात् षाण्मासिके तथा ॥</span> q by <span class="devanagari">अपरार्क</span> p 522, <span class="devanagari">श्रा</span>. <span class="devanagari">क्रि</span>. <span class="devanagari">कौ</span>. p 338 and explained as '<span class="devanagari">एकाहाह्न तिथिभां अहोभिर्यदा संवत्सरस्रवेण न्यूनोत्तराणोति तदा षाण्मासिके श्राद्ध कार्य इत्यर्थः</span>', <span class="devanagari">षड्मासा न्यूनाः स्युः संवत्सरस्रव ताबत्सख्या न्यूनोत्तराणति तदा षाण्मासिके श्राद्ध कार्य इत्यर्थः । तृतीयोर्ये षोडश ।</span> <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-9" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-10" class="footnote-item"><span class="devanagari">द्वादशाहे त्रिपक्षे च पण्मासे मासिकोर्द्धट्ये । तृतीयेर्ये षोडश गोभिलस्मृति</span> (<span class="devanagari">प्रेतखण्ड</span> 5.49-50); the other two groups are at chap 35, 33-36 and in 37, <span class="devanagari">द्वादश ।</span> <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-10" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-11" class="footnote-item"><span class="devanagari">चतुर्दशे त्रिपदे च पण्मासे त्र्यर्द्धिके तथा । द्वादश अविनास्यानि आदरादाने पोडश । पद्म</span>, <span class="devanagari">सृष्टिखण्ड</span> 5. 271. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-11" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-12" class="footnote-item"><span class="devanagari">ब्रह्मपुराणे । कृष्णा तु त्यक्तदेवानां श्राद्धाः पोडश सर्वदा । चतुर्धे पञ्चमे चैव नवमे</span>- <span class="devanagari">कादशे तथा । ततो द्वादशभिर्मासैः श्राद्धा द्वादशसंत्स्रव्या ।</span> q. by <span class="devanagari">अपरार्क</span> p. 523. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-12" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-13" class="footnote-item"><span class="devanagari">श्राद्धानि षोडशाषाद्य विधिप्रीतं सपण्डनम्। लौगाक्षि</span> q by <span class="devanagari">मिता</span> on <span class="devanagari">या</span>. I 255, <span class="devanagari">निर्णयसिन्धु</span> p. 599, <span class="devanagari">भट्टोजि</span> on <span class="devanagari">चतुर्विंशतिमंतसंग्रह</span> p. 168, ascribed to <span class="devanagari">वायु</span>- <span class="devanagari">पुराण</span> by <span class="devanagari">अपराक</span> p. 532, <span class="devanagari">सपण्डिकरणदावाळु कुणोर्छाद्धप्रदाने षोडा। एकोदिष्टावधानेन कुणोर्छाद्धप्रदाने तानि ह ।।</span> q. by <span class="devanagari">अपराक</span> p 522. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-13" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-14" class="footnote-item"><span class="devanagari">एकादिष्ट न कुर्वीत यतीनां चैव सर्वदा। अहर्न्येकादशे मासे पार्वणं तु विधीयते ।। सपिण्डीकरणं तेषां न कर्तव्यं कुतदादिमिः । त्रिदण्डग्रहणणादेव प्रेतत्वं नैव जायते ।। उशनस्</span> q by <span class="devanagari">मिता</span> on <span class="devanagari">या</span> I. 255, <span class="devanagari">परा मा</span> I 2 p. 458, <span class="devanagari">आ क्रि को</span> pp. 444-445. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-14" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-15" class="footnote-item"><span class="devanagari">एकोदिष्टं जलं पिण्डमाधौच प्रेतसंस्कारक्रियाम्। न कुर्यादाषदादग्न्यद् ब्रह्मसूलादि ते रसूया ।। शातातप</span> q. by <span class="devanagari">भट्ट मा</span> p. 527, <span class="devanagari">आ क्रि को</span>. p. 445, <span class="devanagari">अपराक</span> p 538 (reads <span class="devanagari">पार्वणादग्न्यद् ब्रह्मसूलाय भिक्षवे</span>). <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-15" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-16" class="footnote-item"><span class="devanagari">संवत्सरे सपिण्डीकरणेकादशे मासि पक्षे चतुर्थे द्वादशेहेनि। भारद्वाजसूत्र</span> III     17.1; <span class="devanagari">आनन्द्यादकुलधर्माणी ढुंसा चैषाधुप क्षयमात्। अस्थिरतारुल्ष्पृदोषी द्वादशखे।     व्यास</span> q. by <span class="devanagari">भव्</span> p. 631, <span class="devanagari">आ क्रि</span>. <span class="devanagari">की</span> p. 350 (ascribes to <span class="devanagari">व्यास</span>), <span class="devanagari">पृथ्वीव</span> folio     237 a (ascribes to <span class="devanagari">व्यास</span>), <span class="devanagari">भट्टोजि</span> p. 176 of <span class="devanagari">चतुर्वर्गचिं॰</span>, <span class="devanagari">आदत्तत्व</span> p. 301. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-16" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-17" class="footnote-item"><span class="devanagari">यदा संवत्सरपूर्णे प्रागेव सपिण्डीकरणं क्रियते तदा यद्यपि षोडश श्राद्धानि ततः प्रागेव कृतानि श्राद्धानि षोडशादवा न कुर्यात्तु सपिण्डनम्</span>-<span class="devanagari">इति वृद्धवसिष्ठोक्तेः तथापि स्व</span>- <span class="devanagari">स्वकाले पुनरपि मासिकार्द्यान्यष्टवर्तनीयानि। भट्टोजि</span> on <span class="devanagari">चतुर्विंशतिमतसंग्रह</span> p 171 <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-17" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-18" class="footnote-item"><span class="devanagari">नवश्राद्धं सपिण्डत्वं श्राद्धच्यपि च षोडश। एकेनैव हि कार्याणि सविभक्त</span>- <span class="devanagari">धनेष्वपि ॥ उशनस्</span> q. by <span class="devanagari">अपरार्क</span> p. 524, <span class="devanagari">मिता</span>. on <span class="devanagari">या</span>. I. 255 (without name). This verse is <span class="devanagari">गरुडपुराण</span>, <span class="devanagari">प्रेत०</span> 34. 128-129. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-18" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-19" class="footnote-item"><span class="devanagari">अच्वाक् संवत्सरात्कुर्युः श्राद्ध समेत्य वै। संवत्सरे व्यतीते तु कुर्युः श्राद्धं पृथक् पृथक् ॥ प्रचेतस्</span> q. by <span class="devanagari">अपरार्क</span> p. 524. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-19" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-20" class="footnote-item">The saṅkalp in sapindana will be somewhat as followṣ <span class="devanagari">अमुकगोत्रस्या</span>- <span class="devanagari">हमुकशर्मण प्रेतस्य प्रेतत्वनिवृत्त्वा पितृलोकमाप्त्यर्थममुकगोत्रे अमुकशर्मवसुदविज्ञस्य स्वर्ले</span>. <span class="devanagari">प्रेतपितृपितामहप्रपितामहैः सह सपिण्डीकरणं कृतवाहं द्वादशद्वाहे पार्बणोद्दिश्य विधिना करिष्ये ।</span> <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-20" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-21" class="footnote-item">The two mantras are. <span class="devanagari">ये समाना समनस पितरो यमराजे। तेषां लोकः सधमादो अस्तु। तृप्ता</span>1 <span class="devanagari">दर्भेण नमो वशीषु वेतु कल्पताम्‌॥ ये समाना समनसो जीव जीरेषु कामका। १ तेषां श्रीर्मयि कल्पतामस्मिंल्लोके शत समाः। वाज</span>. <span class="devanagari">सं</span>. 19. 45-46, <span class="devanagari">काठकसंहिता</span> 38 23-24 <span class="devanagari">भरद्वाज</span>-<span class="devanagari">गृह्य</span> III 17 sets out the following formula for <span class="devanagari">तिलप्रदान</span> '<span class="devanagari">ये समाना ये संजाता इति द्वादशभ्यो पितृभिः तिलदोने अस्मिहोमि सर्ववेदे तिलोदकं नमे ते स्वधा मम इति द्वितीयुत्कृतार्थम्‌।</span>2 In place of <span class="devanagari">असी</span> one has to use the vocative '<span class="devanagari">अस्मिनपितरकसुगोत्रा</span>- <span class="devanagari">सुखशर्मन्‌ येत</span>3 <span class="devanagari">पितरमहोभि</span>. and <span class="devanagari">अपितमहोभिः</span> are Vedic Instrumentals (plural). <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-21" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-22" class="footnote-item"><span class="devanagari">प्रेतत्वं च क्षुत्तृष्णोपजनितात्यन्तदुःखात्मभावस्था । यथाहुर्मार्कण्डेय । प्रेतलोके च वसतित्वेणां वर्षं प्रकीर्तिता । क्षुत्तृष्णो ये प्रत्यहं तत्र भवेतां स्रुरुनन्दन ।। इति । पितृसुभाषितञ्च वादिश्नादिदेवतासम्बन्धः । मिता</span> on <span class="devanagari">या</span> I. 254. <span class="devanagari">या</span> I. 255-256 presuppose this idea <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-22" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-23" class="footnote-item"><span class="devanagari">सपिण्डीकरणादूर्ध्वं पितुर्यः प्रपितामहः । सुतलेपभुजो याति मह्सप्तपिपिण्डकः ।। मार्कण्डेय</span> 29. 1; <span class="devanagari">ततः प्रभृति वै प्रेतः पितृसामान्यमश्नुते । विन्दते पितृलोकं च तत्</span>. <span class="devanagari">आदिशे प्रवृत्तिं ।। हारीत</span> q. by <span class="devanagari">कल्पतरु</span> (<span class="devanagari">आ</span>) p. 256, <span class="devanagari">हेमाद्रि</span> (<span class="devanagari">अ</span>) p. 1640, <span class="devanagari">आ क्रि कौ</span> p. 262 which last explains ‘<span class="devanagari">पितृसामान्यं पितृभिः सह पार्वणश्राद्धभोक्तृत्वरूपांयस्यर्थः । तेन एकदशा</span>- <span class="devanagari">श्राद्धेना प्रेतपरीहारः</span>. <span class="devanagari">फलै सपिण्डनस्य तु प्रेतपरीहार पितृत्वा पावनभोक्तृत्वं च फलत्रयमिति ।</span>' Vide also <span class="devanagari">स्मृतिचन्द्र</span> on <span class="devanagari">आशौच</span> (Mysore University eḍ) p 158 quoting <span class="devanagari">प्रचेतस्</span> and <span class="devanagari">विष्णु</span>. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-23" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-24" class="footnote-item"><span class="devanagari">संवत्सरा न्ते मेताय सलिले त्वां पितामहाथ तत्प्रपितामहाथ भोजयेत् । अत्राशौकरोणमाशाचं पाव्यं च कुर्यात् । संस्रजतु त्वा पृथिवी समात्री व इति प्रेतपादाचणं । पिटुपाद्याचमणे योजयेत् । विष्णुधर्मसूत्र</span> 21. 12-14. q. by <span class="devanagari">हेमाद्रि</span> (<span class="devanagari">अ</span>) p. 1640. The mantra is <span class="devanagari">संस्रजतु त्वा पृथिवी सद्युरीति प्रजापतिः । संस्रजतु पूर्वाभिः पितृभिः सह ।।</span> The <span class="devanagari">काठकगृह्य</span> 66.7 prescribes that when parts of pretapinda are mixed up with pitṛpindas, this mantra and two more viz., 'samāṁi va ālūtāni' and 'sam vo manāmsi' (<span class="devanagari">काठकसंहिता</span> 10, 38-39) are recited, <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-24" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-25" class="footnote-item"><span class="devanagari">नेतापिण्डे स्त्रिया विभज्य पितृपिण्डेषु त्रिंशादधगति मभु याना इति सिडिभिः सहच्छध्वमिति द्वाभ्यामुल्यल्य शेषं पावेनवत्कुर्याद् । आश्ग</span>. <span class="devanagari">गृ</span>. <span class="devanagari">परि</span> 3.11. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-25" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-26" class="footnote-item"><span class="devanagari">सपिपिंडकरणं तासां पुजाभावे न विद्यते । प्रतिसंस्तार्य कार्यककोशिदे तौ क्रिया ॥ मार्कण्डेय</span> 28.18 on which <span class="devanagari">वङ्गधर</span> (<span class="devanagari">आङ्ग्लविवेक</span> p 113) says: <span class="devanagari">अत्र पुत्राभाव इत्युयलक्षणं पतिपुत्राभाव इति दृष्टव्यम् ।</span> <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-26" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-27" class="footnote-item"><span class="devanagari">स्वेन भर्त्रा समं श्राद्धं माता मुक्ते सुताश्रयम् । पितामही च स्वेनैव स्वेनैव प्रपितामही ॥ बृहस्पति व</span> by <span class="devanagari">स्मृतिच०</span> (<span class="devanagari">आशौच</span>) p. 449, <span class="devanagari">कल्पतरु</span> (<span class="devanagari">आश</span>.) p. 259 (reads <span class="devanagari">स्वाधायम्</span> and <span class="devanagari">तेनैव प्रपितामही</span>) and <span class="devanagari">आ</span>. <span class="devanagari">क्रि</span>. <span class="devanagari">कौ</span>. p. 428, '<span class="devanagari">मातुः सपिण्डकरणं पितामह्या सहोदितम् । गोभिलस्मृति</span> II. 102 <span class="devanagari">आ</span>. <span class="devanagari">क्रि</span>. <span class="devanagari">को</span>. p. 428, '<span class="devanagari">पितुः पितामहे यद्वत् पूर्णान् संवत्सरे क्षिते । मातृगामहे तदवेषा कार्यं सपिण्डता ।</span>' <span class="devanagari">उज्वलं व</span> by <span class="devanagari">स्मृ</span>. <span class="devanagari">चित</span>. on <span class="devanagari">या</span>. I. 253-254 The <span class="devanagari">गौड</span> (<span class="devanagari">जैत</span>. 34.121) says '<span class="devanagari">पितामह्या समं मातृ</span>-<span class="devanagari">पितृ</span>-<span class="devanagari">सङ्ग</span>-<span class="devanagari">प्रपितामहीः सपिण्डकरणं कार्यमिति तात्पर्यं मतं मम ।</span>' Therefore the <span class="devanagari">मिता०</span> says '<span class="devanagari">मातुः सपिण्ड</span>- <span class="devanagari">करणोपि विरुद्धावष्टम्भानि दृश्यन्ते</span> !'. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-27" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-28" class="footnote-item">The mantra here repeated is '<span class="devanagari">यवोसि</span>, <span class="devanagari">यवा पृष्या</span> (in place of <span class="devanagari">स्वधया</span>) <span class="devanagari">नान्दीमुखेभ्यः पितृभ्यः</span>..<span class="devanagari">न स्वाहा नमः</span> (instead of <span class="devanagari">स्वधा नमः</span>)'. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-28" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-29" class="footnote-item">The <span class="devanagari">सङ्कल्प</span> will be somewhat as follows '<span class="devanagari">ओम्</span>, <span class="devanagari">अद्यामुकगोत्रो अमुकशर्माहं अद्यपितामहीपितामहीनान्दीमुखश्राद्धदेवतानां नान्दीमुखीनाममुकगोत्राणां पितृपितामहप्रपितामहनाममुकगोत्राणां नान्दीमुखानां मातामहप्रमातामहप्रप्रमातामहमुकगोत्राणां नान्दीमुखानां मातृपक्षशर्मणां नान्दीमुखानां तदश्वयुक्गोत्रस्य अमुकशर्मणो नान्दीमुखश्राद्धं करिष्ये</span>'. <span class="devanagari">आर्द्रविवेक की चंद्रघर</span> p. 149 For <span class="devanagari">देवीनां</span> it is usual to put <span class="devanagari">यूनां</span>. . <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-29" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-30" class="footnote-item"><span class="devanagari">घृतप्रसन्न</span> is defined in <span class="devanagari">आश्ा ग्र</span>. IV. 1. 17 as '<span class="devanagari">दध्यन्न सपिरान्वन्वयेत</span>- <span class="devanagari">स्निग्ध घृतप्रसन्नम्</span>'. 1178 a. <span class="devanagari">अपरेषुरन्वष्टक्यम्।</span>...<span class="devanagari">पिण्डपितृयज्ञे कल्पेन। हत्वा मधुमध्वर्ज पिठ्भ्यो वधाय। श्रीमभ्य हुवा चावाभामिसित्यधिकम्। आभ ग्र</span>. II. 5 1, 3-5. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-30" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-31" class="footnote-item"><span class="devanagari">एवं मदक्षिणाङ्मुखो हव्यौ नान्दीमुखान् पितृन्। यजेत दधिकर्कन्धूमिश्रान् पिण्डापन्वैः क्रिया</span>. <span class="devanagari">या</span> 1. 250. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-31" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-32" class="footnote-item"><span class="devanagari">यद्यपि पितृव्यतेति सामान्येनोके तथापि श्राद्धत्रयं क्रमध्य स्सृत्पन्नरादद्व मन्तव्यः। यथाद्द शातातपः। मातृ श्राद्धं च पूर्वं स्यात्पितृणां तदनन्तरम्। ततो मावामहानां च ह्यद्रौ श्राद्धत्रयं स्सृत्पन्नं ॥ मिता</span> on <span class="devanagari">या</span>. I 250, <span class="devanagari">कल्पतरु</span> (<span class="devanagari">श्रा</span> ) p. 271 <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-32" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-33" class="footnote-item"><span class="devanagari">तृतीयभागशुद्धयर्थकं ह्यभ्युदयिकं तदुच्यते। पद्म</span> (<span class="devanagari">सृष्टिखण्ड</span> 9. 194). <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-33" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-34" class="footnote-item"><span class="devanagari">कन्यापुत्रविवाहेषु प्रवेशे नववेश्मनो। नामकर्मणि बालानां चूड़ाकर्मणि तथा। सीमान्तोन्नयने चैव पुत्रादिसुमजन्मनि। नान्दीमुखं पितृगणं पूजयेत् प्रयतो गृही। पितृपूजा</span>-<span class="devanagari">विधिः प्रोक्तो इद्धार्थ समासतः। विष्णुपुराण</span> III. 13. 5-7, quoted by <span class="devanagari">अपराके</span> p. 515 (except the last half) <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-34" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-35" class="footnote-item"><span class="devanagari">पित्ता पितामहश्चैव तथैव प्रपितामहः। त्रयो ह्यमुमुखा होते पितरस्सप्तकीर्तिताः॥ तेभ्यः पूर्वे त्रयो ये ते तु नान्दीमुखा इति। ब्रह्मपुराण</span> q. by <span class="devanagari">हेमाद्रि</span> (<span class="devanagari">श्रा</span> p 107), <span class="devanagari">कल्पतरु</span> (<span class="devanagari">श्रा</span> ) p. 270, <span class="devanagari">नद प</span> p. 533. <span class="devanagari">नान्दी</span> means <span class="devanagari">समृद्धि</span> acc. to <span class="devanagari">ब्रह्मपुराण</span> q. by <span class="devanagari">कल्पतरु</span> (<span class="devanagari">श्रा</span> ) p. 268. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-35" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-36" class="footnote-item"><span class="devanagari">पिण्डनिर्वपणं कुर्यान्न वा कुर्याद्विचक्षण । इद्धिद्धाद्धे महाबाहो कुलधर्मा</span>- <span class="devanagari">नवैद्वेष हु ॥ भविष्यपुराण</span>; on this the <span class="devanagari">पृच्चीच०</span> folio 167a remarks ‘<span class="devanagari">अतश्चाद्रो</span>- <span class="devanagari">करणादौनाग्रेपि निषेध । तथा। अशोकरणमर्षे चावाहूनं चावनेजनम् । पिण्डद्धद्धे प्रकुर्वीत पिण्डद्धद्धे निवर्तेते</span>' <span class="devanagari">॥</span> <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-36" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-37" class="footnote-item"><span class="devanagari">कर्मादिषु तु सर्वैपु मातर</span>: <span class="devanagari">सगणयाधिपा</span>: <span class="devanagari">। पूजनीया</span>. <span class="devanagari">प्रयत्नेन पूजिता</span>. <span class="devanagari">पूजयन्ति ता ॥ गोभिलस्मृति</span> I, 13, q by <span class="devanagari">कल्पतरु</span> (<span class="devanagari">आ</span>. p 272). <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-37" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-38" class="footnote-item"><span class="devanagari">ब्रह्मण्याद्यास्तथा सप्त दुर्गात्रिंशगणाधिपान्। इष्ट्वाऽदौ पूजयित्वा तु पश्चात्कान्दी</span>- <span class="devanagari">मुखान् पितृन्।। मातृपूर्व हि पितृन् पूज्य ततो मातामहानपि। मातामहस्ततः केचिद्यमा भोजयेदिति श्रुत्या प्रोक्तमिति। शुद्धिसिद्धि। श्राद्धप्रकाश</span> p 517. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-38" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-39" class="footnote-item">The worship of the mother Goddess or of mother Goddesses is one of the oldest and most widespread forms of religion The mother Goddess appears in the civilizations of Mesopotamia and Syria, in prehistoric Europe and west Africa Rude female figures, which represent idols of the mother Goddesses; have been discovered in the eathest deposits of pre-historic cultures Vide 'Mother Goddesses' by Mr. S K Dikshit (Poona). <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-39" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-40" class="footnote-item"><span class="devanagari">मातृवर्गो मातामहीवर्गो वा ब्राह्मणालाभ पतिपुत्राश्रिताश्रवसश्वशसुवासिन्यो भोजनीया इत्युक्तं वृद्धवसिष्ठेन । मातृश्राद्धे हु विभागाभसलामे पूजयेदपि । पतिपुत्राचिता स्त्रया प्रोपियोऽदौ शुद्धनिता । श्राद्धप्रकाश</span> p. 298. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-40" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-41" class="footnote-item"><span class="devanagari">सर्वेषां तु श्राद्धानां श्रेष्ठं सांवात्सरे स्मृतम् । क्रियते यत्तत्मृतभेदने पुत्रैः सह ॥ न याति नरकं घोरं तामिस्रं नाम नामतः । ततो भवति दुःखत्मा नरोरे सूकरो ।। भविष्य</span>. I. 183. 20 and 25. The first occurs also in <span class="devanagari">स्कन्दपुराण</span> VII I. 205. 43. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-41" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-42" class="footnote-item"><span class="devanagari">मृताहस्य यदा मासो न ज्ञायेत कथंचन । मार्गशीर्षदिनेऽथाद्यं श्राद्धं तद्दिने स्मृतम् ।। यदा तु मासस्तदा ज्ञायेत न तिथिश्चैव सा तथा । अमावास्यामेव तन्मासं श्राद्धं भवेत् ।। यदा तु मासस्तदा ज्ञायेत न तिथिश्चैव सा तथा । अमावास्यामेव तन्मासं श्राद्धं भवेत् ।। स्कन्द</span> VII. I. 205 <span class="devanagari">पृष्ठ</span> (<span class="devanagari">अपरार्कखण्ड</span> 101. 73-74). Vide <span class="devanagari">भविष्यपुराण</span> I. 183, 28-29, <span class="devanagari">स्कन्द</span> VII. I. 205 52 for similar rules <span class="devanagari">बृहस्पति</span> p. by <span class="devanagari">अपरार्के</span> p. 545 has similar verses and adds '<span class="devanagari">विनमासो न विज्ञातो मरणस्य यदा पुनः । मरणमादिनमासो तु ग्राह्यौ पूर्वोक्त्या दिशा</span>’ <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-42" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-43" class="footnote-item"><span class="devanagari">आषाढीमवधिं कृत्वा यस्तु पक्षस्तु पञ्चमः । तत्र श्राद्धं प्रकुर्वीत कन्यां गच्छतु वा न वा ॥ कन्यागते सवितरि याभ्यहानि तु षोडश । कृतभुक्तानि तुल्यानि समावदर्सिनैः ॥</span> ...<span class="devanagari">अभावात् कृष्णपक्षादौ मुलायां कार्यमर्हति ॥ अतो द्वौष्ष्मिकमायते निराशाः पितरो गताः । पुनः संभवने यान्ति शापं दत्वा सुदारुणम् ॥ पद्म</span> (<span class="devanagari">सृष्टिखण्ड</span> 47. 225-228). The first verse <span class="devanagari">आषाढी०</span> occurs in <span class="devanagari">अग्निपुराण</span> 175.33 and is ascribed to <span class="devanagari">जातुकर्ण</span> by <span class="devanagari">भा</span>. <span class="devanagari">अपराकें</span> p 423, which reads the third <span class="devanagari">पाद</span> as <span class="devanagari">श्राद्धकालः कन्यागते०</span> is ascribed to the <span class="devanagari">ब्रह्मपुराण</span> by <span class="devanagari">भा कि कों</span> p 285 (which reads <span class="devanagari">तुल्यानि देवो नारायणोऽनवीत्</span>) and to <span class="devanagari">ब्रह्मपुराण</span> by <span class="devanagari">अपराकें</span> p. 424 (which reads last <span class="devanagari">पाद</span> as <span class="devanagari">तत्र दत्तं महाफलम्</span>) and to <span class="devanagari">श्लोकगोन याभ्यहानि तु षोडश</span>—These words are explained in two wayṣ ‘ <span class="devanagari">कदाचित् पक्षविद्वद्धौ पोडशात्मिनात्मकोपि नभस्स्थस्थापर पक्ष श्राद्धकर्माणि कालो न तु षोडशदिनात्मकौ अमावस्याया अनन्तरभूताया प्रतिपत्तिश्चे यापि संग्रहार्थं</span> ‘<span class="devanagari">तिथिद्वेर्दोषि क्षीणचन्द्रे स।परपक्षक्षुपत्वात्। स्मृतिचन्द्र</span> (<span class="devanagari">आ</span> p. 365). There is also a third way viz including the preceding full moon day along with the 15 days of the dark half. <span class="devanagari">प्रजापतिस्मृति</span> verse 161 is very similar to the verse <span class="devanagari">कन्यागते०</span> and <span class="devanagari">कल्पतरु</span> (<span class="devanagari">श्रा</span>. p. 16) quotes it from <span class="devanagari">ब्रह्माण्ड</span> <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-43" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-44" class="footnote-item"><span class="devanagari">आपत्स्या पक्षे कन्यासंस्थे दिवाकरे । मृताहानि पुनर्वै श्राद्धं दास्याति मानवः ॥ तस्य संवत्सर यावत्तुः स्यु पितरो ध्रुवम् । स्कन्द</span>. VI. 216. 96-97, q. by <span class="devanagari">आद्ध</span>. <span class="devanagari">कल्पलता</span> p 98. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-44" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-45" class="footnote-item"><span class="devanagari">येशु दीपान्विता राजन् ख्याता पञ्चदशी शुचिः। तस्यां दद्यात् येनैवं पिण्डप मह्वालये</span> || <span class="devanagari">भविष्यपुराण</span> q. by <span class="devanagari">कल्पतरु</span> (on <span class="devanagari">आ</span> p 17) and <span class="devanagari">आ क्रि कौ</span> p 291. <span class="devanagari">स्मृति</span> (<span class="devanagari">आ</span> p 747 ascribes to <span class="devanagari">सुमन्यु</span>) <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-45" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-46" class="footnote-item"><span class="devanagari">तदेष्टं शुक्लपक्षः पक्षः पश्चात्पक्षमादिपंचदशामितं दशाब्द्यादिदर्शान्तादि</span>-<span class="devanagari">पश्चदशमीर्वीषो। मध्ये आनिष्टदिवसे वा दिनं महालयश्राद्धकाल । स्मृति</span> (<span class="devanagari">आ</span> p 747) <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-46" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-47" class="footnote-item"><span class="devanagari">श्राद्धान्यनेकेफळाः सन्ति पुराणोक्तानि वै कृते। फलप्रदानि सर्वाणि तेषाम्मयो महालयः॥ प्रजापति</span> verse 37. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-47" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-48" class="footnote-item"><span class="devanagari">कन्यागते सवितरि द्विकानिं दश पक्ष श्वा। पार्वणेन विधिना तत्र श्राद्धं विधोयते ॥ मार्केडेयपुराण</span>. q. by <span class="devanagari">स्मृति</span> (<span class="devanagari">आ</span> p. 745). <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-48" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-49" class="footnote-item"><span class="devanagari">सपिट्डीकरणवर्जं सर्वश्राद्धेषु विस्तृतपार्वणविष्यसंभवे सङ्कल्पविधेनैव कार्यम्। सङ्कल्परिपाने महालयार्थं होमपिण्डवर्जं पार्वणोक्तं यथासंभवं भवति। स्मृतिसार</span> p 60. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-49" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-50" class="footnote-item">Vide <span class="devanagari">धर्मसिन्धु</span> II. p. 79 for the <span class="devanagari">सङ्कल्प</span> in <span class="devanagari">महालयश्राद्ध</span> <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-50" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-51" class="footnote-item"><span class="devanagari">गर्भस्थोषि च दौहित्रो अथर्वश्रुतिपदिने । कुर्यान्मातमाहश्राद्ध पितरो यदि जीवतः ॥ प्रजापतिस्मृति</span> verse 170. . <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-51" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-52" class="footnote-item"><span class="devanagari">अत्र भर्तृमरणोत्तरं पूर्वमृतभार्या न कार्यमिति केचिद्वदन्ति च श्राद्धं नवम्यां कुर्यात्तत्पुत्रे मतरि ह्युप्ते</span>-<span class="devanagari">इति तद्देवेतिर्मूलभूतत्वादनुपलब्धम् । अष्टदीपिकालिकाया भर्तृ</span>-<span class="devanagari">पितृमातृकुलोज्झता या कामिन्युच्यते प्रिय। आदार्शों मातरौ श्रेष्ठा श्राद्धं तत्र मद्रीयेते। अत्र देशाचाराद् व्यवस्था। निर्णयसिन्धु</span> II p 154 <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-52" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-53" class="footnote-item"><span class="devanagari">ताते दशाहोऽतिक्रान्ते कृत्वाशौचौं दुरात्मज। द्वादशेऽहनि सम्राप्ते श्राद्धकर्मणि कारणम्।। ब्राह्मणभ्यो ददौ रत्नं धनमन्नं च पुष्कलम्। बालिकाश्च बहुकश्च माषार्पि शतशतदाः। दासदासींश्च यानं च वेश्मानि सुमहान्ति च। ब्राह्मणभ्यो ददौ पुत्रो राजसर्योपदेशिकम्।। रामायण</span>, <span class="devanagari">अयोध्याकाण्ड</span> 77. 1-3 (M. L. J edition, 1933). <span class="devanagari">ततोऽनवमेश्वाश्च सर्ववर्ण</span>-<span class="devanagari">स्महमनेम । आश्रमवासोपचेण वायपात्मयेष्ये</span> | <span class="devanagari">आश्रमवासिकपर्व</span> 14. 12 <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-53" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-54" class="footnote-item"><span class="devanagari">अच्छादौ लभते नित्यः कन्याकोटीसुतेष्व च। अन्नदानातपरं दानं विद्यते नेह किंचनः। अन्नजीविति लोकेऽस्मिन्नन्नजीविति चेत्यपि । अन्नलोका प्रतिलुब्धिलोकावतनं तत्फलम्। अन्नं सर्वमिदं सततम् ॥ वायुपुराण</span> 80. 54-57. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-54" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-55" class="footnote-item"><span class="devanagari">बृहस्पतिरपि । मद्वचादक्षिण तेषां सर्वेषामनुरूपम् । गोभूहिरण्यवस्त्रैस्ने</span>-<span class="devanagari">स्तुष्टियुक्तं यथा । तथा भवति कर्तव्यं समर्थेन विशेषतः।</span>' q. by <span class="devanagari">पृथ्वीच</span> folio 112b; <span class="devanagari">यच्च विद्वत्तमे लोके यच्चास्य दयितं गृहे। तत्तद्गुणवते देयं तदैवापमिच्छता ॥ मार्कण्डेय</span> 32.91, <span class="devanagari">दानसमुच्चया</span> 14 106. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-55" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-56" class="footnote-item"><span class="devanagari">वस्त्रालङ्कारशल्यादि पितुर्यद्दृहादिकम्। गम्यास्यैः समभ्यर्च्य श्राद्धभोक्त्रे तदयेत् ॥ बृहस्पति</span> q. by <span class="devanagari">स म</span> p 129, <span class="devanagari">आ</span>. <span class="devanagari">क</span>. <span class="devanagari">ल</span>. p 213. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-56" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-57" class="footnote-item"><span class="devanagari">सुलग्नायां द्वितीयेऽह्निं शुद्ध्यां दद्याद्विचक्षणः । काञ्चनं पुरुषं तत्तल्लक्षण</span>-<span class="devanagari">समन्वितम्। सम्पज्य द्विजदाम्पत्यं नानाभरणभूषणैः। वृषोत्सर्गं च कुर्वीत देयं च कपिला शुभा ॥ मत्स्यपुराण</span> 18. 12-14 q. by <span class="devanagari">आ क</span>. <span class="devanagari">ल</span>. p 213, <span class="devanagari">श्राद्धकल्प</span> p 199. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-57" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-58" class="footnote-item"><span class="devanagari">मन्त्रस्तु</span>—<span class="devanagari">यथा न कृष्णोद्युम्न शून्यं सागरमात्थाया । शय्या समाप्यशून्यत्वात् तथा जन्मनि जन्मनि ॥ यस्मादशून्यं शयनं कैश्चिद्वस्य शिष्यस्य च । शय्या</span> p. 597. The <span class="devanagari">गरुडपुराण</span> (<span class="devanagari">प्रेतखण्ड</span> 34 81) has the verse <span class="devanagari">यथा न</span> etc <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-58" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-59" class="footnote-item"><span class="devanagari">गृहीताया ह शय्यायां पुन</span>: <span class="devanagari">संस्कारमर्हति । वेदे नैव पुराणे च शय्या सर्वत्र गर्हिता ॥ गृहीतारस्तु जायन्ते सर्वे नरकगामिनः ॥ पद्म</span> (<span class="devanagari">सृष्टिखण्ड</span> 10 17-18) <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-59" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-60" class="footnote-item">The kṣetraja son was procreated on the wife or widow of a sonless man by a sagotra (a brother or other agnate) or even an asagotra accor-ding to the rules of niyoga, the procreator being called bijin and the hus-band on whose wife or widow the son was begotten was called kṣetriṇ The putrikāputra is of two kinds, (1) a sonless man gives his daughter in marriage to another with the stipulation that the son born of the marriage will be the son of the girl’s father (Vaṣ 17. 17, Manu IX 127). (2) A daughter herself may be made a son (Vas 17. 16). A dattaka is a son whom his father or mother gives to another as a son confirming the gift with water (Manu IX. 168). Vide H. of Dh vol. III. pp. 647-650 for detailed explanations about these and other secondary sonṣ <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-60" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-61" class="footnote-item"><span class="devanagari">तत्र हारीतं । नाक्षेत्रं बीजं रोहतिः । उभयद्वयोर्नाद्रुमयीरप्यमिति । तेषामुत्पाद</span>-<span class="devanagari">यितुः प्रथमः प्रवरो भवति । द्वौ द्वौ पिण्डौ निर्वपेतः । अथर्वकाण्डे दाखकीयेतः । द्वित्तीये द्वय</span>-<span class="devanagari">स्तुतीये पौत्रो लेपिनश्च जीनब्वाद्याण आ ससमान्वयेति । मद पा</span> pp 607-608 and <span class="devanagari">कल्पतरु</span> (on <span class="devanagari">आ</span> pp. 241-242). <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-61" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-62" class="footnote-item"><span class="devanagari">माहुः प्रथमम्</span>: <span class="devanagari">पिण्डं निर्वपेत् पुत्रिकाकृतः। द्वितीयं तु पितुस्तस्यतृतीयं तु पितुः पितुः ॥ गोभिलस्मृति</span> II 105. <span class="devanagari">कुल्लुक</span> appears to be wrong in explaining <span class="devanagari">पितुः पितुः</span> in <span class="devanagari">मनु</span> IX. 140 as ‘<span class="devanagari">तृतीयं मातुः पितामहायं दद्यात्।</span>’. <span class="devanagari">मनु</span> IX. 132 is ‘<span class="devanagari">दौहित्रो ह्यखिलं रिक्थमपुत्रस्य पितुर्हरेत्। स एव दद्यात् द्वौ पिण्डौ पित्रे मातामहाय च।</span>’. Here <span class="devanagari">दौहित्र</span> means <span class="devanagari">पुत्रिकापुत्र</span>. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-62" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-63" class="footnote-item"><span class="devanagari">असावनेत्ये च त्वासमन्निति पिण्डांश्च यथावनेजिते निमित्वाद्योभवेकस्मिन् पिण्डे पितृभेदे । शाङ्खायनश्रौ रू</span> IV. 3 10-11 q by <span class="devanagari">कल्पतरु</span> p 241 (on <span class="devanagari">आ</span>.). The <span class="devanagari">आप</span>. <span class="devanagari">श्रौ</span> I 9. 7 says ‘ <span class="devanagari">यदि द्विपिता स्यादेकैकस्मिन् पिण्डे द्वौ द्वाउपलक्षयेत्।</span>’. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-63" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-64" class="footnote-item"><span class="devanagari">अपुत्रेण परक्षेत्रे नियोगादिदूतः सुतः । उभयोरप्यसौ रिक्थी पिण्डदाता च धर्मेण ॥ या</span> II. 127; <span class="devanagari">यदा तु नियुक्ता</span>: <span class="devanagari">पुत्रार्थं प्रयत्ने तदा तदुत्पन्नः क्षेत्रिण एव पुत्रो भवतीति न बीजिन। स च न नियमेन बीजिनो रिक्थहारी पिण्डदो वापी। मिता</span>. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-64" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-65" class="footnote-item"><span class="devanagari">अथ यद्येषा स्वभावलिपययं न स्यान्निवृत्तु हरैषु</span>. <span class="devanagari">पिण्ड पैन्थृषुरुषयं ददथु यदुभयोर्ने स्यादुभ्यान्वा द्वयोरैकस्मिन्पिण्डे पृथग्राहेश्वरैकपिण्डे प्रकृतीतरौ चार्यादपितारं चा तृतीयादपुरुषात् ।</span> g by <span class="devanagari">कल्पतरु</span> (<span class="devanagari">आ</span>. p. 241) with variations The same passage is cited as from <span class="devanagari">कात्यायन</span> by the <span class="devanagari">व्य</span>. <span class="devanagari">न</span> p. 115 (my edition), and from <span class="devanagari">काल्ययन</span> and <span class="devanagari">लौगासि</span> (quoted in <span class="devanagari">प्रवरमझरी</span>) by <span class="devanagari">नि लि</span>. III p. 389. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-65" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-66" class="footnote-item"><span class="devanagari">अथाप्युदाहरन्तिः । द्विपिठुः पिण्डदानं स्यात्पि पिण्डे पिव नान्नावी । प्रययय पिण्डाः श्रणोतु सुवेयं कुर्व्वेष दुद्धाति ॥ इति । बौ घ सू</span>, II 2. 22-23. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-66" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-67" class="footnote-item"><span class="devanagari">वचकतस्तु जनकतृ पुत्रयाभावे दद्यात्त तससवे । गोत्ररिक्थजे जनविगृहं भजेद द्विजम् । पुत्रयाभावे पिण्डं व्यपेयेति ददत</span>, <span class="devanagari">स्वधा ॥ इति मनसा स्मृतविषयम्। नि लि</span> III p. 389, <span class="devanagari">वचकतस्तु जनकपिपिठु</span>' <span class="devanagari">पुत्रयाभावे जनकपिपिठु आर्थे कुर्वोपं धन च गृहीयाद। धर्मसिन्धु</span> III. (<span class="devanagari">उत्तरार्ध</span>) p 371. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-67" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-68" class="footnote-item"><span class="devanagari">एष्टव्या बहवः पुत्रा यद्येकोपि गयां व्रजेत् । यजेत वाश्वमेधेन नीलं वा वृषमुत्सृजेत् ।। विष्णुधर्मसूत्र</span> 85. 67, <span class="devanagari">बृहत्परिशिष्ट</span> verse 21, <span class="devanagari">लघुआश्व</span> 10, <span class="devanagari">मत्स्यपुराण</span> 22 6, <span class="devanagari">वायुपुराण</span> 19.11), <span class="devanagari">विष्णुधर्मोत्तर</span> I. 146.58 and I. 144 3. The meaning is ‘<span class="devanagari">बहुनां पुत्राणां मध्ये एकेनापि गयाश्राद्धकरणे पितृमुक्तिर्भवति</span>,’ as stated in <span class="devanagari">स्कन्दपुराण</span>, <span class="devanagari">नागरखण्ड</span>, chap. 216 114–117. The first half occurs in <span class="devanagari">अश्वशास्त्रावर्ष</span> 88 14 and the whole verse in <span class="devanagari">मल्य</span> 207. 40 (which says it is an ancient gāthā and reads the third pāda as ‘<span class="devanagari">गौरीं वास्तुमुद्धरेत्स्यात्</span>?’). Compare <span class="devanagari">कूर्म</span>o II. 20. 30–31. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-68" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-69" class="footnote-item"><span class="devanagari">अथ वृषोत्सर्गः कार्तिक्यामाश्वयुज्या वा । तत्र द्वादैव वृषभं परीक्षेत । जीवदत्सायाः पयस्विन्या पुत्रम् । सर्वलक्षणोपेतम् । नीलम् । लोहितं वा । सुखपुच्छाप्याघ्राणच्वादकम् । ततो गवा मध्ये सुसमिद्धमाग्नौ परिस्तीर्य पौर्ण चर्कं पयसा अपविला पृषा गा ध्रुवा ह्यृपयस्करत्वात्सृष्टयेत् । एकास्मिन् पार्श्वे चर्कृणापरास्मिन् पाश्वे श्नेहेन । अद्वैतं च हिरण्यवर्ण इति चतुर्षभिः शं नो देवीरिति च स्नायात् । स्नातमावृद्धत स्नातात्त्वडाभिश्शतवर्माभवेत्सतरीभिः सार्थमानीयं रुदन पुरुषवृतं कृष्णाभिश्च जपेत् । पिता दक्षिणें कर्णें पठेतू । इमे च । वृषो हि भगवागधर्मस्थेभृत्पात् । प्रकीर्तिः । न रसात्तु सर्वत । एतं युवानं पर्व वो ददासि तेन क्रीडन्तीश्वरत भिपेष । मा द्वादधि मञ्जुया मा तनृभिमां रथाम दियते सोम राजन । वृषं वल्गा हिसि । हितुर्वर्षयद्गुर्ण दयात्सुवर्ण कास्यमेव च ।। अपस्कारस्य दातव्यं वेतनं मनसोप्सितम् । भोजनं बहुसर्पिकं ब्राह्मणशास्त्र भोजयेत् ॥ उखष्टो ह्यषभो यस्मिन् विवत्स्य जलांशये । जाता तिष्ठति । श्रद्धेणेखिििषते भूमि यत्र कश्चन द्रपिते । विष्णुधमंस्य तत्प्रवृधुपतिष्ठति ।। विष्णुधर्मसूत्र</span> 86. 1-20. The <span class="devanagari">काठकगृह</span> (59.3) reads '<span class="devanagari">दृवृष्टि रतिरििि</span>' <span class="devanagari">हुल्वा</span>', The commentator gives ten mantras here of which <span class="devanagari">वृदृष्टि रतिरििि</span> is the 2nd, The first half of <span class="devanagari">एवं युवानं</span> occurs in <span class="devanagari">ते स</span> III. 3.9.1 ( reads <span class="devanagari">परि वो ददामि</span> ). The whole verse occurs in a corrupt form in <span class="devanagari">विष्णुधर्मोत्तर</span> I, 147 12 and the verse <span class="devanagari">वृषो हि</span> is <span class="devanagari">विष्णुधर्मोत्तर</span> I 147. 10. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-69" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-70" class="footnote-item">A <span class="devanagari">नीलवृष</span> is variously defineḍ The <span class="devanagari">मत्स्यपु</span> 207 38 and <span class="devanagari">विष्णुधर्मोत्तर</span> I, 146 56 define ' <span class="devanagari">चरणाङ्गि शुक्ल पुष्पं श्वेतप्रेतानं गोपयते</span>: <span class="devanagari">। लाक्षासरसवर्णं च नील</span>- <span class="devanagari">पृष्ठ</span>-<span class="devanagari">धर्मोत्तर</span> I. 146 42-55 and <span class="devanagari">मत्स्य</span> 207 the characteristics of auspicious and inauspicious bulls are giveṇ The <span class="devanagari">भा क ल</span>. p. 214 quotes <span class="devanagari">शौनक</span> as '<span class="devanagari">लोहितो यस्तु वर्णत शुक्ले वृष्णे च पाण्डुरः । श्वेता</span>, <span class="devanagari">खुरविषाणया च नीलो धूप छद्मयेत्</span> ' This is ascribed to <span class="devanagari">ब्रह्माण्डपुराण</span> (<span class="devanagari">रेवाखण्ड</span>) by <span class="devanagari">भा प्र</span>. and <span class="devanagari">शु प्र</span>. p. 226. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-70" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-71" class="footnote-item">The <span class="devanagari">विष्णुधर्मोत्तर</span> says <span class="devanagari">शूलेन दक्षिणे पार्श्वे नामे चक्रण निदेहेत् ।</span> I, 147.6; while the <span class="devanagari">भविष्योत्तर</span> q by <span class="devanagari">शु प्र</span> p 227 says '<span class="devanagari">ततो शमे विशूले द दक्षिणे चक्रमा</span>- <span class="devanagari">लिखेत</span> ' <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-71" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-72" class="footnote-item">The <span class="devanagari">श्राद्धविनेक</span> of <span class="devanagari">रुद्रधर</span> (p 75) sets out the whole verse as ‘<span class="devanagari">पिता वत्सानां पतिरभ्यननामोथो पिता महतां गर्गराणाम्। वस्तो जरानि मतिप्रुषामिक्षा पूर्व वदद्वसस्य रेत ॥</span>’ It is a corrupt reading of <span class="devanagari">बै</span>. <span class="devanagari">स</span>. III, 3,9,2 (which reads <span class="devanagari">पालिरिति धानोपादि अभिषिक्तृतस्य रेत</span> ). <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-72" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-73" class="footnote-item">The holy dharma .... four feet—This refers to the idea that Dharma, when in pristine glory in the <span class="devanagari">कृतयुग</span>, has four feet, but in each succeeding <span class="devanagari">युग</span> one foot is lost; vide <span class="devanagari">मनु</span> I 81 ( = <span class="devanagari">शान्तिपर्व</span> 232 37). Dr. Jolly refers (in SBE vol. 7 p. 262) the words to <span class="devanagari">नारद</span> I, 11 (SBE vol 30 p 7) where <span class="devanagari">व्यवहार</span> is said to have four feet of which <span class="devanagari">धर्म</span> is one, Vide H. of Dh. vol III, pp 259-262 for explanatioṇ <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-73" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-74" class="footnote-item">'That pool' etc The <span class="devanagari">वायुपुराण</span> (83. 45-48) contains verses of similar import, only two of which are quoted here ' <span class="devanagari">वृषोस्दृष्टा पुरात्द्येव झाती</span>-<span class="devanagari">तान्द्वशावान्</span> ...<span class="devanagari">वृद्धेः खुरेर्वा यद् भूमिस्त्रिस्लिरुत्तरियाणं वृषः। मनुष्येण भवन्ति वै ॥</span>' 45, 48. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-74" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-75" class="footnote-item">The <span class="devanagari">वृषोत्सर्गविधि</span> in <span class="devanagari">विष्णुधर्मोत्तर</span> (I 147. 1-19) closely follows the <span class="devanagari">विष्णुधर्मसूत्र</span> <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-75" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-76" class="footnote-item"><span class="devanagari">एकादशाहे मेतस्य यत्स्योत्सृज्येत नो वृषः। प्रेतस्तु स्तिरे सत्त्वैः श्राद्धशतेरपि ॥</span> ...<span class="devanagari">एकादशाहे संमासे वृषालभो भवेद्यदि। दुर्गः पिटेस्त संपाद्य स वर्ष मोचयदेत् ॥ गरुडपुराण</span> II. 2.40, 44-45. <span class="devanagari">वृषपत्ति</span> q. by <span class="devanagari">आ</span>. <span class="devanagari">क्र</span>. <span class="devanagari">ल</span>. p. 214 and <span class="devanagari">वृषोत्सर्गमत्त</span> q. by <span class="devanagari">द्रु म</span> p 225 have a verse very similar to the first and the 2nd is ascribed to <span class="devanagari">संग्रह</span> by the <span class="devanagari">आ</span>. <span class="devanagari">प्र ल</span> <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-76" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-77" class="footnote-item"><span class="devanagari">वाचस्पतिमित्र</span> wrote a work called <span class="devanagari">चन्दनधेष्टदान</span> in which he quotes two verses of <span class="devanagari">देवल</span> from the <span class="devanagari">रत्नाकर</span> as follows <span class="devanagari">जीवञ्त्री हु य नारी सवत्सलार्गा इह चेत्तलार्थाम प्रदापयेद् ॥ पतिपुत्त्रवती नारी स्थिपले बाघतमयो । इवं नैवीत्यजेत् पुत्र पिता यावत् जीवति ॥</span> . Vide Descriptive Cat. of Sanskrit Msṣ under the care of the Asiatic Society of Bengal by M·M Haraprasad Shastri, vol. III (smṛti Mss ) pp 405-406 No 2310. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-77" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-78" class="footnote-item">For the general procedure of homa, vide H. of Dh. vol. II. pp 207-211. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-78" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-79" class="footnote-item">The <span class="devanagari">पुरोनुवाक्या</span> (or simply <span class="devanagari">अनुवाक्या</span>) is so called because it is recited to male the deity favourable before the sacrifice is offered (<span class="devanagari">पुर पूर्वमाहवेत्तानमाहुत्कुल्पिषु या क्रशुच्यते इति व्युत्पत्त्या</span>). Yājyā is the offering prayer It is preceded by <span class="devanagari">ये यजामहे</span> and followed by vasat (pronounced as <span class="devanagari">वौ३षट्</span>). Both these are uttered by the hotṛ in a high tone. Vide H. of Dh. vol. II. pp. 1058–1060. The yājyā is recited while standing, but the Puronuvālyā is recited sitting. The verse <span class="devanagari">योजायित्री सूनृताना</span> appears to be an adaptation of <span class="devanagari">योजयित्री सूनृताना</span> (Rg. I. 3.11). <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-79" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-80" class="footnote-item">The verse iṣ <span class="devanagari">या तिरश्ची निपद्यते</span> (<span class="devanagari">से</span>?) <span class="devanagari">अर्ह विपरणी इति । ता स्या घृतस्य धारा यजे संराधनीमहम्</span>” <span class="devanagari">बृह</span>. <span class="devanagari">उ</span>. VI. 3,1, <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-80" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-81" class="footnote-item"><span class="devanagari">ओम् अद्यामुकगोत्रस्य द्वितीयेहि अमुकगोत्रस्य पितुरमुकप्रेतस्य स्वर्गकामिकामः इमां कपिलां गां हेमशृङ्गीं रौप्यखुरां कांस्यदोहां फलैःसेकां रक्तदुकूलमालाभ्यां भूषयित्वा सवत्सां रुद्रदैवत्यैपत्याच्युतानसाप्तमते भाह्मणाय तुभ्यमहं संप्रददे । श्राद्धविवेक</span> of <span class="devanagari">बद्धधर</span> p. 77. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-81" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-82" class="footnote-item">For <span class="devanagari">कामस्तुति</span>, vide p. 184, n 430 above. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-82" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-83" class="footnote-item"><span class="devanagari">आद्रीयमाणे संवत्ते अधिमासो भवेद्यदि । मासद्वयेऽपि कुर्यात् श्राद्धमेव न सन्नति ॥ वृद्धवसिष्ठ</span> q by <span class="devanagari">स्मृतिच</span>. (<span class="devanagari">आ</span>. p. 375), <span class="devanagari">नि</span>. <span class="devanagari">सि</span>. p. 13. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-83" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-84" class="footnote-item"><span class="devanagari">तत्रैकस्मिन्नहनि क्रमेण मृतानां मरणक्रमेणैव कर्त्रा श्राद्धं कर्तव्यम् । तदाहुः ऋष्यशृङ्गः । कृत्वा पूर्वमृतस्याथौ द्वितीयस्य सतः पुनः । तृतीयस्य तत् । कुर्यात्संनिपाते स्वयं सर्वाणां युगपन्मरणं तदा । सम्बन्धसांनिमालोच्य तत्क्रमाच्छाद्धमाचरेत् ॥ जाबालिः । पिनोस्तु मरणं चेत्प्रायेकदैव यदा तदा । पितृद्धादादिकं कृत्वा पश्चान्मातुः समाचरेत् ॥</span> <em>ibid</em> folio 266 a. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-84" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-85" class="footnote-item"><span class="devanagari">देये पितृणां श्राद्धे हु आपोशे यु व्यतिकाने तेभ्यः श्राद्धं महीयते । एकोद्दिष्टे तु संपाते यदि विघ्नं प्रजायते । मासेऽप्यस्मिन्स्थितौ तस्याः श्राद्धं कुर्यात्प्रयत्नतः ॥ ऋष्यशृङ्ग</span> q. by <span class="devanagari">अपराकं</span> p. 561, <span class="devanagari">श्रा कि को</span>. p 480, <span class="devanagari">मदु</span>. <span class="devanagari">प्रा</span>. 618. <span class="devanagari">स्कन्दपुराण</span> VII. 1. 206. 70 is a very similar verse and the verse <span class="devanagari">एकोद्दिष्टे तु</span> is <span class="devanagari">गरुडपुराण</span> (<span class="devanagari">प्रेतखण्ड</span> 45,9), <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-85" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-86" class="footnote-item"><span class="devanagari">कालिकाखण्डे तु संक्रान्ते सन्मृते सूतकेऽथवा। यद्येषामि भवेच्छ्राद्धं दर्शे कुर्यात् तदापि हि</span>’ <span class="devanagari">संक्रान्त्या सद्य इत्येतत्सूतकेऽथ</span> by <span class="devanagari">अपराक</span> p. 561; <span class="devanagari">कालिकापुराणेऽमावास्ये कार्याणि श्राद्धेषु तु इति। संवत्सरे सद्यः कृतमेतत् कुर्याद् अमावास्ये। संक्रान्ते यदि सूतकं भवेत्तथा। तदा नद्युदके स्नानं हुत्वा चाचमनं पुनः</span> (<span class="devanagari">पातालखण्ड</span> 101. 65 and 71) <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-86" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-87" class="footnote-item"><span class="devanagari">अन्य सूतकमाह दिगोधादिरीति। वापिस्यं फलमूर्ते पायसमद्यं भोक्तव्यं सार्द्धं न भोक्तव्यं सूपरेऽपि कृतासनः। प्रथमदोषेण मज्जा व द्वितीये मांसमज्जा। तृतीये रुधिरं मांसं सार्द्धं शुचं जपसेधाविति श्राद्धभोजनमिष्यते। नि</span> III p 475; <span class="devanagari">आपस्तंब स०</span> ‘<span class="devanagari">अाद्धे मज्जामेव न भिषिवते। रसातरे न भुञ्जत् न मांसमित्येतत् नियते । नि</span> IIII p 13; <span class="devanagari">नि</span> p 423; see <span class="devanagari">श्राद्धविवेक</span> of <span class="devanagari">रुद्रधर</span> p 113, <span class="devanagari">व्या</span>. <span class="devanagari">सि</span>. <span class="devanagari">की</span>. p. 345 for similar rules from other smṛtis; <span class="devanagari">दत्त</span> V. 10. 19 says ‘<span class="devanagari">नवश्राद्धे न भोक्तव्यं सुतरा पालखण्डं वारयेत्</span>’<span class="devanagari">।</span> <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-87" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-88" class="footnote-item"><span class="devanagari">प्रतिग्रहेण संक्षीयते तपस्तेजो यशो बलम् । प्रतिग्रहं न कुर्वीत ह्यल्पेनाप्युदकेन च ॥</span> Manu IV 186. Vide <span class="devanagari">पर</span> IV. 19. 268 for a similar verse <span class="devanagari">राजन् प्रतिग्रहो घोरो मध्वास्वादो विषोपमः । तज् ज्ञायमानं ब्रह्मात्मन् कुरुवेऽलमलोभनम् ॥ दशात्सुनासनाशक्तौ</span>... <span class="devanagari">तेन तुल्यस्ततो राजा पौरस्तस्य प्रतिग्रहः ॥ पद्म</span> V 19 235. <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-88" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-89" class="footnote-item"><span class="devanagari">द्वौ दैवे पितृकृत्ये जीनेकैफद्भमुय वा। भोजयेद्ध्रीषोड न कुर्याद्विस्तरं बुधः॥ १</span> V. 9. 98 <span class="devanagari">जायमानो ह वै ब्राह्मणस्त्रिभिर्ऋणवा जायते ब्रह्मचर्येण ऋषिभ्यो यज्ञेन देवेभ्यः प्रजया पितृभ्य एष वा अनृणो यः पुत्रो यज्ञा ब्रह्मचारिवासा। १ ते सं</span> VI. 3 10 5; <span class="devanagari">ऋषणम</span>- <span class="devanagari">विवत् सन्नयत्प्रसुवत् च गच्छति। पिता पुत्रस्य जातस्य पश्येच्चेज्जीवतो सुखम् ॥ ऐ</span>. <span class="devanagari">आ</span>. 33.1 This subject has been dealt with already in H of Dh. vol III, pp. 414-416 and may be further dilated upon under Gayāśrāddha <span class="devanagari">ये केचिद्भवततो र्त्तन्ते मया इत्तेन तोयेन तृप्तिमायान्तु सर्वशः ॥ वायूपुराण</span> 110. 63–64 Compare also a similar invocation in <span class="devanagari">वापु</span>. 110 21–22 and the Mettasutta in the Suttanipāta. . <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-89" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-x-ekoddista-and-other-shrāddhas-90" class="footnote-item">In passing I may mention that my friend Mr. N. G. Chapekar, B. A., LL. B., retired First Class Subordinate Judge residing at Badlapur in the Thana District, has been celebrating the yearly śrāddha of his mother in the manner indicated above for about twenty-five yearṣ <a href="#fnref-chapter-x-ekoddista-and-other-shrāddhas-90" class="fn-back" aria-label="Back to text">↩</a></li>
+</ol>
+</aside>
+
+            <div class="chapter-nav">
+                <a href="chapter-ix-shrāddha.html" class="nav-prev"><i class="fa-solid fa-chevron-left"></i> Chapter IX. Shrāddha</a>
+                <a href="chapter-xi-tīrthayātrā-pilgrimages-to-holy-places.html" class="nav-next">Chapter XI. Tīrthayātrā (pilgrimages to holy places) <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </main>
+    </div>
+
+    <button class="toc-mobile-toggle" onclick="toggleMobileToc()" aria-label="Table of contents">
+        <i class="fa-solid fa-list"></i>
+    </button>
+
+    
+    <footer class="container-fluid pt-4" style="background-color:#2e4144">
+        <div class="row border-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img src="https://sanatana.in/mbta/public/images/Homepage_html/images/layer_8.png" alt="">
+            </div>
+            <div class="col-md-5 text-white">
+                <p>The divine knowledge and wisdom of our shastras is the only thing eternal,
+                   which was and which will remain ever-present in this gods creation.
+                   Our endeavours are to preserve this knowledge.</p>
+            </div>
+            <div class="col-md-1 text-white">
+                <div class="d-flex" style="height: 75px;">
+                    <div class="vr"></div>
+                </div>
+            </div>
+            <div class="col-md-3 text-white">
+                <i class="fa-solid fa-globe"></i>&emsp;
+                <a href="https://sanatanasampatti.in" class="text-light">www.sanatanasampatti.in</a><br>
+                <i class="fa-solid fa-envelope"></i>&emsp;
+                <a href="" class="text-light">sriranga.yoga@gmail.com</a>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center py-3 mb-4 align-items-center border-bottom">
+            <div class="col-md-2 text-white fs-4 text-center">Project</div>
+            <div class="col-md-2 text-white fs-4 text-center">Our Mission</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contribute</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contact Us</div>
+        </div>
+        <div class="row">
+            <p class="col-md-6 fs-6 text-start text-light">
+                <small>&copy; 2026 Sanatanasampatti</small>
+            </p>
+            <p class="col-md-6 fs-6 text-end text-light">
+                <a class="text-white" rel="nofollow" href="http://www.srirangadigital.com" target="_blank">
+                    <img src="https://sanatana.in/mbta/public/images/logo.png" alt="sriranga logo" />
+                    <small>Designed, Developed and Maintained by Sriranga Digital</small>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        const headings = [];
+        tocLinks.forEach(link => {
+            const id = link.getAttribute('href').substring(1);
+            const el = document.getElementById(id);
+            if (el) headings.push({ el: el, link: link.parentElement });
+        });
+
+        function onScroll() {
+            let current = null;
+            for (const h of headings) {
+                const rect = h.el.getBoundingClientRect();
+                if (rect.top <= 120) current = h;
+            }
+            tocLinks.forEach(l => l.parentElement.classList.remove('active'));
+            if (current) current.link.classList.add('active');
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    });
+
+    function toggleMobileToc() {
+        const toc = document.getElementById('toc');
+        if (!toc) return;
+        if (toc.style.display === 'block') {
+            toc.style.display = '';
+            toc.style.position = '';
+        } else {
+            toc.style.display = 'block';
+            toc.style.position = 'fixed';
+            toc.style.top = '0';
+            toc.style.left = '0';
+            toc.style.width = '80vw';
+            toc.style.maxWidth = '320px';
+            toc.style.height = '100vh';
+            toc.style.maxHeight = '100vh';
+            toc.style.zIndex = '2000';
+            toc.style.background = 'var(--parchment)';
+            toc.style.boxShadow = '4px 0 20px rgba(0,0,0,0.2)';
+            toc.style.padding = '24px';
+            toc.style.overflowY = 'auto';
+        }
+    }
+    </script>
+
+    <script>
+    function toggleSynopsisAudio(btn) {
+        var audio = btn.parentElement.querySelector('audio');
+        if (!audio.src) audio.src = btn.getAttribute('data-src');
+        if (audio.paused) {
+            audio.play();
+            btn.classList.add('playing');
+            btn.querySelector('i').className = 'fa-solid fa-pause';
+        } else {
+            audio.pause();
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        }
+        audio.onended = function() {
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        };
+        // Prevent click from toggling the synopsis open/close
+        event.stopPropagation();
+    }
+    </script>
+</body>
+</html>

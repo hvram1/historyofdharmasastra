@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline — 34. The Yājnavalkya-smriti</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+    :root {
+        --parchment: #faf6ef;
+        --parchment-mid: #f0e6d3;
+        --saffron: #e8941a;
+        --ink: #2c1810;
+        --ink-secondary: #5a3e2b;
+        --rule: #d4c5a9;
+        --indigo: #2d5a87;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+        font-family: 'Lora', Georgia, serif;
+        background: var(--parchment);
+        color: var(--ink);
+    }
+    .navbar {
+        background: linear-gradient(135deg, #1a0f0a, #2c1810);
+        padding: 12px 24px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+    .navbar a { color: var(--parchment); text-decoration: none; }
+    .navbar .devanagari { font-size: 1.3rem; }
+    .navbar .nav-title { font-family: 'Lora', serif; font-size: 1rem; opacity: 0.9; }
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+    .breadcrumb-bar a { color: var(--saffron); text-decoration: none; }
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+    .content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 24px;
+    }
+    h1 {
+        font-size: 1.6rem;
+        margin-bottom: 8px;
+        color: var(--ink);
+    }
+    .subtitle {
+        font-size: 0.9rem;
+        color: var(--ink-secondary);
+        margin-bottom: 24px;
+    }
+    .timeline-container {
+        overflow-x: auto;
+        padding: 16px 0;
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        background: var(--parchment);
+    }
+    .timeline-svg {
+        display: block;
+        min-width: 100%;
+    }
+    .timeline-svg .tl-evt { cursor: pointer; }
+    .timeline-svg .tl-evt:hover { transform: scale(1.5); }
+    .event-list {
+        margin-top: 32px;
+    }
+    .event-list h2 {
+        font-size: 1.1rem;
+        margin-bottom: 16px;
+        color: var(--ink-secondary);
+    }
+    .event-item {
+        display: flex;
+        gap: 16px;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--rule);
+        font-size: 0.88rem;
+    }
+    .event-year {
+        min-width: 90px;
+        font-weight: 600;
+        color: var(--saffron);
+        font-family: 'Open Sans', sans-serif;
+    }
+    .event-label { font-weight: 600; }
+    .event-context {
+        color: var(--ink-secondary);
+        font-size: 0.82rem;
+        margin-top: 2px;
+    }
+    .event-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.8rem;
+    }
+    .event-link:hover { text-decoration: underline; }
+    .back-link {
+        display: inline-block;
+        margin-top: 24px;
+        color: var(--saffron);
+        text-decoration: none;
+        font-family: 'Open Sans', sans-serif;
+    }
+    .back-link:hover { text-decoration: underline; }
+    .century-group {
+        margin-bottom: 8px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        overflow: hidden;
+    }
+    .century-heading {
+        display: block;
+        padding: 10px 16px;
+        background: var(--parchment-mid);
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: var(--ink);
+    }
+    .century-heading:hover { background: #e8dcc8; }
+    .century-count {
+        font-weight: 400;
+        color: var(--ink-secondary);
+        font-size: 0.82rem;
+    }
+    .century-events {
+        padding: 8px 16px;
+    }
+    .vol-tl-link {
+        display: inline-block;
+        margin: 4px 8px 4px 0;
+        padding: 6px 14px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        color: var(--saffron);
+        text-decoration: none;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+    }
+    .vol-tl-link:hover {
+        border-color: var(--saffron);
+        background: #f5ebe0;
+    }
+    .vol-tl-count {
+        color: var(--ink-secondary);
+        font-size: 0.78rem;
+    }
+    /* ── Tab switcher ── */
+    .tl-tabs {
+        display: flex; gap: 0; margin-bottom: 20px;
+        border-bottom: 2px solid var(--rule);
+    }
+    .tl-tab {
+        padding: 10px 20px; cursor: pointer;
+        font-family: 'Open Sans', sans-serif; font-size: 0.9rem;
+        color: var(--ink-secondary); border-bottom: 2px solid transparent;
+        margin-bottom: -2px; transition: all 0.2s;
+    }
+    .tl-tab:hover { color: var(--ink); }
+    .tl-tab.active { color: var(--saffron); border-bottom-color: var(--saffron); font-weight: 600; }
+    .tl-panel { display: none; }
+    .tl-panel.active { display: block; }
+    /* ── Entity graph styles ── */
+    .eg-entity {
+        border: 1px solid var(--rule); border-radius: 6px;
+        margin-bottom: 8px; overflow: hidden; transition: border-color 0.2s;
+    }
+    .eg-entity.highlighted { border-color: var(--saffron); box-shadow: 0 0 0 1px var(--saffron); }
+    .eg-header {
+        display: flex; align-items: center; gap: 12px;
+        padding: 10px 16px; background: var(--parchment-mid);
+        cursor: pointer; font-family: 'Open Sans', sans-serif;
+    }
+    .eg-header:hover { background: #e8dcc8; }
+    .eg-name { font-weight: 600; font-size: 0.92rem; flex: 1; }
+    .eg-type {
+        font-size: 0.72rem; padding: 2px 8px; border-radius: 10px;
+        background: var(--parchment); color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .eg-claims-count {
+        font-size: 0.78rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif;
+    }
+    .eg-body { padding: 12px 16px; display: none; }
+    .eg-entity.open .eg-body { display: block; }
+    .eg-range-bar {
+        position: relative; height: 32px;
+        background: var(--parchment-mid); border-radius: 4px;
+        margin-bottom: 10px; overflow: hidden;
+    }
+    .eg-range-fill {
+        position: absolute; top: 6px; height: 20px;
+        background: var(--saffron); opacity: 0.3; border-radius: 3px;
+    }
+    .eg-range-dot {
+        position: absolute; top: 11px; width: 10px; height: 10px;
+        background: var(--saffron); border-radius: 50%;
+        transform: translateX(-5px); cursor: pointer;
+    }
+    .eg-range-dot:hover { transform: translateX(-5px) scale(1.4); }
+    .eg-range-label {
+        position: absolute; top: -2px;
+        font-size: 0.7rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif;
+        transform: translateX(-50%);
+    }
+    .eg-cooccur {
+        margin-top: 8px; padding-top: 8px;
+        border-top: 1px solid var(--rule);
+    }
+    .eg-cooccur-title {
+        font-size: 0.78rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif; margin-bottom: 6px;
+    }
+    .eg-cooccur-chip {
+        display: inline-block; margin: 2px 4px 2px 0;
+        padding: 3px 10px; background: var(--parchment-mid);
+        border: 1px solid var(--rule); border-radius: 12px;
+        font-size: 0.78rem; color: var(--ink);
+        font-family: 'Open Sans', sans-serif;
+        cursor: pointer; transition: all 0.2s;
+    }
+    .eg-cooccur-chip:hover { border-color: var(--saffron); color: var(--saffron); }
+    .eg-cooccur-weight {
+        font-size: 0.68rem; color: var(--ink-secondary); margin-left: 2px;
+    }
+    .eg-claim-list { margin-top: 8px; }
+    .eg-claim {
+        display: flex; gap: 12px; padding: 4px 0;
+        font-size: 0.82rem; border-bottom: 1px solid #f0e6d3;
+    }
+    .eg-claim-year {
+        min-width: 80px; font-weight: 600; color: var(--saffron);
+        font-family: 'Open Sans', sans-serif; font-size: 0.8rem;
+    }
+    .eg-claim-ctx { color: var(--ink-secondary); font-size: 0.78rem; }
+    .eg-claim a { color: var(--indigo); text-decoration: none; font-size: 0.76rem; }
+    .eg-claim a:hover { text-decoration: underline; }
+    .eg-stats {
+        display: flex; gap: 24px; margin-bottom: 16px;
+        font-family: 'Open Sans', sans-serif; font-size: 0.85rem;
+        color: var(--ink-secondary);
+    }
+    .eg-stat-num { font-weight: 700; color: var(--saffron); font-size: 1.1rem; }
+    .eg-sort {
+        font-family: 'Open Sans', sans-serif; font-size: 0.82rem;
+        margin-bottom: 12px; color: var(--ink-secondary);
+    }
+    .eg-sort a {
+        color: var(--indigo); text-decoration: none; cursor: pointer;
+        margin: 0 6px;
+    }
+    .eg-sort a:hover { text-decoration: underline; }
+    .eg-sort a.active { color: var(--saffron); font-weight: 600; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="../index.html"><span class="devanagari">धर्मशास्त्रम्</span></a>
+        <a href="../index.html" class="nav-title">History of Dharmaśāstra</a>
+    </div>
+    
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep"> &rsaquo; </span>
+        <a href="index.html">Volume I: Part I</a>
+        <span class="sep"> &rsaquo; </span>
+        <a href="34-the-yājnavalkya-smriti.html">34. The Yājnavalkya-smriti</a>
+        <span class="sep"> &rsaquo; </span>
+        <span>Timeline</span>
+    </div>
+    
+    <div class="content">
+        <h1>Timeline: 34. The Yājnavalkya-smriti</h1>
+        <p class="subtitle">24 dated references</p>
+        <div class="tl-tabs">
+            <div class="tl-tab active" data-panel="events-panel">Events</div>
+            <div class="tl-tab" data-panel="graph-panel">Entity Graph</div>
+        </div>
+        <div id="events-panel" class="tl-panel active">
+            <div class="timeline-container">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 280" class="timeline-svg" role="img" aria-label="Timeline for 34. The Yājnavalkya-smriti">
+<rect width="1440" height="280" fill="#faf6ef" rx="8"/>
+<line x1="60" y1="100" x2="1400" y2="100" stroke="#c4956a" stroke-width="2"/>
+<line x1="60.0" y1="94" x2="60.0" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="60.0" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">100 BCE</text>
+<line x1="77.68055555555556" y1="94" x2="77.68055555555556" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="77.68055555555556" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1 CE</text>
+<line x1="170.73611111111111" y1="94" x2="170.73611111111111" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="170.73611111111111" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">100 CE</text>
+<line x1="263.79166666666663" y1="94" x2="263.79166666666663" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="263.79166666666663" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">200 CE</text>
+<line x1="356.84722222222223" y1="94" x2="356.84722222222223" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="356.84722222222223" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">300 CE</text>
+<line x1="449.9027777777778" y1="94" x2="449.9027777777778" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="449.9027777777778" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">400 CE</text>
+<line x1="542.9583333333333" y1="94" x2="542.9583333333333" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="542.9583333333333" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">500 CE</text>
+<line x1="636.0138888888889" y1="94" x2="636.0138888888889" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="636.0138888888889" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">600 CE</text>
+<line x1="729.0694444444445" y1="94" x2="729.0694444444445" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="729.0694444444445" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">700 CE</text>
+<line x1="822.125" y1="94" x2="822.125" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="822.125" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">800 CE</text>
+<line x1="915.1805555555555" y1="94" x2="915.1805555555555" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="915.1805555555555" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">900 CE</text>
+<line x1="1008.2361111111112" y1="94" x2="1008.2361111111112" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="1008.2361111111112" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1000 CE</text>
+<line x1="1101.2916666666667" y1="94" x2="1101.2916666666667" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="1101.2916666666667" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1100 CE</text>
+<line x1="1194.3472222222222" y1="94" x2="1194.3472222222222" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="1194.3472222222222" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1200 CE</text>
+<line x1="1287.4027777777778" y1="94" x2="1287.4027777777778" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="1287.4027777777778" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1300 CE</text>
+<line x1="1380.4583333333335" y1="94" x2="1380.4583333333335" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="1380.4583333333335" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1400 CE</text>
+<text x="1400" y="120" text-anchor="end" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1 later &rarr;</text>
+<circle cx="170.73611111111111" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="2" stroke-dasharray="2,2" class="tl-evt" data-para="p-34-the-yājnavalkya-smriti-29" data-href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-29"><title>Yājñavalkya</title></circle>
+<line x1="170.73611111111111" y1="106" x2="170.73611111111111" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="170.73611111111111" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Yājñavalkya</text>
+<text x="170.73611111111111" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">100 CE</text>
+<line x1="171.66666666666666" y1="100" x2="263.79166666666663" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="217.72916666666663" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-34-the-yājnavalkya-smriti-26" data-href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-26"><title>Yājñavalkya</title></circle>
+<line x1="217.72916666666663" y1="106" x2="217.72916666666663" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="217.72916666666663" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Yājñavalkya</text>
+<text x="217.72916666666663" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">101 CE</text>
+<line x1="264.72222222222223" y1="100" x2="356.84722222222223" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="310.78472222222223" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-34-the-yājnavalkya-smriti-25" data-href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-25"><title>Yājñavalkya</title></circle>
+<line x1="310.78472222222223" y1="106" x2="310.78472222222223" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="310.78472222222223" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Yājñavalkya</text>
+<text x="310.78472222222223" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">201 CE</text>
+<line x1="357.77777777777777" y1="100" x2="449.9027777777778" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="403.8402777777778" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-34-the-yājnavalkya-smriti-27" data-href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-27"><title>Āpastamba Dharmasūtra</title></circle>
+<line x1="403.8402777777778" y1="106" x2="403.8402777777778" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="403.8402777777778" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Āpastamba Dharmasūtra</text>
+<text x="403.8402777777778" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">301 CE</text>
+<line x1="357.77777777777777" y1="100" x2="449.9027777777778" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="403.8402777777778" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-34-the-yājnavalkya-smriti-30" data-href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-30"><title>Yājñavalkya</title></circle>
+<line x1="403.8402777777778" y1="106" x2="403.8402777777778" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="403.8402777777778" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Yājñavalkya</text>
+<text x="403.8402777777778" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">301 CE</text>
+<line x1="450.83333333333337" y1="100" x2="542.9583333333333" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="496.8958333333333" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-34-the-yājnavalkya-smriti-27" data-href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-27"><title>Āpastamba Dharmasūtra</title></circle>
+<line x1="496.8958333333333" y1="106" x2="496.8958333333333" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="496.8958333333333" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Āpastamba Dharmasūtra</text>
+<text x="496.8958333333333" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">401 CE</text>
+<circle cx="528.0694444444443" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-34-the-yājnavalkya-smriti-27" data-href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-27"><title>Āpastamba Dharmasūtra</title></circle>
+<line x1="528.0694444444443" y1="106" x2="528.0694444444443" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="528.0694444444443" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Āpastamba Dharmasūtra</text>
+<text x="528.0694444444443" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">484 CE</text>
+<circle cx="542.9583333333333" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-34-the-yājnavalkya-smriti-25" data-href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-25"><title>Yājñavalkya</title></circle>
+<line x1="542.9583333333333" y1="106" x2="542.9583333333333" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="542.9583333333333" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Yājñavalkya</text>
+<text x="542.9583333333333" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">500 CE</text>
+<circle cx="729.0694444444445" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-34-the-yājnavalkya-smriti-10" data-href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-10"><title>Garuḍapurāṇa</title></circle>
+<line x1="729.0694444444445" y1="106" x2="729.0694444444445" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="729.0694444444445" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Garuḍapurāṇa</text>
+<text x="729.0694444444445" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">700 CE</text>
+<circle cx="729.0694444444445" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-34-the-yājnavalkya-smriti-56" data-href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-56"><title>Yājñavalkya</title></circle>
+<line x1="729.0694444444445" y1="106" x2="729.0694444444445" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="729.0694444444445" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Yājñavalkya</text>
+<text x="729.0694444444445" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">700 CE</text>
+<line x1="822.125" y1="100" x2="845.3888888888889" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="833.7569444444445" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-34-the-yājnavalkya-smriti-6" data-href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-6"><title>Viśvarūpa</title></circle>
+<line x1="833.7569444444445" y1="106" x2="833.7569444444445" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="833.7569444444445" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Viśvarūpa</text>
+<text x="833.7569444444445" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">800 CE</text>
+<line x1="822.125" y1="100" x2="1101.2916666666667" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="961.7083333333334" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-34-the-yājnavalkya-smriti-10" data-href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-10"><title>Garuḍapurāṇa</title></circle>
+<line x1="961.7083333333334" y1="106" x2="961.7083333333334" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="961.7083333333334" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Garuḍapurāṇa</text>
+<text x="961.7083333333334" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">800 CE</text>
+<circle cx="822.125" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="2" stroke-dasharray="2,2" class="tl-evt" data-para="p-34-the-yājnavalkya-smriti-48" data-href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-48"><title>Yājñavalkya</title></circle>
+<line x1="822.125" y1="106" x2="822.125" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="822.125" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Yājñavalkya</text>
+<text x="822.125" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">800 CE</text>
+<line x1="823.0555555555555" y1="100" x2="915.1805555555555" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="869.1180555555555" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-34-the-yājnavalkya-smriti-25" data-href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-25"><title>Yājñavalkya</title></circle>
+<line x1="869.1180555555555" y1="106" x2="869.1180555555555" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="869.1180555555555" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Yājñavalkya</text>
+<text x="869.1180555555555" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">801 CE</text>
+<circle cx="860.2777777777777" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-34-the-yājnavalkya-smriti-48" data-href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-48"><title>Yājñavalkya</title></circle>
+<line x1="860.2777777777777" y1="106" x2="860.2777777777777" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="860.2777777777777" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Yājñavalkya</text>
+<text x="860.2777777777777" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">841 CE</text>
+<circle cx="915.1805555555555" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="2" stroke-dasharray="2,2" class="tl-evt" data-para="p-34-the-yājnavalkya-smriti-6" data-href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-6"><title>Viśvarūpa</title></circle>
+<line x1="915.1805555555555" y1="106" x2="915.1805555555555" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="915.1805555555555" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Viśvarūpa</text>
+<text x="915.1805555555555" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">900 CE</text>
+<circle cx="961.7083333333334" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="2" stroke-dasharray="2,2" class="tl-evt" data-para="p-34-the-yājnavalkya-smriti-48" data-href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-48"><title>Yājñavalkya</title></circle>
+<line x1="961.7083333333334" y1="106" x2="961.7083333333334" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="961.7083333333334" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Yājñavalkya</text>
+<text x="961.7083333333334" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">950 CE</text>
+<circle cx="985.9027777777777" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="2" stroke-dasharray="2,2" class="tl-evt" data-para="p-34-the-yājnavalkya-smriti-48" data-href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-48"><title>Yājñavalkya</title></circle>
+<line x1="985.9027777777777" y1="106" x2="985.9027777777777" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="985.9027777777777" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Yājñavalkya</text>
+<text x="985.9027777777777" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">976 CE</text>
+<circle cx="1008.2361111111112" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-34-the-yājnavalkya-smriti-34" data-href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-34"><title>Yājñavalkya</title></circle>
+<line x1="1008.2361111111112" y1="106" x2="1008.2361111111112" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1008.2361111111112" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Yājñavalkya</text>
+<text x="1008.2361111111112" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1000 CE</text>
+<line x1="1124.5555555555554" y1="100" x2="1147.8194444444443" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1136.1875" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-34-the-yājnavalkya-smriti-20" data-href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-20"><title>Yājñavalkya</title></circle>
+<line x1="1136.1875" y1="106" x2="1136.1875" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1136.1875" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Yājñavalkya</text>
+<text x="1136.1875" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1125 CE</text>
+<line x1="1264.138888888889" y1="100" x2="1296.7083333333335" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1280.4236111111113" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-34-the-yājnavalkya-smriti-52" data-href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-52"><title>Yājñavalkya</title></circle>
+<line x1="1280.4236111111113" y1="106" x2="1280.4236111111113" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1280.4236111111113" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Yājñavalkya</text>
+<text x="1280.4236111111113" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1275 CE</text>
+<circle cx="1278.0972222222222" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-34-the-yājnavalkya-smriti-45" data-href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-45"><title>History of Dharmaśāstra</title></circle>
+<line x1="1278.0972222222222" y1="106" x2="1278.0972222222222" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1278.0972222222222" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">History of Dharmaśāstra</text>
+<text x="1278.0972222222222" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1290 CE</text>
+<line x1="1288.3333333333333" y1="100" x2="1380.4583333333335" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1334.3958333333335" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-34-the-yājnavalkya-smriti-60" data-href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-60"><title>Yājñavalkya</title></circle>
+<line x1="1334.3958333333335" y1="106" x2="1334.3958333333335" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1334.3958333333335" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Yājñavalkya</text>
+<text x="1334.3958333333335" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1301 CE</text>
+<circle cx="1400.0" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-34-the-yājnavalkya-smriti-2" data-href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-2"><title>Viśvarūpa</title></circle>
+<line x1="1400.0" y1="106" x2="1400.0" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1400.0" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Viśvarūpa</text>
+<text x="1400.0" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1892 CE</text>
+</svg>
+            </div>
+            <div class="event-list">
+                <h2>All Dated References</h2>
+                <div class="event-item"><span class="event-year">after 100 CE</span><div><span class="event-label">Yājñavalkya</span><div class="event-context">In III. 171 and 172 Yāj. speaks of only the conjunction of planets and of the passage (of them) through tārās and nakṣat...</div><a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-29" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">101 CE</span><div><span class="event-label">Yājñavalkya</span><div class="event-context">Dr. Jolly (R. u. S. p. 21 ) following Dr. Jacobi ( Z D M G 30, p. 306 ) thinks that Yāj. shows an acquaintance with Gree...</div><a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-26" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">201 CE</span><div><span class="event-label">Yājñavalkya</span><div class="event-context">The Yājñavalkya-smṛti stands in a very intimate relation to the White Yajurveda and the literature that clusters round i...</div><a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-25" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">301 CE</span><div><span class="event-label">Āpastamba Dharmasūtra</span><div class="event-context">The present author has dealt at some length with the question of the origin of week days and their names in pp. 676–685 ...</div><a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-27" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">301 CE</span><div><span class="event-label">Yājñavalkya</span><div class="event-context">Yāj. speaks of the sight of yellow-robed people as an evil omen (I.273), which is probably a reference to the Buddhists ...</div><a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-30" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">401 CE</span><div><span class="event-label">Āpastamba Dharmasūtra</span><div class="event-context">The present author has dealt at some length with the question of the origin of week days and their names in pp. 676–685 ...</div><a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-27" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">484 CE</span><div><span class="event-label">Āpastamba Dharmasūtra</span><div class="event-context">The present author has dealt at some length with the question of the origin of week days and their names in pp. 676–685 ...</div><a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-27" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">500 CE</span><div><span class="event-label">Yājñavalkya</span><div class="event-context">The Yājñavalkya-smṛti stands in a very intimate relation to the White Yajurveda and the literature that clusters round i...</div><a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-25" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">700 CE</span><div><span class="event-label">Garuḍapurāṇa</span><div class="event-context">The above gives rise to an important question whether one can detect several strata in the Yājñavalkyasmṛti. From the fa...</div><a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-10" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">700 CE</span><div><span class="event-label">Yājñavalkya</span><div class="event-context">The Bṛhad-Yogi-Yājñavalkya contains numerous quota- tions from the Manusmṛti and the Bhagavadgītā and a few from the Yāj...</div><a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-56" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">about 800 CE</span><div><span class="event-label">Viśvarūpa</span><div class="event-context">The Agnipurāṇa affords an excellent check for the consideration of the text of the Yājñavalkyasmr̥ti. A good-sized monog...</div><a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-6" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">between 800 CE</span><div><span class="event-label">Garuḍapurāṇa</span><div class="event-context">The above gives rise to an important question whether one can detect several strata in the Yājñavalkyasmṛti. From the fa...</div><a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-10" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">before 800 CE</span><div><span class="event-label">Yājñavalkya</span><div class="event-context">As regards the Bṛhadyogi-Yājñavalkya matters stand as followṣ Vācaspatimiśra in his commentary on the Yogiyājñavalkya-Sm...</div><a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-48" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">801 CE</span><div><span class="event-label">Yājñavalkya</span><div class="event-context">The Yājñavalkya-smṛti stands in a very intimate relation to the White Yajurveda and the literature that clusters round i...</div><a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-25" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">841 CE</span><div><span class="event-label">Yājñavalkya</span><div class="event-context">As regards the Bṛhadyogi-Yājñavalkya matters stand as followṣ Vācaspatimiśra in his commentary on the Yogiyājñavalkya-Sm...</div><a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-48" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">about 900 CE</span><div><span class="event-label">Viśvarūpa</span><div class="event-context">The Agnipurāṇa affords an excellent check for the consideration of the text of the Yājñavalkyasmr̥ti. A good-sized monog...</div><a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-6" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">before 950 CE</span><div><span class="event-label">Yājñavalkya</span><div class="event-context">As regards the Bṛhadyogi-Yājñavalkya matters stand as followṣ Vācaspatimiśra in his commentary on the Yogiyājñavalkya-Sm...</div><a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-48" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">before 976 CE</span><div><span class="event-label">Yājñavalkya</span><div class="event-context">As regards the Bṛhadyogi-Yājñavalkya matters stand as followṣ Vācaspatimiśra in his commentary on the Yogiyājñavalkya-Sm...</div><a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-48" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1000 CE</span><div><span class="event-label">Yājñavalkya</span><div class="event-context">One quotation cited from Vṛddha-Yāj. by Mādhava refers to the means of proof in case of doubt whether there was a partit...</div><a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-34" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">about 1125 CE</span><div><span class="event-label">Yājñavalkya</span><div class="event-context">Aparārka ( about 1125-50 A. D. ) mentions Yogayajña- valkya about 25 times and quotes at least 63 verses therefrom (thou...</div><a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-20" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">about 1275 CE</span><div><span class="event-label">Yājñavalkya</span><div class="event-context">It may be noted that Śrīdatta (about 1275-1310 A. D.) quotes from Yogi-Yājñavalkya about 15 verses in his small work cal...</div><a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-52" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1290 CE</span><div><span class="event-label">History of Dharmaśāstra</span><div class="event-context">The Bṛhadyogiyājñavalkya contains about 930 verses, the Yogayājñavalkya published by Mr. Divanji contains 496 verses and...</div><a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-45" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1301 CE</span><div><span class="event-label">Yājñavalkya</span><div class="event-context">Mr. Divanji's mentality is rather peculiar. On p. 113 of JBBRAS vol. 29, Mr. Divanji gives a list of eight items on quot...</div><a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-60" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1892 CE</span><div><span class="event-label">Viśvarūpa</span><div class="event-context">This smṛti has been published dozens of timeṣ In the following the Nirṇayasāgara edition edited by Śāstri Moghe (1892 A....</div><a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-2" class="event-link">View in text &rarr;</a></div></div>
+            </div>
+        </div>
+        <div id="graph-panel" class="tl-panel">
+            <div class="eg-stats">
+<div><span class="eg-stat-num">5</span> entities</div>
+<div><span class="eg-stat-num">26</span> date claims</div>
+<div><span class="eg-stat-num">4</span> debated</div>
+<div><span class="eg-stat-num">115</span> co-occurrences</div>
+</div>
+<div class="eg-sort">Sort: <a class="active" onclick="egSort('date')">by date</a><a onclick="egSort('claims')">by claims</a><a onclick="egSort('name')">by name</a></div>
+<div id="eg-entities">
+<div class="eg-entity" data-key="pastamba-dharmas-tra" data-consensus="401" data-claims="3" data-name="Āpastamba Dharmasūtra"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Āpastamba Dharmasūtra</span><span class="eg-type">text</span><span class="eg-claims-count">3 claims &middot; 301 CE to 484 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="100" data-max="1892"><span class="eg-range-label" style="left:0;">100 CE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1892 CE</span><div class="eg-range-fill" style="left:11.2%;width:10.2%;"></div><div class="eg-range-dot" style="left:11.2%;" title="301 CE — 4th century A. D."></div><div class="eg-range-dot" style="left:16.8%;" title="401 CE — 5th century A. D."></div><div class="eg-range-dot" style="left:21.4%;" title="484 CE — 484 A. D."></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="b-haspatism-ti" onclick="egHighlight('b-haspatism-ti')">Bṛhaspatismṛti<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="baudh-yana-g-hyas-tra" onclick="egHighlight('baudh-yana-g-hyas-tra')">Baudhāyana Gṛhyasūtra<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="gveda" onclick="egHighlight('gveda')">Ṛgveda<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="mit-k-ar" onclick="egHighlight('mit-k-ar')">Mitākṣarā<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="taittir-ya-br-hma-a" onclick="egHighlight('taittir-ya-br-hma-a')">Taittirīya Brāhmaṇa<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="taittir-ya-sa-hit" onclick="egHighlight('taittir-ya-sa-hit')">Taittirīya Saṃhitā<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="vi-var-pa" onclick="egHighlight('vi-var-pa')">Viśvarūpa<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="y-j-avalkya-sm-ti" onclick="egHighlight('y-j-avalkya-sm-ti')">Yājñavalkya Smṛti<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">301 CE</span><div><span class="eg-claim-ctx">The present author has dealt at some length with the question of the origin of week days and their n...</span> <a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-27">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">401 CE</span><div><span class="eg-claim-ctx">The present author has dealt at some length with the question of the origin of week days and their n...</span> <a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-27">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">484 CE</span><div><span class="eg-claim-ctx">The present author has dealt at some length with the question of the origin of week days and their n...</span> <a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-27">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="garu-apur-a" data-consensus="800" data-claims="2" data-name="Garuḍapurāṇa"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Garuḍapurāṇa</span><span class="eg-type">text</span><span class="eg-claims-count">2 claims &middot; 700 CE to 800 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="100" data-max="1892"><span class="eg-range-label" style="left:0;">100 CE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1892 CE</span><div class="eg-range-fill" style="left:33.5%;width:5.6%;"></div><div class="eg-range-dot" style="left:33.5%;" title="700 CE — 700 A. D."></div><div class="eg-range-dot" style="left:39.1%;" title="800 CE — between 800 and 1100 A. D."></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="a-kha-likhita-dharmas-tra" onclick="egHighlight('a-kha-likhita-dharmas-tra')">Śaṅkha-Likhita Dharmasūtra<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="mit-k-ar" onclick="egHighlight('mit-k-ar')">Mitākṣarā<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="vi-var-pa" onclick="egHighlight('vi-var-pa')">Viśvarūpa<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="y-j-avalkya-sm-ti" onclick="egHighlight('y-j-avalkya-sm-ti')">Yājñavalkya Smṛti<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">700 CE</span><div><span class="eg-claim-ctx">The above gives rise to an important question whether one can detect several strata in the Yājñavalk...</span> <a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-10">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">between 800 CE</span><div><span class="eg-claim-ctx">The above gives rise to an important question whether one can detect several strata in the Yājñavalk...</span> <a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-10">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="y-j-avalkya-sm-ti" data-consensus="801" data-claims="17" data-name="Yājñavalkya Smṛti"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Yājñavalkya Smṛti</span><span class="eg-type">text</span><span class="eg-claims-count">17 claims &middot; 100 CE to 1301 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="100" data-max="1892"><span class="eg-range-label" style="left:0;">100 CE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1892 CE</span><div class="eg-range-fill" style="left:0.0%;width:67.0%;"></div><div class="eg-range-dot" style="left:0.0%;" title="100 CE — after 100 A. D."></div><div class="eg-range-dot" style="left:0.1%;" title="101 CE — 2nd century A. D."></div><div class="eg-range-dot" style="left:5.6%;" title="201 CE — 3rd century A. D."></div><div class="eg-range-dot" style="left:11.2%;" title="301 CE — 4th century A. D."></div><div class="eg-range-dot" style="left:22.3%;" title="500 CE — 500 A. D."></div><div class="eg-range-dot" style="left:33.5%;" title="700 CE — 700 A. D."></div><div class="eg-range-dot" style="left:39.1%;" title="800 CE — before 800 A. D."></div><div class="eg-range-dot" style="left:39.1%;" title="801 CE — 9th century A.D."></div><div class="eg-range-dot" style="left:39.1%;" title="801 CE — 9th century "></div><div class="eg-range-dot" style="left:41.4%;" title="841 CE — 841-41 A. D."></div><div class="eg-range-dot" style="left:47.4%;" title="950 CE — before 950 A. D."></div><div class="eg-range-dot" style="left:48.9%;" title="976 CE — before 976 A.D."></div><div class="eg-range-dot" style="left:50.2%;" title="1000 CE — 1000 A. D."></div><div class="eg-range-dot" style="left:57.2%;" title="1125 CE — about 1125-50 A. D."></div><div class="eg-range-dot" style="left:57.2%;" title="1125 CE — about 1125-1150 A. D."></div><div class="eg-range-dot" style="left:65.6%;" title="1275 CE — about 1275-1310 A. D."></div><div class="eg-range-dot" style="left:67.0%;" title="1301 CE — 14th century A. D."></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="mit-k-ar" onclick="egHighlight('mit-k-ar')">Mitākṣarā<span class="eg-cooccur-weight">4x</span></span><span class="eg-cooccur-chip" data-target="vi-var-pa" onclick="egHighlight('vi-var-pa')">Viśvarūpa<span class="eg-cooccur-weight">4x</span></span><span class="eg-cooccur-chip" data-target="apar-rka" onclick="egHighlight('apar-rka')">Aparārka<span class="eg-cooccur-weight">3x</span></span><span class="eg-cooccur-chip" data-target="b-haspatism-ti" onclick="egHighlight('b-haspatism-ti')">Bṛhaspatismṛti<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="gveda" onclick="egHighlight('gveda')">Ṛgveda<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="manusm-ti" onclick="egHighlight('manusm-ti')">Manusmṛti<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="bhagavadg-t" onclick="egHighlight('bhagavadg-t')">Bhagavadgītā<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="history-of-dharma-stra" onclick="egHighlight('history-of-dharma-stra')">History of Dharmaśāstra<span class="eg-cooccur-weight">2x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">after 100 CE</span><div><span class="eg-claim-ctx">In III. 171 and 172 Yāj. speaks of only the conjunction of planets and of the passage (of them) thro...</span> <a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-29">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">101 CE</span><div><span class="eg-claim-ctx">Dr. Jolly (R. u. S. p. 21 ) following Dr. Jacobi ( Z D M G 30, p. 306 ) thinks that Yāj. shows an ac...</span> <a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-26">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">201 CE</span><div><span class="eg-claim-ctx">The Yājñavalkya-smṛti stands in a very intimate relation to the White Yajurveda and the literature t...</span> <a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-25">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">301 CE</span><div><span class="eg-claim-ctx">Yāj. speaks of the sight of yellow-robed people as an evil omen (I.273), which is probably a referen...</span> <a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-30">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">500 CE</span><div><span class="eg-claim-ctx">The Yājñavalkya-smṛti stands in a very intimate relation to the White Yajurveda and the literature t...</span> <a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-25">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">700 CE</span><div><span class="eg-claim-ctx">The Bṛhad-Yogi-Yājñavalkya contains numerous quota- tions from the Manusmṛti and the Bhagavadgītā an...</span> <a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-56">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">before 800 CE</span><div><span class="eg-claim-ctx">As regards the Bṛhadyogi-Yājñavalkya matters stand as followṣ Vācaspatimiśra in his commentary on th...</span> <a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-48">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">801 CE</span><div><span class="eg-claim-ctx">The Yājñavalkya-smṛti stands in a very intimate relation to the White Yajurveda and the literature t...</span> <a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-25">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">801 CE</span><div><span class="eg-claim-ctx">From the above it is clear that Yoga-Yājñavalkya and Bṛhad-Yogi-Yājñavalkya are entirely different w...</span> <a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-55">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">841 CE</span><div><span class="eg-claim-ctx">As regards the Bṛhadyogi-Yājñavalkya matters stand as followṣ Vācaspatimiśra in his commentary on th...</span> <a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-48">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">before 950 CE</span><div><span class="eg-claim-ctx">As regards the Bṛhadyogi-Yājñavalkya matters stand as followṣ Vācaspatimiśra in his commentary on th...</span> <a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-48">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">before 976 CE</span><div><span class="eg-claim-ctx">As regards the Bṛhadyogi-Yājñavalkya matters stand as followṣ Vācaspatimiśra in his commentary on th...</span> <a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-48">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">1000 CE</span><div><span class="eg-claim-ctx">One quotation cited from Vṛddha-Yāj. by Mādhava refers to the means of proof in case of doubt whethe...</span> <a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-34">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">about 1125 CE</span><div><span class="eg-claim-ctx">Aparārka ( about 1125-50 A. D. ) mentions Yogayajña- valkya about 25 times and quotes at least 63 ve...</span> <a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-20">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">about 1125 CE</span><div><span class="eg-claim-ctx">There are some special features in the Bṛ. Yogi-Yāj. Most early and mediaeval works on Yoga do not d...</span> <a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-49">view</a></div></div><div style="font-size:0.78rem;color:var(--ink-secondary);padding:4px 0;">... and 2 more claims</div></div></div></div>
+<div class="eg-entity" data-key="vi-var-pa" data-consensus="900" data-claims="3" data-name="Viśvarūpa"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Viśvarūpa</span><span class="eg-type">person</span><span class="eg-claims-count">3 claims &middot; 800 CE to 1892 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="100" data-max="1892"><span class="eg-range-label" style="left:0;">100 CE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1892 CE</span><div class="eg-range-fill" style="left:39.1%;width:60.9%;"></div><div class="eg-range-dot" style="left:39.1%;" title="800 CE — about 800-825 A. D."></div><div class="eg-range-dot" style="left:44.6%;" title="900 CE — about 900 A. D."></div><div class="eg-range-dot" style="left:100.0%;" title="1892 CE — 1892 A. D."></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="y-j-avalkya-sm-ti" onclick="egHighlight('y-j-avalkya-sm-ti')">Yājñavalkya Smṛti<span class="eg-cooccur-weight">4x</span></span><span class="eg-cooccur-chip" data-target="mit-k-ar" onclick="egHighlight('mit-k-ar')">Mitākṣarā<span class="eg-cooccur-weight">3x</span></span><span class="eg-cooccur-chip" data-target="b-haspatism-ti" onclick="egHighlight('b-haspatism-ti')">Bṛhaspatismṛti<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="gveda" onclick="egHighlight('gveda')">Ṛgveda<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="agnipur-a" onclick="egHighlight('agnipur-a')">Agnipurāṇa<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="a-kha-likhita-dharmas-tra" onclick="egHighlight('a-kha-likhita-dharmas-tra')">Śaṅkha-Likhita Dharmasūtra<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="garu-apur-a" onclick="egHighlight('garu-apur-a')">Garuḍapurāṇa<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="artha-stra" onclick="egHighlight('artha-stra')">Arthaśāstra<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">about 800 CE</span><div><span class="eg-claim-ctx">The Agnipurāṇa affords an excellent check for the consideration of the text of the Yājñavalkyasmr̥ti...</span> <a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-6">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">about 900 CE</span><div><span class="eg-claim-ctx">The Agnipurāṇa affords an excellent check for the consideration of the text of the Yājñavalkyasmr̥ti...</span> <a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-6">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">1892 CE</span><div><span class="eg-claim-ctx">This smṛti has been published dozens of timeṣ In the following the Nirṇayasāgara edition edited by Ś...</span> <a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-2">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="history-of-dharma-stra" data-consensus="1290" data-claims="1" data-name="History of Dharmaśāstra"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">History of Dharmaśāstra</span><span class="eg-type">text</span><span class="eg-claims-count">1 claims &middot; 1290 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="100" data-max="1892"><span class="eg-range-label" style="left:0;">100 CE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1892 CE</span><div class="eg-range-dot" style="left:66.4%;" title="1290 CE — 1290 A. D."></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="y-j-avalkya-sm-ti" onclick="egHighlight('y-j-avalkya-sm-ti')">Yājñavalkya Smṛti<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="bhagavadg-t" onclick="egHighlight('bhagavadg-t')">Bhagavadgītā<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="vasi-ha-dharmas-tra" onclick="egHighlight('vasi-ha-dharmas-tra')">Vasiṣṭha Dharmasūtra<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">1290 CE</span><div><span class="eg-claim-ctx">The Bṛhadyogiyājñavalkya contains about 930 verses, the Yogayājñavalkya published by Mr. Divanji con...</span> <a href="34-the-yājnavalkya-smriti.html#p-34-the-yājnavalkya-smriti-45">view</a></div></div></div></div></div>
+</div>
+<script>
+function egToggle(header) {
+    header.parentElement.classList.toggle('open');
+}
+function egHighlight(key) {
+    // Remove existing highlights
+    document.querySelectorAll('.eg-entity.highlighted').forEach(function(el) {
+        el.classList.remove('highlighted');
+    });
+    // Highlight target and scroll to it
+    var target = document.querySelector('.eg-entity[data-key="' + key + '"]');
+    if (target) {
+        target.classList.add('highlighted');
+        target.classList.add('open');
+        target.scrollIntoView({behavior: 'smooth', block: 'center'});
+    }
+}
+function egSort(mode) {
+    var container = document.getElementById('eg-entities');
+    var items = Array.from(container.querySelectorAll('.eg-entity'));
+    items.sort(function(a, b) {
+        if (mode === 'date') return parseInt(a.dataset.consensus) - parseInt(b.dataset.consensus);
+        if (mode === 'claims') return parseInt(b.dataset.claims) - parseInt(a.dataset.claims);
+        if (mode === 'name') return a.dataset.name.localeCompare(b.dataset.name);
+        return 0;
+    });
+    items.forEach(function(el) { container.appendChild(el); });
+    // Update active sort link
+    document.querySelectorAll('.eg-sort a').forEach(function(a) { a.classList.remove('active'); });
+    event.target.classList.add('active');
+}
+</script>
+        </div>
+        <a href="34-the-yājnavalkya-smriti.html" class="back-link">&larr; Back to 34. The Yājnavalkya-smriti</a>
+    </div>
+    <script>
+    document.querySelectorAll('.tl-evt').forEach(function(el) {
+        el.addEventListener('click', function() {
+            var href = this.getAttribute('data-href');
+            if (href) {
+                window.location.href = href;
+            } else {
+                var paraId = this.getAttribute('data-para');
+                if (paraId) {
+                    var target = document.getElementById(paraId);
+                    if (target) target.scrollIntoView({behavior: 'smooth'});
+                }
+            }
+        });
+    });
+    // Tab switching
+    document.querySelectorAll('.tl-tab').forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            document.querySelectorAll('.tl-tab').forEach(function(t) { t.classList.remove('active'); });
+            document.querySelectorAll('.tl-panel').forEach(function(p) { p.classList.remove('active'); });
+            tab.classList.add('active');
+            var panel = document.getElementById(tab.getAttribute('data-panel'));
+            if (panel) panel.classList.add('active');
+        });
+    });
+    </script>
+</body>
+</html>

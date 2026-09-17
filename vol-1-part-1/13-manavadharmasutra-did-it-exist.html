@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- MDB UI Kit -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/fonts.css?v=1.2">
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/navbar.css?v=2.4">
+
+    <title>13. Manavadharmasutra - Did it exist? — Volume I: Part I — History of Dharmaśāstra</title>
+    <style>
+    :root {
+        --saffron:        #D4600A;
+        --saffron-light:  #F0924A;
+        --saffron-wash:   rgba(212, 96, 10, 0.07);
+        --indigo:         #2E5FA3;
+        --indigo-dark:    #1C3D70;
+        --maroon:         #7A1E1E;
+        --amber:          #C97A1A;
+        --ink:            #1A1209;
+        --ink-secondary:  #4A3B2A;
+        --parchment:      #FDFAF4;
+        --parchment-mid:  #F5EFE2;
+        --rule:           rgba(180, 130, 60, 0.22);
+        --shadow:         0 2px 18px rgba(90, 50, 10, 0.08);
+        --font-devanagari: 'Tiro Devanagari Sanskrit', 'Siddhanta', 'Noto Sans Devanagari', serif;
+        --font-roman:      'Junicode', Georgia, serif;
+    }
+
+    body {
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: var(--font-roman);
+    }
+
+    .devanagari {
+        font-family: var(--font-devanagari);
+    }
+
+    /* ── Navbar overrides ── */
+    .navbar-ontop { z-index: 1031; }
+    .hdclr { color: var(--saffron); }
+    .engpara { font-family: 'Open Sans', sans-serif; }
+
+    /* ── Layout ── */
+    .dh-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .dh-content {
+        flex: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        background: var(--parchment);
+        box-shadow: var(--shadow);
+        min-height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        .dh-content { padding: 24px 20px; }
+        .dh-wrapper { flex-direction: column; }
+    }
+
+    /* ── TOC Sidebar ── */
+    .toc-sidebar {
+        position: sticky;
+        top: 80px;
+        width: 280px;
+        min-width: 280px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding: 20px 16px;
+        margin-right: 24px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        scrollbar-width: thin;
+    }
+
+    .toc-title {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--saffron-light);
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list li {
+        padding: 4px 0;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-list li.toc-l3 {
+        padding-left: 16px;
+        font-size: 0.78rem;
+    }
+
+    .toc-list li a {
+        color: var(--ink-secondary);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .toc-list li a:hover { color: var(--saffron); }
+
+    .toc-list li.active {
+        border-left-color: var(--saffron);
+    }
+
+    .toc-list li.active a {
+        color: var(--saffron);
+        font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-sidebar { display: none; }
+    }
+
+    /* ── Mobile TOC Toggle ── */
+    .toc-mobile-toggle {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1050;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--saffron);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-mobile-toggle { display: block; }
+    }
+
+    /* ── Section Headings ── */
+    .section-heading {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        margin: 48px 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--rule);
+        letter-spacing: 0.5px;
+        scroll-margin-top: 80px;
+    }
+
+    h2.section-heading { font-size: 1.6rem; }
+
+    h3.section-heading {
+        font-size: 1.25rem;
+        border-left: 4px solid var(--saffron-light);
+        border-bottom: none;
+        padding: 8px 16px;
+        background: var(--saffron-wash);
+        border-radius: 0 5px 5px 0;
+    }
+
+    /* ── Prose ── */
+    .prose {
+        font-family: var(--font-roman);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+        color: var(--ink);
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    .prose em { color: var(--maroon); }
+
+    .prose:target {
+        background: rgba(212, 96, 10, 0.12);
+        border-left: 4px solid var(--saffron);
+        padding-left: 16px;
+        margin-left: -20px;
+        border-radius: 0 6px 6px 0;
+        animation: target-pulse 2s ease-out;
+    }
+
+    @keyframes target-pulse {
+        0%   { background: rgba(212, 96, 10, 0.30); }
+        100% { background: rgba(212, 96, 10, 0.12); }
+    }
+
+    /* ── Footnote References ── */
+    .fn-ref {
+        font-size: 0.75em;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    .fn-ref a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 0 2px;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: color 0.15s;
+    }
+
+    .fn-ref a:hover { color: var(--indigo); }
+
+    /* ── Synopsis Box ── */
+    .synopsis-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron-light);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .synopsis-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .synopsis-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .synopsis-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .synopsis-box.open .synopsis-toggle i {
+        transform: rotate(90deg);
+    }
+    .synopsis-body {
+        display: none;
+        padding: 0 20px 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+    }
+    .synopsis-box.open .synopsis-body { display: block; }
+    .synopsis-body p { margin: 0; }
+    .synopsis-attribution {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: var(--ink-secondary);
+        opacity: 0.7;
+        font-style: italic;
+    }
+    .synopsis-audio {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    .synopsis-play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--saffron);
+        background: none;
+        color: var(--saffron);
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: background 0.2s, color 0.2s;
+        padding: 0;
+    }
+    .synopsis-play-btn:hover {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn.playing {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn i { padding-left: 2px; }
+
+    /* ── Index Terms Panel ── */
+    .index-terms-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .index-terms-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .index-terms-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .index-terms-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .index-terms-box.open .index-terms-toggle i {
+        transform: rotate(90deg);
+    }
+    .index-terms-body {
+        display: none;
+        padding: 0 20px 16px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .index-terms-box.open .index-terms-body { display: block; }
+    .index-terms-dl {
+        margin: 0;
+        padding: 0;
+    }
+    .index-terms-dl dt {
+        font-family: var(--font-roman);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+        margin-top: 8px;
+    }
+    .index-terms-dl dd {
+        margin: 2px 0 0 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        color: var(--ink-secondary);
+        line-height: 1.5;
+    }
+    .nyaya-heading {
+        font-family: var(--font-roman);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        margin: 16px 0 4px;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+    }
+
+    /* ── Inline Index Popovers ── */
+    .idx-term {
+        border-bottom: 1px dotted var(--saffron-light);
+        cursor: help;
+        position: relative;
+    }
+    .idx-term:hover::after {
+        content: attr(data-def);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        background: rgba(44, 36, 22, 0.92);
+        color: #F5ECD8;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        max-width: 280px;
+        z-index: 100;
+        white-space: normal;
+        line-height: 1.4;
+        pointer-events: none;
+    }
+
+    /* ── Structured Version Banner ── */
+    .structured-banner {
+        margin: 0 0 28px;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, rgba(212, 96, 10, 0.06) 0%, rgba(212, 96, 10, 0.02) 100%);
+        border: 1px solid var(--saffron-light);
+        border-radius: 6px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        color: var(--ink-secondary);
+        line-height: 1.6;
+    }
+    .structured-banner i { color: var(--saffron); margin-right: 4px; }
+    .structured-banner a { color: var(--indigo); font-weight: 600; text-decoration: none; }
+    .structured-banner a:hover { text-decoration: underline; }
+
+    /* ── Footnotes Section ── */
+    .footnotes-section {
+        margin: 32px 0 48px;
+        padding: 20px 24px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .footnotes-section hr {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 0 0 16px;
+    }
+
+    .footnotes-list {
+        padding-left: 24px;
+        margin: 0;
+    }
+
+    .footnote-item {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+        scroll-margin-top: 80px;
+    }
+
+    .footnote-item:target {
+        background: rgba(212, 96, 10, 0.1);
+        border-radius: 4px;
+        padding: 4px 6px;
+        margin-left: -6px;
+    }
+
+    .fn-back {
+        color: var(--saffron-light);
+        text-decoration: none;
+        font-size: 0.85em;
+        margin-left: 4px;
+    }
+
+    .fn-back:hover { color: var(--saffron); }
+
+    /* ── Reference Links ── */
+    a.ref {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: all 0.15s;
+    }
+
+    a.ref:hover {
+        color: var(--saffron);
+        border-bottom-style: solid;
+    }
+
+    a.mbta-ext {
+        color: var(--indigo);
+        font-size: 0.7em;
+        margin-left: 2px;
+        opacity: 0.5;
+        text-decoration: none;
+        vertical-align: super;
+    }
+    a.mbta-ext:hover { opacity: 1; color: var(--saffron); }
+
+    /* ── References Panel (sidebar) ── */
+    .refs-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .refs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .refs-list li {
+        padding: 3px 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .ref-source-link {
+        font-weight: 600;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .ref-source-link:hover {
+        text-decoration: underline;
+    }
+
+    .ref-verse-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.76rem;
+    }
+
+    .ref-verse-link:hover {
+        text-decoration: underline;
+        color: var(--saffron);
+    }
+
+    .ref-verses {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Timeline panel ── */
+    .timeline-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .timeline-list li {
+        padding: 2px 0;
+        font-size: 0.76rem;
+        line-height: 1.4;
+        position: relative;
+        padding-left: 14px;
+    }
+
+    .timeline-list li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--saffron);
+    }
+
+    .timeline-list li.tl-approximate::before {
+        background: transparent;
+        border: 2px solid var(--saffron);
+        width: 4px;
+        height: 4px;
+    }
+
+    .timeline-list li.tl-century::before {
+        background: transparent;
+        border: 2px dashed var(--saffron);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+
+    .tl-dot-link {
+        text-decoration: none;
+        color: var(--ink);
+        display: block;
+    }
+
+    .tl-dot-link:hover {
+        color: var(--saffron);
+    }
+
+    .tl-year {
+        font-weight: 600;
+        color: var(--saffron);
+        font-size: 0.72rem;
+        min-width: 70px;
+        display: inline-block;
+    }
+
+    .tl-label {
+        color: var(--ink-secondary);
+        font-size: 0.72rem;
+    }
+
+    .tl-view-link, .tl-more {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.72rem;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .tl-view-link:hover, .tl-more:hover {
+        text-decoration: underline;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+
+    .breadcrumb-bar a {
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+
+    .breadcrumb-bar .sep {
+        color: var(--amber);
+        margin: 0 8px;
+    }
+
+    .breadcrumb-bar .current {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Chapter Navigation ── */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        margin-top: 48px;
+        border-top: 2px solid var(--rule);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .chapter-nav a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        transition: all 0.2s;
+        max-width: 45%;
+    }
+
+    .chapter-nav a:hover {
+        background: var(--saffron-wash);
+        border-color: var(--saffron-light);
+    }
+
+    .nav-prev { text-align: left; }
+    .nav-next { text-align: right; margin-left: auto; }
+
+    .page-range {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+    }
+
+    /* ── Volume Cards (Landing) ── */
+    .vol-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .vol-card {
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        transition: all 0.25s;
+    }
+
+    .vol-card:hover {
+        border-color: var(--saffron-light);
+        box-shadow: 0 4px 24px rgba(212, 96, 10, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .vol-num {
+        font-family: var(--font-roman);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--saffron);
+        margin-bottom: 8px;
+    }
+
+    .vol-subtitle {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        line-height: 1.5;
+        flex: 1;
+    }
+
+    .vol-chapters {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        margin-top: 12px;
+    }
+
+    /* ── Chapter Cards (Volume Index) ── */
+    .chapter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .chapter-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .chapter-card:hover {
+        border-color: var(--saffron-light);
+        background: var(--saffron-wash);
+    }
+
+    .card-num {
+        font-family: var(--font-roman);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--saffron);
+        min-width: 36px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        flex: 1;
+    }
+
+    .card-pages {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        color: var(--ink-secondary);
+    }
+
+    /* ── Landing Hero ── */
+    .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-family: var(--font-roman);
+        font-size: 2.4rem;
+        color: var(--saffron);
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .hero .devanagari-title {
+        font-family: var(--font-devanagari);
+        font-size: 1.8rem;
+        color: var(--ink);
+        margin-bottom: 16px;
+    }
+
+    .hero .author {
+        font-family: var(--font-roman);
+        font-size: 1.1rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .hero .desc {
+        font-family: var(--font-roman);
+        font-size: 1rem;
+        color: var(--ink-secondary);
+        line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer { margin-top: 48px; }
+</style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mbta/">
+      <div class="container-fluid">&emsp;&emsp;
+      <a href="../index.html" class="navbar-brand" style="text-decoration:none;">
+        <span class="devanagari ms-3" style="font-size:1.5rem; color:var(--saffron); font-weight:700;">धर्मशास्त्रम्</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="../index.html">धर्मशास्त्रम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5 active" href="../index.html">खण्डाः</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in/mbta/">महाभारतम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in">सनातनम्</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+
+    <div class="dh-wrapper container-xl">
+        <nav id="toc" class="toc-sidebar">
+<div class="refs-panel">
+<h5 class="toc-title">References</h5>
+<ul class="refs-list">
+<li><a href="../refs/baudhayana.html" class="ref-source-link">Baudhāyana Dharmasūtra</a> <span class="ref-verses"><a href="../refs/baudhayana.html#I.4.2" class="ref-verse-link">I.4.2</a></span></li>
+<li><a href="../refs/gautama.html" class="ref-source-link">Gautama Dharmasūtra</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/kautilya.html" class="ref-source-link">Kauṭilya Arthaśāstra</a> <span class="ref-verses"><a href="../refs/kautilya.html#i" class="ref-verse-link">i</a></span></li>
+<li><a href="../refs/kamandaka.html" class="ref-source-link">Kāmandaka Nītisāra</a> <span class="ref-verses"><a href="../refs/kamandaka.html#XI.67" class="ref-verse-link">XI.67</a></span></li>
+<li><a href="../refs/manu.html" class="ref-source-link">Manusmṛti</a> <span class="ref-verses"><a href="../refs/manu.html#i" class="ref-verse-link">i</a>, <a href="../refs/manu.html#7.60" class="ref-verse-link">7.60</a>, <a href="../refs/manu.html#II.4" class="ref-verse-link">II.4</a>, <a href="../refs/manu.html#7.54" class="ref-verse-link">7.54</a>, <a href="../refs/manu.html#7.43" class="ref-verse-link">7.43</a>, <a href="../refs/manu.html#V.41" class="ref-verse-link">V.41</a> <a href="../refs/manu.html" class="ref-verse-link">+2</a></span></li>
+<li><a href="../refs/vasishtha.html" class="ref-source-link">Vasiṣṭha Dharmasūtra</a> <span class="ref-verses"><a href="../refs/vasishtha.html#19, 37" class="ref-verse-link">19, 37</a>, <a href="../refs/vasishtha.html#IV.5-8" class="ref-verse-link">IV.5-8</a>, <a href="../refs/vasishtha.html#i" class="ref-verse-link">i</a>, <a href="../refs/vasishtha.html#12.16" class="ref-verse-link">12.16</a>, <a href="../refs/vasishtha.html#23.43" class="ref-verse-link">23.43</a>, <a href="../refs/vasishtha.html#11.23" class="ref-verse-link">11.23</a></span></li>
+<li><a href="../refs/vishvarupa.html" class="ref-source-link">Viśvarūpa</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/yajnavalkya.html" class="ref-source-link">Yājñavalkya</a> <span class="ref-verses"><a href="../refs/yajnavalkya.html#III.245" class="ref-verse-link">III.245</a></span></li>
+<li><a href="../refs/apastamba.html" class="ref-source-link">Āpastamba Dharmasūtra</a> <span class="ref-verses"><a href="../refs/apastamba.html#1.2.11-12" class="ref-verse-link">1.2.11-12</a></span></li>
+<li><a href="../refs/rigveda.html" class="ref-source-link">Ṛgveda</a> <span class="ref-verses"></span></li>
+</ul>
+</div>
+<div class="timeline-panel">
+<h5 class="toc-title">Timeline</h5>
+<ul class="timeline-list">
+<li class="tl-exact"><a href="#p-13-manavadharmasutra-did-it-exist-3" class="tl-dot-link"><span class="tl-year">~600 BCE</span> <span class="tl-label">Manusmṛti</span></a></li>
+<li class="tl-exact"><a href="#p-13-manavadharmasutra-did-it-exist-3" class="tl-dot-link"><span class="tl-year">~200 BCE</span> <span class="tl-label">Manusmṛti</span></a></li>
+</ul>
+<a href="13-manavadharmasutra-did-it-exist-timeline.html" class="tl-view-link">View full timeline &rarr;</a>
+</div>
+<h5 class="toc-title">Sections</h5>
+<ul class="toc-list">
+<li class="toc-l2"><a href="#13-manavadharmasutra-did-it-exist">13. Manavadharmasutra - Did it exist?</a></li>
+</ul>
+</nav>
+        <main class="dh-content">
+            
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep">›</span>
+        <a href="index.html">Volume I: Part I</a>
+        <span class="sep">›</span>
+        <span class="current">13. Manavadharmasutra - Did it exist?</span>
+    </div>
+    
+            <h1 class="text-center" style="font-family: var(--font-roman); font-size: 2rem; color: var(--saffron); margin-bottom: 8px;">
+                13. Manavadharmasutra - Did it exist?
+            </h1>
+            <p class="text-center" style="font-family: 'Open Sans', sans-serif; color: var(--ink-secondary); font-size: 0.9rem; margin-bottom: 36px;">
+                Volume I: Part I <span class="page-range">pp. 143–148</span>
+            </p>
+
+            
+    <div class="synopsis-box" id="synopsis">
+        <button class="synopsis-toggle" onclick="this.parentElement.classList.toggle('open')"
+                aria-expanded="false" aria-controls="synopsis-body">
+            <i class="fa-solid fa-chevron-right"></i>
+            Kane's Synopsis
+        </button>
+        <div class="synopsis-audio">
+            <span class="synopsis-play-btn" role="button" tabindex="0"
+                    onclick="toggleSynopsisAudio(this)"
+                    data-src="../audio/synopsis/vol-1-part-1/vol-1-part-1_sec013.mp3" title="Listen to synopsis">
+                <i class="fa-solid fa-play"></i>
+            </span>
+            <audio preload="none"></audio>
+        </div>
+        <div class="synopsis-body" id="synopsis-body">
+            <p>Max Müller and Weber responsible for the theory that the
+extant Manusmrti was a recast of an ancient Mânavadharmasūtra
+now lost - hardly any data for the sweeping generalisation of Max
+Müller that all genuine dharmasāstras are nothing but more modern
+texts of earlier sūtra works on kuladharma - one main plank of this
+theory that the continuous employment of the śloka metre was un-
+known in the sūtra period is now exploded - Bühler supports Max
+Müller's theory by some additional arguments - Vasistha IV. 5-8 on
+which Bühler relies not properly understood by him - Vasistha
+(19-37) quotes a Mānava śloka which is not in the Anustubh
+metre and not found in extant Manu and Bühler thinks it is taken
+from Mânavadharmasūtra - Bühler's reliance on a fragment of
+Uśanas which is corrupt is not worth consideration - Bühler relies
+on Kâmandakīyanītisāra (II. 3 and XI. 67) where Mānavas are
+said to hold that there are three vidyās for a king and that Manu
+said that king's council should consist of 12 ministers - These views
+not the same in extant Manu - Bühler's conclusion not correct -
+Kâmandaka is only paraphrasing Kautiliya - Bühler's generalisation
+about Mānava or Mānavāḥ without foundation - Kumārila, Śaṅkara
+and Viśvarūpa all employ ' Mānava ' for Manusmrti - Bühler relies
+on analogy of the complete set of Āpastamba and Baudhāyana
+sūtras for holding that a Mânavadharmasūtra existed - Proper
+explanation of Vas. Dh. S. IV. 5-8 - Bühler not right in saying that
+Vas. Dh. S. 11. 23, 12. 16, 23, 43 either contradict Manu or find no
+counterpart therein - analogy of Āpastamba sūtras of no use -
+excepting the three caranas of the Black Yajurveda, no carana of
+any Veda has a dharmasūtra attributed to the founder of that
+carana - an explanation suggested - existing materials not sufficient
+to establish theory that a Mânavadharmasūtra once existed.</p>
+            <p class="synopsis-attribution">— Synopsis by P.V. Kane, from History of Dharmaśāstra</p>
+        </div>
+    </div>
+
+
+            
+
+            <h2 id="13-manavadharmasutra-did-it-exist" class="section-heading">13. Manavadharmasutra - Did it exist?</h2>
+<p class="prose" id="p-13-manavadharmasutra-did-it-exist-1">13. Mânavadharmasūtra—Did it exist?</p>
+<p class="prose" id="p-13-manavadharmasutra-did-it-exist-2">Following the orthodox view of Western Sanskrit scholars that most of the dharmasūtras are older than almost all, if not all, the metrical smṛtis, I gave the first place of honour to the dharmasūtras of Gautama and otherṣ But my own views differ to a great extent from those of the orthodox school of Sanskritists represented by Max Müller and Bühler. It is high time to state here my views about the existence of a Mânava-dharma-sūtra supposed to be the original of our extant <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>.</p>
+<p class="prose" id="p-13-manavadharmasutra-did-it-exist-3">Some western scholars, particularly Max Müller and Weber, started the ingenious theory that the extant <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> smṛti was a recast or remodelling of an ancient Mânavadharma-sūtra. Max Müller went so far as to enunciate the bold generalisation "There can be no doubt, however, that all the genuine dharma-śāstras which we possess now, are <em>without any exception, nothing but more modern texts of earlier sūtra works on kuṭadharrmas belonging originally to certain Vedic caraṇas</em> " ( H. A. S. L. pp. 134-135 ). For this sweeping generalisation there were very few data when it was made, as is admitted by Bühler. This theory of Max Müller was as hasty, as unfounded and as uncritical as several other theories of his such as that about the renaissance of Sanskrit Literature in the early centuries of the Christian era, about the absence of the art of writing in India before Pāṇini and about the uniform employment of the śloka for literary purposes in his so-called sūtra period and earlier. Western Scholars had to give up such theories before the stern logic of facts, but they have tenaciously clung to the theory about the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> smṛti being a recast of the Mânavadharmasūtra. One of the main planks of Max Müller's edifice was the now exploded theory about the non-employment of the anuṣṭubh during the sūtra period , which he tentatively placed between 600 B. C.—200 B. C. ) for continuous compositioṇ In spite of the fact that one of the main planks has totally collapsed Bühler makes strenuous efforts to rehabilitate Max Müller's theory by additional <em>ā priori</em> arguments ( S. B. E. vol. 25, pp. XVIII–XXIII and XXXI–XXXIX ). The main points brought forward by Bühler are:— ( I ) The <a class="ref" href="../refs/vasishtha.html#IV.5-8" data-source="vasishtha" data-ref="IV.5-8" title="Vasiṣṭha Dharmasūtra IV.5-8">Vasiṣṭha Dh. S. ( IV. 5-8 )</a> contains four sūtras, the first of which is ‘The Mânava says that one may kill an animal only in honouring the Manes, gods and guests'. There follow two verses and a passage in prose with <em>iti</em> at the enḍ Bühler argues that all the four <em>sūtras</em> are quotations and as the extant <a class="ref" href="../refs/manu.html#i" data-source="manu" data-ref="i" title="Manusmṛti i">Manusmṛti i</a>s in verse, they must be regarded as taken from the Mānavadharmasūtra. (II) There are other quotations in <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> attributed to <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> which either contradict the present <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a> or have no counterpart in the latter. Bühler draws special attention to the fact that <a class="ref" href="../refs/vasishtha.html#19, 37" data-source="vasishtha" data-ref="19, 37" title="Vasiṣṭha Dharmasūtra 19, 37">Vasiṣṭha (19, 37)</a> quotes a Māṇava <em>śloka</em> which is not in the anuṣṭubh metre and which has nothing corresponding to it in the extant <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a>. (III) A fragment of Uśanas quotes an opinion of <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> about impurity, which is in prose.<sup class="fn-ref"><a href="#fn-13-manavadharmasutra-did-it-exist-1" id="fnref-13-manavadharmasutra-did-it-exist-1">1</a></sup> Bühler himself points out that here one mṣ reads 'Sumantuh' for '<a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>h'. Therefore, this argument is of very little use in establishing the existence of a Mānavadharmasūtra. Besides, it is possible that the mutilated passage is not a quotation at all, but a mere summary of <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>'s viewṣ There is no 'iti' at the end to show that it is a quotatioṇ (IV) <a class="ref" href="../refs/kamandaka.html" data-source="kamandaka" data-ref="" title="Kāmandaka Nītisāra">Kāmandaka</a>kīya Nītisāra (II. 3) says that according to the Māṇavas the <em>vidyās</em> to be studied by a king are three, viz. the three Vedas, <em>Vārtā</em>, and <em>Daṇḍanīti</em> and that what is called <em>Ānvīkṣikī</em> is but a branch of <em>trayī</em>; while the <a class="ref" href="../refs/manu.html#7.43" data-source="manu" data-ref="7.43" title="Manusmṛti 7.43">Manusmṛti (7. 43)</a> appear to regard the four as distinct <em>vidyās</em>.<sup class="fn-ref"><a href="#fn-13-manavadharmasutra-did-it-exist-2" id="fnref-13-manavadharmasutra-did-it-exist-2">2</a></sup> <a class="ref" href="../refs/kamandaka.html#XI.67" data-source="kamandaka" data-ref="XI.67" title="Kāmandaka Nītisāra XI.67">Kāmandaka (XI. 67)</a> says that <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> prescribed that the council of ministers should consist of twelve;<sup class="fn-ref"><a href="#fn-13-manavadharmasutra-did-it-exist-3" id="fnref-13-manavadharmasutra-did-it-exist-3">3</a></sup> while <a class="ref" href="../refs/manu.html#7.54" data-source="manu" data-ref="7.54" title="Manusmṛti 7.54">Manu (7. 54)</a> says that the '<em>sacivas</em>' should be seven or eight. Bühler therefore argues that <a class="ref" href="../refs/kamandaka.html" data-source="kamandaka" data-ref="" title="Kāmandaka Nītisāra">Kāmandaka</a> has in mind the Mānavadharmasūtra and not the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a> and on the word ‘Mānavāḥ’ makes the following observations ‘It is a very common practice of Indian authors to refer in this manner to the books restricted to special schoolṣ But I know of no case where the doctrines of the Mānavadharmasāstra or of any other work, which is destined for all Aryans and acknowledged as authoritative by all, are cited in the same or similar way’ (S. B. E. vol. 25, p. XXXVIII ). In the first place it has to be noted that Kāman-daka is only paraphrasing the words of <a class="ref" href="../refs/kautilya.html#i" data-source="kautilya" data-ref="i" title="Kauṭilya Arthaśāstra i">Kauṭilya i</a>n the above two placeṣ<sup class="fn-ref"><a href="#fn-13-manavadharmasutra-did-it-exist-4" id="fnref-13-manavadharmasutra-did-it-exist-4">4</a></sup> Further, it is noteworthy that <a class="ref" href="../refs/kamandaka.html" data-source="kamandaka" data-ref="" title="Kāmandaka Nītisāra">Kāmandaka</a> employs the word ‘<a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>ḥ’ while <a class="ref" href="../refs/kautilya.html" data-source="kautilya" data-ref="" title="Kauṭilya Arthaśāstra">Kauṭilya</a> uses the word ‘Mānavāḥ’ (about the number of ministers). Therefore, according to the Kāmandakīyanītisāra there was no difference between the two, viz. the words ‘<a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>ḥ’ and ‘Mānavāḥ’ denoted the same thing, a work. What Bühler means by his emphasis on the word ‘Mānavāḥ’ is not quite clear. Early writers like Kumārila and <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a> employ the word ‘Māna-vam’ with reference to the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a> just as they use the word Vāsiṣṭham to denote the Vāsiṣṭhadharmasūtra (vide Tantra-vārtika pp. 167, 194 and <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a> on <a class="ref" href="../refs/yajnavalkya.html#III.245" data-source="yajnavalkya" data-ref="III.245" title="Yājñavalkya III.245">Yāj. III. 245</a> and 257). Śaṅkara in his bhāṣya on Bṛ. Upaniṣad I. 4. 17 applies the word ‘Mānava’ to the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a> ‘Mānave ca sarvā pravṛttiḥ kāmāhetukyeveti’ (referring to <a class="ref" href="../refs/manu.html#II.4" data-source="manu" data-ref="II.4" title="Manusmṛti II.4">Manu II. 4</a>). Besides, there is hardly any conflict between the views of the Mānavas and the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a> on the point of the number of the vidyāṣ The Mānavas knew that Ānvīkṣikī was counted as a fourth vidyā but said that it was really comprehended in the study of the Vedaṣ The <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a> only lays down from whom the vidyās were to be learnt. As regards the number of ministers, we cannot afford to forget that the <a class="ref" href="../refs/manu.html#7.60" data-source="manu" data-ref="7.60" title="Manusmṛti 7.60">Manusmṛti (7. 60)</a> allows more ministers than seven or eight. Another explanation also is possible. In the final remodelling of the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a> from its original in verse it is not unlikely that a few changes were made. ( V ) On the strength of the preservation of the complete set of the sūtra works of Āpastamba on śrauta, gṛhya and dharma (also of <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> and Hira-ṇyakeśin ), it is urged that the Mānava caraṇa had a sūtra on dharma. The Mānavasrautasūtra (parts 1-5 edited by Dr. Knauer and the chāyāna by Miss Gelder at Leipzig in 1921) and the Mānava-gṛhyasūtra (edited by Dr. Knauer in 1897 and recently in the Gaikwad Oriental Series) are extant. Bühler admits (S. B. E. vol. 25, p. XXXVIII) that the main pillars of his arguments are the quotations ascribed to <a class="ref" href="../refs/manu.html#i" data-source="manu" data-ref="i" title="Manusmṛti i">Manu i</a>n the Vasisthadharmasūtra.</p>
+<p class="prose" id="p-13-manavadharmasutra-did-it-exist-4">The four sūtras of <a class="ref" href="../refs/vasishtha.html#IV.5-8" data-source="vasishtha" data-ref="IV.5-8" title="Vasiṣṭha Dharmasūtra IV.5-8">Vasiṣṭha (IV. 5-8)</a> which are the sheet anchor of Bühler's argument have been dealt with above under <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> (pp. 102 ff). If, as Bühler says, the four sūtras are one quotation, since ‘iti’ occurs at the end of the 8th sūtra, then we have here a quotation within a quotation, as ‘iti’ occurs also in sūtra 5. But this would be absurḍ Besides, sūtra 8 is really summarised from some Brāhmaṇa passage as indicated above. The proper construction of the four sūtras is as follows:— The fifth sūtra merely summarises the views of the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a> to be gathered from <a class="ref" href="../refs/manu.html#V.41" data-source="manu" data-ref="V.41" title="Manusmṛti V.41">Manu V. 41</a> and 48. The word ‘Mānavam’ stands for the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a> just as it does in the Tantravārtika and in <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a>. Then the two verses of <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> are quoteḍ In the 8th sūtra a Brāhmaṇa passage is cited in support of the position that sacrificing an animal is not ‘killing’ ( that leads to sin ).</p>
+<p class="prose" id="p-13-manavadharmasutra-did-it-exist-5">As regards the few quotations which cannot be found in the extant <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a> the following points deserve consideratioṇ The Vasisthadharmasūtra contains numerous verses identical with those of the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a>. Most of the quotations attributed to <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> are found in the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a>. Hence even if a few quotations are not found in our <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>, we cannot at once jump to the conclusion that <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> had before him not the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a>, but the Mānavadharmasūtra. Besides, Bühler is not right in saying that <a class="ref" href="../refs/vasishtha.html#11.23" data-source="vasishtha" data-ref="11.23" title="Vasiṣṭha Dharmasūtra 11.23">Vasiṣṭha 11. 23</a>, 12. 16 and 23. 43 either contradict or find no counterpart in our <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> ( S. B. E. vol. 25, p. XXXIV ). <a class="ref" href="../refs/vasishtha.html#11.23" data-source="vasishtha" data-ref="11.23" title="Vasiṣṭha Dharmasūtra 11.23">Vasiṣṭha 11. 23</a> corresponds with <a class="ref" href="../refs/manu.html#3.245-246" data-source="manu" data-ref="3.245-246" title="Manusmṛti 3.245-246">Manu 3. 245-246</a>.<sup class="fn-ref"><a href="#fn-13-manavadharmasutra-did-it-exist-5" id="fnref-13-manavadharmasutra-did-it-exist-5">5</a></sup> of the three contradicts anything contained in the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a>. <a class="ref" href="../refs/vasishtha.html#23.43" data-source="vasishtha" data-ref="23.43" title="Vasiṣṭha Dharmasūtra 23.43">Vasiṣṭha 23. 43</a> (about Śiśukṛcchra ) has nothing correspond- ing to it word for word in our <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>, but it seems to be an echo of <a class="ref" href="../refs/manu.html#11.211" data-source="manu" data-ref="11.211" title="Manusmṛti 11.211">Manu 11. 211</a>.<sup class="fn-ref"><a href="#fn-13-manavadharmasutra-did-it-exist-6" id="fnref-13-manavadharmasutra-did-it-exist-6">6</a></sup> In <a class="ref" href="../refs/vasishtha.html#12.16" data-source="vasishtha" data-ref="12.16" title="Vasiṣṭha Dharmasūtra 12.16">Vasiṣṭha 12. 16</a> ( paryagnikaraṇam hy-etan-anurāha Prajāpatiḥ ) there is nothing that contradicts our <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> ; that half and the preceding verses bear a close correspondence to <a class="ref" href="../refs/baudhayana.html#I.4.2" data-source="baudhayana" data-ref="I.4.2" title="Baudhāyana Dharmasūtra I.4.2">Baudhāyana Dh. S. I. 4. 2</a>. Similarly, Bühler’s argument about Mānava śloka in the Triṣṭubh metre is not quite sounḍ The text of <a class="ref" href="../refs/vasishtha.html#i" data-source="vasishtha" data-ref="i" title="Vasiṣṭha Dharmasūtra i">Vasiṣṭha i</a>s far from satisfactory. On the non-occurrence of that verse or a correspond- ing śloka in our <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> no superstructure can be built. Vasi- ṣṭha quotes ( 4. 37 ) a sūtra or opinion of Gautama which is not found in the extant <a class="ref" href="../refs/gautama.html" data-source="gautama" data-ref="" title="Gautama Dharmasūtra">Gautamadharmasūtra</a>. Verses ascri- bed to <a class="ref" href="../refs/vasishtha.html#i" data-source="vasishtha" data-ref="i" title="Vasiṣṭha Dharmasūtra i">Vasiṣṭha i</a>n the nibandhas are not found in the printed text of <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a>.</p>
+<p class="prose" id="p-13-manavadharmasutra-did-it-exist-6">The analogy of the works of the schools of Āpastamba and others can furnish no proof. There are on the other hand weighty grounds for discarding that analogy altogether. It is a remarkable fact that excepting the three <em>caraṇas</em> ( of the Black Yajurveda ) of Āpastamba, <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> and Hiraṇya- keśin that arose and flourished in the southern portion of India, no <em>caraṇa</em> of any of the other Vedas has an extant dhar- masūtra ascribed to the founder of the <em>sūtra-caraṇa</em>. An explanation is suggested in the following lineṣ The Brāhma- ṇas in southern India were in the very early days of their colonisation surrounded by an alien culture and by alien customṣ It was necessary therefore to formulate distinctly the rules of general conduct for the Aryan community in southern India, that studied the Black Yajurveda. The same necessity did not exist in northern India, where the members of the sūtracaraṇas knew their ordinary everyday duties very well, and were more or less a homogeneous community with the same ideals and culture. Therefore, in the beggining when manuals of Śrauta and Gṛhya ceremonies were first com- posed, it was not thought necessary to compose set treatises on dharma for each caraṇa. Some of the rules of conduct were embodied in the gṛhya sūtras because they were germane to the subjects treated of in them (such as the duties of brah- macārins and householders, holidays etc.). Works, however, dealing with the general usages prevalent among the Aryan community in various parts of northern India must have been composed early enough. When the knowledge of the existe- nce of the complete set of the sūtra works in the Āpastamba and other caraṇas of the Yajurveda in southern India perme- ated to northern and central India, the leaders of the caraṇas cast about for works that would complete the works of their caraṇas and bring them in a line with those of Āpastamba and otherṣ Therefore the various caraṇas seized upon seve- ral dharmasūtras and adopted them in their schools for study. This must have occurred at a comparatively early date. For Kumārila, as we saw above, enlightens us as to what dharma- sūtras were specially studied in which Vedic schoolṣ The fact that, though Gautama and <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> are said to have been specially studied by the students of the Sāmaveda and the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> respectively, there is hardly anything in these dharma- sūtras that specially connects them with the two Vedas affo- rds some corroboration of the above hypothesiṣ This assimi- lation of independent dharmasūtras into individual sūtracara- ṇas probably took place before or in the first centuries of the Christian era. Śabara (on Jaimini I. 3. 4) seems to make fun of the dharmasūtras when he says that the direction to observe brahmacarya for forty-eight years was a device of those who wanted to hide their impotence (Gautama 2. 52, <a class="ref" href="../refs/apastamba.html#1.2.11-12" data-source="apastamba" data-ref="1.2.11-12" title="Āpastamba Dharmasūtra 1.2.11-12">Āp. Dh. S. 1. 2. 11–12</a>, Bauḍ Dh. S. I. 2. 1 speak of brah- macarya for 48 years). This shows that these dharmasūtras could not have been regarded as very authoritative by all early writerṣ Jaimini I. 3. 11 (according to Śabara) denies the independent authority of Kalpasūtraṣ It appears that the Māṇava school, which according to the Caraṇavyūha was a sub-division of the Maitrāyaṇīya, dwindled in numbers very</p>
+<aside class="footnotes-section" aria-label="Footnotes">
+<hr>
+<ol class="footnotes-list">
+<li id="fn-13-manavadharmasutra-did-it-exist-1" class="footnote-item">In No. 644 of Visrāmbāg (1) in the Deccan College there is a fragment of Uśanas where we read <span class="devanagari">उपस्पृश्य</span> ... (gap) <span class="devanagari">मनुराह । बाले देशान्तरस्थे चानश्रिके वोराख्याने</span> (?) <span class="devanagari">अनाशकेमिप्रवेशे गृह्णति च सयः शोचम्</span>. The words <span class="devanagari">बाले देशान्तरस्थे</span> occur in Manu 5. 78 in the same connectioṇ For the rest, compare Manu 5. 93 and 95. We must probably read <span class="devanagari">देशान्तरस्थे च सामिके</span>. No. 191 of A 1881-82 is another fragment of Uśanas which contains the same passage. Bühler's msṣ read <span class="devanagari">सद्यः शौचानपनतिमतिनिन्दिनाचारैर्न सह संवसेत्</span> and he proposes <span class="devanagari">शौचमितिमि इति</span>. <a href="#fnref-13-manavadharmasutra-did-it-exist-1" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-13-manavadharmasutra-did-it-exist-2" class="footnote-item">The words of the <span class="devanagari">मनुस्मृति</span> are: <span class="devanagari">त्रैविद्यैष्यम्वयां विद्यां दण्डनीतिं च शाश्वतीम् । आन्वीक्षिकीं चात्मविद्यां वार्तारम्भं लोकान् ॥</span> <a href="#fnref-13-manavadharmasutra-did-it-exist-2" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-13-manavadharmasutra-did-it-exist-3" class="footnote-item"><span class="devanagari">कामन्दक</span> says '<span class="devanagari">द्वादशेति मनुः प्राह षोडशेति बृहस्पतिः । उशना विंशतिरिति मन्त्रिणो मन्त्रिमण्डलम् ॥</span>' <a href="#fnref-13-manavadharmasutra-did-it-exist-3" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-13-manavadharmasutra-did-it-exist-4" class="footnote-item">‘<span class="devanagari">त्रयी वार्ता दण्डनीतिश्चेति मानवाः। त्रयीविशेषो ह्यान्वीक्षिकी</span>’ <span class="devanagari">कौटिल्य</span> I, 2; ‘<span class="devanagari">मन्त्रिपरिषदं द्वादशामात्यान् कुर्वन्ति मानवाः षोडशेति बाहस्पत्याः विंशतिमित्यौशनसाः</span>’ <span class="devanagari">कौटिल्य</span> I, 15, H. D.—19 . <a href="#fnref-13-manavadharmasutra-did-it-exist-4" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-13-manavadharmasutra-did-it-exist-5" class="footnote-item">'<span class="devanagari">प्राक् संस्कारात्प्रीतानां स्ववरयानाममिति स्थितिः । भागधेयं मनुः प्राह उच्छिष्टोच्छेषणे उभे ।। वसिष्ठ</span> 11. 23. Should we not read <span class="devanagari">स्ववरयानाम्</span>, which would correspond to the word <span class="devanagari">दासवर्गा</span> in Manu? <span class="devanagari">मनु</span> reads '<span class="devanagari">असंस्कृतप्रमीतानां त्यागीनां कुल्योपिनाम् । उच्छिष्टं भागधेयं स्याद् दशेपु उच्छिष्टं भागधेयं प्रचक्षते ।।</span>' 3. 245-246. The close correspondence between Vaṣ and Manu in ideas and phraseology should be specially markeḍ <a href="#fnref-13-manavadharmasutra-did-it-exist-5" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-13-manavadharmasutra-did-it-exist-6" class="footnote-item"><span class="devanagari">वसिष्ठ</span> (23. 43 ) ‘ <span class="devanagari">अहः प्रातरह्नएकभहरेकनयाचितम्‌ । अहः पराकं तन्त्रैकमेव चतुरहो परो ॥ अनुमग्राहि विप्रार्णा मनुर्मर्मसूतो वरः । बालवृद्धातुरेष्वव शिशु</span>- <span class="devanagari">कृच्छ्रमुवाच ह ॥</span> ; <span class="devanagari">मनु</span> 11. 245 ‘ <span class="devanagari">व्यहं प्रातरहये सार्धं व्यह्यमदयाचितम्‌ । व्यहं परं च नास्नीयात्याध्याचरेत्‌ द्विजः ॥</span>. It would be noticed that the <span class="devanagari">शिशुकृच्छ्र</span> comes to one-third of the <span class="devanagari">प्राजापत्यकृच्छ्र</span>, as the <span class="devanagari">शिख</span>- <span class="devanagari">चान्द्रायण</span> ( <span class="devanagari">मनु</span>. 11. 218 ) is a milder edition of the <span class="devanagari">चान्द्रायण</span>. The <span class="devanagari">प्रायश्चित्त</span> for minors and women was one-half or one-third of that for adult males ( vide <span class="devanagari">बो</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. II. I. 51. and <span class="devanagari">अङ्गिरस्मृति</span> verse 33 ); <span class="devanagari">बौ</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. ( II. I. 65 ) describes the four day’s observance as the <span class="devanagari">कृच्छ्र</span> for women, minors, and old meṇ <span class="devanagari">याज्ञ</span>. III. 319 calls it <span class="devanagari">पादकृच्छ्र</span>. <a href="#fnref-13-manavadharmasutra-did-it-exist-6" class="fn-back" aria-label="Back to text">↩</a></li>
+</ol>
+</aside>
+
+            <div class="chapter-nav">
+                <a href="12-the-dharmasutra-of-sankha-likhita.html" class="nav-prev"><i class="fa-solid fa-chevron-left"></i> 12. The Dharmasutra of Sankha-Likhita</a>
+                <a href="14-arthashastra-of-kautilya.html" class="nav-next">14. Arthashastra of Kautilya <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </main>
+    </div>
+
+    <button class="toc-mobile-toggle" onclick="toggleMobileToc()" aria-label="Table of contents">
+        <i class="fa-solid fa-list"></i>
+    </button>
+
+    
+    <footer class="container-fluid pt-4" style="background-color:#2e4144">
+        <div class="row border-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img src="https://sanatana.in/mbta/public/images/Homepage_html/images/layer_8.png" alt="">
+            </div>
+            <div class="col-md-5 text-white">
+                <p>The divine knowledge and wisdom of our shastras is the only thing eternal,
+                   which was and which will remain ever-present in this gods creation.
+                   Our endeavours are to preserve this knowledge.</p>
+            </div>
+            <div class="col-md-1 text-white">
+                <div class="d-flex" style="height: 75px;">
+                    <div class="vr"></div>
+                </div>
+            </div>
+            <div class="col-md-3 text-white">
+                <i class="fa-solid fa-globe"></i>&emsp;
+                <a href="https://sanatanasampatti.in" class="text-light">www.sanatanasampatti.in</a><br>
+                <i class="fa-solid fa-envelope"></i>&emsp;
+                <a href="" class="text-light">sriranga.yoga@gmail.com</a>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center py-3 mb-4 align-items-center border-bottom">
+            <div class="col-md-2 text-white fs-4 text-center">Project</div>
+            <div class="col-md-2 text-white fs-4 text-center">Our Mission</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contribute</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contact Us</div>
+        </div>
+        <div class="row">
+            <p class="col-md-6 fs-6 text-start text-light">
+                <small>&copy; 2026 Sanatanasampatti</small>
+            </p>
+            <p class="col-md-6 fs-6 text-end text-light">
+                <a class="text-white" rel="nofollow" href="http://www.srirangadigital.com" target="_blank">
+                    <img src="https://sanatana.in/mbta/public/images/logo.png" alt="sriranga logo" />
+                    <small>Designed, Developed and Maintained by Sriranga Digital</small>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        const headings = [];
+        tocLinks.forEach(link => {
+            const id = link.getAttribute('href').substring(1);
+            const el = document.getElementById(id);
+            if (el) headings.push({ el: el, link: link.parentElement });
+        });
+
+        function onScroll() {
+            let current = null;
+            for (const h of headings) {
+                const rect = h.el.getBoundingClientRect();
+                if (rect.top <= 120) current = h;
+            }
+            tocLinks.forEach(l => l.parentElement.classList.remove('active'));
+            if (current) current.link.classList.add('active');
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    });
+
+    function toggleMobileToc() {
+        const toc = document.getElementById('toc');
+        if (!toc) return;
+        if (toc.style.display === 'block') {
+            toc.style.display = '';
+            toc.style.position = '';
+        } else {
+            toc.style.display = 'block';
+            toc.style.position = 'fixed';
+            toc.style.top = '0';
+            toc.style.left = '0';
+            toc.style.width = '80vw';
+            toc.style.maxWidth = '320px';
+            toc.style.height = '100vh';
+            toc.style.maxHeight = '100vh';
+            toc.style.zIndex = '2000';
+            toc.style.background = 'var(--parchment)';
+            toc.style.boxShadow = '4px 0 20px rgba(0,0,0,0.2)';
+            toc.style.padding = '24px';
+            toc.style.overflowY = 'auto';
+        }
+    }
+    </script>
+
+    <script>
+    function toggleSynopsisAudio(btn) {
+        var audio = btn.parentElement.querySelector('audio');
+        if (!audio.src) audio.src = btn.getAttribute('data-src');
+        if (audio.paused) {
+            audio.play();
+            btn.classList.add('playing');
+            btn.querySelector('i').className = 'fa-solid fa-pause';
+        } else {
+            audio.pause();
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        }
+        audio.onended = function() {
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        };
+        // Prevent click from toggling the synopsis open/close
+        event.stopPropagation();
+    }
+    </script>
+</body>
+</html>

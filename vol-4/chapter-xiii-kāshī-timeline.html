@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline — Chapter XIII. Kāshī</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+    :root {
+        --parchment: #faf6ef;
+        --parchment-mid: #f0e6d3;
+        --saffron: #e8941a;
+        --ink: #2c1810;
+        --ink-secondary: #5a3e2b;
+        --rule: #d4c5a9;
+        --indigo: #2d5a87;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+        font-family: 'Lora', Georgia, serif;
+        background: var(--parchment);
+        color: var(--ink);
+    }
+    .navbar {
+        background: linear-gradient(135deg, #1a0f0a, #2c1810);
+        padding: 12px 24px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+    .navbar a { color: var(--parchment); text-decoration: none; }
+    .navbar .devanagari { font-size: 1.3rem; }
+    .navbar .nav-title { font-family: 'Lora', serif; font-size: 1rem; opacity: 0.9; }
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+    .breadcrumb-bar a { color: var(--saffron); text-decoration: none; }
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+    .content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 24px;
+    }
+    h1 {
+        font-size: 1.6rem;
+        margin-bottom: 8px;
+        color: var(--ink);
+    }
+    .subtitle {
+        font-size: 0.9rem;
+        color: var(--ink-secondary);
+        margin-bottom: 24px;
+    }
+    .timeline-container {
+        overflow-x: auto;
+        padding: 16px 0;
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        background: var(--parchment);
+    }
+    .timeline-svg {
+        display: block;
+        min-width: 100%;
+    }
+    .timeline-svg .tl-evt { cursor: pointer; }
+    .timeline-svg .tl-evt:hover { transform: scale(1.5); }
+    .event-list {
+        margin-top: 32px;
+    }
+    .event-list h2 {
+        font-size: 1.1rem;
+        margin-bottom: 16px;
+        color: var(--ink-secondary);
+    }
+    .event-item {
+        display: flex;
+        gap: 16px;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--rule);
+        font-size: 0.88rem;
+    }
+    .event-year {
+        min-width: 90px;
+        font-weight: 600;
+        color: var(--saffron);
+        font-family: 'Open Sans', sans-serif;
+    }
+    .event-label { font-weight: 600; }
+    .event-context {
+        color: var(--ink-secondary);
+        font-size: 0.82rem;
+        margin-top: 2px;
+    }
+    .event-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.8rem;
+    }
+    .event-link:hover { text-decoration: underline; }
+    .back-link {
+        display: inline-block;
+        margin-top: 24px;
+        color: var(--saffron);
+        text-decoration: none;
+        font-family: 'Open Sans', sans-serif;
+    }
+    .back-link:hover { text-decoration: underline; }
+    .century-group {
+        margin-bottom: 8px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        overflow: hidden;
+    }
+    .century-heading {
+        display: block;
+        padding: 10px 16px;
+        background: var(--parchment-mid);
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: var(--ink);
+    }
+    .century-heading:hover { background: #e8dcc8; }
+    .century-count {
+        font-weight: 400;
+        color: var(--ink-secondary);
+        font-size: 0.82rem;
+    }
+    .century-events {
+        padding: 8px 16px;
+    }
+    .vol-tl-link {
+        display: inline-block;
+        margin: 4px 8px 4px 0;
+        padding: 6px 14px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        color: var(--saffron);
+        text-decoration: none;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+    }
+    .vol-tl-link:hover {
+        border-color: var(--saffron);
+        background: #f5ebe0;
+    }
+    .vol-tl-count {
+        color: var(--ink-secondary);
+        font-size: 0.78rem;
+    }
+    /* ── Tab switcher ── */
+    .tl-tabs {
+        display: flex; gap: 0; margin-bottom: 20px;
+        border-bottom: 2px solid var(--rule);
+    }
+    .tl-tab {
+        padding: 10px 20px; cursor: pointer;
+        font-family: 'Open Sans', sans-serif; font-size: 0.9rem;
+        color: var(--ink-secondary); border-bottom: 2px solid transparent;
+        margin-bottom: -2px; transition: all 0.2s;
+    }
+    .tl-tab:hover { color: var(--ink); }
+    .tl-tab.active { color: var(--saffron); border-bottom-color: var(--saffron); font-weight: 600; }
+    .tl-panel { display: none; }
+    .tl-panel.active { display: block; }
+    /* ── Entity graph styles ── */
+    .eg-entity {
+        border: 1px solid var(--rule); border-radius: 6px;
+        margin-bottom: 8px; overflow: hidden; transition: border-color 0.2s;
+    }
+    .eg-entity.highlighted { border-color: var(--saffron); box-shadow: 0 0 0 1px var(--saffron); }
+    .eg-header {
+        display: flex; align-items: center; gap: 12px;
+        padding: 10px 16px; background: var(--parchment-mid);
+        cursor: pointer; font-family: 'Open Sans', sans-serif;
+    }
+    .eg-header:hover { background: #e8dcc8; }
+    .eg-name { font-weight: 600; font-size: 0.92rem; flex: 1; }
+    .eg-type {
+        font-size: 0.72rem; padding: 2px 8px; border-radius: 10px;
+        background: var(--parchment); color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .eg-claims-count {
+        font-size: 0.78rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif;
+    }
+    .eg-body { padding: 12px 16px; display: none; }
+    .eg-entity.open .eg-body { display: block; }
+    .eg-range-bar {
+        position: relative; height: 32px;
+        background: var(--parchment-mid); border-radius: 4px;
+        margin-bottom: 10px; overflow: hidden;
+    }
+    .eg-range-fill {
+        position: absolute; top: 6px; height: 20px;
+        background: var(--saffron); opacity: 0.3; border-radius: 3px;
+    }
+    .eg-range-dot {
+        position: absolute; top: 11px; width: 10px; height: 10px;
+        background: var(--saffron); border-radius: 50%;
+        transform: translateX(-5px); cursor: pointer;
+    }
+    .eg-range-dot:hover { transform: translateX(-5px) scale(1.4); }
+    .eg-range-label {
+        position: absolute; top: -2px;
+        font-size: 0.7rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif;
+        transform: translateX(-50%);
+    }
+    .eg-cooccur {
+        margin-top: 8px; padding-top: 8px;
+        border-top: 1px solid var(--rule);
+    }
+    .eg-cooccur-title {
+        font-size: 0.78rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif; margin-bottom: 6px;
+    }
+    .eg-cooccur-chip {
+        display: inline-block; margin: 2px 4px 2px 0;
+        padding: 3px 10px; background: var(--parchment-mid);
+        border: 1px solid var(--rule); border-radius: 12px;
+        font-size: 0.78rem; color: var(--ink);
+        font-family: 'Open Sans', sans-serif;
+        cursor: pointer; transition: all 0.2s;
+    }
+    .eg-cooccur-chip:hover { border-color: var(--saffron); color: var(--saffron); }
+    .eg-cooccur-weight {
+        font-size: 0.68rem; color: var(--ink-secondary); margin-left: 2px;
+    }
+    .eg-claim-list { margin-top: 8px; }
+    .eg-claim {
+        display: flex; gap: 12px; padding: 4px 0;
+        font-size: 0.82rem; border-bottom: 1px solid #f0e6d3;
+    }
+    .eg-claim-year {
+        min-width: 80px; font-weight: 600; color: var(--saffron);
+        font-family: 'Open Sans', sans-serif; font-size: 0.8rem;
+    }
+    .eg-claim-ctx { color: var(--ink-secondary); font-size: 0.78rem; }
+    .eg-claim a { color: var(--indigo); text-decoration: none; font-size: 0.76rem; }
+    .eg-claim a:hover { text-decoration: underline; }
+    .eg-stats {
+        display: flex; gap: 24px; margin-bottom: 16px;
+        font-family: 'Open Sans', sans-serif; font-size: 0.85rem;
+        color: var(--ink-secondary);
+    }
+    .eg-stat-num { font-weight: 700; color: var(--saffron); font-size: 1.1rem; }
+    .eg-sort {
+        font-family: 'Open Sans', sans-serif; font-size: 0.82rem;
+        margin-bottom: 12px; color: var(--ink-secondary);
+    }
+    .eg-sort a {
+        color: var(--indigo); text-decoration: none; cursor: pointer;
+        margin: 0 6px;
+    }
+    .eg-sort a:hover { text-decoration: underline; }
+    .eg-sort a.active { color: var(--saffron); font-weight: 600; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="../index.html"><span class="devanagari">धर्मशास्त्रम्</span></a>
+        <a href="../index.html" class="nav-title">History of Dharmaśāstra</a>
+    </div>
+    
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep"> &rsaquo; </span>
+        <a href="index.html">Volume IV</a>
+        <span class="sep"> &rsaquo; </span>
+        <a href="chapter-xiii-kāshī.html">Chapter XIII. Kāshī</a>
+        <span class="sep"> &rsaquo; </span>
+        <span>Timeline</span>
+    </div>
+    
+    <div class="content">
+        <h1>Timeline: Chapter XIII. Kāshī</h1>
+        <p class="subtitle">20 dated references</p>
+        <div class="tl-tabs">
+            <div class="tl-tab active" data-panel="events-panel">Events</div>
+            <div class="tl-tab" data-panel="graph-panel">Entity Graph</div>
+        </div>
+        <div id="events-panel" class="tl-panel active">
+            <div class="timeline-container">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 280" class="timeline-svg" role="img" aria-label="Timeline for Chapter XIII. Kāshī">
+<rect width="1200" height="280" fill="#faf6ef" rx="8"/>
+<line x1="60" y1="100" x2="1160" y2="100" stroke="#c4956a" stroke-width="2"/>
+<line x1="60.0" y1="94" x2="60.0" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="60.0" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">600 BCE</text>
+<line x1="107.26907630522089" y1="94" x2="107.26907630522089" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="107.26907630522089" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">400 BCE</text>
+<line x1="195.62248995983936" y1="94" x2="195.62248995983936" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="195.62248995983936" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">200 BCE</text>
+<line x1="283.9759036144578" y1="94" x2="283.9759036144578" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="283.9759036144578" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1 CE</text>
+<line x1="372.32931726907634" y1="94" x2="372.32931726907634" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="372.32931726907634" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">200 CE</text>
+<line x1="460.6827309236948" y1="94" x2="460.6827309236948" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="460.6827309236948" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">400 CE</text>
+<line x1="549.0361445783133" y1="94" x2="549.0361445783133" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="549.0361445783133" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">600 CE</text>
+<line x1="637.3895582329317" y1="94" x2="637.3895582329317" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="637.3895582329317" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">800 CE</text>
+<line x1="725.7429718875502" y1="94" x2="725.7429718875502" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="725.7429718875502" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1000 CE</text>
+<line x1="814.0963855421686" y1="94" x2="814.0963855421686" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="814.0963855421686" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1200 CE</text>
+<line x1="902.4497991967871" y1="94" x2="902.4497991967871" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="902.4497991967871" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1400 CE</text>
+<line x1="990.8032128514055" y1="94" x2="990.8032128514055" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="990.8032128514055" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1600 CE</text>
+<line x1="1079.1566265060242" y1="94" x2="1079.1566265060242" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="1079.1566265060242" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1800 CE</text>
+<line x1="63.092369477911646" y1="100" x2="107.26907630522089" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="85.18072289156626" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-xiii-kāshī-5" data-href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-5"><title>Vāyupurāṇa</title></circle>
+<line x1="85.18072289156626" y1="106" x2="85.18072289156626" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="85.18072289156626" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Vāyupurāṇa</text>
+<text x="85.18072289156626" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">500 BCE</text>
+<line x1="151.44578313253012" y1="100" x2="195.62248995983936" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="173.53413654618475" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-xiii-kāshī-5" data-href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-5"><title>Vāyupurāṇa</title></circle>
+<line x1="173.53413654618475" y1="106" x2="173.53413654618475" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="173.53413654618475" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Vāyupurāṇa</text>
+<text x="173.53413654618475" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">300 BCE</text>
+<line x1="195.62248995983936" y1="100" x2="239.79919678714862" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="217.710843373494" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-xiii-kāshī-2" data-href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-2"><title>Udyogaparva</title></circle>
+<line x1="217.710843373494" y1="106" x2="217.710843373494" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="217.710843373494" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Udyogaparva</text>
+<text x="217.710843373494" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">200 BCE</text>
+<line x1="328.59437751004015" y1="100" x2="372.32931726907634" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="350.4618473895582" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-xiii-kāshī-2" data-href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-2"><title>Udyogaparva</title></circle>
+<line x1="350.4618473895582" y1="106" x2="350.4618473895582" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="350.4618473895582" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Udyogaparva</text>
+<text x="350.4618473895582" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">101 CE</text>
+<circle cx="350.2409638554217" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-chapter-xiii-kāshī-18" data-href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-18"><title>Viṣṇu Smṛti</title></circle>
+<line x1="350.2409638554217" y1="106" x2="350.2409638554217" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="350.2409638554217" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Viṣṇu Smṛti</text>
+<text x="350.2409638554217" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">150 CE</text>
+<line x1="416.94779116465867" y1="100" x2="460.6827309236948" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="438.81526104417674" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-xiii-kāshī-7" data-href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-7"><title>Viṣṇu Smṛti</title></circle>
+<line x1="438.81526104417674" y1="106" x2="438.81526104417674" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="438.81526104417674" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Viṣṇu Smṛti</text>
+<text x="438.81526104417674" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">301 CE</text>
+<circle cx="438.59437751004015" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-chapter-xiii-kāshī-18" data-href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-18"><title>Viṣṇu Smṛti</title></circle>
+<line x1="438.59437751004015" y1="106" x2="438.59437751004015" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="438.59437751004015" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Viṣṇu Smṛti</text>
+<text x="438.59437751004015" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">350 CE</text>
+<circle cx="460.6827309236948" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="2" stroke-dasharray="2,2" class="tl-evt" data-para="p-chapter-xiii-kāshī-2" data-href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-2"><title>Udyogaparva</title></circle>
+<line x1="460.6827309236948" y1="106" x2="460.6827309236948" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="460.6827309236948" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Udyogaparva</text>
+<text x="460.6827309236948" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">400 CE</text>
+<circle cx="466.42570281124495" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-chapter-xiii-kāshī-2" data-href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-2"><title>Udyogaparva</title></circle>
+<line x1="466.42570281124495" y1="106" x2="466.42570281124495" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="466.42570281124495" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Udyogaparva</text>
+<text x="466.42570281124495" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">413 CE</text>
+<line x1="549.4779116465863" y1="100" x2="593.2128514056225" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="571.3453815261043" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-xiii-kāshī-12" data-href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-12"><title>Padmapurāṇa</title></circle>
+<line x1="571.3453815261043" y1="106" x2="571.3453815261043" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="571.3453815261043" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Padmapurāṇa</text>
+<text x="571.3453815261043" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">601 CE</text>
+<line x1="770.3614457831325" y1="100" x2="814.0963855421686" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="792.2289156626505" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-xiii-kāshī-23" data-href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-23"><title>Matsyapurāṇa</title></circle>
+<line x1="792.2289156626505" y1="106" x2="792.2289156626505" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="792.2289156626505" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Matsyapurāṇa</text>
+<text x="792.2289156626505" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1101 CE</text>
+<circle cx="779.6385542168674" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-chapter-xiii-kāshī-23" data-href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-23"><title>Matsyapurāṇa</title></circle>
+<line x1="779.6385542168674" y1="106" x2="779.6385542168674" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="779.6385542168674" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Matsyapurāṇa</text>
+<text x="779.6385542168674" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1122 CE</text>
+<circle cx="783.6144578313252" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-chapter-xiii-kāshī-18" data-href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-18"><title>Viṣṇu Smṛti</title></circle>
+<line x1="783.6144578313252" y1="106" x2="783.6144578313252" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="783.6144578313252" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Viṣṇu Smṛti</text>
+<text x="783.6144578313252" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1131 CE</text>
+<circle cx="794.6586345381526" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-chapter-xiii-kāshī-18" data-href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-18"><title>Viṣṇu Smṛti</title></circle>
+<line x1="794.6586345381526" y1="106" x2="794.6586345381526" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="794.6586345381526" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Viṣṇu Smṛti</text>
+<text x="794.6586345381526" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1156 CE</text>
+<circle cx="808.3534136546184" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-chapter-xiii-kāshī-18" data-href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-18"><title>Viṣṇu Smṛti</title></circle>
+<line x1="808.3534136546184" y1="106" x2="808.3534136546184" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="808.3534136546184" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Viṣṇu Smṛti</text>
+<text x="808.3534136546184" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1187 CE</text>
+<circle cx="811.4457831325301" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-chapter-xiii-kāshī-15" data-href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-15"><title>It is time now to turn to the individual</title></circle>
+<line x1="811.4457831325301" y1="106" x2="811.4457831325301" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="811.4457831325301" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">It is time now to turn to</text>
+<text x="811.4457831325301" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1194 CE</text>
+<circle cx="984.1767068273092" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="2" stroke-dasharray="2,2" class="tl-evt" data-para="p-chapter-xiii-kāshī-15" data-href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-15"><title>It is time now to turn to the individual</title></circle>
+<line x1="984.1767068273092" y1="106" x2="984.1767068273092" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="984.1767068273092" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">It is time now to turn to</text>
+<text x="984.1767068273092" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1585 CE</text>
+<line x1="1016.4257028112451" y1="100" x2="1038.0722891566265" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1027.2489959839359" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-xiii-kāshī-16" data-href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-16"><title>A mosque, which still exists, was built </title></circle>
+<line x1="1027.2489959839359" y1="106" x2="1027.2489959839359" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1027.2489959839359" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">A mosque, which still exi</text>
+<text x="1027.2489959839359" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1658 CE</text>
+<circle cx="1021.7269076305221" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="2" stroke-dasharray="2,2" class="tl-evt" data-para="p-chapter-xiii-kāshī-15" data-href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-15"><title>It is time now to turn to the individual</title></circle>
+<line x1="1021.7269076305221" y1="106" x2="1021.7269076305221" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1021.7269076305221" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">It is time now to turn to</text>
+<text x="1021.7269076305221" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1670 CE</text>
+<line x1="1068.55421686747" y1="100" x2="1079.1566265060242" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1073.855421686747" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-xiii-kāshī-17" data-href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-17"><title>Viśveśvara or Viśvanātha is the tutelary</title></circle>
+<line x1="1073.855421686747" y1="106" x2="1073.855421686747" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1073.855421686747" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Viśveśvara or Viśvanātha </text>
+<text x="1073.855421686747" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1776 CE</text>
+</svg>
+            </div>
+            <div class="event-list">
+                <h2>All Dated References</h2>
+                <div class="event-item"><span class="event-year">500 BCE</span><div><span class="event-label">Vāyupurāṇa</span><div class="event-context">Ancient Buddhist works show that Banaras was, in the times of Buddha (5th Century B C. at the latest), a great and famou...</div><a href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-5" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">300 BCE</span><div><span class="event-label">Vāyupurāṇa</span><div class="event-context">Ancient Buddhist works show that Banaras was, in the times of Buddha (5th Century B C. at the latest), a great and famou...</div><a href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-5" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">200 BCE</span><div><span class="event-label">Udyogaparva</span><div class="event-context">Before proceeding further, it is necessary to dwell, however briefly, on the ancient history of Banaraṣ The Śatapatha Br...</div><a href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-2" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">101 CE</span><div><span class="event-label">Udyogaparva</span><div class="event-context">Before proceeding further, it is necessary to dwell, however briefly, on the ancient history of Banaraṣ The Śatapatha Br...</div><a href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-2" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">150 CE</span><div><span class="event-label">Viṣṇu Smṛti</span><div class="event-context">It appears that *Vācaspati* <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-45" id="fnref-chapter-xiii-kāshī-45">45<...</div><a href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-18" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">301 CE</span><div><span class="event-label">Viṣṇu Smṛti</span><div class="event-context">From the above-mentioned accounts in the Epic and Purāṇas about Kāśī and Mahādeva, various conclusions <sup class="fn-re...</div><a href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-7" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">350 CE</span><div><span class="event-label">Viṣṇu Smṛti</span><div class="event-context">It appears that *Vācaspati* <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-45" id="fnref-chapter-xiii-kāshī-45">45<...</div><a href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-18" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">about 400 CE</span><div><span class="event-label">Udyogaparva</span><div class="event-context">Before proceeding further, it is necessary to dwell, however briefly, on the ancient history of Banaraṣ The Śatapatha Br...</div><a href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-2" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">413 CE</span><div><span class="event-label">Udyogaparva</span><div class="event-context">Before proceeding further, it is necessary to dwell, however briefly, on the ancient history of Banaraṣ The Śatapatha Br...</div><a href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-2" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">601 CE</span><div><span class="event-label">Padmapurāṇa</span><div class="event-context">Although generally Kāśī, Vāraṇasī and Avimukta are used as synonyms in the Purāṇas, in some passages a distinction is ma...</div><a href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-12" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1101 CE</span><div><span class="event-label">Matsyapurāṇa</span><div class="event-context">In the 12th century A. D. there was a Kapālamocanaghāt<sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-60" id="fnref-...</div><a href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-23" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1122 CE</span><div><span class="event-label">Matsyapurāṇa</span><div class="event-context">In the 12th century A. D. there was a Kapālamocanaghāt<sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-60" id="fnref-...</div><a href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-23" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1131 CE</span><div><span class="event-label">Viṣṇu Smṛti</span><div class="event-context">It appears that *Vācaspati* <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-45" id="fnref-chapter-xiii-kāshī-45">45<...</div><a href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-18" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1156 CE</span><div><span class="event-label">Viṣṇu Smṛti</span><div class="event-context">It appears that *Vācaspati* <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-45" id="fnref-chapter-xiii-kāshī-45">45<...</div><a href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-18" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1187 CE</span><div><span class="event-label">Viṣṇu Smṛti</span><div class="event-context">It appears that *Vācaspati* <sup class="fn-ref"><a href="#fn-chapter-xiii-kāshī-45" id="fnref-chapter-xiii-kāshī-45">45<...</div><a href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-18" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1194 CE</span><div><span class="event-label">It is time now to turn to the individual sacred spots in Banaraṣ It is stated in</span><div class="event-context">It is time now to turn to the individual sacred spots in Banaraṣ It is stated in some of the Purāṇas<sup class="fn-ref">...</div><a href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-15" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">About 1585 CE</span><div><span class="event-label">It is time now to turn to the individual sacred spots in Banaraṣ It is stated in</span><div class="event-context">It is time now to turn to the individual sacred spots in Banaraṣ It is stated in some of the Purāṇas<sup class="fn-ref">...</div><a href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-15" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1658 CE</span><div><span class="event-label">A mosque, which still exists, was built on the site of the Viśveśvara temple by</span><div class="event-context">A mosque, which still exists, was built on the site of the Viśveśvara temple by Aurangzeb, who even changed the name of ...</div><a href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-16" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">about 1670 CE</span><div><span class="event-label">It is time now to turn to the individual sacred spots in Banaraṣ It is stated in</span><div class="event-context">It is time now to turn to the individual sacred spots in Banaraṣ It is stated in some of the Purāṇas<sup class="fn-ref">...</div><a href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-15" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1776 CE</span><div><span class="event-label">Viśveśvara or Viśvanātha is the tutelary deity of Banaras and the principal and</span><div class="event-context">Viśveśvara or Viśvanātha is the tutelary deity of Banaras and the principal and most holy temple in it (vide n 1429 a) I...</div><a href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-17" class="event-link">View in text &rarr;</a></div></div>
+            </div>
+        </div>
+        <div id="graph-panel" class="tl-panel">
+            <div class="eg-stats">
+<div><span class="eg-stat-num">5</span> entities</div>
+<div><span class="eg-stat-num">15</span> date claims</div>
+<div><span class="eg-stat-num">4</span> debated</div>
+<div><span class="eg-stat-num">18</span> co-occurrences</div>
+</div>
+<div class="eg-sort">Sort: <a class="active" onclick="egSort('date')">by date</a><a onclick="egSort('claims')">by claims</a><a onclick="egSort('name')">by name</a></div>
+<div id="eg-entities">
+<div class="eg-entity" data-key="v-yupur-a" data-consensus="-300" data-claims="2" data-name="Vāyupurāṇa"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Vāyupurāṇa</span><span class="eg-type">text</span><span class="eg-claims-count">2 claims &middot; 500 BCE to 300 BCE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="-500" data-max="1200"><span class="eg-range-label" style="left:0;">500 BCE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1200 CE</span><div class="eg-range-fill" style="left:0.0%;width:11.8%;"></div><div class="eg-range-dot" style="left:0.0%;" title="500 BCE — 5th Century B C."></div><div class="eg-range-dot" style="left:11.8%;" title="300 BCE — 3rd century B. C."></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="matsyapur-a" onclick="egHighlight('matsyapur-a')">Matsyapurāṇa<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">500 BCE</span><div><span class="eg-claim-ctx">Ancient Buddhist works show that Banaras was, in the times of Buddha (5th Century B C. at the latest...</span> <a href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-5">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">300 BCE</span><div><span class="eg-claim-ctx">Ancient Buddhist works show that Banaras was, in the times of Buddha (5th Century B C. at the latest...</span> <a href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-5">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="udyogaparva" data-consensus="400" data-claims="4" data-name="Udyogaparva"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Udyogaparva</span><span class="eg-type">text</span><span class="eg-claims-count">4 claims &middot; 200 BCE to 413 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="-500" data-max="1200"><span class="eg-range-label" style="left:0;">500 BCE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1200 CE</span><div class="eg-range-fill" style="left:17.6%;width:36.1%;"></div><div class="eg-range-dot" style="left:17.6%;" title="200 BCE — 2nd century B. C."></div><div class="eg-range-dot" style="left:35.4%;" title="101 CE — 2nd century "></div><div class="eg-range-dot" style="left:52.9%;" title="400 CE — about 400 A. D."></div><div class="eg-range-dot" style="left:53.7%;" title="413 CE — 413 A. D."></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="atapatha-br-hma-a" onclick="egHighlight('atapatha-br-hma-a')">Śatapatha Brāhmaṇa<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="b-had-ra-yaka-upani-ad" onclick="egHighlight('b-had-ra-yaka-upani-ad')">Bṛhadāraṇyaka Upaniṣad<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="gveda" onclick="egHighlight('gveda')">Ṛgveda<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="vi-u-sm-ti" onclick="egHighlight('vi-u-sm-ti')">Viṣṇu Smṛti<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">200 BCE</span><div><span class="eg-claim-ctx">Before proceeding further, it is necessary to dwell, however briefly, on the ancient history of Bana...</span> <a href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-2">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">101 CE</span><div><span class="eg-claim-ctx">Before proceeding further, it is necessary to dwell, however briefly, on the ancient history of Bana...</span> <a href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-2">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">about 400 CE</span><div><span class="eg-claim-ctx">Before proceeding further, it is necessary to dwell, however briefly, on the ancient history of Bana...</span> <a href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-2">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">413 CE</span><div><span class="eg-claim-ctx">Before proceeding further, it is necessary to dwell, however briefly, on the ancient history of Bana...</span> <a href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-2">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="padmapur-a" data-consensus="601" data-claims="1" data-name="Padmapurāṇa"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Padmapurāṇa</span><span class="eg-type">text</span><span class="eg-claims-count">1 claims &middot; 601 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="-500" data-max="1200"><span class="eg-range-label" style="left:0;">500 BCE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1200 CE</span><div class="eg-range-dot" style="left:64.8%;" title="601 CE — 7th century "></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="history-of-dharma-stra" onclick="egHighlight('history-of-dharma-stra')">History of Dharmaśāstra<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="matsyapur-a" onclick="egHighlight('matsyapur-a')">Matsyapurāṇa<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">601 CE</span><div><span class="eg-claim-ctx">Although generally Kāśī, Vāraṇasī and Avimukta are used as synonyms in the Purāṇas, in some passages...</span> <a href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-12">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="matsyapur-a" data-consensus="1122" data-claims="2" data-name="Matsyapurāṇa"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Matsyapurāṇa</span><span class="eg-type">text</span><span class="eg-claims-count">2 claims &middot; 1101 CE to 1122 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="-500" data-max="1200"><span class="eg-range-label" style="left:0;">500 BCE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1200 CE</span><div class="eg-range-fill" style="left:94.2%;width:1.2%;"></div><div class="eg-range-dot" style="left:94.2%;" title="1101 CE — 12th century A. D."></div><div class="eg-range-dot" style="left:95.4%;" title="1122 CE — samvat 1178 (1122 A. D.)"></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="v-yupur-a" onclick="egHighlight('v-yupur-a')">Vāyupurāṇa<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="history-of-dharma-stra" onclick="egHighlight('history-of-dharma-stra')">History of Dharmaśāstra<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="padmapur-a" onclick="egHighlight('padmapur-a')">Padmapurāṇa<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="skandapur-a" onclick="egHighlight('skandapur-a')">Skandapurāṇa<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="vi-u-sm-ti" onclick="egHighlight('vi-u-sm-ti')">Viṣṇu Smṛti<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">1101 CE</span><div><span class="eg-claim-ctx">In the 12th century A. D. there was a Kapālamocanaghāt&lt;sup class=&quot;fn-ref&quot;&gt;&lt;a href=&quot;#fn-chapter-xiii-...</span> <a href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-23">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">1122 CE</span><div><span class="eg-claim-ctx">In the 12th century A. D. there was a Kapālamocanaghāt&lt;sup class=&quot;fn-ref&quot;&gt;&lt;a href=&quot;#fn-chapter-xiii-...</span> <a href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-23">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="vi-u-sm-ti" data-consensus="1131" data-claims="6" data-name="Viṣṇu Smṛti"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Viṣṇu Smṛti</span><span class="eg-type">text</span><span class="eg-claims-count">6 claims &middot; 150 CE to 1187 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="-500" data-max="1200"><span class="eg-range-label" style="left:0;">500 BCE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1200 CE</span><div class="eg-range-fill" style="left:38.2%;width:61.0%;"></div><div class="eg-range-dot" style="left:38.2%;" title="150 CE — 150 A. D."></div><div class="eg-range-dot" style="left:47.1%;" title="301 CE — 4th century A. D."></div><div class="eg-range-dot" style="left:50.0%;" title="350 CE — 350 A. D."></div><div class="eg-range-dot" style="left:95.9%;" title="1131 CE — 1131 A. D."></div><div class="eg-range-dot" style="left:97.4%;" title="1156 CE — 1156 A. D."></div><div class="eg-range-dot" style="left:99.2%;" title="1187 CE — 1187 A. D"></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="atapatha-br-hma-a" onclick="egHighlight('atapatha-br-hma-a')">Śatapatha Brāhmaṇa<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="b-had-ra-yaka-upani-ad" onclick="egHighlight('b-had-ra-yaka-upani-ad')">Bṛhadāraṇyaka Upaniṣad<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="gveda" onclick="egHighlight('gveda')">Ṛgveda<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="udyogaparva" onclick="egHighlight('udyogaparva')">Udyogaparva<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="vi-upur-a" onclick="egHighlight('vi-upur-a')">Viṣṇupurāṇa<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="matsyapur-a" onclick="egHighlight('matsyapur-a')">Matsyapurāṇa<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="skandapur-a" onclick="egHighlight('skandapur-a')">Skandapurāṇa<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">150 CE</span><div><span class="eg-claim-ctx">It appears that *Vācaspati* &lt;sup class=&quot;fn-ref&quot;&gt;&lt;a href=&quot;#fn-chapter-xiii-kāshī-45&quot; id=&quot;fnref-chapte...</span> <a href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-18">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">301 CE</span><div><span class="eg-claim-ctx">From the above-mentioned accounts in the Epic and Purāṇas about Kāśī and Mahādeva, various conclusio...</span> <a href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-7">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">350 CE</span><div><span class="eg-claim-ctx">It appears that *Vācaspati* &lt;sup class=&quot;fn-ref&quot;&gt;&lt;a href=&quot;#fn-chapter-xiii-kāshī-45&quot; id=&quot;fnref-chapte...</span> <a href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-18">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">1131 CE</span><div><span class="eg-claim-ctx">It appears that *Vācaspati* &lt;sup class=&quot;fn-ref&quot;&gt;&lt;a href=&quot;#fn-chapter-xiii-kāshī-45&quot; id=&quot;fnref-chapte...</span> <a href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-18">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">1156 CE</span><div><span class="eg-claim-ctx">It appears that *Vācaspati* &lt;sup class=&quot;fn-ref&quot;&gt;&lt;a href=&quot;#fn-chapter-xiii-kāshī-45&quot; id=&quot;fnref-chapte...</span> <a href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-18">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">1187 CE</span><div><span class="eg-claim-ctx">It appears that *Vācaspati* &lt;sup class=&quot;fn-ref&quot;&gt;&lt;a href=&quot;#fn-chapter-xiii-kāshī-45&quot; id=&quot;fnref-chapte...</span> <a href="chapter-xiii-kāshī.html#p-chapter-xiii-kāshī-18">view</a></div></div></div></div></div>
+</div>
+<script>
+function egToggle(header) {
+    header.parentElement.classList.toggle('open');
+}
+function egHighlight(key) {
+    // Remove existing highlights
+    document.querySelectorAll('.eg-entity.highlighted').forEach(function(el) {
+        el.classList.remove('highlighted');
+    });
+    // Highlight target and scroll to it
+    var target = document.querySelector('.eg-entity[data-key="' + key + '"]');
+    if (target) {
+        target.classList.add('highlighted');
+        target.classList.add('open');
+        target.scrollIntoView({behavior: 'smooth', block: 'center'});
+    }
+}
+function egSort(mode) {
+    var container = document.getElementById('eg-entities');
+    var items = Array.from(container.querySelectorAll('.eg-entity'));
+    items.sort(function(a, b) {
+        if (mode === 'date') return parseInt(a.dataset.consensus) - parseInt(b.dataset.consensus);
+        if (mode === 'claims') return parseInt(b.dataset.claims) - parseInt(a.dataset.claims);
+        if (mode === 'name') return a.dataset.name.localeCompare(b.dataset.name);
+        return 0;
+    });
+    items.forEach(function(el) { container.appendChild(el); });
+    // Update active sort link
+    document.querySelectorAll('.eg-sort a').forEach(function(a) { a.classList.remove('active'); });
+    event.target.classList.add('active');
+}
+</script>
+        </div>
+        <a href="chapter-xiii-kāshī.html" class="back-link">&larr; Back to Chapter XIII. Kāshī</a>
+    </div>
+    <script>
+    document.querySelectorAll('.tl-evt').forEach(function(el) {
+        el.addEventListener('click', function() {
+            var href = this.getAttribute('data-href');
+            if (href) {
+                window.location.href = href;
+            } else {
+                var paraId = this.getAttribute('data-para');
+                if (paraId) {
+                    var target = document.getElementById(paraId);
+                    if (target) target.scrollIntoView({behavior: 'smooth'});
+                }
+            }
+        });
+    });
+    // Tab switching
+    document.querySelectorAll('.tl-tab').forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            document.querySelectorAll('.tl-tab').forEach(function(t) { t.classList.remove('active'); });
+            document.querySelectorAll('.tl-panel').forEach(function(p) { p.classList.remove('active'); });
+            tab.classList.add('active');
+            var panel = document.getElementById(tab.getAttribute('data-panel'));
+            if (panel) panel.classList.add('active');
+        });
+    });
+    </script>
+</body>
+</html>

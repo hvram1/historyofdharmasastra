@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline — 114. Anantadeva</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+    :root {
+        --parchment: #faf6ef;
+        --parchment-mid: #f0e6d3;
+        --saffron: #e8941a;
+        --ink: #2c1810;
+        --ink-secondary: #5a3e2b;
+        --rule: #d4c5a9;
+        --indigo: #2d5a87;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+        font-family: 'Lora', Georgia, serif;
+        background: var(--parchment);
+        color: var(--ink);
+    }
+    .navbar {
+        background: linear-gradient(135deg, #1a0f0a, #2c1810);
+        padding: 12px 24px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+    .navbar a { color: var(--parchment); text-decoration: none; }
+    .navbar .devanagari { font-size: 1.3rem; }
+    .navbar .nav-title { font-family: 'Lora', serif; font-size: 1rem; opacity: 0.9; }
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+    .breadcrumb-bar a { color: var(--saffron); text-decoration: none; }
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+    .content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 24px;
+    }
+    h1 {
+        font-size: 1.6rem;
+        margin-bottom: 8px;
+        color: var(--ink);
+    }
+    .subtitle {
+        font-size: 0.9rem;
+        color: var(--ink-secondary);
+        margin-bottom: 24px;
+    }
+    .timeline-container {
+        overflow-x: auto;
+        padding: 16px 0;
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        background: var(--parchment);
+    }
+    .timeline-svg {
+        display: block;
+        min-width: 100%;
+    }
+    .timeline-svg .tl-evt { cursor: pointer; }
+    .timeline-svg .tl-evt:hover { transform: scale(1.5); }
+    .event-list {
+        margin-top: 32px;
+    }
+    .event-list h2 {
+        font-size: 1.1rem;
+        margin-bottom: 16px;
+        color: var(--ink-secondary);
+    }
+    .event-item {
+        display: flex;
+        gap: 16px;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--rule);
+        font-size: 0.88rem;
+    }
+    .event-year {
+        min-width: 90px;
+        font-weight: 600;
+        color: var(--saffron);
+        font-family: 'Open Sans', sans-serif;
+    }
+    .event-label { font-weight: 600; }
+    .event-context {
+        color: var(--ink-secondary);
+        font-size: 0.82rem;
+        margin-top: 2px;
+    }
+    .event-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.8rem;
+    }
+    .event-link:hover { text-decoration: underline; }
+    .back-link {
+        display: inline-block;
+        margin-top: 24px;
+        color: var(--saffron);
+        text-decoration: none;
+        font-family: 'Open Sans', sans-serif;
+    }
+    .back-link:hover { text-decoration: underline; }
+    .century-group {
+        margin-bottom: 8px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        overflow: hidden;
+    }
+    .century-heading {
+        display: block;
+        padding: 10px 16px;
+        background: var(--parchment-mid);
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: var(--ink);
+    }
+    .century-heading:hover { background: #e8dcc8; }
+    .century-count {
+        font-weight: 400;
+        color: var(--ink-secondary);
+        font-size: 0.82rem;
+    }
+    .century-events {
+        padding: 8px 16px;
+    }
+    .vol-tl-link {
+        display: inline-block;
+        margin: 4px 8px 4px 0;
+        padding: 6px 14px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        color: var(--saffron);
+        text-decoration: none;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+    }
+    .vol-tl-link:hover {
+        border-color: var(--saffron);
+        background: #f5ebe0;
+    }
+    .vol-tl-count {
+        color: var(--ink-secondary);
+        font-size: 0.78rem;
+    }
+    /* ── Tab switcher ── */
+    .tl-tabs {
+        display: flex; gap: 0; margin-bottom: 20px;
+        border-bottom: 2px solid var(--rule);
+    }
+    .tl-tab {
+        padding: 10px 20px; cursor: pointer;
+        font-family: 'Open Sans', sans-serif; font-size: 0.9rem;
+        color: var(--ink-secondary); border-bottom: 2px solid transparent;
+        margin-bottom: -2px; transition: all 0.2s;
+    }
+    .tl-tab:hover { color: var(--ink); }
+    .tl-tab.active { color: var(--saffron); border-bottom-color: var(--saffron); font-weight: 600; }
+    .tl-panel { display: none; }
+    .tl-panel.active { display: block; }
+    /* ── Entity graph styles ── */
+    .eg-entity {
+        border: 1px solid var(--rule); border-radius: 6px;
+        margin-bottom: 8px; overflow: hidden; transition: border-color 0.2s;
+    }
+    .eg-entity.highlighted { border-color: var(--saffron); box-shadow: 0 0 0 1px var(--saffron); }
+    .eg-header {
+        display: flex; align-items: center; gap: 12px;
+        padding: 10px 16px; background: var(--parchment-mid);
+        cursor: pointer; font-family: 'Open Sans', sans-serif;
+    }
+    .eg-header:hover { background: #e8dcc8; }
+    .eg-name { font-weight: 600; font-size: 0.92rem; flex: 1; }
+    .eg-type {
+        font-size: 0.72rem; padding: 2px 8px; border-radius: 10px;
+        background: var(--parchment); color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .eg-claims-count {
+        font-size: 0.78rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif;
+    }
+    .eg-body { padding: 12px 16px; display: none; }
+    .eg-entity.open .eg-body { display: block; }
+    .eg-range-bar {
+        position: relative; height: 32px;
+        background: var(--parchment-mid); border-radius: 4px;
+        margin-bottom: 10px; overflow: hidden;
+    }
+    .eg-range-fill {
+        position: absolute; top: 6px; height: 20px;
+        background: var(--saffron); opacity: 0.3; border-radius: 3px;
+    }
+    .eg-range-dot {
+        position: absolute; top: 11px; width: 10px; height: 10px;
+        background: var(--saffron); border-radius: 50%;
+        transform: translateX(-5px); cursor: pointer;
+    }
+    .eg-range-dot:hover { transform: translateX(-5px) scale(1.4); }
+    .eg-range-label {
+        position: absolute; top: -2px;
+        font-size: 0.7rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif;
+        transform: translateX(-50%);
+    }
+    .eg-cooccur {
+        margin-top: 8px; padding-top: 8px;
+        border-top: 1px solid var(--rule);
+    }
+    .eg-cooccur-title {
+        font-size: 0.78rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif; margin-bottom: 6px;
+    }
+    .eg-cooccur-chip {
+        display: inline-block; margin: 2px 4px 2px 0;
+        padding: 3px 10px; background: var(--parchment-mid);
+        border: 1px solid var(--rule); border-radius: 12px;
+        font-size: 0.78rem; color: var(--ink);
+        font-family: 'Open Sans', sans-serif;
+        cursor: pointer; transition: all 0.2s;
+    }
+    .eg-cooccur-chip:hover { border-color: var(--saffron); color: var(--saffron); }
+    .eg-cooccur-weight {
+        font-size: 0.68rem; color: var(--ink-secondary); margin-left: 2px;
+    }
+    .eg-claim-list { margin-top: 8px; }
+    .eg-claim {
+        display: flex; gap: 12px; padding: 4px 0;
+        font-size: 0.82rem; border-bottom: 1px solid #f0e6d3;
+    }
+    .eg-claim-year {
+        min-width: 80px; font-weight: 600; color: var(--saffron);
+        font-family: 'Open Sans', sans-serif; font-size: 0.8rem;
+    }
+    .eg-claim-ctx { color: var(--ink-secondary); font-size: 0.78rem; }
+    .eg-claim a { color: var(--indigo); text-decoration: none; font-size: 0.76rem; }
+    .eg-claim a:hover { text-decoration: underline; }
+    .eg-stats {
+        display: flex; gap: 24px; margin-bottom: 16px;
+        font-family: 'Open Sans', sans-serif; font-size: 0.85rem;
+        color: var(--ink-secondary);
+    }
+    .eg-stat-num { font-weight: 700; color: var(--saffron); font-size: 1.1rem; }
+    .eg-sort {
+        font-family: 'Open Sans', sans-serif; font-size: 0.82rem;
+        margin-bottom: 12px; color: var(--ink-secondary);
+    }
+    .eg-sort a {
+        color: var(--indigo); text-decoration: none; cursor: pointer;
+        margin: 0 6px;
+    }
+    .eg-sort a:hover { text-decoration: underline; }
+    .eg-sort a.active { color: var(--saffron); font-weight: 600; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="../index.html"><span class="devanagari">धर्मशास्त्रम्</span></a>
+        <a href="../index.html" class="nav-title">History of Dharmaśāstra</a>
+    </div>
+    
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep"> &rsaquo; </span>
+        <a href="index.html">Volume I: Part II</a>
+        <span class="sep"> &rsaquo; </span>
+        <a href="114-anantadeva.html">114. Anantadeva</a>
+        <span class="sep"> &rsaquo; </span>
+        <span>Timeline</span>
+    </div>
+    
+    <div class="content">
+        <h1>Timeline: 114. Anantadeva</h1>
+        <p class="subtitle">13 dated references</p>
+        <div class="tl-tabs">
+            <div class="tl-tab active" data-panel="events-panel">Events</div>
+            <div class="tl-tab" data-panel="graph-panel">Entity Graph</div>
+        </div>
+        <div id="events-panel" class="tl-panel active">
+            <div class="timeline-container">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 280" class="timeline-svg" role="img" aria-label="Timeline for 114. Anantadeva">
+<rect width="800" height="280" fill="#faf6ef" rx="8"/>
+<line x1="60" y1="100" x2="760" y2="100" stroke="#c4956a" stroke-width="2"/>
+<line x1="60.0" y1="94" x2="60.0" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="60.0" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">800 CE</text>
+<line x1="117.14285714285714" y1="94" x2="117.14285714285714" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="117.14285714285714" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">900 CE</text>
+<line x1="192.3308270676692" y1="94" x2="192.3308270676692" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="192.3308270676692" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1000 CE</text>
+<line x1="267.51879699248116" y1="94" x2="267.51879699248116" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="267.51879699248116" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1100 CE</text>
+<line x1="342.70676691729324" y1="94" x2="342.70676691729324" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="342.70676691729324" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1200 CE</text>
+<line x1="417.89473684210526" y1="94" x2="417.89473684210526" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="417.89473684210526" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1300 CE</text>
+<line x1="493.0827067669173" y1="94" x2="493.0827067669173" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="493.0827067669173" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1400 CE</text>
+<line x1="568.2706766917294" y1="94" x2="568.2706766917294" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="568.2706766917294" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1500 CE</text>
+<line x1="643.4586466165414" y1="94" x2="643.4586466165414" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="643.4586466165414" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1600 CE</text>
+<line x1="718.6466165413534" y1="94" x2="718.6466165413534" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="718.6466165413534" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1700 CE</text>
+<line x1="117.89473684210526" y1="100" x2="192.3308270676692" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="155.11278195488723" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-114-anantadeva-14" data-href="114-anantadeva.html#p-114-anantadeva-14"><title>West and Bühler in their digest<sup clas</title></circle>
+<line x1="155.11278195488723" y1="106" x2="155.11278195488723" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="155.11278195488723" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">West and Bühler in their </text>
+<text x="155.11278195488723" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">901 CE</text>
+<circle cx="589.3233082706768" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-114-anantadeva-14" data-href="114-anantadeva.html#p-114-anantadeva-14"><title>West and Bühler in their digest<sup clas</title></circle>
+<line x1="589.3233082706768" y1="106" x2="589.3233082706768" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="589.3233082706768" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">West and Bühler in their </text>
+<text x="589.3233082706768" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1528 CE</text>
+<line x1="604.3609022556391" y1="100" x2="642.7067669172932" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="623.5338345864661" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-114-anantadeva-14" data-href="114-anantadeva.html#p-114-anantadeva-14"><title>West and Bühler in their digest<sup clas</title></circle>
+<line x1="623.5338345864661" y1="106" x2="623.5338345864661" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="623.5338345864661" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">West and Bühler in their </text>
+<text x="623.5338345864661" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1548 CE</text>
+<circle cx="623.1578947368421" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-114-anantadeva-14" data-href="114-anantadeva.html#p-114-anantadeva-14"><title>West and Bühler in their digest<sup clas</title></circle>
+<line x1="623.1578947368421" y1="106" x2="623.1578947368421" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="623.1578947368421" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">West and Bühler in their </text>
+<text x="623.1578947368421" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1573 CE</text>
+<circle cx="633.6842105263158" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-114-anantadeva-14" data-href="114-anantadeva.html#p-114-anantadeva-14"><title>West and Bühler in their digest<sup clas</title></circle>
+<line x1="633.6842105263158" y1="106" x2="633.6842105263158" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="633.6842105263158" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">West and Bühler in their </text>
+<text x="633.6842105263158" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1587 CE</text>
+<circle cx="642.7067669172932" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-114-anantadeva-14" data-href="114-anantadeva.html#p-114-anantadeva-14"><title>West and Bühler in their digest<sup clas</title></circle>
+<line x1="642.7067669172932" y1="106" x2="642.7067669172932" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="642.7067669172932" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">West and Bühler in their </text>
+<text x="642.7067669172932" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1599 CE</text>
+<circle cx="643.4586466165414" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-114-anantadeva-14" data-href="114-anantadeva.html#p-114-anantadeva-14"><title>West and Bühler in their digest<sup clas</title></circle>
+<line x1="643.4586466165414" y1="106" x2="643.4586466165414" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="643.4586466165414" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">West and Bühler in their </text>
+<text x="643.4586466165414" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1600 CE</text>
+<line x1="644.2105263157895" y1="100" x2="718.6466165413534" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="681.4285714285714" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-114-anantadeva-14" data-href="114-anantadeva.html#p-114-anantadeva-14"><title>West and Bühler in their digest<sup clas</title></circle>
+<line x1="681.4285714285714" y1="106" x2="681.4285714285714" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="681.4285714285714" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">West and Bühler in their </text>
+<text x="681.4285714285714" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1601 CE</text>
+<line x1="651.7293233082706" y1="100" x2="652.4812030075188" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="652.1052631578948" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-114-anantadeva-14" data-href="114-anantadeva.html#p-114-anantadeva-14"><title>West and Bühler in their digest<sup clas</title></circle>
+<line x1="652.1052631578948" y1="106" x2="652.1052631578948" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="652.1052631578948" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">West and Bühler in their </text>
+<text x="652.1052631578948" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1611 CE</text>
+<line x1="677.2932330827068" y1="100" x2="699.8496240601503" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="688.5714285714286" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-114-anantadeva-14" data-href="114-anantadeva.html#p-114-anantadeva-14"><title>West and Bühler in their digest<sup clas</title></circle>
+<line x1="688.5714285714286" y1="106" x2="688.5714285714286" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="688.5714285714286" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">West and Bühler in their </text>
+<text x="688.5714285714286" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1645 CE</text>
+<circle cx="690.0751879699249" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-114-anantadeva-14" data-href="114-anantadeva.html#p-114-anantadeva-14"><title>West and Bühler in their digest<sup clas</title></circle>
+<line x1="690.0751879699249" y1="106" x2="690.0751879699249" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="690.0751879699249" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">West and Bühler in their </text>
+<text x="690.0751879699249" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1662 CE</text>
+<circle cx="698.3458646616541" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-114-anantadeva-14" data-href="114-anantadeva.html#p-114-anantadeva-14"><title>West and Bühler in their digest<sup clas</title></circle>
+<line x1="698.3458646616541" y1="106" x2="698.3458646616541" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="698.3458646616541" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">West and Bühler in their </text>
+<text x="698.3458646616541" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1673 CE</text>
+<circle cx="702.1052631578947" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-114-anantadeva-14" data-href="114-anantadeva.html#p-114-anantadeva-14"><title>West and Bühler in their digest<sup clas</title></circle>
+<line x1="702.1052631578947" y1="106" x2="702.1052631578947" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="702.1052631578947" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">West and Bühler in their </text>
+<text x="702.1052631578947" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1678 CE</text>
+</svg>
+            </div>
+            <div class="event-list">
+                <h2>All Dated References</h2>
+                <div class="event-item"><span class="event-year">901 CE</span><div><span class="event-label">West and Bühler in their digest<sup class="fn-ref"><a href="#fn-114-anantadeva-1</span><div class="event-context">West and Bühler in their digest<sup class="fn-ref"><a href="#fn-114-anantadeva-13" id="fnref-114-anantadeva-13">13</a></...</div><a href="114-anantadeva.html#p-114-anantadeva-14" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1528 CE</span><div><span class="event-label">West and Bühler in their digest<sup class="fn-ref"><a href="#fn-114-anantadeva-1</span><div class="event-context">West and Bühler in their digest<sup class="fn-ref"><a href="#fn-114-anantadeva-13" id="fnref-114-anantadeva-13">13</a></...</div><a href="114-anantadeva.html#p-114-anantadeva-14" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1548 CE</span><div><span class="event-label">West and Bühler in their digest<sup class="fn-ref"><a href="#fn-114-anantadeva-1</span><div class="event-context">West and Bühler in their digest<sup class="fn-ref"><a href="#fn-114-anantadeva-13" id="fnref-114-anantadeva-13">13</a></...</div><a href="114-anantadeva.html#p-114-anantadeva-14" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1573 CE</span><div><span class="event-label">West and Bühler in their digest<sup class="fn-ref"><a href="#fn-114-anantadeva-1</span><div class="event-context">West and Bühler in their digest<sup class="fn-ref"><a href="#fn-114-anantadeva-13" id="fnref-114-anantadeva-13">13</a></...</div><a href="114-anantadeva.html#p-114-anantadeva-14" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1587 CE</span><div><span class="event-label">West and Bühler in their digest<sup class="fn-ref"><a href="#fn-114-anantadeva-1</span><div class="event-context">West and Bühler in their digest<sup class="fn-ref"><a href="#fn-114-anantadeva-13" id="fnref-114-anantadeva-13">13</a></...</div><a href="114-anantadeva.html#p-114-anantadeva-14" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1599 CE</span><div><span class="event-label">West and Bühler in their digest<sup class="fn-ref"><a href="#fn-114-anantadeva-1</span><div class="event-context">West and Bühler in their digest<sup class="fn-ref"><a href="#fn-114-anantadeva-13" id="fnref-114-anantadeva-13">13</a></...</div><a href="114-anantadeva.html#p-114-anantadeva-14" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1600 CE</span><div><span class="event-label">West and Bühler in their digest<sup class="fn-ref"><a href="#fn-114-anantadeva-1</span><div class="event-context">West and Bühler in their digest<sup class="fn-ref"><a href="#fn-114-anantadeva-13" id="fnref-114-anantadeva-13">13</a></...</div><a href="114-anantadeva.html#p-114-anantadeva-14" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1601 CE</span><div><span class="event-label">West and Bühler in their digest<sup class="fn-ref"><a href="#fn-114-anantadeva-1</span><div class="event-context">West and Bühler in their digest<sup class="fn-ref"><a href="#fn-114-anantadeva-13" id="fnref-114-anantadeva-13">13</a></...</div><a href="114-anantadeva.html#p-114-anantadeva-14" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1611 CE</span><div><span class="event-label">West and Bühler in their digest<sup class="fn-ref"><a href="#fn-114-anantadeva-1</span><div class="event-context">West and Bühler in their digest<sup class="fn-ref"><a href="#fn-114-anantadeva-13" id="fnref-114-anantadeva-13">13</a></...</div><a href="114-anantadeva.html#p-114-anantadeva-14" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">between 1645 CE</span><div><span class="event-label">West and Bühler in their digest<sup class="fn-ref"><a href="#fn-114-anantadeva-1</span><div class="event-context">West and Bühler in their digest<sup class="fn-ref"><a href="#fn-114-anantadeva-13" id="fnref-114-anantadeva-13">13</a></...</div><a href="114-anantadeva.html#p-114-anantadeva-14" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1662 CE</span><div><span class="event-label">West and Bühler in their digest<sup class="fn-ref"><a href="#fn-114-anantadeva-1</span><div class="event-context">West and Bühler in their digest<sup class="fn-ref"><a href="#fn-114-anantadeva-13" id="fnref-114-anantadeva-13">13</a></...</div><a href="114-anantadeva.html#p-114-anantadeva-14" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1673 CE</span><div><span class="event-label">West and Bühler in their digest<sup class="fn-ref"><a href="#fn-114-anantadeva-1</span><div class="event-context">West and Bühler in their digest<sup class="fn-ref"><a href="#fn-114-anantadeva-13" id="fnref-114-anantadeva-13">13</a></...</div><a href="114-anantadeva.html#p-114-anantadeva-14" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1678 CE</span><div><span class="event-label">West and Bühler in their digest<sup class="fn-ref"><a href="#fn-114-anantadeva-1</span><div class="event-context">West and Bühler in their digest<sup class="fn-ref"><a href="#fn-114-anantadeva-13" id="fnref-114-anantadeva-13">13</a></...</div><a href="114-anantadeva.html#p-114-anantadeva-14" class="event-link">View in text &rarr;</a></div></div>
+            </div>
+        </div>
+        <div id="graph-panel" class="tl-panel">
+            <p style="color:var(--ink-secondary);">No entity data available.</p>
+        </div>
+        <a href="114-anantadeva.html" class="back-link">&larr; Back to 114. Anantadeva</a>
+    </div>
+    <script>
+    document.querySelectorAll('.tl-evt').forEach(function(el) {
+        el.addEventListener('click', function() {
+            var href = this.getAttribute('data-href');
+            if (href) {
+                window.location.href = href;
+            } else {
+                var paraId = this.getAttribute('data-para');
+                if (paraId) {
+                    var target = document.getElementById(paraId);
+                    if (target) target.scrollIntoView({behavior: 'smooth'});
+                }
+            }
+        });
+    });
+    // Tab switching
+    document.querySelectorAll('.tl-tab').forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            document.querySelectorAll('.tl-tab').forEach(function(t) { t.classList.remove('active'); });
+            document.querySelectorAll('.tl-panel').forEach(function(p) { p.classList.remove('active'); });
+            tab.classList.add('active');
+            var panel = document.getElementById(tab.getAttribute('data-panel'));
+            if (panel) panel.classList.add('active');
+        });
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- MDB UI Kit -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/fonts.css?v=1.2">
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/navbar.css?v=2.4">
+
+    <title>Chapter I. The Topics of Dharmashastra — Volume II: Part I — History of Dharmaśāstra</title>
+    <style>
+    :root {
+        --saffron:        #D4600A;
+        --saffron-light:  #F0924A;
+        --saffron-wash:   rgba(212, 96, 10, 0.07);
+        --indigo:         #2E5FA3;
+        --indigo-dark:    #1C3D70;
+        --maroon:         #7A1E1E;
+        --amber:          #C97A1A;
+        --ink:            #1A1209;
+        --ink-secondary:  #4A3B2A;
+        --parchment:      #FDFAF4;
+        --parchment-mid:  #F5EFE2;
+        --rule:           rgba(180, 130, 60, 0.22);
+        --shadow:         0 2px 18px rgba(90, 50, 10, 0.08);
+        --font-devanagari: 'Tiro Devanagari Sanskrit', 'Siddhanta', 'Noto Sans Devanagari', serif;
+        --font-roman:      'Junicode', Georgia, serif;
+    }
+
+    body {
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: var(--font-roman);
+    }
+
+    .devanagari {
+        font-family: var(--font-devanagari);
+    }
+
+    /* ── Navbar overrides ── */
+    .navbar-ontop { z-index: 1031; }
+    .hdclr { color: var(--saffron); }
+    .engpara { font-family: 'Open Sans', sans-serif; }
+
+    /* ── Layout ── */
+    .dh-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .dh-content {
+        flex: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        background: var(--parchment);
+        box-shadow: var(--shadow);
+        min-height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        .dh-content { padding: 24px 20px; }
+        .dh-wrapper { flex-direction: column; }
+    }
+
+    /* ── TOC Sidebar ── */
+    .toc-sidebar {
+        position: sticky;
+        top: 80px;
+        width: 280px;
+        min-width: 280px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding: 20px 16px;
+        margin-right: 24px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        scrollbar-width: thin;
+    }
+
+    .toc-title {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--saffron-light);
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list li {
+        padding: 4px 0;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-list li.toc-l3 {
+        padding-left: 16px;
+        font-size: 0.78rem;
+    }
+
+    .toc-list li a {
+        color: var(--ink-secondary);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .toc-list li a:hover { color: var(--saffron); }
+
+    .toc-list li.active {
+        border-left-color: var(--saffron);
+    }
+
+    .toc-list li.active a {
+        color: var(--saffron);
+        font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-sidebar { display: none; }
+    }
+
+    /* ── Mobile TOC Toggle ── */
+    .toc-mobile-toggle {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1050;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--saffron);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-mobile-toggle { display: block; }
+    }
+
+    /* ── Section Headings ── */
+    .section-heading {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        margin: 48px 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--rule);
+        letter-spacing: 0.5px;
+        scroll-margin-top: 80px;
+    }
+
+    h2.section-heading { font-size: 1.6rem; }
+
+    h3.section-heading {
+        font-size: 1.25rem;
+        border-left: 4px solid var(--saffron-light);
+        border-bottom: none;
+        padding: 8px 16px;
+        background: var(--saffron-wash);
+        border-radius: 0 5px 5px 0;
+    }
+
+    /* ── Prose ── */
+    .prose {
+        font-family: var(--font-roman);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+        color: var(--ink);
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    .prose em { color: var(--maroon); }
+
+    .prose:target {
+        background: rgba(212, 96, 10, 0.12);
+        border-left: 4px solid var(--saffron);
+        padding-left: 16px;
+        margin-left: -20px;
+        border-radius: 0 6px 6px 0;
+        animation: target-pulse 2s ease-out;
+    }
+
+    @keyframes target-pulse {
+        0%   { background: rgba(212, 96, 10, 0.30); }
+        100% { background: rgba(212, 96, 10, 0.12); }
+    }
+
+    /* ── Footnote References ── */
+    .fn-ref {
+        font-size: 0.75em;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    .fn-ref a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 0 2px;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: color 0.15s;
+    }
+
+    .fn-ref a:hover { color: var(--indigo); }
+
+    /* ── Synopsis Box ── */
+    .synopsis-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron-light);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .synopsis-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .synopsis-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .synopsis-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .synopsis-box.open .synopsis-toggle i {
+        transform: rotate(90deg);
+    }
+    .synopsis-body {
+        display: none;
+        padding: 0 20px 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+    }
+    .synopsis-box.open .synopsis-body { display: block; }
+    .synopsis-body p { margin: 0; }
+    .synopsis-attribution {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: var(--ink-secondary);
+        opacity: 0.7;
+        font-style: italic;
+    }
+    .synopsis-audio {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    .synopsis-play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--saffron);
+        background: none;
+        color: var(--saffron);
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: background 0.2s, color 0.2s;
+        padding: 0;
+    }
+    .synopsis-play-btn:hover {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn.playing {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn i { padding-left: 2px; }
+
+    /* ── Index Terms Panel ── */
+    .index-terms-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .index-terms-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .index-terms-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .index-terms-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .index-terms-box.open .index-terms-toggle i {
+        transform: rotate(90deg);
+    }
+    .index-terms-body {
+        display: none;
+        padding: 0 20px 16px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .index-terms-box.open .index-terms-body { display: block; }
+    .index-terms-dl {
+        margin: 0;
+        padding: 0;
+    }
+    .index-terms-dl dt {
+        font-family: var(--font-roman);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+        margin-top: 8px;
+    }
+    .index-terms-dl dd {
+        margin: 2px 0 0 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        color: var(--ink-secondary);
+        line-height: 1.5;
+    }
+    .nyaya-heading {
+        font-family: var(--font-roman);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        margin: 16px 0 4px;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+    }
+
+    /* ── Inline Index Popovers ── */
+    .idx-term {
+        border-bottom: 1px dotted var(--saffron-light);
+        cursor: help;
+        position: relative;
+    }
+    .idx-term:hover::after {
+        content: attr(data-def);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        background: rgba(44, 36, 22, 0.92);
+        color: #F5ECD8;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        max-width: 280px;
+        z-index: 100;
+        white-space: normal;
+        line-height: 1.4;
+        pointer-events: none;
+    }
+
+    /* ── Structured Version Banner ── */
+    .structured-banner {
+        margin: 0 0 28px;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, rgba(212, 96, 10, 0.06) 0%, rgba(212, 96, 10, 0.02) 100%);
+        border: 1px solid var(--saffron-light);
+        border-radius: 6px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        color: var(--ink-secondary);
+        line-height: 1.6;
+    }
+    .structured-banner i { color: var(--saffron); margin-right: 4px; }
+    .structured-banner a { color: var(--indigo); font-weight: 600; text-decoration: none; }
+    .structured-banner a:hover { text-decoration: underline; }
+
+    /* ── Footnotes Section ── */
+    .footnotes-section {
+        margin: 32px 0 48px;
+        padding: 20px 24px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .footnotes-section hr {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 0 0 16px;
+    }
+
+    .footnotes-list {
+        padding-left: 24px;
+        margin: 0;
+    }
+
+    .footnote-item {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+        scroll-margin-top: 80px;
+    }
+
+    .footnote-item:target {
+        background: rgba(212, 96, 10, 0.1);
+        border-radius: 4px;
+        padding: 4px 6px;
+        margin-left: -6px;
+    }
+
+    .fn-back {
+        color: var(--saffron-light);
+        text-decoration: none;
+        font-size: 0.85em;
+        margin-left: 4px;
+    }
+
+    .fn-back:hover { color: var(--saffron); }
+
+    /* ── Reference Links ── */
+    a.ref {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: all 0.15s;
+    }
+
+    a.ref:hover {
+        color: var(--saffron);
+        border-bottom-style: solid;
+    }
+
+    a.mbta-ext {
+        color: var(--indigo);
+        font-size: 0.7em;
+        margin-left: 2px;
+        opacity: 0.5;
+        text-decoration: none;
+        vertical-align: super;
+    }
+    a.mbta-ext:hover { opacity: 1; color: var(--saffron); }
+
+    /* ── References Panel (sidebar) ── */
+    .refs-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .refs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .refs-list li {
+        padding: 3px 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .ref-source-link {
+        font-weight: 600;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .ref-source-link:hover {
+        text-decoration: underline;
+    }
+
+    .ref-verse-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.76rem;
+    }
+
+    .ref-verse-link:hover {
+        text-decoration: underline;
+        color: var(--saffron);
+    }
+
+    .ref-verses {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Timeline panel ── */
+    .timeline-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .timeline-list li {
+        padding: 2px 0;
+        font-size: 0.76rem;
+        line-height: 1.4;
+        position: relative;
+        padding-left: 14px;
+    }
+
+    .timeline-list li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--saffron);
+    }
+
+    .timeline-list li.tl-approximate::before {
+        background: transparent;
+        border: 2px solid var(--saffron);
+        width: 4px;
+        height: 4px;
+    }
+
+    .timeline-list li.tl-century::before {
+        background: transparent;
+        border: 2px dashed var(--saffron);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+
+    .tl-dot-link {
+        text-decoration: none;
+        color: var(--ink);
+        display: block;
+    }
+
+    .tl-dot-link:hover {
+        color: var(--saffron);
+    }
+
+    .tl-year {
+        font-weight: 600;
+        color: var(--saffron);
+        font-size: 0.72rem;
+        min-width: 70px;
+        display: inline-block;
+    }
+
+    .tl-label {
+        color: var(--ink-secondary);
+        font-size: 0.72rem;
+    }
+
+    .tl-view-link, .tl-more {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.72rem;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .tl-view-link:hover, .tl-more:hover {
+        text-decoration: underline;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+
+    .breadcrumb-bar a {
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+
+    .breadcrumb-bar .sep {
+        color: var(--amber);
+        margin: 0 8px;
+    }
+
+    .breadcrumb-bar .current {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Chapter Navigation ── */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        margin-top: 48px;
+        border-top: 2px solid var(--rule);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .chapter-nav a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        transition: all 0.2s;
+        max-width: 45%;
+    }
+
+    .chapter-nav a:hover {
+        background: var(--saffron-wash);
+        border-color: var(--saffron-light);
+    }
+
+    .nav-prev { text-align: left; }
+    .nav-next { text-align: right; margin-left: auto; }
+
+    .page-range {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+    }
+
+    /* ── Volume Cards (Landing) ── */
+    .vol-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .vol-card {
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        transition: all 0.25s;
+    }
+
+    .vol-card:hover {
+        border-color: var(--saffron-light);
+        box-shadow: 0 4px 24px rgba(212, 96, 10, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .vol-num {
+        font-family: var(--font-roman);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--saffron);
+        margin-bottom: 8px;
+    }
+
+    .vol-subtitle {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        line-height: 1.5;
+        flex: 1;
+    }
+
+    .vol-chapters {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        margin-top: 12px;
+    }
+
+    /* ── Chapter Cards (Volume Index) ── */
+    .chapter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .chapter-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .chapter-card:hover {
+        border-color: var(--saffron-light);
+        background: var(--saffron-wash);
+    }
+
+    .card-num {
+        font-family: var(--font-roman);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--saffron);
+        min-width: 36px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        flex: 1;
+    }
+
+    .card-pages {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        color: var(--ink-secondary);
+    }
+
+    /* ── Landing Hero ── */
+    .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-family: var(--font-roman);
+        font-size: 2.4rem;
+        color: var(--saffron);
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .hero .devanagari-title {
+        font-family: var(--font-devanagari);
+        font-size: 1.8rem;
+        color: var(--ink);
+        margin-bottom: 16px;
+    }
+
+    .hero .author {
+        font-family: var(--font-roman);
+        font-size: 1.1rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .hero .desc {
+        font-family: var(--font-roman);
+        font-size: 1rem;
+        color: var(--ink-secondary);
+        line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer { margin-top: 48px; }
+</style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mbta/">
+      <div class="container-fluid">&emsp;&emsp;
+      <a href="../index.html" class="navbar-brand" style="text-decoration:none;">
+        <span class="devanagari ms-3" style="font-size:1.5rem; color:var(--saffron); font-weight:700;">धर्मशास्त्रम्</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="../index.html">धर्मशास्त्रम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5 active" href="../index.html">खण्डाः</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in/mbta/">महाभारतम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in">सनातनम्</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+
+    <div class="dh-wrapper container-xl">
+        <nav id="toc" class="toc-sidebar">
+<div class="refs-panel">
+<h5 class="toc-title">References</h5>
+<ul class="refs-list">
+<li><a href="../refs/apararka.html" class="ref-source-link">Aparārka</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/baudhayana.html" class="ref-source-link">Baudhāyana Dharmasūtra</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/gita.html" class="ref-source-link">Bhagavadgītā</a> <span class="ref-verses"><a href="../refs/gita.html#VII.11" class="ref-verse-link">VII.11</a></span></li>
+<li><a href="../refs/brihadaranyaka.html" class="ref-source-link">Bṛhadāraṇyaka Upaniṣad</a> <span class="ref-verses"><a href="../refs/brihadaranyaka.html#i" class="ref-verse-link">i</a>, <a href="../refs/brihadaranyaka.html#I.3.28" class="ref-verse-link">I.3.28</a>, <a href="../refs/brihadaranyaka.html#VI.2.1" class="ref-verse-link">VI.2.1</a>, <a href="../refs/brihadaranyaka.html#III.9.19" class="ref-verse-link">III.9.19</a></span></li>
+<li><a href="../refs/chandogya.html" class="ref-source-link">Chāndogya Upaniṣad</a> <span class="ref-verses"><a href="../refs/chandogya.html#III.17" class="ref-verse-link">III.17</a>, <a href="../refs/chandogya.html#V.3.1" class="ref-verse-link">V.3.1</a></span></li>
+<li><a href="../refs/gautama.html" class="ref-source-link">Gautama Dharmasūtra</a> <span class="ref-verses"><a href="../refs/gautama.html#VIII.24-26" class="ref-verse-link">VIII.24-26</a></span></li>
+<li><a href="../refs/mb_karnaparva.html" class="ref-source-link">Karṇaparva</a> <span class="ref-verses"><a href="../refs/mb_karnaparva.html#43.5-8" class="ref-verse-link">43.5-8</a></span></li>
+<li><a href="../refs/kautilya.html" class="ref-source-link">Kauṭilya Arthaśāstra</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/kamasutra.html" class="ref-source-link">Kāmasūtra</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mahabharata.html" class="ref-source-link">Mahābhārata</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/manu.html" class="ref-source-link">Manusmṛti</a> <span class="ref-verses"><a href="../refs/manu.html#II.25" class="ref-verse-link">II.25</a>, <a href="../refs/manu.html#II.4" class="ref-verse-link">II.4</a>, <a href="../refs/manu.html#II.224" class="ref-verse-link">II.224</a>, <a href="../refs/manu.html#VIII.86" class="ref-verse-link">VIII.86</a>, <a href="../refs/manu.html#VIII.85" class="ref-verse-link">VIII.85</a>, <a href="../refs/manu.html#IV.161" class="ref-verse-link">IV.161</a> <a href="../refs/manu.html" class="ref-verse-link">+4</a></span></li>
+<li><a href="../refs/medhatithi.html" class="ref-source-link">Medhātithi</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mitakshara.html" class="ref-source-link">Mitākṣarā</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/markandeya.html" class="ref-source-link">Mārkaṇḍeyapurāṇa</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/parasara.html" class="ref-source-link">Parāśara</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/taittiriya_br.html" class="ref-source-link">Taittirīya Brāhmaṇa</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/taittiriya_ar.html" class="ref-source-link">Taittirīya Āraṇyaka</a> <span class="ref-verses"><a href="../refs/taittiriya_ar.html#II.20" class="ref-verse-link">II.20</a></span></li>
+<li><a href="../refs/mb_udyogaparva.html" class="ref-source-link">Udyogaparva</a> <span class="ref-verses"><a href="../refs/mb_udyogaparva.html#43.20" class="ref-verse-link">43.20</a></span></li>
+<li><a href="../refs/mb_vanaparva.html" class="ref-source-link">Vanaparva</a> <span class="ref-verses"><a href="../refs/mb_vanaparva.html#207.54" class="ref-verse-link">207.54</a></span></li>
+<li><a href="../refs/vasishtha.html" class="ref-source-link">Vasiṣṭha Dharmasūtra</a> <span class="ref-verses"><a href="../refs/vasishtha.html#X.30" class="ref-verse-link">X.30</a>, <a href="../refs/vasishtha.html#IV.4" class="ref-verse-link">IV.4</a>, <a href="../refs/vasishtha.html#I.14-15" class="ref-verse-link">I.14-15</a></span></li>
+<li><a href="../refs/vishvarupa.html" class="ref-source-link">Viśvarūpa</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/vishnu_dh.html" class="ref-source-link">Viṣṇu Dharmasūtra</a> <span class="ref-verses"><a href="../refs/vishnu_dh.html#71.84" class="ref-verse-link">71.84</a></span></li>
+<li><a href="../refs/vishnu_smriti.html" class="ref-source-link">Viṣṇu Smṛti</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/vishnu_purana.html" class="ref-source-link">Viṣṇupurāṇa</a> <span class="ref-verses"><a href="../refs/vishnu_purana.html#II.3.1" class="ref-verse-link">II.3.1</a></span></li>
+<li><a href="../refs/vayu_purana.html" class="ref-source-link">Vāyupurāṇa</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/yajnavalkya.html" class="ref-source-link">Yājñavalkya</a> <span class="ref-verses"><a href="../refs/yajnavalkya.html#I.1" class="ref-verse-link">I.1</a>, <a href="../refs/yajnavalkya.html#I.115" class="ref-verse-link">I.115</a>, <a href="../refs/yajnavalkya.html#1.209" class="ref-verse-link">1.209</a>, <a href="../refs/yajnavalkya.html#I.122" class="ref-verse-link">I.122</a>, <a href="../refs/yajnavalkya.html#I.2" class="ref-verse-link">I.2</a></span></li>
+<li><a href="../refs/mb_adiparva.html" class="ref-source-link">Ādiparva</a> <span class="ref-verses"><a href="../refs/mb_adiparva.html#74.28-29" class="ref-verse-link">74.28-29</a></span></li>
+<li><a href="../refs/apastamba.html" class="ref-source-link">Āpastamba Dharmasūtra</a> <span class="ref-verses"><a href="../refs/apastamba.html#II.8.20.22-23" class="ref-verse-link">II.8.20.22-23</a>, <a href="../refs/apastamba.html#I.8.23.3-6" class="ref-verse-link">I.8.23.3-6</a></span></li>
+<li><a href="../refs/shatapatha.html" class="ref-source-link">Śatapatha Brāhmaṇa</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mb_shantiparva.html" class="ref-source-link">Śāntiparva</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/rigveda.html" class="ref-source-link">Ṛgveda</a> <span class="ref-verses"><a href="../refs/rigveda.html#VII.104.12" class="ref-verse-link">VII.104.12</a>, <a href="../refs/rigveda.html#i" class="ref-verse-link">i</a>, <a href="../refs/rigveda.html#X.75.5" class="ref-verse-link">X.75.5</a>, <a href="../refs/rigveda.html#VIII.24.30" class="ref-verse-link">VIII.24.30</a>, <a href="../refs/rigveda.html#VI.61" class="ref-verse-link">VI.61</a>, <a href="../refs/rigveda.html#VII.95" class="ref-verse-link">VII.95</a> <a href="../refs/rigveda.html" class="ref-verse-link">+12</a></span></li>
+</ul>
+</div>
+<div class="timeline-panel">
+<h5 class="toc-title">Timeline</h5>
+<ul class="timeline-list">
+<li class="tl-century"><a href="#p-chapter-i-the-topics-of-dharmashastra-8" class="tl-dot-link"><span class="tl-year">~300 BCE</span> <span class="tl-label">Viṣṇu Smṛti</span></a></li>
+<li class="tl-century"><a href="#p-chapter-i-the-topics-of-dharmashastra-10" class="tl-dot-link"><span class="tl-year">~200 BCE</span> <span class="tl-label">Vāyupurāṇa</span></a></li>
+<li class="tl-century"><a href="#p-chapter-i-the-topics-of-dharmashastra-10" class="tl-dot-link"><span class="tl-year">~401 CE</span> <span class="tl-label">Vāyupurāṇa</span></a></li>
+<li class="tl-century"><a href="#p-chapter-i-the-topics-of-dharmashastra-7" class="tl-dot-link"><span class="tl-year">1201 CE</span> <span class="tl-label">Śāntiparva</span></a></li>
+<li class="tl-century"><a href="#p-chapter-i-the-topics-of-dharmashastra-7" class="tl-dot-link"><span class="tl-year">1901 CE</span> <span class="tl-label">Śāntiparva</span></a></li>
+</ul>
+<a href="chapter-i-the-topics-of-dharmashastra-timeline.html" class="tl-view-link">View full timeline &rarr;</a>
+</div>
+<h5 class="toc-title">Sections</h5>
+<ul class="toc-list">
+<li class="toc-l2"><a href="#chapter-i-the-topics-of-dharmashastra">Chapter I. The Topics of Dharmashastra</a></li>
+</ul>
+</nav>
+        <main class="dh-content">
+            
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep">›</span>
+        <a href="index.html">Volume II: Part I</a>
+        <span class="sep">›</span>
+        <span class="current">Chapter I. The Topics of Dharmashastra</span>
+    </div>
+    
+            <h1 class="text-center" style="font-family: var(--font-roman); font-size: 2rem; color: var(--saffron); margin-bottom: 8px;">
+                Chapter I. The Topics of Dharmashastra
+            </h1>
+            <p class="text-center" style="font-family: 'Open Sans', sans-serif; color: var(--ink-secondary); font-size: 0.9rem; margin-bottom: 36px;">
+                Volume II: Part I <span class="page-range">pp. 1–18</span>
+            </p>
+
+            
+    <div class="synopsis-box" id="synopsis">
+        <button class="synopsis-toggle" onclick="this.parentElement.classList.toggle('open')"
+                aria-expanded="false" aria-controls="synopsis-body">
+            <i class="fa-solid fa-chevron-right"></i>
+            Kane's Synopsis
+        </button>
+        <div class="synopsis-audio">
+            <span class="synopsis-play-btn" role="button" tabindex="0"
+                    onclick="toggleSynopsisAudio(this)"
+                    data-src="../audio/synopsis/vol-2-part-1/vol-2-part-1_sec001.mp3" title="Listen to synopsis">
+                <i class="fa-solid fa-play"></i>
+            </span>
+            <audio preload="none"></audio>
+        </div>
+        <div class="synopsis-body" id="synopsis-body">
+            <p>The vast purview of Dharmaśāstra addresses a myriad of subjects, commencing with a comprehensive exploration of dharma itself. This foundational concept is then meticulously divided, examining various classifications and types of dharma. A significant focus is placed upon the Dharmas common to all, identified as sādharana-dharma. These universal moral injunctions, such as truth, love, charity, and self-restraint, are presented as the immutable standard of moral values underpinning the entire system.
+
+Beyond these ethical foundations, the texts delve into the profound concept of the four purus-ārthas, defining the ultimate goals of human existence and meticulously detailing their inherent gradation and interrelationship. Finally, the discourse situates these socio-legal and ethical frameworks geographically, meticulously outlining the limits of Āryāvarta and establishing the cultural and administrative relevance of Bharatavarṣa within which these principles are to be applied.</p>
+            <p class="synopsis-attribution">— Synopsis by P.V. Kane, from History of Dharmaśāstra</p>
+        </div>
+    </div>
+
+
+            
+
+            <h2 id="chapter-i-the-topics-of-dharmashastra" class="section-heading">Chapter I. The Topics of Dharmashastra</h2>
+<p class="prose" id="p-chapter-i-the-topics-of-dharmashastra-1"># CHAPTER I</p>
+<p class="prose" id="p-chapter-i-the-topics-of-dharmashastra-2">THE TOPICS OF DHARMAŚĀSTRA</p>
+<p class="prose" id="p-chapter-i-the-topics-of-dharmashastra-3">Manifold are the topics that have been included under dharmaśāstra from very ancient timeṣ The Dharma-sūtras of Gautama, <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>, Āpastamba and <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> deal in greater or less detail principally with the following subjects: the several varņas (classes), āśramas (stages of life), their privileges, obligations and responsibilities; the saṁskāras performed on an individual (from garbhādhāna to antyeşţi); the duties of the brahmacārin (the first āśrama); anadhyāyas (holidays on which Vedic study was stopped); the duties of a snātaka (one who has finished the first stage of life); vivāha (marriage) and all matters connected therewith; the duties of the gṛhastha (house-holder's stage); śauca (daily purification of body); the five daily yajñas; dāna (gifts); bhakṣyābhakṣya (what food should one partake of and what not); śuddhi (purification of persons, vessels, clothes &c.); āśauca (impurity on birth and death); antyeşţi (rites on death); śrāddha (rites performed for the deceased ancestors and relatives); strīdharma (special duties of women) and stripuṁdharma (duties of husband and wife); dharmas of kṣatriyas and of kings; vyavahāra (judicial procedure, and the sphere of substantive law such as crimes and punishments, contracts, partition and inheritance, adoption, gambling &c.); the four principal classes, mixed castes and their proper avocations; āpaddharma (actions and avocations permitted to the several castes in extreme difficulties); prāyaścitta (sins and how to expiate them); karmavipāka (results of evil deeds done in past lives); śānti (rites on the happening of portents or for propitiating the planets &c.); duties of vānaprastha (forest hermit) and saṁnyāsin (ascetic). All these subjects are not treated in any fixed or settled order in the sūtra workṣ To take only one example, the subject of partition and inheritance occurs at the end of the dharmasūtra of Gautama, while <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> places the same subject in the middle of his work ( 17th chapter) and Āpastamba deals with those topics after finishing three-fourths of his work (in II. 6.14). Further, some works on dharmaśāstra give very elaborate treatment of certain topics of which only faint traces are found in the ancient dharmasūtras and metrical smṛtis Such topics are vratas (which may be looked upon as extensions of the subject of gifts), utsarga and pratiṣṭhā (dedication of works of public utility and of temples and shrines), tīrtha (sacred places and pilgrimages to them), kāla (auspicious times, festivals &c. ).</p>
+<p class="prose" id="p-chapter-i-the-topics-of-dharmashastra-4">A glance at the above list will convince anyone how the conception of dharma was a far-reaching one, how it embraced the whole life of maṇ The writers on dharmaśāstra meant by dharma not a creed or religion but a mode of life or a code of conduct, which regulated a man's work and activities as a member of society and as an individual and was intended to bring about the gradual development of a man and to enable him to reach what was deemed to be the goal of human existence.</p>
+<p class="prose" id="p-chapter-i-the-topics-of-dharmashastra-5">From this standpoint various divisions of dharma were suggesteḍ Dharma was divided into śrauta and smārta. The first comprised those rites and ceremonies with which the Vedic Saṁhitās and Brāhmaṇas were chiefly concerned, such as con- secration of the three sacred fires, the Full moon and New moon sacrifices, the solemn soma rites &c. The smārta comprised those topics that were specially dealt with by the smṛtis and that concerned the various classes and stages of life.<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-1" id="fnref-chapter-i-the-topics-of-dharmashastra-1">1</a></sup> The present work will concern itself principally with smārta dharma and śrauta dharma will be dealt with concisely in an appendix. Some works divide dharma into śrauta (Vedic), smārta (based upon smṛtis) and śiṣṭācāra (the actions of the respected in society )<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-2" id="fnref-chapter-i-the-topics-of-dharmashastra-2">2</a></sup>. This classification is based on the three sources of dharma viz., śruti, smṛti and śiṣṭācāra, as observed by <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>.<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-3" id="fnref-chapter-i-the-topics-of-dharmashastra-3">3</a></sup> Another and more comprehensive classification says that dharma is sixfold, viz. dharma of varṇas (injunctions based on varṇa alone such as 'a brāhmaṇa should never drink wine' or 'a brāhmaṇa should not be killed'), āśramadharma (such rules as 'begging' and 'carrying a staff' enjoined on a brahmacārī), varṇāśrama-dharma (rules of conduct enjoined on a man because he belongs to a particular class and is in a particular stage of life, such as 'a brāhmaṇa brahmacārī should carry a staff of palāśa tree), guṇadharma (such as protection of subjects in the case of a crowned king), naimittika dharma (such as expiation on doing what is forbidden), sādhāraṇa dharma (what is common to all humanity viz., ahiṁsā and other virtues). This classification appears to have been an ancient one. <a class="ref" href="../refs/medhatithi.html" data-source="medhatithi" data-ref="" title="Medhātithi">Medhātithi</a> on <a class="ref" href="../refs/manu.html#II.25" data-source="manu" data-ref="II.25" title="Manusmṛti II.25">Manu II. 25</a> speaks of fivefold dharma (only omitting sādhāraṇa dharma from the abovementioned six) and quotes the explanations of them from the expounders of smṛtis Hemādri (vrata-khaṇḍa p. 5) quotes 16 verses from the Bhaviṣyapurāṇa on the six-fold dharma.<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-5" id="fnref-chapter-i-the-topics-of-dharmashastra-5">5</a></sup> It will be noticed from the above that all matters (except sādhāraṇa or sāmānya dharma) have varṇa and āśrama as the pivots round which the whole of dharmaśāstra revolveṣ It is therefore that in ancient smṛtis like those of <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> (I. 2 and 107) and <a class="ref" href="../refs/yajnavalkya.html#I.1" data-source="yajnavalkya" data-ref="I.1" title="Yājñavalkya I.1">Yājñavalkya (I. 1)</a> the sages are represented as asking the great expounders of those codes to impart to them instruction in the dharmas of varṇas and āśramaṣ</p>
+<p class="prose" id="p-chapter-i-the-topics-of-dharmashastra-6">Before embarking upon any treatment of varṇas it would not be out of place to say a few words about dharmas common to all humanity. Our dharmaśāstra works do not enter into any subtle or detailed examination of the principles of ethics or of the moral standard, nor are the concepts of duty, happiness or perfection subjected to any searching analysiṣ<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-6" id="fnref-chapter-i-the-topics-of-dharmashastra-6">6</a></sup> But this does not at all mean that the principles of ethics were passed over by dharmaśāstra works or were not highly thought of by theṃ From very ancient times truth is exalted above everything else. <a class="ref" href="../refs/rigveda.html#VII.104.12" data-source="rigveda" data-ref="VII.104.12" title="Ṛgveda VII.104.12">Ṛgveda VII. 104. 12</a> says<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-7" id="fnref-chapter-i-the-topics-of-dharmashastra-7">7</a></sup> 'True speech and</p>
+<p class="prose" id="p-chapter-i-the-topics-of-dharmashastra-7">( Continued from last page ) this hypothesis in well-known works on Ethicṣ To expose the fallacies in Principal McKenzie's work would require a volume. But a few words must be said here. What particular brand of active social service the learned author has in view is difficult to follow. I would like to make him a present of the following lines from the Encyclopædia Britannica on Social Service ‘The term social service is a comparatively new one in Great Britaiṇ If it had been used previous to the 20th century it would have meant philanthropy and charity in the ordinary sense’. If the learned author means that ancient India never insisted on universal philanthropy and charity, he has read the Indian Literature in vaiṇ Every house-holder was called upon by the Hindu Śāstras to offer food according to his ability to students, ascetics and to all beings including the untouchable caṇḍālas and even dogs and crowṣ Every brāhmaṇa who could teach had to do so without demanding any fee beforehanḍ Maths were established in all parts of India for expounding religious books, feeding students and the poor. There are annasātras even now where hundreds are fed every day. No necessity arose throughout the ages for a Poor Law in India with its attendant evils well portrayed in Dickens' famous master-piece ‘Oliver Twist’. The above were some of the different aspects of philanthropy and charity which are now dubbed social service. In the third century B. C. Aśoka had established hospitals not only for men but even for beasts and <a class="ref" href="../refs/yajnavalkya.html#1.209" data-source="yajnavalkya" data-ref="1.209" title="Yājñavalkya 1.209">Yāj. 1.209</a> equates the free nursing of sick persons with gifts of cowṣ The learned Professor asks with an air of triumph and condemnation of all Indian morality (p. 251) ‘Is there anything comparable to the movement which St. Francis of Assisi initiated and led?’. The learned Professor has fallen into the frequent error of comparing a movement of the 13th century with Indian ideas over 2000 years olḍ Again I shall quote words from the Encyclopædia Britannica. ‘It would be an anachronism to think of Francis as a philanthropist or social worker or a revivalist preacher, though he fulfilled the functions of all these. Before every thing he was an ascetic and mystic’. The particular brands of Social Service that are now in vogue are mainly due to the ravages of Imperialism and extreme capitalistic tendencieṣ Besides he forgets that even the movement started by St. Francis had schisms and was guilty of all the moral evils that are associated with Western monastic institutionṣ Vide the recent and lucid book of Sir Sivaswamy Aiyer on ‘Evolution of Hindu moral ideals’ (1935, Calcutta University ). false speech run a race against each other. Soma protects out of the two what is true and what is very straight-forward and strikes down what is false'. The conception of <em>ṛta</em> in the <a class="ref" href="../refs/rigveda.html#i" data-source="rigveda" data-ref="i" title="Ṛgveda i">Ṛgveda i</a>s a sublime one and is the germ of the later doctrine of the rule of dharma. The Śatapatha-brāhmaṇa (S. B. E. vol. 44 p.85) enjoins 'therefore let a man speak naught but truth'<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-8" id="fnref-chapter-i-the-topics-of-dharmashastra-8">8</a></sup>. In the Taittiriyopaniṣad (I. II. 1), the teacher when taking leave of his pupil at the end of the latter's studenthood places truth in the forefront of his exhortation and dharma next.<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-9" id="fnref-chapter-i-the-topics-of-dharmashastra-9">9</a></sup> In the <a class="ref" href="../refs/chandogya.html#III.17" data-source="chandogya" data-ref="III.17" title="Chāndogya Upaniṣad III.17">Chāndogya (III. 17)</a> there is an allegory of a Soma sacrifice on life, where the <em>dakṣiṇā</em> (fee to be paid) is fivefold viz. the five virtues of <em>tapas</em> (asceticism), <em>dāna</em> (charity), <em>ārjava</em> (straightforwardness), <em>ahiṁsā</em> (non-injury to sentient beings), <em>satyavacana</em> (truthfulness). The <a class="ref" href="../refs/brihadaranyaka.html" data-source="brihadaranyaka" data-ref="" title="Bṛhadāraṇyaka Upaniṣad">Br. Up.</a> remarks that truth and dharma are in practical life identical termṣ<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-10" id="fnref-chapter-i-the-topics-of-dharmashastra-10">10</a></sup> One of the noblest prayers in all literature occurs in the <a class="ref" href="../refs/brihadaranyaka.html#I.3.28" data-source="brihadaranyaka" data-ref="I.3.28" title="Bṛhadāraṇyaka Upaniṣad I.3.28">Br. Up. (I. 3.28)</a> 'from falsehood lead me unto truth, from darkness lead me unto light, from death lead me unto immortality'. The Muṇḍakopaniṣad says 'only truth is victorious and not falsehood; the path of the gods is spread out by (the pursuit of) truth'. The <a class="ref" href="../refs/brihadaranyaka.html#i" data-source="brihadaranyaka" data-ref="i" title="Bṛhadāraṇyaka Upaniṣad i">Br. Up. i</a>nculcates on all the great need of three cardinal virtues, viz. self-restraint, <em>dayā</em> (compassion or love for all sentient life) and <em>dāna</em> (gifts or charity).<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-11" id="fnref-chapter-i-the-topics-of-dharmashastra-11">11</a></sup> The Chāṇ Up. says that the world of Brahman is free from all evil and only those who have lived as chaste students can enter the world of brahma. The Chāṇ Up. V.10 sternly condemns five sins, viz. theft of gold, drinking spirits, murder of a brāhmaṇa, defiling of one's guru's bed and association with these, as the greatest sins and in V. 11. 5 Āśvapati exultantly declares that in his kingdom there were no grave sinnerṣ The Kathopaniṣad (I. 2.23) insists<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-12" id="fnref-chapter-i-the-topics-of-dharmashastra-12">12</a></sup> upon cessation from evil conduct, peace of mind and concentration as essential for the seeker after the Self. The <a class="ref" href="../refs/mb_udyogaparva.html#43.20" data-source="mb_udyogaparva" data-ref="43.20" title="Udyogaparva 43.20">Udyogaparva 43.20</a><a href="https://sanatana.in/mbta/listing/parva/udyogaparva#P05_U04_A043_S020" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>ff. speaks of the twelve <em>vratas</em> (vows or rules of conduct) for <em>brāhmaṇas</em> and verses 22-25 describe at great length the characteristics of one who is <em>dānta</em> (self-controlled). Śānti 160 contains an eulogy of <em>dama</em> (self-control). Śānti 162.7 describes how <em>satya</em> has 13 aspects and verse 21 says that non-injury to all beings in thought, word and deed, good will and charity are the eternal <em>dharma</em> of the gooḍ<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-13" id="fnref-chapter-i-the-topics-of-dharmashastra-13">13</a></sup> The <a class="ref" href="../refs/gautama.html#VIII.24-26" data-source="gautama" data-ref="VIII.24-26" title="Gautama Dharmasūtra VIII.24-26">Gautama-dharmasūtra (VIII. 24-26)</a> holds that <em>dayā</em> (compassion or love for all beings), <em>kṣānti</em> (forebearance), <em>anasūyā</em> (freedom from envy), <em>śauca</em> (purity of body, speech and thought), <em>anāyāsa</em> (absence of painful efforts or ambitions), <em>maṅgala</em> (doing what is commended), <em>akārpanya</em> (not demeaning oneself before others), <em>aspṛhā</em> (not hankering after sensual pleasures or the possessions of others)<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-14" id="fnref-chapter-i-the-topics-of-dharmashastra-14">14</a></sup> are the qualities of the soul and remarks that the person who has these eight qualities realizes non-difference from Brahma and reaches the world of Brahma, though he may not have all the other forty <em>saṁskāras</em>, while he who has all the forty <em>saṁskāras</em> but is not possessed of these eight qualities does not reach the world of Brahma.<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-15" id="fnref-chapter-i-the-topics-of-dharmashastra-15">15</a></sup> <a class="ref" href="../refs/vasishtha.html#X.30" data-source="vasishtha" data-ref="X.30" title="Vasiṣṭha Dharmasūtra X.30">Vasiṣṭha (X. 30)</a> says that avoiding backbiting, jealousy, pride, egoism, unbelief, crookedness, self-praise, abuse of others, deceit, covetousness, delusion, anger and envy is the <em>dharma</em> of all <em>āśramas</em> and further (XXX. 1) he delivers a fine exhortation 'practise <em>dharma</em> (righteousness) and not <em>adharma</em>; speak the truth and not untruth; look far ahead, not near; look at what is highest, not at what is not highest'. <a class="ref" href="../refs/apastamba.html#I.8.23.3-6" data-source="apastamba" data-ref="I.8.23.3-6" title="Āpastamba Dharmasūtra I.8.23.3-6">Āpastamba Dh. S. (I. 8. 23. 3–6)</a> calls upon all āśramas to eradicate faults that tend to destruction and to cultivate the opposite virtues (and gives long lists of both). This shows that in the scale of values mere performance of sacrifices and purificatory and other religious ceremonies ranked according to Gautama and other writers very low and the highest value attached to the moral qualities of the soul. There is no elaborate discussion of the questions as to why a man should tell the truth or abstain from <em>hiṁsā</em> (injury to sentient beings) and cultivate other high moral qualitieṣ But it should not be supposed that no indications whatever are given of the reasons why this should be done. Two principles emerge if we closely examine the textṣ In the midst of countless rules of outward conduct there is always insistence on the necessity to satisfy the inner man (antara-puruṣa) or conscience. <a class="ref" href="../refs/manu.html#IV.161" data-source="manu" data-ref="IV.161" title="Manusmṛti IV.161">Manu IV. 161</a> says 'assiduously do that which will give satisfaction to the antarātman' (inner self); IV. 239 says 'No parents, nor wife nor sons will be a man's friends in the next world; but only righteousnesṣ' 'Gods and the inner man mark the sinful acts'. <a class="ref" href="../refs/mb_vanaparva.html#207.54" data-source="mb_vanaparva" data-ref="207.54" title="Vanaparva 207.54">Vanaparva 207.54</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva#P03_U12_A207_S054" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> and <a class="ref" href="../refs/manu.html#VIII.85" data-source="manu" data-ref="VIII.85" title="Manusmṛti VIII.85">Manu VIII. 85</a>, 91–92. Vide also <a class="ref" href="../refs/mb_adiparva.html#74.28-29" data-source="mb_adiparva" data-ref="74.28-29" title="Ādiparva 74.28-29">Ādi- parva 74. 28-29</a><a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A074_S028" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>, <a class="ref" href="../refs/manu.html#VIII.86" data-source="manu" data-ref="VIII.86" title="Manusmṛti VIII.86">Manu VIII. 86</a>, Anūśāsana 2. 73–74. The reason given for cultivating such virtues as <em>dayā</em>, <em>ahiṁsā</em> is based upon the philosophical doctrine of the one Self being immanent in every individual as said in the words 'tat tvam-asi'. This is the highest point reached in Indian metaphysics and combines morality and metaphysicṣ That doctrine requires us to regard the goodness or badness of one's actions from the standpoint of other individuals who will be affected by such actionṣ Dakṣa (III. 22) declares <sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-16" id="fnref-chapter-i-the-topics-of-dharmashastra-16">16</a></sup> 'one who desires happiness should look upon another just as he looks upon himself. Happi- ness and misery affect one's self and others in the same way'. Devala says that the quintessence of dharma is that one should not do to others what would be disliked by one's self.<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-17" id="fnref-chapter-i-the-topics-of-dharmashastra-17">17</a></sup> There- fore our texts lay down two seats of authority in morals viz., the revealed truth (śruti) that 'All this is brahma' and the inner light of conscience. Another reason for cultivating high moral qualities is found in the doctrine of the goals or ends of human existence (puruṣārtha). From very ancient times they are said to be four, dharma (right conduct), artha (economic interests), kāma (satisfaction of sexual, emotional and artistic life), mokṣa (liberation of the spirit). The last is said to be the supreme end and to be attained only by the few and the vast majority can only place it as an ideal to be attained in the most distant future. As regards the other three, there is a gradation of valueṣ Kāma is the lowest of all and only fools regard it as the only enḍ<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-18" id="fnref-chapter-i-the-topics-of-dharmashastra-18">18</a></sup> The <a class="ref" href="../refs/mahabharata.html" data-source="mahabharata" data-ref="" title="Mahābhārata">Mahābhārata</a> says: 'A wise man tries to secure all three, but if all three cannot be attained, he secures dharma and artha or only dharma if he has a choice of only one from among the three. A man of middling discipline prefers artha to the other two; dharma is the source of both artha and kāma.' The dharmaśāstra writers did not condemn kāma altogether, they recognise that kāma has a place as a motive urging men to be active but they assigned it a low place. They recognised that a man shares with lower beings the impulses and emotions of sex, but that the satisfaction of these impulses is of lower values than the moral and spiritual ends proper for a developed human personality and therefore insist that it should be subordinated to artha and dharma. Gautama (IX. 46-47) says 'one should not allow the morning, midday and evening to remain fruitless so far as dharma, artha and kāma are concerneḍ But among these three one should attach most importance to dharma.' <a class="ref" href="../refs/yajnavalkya.html#I.115" data-source="yajnavalkya" data-ref="I.115" title="Yājñavalkya I.115">Yāj. I. 115</a> says practically the same thing. <a class="ref" href="../refs/apastamba.html#II.8.20.22-23" data-source="apastamba" data-ref="II.8.20.22-23" title="Āpastamba Dharmasūtra II.8.20.22-23">Āp. Dh. S. (II. 8. 20. 22-23)</a> declares that 'a man should enjoy all such pleasures as are not opposed to dharma. In this way one secures both worlds'.<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-19" id="fnref-chapter-i-the-topics-of-dharmashastra-19">19</a></sup> In the <a class="ref" href="../refs/gita.html#VII.11" data-source="gita" data-ref="VII.11" title="Bhagavadgītā VII.11">Bhagavadgītā (VII. 11)</a> Kṛṣṇa identifies himself with kāma that is not opposed to dharma. <a class="ref" href="../refs/kautilya.html" data-source="kautilya" data-ref="" title="Kauṭilya Arthaśāstra">Kauṭilya</a> says<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-20" id="fnref-chapter-i-the-topics-of-dharmashastra-20">20</a></sup> one may enjoy kāma provided there is no conflict with dharma and artha, one should not lead a life of no pleasures' and then true to his role of a writer on arthaśāstra, he proclaims his own opinion is that artha is the principal of the three, as dharma and kāma both spring from artha.' <a class="ref" href="../refs/manu.html#II.224" data-source="manu" data-ref="II.224" title="Manusmṛti II.224">Manu (II. 224)</a><sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-21" id="fnref-chapter-i-the-topics-of-dharmashastra-21">21</a></sup> after setting out several views about which of the three is principal states it as his own opinion that one should strive for all the three, but adds that if artha or kāma is in conflict with dharma one should give up artha or kāma as the case may be. <a class="ref" href="../refs/vishnu_dh.html#71.84" data-source="vishnu_dh" data-ref="71.84" title="Viṣṇu Dharmasūtra 71.84">Viṣṇu Dh. S. (71. 84)</a> and Bhāgavata I. 2. 9 say the same. The <a class="ref" href="../refs/kamasutra.html" data-source="kamasutra" data-ref="" title="Kāmasūtra">Kāmasūtra</a><sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-22" id="fnref-chapter-i-the-topics-of-dharmashastra-22">22</a></sup> of Vātsyāyana defines the three and says that out of dharma, artha and kāma each preceding one is superior to each following one and that to the king artha should be the highest goal. This teaching shows that there are proximate ends or motives and ultimate ends or motives, that the ultimate ends are really the most valuable and that the whole teaching of dharmaśāstra points to this that all higher life demands discipline both of body and mind and requires the subjection of lower aims to aims of higher value. <a class="ref" href="../refs/manu.html#II.4" data-source="manu" data-ref="II.4" title="Manusmṛti II.4">Manu II. 4</a> ( like Aristotle in the first sentence of his Politics) says that the end of all activity is some presumed gooḍ <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> further says (V. 56) that the natural proclivity of all beings is to hanker after the satisfaction of the common and lower desires of hunger, thirst and sexual gratification and therefore no stress is to be placed on them but on the cessation or curbing of these. The Upaniṣads<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-23" id="fnref-chapter-i-the-topics-of-dharmashastra-23">23</a></sup> recognise the distinction between what is beneficial ( <em>hita</em> ) and what is most beneficial ( <em>hitatama</em> ). <a class="ref" href="../refs/mb_shantiparva.html" data-source="mb_shantiparva" data-ref="" title="Śāntiparva">Śāntiparva</a><a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> ( 288. 20 and 330. 13 ) declares that what conduces to the greatest good of beings is ' <em>satya</em>.'</p>
+<p class="prose" id="p-chapter-i-the-topics-of-dharmashastra-8">The <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mitākṣarā</a> on <a class="ref" href="../refs/yajnavalkya.html#I.1" data-source="yajnavalkya" data-ref="I.1" title="Yājñavalkya I.1">Yāj. I. 1</a>. remarks that <em>ahiṃsā</em> and other qualities are the dharmas common to all including even <em>cāṇḍālas</em>. The qualities are variously enumerated and emphasis is laid upon different lists in different workṣ Śaṅkhasmṛti ( I. 5 ) says that forbearance, truthfulness, self-restraint and purity are common to all <em>varṇas</em>. The <a class="ref" href="../refs/mahabharata.html" data-source="mahabharata" data-ref="" title="Mahābhārata">Mahābhārata</a> says that three are the best qualities among all beings viz., absence of enmity, truthfulness and freedom from anger<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-24" id="fnref-chapter-i-the-topics-of-dharmashastra-24">24</a></sup> and in another place says that the best <em>vrata</em> ( vow ) for a man is threefold viz., he should feel no enmity ( to others ), should give and should speak the truth. <a class="ref" href="../refs/vasishtha.html#IV.4" data-source="vasishtha" data-ref="IV.4" title="Vasiṣṭha Dharmasūtra IV.4">Vasiṣṭha ( IV. 4 )</a> says<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-25" id="fnref-chapter-i-the-topics-of-dharmashastra-25">25</a></sup> that truthfulness, freedom from anger, generosity, <em>ahiṃsā</em> ( non-injury ) and procreation of offspring are ( the common dharma ) of all ( <em>varṇas</em> ). Gautama ( X. 52 ) says that even the Śūdra has to submit himself to the dharma of truthfulness, freedom from anger and purity ( of body and mind ). <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> says that <em>ahiṃsā</em>, truthfulness, no wrongful taking of another's possessions, purity and restraint of senses are in brief the common dharmas of all <em>varṇas</em>.<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-26" id="fnref-chapter-i-the-topics-of-dharmashastra-26">26</a></sup> <a class="ref" href="../refs/manu.html#IV.175" data-source="manu" data-ref="IV.175" title="Manusmṛti IV.175">Manu ( IV. 175 )</a> calls upon all to take delight in truth, in dharma, in conduct worthy of an <em>ārya</em> and in purity. In the 3rd century B. C. the remarkable emperor Aśoka inscribed on stone in all parts of his empire the following list of virtues: compassion, liberality, truth, purity gentleness, peace, joyousness, saintliness, self-control ; which bear a close resemblance to Gautama's list and even to a later list of St. Paul ( <em>vide</em> Pillar Edicts II and VII in E. I. vol. II p. 249 and p. 272 ). <a class="ref" href="../refs/yajnavalkya.html#I.122" data-source="yajnavalkya" data-ref="I.122" title="Yājñavalkya I.122">Yāj. ( I. 122 )</a> men- tions nine qualities as the means of securing dharma for all ( from the <em>brāhmaṇa</em> to the <em>cāṇḍāla</em><sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-27" id="fnref-chapter-i-the-topics-of-dharmashastra-27">27</a></sup> ). The <a class="ref" href="../refs/mahabharata.html" data-source="mahabharata" data-ref="" title="Mahābhārata">Mahābhārata</a> says that freedom from anger, truthfulness, sharing one's wealth with others, forbearance, procreation (of children), from one's wife (alone), purity, absence of enmity, straight-forwardness, maintaining persons dependent on one-self—these nine are the duties of all varnaṣ<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-28" id="fnref-chapter-i-the-topics-of-dharmashastra-28">28</a></sup> The Vāmanapurāņa says that tenfold dharma is common to all and names these ten as ahiṁsā, satya, asteya, dāna, forbearance, restraint, quiescence, not demeaning oneself, purity, tapaṣ<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-29" id="fnref-chapter-i-the-topics-of-dharmashastra-29">29</a></sup> Hemādri ( vratakhaṇḍa pp. 7-8 ) quotes several passages from the Brahma, Brahmavaivarta and <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>-dharmottara for several sādhāraṇa dharmas (virtues common to all varņas and āśramas). The <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharmasūtra enumerates fourteen qualities as sāmānya-dharma.<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-30" id="fnref-chapter-i-the-topics-of-dharmashastra-30">30</a></sup></p>
+<p class="prose" id="p-chapter-i-the-topics-of-dharmashastra-9">The foregoing discussion establishes that all dharmaśāstra writers attached the highest importance to moral qualities and enjoined them upon all with all the emphasis they could command; but as their main purpose was a practical one, viz., to guide people to right acts in everyday life, they dealt more elaborately with the acts, rites and ceremonies that each person had to do with reference to his station in society. They are therefore found principally concerning themselves with varṇa- śrama dharma and not with sādhāraṇa dharma (i. e. duties common to all alike).</p>
+<p class="prose" id="p-chapter-i-the-topics-of-dharmashastra-10">Āryāvarta — One important question that is very much canvassed in works on dharmaśāstra is about the country or territory which should be called āryāvarta or which was a fit habitation for those who called themselves the followers of the Vedic religioṇ Therefore a few words on this subject would be quite relevant. The <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> shows that the centre of Aryan culture in the times of the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> was the land of the seven rivers, viz. North-west India and Punjab. We find that the rivers from Kubhā (the Kabul river, in <a class="ref" href="../refs/rigveda.html#V.53.9" data-source="rigveda" data-ref="V.53.9" title="Ṛgveda V.53.9">Rg. V. 53. 9</a>; x. 76. 6), Krumu (the modern Kurram, <a class="ref" href="../refs/rigveda.html#V.53.9" data-source="rigveda" data-ref="V.53.9" title="Ṛgveda V.53.9">Rg. V. 53. 9</a>, X. 75. 6), Suvāstu (modern Swāt, in <a class="ref" href="../refs/rigveda.html#VIII.19.37" data-source="rigveda" data-ref="VIII.19.37" title="Ṛgveda VIII.19.37">Rg. VIII. 19. 37</a>), the seven Sindhus (<a class="ref" href="../refs/rigveda.html#II.12.12" data-source="rigveda" data-ref="II.12.12" title="Ṛgveda II.12.12">Rg. II. 12. 12</a>, IV. 28. 1, VIII. 24. 27, X. 43. 3) up to the Yamunā (<a class="ref" href="../refs/rigveda.html#V.52.17" data-source="rigveda" data-ref="V.52.17" title="Ṛgveda V.52.17">Rg. V. 52. 17</a>, X. 75. 5), the Ganges (<a class="ref" href="../refs/rigveda.html#VI.45.31" data-source="rigveda" data-ref="VI.45.31" title="Ṛgveda VI.45.31">Rg. VI. 45. 31</a>, X. 75. 5) and Sarayu (probably in modern Oudh, in <a class="ref" href="../refs/rigveda.html#IV.30.18" data-source="rigveda" data-ref="IV.30.18" title="Ṛgveda IV.30.18">Rg. IV. 30. 18</a> and V. 53. 9) figure in the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a>. Among the rivers of the Punjab the following are individually mentioned:— Sindhu (<a class="ref" href="../refs/rigveda.html#II.15.6" data-source="rigveda" data-ref="II.15.6" title="Ṛgveda II.15.6">Rg. II. 15. 6</a> 'he made the Sindhu flow northwards', <a class="ref" href="../refs/rigveda.html#V.53.9" data-source="rigveda" data-ref="V.53.9" title="Ṛgveda V.53.9">Rg. V. 53. 9</a>, <a class="ref" href="../refs/rigveda.html#IV.30.12" data-source="rigveda" data-ref="IV.30.12" title="Ṛgveda IV.30.12">Rg. IV. 30. 12</a>, <a class="ref" href="../refs/rigveda.html#VIII.20.25" data-source="rigveda" data-ref="VIII.20.25" title="Ṛgveda VIII.20.25">Rg. VIII. 20. 25</a> where reference is made to the medicine in the Sindhu, in the Asiknī, in the seas and on mountains), Asiknī (<a class="ref" href="../refs/rigveda.html#VIII.20.25" data-source="rigveda" data-ref="VIII.20.25" title="Ṛgveda VIII.20.25">Rg. VIII. 20. 25</a>, X. 75. 5), Paruṣṇī (<a class="ref" href="../refs/rigveda.html#IV.22.2" data-source="rigveda" data-ref="IV.22.2" title="Ṛgveda IV.22.2">Rg. IV. 22. 2</a>, V. 52. 9), Vipāś and Sutudrī (<a class="ref" href="../refs/rigveda.html#III.33.1" data-source="rigveda" data-ref="III.33.1" title="Ṛgveda III.33.1">Rg. III. 33. 1</a> where their confluence is spoken of), Vipāś alone in <a class="ref" href="../refs/rigveda.html#IV.30.12" data-source="rigveda" data-ref="IV.30.12" title="Ṛgveda IV.30.12">Rg. IV. 30. 12</a>, Sutudrī alone in <a class="ref" href="../refs/rigveda.html#X.75.5" data-source="rigveda" data-ref="X.75.5" title="Ṛgveda X.75.5">Rg. X. 75. 5</a>, Dṛṣadvatī, Āpāyā and Sarasvatī (as very holy in <a class="ref" href="../refs/rigveda.html#III.23.4" data-source="rigveda" data-ref="III.23.4" title="Ṛgveda III.23.4">Rg. III. 23. 4</a>), Sarasvatī alone (<a class="ref" href="../refs/rigveda.html#VII.95" data-source="rigveda" data-ref="VII.95" title="Ṛgveda VII.95">Rg. VII. 95</a>, the whole hymn is addressed to it of which verse 2 says it springs from the mountains; <a class="ref" href="../refs/rigveda.html#VI.61" data-source="rigveda" data-ref="VI.61" title="Ṛgveda VI.61">Rg. VI. 61</a> is another hymn addressed to it, V. 30 of which says it has seven sisters), Gomati (<a class="ref" href="../refs/rigveda.html#VIII.24.30" data-source="rigveda" data-ref="VIII.24.30" title="Ṛgveda VIII.24.30">Rg. VIII. 24. 30</a>, X. 75. 6), Vitastā (<a class="ref" href="../refs/rigveda.html#X.75.5" data-source="rigveda" data-ref="X.75.5" title="Ṛgveda X.75.5">Rg. X. 75. 5</a>). Gradually the Āryans spread southwards and eastwardṣ The Kāṭhaka S. X. 6 speaks of Kuru-Pāñcālaṣ In the Brāhmaṇas the centre of Āryan activities and culture shifted to the countries of the Kurus and Pāñcālas and Kosala-Videhaṣ For example, the <a class="ref" href="../refs/shatapatha.html" data-source="shatapatha" data-ref="" title="Śatapatha Brāhmaṇa">Śatapatha Brāhmaṇa</a> remarks that in the lands of Kurupāñcālas speech is at its best.<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-31" id="fnref-chapter-i-the-topics-of-dharmashastra-31">31</a></sup> In Sat. Br. XI. 4. 1. 1 Uddālaka Āruņi is called a Kuru-Pāñcāla brāhmaṇa and contrasted with brāhmaṇas of the north (S. B. E. vol. 44 p. 51). Similarly the Kauṣītaki-br. (VII. 6) remarks<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-32" id="fnref-chapter-i-the-topics-of-dharmashastra-32">32</a></sup> that those who want to learn (best) speech go northwards or wait upon him who comes from that directioṇ In the Śatapatha we have the story of Videgha Māthava who went beyond the country of Kosala-Videha, crossed the river Sadānīrā that came down from the Himālaya, and settled to the east of that river, where the country was a cultivated and civilized one in the times of that work, while in former ages it had been uncultivated (I. 4. 1. 4-17, S. B. E. vol. 12 pp. 105-106.). Even in the Buddhist Jātakas we see that being an 'udicoa brāhmaṇo' was a source of great pride (vide Fick's work p. 40). The <a class="ref" href="../refs/taittiriya_br.html" data-source="taittiriya_br" data-ref="" title="Taittirīya Brāhmaṇa">Tai. Br.</a> speaks of the vedi of the gods as being in Kuru-kṣetra.<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-33" id="fnref-chapter-i-the-topics-of-dharmashastra-33">33</a></sup> Even in the <a class="ref" href="../refs/rigveda.html#i" data-source="rigveda" data-ref="i" title="Ṛgveda i">Ṛgveda i</a>tself the country through' which the rivers Dṛṣadvatī, Apaya and Sarasvatī flowed is spoken of as the best spot (vide III. 23. 4). The <a class="ref" href="../refs/taittiriya_br.html" data-source="taittiriya_br" data-ref="" title="Taittirīya Brāhmaṇa">Tai. Br.</a> says that the Kurupañcālas go east in the winter and westwards in the last month of summer. In the times of the Upaniṣads also the Kurupañcāla country appears to have occupied a pre-eminent place. The <a class="ref" href="../refs/brihadaranyaka.html" data-source="brihadaranyaka" data-ref="" title="Bṛhadāraṇyaka Upaniṣad">Br. Up.</a> (III. 1. 1.) says that when Janaka, king of Videha, performed a sacrifice the brāhmaṇas of Kurupañcāla flocked there in large numberṣ Vide also <a class="ref" href="../refs/brihadaranyaka.html#III.9.19" data-source="brihadaranyaka" data-ref="III.9.19" title="Bṛhadāraṇyaka Upaniṣad III.9.19">Br. Up. III. 9. 19</a>. The <a class="ref" href="../refs/brihadaranyaka.html#VI.2.1" data-source="brihadaranyaka" data-ref="VI.2.1" title="Bṛhadāraṇyaka Upaniṣad VI.2.1">Br. Up. VI. 2. 1</a> and <a class="ref" href="../refs/chandogya.html#V.3.1" data-source="chandogya" data-ref="V.3.1" title="Chāndogya Upaniṣad V.3.1">Chāndogya V. 3. 1</a> say that Śvetaketu went to the assembly of the Pañcālaṣ Kauṣītaki <a class="ref" href="../refs/brihadaranyaka.html" data-source="brihadaranyaka" data-ref="" title="Bṛhadāraṇyaka Upaniṣad">Br. Up.</a> (IV. 1.) names the countries of Uśīnara, Matsya, Kurupañcāla and Kāśīvideha as centres of intellectual activity and in II. 13 refers to two mountains one in the North and the other in the South (meaning probably Himavat and Vindhya). According to the Nirukta (II. 2), the country of Kamboja was outside the limits of the country of Āryas, though the language spoken there seems to have been the same. The Mahābhāṣya lends support to this and adds that Surāṣṭra was not an Ārya country (vol. 1, p. 9). In the times of the Dharmasūtras great divergence of opinion prevailed on the question of the location of Āryāvarta. The <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a>-dharma<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-34" id="fnref-chapter-i-the-topics-of-dharmashastra-34">34</a></sup>-sūtra says; 'Āryāvarta is to the east of the disappearance (of Sarasvatī in the desert), to the west of Kālākavana, to the north of the mountains Pāriyātra and Vindhya and to the south of the Himālaya'. It then refers to two more views held by other authors viz., 'Āryāvarta is in the region between the Ganges and the Jumņa' and 'where the black antelope roams about there is spiritual pre-eminence'. The Bauḍ D. S. (I. 1.27) gives the same limits of Āryāvarta as <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a>, substituting the word 'vināśana' for 'ādarsa'.<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-35" id="fnref-chapter-i-the-topics-of-dharmashastra-35">35</a></sup> Patañjali in his Mahābhāṣya defines Āryāvarta several times in the same terms as <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> doeṣ<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-36" id="fnref-chapter-i-the-topics-of-dharmashastra-36">36</a></sup> The Dharmasūtra of Śankha-Likhita gives somewhat similar limits by remarking 'spotless spiritual pre-eminence is to be found (in the country) to the east of the countries of Sindhu and Sauvīra, to the west of the city of Kāmpīli, to the south of Himālaya and to the north of Pāriyātra'.<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-37" id="fnref-chapter-i-the-topics-of-dharmashastra-37">37</a></sup> The extant <a class="ref" href="../refs/manu.html#II.22" data-source="manu" data-ref="II.22" title="Manusmṛti II.22">Manusmṛti (II. 22)</a> makes Āryāvarta coterminous with the whole of India north of the Vindhya by saying that the territory between the Himālaya and the Vindhya and extending up to the eastern and western oceans is known by the wise as Āryāvarta. The second view (viz. Āryāvarta is the region between the Ganges and the Jumna) occurs in Bauḍ Dh. S. (I. 1.28). In the <a class="ref" href="../refs/taittiriya_ar.html#II.20" data-source="taittiriya_ar" data-ref="II.20" title="Taittirīya Āraṇyaka II.20">Tai. Ār. II.20</a> special honour is shown to those who dwell between the Gangā and the Yamunā. The third view (viz. Āryāvarta is the country where the black antelope foams about naturally) is the one given in most smṛtis Both <a class="ref" href="../refs/vasishtha.html#I.14-15" data-source="vasishtha" data-ref="I.14-15" title="Vasiṣṭha Dharmasūtra I.14-15">Vasiṣṭha (I. 14-15)</a> and Bauḍ Dh. S. (I. 1. 29-30) quote an ancient gāthā from the Nidāna work of the Bhāllavins<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-38" id="fnref-chapter-i-the-topics-of-dharmashastra-38">38</a></sup> to the effect that wherever the black antelope roams about in the country lying between the Sindhu in the west and the rising mountain in the east, there is spiritual pre-eminence. So this view is a very ancient one and probably arose from some mythological account as is indicated by the commentary of <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a> on <a class="ref" href="../refs/yajnavalkya.html#I.2" data-source="yajnavalkya" data-ref="I.2" title="Yājñavalkya I.2">Yāj. I.2</a> which quotes a prose passage of the Śvetāśvataraś ‘Sacrifice became a black antelope and wandered over the earth; _dharma_ followed it in its wanderings’. This view of the limits of Āryāvarta is maintained by Śaṅkha (as quoted by <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a> on <a class="ref" href="../refs/yajnavalkya.html#I.2" data-source="yajnavalkya" data-ref="I.2" title="Yājñavalkya I.2">Yāj. I. 2</a>), <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharma-sūtra 84.4, <a class="ref" href="../refs/manu.html#II.23" data-source="manu" data-ref="II.23" title="Manusmṛti II.23">Manu II. 23</a>, <a class="ref" href="../refs/yajnavalkya.html#I.2" data-source="yajnavalkya" data-ref="I.2" title="Yājñavalkya I.2">Yāj. I. 2</a>, Saṁvarta 4, Laghu-Hārīta (I. p. 178), Veda-Vyāsa (I. 3), Bṛhat-<a class="ref" href="../refs/parasara.html" data-source="parasara" data-ref="" title="Parāśara">Parāśara</a> (p. 56) and several other smṛtis The <a class="ref" href="../refs/manu.html#II.17-24" data-source="manu" data-ref="II.17-24" title="Manusmṛti II.17-24">Manusmṛti (II. 17-24)</a> defines Brahmāvarta as the country between the holy rivers Sarasvatī and Dṛṣad-vatī,<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-39" id="fnref-chapter-i-the-topics-of-dharmashastra-39">39</a></sup> says that the traditional mode of conduct observed in that country is called _sadācāra_, that the countries of Kurukṣetra, Matsya, Pāñcāla and Śūrasena are styled Brahmarṣideśa and are slightly less (in holiness) than Brahmāvarta, that Madhyadeśa is between the Himālaya and the Vindhya and to the east of Vināśana and to the west of Prayāga, that Āryāvarta is the country between the Himālaya and Vindhya up to the eastern and western oceans, that that territory where the black antelope roams about naturally is the country fit for sacrifices and the countries beyond constitute _mlecchadeśa_, that men of the three higher _varṇas_ should endeavour to live in these countries (viz. Brahmāvarta, Brahmarṣideśa, Madhyadeśa, Āryāvarta &c.) while a śūdra, when distressed for his livelihood, may stay in any country whatever. The <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharmasūtra (84. 4) says that the country where the system of the four _varṇas_ is not established is to be known as Mleccha country and Āryāvarta is beyond that. This is ex- plained by <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> (p. 5) as follows : one who desires to practise Vedic religion should live in one of the four countries viz. Brahmāvarta and others; if that is not possible, then in a country where there is establishment of the four _varṇas_ and the black antelope roams about naturally; if both these cannot be had, then one should dwell in a country where at least one of the two (_cāturvarṇya_ and black antelope) is founḍ The above discussion shows that in very ancient times the country south of the Vindhya was looked upon as beyond the pale of Aryan culture. Baudh. Dh. S. (I. 1. 31) says that the countries of Avanti, Aṅga, Magadha, Surāṣṭra, Dakṣiṇāpatha, Upāvṛt, Sindhu and Sauvira are of mixed origin (i. e. not of pure Aryan ancestry), that a person who goes to Arāṭṭaka, Kārasakara, Puṇḍra, Sauvīra, Aṅga, Vaṅga, Kaliṅga and Praṇūna (?) has to offer a solemn sacrifice like the Sarvapṛṣṭha and that for going to Kaliṅga the prāyaścitta is an offering to Vaiśvānara Agni. The <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> on Yaj. III. 292 quotes a verse of Devala to the effect that if a man goes to Sindhu, Sauvīra, Saurāṣṭra, the border lands (or Mleccha countries), Aṅga, Vaṅga, Kaliṅga and Andhra he has to perform the Upanayana saṁskāra over agaiṇ<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-40" id="fnref-chapter-i-the-topics-of-dharmashastra-40">40</a></sup> The <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> adds a remark that this is so only if the man goes to these countries for some purpose other than pilgrimage. Gradually however as Āryan culture spread over the whole of what is now called India the view of the sages about the countries pre-eminently Āryan had to be given up. <a class="ref" href="../refs/medhatithi.html" data-source="medhatithi" data-ref="" title="Medhātithi">Medhātithi</a> on <a class="ref" href="../refs/manu.html#II.22" data-source="manu" data-ref="II.22" title="Manusmṛti II.22">Manu II. 22</a> explains that Āryāvarta is so called ‘because Āryas again and again spring up there and because the Mlecchas even if they overrun it from time to time do not abide there for long’ and then makes the following very sensible observation (on II. 23) ‘if a kṣatriya king of excellent conduct were to conquer the Mlecchas, establish the system of four varṇas (in the Mleccha country) and assign to Mlecchas a position similar to that of cāṇḍālas in Āryāvarta, even that (Mleccha) country would be fit for the performance of sacri- fices, since the earth is not by itself impure, but becomes impure through contact (of impure persons or things).’<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-41" id="fnref-chapter-i-the-topics-of-dharmashastra-41">41</a></sup> As a result of the spread of Āryan culture eastwards and southwards and the frequent invasions of non-Āryan tribes on the north- west, the countries on the rivers of the Punjab came to be looked upon in the whirligig of time as unworthy of the Āryas to live iṇ <a class="ref" href="../refs/mb_karnaparva.html#43.5-8" data-source="mb_karnaparva" data-ref="43.5-8" title="Karṇaparva 43.5-8">Karṇaparva 43. 5-8</a><a href="https://sanatana.in/mbta/listing/parva/karnaparva#P08_U01_A043_S005" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> abuses those who live on the Sindhu and the five rivers of the Punjab as impure and dharmabāhya.<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-43" id="fnref-chapter-i-the-topics-of-dharmashastra-43">43</a></sup> Another word which is very often used, particularly in the Purāṇas, to denote the territory where the ancient Vedic religion prevails is Bharatavarṣa or Bhāratavarṣa. It occurs in the Hathigumpha Inscription of Khāravela (2nd century B. C.) as Bharadhavasa.<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-43" id="fnref-chapter-i-the-topics-of-dharmashastra-43">43</a></sup> The <a class="ref" href="../refs/markandeya.html" data-source="markandeya" data-ref="" title="Mārkaṇḍeyapurāṇa">Mārkaṇḍeyapurāṇa</a> says that Bharatavarṣa has the ocean on the east, south and west and the Himālaya on the north.<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-44" id="fnref-chapter-i-the-topics-of-dharmashastra-44">44</a></sup> The <a class="ref" href="../refs/vishnu_purana.html#II.3.1" data-source="vishnu_purana" data-ref="II.3.1" title="Viṣṇupurāṇa II.3.1">Viṣṇupurāṇa (II. 3.1)</a> says the same and Matsya (114.10) and Vāyu define Bharatavarṣa as stretching from Cape Comorin to the source of the Gangeṣ<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-45" id="fnref-chapter-i-the-topics-of-dharmashastra-45">45</a></sup> Śabara (not later than 5th century A. D.) in his bhāṣya on Jaimini (X. 1.35 and 42) shows that to him there was unity of language and culture from the Himālaya to Cape Comoriṇ<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-46" id="fnref-chapter-i-the-topics-of-dharmashastra-46">46</a></sup> Paithinasi as quoted in the Paribhāṣā-prakāśa (p. 58) says that dharma is fully developed (lit. four-legged) in the country from the Himālaya to Cape Comoriṇ<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-47" id="fnref-chapter-i-the-topics-of-dharmashastra-47">47</a></sup> According to Mārkaṇḍeya (53-41), Vāyu (vol. I chap. 33-52) and other Purāṇas Bharatavarṣa is so called after Bharata, son of Ṛṣabha, descendant of Svāyambhuva <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>; while Vāyu (vol. II. chap. 37.130) appears to strike a different note by saying that Bharatavarṣa is so called after Bharata, the son of Duṣyanta and Śakuntalā. The <a class="ref" href="../refs/vishnu_purana.html" data-source="vishnu_purana" data-ref="" title="Viṣṇupurāṇa">Viṣṇupurāṇa</a> says that after thousands of births a person secures life as a human being in Bharatavarṣa and this land is called Karmabhūmi (the land of religious actions) for those who want to secure heaven and find final liberatioṇ<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-48" id="fnref-chapter-i-the-topics-of-dharmashastra-48">48</a></sup> The <a class="ref" href="../refs/vayu_purana.html" data-source="vayu_purana" data-ref="" title="Vāyupurāṇa">Vāyupurāṇa</a> says almost the same and adds that in no land other than Bharatavarṣa is karma prescribed for mortalṣ It is somewhat amusing to find that many of the countries of India that in modern times pride them-selves on being most orthodox are declared by the Ādityapurāṇa (as quoted in the Smṛticandrikā) to be countries unfit for habitation and to be such that a stay in them except for pilgrim-age entailed loss of caste and prāyaścittaṣ<sup class="fn-ref"><a href="#fn-chapter-i-the-topics-of-dharmashastra-49" id="fnref-chapter-i-the-topics-of-dharmashastra-49">49</a></sup> The Ādipurāṇa (Ādityapurāṇa?) as quoted in the Paribhāṣāprakāśa (p. 59) says 'no one, whether a dvija or not, born in Āryāvarta should cross the three rivers, Sindhu, Karamadā (i. e. Karmanāśā) or Karatoyā except on a pilgrimage' and that if he does so, he should perform the penance of cāndrāyaṇa.</p>
+<p class="prose" id="p-chapter-i-the-topics-of-dharmashastra-11">All smṛti writers and commentators generally restrict themselves to the duties of varṇas and āśramas as practised in Āryāvarta or Bharatavarṣa, though in very rare cases (as in Yaj. II. 192) they provide for the observance of the usages of even hereticṣ</p>
+<aside class="footnotes-section" aria-label="Footnotes">
+<hr>
+<ol class="footnotes-list">
+<li id="fn-chapter-i-the-topics-of-dharmashastra-1" class="footnote-item"><span class="devanagari">दारामिहोत्रसंबन्धनियमा श्रौतस्य लक्षणम् । स्मार्तो वर्णाश्रमाचारो यश्चैष नियमेद्वैतः ॥ मत्स्यपुराण</span> 144. 30–31; <span class="devanagari">वायुपुराण</span> 59. 31–32 and 39; '<span class="devanagari">अनध्यायानादि</span>- <span class="devanagari">पूर्वोऽधीतमत्सरयक्षवेदावेवमूलो दर्शपूर्णमासादिः श्रौतः । अग्निपरोपरोक्षाक्षाबामूलः शौचाचमनादिः स्मार्तः ॥ परा</span>. <span class="devanagari">मा</span>. I, Part 1 p. 64. <a href="#fnref-chapter-i-the-topics-of-dharmashastra-1" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-2" class="footnote-item"><span class="devanagari">वेदोक्तः परमो धर्मः स्मृतिशिष्टाचारागतोऽपरः । शिष्टाचारिणः परः मोक्षस्ययो धर्मः सनातनाः॥ अनुशासनपर्व</span> 141. 65; <span class="devanagari">वनपर्व</span> 207. 83 '<span class="devanagari">वेदोक्तः</span> ..... <span class="devanagari">धर्मशाजेषु चापरः । शिष्टाचारश्च शिक्षणा त्रिविधं धर्मलक्षणम् ॥</span>'; vide <span class="devanagari">शान्ति</span> 354. 6 also. <a href="#fnref-chapter-i-the-topics-of-dharmashastra-2" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-3" class="footnote-item"><span class="devanagari">उपविष्टो धर्मः प्रतिवेदम् ।</span> ... <span class="devanagari">स्मार्तो द्वितीयः । तृतीयः शिष्टानाम् । बौ</span>. <span class="devanagari">ध</span>.<span class="devanagari">सू</span>. I. 1. 1-4. <a href="#fnref-chapter-i-the-topics-of-dharmashastra-3" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-4" class="footnote-item"><span class="devanagari">इदं पञ्चप्रकारो धर्म इति विवरणकाराः प्रपञ्चयन्ति । मेधा०</span> on <span class="devanagari">मनु</span> II. 25; <span class="devanagari">अत्र च धर्मशब्दः षड् विधस्मार्तधर्मविषयः । तथथा</span>-<span class="devanagari">वर्णाश्रमे आश्रमधर्मो गुणधर्मो निमित्तधर्मः साधारणधर्मश्चेति । मिताक्षरा</span> on <span class="devanagari">या</span>. 1. 1. <a href="#fnref-chapter-i-the-topics-of-dharmashastra-4" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-5" class="footnote-item">Kulluka on Manu II. 25 and the Kṛtyaratnākara pp. 9–10 do the same. It is to be noted that some of these very verses are quoted as from Sumantu by the Smṛticandrikā. (I p. 6). <a href="#fnref-chapter-i-the-topics-of-dharmashastra-5" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-6" class="footnote-item">Reference may be made to the ‘Ethics of India’ by Prof. Hopkins (1924) and ‘Hindu Ethics’ by Dr. John McKenzie in ‘Religious quest of India’ serieṣ The former work is marked by a detached and fair attitude towards the ideas of the ancient Indians and their writingṣ The latter, I am sorry to say, is marred by the unsympathetic and supercilious attitude of a Christian missionary. Its key-note is perverse inasmuch as the foundation of the author’s criticism is the notion that one is not really moral unless one is engaged in active social service. There is very little warrant for (Continued on next page) <a href="#fnref-chapter-i-the-topics-of-dharmashastra-6" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-7" class="footnote-item"><span class="devanagari">सुविज्ञानं चिकिषेपे जनाय सञ्जानाय सन्नसत्ये । तपोरित्स्यं वतरगुजीव</span>- <span class="devanagari">स्तविस्सोमोवावति हन्यसत् ॥</span> Ṛg. VII. 104. 12. <a href="#fnref-chapter-i-the-topics-of-dharmashastra-7" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-8" class="footnote-item">Compare <span class="devanagari">शतपथब्रा</span>. I. 1. 1. 1. ' <span class="devanagari">अमेध्यो वै पुरुषो यद्वृत् वदति</span>', and I. 1. 5. 6 ' <span class="devanagari">स वै सत्यमेव वदेत्</span> '. <a href="#fnref-chapter-i-the-topics-of-dharmashastra-8" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-9" class="footnote-item"><span class="devanagari">वेदमनूच्याचार्योंऽन्तेवासिनमनुशास्ति । सत्यं वद । धर्म चर । तै</span>. <span class="devanagari">उ</span>. I. 11. 1. <a href="#fnref-chapter-i-the-topics-of-dharmashastra-9" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-10" class="footnote-item"><span class="devanagari">तस्मात्सत्यं वदन्तमाहुर्धर्मं वदतीति धर्मं वा वदन्तं सत्यं वदतीत्येतद्धयेवैतदुभयं भवति । बृह</span>. <span class="devanagari">उ</span>. I. 4. 14. <span class="devanagari">तद्वैतानि जपयेदृतो मा सदगमय तमसो मा ज्योतिर्गमय मृत्योर्माऽमृतं गमयेति । बृह</span>. <span class="devanagari">उ</span>. I. 3. 28. <a href="#fnref-chapter-i-the-topics-of-dharmashastra-10" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-11" class="footnote-item"><span class="devanagari">तस्मादेतत्रयं शिक्षेत् दमं दानं दयामिति । बृह</span>. <span class="devanagari">उ</span>. V. 2. 3. <a href="#fnref-chapter-i-the-topics-of-dharmashastra-11" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-12" class="footnote-item"><span class="devanagari">नाविरतो दुश्चरितान्नाशान्तो नासमाहितः । नाशान्तमानसो वाऽपि प्रज्ञानेनैनमाप्नु</span>- <span class="devanagari">यात् ॥ कठोप</span>. I. 2. 23; vide also I. 3.7 and <span class="devanagari">मैत्रेयी उप</span>. III. 5 for a list of qualities of darkness which the student of a high and sublime philosophy has to avoiḍ <a href="#fnref-chapter-i-the-topics-of-dharmashastra-12" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-13" class="footnote-item"><span class="devanagari">अद्रोहः सर्वभूतेषु कर्मणा मनसा गिरा। अनुग्रहश्च दानं च सतां धर्मः सनातनः॥ शान्तिपर्व</span> 162. 21. <a href="#fnref-chapter-i-the-topics-of-dharmashastra-13" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-14" class="footnote-item"><span class="devanagari">अथाष्टावात्मगुणाः। दया सर्वभूतेषु क्षान्तिरनसूया शौचमनायासो मङ्गलमकार्प</span>-<span class="devanagari">ण्यमस्पृहेति । गौ</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. VIII. 23-24. Haradatta quotes eight verses which explain these eight qualitieṣ Atri (verses 34-41) also defines these eight similarly but in different wordṣ Aparārka (pp. 164-165), Smṛticandrikā (I. p. 13), Hemādri (Vrata p. 8) and Parāśaramādhavīya I. part 1 p. 84 quote from Bṛhaspati eight verses defining these eight qualities, which closely resemble Atri'ṣ Vide Matsya 52.8-10 for these eight qualities and Vayu 59.40-49, Mārkaṇḍeya 61.66 for saying that <em>dayā</em> (love for beings) is at the top of the eight <em>ātmaguṇas</em> and 28.31-32 for a slightly different enumeration of the eight. Viṣṇupurāṇa (III. 8.35-37) says that these eight mentioned by Gautama (<span class="devanagari">तितिक्षा</span> being substituted for <span class="devanagari">शान्ति</span>) and three more namely <span class="devanagari">नामिमानिता</span>, <span class="devanagari">सत्य</span>, and <span class="devanagari">प्रियवादिता</span> are common to all <em>varṇas</em>. Vide <span class="devanagari">वसिष्ठ</span> VI. 3 <span class="devanagari">आचारहीनं न पुनन्ति वेदाः</span>. <a href="#fnref-chapter-i-the-topics-of-dharmashastra-14" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-15" class="footnote-item">Smṛticandrikā (I. p. 13) quotes verses of Śāṅkha to the same effect. <a href="#fnref-chapter-i-the-topics-of-dharmashastra-15" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-16" class="footnote-item"><span class="devanagari">यथैवात्मा परतद्धृदृष्ट्यः सुखमिच्छता । सुखदुःखानि तुल्यनि यथात्मनि तथा परे ॥ दक्ष</span> III. 22. <a href="#fnref-chapter-i-the-topics-of-dharmashastra-16" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-17" class="footnote-item"><span class="devanagari">श्रूयतां धर्मसर्वस्वं श्रुत्वा चैवावधार्यताम् । आत्मनः प्रतिकूलानि परेषां न समाचरेत् ॥ देवल</span> quoted in <span class="devanagari">कृत्यरत्नाकर</span> p. 17. Compare <span class="devanagari">आपस्तम्बस्मृति</span> X.12 '<span class="devanagari">आत्मवत्सर्वभूतानि यः पश्यति स पश्यति</span>', <span class="devanagari">अनुशासनपर्व</span> 113. 8-9 <span class="devanagari">न तत्परस्य संदध्यात् प्रतिकूलं यदात्मनः । एष संक्षेपतो धर्मः कामादन्यः प्रवर्तते ॥ प्रत्याख्याने च दाने च सुखदुःखं प्रियाप्रिये । आत्मौपम्येन पुरुषः प्रमाणमधिगच्छति ॥</span>; <span class="devanagari">शान्ति</span> 260. 20 and 25 <span class="devanagari">यद्यन्ये चेत्कृतं नेच्छेदुदात्मानः कर्म पूरुषः । न तत्परेषु कुर्वीत जानन्नप्रियावनात्मनः ॥ सर्वे प्रियाम्युपगते धर्मं प्राहुर्मनीषिणः ।</span> <a href="#fnref-chapter-i-the-topics-of-dharmashastra-17" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-18" class="footnote-item"><span class="devanagari">त्रिवर्गयुक्तैः प्राज्ञानामारम्भो भरतर्षभ । धर्मार्थोपदृष्यन्ते त्रिवर्गसंभवे नराः ॥ पृथक्प्रवृत्तिनिश्चितानां धर्म धीरोऽवरुध्यते । मध्यमयोर्वें कलिं बालः काममेवानुरुध्यते ॥</span>... <span class="devanagari">कामाथ लिप्तसमानस्तु धर्ममेवावतिष्ठेत् । नहि धर्मार्थपैर्यर्थः कामो चापि कदाचन । उपायं धर्म</span>-<span class="devanagari">मेवानुविष्यैव निधापने । उद्योगपर्व ।</span> 124. 34-38; vide <span class="devanagari">ज्ञानिवर्ष</span> 167.8-9 for the statement that dharma is the best, artha is middling and kāma is the lowest and that a man should so act that dharma would be the principal goal of his life and that he should so deal with others as he would deal with himself ' <span class="devanagari">तस्माद्धर्मप्रधानेन भवितव्यं यतात्मना । तथा च सर्वेभूतेषु वर्तितव्यं यथात्मनि ।।</span>'. The <span class="devanagari">महाभारत</span> winds up with the words <span class="devanagari">ऊर्ध्वबाहुर्विरौम्येषा न कश्चि</span>-<span class="devanagari">च्छृणोति माम् । धर्मोदपिच कामश्च स किमर्थं न सेष्यते ॥ स्वर्गारोह०</span> 5.62; vide also <span class="devanagari">ज्ञाल्य</span> 60.22, <span class="devanagari">द्रोण</span> 151,37. <a href="#fnref-chapter-i-the-topics-of-dharmashastra-18" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-19" class="footnote-item"><span class="devanagari">भोक्ता च धर्मविच्चज्ञान भोगान् । एवभूौ लोकाभिवजयति । आप</span>. <span class="devanagari">ध</span>. II. 8. 22-23. <a href="#fnref-chapter-i-the-topics-of-dharmashastra-19" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-20" class="footnote-item"><span class="devanagari">अर्थशास्त्र</span> I. 7 ‘<span class="devanagari">धर्माविरोधेन कामं सेवेत । न नि</span>:<span class="devanagari">सुख</span>: <span class="devanagari">स्यात् ।</span> ......... <span class="devanagari">अर्थ अर्थमूलो हि धर्मकामाविति ।</span>' <a href="#fnref-chapter-i-the-topics-of-dharmashastra-20" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-21" class="footnote-item"><span class="devanagari">धर्माधिकुयुज्यते श्रेय</span>: <span class="devanagari">कामाथों धर्म एव च। अर्थ एवह वा श्रेष्विवर्ण इति तु स्थिति</span>: <span class="devanagari">॥ मनु</span> II. 224; <span class="devanagari">परित्यजेदर्थकामौ यौ स्यातां धर्मवजितौ । मनु</span> IV. 176; com- pare <span class="devanagari">विष्णुधर्मसूत्र</span> 71.84 ‘<span class="devanagari">धर्मविरुद्देौ चार्थकामौ</span> (<span class="devanagari">परिहरेत्</span>) <span class="devanagari">।</span>’ ; <span class="devanagari">अनुशासन</span> 111.18-19 ‘<span class="devanagari">धर्मस्यार्थश्व कामश्व त्रितयं जीविते फलम् । एतत्त्रययसमायमधर्ममर्पिवजितम्</span>' <span class="devanagari">॥ विष्णुपुराण</span> III. 11. 7 <span class="devanagari">परित्यजेदर्थकामौ धर्मपीडाकरी चूप । धर्मसमृपयसुखोपर्द्रक लोकविद्धुमेव च ॥</span> <a href="#fnref-chapter-i-the-topics-of-dharmashastra-21" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-22" class="footnote-item"><span class="devanagari">अलौकिकत्वावदुष्टार्थात् अमृतानां यज्ञादीनां शास्त्रावर्त्तनेन लोकिकावद् दृष्टार्थत्वायच प्रवृत्तेग्यश्व मांसभक्षणादिव्यः शास्त्रादेव निवारणं धर्म</span>: <span class="devanagari">।</span> ...<span class="devanagari">विद्याभूभिविरुप्तयधु</span>- <span class="devanagari">घान्यभाषापकत्व</span>-<span class="devanagari">मित्रादीनांर्जनजसिस्तस्य विषयमर्थ</span>: <span class="devanagari">।</span> ...<span class="devanagari">श्रीलक्वचुद्रजिज्ञाणानामा</span>- <span class="devanagari">समाहितन मनसाधिष्टितानां स्वेषु स्वेषु विषयेष्ववोडकुलयतः प्रवृत्ति</span>: <span class="devanagari">काम</span>: <span class="devanagari">। तेषां समवाये पूर्व</span>: <span class="devanagari">पूर्वो गरीयान् । कामसूत्र</span> I. 2.7-15. <a href="#fnref-chapter-i-the-topics-of-dharmashastra-22" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-23" class="footnote-item"><span class="devanagari">स्वमेव तृणीछ च्वं मं मनुष्याय हिततमं मन्नस इति । कौषीतकि ब्रा</span>. <span class="devanagari">उ</span>. III. 1, H. D. 2 <a href="#fnref-chapter-i-the-topics-of-dharmashastra-23" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-24" class="footnote-item"><span class="devanagari">एतद्धि त्रितयं श्रेष्ठं सर्वभूतेषु भारत । निर्वैरता महाराज सत्यमक्रोध एव च ॥ आश्रमवासिपर्व</span> 28.9 ; <span class="devanagari">जीर्णेय तु पद्भ्यागुः पुरुषस्योत्तमं व्रतम् । न क्रुद्धयेच्च दुद्याच्च सत्यं चैव परं वदेत् ॥ अनुशासन</span> 120.10. <a href="#fnref-chapter-i-the-topics-of-dharmashastra-24" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-25" class="footnote-item"><span class="devanagari">सर्वेषां सत्यमक्रोधो दानमहिंसा प्रजननं च । वसिष्ठ</span> IV. 4; vide <span class="devanagari">वसिष्ठ</span> X. 30 for 13 qualities prescribed for all āśramaṣ <a href="#fnref-chapter-i-the-topics-of-dharmashastra-25" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-26" class="footnote-item"><span class="devanagari">अहिंसा सत्यमस्तेयं शौचमिन्द्रियनिग्रहः । एतं सामासिकं धर्मं चातुर्वर्ण्यै</span>- <span class="devanagari">रब्रवीन्मनु ॥ मनु</span> X. 63; vide <span class="devanagari">मनु</span> VI. 62 for ten guṇas prescribed for all āśramaṣ <a href="#fnref-chapter-i-the-topics-of-dharmashastra-26" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-27" class="footnote-item"><span class="devanagari">अहिंसा</span>.......<span class="devanagari">न्द्रियसंयमः । दमः क्षमार्जनं दानं सर्वेषां धर्मसाधनम् ॥ या</span>. I. 122 ; vide <span class="devanagari">या</span>. III. 66. <a href="#fnref-chapter-i-the-topics-of-dharmashastra-27" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-28" class="footnote-item"><span class="devanagari">अक्रोधः सत्यवचनं संविभागः क्षमा तथा । प्रजनः स्वेषु दारेषु शौचमद्रोह एव च । आर्चवँ भरणं चैव सार्ववणिकाः ॥ शान्ति</span>. 60. 7-8. <a href="#fnref-chapter-i-the-topics-of-dharmashastra-28" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-29" class="footnote-item"><span class="devanagari">अहिंसा सत्यमस्तेयं दानं शान्तिर्दैमः शमः । अकार्यं च शौचं च तपश्चैव धर्मीसौ सार्ववणिकैः ॥ वामनपुराण</span> 14. 1-2; <span class="devanagari">ब्रह्मपुराण</span> 114. 16-18 prescribes the following as common to all varnas and āśramaṣ ‘ <span class="devanagari">दया समस्तभूतेषु तितिक्षा नाभिमनिता । सत्यं शौचमनायासो मङ्गलँ मियवादिता । मैत्री द्वेषोत्सृष्टा बहूकार्पण्यं द्विजोत्तमाः । अनसूया च सामान्या वर्णानां कथिता गुणाः ॥ आश्रमाणां च सर्वेषामेते सामान्यलक्षणाः ।</span>’ <a href="#fnref-chapter-i-the-topics-of-dharmashastra-29" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-30" class="footnote-item"><span class="devanagari">क्षमा सत्यं दमः शौचं दानमिन्द्रियसंयमः । अहिंसा गुरुशुश्रूषा तीर्थानुसरणँ दया । आर्जवँ लोभशून्यत्वं देवब्राह्मणपूजनम् । अनसूया च तथा धर्मः सामान्य उच्यते ॥ विष्णु</span>-<span class="devanagari">धर्मसूत्र</span> II. 16-17; compare <span class="devanagari">आप</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. I. 8. 23.6 for a long list of qualities prescribed for all āśramas and <span class="devanagari">शान्तिपर्व</span> 297. 24-25 for 13 <span class="devanagari">साधारणधर्मस्</span> ‘ <span class="devanagari">आदर्घ्यमहिंसा च प्रसादः</span> (<span class="devanagari">प्रसादः</span>?) <span class="devanagari">संविभागिता । आवक्रमतिथ्येयं च सत्यमक्रोध एव च ॥ स्वेषु दारेषु संतोषः शौचं नित्यानसूयता । आत्मज्ञानं तितिक्षा च धर्माः साधारण गुणा ॥</span> <a href="#fnref-chapter-i-the-topics-of-dharmashastra-30" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-31" class="footnote-item"><span class="devanagari">तस्मादुत्तरतो हि वाग्‌वदति कुरुपञ्चाल्त्रा । शतपथ ब्रा</span>. III. 2. 3. 15. Vide S. B. E. vol. 12 p. XLII ṇ 1 and vol. 26 p. 50 for various interpretationṣ <a href="#fnref-chapter-i-the-topics-of-dharmashastra-31" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-32" class="footnote-item"><span class="devanagari">तस्मादुदीच्यां दिशि प्रज्ञाततरा वागुद्यत उदञ्च उ एव यन्ति वाचं शिक्षितुं यो वा तत आगच्छति तस्य वा शुश्रूषन्ते । कौषीताके ब्रा</span>. VII. 6, <a href="#fnref-chapter-i-the-topics-of-dharmashastra-32" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-33" class="footnote-item"><span class="devanagari">देवा वै सत्रमासत ।</span> ...... <span class="devanagari">तेषां कुरुक्षेत्रे वेदिरासीत् । तै</span>. <span class="devanagari">ब्रा</span>. V. 1. 1; <span class="devanagari">नि स्वाद बुधे चर आ पृथिव्या इलायास्पदे शुचिनले अह्नाम। कुरुक्षेत्र्यां माळ्प आपयायां सरस्वत्यां रेवद्व्ये द्विवेदीहि ॥ ऋ</span>. III. 23. 4; for Kurukṣetra as a very ancient place vide Śatapatha IV. 1. 5. 13 and Ait. Br. (chap. 35. kh. 4); <span class="devanagari">आत्रेयमक्षत्रपालं निर्भरपति । तस्माच्छितिरे कुरुपञ्चालाः प्राचो यन्ति ।</span> ...... <span class="devanagari">तस्माज्जय्पने नेक्ष्यते प्रत्यक् कुरुपञ्चाला यन्ति । तै</span>. <span class="devanagari">ब्रा</span>. I. 8. 5. <a href="#fnref-chapter-i-the-topics-of-dharmashastra-33" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-34" class="footnote-item"><span class="devanagari">आर्यावर्त्तः प्रागादर्शनात्प्रत्पक् कालकवनाद्दक्षिणेन हिमवतः । उत्तरेण च विन्ध्यस्य ।</span> ... <span class="devanagari">गङ्गायमुनयोरन्तरेप्येके । यावद्वा कृष्णमृगो विचरति तावद्ब्रह्मवर्चसमिति । वसिष्ठधर्मसूत्र</span> I. 8-9 and 12-13. <a href="#fnref-chapter-i-the-topics-of-dharmashastra-34" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-35" class="footnote-item"><span class="devanagari">प्राग्विनशनात् प्रत्यक् कालकवनाद् दक्षिणेन हिमवत्सुदूपकपारियात्रमेतदार्यावर्त्त तस्मिन् आचारः स प्रमाणम् । बौ</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. I. 1.27. Even so early as the <span class="devanagari">ताण्ड्यमहा</span>- <span class="devanagari">ब्राह्मण</span> we have the words <span class="devanagari">सरस्वत्या विनशने दीक्षन्ते</span> (24.17.1). This shows that the Sarasvati had disappeared by the time of the <span class="devanagari">ताण्ड्य</span>. According to the Vanaparva 82. 111 Vināśana is the tīrtha where the Sarasvati disappeared and Vanaparva (130. 3-5) says that the Sarasvati disappeared at the entrance of Niṣādarāṣṭra through fear of pollution from Niṣādas and Śalyaparva (37. 1-2) tells us that Vināśana is the sacred place where the Sarasvati disappeared through hatred for Śūdras and Abhīraṣ <a href="#fnref-chapter-i-the-topics-of-dharmashastra-35" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-36" class="footnote-item"><span class="devanagari">कः पुनरायावर्ते । प्रागादर्शात् प्रत्यक्कालकवनाद् दक्षिणेन हिमवत्तरेण पारियात्रम् । महाभाष्य</span> vol. I. p. 475 (on Pāṇ. II. 4.10), vol. III. p. 174 (on Pāṇ. VI. 3.109) <a href="#fnref-chapter-i-the-topics-of-dharmashastra-36" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-37" class="footnote-item"><span class="devanagari">प्राक्मिन्धुसौवीरात् दक्षिणेन हिमवतः पश्चात्काम्पिल्या उद्दूक् पारियात्रावनयर्य ब्रह्मावर्चम् ।</span> quoted in <span class="devanagari">परिभाषाप्रकाशा</span> (<span class="devanagari">वीरमित्रोदय</span> p. 57 ). <a href="#fnref-chapter-i-the-topics-of-dharmashastra-37" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-38" class="footnote-item"><span class="devanagari">अथापि भाल्लविनो निदाने गाथासुदाहरन्ति । पश्चात्सिन्धुविधाणी सूर्योदयेन पुरः । यावत्कृष्णोमिधावति तावद् वै ब्रह्मावर्चम् । इति । वसिष्ठ</span> I. 14-15. Viśvarūpa reads ‘<span class="devanagari">विकीर्ण</span>' and explains it as 'where the sun sets', while <span class="devanagari">विधाणी</span> may mean 'dividing line, boundary'. <span class="devanagari">परिभाषाप्रकाशा</span> p. 57 reads <span class="devanagari">वितरणी</span> and explains <span class="devanagari">विंध्यौ जनपदपर्वतसमीपे मालवदेशे परशुरामेण धडष्कोष्ठा कुण्डं भित्त्वा निर्भि</span>- <span class="devanagari">देति जनमसिद्धः ।</span> <a href="#fnref-chapter-i-the-topics-of-dharmashastra-38" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-39" class="footnote-item">Vide Tāṇḍya Br. 25. 10. 13-14 for Dṛṣadvatī falling into the Sarasvatī and 25. 10. 16 for the disappearance of the latter and Ait. Br. (chap. 38 kh. 3) for Kuru-Pāñcāla, Vaśa and Uśīnara as included in the centre of India. <a href="#fnref-chapter-i-the-topics-of-dharmashastra-39" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-40" class="footnote-item"><span class="devanagari">सिन्धुसौवीरसौराष्ट्रास्था मत्स्यन्निवासिनः । अङ्गवङ्गकलिङ्गान् गत्वा संस्कार</span>- <span class="devanagari">महति ।</span> This is Devala v. 16 with slight variations in the 3rd pāda. It is ascribed to Baudhāyana in the Smrticandrika I. p. 9. <a href="#fnref-chapter-i-the-topics-of-dharmashastra-40" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-41" class="footnote-item"><span class="devanagari">आर्यं वर्तन्ते तत्र पुनः पुनरुद्भ्रान्त्याक्रम्यक्राम्यापि न चिरं तत्र म्लेच्छाः स्थातारो भवन्ति । मेघा</span>. on <span class="devanagari">मनु</span> II. 22; <span class="devanagari">यदि कश्चित्क्षत्रियद्विजातीयो राजा साझाचरणो म्लेच्छा</span>- <span class="devanagari">नपराजयेत चातुर्वर्ण्यं वासयेत्</span>, <span class="devanagari">म्लेच्छांश्चार्यावर्त इव चाण्डालान् व्यवस्थापयेत् सोपि स्वार्थामिषः</span>, <span class="devanagari">यतो भूमिर्न स्वतो दुष्टा संसर्गाद्धि सा दुष्यति । मेधा</span>. on <span class="devanagari">मनु</span> II. 23. <a href="#fnref-chapter-i-the-topics-of-dharmashastra-41" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-42" class="footnote-item"><span class="devanagari">पञ्चानां सिन्धुभङ्गनां नदीनां येऽन्तराजमिताः । तान् धर्मबाह्यशूचीन् बाहिका</span>- <span class="devanagari">नानपतेत् ॥ कर्णपर्व</span> 43. 7; <span class="devanagari">कर्ण</span>. 44. 31-34 calls these countries Arattas and 'nastadharma'. Vide <span class="devanagari">पञ्च नद्यो वहन्त्येता यत्र नि</span>:<span class="devanagari">सृत्य पर्वतात् । आरट्टा नाम बाहीका न तेष्वाईयो द्वयहं वसेत् ॥ काश्करसमानहिष्कार कालिङ्गाकेकरलाकाश्च । ककोर्धाकाम्ब्रीकाश्च दुर्धर्माश्च विवर्धयेत् ॥ कर्णपर्व</span> 44. 40 and 43. <a href="#fnref-chapter-i-the-topics-of-dharmashastra-42" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-43" class="footnote-item">Vide E. I. vol. 20 p. 79. <a href="#fnref-chapter-i-the-topics-of-dharmashastra-43" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-44" class="footnote-item"><span class="devanagari">दक्षिणपरतो हांस्य पूर्वेण च महोदधिः । हिमवादुत्तरण रेणास्य कार्छुरुष्य यथा गुणः ॥ तदेतद्भारतं वर्षं । मार्कण्डेय</span> 57.59. <a href="#fnref-chapter-i-the-topics-of-dharmashastra-44" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-45" class="footnote-item"><span class="devanagari">उत्तरं यत्समुद्रस्य हिमाद्रेश्चैव दक्षिणम् । वर्षं तद्भारतं नाम भारती यत्र संततिः ॥ विष्णुपुराण</span> II. 3. 1; <span class="devanagari">वायु</span> vol. I, 45. 75-76 <span class="devanagari">उत्तरं यत्समुद्रस्य हिमवद्दक्षिण यत् । वर्षं यत्परं नाम ध्येयं भारती प्रजा ।</span>; <span class="devanagari">मत्स्य</span> 114. 10 <span class="devanagari">आयतस्तु कुमारीतो गङ्गाद्यः प्रभववाधि</span> (<span class="devanagari">प्रभवावधि</span>?); compare with the last <span class="devanagari">वायुपुराण</span> vol. 1, 45. 81 '<span class="devanagari">आयतौ ह्या कुमारिक्यादागङ्गप्रभवाच्च वै ।</span>' <a href="#fnref-chapter-i-the-topics-of-dharmashastra-45" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-46" class="footnote-item">'<span class="devanagari">प्रसिद्धा स्थाल्यां चरुशब्द आ हिमवत् आ च कुमारीभ्यः</span>' on <span class="devanagari">जैमिनि</span> X. 1. 35 and '<span class="devanagari">ओदने हि चरुशब्दः प्रसिद्ध आ हिमवत् आ च कुमारीभ्यः</span>' on <span class="devanagari">जैमिनि</span> X. 1.42. <a href="#fnref-chapter-i-the-topics-of-dharmashastra-46" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-47" class="footnote-item"><span class="devanagari">पैठीनसिः। आ हिमवत् आ च कुमारी</span>; <span class="devanagari">सिन्धुविंतरणी नदी पूर्वतोदयनं पुरः या</span>- <span class="devanagari">पत्त्रा कृष्णगुणो विचिरति तत्र धर्मचतुष्पादौ भवतीति । परिभाषाप्रकाश</span> p. 58. <a href="#fnref-chapter-i-the-topics-of-dharmashastra-47" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-48" class="footnote-item"><span class="devanagari">सर्वत्रोर्ध्वगतिं स्वर्गमपवर्गं च गच्छताम् । विष्णुपुराण</span> II. 3. 2; vide Wilson's Viṣṇupurāṇa vol. II. pp. 105-106; <span class="devanagari">ततः स्वर्गश्च मोक्षश्च मत्पच्य मत्पश्च । न खल्वत्र मरत्यानां भूमो कर्म विधीयते ॥ वायु</span> 45. 77; <span class="devanagari">विष्णुपुराण</span> II. 3. 5. <a href="#fnref-chapter-i-the-topics-of-dharmashastra-48" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-the-topics-of-dharmashastra-49" class="footnote-item"><span class="devanagari">काञ्छीकावेरयोरान्तं देशद्रावियमस्त्यजाः । कावेरीकोङ्कणा दूणास्ते देशा निन्दिता भृशम् ॥ पञ्चनद्यो</span>...<span class="devanagari">वसेत् ॥</span> (same verse as in ṇ 42)...<span class="devanagari">सौराष्ट्रसिन्धुसौवीरमालवयं वृशि</span>-<span class="devanagari">णापथम् । गत्वैतान् कामतो देशान् कलिङ्गश्च पतद्भद्विजः ॥ स्मृतिच०</span> I. p. 9 quoting <span class="devanagari">आदित्यपुराण</span>, <span class="devanagari">आदिपुराणे</span>–<span class="devanagari">आर्यावर्तसद्भूतो द्विजो वा यदि वाद्विजः । कर्मदां सिन्धुपारं च करतयो न लङघयेत् । आर्यावर्तमतिक्रम्य बिना तीर्थक्रियां द्विजः । आज्ञां चैव तथा पित्रोरेन्दनं विमुञ्चति ॥ परिभाषाप्रकाश</span> p. 59. <a href="#fnref-chapter-i-the-topics-of-dharmashastra-49" class="fn-back" aria-label="Back to text">↩</a></li>
+</ol>
+</aside>
+
+            <div class="chapter-nav">
+                
+                <a href="chapter-ii-varna.html" class="nav-next">Chapter II. Varna <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </main>
+    </div>
+
+    <button class="toc-mobile-toggle" onclick="toggleMobileToc()" aria-label="Table of contents">
+        <i class="fa-solid fa-list"></i>
+    </button>
+
+    
+    <footer class="container-fluid pt-4" style="background-color:#2e4144">
+        <div class="row border-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img src="https://sanatana.in/mbta/public/images/Homepage_html/images/layer_8.png" alt="">
+            </div>
+            <div class="col-md-5 text-white">
+                <p>The divine knowledge and wisdom of our shastras is the only thing eternal,
+                   which was and which will remain ever-present in this gods creation.
+                   Our endeavours are to preserve this knowledge.</p>
+            </div>
+            <div class="col-md-1 text-white">
+                <div class="d-flex" style="height: 75px;">
+                    <div class="vr"></div>
+                </div>
+            </div>
+            <div class="col-md-3 text-white">
+                <i class="fa-solid fa-globe"></i>&emsp;
+                <a href="https://sanatanasampatti.in" class="text-light">www.sanatanasampatti.in</a><br>
+                <i class="fa-solid fa-envelope"></i>&emsp;
+                <a href="" class="text-light">sriranga.yoga@gmail.com</a>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center py-3 mb-4 align-items-center border-bottom">
+            <div class="col-md-2 text-white fs-4 text-center">Project</div>
+            <div class="col-md-2 text-white fs-4 text-center">Our Mission</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contribute</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contact Us</div>
+        </div>
+        <div class="row">
+            <p class="col-md-6 fs-6 text-start text-light">
+                <small>&copy; 2026 Sanatanasampatti</small>
+            </p>
+            <p class="col-md-6 fs-6 text-end text-light">
+                <a class="text-white" rel="nofollow" href="http://www.srirangadigital.com" target="_blank">
+                    <img src="https://sanatana.in/mbta/public/images/logo.png" alt="sriranga logo" />
+                    <small>Designed, Developed and Maintained by Sriranga Digital</small>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        const headings = [];
+        tocLinks.forEach(link => {
+            const id = link.getAttribute('href').substring(1);
+            const el = document.getElementById(id);
+            if (el) headings.push({ el: el, link: link.parentElement });
+        });
+
+        function onScroll() {
+            let current = null;
+            for (const h of headings) {
+                const rect = h.el.getBoundingClientRect();
+                if (rect.top <= 120) current = h;
+            }
+            tocLinks.forEach(l => l.parentElement.classList.remove('active'));
+            if (current) current.link.classList.add('active');
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    });
+
+    function toggleMobileToc() {
+        const toc = document.getElementById('toc');
+        if (!toc) return;
+        if (toc.style.display === 'block') {
+            toc.style.display = '';
+            toc.style.position = '';
+        } else {
+            toc.style.display = 'block';
+            toc.style.position = 'fixed';
+            toc.style.top = '0';
+            toc.style.left = '0';
+            toc.style.width = '80vw';
+            toc.style.maxWidth = '320px';
+            toc.style.height = '100vh';
+            toc.style.maxHeight = '100vh';
+            toc.style.zIndex = '2000';
+            toc.style.background = 'var(--parchment)';
+            toc.style.boxShadow = '4px 0 20px rgba(0,0,0,0.2)';
+            toc.style.padding = '24px';
+            toc.style.overflowY = 'auto';
+        }
+    }
+    </script>
+
+    <script>
+    function toggleSynopsisAudio(btn) {
+        var audio = btn.parentElement.querySelector('audio');
+        if (!audio.src) audio.src = btn.getAttribute('data-src');
+        if (audio.paused) {
+            audio.play();
+            btn.classList.add('playing');
+            btn.querySelector('i').className = 'fa-solid fa-pause';
+        } else {
+            audio.pause();
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        }
+        audio.onended = function() {
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        };
+        // Prevent click from toggling the synopsis open/close
+        event.stopPropagation();
+    }
+    </script>
+</body>
+</html>

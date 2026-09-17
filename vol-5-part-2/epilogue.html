@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- MDB UI Kit -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/fonts.css?v=1.2">
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/navbar.css?v=2.4">
+
+    <title>Epilogue — Volume V: Part II — History of Dharmaśāstra</title>
+    <style>
+    :root {
+        --saffron:        #D4600A;
+        --saffron-light:  #F0924A;
+        --saffron-wash:   rgba(212, 96, 10, 0.07);
+        --indigo:         #2E5FA3;
+        --indigo-dark:    #1C3D70;
+        --maroon:         #7A1E1E;
+        --amber:          #C97A1A;
+        --ink:            #1A1209;
+        --ink-secondary:  #4A3B2A;
+        --parchment:      #FDFAF4;
+        --parchment-mid:  #F5EFE2;
+        --rule:           rgba(180, 130, 60, 0.22);
+        --shadow:         0 2px 18px rgba(90, 50, 10, 0.08);
+        --font-devanagari: 'Tiro Devanagari Sanskrit', 'Siddhanta', 'Noto Sans Devanagari', serif;
+        --font-roman:      'Junicode', Georgia, serif;
+    }
+
+    body {
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: var(--font-roman);
+    }
+
+    .devanagari {
+        font-family: var(--font-devanagari);
+    }
+
+    /* ── Navbar overrides ── */
+    .navbar-ontop { z-index: 1031; }
+    .hdclr { color: var(--saffron); }
+    .engpara { font-family: 'Open Sans', sans-serif; }
+
+    /* ── Layout ── */
+    .dh-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .dh-content {
+        flex: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        background: var(--parchment);
+        box-shadow: var(--shadow);
+        min-height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        .dh-content { padding: 24px 20px; }
+        .dh-wrapper { flex-direction: column; }
+    }
+
+    /* ── TOC Sidebar ── */
+    .toc-sidebar {
+        position: sticky;
+        top: 80px;
+        width: 280px;
+        min-width: 280px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding: 20px 16px;
+        margin-right: 24px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        scrollbar-width: thin;
+    }
+
+    .toc-title {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--saffron-light);
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list li {
+        padding: 4px 0;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-list li.toc-l3 {
+        padding-left: 16px;
+        font-size: 0.78rem;
+    }
+
+    .toc-list li a {
+        color: var(--ink-secondary);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .toc-list li a:hover { color: var(--saffron); }
+
+    .toc-list li.active {
+        border-left-color: var(--saffron);
+    }
+
+    .toc-list li.active a {
+        color: var(--saffron);
+        font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-sidebar { display: none; }
+    }
+
+    /* ── Mobile TOC Toggle ── */
+    .toc-mobile-toggle {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1050;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--saffron);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-mobile-toggle { display: block; }
+    }
+
+    /* ── Section Headings ── */
+    .section-heading {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        margin: 48px 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--rule);
+        letter-spacing: 0.5px;
+        scroll-margin-top: 80px;
+    }
+
+    h2.section-heading { font-size: 1.6rem; }
+
+    h3.section-heading {
+        font-size: 1.25rem;
+        border-left: 4px solid var(--saffron-light);
+        border-bottom: none;
+        padding: 8px 16px;
+        background: var(--saffron-wash);
+        border-radius: 0 5px 5px 0;
+    }
+
+    /* ── Prose ── */
+    .prose {
+        font-family: var(--font-roman);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+        color: var(--ink);
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    .prose em { color: var(--maroon); }
+
+    .prose:target {
+        background: rgba(212, 96, 10, 0.12);
+        border-left: 4px solid var(--saffron);
+        padding-left: 16px;
+        margin-left: -20px;
+        border-radius: 0 6px 6px 0;
+        animation: target-pulse 2s ease-out;
+    }
+
+    @keyframes target-pulse {
+        0%   { background: rgba(212, 96, 10, 0.30); }
+        100% { background: rgba(212, 96, 10, 0.12); }
+    }
+
+    /* ── Footnote References ── */
+    .fn-ref {
+        font-size: 0.75em;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    .fn-ref a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 0 2px;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: color 0.15s;
+    }
+
+    .fn-ref a:hover { color: var(--indigo); }
+
+    /* ── Synopsis Box ── */
+    .synopsis-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron-light);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .synopsis-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .synopsis-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .synopsis-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .synopsis-box.open .synopsis-toggle i {
+        transform: rotate(90deg);
+    }
+    .synopsis-body {
+        display: none;
+        padding: 0 20px 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+    }
+    .synopsis-box.open .synopsis-body { display: block; }
+    .synopsis-body p { margin: 0; }
+    .synopsis-attribution {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: var(--ink-secondary);
+        opacity: 0.7;
+        font-style: italic;
+    }
+    .synopsis-audio {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    .synopsis-play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--saffron);
+        background: none;
+        color: var(--saffron);
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: background 0.2s, color 0.2s;
+        padding: 0;
+    }
+    .synopsis-play-btn:hover {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn.playing {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn i { padding-left: 2px; }
+
+    /* ── Index Terms Panel ── */
+    .index-terms-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .index-terms-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .index-terms-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .index-terms-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .index-terms-box.open .index-terms-toggle i {
+        transform: rotate(90deg);
+    }
+    .index-terms-body {
+        display: none;
+        padding: 0 20px 16px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .index-terms-box.open .index-terms-body { display: block; }
+    .index-terms-dl {
+        margin: 0;
+        padding: 0;
+    }
+    .index-terms-dl dt {
+        font-family: var(--font-roman);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+        margin-top: 8px;
+    }
+    .index-terms-dl dd {
+        margin: 2px 0 0 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        color: var(--ink-secondary);
+        line-height: 1.5;
+    }
+    .nyaya-heading {
+        font-family: var(--font-roman);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        margin: 16px 0 4px;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+    }
+
+    /* ── Inline Index Popovers ── */
+    .idx-term {
+        border-bottom: 1px dotted var(--saffron-light);
+        cursor: help;
+        position: relative;
+    }
+    .idx-term:hover::after {
+        content: attr(data-def);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        background: rgba(44, 36, 22, 0.92);
+        color: #F5ECD8;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        max-width: 280px;
+        z-index: 100;
+        white-space: normal;
+        line-height: 1.4;
+        pointer-events: none;
+    }
+
+    /* ── Structured Version Banner ── */
+    .structured-banner {
+        margin: 0 0 28px;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, rgba(212, 96, 10, 0.06) 0%, rgba(212, 96, 10, 0.02) 100%);
+        border: 1px solid var(--saffron-light);
+        border-radius: 6px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        color: var(--ink-secondary);
+        line-height: 1.6;
+    }
+    .structured-banner i { color: var(--saffron); margin-right: 4px; }
+    .structured-banner a { color: var(--indigo); font-weight: 600; text-decoration: none; }
+    .structured-banner a:hover { text-decoration: underline; }
+
+    /* ── Footnotes Section ── */
+    .footnotes-section {
+        margin: 32px 0 48px;
+        padding: 20px 24px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .footnotes-section hr {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 0 0 16px;
+    }
+
+    .footnotes-list {
+        padding-left: 24px;
+        margin: 0;
+    }
+
+    .footnote-item {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+        scroll-margin-top: 80px;
+    }
+
+    .footnote-item:target {
+        background: rgba(212, 96, 10, 0.1);
+        border-radius: 4px;
+        padding: 4px 6px;
+        margin-left: -6px;
+    }
+
+    .fn-back {
+        color: var(--saffron-light);
+        text-decoration: none;
+        font-size: 0.85em;
+        margin-left: 4px;
+    }
+
+    .fn-back:hover { color: var(--saffron); }
+
+    /* ── Reference Links ── */
+    a.ref {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: all 0.15s;
+    }
+
+    a.ref:hover {
+        color: var(--saffron);
+        border-bottom-style: solid;
+    }
+
+    a.mbta-ext {
+        color: var(--indigo);
+        font-size: 0.7em;
+        margin-left: 2px;
+        opacity: 0.5;
+        text-decoration: none;
+        vertical-align: super;
+    }
+    a.mbta-ext:hover { opacity: 1; color: var(--saffron); }
+
+    /* ── References Panel (sidebar) ── */
+    .refs-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .refs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .refs-list li {
+        padding: 3px 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .ref-source-link {
+        font-weight: 600;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .ref-source-link:hover {
+        text-decoration: underline;
+    }
+
+    .ref-verse-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.76rem;
+    }
+
+    .ref-verse-link:hover {
+        text-decoration: underline;
+        color: var(--saffron);
+    }
+
+    .ref-verses {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Timeline panel ── */
+    .timeline-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .timeline-list li {
+        padding: 2px 0;
+        font-size: 0.76rem;
+        line-height: 1.4;
+        position: relative;
+        padding-left: 14px;
+    }
+
+    .timeline-list li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--saffron);
+    }
+
+    .timeline-list li.tl-approximate::before {
+        background: transparent;
+        border: 2px solid var(--saffron);
+        width: 4px;
+        height: 4px;
+    }
+
+    .timeline-list li.tl-century::before {
+        background: transparent;
+        border: 2px dashed var(--saffron);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+
+    .tl-dot-link {
+        text-decoration: none;
+        color: var(--ink);
+        display: block;
+    }
+
+    .tl-dot-link:hover {
+        color: var(--saffron);
+    }
+
+    .tl-year {
+        font-weight: 600;
+        color: var(--saffron);
+        font-size: 0.72rem;
+        min-width: 70px;
+        display: inline-block;
+    }
+
+    .tl-label {
+        color: var(--ink-secondary);
+        font-size: 0.72rem;
+    }
+
+    .tl-view-link, .tl-more {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.72rem;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .tl-view-link:hover, .tl-more:hover {
+        text-decoration: underline;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+
+    .breadcrumb-bar a {
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+
+    .breadcrumb-bar .sep {
+        color: var(--amber);
+        margin: 0 8px;
+    }
+
+    .breadcrumb-bar .current {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Chapter Navigation ── */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        margin-top: 48px;
+        border-top: 2px solid var(--rule);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .chapter-nav a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        transition: all 0.2s;
+        max-width: 45%;
+    }
+
+    .chapter-nav a:hover {
+        background: var(--saffron-wash);
+        border-color: var(--saffron-light);
+    }
+
+    .nav-prev { text-align: left; }
+    .nav-next { text-align: right; margin-left: auto; }
+
+    .page-range {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+    }
+
+    /* ── Volume Cards (Landing) ── */
+    .vol-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .vol-card {
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        transition: all 0.25s;
+    }
+
+    .vol-card:hover {
+        border-color: var(--saffron-light);
+        box-shadow: 0 4px 24px rgba(212, 96, 10, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .vol-num {
+        font-family: var(--font-roman);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--saffron);
+        margin-bottom: 8px;
+    }
+
+    .vol-subtitle {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        line-height: 1.5;
+        flex: 1;
+    }
+
+    .vol-chapters {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        margin-top: 12px;
+    }
+
+    /* ── Chapter Cards (Volume Index) ── */
+    .chapter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .chapter-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .chapter-card:hover {
+        border-color: var(--saffron-light);
+        background: var(--saffron-wash);
+    }
+
+    .card-num {
+        font-family: var(--font-roman);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--saffron);
+        min-width: 36px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        flex: 1;
+    }
+
+    .card-pages {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        color: var(--ink-secondary);
+    }
+
+    /* ── Landing Hero ── */
+    .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-family: var(--font-roman);
+        font-size: 2.4rem;
+        color: var(--saffron);
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .hero .devanagari-title {
+        font-family: var(--font-devanagari);
+        font-size: 1.8rem;
+        color: var(--ink);
+        margin-bottom: 16px;
+    }
+
+    .hero .author {
+        font-family: var(--font-roman);
+        font-size: 1.1rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .hero .desc {
+        font-family: var(--font-roman);
+        font-size: 1rem;
+        color: var(--ink-secondary);
+        line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer { margin-top: 48px; }
+</style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mbta/">
+      <div class="container-fluid">&emsp;&emsp;
+      <a href="../index.html" class="navbar-brand" style="text-decoration:none;">
+        <span class="devanagari ms-3" style="font-size:1.5rem; color:var(--saffron); font-weight:700;">धर्मशास्त्रम्</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="../index.html">धर्मशास्त्रम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5 active" href="../index.html">खण्डाः</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in/mbta/">महाभारतम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in">सनातनम्</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+
+    <div class="dh-wrapper container-xl">
+        <nav id="toc" class="toc-sidebar">
+<div class="refs-panel">
+<h5 class="toc-title">References</h5>
+<ul class="refs-list">
+<li><a href="../refs/gita.html" class="ref-source-link">Bhagavadgītā</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/hodh.html" class="ref-source-link">History of Dharmaśāstra</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mahabharata.html" class="ref-source-link">Mahābhārata</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/ramayana.html" class="ref-source-link">Rāmāyaṇa</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/vishnu_smriti.html" class="ref-source-link">Viṣṇu Smṛti</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/rigveda.html" class="ref-source-link">Ṛgveda</a> <span class="ref-verses"></span></li>
+</ul>
+</div>
+<div class="timeline-panel">
+<h5 class="toc-title">Timeline</h5>
+<ul class="timeline-list">
+<li class="tl-century"><a href="#p-epilogue-12" class="tl-dot-link"><span class="tl-year">1801 CE</span> <span class="tl-label">Another case that I conducted </span></a></li>
+</ul>
+</div>
+<h5 class="toc-title">Sections</h5>
+<ul class="toc-list">
+<li class="toc-l2"><a href="#epilogue">Epilogue</a></li>
+</ul>
+</nav>
+        <main class="dh-content">
+            
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep">›</span>
+        <a href="index.html">Volume V: Part II</a>
+        <span class="sep">›</span>
+        <span class="current">Epilogue</span>
+    </div>
+    
+            <h1 class="text-center" style="font-family: var(--font-roman); font-size: 2rem; color: var(--saffron); margin-bottom: 8px;">
+                Epilogue
+            </h1>
+            <p class="text-center" style="font-family: 'Open Sans', sans-serif; color: var(--ink-secondary); font-size: 0.9rem; margin-bottom: 36px;">
+                Volume V: Part II <span class="page-range">pp. 1712–1733</span>
+            </p>
+
+            
+
+            
+    <div class="index-terms-box" id="index-terms">
+        <button class="index-terms-toggle" onclick="this.parentElement.classList.toggle('open')"
+                aria-expanded="false" aria-controls="index-terms-body">
+            <i class="fa-solid fa-chevron-right"></i>
+            Index Terms (2)
+        </button>
+        <div class="index-terms-body" id="index-terms-body">
+            <dl class="index-terms-dl"><dt>Dīkṣāprakāśikā of Viṣṇubhaṭṭa</dt><dd>composed in śaka (</dd><dt>Heart</dt><dd>(note ) spoken of as lotus in the Upaniṣads</dd></dl>
+        </div>
+    </div>
+
+
+            <h2 id="epilogue" class="section-heading">Epilogue</h2>
+<p class="prose" id="p-epilogue-1">Many friends and well-wishers of the author and some readers of the volumes of the History of dharmaśāstra have often (personally and by correspondence) pressed him to furnish some biographical details about himself, about the circumstances in which he launched on this undertaking, about the preparations he made, about the time and labour that this undertaking cost him and also what money it brought to him (a few asked even this).</p>
+<p class="prose" id="p-epilogue-2">To write an autobiography is a most difficult and delicate matter. In an autobiography one has often to use the words ‘I’, ‘Me’, ‘My’ etc. and the writer is liable to be charged with egotisṃ If he is very frank about his own failings and faults, he may be accused of exhi- bitionisṃ I do not propose to say much about my parents or my ancestors or about my marriage and family life or my likes and dis- likeṣ I had my own share of anxieties, troubles and sorrows, but I shall not say much about them, since the blessings that were showered on me far outweighed the anxieties and sorrowṣ A brief account of some aspects of my long life may, I hope, be of some interest and help to those who have to face problems similar to those that I had to face.</p>
+<p class="prose" id="p-epilogue-3">I was born on 7th May 1880 in a village called Pedhem or Paraśurāma [ because it has a large and famous temple of Paraśu- rāma, an avatāra of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> and the patron saint of several brāhmaṇa sub-castes (such as the Citpāvana) ] near Chiplun in the Ratnagiri District at my maternal uncle's house. My father belonged to a priestly family in a village called Murleṁ near Khed in the Ratna- giri District. My father had learnt by <span class="idx-term" data-def="(note ) spoken of as lotus in the Upaniṣads">heart</span> a great deal of the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> and was being trained for priesthood till the age of 18. He did not like the profession of a priest and left for Poona to learn English along with a friend of his boyhood, the late Shankar Bal- krishna Dixit, who later on became famous for his Marathi work on Indian Astronomy which was admired by Dr. Thibaut. Mr. Dixit and my father passed the Matriculation Examination of the Bombay University in 1873. My father studied for the Pleader's examination held in those days by the Bombay High Court, passed it and began to practise as a Taluka lawyer at Dapoli in the Ratnagiri District from 1878. Besides Vedic lore, my father studied the principal Upaniṣads II and the <a class="ref" href="../refs/gita.html" data-source="gita" data-ref="" title="Bhagavadgītā">Gītā</a> and had many of the former by heart. He practised as a lawyer for about forty years, then retired and passed away in 1925. We were nine children, six brothers and three sisterṣ I was the eldest of the sons and one sister was older than myself. In my early boyhood my father taught me some elements of astrology and advised me to commit to memory the verses of Amarakośa (of which I had 400 by heart before I was 12 years of age). In 1891 I joined the S. P. G. Mission's English High School at Dapoli and passed the Bombay University's Matriculation Examination in 1897 and stood high among the successful candidateṣ While at school, I began to suffer from hyper-acidity, consequent acute stomach pains and vomit- ing at the age of 16 and had to leave school for nearly a year. At the time when I passed the Matriculation there was an epidemic of Bubonic Plague in Bombay and Poona, where there was high morta- lity. My father was not willing to send me (whose health was already delicate) to those places where alone College education could then be haḍ So he asked me to study law under hiṃ I studied it for two weeks, but being repelled soon by the dry study of law, I wrote a letter to Dr. Machichan, who was then Principal of the Wilson College in Bombay (and reputed to be very kind), conducted by the Scottish Mission, asking him whether I could be enrolled as a student in absentia. He asked me to send Rṣ 36/-, a term's fee, get myself registered as a student and stated that as the epidemic was at its height the University might condone absence. The Bombay University later on did so. I did not attend College in the first terṃ The epidemic abated, I joined College in June and appeared for the first year's examination of the Bombay University in Novem- ber 1898 (which was then called the Previous Exaṃ) and was awarded a scholarship of Rṣ 175 and a prize of Rṣ 100 for being the first among the students whose second language was Sanskrit. This was the first lucky incident in my life. Life is a mysterious businesṣ It is full of lucky incidents or chances and one must be able to take advantage of them by one's own effortṣ There have been many such incidents and disinterested friendships in my life and I have hardly ever had an enemy to my knowledge in the whole of my rather long life. The ailment of my boyhood pursued me at college, pursues me even now and has become worse, but I did not allow myself to be much disturbed by it, controlled my diet and led a regular and strict life. At the second year's examination in Arts (called Intermediate) I was awarded a scholarship of Rṣ 180 ( lump sum ) for standing first among students taking Sanskrit as a second language. Two years afterwards I appeared for the B. A. examination in 1901 and was awarded the Bhau Daji Prize for proficiency in Sanskrit and stood first among the students of the Wilson College. An idea about how delicate I was in 1901 when I was 21 years old may be had from the fact that, though I was 5 feet 4 inches in height, I weighed only 98 poundṣ After the B. A. examination I was a Dakṣiṇā Fellow at the Wilson College for two years and lectured to the first two years’ classes at the Wilson College on Sanskrit about three hours a week. In 1902, I passed the First LL. B. examination in the First class and in 1903 the M. A. examination and was awarded the Zala Vedānta Prize of Rṣ 400. The peculiarity of this prize is that the paper set is in Sanskrit, the answers are to be written in Sanskrit in three hours, the chief examiner was to be a Śāstri who was proficient in Śaṅkara Vedānta and had studied it under the old traditional methodṣ As my father had yet to spend for the education of several sons he asked me either to enter the Education Department as a High School teacher or to become a lawyer in a subordinate court. I did not like the latter idea and applied to the Director of Public Instruction, Poona, for appointment as a teacher in a Govt. High School. Here again Dr. Machichan helped me by recommending me highly to the D. P. I. I was appointed a teacher in the Govt. High School at Ratnagiri in August 1904 on a salary of Rṣ 60 per month raised to Rṣ 65 per month after a few months (having been an M. A. with five scholarships and prizes in Sanskrit). I was at the Ratnagiri Govt. High School for three yearṣ I appeared for the S. T. C. (Secondary Teacher’s Certificate ) Examination held by the Department in 1905 and stood first in the whole of the Bombay Presidency (including Sind in those days). In the same year I submitted an essay on ‘Aryan Manners and Morals as depicted in the Epics’ for the V. N. Mandlik Gold Medal of the Bombay University and was awarded a prize of books worth Rṣ 150. For this essay I read both the <a class="ref" href="../refs/mahabharata.html" data-source="mahabharata" data-ref="" title="Mahābhārata">Mahābhārata</a> and the <a class="ref" href="../refs/ramayana.html" data-source="ramayana" data-ref="" title="Rāmāyaṇa">Rāmāyaṇa</a>. Till now I have read the <a class="ref" href="../refs/mahabharata.html" data-source="mahabharata" data-ref="" title="Mahābhārata">Mahābhārata</a> thrice and I have yet got the notebooks of extensive extracts, particularly from the <a class="ref" href="../refs/mahabharata.html" data-source="mahabharata" data-ref="" title="Mahābhārata">Mahābhārata</a>. In the next year I appeared for a Departmental Examination for Honours in Teaching and secured first class in ‘Logic in relation to teaching’. The same year ( 1906 ) I submitted a paper on ‘the History of Alaṅkāra Literature’ for the V. N. Mandlik Gold Medal again and was awarded the medal. At the end of this year I lost my younger brother by T. B. I was transferred at my own request to the Elphinstone High School in Bombay as 5th assistant on Rṣ 75 in April 1907. There were over 40 teachers in that High School and about 750 students from the 4th to the 7th standarḍ I was made Head Sanskrit teacher (there were three teachers of Sanskrit and 12 classes in Sanskrit). Towards the end of 1907 the post of Assistant to the Professor of Sanskrit at the Poona Deccan College (on Rṣ 125 p. ṃ) fell vacant and I applied for the post. But I was not appointed and another person who was an M. A. in Sanskrit, but had won no prize, scholarship or medal in Sanskrit at any examination from the Matriculation to the M. A. and who was 9th Assistant in the Elphinstone High School (where I was 5th assistant) was appointed to the post, because he was a favourite student of the D. P. I. when the latter was Principal of the Deccan College. I sent a protest through the Principal of the High School. I was informed that a competent authority in Sanskrit had recom- mended that the person chosen was superior to me in Sanskrit and when I requested the D. P. I. to let me know the name of the com- petent authority I was informed that my letter was an impertinent one and deserved no reply. This added insult to injury. This happened in December 1907. I decided to appear for the 2nd LL. B. examination in November 1908 and then to leave Govt. service. My supersession created a great deal of criticism in the Department and almost all persons sympathised with me and helped me in various wayṣ I appeared for the 2nd LL. B. examination in Novem- ber 1908 and passed it. This created an impression in the Education Department that I meant serious businesṣ Therefore, as a sop to my injured feelings, I was appointed to act as Professor of Sanskrit at the Elphinstone College from February to April 1909 in place of Prof. S. R. Bhandarkar who had been deputed on some Govt. work. I reverted to the High School at the end of April 1909 and began to cast about where to practise as a lawyer. I was not inclined to practise as a lawyer in subordinate courts and decided that, if I left service, I would practise on the Appellate side of the High court, where it is a battle of wits and of hard work and one had not to do what a lawyer practising in the subordinate courts had to do. At that time, the late Mr. Daji Abaji Khare was almost at the top of the Appellate side Bar (called Vakils of the High Court). He had some large estates at Dapoli (my native place) and knew my father and myself. I approached him for advice. He told me that I must have with me at least two thousand rupees in cash, if I wanted to practise in the High Court and to stick to it. I had then not a pie with me and my father who was already sixty years old and had to educate other sons, declined to help. In less than two years from June 1909 I brought out two school books and one annotated book in Sanskrit (the Sāhityadarpaṇa) for College students and was also appointed an examiner in Sanskrit at the Previous and Intermediate Arts Examinationṣ I thus collected two thousand rupees, resigned from Govt. service at the end of June 1911 and applied for a Sanad (after paying Rṣ 500 as fee for enrolment as a Vakil of the High Court of Bombay) with a certificate of good moral character from Mr. Khare and was enrolled as a Vakil of the High Court on 5th July 1911 when I was in my 32nd year.</p>
+<p class="prose" id="p-epilogue-4">Work was slow in coming and the first two years were rather bleak. Having not much to do, I appeared for the LL. M. examina- tion in Hindu and Mahomedan law in 1912 and passed it. From 1911 to about 1918 I brought out every year some book or books such as the Kādambarī of Bāṇa in three parts with ample notes, the Harṣacarita in two parts, and the Uttararāmacarita. I also conducted a private law class for coaching students for the High Court Vakil's examination (in which 60 percent marks were required for passing). This brought in a steady income of about Rṣ 100 per month for four years from 1913 to 1917 and, what was more impor- tant, this task of teaching single-handed the vast field of law made me proficient in all complicated legal topicṣ In the meantime, in 1913 I was appointed Wilson Philological Lecturer to deliver six lectures on Sanskrit, Prakrit and allied languages for a lump sum of Rṣ 750. In 1913 I became an ordinary member of the Bombay Branch of the Royal Asiatic Society and a life.member ( by paying a lump sum of Rṣ 500 ) in January 1915. At the beginning of 1915 I was appointed by the Bombay University a Springer Research Scholar for two years on a salary of Rṣ 100 per month, the subject of research being ‘Ancient Geography of Mahārāṣṭra’ (part publish- ed in JBBRAS, Vol. XXIV for 1917, pp. 613-657 ). In 1916 I worked as Honorary Professor of Sanskrit at the Wilson College, when Prof. S. R. Bhandarkar, who was permanent Professor, fell ill, and I lectured for three hours a week to B. A. classes on the most difficult part of Rāmānuja’s Bhāṣya on Vedāntasūtra.</p>
+<p class="prose" id="p-epilogue-5">In 1917 June I was appointed as a Professor of Law in the Govt. Law College at Bombay. This was again a case of an unexpected event. The Chief Justice of the Bombay High Court had recommended for a vacancy in the law college two names from among the Vakils on the Appellate side Bar of the High Court, one a very senior gentleman and myself who had less than six years’ practice. The senior gentleman for some reason (not given out) refused at the last moment and on 20th June, the day on which the Law College was to open, I received a wire in the Vakil's room from Government stating that Govt. proposed to appoint me as a Professor of Law from that day and that if I agreed I should see the Principal. This was a comfortable job, the salary being Rṣ 350 a month and the duties light viz. three or four hours per week in the evening from 5–45 p. ṃ to 6–45 p.ṃ I was Professor of Law for six years (1917–1923). Hardly any Vakil with less than six years’ practice on the Appellate Side of the High Court had been appointed before me as Professor of Law.</p>
+<p class="prose" id="p-epilogue-6">I had undertaken about 1911 an edition of the Vyavahāramayūkba with explanatory notes on the advice of Prof. S. R. Bhan-darkar who was one of the General Editors of the Bombay Govt.’s Sanskrit Serieṣ But, owing to fluctuations in my own fortunes, I had neglected the work and had almost decided to give up the under-taking altogether. The Bombay Govt.’s Sanskrit Series came to be transferred by Govt. to the Bhandarkar Oriental Research Institute that had been started in Poona in 1917. The authorities of the Institute pressed me to carry out my undertaking. I agreed and began to read the vast dharmaśāstra Literature for that purpose. The edition of the Vyavahāramayūkba of Nīlakaṇṭha (text based on three printed editions and eight msṣ, an Introduction of 47 pages and exhaustive notes) was published in 1926 by the Bhandarkar Oriental Research Institute, Poona. In the brief Preface to that edition of 1926, I announced that I had undertaken to write the History of dharmaśāstra Literature.</p>
+<p class="prose" id="p-epilogue-7">Dr. R. G. Bhandarkar had expressed a desire to donate his large library of thousands of books to some Institute that would properly house them, take care of them and make it a centre of Sanskrit studieṣ Dr. Belvalkar, Dr. Gune and several others suppor-ted the idea and about thirty people including myself contributed Rṣ 500 each for the purchase of a big vacant plot of 30 acres in Poona and, after setting aside nearly half of the purchased plot for The Institute to be named after Dr. R. G. Bhandarkar, distributed the rest among the original contributors as plot-holderṣ The public and Govt. supported the Institute and the famous Tatas donated money to construct a suitable building. The first project undertaken was the publication of the critical edition of the <a class="ref" href="../refs/mahabharata.html" data-source="mahabharata" data-ref="" title="Mahābhārata">Mahābhārata</a>. Govt. made grants, transferred the Bombay Sanskrit Series to the Institute, the Chief of Aundh promised a lakh of rupees for the <a class="ref" href="../refs/mahabharata.html" data-source="mahabharata" data-ref="" title="Mahābhārata">Mahābhārata</a> edition with pictures and later the Nizam of Hyderabad contributed a large sum for building a guest-house for scholars from India and abroaḍ</p>
+<p class="prose" id="p-epilogue-8">The first volume of the History of Dharmaśāstra, which was published in 1930, deals with the chronology and relative importance of famous and less known writers and works and covers 760 pageṣ As I regarded myself as one of the original founders of the B. O. R. I. and as I was a successful lawyer on the Appellate side of the High Court, I offered the volume to that Institute for publication without any agreement about payment. The Preface to the first volume makes it clear that I intended to finish the whole history in two volumes and that even at that time I suffered from a painful complaint (duodenal ulcer) which has dogged my footsteps throughout up to this day. The second volume of the History of Dharmaśāstra covering 1368 pages (including about 300 pages on Śrauta ritual, not included in the original plan) was published in June 1941 (i. e. eleven years after the publication of the first volume), when I was already 61 years old and pursued by an implacable ailment. The third volume containing 1088 pages was published in October 1946 and deals with only three topics ‘Rājadharma, Vyavahāra, and Sadācāra’ (customs and customary law). On account of the 2nd world war there was paper shortage and the finances of B. O. R. I. were at a low ebb. I had therefore to advance three thousand rupees to the B. O. R. I. and had to purchase paper worth several hundred rupees for expediting the printing, in view of the fact that I was in my 67th year and that my physical condition was causing anxiety. The 4th volume is spread over 926 pages, was published in October 1953 (when I was in my 74th year) and deals with Pātaka (sins), Prāyaścitta (expiation), Karmavipāka (fruition of evil deeds), Antyeṣṭi (rites on death), Āśauca (impurity on death and birth), Śuddhi (purification), Śrāddha, Tirthayātrā (pilgrimages to sacred places). The (fifth and) last volume deals with numerous topics, as the Table of Contents will show. The first part of 718 pages dealing with Vrata (sacred vows, observances and festivals) and Kāla was separately published in 1958 (as I had then an attack of heart trouble, and it was thought that I might not survive, being more than 78 years old at that time). The second part now printed deals with Śāntis, Purāṇas in relation to dharmaśāstra, causes of the disappearance of Buddhism from India, Tantras and dharmaśāstra, Sāṅkhya, Yoga, Tarka and dharmaśāstra, Pūrvamīmāṁsā and Dharmaśāstra, Cosmology, doctrine of Karma and Punarjanma, dominant characteristics of our Indian culture and civilization and future trendṣ This volume has been in the press for over five years and has involved an enormous amount of varied reading and writing for over eight years from 1953.</p>
+<p class="prose" id="p-epilogue-9">In describing how and in how many years the <a class="ref" href="../refs/hodh.html" data-source="hodh" data-ref="" title="History of Dharmaśāstra">H. of Dh.</a> deve- loped, I have not said anything about the environment in which I had to work. From about 1918 I began to have good work as a lawyer. I not only conducted cases in the Bombay High Court, but I appeared before the District Courts of the mofussil in several districts such as Khandesh, Nagar, Poona, Sholapur, Satara, and Ratnagiri. I owe a great deal to my college friends, to my students that passed the High Court Vakil's examination after attending my private law class and to Mr. M. K. Athavle of Sangli and Mr. C. M. Saptarishi of Ahmednager for sending me much legal work.</p>
+<p class="prose" id="p-epilogue-10">I took part in many of the intellectual activities in Bombay and Poona. I was a member of the Senate of the Bombay Univer- sity from 1919 to 1928, I have been throughout a member of the Regulating Council of the Bhandarkar Institute and of its other bodieṣ I was closely connected for over 40 years with the Marathi Granthasaṅgrahālaya of Bombay in various capacities and with the Managing Committee, a Trustee for 21 years and Adviser from 1918 to this day.</p>
+<p class="prose" id="p-epilogue-11">I had argued gratis several cases for some societies and indivi- dualṣ Mr. Javdekar, lawyer of Dhulia, espoused the cause of people who had grievances against the Indian Railwayṣ I conducted many such railway cases and cases of poor and helpless people. One of these latter was that of a poor untonsured brāhmaṇa widow who had been prevented by the priests in the temple of Vithoba at Pandharpur from offering worship to the image by placing her head at the feet of the image (because she was untonsured) as all Hindus, male or female, of all castes were allowed to do. I had to go to Pandharpur thrice at my own expense and spent in all seven days in court. The court decided in favour of the widow. The case is referred to in the History of dharmaśāstra, vol. II p. 593 and the arguments are set out on pp. 587–593 of the volume.</p>
+<p class="prose" id="p-epilogue-12">Another case that I conducted gratis is that of the Deccan College, Poona. This College was started by Govt. but a Parsi Baronet, Sir Jamsetji, made in the early sixties of the 19th century a munificent donation of about two lakhs with the stipulation that it was to be maintained as an educational Institution for ever on the lines already laid dowṇ The British Govt. on the suggestion of an Indian Minister wanted to close the College and made a contract for sale of the site and buildings for a Parsi Public School. Some of the Old Boys of the College such as Prof. S. G. Sathe and Dr. Belvalkar consulted me what to do, though I was not an old boy of the Deccan College. I first suggested that a member of the Bombay Legislative Council should ask a question whether the Deccan College was not an Institution held in trust by Govt. The Govt. replied that it was a trust property, but that Govt. would approach the District Court of Poona for permission to sell it for the purpose of a public school. Govt. applied to the District Court at Poona for permission to sell it for the purpose of a public school. I appeared for the old Boys' party to Govt's applicatioṇ The Court allowed the applicatioṇ I had agreed not to charge any feeṣ I suggested that Mr. M. R. Jayakar, who had a great regard for me and was a very successful advocate in Bombay (who later became a member of the Judicial Committee of the Privy Council in England), should be briefed in the matter. The Association said that they had not money enough to pay Mr. Jayakar's heavy feeṣ I requested Mr. Jayakar not to charge any feeṣ He complied with my request and the whole case took about 15 working days in court, besides many days of prepara- tioṇ Mr. Jayakar, having once agreed to work without fees, put his heart and soul in the matter and the District Court in a long judgement of about ninety typed pages held that the Deccan College was a trust and could not be solḍ Govt. went in appeal to the High Court of Bombay, but by that time a popular Ministry with the late Mr. B. G. Kher as Chief Minister had come to power and compromised the matter by agreeing to conduct the Deccan College as a Research Institute for Vedic studies and classical Sanskrit, Ancient Indian History etc. The Association made Mr. Jayakar and myself Honorary members of the Old Boys' Associatioṇ I have been on the Managing Council of the Deccan College Research Institute since 1938 to this day.</p>
+<p class="prose" id="p-epilogue-13">In 1944 I was appointed by the Bombay University Sir Lallubhai Shah Lecturer and delivered four lectures on Hindu customs and modern lawṣ The lectures have been published in book form by the University.</p>
+<p class="prose" id="p-epilogue-14">In 1927 at the time of the Ganapati festival in Bombay, a mela (party of worshippers) of the Mahar caste (held untouchable) approached the authorities of the Brāhmaṇasabhā for permission to come for darśan of the image installed by the Sabhā and stated that they would be content if they were allowed to come as near the image as Parsis, Christians and Moslems would be allowed to do. I was then Chairman of the Managing Committee and called a meeting of the Committee to decide whether the request should be granteḍ In the Committee the voting was exactly half for and half against. I had to give a casting vote for granting permission, since I was of the opinion that the request was a very modest one and in view of the changing times should be acceded to. A suit was filed in the Bombay High Court by certain orthodox people against the Brāhmaṇasabhā, against myself as Chairman of the Manag- ing Committee and the Secretary for a temporary injunction res- training us from bringing the Mahar Mela inside the building where the image was and for a declaration that the Sabhā through its office-bearers had no right to do what had not been pre- viously done. It must be said to the credit of the members of the Sabhā that in a meeting of the general body of members my action was supported by a very large majority. There was great excitement and it was feared that violence might result. The High Court refused to grant a temporary injunction and later the suit was withdrawn by the members seeking legal relief. Our Constitution has abolished untouchability but that was in 1950 and this excite- ment arose in 1927.</p>
+<p class="prose" id="p-epilogue-15">I have been a member of the Managing Committee of the Bombay Asiatic Society for about 45 years, a Vice-President and one of the editors of the Journal of the Society for many yearṣ I contributed many long articles to the Journal of the Society and to the Annals of the Bhandarkar Institute. In 1946 at my request Dr. B. C. Law, a great scholar, whom I had never seen but who had become an admirer of my books, donated Rṣ three thousand (for purchase of books for the Society) and donated five thousand rupees for founding a medal called P. V. Kane Gold Medal to be awarded once every three years to a scholar who had done substantial research in subjects in which I was interesteḍ</p>
+<p class="prose" id="p-epilogue-16">On 7th May 1941, in honour of my 61st birthday ‘A volume of studies in Indology’ was presented to me edited by Dr. S. M. Katre and Prof. P. K. Gode and published by Dr. N. G. Sardesai of the Oriental Book Agency, Poona. My friends and admirers had formed a Committee with Dr. V. S. Sukthankar as Chairman and invited paperṣ Many contributions came in, of which 74 are contained in that work, mostly written by Indian scholars (a few by scholars from abroad also).</p>
+<p class="prose" id="p-epilogue-17">In 1942 the British Govt. conferred on me the title of Mahā- mahopādhyāya and the Allahabad University conferred on me the Honorary Degree of D. Litt. In 1946 I was asked to preside over the All India Oriental Conference held at Nagpur. In 1947 Mr. B. G. Kher, then Chief Minister of the Bombay State, pressed me to become Vice-Chancellor of the Bombay University for two years and I agreed after some hesitation owing to my age (about 68). There was no salary attached to the post nor was there any sumptuary allowance nor any other allowance. In the years 1947 to 1949 I had three matters on my hands, my legal practice, the History of dharmaśāstra and the work as Vice-Chancellor (which was heavy in those days, sometimes three hours a day). Mr. Kher pressed me to remain Vice-Chancellor for three years more, offered to make it a salaried post of 2000 Rṣ per month and requested me to give up practice as Advocate. The then Governor of Bombay, Sir Maharaj Singh, as Chancellor, also pressed me, but for various reasons (the foremost being that the work on the History of Dharma- śāstra would make slow progress if I spent five or more hours a day in the University) I declineḍ The Session of the All India Oriental Conference was held in Bombay in 1949. I was Chairman of the Reception Committee. On my request the Śākuntala of Kālidāsa was performed in Sanskrit with songs, the director being Mr. K.C.M. Bhatavdekar who is a fine-looking and tall man, an excellent actor, a good Sanskritist and a singer. It was a great succesṣ Emboldened by this success I suggested that other Sanskrit dramas should be put up on the stage. Mr. Bhatawdekar and Mr. P. P. Joshi, two enthusiastic workers of the Sanskrita Samiti (Cultural Committee) of the Brāhmaṇasabhā at Bombay, worked hard and at different times and in different places (Delhi, Bombay, Ujjain, Poona) put up on the stage ten Sanskrit dramas, Śākuntala, Mrcchakaṭika, Ratnāvali, Veṇīsaṁhāra, Uttararāmacarita, Mudrārākṣasa, Vikramorvaśīya, Mālavikāgnimitra, Svapnavāsavadattā and Śāṅgīta Saubhadra (translated into Sanskrit by Mr. S. B. Velankar, Indian Postal Service, from the original Marathi by Anna Kirloskar). These performances became very popular. The sale of tickets yielded 150,000 Rṣ out of which about thirty thousand were saved after meeting all expenses as a fund to fall back upon when they performed one of these plays at different placeṣ</p>
+<p class="prose" id="p-epilogue-18">The International Congress of Orientalists was held in Paris in 1948. The Indian Govt. sent a delegation of three, Dr. S. Radhakrishnan as leader and Dr. S. K. Chatterji and myself as two memberṣ In 1951 the International Congress met in Istanbul and the Indian Govt. sent a delegation consisting of myself (as leader), Dr. R. C. Majumdar and Prof. Siddiqui. At this conference I sponsored a resolution that the Unesco should make a substantial grant to the project of a Sanskrit Dictionary on Historical Principles undertaken by the Deccan College and it was unanimously passed by the Conference and subsequently Unesco made a grant of 5000 dollars to the Deccan College. In 1954 the Session of the International Congress of Orientalists was held at Cambridge to which the Govt of India sent a delegation consisting of myself (as leader), Dr. S. K. Chatterji and Dr. R. N. Dandekar. From Cambridge I went at my own expense to U. S. A. and visited the Library of the Congress in Washington for two days, the University of Princeton, Harvard University and the University of Rochester, where my younger son was studying for the Ph. D. degree in Atomic and Nuclear Physicṣ The Governing Body of the London School of Oriental and African studies of the London University was pleased to nominate me as an Honorary Fellow, I being the only Indian among the present 25 Honorary Fellows of the School. In December 1953 I presided over the session of the Indian History Congress at Waltair. In November 1953 the President of India was pleased to nominate me as a member of Parliament i.e. of the Rājyasabhā ( Council of States ) and when my term expired on 1-4-58 I was again nominated for six yearṣ While in Parliament I worked on several committees such as the Committees for considering the Hindu Adoption Act, the Hindu Marriage Act, the Hindu Succession Act. I pressed on the Govt. that they should start a Central Institute of Indian Studieṣ This has been now accepted in principle and a committee has been appointed to suggest a constitution and other matterṣ I have also been a member of the Central Sanskrit Boarḍ On 15th August 1958 the President of India was pleased to grant me a certificate of merit and an annuity of Rṣ 1500 a year. In August 1959 the President was pleased to nominate me as National Professor of Indology for five years on a substantial salary, the only condition being that I should carry on research as I have been doing. I resigned from Parliament in September 1959, because as I held an office of profit under Govt., I had to do so according to law. In 1960 the University of Poona conferred on me the Honorary Degree of Doctor of Letterṣ</p>
+<p class="prose" id="p-epilogue-19">From the beginning of 1955 I did not take any fresh legal work and by March 1956 I got all my cases disposed off. Since April 1956 I have systematically refused all pressure to accept briefṣ Since April 1956 I have devoted my time to Parliamentary work ( till September 1959 only ) and to the last volume of the History of Dharmaśāstra.</p>
+<p class="prose" id="p-epilogue-20">I had substantial legal work from 1919 to about 1949. For the benefit of those who made inquiries and of those who desire to pursue literary studies while working as lawyers, I shall briefly state how I saved time for literary work. The High Court worked for five days in the week. I always utilized all holidays for literary work. Saturday and Sunday have always been my busiest dayṣ There were always two Benches ( sometimes three Benches also ) on the Appellate side of the High Court. Often ten appeals were placed on the board for each Bench every day, since the practice of the Court has been that if an Advocate had two matters, one in each of the different courts and he was engaged in one court, his case in the other court was kept back till he became free. So when an advocate had even one appeal in one court and that too very low down in the list, even then he had to be present in court from the beginning, since appeals lower down on the Board might be taken up by the Court if the lawyers therein were available. Most lawyers when free spent their time in chitchat in the Advocates' rooṃ I spent such time in the Library for preparing my briefs that were likely to be taken up in the next few weekṣ I hardly ever read my briefs at home. Therefore, I could devote every day some hours in the morning and evening to my work on Sanskrit studieṣ I always worked for eight or nine hours a day and sometimes ten to twelve hours from 1911 to 1948, except when I was not in Bombay. I have never slept or even taken a nap by day from 1904 to 1958; even when I went to see a drama at night and came home at 2 A.M. I awoke at 6 A.M. and slept a little earlier on the following night. After the mild heart trouble in 1958, I tried sleeping a little by day, but not being used to such a thing I gave it up in a few monthṣ For fifty years I have been taking morning walk for about one hour on the Chowpati sea face in Bombay and at the Hanging Gardens since 1912, but stopped going to the Hanging Gardens from about 1956.</p>
+<p class="prose" id="p-epilogue-21">That I had duodenal ulcer was discovered by x-ray therapy about 1925. Some doctors advised an operatioṇ Others opposed it. I consulted the then most eminent surgeon in Bombay, Dr. G. V. Deshmukh, and he advised me not to go in for it. Again in 1937 when I undertook a trip in European countries for three months, I consulted in Vienna an eminent German doctor who advised me to continue my dietetic methods and not to undergo an operation, when I was nearly 58 and the disease was of very long standing.</p>
+<p class="prose" id="p-epilogue-22">A few words about my method of collecting materials for my History of dharmaśāstra. I have about a hundred note-books, some of them subjectwise and some with pages marked from A to Z, in which I noted important pages and passages extracted from the works reaḍ For example, I have a big oblong notebook ( leather bound ) of about 500 pages devoted to Purāṇas only.</p>
+<p class="prose" id="p-epilogue-23">As regards the writing of the History of dharmaśāstra my method was as follows: I wrote in my own hand a first draft, collected a hundred pages or so and then carefully read those pageṣ Sometimes I tore off several pages and prepared a new draft. I cannot type well, having had no time to cultivate the habit of using a typewriter. Then I got the matter typewritten by an excellent typist, Mr. G. R. Barve, who was my neighbour and who could decipher my bad writing tolerably well and paid him his usual chargeṣ I sent to the Press only the handwritten original of the first volume. It was from the 2nd volume onwards that I got one or two copies typewritten ( two when there was danger of bombing Bombay in 1942 ) and sometime afterwards I read the typed copy myself and put in the diacritical markṣ This was sent to the Press in Poona. I examined three ( rarely four ) proofs of all forms myself, but the press had directions to send a copy of the third page proof to a good Sanskrit scholar in Poona who was to read it and make corrections ( not in the matter but only as to diacritical marks, spelling, stops etc. ) and to send the corrected proof to me and I incorporated his corrections ( if accepted by me ) in my own copy of the third proof, which was sent to the Press as the final proof. The Indexes to all the five volumes were prepared by me. The Indexes to volumes I–IV alone come to 269 pageṣ The total printed pages of all works written and printed by me and of the numerous papers that I contributed to the Journal of the Bombay Asiatic Society, the Annals of the Bhandarkar Oriental Institute and to other Journals would come to at least twenty thousand pageṣ To the typewriters of vol. II to V, I paid about 2500 rupees out of my own pocket and about 600 rupees to the correctors of the page proofs ( of volume II to V ). I went to places that had collections of Sanskrit Msṣ such as Poona ( very often ), Baroda, Benares ( several times ), Madras ( several times ), Tanjore and Ujjain at my own expense for reading several msṣ and getting copies made of a few of theṃ In our country, there are no large libraries like those in Europe and U. S. A. So I had to spend money on securing micro-films of certain articles in foreign journals and copies of certain Msṣ I have no accounts of the travelling charges but about making copies of some msṣ and microfilms I can say that they came to about 200 rupeeṣ The Press was in Poona and I was in Bombay and the proofs ( along with the original copy at the time of the despatch of the first proof ) had to be sent by post for about 35 years ( sometimes one form, sometimes two and rarely three at a time ). Besides, the original mṣ had always to be sent in small packets ( of from 50 to 100 handwritten or typed pages ) by registered bookpost. No accounts are kept of this but probably Rṣ 400 would be a very modest estimate. The honorarium paid ( and to be paid ) to me for all the five volumes is given in the table below :</p>
+<p class="prose" id="p-epilogue-24">For the information of those who have already inquired or ` might inquire hereafter about the cost of this undertaking viṣ, History of Dharmaśāstra, a table is appended:—</p>
+<p class="prose" id="p-epilogue-25">| Volumes           | Year of publication | Cost of Printing, paper, binding | Honorarium                                     | | :---------------- | :------------------ | :------------------------------- | :--------------------------------------------- | | I                 | 1930                | Rṣ 4814 - 12                    | Rṣ 2433 - 0                                   | | II ptṣ 1 and 2   | 1941                | Rṣ 8828 - 12                    | Rṣ 4239 - 0                                   | | III               | 1946                | Rṣ 8605 - 13                    | Rṣ 2256 - 0                                   | | IV                | 1953                | Rṣ 11092 - 9                    | Rṣ 2873 - 0                                   | | V part I          | 1958                | Rṣ 25000 - 0                    | Rṣ 7000 - 0                                   | | V part II         | 1962                | (Approximately)                  | (Approximately) the II part is to be hereafter published |</p>
+<p class="prose" id="p-epilogue-26">58341 - 13 18802 - 0 77,143 - 13</p>
+<p class="prose" id="p-epilogue-27">3900 copies of volumes II-V are unbound as follows:—</p>
+<p class="prose" id="p-epilogue-28">Copies unbound Vol. II parts 1 and 2 1000 Volume III 800 Volume IV 1000 Volume V pt. 1 1100 3900 copies</p>
+<p class="prose" id="p-epilogue-29">The charges for binding these 3900 copies at Rṣ 2/- ( per copy ) would be Rṣ 7,800 ( 3900 x 2 ).</p>
+<p class="prose" id="p-epilogue-30">Thus the cost of the whole series would be Rṣ 84,943–13–0 ( 77,143–13 + 7,800 ). It must be mentioned that the Executive Board of the B. O. R. I. paid me Rṣ three per page as to Volumes I, II and IV and only Rṣ two per page for Vol. III and propose to pay me Rṣ four per page for Vol. V, leaving me to bear all expenses for typewritten copy, for correction of one proof by a third person, all postage, travelling expenses and for copies of msṣ and microfilmṣ The usual method in India as regards Histories or Encyclopedias in several volumes (running into thousands of pages) is to appoint a Director or Chief Editor (on a salary of Rṣ 1500 per month), an Assistant Editor (on a salary of Rṣ 600 or Rṣ 750 per month) and to pay contributors at Rṣ five or so per page, beside an office and a staff of clerks and typistṣ The Director's salary on the usual scale for one year alone would come to Rṣ 18,000. The payments made and to be made to me for writing a work of over six thousand pages spread over 37 years come practically to one year's salary for a Chief Editor (or rather less by Rṣ 3700 which were spent for typewriting, correction, and copies etc. as stated above). I do not like this distasteful task. I had, however, to write about this matter because I wanted to dispel the queer notions about my profits that some people appear to entertain and made inquirieṣ It is owing to one individual's sacrifice that all the volumes (containing over 6000 pages) can be sold by the Bhandarkar Oriental Institute for only Rṣ 180. If the usual method had been followed, these 6000 pages would have had to be priced at Rṣ 400 or more.</p>
+<p class="prose" id="p-epilogue-31">I could not arrange or plan my life. I had to oscillate between education, literature and law, between Government service and an independent profession like that of law. I have, however, lived a very active, full and varied life for over sixty yearṣ Thinking over the vast Sanskrit literature and the labour and time that I had to spend on one branch of it, I am inclined to close this Epilogue with two lines from Browning's poem “The last ride together ”</p>
+<p class="prose" id="p-epilogue-32">‘ Look at the end of the work, contrast The petty done, the undone vast.’</p>
+<p class="prose" id="p-epilogue-33">ACKNOWLEDGMENTS AND THANKS</p>
+<p class="prose" id="p-epilogue-34">During the last thirty-seven years from 1925 to this day I have received from hundreds of friends and others, institutions and books, assistance of various kindṣ Now that this undertaking is drawing to a close, I should like to mention with gratitude all of them that I can remember. In the Prefaces to the several volumes of this History I have acknowledged the help received from individuals in writing the separate volumeṣ Here at the end of the whole work, I shall try to mention in one place the Institutions, the series of books and individuals to whom I have been indebteḍ</p>
+<p class="prose" id="p-epilogue-35">INSTITUTIONS</p>
+<p class="prose" id="p-epilogue-36">Among Institutions the first place must be assigned to the Library of the Bombay Asiatic Society ( formerly called Bombay Branch of the Royal Asiatic Society ). It was in this Library that I passed several hours almost every day ( except on holidays ), when I was in Bombay. It has also a large collection of Sanskrit Msṣ The materials for the first four volumes were collected mainly in the rooms of this Library. I owe a deep debt of gratitude to this Library and to all persons in the service of the Library from the highest to the lowest. I must next mention the Library of the Bombay University, which was also of great use to me. The Library of the Bombay Asiatic Society is a circulating Library with a large membership, but the Bombay University Library permits only the members of the Senate to have books issued to them for reading at home. I could secure books urgently needed by me from this Library, when I could not get them from the Asiatic Society's Library ( because some members had taken them ). Besides, it possesses a large number of Sanskrit Msṣ I tender my thanks to the Bombay University and its Library, to the staff of the Library and particularly to Mr. D. N. Marshall, the present Librariaṇ Since November 1953 when I was nominated a member of Parliament ( Rājyasabhā ) by the President of India, two more Libraries became available to me. One was the Library of Parliament which contains a large number of books on many subjects including Sanskrit Literature, Ancient Indian History, and the Library of the Archaeological Department in New Delhi. I thank the staff of the Parliament Library. Dr. A. Ghosh, Director-General of the Archaeological Survey of India, made special arrangements for seating me in the Archaeological Library and made me a corresponding member. Dr. Chhabra, Joint Director of that Department, also was very kind and helpful. I am under great obligations to these high Officerṣ When at the end of 1953, I went to the Library of the Archaeological Department, the Librarian was a young man, Shri L. G. Parab, a double M. A. of the Bombay University, a B. T. and holder of a diploma in Librarianship. He is a very industrious and enthusiastic young Librarian, who made great efforts to keep the Library full of Sanskrit books, full of books both on ancient and medieval history of India and of other countries, and of books on all archae- logical studies, such as architecture, iconography and painting, kept the Library uptodate and took a keen interest in my work and a great deal of trouble to accommodate me in various ways (too many to mention) from 1954 to the present day. Much of the material for this lengthy 5th volume was collected in the Archaeological Library and a good deal of the text also was written there. I am under a deep debt of gratitude to Mr. Parab and also thank all his assistants, particularly Messrṣ Kapur and Mr. A. S. Dhavle and his Jamadar, Bhagavat Sahai.</p>
+<p class="prose" id="p-epilogue-37">Then I must mention certain Series of books and certain Presses that have printed and published a large number of books, such as the Ānandāśrama series (Poona), the Bibliotheca Indica Series the Bombay Sanskrit Series, the Kāvyamālā and the Nirnayasāgar Press, Calcutta Oriental Series, Chowkhamba S. Series, Cultural Heritage of India, volumes I–IV (Calcutta), the Gujarati Press and its Sanskrit Series, the Gaikwad Oriental Series (Baroda), Haridas Sanskrit Series (Benaras), Harvard Oriental Series, Kashi Sanskrit Series, Jivanand Vidyasāgar’s numerous publications, Prājñapātha- śālā Maṇḍala's volumes of Dharmakośa and Mīmāṁsā-kośa (Wai), Kashmir Sanskrit Series, the Manikyachandra Digambar Jain Series, Jain Grantha-male Series, Pali Texts Society’s Series, Prince of Wales Sarasvatibhavana Series of texts and Studies, Pandit S. D. Satavalekar's Series of Vedic Saṁhitās, Sacred Books of the East Series (50 volumes including the valuable Index Volume), St. Petersburg Dictionary by Bohthlingk and Roth, the Vaidika Saṁśodhana-maṇḍal’s volume of 18 Upaniṣads with valuable foot- notes and Index (Poona), Trivandrum S. Series, Vedic Index (in two volumes) of Macdonell and Keith, Vijianagram S. Serieṣ</p>
+<p class="prose" id="p-epilogue-38">Among periodicals I must mention, the Epigraphia Indica, the Indian Antiquary and those indexed under the word ‘Journal’.</p>
+<p class="prose" id="p-epilogue-39">I am highly obliged to many scholars who contributed apprecia- tive and encouraging reviews in several journals and newspaperṣ The first and third volumes received the largest number of reviewṣ I shall mention only a few for each volume. The first was reviewed in the Bombay Law Reporter, volume 32 (Journal pp. 94–95), in J. A. O. S. for 1931 volume 61 pp. 80–84 by Prof. Hopkins, in JRAS. for 1932 pp. 158–161 by Prof. S. V. Fitzgerald, I. H. Q. for 1932, pp. 805–807 by Amareshwar Thakur, J. of Oriental Research, Madras, for 1931 pp. 231–233 by Prof. Kuppuswami Sastri, by the ‘ Kesari ’ of Poona in three issues dated 7th, 10th, 14th March 1931 ( in Marathi ); Volume II was reviewed by Prof. K. V. Rangaswami Aiyangar in very eulogistic terms in Adyar Library Bulletin for 1944 pp. 75–86, in J. R. A. S. for 1942 pp. 106–107 by Prof. Brough ; Vol. III was reviewed in “Indian Culture ” by Dr. B. C. Law, Volume XIII for 1947 pp. 119–23, in Journal Asiatique for 1948, vol. 236 pp. 149–150 by Prof. L. Renou and also in his book “ Sanskrit et Culture” ( Paris, 1950) pp. 126–136, in J. A. O. S. Vol. 67 pp. 232–234 by Dr. Ludwik Sternbach, in M. L. J. Vol. 93 for 1947 ( Journal pp. 33–38 ), in newspaper “Hindu ” of 25. 5. 1947 ( Madras) by Prof. K. V. Rangaswami Aiyangar, in Boṃ Law Reporter for January 1947 (Journal pp. 13–15), in the “Bombay Chronicle” of 9-2-1947 by Mr. Prabhu and in the ‘ Times of India ’ of 13. 6. 1947, by Mr. N. C. Kelkar in “Kesari ” of 2nd and 5th December 1947, in ‘Prabhāt’ ( a Marathi newspaper ) in seven issues in March and May 1947 by Shri N. G. Chapekar ; Volume IV was reviewed at some length by Prof. Hans Losch of Bonn in Z. D. M. G. Volume 107 pp. 217–221, and in 56 Boṃ L. R. ( 1954 pp. 34–35 Journal ), in the Journal of the Ganganath Jha Research Institute, volume X pp. 168–172, in J. A. O. S. Vol. 74, pp. 271–273 by Dr. Sternbach, in the Bulletin of the London School of Oriental and African Studies, Volume 17, part 3 for October 1955 pp. 620–21 and in the “Kesari ” of 26th September 1954 by Mr. J. S. Karandikar ; Volume V part I was reviewed in J. A. O. S. for 1959 by Dr. Sternbach, in J. R. A. S. for 1960 pp. 193–194 by Dr. Derrett. Volumes I to IV were reviewed by Prof. V. I. Kalyanoy in the Quarterly Journal of the Indo-Soviet Cultural Society, volume VII No. 4 pp. 7–10 (1960). The number of Individual authors whose works I read or whom I consulted in 37 years may run into thousandṣ Authors and works referred to only once or twice are not collected here, but they have been men tioned in the several separate Indices to the five volumeṣ Only very eminent writers or authors who wrote several valuable works and papers or were personally consulted are named below.</p>
+<p class="prose" id="p-epilogue-40">Abhyankar, Vasudevasastri ( M. M. Pandit ); Prof. K. V. Abhyankar ( son of the preceding ) ; Aiyangar ( Krishna ), (Prof.) K. V. Rangaswami Aiyangar, Dr. Krishnaswamy Aiyangar, Dr. A. S. Altekar, Arthur Avalon ( Sir. John Woodroffe ), Mr. M. B. Arte, Sri Aurobindo, Prof. P. V. Bapat, Shri. N. C. Bapat, Prof. A. L. Basham, Mr. Y. A. Bhat, Dr. S. K. Belvalkar, Pandit Bhagavad- datta, Dr. D. R. Bhandarkar, Prof. G H. Bhatt, Mr. ( and now Dr.) Bhabatosh Bhattacharya, Dr. Benoyatosh Bhattacharya, M. Bloomfield, G. Bühler, A. Burnell, Dr. Caland, Prof. Chinta- haran Chakravarti, M. M. Cakravarty, Mr. N. G. Chapekar, Mr. M. A. Chinnaswami Sastry, H. T. Colebrooke, A. Coomaraswamy, E. B. Cowell, Dr. K. L. Daftari, Dr. R. N. Dandekar, Dr. Matilal Das, Prof. Das Gupta, Datar Chintaman Sastri, T. W. Rhys Davids, Prof. S. K. De, Paul Deussen, Dr. (Miss) Indu Dike, Mr. D. B. Diskalkar, Mr. P. C. Divanji, Shri R. R. Diwakar, Pandit K. S. Dravid ( Sāmaveda expert), Prof. P. E. Dumont, Will Durant, M. N. Dutt, Prof. Edgerton, Julius Eggeling, V. Fausböll, Prof. Filliozat, J. F. Fleet, A. A. Führer, Dr. D. Gaastra, Dr. G. S. Gaj, Pandit T. Ganapati Sastri, R. Garbe, G. T. Garrat, Dr. U. N. Ghoshal, Dr. G. S. Ghurye, Prof. P. K. Gode, Prof. N. A. Gore, M. M. Gopinath Kaviraj, G. Gorer, H. H. Gowen, R. T. Griffith, F. Hall, Martin Haug, Dr. R. C. Hazra, A. Hillebrandt, Prof. M. Hiriyanna, Dr. R. Hoernle, Prof. Hopkins, R. E. Hume, Col. G. A. Jacob, H. Jacobi, W. James, K. P. Jayaswal, Dr. Ganganath Jha, Julius Jolly, Dr. B. S. Joshi, Tarkatīrtha Lakṣmaṇa Śāstrī Joshi, Mr. S. N. Joshi ( Poona ), Pandit Kamalkrishna Smrititirtha, Mr. S. L. Katre, Dr. S. M. Katre, A. B. Keith, H. Kern, Mr. Kesavan (National Library, Calcutta ), Dr. S. V. Ketkar, Swami Kevalānanda, Mr. G. H. Khare, Pandit Balacharya Khuperkar, F. Kielhorn, W. Kirfel, Tarkatīrtha Raghunath Shastri Kokje, Sten Konow, Prof Kunhan Raja, Prof. Kuppuswami Sastri, Shri Kuvalayānanda, Dr. B. C. Law, Sylvain Levi, H. Lüders, A. A. Macdonell, MacTaggart, Dr. R. C. Majumdar, V. N. Mandlik, Prof. Mangal Deva Shastri, Sir R. P. Masani, F. Max-Müller, Dr. V. V. Mirashi, Rajendralal Mitra, Dr. M. M. Umesha Mishra, Dr. R. K. Mukerji, Mr. Y. M. Mulay, Prof. Neugebauer, Prime Minister Jawaharlal Nehru, K. L. Ogale, Hermann Oldenberg, Pandit J. S. Pade, Shankar Pandurang Pandit, Prof. A. M. Paramasivanandan, Prof. V. G. Paranjape, Peter Peterson, A. S. Pringle-Pattison, Mr. P. M. Purāndare, Dr. A. D. Pusalker, Dr. S. Radhakrishnan, Ranga- charya Raddi Shastri, Dr. V. Raghavan, V. K. Rajwade, Prof. R. D. Ranade, Prof. P. T. Raju, Prof. L. Renou, R. Roth, Mr. R. S. Sarma. Prof. G. Sarton, Miss Kunda Sathe (now Mrṣ Savkar), P. P. S. Sastri, Pandit Aiyanath Sastri, Dr. Dakshinarajan Shastri, M. M. Sridhar Sastri Pathak, Satyavrata Samäśrami, Mr. S. N. Savadi, Pandit Srījiva Nyāyatirtha, Pandit V. A. Ramswami Sastri, Pandit S. D. Satavalekar, R. Sham Sastri, V. A. Smith, Prof. P. A. Sorokin, Dr. Sternbach, Pandit Sudhakar Dwivedi, Dr. V. S. Sukthankar, Dr. A. Schweitzer, W. W. Tarn, C. H. Tawney, R. H. Tawney, K. T. Telang, G. Thibaut, K. P. Trivedi, Prof. A. N. Upadhye, Prof. H. D. Velankar, Swami Vivekānanda, Prof. A. R. Wadia, A. Weber, H. G. Wells, W. D. Whitney, Monier Williams, H. H. Wilson, M. Winternitz, R. C. Zaehner, H. Zimmer. I beg to be pardoned if, through loss of memory, I have omitted the names of persons to whom I have been indebted for advice, guidance or informatioṇ</p>
+
+            <div class="chapter-nav">
+                <a href="chapter-xxxvii-future-trends.html" class="nav-prev"><i class="fa-solid fa-chevron-left"></i> Chapter XXXVII. Future Trends</a>
+                <a href="index-to-vol-v.html" class="nav-next">Index (to Vol. V) <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </main>
+    </div>
+
+    <button class="toc-mobile-toggle" onclick="toggleMobileToc()" aria-label="Table of contents">
+        <i class="fa-solid fa-list"></i>
+    </button>
+
+    
+    <footer class="container-fluid pt-4" style="background-color:#2e4144">
+        <div class="row border-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img src="https://sanatana.in/mbta/public/images/Homepage_html/images/layer_8.png" alt="">
+            </div>
+            <div class="col-md-5 text-white">
+                <p>The divine knowledge and wisdom of our shastras is the only thing eternal,
+                   which was and which will remain ever-present in this gods creation.
+                   Our endeavours are to preserve this knowledge.</p>
+            </div>
+            <div class="col-md-1 text-white">
+                <div class="d-flex" style="height: 75px;">
+                    <div class="vr"></div>
+                </div>
+            </div>
+            <div class="col-md-3 text-white">
+                <i class="fa-solid fa-globe"></i>&emsp;
+                <a href="https://sanatanasampatti.in" class="text-light">www.sanatanasampatti.in</a><br>
+                <i class="fa-solid fa-envelope"></i>&emsp;
+                <a href="" class="text-light">sriranga.yoga@gmail.com</a>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center py-3 mb-4 align-items-center border-bottom">
+            <div class="col-md-2 text-white fs-4 text-center">Project</div>
+            <div class="col-md-2 text-white fs-4 text-center">Our Mission</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contribute</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contact Us</div>
+        </div>
+        <div class="row">
+            <p class="col-md-6 fs-6 text-start text-light">
+                <small>&copy; 2026 Sanatanasampatti</small>
+            </p>
+            <p class="col-md-6 fs-6 text-end text-light">
+                <a class="text-white" rel="nofollow" href="http://www.srirangadigital.com" target="_blank">
+                    <img src="https://sanatana.in/mbta/public/images/logo.png" alt="sriranga logo" />
+                    <small>Designed, Developed and Maintained by Sriranga Digital</small>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        const headings = [];
+        tocLinks.forEach(link => {
+            const id = link.getAttribute('href').substring(1);
+            const el = document.getElementById(id);
+            if (el) headings.push({ el: el, link: link.parentElement });
+        });
+
+        function onScroll() {
+            let current = null;
+            for (const h of headings) {
+                const rect = h.el.getBoundingClientRect();
+                if (rect.top <= 120) current = h;
+            }
+            tocLinks.forEach(l => l.parentElement.classList.remove('active'));
+            if (current) current.link.classList.add('active');
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    });
+
+    function toggleMobileToc() {
+        const toc = document.getElementById('toc');
+        if (!toc) return;
+        if (toc.style.display === 'block') {
+            toc.style.display = '';
+            toc.style.position = '';
+        } else {
+            toc.style.display = 'block';
+            toc.style.position = 'fixed';
+            toc.style.top = '0';
+            toc.style.left = '0';
+            toc.style.width = '80vw';
+            toc.style.maxWidth = '320px';
+            toc.style.height = '100vh';
+            toc.style.maxHeight = '100vh';
+            toc.style.zIndex = '2000';
+            toc.style.background = 'var(--parchment)';
+            toc.style.boxShadow = '4px 0 20px rgba(0,0,0,0.2)';
+            toc.style.padding = '24px';
+            toc.style.overflowY = 'auto';
+        }
+    }
+    </script>
+
+    <script>
+    function toggleSynopsisAudio(btn) {
+        var audio = btn.parentElement.querySelector('audio');
+        if (!audio.src) audio.src = btn.getAttribute('data-src');
+        if (audio.paused) {
+            audio.play();
+            btn.classList.add('playing');
+            btn.querySelector('i').className = 'fa-solid fa-pause';
+        } else {
+            audio.pause();
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        }
+        audio.onended = function() {
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        };
+        // Prevent click from toggling the synopsis open/close
+        event.stopPropagation();
+    }
+    </script>
+</body>
+</html>

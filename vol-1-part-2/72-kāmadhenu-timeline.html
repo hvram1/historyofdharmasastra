@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline — 72. Kāmadhenu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+    :root {
+        --parchment: #faf6ef;
+        --parchment-mid: #f0e6d3;
+        --saffron: #e8941a;
+        --ink: #2c1810;
+        --ink-secondary: #5a3e2b;
+        --rule: #d4c5a9;
+        --indigo: #2d5a87;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+        font-family: 'Lora', Georgia, serif;
+        background: var(--parchment);
+        color: var(--ink);
+    }
+    .navbar {
+        background: linear-gradient(135deg, #1a0f0a, #2c1810);
+        padding: 12px 24px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+    .navbar a { color: var(--parchment); text-decoration: none; }
+    .navbar .devanagari { font-size: 1.3rem; }
+    .navbar .nav-title { font-family: 'Lora', serif; font-size: 1rem; opacity: 0.9; }
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+    .breadcrumb-bar a { color: var(--saffron); text-decoration: none; }
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+    .content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 24px;
+    }
+    h1 {
+        font-size: 1.6rem;
+        margin-bottom: 8px;
+        color: var(--ink);
+    }
+    .subtitle {
+        font-size: 0.9rem;
+        color: var(--ink-secondary);
+        margin-bottom: 24px;
+    }
+    .timeline-container {
+        overflow-x: auto;
+        padding: 16px 0;
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        background: var(--parchment);
+    }
+    .timeline-svg {
+        display: block;
+        min-width: 100%;
+    }
+    .timeline-svg .tl-evt { cursor: pointer; }
+    .timeline-svg .tl-evt:hover { transform: scale(1.5); }
+    .event-list {
+        margin-top: 32px;
+    }
+    .event-list h2 {
+        font-size: 1.1rem;
+        margin-bottom: 16px;
+        color: var(--ink-secondary);
+    }
+    .event-item {
+        display: flex;
+        gap: 16px;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--rule);
+        font-size: 0.88rem;
+    }
+    .event-year {
+        min-width: 90px;
+        font-weight: 600;
+        color: var(--saffron);
+        font-family: 'Open Sans', sans-serif;
+    }
+    .event-label { font-weight: 600; }
+    .event-context {
+        color: var(--ink-secondary);
+        font-size: 0.82rem;
+        margin-top: 2px;
+    }
+    .event-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.8rem;
+    }
+    .event-link:hover { text-decoration: underline; }
+    .back-link {
+        display: inline-block;
+        margin-top: 24px;
+        color: var(--saffron);
+        text-decoration: none;
+        font-family: 'Open Sans', sans-serif;
+    }
+    .back-link:hover { text-decoration: underline; }
+    .century-group {
+        margin-bottom: 8px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        overflow: hidden;
+    }
+    .century-heading {
+        display: block;
+        padding: 10px 16px;
+        background: var(--parchment-mid);
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: var(--ink);
+    }
+    .century-heading:hover { background: #e8dcc8; }
+    .century-count {
+        font-weight: 400;
+        color: var(--ink-secondary);
+        font-size: 0.82rem;
+    }
+    .century-events {
+        padding: 8px 16px;
+    }
+    .vol-tl-link {
+        display: inline-block;
+        margin: 4px 8px 4px 0;
+        padding: 6px 14px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        color: var(--saffron);
+        text-decoration: none;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+    }
+    .vol-tl-link:hover {
+        border-color: var(--saffron);
+        background: #f5ebe0;
+    }
+    .vol-tl-count {
+        color: var(--ink-secondary);
+        font-size: 0.78rem;
+    }
+    /* ── Tab switcher ── */
+    .tl-tabs {
+        display: flex; gap: 0; margin-bottom: 20px;
+        border-bottom: 2px solid var(--rule);
+    }
+    .tl-tab {
+        padding: 10px 20px; cursor: pointer;
+        font-family: 'Open Sans', sans-serif; font-size: 0.9rem;
+        color: var(--ink-secondary); border-bottom: 2px solid transparent;
+        margin-bottom: -2px; transition: all 0.2s;
+    }
+    .tl-tab:hover { color: var(--ink); }
+    .tl-tab.active { color: var(--saffron); border-bottom-color: var(--saffron); font-weight: 600; }
+    .tl-panel { display: none; }
+    .tl-panel.active { display: block; }
+    /* ── Entity graph styles ── */
+    .eg-entity {
+        border: 1px solid var(--rule); border-radius: 6px;
+        margin-bottom: 8px; overflow: hidden; transition: border-color 0.2s;
+    }
+    .eg-entity.highlighted { border-color: var(--saffron); box-shadow: 0 0 0 1px var(--saffron); }
+    .eg-header {
+        display: flex; align-items: center; gap: 12px;
+        padding: 10px 16px; background: var(--parchment-mid);
+        cursor: pointer; font-family: 'Open Sans', sans-serif;
+    }
+    .eg-header:hover { background: #e8dcc8; }
+    .eg-name { font-weight: 600; font-size: 0.92rem; flex: 1; }
+    .eg-type {
+        font-size: 0.72rem; padding: 2px 8px; border-radius: 10px;
+        background: var(--parchment); color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .eg-claims-count {
+        font-size: 0.78rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif;
+    }
+    .eg-body { padding: 12px 16px; display: none; }
+    .eg-entity.open .eg-body { display: block; }
+    .eg-range-bar {
+        position: relative; height: 32px;
+        background: var(--parchment-mid); border-radius: 4px;
+        margin-bottom: 10px; overflow: hidden;
+    }
+    .eg-range-fill {
+        position: absolute; top: 6px; height: 20px;
+        background: var(--saffron); opacity: 0.3; border-radius: 3px;
+    }
+    .eg-range-dot {
+        position: absolute; top: 11px; width: 10px; height: 10px;
+        background: var(--saffron); border-radius: 50%;
+        transform: translateX(-5px); cursor: pointer;
+    }
+    .eg-range-dot:hover { transform: translateX(-5px) scale(1.4); }
+    .eg-range-label {
+        position: absolute; top: -2px;
+        font-size: 0.7rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif;
+        transform: translateX(-50%);
+    }
+    .eg-cooccur {
+        margin-top: 8px; padding-top: 8px;
+        border-top: 1px solid var(--rule);
+    }
+    .eg-cooccur-title {
+        font-size: 0.78rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif; margin-bottom: 6px;
+    }
+    .eg-cooccur-chip {
+        display: inline-block; margin: 2px 4px 2px 0;
+        padding: 3px 10px; background: var(--parchment-mid);
+        border: 1px solid var(--rule); border-radius: 12px;
+        font-size: 0.78rem; color: var(--ink);
+        font-family: 'Open Sans', sans-serif;
+        cursor: pointer; transition: all 0.2s;
+    }
+    .eg-cooccur-chip:hover { border-color: var(--saffron); color: var(--saffron); }
+    .eg-cooccur-weight {
+        font-size: 0.68rem; color: var(--ink-secondary); margin-left: 2px;
+    }
+    .eg-claim-list { margin-top: 8px; }
+    .eg-claim {
+        display: flex; gap: 12px; padding: 4px 0;
+        font-size: 0.82rem; border-bottom: 1px solid #f0e6d3;
+    }
+    .eg-claim-year {
+        min-width: 80px; font-weight: 600; color: var(--saffron);
+        font-family: 'Open Sans', sans-serif; font-size: 0.8rem;
+    }
+    .eg-claim-ctx { color: var(--ink-secondary); font-size: 0.78rem; }
+    .eg-claim a { color: var(--indigo); text-decoration: none; font-size: 0.76rem; }
+    .eg-claim a:hover { text-decoration: underline; }
+    .eg-stats {
+        display: flex; gap: 24px; margin-bottom: 16px;
+        font-family: 'Open Sans', sans-serif; font-size: 0.85rem;
+        color: var(--ink-secondary);
+    }
+    .eg-stat-num { font-weight: 700; color: var(--saffron); font-size: 1.1rem; }
+    .eg-sort {
+        font-family: 'Open Sans', sans-serif; font-size: 0.82rem;
+        margin-bottom: 12px; color: var(--ink-secondary);
+    }
+    .eg-sort a {
+        color: var(--indigo); text-decoration: none; cursor: pointer;
+        margin: 0 6px;
+    }
+    .eg-sort a:hover { text-decoration: underline; }
+    .eg-sort a.active { color: var(--saffron); font-weight: 600; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="../index.html"><span class="devanagari">धर्मशास्त्रम्</span></a>
+        <a href="../index.html" class="nav-title">History of Dharmaśāstra</a>
+    </div>
+    
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep"> &rsaquo; </span>
+        <a href="index.html">Volume I: Part II</a>
+        <span class="sep"> &rsaquo; </span>
+        <a href="72-kāmadhenu.html">72. Kāmadhenu</a>
+        <span class="sep"> &rsaquo; </span>
+        <span>Timeline</span>
+    </div>
+    
+    <div class="content">
+        <h1>Timeline: 72. Kāmadhenu</h1>
+        <p class="subtitle">14 dated references</p>
+        <div class="tl-tabs">
+            <div class="tl-tab active" data-panel="events-panel">Events</div>
+            <div class="tl-tab" data-panel="graph-panel">Entity Graph</div>
+        </div>
+        <div id="events-panel" class="tl-panel active">
+            <div class="timeline-container">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 280" class="timeline-svg" role="img" aria-label="Timeline for 72. Kāmadhenu">
+<rect width="840" height="280" fill="#faf6ef" rx="8"/>
+<line x1="60" y1="100" x2="800" y2="100" stroke="#c4956a" stroke-width="2"/>
+<line x1="60.0" y1="94" x2="60.0" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="60.0" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">900 CE</text>
+<line x1="160.0" y1="94" x2="160.0" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="160.0" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1000 CE</text>
+<line x1="360.0" y1="94" x2="360.0" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="360.0" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1100 CE</text>
+<line x1="560.0" y1="94" x2="560.0" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="560.0" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1200 CE</text>
+<line x1="760.0" y1="94" x2="760.0" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="760.0" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1300 CE</text>
+<line x1="160.0" y1="100" x2="360.0" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="260.0" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-72-kāmadhenu-15" data-href="72-kāmadhenu.html#p-72-kāmadhenu-15"><title>Mitākṣarā</title></circle>
+<line x1="260.0" y1="106" x2="260.0" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="260.0" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Mitākṣarā</text>
+<text x="260.0" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1000 CE</text>
+<circle cx="360.0" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="2" stroke-dasharray="2,2" class="tl-evt" data-para="p-72-kāmadhenu-2" data-href="72-kāmadhenu.html#p-72-kāmadhenu-2"><title>Some later writers appear to ascribe the</title></circle>
+<line x1="360.0" y1="106" x2="360.0" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="360.0" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Some later writers appear</text>
+<text x="360.0" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1100 CE</text>
+<circle cx="360.0" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="2" stroke-dasharray="2,2" class="tl-evt" data-para="p-72-kāmadhenu-6" data-href="72-kāmadhenu.html#p-72-kāmadhenu-6"><title>Aparārka</title></circle>
+<line x1="360.0" y1="106" x2="360.0" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="360.0" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Aparārka</text>
+<text x="360.0" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1100 CE</text>
+<circle cx="360.0" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="2" stroke-dasharray="2,2" class="tl-evt" data-para="p-72-kāmadhenu-9" data-href="72-kāmadhenu.html#p-72-kāmadhenu-9"><title>The bad state of the msṣ of the Kalpatar</title></circle>
+<line x1="360.0" y1="106" x2="360.0" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="360.0" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">The bad state of the msṣ </text>
+<text x="360.0" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1100 CE</text>
+<circle cx="360.0" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="2" stroke-dasharray="2,2" class="tl-evt" data-para="p-72-kāmadhenu-15" data-href="72-kāmadhenu.html#p-72-kāmadhenu-15"><title>Mitākṣarā</title></circle>
+<line x1="360.0" y1="106" x2="360.0" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="360.0" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Mitākṣarā</text>
+<text x="360.0" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1100 CE</text>
+<circle cx="388.0" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-72-kāmadhenu-2" data-href="72-kāmadhenu.html#p-72-kāmadhenu-2"><title>Some later writers appear to ascribe the</title></circle>
+<line x1="388.0" y1="106" x2="388.0" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="388.0" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Some later writers appear</text>
+<text x="388.0" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1114 CE</text>
+<circle cx="460.0" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-72-kāmadhenu-6" data-href="72-kāmadhenu.html#p-72-kāmadhenu-6"><title>Aparārka</title></circle>
+<line x1="460.0" y1="106" x2="460.0" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="460.0" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Aparārka</text>
+<text x="460.0" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1150 CE</text>
+<line x1="460.0" y1="100" x2="500.0" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="480.0" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-72-kāmadhenu-8" data-href="72-kāmadhenu.html#p-72-kāmadhenu-8"><title>It is not necessary for me to establish </title></circle>
+<line x1="480.0" y1="106" x2="480.0" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="480.0" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">It is not necessary for m</text>
+<text x="480.0" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1150 CE</text>
+<line x1="460.0" y1="100" x2="500.0" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="480.0" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-72-kāmadhenu-11" data-href="72-kāmadhenu.html#p-72-kāmadhenu-11"><title>assigned to about 1150-1170 A. D. The Ha</title></circle>
+<line x1="480.0" y1="106" x2="480.0" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="480.0" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">assigned to about 1150-11</text>
+<text x="480.0" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1150 CE</text>
+<circle cx="460.0" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-72-kāmadhenu-14" data-href="72-kāmadhenu.html#p-72-kāmadhenu-14"><title>Yājñavalkya</title></circle>
+<line x1="460.0" y1="106" x2="460.0" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="460.0" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Yājñavalkya</text>
+<text x="460.0" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1150 CE</text>
+<circle cx="470.0" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="2" stroke-dasharray="2,2" class="tl-evt" data-para="p-72-kāmadhenu-2" data-href="72-kāmadhenu.html#p-72-kāmadhenu-2"><title>Some later writers appear to ascribe the</title></circle>
+<line x1="470.0" y1="106" x2="470.0" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="470.0" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Some later writers appear</text>
+<text x="470.0" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1155 CE</text>
+<circle cx="497.99999999999994" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-72-kāmadhenu-3" data-href="72-kāmadhenu.html#p-72-kāmadhenu-3"><title>Śrīdharācārya, author of Smṛtyarthasāra </title></circle>
+<line x1="497.99999999999994" y1="106" x2="497.99999999999994" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="497.99999999999994" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Śrīdharācārya, author of </text>
+<text x="497.99999999999994" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1169 CE</text>
+<circle cx="497.99999999999994" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-72-kāmadhenu-10" data-href="72-kāmadhenu.html#p-72-kāmadhenu-10"><title>Aniruddhabhatta was a guru of king Ballā</title></circle>
+<line x1="497.99999999999994" y1="106" x2="497.99999999999994" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="497.99999999999994" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Aniruddhabhatta was a gur</text>
+<text x="497.99999999999994" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1169 CE</text>
+<line x1="700.0" y1="100" x2="760.0" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="730.0" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-72-kāmadhenu-12" data-href="72-kāmadhenu.html#p-72-kāmadhenu-12"><title>The Chandogāhnika<sup>846</sup> of Śrīda</title></circle>
+<line x1="730.0" y1="106" x2="730.0" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="730.0" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">The Chandogāhnika<sup>846</text>
+<text x="730.0" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1270 CE</text>
+</svg>
+            </div>
+            <div class="event-list">
+                <h2>All Dated References</h2>
+                <div class="event-item"><span class="event-year">between 1000 CE</span><div><span class="event-label">Mitākṣarā</span><div class="event-context">As the Kāmadhenu is named as an authority by the Kalpa- taru and the Hāralatā it is certainly not later than 1100 A.D. I...</div><a href="72-kāmadhenu.html#p-72-kāmadhenu-15" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">about 1100 CE</span><div><span class="event-label">Some later writers appear to ascribe the Kāmadhenu to Gopāla e. g. the Vyavahāra</span><div class="event-context">Some later writers appear to ascribe the Kāmadhenu to Gopāla e. g. the Vyavahāraratnākara<sup class="fn-ref"><a href="#f...</div><a href="72-kāmadhenu.html#p-72-kāmadhenu-2" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">about 1100 CE</span><div><span class="event-label">Aparārka</span><div class="event-context">Aufrecht in his great Catalogue (I. 93) ascribed the authorship of the Kāmadhenu to Śambhu. Whence he derived this infor...</div><a href="72-kāmadhenu.html#p-72-kāmadhenu-6" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">after 1100 CE</span><div><span class="event-label">The bad state of the msṣ of the Kalpataru will be briefly indicated under the se</span><div class="event-context">The bad state of the msṣ of the Kalpataru will be briefly indicated under the section 'Kalpataru'. The Brahmacāri- kanda...</div><a href="72-kāmadhenu.html#p-72-kāmadhenu-9" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">not later than 1100 CE</span><div><span class="event-label">Mitākṣarā</span><div class="event-context">As the Kāmadhenu is named as an authority by the Kalpa- taru and the Hāralatā it is certainly not later than 1100 A.D. I...</div><a href="72-kāmadhenu.html#p-72-kāmadhenu-15" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1114 CE</span><div><span class="event-label">Some later writers appear to ascribe the Kāmadhenu to Gopāla e. g. the Vyavahāra</span><div class="event-context">Some later writers appear to ascribe the Kāmadhenu to Gopāla e. g. the Vyavahāraratnākara<sup class="fn-ref"><a href="#f...</div><a href="72-kāmadhenu.html#p-72-kāmadhenu-2" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1150 CE</span><div><span class="event-label">Aparārka</span><div class="event-context">Aufrecht in his great Catalogue (I. 93) ascribed the authorship of the Kāmadhenu to Śambhu. Whence he derived this infor...</div><a href="72-kāmadhenu.html#p-72-kāmadhenu-6" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">about 1150 CE</span><div><span class="event-label">It is not necessary for me to establish that the passage is genuine and so I lea</span><div class="event-context">It is not necessary for me to establish that the passage is genuine and so I leave it out of account altogether. From th...</div><a href="72-kāmadhenu.html#p-72-kāmadhenu-8" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">about 1150 CE</span><div><span class="event-label">assigned to about 1150-1170 A. D. The Haralatā on pp. 41, 117, 174 mentions Kāmā</span><div class="event-context">assigned to about 1150-1170 A. D. The Haralatā on pp. 41, 117, 174 mentions Kāmādhenu expressly, as the quotations cited...</div><a href="72-kāmadhenu.html#p-72-kāmadhenu-11" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1150 CE</span><div><span class="event-label">Yājñavalkya</span><div class="event-context">But it seems to me that they are identical. Aufrecht in his great catalogue ( I. 93 ) ascribes the authorship of the Kām...</div><a href="72-kāmadhenu.html#p-72-kāmadhenu-14" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">about 1155 CE</span><div><span class="event-label">Some later writers appear to ascribe the Kāmadhenu to Gopāla e. g. the Vyavahāra</span><div class="event-context">Some later writers appear to ascribe the Kāmadhenu to Gopāla e. g. the Vyavahāraratnākara<sup class="fn-ref"><a href="#f...</div><a href="72-kāmadhenu.html#p-72-kāmadhenu-2" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1169 CE</span><div><span class="event-label">Śrīdharācārya, author of Smṛtyarthasāra ( verses 4 and 5 ), mentions Kāmadhenu a</span><div class="event-context">Śrīdharācārya, author of Smṛtyarthasāra ( verses 4 and 5 ), mentions Kāmadhenu among the authors and works on which he r...</div><a href="72-kāmadhenu.html#p-72-kāmadhenu-3" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1169 CE</span><div><span class="event-label">Aniruddhabhatta was a guru of king Ballālasena of Bengal (as stated in verses 6</span><div class="event-context">Aniruddhabhatta was a guru of king Ballālasena of Bengal (as stated in verses 6 and 7 of the Dānasagara, <sup class="fn-...</div><a href="72-kāmadhenu.html#p-72-kāmadhenu-10" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">about 1270 CE</span><div><span class="event-label">The Chandogāhnika<sup>846</sup> of Śrīdatta (about 1270-1300 A. D.) mentions the</span><div class="event-context">The Chandogāhnika<sup>846</sup> of Śrīdatta (about 1270-1300 A. D.) mentions the Kāmādhenu several times ( e. g. on pp. ...</div><a href="72-kāmadhenu.html#p-72-kāmadhenu-12" class="event-link">View in text &rarr;</a></div></div>
+            </div>
+        </div>
+        <div id="graph-panel" class="tl-panel">
+            <div class="eg-stats">
+<div><span class="eg-stat-num">3</span> entities</div>
+<div><span class="eg-stat-num">6</span> date claims</div>
+<div><span class="eg-stat-num">2</span> debated</div>
+<div><span class="eg-stat-num">6</span> co-occurrences</div>
+</div>
+<div class="eg-sort">Sort: <a class="active" onclick="egSort('date')">by date</a><a onclick="egSort('claims')">by claims</a><a onclick="egSort('name')">by name</a></div>
+<div id="eg-entities">
+<div class="eg-entity" data-key="apar-rka" data-consensus="1100" data-claims="3" data-name="Aparārka"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Aparārka</span><span class="eg-type">person</span><span class="eg-claims-count">3 claims &middot; 1100 CE to 1150 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="1000" data-max="1150"><span class="eg-range-label" style="left:0;">1000 CE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1150 CE</span><div class="eg-range-fill" style="left:66.7%;width:33.3%;"></div><div class="eg-range-dot" style="left:66.7%;" title="1100 CE — about 1100 A. D."></div><div class="eg-range-dot" style="left:66.7%;" title="1100 CE — 1100-1110 A. D."></div><div class="eg-range-dot" style="left:100.0%;" title="1150 CE — 1150 A. D."></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="medh-tithi" onclick="egHighlight('medh-tithi')">Medhātithi<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="mit-k-ar" onclick="egHighlight('mit-k-ar')">Mitākṣarā<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">about 1100 CE</span><div><span class="eg-claim-ctx">Aufrecht in his great Catalogue (I. 93) ascribed the authorship of the Kāmadhenu to Śambhu. Whence h...</span> <a href="72-kāmadhenu.html#p-72-kāmadhenu-6">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">1100 CE</span><div><span class="eg-claim-ctx">Aufrecht in his great Catalogue (I. 93) ascribed the authorship of the Kāmadhenu to Śambhu. Whence h...</span> <a href="72-kāmadhenu.html#p-72-kāmadhenu-6">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">1150 CE</span><div><span class="eg-claim-ctx">Aufrecht in his great Catalogue (I. 93) ascribed the authorship of the Kāmadhenu to Śambhu. Whence h...</span> <a href="72-kāmadhenu.html#p-72-kāmadhenu-6">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="mit-k-ar" data-consensus="1100" data-claims="2" data-name="Mitākṣarā"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Mitākṣarā</span><span class="eg-type">text</span><span class="eg-claims-count">2 claims &middot; 1000 CE to 1100 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="1000" data-max="1150"><span class="eg-range-label" style="left:0;">1000 CE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1150 CE</span><div class="eg-range-fill" style="left:0.0%;width:66.7%;"></div><div class="eg-range-dot" style="left:0.0%;" title="1000 CE — between 1000 and 1100 A. D."></div><div class="eg-range-dot" style="left:66.7%;" title="1100 CE — not later than 1100 A.D."></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="medh-tithi" onclick="egHighlight('medh-tithi')">Medhātithi<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="apar-rka" onclick="egHighlight('apar-rka')">Aparārka<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">between 1000 CE</span><div><span class="eg-claim-ctx">As the Kāmadhenu is named as an authority by the Kalpa- taru and the Hāralatā it is certainly not la...</span> <a href="72-kāmadhenu.html#p-72-kāmadhenu-15">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">not later than 1100 CE</span><div><span class="eg-claim-ctx">As the Kāmadhenu is named as an authority by the Kalpa- taru and the Hāralatā it is certainly not la...</span> <a href="72-kāmadhenu.html#p-72-kāmadhenu-15">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="y-j-avalkya-sm-ti" data-consensus="1150" data-claims="1" data-name="Yājñavalkya Smṛti"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Yājñavalkya Smṛti</span><span class="eg-type">text</span><span class="eg-claims-count">1 claims &middot; 1150 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="1000" data-max="1150"><span class="eg-range-label" style="left:0;">1000 CE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1150 CE</span><div class="eg-range-dot" style="left:100.0%;" title="1150 CE — 1150 A. D."></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="manusm-ti" onclick="egHighlight('manusm-ti')">Manusmṛti<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="medh-tithi" onclick="egHighlight('medh-tithi')">Medhātithi<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">1150 CE</span><div><span class="eg-claim-ctx">But it seems to me that they are identical. Aufrecht in his great catalogue ( I. 93 ) ascribes the a...</span> <a href="72-kāmadhenu.html#p-72-kāmadhenu-14">view</a></div></div></div></div></div>
+</div>
+<script>
+function egToggle(header) {
+    header.parentElement.classList.toggle('open');
+}
+function egHighlight(key) {
+    // Remove existing highlights
+    document.querySelectorAll('.eg-entity.highlighted').forEach(function(el) {
+        el.classList.remove('highlighted');
+    });
+    // Highlight target and scroll to it
+    var target = document.querySelector('.eg-entity[data-key="' + key + '"]');
+    if (target) {
+        target.classList.add('highlighted');
+        target.classList.add('open');
+        target.scrollIntoView({behavior: 'smooth', block: 'center'});
+    }
+}
+function egSort(mode) {
+    var container = document.getElementById('eg-entities');
+    var items = Array.from(container.querySelectorAll('.eg-entity'));
+    items.sort(function(a, b) {
+        if (mode === 'date') return parseInt(a.dataset.consensus) - parseInt(b.dataset.consensus);
+        if (mode === 'claims') return parseInt(b.dataset.claims) - parseInt(a.dataset.claims);
+        if (mode === 'name') return a.dataset.name.localeCompare(b.dataset.name);
+        return 0;
+    });
+    items.forEach(function(el) { container.appendChild(el); });
+    // Update active sort link
+    document.querySelectorAll('.eg-sort a').forEach(function(a) { a.classList.remove('active'); });
+    event.target.classList.add('active');
+}
+</script>
+        </div>
+        <a href="72-kāmadhenu.html" class="back-link">&larr; Back to 72. Kāmadhenu</a>
+    </div>
+    <script>
+    document.querySelectorAll('.tl-evt').forEach(function(el) {
+        el.addEventListener('click', function() {
+            var href = this.getAttribute('data-href');
+            if (href) {
+                window.location.href = href;
+            } else {
+                var paraId = this.getAttribute('data-para');
+                if (paraId) {
+                    var target = document.getElementById(paraId);
+                    if (target) target.scrollIntoView({behavior: 'smooth'});
+                }
+            }
+        });
+    });
+    // Tab switching
+    document.querySelectorAll('.tl-tab').forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            document.querySelectorAll('.tl-tab').forEach(function(t) { t.classList.remove('active'); });
+            document.querySelectorAll('.tl-panel').forEach(function(p) { p.classList.remove('active'); });
+            tab.classList.add('active');
+            var panel = document.getElementById(tab.getAttribute('data-panel'));
+            if (panel) panel.classList.add('active');
+        });
+    });
+    </script>
+</body>
+</html>

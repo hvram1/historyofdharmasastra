@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- MDB UI Kit -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/fonts.css?v=1.2">
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/navbar.css?v=2.4">
+
+    <title>6. The Baudhāyana Dharmasutra — Volume I: Part I — History of Dharmaśāstra</title>
+    <style>
+    :root {
+        --saffron:        #D4600A;
+        --saffron-light:  #F0924A;
+        --saffron-wash:   rgba(212, 96, 10, 0.07);
+        --indigo:         #2E5FA3;
+        --indigo-dark:    #1C3D70;
+        --maroon:         #7A1E1E;
+        --amber:          #C97A1A;
+        --ink:            #1A1209;
+        --ink-secondary:  #4A3B2A;
+        --parchment:      #FDFAF4;
+        --parchment-mid:  #F5EFE2;
+        --rule:           rgba(180, 130, 60, 0.22);
+        --shadow:         0 2px 18px rgba(90, 50, 10, 0.08);
+        --font-devanagari: 'Tiro Devanagari Sanskrit', 'Siddhanta', 'Noto Sans Devanagari', serif;
+        --font-roman:      'Junicode', Georgia, serif;
+    }
+
+    body {
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: var(--font-roman);
+    }
+
+    .devanagari {
+        font-family: var(--font-devanagari);
+    }
+
+    /* ── Navbar overrides ── */
+    .navbar-ontop { z-index: 1031; }
+    .hdclr { color: var(--saffron); }
+    .engpara { font-family: 'Open Sans', sans-serif; }
+
+    /* ── Layout ── */
+    .dh-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .dh-content {
+        flex: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        background: var(--parchment);
+        box-shadow: var(--shadow);
+        min-height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        .dh-content { padding: 24px 20px; }
+        .dh-wrapper { flex-direction: column; }
+    }
+
+    /* ── TOC Sidebar ── */
+    .toc-sidebar {
+        position: sticky;
+        top: 80px;
+        width: 280px;
+        min-width: 280px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding: 20px 16px;
+        margin-right: 24px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        scrollbar-width: thin;
+    }
+
+    .toc-title {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--saffron-light);
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list li {
+        padding: 4px 0;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-list li.toc-l3 {
+        padding-left: 16px;
+        font-size: 0.78rem;
+    }
+
+    .toc-list li a {
+        color: var(--ink-secondary);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .toc-list li a:hover { color: var(--saffron); }
+
+    .toc-list li.active {
+        border-left-color: var(--saffron);
+    }
+
+    .toc-list li.active a {
+        color: var(--saffron);
+        font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-sidebar { display: none; }
+    }
+
+    /* ── Mobile TOC Toggle ── */
+    .toc-mobile-toggle {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1050;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--saffron);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-mobile-toggle { display: block; }
+    }
+
+    /* ── Section Headings ── */
+    .section-heading {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        margin: 48px 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--rule);
+        letter-spacing: 0.5px;
+        scroll-margin-top: 80px;
+    }
+
+    h2.section-heading { font-size: 1.6rem; }
+
+    h3.section-heading {
+        font-size: 1.25rem;
+        border-left: 4px solid var(--saffron-light);
+        border-bottom: none;
+        padding: 8px 16px;
+        background: var(--saffron-wash);
+        border-radius: 0 5px 5px 0;
+    }
+
+    /* ── Prose ── */
+    .prose {
+        font-family: var(--font-roman);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+        color: var(--ink);
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    .prose em { color: var(--maroon); }
+
+    .prose:target {
+        background: rgba(212, 96, 10, 0.12);
+        border-left: 4px solid var(--saffron);
+        padding-left: 16px;
+        margin-left: -20px;
+        border-radius: 0 6px 6px 0;
+        animation: target-pulse 2s ease-out;
+    }
+
+    @keyframes target-pulse {
+        0%   { background: rgba(212, 96, 10, 0.30); }
+        100% { background: rgba(212, 96, 10, 0.12); }
+    }
+
+    /* ── Footnote References ── */
+    .fn-ref {
+        font-size: 0.75em;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    .fn-ref a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 0 2px;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: color 0.15s;
+    }
+
+    .fn-ref a:hover { color: var(--indigo); }
+
+    /* ── Synopsis Box ── */
+    .synopsis-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron-light);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .synopsis-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .synopsis-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .synopsis-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .synopsis-box.open .synopsis-toggle i {
+        transform: rotate(90deg);
+    }
+    .synopsis-body {
+        display: none;
+        padding: 0 20px 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+    }
+    .synopsis-box.open .synopsis-body { display: block; }
+    .synopsis-body p { margin: 0; }
+    .synopsis-attribution {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: var(--ink-secondary);
+        opacity: 0.7;
+        font-style: italic;
+    }
+    .synopsis-audio {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    .synopsis-play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--saffron);
+        background: none;
+        color: var(--saffron);
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: background 0.2s, color 0.2s;
+        padding: 0;
+    }
+    .synopsis-play-btn:hover {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn.playing {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn i { padding-left: 2px; }
+
+    /* ── Index Terms Panel ── */
+    .index-terms-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .index-terms-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .index-terms-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .index-terms-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .index-terms-box.open .index-terms-toggle i {
+        transform: rotate(90deg);
+    }
+    .index-terms-body {
+        display: none;
+        padding: 0 20px 16px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .index-terms-box.open .index-terms-body { display: block; }
+    .index-terms-dl {
+        margin: 0;
+        padding: 0;
+    }
+    .index-terms-dl dt {
+        font-family: var(--font-roman);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+        margin-top: 8px;
+    }
+    .index-terms-dl dd {
+        margin: 2px 0 0 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        color: var(--ink-secondary);
+        line-height: 1.5;
+    }
+    .nyaya-heading {
+        font-family: var(--font-roman);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        margin: 16px 0 4px;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+    }
+
+    /* ── Inline Index Popovers ── */
+    .idx-term {
+        border-bottom: 1px dotted var(--saffron-light);
+        cursor: help;
+        position: relative;
+    }
+    .idx-term:hover::after {
+        content: attr(data-def);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        background: rgba(44, 36, 22, 0.92);
+        color: #F5ECD8;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        max-width: 280px;
+        z-index: 100;
+        white-space: normal;
+        line-height: 1.4;
+        pointer-events: none;
+    }
+
+    /* ── Structured Version Banner ── */
+    .structured-banner {
+        margin: 0 0 28px;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, rgba(212, 96, 10, 0.06) 0%, rgba(212, 96, 10, 0.02) 100%);
+        border: 1px solid var(--saffron-light);
+        border-radius: 6px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        color: var(--ink-secondary);
+        line-height: 1.6;
+    }
+    .structured-banner i { color: var(--saffron); margin-right: 4px; }
+    .structured-banner a { color: var(--indigo); font-weight: 600; text-decoration: none; }
+    .structured-banner a:hover { text-decoration: underline; }
+
+    /* ── Footnotes Section ── */
+    .footnotes-section {
+        margin: 32px 0 48px;
+        padding: 20px 24px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .footnotes-section hr {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 0 0 16px;
+    }
+
+    .footnotes-list {
+        padding-left: 24px;
+        margin: 0;
+    }
+
+    .footnote-item {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+        scroll-margin-top: 80px;
+    }
+
+    .footnote-item:target {
+        background: rgba(212, 96, 10, 0.1);
+        border-radius: 4px;
+        padding: 4px 6px;
+        margin-left: -6px;
+    }
+
+    .fn-back {
+        color: var(--saffron-light);
+        text-decoration: none;
+        font-size: 0.85em;
+        margin-left: 4px;
+    }
+
+    .fn-back:hover { color: var(--saffron); }
+
+    /* ── Reference Links ── */
+    a.ref {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: all 0.15s;
+    }
+
+    a.ref:hover {
+        color: var(--saffron);
+        border-bottom-style: solid;
+    }
+
+    a.mbta-ext {
+        color: var(--indigo);
+        font-size: 0.7em;
+        margin-left: 2px;
+        opacity: 0.5;
+        text-decoration: none;
+        vertical-align: super;
+    }
+    a.mbta-ext:hover { opacity: 1; color: var(--saffron); }
+
+    /* ── References Panel (sidebar) ── */
+    .refs-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .refs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .refs-list li {
+        padding: 3px 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .ref-source-link {
+        font-weight: 600;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .ref-source-link:hover {
+        text-decoration: underline;
+    }
+
+    .ref-verse-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.76rem;
+    }
+
+    .ref-verse-link:hover {
+        text-decoration: underline;
+        color: var(--saffron);
+    }
+
+    .ref-verses {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Timeline panel ── */
+    .timeline-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .timeline-list li {
+        padding: 2px 0;
+        font-size: 0.76rem;
+        line-height: 1.4;
+        position: relative;
+        padding-left: 14px;
+    }
+
+    .timeline-list li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--saffron);
+    }
+
+    .timeline-list li.tl-approximate::before {
+        background: transparent;
+        border: 2px solid var(--saffron);
+        width: 4px;
+        height: 4px;
+    }
+
+    .timeline-list li.tl-century::before {
+        background: transparent;
+        border: 2px dashed var(--saffron);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+
+    .tl-dot-link {
+        text-decoration: none;
+        color: var(--ink);
+        display: block;
+    }
+
+    .tl-dot-link:hover {
+        color: var(--saffron);
+    }
+
+    .tl-year {
+        font-weight: 600;
+        color: var(--saffron);
+        font-size: 0.72rem;
+        min-width: 70px;
+        display: inline-block;
+    }
+
+    .tl-label {
+        color: var(--ink-secondary);
+        font-size: 0.72rem;
+    }
+
+    .tl-view-link, .tl-more {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.72rem;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .tl-view-link:hover, .tl-more:hover {
+        text-decoration: underline;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+
+    .breadcrumb-bar a {
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+
+    .breadcrumb-bar .sep {
+        color: var(--amber);
+        margin: 0 8px;
+    }
+
+    .breadcrumb-bar .current {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Chapter Navigation ── */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        margin-top: 48px;
+        border-top: 2px solid var(--rule);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .chapter-nav a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        transition: all 0.2s;
+        max-width: 45%;
+    }
+
+    .chapter-nav a:hover {
+        background: var(--saffron-wash);
+        border-color: var(--saffron-light);
+    }
+
+    .nav-prev { text-align: left; }
+    .nav-next { text-align: right; margin-left: auto; }
+
+    .page-range {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+    }
+
+    /* ── Volume Cards (Landing) ── */
+    .vol-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .vol-card {
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        transition: all 0.25s;
+    }
+
+    .vol-card:hover {
+        border-color: var(--saffron-light);
+        box-shadow: 0 4px 24px rgba(212, 96, 10, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .vol-num {
+        font-family: var(--font-roman);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--saffron);
+        margin-bottom: 8px;
+    }
+
+    .vol-subtitle {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        line-height: 1.5;
+        flex: 1;
+    }
+
+    .vol-chapters {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        margin-top: 12px;
+    }
+
+    /* ── Chapter Cards (Volume Index) ── */
+    .chapter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .chapter-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .chapter-card:hover {
+        border-color: var(--saffron-light);
+        background: var(--saffron-wash);
+    }
+
+    .card-num {
+        font-family: var(--font-roman);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--saffron);
+        min-width: 36px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        flex: 1;
+    }
+
+    .card-pages {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        color: var(--ink-secondary);
+    }
+
+    /* ── Landing Hero ── */
+    .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-family: var(--font-roman);
+        font-size: 2.4rem;
+        color: var(--saffron);
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .hero .devanagari-title {
+        font-family: var(--font-devanagari);
+        font-size: 1.8rem;
+        color: var(--ink);
+        margin-bottom: 16px;
+    }
+
+    .hero .author {
+        font-family: var(--font-roman);
+        font-size: 1.1rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .hero .desc {
+        font-family: var(--font-roman);
+        font-size: 1rem;
+        color: var(--ink-secondary);
+        line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer { margin-top: 48px; }
+</style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mbta/">
+      <div class="container-fluid">&emsp;&emsp;
+      <a href="../index.html" class="navbar-brand" style="text-decoration:none;">
+        <span class="devanagari ms-3" style="font-size:1.5rem; color:var(--saffron); font-weight:700;">धर्मशास्त्रम्</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="../index.html">धर्मशास्त्रम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5 active" href="../index.html">खण्डाः</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in/mbta/">महाभारतम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in">सनातनम्</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+
+    <div class="dh-wrapper container-xl">
+        <nav id="toc" class="toc-sidebar">
+<div class="refs-panel">
+<h5 class="toc-title">References</h5>
+<ul class="refs-list">
+<li><a href="../refs/atharvaveda.html" class="ref-source-link">Atharvaveda</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/baudhayana.html" class="ref-source-link">Baudhāyana Dharmasūtra</a> <span class="ref-verses"><a href="../refs/baudhayana.html#i" class="ref-verse-link">i</a>, <a href="../refs/baudhayana.html#I.5.47" class="ref-verse-link">I.5.47</a>, <a href="../refs/baudhayana.html#II.3.28" class="ref-verse-link">II.3.28</a>, <a href="../refs/baudhayana.html#I.1.19-24" class="ref-verse-link">I.1.19-24</a>, <a href="../refs/baudhayana.html#I.2.1" class="ref-verse-link">I.2.1</a>, <a href="../refs/baudhayana.html#II.6.30" class="ref-verse-link">II.6.30</a> <a href="../refs/baudhayana.html" class="ref-verse-link">+5</a></span></li>
+<li><a href="../refs/baudhayana_gr.html" class="ref-source-link">Baudhāyana Gṛhyasūtra</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/brihadaranyaka.html" class="ref-source-link">Bṛhadāraṇyaka Upaniṣad</a> <span class="ref-verses"><a href="../refs/brihadaranyaka.html#IV.5.15" class="ref-verse-link">IV.5.15</a></span></li>
+<li><a href="../refs/brihaspati.html" class="ref-source-link">Bṛhaspati</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/chandogya.html" class="ref-source-link">Chāndogya Upaniṣad</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mahabharata.html" class="ref-source-link">Mahābhārata</a> <span class="ref-verses"><a href="../refs/mahabharata.html#I.78.10" class="ref-verse-link">I.78.10</a></span></li>
+<li><a href="../refs/manu.html" class="ref-source-link">Manusmṛti</a> <span class="ref-verses"><a href="../refs/manu.html#i" class="ref-verse-link">i</a>, <a href="../refs/manu.html#XI.260" class="ref-verse-link">XI.260</a>, <a href="../refs/manu.html#9.63" class="ref-verse-link">9.63</a>, <a href="../refs/manu.html#9.56-63" class="ref-verse-link">9.56-63</a></span></li>
+<li><a href="../refs/medhatithi.html" class="ref-source-link">Medhātithi</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mitakshara.html" class="ref-source-link">Mitākṣarā</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/taittiriya_br.html" class="ref-source-link">Taittirīya Brāhmaṇa</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/taittiriya_ar.html" class="ref-source-link">Taittirīya Āraṇyaka</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/vasishtha.html" class="ref-source-link">Vasiṣṭha Dharmasūtra</a> <span class="ref-verses"><a href="../refs/vasishtha.html#15.1-9" class="ref-verse-link">15.1-9</a></span></li>
+<li><a href="../refs/vishvarupa.html" class="ref-source-link">Viśvarūpa</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/vishnu_smriti.html" class="ref-source-link">Viṣṇu Smṛti</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/yajnavalkya.html" class="ref-source-link">Yājñavalkya</a> <span class="ref-verses"><a href="../refs/yajnavalkya.html#III.24" class="ref-verse-link">III.24</a>, <a href="../refs/yajnavalkya.html#I.71" class="ref-verse-link">I.71</a>, <a href="../refs/yajnavalkya.html#III.305" class="ref-verse-link">III.305</a>, <a href="../refs/yajnavalkya.html#I.72" class="ref-verse-link">I.72</a>, <a href="../refs/yajnavalkya.html#I.64" class="ref-verse-link">I.64</a>, <a href="../refs/yajnavalkya.html#III.306" class="ref-verse-link">III.306</a> <a href="../refs/yajnavalkya.html" class="ref-verse-link">+1</a></span></li>
+<li><a href="../refs/apastamba.html" class="ref-source-link">Āpastamba Dharmasūtra</a> <span class="ref-verses"><a href="../refs/apastamba.html#II.9.24.8" class="ref-verse-link">II.9.24.8</a>, <a href="../refs/apastamba.html#II.4.9.13" class="ref-verse-link">II.4.9.13</a>, <a href="../refs/apastamba.html#II.9.21.10" class="ref-verse-link">II.9.21.10</a>, <a href="../refs/apastamba.html#II.6.13.6" class="ref-verse-link">II.6.13.6</a>, <a href="../refs/apastamba.html#I.9.27.11" class="ref-verse-link">I.9.27.11</a>, <a href="../refs/apastamba.html#I.11.31.11" class="ref-verse-link">I.11.31.11</a> <a href="../refs/apastamba.html" class="ref-verse-link">+3</a></span></li>
+<li><a href="../refs/rigveda.html" class="ref-source-link">Ṛgveda</a> <span class="ref-verses"><a href="../refs/rigveda.html#I.162-1" class="ref-verse-link">I.162-1</a></span></li>
+</ul>
+</div>
+<div class="timeline-panel">
+<h5 class="toc-title">Timeline</h5>
+<ul class="timeline-list">
+<li class="tl-exact"><a href="#p-6-the-baudhāyana-dharmasutra-8" class="tl-dot-link"><span class="tl-year">~600 BCE</span> <span class="tl-label">Baudhāyana Dharmasūtra</span></a></li>
+<li class="tl-range"><a href="#p-6-the-baudhāyana-dharmasutra-7" class="tl-dot-link"><span class="tl-year">~500 BCE</span> <span class="tl-label">Manusmṛti</span></a></li>
+<li class="tl-exact"><a href="#p-6-the-baudhāyana-dharmasutra-8" class="tl-dot-link"><span class="tl-year">~500 BCE</span> <span class="tl-label">Baudhāyana Dharmasūtra</span></a></li>
+<li class="tl-exact"><a href="#p-6-the-baudhāyana-dharmasutra-8" class="tl-dot-link"><span class="tl-year">~300 BCE</span> <span class="tl-label">Baudhāyana Dharmasūtra</span></a></li>
+<li class="tl-exact"><a href="#p-6-the-baudhāyana-dharmasutra-8" class="tl-dot-link"><span class="tl-year">~200 BCE</span> <span class="tl-label">Baudhāyana Dharmasūtra</span></a></li>
+<li class="tl-exact"><a href="#p-6-the-baudhāyana-dharmasutra-7" class="tl-dot-link"><span class="tl-year">500 CE</span> <span class="tl-label">Manusmṛti</span></a></li>
+<li class="tl-approximate"><a href="#p-6-the-baudhāyana-dharmasutra-6" class="tl-dot-link"><span class="tl-year">~700 CE</span> <span class="tl-label">Baudhāyana Dharmasūtra</span></a></li>
+<li class="tl-century"><a href="#p-6-the-baudhāyana-dharmasutra-10" class="tl-dot-link"><span class="tl-year">701 CE</span> <span class="tl-label">Baudhāyana Dharmasūtra</span></a></li>
+<li class="tl-approximate"><a href="#p-6-the-baudhāyana-dharmasutra-5" class="tl-dot-link"><span class="tl-year">~800 CE</span> <span class="tl-label">Manusmṛti</span></a></li>
+<li class="tl-century"><a href="#p-6-the-baudhāyana-dharmasutra-6" class="tl-dot-link"><span class="tl-year">801 CE</span> <span class="tl-label">Baudhāyana Dharmasūtra</span></a></li>
+</ul>
+<a href="6-the-baudhāyana-dharmasutra-timeline.html" class="tl-view-link">View full timeline &rarr;</a>
+</div>
+<h5 class="toc-title">Sections</h5>
+<ul class="toc-list">
+<li class="toc-l2"><a href="#6-the-baudhāyana-dharmasutra">6. The Baudhāyana Dharmasutra</a></li>
+</ul>
+</nav>
+        <main class="dh-content">
+            
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep">›</span>
+        <a href="index.html">Volume I: Part I</a>
+        <span class="sep">›</span>
+        <span class="current">6. The Baudhāyana Dharmasutra</span>
+    </div>
+    
+            <h1 class="text-center" style="font-family: var(--font-roman); font-size: 2rem; color: var(--saffron); margin-bottom: 8px;">
+                6. The Baudhāyana Dharmasutra
+            </h1>
+            <p class="text-center" style="font-family: 'Open Sans', sans-serif; color: var(--ink-secondary); font-size: 0.9rem; margin-bottom: 36px;">
+                Volume I: Part I <span class="page-range">pp. 38–53</span>
+            </p>
+
+            
+    <div class="synopsis-box" id="synopsis">
+        <button class="synopsis-toggle" onclick="this.parentElement.classList.toggle('open')"
+                aria-expanded="false" aria-controls="synopsis-body">
+            <i class="fa-solid fa-chevron-right"></i>
+            Kane's Synopsis
+        </button>
+        <div class="synopsis-audio">
+            <span class="synopsis-play-btn" role="button" tabindex="0"
+                    onclick="toggleSynopsisAudio(this)"
+                    data-src="../audio/synopsis/vol-1-part-1/vol-1-part-1_sec006.mp3" title="Listen to synopsis">
+                <i class="fa-solid fa-play"></i>
+            </span>
+            <audio preload="none"></audio>
+        </div>
+        <div class="synopsis-body" id="synopsis-body">
+            <p>Baudhāyana is identified as a teacher of the Black Yajurveda, whose *kalpa* arrangement has been studied by Dr. Burnell and Dr. Caland. The Baudhāyanagṛhya presupposes the Baudhāyanadharmasūtra, with the Gṛhya (III. 9.6) naming Kanva Bodhāyana a *pravacanakāra* and Āpastamba a *sūtrakāra*. These figures, along with Hiraṇyakeśin, are also mentioned in the Dharmasūtra's *tarpaṇa* (II. 5. 27). Govindasvāmin later commented on Baudhāyana. The extant Baudhāyanadharmasūtra is incomplete; its fourth *praśna* is likely interpolated, and the third is also doubtful. Baudhāyana III.10 is taken from Gautama, and III.6 aligns closely with Viṣṇudharmasūtra 48. Dr. Jolly suggested a common source, though Viṣṇu likely borrows from Baudhāyana. Repetitions exist even in the first two *praśnas*, and numerous *sūtras* are identical with those of Āpastamba and Vasiṣṭha, despite Baudhāyana's style often departing from Pāṇinian standards and Āpastamba's.
+
+Baudhāyana's form and structure frequently quote verses, even initially. It reveals knowledge of various *dharma* authors and their views, noting Asura Kapila as the originator of *āśramas*. Śabara, Kumārila, Viśvarūpa, and Medhātithi all refer to the Baudhāyana dharmasūtra. Bühler posited Baudhāyana as a southern teacher, citing five peculiar regional usages and views on Āryāvarta. Chronologically, Baudhāyana is placed later than Gautama, generally between 500-200 B.C., though Bühler’s arguments for an earlier dating than Āpastamba are unconvincing. The text also mentions several appellations of Gaṇeśa, like the Mānavagṛhya, and refers to the seven planets, Rāhu and Ketu.</p>
+            <p class="synopsis-attribution">— Synopsis by P.V. Kane, from History of Dharmaśāstra</p>
+        </div>
+    </div>
+
+
+            
+
+            <h2 id="6-the-baudhāyana-dharmasutra" class="section-heading">6. The Baudhāyana Dharmasutra</h2>
+<p class="prose" id="p-6-the-baudhāyana-dharmasutra-1">6. The <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana dharmasūtra</a> This has been edited several times (text by Dr. Hultzsch at Leipzig in 1884, text in the Ānandāśrama collection of smṛtis and in the Mysore Government Oriental Series in 1907 with the commentary of Govindasvāmin; translated in S. B. E., Vol. 14, with an Introduction). The Mysore edition has been used in this work. <a class="ref" href="../refs/baudhayana.html#i" data-source="baudhayana" data-ref="i" title="Baudhāyana Dharmasūtra i">Baudhāyana i</a>s a teacher of the Kṛṣṇayajurveda. A complete set of the Baudhayanasūtras has not yet been recovered and has not been as carefully preserved as the sūtras of Āpastamba and Hiraṇyakeśiṇ Dr. Burnell arranges <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>’s sūtras into six sūtras, the Śrautasūtra in 19 praśnas (probably); Karmāntasūtra in 20 adhyāyas; Dvaidhasūtra in four praśnas; Gṛhyasūtra in four praśnas; Dharmasūtra in four praśnas; Śulvasūtra in three adhyāyaṣ The commentators offer no indi- cation as to the place originally assigned to the gṛhya, dharma and śulva sūtras in the whole collectioṇ Dr. Caland in his mono- graph (A. D. 1903) ‘Uber das Rituelle sūtra des <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>’ gives on p. 12 the contents of the Baudhayanasūtra as follows:— Praśnas I-XXI Śrauta, XXII-XXV Dvaidha, XXVI-XXVIII Karmānta; XXIX-XXXI Prāyaścitta; XXXII Śulvasūtra; XXXIII-XXXV gṛhyasūtra, XXXVI Grhyaprāyaścitta; XXXVII Grhyaparihāsā; XXXVIII-XLI Grhyapariśiṣṭa; XLII-XLIV Pitrmedha; XLV Pravara; XLVI-XLIX Dharma. Dr. Caland edited nine praśnas of the Śrautasūtra for the B. I. Series (A. D. 1904). Dr. R. Shamsastri published for the Mysore University the <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>grhyasūtra with paribhāsā, grhyaśesa, Pitrmedhasūtra. The gṛhyasūtra cites the view of <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> himself (I. 7). The <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>-dharma refers to the Grhya and presuppose it in several places (vide note 54). In the <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>grhyā (III. 9. 6) we have a reference to padakāra Ātreya, Vrttikāra Kauṇḍinya, Pravacanakāra Kaṇva Bodhāyana, and Sūtrakāra Āpastamba.<sup class="fn-ref"><a href="#fn-6-the-baudhāyana-dharmasutra-1" id="fnref-6-the-baudhāyana-dharmasutra-1">1</a></sup> A similar passage occurs in the Bhāradvāja gṛhyasūtra. In the <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>-dharma-sūtra (II. 5.27 Rṣitarpana) we have Kaṇva Bodhāyana, Āpastamba sūtrakāra and Satyāṣāḍha Hiraṇyakeśin one after another. These references show that Kaṇva Bodhāyana was an ancient sage when the <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana-dharmasūtra</a> was written and that he could not have been the author of the grhya or the dharma-sūtras of <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>. <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> may have been a descendant of his Kaṇva Bodhāyana. This surmise is supported by Govindasvāmin who explains <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> occurring in Baudhā- yanadharmasūtra I. 3. 13 as Kāṇvāyana. In the dharmasūtra <a class="ref" href="../refs/baudhayana.html#i" data-source="baudhayana" data-ref="i" title="Baudhāyana Dharmasūtra i">Baudhāyana i</a>s himself cited as an authority several times (e. g. I. 4. 15 and 24, III. 5. 8, III. 6. 20). In all these places the Mysore edition reads Bodhāyana, while the Ānandāśrama reads <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>. In one or two places he is styled ‘bhagavān’ ( III. 6. 20 ). Several explanations are offered by the commen-tator Govindasvāmin (on I. 3. 13 ). He says that it is the practice of the Ācāryas to refer to themselves in the third person (as <a class="ref" href="../refs/medhatithi.html" data-source="medhatithi" data-ref="" title="Medhātithi">Medhātithi</a> says on <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>.<sup class="fn-ref"><a href="#fn-6-the-baudhāyana-dharmasutra-2" id="fnref-6-the-baudhāyana-dharmasutra-2">2</a></sup>) or that the author of the dharmasūtra is a pupil of <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> as the <a class="ref" href="../refs/manu.html#i" data-source="manu" data-ref="i" title="Manusmṛti i">Manusmṛti i</a>s promulgated by Bhṛgu, the pupil of <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>, or there was some other <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> whose works have not come down to uṣ Confusion results from the lists of sages in tarpaṇa mention-ed in several Gṛhyasūtraṣ The passage from <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> gṛ is quoted in note <sup class="fn-ref"><a href="#fn-6-the-baudhāyana-dharmasutra-3" id="fnref-6-the-baudhāyana-dharmasutra-3">3</a></sup>. In that passage Kāṇva Bodhāyana is called ‘pravacanakāra’ and Āpastamba is called ‘sūtrakāra’, while Satyāṣāḍha, Hiraṇyakeśa, Vājasaneya, <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yājñavalkya</a>, Bhara-dvāja and Agniveśya are merely named without any additioṇ In the Bauḍ Dh. S. quoted in the same note Kāṇva <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> (without the epithet ‘pravacanakāra’), Āpastamba sūtrakāra and Satyāṣāḍha Hiraṇyakeśin are nameḍ Two questions arise about the three names viz. (1) are the sages mentioned in the tarpaṇa passages the authors of the sūtra works in which they occur; (2) what is the import of the words pravacanakāra and sūtrakāra applied to Kāṇva Bodhāyana and Āpastamba respec-tively and do those words suggest that Kāṇva Bodhāyana is much earlier than Āpastamba. The present writer thinks that the authors of the Gṛhyasūtras were different from Kāṇva Bodhā-yana and Āpastamba to whom water is directed to be offered in the tarpaṇa part of those workṣ They might be descendants of Kāṇva Bodhāyana and Āpastamba who are included in the sages for tarpaṇa. If Kāṇva Bodhāyana and Āpastamba mentioned in the tarpaṇa passage were also the authors of the Bodhāyana and Āpastamba gṛhyasūtras it is very difficult to believe that they recommended to the generations that would come after them to offer water to them in tarpaṇa. The word <em>pravacana</em><sup class="fn-ref"><a href="#fn-6-the-baudhāyana-dharmasutra-3" id="fnref-6-the-baudhāyana-dharmasutra-3">3</a></sup> occurs frequently in the Upaniṣads viz. Tai. Up. 9, Katha II. 23 and Mundaka III. 2.4 (nāyam-ātmā pravacanena labhyaḥ). The Tai. Up. (I. 9 ), after setting out the opinions of two sages, mentions the view of Nāka Maudgalya that svādhyāya (study of the Veda) and pravacana (expounding or exposition i. e. teaching) is tapas (i. e. they should be striven for ). The <a class="ref" href="../refs/rigveda.html#I.162-1" data-source="rigveda" data-ref="I.162-1" title="Ṛgveda I.162-1">Ṛgveda I. 162-1</a> employs the form ‘pravakṣyāmaḥ (we shall loudly proclaim in the sacrifices the valorous deeds of the swift horse born among Gods). The <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> Gṛ. while dilating upon the offering of Madhuparka once a year to one’s teacher, father-in-law, king &c. when they pay a visit, provides that one should offer only once and not every year Madhuparka to a famous expounder (of the Veda and its meaning) acc. to Haradatta (on <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> Gṛ. V. 13. 20. (sakrit- pravaktre citrāya). In these words (pravacanakāra and sūtrakāra) there is no suggestion of time or early or late in time. The only difference is that the expounder may compose his work in any way (which may be prolix or otherwise), but a sūtrakāra has to be brief and compose his work in an appropriate style.</p>
+<p class="prose" id="p-6-the-baudhāyana-dharmasutra-2">The following are the contents of the <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>-dharma- sūtra :—Prāśna I :—Sources of dharma, who are śiṣṭas, pariṣad, different practices of northern and southern India, countries where śiṣṭas reside and where mixed castes reside, prāyaścitta for visiting countries of the latter type; 2 Studenthood for 48, 24 or 12 years, time of upanayana and the girdle, skin, staff appropriate to each caste, duties of brahmacārin, eulogy of brahmacarya; 3. The duties of the snātaka who has completed his studies and observances but has not yet married; 4. directions about carrying the earthen jar (in the case of the snātaka); 5. bodily and mental śauca, purification of various substances, impurity on birth and death, meaning of sapiṇḍa and sakulya, rules of inheritance, purification on touching a corpse or a woman in her menses or on dog-bite, what flesh and food was allowed and forbidden; 6. Purification from the point of view of sacrifice, purification of clothes, ground, grass, fuel, vessels, and articles used in sacrifice; 7. Rules about the importance from the sacrificial point of view of sacrifice, of the sacrificial utensils, priests, the sacrificer and his wife, ghee, cooked offerings, the victim, <em>soma</em> and fires; 8. The four <em>varnas</em> and the sub-castes; 9. the duties of kings, the five great sins and punishments for them, punishments for killing birds; witnesses; 11. The eight forms of marriage, holidays; <em>Prāśna</em> II. 1 <em>Prāyaścittas</em> for <em>brahmahatyā</em> and other great sins, Prāyaścittas for a <em>bramacharin</em> violating his vow of celibacy, for marrying a <em>sagotra</em> girl, for marrying before elder brother, sins lesser than the great ones, description of such penances as <em>Parāka</em>, <em>Kṛcchra</em>, <em>Atikṛcchra</em>; 2. Partition of heritage, larger share for the eldest, the several substitutes for an <em>aurasa</em> son, exclusion from inheritance, dependence of women, <em>prāyaścitta</em> for adultery by men and women, rules about <em>niyoga</em>, means of subsistence in distress, continuous duties of the house-holder such as <em>Agnihotra</em> &c.; 3. The daily duties of the householder such as bathing, <em>ācamana</em>, Vaiśvadeva, giving food; 4. <em>Sandhyā</em>; 5. Rules about the manner of propitiating ('<em>tarpana</em>') gods, sages and pitṛs; 6. The five great daily <em>yajñas</em>; the four castes and their duties; 7. regulations about dinner; 8. <em>Śrāddha</em>; 9. eulogy of sons and spiritual benefit from sons; 10. rules about <em>sannyāsa</em>; <em>Prāśna</em> III. 1 modes of subsistence for the two kinds of householders, <em>Śālīna</em> and <em>Yāyāvara</em>; 2. the means of subsistence called ‘<em>Sannivartani</em>’; 3. the duties of the forest hermit and his means of livelihood; 4. <em>prāyaścitta</em> for not observing the vows of <em>brahmacārin</em> or householder; 5. method of reciting <em>Aghamarsaṇa</em>, the holiest of texts; 6. the ritual of <em>prastāyavaka</em>; 7. the purificatory <em>homa</em> called <em>Kūsmāṇḍa</em>; 8. the penance called <em>cāndrāyaṇa</em>; 9 the recital of the Vedas without taking food; 10. theories about purification for sin, purifying things; <em>Prāśna</em> IV. 1. <em>prāyaścittas</em> of various kinds viz. for eating forbidden food or drink &c.; 2. <em>Prāṇāyāmas</em> and <em>Aghamarṣaṇa</em> as purifiers in case of several sins; 3. secret <em>prāyaścittas</em>; 4. Various Vedic texts as <em>prāyaścittas</em>; 5. Means of securing <em>siddhi</em> by means of <em>japa</em>, <em>homa</em>, <em>iṣṭi</em> and <em>yantra</em>; the penances called <em>Kṛcchra</em>, <em>Ati-Kṛcchra</em>, <em>Sāntapana</em>, <em>Parāka</em>, <em>Cāndrāyaṇa</em>; 6. the muttering (<em>japa</em>) of holy texts, the <em>iṣṭis</em>; 7. praise of <em>Yantras</em>, various Vedic texts used in <em>homa</em>; 8 censure of those who enter on the means of <em>siddhi</em> out of great greed, permission to get these things done through another in certain circumstanceṣ</p>
+<p class="prose" id="p-6-the-baudhāyana-dharmasutra-3">The extant dharmasūtra does not appear to have come down intact. The fourth <em>prāśna</em> is most probably an interpolatioṇ Most of the eight chapters of that <em>prāśna</em> are full of verses, the portion in prose being very small. The last three chapters (6-8) are entirely in verse. The style is quite different from that of the first two praśnaṣ The first five chapters of the fourth praśna deal with prāyaścittas are more or less superfluous, the same subject having been dealt with in II. 1. and III. 4-10. Some of the sūtras in the earlier praśnas are repeated verbatim in the fourth, e. g. II. I. 33-34 and IV. 2. 10-11 ( avakirṇi-prāyaścitta ). The third praśna also is not free from doubt. The tenth chapter of the third praśna is, as said above, taken from Gautama. The sixth chapter of the third praśna agrees very closely in phraseology with the 48th chapter of the <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharmasūtra. But it is rather difficult to say which is the borrower. Dr. Jolly (S. B. E. Vol. VII. p. XIX) is inclined to think that both borrowed from a common source. It seems more probable that <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> borrows from <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>, as the <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharmasūtra uses the form ‘punita’ in place of ‘punatha’ (in Bauḍ) and as the <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharmasūtra omits all reference to Rudra (Bauḍ III. 6. 12.) and omits the words “ gaṇān paśyati, gaṇādhipatim paśyati ... bhagavān <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>ḥ” (Bauḍ III. 6. 20.). In the Mysore edition all the four praśnas of the Dharmasūtra are divided into adhyāyas, but the Mss used by Bühler appear to have divided the first two praśnas into kandikās and the last two into adhyāyaṣ There are many repetitions even in the first two praśnas, which therefore make one rather doubtful about the authenticity of the first two praśnas also in their entirety. For example II. 6. 11 and 31 have identical; parts in II, 7 22 and II. 10. 53 the same verse (“astau grāsā” &c.) is quoteḍ Such repetitions are frequent in the two last praśnas e. g. III. 2. 16 and III. 3. 23; III. 4. 5 and III. 7. 12. Some of the quotations ascribed to <a class="ref" href="../refs/baudhayana.html#i" data-source="baudhayana" data-ref="i" title="Baudhāyana Dharmasūtra i">Baudhāyana i</a>n the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mitākṣarā</a> and other works are not taken from the dharmasūtra, but from the Gṛhyasūtra or its supplements (e. g. the words ‘ekām śākhāmādhite śrotriyaḥ” quoted in the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> on <a class="ref" href="../refs/yajnavalkya.html#III.24" data-source="yajnavalkya" data-ref="III.24" title="Yājñavalkya III.24">Yāj. III. 24</a> which are cited by Hultzsch (on p. 125), are taken from the Gṛhya ( vide note 78 below ).</p>
+<p class="prose" id="p-6-the-baudhāyana-dharmasutra-4">Though the fourth praśna appears to be interpolated, yet the interpolation must have taken place early enough. <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a> on <a class="ref" href="../refs/yajnavalkya.html#I.64" data-source="yajnavalkya" data-ref="I.64" title="Yājñavalkya I.64">Yāj. I. 64</a> quotes Bauḍ Dh. S. IV. 1. 15-16 (triṇi varṣāṇyr- tumati) expressly as <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>’s and on <a class="ref" href="../refs/yajnavalkya.html#I.72" data-source="yajnavalkya" data-ref="I.72" title="Yājñavalkya I.72">Yāj. I. 72</a> quotes Bauḍ Dh. S. IV. 1. 22 (bhartuḥ pratiniveśena &c.) by name. The <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> on <a class="ref" href="../refs/yajnavalkya.html#III.305" data-source="yajnavalkya" data-ref="III.305" title="Yājñavalkya III.305">Yāj. III. 305</a> quotes (as <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>’s) a long passage, Baudh. Dh. S. IV. 1. 5-11. Śaṅkarācārya on <a class="ref" href="../refs/brihadaranyaka.html#IV.5.15" data-source="brihadaranyaka" data-ref="IV.5.15" title="Bṛhadāraṇyaka Upaniṣad IV.5.15">Br. Up. IV. 5. 15</a> quotes Bauḍ II. 10. 2 “brahmacaryavān pravrajati” as smṛti. <a class="ref" href="../refs/yajnavalkya.html#I.71" data-source="yajnavalkya" data-ref="I.71" title="Yājñavalkya I.71">Yāj. I. 71</a> is almost the same as Bauḍ Dh. II. 2. 58 (Somah śaucam &c) The Dharmasūtra of <a class="ref" href="../refs/baudhayana.html#i" data-source="baudhayana" data-ref="i" title="Baudhāyana Dharmasūtra i">Baudhāyana i</a>s somewhat loose in structure and is not concise. Govindasvāmin remarks (on I. 2. 19) that <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> does not aim at brevity.<sup class="fn-ref"><a href="#fn-6-the-baudhāyana-dharmasutra-5" id="fnref-6-the-baudhāyana-dharmasutra-5">5</a></sup> Several subjects are treated of in two places and often without any logical connection with what precedes or followṣ Rules of inheritance (dāya-bhāga) occur in the midst of rules about prāyaścitta (in II. 2.); rules about holidays (anadhyāya) occur immediately after the eight forms of marriage and the condemnation of the sale of a daughter (I. 11). Rules about <em>snātaka</em> occur in two places (I. 3 and II. 3. 10 ff.). <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> quotes at least 90 verses introduced by the words “athāpyudāharanti,” more than 80 being from the first two praśnas alone. There are over two hundred other verses, about 80 of which occur in the first two praśnas and about ten are Vedic. Some of the verses even in the first two praśnas do not appear to be quotations e. g. I. 16, II. 2. 1, II. 3. 52–54 and 56. A verse quoted is in the Vaṁśastha metre (IV. 3. 14); there are two verses in the Upajāti metre taken as a quotation (II. 3. 18). There are some prose quotations introduced with the words “athāpyudāharanti” (e. g. II. 4. 5 and II. 6. 30 which refers to the asura Kapila son of Prahlāda). The language of the Bauḍ Dh. S. is archaic and often departs from the Pāṇinean standarḍ <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> employs such un-Pāṇinean forms as “gṛhya” (for gṛhītva in II. 5. 1), pūjya (II. 9. 5.), “adhigacchānāḥ” (in II. 9. 9.), anayītvā (III. 3. 6), “punatha” (in III. 6. 5, probably a quotation), “tebhiḥ” (for taiḥ in III. 2. 16, a quotation). In several places <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> states opposite views and then gives his own opinion on the point, e. g. Bauḍ I. 5. 105–109 (about impurity on birth); II. 1. 49–51.</p>
+<p class="prose" id="p-6-the-baudhāyana-dharmasutra-5">As regards the literature known to <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> the following points may be noteḍ All the four Vedas are mentioned by name in II. 5. 27 (<em>tarpana</em>). He quotes very frequently the Taittirīya saṃhitā, <a class="ref" href="../refs/taittiriya_br.html" data-source="taittiriya_br" data-ref="" title="Taittirīya Brāhmaṇa">Tai. Brāhmaṇa</a> and the <a class="ref" href="../refs/taittiriya_ar.html" data-source="taittiriya_ar" data-ref="" title="Taittirīya Āraṇyaka">Tai. Āraṇyaka</a> (in the Andhra recension). Well-known hymns of the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> such as the Aghamarṣaṇa, the Purusaśūkta and also simple ‘<em>ṛks</em>’ are frequently referred to. In III. 10 (which is almost the same as Gautama 19) there is a sūtra enumerating the Upaniṣads, the Samhitās of all the Vedas and several <em>sūmans</em> as purificatory textṣ There are long quotations taken from the Śatapatha-brāhmaṇa (XI. 3. 3. 1 ff and XI. 5. 6. 3) in Bauḍ (I. 2. 52 about brahmacārī and II. 6. 7-9 about <em>brahmayajña</em> ). It is noteworthy that in the <em>tarpana</em> there is an invocation of the <a class="ref" href="../refs/atharvaveda.html" data-source="atharvaveda" data-ref="" title="Atharvaveda">Atharvaveda</a> and immediately afterwards of the Atharvāngiraśah. The same is found in the <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>grhya also (III. 2. 9 and 22 ). In the Upaniṣads ( <em><a class="ref" href="../refs/brihadaranyaka.html" data-source="brihadaranyaka" data-ref="" title="Bṛhadāraṇyaka Upaniṣad">Bṛhadāraṇyaka</a></em> II. 4. 10, IV. 1. 2 ) it is the word Atharvāngirasaḥ that stands for the <a class="ref" href="../refs/atharvaveda.html" data-source="atharvaveda" data-ref="" title="Atharvaveda">Atharvaveda</a>. <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> quotes a <em>gāthā</em> of the Bhāllavins (I. 1. 29 ) about the geographical limits of Aryāvarta. <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> adduces the same verse (I. 15 ) and says that it is taken from the Nidāna work of the Bhāllavinṣ The Nirukta also mentions a school of Vedic interpretation called Naidānāh. It is difficult to say what Nidāna works containeḍ Itihāsa and Purāṇa occur in the <em>tarpana</em> (II. 5. 27 ). The <em>angas</em> of the Vedas occur in I. 1. 8 and the six <em>angas</em> in II. 8. 2. Whether the word “rahasya” in II. 8. 3 means the Āranyakas ( as Govindasvāmin explains ) is doubtful. <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> mentions a Vaikhānasasāstra in II. 6. 16, which appears to refer to the work of Vikhanas on hermits and speaks of Śrāmaṇaka (the rites prescribed by Vikhanas for initiation as hermit), just as Gautama doeṣ Among the authors on <em>dharma</em> mentioned by name are : Aupajanghani (II. 2. 33 for the view that only <em>aurasa</em> son was to be recognised and not the other kinds of sons<sup class="fn-ref"><a href="#fn-6-the-baudhāyana-dharmasutra-6" id="fnref-6-the-baudhāyana-dharmasutra-6">6</a></sup>), Kātya (I. 2. 47), Kaśyapa (or Kāśyapa in other editions, I. 11. 20 on the point that a woman bought cannot be a <em>patnī</em> ), Gautama (I. 1. 23 and II. 2. 70 ), Prajāpati (II. 4. 15 about failure in Sandhyopāsana, and II. 10. 71 about <em>sannyāsa</em> ), <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> (IV. 1. 14 and IV. 2. 16), Maudgalya (II. 2. 61, about observances of a widow being restricted only to six months after her husband’s death ), Hārīta (II. 1. 50 ). Bauḍ I. 2. 7 quotes a verse, which <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> ascribes to Hārīta (Vaṣ II. 6 ). As to Gautama, <em>vide</em> p. 33 above. <a class="ref" href="../refs/manu.html#i" data-source="manu" data-ref="i" title="Manusmṛti i">Manu i</a>s only mentioned in the fourth praśna, the authenticity of which, as said above, is very doubtful. <a class="ref" href="../refs/baudhayana.html#II.2.16" data-source="baudhayana" data-ref="II.2.16" title="Baudhāyana Dharmasūtra II.2.16">Baudhāyana II. 2. 16</a> (about the efficacy of <em>Aghamarṣaṇa</em>) closely agrees with <a class="ref" href="../refs/manu.html#XI.260" data-source="manu" data-ref="XI.260" title="Manusmṛti XI.260">Manu XI. 260</a>. The first reference to <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>’s teaching cannot be traced in the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a>. Prajāpati (III. 9. 21 ) seems to stand for god Brahmā and not for any real or mythical writer on <em>dharma</em>. One remarkable piece of information contained in <a class="ref" href="../refs/baudhayana.html#II.6.30" data-source="baudhayana" data-ref="II.6.30" title="Baudhāyana Dharmasūtra II.6.30">Baudhāyana (II. 6. 30 )</a> is that he quotes from a work (of the Brāhmaṇa class in language ) a prose passage wherein the division into four āśramas is ascribed to an <em>asura</em> Kapila, son of Pralhāda. In II. 2. 79 <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> quotes a <em>gāthā</em> from the dialogue between the daughter of Uśanas and the king Vṛṣaparvan<sup class="fn-ref"><a href="#fn-6-the-baudhāyana-dharmasutra-7" id="fnref-6-the-baudhāyana-dharmasutra-7">7</a></sup>, which is nearly the same as <a class="ref" href="../refs/mahabharata.html#I.78.10" data-source="mahabharata" data-ref="I.78.10" title="Mahābhārata I.78.10">Mahābhārata I. 78. 10</a> and 34. Bauḍ quotes the view of Ācāryas (II. 6. 29) as Gautama doeṣ In several places he refers to the views of his predecessors on <em>dharma</em> as “others” (<em>eke, apare</em>) e. g. I. 4. 23, I. 5. 16, I. 6. 105-106, II. 5. 2. In II. 3. 18 two verses in the Upajāti metre are quoted as sung by “anna” (food). From the numerous quotations in verse cited by <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> on topics of <em>dharma</em>, it follows that the Dharmasūtra was preceded by a considerable number of works on <em>dharma</em> in verse. Bühler (SBE vol. XIV, p. XLIII ) says that Vijñāneśvara was the first writer who quoted the Bauḍ D. S. But there are writers who flourished centuries before Vijñāneśvara that regarded <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> as a writer on <em>dharma</em> and either quoted his words or pointedly referred to theṃ Śabara in his <em>bhāṣya</em> on Jaimini I. 3. 3 says that the rule in the Smṛtis about the period of Vedic study being 48 years is opposed to the Vedic injunction “one who has begot sons and whose hair are dark should consecrate the sacrificial fires<sup class="fn-ref"><a href="#fn-6-the-baudhāyana-dharmasutra-8" id="fnref-6-the-baudhāyana-dharmasutra-8">8</a></sup>.” This must be regarded as referring to the words of <a class="ref" href="../refs/baudhayana.html#I.2.1" data-source="baudhayana" data-ref="I.2.1" title="Baudhāyana Dharmasūtra I.2.1">Baudhāyana (I. 2. 1)</a>. Śabara uses the same word “Vedabrahmacarya” that Bauḍ employṣ It is true that Gautama and Āpastamba both refer to the rule about 48 years, but they do not employ the word “veda-brahmacarya.” The Tantravārtika<sup class="fn-ref"><a href="#fn-6-the-baudhāyana-dharmasutra-9" id="fnref-6-the-baudhāyana-dharmasutra-9">9</a></sup> of Kumārila says that the words of Āpastamba (II. 6. 15. 1) which seem to accept the validity of local and family usages (even though opposed to Smṛti tradition ) stand refuted by the words of <a class="ref" href="../refs/baudhayana.html#I.1.19-24" data-source="baudhayana" data-ref="I.1.19-24" title="Baudhāyana Dharmasūtra I.1.19-24">Baudhāyana (I. 1. 19-24)</a> who cites only such censured usages as are opposed to Smṛti. Kumārila appears to think that <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> attacks the extant work of Āpastamba, i. e. the present Bauḍ is later than the present Āpastamba. It is not necessary to follow Kumārila implicitly as regards chronological details, where he is speaking of writers that flourished over a thous- and years before hiṃ But his opinion deserves weight. The Tantra- vārtika quotes a Smṛti passage which bears a close resemblance to <a class="ref" href="../refs/baudhayana.html#II.3.28" data-source="baudhayana" data-ref="II.3.28" title="Baudhāyana Dharmasūtra II.3.28">Baudhāyana (II. 3. 28)</a><sup class="fn-ref"><a href="#fn-6-the-baudhāyana-dharmasutra-10" id="fnref-6-the-baudhāyana-dharmasutra-10">10</a></sup>. In the commentary of <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a> (who flourished about 800 A. D.) on <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yājñavalkya</a>, <a class="ref" href="../refs/baudhayana.html#i" data-source="baudhayana" data-ref="i" title="Baudhāyana Dharmasūtra i">Baudhāyana i</a>s quoted at least nine times in the chapter on ācāra alone. Vide <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a> on Yaj. I. 21, 26, 29, 53, 64, 69, 72, 79, 195 (Trivandrum edition), where Bauḍ I. 5. 14, I. 2. 30, I. 5. 1, I. 17, IV. 1. 15, IV. 1. 18, IV. 1. 22, IV. 1. 20 and I. 5. 47 are respectively quoteḍ There are very few variations from the present text and the only serious variation is as regards the last (I. 5. 47) which is in prose ( while <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a> quotes a verse ). It is remarkable that <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a> quotes several verses from the fourth praśna, which shows that even if the fourth praśna be an interpolation, it is comparatively an ancient one. The <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> also (on <a class="ref" href="../refs/yajnavalkya.html#III.306" data-source="yajnavalkya" data-ref="III.306" title="Yājñavalkya III.306">Yāj. III. 306</a>) quotes a long passage from the fourth praśna (IV. 1. 5–11). The words of the Śakuntala<sup class="fn-ref"><a href="#fn-6-the-baudhāyana-dharmasutra-11" id="fnref-6-the-baudhāyana-dharmasutra-11">11</a></sup> that the first precept is that a girl is to be given away to a meritorious person are probably a reminiscence of Bauḍ IV. 1. 12. <a class="ref" href="../refs/medhatithi.html" data-source="medhatithi" data-ref="" title="Medhātithi">Medhātithi</a> on <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>. V. 117 quotes <a class="ref" href="../refs/baudhayana.html#I.5.47" data-source="baudhayana" data-ref="I.5.47" title="Baudhāyana Dharmasūtra I.5.47">Baudhāyana I. 5. 47</a> and on IV. 36 quotes Bauḍ I. 4. 2 (which is mutilated as printed). On <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>. V. 114 he says that all the rules about purification of substances are contained in <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>-smṛti. On <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>. V. 118. he quotes Bauḍ I. 5. 50.</p>
+<p class="prose" id="p-6-the-baudhāyana-dharmasutra-6">About the home of <a class="ref" href="../refs/baudhayana.html#i" data-source="baudhayana" data-ref="i" title="Baudhāyana Dharmasūtra i">Baudhāyana i</a>t is difficult to advance any positive conclusioṇ In modern times Baudhāyanīyas are mostly confined to the south. We know that Sāyaṇa, the great commentator of the Vedas, was a Baudhāṇīya. A grant of Nandivarma, a Pallava, of the 9th century mentions Brāhmaṇas of the pravacana-sūtra as recipientṣ<sup class="fn-ref"><a href="#fn-6-the-baudhāyana-dharmasutra-12" id="fnref-6-the-baudhāyana-dharmasutra-12">12</a></sup> As <a class="ref" href="../refs/baudhayana.html#i" data-source="baudhayana" data-ref="i" title="Baudhāyana Dharmasūtra i">Baudhāyana i</a>s called pravacanakāra in the Gṛhyasūtra Bühler thinks (S. B. E. vo!. 14 p. XLII) that the Brāhmaṇas belonged to the Baudhāyanācaraṇa. Bühler is probably right. In the grant most of the donees are students of the Āpastamba Sūtra. First the Gotra, then the Sūtra and then the name of the donee are introduced in the grant. Therefore as some of the donees are said to be students of “pravacanasūtra,” it follows that “pravacana” stands for some sūtra school. It appears that sūtra and pravacana are two different things, whatever the latter term may meaṇ <a class="ref" href="../refs/baudhayana.html#i" data-source="baudhayana" data-ref="i" title="Baudhāyana Dharmasūtra i">Baudhāyana i</a>s called pravacanakãra and Āpastamba is styled sûtrakãra. We are told by the <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>-gṛhyasūtra<sup class="fn-ref"><a href="#fn-6-the-baudhāyana-dharmasutra-13" id="fnref-6-the-baudhāyana-dharmasutra-13">13</a></sup> that a brāhmaṇa who studied sūtra and pravacana was styled “bhrūna.” Bühler was inclined to hold that <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> was a southern teacher for several reasonṣ <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> mentions customs of the south and includes sea-faring as a custom peculiar to the north (I. 1. 20), while in another place he places sea-faring at the head of sins (pataniyãs) lesser than the mortal ones (II. 1. 41). Therefore it is said that he was not a northern teacher. But as against this we have to remember that <a class="ref" href="../refs/baudhayana.html#I.1.29" data-source="baudhayana" data-ref="I.1.29" title="Baudhāyana Dharmasūtra I.1.29">Baudhāyana (I. 1. 29)</a> quotes with approval a verse in which the countries of Avanti (Ujjain), Anga, Magadha, Surãstra (Kathiãwar) and Daksinãpatha are declared to be the home of mixed casteṣ Daksinãpatha was generally supposed to be the whole peninsula south of the Narmadã. <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>, if he was a native of the south, would not have spoken of his country as the home of mixed castes only, unless he put a restricted meaning on the word Daksinãpatha (which sometimes meant in later days Mahãrãstra). Vide J. B. B. R. A. S. for 1917 p. 620. Though as stated above, the question of the home of <a class="ref" href="../refs/baudhayana.html#i" data-source="baudhayana" data-ref="i" title="Baudhāyana Dharmasūtra i">Baudhāyana i</a>s a difficult one, yet if a definite inclination has to be shown, then I am disposed to agree with Bühler that the author of Bauḍ Dh. S. was a southerner. It is important to note that Bauḍ wants to expound the dharmas declared in the Veda, in the smṛtis (I. 1. 5-6) as those who possess certain moral qualities and who understand the Veda together with other supporting sastraṣ He sets out first the five peculiar usages of the southern part, two of which are the usages of marrying one’s maternal uncle’s or paternal aunt’s daughter, These two are even now in vogue in some parts of Mahãrãstra and the South among certain sub-divisions of brāhmaṇas and were not prevalent in the north. <a class="ref" href="../refs/baudhayana.html#i" data-source="baudhayana" data-ref="i" title="Baudhāyana Dharmasūtra i">Baudhāyana i</a>mpartially sets forth five practices of the south and five of the north that were opposed to ancient sãstras and his own view appears to have been that in the case of all persons belonging to Aryavarta (whether they be in the northern or southern parts) both sets of five practices in sūtras (19 and 20) were not to be followeḍ In that connection he quotes several (three) views about Aryãvarta and two verses more, one of which names the countries in which there is mixture of castes and the 2nd mentions some countries like Āraṭṭa (Panjab), Sauvira, Puṇḍra, Vaṅga, Kaliṅga, sojourn in which made a person liable to undergo an expiatioṇ<sup>2</sup> The countries mentioned in the first verse are all (except Dakṣiṇāpatha) to the north of the Narmadā. It is quite probable that he did not like the usage of marrying one's maternal uncle's or paternal aunt's daughter even for southern people. It should<sup>3</sup> be noted that almost all the countries in the 2nd verse are north of the Narmadā. Further, Dakṣiṇāpatha appears to have meant a country roughly like modern Mahārāṣṭra long before the Christian era; vide ASWI. Vol. V. p. 60 which shows that in an inscription (No. 1) of Nanaghat (Poona District) Vediśiri is mentioned as king of Dakṣiṇāpatha. Vide ASWI Vol. IV. p. 110 and Rudradāman's inscription (E. I. Vol. VIII at p. 44, where Śātakarṇi is said to have been lord of Dakṣiṇāpatha). The fact that Āpastambiyas, Hiraṇyakeśins and Baudhayaniyas have congregated much more in the south than in the north for centuries supports the above statement. The words Uttarāpatha and Dakṣiṇāpatha were never strictly defineḍ For example, in the Sanjan plates (supposed to be spurious) of Buddhavarasa (E. I. Vol. 14 p. 144 at p. 149 about 700 A. D.) we meet with the words ‘Uttarāpa- thādhipati-Śrī-Harsadevapārājayopalabdabhogra-pratāpaḥ’ i. e. king Harṣa is said to have been lord of Uttarāpatha. If we turn to the Harṣacarita of Bāṇa (first paragraph after two initial verses of the 5th Ucchvāsa) we read ‘Atha kadācid-rājā Rājyavardhanam-āhūya Hūṇān hantuṃ..cirantanaīramatyaīḥ... kṛtvā sābhisāram-uttarāpatham prāhiṇot’. This shows that Sthāṇvīśvara (modern Thanesar) was not included in Uttarāpatha in Bāṇa's dayṣ Uttarāpatha occurs in the Hathīgumpha Inscription of Khāravela (E. I. Vol. XX. p.71 at p. 79 and p. 88). Pāṇini knows the word as in V. 1. 77 ‘Uttarāpathenārtam ca’ (Uttarāpathenārtam auttarāpathikam, Uttarāpathena gacchati auttarāpathikaḥ). About Dakṣiṇāpatha the Mahābhāṣya says that large lakes are called ‘Sarasī’ in Dakṣiṇāpatha (Kielhorn's eḍ Vol. I. p. 73). The word ‘Dakṣiṇāpatha occurs in the gaṇa ‘dhūmādi’ (Pāṇ. IV. 2. 127).</p>
+<p class="prose" id="p-6-the-baudhāyana-dharmasutra-7">The extant Baudhayānadharmasūtra is certainly later than Gautama, as it mentions Gautama twice by name and as one quota- tion at least is found in the extant Gautama. Besides <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> quotes by name several teachers on dharma, while Gautama quotes only one, <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>. <a class="ref" href="../refs/baudhayana.html#i" data-source="baudhayana" data-ref="i" title="Baudhāyana Dharmasūtra i">Baudhāyana i</a>s far removed from the times of the Upaniṣadṣ Bauḍ (II, 7, 15) quotes a verse which is itself an H. D.—7 adaptation of a passage from the <a class="ref" href="../refs/chandogya.html" data-source="chandogya" data-ref="" title="Chāndogya Upaniṣad">Chāndogya</a>-upaniṣaḍ<sup class="fn-ref"><a href="#fn-6-the-baudhāyana-dharmasutra-14" id="fnref-6-the-baudhāyana-dharmasutra-14">14</a></sup> He quotes Harita. It is uncertain whether the Hārītadharmasūtra, a manuscript of which was discovered by the late Vaman Śastrī Islāmpurkar at Nasik, is the one intendeḍ Bühler thought that the work of <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> was earlier than that of Āpastamba by a century or two. His first reason was that Kāṇva <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> receives homage in the tarpaṇa before Āpastamba and Hiraṇyakeśin and that the same order is observed in the <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>-gṛhyasūtra. But this reason is far from convincing. It may be conceded that <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> was regarded as the oldest (or the most authoritative or respectable ) of the three schools of the Black Yajurveda. But from this it does not at all follow that the extant dharma-sūtra of the Baudhāyanīyas is earlier than that of the Āpastambīyaṣ For aught we know the sūtra compiled for the school of <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> may be later than the sūtra manual of the Āpastambīyaṣ We saw above that orthodox opinion, represented by Kumārila, regards <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>'s work as later than Āpastamba'ṣ All the three founders of the three schools are mentioned in the <a class="ref" href="../refs/baudhayana_gr.html" data-source="baudhayana_gr" data-ref="" title="Baudhāyana Gṛhyasūtra">Baudhāyanagṛhya </a>and dharmasūtra. One may equally argue with good reason that both these works knew a sūtra work of Āpastamba and that the extant dharmasūtra of Āpastamba is that work. Another reason assigned for the priority of <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>'s work over Āpastamba's is that, though both have numerous sūtras that agree almost word for word, a comparison of the views of the two writers shows that Āpastamba lays down stricter and more puritanic (and therefore later) views on certain points than <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>. Gautama, <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> and <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> mention several secondary sons, while Āpastamba is silent about theṃ Gautama, <a class="ref" href="../refs/baudhayana.html#II.2.17, 62" data-source="baudhayana" data-ref="II.2.17, 62" title="Baudhāyana Dharmasūtra II.2.17, 62">Baudhāyana (II. 2. 17, 62)</a>, <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> and even <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> approve of the practice of niyoga, while Āpastamba condemns it (II. 6. 13. 1–9). Gautama and <a class="ref" href="../refs/baudhayana.html#I.11.1" data-source="baudhayana" data-ref="I.11.1" title="Baudhāyana Dharmasūtra I.11.1">Baudhāyana (I. 11. 1)</a> speak of eight forms of marriage, while Āpastamba speaks of only six and omits Prājāpatya and Paiśāca (II. 5. 11. 17–20 and II. 5. 12. 1–2). <a class="ref" href="../refs/baudhayana.html#II.2.4-6" data-source="baudhayana" data-ref="II.2.4-6" title="Baudhāyana Dharmasūtra II.2.4-6">Baudhāyana (II. 2. 4–6)</a> allowed a larger share to the eldest son on a partition, while Āpastamba condemns such a procedure (II. 6. 14. 10–14). The <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>-gṛhyasūtra (II. 4. 6) allows upanayana to rathakāra, while Āpastamba (gṛhya 4. 10. 1–4) does not do so (dharmasūtra I. 1. 1. 19). These points are hardly conclusive on the question of date. From very ancient times there was great divergence of opinion among the doctors of the law on most, if not on all, of these pointṣ There is no hard and fast rule that these doctrines were upheld by early writers and condemned by later oneṣ <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> himself quotes the views of an ancient writer, Aupajanghani, who condemned all secondary sonṣ The verses that <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> quotes on this point (II. 2. 34-36) are quoted by Āpastamba also but without the author's name (<a class="ref" href="../refs/apastamba.html#II.6.13.6" data-source="apastamba" data-ref="II.6.13.6" title="Āpastamba Dharmasūtra II.6.13.6">Āp. II. 6. 13. 6</a>), there being variants only in the first verse. Niyoga was allowed by <a class="ref" href="../refs/manu.html#9.56-63" data-source="manu" data-ref="9.56-63" title="Manusmṛti 9.56-63">Manu (9. 56-63)</a> and then condemned (9. 64-68) and <a class="ref" href="../refs/brihaspati.html" data-source="brihaspati" data-ref="" title="Bṛhaspati">Bṛhaspati</a> refers to this attitude of <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> (vide Kullūka on <a class="ref" href="../refs/manu.html#9.63" data-source="manu" data-ref="9.63" title="Manusmṛti 9.63">Manu 9. 63</a>). Even so late a writer as <a class="ref" href="../refs/yajnavalkya.html#II.131" data-source="yajnavalkya" data-ref="II.131" title="Yājñavalkya II.131">Yājñavalkya (II. 131)</a> approves of niyoga. About the rathakāra being allowed to consecrate the sacred fires there is a discussion in the sūtras of Jaimini (VI. 1. 44 ff). Vedic passages supported both methods viz. equal division among sons and the bestowal of a larger share on the eldest. Even yajña- valkya (II. 118) allows a larger share to the eldest soṇ Therefore, hardly anyone of the circumstances relied upon by Bühler as indicating a later age for Āpastamba is conclusive or convincing. The third ground for placing <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> before Āpastamba is that the style of the former is simpler and older as compared with the latter'ṣ That <a class="ref" href="../refs/baudhayana.html#i" data-source="baudhayana" data-ref="i" title="Baudhāyana Dharmasūtra i">Baudhāyana i</a>s simpler than Āpastamba may be admitteḍ But this may be due to the fact that <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> has been tampered with more than Āpastamba. On the other hand Āpastamba contains more un-Pāṇinean forms, more uncouth constructions, more words in an archaic sense than is the case with <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>. All that is almost certain about the age of the <a class="ref" href="../refs/baudhayana.html#i" data-source="baudhayana" data-ref="i" title="Baudhāyana Dharmasūtra i">Baudhāyana-dharmasūtra i</a>s that it is later than the work of Gautama, that its style, its doctrines and its general out-look on different subjects do not compel us to assign it a later date than that of the other dharmasūtraṣ We have adduced evidence to show that long before the days of Śabara (whose latest date cannot be later than 500 A. D.) the <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana-dharmasūtra</a> was an authoritative smṛti; it follows that the dharmasūtra must be placed somewhere between 500-200 B. C. Numerous sūtras are identical in <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> and Āpastamba e. g. <a class="ref" href="../refs/apastamba.html#I.1.2.30" data-source="apastamba" data-ref="I.1.2.30" title="Āpastamba Dharmasūtra I.1.2.30">Āp. I. 1. 2. 30</a> = Bauḍ I. 2. 40-41, <a class="ref" href="../refs/apastamba.html#I.2.6.8-9" data-source="apastamba" data-ref="I.2.6.8-9" title="Āpastamba Dharmasūtra I.2.6.8-9">Āp. I. 2. 6. 8-9</a> = Bauḍ I. 2. 39, <a class="ref" href="../refs/apastamba.html#I.5.15.8" data-source="apastamba" data-ref="I.5.15.8" title="Āpastamba Dharmasūtra I.5.15.8">Āp. I. 5. 15. 8</a> = Bauḍ I. 2. 31, <a class="ref" href="../refs/apastamba.html#I.11.31.11" data-source="apastamba" data-ref="I.11.31.11" title="Āpastamba Dharmasūtra I.11.31.11">Āp. I. 11. 31. 11</a> and 16 = Bauḍ II. 3. 39 and 32. There are several verses that occur in both e. g. Bauḍ II. 1. 42 = <a class="ref" href="../refs/apastamba.html#I.9.27.11" data-source="apastamba" data-ref="I.9.27.11" title="Āpastamba Dharmasūtra I.9.27.11">Āp. I. 9. 27. 11</a>, Bauḍ II. 2. 34-36 = <a class="ref" href="../refs/apastamba.html#II.6.13.6" data-source="apastamba" data-ref="II.6.13.6" title="Āpastamba Dharmasūtra II.6.13.6">Āp. II. 6. 13. 6</a> (three verses condemning secondary sons), Bauḍ II. 10. 63 = <a class="ref" href="../refs/apastamba.html#II.9.21.10" data-source="apastamba" data-ref="II.9.21.10" title="Āpastamba Dharmasūtra II.9.21.10">Āp. II. 9. 21. 10</a>, Bauḍ II. 7. 22-23 = <a class="ref" href="../refs/apastamba.html#II.4.9.13" data-source="apastamba" data-ref="II.4.9.13" title="Āpastamba Dharmasūtra II.4.9.13">Āp. II. 4. 9. 13</a>. (two verses), Bauḍ II. 6. 36 = <a class="ref" href="../refs/apastamba.html#II.9.24.8" data-source="apastamba" data-ref="II.9.24.8" title="Āpastamba Dharmasūtra II.9.24.8">Āp. II. 9. 24. 8</a>. Besides these there are numerous Vedic quotations that are common to both. All this however, does not establish anything about their relative positioṇ The <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha-dharmasūtra</a> also has numerous quotations in common with Bauḍ Vide Vaṣ I. 15. = Bauḍ I. 28, Vaṣ III. 5, 6, 11, 20, 56 = Bauḍ I. 10, 12, 11, 8 and I. 5. 58. (respectively); Vaṣ 6. 20-21 = Bauḍ II. 7. 22-23; Vaṣ VIII. 17 = Bauḍ II. 2, 1; Vaṣ XI. 27-28 = Bauḍ II. 8. 21-22; Vaṣ XVI. 34 = Bauḍ I. 10. 35, Vaṣ XVII. 73 = Bauḍ IV. 1. 17, Vaṣ XVII. 86 = Bauḍ I. 5. 102; Vaṣ XXII. 10 = Bauḍ I. 1. 33. It is to be noted that some of these quotations (Bauḍ II. 8. 21-22, I. 10. 35) occur in the extant <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a> (III. 125-126 and VIII, 98). There are a few prose sūtras in Vaṣ that are transformed into verse in Bauḍ and <em>vice versa</em> e. g. Vaṣ III. 41 (prose) = Bauḍ I. 5. 20 (quoted as a verse), Vaṣ III. 57 (quoted as a verse) = Bauḍ I. 6. 19-20. It is not likely that one borrows from the other. There are two other possible explanations, viz. that both Bauḍ and Vaṣ (and <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> also) quote from or adapt a common source or that the three works have been tempered with and interpolations introduced at every step. The latter alternative is too sweeping as the number of verses is very large and makes all the old sūtras except that of Gautama valueless for all chronological purposeṣ One cannot subscribe to the view that such extensive interpolations took place as the latter theory demandṣ The first alternative appears more reasonable. What that common source was, whether it was a regular work in verse or whether there was a floating mass of such popular verses as Bühler holds, are questions that present very great difficultieṣ It is not easy to believe that there were hundreds of floating verses on <em>dharma</em> no body knew by whom composed, on which writers of the centuries preceding the Christian era drew for supporting their opinionṣ That does not sound as a very likely procedure. It is more probable that such verses were contained in a work or works now lost.</p>
+<p class="prose" id="p-6-the-baudhāyana-dharmasutra-8">I tried on pp. 29-31 of the first edition to bring forward arguments on both sides of the question whether <a class="ref" href="../refs/baudhayana.html#i" data-source="baudhayana" data-ref="i" title="Baudhāyana Dharmasūtra i">Baudhāyana Dh. S. i</a>s earlier or later than Āpastamba and on p. 30 stated that the Bauḍ Dh. S. may be placed between 500 B. C. and 200 B. C. Dr. Ram Gopal (p. 76 of his work) trots out the plea that I am inconsistent. I have given above an answer to this charge in the case of my remarks about Gautama. So I do not want to rebut here the charge of inconsistency. I am prepared to place <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana Dh. S.</a> between 600 B. C. to 300 B. C. All these dates are more or less tentative and there is no finality about them at least at present.</p>
+<p class="prose" id="p-6-the-baudhāyana-dharmasutra-9">In the <em>tarpana</em>, Bauḍ (II. 5. 21) mentions several appellations of Gaṇeśa, viz. Vighna, Vināyaka, Sthūla, Varada, Hastimukha, Vakratuṇḍa, Ekadanta, Lambodara. But this affords no certain clue as to date. The worship of Vināyaka is found in the Mānāvāgṛhya also. In the <em>tarpana</em> (II. 5. 23) we have the seven planets mentioned in the order of the days of the week and also Rāhu and Ketu; besides the twelve names of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> occur in II. 5. 24. In II. 1. 44 Bauḍ speaks of the profession of an actor or of a teacher of dramaturgy (Nātyācārya) as an upapātaka. Several sūtras attributed to <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> on the subject of adoption in the Dattakamīmāmsā and other later works are taken from the <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>gṛhyāśeṣasūtra (II. 6), the sūtras agreeing very closely with <a class="ref" href="../refs/vasishtha.html#15.1-9" data-source="vasishtha" data-ref="15.1-9" title="Vasiṣṭha Dharmasūtra 15.1-9">Vasiṣṭha (15. 1-9)</a>.</p>
+<p class="prose" id="p-6-the-baudhāyana-dharmasutra-10">According to Burnell the oldest commentator on the <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>śrauta-sūtra was Bhavasvāmin, whom he placed in the 8th century. The commentary of Govindasvāmin on the Dharmasūtra is a learned one and is generally to the point. He appears to be a very late writer.</p>
+<aside class="footnotes-section" aria-label="Footnotes">
+<hr>
+<ol class="footnotes-list">
+<li id="fn-6-the-baudhāyana-dharmasutra-1" class="footnote-item">a <span class="devanagari">अथ दक्षिणतः प्राचीनावीतिनो वैशम्पायनाय फलिङ्गवे तितिरये उच्चायोच्चायनाय आग्नेयाय पदकाराय कौण्डिन्याय वृत्तिकाराय कृष्णाय बोधायनाय प्रवचनकाराय</span>- <span class="devanagari">पस्तम्बाय सूत्रकाराय सत्याषाढाय हिरण्यकेशाय वाजनसेयाय याज्ञवल्क्याय भरद्वाजायग्भिवेष्याचार्येभ्यो वानप्रस्थेभ्यो वंशस्थेभ्यो एकपर्नीभ्यः कल्पयामीति</span>. The epithets must be understood as arranged above, since elsewhere the epithet <span class="devanagari">सूत्रकार</span> is specially appropriated to <span class="devanagari">आपस्तम्ब</span>. The <span class="devanagari">हिरण्यकेशिगृह्य</span> (II. 20. 1, eḍ by Kirste in 1889) makes this clear. It reads ' <span class="devanagari">आग्नेयाय पदकाराय कौण्डिन्याय वृत्तिकाराय सूत्रकाराय सत्याषाढाय प्रवचनकर्तृभ्यः आचार्येभ्यः</span> etc. <span class="devanagari">भारद्वाजगृह्य</span> (quoted by Dr, Caland in ' Uber das Rituelle &c. 3. ṇ 2) reads ' <span class="devanagari">बोधायनाय भरद्वाजाय सूत्रकारायापस्तम्बाय सर्वेभ्यः सूत्रकारेभ्यः</span> &c.' <span class="devanagari">आं कृष्णे बौधायनं तर्पयामि</span>, <span class="devanagari">आोमापस्तम्बं सूत्रकारं तर्पयामि ओ सत्याषाढं हिरण्यकेशीनं तर्पयामि</span>, <span class="devanagari">ओ वाजनसेयीनं याज्ञवल्क्यं तर्पयामि</span>, <span class="devanagari">आोमाशलायनं शौनकं तर्पयामि</span>, <span class="devanagari">ओ व्यास तर्पयामि ।</span>' No 164-169 in <span class="devanagari">बो</span>. <span class="devanagari">ध</span>. <span class="devanagari">गृ</span>. II. 5 (Anaṇ eḍ). The <span class="devanagari">हिरण्यकेशिगृह्य</span> (edited by Kirste) does not mention <span class="devanagari">बौधायन</span> at all in the <span class="devanagari">तर्पण</span> (II. 20-21), but mentions <span class="devanagari">आत्रेय</span>- <span class="devanagari">पदकार</span>, <span class="devanagari">कौण्डिन्य वृत्तिकार</span>, <span class="devanagari">सत्याषाढ</span> and <span class="devanagari">सूत्रकार</span>ṣ <a href="#fnref-6-the-baudhāyana-dharmasutra-1" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-6-the-baudhāyana-dharmasutra-2" class="footnote-item">' <span class="devanagari">प्रायेण ग्रन्थकाराः स्वमतं परोपदेशो नब्रुवते</span> ' (on Manu I. 4). <a href="#fnref-6-the-baudhāyana-dharmasutra-2" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-6-the-baudhāyana-dharmasutra-3" class="footnote-item"><span class="devanagari">ऋतं च स्वाध्यायप्रवचनेच ।</span>...<span class="devanagari">सत्यमिति सत्यवचा राथीतरः । तप इति तपोनिष्ट्ठः पौर्षिष्ठिः । स्वाध्यायप्रवचने एवेति नाको मौद्गल्यः । तद्धि तपस्तद्धि तपः । तै</span>. <span class="devanagari">उ</span>. <span class="devanagari">प</span>. 1.9: <span class="devanagari">शङ्कराचार्य</span> explains: '<span class="devanagari">स्वाध्यायॊध्ययनम् । प्रवचनमध्यापनं ब्रह्मयज्ञौ वा</span>'; '<span class="devanagari">नायमात्मा प्रवचनेन लभ्यो न मेधया न बहुना श्रुतेन । कठ</span> 2.23 and <span class="devanagari">मुण्डक</span> III. 2.3. Compare: <span class="devanagari">द्विज्जातीनामध्येयमित्वा दानम्</span>, <span class="devanagari">ब्राह्मणास्याधिकाः प्रवचनयाज्यप्रतिग्रहाः ।</span> ( Continued on next page ) <a href="#fnref-6-the-baudhāyana-dharmasutra-3" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-6-the-baudhāyana-dharmasutra-4" class="footnote-item">( Continued from last page ) <span class="devanagari">मौ</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. X. 1-2: <span class="devanagari">हरदत्त</span> says ‘<span class="devanagari">प्रवचनमध्ययनम्</span>. It is clear from <span class="devanagari">आप्</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. I. 11. 32. 1 ‘<span class="devanagari">प्रवचनयुक्ती वर्षीशरदं मैधुनं वर्जयेत्</span>’ that <span class="devanagari">प्रवचन</span> means <span class="devanagari">अध्यापन</span> in that sūtra also. The word <span class="devanagari">प्रवचन</span> is derived from <span class="devanagari">वच्</span> ‘ to speak with <span class="devanagari">प्र</span> ’ and literally means ‘ declare loudly proclaim, ’ Nāka Maudgalya sage occurs in Br. Up. VI. 4. 4. H. D. – 6 <a href="#fnref-6-the-baudhāyana-dharmasutra-4" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-6-the-baudhāyana-dharmasutra-5" class="footnote-item"><span class="devanagari">ननु द्विजातिषु स्वकर्मस्थेषु इति सूत्रयन्ते किमिति सूत्रद्‌गारम्भः। सत्यं</span>, <span class="devanagari">अयं साचार्यो नातीव ग्रन्थलाघवाभिप्रावो भवति ।</span> <a href="#fnref-6-the-baudhāyana-dharmasutra-5" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-6-the-baudhāyana-dharmasutra-6" class="footnote-item">One of the verses ( <span class="devanagari">अप्रमत्ता रक्षत तन्तुमेनं</span> ) is referred to by <span class="devanagari">शबरस्वामी</span> on <span class="devanagari">पू</span>. <span class="devanagari">मी</span>. <span class="devanagari">सू</span>. 1. 2. 13 (<span class="devanagari">अपराधात् कर्तेध पुद्गदर्शनम्</span>). <a href="#fnref-6-the-baudhāyana-dharmasutra-6" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-6-the-baudhāyana-dharmasutra-7" class="footnote-item"><span class="devanagari">स्तुवतो दुहिता त्वं वै याचतः प्रतिगृह्णतः । अथाऽहं स्तूयमानस्य ददतोऽप्रतिगृह्णतः ॥</span> <a href="#fnref-6-the-baudhāyana-dharmasutra-7" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-6-the-baudhāyana-dharmasutra-8" class="footnote-item"><span class="devanagari">शबर</span>'s words are '<span class="devanagari">अष्टाचत्वारिंशद्वर्षाणि वेदब्रह्मचर्यं चरणं जातपुत्रः कृष्णकेशीना</span>- <span class="devanagari">विरूद्धम्</span>' on 1. 3. 3, and again on 1. 3. 4 '<span class="devanagari">अनुरूखं प्रच्छा</span>- <span class="devanagari">द्यन्ताष्ट्राचत्वारिंशद्वर्षाणि ब्रह्मचर्यं चरितवन्तः</span>'. <span class="devanagari">बौधायन</span>'s words are <span class="devanagari">अष्टा</span>- <span class="devanagari">चत्वारिंशद्वर्षाणि पौराणं वेदब्रह्मचर्यम्</span>. Compare <span class="devanagari">गौ</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. 2. 52 and <span class="devanagari">आ</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. I. 1. 2. 12. <a href="#fnref-6-the-baudhāyana-dharmasutra-8" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-6-the-baudhāyana-dharmasutra-9" class="footnote-item"><span class="devanagari">तन्त्रवार्तिक</span> p. 139 ‘<span class="devanagari">आपस्तम्बवचने तु बौधायनेन स्मृतिविरुद्धदुराचारोदाहरणान्येव प्रच्छन्ना निराकृतम्</span>’. The words in the <span class="devanagari">बौ</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. (I. 11. 22) '<span class="devanagari">तत्र तत्र देशप्रामाण्यमेव स्यात्</span>' are opposed to the words of <span class="devanagari">आपस्तम्ब</span> ‘<span class="devanagari">एतेन देश</span>- <span class="devanagari">लक्षणमी व्याख्याता</span>.’ <a href="#fnref-6-the-baudhāyana-dharmasutra-9" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-6-the-baudhāyana-dharmasutra-10" class="footnote-item"><span class="devanagari">तन्त्रवार्तिक</span> p. 993 ‘ <span class="devanagari">तथा च स्मृतिः।</span> ...<span class="devanagari">प्यारयेद्रुग्वं शुभे रौक्मे च कुण्डले</span>–– <span class="devanagari">इत्यादि सूपपसत्ये</span> '; Bauḍ has <span class="devanagari">वैर्ण दण्डे चारयेद्रुक्मकुण्डले च</span>. Compare <span class="devanagari">मनु</span> IV. 36. It is probable that the <span class="devanagari">तन्त्रवार्तिक</span> combines <span class="devanagari">बौ</span>. and <span class="devanagari">मनु</span>. <a href="#fnref-6-the-baudhāyana-dharmasutra-10" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-6-the-baudhāyana-dharmasutra-11" class="footnote-item">‘<span class="devanagari">गुणवते कन्यका प्रदेया इति तावत्प्रथमः कल्पः</span> ' <span class="devanagari">शाकुन्तल</span> 4th Act; while Bauḍ has ‘ <span class="devanagari">दयालुगुणवते कन्यां नामिकां ब्रह्मचारिणे</span> '. <a href="#fnref-6-the-baudhāyana-dharmasutra-11" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-6-the-baudhāyana-dharmasutra-12" class="footnote-item">I. A. vol. 8, pp 273-274. . <a href="#fnref-6-the-baudhāyana-dharmasutra-12" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-6-the-baudhāyana-dharmasutra-13" class="footnote-item">The whole passage is interesting ‘<span class="devanagari">उपनीतिमात्रो व्रतानुचारी वेदानां किञ्चिदधीत्य ब्राह्मणः । एको शाखाश्रमीय श्रोत्रियः । अङ्गाध्याप्ययनूचानः सूत्रप्रवचनाध्यायी भ्रूणः । चतुर्वेदाहाविः । अत ऊर्ध्वं देवर्षयः ।</span>’ <span class="devanagari">बौ</span>. <span class="devanagari">गृ</span>. <span class="devanagari">सू</span>. 1. 7. 2-8. <a href="#fnref-6-the-baudhāyana-dharmasutra-13" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-6-the-baudhāyana-dharmasutra-14" class="footnote-item">Bauḍ ‘<span class="devanagari">अथाच्युदाहरन्ति</span>—<span class="devanagari">यथापि तूलैषीकम्रौत प्रोतं प्रदीष्येते । तद्वत्सर्वाणि पापानि दद्यन्ते ह्यात्मयाजिनः ॥</span>’; compare <span class="devanagari">छान्दोग्योपनिषद्</span> V. 24. 3 ‘<span class="devanagari">तद्यथैषीकातूलमग्नौ प्रोतं प्रदर्ह्येतैवं ह सर्वं पाप्मानः प्रदर्ह्यन्ते</span>’ &c. <a href="#fnref-6-the-baudhāyana-dharmasutra-14" class="fn-back" aria-label="Back to text">↩</a></li>
+</ol>
+</aside>
+
+            <div class="chapter-nav">
+                <a href="5-the-dharmasutra-of-gautama.html" class="nav-prev"><i class="fa-solid fa-chevron-left"></i> 5. The Dharmasutra of Gautama</a>
+                <a href="7-dharmasutra-of-āpastamba.html" class="nav-next">7. Dharmasutra of Āpastamba <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </main>
+    </div>
+
+    <button class="toc-mobile-toggle" onclick="toggleMobileToc()" aria-label="Table of contents">
+        <i class="fa-solid fa-list"></i>
+    </button>
+
+    
+    <footer class="container-fluid pt-4" style="background-color:#2e4144">
+        <div class="row border-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img src="https://sanatana.in/mbta/public/images/Homepage_html/images/layer_8.png" alt="">
+            </div>
+            <div class="col-md-5 text-white">
+                <p>The divine knowledge and wisdom of our shastras is the only thing eternal,
+                   which was and which will remain ever-present in this gods creation.
+                   Our endeavours are to preserve this knowledge.</p>
+            </div>
+            <div class="col-md-1 text-white">
+                <div class="d-flex" style="height: 75px;">
+                    <div class="vr"></div>
+                </div>
+            </div>
+            <div class="col-md-3 text-white">
+                <i class="fa-solid fa-globe"></i>&emsp;
+                <a href="https://sanatanasampatti.in" class="text-light">www.sanatanasampatti.in</a><br>
+                <i class="fa-solid fa-envelope"></i>&emsp;
+                <a href="" class="text-light">sriranga.yoga@gmail.com</a>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center py-3 mb-4 align-items-center border-bottom">
+            <div class="col-md-2 text-white fs-4 text-center">Project</div>
+            <div class="col-md-2 text-white fs-4 text-center">Our Mission</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contribute</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contact Us</div>
+        </div>
+        <div class="row">
+            <p class="col-md-6 fs-6 text-start text-light">
+                <small>&copy; 2026 Sanatanasampatti</small>
+            </p>
+            <p class="col-md-6 fs-6 text-end text-light">
+                <a class="text-white" rel="nofollow" href="http://www.srirangadigital.com" target="_blank">
+                    <img src="https://sanatana.in/mbta/public/images/logo.png" alt="sriranga logo" />
+                    <small>Designed, Developed and Maintained by Sriranga Digital</small>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        const headings = [];
+        tocLinks.forEach(link => {
+            const id = link.getAttribute('href').substring(1);
+            const el = document.getElementById(id);
+            if (el) headings.push({ el: el, link: link.parentElement });
+        });
+
+        function onScroll() {
+            let current = null;
+            for (const h of headings) {
+                const rect = h.el.getBoundingClientRect();
+                if (rect.top <= 120) current = h;
+            }
+            tocLinks.forEach(l => l.parentElement.classList.remove('active'));
+            if (current) current.link.classList.add('active');
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    });
+
+    function toggleMobileToc() {
+        const toc = document.getElementById('toc');
+        if (!toc) return;
+        if (toc.style.display === 'block') {
+            toc.style.display = '';
+            toc.style.position = '';
+        } else {
+            toc.style.display = 'block';
+            toc.style.position = 'fixed';
+            toc.style.top = '0';
+            toc.style.left = '0';
+            toc.style.width = '80vw';
+            toc.style.maxWidth = '320px';
+            toc.style.height = '100vh';
+            toc.style.maxHeight = '100vh';
+            toc.style.zIndex = '2000';
+            toc.style.background = 'var(--parchment)';
+            toc.style.boxShadow = '4px 0 20px rgba(0,0,0,0.2)';
+            toc.style.padding = '24px';
+            toc.style.overflowY = 'auto';
+        }
+    }
+    </script>
+
+    <script>
+    function toggleSynopsisAudio(btn) {
+        var audio = btn.parentElement.querySelector('audio');
+        if (!audio.src) audio.src = btn.getAttribute('data-src');
+        if (audio.paused) {
+            audio.play();
+            btn.classList.add('playing');
+            btn.querySelector('i').className = 'fa-solid fa-pause';
+        } else {
+            audio.pause();
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        }
+        audio.onended = function() {
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        };
+        // Prevent click from toggling the synopsis open/close
+        event.stopPropagation();
+    }
+    </script>
+</body>
+</html>

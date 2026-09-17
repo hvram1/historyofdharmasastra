@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- MDB UI Kit -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/fonts.css?v=1.2">
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/navbar.css?v=2.4">
+
+    <title>Chapter XIX. Devayajna — Volume II: Part II — History of Dharmaśāstra</title>
+    <style>
+    :root {
+        --saffron:        #D4600A;
+        --saffron-light:  #F0924A;
+        --saffron-wash:   rgba(212, 96, 10, 0.07);
+        --indigo:         #2E5FA3;
+        --indigo-dark:    #1C3D70;
+        --maroon:         #7A1E1E;
+        --amber:          #C97A1A;
+        --ink:            #1A1209;
+        --ink-secondary:  #4A3B2A;
+        --parchment:      #FDFAF4;
+        --parchment-mid:  #F5EFE2;
+        --rule:           rgba(180, 130, 60, 0.22);
+        --shadow:         0 2px 18px rgba(90, 50, 10, 0.08);
+        --font-devanagari: 'Tiro Devanagari Sanskrit', 'Siddhanta', 'Noto Sans Devanagari', serif;
+        --font-roman:      'Junicode', Georgia, serif;
+    }
+
+    body {
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: var(--font-roman);
+    }
+
+    .devanagari {
+        font-family: var(--font-devanagari);
+    }
+
+    /* ── Navbar overrides ── */
+    .navbar-ontop { z-index: 1031; }
+    .hdclr { color: var(--saffron); }
+    .engpara { font-family: 'Open Sans', sans-serif; }
+
+    /* ── Layout ── */
+    .dh-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .dh-content {
+        flex: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        background: var(--parchment);
+        box-shadow: var(--shadow);
+        min-height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        .dh-content { padding: 24px 20px; }
+        .dh-wrapper { flex-direction: column; }
+    }
+
+    /* ── TOC Sidebar ── */
+    .toc-sidebar {
+        position: sticky;
+        top: 80px;
+        width: 280px;
+        min-width: 280px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding: 20px 16px;
+        margin-right: 24px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        scrollbar-width: thin;
+    }
+
+    .toc-title {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--saffron-light);
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list li {
+        padding: 4px 0;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-list li.toc-l3 {
+        padding-left: 16px;
+        font-size: 0.78rem;
+    }
+
+    .toc-list li a {
+        color: var(--ink-secondary);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .toc-list li a:hover { color: var(--saffron); }
+
+    .toc-list li.active {
+        border-left-color: var(--saffron);
+    }
+
+    .toc-list li.active a {
+        color: var(--saffron);
+        font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-sidebar { display: none; }
+    }
+
+    /* ── Mobile TOC Toggle ── */
+    .toc-mobile-toggle {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1050;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--saffron);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-mobile-toggle { display: block; }
+    }
+
+    /* ── Section Headings ── */
+    .section-heading {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        margin: 48px 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--rule);
+        letter-spacing: 0.5px;
+        scroll-margin-top: 80px;
+    }
+
+    h2.section-heading { font-size: 1.6rem; }
+
+    h3.section-heading {
+        font-size: 1.25rem;
+        border-left: 4px solid var(--saffron-light);
+        border-bottom: none;
+        padding: 8px 16px;
+        background: var(--saffron-wash);
+        border-radius: 0 5px 5px 0;
+    }
+
+    /* ── Prose ── */
+    .prose {
+        font-family: var(--font-roman);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+        color: var(--ink);
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    .prose em { color: var(--maroon); }
+
+    .prose:target {
+        background: rgba(212, 96, 10, 0.12);
+        border-left: 4px solid var(--saffron);
+        padding-left: 16px;
+        margin-left: -20px;
+        border-radius: 0 6px 6px 0;
+        animation: target-pulse 2s ease-out;
+    }
+
+    @keyframes target-pulse {
+        0%   { background: rgba(212, 96, 10, 0.30); }
+        100% { background: rgba(212, 96, 10, 0.12); }
+    }
+
+    /* ── Footnote References ── */
+    .fn-ref {
+        font-size: 0.75em;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    .fn-ref a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 0 2px;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: color 0.15s;
+    }
+
+    .fn-ref a:hover { color: var(--indigo); }
+
+    /* ── Synopsis Box ── */
+    .synopsis-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron-light);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .synopsis-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .synopsis-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .synopsis-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .synopsis-box.open .synopsis-toggle i {
+        transform: rotate(90deg);
+    }
+    .synopsis-body {
+        display: none;
+        padding: 0 20px 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+    }
+    .synopsis-box.open .synopsis-body { display: block; }
+    .synopsis-body p { margin: 0; }
+    .synopsis-attribution {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: var(--ink-secondary);
+        opacity: 0.7;
+        font-style: italic;
+    }
+    .synopsis-audio {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    .synopsis-play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--saffron);
+        background: none;
+        color: var(--saffron);
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: background 0.2s, color 0.2s;
+        padding: 0;
+    }
+    .synopsis-play-btn:hover {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn.playing {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn i { padding-left: 2px; }
+
+    /* ── Index Terms Panel ── */
+    .index-terms-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .index-terms-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .index-terms-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .index-terms-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .index-terms-box.open .index-terms-toggle i {
+        transform: rotate(90deg);
+    }
+    .index-terms-body {
+        display: none;
+        padding: 0 20px 16px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .index-terms-box.open .index-terms-body { display: block; }
+    .index-terms-dl {
+        margin: 0;
+        padding: 0;
+    }
+    .index-terms-dl dt {
+        font-family: var(--font-roman);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+        margin-top: 8px;
+    }
+    .index-terms-dl dd {
+        margin: 2px 0 0 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        color: var(--ink-secondary);
+        line-height: 1.5;
+    }
+    .nyaya-heading {
+        font-family: var(--font-roman);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        margin: 16px 0 4px;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+    }
+
+    /* ── Inline Index Popovers ── */
+    .idx-term {
+        border-bottom: 1px dotted var(--saffron-light);
+        cursor: help;
+        position: relative;
+    }
+    .idx-term:hover::after {
+        content: attr(data-def);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        background: rgba(44, 36, 22, 0.92);
+        color: #F5ECD8;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        max-width: 280px;
+        z-index: 100;
+        white-space: normal;
+        line-height: 1.4;
+        pointer-events: none;
+    }
+
+    /* ── Structured Version Banner ── */
+    .structured-banner {
+        margin: 0 0 28px;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, rgba(212, 96, 10, 0.06) 0%, rgba(212, 96, 10, 0.02) 100%);
+        border: 1px solid var(--saffron-light);
+        border-radius: 6px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        color: var(--ink-secondary);
+        line-height: 1.6;
+    }
+    .structured-banner i { color: var(--saffron); margin-right: 4px; }
+    .structured-banner a { color: var(--indigo); font-weight: 600; text-decoration: none; }
+    .structured-banner a:hover { text-decoration: underline; }
+
+    /* ── Footnotes Section ── */
+    .footnotes-section {
+        margin: 32px 0 48px;
+        padding: 20px 24px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .footnotes-section hr {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 0 0 16px;
+    }
+
+    .footnotes-list {
+        padding-left: 24px;
+        margin: 0;
+    }
+
+    .footnote-item {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+        scroll-margin-top: 80px;
+    }
+
+    .footnote-item:target {
+        background: rgba(212, 96, 10, 0.1);
+        border-radius: 4px;
+        padding: 4px 6px;
+        margin-left: -6px;
+    }
+
+    .fn-back {
+        color: var(--saffron-light);
+        text-decoration: none;
+        font-size: 0.85em;
+        margin-left: 4px;
+    }
+
+    .fn-back:hover { color: var(--saffron); }
+
+    /* ── Reference Links ── */
+    a.ref {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: all 0.15s;
+    }
+
+    a.ref:hover {
+        color: var(--saffron);
+        border-bottom-style: solid;
+    }
+
+    a.mbta-ext {
+        color: var(--indigo);
+        font-size: 0.7em;
+        margin-left: 2px;
+        opacity: 0.5;
+        text-decoration: none;
+        vertical-align: super;
+    }
+    a.mbta-ext:hover { opacity: 1; color: var(--saffron); }
+
+    /* ── References Panel (sidebar) ── */
+    .refs-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .refs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .refs-list li {
+        padding: 3px 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .ref-source-link {
+        font-weight: 600;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .ref-source-link:hover {
+        text-decoration: underline;
+    }
+
+    .ref-verse-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.76rem;
+    }
+
+    .ref-verse-link:hover {
+        text-decoration: underline;
+        color: var(--saffron);
+    }
+
+    .ref-verses {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Timeline panel ── */
+    .timeline-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .timeline-list li {
+        padding: 2px 0;
+        font-size: 0.76rem;
+        line-height: 1.4;
+        position: relative;
+        padding-left: 14px;
+    }
+
+    .timeline-list li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--saffron);
+    }
+
+    .timeline-list li.tl-approximate::before {
+        background: transparent;
+        border: 2px solid var(--saffron);
+        width: 4px;
+        height: 4px;
+    }
+
+    .timeline-list li.tl-century::before {
+        background: transparent;
+        border: 2px dashed var(--saffron);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+
+    .tl-dot-link {
+        text-decoration: none;
+        color: var(--ink);
+        display: block;
+    }
+
+    .tl-dot-link:hover {
+        color: var(--saffron);
+    }
+
+    .tl-year {
+        font-weight: 600;
+        color: var(--saffron);
+        font-size: 0.72rem;
+        min-width: 70px;
+        display: inline-block;
+    }
+
+    .tl-label {
+        color: var(--ink-secondary);
+        font-size: 0.72rem;
+    }
+
+    .tl-view-link, .tl-more {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.72rem;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .tl-view-link:hover, .tl-more:hover {
+        text-decoration: underline;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+
+    .breadcrumb-bar a {
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+
+    .breadcrumb-bar .sep {
+        color: var(--amber);
+        margin: 0 8px;
+    }
+
+    .breadcrumb-bar .current {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Chapter Navigation ── */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        margin-top: 48px;
+        border-top: 2px solid var(--rule);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .chapter-nav a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        transition: all 0.2s;
+        max-width: 45%;
+    }
+
+    .chapter-nav a:hover {
+        background: var(--saffron-wash);
+        border-color: var(--saffron-light);
+    }
+
+    .nav-prev { text-align: left; }
+    .nav-next { text-align: right; margin-left: auto; }
+
+    .page-range {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+    }
+
+    /* ── Volume Cards (Landing) ── */
+    .vol-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .vol-card {
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        transition: all 0.25s;
+    }
+
+    .vol-card:hover {
+        border-color: var(--saffron-light);
+        box-shadow: 0 4px 24px rgba(212, 96, 10, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .vol-num {
+        font-family: var(--font-roman);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--saffron);
+        margin-bottom: 8px;
+    }
+
+    .vol-subtitle {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        line-height: 1.5;
+        flex: 1;
+    }
+
+    .vol-chapters {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        margin-top: 12px;
+    }
+
+    /* ── Chapter Cards (Volume Index) ── */
+    .chapter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .chapter-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .chapter-card:hover {
+        border-color: var(--saffron-light);
+        background: var(--saffron-wash);
+    }
+
+    .card-num {
+        font-family: var(--font-roman);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--saffron);
+        min-width: 36px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        flex: 1;
+    }
+
+    .card-pages {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        color: var(--ink-secondary);
+    }
+
+    /* ── Landing Hero ── */
+    .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-family: var(--font-roman);
+        font-size: 2.4rem;
+        color: var(--saffron);
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .hero .devanagari-title {
+        font-family: var(--font-devanagari);
+        font-size: 1.8rem;
+        color: var(--ink);
+        margin-bottom: 16px;
+    }
+
+    .hero .author {
+        font-family: var(--font-roman);
+        font-size: 1.1rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .hero .desc {
+        font-family: var(--font-roman);
+        font-size: 1rem;
+        color: var(--ink-secondary);
+        line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer { margin-top: 48px; }
+</style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mbta/">
+      <div class="container-fluid">&emsp;&emsp;
+      <a href="../index.html" class="navbar-brand" style="text-decoration:none;">
+        <span class="devanagari ms-3" style="font-size:1.5rem; color:var(--saffron); font-weight:700;">धर्मशास्त्रम्</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="../index.html">धर्मशास्त्रम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5 active" href="../index.html">खण्डाः</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in/mbta/">महाभारतम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in">सनातनम्</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+
+    <div class="dh-wrapper container-xl">
+        <nav id="toc" class="toc-sidebar">
+<div class="refs-panel">
+<h5 class="toc-title">References</h5>
+<ul class="refs-list">
+<li><a href="../refs/agni_purana.html" class="ref-source-link">Agnipurāṇa</a> <span class="ref-verses"><a href="../refs/agni_purana.html#c" class="ref-verse-link">c</a></span></li>
+<li><a href="../refs/aitareya_br.html" class="ref-source-link">Aitareya Brāhmaṇa</a> <span class="ref-verses"><a href="../refs/aitareya_br.html#11.8" class="ref-verse-link">11.8</a></span></li>
+<li><a href="../refs/mb_anushasana.html" class="ref-source-link">Anuśāsanaparva</a> <span class="ref-verses"><a href="../refs/mb_anushasana.html#149.14-120" class="ref-verse-link">149.14-120</a></span></li>
+<li><a href="../refs/apararka.html" class="ref-source-link">Aparārka</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/arthashastra.html" class="ref-source-link">Arthaśāstra</a> <span class="ref-verses"><a href="../refs/arthashastra.html#II.4" class="ref-verse-link">II.4</a></span></li>
+<li><a href="../refs/atharvaveda.html" class="ref-source-link">Atharvaveda</a> <span class="ref-verses"><a href="../refs/atharvaveda.html#i" class="ref-verse-link">i</a></span></li>
+<li><a href="../refs/baudhayana.html" class="ref-source-link">Baudhāyana Dharmasūtra</a> <span class="ref-verses"><a href="../refs/baudhayana.html#ci" class="ref-verse-link">ci</a></span></li>
+<li><a href="../refs/chandogya.html" class="ref-source-link">Chāndogya Upaniṣad</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/gautama.html" class="ref-source-link">Gautama Dharmasūtra</a> <span class="ref-verses"><a href="../refs/gautama.html#I" class="ref-verse-link">I</a>, <a href="../refs/gautama.html#V.8-9" class="ref-verse-link">V.8-9</a>, <a href="../refs/gautama.html#IX.13-14" class="ref-verse-link">IX.13-14</a></span></li>
+<li><a href="../refs/kautilya.html" class="ref-source-link">Kauṭilya Arthaśāstra</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/kamasutra.html" class="ref-source-link">Kāmasūtra</a> <span class="ref-verses"><a href="../refs/kamasutra.html#III.4.40" class="ref-verse-link">III.4.40</a>, <a href="../refs/kamasutra.html#I.4.16" class="ref-verse-link">I.4.16</a></span></li>
+<li><a href="../refs/katyayana.html" class="ref-source-link">Kātyāyana</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/kurma_purana.html" class="ref-source-link">Kūrmapurāṇa</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mahabharata.html" class="ref-source-link">Mahābhārata</a> <span class="ref-verses"><a href="../refs/mahabharata.html#i" class="ref-verse-link">i</a></span></li>
+<li><a href="../refs/manu.html" class="ref-source-link">Manusmṛti</a> <span class="ref-verses"><a href="../refs/manu.html#II.176" class="ref-verse-link">II.176</a>, <a href="../refs/manu.html#III.152" class="ref-verse-link">III.152</a>, <a href="../refs/manu.html#III.117" class="ref-verse-link">III.117</a></span></li>
+<li><a href="../refs/matsya_purana.html" class="ref-source-link">Matsyapurāṇa</a> <span class="ref-verses"><a href="../refs/matsya_purana.html#c" class="ref-verse-link">c</a>, <a href="../refs/matsya_purana.html#258.23-25" class="ref-verse-link">258.23-25</a>, <a href="../refs/matsya_purana.html#258.22" class="ref-verse-link">258.22</a>, <a href="../refs/matsya_purana.html#258.20-21" class="ref-verse-link">258.20-21</a>, <a href="../refs/matsya_purana.html#47.247" class="ref-verse-link">47.247</a>, <a href="../refs/matsya_purana.html#52.23" class="ref-verse-link">52.23</a> <a href="../refs/matsya_purana.html" class="ref-verse-link">+1</a></span></li>
+<li><a href="../refs/mitakshara.html" class="ref-source-link">Mitākṣarā</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/markandeya.html" class="ref-source-link">Mārkaṇḍeyapurāṇa</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/narada.html" class="ref-source-link">Nārada</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/padma_purana.html" class="ref-source-link">Padmapurāṇa</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/parasara.html" class="ref-source-link">Parāśara</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/ramayana.html" class="ref-source-link">Rāmāyaṇa</a> <span class="ref-verses"><a href="../refs/ramayana.html#i" class="ref-verse-link">i</a></span></li>
+<li><a href="../refs/taittiriya_br.html" class="ref-source-link">Taittirīya Brāhmaṇa</a> <span class="ref-verses"><a href="../refs/taittiriya_br.html#II.6.17" class="ref-verse-link">II.6.17</a>, <a href="../refs/taittiriya_br.html#I.1.3" class="ref-verse-link">I.1.3</a>, <a href="../refs/taittiriya_br.html#II.4.6" class="ref-verse-link">II.4.6</a>, <a href="../refs/taittiriya_br.html#I.4.8" class="ref-verse-link">I.4.8</a>, <a href="../refs/taittiriya_br.html#II.7.7" class="ref-verse-link">II.7.7</a></span></li>
+<li><a href="../refs/taittiriya_s.html" class="ref-source-link">Taittirīya Saṃhitā</a> <span class="ref-verses"><a href="../refs/taittiriya_s.html#VII.1.5.1" class="ref-verse-link">VII.1.5.1</a>, <a href="../refs/taittiriya_s.html#I.2.1" class="ref-verse-link">I.2.1</a>, <a href="../refs/taittiriya_s.html#IV.2.8.2" class="ref-verse-link">IV.2.8.2</a>, <a href="../refs/taittiriya_s.html#V.6.1.1-2" class="ref-verse-link">V.6.1.1-2</a>, <a href="../refs/taittiriya_s.html#I.2.13.2" class="ref-verse-link">I.2.13.2</a>, <a href="../refs/taittiriya_s.html#IV.2.6.1" class="ref-verse-link">IV.2.6.1</a> <a href="../refs/taittiriya_s.html" class="ref-verse-link">+1</a></span></li>
+<li><a href="../refs/taittiriya_ar.html" class="ref-source-link">Taittirīya Āraṇyaka</a> <span class="ref-verses"><a href="../refs/taittiriya_ar.html#X.1" class="ref-verse-link">X.1</a>, <a href="../refs/taittiriya_ar.html#X.43-47" class="ref-verse-link">X.43-47</a>, <a href="../refs/taittiriya_ar.html#X.47" class="ref-verse-link">X.47</a>, <a href="../refs/taittiriya_ar.html#X.18" class="ref-verse-link">X.18</a></span></li>
+<li><a href="../refs/mb_vanaparva.html" class="ref-source-link">Vanaparva</a> <span class="ref-verses"><a href="../refs/mb_vanaparva.html#39.76" class="ref-verse-link">39.76</a>, <a href="../refs/mb_vanaparva.html#115" class="ref-verse-link">115</a>, <a href="../refs/mb_vanaparva.html#39.4" class="ref-verse-link">39.4</a></span></li>
+<li><a href="../refs/vasishtha.html" class="ref-source-link">Vasiṣṭha Dharmasūtra</a> <span class="ref-verses"><a href="../refs/vasishtha.html#XI.31" class="ref-verse-link">XI.31</a></span></li>
+<li><a href="../refs/mb_virataparva.html" class="ref-source-link">Virāṭaparva</a> <span class="ref-verses"><a href="../refs/mb_virataparva.html#6" class="ref-verse-link">6</a></span></li>
+<li><a href="../refs/vishnu_dh.html" class="ref-source-link">Viṣṇu Dharmasūtra</a> <span class="ref-verses"><a href="../refs/vishnu_dh.html#69.7" class="ref-verse-link">69.7</a>, <a href="../refs/vishnu_dh.html#23.34, 63.27" class="ref-verse-link">23.34, 63.27</a>, <a href="../refs/vishnu_dh.html#66.4" class="ref-verse-link">66.4</a>, <a href="../refs/vishnu_dh.html#66.1" class="ref-verse-link">66.1</a></span></li>
+<li><a href="../refs/vishnu_smriti.html" class="ref-source-link">Viṣṇu Smṛti</a> <span class="ref-verses"><a href="../refs/vishnu_smriti.html#i" class="ref-verse-link">i</a>, <a href="../refs/vishnu_smriti.html#5" class="ref-verse-link">5</a>, <a href="../refs/vishnu_smriti.html#1" class="ref-verse-link">1</a></span></li>
+<li><a href="../refs/vajasaneya.html" class="ref-source-link">Vājasaneya Saṃhitā</a> <span class="ref-verses"><a href="../refs/vajasaneya.html#16.7" class="ref-verse-link">16.7</a>, <a href="../refs/vajasaneya.html#XXII.1" class="ref-verse-link">XXII.1</a>, <a href="../refs/vajasaneya.html#I.8" class="ref-verse-link">I.8</a></span></li>
+<li><a href="../refs/yajnavalkya.html" class="ref-source-link">Yājñavalkya</a> <span class="ref-verses"><a href="../refs/yajnavalkya.html#i" class="ref-verse-link">i</a>, <a href="../refs/yajnavalkya.html#I.297" class="ref-verse-link">I.297</a>, <a href="../refs/yajnavalkya.html#I.296-298" class="ref-verse-link">I.296-298</a></span></li>
+<li><a href="../refs/mb_adiparva.html" class="ref-source-link">Ādiparva</a> <span class="ref-verses"><a href="../refs/mb_adiparva.html#70.49" class="ref-verse-link">70.49</a></span></li>
+<li><a href="../refs/apastamba.html" class="ref-source-link">Āpastamba Dharmasūtra</a> <span class="ref-verses"><a href="../refs/apastamba.html#I.4.13.1" class="ref-verse-link">I.4.13.1</a>, <a href="../refs/apastamba.html#I.11.30.28" class="ref-verse-link">I.11.30.28</a></span></li>
+<li><a href="../refs/shatapatha.html" class="ref-source-link">Śatapatha Brāhmaṇa</a> <span class="ref-verses"><a href="../refs/shatapatha.html#I.2.5.1" class="ref-verse-link">I.2.5.1</a>, <a href="../refs/shatapatha.html#XII.7.3.4" class="ref-verse-link">XII.7.3.4</a>, <a href="../refs/shatapatha.html#XII.7.3.1-4" class="ref-verse-link">XII.7.3.1-4</a>, <a href="../refs/shatapatha.html#XIV.1.2.11" class="ref-verse-link">XIV.1.2.11</a></span></li>
+<li><a href="../refs/mb_shantiparva.html" class="ref-source-link">Śāntiparva</a> <span class="ref-verses"><a href="../refs/mb_shantiparva.html#339.103-104" class="ref-verse-link">339.103-104</a></span></li>
+<li><a href="../refs/rigveda.html" class="ref-source-link">Ṛgveda</a> <span class="ref-verses"><a href="../refs/rigveda.html#X.27.6" class="ref-verse-link">X.27.6</a>, <a href="../refs/rigveda.html#VII.104.15" class="ref-verse-link">VII.104.15</a>, <a href="../refs/rigveda.html#X.4.4" class="ref-verse-link">X.4.4</a>, <a href="../refs/rigveda.html#VII.104.24" class="ref-verse-link">VII.104.24</a>, <a href="../refs/rigveda.html#VII.104.14" class="ref-verse-link">VII.104.14</a>, <a href="../refs/rigveda.html#VII.21.5" class="ref-verse-link">VII.21.5</a> <a href="../refs/rigveda.html" class="ref-verse-link">+34</a></span></li>
+</ul>
+</div>
+<div class="timeline-panel">
+<h5 class="toc-title">Timeline</h5>
+<ul class="timeline-list">
+<li class="tl-approximate"><a href="#p-chapter-xix-devayajna-3" class="tl-dot-link"><span class="tl-year">~563 BCE</span> <span class="tl-label">Aitareya Brāhmaṇa</span></a></li>
+<li class="tl-century"><a href="#p-chapter-xix-devayajna-3" class="tl-dot-link"><span class="tl-year">~500 BCE</span> <span class="tl-label">Aitareya Brāhmaṇa</span></a></li>
+<li class="tl-approximate"><a href="#p-chapter-xix-devayajna-3" class="tl-dot-link"><span class="tl-year">~483 BCE</span> <span class="tl-label">Aitareya Brāhmaṇa</span></a></li>
+<li class="tl-century"><a href="#p-chapter-xix-devayajna-3" class="tl-dot-link"><span class="tl-year">~400 BCE</span> <span class="tl-label">Aitareya Brāhmaṇa</span></a></li>
+<li class="tl-exact"><a href="#p-chapter-xix-devayajna-3" class="tl-dot-link"><span class="tl-year">~300 BCE</span> <span class="tl-label">Aitareya Brāhmaṇa</span></a></li>
+<li class="tl-century"><a href="#p-chapter-xix-devayajna-3" class="tl-dot-link"><span class="tl-year">~150 BCE</span> <span class="tl-label">Aitareya Brāhmaṇa</span></a></li>
+<li class="tl-exact"><a href="#p-chapter-xix-devayajna-3" class="tl-dot-link"><span class="tl-year">250 CE</span> <span class="tl-label">Aitareya Brāhmaṇa</span></a></li>
+<li class="tl-approximate"><a href="#p-chapter-xix-devayajna-20" class="tl-dot-link"><span class="tl-year">~500 CE</span> <span class="tl-label">Matsyapurāṇa</span></a></li>
+<li class="tl-approximate"><a href="#p-chapter-xix-devayajna-21" class="tl-dot-link"><span class="tl-year">~600 CE</span> <span class="tl-label">About Sarasvati, the goddess o</span></a></li>
+<li class="tl-century"><a href="#p-chapter-xix-devayajna-16" class="tl-dot-link"><span class="tl-year">601 CE</span> <span class="tl-label">Viṣṇu Smṛti</span></a></li>
+<li class="tl-approximate"><a href="#p-chapter-xix-devayajna-31" class="tl-dot-link"><span class="tl-year">~625 CE</span> <span class="tl-label">Mārkaṇḍeyapurāṇa</span></a></li>
+<li class="tl-exact"><a href="#p-chapter-xix-devayajna-16" class="tl-dot-link"><span class="tl-year">750 CE</span> <span class="tl-label">Viṣṇu Smṛti</span></a></li>
+<li><a href="chapter-xix-devayajna-timeline.html" class="tl-more">View all 19 dates &rarr;</a></li>
+</ul>
+<a href="chapter-xix-devayajna-timeline.html" class="tl-view-link">View full timeline &rarr;</a>
+</div>
+<h5 class="toc-title">Sections</h5>
+<ul class="toc-list">
+<li class="toc-l2"><a href="#chapter-xix-devayajna">Chapter XIX. Devayajna</a></li>
+</ul>
+</nav>
+        <main class="dh-content">
+            
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep">›</span>
+        <a href="index.html">Volume II: Part II</a>
+        <span class="sep">›</span>
+        <span class="current">Chapter XIX. Devayajna</span>
+    </div>
+    
+            <h1 class="text-center" style="font-family: var(--font-roman); font-size: 2rem; color: var(--saffron); margin-bottom: 8px;">
+                Chapter XIX. Devayajna
+            </h1>
+            <p class="text-center" style="font-family: 'Open Sans', sans-serif; color: var(--ink-secondary); font-size: 0.9rem; margin-bottom: 36px;">
+                Volume II: Part II <span class="page-range">pp. 705–740</span>
+            </p>
+
+            
+    <div class="synopsis-box" id="synopsis">
+        <button class="synopsis-toggle" onclick="this.parentElement.classList.toggle('open')"
+                aria-expanded="false" aria-controls="synopsis-body">
+            <i class="fa-solid fa-chevron-right"></i>
+            Kane's Synopsis
+        </button>
+        <div class="synopsis-audio">
+            <span class="synopsis-play-btn" role="button" tabindex="0"
+                    onclick="toggleSynopsisAudio(this)"
+                    data-src="../audio/synopsis/vol-2-part-2/vol-2-part-2_sec019.mp3" title="Listen to synopsis">
+                <i class="fa-solid fa-play"></i>
+            </span>
+            <audio preload="none"></audio>
+        </div>
+        <div class="synopsis-body" id="synopsis-body">
+            <p>The chapter on *Devayajña* establishes that in the *sūtras*, *homa* constituted this practice, though by medieval times *homa* had receded, replaced by *devapūjā*. It critically examines whether images of gods were known in Vedic times, exploring the meaning of *Śiśnādeva* and phallic emblems at Mohenjo-daro pertinent to *Liṅga* worship. Evidence suggests images were known long before *Pāṇini*, leading to a discussion on whether temple erection and image worship were borrowed or indigenous. Details cover the substances used for images and the principal gods worshipped.
+
+The ritual of image worship and entitlement to perform *devapūjā* are detailed. The text also covers *Śalagrāma* and other sacred stones, including *Pañcāyatanapūjā*. A comprehensive section explores the *Ten avatāras of Viṣṇu*, tracing the theory's germs to Vedic Literature. It examines when *Buddha* became an *avatāra* of *Viṣṇu* and the disappearance of Buddhism from India, noting the very meagre evidence for religious persecution. Beyond *Viṣṇu*, the chapter reviews *Śiva* worship, alongside that of *Gaṇeśa* and *Dattātreya*.
+
+Earliest descriptions of *Viṣṇu* and *Śiva* worship are provided, detailing the *16 upacāras*. Specific aspects like flowers for different gods, *Tāmbūla*, *Namaskāras* to the sun, and the worship of *Durgā* are highlighted. The chapter concludes with an analysis of modern *devapūjā*.</p>
+            <p class="synopsis-attribution">— Synopsis by P.V. Kane, from History of Dharmaśāstra</p>
+        </div>
+    </div>
+
+
+            
+
+            <h2 id="chapter-xix-devayajna" class="section-heading">Chapter XIX. Devayajna</h2>
+<p class="prose" id="p-chapter-xix-devayajna-1">Devayajña :—As stated in the Tai. Ar. quoted above ( p. 696 ) the Devayajña was performed by offering fuel sticks into fire. According to the <a class="ref" href="../refs/apastamba.html#I.4.13.1" data-source="apastamba" data-ref="I.4.13.1" title="Āpastamba Dharmasūtra I.4.13.1">Āp. Dh. S. I. 4. 13. 1</a>, Bauḍ <sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-1" id="fnref-chapter-xix-devayajna-1">1</a></sup> Dh. S. II. 6. 4 and <a class="ref" href="../refs/gautama.html#V.8-9" data-source="gautama" data-ref="V.8-9" title="Gautama Dharmasūtra V.8-9">Gaut. V. 8-9</a>, the Devayajña consisted in offering into fire offerings ( of food or at least a fuel stick ) with ‘svāhā’ uttered after the name of the deities in the dative case. <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> also (III. 70 ) looks upon homa as devayajña. The devatās to whom homa or devayajña was offered are different according to different gṛhya or dharma sūtraṣ For example, Āśv. gṛ. ( I. 2. 2 ) says that ‘ they are the deities of the Agnihotra ( i. e. Sūrya or Agni, and Prajāpati ), Soma Vanaspati, Agni and Soma, Indra and Agni, Heaven and earth, Dhanvantari, Indra, the Viśve Devas, Brahman’. According to <a class="ref" href="../refs/gautama.html" data-source="gautama" data-ref="" title="Gautama Dharmasūtra">Gaut.</a> they are Agni, Dhanvantari, Viśve Devas, Prajāpati, Agni Sviṣṭakṛt. Vide Mānava-gṛhya II. 12. 2 where the deities are different from those in Āśv. gṛ. and <a class="ref" href="../refs/gautama.html#I" data-source="gautama" data-ref="I" title="Gautama Dharmasūtra I">Gaut. I</a>n later smṛtis a distinction is made between homa ( or devayajña ) and devapūjā. <a class="ref" href="../refs/yajnavalkya.html#i" data-source="yajnavalkya" data-ref="i" title="Yājñavalkya i">Yāj. i</a>n I. 100 speaks of the worship of gods immediately after tarpaṇa and then in I. 102 includes homa among the five yajñaṣ <a class="ref" href="../refs/manu.html#II.176" data-source="manu" data-ref="II.176" title="Manusmṛti II.176">Manu II. 176</a> also makes this distinctioṇ Medieval writers came to look upon Vaiśvadeva as the devayajña, while others held that homa to gods was different from Vaiśvadeva. Vide Haradatta <sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-2" id="fnref-chapter-xix-devayajna-2">2</a></sup> on <a class="ref" href="../refs/apastamba.html#I.4.13.1" data-source="apastamba" data-ref="I.4.13.1" title="Āpastamba Dharmasūtra I.4.13.1">Āp. Dh. S. I. 4. 13. 1</a>. According to Marīci and Hārīta quoted in the Smṛtimuktāphala ( āhnika p. 383 ) devapūjā is performed after the morning homa or after brahmayajña and tarpaṇa <sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-3" id="fnref-chapter-xix-devayajna-3">3</a></sup> in the nooṇ In medieval and modern times the ancient idea of homa receded far into the back-ground and its place was taken by an elaborated procedure of <em>devapūjā</em> (worship of images kept in the house). Some space must be devoted to the origin and develop-ment of this phase of religious practice.</p>
+<p class="prose" id="p-chapter-xix-devayajna-2">It is extremely doubtful whether images were generally worshipped in the ancient Vedic timeṣ In the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> and the other Vedas, there is worship of Agni, the Sun, Varuṇa and various other deities; but they were worshipped in the abstract, as powers and manifestations of the one Divine Person or as separate deities or functions behind natural phenomena or cosmic processeṣ There are no doubt passages where the deities of the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> are spoken of as possessed of bodily attributeṣ A few verses may be cited in this connectioṇ Indra is described in <a class="ref" href="../refs/rigveda.html#VIII.17.8" data-source="rigveda" data-ref="VIII.17.8" title="Ṛgveda VIII.17.8">Ṛg. VIII. 17. 8</a> as 'tuvigrīva' (with a powerful or thick neck) and 'vapodara' (having big or capacious belly) and 'subāhu' (having well-shaped arms). <a class="ref" href="../refs/rigveda.html#VIII.17.5" data-source="rigveda" data-ref="VIII.17.5" title="Ṛgveda VIII.17.5">Ṛg. VIII. 17. 5</a> speaks of the limbs and sides of Indra and prays Indra to taste honey with his tongue. In <a class="ref" href="../refs/rigveda.html#X.96.8" data-source="rigveda" data-ref="X.96.8" title="Ṛgveda X.96.8">Ṛg. X. 96. 8</a> Indra is spoken as having dark green (<em>hari</em>) hair and beard and in X. 105.7 again it is said that the hair on his chin are dark-green and his chin is never injured (in battle).<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-4" id="fnref-chapter-xix-devayajna-4">4</a></sup> In <a class="ref" href="../refs/rigveda.html#II.33.5" data-source="rigveda" data-ref="II.33.5" title="Ṛgveda II.33.5">Ṛg. II. 33. 5</a> Rudra is said to be 'ṛdūdara' (whose abdomen is soft), 'babhrū' (of brown colour) and 'suśipra' (with a fine chin or nose). The <a class="ref" href="../refs/vajasaneya.html#16.7" data-source="vajasaneya" data-ref="16.7" title="Vājasaneya Saṃhitā 16.7">Vāj. S. 16. 7</a> speaks of Rudra as having a dark-blue throat and red (complexion) and 16. 51 says he wears a skin (<em>kṛtti</em>). In <a class="ref" href="../refs/rigveda.html#I.155.6" data-source="rigveda" data-ref="I.155.6" title="Ṛgveda I.155.6">Ṛg. I. 155. 6</a> <a class="ref" href="../refs/vishnu_smriti.html#i" data-source="vishnu_smriti" data-ref="i" title="Viṣṇu Smṛti i">Viṣṇu i</a>s said to approach a battle with his huge body and as a youth ('bṛhac-charīra' and 'yuvā'). In <a class="ref" href="../refs/rigveda.html#III.53.6" data-source="rigveda" data-ref="III.53.6" title="Ṛgveda III.53.6">Ṛg. III. 53. 6</a> Indra is asked to go home at once after drinking Somas, as he has a charming wife and delightful house. In <a class="ref" href="../refs/rigveda.html#X.26.7" data-source="rigveda" data-ref="X.26.7" title="Ṛgveda X.26.7">Ṛg. X. 26.7</a> god Pūṣan is said to shake his bearḍ In <a class="ref" href="../refs/rigveda.html#IV.53.2" data-source="rigveda" data-ref="IV.53.2" title="Ṛgveda IV.53.2">Ṛg. IV. 53.2</a> Savitṛ is said to put on a yellowish <em>drāpi</em> (armour) and in <a class="ref" href="../refs/rigveda.html#I.25.13" data-source="rigveda" data-ref="I.25.13" title="Ṛgveda I.25.13">Ṛg. I. 25. 13</a> Varuṇa is said to wear a golden <em>drāpi</em>. It is not necessary to multiply exampleṣ It is possible to argue that all these descriptions are poetic and metaphoric. But there are two passages of the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> that cause much more difficulty than the above. <a class="ref" href="../refs/rigveda.html#IV.24.10" data-source="rigveda" data-ref="IV.24.10" title="Ṛgveda IV.24.10">Ṛg. IV. 24. 10</a> asks 'who will<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-5" id="fnref-chapter-xix-devayajna-5">5</a></sup> purchase this my Indra for ten cows and might return it after he ( Indra ) has killed enemies' ? <a class="ref" href="../refs/rigveda.html#VIII.1.5" data-source="rigveda" data-ref="VIII.1.5" title="Ṛgveda VIII.1.5">Rg. VIII. 1. 5</a> says 'O Indra ! I shall not give thee for even a great price, not even for a hundred, a thou-sand or an <em>ayuta</em> ( ten thousand )'. It may be argued that here there is a reference to an image of Indra. But this is not convincing. It is equally possible to hold that these are hyperbolic or boastful statements of the great devotion of the worshipper to Indra and that there is no reference to an image of Indra. If we look at the Vedic cult described in the brāhmaṇas where sacri-fices of butter, cakes and boiled rice or other grain are offered to several deities in the fire, or animal and soma sacrifices are described at great length, it is clear that the ancient sages hardly ever thought of the worship of idols, but of deities in the abstract to whom they ascribed different functions and poetically represented them as being endowed like human beings with hands and feet and other limbṣ It cannot be denied that here and there occur a few passages that suggest images as objects of worship. For example, in the <a class="ref" href="../refs/taittiriya_br.html#II.6.17" data-source="taittiriya_br" data-ref="II.6.17" title="Taittirīya Brāhmaṇa II.6.17">Tai. Br. II. 6. 17</a> occurs the passage 'may the hotṛ priest worship the three goddesses, that are golden, that are endowed with beauty ( or ornaments ) that are great ones'&c. It looks as if golden images of the three goddesses are meant.<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-6" id="fnref-chapter-xix-devayajna-6">6</a></sup> One can say without much fear of contradiction that the religious practices among the higher strata of the Vedic Aryans did not include the worship of images in the house or in templeṣ But we have hardly any literary materials for judging what the religious practices of the lower or ignorant masses of Vedic India were. In <a class="ref" href="../refs/rigveda.html#VII.21.5" data-source="rigveda" data-ref="VII.21.5" title="Ṛgveda VII.21.5">Rg. VII. 21. 5</a> <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> prays to Indra 'may the <em>śiśna-devas</em> not overwhelm our <em>ṛta</em> ( religious order or practices ); similarly in <a class="ref" href="../refs/rigveda.html#X.99.3" data-source="rigveda" data-ref="X.99.3" title="Ṛgveda X.99.3">Rg. X. 99. 3</a> the prayer is 'may he ( Indra ) striking ( or killing ) the <em>śiśnadevas</em> overcome them by his form or power'. Scholars are sharply divided in opinion about the meaning of the word<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-7" id="fnref-chapter-xix-devayajna-7">7</a></sup> '<em>śiśnadevā</em>'. Some hold that it denotes people who were worshippers of the phallus ( <em>vide</em> Vedic Index, vol. II. p. 382 ). Others hold that the word is used in a secondary or metaphorical sense for those who are immersed in sexual gratification and do not recognize anything else (as worthy of pursuit ). Yāska in his Nirukta (IV. 19) quotes <a class="ref" href="../refs/rigveda.html#VII.21.5" data-source="rigveda" data-ref="VII.21.5" title="Ṛgveda VII.21.5">Rg. VII. 21. 5</a> and explains that the word means 'those who do not observe rules of brahmacarya (celibacy)'. The preponderance of authority and evidence is in favour of the second view. In <a class="ref" href="../refs/rigveda.html#VII.104.14" data-source="rigveda" data-ref="VII.104.14" title="Ṛgveda VII.104.14">Rg. VII. 104. 14</a>(=Atharva VIII. 4. 14), the poet pleads 'if I be addicted to falsehood, O fire, or if I call upon the gods in vain (then you may injure me), but (not being so) why are you angry with me? May those whose speech is false incur slaughter at your hands'. Here 'anṛta-devāḥ' is practi- cally the same as 'drogha-vācaḥ' in the fourth pāda. In the Tai. Up. I. 11. 2 we have the words 'mātṛdevo bhava, pitṛdevo bhava', where all that is meant is that 'one should be devoted to the parents'. Therefore 'śiśna-deva' could hardly mean 'those who worship phallus as god'. In <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Rg.</a><sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-8" id="fnref-chapter-xix-devayajna-8">8</a></sup> X. 87. 2 Agni is invoked as follows 'with thy tongue reach the mūradevas, in thy mouth envelope the eaters of raw flesh after cutting them into bits' and in <a class="ref" href="../refs/rigveda.html#VII.104.24" data-source="rigveda" data-ref="VII.104.24" title="Ṛgveda VII.104.24">Rg. VII. 104. 24</a> Indra is called upon to kill male and female yātudhānas (evil spirits or sorcerers) and it is added 'may the mūradevas perish bereft of their necks and may they not see the sun rising up from the horizon'. Yāska in commenting on <a class="ref" href="../refs/rigveda.html#X.4.4" data-source="rigveda" data-ref="X.4.4" title="Ṛgveda X.4.4">Rg. X. 4. 4</a> explains 'mūra' as 'mūḍha' (stupid)<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-9" id="fnref-chapter-xix-devayajna-9">9</a></sup>. It is possible to take 'mūra' as meaning 'mortal', or 'perishable' (since the root 'mṛ' assumes the form 'muriya' as in <a class="ref" href="../refs/rigveda.html#VII.104.15" data-source="rigveda" data-ref="VII.104.15" title="Ṛgveda VII.104.15">Rg. VII. 104. 15</a>). From the above quotations it is clear that the Ṛgvedic poets knew of low people who practised witchcraft, who were mūradevas (i. e. either worshipped perishable objects or were stupid in their cult) and who were the enemies of the Aryanṣ There are also clear references to enemies who did not look upon Indra as God (<a class="ref" href="../refs/rigveda.html#X.27.6" data-source="rigveda" data-ref="X.27.6" title="Ṛgveda X.27.6">Rg. X. 27. 6</a>, X. 48. 7, X. 86. 1).</p>
+<p class="prose" id="p-chapter-xix-devayajna-3">Phallic emblems have been found in the ancient ruins at Mohenjo-daro (vide Sir John Marshall's work, vol. I. pp. 58-63). Except these finds the earliest known liṅgas so far discovered do not go beyond the first century B. C. But centuries before Christ the worship of images had become widespread in India. According to Haradatta on <a class="ref" href="../refs/apastamba.html" data-source="apastamba" data-ref="" title="Āpastamba Dharmasūtra">Āp.</a> gr. 20. 1-3, where the offerings to Īśāna, his consort and his son ‘Jayanta’ (the conqueror Skanda) are described, images of these three are worshippeḍ The Mānava-gṛhya <sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-10" id="fnref-chapter-xix-devayajna-10">10</a></sup> II. 15. 6 prescribes that if an image (of wood, stone or metal) were to be burnt down or to become reduced to powder (of itself) or falls (from its pedestal) or breaks into pieces, or laughs, or moves to another place, the householder (in whose house it had been established) should offer ten oblations into fire with certain Vedic verseṣ In the Bauḍ gr. II. 2. 13 when describing the ceremony of Upaniṣkramaṇa (taking the infant child out of the house for the first time) it is said that the father after performing homa goes out of the house, worships the images outside (the house), feeds the brāhmaṇas, makes them pronounce benedictions and then brings back to the house the infant. <sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-11" id="fnref-chapter-xix-devayajna-11">11</a></sup> The Laugākṣi gṛhya (18. 3) speaks of devatāyatana (a temple). <a class="ref" href="../refs/gautama.html#IX.13-14" data-source="gautama" data-ref="IX.13-14" title="Gautama Dharmasūtra IX.13-14">Gaut. (IX. 13-14)</a> forbids a man from answering calls of nature in front of images or from stretching one’s feet towards them and (IX. 66) requires a man to circumambulate a temple (devatāyatana) that he may meet on his way. The Sāṇ gr. IV. 12. 15 does the same and uses the same word (S. B. E. vol. 29, p. 125) and in II. 6. mentions a deva-kula (god’s house). <a class="ref" href="../refs/apastamba.html#I.11.30.28" data-source="apastamba" data-ref="I.11.30.28" title="Āpastamba Dharmasūtra I.11.30.28">Āp. Dh. S. (I. 11. 30. 28)</a> has a similar rule. <a class="ref" href="../refs/manu.html#II.176" data-source="manu" data-ref="II.176" title="Manusmṛti II.176">Manu (II. 176)</a> directs the brahmacārin to worship images, requires a person to circumambulate images that he may meet with when on a journey (IV. 39), not to cross the shadow of images (IV. 130) and ordains that witnesses be sworn in the presence of the images of gods and brāhmaṇas (VIII. 87). Vide also <a class="ref" href="../refs/manu.html#III.117" data-source="manu" data-ref="III.117" title="Manusmṛti III.117">Manu III. 117</a> and IX. 285. The <a class="ref" href="../refs/vishnu_dh.html#23.34, 63.27" data-source="vishnu_dh" data-ref="23.34, 63.27" title="Viṣṇu Dharmasūtra 23.34, 63.27">Viṣṇu Dh. S. (23. 34, 63. 27)</a> mentions the images of gods (devatārcā) and speaks of the worship of Bhagavat Vāsudeva as an image. In <a class="ref" href="../refs/vasishtha.html#XI.31" data-source="vasishtha" data-ref="XI.31" title="Vasiṣṭha Dharmasūtra XI.31">Vasiṣṭha XI. 31</a>, <a class="ref" href="../refs/vishnu_dh.html#69.7" data-source="vishnu_dh" data-ref="69.7" title="Viṣṇu Dharmasūtra 69.7">Viṣṇu Dh. S. 69. 7</a>, 30. 15, 70 13, 91. 10 the word ‘deva-tāyatana’ or ‘devāyatana’ occurṣ Unfortunately the dates of all these works are far from being certaiṇ But no scholar will assign the Mānava, <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a> and Śāṅkhyāyana gṛhyasūtras and the dharmasūtras of Gautama and Āpastamba to a later date than the 5th or 4th century B. C. Pāṇini, whom no scholar will place later than 300 B. C. (though there are some who place him several centuries earlier), teaches <sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-12" id="fnref-chapter-xix-devayajna-12">12</a></sup> that an image by attending on which a person maintains himself and which is not for sale has the same name as the god whose image it is e. g. an image is called Śiva or Skanda when the worshipper makes his livelihood by attending on the image of Śiva or Skanda (and appropriating the offerings placed before the image) which is not for sale. Pāṇini also teaches (IV. 3. 98) that 'Vāsudevaka' is a person who is a votary of Vāsudeva and Patañjali expressly says that Vāsudeva was not a mere kṣatriya, but that the word is the name of Goḍ Patañjali comments on the former sūtra and vouchsafes the very interesting information that the Mauryas who were greedy of gold established or manufactured images, to which this rule would not apply, but it would apply to the images of gods that were in Patañjali's day used for pūjā (worship). According to Patañjali the images manufactured by the Mauryas would be called Śivaka &c. Patañjali, while commenting on Pāṇini IV. 1. 54, gives as examples an image with a long or high nose. The <a class="ref" href="../refs/mb_adiparva.html#70.49" data-source="mb_adiparva" data-ref="70.49" title="Ādiparva 70.49">Ādiparva 70. 49</a><a href="https://sanatana.in/mbta/listing/parva/adiparva#P01_U07_A070_S049" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>, Anuśāsana 10. 20–21, Aśvamedhika 70. 16 speak of devatāyatanas (temples) and Bhīṣma 112. 11 in speaking of terrible portents refers to images in temples trembling and shedding tearṣ Khāravela, king of Kalinga (latter half of 2nd century B. C.) is said to have re-established an image of Jina carried away by Nandarāja and he is described as 'sarva-devāyatana-saṅkhāra-kāraka' (one who looked after the preservation and repair of all temples). In <a class="ref" href="../refs/kautilya.html" data-source="kautilya" data-ref="" title="Kauṭilya Arthaśāstra">Kauṭilya</a>'s <a class="ref" href="../refs/arthashastra.html#II.4" data-source="arthashastra" data-ref="II.4" title="Arthaśāstra II.4">Arthaśāstra II. 4</a> (variously assigned to different dates from 300 B. C. to 250 A. D.) it is stated that in the centre of the capital shrines of Aparājita, Apratihata, Jayanta, Vaijayanta and temples of Śiva, Aśvins, Vaiśravaṇa, Lakṣmī and of Madirā (wine?) should be erecteḍ It follows from the above discussion that long before Pāṇini there had arisen professional men who made their livelihood by attending on images and that temples of deities must have existed even in the 4th or 5th century B. C. The question whether the worship of images and the erection of temples spontaneously arose among the Vedic Aryans or whether they derived the idea from some other race or sectarians has been very often discusseḍ There are three principal views, viz. (1) that the worship of images was derived from śūdras and Dravidian tribes and absorbed in the brahmā- nical cult; (2) that the making of images was copied from the Buddhists; (3) that this practice was a natural and spontaneous growth. The second view is not very plausible. Images of Buddha were not made for a long time after his nirvāṇa. He was only represented at first by symbolṣ If modern chrono- logy about Buddha’s ministry is to be followed <sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-13" id="fnref-chapter-xix-devayajna-13">13</a></sup> (he was born about 563 B. C. and died about 483 B. C.), it is almost impossible to hold that images of gods originally came to be made in imitation of images or statues of Buddha, since, as we saw above, temples and images of gods had already become widespread throughout India in the 4th or 5th century B. C. <sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-14" id="fnref-chapter-xix-devayajna-14">14</a></sup> The first view is supported with arguments of some weight by Dr. Farquhar in J. R. A. S. for 1928 pp. 15–23. Vide also Dr. Charpentier in Indian Antiquary for 1927 pp. 89 ff. and 130 ff. But I do not hold that the reasons for this view are convincing. There is no apparent reason why only about 400 B. C. image worship should have been copied from the śūdras by the brāhmaṇaṣ The śūdra though given an inferior status had be- come a part of Indian Society at least a thousand years before 400 B. C., as the Puruṣasūkta showṣ He had been serving the brāhmaṇas for centuries before that date and brāhmaṇas could in the times of the sūtras partake of food cooked by him and could take śūdra women in marriage. So, if the worship of images was a practice borrowed from the śūdras, it should have prevailed at least a thousand years before 400 B. C. The fact that the devalaka brāhmaṇa (one who maintained himself by attending on images either for a salary or by appropriating what was placed before the image) was not to be invited at a śrāddha and had thus an inferior status (<a class="ref" href="../refs/manu.html#III.152" data-source="manu" data-ref="III.152" title="Manusmṛti III.152">Manu III. 152</a>) is to be explained in a different way. The institution of worshippers of images had not an hoary antiquity behind it in the time of <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>, as that of priests officiating at the śrauta or gṛhya sacrifices had in his day; besides such men neg-lected the principal duty of a brāhmaṇa (viz. study of the Veda) and so they were looked down upoṇ Even in the times of the Brāhmaṇas the simple gṛhya sacrifices were being raised to the level of śrauta rites, which were gradually becoming less and less frequent. The <a class="ref" href="../refs/aitareya_br.html#11.8" data-source="aitareya_br" data-ref="11.8" title="Aitareya Brāhmaṇa 11.8">Ait. Br. (11. 8)</a> prescribes that when a man takes up an offering to a deity and is about to say ‘vaṣaț’ he should contemplate upon that deity for whom the offering is meant.<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-15" id="fnref-chapter-xix-devayajna-15">15</a></sup> This would naturally lead the worshipper to invest the deity with anthropomorphic attributeṣ The Nirukta devotes some space (VII. 6–7) to the consideration of the question of the form of the deities referred to in the Vedic mantraṣ<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-16" id="fnref-chapter-xix-devayajna-16">16</a></sup> Three views are propounded, viz. (1) they have an anthropomorphic form, (2) they have no anthropomorphic form, (3) they may par-take of both characters, i. e. the deities though really non-anthropomorphic may assume various forms for carrying out some purpose or activity. This last view contains the doctrine of avatāraṣ When Vedic sacrifices became less and less prevalent owing to various causes (particularly because of the doctrine of ahiṁsā, the various upāsanās and the philosophy of the Absolute set forth in the Upaniṣads), there arose the cult of the worship of imageṣ Originally, it was not so universal or elaborate as it became in medieval and modern timeṣ</p>
+<p class="prose" id="p-chapter-xix-devayajna-4">The literature on the subject of image-worship is vast. The principal topics are: the substances from which images are made, the principal deities of which images were or are worshipped, the proportions of the various limbs in manufacturing images, the consecration of images and temples, the ritual of image worship. The subject of consecration of images and temples will be dealt with later on under the topic of Pratiṣṭhā.</p>
+<p class="prose" id="p-chapter-xix-devayajna-5">In the Bṛhat-saṃhitā of Varāhamihira (chap. 58, where images of Rāma, of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> with eight or four or two arms, of Baladeva, Ekānaṁśā, Śaṁba, Brahmā, Skanda, Śiva, Girijā as half of Śiva’s body, Buddha, Jina, the Sun, the Mātṛs, Yama, Varuṇa, Kubera are described); in the <a class="ref" href="../refs/matsya_purana.html#c" data-source="matsya_purana" data-ref="c" title="Matsyapurāṇa c">Matsyapurāṇa c</a>hap. Ch. XIX ] 258-264; in the <a class="ref" href="../refs/agni_purana.html#c" data-source="agni_purana" data-ref="c" title="Agnipurāṇa c">Agnipurāṇa c</a>hap. 44-53, the <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharmottara varga-cintāmaṇi of Hemādri (Vratakhaṇḍa vol. II part 1, pp. 76-222), in several āgama works, in the Devatāmūrti-prakaraṇa of sūtradhāra Maṇḍana of the 15th century (eḍ by Upendra Mohan Sāṅkhyatīrtha, Calcutta, 1936) and similar works elaborate rules are given on pratimālakṣaṇa (the characteristics of the images of gods and goddesses). They cannot be dealt with here. In modern times many works and papers, several of them illustrated with plates and photographs, have been pub- lished on this subject.<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-17" id="fnref-chapter-xix-devayajna-17">17</a></sup></p>
+<p class="prose" id="p-chapter-xix-devayajna-6">Medieval digests like the Sṃ C., the Smṛtimuktāphala, the Pūjā-prakāśa devote considerable space to the subject of deva- pūjā (image-worship) in its various aspects, the last work containing 382 pages in print on this subject. A very concise statement of only a few topics is attempted below. The word 'devapūjā'<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-18" id="fnref-chapter-xix-devayajna-18">18</a></sup> occurs in the Vārtika on Pāṇini I. 3. 25. The digests try to show that, just as yāga (sacrifice) consists in giving up materials accompanied by a mantra with reference to a deity that is then principally in view, so pūjā also is yāga, as therein also there is giving up (or dedication) of materials to a deity.<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-19" id="fnref-chapter-xix-devayajna-19">19</a></sup></p>
+<p class="prose" id="p-chapter-xix-devayajna-7">The next question is; who are entitled to perform devapūjā. Men and women of all varṇas and even the untouchables were to worship <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> who incarnated himself as man-lion, according to the Nṛsiṁhapurāṇa and Vṛddha-Hārīta<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-20" id="fnref-chapter-xix-devayajna-20">20</a></sup> (VI. 6 and 256). All the male members of a joint undivided family are to perform separately saṁdhyā, brahmayajña and agnihotra (if they have consecrated the śrauta and gṛhya fires) but devapūjā and vaiśvadeva will be only one for the whole family.<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-21" id="fnref-chapter-xix-devayajna-21">21</a></sup> The time for devapūjā is after tarpaṇa at noon and before vaiśvadeva; but some place it after vaiśvadeva. According to Dakṣa II. 30-31 all devakārya (duties and ceremonies in honour of gods) must be performed in the first half of the day.</p>
+<p class="prose" id="p-chapter-xix-devayajna-8">One of the peculiar tenets of Hinduism is adhikāra-bheda (difference in rights, duties, ceremonies and worship dependent on difference in intellectual, emotional and spiritual equipment). Not every one was capable of the same discipline and regimeṇ Image worship was not absolutely necessary for everybody and the ancient writers never thought that when they worshipped an image they were simply paying homage to a material object. They believed that they contemplated the One Supreme Spirit in the form of the image or symbol before them, which helped ordinary people to concentrate their mind on the Godhead to the exclusion of other external and engrossing objects and pursuitṣ According<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-22" id="fnref-chapter-xix-devayajna-22">22</a></sup> to <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>, the Bhāgavata-purāṇa XI. 27. 9 and Vṛddha-Hārita ( VI. 128-129 ) Hari is to be worshipped in water, in fire, in the heart, in the sun, on the altar, in brāhmaṇas and in imageṣ Sātātapa<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-23" id="fnref-chapter-xix-devayajna-23">23</a></sup> says ‘the gods of ordinary men are in water, those of the knowing are in heaven, of the ignorant and of those of small intelligence are in wood and clay (i. e. images) and of the yogin in his own self (or heart)’. God is worshipped in fire by throwing oblations, in water by throwing flowers, in the heart by contemplation and in the orb of the sun by japa.</p>
+<p class="prose" id="p-chapter-xix-devayajna-9">The materials out of which images are to be made are precious stones, gold, silver, copper, brass, iron, stone, wood or clay. One made of precious stones was the best and the most inferior was that made of clay. The Bhāgavata-purāṇa (XI. 27. 12) says that images are eight-fold viz. made of stone, wood, iron, sandal-wood or similar paste, drawn (as a picture), made of sand, of precious stones and lastly mental<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-24" id="fnref-chapter-xix-devayajna-24">24</a></sup>. The <a class="ref" href="../refs/matsya_purana.html#258.20-21" data-source="matsya_purana" data-ref="258.20-21" title="Matsyapurāṇa 258.20-21">Matsya-purāṇa (258. 20-21)</a> adds ‘lead and bronze’ to the above eight of the Skanda. Vide also Vṛddha-Hārita VIII. 120. Among stones the Śālagrāma stone (a black stone containing fossil ammonite found in the Gaṇḍakī river near a village called Śālagrāma) and the stone from Dvārakā marked with a cakra (discus) are highly prized in the worship of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>. Vṛddha-Hārita (VIII. 183-189) highly extols Śālagrāma-pūjā. It is stated by Vṛddha-Hārita that only dvijas can worship Śālagrāma and not śūdraṣ According to several purāṇa passages quoted in the Pūjāprakāśa (pp. 20-21) even women and śūdras can perform the worship of Śalagrāma<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-25" id="fnref-chapter-xix-devayajna-25">25</a></sup>, but they should not touch it. Similarly they are not to worship liṅgas established in the past by sages &c. This worship of Śalagrāma is comparatively ancient. Śaṁkarācārya in his commentary on the Vedāntasūtra speaks in several places of Śalagrāma<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-26" id="fnref-chapter-xix-devayajna-26">26</a></sup> being worshipped as a symbol of Hari. Five kinds of stones were used in worship, viz. Bāṇa-liṅgas from Narmadā in Śiva worship, Śalagrāma in <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> worship, metallic stone in Durgā worship, crystal for sun-worship and red stone in Gaṇeśa worship. The Rājataraṅgiṇī (II. 131 and VII. 185) refers to the establishment of Bāṇaliṅgas<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-27" id="fnref-chapter-xix-devayajna-27">27</a></sup> of Śiva in Kashmir taken from the Narmadā. About the images to be worshipped in the house it is stated in the <a class="ref" href="../refs/matsya_purana.html#258.22" data-source="matsya_purana" data-ref="258.22" title="Matsyapurāṇa 258.22">Matsyapurāṇa (258. 22)</a> that they should be in size as big as a part of the thumb up to 12 aṅgulas and not more; but an image to be established in a temple should be up to sixteen aṅgulas and not more or its proper height should be arrived at as follows: divide the height of the door into eight parts; taking seven parts divide them into one-third and two-thirds; the pedestal of the image should be one-third and the image should be two-thirds of the seven parts (i. e. <sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-35" id="fnref-chapter-xix-devayajna-35">35</a></sup>⁄<sub>24</sub> of seven-eighths of the height of the door). Vide <a class="ref" href="../refs/matsya_purana.html#258.23-25" data-source="matsya_purana" data-ref="258.23-25" title="Matsyapurāṇa 258.23-25">Matsyapurāṇa 258. 23-25</a>.</p>
+<p class="prose" id="p-chapter-xix-devayajna-10">Among the gods popularly worshipped the principal ones are <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> under various names and in various avatāras, Śiva in his various forms, Durgā, Gaṇeśa and the Suṇ<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-29" id="fnref-chapter-xix-devayajna-29">29</a></sup> The worship of these deities (called pañcāyatanapūjā) is said to have been popularised by the great Śaṁkarācārya. In modern times these five devatās are still worshipped, but they are differently arranged according as the worshipper places one or other of the five in the centre. The following diagram will show the five positions :</p>
+<p class="prose" id="p-chapter-xix-devayajna-11">East</p>
+<p class="prose" id="p-chapter-xix-devayajna-12">North <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>pañcā-yatana: Saṁka-Gaṇeśa ra 2 3 <a class="ref" href="../refs/vishnu_smriti.html#1" data-source="vishnu_smriti" data-ref="1" title="Viṣṇu Smṛti 1">Viṣṇu 1</a> Devī Sūrya 5 4 Śivapañcā-yatana: <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> Sūrya 2 3 Śaṁkara 1 Devī Gaṇeśa 5 4 Sūrya-pañcā-yatana: Saṁka-Gaṇeśa ra 2 3 Sūrya 1 Devī <a class="ref" href="../refs/vishnu_smriti.html#5" data-source="vishnu_smriti" data-ref="5" title="Viṣṇu Smṛti 5">Viṣṇu 5</a> 4 Devī-pañcā-yatana: <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> Saṁka- 2 ra 3 Devī 1 Sūrya Gaṇeśa 5 4 Gaṇeśa-pañcāyatana: <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> Saṁka- 2 ra 3 Gaṇeśa 1 Devī Sūrya 5 4</p>
+<p class="prose" id="p-chapter-xix-devayajna-13">West</p>
+<p class="prose" id="p-chapter-xix-devayajna-14">In medieval and modern times <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> has been deemed to have descended to earth ten times to preserve the world and its culture. A brief account of the development of this theory will not be out of place here. The ten well-known avatāras are Matsya ( fish ), Kūrma ( tortoise ), Varāha ( boar ), Narasiṁha (man-lion), Vāmana (dwarf), Paraśurāma, Rāma, Kṛṣṇa, Buddha and Kalkiṇ There are faint glimmerings of the theory of avatāras and of these forms even in the earliest Vedic Literature. In <a class="ref" href="../refs/rigveda.html#VIII.17.13" data-source="rigveda" data-ref="VIII.17.13" title="Ṛgveda VIII.17.13">Rg. VIII. 17. 13</a><sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-29" id="fnref-chapter-xix-devayajna-29">29</a></sup> it is said that Indra was the grandson of the sage Śṛṅgavṛṣa. This may be interpreted as meaning that Indra was supposed to have descended on the earth in a human forṃ In <a class="ref" href="../refs/rigveda.html#IV.26.1" data-source="rigveda" data-ref="IV.26.1" title="Ṛgveda IV.26.1">Rg. IV. 26. 1</a> the sage Vāmadeva exclaims<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-30" id="fnref-chapter-xix-devayajna-30">30</a></sup> ‘I was <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> and I was also the Sun’. This is referred to in the Bṛ. Up. I. 4. 10 and is often relied upon in support of the doctrine of the transmigration of soulṣ It may be capable of that interpretation, but if that is not accepted it will at least tend to support the proposition that the Vedic sage thought that the Sun could be born on the earth as a human being (i. e. there was an avatāra of the Sun). There is another sense in which this passage of the Ṛg and that of the Bṛ. Up. are understood in the Vedāntasūtra I. 1. 30 viz. that Vāmadeva had realized that his soul was non-different from the Supreme Soul, Brahma. The elements of the avatāra of Matsya are probably suggested by the story of <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> who was saved from a flood by a great horned fish to whose horn <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> tied the rope of his ship when the flood rose. Vide Śat. Bṛ. I. 8. 1. 1-6 (S. B. E. vol, 12, pp. 216-218).<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-31" id="fnref-chapter-xix-devayajna-31">31</a></sup> The tortoise avatāra was probably suggested by the legend that Prajāpati having assumed the form of a tortoise created living beings and that as the words <em>kūrma</em> (tortoise) and <em>kaśyapa</em> mean the same object all creatures are said to be descended from (or to belong to) Kaśyapa (Śat. Bṛ. VII. 5. 1. 5, S. B. E. vol. 41, p. 390 ).<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-32" id="fnref-chapter-xix-devayajna-32">32</a></sup> The peculiar exploit of the Boar incarnation, viz. raising up the earth from the bottom of the ocean, is alluded to in the <a class="ref" href="../refs/shatapatha.html#XIV.1.2.11" data-source="shatapatha" data-ref="XIV.1.2.11" title="Śatapatha Brāhmaṇa XIV.1.2.11">Śat. Br. XIV. 1. 2. 11</a> (S. B. E. vol. 44, p. 451) ‘a boar called Emūṣa raised the earth up and he was her lord Prajāpati.’<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-33" id="fnref-chapter-xix-devayajna-33">33</a></sup> In the <a class="ref" href="../refs/rigveda.html#Vi" data-source="rigveda" data-ref="Vi" title="Ṛgveda Vi">Ṛg. Vi</a>ṣṇu is said to have pierced Varāha (I. 61. 7) and that he being incited by Indra brings to the worshipper a hundred buffaloes, rice cooked in milk, and the boar (called) Emūṣa (VIII. 77. 10). The <a class="ref" href="../refs/taittiriya_ar.html#X.1" data-source="taittiriya_ar" data-ref="X.1" title="Taittirīya Āraṇyaka X.1">Tai. Ār. X. 1</a> refers to this myth. In the Kāṭhaka S. VIII. 2 Prajāpati is said to have become a boar and plunged in water. Vide also <a class="ref" href="../refs/taittiriya_s.html#VII.1.5.1" data-source="taittiriya_s" data-ref="VII.1.5.1" title="Taittirīya Saṃhitā VII.1.5.1">Tai. S. VII. 1. 5. 1</a> and <a class="ref" href="../refs/taittiriya_br.html#I.1.3" data-source="taittiriya_br" data-ref="I.1.3" title="Taittirīya Brāhmaṇa I.1.3">Tai. Br. I. 1. 3</a>. Some elements of the story of the destruction of Hiraṇyakaśipu by <a class="ref" href="../refs/vishnu_smriti.html#i" data-source="vishnu_smriti" data-ref="i" title="Viṣṇu Smṛti i">Viṣṇu i</a>n the man-lion form are supplied by the story of the slaughter of the demon Namuci by Indra at dawn with the foam of waters, since Indra had agreed with Namuci that ‘he would not slay him by day or by night, with the dry or moist or with the palm or with the fist, or with staff or bow &c. ( <a class="ref" href="../refs/shatapatha.html#XII.7.3.1-4" data-source="shatapatha" data-ref="XII.7.3.1-4" title="Śatapatha Brāhmaṇa XII.7.3.1-4">Śat. Br. XII. 7. 3. 1-4</a>, S. B. E. vol. 44, pp. 222-223 ). <a class="ref" href="../refs/shatapatha.html#XII.7.3.4" data-source="shatapatha" data-ref="XII.7.3.4" title="Śatapatha Brāhmaṇa XII.7.3.4">Śat. Br. XII. 7. 3. 4</a> quotes <a class="ref" href="../refs/rigveda.html#VIII.14.13" data-source="rigveda" data-ref="VIII.14.13" title="Ṛgveda VIII.14.13">Rg. VIII. 14. 13</a> which narrates that Indra cut off the head of Namuci with the foam of waterṣ<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-34" id="fnref-chapter-xix-devayajna-34">34</a></sup> In the ancient Tamil work Silappadikāram (translated by Prof. V. R. Dikṣitar) there is a reference to the Narasimha avatāra. The special achievement of the dwarf incarnation, viz. the request of the dwarf for as much space as would be covered by his three steps, has its counter-part in the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a>, where the principal exploits of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> are the taking of three steps and making the earth steady or fast.<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-36" id="fnref-chapter-xix-devayajna-36">36</a></sup> Vide <a class="ref" href="../refs/shatapatha.html#I.2.5.1" data-source="shatapatha" data-ref="I.2.5.1" title="Śatapatha Brāhmaṇa I.2.5.1">Śat. Br. I. 2. 5. 1</a> for the Dwarf incarnatioṇ In the <a class="ref" href="../refs/chandogya.html" data-source="chandogya" data-ref="" title="Chāndogya Upaniṣad">Chāndogya</a> Up. III. 17. 6 it is stated that the sage Ghora Āṅgirasa imparted a certain instruction to Kṛṣṇa, the son of Devakī.<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-37" id="fnref-chapter-xix-devayajna-37">37</a></sup> This may have supplied some part of the legends about Kṛṣṇa in the Great Epic and the Purāṇaṣ</p>
+<p class="prose" id="p-chapter-xix-devayajna-15">We saw above that according to Patañjali Vāsudeva was not a mere kṣatriya but an incarnation of Goḍ Patañjali quotes a quarter of a verse which speaks of Kaṁsa being killed by Vāsudeva and refers to painted shows wherein the party of Vāsudeva were dressed in black and of Kaṁsa in red (vide Mahābhāṣya, vol. II. p. 36 and p. 119). Patañjali also speaks of Ugrasena as a member of the Andhaka clan and Viṣvaksena as a Vṛṣṇi and of Baladeva also (Mahābhāṣya, vol. II. p. 257 on Pāṇini IV. 1. 114) and of Satyabhāmā (vol. I. p. 111) and Akrūra (vol. II. p. 295). So the main story of Kṛṣṇa and persons connected with his ministry on earth as gathered from the <a class="ref" href="../refs/mahabharata.html" data-source="mahabharata" data-ref="" title="Mahābhārata">Mahābhārata</a>, the Harivaṁśa &c. were known to Patañjali and to some extent also to Pāṇini. The Besnagara Inscription of Heliodorus (E. I. vol. X. Appendix p. 63 No. 669 ) shows that even Greeks became devotees of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>. The Eran Stone Inscription (vide Gupta Inscriptions p. 158 No. 36) refers to the Boar Incarnatioṇ The Bhāgavatapurāṇa II. 4. 18 declares that even Kirātas, Hūṇas, Andhras, Pulindas, Pukkasas, Abhiras, Suhmās, Yāvanas, Khasas and others and even sinners, when they throw themselves on the mercy of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> as devotees, are purifieḍ It may therefore be assumed that the theory of the avatāras of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> (whether ten or less or more) had been prevalent some centuries before the Christian era.</p>
+<p class="prose" id="p-chapter-xix-devayajna-16">In the <a class="ref" href="../refs/mahabharata.html" data-source="mahabharata" data-ref="" title="Mahābhārata">Mahābhārata</a> and the <a class="ref" href="../refs/ramayana.html#i" data-source="ramayana" data-ref="i" title="Rāmāyaṇa i">Rāmāyaṇa i</a>t is frequently stated that God comes down to earth often for punishing the wicked, for the protection of the good and the establish-ment of dharma.<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-38" id="fnref-chapter-xix-devayajna-38">38</a></sup> In the <a class="ref" href="../refs/mb_shantiparva.html#339.103-104" data-source="mb_shantiparva" data-ref="339.103-104" title="Śāntiparva 339.103-104">Śāntiparva (339. 103-104)</a><a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> the avatāras are stated to be ten and they are the same as now accepted except that Haṃsa is mentioned instead of Buddha and Kṛṣṇa is called Sātvata. Among the Purāṇas also several do not mention Buddha as an avatāra. The Mārkaṇḍeya (47. 7) speaks of Matsya, Kūrma and Varāha incarnations and in 4. 53-56 begins with Varāha and mentions Nṛsiṃha, Vāmana and Māthura (i. e. Kṛṣṇa). The Matsya (47. 39-45) speaks of 12 avatāras, some of which are different from the usual ones and verse 106 states that Bhṛgu cursed <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> to be born as a human being seven times, as he killed a woman, viz. his wife. The <a class="ref" href="../refs/matsya_purana.html" data-source="matsya_purana" data-ref="" title="Matsyapurāṇa">Matsya-purāṇa</a> (chap. 285. 6-7) mentions the well-known ten avatāras including Buddha and this passage is quoted by <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> on p. 338. The <a class="ref" href="../refs/matsya_purana.html#47.247" data-source="matsya_purana" data-ref="47.247" title="Matsyapurāṇa 47.247">Matsya-purāṇa 47. 247</a> speaks of Buddha as the 9th (avatāra). The Nṛsiṃha-purāṇa chap. 36, the <a class="ref" href="../refs/agni_purana.html#c" data-source="agni_purana" data-ref="c" title="Agnipurāṇa c">Agni-purāṇa c</a>hap. 2 to 16 and the Varāha-purāṇa 4. 2 enumerate the well-known ten avatāraṣ The Vṛddha-Hārīta smṛti<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-39" id="fnref-chapter-xix-devayajna-39">39</a></sup> (X. 145-146) enumerates ten avatāras, includes Hayagrīva in them (in place of Buddha) and expressly says that Buddha should not be worshippeḍ In the <a class="ref" href="../refs/ramayana.html" data-source="ramayana" data-ref="" title="Rāmāyaṇa">Rāmāyaṇa</a> (Ayodhyā- kāṇḍa 109. 34) Buddha is reviled as a thief and an atheist.<sup>1723</sup> This passage may be an interpolatioṇ In the Bhāgavatapurāṇa there are three different lists of avatāras at I. 3 (where 22 avatāras occur in which Buddha, Kalkin, Vyāsa, Balarāma and Kṛṣṇa are separately enumerated), II. 7 (where besides the well-known avatāras, Kapila, Dattātreya and others are mentioned), and at VI. 8 Buddha and Kalkin are both mentioned in verse 17.<sup>1724</sup> The Kṛtyaratnākara ( pp. 159-160 ) quotes a passage from the Brahmapurāṇa about a vrata on the 7th of the bright half of Vaiśākha where it is stated that <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> as Buddha started the Śākya dharma and that on the 7th day of Vaiśākha when the moon is in conjunction with the Puṣya constellation, the image of Buddha should be bathed to the accompaniment of sayings of the Śākya and gifts of garments should be made to Śākya asceticṣ The same work ( pp. 247-248 ) quotes a passage of the Varāhapurāṇa on the observances of Buddha-dvādaśī, when a golden image of Buddha was to be worshipped and given to a brāhmaṇa. In memoir No. 26 of the Archæological Survey of India, it is stated ( p. 5 ) that in an inscription from South India of about the 7th century A. D. occurs a verse in a mutilated form in which Buddha is enume- rated among the ten avatāras ( ...narasimḥotha Vāmanāḥ Rāmo Rāmaśca Kṛṣṇaśca Buddhaḥ Kalkī ca te daśa ).<sup>1725</sup> From the above discussion it follows that Buddha became in popular view an avatāra of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> for the Hindus from about the 7th century A. D. Even about that time he was not universally so treated and orthodox writers like Kumārila ( who flourished somewhere about 650 to 750 A. D. ) did not admit that he was an avatāra. In his Tantravārtika ( p. 195 on Jaimini I. 3. 4 ) Kumārilabhaṭṭa says that the Śākya texts were promulgated by Buddha and others that had strayed from the path of the three Vedas and that acted contrary to the Vedas and asks 1786 the question "what assurance is there that one, who, himself being a kṣatriya, trans-gressed the dharma laid down for kṣatriyas and betook himself to the profession of a religious teacher and accepted gifts, would impart instruction in dharma that would not lead to confusion? It has been said ‘one should leave at a distance a person who does acts contrary to the other worlḍ How can one who deceives himself confer benefit on another’"? The Bṛhatsaṁhitā of Varāhamihira (60. 19) states the persons who are to hold the office of worshipper in the temples of several deities, viz. the Bhāgavatas for <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>, the Magas (śākadvīpiya brāhmaṇas) in temples of the sun, dvijas smeared with ashes in Śiva temples, those who know the group of mātṛs in the temples of the Mother Goddesses, brāhmaṇas in the temples of Brahmā, Buddhists in the temples of Buddha who was good to all and whose mind was full of peace, naked ascetics in the temples of Jinas; who-ever is a devotee of a particular god should worship that god according to the procedure prescribed in his own cult.<sup>1727</sup> Kṣemendra (about 1066 A. D.) in his Daśāvatāra-carita and the Gitagovinda of Jayadeva (about 1180-1200 A. D.) speak of Buddha as an avatāra of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>. Therefore at least before or about the 10th century A. D. Buddha had come to be looked upon as an avatāra of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> throughout India.<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-46" id="fnref-chapter-xix-devayajna-46">46</a></sup> The total disappearance of Buddhism from India, the land of its birth, is a most striking phenomenon, which as stated by A. Schweitzer in ‘Indian thought and its development’ (tr. by Mrṣ C. E. B. Russell, 1935) p. 137, cannot be satisfactorily explaineḍ Though Buddha did not accept the authority of the Vedas and of brāhmaṇas, nor the existence of an individual soul nor the Supreme Soul, he believed in <em>karma</em> and <em>punarjanma</em> and in release from <em>saṁsāra</em> by renunciation and desirelessnesṣ When his followers deified Buddha, when animal sacrifices had been almost stopped and his insistence on universal charity and kindliness and on self-restraint were universally accepted by the followers of the Vedic religion, Buddha came to be deemed an <em>avatāra</em> of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>, as the <em>raison d'être</em> for a separate cult ceased and the decadence of morals among monks and nuns hastened the downfall of Buddhism, the finishing touches being added by the Moslem invasions from about 1200 A. D. No one can affirm that persecution had anything to do with the disappearance of Buddhism from India. Though it cannot be said that there was no religious persecution whatever at any time in India, the evidence for persecution is very limited and such persecution if any as may have existed was as nothing compared to the persecution of Christians by other Christians and of Jews in all centuries and particularly in the 20th century by several so-called Christian powerṣ The few well-authenticated cases of large-scale persecutions are those of Śaśāṅka who persecuted the Buddhists (vide Beal's ‘Records of the eastern world,’ vol. I p. 212, vol. II, p. 42, 91, 118, 121), of Mihirakula, of a Pāṇḍya king (in the 11th century ) who persecuted the Jainaṣ From Aśoka downwards, kings and the civil power always extended a generous tolerance to all sects (vide Aśoka’s Rock Edict No. 12 ). The father of the great emperor Harṣa was a worshipper of the Sun, while Harṣa’s elder brother Rājyavardhana was a Buddhist and Harṣa, though himself a Śaiva, speaks of his brother with greater reverence than of his own father ( vide the Madhuban copperplate inscription in E. I. vol. VII p. 155 and I p. 67 ). Vide Barth’s ‘ Religions of India ’ pp. 133-134, Farquhar’s ‘ Outlines of the Religious Literature of India ’ pp. 169, 175 for general religious tolerance in ancient India.</p>
+<p class="prose" id="p-chapter-xix-devayajna-17">Rāma and Kṛṣṇa were worshipped as avatāras of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> at least several centuries before Christ. Kālidāsa in the Raghu- vaṁśa (XI. 22 ) and the Meghadūta indicates that he regarded Vāmana as an avatāra of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> as much as Rāma waṣ Simi- larly the Varāha and Narasimha avatāras are frequently spoken of in the Kādaṁbarī. The Trimūrti i. e. the conception of the triune combination of Brahmā, <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> and Śiva into one God- head is also an ancient one. The <a class="ref" href="../refs/mahabharata.html" data-source="mahabharata" data-ref="" title="Mahābhārata">Mahābhārata</a> (<a class="ref" href="../refs/mb_vanaparva.html" data-source="mb_vanaparva" data-ref="" title="Vanaparva">Vanaparva</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>) gives expression to the idea that Prajāpati creates the world in the form of Brahmā, sustains it in the form of the great Puruṣa and annihilates it in the form of Rudra. Hopkins in his ‘ Epic Mythology ’ p. 231 holds that this is a solitary passage about Trimūrti and is a late one and that the <a class="ref" href="../refs/mahabharata.html#i" data-source="mahabharata" data-ref="i" title="Mahābhārata i">Mahābhārata i</a>n general has no doctrine of Trimūrti, but rather of the equality of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> and Śiva. Kālidāsa in his Raghuvamśa (X. 16) and Kumārasaṁbhava (II. 4)<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-47" id="fnref-chapter-xix-devayajna-47">47</a></sup> breathes the same belief. The temples of Brahmā are now very few and far between, the most well-known being that at Puṣkara (Ajmer). There is a temple of Brahmā in the Idar State and another at Sādhi in the Padra Taluka of the Baroda State. The <a class="ref" href="../refs/padma_purana.html" data-source="padma_purana" data-ref="" title="Padmapurāṇa">Padmapurāṇa</a> (Sṛṣṭi- khaṇḍa 17 ) shows that the worship of Brahmā had declined at that time owing, it is said, to the curse of Sāvitrī.</p>
+<p class="prose" id="p-chapter-xix-devayajna-18">Śiva worship appears to be the most ancient worship that is still prevalent. Sir John Marshall’s work on Mohenjo-daro (vol. I pp. 52-53 and plate XII No. 17 ) shows a figure that is most probably of Śiva as a great yogin surrounded by the elephant, the tiger, the rhinoceros and the buffalo (as Śiva is called Paśupati ). <em>Vide</em> also the Preface to vol. I. p. VII. At Mohenjo-daro the humped and short-horned bull is among the most prominent objectṣ Śiva as half male and half female was worshipped long before Kālidāsa (vide first verse of the Mālavikāgnimitra and Kumārasambhava VII. 28). Śiva is often spoken of as Pañcatuṇḍa (with five faces), the five aspects being respectively called Sadyojāta, Vāmadeva, Aghora, Tatpuruṣa and Īśāna (<em>vide</em> <a class="ref" href="../refs/taittiriya_ar.html#X.43-47" data-source="taittiriya_ar" data-ref="X.43-47" title="Taittirīya Āraṇyaka X.43-47">Tai. Ār. X. 43-47</a>, <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharmottara III. 48. 1). Though in later times the followers of Śiva and <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> abused each other, the <a class="ref" href="../refs/mahabharata.html" data-source="mahabharata" data-ref="" title="Mahābhārata">Mahābhārata</a> and some of the Purāṇas exhibit a most tolerant spirit and say there is no difference between the two.<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-48" id="fnref-chapter-xix-devayajna-48">48</a></sup> <em>Vide</em> <a class="ref" href="../refs/mb_vanaparva.html#39.76" data-source="mb_vanaparva" data-ref="39.76" title="Vanaparva 39.76">Vanaparva 39. 76</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva#P03_U04_A039_S076" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> and 189. 5–6, Śānti 343. 132, <a class="ref" href="../refs/matsya_purana.html#52.23" data-source="matsya_purana" data-ref="52.23" title="Matsyapurāṇa 52.23">Matsyapurāṇa 52. 23</a>. The 1000 names of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> are enumerated in <a class="ref" href="../refs/mb_anushasana.html#149.14-120" data-source="mb_anushasana" data-ref="149.14-120" title="Anuśāsanaparva 149.14-120">Anuśāsanaparva 149. 14–120</a><a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> and the 1000 names of Śiva in Anuśāsana 17 and Śānti 285. 74 ff.</p>
+<p class="prose" id="p-chapter-xix-devayajna-19">About the images of the sun the <a class="ref" href="../refs/matsya_purana.html" data-source="matsya_purana" data-ref="" title="Matsyapurāṇa">Matsyapurāṇa</a> (11. 31 and 33 ) enjoins that in painting pictures of the sun or in temples of the sun the feet of the sun are not to be drawn <sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-49" id="fnref-chapter-xix-devayajna-49">49</a></sup> or showṇ</p>
+<p class="prose" id="p-chapter-xix-devayajna-20">About Gaṇeśa a few words have already been said (at pp. 213–216 ). Gaṇeśa came to be worshipped even by the Jainaṣ <em>Vide</em> Ācāra-dinakara (composed in <em>samvat</em> 1468 ) published in the Kharataragaccha-granthamālā (part II, 1923 ), where on p. 210 there is the procedure of consecrating an image of Gaṇeśa even for Jainas and ‘Journal of Indian History’, vol. 18 for 1939 p. 158 for different types of Gaṇeśa figures one of which has 18 armṣ For a figure of Gaṇeśa with sweetmeats (of about 500 A. D.) <em>vide</em> ‘Ancient India’ by Codrington (Plate XXXIX). The Ācāradinakara says that images of Gaṇeśa may have two, four, six, nine, 18 or 108 armṣ The <a class="ref" href="../refs/agni_purana.html#c" data-source="agni_purana" data-ref="c" title="Agnipurāṇa c">Agnipurāṇa c</a>hap. 71, the Mudgalapurāṇa and Gaṇeśapurāṇa deal with Gaṇeśa worship, but their dates are uncertaiṇ The Vārāha-purāṇa chap. 23 narrates a fantastic story of the birth of Gaṇeśa. The Gaṇapatyatharvaśīrṣa (Anaṇ eḍ) identifies Gaṇeśa with supreme Brahma.<sup>*</sup> The worship of the images of planets is comparatively ancient. <a class="ref" href="../refs/yajnavalkya.html#I.296-298" data-source="yajnavalkya" data-ref="I.296-298" title="Yājñavalkya I.296-298">Yāj. I. 296-298</a> prescribes that the images for the worship of the nine grahas (planets) viz. the Sun, the Moon, Mars, Mercury, Jupiter, Venus, Saturn, Rāhu and Ketu (the last two are the nodal points) should be made respectively of copper, crystal, red sandal-wood, gold (for both Mercury and Jupiter), silver, iron, lead and bronze. <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yāj.</a> then prescribes the details of the worship of the planets such as the clothes to be gifted, the flowers, incenses, offerings, and the mantras (from the <a class="ref" href="../refs/vajasaneya.html" data-source="vajasaneya" data-ref="" title="Vājasaneya Saṃhitā">Vāj. S.</a>), the fuel-sticks, the food, and the fee. The <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> on <a class="ref" href="../refs/yajnavalkya.html#I.297" data-source="yajnavalkya" data-ref="I.297" title="Yājñavalkya I.297">Yāj. I. 297</a> quotes nine verses from the <a class="ref" href="../refs/matsya_purana.html" data-source="matsya_purana" data-ref="" title="Matsyapurāṇa">Matsyapurāṇa</a>, chap. 94, concerning the details of the images of the nine planetṣ</p>
+<p class="prose" id="p-chapter-xix-devayajna-21">About Sarasvati, the goddess of learning, so early a writer as Dandin (not later than 600 A. D.) says that she was ‘sarvaśuklā’ (all white).</p>
+<p class="prose" id="p-chapter-xix-devayajna-22">Another deity whose worship is very popular in the Deccan is Dattatreya. His worship cannot have originated later than the first centuries of the Christian era. In the Jābālopaniṣad, he is referred to as a paramahamsa and there is an Upaniṣad named after hiṃ <a class="ref" href="../refs/mb_vanaparva.html#115" data-source="mb_vanaparva" data-ref="115" title="Vanaparva 115">Vanaparva 115</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva#P03_U07_A115" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>, Anuśāsana 153, Śānti 49.36, say that he conferred boons on Kārtavīrya. <a class="ref" href="../refs/markandeya.html" data-source="markandeya" data-ref="" title="Mārkaṇḍeyapurāṇa">Mārkaṇḍeyapurāṇa</a> (chap. 16-19) gives the story of his birth, calls him a yogin and asserts that he was offered wine and meat by his devotees (19. 10-12). The Bhāgavata IX. 23, 23, Matsya 47. 242-246 and other purāṇas also refer to hiṃ In the Śiśupālavadha of Māgha he is spoken of as an avatāra.</p>
+<p class="prose" id="p-chapter-xix-devayajna-23">The <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharmasūtra<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-50" id="fnref-chapter-xix-devayajna-50">50</a></sup> chap. 65 contains one of the earliest detailed description of devapūjā (of Vāsudeva or <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>). “After having well bathed and washed his hands and feet and performed ācamana (sipping of water) he should worship Lord Vāsudeva who is without beginning or end, before an idol or on the sacrificial grounḍ Having given animated form in his mind to <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> with the mantra ‘may the Aśvins who possess life give thee life’ (Maitrāyaṇī Saṁ. II. 3. 4) and having invited <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> with the anuvāka ‘yuñjate manaḥ’ (<a class="ref" href="../refs/rigveda.html#V.81" data-source="rigveda" data-ref="V.81" title="Ṛgveda V.81">Rg. V. 81</a>), he must worship God with a salutation with his knees, hands and heaḍ With the three mantras ‘āpo hi &c.’ (<a class="ref" href="../refs/rigveda.html#X.9.1-3" data-source="rigveda" data-ref="X.9.1-3" title="Ṛgveda X.9.1-3">Rg. X. 9. 1-3</a>), he must announce the arghya (water respectfully offered for washing the hands); with the four mantras ‘hiraṇyavarṇāḥ’ (<a class="ref" href="../refs/taittiriya_s.html#V.6.1.1-2" data-source="taittiriya_s" data-ref="V.6.1.1-2" title="Taittirīya Saṃhitā V.6.1.1-2">Tai. S. V. 6. 1.1-2</a>) the pādya (water for washing the feet); with ‘may the waters of the plain propitiate us’ (Atharva I. 6. 4), the ‘ācamanīya’ (the water for sipping); with <a class="ref" href="../refs/rigveda.html#I.23.22" data-source="rigveda" data-ref="I.23.22" title="Ṛgveda I.23.22">Rg. I. 23. 22</a> the water meant for the bath (should be offered); with ‘in chariots, in axles, in the strength of bulls’ (<a class="ref" href="../refs/taittiriya_br.html#II.7.7" data-source="taittiriya_br" data-ref="II.7.7" title="Taittirīya Brāhmaṇa II.7.7">Tai. Br. II. 7. 7</a>) unguents and ornaments; with (<a class="ref" href="../refs/rigveda.html#III.8.4" data-source="rigveda" data-ref="III.8.4" title="Ṛgveda III.8.4">Rg. III. 8. 4</a> ‘yuvā suvāsāḥ’) a garment; with ‘endowed with flowers’ (<a class="ref" href="../refs/taittiriya_s.html#IV.2.6.1" data-source="taittiriya_s" data-ref="IV.2.6.1" title="Taittirīya Saṃhitā IV.2.6.1">Tai. S. IV. 2. 6. 1</a>) a flower; with ‘thou art a slayer, slay the enemies’ (<a class="ref" href="../refs/vajasaneya.html#I.8" data-source="vajasaneya" data-ref="I.8" title="Vājasaneya Saṃhitā I.8">Vāj. S. I. 8</a>) incense; with ‘thou art lustre, thou art bright’ (<a class="ref" href="../refs/vajasaneya.html#XXII.1" data-source="vajasaneya" data-ref="XXII.1" title="Vājasaneya Saṃhitā XXII.1">Vāj. S. XXII.1</a>) a lamp; with ‘dadikhrāvṇo’ (<a class="ref" href="../refs/rigveda.html#IV.39.6" data-source="rigveda" data-ref="IV.39.6" title="Ṛgveda IV.39.6">Rg. IV.39.6</a>) a madhuparka (honey mixture); with the eight mantras ‘hiraṇyagarbhāḥ’ (<a class="ref" href="../refs/rigveda.html#X.121.1-8" data-source="rigveda" data-ref="X.121.1-8" title="Ṛgveda X.121.1-8">Rg. X. 121. 1-8</a>) an offering of eatables; a chowrie, a fan, a looking glass, an umbrella, a vehicle, a seat, all these objects he must announce and place before God (<a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>) muttering the Gāyatrī at the same time. After having thus worshipped Him, he must mutter the Puruṣasūkta. After that he who desires to obtain eternal bliss should make oblations of clarified butter, while reciting the verses of the same hymn (<a class="ref" href="../refs/rigveda.html#X.90" data-source="rigveda" data-ref="X.90" title="Ṛgveda X.90">Rg. X.90</a>).” The Bauḍ gr. pariśeṣasūtra II. 14 describes<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-51" id="fnref-chapter-xix-devayajna-51">51</a></sup> the daily worship of Mahāpuruṣa (i, e. <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>). “A man after bathing should cowdung a pure and even spot and draw the image of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>, should offer whole grains of rice and flowers to it in worship and then should invoke <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> to come by offering water with flowers accompanied by the three vyāhṛtis repeated separately and together: then he should utter the words ‘this kūrca (bundle) of darbhas is made for the divine lord, its blades are twisted by threes, it is green and gold, accept this’. Then he should cleanse a vessel with water to the accompaniment of the Gāyatrī, should pass kuśa grass across thiṣ The water poured therein, should then utter the Gāyatrī mantra over it and should then turn it towards the sun with the syllable ‘om’ till he desires (or till he is tired); from that water he offers water for washing the feet (pādya) with <a class="ref" href="../refs/rigveda.html#I.22.18" data-source="rigveda" data-ref="I.22.18" title="Ṛgveda I.22.18">Rg. I. 22. 18</a> (triṇi padā &c); then after having put aside the stale flowers to the accompaniment of the vyāhṛtis, he should offer arghya with the verse <a class="ref" href="../refs/rigveda.html#I.22.17" data-source="rigveda" data-ref="I.22.17" title="Ṛgveda I.22.17">Rg. I. 22. 17</a> (idaṃ <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>r) and should offer ācamanīya with the verse ‘divo vā Viṣṇo’ (<a class="ref" href="../refs/taittiriya_s.html#I.2.13.2" data-source="taittiriya_s" data-ref="I.2.13.2" title="Taittirīya Saṃhitā I.2.13.2">Tai. S. I. 2. 13. 2</a>); then he bathes the deity with the three verses <a class="ref" href="../refs/rigveda.html#X.9.1-3" data-source="rigveda" data-ref="X.9.1-3" title="Ṛgveda X.9.1-3">Rg. X. 9. 1–3</a> (āpo hi ṣṭhā &c), with the four verses ‘hiraṇya-varṇāḥ’ (<a class="ref" href="../refs/taittiriya_s.html#V.6.1.1-2" data-source="taittiriya_s" data-ref="V.6.1.1-2" title="Taittirīya Saṃhitā V.6.1.1-2">Tai. S. V. 6. 1. 1–2</a>), with the anuvāka beginning with ‘pavamānaḥ suvarjanaḥ’ (<a class="ref" href="../refs/taittiriya_br.html#I.4.8" data-source="taittiriya_br" data-ref="I.4.8" title="Taittirīya Brāhmaṇa I.4.8">Tai. Br. I. 4. 8</a>) and with the mantra ‘brahma jajñānam’ (<a class="ref" href="../refs/taittiriya_s.html#IV.2.8.2" data-source="taittiriya_s" data-ref="IV.2.8.2" title="Taittirīya Saṃhitā IV.2.8.2">Tai. S. IV. 2. 8. 2</a>), and with the Vāmadevī ṛk (<a class="ref" href="../refs/rigveda.html#IV.26.1" data-source="rigveda" data-ref="IV.26.1" title="Ṛgveda IV.26.1">Rg. IV. 26. 1</a>), with the ‘yajuh-pavitra’ (i. e. <a class="ref" href="../refs/taittiriya_s.html#I.2.1" data-source="taittiriya_s" data-ref="I.2.1" title="Taittirīya Saṃhitā I.2.1">Tai. S. I. 2. 1</a> 1). Then he satiates (the image of) the deity with water sprinkled round the deity keeping the right hand towards it and taking the twelve names (Keśava and others) with the vyāhṛtis; he offers a garment with the syllable ‘om’, yajñopavita with the sacred Gāyatrī, ācamanīya with <a class="ref" href="../refs/rigveda.html#I.22.17" data-source="rigveda" data-ref="I.22.17" title="Ṛgveda I.22.17">Rg. I. 22. 17</a>, sandalwood paste with the verse ‘gandhadvārām’ (<a class="ref" href="../refs/taittiriya_ar.html#X.1" data-source="taittiriya_ar" data-ref="X.1" title="Taittirīya Āraṇyaka X.1">Tai. Ār. X. 1</a>), whole grains of rice (akṣata) with the verse ‘Irāvatī’ (<a class="ref" href="../refs/rigveda.html#VII.99.3" data-source="rigveda" data-ref="VII.99.3" title="Ṛgveda VII.99.3">Rg. VII. 99. 3</a>), flowers with <a class="ref" href="../refs/rigveda.html#I.22.20" data-source="rigveda" data-ref="I.22.20" title="Ṛgveda I.22.20">Rg. I. 22. 20</a> (tad Viṣṇoḥ), incense (dhūpa) with the Gāyatrī, a lamp with the mantra ‘uddīpyasva’ (<a class="ref" href="../refs/taittiriya_ar.html#X.1" data-source="taittiriya_ar" data-ref="X.1" title="Taittirīya Āraṇyaka X.1">Tai. Ār. X. 1</a>) and cooked food is offered with the formula ‘devasya tvā’; then he should offer flowers to the image repeating the twelve names of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>, associating with each name the verses from ‘triṇi padā’ to ‘sumṛdīkā bhavantu naḥ’ (<a class="ref" href="../refs/taittiriya_br.html#II.4.6" data-source="taittiriya_br" data-ref="II.4.6" title="Taittirīya Brāhmaṇa II.4.6">Tai. Br. II. 4. 6</a>). Then they laud him with verses derived from the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a>, Yajurveda, Sāmaveda or <a class="ref" href="../refs/atharvaveda.html#i" data-source="atharvaveda" data-ref="i" title="Atharvaveda i">Atharvaveda i</a>n praise of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>; then he should bid good bye to the Puruṣa (i. e. <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>) by uttering <sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-52" id="fnref-chapter-xix-devayajna-52">52</a></sup> the three vyāhṛtis (in such formula as ‘om bhūḥ puruṣamudvās-ayāmi) and adding ‘may the Lord, the Great Person, go away for (my) well-being, for conquest and for being seen agaiṇ” In case the image is immovably fixed on a pedestal &c. the invocation to come and the bidding of good-bye are omitteḍ The Bauḍ gṛhya-śeṣasūtra (II. 17) contains the procedure of the worship of Mahādeva (Śiva). It is almost on the same lines as the worship of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> set out above with the difference that the names of Śiva such as Mahādeva, Bhava, Rudra, Tryambaka are substituted and some of the mantras are different. A few differences will be found in the text quoted below. It is stated therein that when the worship is of a liṅga immovably fixed then there is no invocation to come and no bidding of good-bye.<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-53" id="fnref-chapter-xix-devayajna-53">53</a></sup></p>
+<p class="prose" id="p-chapter-xix-devayajna-24">In the Pūjāprakāśa (pp. 97-149) and other digests the methods of devapūjā according to Śaunaka, Gṛhyapariśiṣṭa, Ṛgvidhāna, <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharmottarapurāṇa, Bhāgavatapurāṇa, the Narasiṁhapurāṇa are set out in detail. But for want of space they are all passed over. It will have been noticed from the passages of the <a class="ref" href="../refs/vishnu_dh.html" data-source="vishnu_dh" data-ref="" title="Viṣṇu Dharmasūtra">Viṣṇu Dh. S.</a> and of <a class="ref" href="../refs/baudhayana.html#ci" data-source="baudhayana" data-ref="ci" title="Baudhāyana Dharmasūtra ci">Baudhāyana ci</a>ted above that devapūjā contains certain items and stages in the whole procedure. These are called upacāras (ways of service). They are usually stated to be sixteeṇ They are: āvāhana, āsana, pādya, arghya, ācamanīya, snāna, vastra, yajñopavīta, anu-lepana or gandha, puṣpa, dhūpa, dīpa, naivedya (or upa-hāra), namaskāra, pradakṣiṇā and visarjana or udvāsana. In different works, the items differ. Some add bhūṣaṇa (orna-ment) after yajñopavīta and tāmbūla (or mukhavāsa) after pradakṣiṇā or naivedya (Vṛddha-Hārīta VI. 31-32 and Pūjā-prakāśa, p. 98). Therefore some speak of 18 upacāraṣ<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-54" id="fnref-chapter-xix-devayajna-54">54</a></sup> Some omit āvāhana, add svāgata (welcome) after āsana, madhuparka after ācamanīya, and some have stotra (hymn of praise) and praṇāma (bow) as distinct upacāras, while others hold that these latter two are one and that pradakṣiṇā is part of visarjana (vide Pūjāprakāśa p. 98). If a person cannot afford to offer vastra (garment) and alaṁkāra (ornament), he could perform only ten out of these 16 upacāras viz. from pādya to naivedya; if he cannot afford to offer even ten he may offer only five (pañcopacāra-pūjā) viz. from gandha to naivedya; if he has nothing he may perform with flowers alone all the 16 upacāraṣ When the image is immovably fixed on a pedestal there is no āvāhana and visarjana and so the items become 14 or one may offer in their place only a handful of flowers with mantraṣ<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-55" id="fnref-chapter-xix-devayajna-55">55</a></sup> Those who cannot repeat the Puruṣasūkta (<a class="ref" href="../refs/rigveda.html#X.90" data-source="rigveda" data-ref="X.90" title="Ṛgveda X.90">Rg. X. 90</a>) should repeat one of its verses before offering each of the 16 upacāras (see Nṛsimhapurāṇa 62. 9–13). Those who cannot repeat that hymn and women and śūdras should simply say ‘Śivāya namaḥ’ or ‘Viṣṇave namaḥ’ (adoration to Śiva or <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>). Vṛddha-Hārīta (XI. 81) specially recommends the worship of the child Kṛṣṇa to women and of Hari to widows (XI. 208).<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-56" id="fnref-chapter-xix-devayajna-56">56</a></sup> After each of snāna, vastra, yajñopavīta and naivedya, ācamana is to be offered as part of that upacāra<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-57" id="fnref-chapter-xix-devayajna-57">57</a></sup> (vide Nṛsimhapurāṇa 62. 14). The names of some of these upacāras occur even in the Aśv. gr. (IV. 7.10 and IV. 8. 1) in relation to the brāhmaṇas invited at śrāddha such as āsana, arghya, gandha, mālya (flowers), dhūpa, dīpa and ācchādana (i.e. vastra). Farquhar is not right when he says in his ‘Outlines of the Religious literature of India’ p. 51 that the sixteen upacāras ‘are so distinct in character from the sacrificial cult as to betray alien origiṇ’ When image-worship became general items offered to invited brāhmaṇas were also offered to the image of godṣ It was a case of extension and not of borrowing from an alien cult.</p>
+<p class="prose" id="p-chapter-xix-devayajna-25">A few words have to be said in connection with some of the 16 upacāraṣ</p>
+<p class="prose" id="p-chapter-xix-devayajna-26">As regards the water to be employed in devapūjā and rites for the Manes, the <a class="ref" href="../refs/vishnu_dh.html#66.1" data-source="vishnu_dh" data-ref="66.1" title="Viṣṇu Dharmasūtra 66.1">Viṣṇu Dh. S. (66. 1)</a> prescribes that it should not have been brought the night before (but it must be drawn that day. ). The worshipper should not sit on an āsana made of bamboo or stone, or of unsacrificial wood or on the bare ground, or on a seat made of grass or green leaves, but should sit on a woollen blanket or silken garment or deer-skin (Pūjāprakāśa, p. 95 ). When offering arghya, in the vessel containing the water to be used for that purpose all or as many as one can afford out of the following eight articles are to be mixed up, viz. curds, whole grains of rice, ends of kuśa grass, milk, dūrvā grass, honey, barley grains and white mustard seeds (<a class="ref" href="../refs/matsya_purana.html#267.2" data-source="matsya_purana" data-ref="267.2" title="Matsyapurāṇa 267.2">Matsya-purāṇa 267. 2</a> quoted in the Pūjāprakāśa p. 34). It is further said that arghya is offered to the image of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> by means of a conch in which water is mixed with sandalwood paste, flowers and whole grains of rice. In the water for ācamana are mixed cardamom, cloves, uśīra grass and kakkola or as many of them as possible. The snāna (bath) of images is effected with five materials called pañcāmṛta (five ambrosial things) viz. milk, curds, clarified butter, honey and sugar.<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-58" id="fnref-chapter-xix-devayajna-58">58</a></sup> The image is to be bathed with these five in the order stated, so that sugar coming last removes all effects of oilinesṣ After these a bath with pure water followṣ In the pañcāmṛtasnāna the following Vedic verses are repeated in order; ‘āpyāyasva’ (<a class="ref" href="../refs/rigveda.html#I.91.16" data-source="rigveda" data-ref="I.91.16" title="Ṛgveda I.91.16">Rg. I. 91. 16</a>), ‘dadhikrāvṇo’ (<a class="ref" href="../refs/rigveda.html#IV.39.6" data-source="rigveda" data-ref="IV.39.6" title="Ṛgveda IV.39.6">Rg. IV. 39. 6</a>), ‘ghṛtam mimikṣe’ (<a class="ref" href="../refs/rigveda.html#II.3.11" data-source="rigveda" data-ref="II.3.11" title="Ṛgveda II.3.11">Rg. II. 3. 11</a>), ‘madhu vātā’ (<a class="ref" href="../refs/rigveda.html#I.90.6" data-source="rigveda" data-ref="I.90.6" title="Ṛgveda I.90.6">Rg. I. 90. 6</a>), ‘svāduh pavasva’ (<a class="ref" href="../refs/rigveda.html#IX.85.6" data-source="rigveda" data-ref="IX.85.6" title="Ṛgveda IX.85.6">Rg. IX. 85. 6</a>). It will be noticed that each of these mantras is suggestive of the material with regard to which it is uttereḍ No bath with water or these things is allowed when only a picture or a clay image is to be worshippeḍ If one cannot afford these, one may bathe the image with water in which the leaves of the basil plant (tulasī) are mixed up, as that plant is deemed to be the favourite of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>. The water used in the bath of the image of a God is regarded as very sacred and it is used for ācamana by the worshipper and members of his family and friends and is called tīrtha ( it is also sprinkled over one’s head ).<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-59" id="fnref-chapter-xix-devayajna-59">59</a></sup> As regards the unguents to be offered (anulepana or gandha) numerous rules are laid down (vide Pūjāprakāśa pp. 39-41 ). The <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a><sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-60" id="fnref-chapter-xix-devayajna-60">60</a></sup> Dh. S. (66. 2) says that unguents should be one or more out of sandalwood, pine tree paste, musk, camphor, saffron, nutmeg. If ornaments are offered, then gold and precious stones should be real and not imitation ones (<a class="ref" href="../refs/vishnu_dh.html#66.4" data-source="vishnu_dh" data-ref="66.4" title="Viṣṇu Dharmasūtra 66.4">Viṣṇu Dh. S. 66. 4</a>). Very detailed rules are laid down about flowerṣ The Pūjāprakāśa (pp. 42-49) waxes eloquent over the merit of offering basil leaves to <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> and using the same wood in worship generally and also when no flowers are available. The <a class="ref" href="../refs/vishnu_dh.html" data-source="vishnu_dh" data-ref="" title="Viṣṇu Dharmasūtra">Viṣṇu Dh. S.</a><sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-61" id="fnref-chapter-xix-devayajna-61">61</a></sup> (66. 5-9) prescribes that flowers emitting an overpowering smell or having no smell whatever are not to be used, nor flowers of thorny plants unless the flowers are white and sweetly fragrant; that even red flowers such as saffron flowers and those that spring in ponds or lakes may be employeḍ There are grades in the merit derived from offering certain flowers, e. g. the Sṃ C. I, pp. 201-202 and the Pūjāprakāśa p. 51 quote many verses of the Narasimhapurāṇa, some of which arrange vanamallikā, campaka, aśoka, vāsantī, mālatī, kunda &c. in an ascending order among flowers and the jāti flower is said to be the best of the flowers in the worship of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>. The same work (p. 56) names dūrva and twenty-five flowers as favourites with <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>. Vide Vṛddha-Hārīta VII. 53-59 for the flowers that may be used in <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>-pūjā and Vṛddha Gautama p. 563. The flowers offered on a day are removed the next day by the worshipper when he is about to offer worship that day. Such flowers are called ‘nirmālya’ and great virtue is attached to placing such flowers on one’s head by way of homage to the deity worshipped (vide Pūjāprakāśa, pp. 27 and 90). The Sṃ C. (I. p. 204) quotes a purāṇa to the effect ‘He, whose heart contemplates the form of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>, on whose lips there is ever the name of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>, who partakes of the naivedya offered to <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> and who places on his head the water in which the feet of an image of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> are washed and the nirmālya of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>, never falls off (from heaven).’ The Madana-pārijāta (p.303) quotes passages from the <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>-dharmottara about the flowers that are not to be used in worship. In Śiva worship the following flowers and leaves are in an ascending grade of worth; viz. arka flowers, karavīra flowers, bilva leaves, flower of droṇa, leaves of apāmārga, flower of kuśa, śamī leaves, blue lotus leaves, dhaṭṭūra flower, śami flower, blue lotus, which is the best ( vide Pūjāprakāśa, p. 210 ). The Madana-pārijāta, p. 303 quotes from the Devīpurāṇa verses which enumerate the flowers that are to be avoided in Śiva worship. If no flowers are available, then a fruit may be offered or if no fruit is available then only leaves and lastly only white whole grains of rice or even water may be offereḍ<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-62" id="fnref-chapter-xix-devayajna-62">62</a></sup> Lamps are to be fed with ghee or in its absence with sesame oil.<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-63" id="fnref-chapter-xix-devayajna-63">63</a></sup> Camphor is to be burnt before the image. There is a ceremony called <em>arātrika</em> ( waving lights round the image) performed with several lights or pieces of camphor placed in a broad vessel which is held in both hands and waved round an image and over its heaḍ Vide Pūjāprakāśa, pp. 75 and 87. For <em>naivedya</em> no food is to be offered which is declared unfit in the śāstras for eating, nor the milk of a she-goat or she-buffalo though they are allowed for food, nor the meat of the five-nailed animals nor the flesh of the wild boar nor fish. The general rule is stated by the <a class="ref" href="../refs/ramayana.html" data-source="ramayana" data-ref="" title="Rāmāyaṇa">Rāmāyaṇa</a> as 'whatever food a man eats the same is the food to be offered to his deities'.<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-64" id="fnref-chapter-xix-devayajna-64">64</a></sup> The Sṃ C. (I. p. 203) quotes the <a class="ref" href="../refs/padma_purana.html" data-source="padma_purana" data-ref="" title="Padmapurāṇa">Padmapurāṇa</a> to the effect that <em>naivedya</em> should be offered in a vessel of gold, silver, bronze, copper or of clay or in palāśa leaves or on lotus leaf. The <em>naivedya</em> is offered with the formula set out below.<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-65" id="fnref-chapter-xix-devayajna-65">65</a></sup> According to the Brahmapurāṇa quoted by <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a>, pp. 153-154 and Pūjāprakāśa (p. 82) the <em>naivedya</em> offered to Brahmā, <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>, Śiva, the Sun, Devī, the Mātṛs, to goblins and evil spirits respectively is to be given to brāhmaṇas, Sātvatas ( Bhāgavatas ), those whose bodies are smeared with ashes, to Magas, to the Śāktas, to women, to the poor.<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-66" id="fnref-chapter-xix-devayajna-66">66</a></sup> One may also partake of the naivedya offered by oneself and the Smṛtimuktāphala (āhnika, p. 390) quotes <a class="ref" href="../refs/rigveda.html#L" data-source="rigveda" data-ref="L" title="Ṛgveda L">Rg. L</a> 154. 5 in support. After naivedya, tāmbūla is to be offered to the God worshippeḍ In the ancient gṛhya and dharma sūtras no mention is made of tāmbūla or mukhavāsa (materials that will render the breath fragrant). Tāmbūla was probably introduced some time before or about the beginning of the Christian era in South India and then spread northwardṣ Among the smṛtis, Saṁvarta 55 quoted in the Kṛtyaratnākara p. 560, Laghu-Hārīta (Ānanḍ 39), Laghu-Āśvalāyana (Ānanḍ) 1. 160-61 and 23. 105, Auśanasa (Jīvānanda, part I. p. 509) refer to the chewing of tāmbūla after dinner. In the Raghuvaṁśa VI. 64 Kālidāsa describes betelnut plants surrounded by betel creeperṣ The <a class="ref" href="../refs/kamasutra.html#I.4.16" data-source="kamasutra" data-ref="I.4.16" title="Kāmasūtra I.4.16">Kāmasūtra I. 4. 16</a> <sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-67" id="fnref-chapter-xix-devayajna-67">67</a></sup> states that a person after performing the brushing of the teeth, consulting a looking glass and partaking of tāmbūla for rendering his breath fragrant should set about his daily businesṣ <em>Vide</em> also <a class="ref" href="../refs/kamasutra.html#III.4.40" data-source="kamasutra" data-ref="III.4.40" title="Kāmasūtra III.4.40">Kāmasūtra III. 4. 40</a>, IV. 1. 36, V. 2. 21 and 24, VI. 1. 29, VI. 2. 8 for other referenceṣ In the Bṛhat-saṃhitā of Varāhamihira (77. 35-37 ) the virtues of tāmbūla and its ingredients are describeḍ In the Kādambarī (para 85) the royal palace is compared to the house of a dealer in betel leaves (tāmbūlika) in which lavali, cloves, cardamom, kaṅkola are storeḍ The <a class="ref" href="../refs/parasara.html" data-source="parasara" data-ref="" title="Parāśara">Par.</a> M. I. part 1. p. 434 quotes four verses from <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> (not found in the printed Dharmasūtra ) about the cutting off of the two ends of tāmbūla leaves before eating theṃ In the Vratakhaṇḍa (of Caturvargacintāmaṇi, vol. II. part I, p. 242) Hemādri quotes Ratnakośa to the effect that tāmbūla means betel leaves, betel nut and <em>chūnam</em>; while ' mukhavāsa ' means these together with cardamom, camphor, kakkoḷa berries, pieces of copra and <em>mātuluṅga</em>. The Nityācāra-paddhati <sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-68" id="fnref-chapter-xix-devayajna-68">68</a></sup> (p. 549) quotes verses showing that tāmbūla comprised nine ingredients viz. betel nut, betel leaves, <em>chūnam</em>, camphor, cardamom, clove, kaṅkola, copra, the <em>mātuluṅga</em> fruit. In modern times pieces of almond, nutmeg fruit and bark thereof, saffron, catechu are taken and <em>mātuluṅga</em> is omitteḍ Thus the thirteen ingredients of tāmbūla are made up. The Aṣṭañgasamgraha<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-69" id="fnref-chapter-xix-devayajna-69">69</a></sup> of Vāgbhaṭa also mentions the several ingredients of tāmbūla including the essence of the bark of the Khadira tree ( catechu ). In modern times tāmbūla is said to be of 13 guṇas, either because it contains thirteen ingredients or because it effects thirteen good results, the last of which are set out in a subhāṣita quoted below.</p>
+<p class="prose" id="p-chapter-xix-devayajna-27">Pradakṣiṇā ( going round the image with the right hand always turned towards the image ) and namaskāra constitute only one upacāra ( item of worship ) according to many. The namaskāra to the image is either aṣṭāṅga ( with eight limbs ) or pañcāṅga ( with five limbṣ ) The first occurs when a person prostrates himself on the ground in front of the image in such a way that the palms of his hands, his feet, his knees, his chest and forehead touch the ground and his mind, speech and eye are fixed on the image and the latter occurs when he prostrates himself with his hands, feet and heaḍ<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-70" id="fnref-chapter-xix-devayajna-70">70</a></sup> There are other definitions of the aṣṭāṅga namaskāra. These several parts of the worship of images have been judicially noticed in Ram brahma Chatterji v. Kedar Nath 36 Calcutta Law Journal 478 at p. 483 ( where the normal type of the continuous worship of an idol is described ) and Pramatha Nath Mullick v. Pradyumna Kumar Mullick 52 Cal. 809 at p. 815 ( P. C. ).</p>
+<p class="prose" id="p-chapter-xix-devayajna-28">In modern times it is the practice to perform in homage to the sun twelve namaskāras or any multiple of twelve and repeat the following twelve names of the sun in the dative preceded by ' om ' and followed by ' namah ': Mitra, Ravi, Sūrya, Bhānu, Khaga, Pūṣan, Hiraṇyagarbha, Marīci, Āditya, Savitṛ, Arka and Bhāskara. There is another method of these namaskāras called Trcakalpanamaskāras in which after ' om ' certain mystic syllables and their combinations in twos and</p>
+<p class="prose" id="p-chapter-xix-devayajna-29">śāstras of the Śaiva sects, of Kāpālas, Nākulas <sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-71" id="fnref-chapter-xix-devayajna-71">71</a></sup> (Lākulas?), Vāmas, Bhairavas, Pāśupatas as meant for deluding the worlḍ The Varāhapurāṇa (chap.70-71) is also directed against Pāśupataṣ The Pāśupata brāhmaṇas are stated in the Kādambarī to have surrounded the minister Śukanāsa (para 90). Śiva was worship-ped in the form of the liṅga or as an image. It is believed that 14 crores of liṅgas were established by Bāṇa, an Asura devotee of Śiva, in various spots and these are called Bāṇa-liṅgas (Nityā-cārapaddhati, p. 556) and the Bāṇa-liṅgas (white stones) found in the Narmadā, the Ganges and other holy rivers are only like theṃ In the Kādambarī (para 130) Bāṇa speaks of sand liṅgas on the Acchoda lake and in another place of a liṅga made of pure mother-o'-pearl. The <a class="ref" href="../refs/kurma_purana.html" data-source="kurma_purana" data-ref="" title="Kūrmapurāṇa">Kūrmapurāṇa</a> (pūrvārdha chap. 26) describes the origin of Liṅga and its worship and the Vāmana-purāṇa 46 lauds the several holy places where ancient liṅgas are establisheḍ The famous twelve Jyotir-liṅgas are; Oṁkāra at Māndhātā, Mahākāla at Ujjayinī (modern Ujjain), Tryambaka (near Nasik), Dhṛṣṇeśvara at Elora, Nāganātha (towards the east of Ahmednagar), Bhīmā-Śaṁkara (at the source of the Bhīmā river in the Sahyādri), Kedāra-nātha in Garhwal, Viś-veśvara at Benares, Somanātha in Kathiawar, Vaidyanātha new Parali. Mallikārjuna on the Śrīśaila, and Rāmeśvara in South India. Many of these are situated in central and western India near each other.</p>
+<p class="prose" id="p-chapter-xix-devayajna-30">The Pūjāprakāśa (p. 194) quotes Hārita prescribing that Maheśvara may be worshipped by means of the mantra of five syllables (namaḥ Śivāya) or by the Rudra<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-72" id="fnref-chapter-xix-devayajna-72">72</a></sup> Gāyatrī or by 'om' or by the mantra ‘Īśanah sarva-vidyānām’ (<a class="ref" href="../refs/taittiriya_ar.html#X.47" data-source="taittiriya_ar" data-ref="X.47" title="Taittirīya Āraṇyaka X.47">Tai. Ār. X. 47</a> ), or by the Rudra mantras ( viz. <a class="ref" href="../refs/taittiriya_s.html#IV.5.1-11" data-source="taittiriya_s" data-ref="IV.5.1-11" title="Taittirīya Saṃhitā IV.5.1-11">Tai. S. IV. 5. 1–11</a> ) or by the mantra ‘tryambakam yajāmahe’ (<a class="ref" href="../refs/rigveda.html#VII.59.12" data-source="rigveda" data-ref="VII.59.12" title="Ṛgveda VII.59.12">Rg. VII. 59. 12</a> ). For a devotee of Śiva, the wearing of a string of Rudrākṣa berries is necessary either on the hand, the arm, the neck or on the heaḍ<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-73" id="fnref-chapter-xix-devayajna-73">73</a></sup> The Smṛtimuktāphala (āhnika p. 393 ) quotes verses from the Smṛtiratna and the Ratnāvalī about the merit secured by bathing the liṅga with cow's milk, curds, clarified butter, honey, sugarcane juice, pañcagavya, water in which camphor and aguru are mixed up, and other substanceṣ The 14th day of the dark half of a month has been sacred to Śiva from ancient timeṣ Bāṇa in the Kādambarī (para 54 ) refers to the fact that queen Vilāsavatī went to worship Mahākāla at Ujjayinī on the 14th.</p>
+<p class="prose" id="p-chapter-xix-devayajna-31">The worship of Durgā has prevailed from ancient timeṣ<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-74" id="fnref-chapter-xix-devayajna-74">74</a></sup> She is worshipped under various names and aspectṣ In the <a class="ref" href="../refs/taittiriya_ar.html#X.18" data-source="taittiriya_ar" data-ref="X.18" title="Taittirīya Āraṇyaka X.18">Tai. Ār. X. 18</a> Śiva is said to be the husband of Ambikā or Umā. In the Kena Upaniṣad (III. 25 ) Umā Haimavatī is mentioned as imparting to Indra the knowledge of the Great Being. The various names of Durgā are Umā, Pārvatī, Devī, Ambikā, Gaurī, Caṇḍī or Caṇḍikā, Kālī, Kumārī, Lalitā &c. The <a class="ref" href="../refs/mahabharata.html" data-source="mahabharata" data-ref="" title="Mahābhārata">Mahābhārata</a> (<a class="ref" href="../refs/mb_virataparva.html#6" data-source="mb_virataparva" data-ref="6" title="Virāṭaparva 6">Virāṭaparva 6</a><a href="https://sanatana.in/mbta/listing/parva/virataparva#P04_U01_A006" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> and Bhīṣma 23 ) contains two hymns addressed to Durgā in which she is stated to be Vindhyavāsinī and fond of blood and wine, and in <a class="ref" href="../refs/mb_vanaparva.html#39.4" data-source="mb_vanaparva" data-ref="39.4" title="Vanaparva 39.4">Vanaparva 39. 4</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva#P03_U04_A039_S004" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> it is stated that Umā became a kirātī when Śiva became a kirāta to test the prowess of Arjuna. In the Kumārasambhava Kālidāsa speaks of Pārvatī, Umā, Aparṇā and derives the latter two words (I. 26 and V. 28 ). Yaj. I. 290 speaks of Ambikā as the mother of Vināyaka. The Devī-māhātmya in the <a class="ref" href="../refs/markandeya.html" data-source="markandeya" data-ref="" title="Mārkaṇḍeyapurāṇa">Mārkaṇḍeyapurāṇa</a> (chap. 81–93 ) is the principal sacred text of Durgā worshippers in Northern India. E. I. vol. 9 p. 189 shows that about 625 A. D. Durgā was invoked as a supreme goddesṣ Bāṇa in his Kādambarī gives a graphic description of the temple of Caṇḍikā and refers to offerings of blood made to her (para 28 ), to her trident (triśūla ) and her slaughter of Mahiṣāsura. The Kṛtyaratnākara (p. 351 ) quotes verses from the Devīpurāṇa that the 8th of the bright half of a month is sacred to Devī (and particularly of Aśvina ), that a goat or a buffalo may be sacrificed for her.<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-75" id="fnref-chapter-xix-devayajna-75">75</a></sup> These bloody rites are still continued in the Kālī temple in Bengal and a few other shrines of Durgā. In Bengal the worship of Durgā in Āśvina has been most popular.<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-76" id="fnref-chapter-xix-devayajna-76">76</a></sup> Raghunandana in his Durgārcana-paddhati gives an elaborate description of the worship of Durgā in Āśvina. Durgā is also worshipped as Śakti. The influence of Śākta worship has been great throughout India and will be briefly surveyed later oṇ</p>
+<p class="prose" id="p-chapter-xix-devayajna-32">In modern times devapūjā differs considerably from the ritual of the ancient works of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> and <a class="ref" href="../refs/baudhayana.html" data-source="baudhayana" data-ref="" title="Baudhāyana Dharmasūtra">Baudhāyana</a>; it also differs from province to province and caste to caste. A brief analysis of the devapūjā practised by brāhmaṇas in Western India is given below: Ācamana; prāṇāyāma; adoration to Mahāgaṇapati and certain other deities; twelve names of Gaṇeśa, hymn of praise to Gaṇeśa, Gaurī, <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>; mention of the place and the time with astronomical details about the day, the nakṣatra &c.; then the saṁkalpa of performing devapūjā with sixteen upacāras; contemplation on Gaṇapati with <a class="ref" href="../refs/rigveda.html#II.23.1" data-source="rigveda" data-ref="II.23.1" title="Ṛgveda II.23.1">Rg. II. 23. 1</a> (gaṇanām tvā); āsanavidhi with an invocation to the earth; nyāsa (mystical sanctification of the body) of the sixteen verses of <a class="ref" href="../refs/rigveda.html#X.90" data-source="rigveda" data-ref="X.90" title="Ṛgveda X.90">Rg. X. 90</a> on sixteen parts of the body; invocation of the deities and the sacred rivers in the water jar and offering sandalwood paste, flowers and whole grains of rice to the jar; then invocation of the conch and bell in a similar way; sprinkling of oneself and the materials of worship with water accompanied by the mantra ('apavitraḥ pavitro vā &c.'); dhyāna (contemplation) of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>, Śiva, Gaṇeśa, the sun's disc, Durgā holding a bunch of flowers in one's folded hands; then offering the sixteen upacāras enume- rated above to the accompaniment of the 16 verses of <a class="ref" href="../refs/rigveda.html#X.90" data-source="rigveda" data-ref="X.90" title="Ṛgveda X.90">Rg. X. 90</a> to one's favourite deity; final benedictioṇ<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-77" id="fnref-chapter-xix-devayajna-77">77</a></sup> When several deities are worshipped, there are two methods in which the upacāras may be offereḍ One may offer the upacāras from āvāhana to namaskāra to one deity or the principal deity and then the same upacāras to the other deity or deities one after another. This method is called <em>kāṇḍānusamaya</em>. The other method occurs when <em>āvāhana</em> is done for the several deities in order, then <em>āsana</em> for all, then <em>pādya</em> for all and so on up to <em>namas-kāra</em>. This is called <em>padārthānusamaya</em>. This method is generally preferreḍ <em>Vide</em> the coṃ of <em>Nārāyaṇa</em> on <em>Āśv. gr. I. 24. 7</em>, the coṃ on <em><a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>-śrauta I. 5. 9–11</em> for detailed explanations of these.</p>
+<p class="prose" id="p-chapter-xix-devayajna-33">From the early centuries of the Christian era the works on Tantra exercised a profound influence on the ritual of <em>devapūjā</em> and several mystical postures of the hands and fingers such as the <em>mudrās</em> and the <em>nyāsas</em> began to occupy the minds of the worshipperṣ<sup class="fn-ref"><a href="#fn-chapter-xix-devayajna-78" id="fnref-chapter-xix-devayajna-78">78</a></sup> The <em>Bhāgavata-purāṇa XI. 27. 7</em> says that <em>devapūjā</em> is of three kinds viz. <em>Vaidikī, Tāntrikī</em> and <em>miśrā</em>. The first and the third are for the three <em>varṇas</em> and <em>Tāntrikī</em> for <em>śūdras</em>.</p>
+<aside class="footnotes-section" aria-label="Footnotes">
+<hr>
+<ol class="footnotes-list">
+<li id="fn-chapter-xix-devayajna-1" class="footnote-item"><span class="devanagari">अहरहः स्वाहाकुर्यादाकाशात्तथैवं देवयज्ञं समाप्नोति । बो</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. II. 6.4; <span class="devanagari">देव</span>-<span class="devanagari">पितृमनुष्ययज्ञाः स्वाध्यायश्च बलिकर्म । अत्रावशिष्टेभ्यस्तविशेषा देवाः प्रजापतिः स्विष्ठकृदिति होमः । गौ</span>. V. 8-9. The mantras become <span class="devanagari">सोमाय वनस्पतये स्वाहा</span>, <span class="devanagari">अग्नीषोमाभ्यां स्वाहा</span> and so on; when <span class="devanagari">स्वाहा</span> is said the offering is thrown into the fire. <a href="#fnref-chapter-xix-devayajna-1" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-2" class="footnote-item"><span class="devanagari">देवयज्ञेनोपकारोणैव देवयज्ञः केचिद्देवनोडाहतिभ्यः पृथग्भूतानामाहुर्ति मन्यन्ते । देवेभ्यः स्वाहेति च मन्त्रनिष्ठान्ति । देवयज्ञेन पड्येते इति संकल्पयिच्छन्ति । वर्ष ह न ध्यतेति गृहा एवाचोधाम । हरदत्त</span> on <span class="devanagari">आप</span>. <span class="devanagari">ध</span>. I. 4. 13. 1. <a href="#fnref-chapter-xix-devayajna-2" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-3" class="footnote-item"><span class="devanagari">अथ देवपूजनम् । तच्च प्रातर्होमानन्तरमिति केचित् । विषेषा देवतापूजा प्रातर्हो</span>-<span class="devanagari">मानन्तरम् । इति मरीचिरस्मरणात् ।</span> ..... <span class="devanagari">ब्रह्मयज्ञजपयज्ञानन्तरमित्यन्ये । तथा च हारीतः कुर्वीत देवतापूजा जपयज्ञानन्तरम् । इति । स्मृतिमुक्ताफल</span> ( <span class="devanagari">आह्निक</span> p. 383 ). <a href="#fnref-chapter-xix-devayajna-3" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-4" class="footnote-item"><span class="devanagari">तुविग्रीवो वपोदरः सुबाहुर्हिरण्ययो मदे । इन्द्रो वृत्राणि जिघ्नते ॥ ऋ</span>. VIII 17. 8; <span class="devanagari">हरिश्रामाहरिकेश आयस्सुरूचेधे यो हरिषा अधर्षत् । ऋ</span>. X. 96. 8; <span class="devanagari">वज्रं यच्छके हरिमाप्सु हरिमार्नाम् । अधच्छद्भुरिरक्षुरं न राजिः ॥ ऋ</span>. X. 105.7. <a href="#fnref-chapter-xix-devayajna-4" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-5" class="footnote-item"><span class="devanagari">क इमं दशभिर्ममेन्द्रं क्रीणाति धेनुभिः । यदा वृत्राणि जङ्घनत्थेने मे पुनर्ददत् ॥ ऋ</span>. IV. 24. 10; <span class="devanagari">महे यं त्वामभिरप्रः परा शुल्काय देयाम् । न सहस्राय नायुताय वनिीम नाशत सतायताम् ॥ ऋ</span>. VIII. 1. 5. . <a href="#fnref-chapter-xix-devayajna-5" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-6" class="footnote-item"><span class="devanagari">होता यक्षलेशशस्तीः। तिस्रो देवीः हिरण्ययीः। भारतीळीळीनर्महीः। ते</span>. <span class="devanagari">मा</span>. II. 6. 17. The three devis are Bhāratī, Iḍā and Sarasvatī. <a href="#fnref-chapter-xix-devayajna-6" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-7" class="footnote-item"><span class="devanagari">मा शिश्नदेवा अपि गुर्त्तत नः।। रू</span>. VII. 21. 5; <span class="devanagari">प्रशिश्नदेवा अभि वर्पसा भृत् ।। रू</span>. X. 99.3; '<span class="devanagari">मा शिश्नदेवाः अनळाचयोः शिश्नं इनधतेः अपि गुर्त्ततं नः सरणै वा यशं या</span>' <span class="devanagari">निरुक्त</span> IV. 19. <a href="#fnref-chapter-xix-devayajna-7" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-8" class="footnote-item"><span class="devanagari">आ जिह्मया मुरदेवान्भम कृण्वापदो धृष्टासन्न ॥ ऋ</span>. X. 87. 2 and <span class="devanagari">अथर्ववेद</span> VIII. 3. 2 (<span class="devanagari">सायण</span> renders <span class="devanagari">मुरदेवान् राक्षसान्</span>) ; <span class="devanagari">पराञ्चिवा मुरदेवाच्छृणुदीवधि पराशुष्पो अभि शोशुचानः ॥ ऋ</span>. X. 87. 14 (=<span class="devanagari">अथर्ववेद</span> VIII. 3. 13 with slight variation at end) ; <span class="devanagari">पि भीवालो मुरदेवा अववृत्तु मा ते कुशग्हर्यद्रवत्पद्म ॥ ऋ</span>. VII. 104. 24 (<span class="devanagari">अथर्ववेद</span> VIII. 4. 24). <a href="#fnref-chapter-xix-devayajna-8" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-9" class="footnote-item"><span class="devanagari">मूरा अमूर न वयं चिकित्वो महित्वमत्ते त्वनङ्क वि ९</span>. 10. 4. 4.) ; <span class="devanagari">मूढा वर्व अमूरः स्वमसि न वर्ष विश्वः महित्वमग्ने त्वं ह चेरप ॥ निरुक्त</span> VI. 8. <a href="#fnref-chapter-xix-devayajna-9" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-10" class="footnote-item"><span class="devanagari">यद्यर्ची दग्द्ध्वा नश्येदा प्रपतेद्वा भ्रमजेद्वा प्रहसेद्वा प्रचलेद्वा</span>... <span class="devanagari">एताभिर्जुहुयात्</span>... <span class="devanagari">इति गृह्याहुतिः । मानवगृ०</span> II. 15. 6. <a href="#fnref-chapter-xix-devayajna-10" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-11" class="footnote-item"><span class="devanagari">अपोपनिष्क्रम्य प्राच्यानि चित्रित्याचरण्पर्यर्य</span> ... <span class="devanagari">स्वाद् गृहानयनपति । बौ</span>. <span class="devanagari">गृ</span>. II. 2. 13. This is quoted in the <span class="devanagari">संस्काररत्नमाला</span> p. 887 where <span class="devanagari">चित्रित्र्याणि</span> is explained as <span class="devanagari">देवनाः</span>. . <a href="#fnref-chapter-xix-devayajna-11" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-12" class="footnote-item"><span class="devanagari">जीविकार्थे चापण्ये । पा</span>. V. 3. 99; <span class="devanagari">अपण्य इत्युच्यते । तनेवं न सिध्यति शिव</span>: <span class="devanagari">स्कन्दः शिवाक इति । किं कारणम् । मौर्य्यहिरण्यार्थिभिरर्चा</span>: <span class="devanagari">प्रकल्पिता</span>: <span class="devanagari">। भवत्वाहस इत्युपसं ख्यातः प्रकृतिभूतं द्रष्टव्यम् इति महाभाष्य</span> vol. II. p. 429; <span class="devanagari">जीविकार्थिक इति महाभाष्य</span> vol. II. p. 222 (on <span class="devanagari">पा</span>. IV. 1. 54); '<span class="devanagari">वासुदेवार्जुनाभ्यां वुन्</span>' <span class="devanagari">पा</span>. IV. 3. 98; <span class="devanagari">अयंवा नैव क्षत्रियरूप । संज्ञाषेषा भगवतः । महाभाष्य</span> vol. II. p. 314; vide E. I. vol. 20 p. 80 and 'Vaiṣṇavism and Śaivism' by Dr. R. G. Bhandarkar (1913) pp. 3–4. <a href="#fnref-chapter-xix-devayajna-12" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-13" class="footnote-item">See ‘History of Buddhist thought’ by Dr. E. J. Thomas (1933) for these dateṣ <a href="#fnref-chapter-xix-devayajna-13" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-14" class="footnote-item">Vide Mr. O. C. Ganguly’s paper ‘the antiquity of the Buddha Image’ in Ostasiatische Zeitschrift Neue Folge XIV, Heft 2/3, where he adduces very weighty grounds for holding that the beginning of the cult of the worship of the image of Buddha lies somewhere between 150 B. C. to 50 B. C. <a href="#fnref-chapter-xix-devayajna-14" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-15" class="footnote-item"><span class="devanagari">यस्यै देबतायै हबिर्गृह्णीयात् स्यात् स्थायैबद्बुद्धिरिष्यत इ</span>. <span class="devanagari">प्रा</span>. 11.8, quoted by <span class="devanagari">शंकराचार्य</span> on <span class="devanagari">बेदान्तसूत्र</span> 1. 3. 33. <a href="#fnref-chapter-xix-devayajna-15" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-16" class="footnote-item"><span class="devanagari">अथाकारचिन्तनं देबतानाम् । पुरुषबिधाः स्युरित्येकेम् ।</span> .... <span class="devanagari">अनुष्ठुबबिधाः स्युरित्यपरम् ।</span>.... <span class="devanagari">अपि वा उभयबिधाः स्युः अपि वा अनुष्ठुबबिधानामेब सतामेते कर्मात्मनाम्ः स्तुः । निरूक्त</span> VII. 6-7. <a href="#fnref-chapter-xix-devayajna-16" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-17" class="footnote-item">Besides the Annual Reports and Memoirs of the Archaeologi- cal Survey of India, the following is a modest list of such works: Ars Asiatica (in French), some volumes of which such as vol. III (on Śaiva sculpturo), vol. X (on Ajanta), vol. XV (about images at Mathurā) aro specially useful; Ludwig Bachhofer's 'Early Indian Sculpture' in two volumes (1929, Paris) with 161 plates (from 300 B. C. to 200 A. D.); Brindaban Bhattacharya's 'Indian Images' vol. I (1921, a very useful work containing original Sanskrit texts from the Vedas to the latest works and several illustrations); N. K. Bhattasali's 'Iconography of Buddhist and Brahmanical Sculptures in the Dacca Museum'; Rai Bahadur Chanda's 'Medieval Indian Sculpturos in the British Museum' (1936); 'Ancient India' (from the earliest times to the Guptas as to architecture and sculpturo) by K. de B. Codrington 1926, with numerous plates; A. K. Coomarswamy's 'History of Indian and Indonesian Art'; A. Foucher's 'Beginnings of Buddhist Art' (1917 translated by L. A. Thomas and F. W. Thomas) and 'L' Arte Gréco- Bouddhique du Gaṇdhāra' (in two volṣ 1905 and 1918); O. C. Gangoly's 'South Indian Bronzes' (1915, with 95 full page illustrations and 45 smaller plates); T. A. Gopinath Rao's 'Elements of Hindu Iconography' (in 4 parts, containing quotations from purāṇas, śilpaśāstras and other works and numerous illustrations); Grünwedel's 'Buddhist Art in India' (English translation by Agnes C. Gibson revised by James Burgess, 1901); E. B. Havell's 'Indian Sculpture and Painting' (London, 1908), 'the Idoals of Indian Art' (London, 1911), 'Hand-book of Indian Art' (London, 1920); H. Krishna Sastry's 'South Indian Images of Gods and Goddesses'; Nihar Ranjan Ray's 'Brahmanical Gods of Burma' (1932); V. A. Smith's 'History of Fine Art in India' (1911, with hundreds of illustrations); 'Mūrtivijñāna' (in Marathi) by G. H. Khare (1939, Poona). H. D. 90 <a href="#fnref-chapter-xix-devayajna-17" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-18" class="footnote-item"><span class="devanagari">उपादेयपूजासंग्रहकरणयोः । वार्त्तिक</span> on <span class="devanagari">पा</span>. I. 3. 25 <span class="devanagari">उपाप्तमन्त्रकरणे</span>. Vide <span class="devanagari">महाभाष्य</span> vol. I. p. 281 which shows that this <span class="devanagari">वार्त्तिक</span> was read somewhat differently by others even so early. <a href="#fnref-chapter-xix-devayajna-18" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-19" class="footnote-item"><span class="devanagari">यजतिचोदना द्रव्यदेवताक्रिय संसुदाये कुतार्थत्वात्। तदुक्तं श्रवणाज्जुहोति</span>- <span class="devanagari">रासेचनाधिकः स्यात् । जै</span>. IV. 2. 27-28, on which <span class="devanagari">शाबर</span> distinguishes between <span class="devanagari">याग</span>, <span class="devanagari">होम</span> and <span class="devanagari">दान</span> as follows <span class="devanagari">यजतिबददातिजुहोतिषु सर्वेषूसर्गः समानः । तत्र यजति</span>- <span class="devanagari">देवतोद्देश्य उत्सर्गमात्रे</span>, <span class="devanagari">जुहोतिरासेचनाधिकः</span>, <span class="devanagari">ददातिकर्त्वसंगेपूर्वकः परस्वत्वेन संबन्ध इत्येषां एव विशेष इति । तत्र पूजा नाम देवतोद्देशेन द्रव्यत्यागात्मकफलखाधाग एष । पूजा</span>- <span class="devanagari">प्रकाश</span> p. 1. <a href="#fnref-chapter-xix-devayajna-19" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-20" class="footnote-item"><span class="devanagari">ब्राह्मणो क्षत्रियो वैश्यः स्त्रियः शूद्राश्च यजायः । संपुज्य सं क्षुरेठं भक्त्या सिंहरूपधरम् । मुच्यन्ते बाहुशैर्जेन्मकोटीसुदुस्तरैः । इतिसिंहपुराण</span> quoted in <span class="devanagari">पूजाप्रकाश</span> p. 1, <span class="devanagari">शुक्रमलाकर</span> p. 33. <a href="#fnref-chapter-xix-devayajna-20" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-21" class="footnote-item">Vide <span class="devanagari">शाकल</span> quoted in the <span class="devanagari">व्यवहारमयूख</span> p. 133. <a href="#fnref-chapter-xix-devayajna-21" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-22" class="footnote-item"><span class="devanagari">साकारा विकृतिर्जेया तस्य सर्वं जगत्स्मृतम् । पूजास्थानानि विप्रे कार्ये साकारस्यैव शस्यते ॥ विष्णुधर्मोत्तर</span> III. 46. 3; <span class="devanagari">नारदोऽपि । अग्नावाप्स्वथ हृदये सूर्ये स्थण्डिले प्रतिमासु च । ब्राह्मणेष्वथ कुंभेषु स्वधर्मे सम्यगर्चनं मुनिभिः स्मृतम् ॥</span> quoted in <span class="devanagari">पूजाप्रकाश</span> p. 10 and <span class="devanagari">स्मृति</span>. ( <span class="devanagari">आन्हिक</span> p. 384 ); <span class="devanagari">ऋग्विधान</span> III. 29. 2 has the same wordṣ ‘<span class="devanagari">हृदये भक्तिमुत्पन्नं वा जले सवितुमण्डले । वह्नौ च स्थण्डिले वापि चिन्तयेद्विष्णुमव्ययम् ॥ वृद्धहारीत</span> VI 128-129; <span class="devanagari">अर्चायां स्थण्डिलेऽग्नौ वा सूर्ये वाप्सु हृदि द्विजे । इत्थं भक्तिकोशोत्थं स्वगृहं मामयमायम् ॥ भागवत</span> XI. 27. 9; vide also <span class="devanagari">वृद्धहारीत</span> VIII. 91-92. <a href="#fnref-chapter-xix-devayajna-22" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-23" class="footnote-item"><span class="devanagari">अप्सु देवा मनुष्याणां दिवि देवा मनीषिणाम् । काष्ठलोहेषु मूर्खाणां युक्तस्यात्मास्मि देवता ॥ शातातप</span> in <span class="devanagari">आन्हिकप्रकाश</span> p. 382; <span class="devanagari">अग्ौ क्रियावतां देवो दिवि देवो मनीषिणाम् । प्रतिमास्वल्पबुद्धीनां योगिनां हृदये हरिः ॥</span> quoted in <span class="devanagari">पूजाप्रकाश</span> p. 8 (this is <span class="devanagari">यत्सिंहपुराण</span> 62. 5 and <span class="devanagari">ऋग्विधान</span> III. 29. 3); <span class="devanagari">हविर्भक्षौ जले पुष्पैर्नवैश्च हृदये हरिम् । अर्चन्ति सूरयो नित्यं जपेन रविमण्डले ॥ स्मृति</span>. ( <span class="devanagari">आन्हिक</span> p. 384 ). <a href="#fnref-chapter-xix-devayajna-23" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-24" class="footnote-item"><span class="devanagari">रत्नजा हेमजा रौप्य शैलजा ताम्रजा तथा । रौतिष्ठी दारवी लेप्या सैकती मनोमयी मणिमयी प्रतिमाष्टविधा स्मृता ॥ भागवतपुराण</span> XI. 27. 12, quoted in <span class="devanagari">पूजाप्रकाश</span> p. 116. <a href="#fnref-chapter-xix-devayajna-24" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-25" class="footnote-item"><span class="devanagari">शालग्रामशिला यत्र यत्र द्वारवतीशिला । उभयोः संगमो यत्र तत्र मुक्तिर्न संशयः ॥ नारद</span> quoted in <span class="devanagari">स्मृतिषु</span>. ( <span class="devanagari">आद्रिक</span> p. 384 ); vide also <span class="devanagari">पूजाप्र</span>. p. 11 and <span class="devanagari">आचाररत्न</span> p. 78a quoting <span class="devanagari">स्कन्दपुराण</span>. <span class="devanagari">द्विजानाममेघ नान्येषो शालग्रामशिलार्चनम् । वृद्धहारीत</span> VIII. 190. <a href="#fnref-chapter-xix-devayajna-25" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-26" class="footnote-item"><span class="devanagari">एवमपीश्वरादिगणगणेपेते ईश्वरस्तत्र हृदयुपुण्डरीके निवास्यो मृष्य उप</span>- <span class="devanagari">दिस्यते यथा शालग्रामे हरिः । शंकर</span> on <span class="devanagari">वेदान्तसूत्र</span> I. 2. 7; vid vide also on I. 2. 14 and I. 3. 14. (where he says <span class="devanagari">यथा शालग्रामे विष्णुः संनिहित इति तद्दत्</span> ). Vide <span class="devanagari">शुद्ध</span>- <span class="devanagari">कमलाकर</span> p. 35 '<span class="devanagari">नूतनलिङ्गार्चा शालग्रामौ तु स्पर्शरहिता पूजा शूद्रायैः कार्या</span>' and p. 37 quotes a passage from the <span class="devanagari">भविष्यपुराण</span> which allows even <span class="devanagari">म्लेच्छ</span>s to worship Devi and Lingas mado of clay or sand ( <span class="devanagari">पार्थिवलिङ्गा</span>). <a href="#fnref-chapter-xix-devayajna-26" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-27" class="footnote-item"><span class="devanagari">स्थाने स्थाने जलान्तस्थ बहुसंख्येयनिर्मितैः । अनयधर्मधर्मर्षि शिवालिकैस्तर</span>- <span class="devanagari">विणिः ॥ राजतरङ्गिणी</span> II. 131. <a href="#fnref-chapter-xix-devayajna-27" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-28" class="footnote-item"><span class="devanagari">आदित्यमम्बिकां विष्णुं गणनाथं महेश्वरम् । पञ्चपक्षरत् निश्यं गृहस्थः पञ्ज पूजयेत् ॥ संग्रह</span> quoted in <span class="devanagari">स्मृतिषु</span>. (<span class="devanagari">आद्रिक</span> p. 384 ). Vide <span class="devanagari">पूजाप्रकाश</span> p. 239 where a verse is quoted which supports the diagram in tho text '<span class="devanagari">इशाम्मो मदनपतेर् हरिविरुपेश्येपी हरौ शंकरभागेनागसुता द्यौ हरणगणेशागिकाः स्थापिताः । वेष्पो विष्णु</span>- <span class="devanagari">हरिकमजलयी हरिकरेण्येरेयनामापो शंकरमातोडलिङगमुहा यस्साट्व ते हानिशवा ॥</span>'. This verse is quoted in the <span class="devanagari">आचाररत्न</span> ( p. 81a ) as from the <span class="devanagari">यमलप्रकाश</span> of <span class="devanagari">बोपदेव</span>. <a href="#fnref-chapter-xix-devayajna-28" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-29" class="footnote-item"><span class="devanagari">यस्ते शृङ्गवृषो नपात् प्रणपाल्कुण्डपाव्यः। व्यस्मिन्वृष आ मनः॥ ऋ</span>. VIII.     17. 13. <span class="devanagari">निरूक्त</span> VIII. 5 explains ‘<span class="devanagari">नपात् इति अनन्तरायाः प्रजाया नामधेयम्</span>’<span class="devanagari">।     सायण</span> takes <span class="devanagari">नपात्</span> to mean <span class="devanagari">पुत्र</span> here. <a href="#fnref-chapter-xix-devayajna-29" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-30" class="footnote-item"><span class="devanagari">अहं मनुरभवं सूर्यश्चाहं कक्षीवाँ ऋषिरस्मि विप्रः । ऋ</span>. IV. 26. 1; <span class="devanagari">ब्रह्मा वा     इदमग्र आसीदेकतमेवत्। स आह ब्रह्मास्मीति । तस्मात्सर्वमभवत्। यो देवानां     प्रत्यबुध्यत स एव तदभवत्तथर्षीणां तथा मनुष्याणां तद्येतत्प्रत्यबुध्यंतदेवेत्सः। मदेपदेवं     महर्षभं सूर्योस्मिते। बृह</span>. <span class="devanagari">उप</span>. I. 4.10; <span class="devanagari">शाङ्गुकृष्णया तृपवेवो शामदेवत् । वेदाळव्द्य</span> I. 1.30. <a href="#fnref-chapter-xix-devayajna-30" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-31" class="footnote-item"><span class="devanagari">स ओष उन्निये नावमापेदे तं स मत्स्य उपन्यापुद्रुतरे तस्य शुद्देः नावः पाशं प्रति</span>-<span class="devanagari">तिदुस्राव । शतपथब्रा</span>. I. 8. I. 5. Vide an interesting and learned article by Prof. Macdonell in J. R. A. S. 1895 pp. 165–189 on the mythological basis of some of the incarnationṣ <a href="#fnref-chapter-xix-devayajna-31" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-32" class="footnote-item"><span class="devanagari">स यत्कर्मों नाम । एतद्वै रूपं कृत्वा प्रजापतिः प्रजा अस्सृजत यद्यसृजाकरोत् व</span>-<span class="devanagari">करोत्तस्मात्कर्मः कश्यपो वै कूर्मस्तस्मादाहुः सर्वाः प्रजाः काश्यप्य इति । शतपथब्रा</span>. VII. 5. 1. 5. <a href="#fnref-chapter-xix-devayajna-32" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-33" class="footnote-item"><span class="devanagari">इयती ह वा इयमग्रे पृथिव्यासं तानेतदूध्रति वराह उद्जधान सोऽस्याः पतिः प्रजापतिः । शतपथ</span> XIV. 1. 2. 11; <span class="devanagari">उद्घृतासि वराहेण कृष्णेन शत</span>-<span class="devanagari">बाहुणा । भूमिमुद्दधरेणी लोकधारिणी । तै</span>. <span class="devanagari">आ</span>. X. 1. <span class="devanagari">वराह</span> may in the Ṛg. mean ‘a boar-like cloud demon’ or ‘a boar’. Vide <span class="devanagari">निरुक्त</span> V. 4. <a href="#fnref-chapter-xix-devayajna-33" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-34" class="footnote-item"><span class="devanagari">नमुचेरासुरस्य वधार्थं पाषाणखनिते आदिसे न विद्या न नक्राभिति शिर उत्प्रवापतत् । तस्मादेतदृतुषात्पन्नम् । अथा फेनेन</span> ... <span class="devanagari">सुधः ॥ इति । शतपथब्रा</span>. XII. <a href="#fnref-chapter-xix-devayajna-34" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-35" class="footnote-item">3. 3-4; <span class="devanagari">ऋ</span>. VIII. 14. 13 is <span class="devanagari">अपां फेनेन नमुचेः शिर इन्द्रोदवर्तयः। विश्वा यद्यन्यगुधः ॥</span>. <a href="#fnref-chapter-xix-devayajna-35" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-36" class="footnote-item"><span class="devanagari">इदं विष्णुविचक्रे मेधा निदधुवे पदम् । समूढुळमस्य पाँशुरे ॥ त्रीणि पदा विच</span>- <span class="devanagari">क्रमे विष्णुर्गोपा अदाम्यः। ऋ</span>. I. 22. 17-18; vide also Rg. I. 154. 1-4, I. 155. 4, VI. 49. 13 &c.; <span class="devanagari">न ते विष्णो जायमानो न जातो देव महिम्नः परमन्तमार्प। उदस्तम्भा रोदसीमेध धामम् । मर्चो दक्षस्य गुहियाः ॥</span>... <span class="devanagari">व्यवस्थितमा रोदसी विष्णवे दाधर्थ पृथिमिमिमितो मयुखैः ॥ ऋ</span>. VII. 99. 2-3. <a href="#fnref-chapter-xix-devayajna-36" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-37" class="footnote-item"><span class="devanagari">तदेतद्धोरे अङ्गिरासः कृष्णाय देवकीपुत्रायापोक्त्वावापिपास एव स बभूव । छान्दोग्य उप</span>. III. 17. 6. Vide ‘ Vaiṣṇavism and Śaivism’ by Sir R. G. Bhandarkar p. 11 on Kṛṣṇa. <a href="#fnref-chapter-xix-devayajna-37" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-38" class="footnote-item">Vide Hopkins' 'Epic Mythology' 1915, pp. 209-219 and Indian Historical Quarterly, vol. XI. p. 121 ff. for detailed information on the avatāras of Viṣṇu; note the following : <span class="devanagari">असतौ निग्रहार्थाय धर्मसंस्थपनाय च ॥ आभमेधिकपर्व</span> 54.13; <span class="devanagari">भगवद्गीता</span> IV. 7-8, <span class="devanagari">वनपर्व</span> 272. 61-70, 276. 8. &c.; <span class="devanagari">अयोध्यकाण्ड</span> I. 7, <span class="devanagari">उत्तरकाण्ड</span> 8. 27; <span class="devanagari">हंसा कूमों मत्स्यश्च वाराहश्च द्विजोत्तम । नृसिंहो नारसिंहश्च वामनो राम एव च ॥ रामो वामनश्चैव सात्वत । कलिर्रेव च । शान्तिपर्व</span> 339. 103-104. <a href="#fnref-chapter-xix-devayajna-38" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-39" class="footnote-item"><span class="devanagari">मत्स्यं कूमों च वाराहं नारसिंहं च वामनम् । श्रीरामं बलरामं च कृष्णं कल्किक</span>-<span class="devanagari">नमवश्यम् ॥ हयग्रीवं युगघोरं पूज्यमेष्युपेत्योत्तम् । नार्घ्यभेद्यमपि दुर्जं सर्वभाषि च कर्मज्ञ ॥ वृद्धहारीत</span> X. 145-146. <a href="#fnref-chapter-xix-devayajna-39" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-40" class="footnote-item">1723. <span class="devanagari">यथा हि चोरः स तथा हि बुद्धस्तथागतं नास्तिकमनं विद्धि । अयोध्याकाण्ड</span> 109. 34. <a href="#fnref-chapter-xix-devayajna-40" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-41" class="footnote-item">1724. <span class="devanagari">अवतारा ह्यसंख्येया हरेः सत्वनिधेर्द्वजाः । भागवत</span> I. 3. 26; <span class="devanagari">अष्टाविंशतिमे प्राप्ते विष्णोः कलियुगे सति। शाक्यन विप्नधर्मज्ञं बुद्धो भूत्वा प्रवर्तयत् ॥ ब्रह्मापुराण</span> quoted in <span class="devanagari">कृत्य०</span>. p. 159; ' <span class="devanagari">स्थापयेन्नैव सौवर्ण बुद्धं कृत्वा विचक्षणः । समर्चयेद् बुद्धस्तु ब्रह्मणे नाय निवेदयेत् ॥</span> ....... <span class="devanagari">शुद्धादनस्य द्व्याद्भूत स्वर्य पुत्रो जनाईनः ।</span> ...... <span class="devanagari">मुसुप्ता राज्य</span>- <span class="devanagari">श्रिय शोभ नादि परमकं गत</span>: <span class="devanagari">।</span>' <span class="devanagari">वराहपुराण</span> quoted in <span class="devanagari">कृत्य०</span>. pp. 247-248. <a href="#fnref-chapter-xix-devayajna-41" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-42" class="footnote-item">1725. <span class="devanagari">मत्स्यः कूर्मो वराहश्च नरसिंहोथ वामनः। रामो रामश्च कृष्णश्च बुद्धः कल्की च ते दश ॥ वराहपुराण</span> IV. 2; the inscription in the memoir 26 ( p. 5 ) contains the verse in this forṃ Vide ' Vaiṣṇavism and Śaivism ' pp. 41-42 for the incarnations of Viṣṇu. <a href="#fnref-chapter-xix-devayajna-42" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-43" class="footnote-item">1726. <span class="devanagari">शाक्यादिवचनैर्हि कतिपयपदनादिवचनवर्जे सर्वाण्येव समस्तचतुर्दश</span>-<span class="devanagari">विद्यास्थानविरुद्धानि त्रीणिमार्गप्रवृत्तियत्रणेऽङ्गिप्रदानिः प्रतिपन्नैः ।</span> ... <span class="devanagari">स्वधर्माति</span>-<span class="devanagari">क्रमणं च येन क्षत्रियेण सता प्रवक्तृत्वाप्रतिग्रहो प्रतिपन्नो स धर्ममधिष्ठातुमुपदेशेऽन</span>-<span class="devanagari">भ्यासस्थैः । इति । प्रश्नवार्तिक</span> p. 195. The verse <span class="devanagari">परलोक</span> &c. is <span class="devanagari">शान्तिपर्व</span> 143, 13, the first half being somewhat different (though the sense is the same). A <span class="devanagari">ब्राह्मण</span> alone was entitled to accept gifts and propound dharma. Vide Manu X. 1. <a href="#fnref-chapter-xix-devayajna-43" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-44" class="footnote-item">1727. <span class="devanagari">विष्णोर्भोर्गवक्तात्मगान्ध्र सवितुः शम्भोः समसभाद्भिज्ञान् मातृणामपि मातृमण्डल</span>-<span class="devanagari">विदो विप्रान् बुद्धर्हत्सुणः । इति । तन्त्रवार्तिक</span> 60.19. Vide Wilson's Viṣṇupurāṇa vol. V. p. 382 where an analysis of the Bhaviṣyapurāṇa (last 12 chapters) is giveṇ Saṃba being cursed built a temple of Śiva and brought 18 families of Magas from Śakadvīpa, with whom the Bhojas (a sub-division of Yadavas) entered into matrimonial alliances, whence the Magas came to be called Bhojakaṣ In the Harṣacarita IV Bāṇa speaks of a Bhojaka astrologer called Tāraka who predicts on Harṣa's birth his greatness and the commentator states that 'Bhojaka' means 'Maga'. Vide Sherring's 'Hindu Tribes and Castes' vol. I. pp. 102-103 where he describes the Śākadvīpī brāhmaṇas as Māgadha brāhmaṇas and not as Magaṣ For Sun-worship and the Magas, vide 'Vaiṣṇavism and Śaivism' pp. 151-155. Vide Weber's essay on the Māgavyakti of Kṛṣṇadāsa for the Magabrāhmaṇas and E. I. vol. II. p. 330 ff, the Govindapura stone inscription of the poet Gāṅgadhara, who was a Maga, in śaka 1059 (1137-38 A. D.), where it is said that the Magas were sprung from the <a href="#fnref-chapter-xix-devayajna-44" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-45" class="footnote-item">(Continued from next page) <a href="#fnref-chapter-xix-devayajna-45" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-46" class="footnote-item">Vide the first <em>aṣṭapadī</em> of the Gītagovinda: <span class="devanagari">धूनिधति वेद्भूम्</span> ! .... <span class="devanagari">निव्वसि पशुपिशुष्टृतजालाम्</span> ! <span class="devanagari">सद्वुद्बुध दुहितृपशुपालम्</span> ! <span class="devanagari">केशव धृतबुद्धशरीर जय जगदीश हरे ॥</span> <a href="#fnref-chapter-xix-devayajna-46" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-47" class="footnote-item"><span class="devanagari">सुजसते हर्यमूर्त्तिस्त्वं रक्षते पोषणी तथाः। रौद्रीभावेन शमेपतेऽवस्थाः प्रजा</span>- <span class="devanagari">पतौ ॥ वनपर्व</span> 272. 48; <span class="devanagari">नमतिपूर्तये हर्म्य प्राक् दृष्टोः केषालमने। गुणत्रयविभागाय पञ्जयेन हर्म्यद्रुवे ॥ कुमारसंभव</span> II. 4. It is noteworthy that the three aspects of crea- tion, preservation and destruction are ascribed by Kālīdāsa to Brahmā here and not to Viṣṇu. <a href="#fnref-chapter-xix-devayajna-47" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-48" class="footnote-item"><span class="devanagari">शिवाय विष्णुरूपाय विष्णवे शिवरूपिणे । वनपर्व</span> 39. 76; <span class="devanagari">यस्तवां वेत्ति स मो वेत्ति यस्तवां मानुडू स मामदृक् । भागवतोत्तरे किञ्चिन्मा ते भूद्भुद्धिरुभय</span>- <span class="devanagari">मेकं निन्दति यस्तेषां सर्वेषामपि स निन्दति । एकं प्रशंसास्तु सर्वानेव प्रशंसति ॥ वायु</span>. 66.114. <a href="#fnref-chapter-xix-devayajna-48" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-49" class="footnote-item"><span class="devanagari">तस्माच्च धर्मकामार्थी चित्रेष्वापतननेषु च । न कर्ष्षिकारयेत्पादौ देवदेवस्य धीमतः ॥ मत्स्यपुराण</span> 11. 33; <em>vide</em> <span class="devanagari">अपरार्क</span> p. 570 for a similar rule quoted from the <span class="devanagari">देवीपुराण</span> and <span class="devanagari">पद्मपुराण</span>. *. Vide a learned monograph on Gaṇeśa by Alice Getty with a poetic Introduction by Prof. A. Foucher and many plates (1936, Oxford). <a href="#fnref-chapter-xix-devayajna-49" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-50" class="footnote-item"><span class="devanagari">अथातः सुमनः</span> ... <span class="devanagari">सम्यग्घरेत्</span> (quoted above) <span class="devanagari">। अश्विनोः प्राणस्तौ न इति जीवदार्मो दृष्ट्वा युञ्जते मन इन्द्रयक्कुवाकेनावाहनं कृत्वा आज्यां पाणिभ्यां शिरसा च नमस्कारं कुर्यात् । आपो हि छेति सिन्धुभिरक्केयं निवेदयत् । हिरण्यवर्णा इति छतमुधिः पाधम् । स नो आपो धन्वया इत्यचामनीयम् । इदममापः प्रवह्छतेति स्नानीयम् । श्येनंसुधुवमसय बाज शुषासापलेनालंकारो । युवा सुषासा ह इति वासः । पुष्पापसीरिरिति पुष्पम् । तेजोजीति हुक्रमिमिति दीपम् । दधिकावण इति मधुमुपकम् । हिरियं घामरं घामनें मात्रं छत्रं यामासने तथा । साविश्रेणेश्छलसर्षे सम्यग्यर्ज्य ष जपेत् छद्मं यै पीर्णवं ततः । तेनैष शुद्धापादाज्यं य इष्छोष्यापवं पदम् ॥ विष्णुधर्मे</span>- <span class="devanagari">सूत्रम्</span> 65. The text of <span class="devanagari">तै</span>. <span class="devanagari">ब्रा</span>. II. 7. 7 is <span class="devanagari">रखे असाइठृषमस्य बाजे</span>. <a href="#fnref-chapter-xix-devayajna-50" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-51" class="footnote-item"><span class="devanagari">अथातो महापुरुषस्यारहः परिवार्चाविधिं व्याख्यास्यामः । स्नायाः शुचिः शुचौ समे देशे गोमयोमोपालिप्य वेवस्य प्रतिकृतिं कृत्वाक्षतपुष्पौर्थयालाभमर्च्य महापुरुषावाहयेत् । ओं भूः पुरुषमावाहयामि</span> ….. <span class="devanagari">ओं भुवः स्वः पुरुषमावाहयामीत्या मीति द्वाक्षराणमध्येयव्याहृतिभिः प्रदक्षिणमुदकं परिषिच्य</span> … … <span class="devanagari">स्याहृतिभिः पुरुषस्यारद्वेय</span>…<span class="devanagari">ओँ भूः पुरुषस्याग्नि</span>-<span class="devanagari">हरद्विभिः</span> ‘<span class="devanagari">प्रयातु भगवन् महापुरुषः क्षेमाय विजयाय पुनःसन्दर्शनाय च</span>’ <span class="devanagari">इति । प्रतिमास्थानेष्ववाहनादासनमर्ज्यमर्धहस्तवा याथमः । बौधा</span>. <span class="devanagari">गृह्योपसूत्र</span> II. 14. This whole chapter is quoted by the <span class="devanagari">स्मृतिचन्द्रिका</span> I. pp. 199-200, <span class="devanagari">स्मृतिस</span>. (<span class="devanagari">आह्निक</span> p. 386), <span class="devanagari">पूजा</span>-<span class="devanagari">प्रकाश</span> pp. 140-142 (in all with variations). <a href="#fnref-chapter-xix-devayajna-51" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-52" class="footnote-item">Vide above (note 567) for the twelve names of Viṣṇu. The <span class="devanagari">उद्वासन</span> will be in four formulae viz. <span class="devanagari">ओं भूः पुरुषमुद्वासयामि । ओं भुवः पुरुष०</span>, <span class="devanagari">ओं स्वः पुरुष०</span>, <span class="devanagari">ओं भूर्भुवः स्वः पुरुष०</span>. <a href="#fnref-chapter-xix-devayajna-52" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-53" class="footnote-item"><span class="devanagari">अथातो महादेवस्यावाहः परिचर्याविधिं व्याख्यास्यामः । स्नातः</span> ... <span class="devanagari">पुष्पोष</span>– <span class="devanagari">केन महादेवमावाहयेत्</span> ... <span class="devanagari">आयातु भगवाल्ल्महादेव इति । यो रुद्रो अग्नो इति यजुषा पात्र</span>- <span class="devanagari">मक्षिपन्</span> ... <span class="devanagari">अथ</span> ... <span class="devanagari">माचमनीयं दुस्वामिभिरित्यापो हि हा</span> ... <span class="devanagari">ब्रह्मज्ञानम्</span>, <span class="devanagari">कञ्जय</span>, <span class="devanagari">त्वरितश्च । ओं नमो भगवते रुद्राय व्यम्बकाय इति यजज्ञोपवीते दध्यात् । भषाय देवाय नमस्</span>-<span class="devanagari">इत्यष्टार्द्धामिः पुष्पाणि दद्यात् । त्वरितक्रमेण गन्धपुष्पधूपदीपं दद्यात् ।</span> ... ‘<span class="devanagari">कश्मक</span>’ <span class="devanagari">इति परिक्वृत् दध्यात् । अङ्गतोपलम्तसीति मर्तिपर्व कृत्वा हविरविषाद सर्वं स्नातुं वस्तुं कम्बुजकफलानि दुख्यात् । इदूतसमनवशाणम आसीनो हविदृसन्नपालनि इति निवेद्य</span>- <span class="devanagari">स्थाथ्यम् । भगवद्विद्यालयममिति मर्तिपर्व कृत्वा कर्मकालरूपत्वमिति दुख्यात् ।</span> ... <span class="devanagari">लिङ्ग</span>- <span class="devanagari">स्रवनमित्तमाहोसवलसंबर्द्धमायः स्वस्यमनमित्यक्षात इह भगवद् बोधायनः । श्री</span>. <span class="devanagari">युक्ष</span>- <span class="devanagari">क्षेपण</span> II. 17. This occurs in <span class="devanagari">स्मृतिचि</span>. I. 204-205, <span class="devanagari">स्मृतिसु</span>. ( <span class="devanagari">आद्विकि</span> p. 392), <span class="devanagari">पूजामकाश</span> pp. 194-196 (with variations in all). <a href="#fnref-chapter-xix-devayajna-53" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-54" class="footnote-item">Vide <span class="devanagari">नरसिहपुराण</span> 62.9-13 quoted in <span class="devanagari">अपराक</span> pp. 140-141; <span class="devanagari">अग्निपुराण</span> III. 31. 6-10; also <span class="devanagari">स्मृतिचि०</span> I. pp. 199, <span class="devanagari">परा</span>. <span class="devanagari">मा</span>. I. I. p. 367, <span class="devanagari">नित्याचारपद्धति</span> of <span class="devanagari">विधिकार</span> pp. 536-537, <span class="devanagari">संस्काररत्नमाला</span> p. 27, <span class="devanagari">आचाररत्न</span> p. 71 b quoting <span class="devanagari">आचार</span>- <span class="devanagari">चिन्तामणि</span> for the 16 <span class="devanagari">उपवारस</span>. H. D. 92 <a href="#fnref-chapter-xix-devayajna-54" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-55" class="footnote-item">Vide <span class="devanagari">नित्याचारपद्धति</span> p. 549. In the Mandhatā plates of Jayavarman II. dated samvat 1317 (1250-51 A. D.) pañcopacārapūjā is mentioned (vide E. I. vol. IX. pp. 117, 119). <span class="devanagari">प्रतिलिपयप्रतिमायामावाहनविसर्जनयोः स्थाने मन्त्रपुष्पाञ्जलिप्रदानम् । भूतमतिमायाः तु षोडशोपचारेण पूजा । सं</span>. <span class="devanagari">१</span>. <span class="devanagari">मा</span>. p. 27. <a href="#fnref-chapter-xix-devayajna-55" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-56" class="footnote-item"><span class="devanagari">नमोम्लेन शिवेन कीणा पूजा विधिधते ॥ निरकाणां च शूद्राणामेव पूजा प्रवीताणां पुराण</span> quoted by <span class="devanagari">शुभकमलाकर</span> p. 34. <a href="#fnref-chapter-xix-devayajna-56" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-57" class="footnote-item"><span class="devanagari">अञ्छादनम धुपचारो न भवति स्नानवस्त्रोपवीतोपचारोराणामाचममानां त्वादृशत्वं तदनन्तरमपि च स्तोविर्सजनार्द्धोपचारात्परंते । अत उपचारेषु न षोडशत्वं व्याघातः । पूजाप्रकाश</span> p. 128. <a href="#fnref-chapter-xix-devayajna-57" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-58" class="footnote-item"><span class="devanagari">क्षीरेण पूर्व कुर्यात् तृष्ना पश्चात् वृत्तेन च । मधुना घारुष्णेन क्रमो ज्ञेयो विचक्षणैः ॥ दक्षितपुराण</span> quoted in the <span class="devanagari">पूजाप्रकाश</span> p. 34. <a href="#fnref-chapter-xix-devayajna-58" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-59" class="footnote-item"><span class="devanagari">व्यासः । देवेषु जगन्नाथं शङ्खचक्रगदाधरम् । देहि देह्य समाह्वानं भवतीर्थयिष्पवे ॥ इत्युच्चार्य तुरी लक्षानां तीर्थेनाप्याचामेत् । अकालमृत्युहरणं सर्वव्याधिविनाशनम् । त्रिलोके पापीयं तीर्थं चिरसार्थावपनम् । इति मन्त्रं सहस्रार्चे सर्वदुखोपपादनम् । तुलसीनिमितं तीर्थं विषेश्मपूर्णं वा धारयेत् ।</span> quoted in <span class="devanagari">स्मृतिसुहृत्</span> ( <span class="devanagari">आह्निक</span> p. 389 ). <a href="#fnref-chapter-xix-devayajna-59" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-60" class="footnote-item"><span class="devanagari">बन्धनूवनमृगनाभिकर्पूरकुङ्कुमातीफलचंदनलेपनं न कुर्यात् । विष्णुधर्मसूत्रे</span> 66. 2. <a href="#fnref-chapter-xix-devayajna-60" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-61" class="footnote-item"><span class="devanagari">गंधोन्यस्मिन्न । नागंधिनि । न कण्टकिजम् । कण्टकिन्यपि शुद्धे सुगन्धिनी चेत्स्यात् । रक्तवर्णपि कुङ्कुमं जलजं च कुर्यात् । विष्णुधर्मसूत्रे</span> 66. 5-9. <a href="#fnref-chapter-xix-devayajna-61" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-62" class="footnote-item"><span class="devanagari">पुष्पाभावे फलं शस्तं फलाभावे तु पल्लवम् । पल्लवाप्यभावे तु सलिलं ग्राह्यं</span>- <span class="devanagari">निष्यते ॥ पुष्पाद्यसंभवे देवं पूजयेत्सिततण्डुलैः।</span> quoted in the Pūjāprakāśa p. 65. <a href="#fnref-chapter-xix-devayajna-62" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-63" class="footnote-item"><span class="devanagari">न घृततैलं विना किंचन दीपाये । विष्णुधर्मसूत्र</span> 66. 11. <span class="devanagari">नामर्दयं नैवेद्येर्वा। न भक्षये अपि अजामहिषीक्षीरम् । पञ्चनखश्वापदमांसानि च । विष्णुधर्मसूत्र</span> 66. 12-14. <a href="#fnref-chapter-xix-devayajna-63" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-64" class="footnote-item"><span class="devanagari">यद्वद्भविः पुरुषो भवति तद्वत्तस्य देवताः ॥ अयोकाण्ड</span> 103. 30 and 104. 15. <span class="devanagari">नृपाचितिचि</span> on Mug. V. 7 quotes thiṣ <a href="#fnref-chapter-xix-devayajna-64" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-65" class="footnote-item"><span class="devanagari">ओं प्राणाय स्वाहा । ओं अपानाय स्वाहा । ओं व्यानाय स्वाहा । ओं उदानाय स्वाहा । ओं समानाय स्वाहा । ओं ब्रह्मणे स्वाहा । नैवेद्यमध्ये प्राणार्थे पानीयं समर्पयामि ओं प्राणाय स्वाहा</span> ..... <span class="devanagari">ब्रह्मणे स्वाहा । उत्तरपोशनं समर्पयामि । हस्तप्रक्षालनं समर्पयामि । मुखप्रक्षालनं समर्पयामि । करोद्वर्तनार्थे चन्दनं समर्पयामि । मुखवासार्थं पूगीफलनागवल्ल्युपभोगार्थे ताम्बूलं समर्पयामि ।</span> <a href="#fnref-chapter-xix-devayajna-65" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-66" class="footnote-item"><span class="devanagari">विशेषश्चात्र तदेभ्यः ब्रह्मणे यज्ञिवेषितवत् । वैष्णवं सात्वतेभ्यो भगवज्जन्येभ्यो शाक्येभ्यो देवीभ्यो यज्ञिवेषितवत् ।</span> ( Continued from last page ) <span class="devanagari">कीम्यश्च देवं मातृगणे पद्यविशिष्टो देवेभ्यो च्यवसीदेषु निक्षिपयेत् ॥ अपराकं</span> pp. 153-154 and <span class="devanagari">पूजाप्रकाश</span> pp. 82. <span class="devanagari">अपरार्क</span> reads <span class="devanagari">सोरे गणेभ्यश्च</span> and <span class="devanagari">भूतो निषादयेत्</span> while the <span class="devanagari">पूजाप्रकाश</span> reads <span class="devanagari">शाक्येभ्योऽस्थापिते यज्ञिवेषितवत्</span> for <span class="devanagari">शाक्तैः</span>. <span class="devanagari">वाचिन्</span> is <span class="devanagari">शुद्धः</span>. <a href="#fnref-chapter-xix-devayajna-66" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-67" class="footnote-item"><span class="devanagari">स प्रातराय कृतनियमतल्पयो गृहीततम्बलभावनः</span> ... <span class="devanagari">दृष्टादर्श सुखे गृहीतमुख</span>- <span class="devanagari">वास्ताम्बूलः कार्योपलब्धेतृत् । कामसूत्र</span> I. 4. 16. <a href="#fnref-chapter-xix-devayajna-67" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-68" class="footnote-item"><span class="devanagari">पूगीफलानि चत्वारि ताम्बूलपत्रलक्षणम् । मार्केण्डेयपुराण</span> 29.39, quoted in <span class="devanagari">स्मृतिवि</span>. I. 3. 216; <span class="devanagari">मल्हारिमार्खे ममाङ्गळेस्तम्बलं तथा । लघुतैः शेषं काकोलं नारिकेलं सुजातकम् ॥ माठुलुंगं तथा सर्वं चाम्बलजाम्भूवि ये । इति मयात्र ताम्बूलं मध्यात्तराणा। कृत्वाद् । नित्याचारपद्धति</span> p. 549. <a href="#fnref-chapter-xix-devayajna-68" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-69" class="footnote-item"><span class="devanagari">क्विवैशद्ये सौगन्ध्ये मिर्चनं वक्त्रणे धारयेत् । जातीलवङ्गकष्कोलकुङ्कुमैः सह ॥ ताम्बूलीनां किसलयं हृद्यं पुष्पफलान्वितम् । द्विपत्रमेकं पूर्वं च संपूर्णवदिरं च तत् ॥ महासङ्ग्रह</span> I. 3 (<span class="devanagari">वित्वर्याध्याय</span>). ‘<span class="devanagari">ताम्बूलं कफजित्कृष्णलणमपूवं क्षारं कषायान्वितं वातलं कफजाह्मयं कृमिहरं कुष्ठविध्वंसकम् । वक्त्रसम्पूरणं विष्ठुष्टिकरणं कामार्थिसंप्रेषणं ताम्बूलरूप सर्व अवीक्षा गुणा</span>: <span class="devanagari">स्वर्गीषि ते दुर्लभाः ॥</span>’ <span class="devanagari">सुभाषित</span>. <a href="#fnref-chapter-xix-devayajna-69" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-70" class="footnote-item"><span class="devanagari">गोभ्यां पट्भ्यां च जानुभ्यां सिरसा तथा । मनसा वचसा दृष्ट्या प्रणामोऽष्टाङ्गरिरीतः ॥</span> quoted from <span class="devanagari">व्यास</span> in <span class="devanagari">स्मृतिहृ</span>. (<span class="devanagari">आद्विक</span> p. 389) and <span class="devanagari">पूजाम</span>o p. 88; <span class="devanagari">पट्भ्यां कराभ्यां सिरसा पञ्चाङ्ग प्रणामिः स्मृता । पूजाम</span>. p. 88; <span class="devanagari">उरसा सिरसा हृदषा मनसा च धिय।पि च । पट्भ्यां कराभ्यां बाह्या च प्रणामोऽष्टाङ्ग उच्यते ॥ पुराण</span> quoted in <span class="devanagari">स्मृतिहृद</span>o I. p. 204, which <span class="devanagari">पूजाम</span>. p. 88 reads <span class="devanagari">मनसा दृष्ट्या तथा</span>. <a href="#fnref-chapter-xix-devayajna-70" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-71" class="footnote-item">About Lakulīśa, Pāśupata or Kālamukha, vide ‘Vaiṣṇavism and Śaivism’ p. 119 ff. In the Vāyupurāṇa 23. 221-224 it is said in a prophetic strain that Śiva would assume the form of Nakulī (Lakulī?) and the place where he will appear will be called the holy place of Kāyā-rohaṇa. Vide E. I. vol. II. p. 124, vol. XII. p. 337, vol. XIV p. 265 for the Lakulā doctrine, its ācāryas and other informatioṇ For the Kāpālikas, vide Bhandarkar’s ‘Vaiṣṇavism and Śaivism’ pp. 117,127. A grant of Nagavardhana, nephew of Pulakeśī (610-639 A. D.), was made provi-ding for the worship of Kāpāleśvara and the maintenance of Mahāvratinṣ Yama 29 quoted in Par. M. II. part 1 p. 335 prescribes the penance of Kroṣṭra for eating at a Kāpālika's house. The Karpūramañjarī (about 900 A. D.) I. 22-24 contains a caricature of Kaula (i. e. Kāpālika) practioeṣ <a href="#fnref-chapter-xix-devayajna-71" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-72" class="footnote-item"><span class="devanagari">वम्रगायत्री</span> is <span class="devanagari">तत्पुरुषाय विद्महे महादेवाय धीमहि । तन्नो रुद्रः प्रचोदयात् ॥ वै</span>. <span class="devanagari">आ</span>. X. 1 and <span class="devanagari">काठकसंहिता</span> 17. 11. It closely resembles the famous Gāyatrī verse, particularly the words 'dhimahi' and 'pracodayāt' are the same in both. H. D. 53 . <a href="#fnref-chapter-xix-devayajna-72" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-73" class="footnote-item"><span class="devanagari">इहते पादौ तथा कृप्दे मूर्धिन ब्रह्मक्षधारणातू । अवश्यः सर्वभूतानां रुद्रारुद्राक्षि ॥ स्कन्दपुराण</span> quoted in <span class="devanagari">पूजाप्र०</span> p. 194. <a href="#fnref-chapter-xix-devayajna-73" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-74" class="footnote-item">Vide B. C. Muzumdar on the worship of Durgā in J. R. A. S. for 1906 pp. 355–362. <a href="#fnref-chapter-xix-devayajna-74" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-75" class="footnote-item"><span class="devanagari">समासतक्तमिरेवदेवी वृषमति वै प्रज्ञम् । महिषीछामेवाणा रूधिरेण तथा बुष । एवं मानम्यलेनाणौः पूज्यते सर्ववदस्थामिः । अङ्गुषकालिफेषा किनारे</span>: <span class="devanagari">षर्षाः शकेः । भविष्यपुराण</span> quoted in <span class="devanagari">कुरसल्लाकर</span> p. 357. <a href="#fnref-chapter-xix-devayajna-75" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-76" class="footnote-item">Vide ‘Durgāpūjā’ by Pratapchandra Ghosh (1871) for a detailed description of Durgāpūjā in Bengal. <a href="#fnref-chapter-xix-devayajna-76" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-77" class="footnote-item">The benediction is <span class="devanagari">अनेल यथाज्ञानेन कृतपूर्बारपहेन अदकदेवता मीयत्तं न मम । तत्सद् ब्रह्मापणमस्तु ।</span> <a href="#fnref-chapter-xix-devayajna-77" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xix-devayajna-78" class="footnote-item"><span class="devanagari">वैदिकतान्त्रिको मिश्र इति वै त्रिविधो मखः । त्रयाणामीप्सितेनैव विधिना प्रो समर्चयेत् ॥ भागवत</span> XI. 27. 7 quoted in <span class="devanagari">पूजाप्रकाश</span> p. 115. Vide also <span class="devanagari">वृद्धहारीत</span>. VIII. 37 and XI. 77. <a href="#fnref-chapter-xix-devayajna-78" class="fn-back" aria-label="Back to text">↩</a></li>
+</ol>
+</aside>
+
+            <div class="chapter-nav">
+                
+                <a href="chapter-xx-vaishvadeva.html" class="nav-next">Chapter XX. Vaishvadeva <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </main>
+    </div>
+
+    <button class="toc-mobile-toggle" onclick="toggleMobileToc()" aria-label="Table of contents">
+        <i class="fa-solid fa-list"></i>
+    </button>
+
+    
+    <footer class="container-fluid pt-4" style="background-color:#2e4144">
+        <div class="row border-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img src="https://sanatana.in/mbta/public/images/Homepage_html/images/layer_8.png" alt="">
+            </div>
+            <div class="col-md-5 text-white">
+                <p>The divine knowledge and wisdom of our shastras is the only thing eternal,
+                   which was and which will remain ever-present in this gods creation.
+                   Our endeavours are to preserve this knowledge.</p>
+            </div>
+            <div class="col-md-1 text-white">
+                <div class="d-flex" style="height: 75px;">
+                    <div class="vr"></div>
+                </div>
+            </div>
+            <div class="col-md-3 text-white">
+                <i class="fa-solid fa-globe"></i>&emsp;
+                <a href="https://sanatanasampatti.in" class="text-light">www.sanatanasampatti.in</a><br>
+                <i class="fa-solid fa-envelope"></i>&emsp;
+                <a href="" class="text-light">sriranga.yoga@gmail.com</a>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center py-3 mb-4 align-items-center border-bottom">
+            <div class="col-md-2 text-white fs-4 text-center">Project</div>
+            <div class="col-md-2 text-white fs-4 text-center">Our Mission</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contribute</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contact Us</div>
+        </div>
+        <div class="row">
+            <p class="col-md-6 fs-6 text-start text-light">
+                <small>&copy; 2026 Sanatanasampatti</small>
+            </p>
+            <p class="col-md-6 fs-6 text-end text-light">
+                <a class="text-white" rel="nofollow" href="http://www.srirangadigital.com" target="_blank">
+                    <img src="https://sanatana.in/mbta/public/images/logo.png" alt="sriranga logo" />
+                    <small>Designed, Developed and Maintained by Sriranga Digital</small>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        const headings = [];
+        tocLinks.forEach(link => {
+            const id = link.getAttribute('href').substring(1);
+            const el = document.getElementById(id);
+            if (el) headings.push({ el: el, link: link.parentElement });
+        });
+
+        function onScroll() {
+            let current = null;
+            for (const h of headings) {
+                const rect = h.el.getBoundingClientRect();
+                if (rect.top <= 120) current = h;
+            }
+            tocLinks.forEach(l => l.parentElement.classList.remove('active'));
+            if (current) current.link.classList.add('active');
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    });
+
+    function toggleMobileToc() {
+        const toc = document.getElementById('toc');
+        if (!toc) return;
+        if (toc.style.display === 'block') {
+            toc.style.display = '';
+            toc.style.position = '';
+        } else {
+            toc.style.display = 'block';
+            toc.style.position = 'fixed';
+            toc.style.top = '0';
+            toc.style.left = '0';
+            toc.style.width = '80vw';
+            toc.style.maxWidth = '320px';
+            toc.style.height = '100vh';
+            toc.style.maxHeight = '100vh';
+            toc.style.zIndex = '2000';
+            toc.style.background = 'var(--parchment)';
+            toc.style.boxShadow = '4px 0 20px rgba(0,0,0,0.2)';
+            toc.style.padding = '24px';
+            toc.style.overflowY = 'auto';
+        }
+    }
+    </script>
+
+    <script>
+    function toggleSynopsisAudio(btn) {
+        var audio = btn.parentElement.querySelector('audio');
+        if (!audio.src) audio.src = btn.getAttribute('data-src');
+        if (audio.paused) {
+            audio.play();
+            btn.classList.add('playing');
+            btn.querySelector('i').className = 'fa-solid fa-pause';
+        } else {
+            audio.pause();
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        }
+        audio.onended = function() {
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        };
+        // Prevent click from toggling the synopsis open/close
+        event.stopPropagation();
+    }
+    </script>
+</body>
+</html>

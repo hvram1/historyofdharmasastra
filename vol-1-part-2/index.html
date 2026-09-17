@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- MDB UI Kit -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/fonts.css?v=1.2">
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/navbar.css?v=2.4">
+
+    <title>Volume I: Part II — History of Dharmaśāstra</title>
+    <style>
+    :root {
+        --saffron:        #D4600A;
+        --saffron-light:  #F0924A;
+        --saffron-wash:   rgba(212, 96, 10, 0.07);
+        --indigo:         #2E5FA3;
+        --indigo-dark:    #1C3D70;
+        --maroon:         #7A1E1E;
+        --amber:          #C97A1A;
+        --ink:            #1A1209;
+        --ink-secondary:  #4A3B2A;
+        --parchment:      #FDFAF4;
+        --parchment-mid:  #F5EFE2;
+        --rule:           rgba(180, 130, 60, 0.22);
+        --shadow:         0 2px 18px rgba(90, 50, 10, 0.08);
+        --font-devanagari: 'Tiro Devanagari Sanskrit', 'Siddhanta', 'Noto Sans Devanagari', serif;
+        --font-roman:      'Junicode', Georgia, serif;
+    }
+
+    body {
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: var(--font-roman);
+    }
+
+    .devanagari {
+        font-family: var(--font-devanagari);
+    }
+
+    /* ── Navbar overrides ── */
+    .navbar-ontop { z-index: 1031; }
+    .hdclr { color: var(--saffron); }
+    .engpara { font-family: 'Open Sans', sans-serif; }
+
+    /* ── Layout ── */
+    .dh-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .dh-content {
+        flex: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        background: var(--parchment);
+        box-shadow: var(--shadow);
+        min-height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        .dh-content { padding: 24px 20px; }
+        .dh-wrapper { flex-direction: column; }
+    }
+
+    /* ── TOC Sidebar ── */
+    .toc-sidebar {
+        position: sticky;
+        top: 80px;
+        width: 280px;
+        min-width: 280px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding: 20px 16px;
+        margin-right: 24px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        scrollbar-width: thin;
+    }
+
+    .toc-title {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--saffron-light);
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list li {
+        padding: 4px 0;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-list li.toc-l3 {
+        padding-left: 16px;
+        font-size: 0.78rem;
+    }
+
+    .toc-list li a {
+        color: var(--ink-secondary);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .toc-list li a:hover { color: var(--saffron); }
+
+    .toc-list li.active {
+        border-left-color: var(--saffron);
+    }
+
+    .toc-list li.active a {
+        color: var(--saffron);
+        font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-sidebar { display: none; }
+    }
+
+    /* ── Mobile TOC Toggle ── */
+    .toc-mobile-toggle {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1050;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--saffron);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-mobile-toggle { display: block; }
+    }
+
+    /* ── Section Headings ── */
+    .section-heading {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        margin: 48px 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--rule);
+        letter-spacing: 0.5px;
+        scroll-margin-top: 80px;
+    }
+
+    h2.section-heading { font-size: 1.6rem; }
+
+    h3.section-heading {
+        font-size: 1.25rem;
+        border-left: 4px solid var(--saffron-light);
+        border-bottom: none;
+        padding: 8px 16px;
+        background: var(--saffron-wash);
+        border-radius: 0 5px 5px 0;
+    }
+
+    /* ── Prose ── */
+    .prose {
+        font-family: var(--font-roman);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+        color: var(--ink);
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    .prose em { color: var(--maroon); }
+
+    .prose:target {
+        background: rgba(212, 96, 10, 0.12);
+        border-left: 4px solid var(--saffron);
+        padding-left: 16px;
+        margin-left: -20px;
+        border-radius: 0 6px 6px 0;
+        animation: target-pulse 2s ease-out;
+    }
+
+    @keyframes target-pulse {
+        0%   { background: rgba(212, 96, 10, 0.30); }
+        100% { background: rgba(212, 96, 10, 0.12); }
+    }
+
+    /* ── Footnote References ── */
+    .fn-ref {
+        font-size: 0.75em;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    .fn-ref a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 0 2px;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: color 0.15s;
+    }
+
+    .fn-ref a:hover { color: var(--indigo); }
+
+    /* ── Synopsis Box ── */
+    .synopsis-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron-light);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .synopsis-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .synopsis-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .synopsis-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .synopsis-box.open .synopsis-toggle i {
+        transform: rotate(90deg);
+    }
+    .synopsis-body {
+        display: none;
+        padding: 0 20px 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+    }
+    .synopsis-box.open .synopsis-body { display: block; }
+    .synopsis-body p { margin: 0; }
+    .synopsis-attribution {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: var(--ink-secondary);
+        opacity: 0.7;
+        font-style: italic;
+    }
+    .synopsis-audio {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    .synopsis-play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--saffron);
+        background: none;
+        color: var(--saffron);
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: background 0.2s, color 0.2s;
+        padding: 0;
+    }
+    .synopsis-play-btn:hover {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn.playing {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn i { padding-left: 2px; }
+
+    /* ── Index Terms Panel ── */
+    .index-terms-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .index-terms-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .index-terms-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .index-terms-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .index-terms-box.open .index-terms-toggle i {
+        transform: rotate(90deg);
+    }
+    .index-terms-body {
+        display: none;
+        padding: 0 20px 16px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .index-terms-box.open .index-terms-body { display: block; }
+    .index-terms-dl {
+        margin: 0;
+        padding: 0;
+    }
+    .index-terms-dl dt {
+        font-family: var(--font-roman);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+        margin-top: 8px;
+    }
+    .index-terms-dl dd {
+        margin: 2px 0 0 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        color: var(--ink-secondary);
+        line-height: 1.5;
+    }
+    .nyaya-heading {
+        font-family: var(--font-roman);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        margin: 16px 0 4px;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+    }
+
+    /* ── Inline Index Popovers ── */
+    .idx-term {
+        border-bottom: 1px dotted var(--saffron-light);
+        cursor: help;
+        position: relative;
+    }
+    .idx-term:hover::after {
+        content: attr(data-def);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        background: rgba(44, 36, 22, 0.92);
+        color: #F5ECD8;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        max-width: 280px;
+        z-index: 100;
+        white-space: normal;
+        line-height: 1.4;
+        pointer-events: none;
+    }
+
+    /* ── Structured Version Banner ── */
+    .structured-banner {
+        margin: 0 0 28px;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, rgba(212, 96, 10, 0.06) 0%, rgba(212, 96, 10, 0.02) 100%);
+        border: 1px solid var(--saffron-light);
+        border-radius: 6px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        color: var(--ink-secondary);
+        line-height: 1.6;
+    }
+    .structured-banner i { color: var(--saffron); margin-right: 4px; }
+    .structured-banner a { color: var(--indigo); font-weight: 600; text-decoration: none; }
+    .structured-banner a:hover { text-decoration: underline; }
+
+    /* ── Footnotes Section ── */
+    .footnotes-section {
+        margin: 32px 0 48px;
+        padding: 20px 24px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .footnotes-section hr {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 0 0 16px;
+    }
+
+    .footnotes-list {
+        padding-left: 24px;
+        margin: 0;
+    }
+
+    .footnote-item {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+        scroll-margin-top: 80px;
+    }
+
+    .footnote-item:target {
+        background: rgba(212, 96, 10, 0.1);
+        border-radius: 4px;
+        padding: 4px 6px;
+        margin-left: -6px;
+    }
+
+    .fn-back {
+        color: var(--saffron-light);
+        text-decoration: none;
+        font-size: 0.85em;
+        margin-left: 4px;
+    }
+
+    .fn-back:hover { color: var(--saffron); }
+
+    /* ── Reference Links ── */
+    a.ref {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: all 0.15s;
+    }
+
+    a.ref:hover {
+        color: var(--saffron);
+        border-bottom-style: solid;
+    }
+
+    a.mbta-ext {
+        color: var(--indigo);
+        font-size: 0.7em;
+        margin-left: 2px;
+        opacity: 0.5;
+        text-decoration: none;
+        vertical-align: super;
+    }
+    a.mbta-ext:hover { opacity: 1; color: var(--saffron); }
+
+    /* ── References Panel (sidebar) ── */
+    .refs-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .refs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .refs-list li {
+        padding: 3px 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .ref-source-link {
+        font-weight: 600;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .ref-source-link:hover {
+        text-decoration: underline;
+    }
+
+    .ref-verse-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.76rem;
+    }
+
+    .ref-verse-link:hover {
+        text-decoration: underline;
+        color: var(--saffron);
+    }
+
+    .ref-verses {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Timeline panel ── */
+    .timeline-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .timeline-list li {
+        padding: 2px 0;
+        font-size: 0.76rem;
+        line-height: 1.4;
+        position: relative;
+        padding-left: 14px;
+    }
+
+    .timeline-list li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--saffron);
+    }
+
+    .timeline-list li.tl-approximate::before {
+        background: transparent;
+        border: 2px solid var(--saffron);
+        width: 4px;
+        height: 4px;
+    }
+
+    .timeline-list li.tl-century::before {
+        background: transparent;
+        border: 2px dashed var(--saffron);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+
+    .tl-dot-link {
+        text-decoration: none;
+        color: var(--ink);
+        display: block;
+    }
+
+    .tl-dot-link:hover {
+        color: var(--saffron);
+    }
+
+    .tl-year {
+        font-weight: 600;
+        color: var(--saffron);
+        font-size: 0.72rem;
+        min-width: 70px;
+        display: inline-block;
+    }
+
+    .tl-label {
+        color: var(--ink-secondary);
+        font-size: 0.72rem;
+    }
+
+    .tl-view-link, .tl-more {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.72rem;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .tl-view-link:hover, .tl-more:hover {
+        text-decoration: underline;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+
+    .breadcrumb-bar a {
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+
+    .breadcrumb-bar .sep {
+        color: var(--amber);
+        margin: 0 8px;
+    }
+
+    .breadcrumb-bar .current {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Chapter Navigation ── */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        margin-top: 48px;
+        border-top: 2px solid var(--rule);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .chapter-nav a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        transition: all 0.2s;
+        max-width: 45%;
+    }
+
+    .chapter-nav a:hover {
+        background: var(--saffron-wash);
+        border-color: var(--saffron-light);
+    }
+
+    .nav-prev { text-align: left; }
+    .nav-next { text-align: right; margin-left: auto; }
+
+    .page-range {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+    }
+
+    /* ── Volume Cards (Landing) ── */
+    .vol-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .vol-card {
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        transition: all 0.25s;
+    }
+
+    .vol-card:hover {
+        border-color: var(--saffron-light);
+        box-shadow: 0 4px 24px rgba(212, 96, 10, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .vol-num {
+        font-family: var(--font-roman);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--saffron);
+        margin-bottom: 8px;
+    }
+
+    .vol-subtitle {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        line-height: 1.5;
+        flex: 1;
+    }
+
+    .vol-chapters {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        margin-top: 12px;
+    }
+
+    /* ── Chapter Cards (Volume Index) ── */
+    .chapter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .chapter-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .chapter-card:hover {
+        border-color: var(--saffron-light);
+        background: var(--saffron-wash);
+    }
+
+    .card-num {
+        font-family: var(--font-roman);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--saffron);
+        min-width: 36px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        flex: 1;
+    }
+
+    .card-pages {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        color: var(--ink-secondary);
+    }
+
+    /* ── Landing Hero ── */
+    .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-family: var(--font-roman);
+        font-size: 2.4rem;
+        color: var(--saffron);
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .hero .devanagari-title {
+        font-family: var(--font-devanagari);
+        font-size: 1.8rem;
+        color: var(--ink);
+        margin-bottom: 16px;
+    }
+
+    .hero .author {
+        font-family: var(--font-roman);
+        font-size: 1.1rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .hero .desc {
+        font-family: var(--font-roman);
+        font-size: 1rem;
+        color: var(--ink-secondary);
+        line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer { margin-top: 48px; }
+</style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mbta/">
+      <div class="container-fluid">&emsp;&emsp;
+      <a href="../index.html" class="navbar-brand" style="text-decoration:none;">
+        <span class="devanagari ms-3" style="font-size:1.5rem; color:var(--saffron); font-weight:700;">धर्मशास्त्रम्</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="../index.html">धर्मशास्त्रम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5 active" href="../index.html">खण्डाः</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in/mbta/">महाभारतम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in">सनातनम्</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+
+    <div style="max-width: 1100px; margin: 0 auto; padding: 20px;">
+        <div class="breadcrumb-bar">
+            <a href="../index.html">Home</a>
+            <span class="sep">›</span>
+            <span class="current">Volume I: Part II</span>
+        </div>
+
+        <div class="hero" style="padding: 30px 20px 20px;">
+            <h1 style="font-size: 2rem;">Volume I: Part II</h1>
+            <p class="desc">Volume I: Part II</p>
+            <p class="vol-chapters" style="margin-top: 8px;">55 chapters</p>
+            <p style="margin-top: 8px;"><a href="timeline.html" style="color: var(--saffron); text-decoration: none; font-family: 'Open Sans', sans-serif; font-size: 0.85rem;">View Volume Timeline &rarr;</a></p>
+        </div>
+
+        <div class="chapter-grid">
+            
+        <a href="65-dhāreshvara-bhojadeva.html" class="chapter-card">
+            <span class="card-num">1</span>
+            <span class="card-title">65. Dhāreshvara Bhojadeva</span>
+            <span class="card-pages">pp. 585–591</span>
+        </a>
+
+        <a href="66-devasvāmin.html" class="chapter-card">
+            <span class="card-num">2</span>
+            <span class="card-title">66. Devasvāmin</span>
+            <span class="card-pages">pp. 591–593</span>
+        </a>
+
+        <a href="67-jitendriya.html" class="chapter-card">
+            <span class="card-num">3</span>
+            <span class="card-title">67. Jitendriya</span>
+            <span class="card-pages">pp. 593–595</span>
+        </a>
+
+        <a href="68-bālaka.html" class="chapter-card">
+            <span class="card-num">4</span>
+            <span class="card-title">68. Bālaka</span>
+            <span class="card-pages">pp. 595–596</span>
+        </a>
+
+        <a href="69-bālarūpa.html" class="chapter-card">
+            <span class="card-num">5</span>
+            <span class="card-title">69. Bālarūpa</span>
+            <span class="card-pages">pp. 596–598</span>
+        </a>
+
+        <a href="70-yogloka.html" class="chapter-card">
+            <span class="card-num">6</span>
+            <span class="card-title">70. Yogloka</span>
+            <span class="card-pages">pp. 598–599</span>
+        </a>
+
+        <a href="71-vijnāneshvara.html" class="chapter-card">
+            <span class="card-num">7</span>
+            <span class="card-title">71. Vijnāneshvara</span>
+            <span class="card-pages">pp. 599–616</span>
+        </a>
+
+        <a href="72-kāmadhenu.html" class="chapter-card">
+            <span class="card-num">8</span>
+            <span class="card-title">72. Kāmadhenu</span>
+            <span class="card-pages">pp. 616–622</span>
+        </a>
+
+        <a href="73-halāyudha.html" class="chapter-card">
+            <span class="card-num">9</span>
+            <span class="card-title">73. Halāyudha</span>
+            <span class="card-pages">pp. 622–639</span>
+        </a>
+
+        <a href="74-bhavadevabhatta.html" class="chapter-card">
+            <span class="card-num">10</span>
+            <span class="card-title">74. Bhavadevabhatta</span>
+            <span class="card-pages">pp. 639–652</span>
+        </a>
+
+        <a href="75-prakāsha.html" class="chapter-card">
+            <span class="card-num">11</span>
+            <span class="card-title">75. Prakāsha</span>
+            <span class="card-pages">pp. 652–655</span>
+        </a>
+
+        <a href="76-pārijāta.html" class="chapter-card">
+            <span class="card-num">12</span>
+            <span class="card-title">76. Pārijāta</span>
+            <span class="card-pages">pp. 655–656</span>
+        </a>
+
+        <a href="77-govindarāja.html" class="chapter-card">
+            <span class="card-num">13</span>
+            <span class="card-title">77. Govindarāja</span>
+            <span class="card-pages">pp. 656–663</span>
+        </a>
+
+        <a href="78-the-kalpataru-of-lakshmīdhara.html" class="chapter-card">
+            <span class="card-num">14</span>
+            <span class="card-title">78. The Kalpataru of Lakshmīdhara</span>
+            <span class="card-pages">pp. 663–699</span>
+        </a>
+
+        <a href="79-jīmūtavāhana.html" class="chapter-card">
+            <span class="card-num">15</span>
+            <span class="card-title">79. Jīmūtavāhana</span>
+            <span class="card-pages">pp. 699–712</span>
+        </a>
+
+        <a href="80-aparārka.html" class="chapter-card">
+            <span class="card-num">16</span>
+            <span class="card-title">80. Aparārka</span>
+            <span class="card-pages">pp. 713–723</span>
+        </a>
+
+        <a href="81-pradīpa.html" class="chapter-card">
+            <span class="card-num">17</span>
+            <span class="card-title">81. Pradīpa</span>
+            <span class="card-pages">pp. 724–725</span>
+        </a>
+
+        <a href="82-smrityarthasāra-of-shrīdhara.html" class="chapter-card">
+            <span class="card-num">18</span>
+            <span class="card-title">82. Smrityarthasāra of Shrīdhara</span>
+            <span class="card-pages">pp. 725–726</span>
+        </a>
+
+        <a href="83-aniruddha.html" class="chapter-card">
+            <span class="card-num">19</span>
+            <span class="card-title">83. Aniruddha</span>
+            <span class="card-pages">pp. 727–730</span>
+        </a>
+
+        <a href="84-ballālasena-and-laksmanasena.html" class="chapter-card">
+            <span class="card-num">20</span>
+            <span class="card-title">84. Ballālasena and Laksmanasena</span>
+            <span class="card-pages">pp. 730–734</span>
+        </a>
+
+        <a href="85-harihara.html" class="chapter-card">
+            <span class="card-num">21</span>
+            <span class="card-title">85. Harihara</span>
+            <span class="card-pages">pp. 735–736</span>
+        </a>
+
+        <a href="86-smriticandrikā-of-devannabhatta.html" class="chapter-card">
+            <span class="card-num">22</span>
+            <span class="card-title">86. Smriticandrikā of Devannabhatta</span>
+            <span class="card-pages">pp. 737–741</span>
+        </a>
+
+        <a href="87-haradatta.html" class="chapter-card">
+            <span class="card-num">23</span>
+            <span class="card-title">87. Haradatta</span>
+            <span class="card-pages">pp. 742–748</span>
+        </a>
+
+        <a href="88-hemādri.html" class="chapter-card">
+            <span class="card-num">24</span>
+            <span class="card-title">88. Hemādri</span>
+            <span class="card-pages">pp. 749–755</span>
+        </a>
+
+        <a href="89-kullūkabhatta.html" class="chapter-card">
+            <span class="card-num">25</span>
+            <span class="card-title">89. Kullūkabhatta</span>
+            <span class="card-pages">pp. 756–759</span>
+        </a>
+
+        <a href="90-shrīdatta-upādhyāya.html" class="chapter-card">
+            <span class="card-num">26</span>
+            <span class="card-title">90. Shrīdatta Upādhyāya</span>
+            <span class="card-pages">pp. 759–762</span>
+        </a>
+
+        <a href="91-candeshvara.html" class="chapter-card">
+            <span class="card-num">27</span>
+            <span class="card-title">91. Candeshvara</span>
+            <span class="card-pages">pp. 763–774</span>
+        </a>
+
+        <a href="92-harinātha.html" class="chapter-card">
+            <span class="card-num">28</span>
+            <span class="card-title">92. Harinātha</span>
+            <span class="card-pages">pp. 775–777</span>
+        </a>
+
+        <a href="93-mādhavācārya.html" class="chapter-card">
+            <span class="card-num">29</span>
+            <span class="card-title">93. Mādhavācārya</span>
+            <span class="card-pages">pp. 778–791</span>
+        </a>
+
+        <a href="94-madanapāla-and-vishveshvarabhatta.html" class="chapter-card">
+            <span class="card-num">30</span>
+            <span class="card-title">94. Madanapāla and Vishveshvarabhatta</span>
+            <span class="card-pages">pp. 792–804</span>
+        </a>
+
+        <a href="95-madanaratna.html" class="chapter-card">
+            <span class="card-num">31</span>
+            <span class="card-title">95. Madanaratna</span>
+            <span class="card-pages">pp. 804–809</span>
+        </a>
+
+        <a href="96-vidyāpati.html" class="chapter-card">
+            <span class="card-num">32</span>
+            <span class="card-title">96. Vidyāpati</span>
+            <span class="card-pages">pp. 810–814</span>
+        </a>
+
+        <a href="97-vyavahāranirnaya-of-varadarāja.html" class="chapter-card">
+            <span class="card-num">33</span>
+            <span class="card-title">97. Vyavahāranirnaya of Varadarāja</span>
+            <span class="card-pages">pp. 815–822</span>
+        </a>
+
+        <a href="98-shūlapāni.html" class="chapter-card">
+            <span class="card-num">34</span>
+            <span class="card-title">98. Shūlapāni</span>
+            <span class="card-pages">pp. 823–840</span>
+        </a>
+
+        <a href="99-rudradhara.html" class="chapter-card">
+            <span class="card-num">35</span>
+            <span class="card-title">99. Rudradhara</span>
+            <span class="card-pages">pp. 840–842</span>
+        </a>
+
+        <a href="100-misarumiśra.html" class="chapter-card">
+            <span class="card-num">36</span>
+            <span class="card-title">100. Misarumiśra</span>
+            <span class="card-pages">pp. 842–844</span>
+        </a>
+
+        <a href="101-vācaspatimiśra.html" class="chapter-card">
+            <span class="card-num">37</span>
+            <span class="card-title">101. Vācaspatimiśra</span>
+            <span class="card-pages">pp. 844–854</span>
+        </a>
+
+        <a href="102-dandaviveka-of-vardhamāna.html" class="chapter-card">
+            <span class="card-num">38</span>
+            <span class="card-title">102. Dandaviveka of Vardhamāna</span>
+            <span class="card-pages">pp. 854–860</span>
+        </a>
+
+        <a href="103-nrisimhaprasāda.html" class="chapter-card">
+            <span class="card-num">39</span>
+            <span class="card-title">103. Nrisimhaprasāda</span>
+            <span class="card-pages">pp. 860–868</span>
+        </a>
+
+        <a href="104-pratāparudradeva.html" class="chapter-card">
+            <span class="card-num">40</span>
+            <span class="card-title">104. Pratāparudradeva</span>
+            <span class="card-pages">pp. 869–879</span>
+        </a>
+
+        <a href="105-dharmatattvakalānidhi-or-prithvīcandrodaya-vyavahāraprakāsha.html" class="chapter-card">
+            <span class="card-num">41</span>
+            <span class="card-title">105. Dharmatattvakalānidhi or Prithvīcandrodaya Vyavahāraprakāsha</span>
+            <span class="card-pages">pp. 879–882</span>
+        </a>
+
+        <a href="106-govindānanda.html" class="chapter-card">
+            <span class="card-num">42</span>
+            <span class="card-title">106. Govindānanda</span>
+            <span class="card-pages">pp. 882–889</span>
+        </a>
+
+        <a href="107-raghunandana.html" class="chapter-card">
+            <span class="card-num">43</span>
+            <span class="card-title">107. Raghunandana</span>
+            <span class="card-pages">pp. 890–902</span>
+        </a>
+
+        <a href="108-nārāyanabhatta.html" class="chapter-card">
+            <span class="card-num">44</span>
+            <span class="card-title">108. Nārāyanabhatta</span>
+            <span class="card-pages">pp. 903–907</span>
+        </a>
+
+        <a href="109-todarānanda.html" class="chapter-card">
+            <span class="card-num">45</span>
+            <span class="card-title">109. Todarānanda</span>
+            <span class="card-pages">pp. 907–914</span>
+        </a>
+
+        <a href="110-nandapandita.html" class="chapter-card">
+            <span class="card-num">46</span>
+            <span class="card-title">110. Nandapandita</span>
+            <span class="card-pages">pp. 915–925</span>
+        </a>
+
+        <a href="111-kamalākarabhatta.html" class="chapter-card">
+            <span class="card-num">47</span>
+            <span class="card-title">111. Kamalākarabhatta</span>
+            <span class="card-pages">pp. 925–936</span>
+        </a>
+
+        <a href="112-nīlakanthabhatta.html" class="chapter-card">
+            <span class="card-num">48</span>
+            <span class="card-title">112. Nīlakanthabhatta</span>
+            <span class="card-pages">pp. 937–941</span>
+        </a>
+
+        <a href="113-the-vīramitrodaya-of-mitramiśra.html" class="chapter-card">
+            <span class="card-num">49</span>
+            <span class="card-title">113. The Vīramitrodaya of Mitramiśra</span>
+            <span class="card-pages">pp. 941–953</span>
+        </a>
+
+        <a href="114-anantadeva.html" class="chapter-card">
+            <span class="card-num">50</span>
+            <span class="card-title">114. Anantadeva</span>
+            <span class="card-pages">pp. 953–963</span>
+        </a>
+
+        <a href="115-nāgojibhatta.html" class="chapter-card">
+            <span class="card-num">51</span>
+            <span class="card-title">115. Nāgojibhatta</span>
+            <span class="card-pages">pp. 963–967</span>
+        </a>
+
+        <a href="116-bālakrishna-or-bālambhatta.html" class="chapter-card">
+            <span class="card-num">52</span>
+            <span class="card-title">116. Bālakrishna or Bālambhatta</span>
+            <span class="card-pages">pp. 968–974</span>
+        </a>
+
+        <a href="117-kāshinātha-upādhyāya.html" class="chapter-card">
+            <span class="card-num">53</span>
+            <span class="card-title">117. Kāshinātha Upādhyāya</span>
+            <span class="card-pages">pp. 974–978</span>
+        </a>
+
+        <a href="118-jagannātha-tarkapanchānana.html" class="chapter-card">
+            <span class="card-num">54</span>
+            <span class="card-title">118. Jagannātha Tarkapanchānana</span>
+            <span class="card-pages">pp. 978–980</span>
+        </a>
+
+        <a href="119-conclusion.html" class="chapter-card">
+            <span class="card-num">55</span>
+            <span class="card-title">119. Conclusion</span>
+            <span class="card-pages">pp. 980–1294</span>
+        </a>
+        </div>
+    </div>
+
+    
+    <footer class="container-fluid pt-4" style="background-color:#2e4144">
+        <div class="row border-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img src="https://sanatana.in/mbta/public/images/Homepage_html/images/layer_8.png" alt="">
+            </div>
+            <div class="col-md-5 text-white">
+                <p>The divine knowledge and wisdom of our shastras is the only thing eternal,
+                   which was and which will remain ever-present in this gods creation.
+                   Our endeavours are to preserve this knowledge.</p>
+            </div>
+            <div class="col-md-1 text-white">
+                <div class="d-flex" style="height: 75px;">
+                    <div class="vr"></div>
+                </div>
+            </div>
+            <div class="col-md-3 text-white">
+                <i class="fa-solid fa-globe"></i>&emsp;
+                <a href="https://sanatanasampatti.in" class="text-light">www.sanatanasampatti.in</a><br>
+                <i class="fa-solid fa-envelope"></i>&emsp;
+                <a href="" class="text-light">sriranga.yoga@gmail.com</a>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center py-3 mb-4 align-items-center border-bottom">
+            <div class="col-md-2 text-white fs-4 text-center">Project</div>
+            <div class="col-md-2 text-white fs-4 text-center">Our Mission</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contribute</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contact Us</div>
+        </div>
+        <div class="row">
+            <p class="col-md-6 fs-6 text-start text-light">
+                <small>&copy; 2026 Sanatanasampatti</small>
+            </p>
+            <p class="col-md-6 fs-6 text-end text-light">
+                <a class="text-white" rel="nofollow" href="http://www.srirangadigital.com" target="_blank">
+                    <img src="https://sanatana.in/mbta/public/images/logo.png" alt="sriranga logo" />
+                    <small>Designed, Developed and Maintained by Sriranga Digital</small>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+</body>
+</html>

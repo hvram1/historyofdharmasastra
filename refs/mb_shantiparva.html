@@ -1,0 +1,1814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- MDB UI Kit -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/fonts.css?v=1.2">
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/navbar.css?v=2.4">
+
+    <title>Śāntiparva — References in History of Dharmaśāstra</title>
+    <style>
+    :root {
+        --saffron:        #D4600A;
+        --saffron-light:  #F0924A;
+        --saffron-wash:   rgba(212, 96, 10, 0.07);
+        --indigo:         #2E5FA3;
+        --indigo-dark:    #1C3D70;
+        --maroon:         #7A1E1E;
+        --amber:          #C97A1A;
+        --ink:            #1A1209;
+        --ink-secondary:  #4A3B2A;
+        --parchment:      #FDFAF4;
+        --parchment-mid:  #F5EFE2;
+        --rule:           rgba(180, 130, 60, 0.22);
+        --shadow:         0 2px 18px rgba(90, 50, 10, 0.08);
+        --font-devanagari: 'Tiro Devanagari Sanskrit', 'Siddhanta', 'Noto Sans Devanagari', serif;
+        --font-roman:      'Junicode', Georgia, serif;
+    }
+
+    body {
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: var(--font-roman);
+    }
+
+    .devanagari {
+        font-family: var(--font-devanagari);
+    }
+
+    /* ── Navbar overrides ── */
+    .navbar-ontop { z-index: 1031; }
+    .hdclr { color: var(--saffron); }
+    .engpara { font-family: 'Open Sans', sans-serif; }
+
+    /* ── Layout ── */
+    .dh-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .dh-content {
+        flex: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        background: var(--parchment);
+        box-shadow: var(--shadow);
+        min-height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        .dh-content { padding: 24px 20px; }
+        .dh-wrapper { flex-direction: column; }
+    }
+
+    /* ── TOC Sidebar ── */
+    .toc-sidebar {
+        position: sticky;
+        top: 80px;
+        width: 280px;
+        min-width: 280px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding: 20px 16px;
+        margin-right: 24px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        scrollbar-width: thin;
+    }
+
+    .toc-title {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--saffron-light);
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list li {
+        padding: 4px 0;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-list li.toc-l3 {
+        padding-left: 16px;
+        font-size: 0.78rem;
+    }
+
+    .toc-list li a {
+        color: var(--ink-secondary);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .toc-list li a:hover { color: var(--saffron); }
+
+    .toc-list li.active {
+        border-left-color: var(--saffron);
+    }
+
+    .toc-list li.active a {
+        color: var(--saffron);
+        font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-sidebar { display: none; }
+    }
+
+    /* ── Mobile TOC Toggle ── */
+    .toc-mobile-toggle {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1050;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--saffron);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-mobile-toggle { display: block; }
+    }
+
+    /* ── Section Headings ── */
+    .section-heading {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        margin: 48px 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--rule);
+        letter-spacing: 0.5px;
+        scroll-margin-top: 80px;
+    }
+
+    h2.section-heading { font-size: 1.6rem; }
+
+    h3.section-heading {
+        font-size: 1.25rem;
+        border-left: 4px solid var(--saffron-light);
+        border-bottom: none;
+        padding: 8px 16px;
+        background: var(--saffron-wash);
+        border-radius: 0 5px 5px 0;
+    }
+
+    /* ── Prose ── */
+    .prose {
+        font-family: var(--font-roman);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+        color: var(--ink);
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    .prose em { color: var(--maroon); }
+
+    .prose:target {
+        background: rgba(212, 96, 10, 0.12);
+        border-left: 4px solid var(--saffron);
+        padding-left: 16px;
+        margin-left: -20px;
+        border-radius: 0 6px 6px 0;
+        animation: target-pulse 2s ease-out;
+    }
+
+    @keyframes target-pulse {
+        0%   { background: rgba(212, 96, 10, 0.30); }
+        100% { background: rgba(212, 96, 10, 0.12); }
+    }
+
+    /* ── Footnote References ── */
+    .fn-ref {
+        font-size: 0.75em;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    .fn-ref a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 0 2px;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: color 0.15s;
+    }
+
+    .fn-ref a:hover { color: var(--indigo); }
+
+    /* ── Synopsis Box ── */
+    .synopsis-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron-light);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .synopsis-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .synopsis-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .synopsis-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .synopsis-box.open .synopsis-toggle i {
+        transform: rotate(90deg);
+    }
+    .synopsis-body {
+        display: none;
+        padding: 0 20px 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+    }
+    .synopsis-box.open .synopsis-body { display: block; }
+    .synopsis-body p { margin: 0; }
+    .synopsis-attribution {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: var(--ink-secondary);
+        opacity: 0.7;
+        font-style: italic;
+    }
+    .synopsis-audio {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    .synopsis-play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--saffron);
+        background: none;
+        color: var(--saffron);
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: background 0.2s, color 0.2s;
+        padding: 0;
+    }
+    .synopsis-play-btn:hover {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn.playing {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn i { padding-left: 2px; }
+
+    /* ── Index Terms Panel ── */
+    .index-terms-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .index-terms-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .index-terms-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .index-terms-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .index-terms-box.open .index-terms-toggle i {
+        transform: rotate(90deg);
+    }
+    .index-terms-body {
+        display: none;
+        padding: 0 20px 16px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .index-terms-box.open .index-terms-body { display: block; }
+    .index-terms-dl {
+        margin: 0;
+        padding: 0;
+    }
+    .index-terms-dl dt {
+        font-family: var(--font-roman);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+        margin-top: 8px;
+    }
+    .index-terms-dl dd {
+        margin: 2px 0 0 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        color: var(--ink-secondary);
+        line-height: 1.5;
+    }
+    .nyaya-heading {
+        font-family: var(--font-roman);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        margin: 16px 0 4px;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+    }
+
+    /* ── Inline Index Popovers ── */
+    .idx-term {
+        border-bottom: 1px dotted var(--saffron-light);
+        cursor: help;
+        position: relative;
+    }
+    .idx-term:hover::after {
+        content: attr(data-def);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        background: rgba(44, 36, 22, 0.92);
+        color: #F5ECD8;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        max-width: 280px;
+        z-index: 100;
+        white-space: normal;
+        line-height: 1.4;
+        pointer-events: none;
+    }
+
+    /* ── Structured Version Banner ── */
+    .structured-banner {
+        margin: 0 0 28px;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, rgba(212, 96, 10, 0.06) 0%, rgba(212, 96, 10, 0.02) 100%);
+        border: 1px solid var(--saffron-light);
+        border-radius: 6px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        color: var(--ink-secondary);
+        line-height: 1.6;
+    }
+    .structured-banner i { color: var(--saffron); margin-right: 4px; }
+    .structured-banner a { color: var(--indigo); font-weight: 600; text-decoration: none; }
+    .structured-banner a:hover { text-decoration: underline; }
+
+    /* ── Footnotes Section ── */
+    .footnotes-section {
+        margin: 32px 0 48px;
+        padding: 20px 24px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .footnotes-section hr {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 0 0 16px;
+    }
+
+    .footnotes-list {
+        padding-left: 24px;
+        margin: 0;
+    }
+
+    .footnote-item {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+        scroll-margin-top: 80px;
+    }
+
+    .footnote-item:target {
+        background: rgba(212, 96, 10, 0.1);
+        border-radius: 4px;
+        padding: 4px 6px;
+        margin-left: -6px;
+    }
+
+    .fn-back {
+        color: var(--saffron-light);
+        text-decoration: none;
+        font-size: 0.85em;
+        margin-left: 4px;
+    }
+
+    .fn-back:hover { color: var(--saffron); }
+
+    /* ── Reference Links ── */
+    a.ref {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: all 0.15s;
+    }
+
+    a.ref:hover {
+        color: var(--saffron);
+        border-bottom-style: solid;
+    }
+
+    a.mbta-ext {
+        color: var(--indigo);
+        font-size: 0.7em;
+        margin-left: 2px;
+        opacity: 0.5;
+        text-decoration: none;
+        vertical-align: super;
+    }
+    a.mbta-ext:hover { opacity: 1; color: var(--saffron); }
+
+    /* ── References Panel (sidebar) ── */
+    .refs-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .refs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .refs-list li {
+        padding: 3px 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .ref-source-link {
+        font-weight: 600;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .ref-source-link:hover {
+        text-decoration: underline;
+    }
+
+    .ref-verse-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.76rem;
+    }
+
+    .ref-verse-link:hover {
+        text-decoration: underline;
+        color: var(--saffron);
+    }
+
+    .ref-verses {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Timeline panel ── */
+    .timeline-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .timeline-list li {
+        padding: 2px 0;
+        font-size: 0.76rem;
+        line-height: 1.4;
+        position: relative;
+        padding-left: 14px;
+    }
+
+    .timeline-list li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--saffron);
+    }
+
+    .timeline-list li.tl-approximate::before {
+        background: transparent;
+        border: 2px solid var(--saffron);
+        width: 4px;
+        height: 4px;
+    }
+
+    .timeline-list li.tl-century::before {
+        background: transparent;
+        border: 2px dashed var(--saffron);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+
+    .tl-dot-link {
+        text-decoration: none;
+        color: var(--ink);
+        display: block;
+    }
+
+    .tl-dot-link:hover {
+        color: var(--saffron);
+    }
+
+    .tl-year {
+        font-weight: 600;
+        color: var(--saffron);
+        font-size: 0.72rem;
+        min-width: 70px;
+        display: inline-block;
+    }
+
+    .tl-label {
+        color: var(--ink-secondary);
+        font-size: 0.72rem;
+    }
+
+    .tl-view-link, .tl-more {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.72rem;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .tl-view-link:hover, .tl-more:hover {
+        text-decoration: underline;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+
+    .breadcrumb-bar a {
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+
+    .breadcrumb-bar .sep {
+        color: var(--amber);
+        margin: 0 8px;
+    }
+
+    .breadcrumb-bar .current {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Chapter Navigation ── */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        margin-top: 48px;
+        border-top: 2px solid var(--rule);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .chapter-nav a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        transition: all 0.2s;
+        max-width: 45%;
+    }
+
+    .chapter-nav a:hover {
+        background: var(--saffron-wash);
+        border-color: var(--saffron-light);
+    }
+
+    .nav-prev { text-align: left; }
+    .nav-next { text-align: right; margin-left: auto; }
+
+    .page-range {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+    }
+
+    /* ── Volume Cards (Landing) ── */
+    .vol-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .vol-card {
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        transition: all 0.25s;
+    }
+
+    .vol-card:hover {
+        border-color: var(--saffron-light);
+        box-shadow: 0 4px 24px rgba(212, 96, 10, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .vol-num {
+        font-family: var(--font-roman);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--saffron);
+        margin-bottom: 8px;
+    }
+
+    .vol-subtitle {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        line-height: 1.5;
+        flex: 1;
+    }
+
+    .vol-chapters {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        margin-top: 12px;
+    }
+
+    /* ── Chapter Cards (Volume Index) ── */
+    .chapter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .chapter-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .chapter-card:hover {
+        border-color: var(--saffron-light);
+        background: var(--saffron-wash);
+    }
+
+    .card-num {
+        font-family: var(--font-roman);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--saffron);
+        min-width: 36px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        flex: 1;
+    }
+
+    .card-pages {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        color: var(--ink-secondary);
+    }
+
+    /* ── Landing Hero ── */
+    .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-family: var(--font-roman);
+        font-size: 2.4rem;
+        color: var(--saffron);
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .hero .devanagari-title {
+        font-family: var(--font-devanagari);
+        font-size: 1.8rem;
+        color: var(--ink);
+        margin-bottom: 16px;
+    }
+
+    .hero .author {
+        font-family: var(--font-roman);
+        font-size: 1.1rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .hero .desc {
+        font-family: var(--font-roman);
+        font-size: 1rem;
+        color: var(--ink-secondary);
+        line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer { margin-top: 48px; }
+
+
+    .ref-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    .ref-table th { text-align: left; padding: 10px 12px; border-bottom: 2px solid var(--saffron);
+        font-family: 'Open Sans', sans-serif; font-size: 0.8rem; color: var(--ink-secondary);
+        text-transform: uppercase; letter-spacing: 0.5px; }
+    .ref-table td { padding: 8px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+    .ref-table tr:target { background: var(--saffron-wash); }
+    .verse-ref { font-weight: 600; color: var(--saffron); white-space: nowrap; min-width: 80px; }
+    .verse-locs a { color: var(--indigo); text-decoration: none; font-size: 0.85rem; }
+    .verse-locs a:hover { text-decoration: underline; }
+    .verse-context { color: var(--ink-secondary); font-style: italic; max-width: 400px; }
+    .verse-text { max-width: 460px; }
+    .kane-sa { font-family: 'Noto Serif Devanagari', serif; font-size: 0.95rem;
+        line-height: 1.7; color: var(--ink); }
+    .kane-note { font-size: 0.72rem; color: var(--ink-secondary); margin-top: 4px;
+        padding-left: 8px; border-left: 2px solid var(--rule, #ddd); opacity: .85; }
+    .kane-src { font-size: 0.7rem; color: var(--ink-secondary); margin-top: 3px; }
+    .kane-src a { color: var(--indigo); text-decoration: none; }
+    .kane-src a:hover { text-decoration: underline; }
+    .tier { text-transform: uppercase; letter-spacing: .06em; font-size: 0.62rem;
+        border: 1px solid currentColor; border-radius: 2px; padding: 0 3px; }
+    .tier.cited { color: #1f6b5c; }
+    .tier.sole { color: #a8730d; }
+    .kane-none { color: var(--ink-secondary); font-size: 0.75rem; opacity: .55; }
+    .source-hero { text-align: center; padding: 40px 20px 30px; max-width: 800px; margin: 0 auto; }
+    .source-hero h1 { font-family: var(--font-roman); color: var(--saffron); font-size: 2rem; }
+    .source-hero .stats { font-family: 'Open Sans', sans-serif; color: var(--ink-secondary);
+        font-size: 0.9rem; margin-top: 8px; }
+    .ext-link { color: var(--indigo); font-weight: 600; }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mbta/">
+      <div class="container-fluid">&emsp;&emsp;
+      <a href="../index.html" class="navbar-brand" style="text-decoration:none;">
+        <span class="devanagari ms-3" style="font-size:1.5rem; color:var(--saffron); font-weight:700;">धर्मशास्त्रम्</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="../index.html">धर्मशास्त्रम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5 active" href="../index.html">खण्डाः</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in/mbta/">महाभारतम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in">सनातनम्</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+
+    <div style="max-width: 1100px; margin: 0 auto; padding: 20px;">
+        <div class="breadcrumb-bar">
+            <a href="../index.html">Home</a>
+            <span class="sep">›</span>
+            <a href="index.html">References</a>
+            <span class="sep">›</span>
+            <span class="current">Śāntiparva</span>
+        </div>
+
+        <div class="source-hero">
+            <h1>Śāntiparva</h1>
+            <p class="stats">332 references across all volumes ·
+               121 distinct verses ·
+               <b>30</b> of them with the verse as Kane prints it · <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" class="ext-link">Read text →</a></p>
+        </div>
+
+        <table class="ref-table">
+            <thead>
+                <tr><th>Verse</th><th>The verse, as Kane prints it</th><th>Locations</th><th>Context</th></tr>
+            </thead>
+            <tbody>
+                
+        <tr id="c">
+            <td class="verse-ref">c <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">दस्युविद्विते व राजा भूपसोऽध्यापचागसः । भार्या माता पिता पुत्रो हन्यते दूड़षेण वै न मृलच्यत्तः कर्तव्यं &amp;c. शान्ति 268 10-11.</div><div class="kane-src"><span class="tier sole" title="the only Sanskrit on the only passage citing it — inferred">sole</span> <a href="../vol-3/chapter-xv-decision.html#fn-chapter-xv-decision-46">vol-3 §chapter-xv-decision</a></div></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-13">vol-1-part-1 §32-the-two-epics</a> · <a href="../vol-2-part-1/chapter-vii-upanayana.html#p-chapter-vii-upanayana-135">vol-2-part-1 §chapter-vii-upanayana</a> · <a href="../vol-2-part-1/chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage.html#p-chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage-27">vol-2-part-1 §chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage</a> · <a href="../vol-2-part-2/chapter-xxii-bhojana.html#p-chapter-xxii-bhojana-11">vol-2-part-2 §chapter-xxii-bhojana</a> · <a href="../vol-2-part-2/chapter-xxviii-sannyāsa.html#p-chapter-xxviii-sannyāsa-3">vol-2-part-2 §chapter-xxviii-sannyāsa</a></td>
+            <td class="verse-context"><small>...roṇaparva (chap. 55-1) and again in the Śāntiparva chap. 29. The story of Āstika occurs twic...</small></td>
+        </tr>
+
+        <tr id="i">
+            <td class="verse-ref">i <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-95">vol-1-part-1 §14-arthashastra-of-kautilya</a> · <a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-41">vol-1-part-1 §32-the-two-epics</a> · <a href="../vol-3/chapter-ii-seven-angas-of-rājya.html#p-chapter-ii-seven-angas-of-rājya-1">vol-3 §chapter-ii-seven-angas-of-rājya</a> · <a href="../vol-5-part-1/chapter-xiv-conception-of-kāla.html#p-chapter-xiv-conception-of-kāla-7">vol-5-part-1 §chapter-xiv-conception-of-kāla</a> · <a href="../vol-5-part-2/chapter-xxxi-dharmashastra-and-sānkhya.html#p-chapter-xxxi-dharmashastra-and-sānkhya-12">vol-5-part-2 §chapter-xxxi-dharmashastra-and-sānkhya</a></td>
+            <td class="verse-context"><small>...iparva 58. 3. Chap. 140 (71 verses ) of Śāntiparva is called Kaṇikopadeśa at the enḍ But in ...</small></td>
+        </tr>
+
+        <tr id="2">
+            <td class="verse-ref">2 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/general-index.html#p-general-index-13">vol-3 §general-index</a></td>
+            <td class="verse-context"><small>...8 Sambara, as a writer on Rājāśāstra 1n Śāntiparva 2 Sambhajī-raje-caritra, a work 81n Sambh...</small></td>
+        </tr>
+
+        <tr id="2.56">
+            <td class="verse-ref">2.56 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/general-index.html#p-general-index-12">vol-3 §general-index</a></td>
+            <td class="verse-context"><small>...ounders of, acc. to Anuśāsana-parva and Śāntiparva 2. 56. expoonders of, acc to Kauṭilya 3. expo...</small></td>
+        </tr>
+
+        <tr id="5">
+            <td class="verse-ref">5 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-116">vol-1-part-1 §14-arthashastra-of-kautilya</a> · <a href="../vol-3/general-index.html#p-general-index-6">vol-3 §general-index</a></td>
+            <td class="verse-context"><small>...to be seven and the same is the idea in Śāntiparva 5 and Manu IX. 294. For the antiquity of ...</small></td>
+        </tr>
+
+        <tr id="v">
+            <td class="verse-ref">v <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-240">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>..., ' taduktaṁ ' occur, discussed, 1176 ; Śāntiparva verses quoted as Smṛti by Śaṅkarācārya fo...</small></td>
+        </tr>
+
+        <tr id="9">
+            <td class="verse-ref">9 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/general-index-of-vol-iv.html#p-general-index-of-vol-iv-5">vol-4 §general-index-of-vol-iv</a> · <a href="../vol-4/general-index-of-vol-iv.html#p-general-index-of-vol-iv-35">vol-4 §general-index-of-vol-iv</a></td>
+            <td class="verse-context"><small>...s of sins 187, enemies of, according to Śānti- parva 9, how ṃ incurs sin 10, m on whose death ...</small></td>
+        </tr>
+
+        <tr id="15">
+            <td class="verse-ref">15 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-ii-seven-angas-of-rājya.html#p-chapter-ii-seven-angas-of-rājya-6">vol-3 §chapter-ii-seven-angas-of-rājya</a></td>
+            <td class="verse-context"><small>...&gt;&lt;/sup&gt; 225, 17, Agnipurāṇa 226. 16 and Śāntiparva 15 8 state that daṇḍa is so called because...</small></td>
+        </tr>
+
+        <tr id="15.30">
+            <td class="verse-ref">15.30 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">सुप्रणीतो हि दण्डः प्रजा धर्मार्थकामैर्योजयति । अप्रणीतस्तु मात्स्यन्याय - मुद्राववति । बलीयानबलं हि प्रसने दण्डधराभावे । स तेन गुप्तः प्रभवतीति । अर्थ० I. 4. 11-15; vide also ' मात्स्यन्यायाभिभूताः प्रजा मनुं राजानं चक्रिरे ’ अर्थ० I. 13. 5; यदि न प्रणयेद्वाजा दण्डं दण्डेप्वतन्द्रितः । शूळे मत्स्यानिवा - घ्यत् । दुर्बलाम्बत्नत्तराः ॥ मनु VII. 20 ( कुल्लूक writes that this is the readig of मेघा० and गोविन्दराज and he cites another reading जले मत्स्यानिवाहिष्युः ; the</div><div class="kane-note">शान्तिपर्व 15. 30 has जले मत्स्यानिवाभक्षयन् दुर्बला - नबलवत्तराः ।</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#fn-14-arthashastra-of-kautilya-85">vol-1-part-1 §14-arthashastra-of-kautilya</a></div></td>
+            <td class="verse-locs"><a href="../vol-1-part-2/102-dandaviveka-of-vardhamāna.html#p-102-dandaviveka-of-vardhamāna-5">vol-1-part-2 §102-dandaviveka-of-vardhamāna</a> · <a href="../vol-3/chapter-ii-seven-angas-of-rājya.html#p-chapter-ii-seven-angas-of-rājya-6">vol-3 §chapter-ii-seven-angas-of-rājya</a></td>
+            <td class="verse-context"><small>...er matterṣ For example, Manu VIII. 20 (=Śāntiparva 15. 30) states that if the king were not vigil...</small></td>
+        </tr>
+
+        <tr id="21.15">
+            <td class="verse-ref">21.15 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">पुत्रसंक्रामितश्रीश्च बने चर्मेण वर्त्मयन् । निषिना आव्रजेत् कुर्यात्कर्माणि तपस्मितः ॥</div><div class="kane-note">शान्तिपर्व 21. 15. आव्रजण seems to be a variant for आम्रजण or आम्रवण . Vide note 2123 above.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-2/chapter-xxvii-vānaprastha-forest-hermit.html#fn-chapter-xxvii-vānaprastha-forest-hermit-14">vol-2-part-2 §chapter-xxvii-vānaprastha-forest-hermit</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxvii-vānaprastha-forest-hermit.html#p-chapter-xxvii-vānaprastha-forest-hermit-22">vol-2-part-2 §chapter-xxvii-vānaprastha-forest-hermit</a></td>
+            <td class="verse-context"><small>...thas employs the word ‘ dvija ’. In the Śāntiparva 21. 15 it is stated that a kṣatriya after tran...</small></td>
+        </tr>
+
+        <tr id="25.5">
+            <td class="verse-ref">25.5 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-1/chapter-xiv-conception-of-kāla.html#p-chapter-xiv-conception-of-kāla-7">vol-5-part-1 §chapter-xiv-conception-of-kāla</a></td>
+            <td class="verse-context"><small>...a, Kāla &amp;c. Vide for further references Śāntiparva 25. 5 ff, 224-225.</small></td>
+        </tr>
+
+        <tr id="27.31">
+            <td class="verse-ref">27.31 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">सर्वे क्षयान्ता निचयाः पतनान्ताः समुच्छ्रयाः। संयोगा विप्रयोगान्ता मरणान्तं च जीवितम्॥</div><div class="kane-note">शान्ति 27. 31, 330. 20, स्त्रीपर्व II. 3; अयो० 105. 16.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-1/32-the-two-epics.html#fn-32-the-two-epics-41">vol-1-part-1 §32-the-two-epics</a></div></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/38-kātyāyana.html#p-38-kātyāyana-13">vol-1-part-1 §38-kātyāyana</a></td>
+            <td class="verse-context"><small>...e con- text occurs in the Mahābhārata ( Śāntiparva 27.31 and other places ).&lt;sup class="fn-ref"&gt;...</small></td>
+        </tr>
+
+        <tr id="29.I">
+            <td class="verse-ref">29.I <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-120">vol-1-part-1 §14-arthashastra-of-kautilya</a></td>
+            <td class="verse-context"><small>...rva 98–99). For Ambarīṣa vide above and Śāntiparva 29. In A. XIII. 3. 54–55 reference is made to...</small></td>
+        </tr>
+
+        <tr id="29.13">
+            <td class="verse-ref">29.13 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/36-the-nāradasmriti.html#p-36-the-nāradasmriti-4">vol-1-part-1 §36-the-nāradasmriti</a></td>
+            <td class="verse-context"><small>...a was the maternal uncle of Parvata. In Śāntiparva 29. 13 ff it is stated that Nārada comforted Y...</small></td>
+        </tr>
+
+        <tr id="33.43-46">
+            <td class="verse-ref">33.43-46 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">तेषां पुत्रानि राशृणि गत्वा राजन सहहृष्ट्यन । आन्द पुत्रान्न पौत्रान्न स्त्रे शे राश्ये निपिचय्य ॥ ... कुमारी नारित वेषां च कन्यास्तस्यनिपिचय्य ?</div><div class="kane-note">शान्ति 33. 43 and 45</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-3/chapter-ii-seven-angas-of-rājya.html#fn-chapter-ii-seven-angas-of-rājya-30">vol-3 §chapter-ii-seven-angas-of-rājya</a></div></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-ii-seven-angas-of-rājya.html#p-chapter-ii-seven-angas-of-rājya-22">vol-3 §chapter-ii-seven-angas-of-rājya</a></td>
+            <td class="verse-context"><small>...ppear to have been stray exceptionṣ The Śāntiparva (33.43-46 ) enjoins&lt;sup class="fn-ref"&gt;&lt;a href="#fn...</small></td>
+        </tr>
+
+        <tr id="34">
+            <td class="verse-ref">34 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-i-sin-in-rigveda-conception-of-rita-enumeration-and-classification-of-si.html#p-chapter-i-sin-in-rigveda-conception-of-rita-enumeration-and-classification-of-si-18">vol-4 §chapter-i-sin-in-rigveda-conception-of-rita-enumeration-and-classification-of-si</a></td>
+            <td class="verse-context"><small>...n incurs fall (i e sin)' Manu XI 44 and Śāntiparva 34 2 are similar verses The mitākṣarā expl...</small></td>
+        </tr>
+
+        <tr id="34.20">
+            <td class="verse-ref">34.20 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxii-bhojana.html#p-chapter-xxii-bhojana-30">vol-2-part-2 §chapter-xxii-bhojana</a></td>
+            <td class="verse-context"><small>...m their birth surmount all difficultieṣ Śāntiparva (34. 20) prescribes that, if a man drank liquor ...</small></td>
+        </tr>
+
+        <tr id="34.25">
+            <td class="verse-ref">34.25 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">The महाभारत allowed telling a lie in few cases : प्राणत्राणेऽनृतं वाच्यमात्मनो वा परस्य च। गुर्वर्थेस्त्रीषु चैव स्याद्दिवावहकरणेषु च ॥</div><div class="kane-note">शान्ति 34. 25; न नर्मयुक्तमनृतं हिनस्ति न स्त्रीषु राजन् न विवाहकाले। न गुर्वर्थं नात्मनो जीवितार्थं परान्नाघारानृतकानि ॥ शान्ति 165. 30; प्राय . विवेक quotes a verse of Yama very like the preceding ' न नर्म ... न स्वैरावक्यं न च मैथुनार्थे । प्राणायस्ये सर्वैधनापहारे पञ्चा ... तकानि ॥ ' H. D.—105</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-2/98-shūlapāni.html#fn-98-shūlapāni-14">vol-1-part-2 §98-shūlapāni</a></div></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxxii-yoga-and-dharmashastra.html#p-chapter-xxxii-yoga-and-dharmashastra-40">vol-5-part-2 §chapter-xxxii-yoga-and-dharmashastra</a></td>
+            <td class="verse-context"><small>.... 29, Vasiṣṭha 16. 36, Ādiparva 82. 16, Śānti-parva 34. 25 and 165. 30, quoted in H. of Dh. vol. I...</small></td>
+        </tr>
+
+        <tr id="45">
+            <td class="verse-ref">45 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/general-index.html#p-general-index-11">vol-3 §general-index</a></td>
+            <td class="verse-context"><small>...44- 45, qualities of a k. are 36 acc to Śāntiparva 45, qualities of a k are 96 acc to Paraśur...</small></td>
+        </tr>
+
+        <tr id="46.53">
+            <td class="verse-ref">46.53 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-120">vol-1-part-1 §14-arthashastra-of-kautilya</a></td>
+            <td class="verse-context"><small>...53. 3 ff. and Āśvamedhika Chap. 29) and Śāntiparva (46.53) states that Kārtavirya and his sons and...</small></td>
+        </tr>
+
+        <tr id="51.14">
+            <td class="verse-ref">51.14 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-23">vol-3 §chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age</a></td>
+            <td class="verse-context"><small>... he came to Bhīṣma (Anuśāsana 167 5) In Śāntiparva 51. 14 Kṛṣṇa says to Bhīṣma : ‘You have yet to...</small></td>
+        </tr>
+
+        <tr id="57.6">
+            <td class="verse-ref">57.6 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">मरुत्तेन हि राज्ञा वै गीतः श्लोकः पुरातनः । राजाधिकारे राजेन्द्र बृहस्पति - मते पुरा ।। गुरोरप्यवलितस्य कार्याकार्यमजानतः । उत्पथमतिपन्नस्य दण्डो भवति शाश्वतः ।।</div><div class="kane-note">शान्ति . 57. 6-7. This verse occurs several times in the Epic, viz. in Udyogaparva 178. 47-48, Ādiparva 140. 54 and in Śānti (140. 48). The last pāda in some of these presents different readingṣ</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#fn-14-arthashastra-of-kautilya-20">vol-1-part-1 §14-arthashastra-of-kautilya</a></div></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-30">vol-1-part-1 §32-the-two-epics</a></td>
+            <td class="verse-context"><small>...cs-40"&gt;40&lt;/a&gt;&lt;/sup&gt; occurs in both. The Śāntiparva (in 57.6) says that in former times king Marutta ...</small></td>
+        </tr>
+
+        <tr id="57.40-41">
+            <td class="verse-ref">57.40-41 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">आख्याते रामचरिते नृपति प्रति भारत ॥ राजानं प्रथमं विन्देत्ततो भार्यां ततो धनम् । राजन्यसनि लोकस्य कुतो भार्या कुतो धनम् ॥</div><div class="kane-note">शान्ति 57. 40-41; अयोध्याकाण्ड 67. 11 is ' अराजके धनं नास्ति नारित भार्याप्यराजके । इदमित्याहितं चान्यक्त : सत्यमराजके ॥ '; राज्येऽसति कुतो धर्मो धर्मोऽसति कुतः परम् । शान्ति० 320. 59.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-1/32-the-two-epics.html#fn-32-the-two-epics-30">vol-1-part-1 §32-the-two-epics</a></div></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/17-ushanas.html#p-17-ushanas-14">vol-1-part-1 §17-ushanas</a></td>
+            <td class="verse-context"><small>...cases of misconduct or negligence. Vide Śāntiparva 57. 40-41 for a famous verse of Bhārgava ( i. e. ...</small></td>
+        </tr>
+
+        <tr id="57.44-45">
+            <td class="verse-ref">57.44-45 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">( Continued from the previous page ) अथाभिमिचिदुर्धोण दुर्योधनमुखा नृपाः । सेनापरये यथा स्कन्दं पुरा शक्रमुखाः सुराः ॥ द्रोणपर्व 7.6. त्रयः परार्थे क्रियन्ति साक्षिणः प्रतिभूः कुलम् । चत्वारस्तूपचीयन्ते विप्र आढ्यो वणिड् नृपः । मनु VIII. 169; ददेनान्यपुरुषो जह्वादिनां नाविमिवाम्भासि । अप्रवक्तास्मार्याचार्यमवर्धयागमहदिव्यम् ॥ अरक्षितारौ राजानं भार्या ग्रामकामां च गोपालं वनकामं च नापितम् ॥</div><div class="kane-note">शान्ति . 57. 44-45, उद्योगपर्व 33. 79-80; अधौषीतत्वं राजधर्मामन्यथा वै मनुरब्रवीत् । वनपर्व 35. 21. .</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-1/31-the-manusmriti.html#fn-31-the-manusmriti-48">vol-1-part-1 §31-the-manusmriti</a></div></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-ii-seven-angas-of-rājya.html#p-chapter-ii-seven-angas-of-rājya-19">vol-3 §chapter-ii-seven-angas-of-rājya</a></td>
+            <td class="verse-context"><small>...rt of the merit (punya) of the subjectṣ Śāntiparva (57. 44-45) states 'One should abandon six persons ...</small></td>
+        </tr>
+
+        <tr id="58.3.C">
+            <td class="verse-ref">58.3.C <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-95">vol-1-part-1 §14-arthashastra-of-kautilya</a></td>
+            <td class="verse-context"><small>...e expounders of Rājaśāstra mentioned in Śāntiparva 58. 3. Chap. 140 (71 verses ) of Śāntiparva is c...</small></td>
+        </tr>
+
+        <tr id="59">
+            <td class="verse-ref">59 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-ii-seven-angas-of-rājya.html#p-chapter-ii-seven-angas-of-rājya-8">vol-3 §chapter-ii-seven-angas-of-rājya</a></td>
+            <td class="verse-context"><small>...ed dharma, was killed by the brāhmaṇas (Śāntiparva 59 93-95, Bhāgavata-purāṇa IV. 14 ) The An...</small></td>
+        </tr>
+
+        <tr id="59.33">
+            <td class="verse-ref">59.33 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-4">vol-1-part-1 §14-arthashastra-of-kautilya</a></td>
+            <td class="verse-context"><small>...Sabhāparva 5. 83, Vanaparva 150. 30-31, Śāntiparva 59. 33, 68. 35, 268. 3. The epic says ‘Vārtāmū...</small></td>
+        </tr>
+
+        <tr id="59.78">
+            <td class="verse-ref">59.78 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">150b. दण्डो दमनादिवाहृत्सेनाशतान् दमयेत् । गौ . ध . सू . XI. 28; compare मत्स्यपुराण 225. 17 यस्माद्दण्डो दमयति अदण्ड्यान्दण्ड्यन्नपि । दमनाद्दण्ड - नाम्नैव तस्माद्दण्डं विदुर्बुधाः ॥ and</div><div class="kane-note">शान्ति 59, 78; नित्यमुद्यतदण्डः स्याच्चिज्यं ॠचिसिद्धिरदर्शनां च परेषां विवरात्तुगः ॥ नित्यमुद्यतदण्डस्य भूतानि दण्डेनैव प्रसाधयेत् ॥ ... तस्मान्नचतुष्ठये तस्मिन्धचनो दण्ड इत्येते ॥ शान्ति 140. 7-9; compare रामायण ( अयोध्या० ) कचिच्चित्रेण दण्डेन भृशमुञ्जितप्रजम् । राष्ट्रं त्ववानुजानन्ति मन्त्रिणः केकूयसुत ॥ 100, 78</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#fn-14-arthashastra-of-kautilya-4">vol-1-part-1 §14-arthashastra-of-kautilya</a></div></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-i-preliminary.html#p-chapter-i-preliminary-7">vol-3 §chapter-i-preliminary</a></td>
+            <td class="verse-context"><small>...ingship) Another name is Daṇḍanīti. The Śāntiparva (59. 78) explains why Daṇḍanīti is so called viz...</small></td>
+        </tr>
+
+        <tr id="59.96-97">
+            <td class="verse-ref">59.96-97 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-ii-varna.html#p-chapter-ii-varna-111">vol-2-part-1 §chapter-ii-varna</a></td>
+            <td class="verse-context"><small>...arks to make about pārasava and niṣāda. Śāntiparva (59. 96-97) speaks of niṣādas as men with reddish e...</small></td>
+        </tr>
+
+        <tr id="59.125">
+            <td class="verse-ref">59.125 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-2/71-vijnāneshvara.html#p-71-vijnāneshvara-32">vol-1-part-2 §71-vijnāneshvara</a></td>
+            <td class="verse-context"><small>...lows what is stated in the Mahābhārata. Śāntiparva (in 59. 125) states ‘rañjitāśca prajāḥ sarvās tena r...</small></td>
+        </tr>
+
+        <tr id="63.11-14">
+            <td class="verse-ref">63.11-14 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">‘ न पृथिव्यां त्रीहियवं हिरण्यं पशवः स्त्रियः । नालमेकस्य तत्सर्वमिति मत्त्वा शं व्रजेत् ॥ The Ch. eḍ reads this as ‘ पृथिवीरत्लसम्पूर्णा हिरण्यं ... व्रजेत् ’ ( आदि 75. 51); आश्रमा विहिताः सर्वे वर्जयित्वा निरामिषम् ।</div><div class="kane-note">शान्ति 63. 13.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-1/32-the-two-epics.html#fn-32-the-two-epics-49">vol-1-part-1 §32-the-two-epics</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxviii-sannyāsa.html#p-chapter-xxviii-sannyāsa-31">vol-2-part-2 §chapter-xxviii-sannyāsa</a></td>
+            <td class="verse-context"><small>... śūdra could not become a sannyāsiṇ The Śāntiparva (63. 11-14) is quite clear that a śūdra cannot be a...</small></td>
+        </tr>
+
+        <tr id="63.16-21">
+            <td class="verse-ref">63.16-21 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxviii-sannyāsa.html#p-chapter-xxviii-sannyāsa-30">vol-2-part-2 §chapter-xxviii-sannyāsa</a></td>
+            <td class="verse-context"><small>...hapter-xxviii-sannyāsa-21"&gt;21&lt;/a&gt;&lt;/sup&gt; Śāntiparva (63. 16-21) allows sannyāsa to kings when their lif...</small></td>
+        </tr>
+
+        <tr id="63.25">
+            <td class="verse-ref">63.25 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-i-preliminary.html#p-chapter-i-preliminary-4">vol-3 §chapter-i-preliminary</a></td>
+            <td class="verse-context"><small>...f or the quintessence of all *dharmas*. Śāntiparva (63.25) states 'know that all *dharmas* are mer...</small></td>
+        </tr>
+
+        <tr id="65.13-21">
+            <td class="verse-ref">65.13-21 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">यवनाः किराता गान्धाराश्चीनाः शवरबर्बराः । शकास्तुषाराः कङ्काश्च पह्नवाश्चान्ध्र - मद्रकाः ॥ पौण्डाः पुलिन्दा रमठाः काम्बोजाश्चैव सर्वेषः । कथं धर्मोंचरिष्यन्ति सर्वे विषयवासिनः । मार्द्ववैश्च कथं स्थाप्याः सर्वे वै दस्युजीविनः ॥</div><div class="kane-note">शान्ति 65, 13–15</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-1/31-the-manusmriti.html#fn-31-the-manusmriti-22">vol-1-part-1 §31-the-manusmriti</a></div></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-ix-shrāddha.html#p-chapter-ix-shrāddha-36">vol-4 §chapter-ix-shrāddha</a></td>
+            <td class="verse-context"><small>...ntioned there may be added here. In the Śāntiparva 65. 13-21 it is narrated&lt;sup class="fn-ref"&gt;&lt;a hr...</small></td>
+        </tr>
+
+        <tr id="65.17-22">
+            <td class="verse-ref">65.17-22 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-vii-upanayana.html#p-chapter-vii-upanayana-130">vol-2-part-1 §chapter-vii-upanayana</a></td>
+            <td class="verse-context"><small>...ly Indian citizens of a Greek poliṣ The Śāntiparva 65. 17-22 prescribes for Yavanas, Śakas and simil...</small></td>
+        </tr>
+
+        <tr id="67.16">
+            <td class="verse-ref">67.16 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-ii-seven-angas-of-rājya.html#p-chapter-ii-seven-angas-of-rājya-6">vol-3 §chapter-ii-seven-angas-of-rājya</a></td>
+            <td class="verse-context"><small>...alled daṇḍadhara in many works e. g. in Śāntiparva 67.16 and Kāṃ I. 1. Gautama XI. 28 says that ...</small></td>
+        </tr>
+
+        <tr id="69">
+            <td class="verse-ref">69 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-i-preliminary.html#p-chapter-i-preliminary-5">vol-3 §chapter-i-preliminary</a></td>
+            <td class="verse-context"><small>...000 chapters the science of erotics The Śāntiparva (69) gives (verses 33-74) a summary of the c...</small></td>
+        </tr>
+
+        <tr id="69.23">
+            <td class="verse-ref">69.23 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">वर्जनीये सदा युद्धं राज्यकालेन धीमता। उपायौभिर्मिदां सम्बन्धाद् वृहस्पतिः॥</div><div class="kane-note">शान्ति 69. 23, न क्षुद्रमाभवेप्सयो न कुर्यात् स्वबलक्षयम्। ... वदन्ति सर्वे नीतिज्ञा दण्ड - स्तवनगतिका गतिः। वृहत्पाराशर ; दण्डस्तवनगतिका गतिः is the last उपाय of या . I 346</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-3/chapter-v-rāshtra-the-territory-of-a-state.html#fn-chapter-v-rāshtra-the-territory-of-a-state-50">vol-3 §chapter-v-rāshtra-the-territory-of-a-state</a></div></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-21">vol-3 §chapter-v-rāshtra-the-territory-of-a-state</a></td>
+            <td class="verse-context"><small>...rt, since victory is not certaiṇ In the Śāntiparva 69. 23 the view of Bṛhaspati is quoted&lt;sup cla...</small></td>
+        </tr>
+
+        <tr id="69.52">
+            <td class="verse-ref">69.52 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-132">vol-1-part-1 §14-arthashastra-of-kautilya</a></td>
+            <td class="verse-context"><small>...0. 36, Boṃ eḍ, 94. 30 (Cr. eḍ Baroda ), Śāntiparva 69. 52. The Arthaśāstra ( I. 12. 6 ) names the...</small></td>
+        </tr>
+
+        <tr id="69.76">
+            <td class="verse-ref">69.76 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">दण्डेन नीयते चेदं दण्डं नयति वा पुनः । दण्डनीतिरिति ख्याता त्रीळोकानभिप - वर्तते ॥ शान्तिपर्व 59. 78; दण्डनीतिः स्वधर्मस्थानाचतुर्वर्ण्यं नियम्यच । प्रयुक्ता स्वामिन सम्पग्रमेयभ्यौ नियच्छति ॥</div><div class="kane-note">शान्ति . 69. 76. सपमेयभ्यः is in the dative and अधमेयभ्यः in the ablative.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-3/chapter-i-preliminary.html#fn-chapter-i-preliminary-4">vol-3 §chapter-i-preliminary</a></div></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-i-preliminary.html#p-chapter-i-preliminary-7">vol-3 §chapter-i-preliminary</a></td>
+            <td class="verse-context"><small>...t (faces) pervades the three worlds’ In Śāntiparva 69. 76 it is stated that ‘daṇḍanīti controls t...</small></td>
+        </tr>
+
+        <tr id="69.80-97">
+            <td class="verse-ref">69.80-97 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-1/chapter-xix-kalpa-manvantara-mahāyuga-yuga.html#p-chapter-xix-kalpa-manvantara-mahāyuga-yuga-5">vol-5-part-1 §chapter-xix-kalpa-manvantara-mahāyuga-yuga</a></td>
+            <td class="verse-context"><small>... forth in the Vanaparva, chap 188, 190, Śānti- parva 69. 80-97, the Harivamsa ( Bhavisyaparva, chap. 3...</small></td>
+        </tr>
+
+        <tr id="70">
+            <td class="verse-ref">70 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-ii-seven-angas-of-rājya.html#p-chapter-ii-seven-angas-of-rājya-25">vol-3 §chapter-ii-seven-angas-of-rājya</a></td>
+            <td class="verse-context"><small>...or less with those of Kauṭilya and Yaj. Śāntiparva 70 states that the king should possess 36 ...</small></td>
+        </tr>
+
+        <tr id="75.10">
+            <td class="verse-ref">75.10 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">चौरहतमप्यनीत्थात्मानं गमयेत् । कोषाज्ञां दद्यात् । गौ X 46–47; ब्रह्माहतमुद्दाम्य रत्नस्य न चोरहेतुं । तथैव स्वकोशाद्यन्येन स्वानुकेषोपोपजीर्णतः ॥</div><div class="kane-note">शान्ति 75. 10 B by the मिता on या II 36. चौरहतमविद्यमाने स्वद्रव्येभ्य प्रयच्छेत् । कौटिल्य III 16 p. 190.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-4/chapter-iii-prāyashchitta-its-origin-derivation-and-meaning.html#fn-chapter-iii-prāyashchitta-its-origin-derivation-and-meaning-47">vol-4 §chapter-iii-prāyashchitta-its-origin-derivation-and-meaning</a></div></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-iii-prāyashchitta-its-origin-derivation-and-meaning.html#p-chapter-iii-prāyashchitta-its-origin-derivation-and-meaning-10">vol-4 §chapter-iii-prāyashchitta-its-origin-derivation-and-meaning</a></td>
+            <td class="verse-context"><small>...d-meaning-47"&gt;47&lt;/a&gt;&lt;/sup&gt; (Gaut X. 47, Śāntiparva 75. 10, Kauṭilya III. 16) or he had to make hi...</small></td>
+        </tr>
+
+        <tr id="76.2-10">
+            <td class="verse-ref">76.2-10 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">विद्यालक्षणसंपन्नाः सर्वत्र समदर्शिनः । एते ब्रह्मसमा राजन् ब्राह्मणाः परि - कीर्तिताः ॥ ऋग्यजु : सामसंपन्नाः स्वेषु कर्मस्ववस्थिताः । एते देवसमा ....... अश्रोत्रियाः सर्वे एव सर्वे चानाहिताग्नयः । तान् सर्वान् धार्मिको राजा बलिं बिष्टिं च कारयेत् ॥ ...... एतेभ्यो बलिमवाप्नुयाद्भीमकोशो महीपतिः । ऋते ब्रह्मसमेभ्यश्च देवकल्पेभ्य एव च ॥</div><div class="kane-note">शान्तिपर्व 76. 2-3, 5, 9. H, D. 19</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-iii-the-duties-disabilities-and-privileges-of-varnas.html#fn-chapter-iii-the-duties-disabilities-and-privileges-of-varnas-111">vol-2-part-1 §chapter-iii-the-duties-disabilities-and-privileges-of-varnas</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-iii-the-duties-disabilities-and-privileges-of-varnas.html#p-chapter-iii-the-duties-disabilities-and-privileges-of-varnas-32">vol-2-part-1 §chapter-iii-the-duties-disabilities-and-privileges-of-varnas</a></td>
+            <td class="verse-context"><small>...ces (E. I. vol. XX. pp. 64 and 70). The Śāntiparva (76. 2–10) contains an interesting disquisition on...</small></td>
+        </tr>
+
+        <tr id="77">
+            <td class="verse-ref">77 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-i-preliminary.html#p-chapter-i-preliminary-4">vol-3 §chapter-i-preliminary</a></td>
+            <td class="verse-context"><small>...-3, Nārada (prākirnaka, 5-7 and 33-34), Śāntiparva 77 33 and 57 15, Matsyapurāṇa 215.63, Mārk...</small></td>
+        </tr>
+
+        <tr id="78">
+            <td class="verse-ref">78 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-iii-duties-and-responsibilities-of-the-ruler.html#p-chapter-iii-duties-and-responsibilities-of-the-ruler-2">vol-3 §chapter-iii-duties-and-responsibilities-of-the-ruler</a></td>
+            <td class="verse-context"><small>...th this attitude no sin attaches to hiṃ Śānti parva 78 31 states that just as those who join i...</small></td>
+        </tr>
+
+        <tr id="78.4-6">
+            <td class="verse-ref">78.4-6 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-iii-the-duties-disabilities-and-privileges-of-varnas.html#p-chapter-iii-the-duties-disabilities-and-privileges-of-varnas-18">vol-2-part-1 §chapter-iii-the-duties-disabilities-and-privileges-of-varnas</a></td>
+            <td class="verse-context"><small>...as-63"&gt;63&lt;/a&gt;&lt;/sup&gt; Udyoga-parva 38. 5, Śāntiparva 78. 4-6, Hārīta (as quoted by Aparārka p. 1113)...</small></td>
+        </tr>
+
+        <tr id="78.18">
+            <td class="verse-ref">78.18 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-iii-the-duties-disabilities-and-privileges-of-varnas.html#p-chapter-iii-the-duties-disabilities-and-privileges-of-varnas-15">vol-2-part-1 §chapter-iii-the-duties-disabilities-and-privileges-of-varnas</a></td>
+            <td class="verse-context"><small>...ivileges-of-varnas-51"&gt;51&lt;/a&gt;&lt;/sup&gt; The Śāntiparva (78. 18) calls upon persons of all varṇas to wie...</small></td>
+        </tr>
+
+        <tr id="81-3">
+            <td class="verse-ref">81-3 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-i-preliminary.html#p-chapter-i-preliminary-3">vol-3 §chapter-i-preliminary</a></td>
+            <td class="verse-context"><small>...as composed by Bṛhaspati and Usanas The Śānti- parva (81–3) names as expounders of rājaśāstra Bṛhas...</small></td>
+        </tr>
+
+        <tr id="85">
+            <td class="verse-ref">85 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/appendix-note-191.html#p-appendix-note-191-69">vol-3 §appendix-note-191</a></td>
+            <td class="verse-context"><small>...s in Visnudharmottara II. 24. 17 and in Śāntiparva 85 30. संनिपातृ—The Superintendent of the ...</small></td>
+        </tr>
+
+        <tr id="85.7-9">
+            <td class="verse-ref">85.7-9 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-iv-ministers.html#p-chapter-iv-ministers-2">vol-3 §chapter-iv-ministers</a></td>
+            <td class="verse-context"><small>... duties are described (p. 123 ). In the Śāntiparva (85. 7-9 ) it is declared that the king should hav...</small></td>
+        </tr>
+
+        <tr id="85.10">
+            <td class="verse-ref">85.10 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/30-the-smritis.html#p-30-the-smritis-3">vol-1-part-1 §30-the-smritis</a></td>
+            <td class="verse-context"><small>...e word Smṛti occurs in the Mahābhārata (Śāntiparva 85. 10). But the more frequent word is Dharmaś...</small></td>
+        </tr>
+
+        <tr id="85.12">
+            <td class="verse-ref">85.12 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/appendix-note-191.html#p-appendix-note-191-57">vol-3 §appendix-note-191</a></td>
+            <td class="verse-context"><small>...nce. Vide p 117 and note 155a above and Śāntiparva 85. 12.</small></td>
+        </tr>
+
+        <tr id="90">
+            <td class="verse-ref">90 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-1/list-of-vratas-and-utsavas.html#p-list-of-vratas-and-utsavas-572">vol-5-part-1 §list-of-vratas-and-utsavas</a></td>
+            <td class="verse-context"><small>...spoken of as vṛṣa as in Manu VIII 16 (= Śāntiparva 90 15. **Vrsanavra'a**—(1) the same as Viṣ...</small></td>
+        </tr>
+
+        <tr id="90.75">
+            <td class="verse-ref">90.75 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/1-meaning-of-dharma.html#p-1-meaning-of-dharma-2">vol-1-part-1 §1-meaning-of-dharma</a></td>
+            <td class="verse-context"><small>...di., chap. 74.16) (which also occurs in Śāntiparva 90.75 ). Vide H. of Dh. Vol. V (part 1) pp. 1...</small></td>
+        </tr>
+
+        <tr id="92">
+            <td class="verse-ref">92 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-ii-seven-angas-of-rājya.html#p-chapter-ii-seven-angas-of-rājya-8">vol-3 §chapter-ii-seven-angas-of-rājya</a></td>
+            <td class="verse-context"><small>...elded might exasperate even hermits The Śāntiparva 92 19 recommends that a king who has false...</small></td>
+        </tr>
+
+        <tr id="95.17-18">
+            <td class="verse-ref">95.17-18 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">न तथा घलवीर्याभ्यां जयन्ति विजितिषवः । यथा सत्यप्रामाण्यधर्मधर्मैगौढख - डेन वा ॥ भीष्म 21 10. धर्मेण नियमं श्रेयो न जयः पापकर्मणा । नाहि फलति गौरिव । मूलागि च मशाखाश्च दुहत्य समधिगच्छति ॥</div><div class="kane-note">शान्ति 95. 17–18</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-3/chapter-viii-bala-the-army.html#fn-chapter-viii-bala-the-army-15">vol-3 §chapter-viii-bala-the-army</a></div></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-viii-bala-the-army.html#p-chapter-viii-bala-the-army-3">vol-3 §chapter-viii-bala-the-army</a></td>
+            <td class="verse-context"><small>...nce of dharma and energetic actionṣ The Śānti- parva (95. 17–18) states that it is better to die while f...</small></td>
+        </tr>
+
+        <tr id="100.24">
+            <td class="verse-ref">100.24 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-viii-bala-the-army.html#p-chapter-viii-bala-the-army-2">vol-3 §chapter-viii-bala-the-army</a></td>
+            <td class="verse-context"><small>...apter-viii-bala-the-army-7"&gt;7&lt;/a&gt;&lt;/sup&gt; Śānti- parva (100. 24) says that an army in which the infantry...</small></td>
+        </tr>
+
+        <tr id="110.22">
+            <td class="verse-ref">110.22 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxii-bhojana.html#p-chapter-xxii-bhojana-30">vol-2-part-2 §chapter-xxii-bhojana</a></td>
+            <td class="verse-context"><small>... would be punished with impalement. The Śāntiparva (110. 22) declares that those men who always avoi...</small></td>
+        </tr>
+
+        <tr id="119.16">
+            <td class="verse-ref">119.16 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">कोशमूलोः कोशवृद्धौ समर्ध्यास्मा । तस्मात्पूर्वं कोशमेवेदं । कौटिल्य II 2. कोशश्च सततौ रहपो यत्नमास्थाय राजभिः । कोशमूलो हि राजानः कोशो वृद्धिकरो भवेत् ॥</div><div class="kane-note">शान्ति 119. 16; कोशमूलो हि राजेति प्रचदुः सार्वलौकिक । कामन्दक XIII. 33. This last occurs in कुप्रदु P 36; कोशस्तु सर्वथा अमिरक्षत्व इत्यह गौतम । समुत्पल्कात्साम् कुत्रानिमिति । स . वि . p. 46.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-3/chapter-vii-kosha-treasury-or-finance.html#fn-chapter-vii-kosha-treasury-or-finance-1">vol-3 §chapter-vii-kosha-treasury-or-finance</a></div></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-vii-kosha-treasury-or-finance.html#p-chapter-vii-kosha-treasury-or-finance-1">vol-3 §chapter-vii-kosha-treasury-or-finance</a></td>
+            <td class="verse-context"><small>...he other six elements of the State. The Śāntiparva 119. 16 calls upon the king to guard his financ...</small></td>
+        </tr>
+
+        <tr id="121.10">
+            <td class="verse-ref">121.10 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-2/102-dandaviveka-of-vardhamāna.html#p-102-dandaviveka-of-vardhamāna-5">vol-1-part-2 §102-dandaviveka-of-vardhamāna</a></td>
+            <td class="verse-context"><small>.... dharma, artha and kāma (Manu VII. 27, Śāntiparva 121. 10). Kauṭilya (in I. 4. 11-14) emphasizes ...</small></td>
+        </tr>
+
+        <tr id="123.11">
+            <td class="verse-ref">123.11 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-65">vol-1-part-1 §14-arthashastra-of-kautilya</a></td>
+            <td class="verse-context"><small>...tathya, Vāmadeva, Vasuhoma, Kāmandaka ( Śāntiparva 123. 11 ) and a few others which are not found ...</small></td>
+        </tr>
+
+        <tr id="135.14">
+            <td class="verse-ref">135.14 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xii-the-duties-of-a-widow-some-privileges-of-women-and-the-purda-system.html#p-chapter-xii-the-duties-of-a-widow-some-privileges-of-women-and-the-purda-system-13">vol-2-part-1 §chapter-xii-the-duties-of-a-widow-some-privileges-of-women-and-the-purda-system</a></td>
+            <td class="verse-context"><small>...who gave livelihood or shelter’. In the Śāntiparva (135. 14 ) even thieves are instructed not to kill...</small></td>
+        </tr>
+
+        <tr id="140.38">
+            <td class="verse-ref">140.38 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/31-the-manusmriti.html#p-31-the-manusmriti-30">vol-1-part-1 §31-the-manusmriti</a></td>
+            <td class="verse-context"><small>...the present Manu but occurs in the MBH, Śāntiparva 140.38, which states that a man should first e...</small></td>
+        </tr>
+
+        <tr id="141.9">
+            <td class="verse-ref">141.9 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/31-the-manusmriti.html#p-31-the-manusmriti-12">vol-1-part-1 §31-the-manusmriti</a></td>
+            <td class="verse-context"><small>...fare of the people depends on the king (Śāntiparva 141. 9). Though the general tendency was to sa...</small></td>
+        </tr>
+
+        <tr id="144-6">
+            <td class="verse-ref">144-6 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/3-when-dharmashastra-works-were-first-composed.html#p-3-when-dharmashastra-works-were-first-composed-5">vol-1-part-1 §3-when-dharmashastra-works-were-first-composed</a></td>
+            <td class="verse-context"><small>...hed' or 'wife' ('gṛhiṇī gṛhamucyate' in Śānti-parva 144-6 Ch eḍ). The gṛhya fire was set up by a ...</small></td>
+        </tr>
+
+        <tr id="144.6">
+            <td class="verse-ref">144.6 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">न गृहं गृहमि - त्याहु - र्गृहिणी गृहमुच्यते । गृहं तु गृहिणीहीनमरष्यसदृशं मतम् ॥</div><div class="kane-note">शान्ति 144. 6; नास्ति भार्यासमो बन्धुः नास्ति भार्यासमा गतिः। नास्ति भार्यासमो लोके सहायो धर्मसंग्रहे । शान्ति 144. 16; यदा भार्या च भर्त्ता च परस्परवशानुगौ । तदा धर्मार्थकामानां त्रयाणां संगमम् ॥ कथं भार्यादृते धर्मार्थ वा पुरुषः प्रभो । ग्रामोति काममन्यास्तस्यां चित्तमाहितम् ॥ तथैव भर्त्तारमृते भार्या धर्मो - पपादने । न समर्था स्त्रिवर्गयं दाम्पत्यं समुद्दिष्टम् ॥ मार्कण्डेयपुराण 21. 69-71.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage.html#fn-polyandry-57">vol-2-part-1 §chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage.html#p-chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage-23">vol-2-part-1 §chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage</a></td>
+            <td class="verse-context"><small>...-141 and 193-198, Ādiparva 74. 140-152, Śāntiparva 144. 6 and 12-17, Anuśāsana 46, Mārkaṇḍeyapurā...</small></td>
+        </tr>
+
+        <tr id="146.5">
+            <td class="verse-ref">146.5 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxi-nriyajna-or-manushya-yajna.html#p-chapter-xxi-nriyajna-or-manushya-yajna-2">vol-2-part-2 §chapter-xxi-nriyajna-or-manushya-yajna</a></td>
+            <td class="verse-context"><small>...food if he arrives at the time of mealṣ Śāntiparva 146. 5 says that even an enemy when he comes t...</small></td>
+        </tr>
+
+        <tr id="148.2">
+            <td class="verse-ref">148.2 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">उत्सूक्ष्ममपि भूमो प्रार्थयन्ति यथा खगाः। प्रार्थयन्ति जनाः सर्वे पतिहीनां तथा श्रियम् ॥ आदिपर्व 160. 12; सर्वापि विधवा नारी बहुपुत्रपि शोचते ॥</div><div class="kane-note">शान्तिपर्व 148. 2.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-xii-the-duties-of-a-widow-some-privileges-of-women-and-the-purda-system.html#fn-chapter-xii-the-duties-of-a-widow-some-privileges-of-women-and-the-purda-system-8">vol-2-part-1 §chapter-xii-the-duties-of-a-widow-some-privileges-of-women-and-the-purda-system</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xii-the-duties-of-a-widow-some-privileges-of-women-and-the-purda-system.html#p-chapter-xii-the-duties-of-a-widow-some-privileges-of-women-and-the-purda-system-4">vol-2-part-1 §chapter-xii-the-duties-of-a-widow-some-privileges-of-women-and-the-purda-system</a></td>
+            <td class="verse-context"><small>...woman whose husband is dead'; while the Śāntiparva (148. 2) remark: 'all widows are in sorrow even ...</small></td>
+        </tr>
+
+        <tr id="148.6-7">
+            <td class="verse-ref">148.6-7 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">मितं ददाति हि पिता मितं भ्राता मितं सुतः। अमितस्य हि दातारं भत्तारं का न पूजयेत्॥</div><div class="kane-note">शान्ति 148. 6-7, अयो० 39. 30-31 (in this latter the Madras eḍ reads माता for भ्राता ). It is noteworthy that Mitākṣarā on Yaj. I. 86 refers to this Kapotikākhyāna, quotes verses 10 and 12 of Śānti 148 and remarks that in the guise of this story Vyāsa recommends ‘anvārohaṇa’ (burning oneself on the deceased husband’s funeral pyre) as most meritoriouṣ I am inclined to hold that it is the author of the Rāmāyaṇa that probably borrowṣ Rāma was only going to a forest (no question of dying arose) and so the words are not so appropriate in the Rāmāyaṇa as they are in the Mahābhārata.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-1/32-the-two-epics.html#fn-32-the-two-epics-39">vol-1-part-1 §32-the-two-epics</a></div></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-30">vol-1-part-1 §32-the-two-epics</a></td>
+            <td class="verse-context"><small>... put in the mouth of the female bird in Śāntiparva 148. 6-7.&lt;sup class="fn-ref"&gt;&lt;a href="#fn-32-the...</small></td>
+        </tr>
+
+        <tr id="153.38">
+            <td class="verse-ref">153.38 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxxv-the-doctrine-of-karma-and-punarjanma-transmigration-or-metempsychos.html#p-chapter-xxxv-the-doctrine-of-karma-and-punarjanma-transmigration-or-metempsychos-75">vol-5-part-2 §chapter-xxxv-the-doctrine-of-karma-and-punarjanma-transmigration-or-metempsychos</a></td>
+            <td class="verse-context"><small>...ced by the doer alone, what with that' (Śāntiparva 153. 38 and 41=cr. eḍ 149. 34 and 37).</small></td>
+        </tr>
+
+        <tr id="162.26">
+            <td class="verse-ref">162.26 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/appendix-note-191.html#p-appendix-note-191-71">vol-3 §appendix-note-191</a></td>
+            <td class="verse-context"><small>...rse 11 is the same as Ādiparva 74. 103, Śāntiparva 162. 26 and Anusasana 75. 29; verse 25 is almos...</small></td>
+        </tr>
+
+        <tr id="165.30">
+            <td class="verse-ref">165.30 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">The महाभारत allowed telling a lie in few cases : प्राणत्राणेऽनृतं वाच्यमात्मनो वा परस्य च। गुर्वर्थेस्त्रीषु चैव स्याद्दिवावहकरणेषु च ॥ शान्ति 34. 25; न नर्मयुक्तमनृतं हिनस्ति न स्त्रीषु राजन् न विवाहकाले। न गुर्वर्थं नात्मनो जीवितार्थं परान्नाघारानृतकानि ॥</div><div class="kane-note">शान्ति 165. 30; प्राय . विवेक quotes a verse of Yama very like the preceding ' न नर्म ... न स्वैरावक्यं न च मैथुनार्थे । प्राणायस्ये सर्वैधनापहारे पञ्चा ... तकानि ॥ ' H. D.—105</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-2/98-shūlapāni.html#fn-98-shūlapāni-14">vol-1-part-2 §98-shūlapāni</a></div></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/54-shat-trimshan-mata.html#p-54-shat-trimshan-mata-4">vol-1-part-1 §54-shat-trimshan-mata</a></td>
+            <td class="verse-context"><small>...urs in the Mahābhārata (Ādi. 82, 16 and Śāntiparva 165. 30). Verse 129 (Ādityacandrāvanilo which i...</small></td>
+        </tr>
+
+        <tr id="165.31">
+            <td class="verse-ref">165.31 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-vii-upanayana.html#p-chapter-vii-upanayana-63">vol-2-part-1 §chapter-vii-upanayana</a></td>
+            <td class="verse-context"><small>...eneficial knowledge) even from a śūdra. Śāntiparva 165. 31 does the same.&lt;sup class="fn-ref"&gt;&lt;a hr...</small></td>
+        </tr>
+
+        <tr id="165.37">
+            <td class="verse-ref">165.37 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">( 1 ) नास्य गुह्यं - कौ . I. 15.60, मनु VII. 105, शान्ति 140.24. ( 2 ) नित्यमुद्यतदण्डः स्यात् - इत्याचार्याः । कौ . I. 4. 5-6, मनु . VII.102-3, आदि 140. 6-7, शान्ति 140. 7-8. ( 3 ) मात्सस्यन्यायः - कौ . I. 4. 13, I. 13. 5, शान्ति 15. 30, 67. 16, मनु VII.20. ( 4 ) संवत्सरेण पतन्ति० - मनु XI. 180</div><div class="kane-note">शान्ति 165. 37. ( Continued on the next page )</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-1/32-the-two-epics.html#fn-32-the-two-epics-58">vol-1-part-1 §32-the-two-epics</a></div></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-i-sin-in-rigveda-conception-of-rita-enumeration-and-classification-of-si.html#p-chapter-i-sin-in-rigveda-conception-of-rita-enumeration-and-classification-of-si-30">vol-4 §chapter-i-sin-in-rigveda-conception-of-rita-enumeration-and-classification-of-si</a></td>
+            <td class="verse-context"><small>...aut. 21.3, Vaṣ I. 21-22, Manu XI. 180 (=Śāntiparva 165. 37), Yāj. III. 261, Viṣṇu Dh. S 35.3, Agni...</small></td>
+        </tr>
+
+        <tr id="165.63">
+            <td class="verse-ref">165.63 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage.html#p-chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage-20">vol-2-part-1 §chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage</a></td>
+            <td class="verse-context"><small>... of all her rights as wife (Yāj. I. 70, Śāntiparva 165. 63) ; (5) a wife, who commits adultery wit...</small></td>
+        </tr>
+
+        <tr id="165.64">
+            <td class="verse-ref">165.64 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage.html#p-chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage-18">vol-2-part-1 §chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage</a></td>
+            <td class="verse-context"><small>... of the husband's house'. Gaut. 23. 14, Śānti-parva 165. 64 and Manu VIII. 371 are more harsh on a ...</small></td>
+        </tr>
+
+        <tr id="170.12">
+            <td class="verse-ref">170.12 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">चतुर्विधा हार्थसिद्धिवृहस्पतिमंतं यथा । पारम्पर्यं तथा दैवं काम्यं मैत्रमिति प्रमो ।।</div><div class="kane-note">शान्ति 170. 12.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#fn-14-arthashastra-of-kautilya-16">vol-1-part-1 §14-arthashastra-of-kautilya</a></div></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/26-brihaspati.html#p-26-brihaspati-4">vol-1-part-1 §26-brihaspati</a></td>
+            <td class="verse-context"><small>...referred to (as e. g. rājādhikāra). The Śānti- parva (170. 12) describes how a king could, according t...</small></td>
+        </tr>
+
+        <tr id="174">
+            <td class="verse-ref">174 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/9-vasishtha-dharmasutra.html#p-9-vasishtha-dharmasutra-12">vol-1-part-1 §9-vasishtha-dharmasutra</a></td>
+            <td class="verse-context"><small>...&amp;c., which is found in Vanaparva 2. 36, Śānti-parva 174, 55 and 276. 12 and Anuśāsana 7. 21. Th...</small></td>
+        </tr>
+
+        <tr id="184.1-17">
+            <td class="verse-ref">184.1-17 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">अतिथिर्यस्य भग्नाशो गृहात्प्रतितनिवेते । स तस्मै दुष्कृतं दत्वा पुण्यामादाय गच्छति ॥</div><div class="kane-note">शान्तिपर्व 184. 12 (expressly quoted) as a श्लोक = Ch. eḍ 191. 12), विष्णुधर्मसूत्र 67. 33, विष्णुपुराण III. 9. 15 and III. 11. 68, वराहपुराण 170. 46 (with variations).</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-5-part-2/chapter-xxxv-the-doctrine-of-karma-and-punarjanma-transmigration-or-metempsychos.html#fn-chapter-xxxv-the-doctrine-of-karma-and-punarjanma-transmigration-or-metempsychos-102">vol-5-part-2 §chapter-xxxv-the-doctrine-of-karma-and-punarjanma-transmigration-or-metempsychos</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxvi-pratishthā-and-utsarga.html#p-chapter-xxvi-pratishthā-and-utsarga-7">vol-2-part-2 §chapter-xxvi-pratishthā-and-utsarga</a></td>
+            <td class="verse-context"><small>..."&gt;21&lt;/a&gt;&lt;/sup&gt; built for them (caitya). Śāntiparva 184. 1-17 graphically describes how trees have li...</small></td>
+        </tr>
+
+        <tr id="191.12">
+            <td class="verse-ref">191.12 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxi-nriyajna-or-manushya-yajna.html#p-chapter-xxi-nriyajna-or-manushya-yajna-4">vol-2-part-2 §chapter-xxi-nriyajna-or-manushya-yajna</a></td>
+            <td class="verse-context"><small>...ous works like the Viṣṇu Dh. S. 67. 33, Śāntiparva 191. 12, Viṣṇupurāṇa III. 9. 15, Mārkaṇḍeya 29....</small></td>
+        </tr>
+
+        <tr id="195.19-20">
+            <td class="verse-ref">195.19-20 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxxii-yoga-and-dharmashastra.html#p-chapter-xxxii-yoga-and-dharmashastra-68">vol-5-part-2 §chapter-xxxii-yoga-and-dharmashastra</a></td>
+            <td class="verse-context"><small>... 53–54) and in Vanaparva (3. 11) and in Śāntiparva 195. 19–20, Ch. eḍ). The Viṣṇupurāṇa&lt;sup class="fn...</small></td>
+        </tr>
+
+        <tr id="199">
+            <td class="verse-ref">199 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-iii-the-duties-disabilities-and-privileges-of-varnas.html#p-chapter-iii-the-duties-disabilities-and-privileges-of-varnas-11">vol-2-part-1 §chapter-iii-the-duties-disabilities-and-privileges-of-varnas</a></td>
+            <td class="verse-context"><small>...vitations for dinner at śrāddhaṣ In the Śāntiparva 199 brāhmaṇas are divided into two sorts, v...</small></td>
+        </tr>
+
+        <tr id="207.43">
+            <td class="verse-ref">207.43 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/5-the-dharmasutra-of-gautama.html#p-5-the-dharmasutra-of-gautama-16">vol-1-part-1 §5-the-dharmasutra-of-gautama</a></td>
+            <td class="verse-context"><small>...city in the Greek worlḍ Even the M. B. (Śāntiparva 207. 43, Ch. eḍ) has 'Yauna-Kāmboja-Gandhārāḥ K...</small></td>
+        </tr>
+
+        <tr id="210.20">
+            <td class="verse-ref">210.20 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">भार्गवी नीतिशास्त्रं तु जगाद जगतो हितम् ।</div><div class="kane-note">शान्तिपर्व 210.20. एतत्ने राजधर्माणं नवनीतं युधिष्ठिर । बृहस्पतिर्हि भगवव्यान्यायं धर्मं प्रशंसति । विशाल्लाक्षश्च भगवाक्काव्यश्चैव महत्तपा : । . . . राजशास्त्रप्रणेत्तारो ब्रह्मण्या ब्रह्मवादिन : ॥ शान्ति० 58. 1-3.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-1/32-the-two-epics.html#fn-32-the-two-epics-32">vol-1-part-1 §32-the-two-epics</a></div></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/17-ushanas.html#p-17-ushanas-3">vol-1-part-1 §17-ushanas</a> · <a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-23">vol-1-part-1 §32-the-two-epics</a></td>
+            <td class="verse-context"><small>...va follows the wrong nīti (39. 30). The Śāntiparva (210. 20) states that Bhārgava expounded Nītiśāst...</small></td>
+        </tr>
+
+        <tr id="225">
+            <td class="verse-ref">225 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-1/chapter-x-vijayādashāmī-and-divālī.html#p-chapter-x-vijayādashāmī-and-divālī-21">vol-5-part-1 §chapter-x-vijayādashāmī-and-divālī</a></td>
+            <td class="verse-context"><small>...nce) or tejas’ (vigorous action) In the Śāntiparva 225 13 it is said that Bali felt jealous of...</small></td>
+        </tr>
+
+        <tr id="230.I">
+            <td class="verse-ref">230.I <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/23-devala.html#p-23-devala-2">vol-1-part-1 §23-devala</a></td>
+            <td class="verse-context"><small>... Vide Sabhāparva 59. 9-11, Śalya 50 and Śāntiparva 230. In Sabhā ( 72. 5 ) it is stated that Deva...</small></td>
+        </tr>
+
+        <tr id="231.23-24">
+            <td class="verse-ref">231.23-24 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o.html#p-chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o-3">vol-3 §chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o</a></td>
+            <td class="verse-context"><small>...compare Gaut VIII. 1). Manu I. 81-82 (= Śāntiparva 231. 23-24) state that in the Kṛta age dharma prev...</small></td>
+        </tr>
+
+        <tr id="231.29-32">
+            <td class="verse-ref">231.29-32 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxxv-the-doctrine-of-karma-and-punarjanma-transmigration-or-metempsychos.html#p-chapter-xxxv-the-doctrine-of-karma-and-punarjanma-transmigration-or-metempsychos-44">vol-5-part-2 §chapter-xxxv-the-doctrine-of-karma-and-punarjanma-transmigration-or-metempsychos</a></td>
+            <td class="verse-context"><small>... which it is absorbed into brahmaṇ Vide Śāntiparva 231. 29–32 (Ch. eḍ = cr. eḍ 224. 28-31). It is sta...</small></td>
+        </tr>
+
+        <tr id="233.24">
+            <td class="verse-ref">233.24 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">अनादिनिधना नित्या वागुत्सृष्टा स्वयंभुवा । आदौ वेदमयी दिव्या यतः सर्वाः प्रवृत्तयः ॥</div><div class="kane-note">शान्तिपर्व 233. 24; युगान्तेऽन्तर्हितान् वेदान्सेतिहासान्महर्षयः । लेभिरे तपसा पूर्वे मनून्नामान् स्वयंभुवा ॥ शान्तिपर्व 210. 19. Both these verses are quoted by शंकराचार्य on वेदान्तसूत्र I. 3. 28 and 29 respectively.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-vii-upanayana.html#fn-chapter-vii-upanayana-247">vol-2-part-1 §chapter-vii-upanayana</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-vii-upanayana.html#p-chapter-vii-upanayana-98">vol-2-part-1 §chapter-vii-upanayana</a></td>
+            <td class="verse-context"><small>...in Upaniṣad passages and on Manu I. 21, Śānti-parva 233. 24 and other smṛtis The Bṛ. Up. IV. 5. 11 ...</small></td>
+        </tr>
+
+        <tr id="243.2-3">
+            <td class="verse-ref">243.2-3 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-135">vol-1-part-1 §14-arthashastra-of-kautilya</a></td>
+            <td class="verse-context"><small>In the Śāntiparva ( 243. 2-3 ) it is stated that there are four ways o...</small></td>
+        </tr>
+
+        <tr id="244">
+            <td class="verse-ref">244 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-vii-upanayana.html#p-chapter-vii-upanayana-170">vol-2-part-1 §chapter-vii-upanayana</a></td>
+            <td class="verse-context"><small>...hildren, wife, slaves (Manu IV. 179-180=Śāntiparva 244, 14–16, Yāj. I. 157–158); he should car...</small></td>
+        </tr>
+
+        <tr id="245.1-14">
+            <td class="verse-ref">245.1-14 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxvii-vānaprastha-forest-hermit.html#p-chapter-xxvii-vānaprastha-forest-hermit-4">vol-2-part-2 §chapter-xxvii-vānaprastha-forest-hermit</a></td>
+            <td class="verse-context"><small>... X. 5, Śaṅkha-smṛti VI. 1-7 (in verse), Śāntiparva 245. 1-14 and Anuśāsana 142, Aśvamedhika-parva 46...</small></td>
+        </tr>
+
+        <tr id="264.11">
+            <td class="verse-ref">264.11 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xvii-āhnika-and-āchāra.html#p-chapter-xvii-āhnika-and-āchāra-41">vol-2-part-1 §chapter-xvii-āhnika-and-āchāra</a></td>
+            <td class="verse-context"><small>...ance of all beingṣ Vide Manu III. 76 (= Śāntiparva 264. 11) and Sṃ C. I. p. 155, Par. M. I, part I...</small></td>
+        </tr>
+
+        <tr id="267.38">
+            <td class="verse-ref">267.38 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage.html#p-chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage-23">vol-2-part-1 §chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage</a></td>
+            <td class="verse-context"><small>...mlecchas and conceiving thereby. In the Śāntiparva 267. 38 it is said that it is not the woman who...</small></td>
+        </tr>
+
+        <tr id="296.22-24">
+            <td class="verse-ref">296.22-24 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxiv-influence-of-purānas-on-dharmashastra.html#p-chapter-xxiv-influence-of-purānas-on-dharmashastra-33">vol-5-part-2 §chapter-xxiv-influence-of-purānas-on-dharmashastra</a></td>
+            <td class="verse-context"><small>...8, Āśvamedhikaparva 28. 16-18, 43. 21). Śāntiparva (296. 22-24) enumerates thirteen virtues common to a...</small></td>
+        </tr>
+
+        <tr id="296.39">
+            <td class="verse-ref">296.39 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xvii-āhnika-and-āchāra.html#p-chapter-xvii-āhnika-and-āchāra-3">vol-2-part-1 §chapter-xvii-āhnika-and-āchāra</a></td>
+            <td class="verse-context"><small>...f the order of householder is frequent. Śāntiparva 296. 39 is the same as Manu VI. 90. Śānti 270. ...</small></td>
+        </tr>
+
+        <tr id="297.28">
+            <td class="verse-ref">297.28 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">शूद्राणां तु सधर्माणः सर्वैरेवोपसंस्मृताः ॥ मनु X. 41; वैदेहिकं शूद्रमुखा - दहरन्ति द्विजा महाराज श्रुतौपपन्नाः।</div><div class="kane-note">शान्तिपर्व 297. 28.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-iv-untouchability.html#fn-chapter-iv-untouchability-9">vol-2-part-1 §chapter-iv-untouchability</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-iv-untouchability.html#p-chapter-iv-untouchability-4">vol-2-part-1 §chapter-iv-untouchability</a></td>
+            <td class="verse-context"><small>... śūdras in their dharma and because the Śāntiparva 297.28&lt;sup class="fn-ref"&gt;&lt;a href="#fn-chapter...</small></td>
+        </tr>
+
+        <tr id="304.1">
+            <td class="verse-ref">304.1 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxxii-yoga-and-dharmashastra.html#p-chapter-xxxii-yoga-and-dharmashastra-24">vol-5-part-2 §chapter-xxxii-yoga-and-dharmashastra</a></td>
+            <td class="verse-context"><small>... for those whose souls are not purifieḍ Śāntiparva 304. 1 states that there is no knowledge equal...</small></td>
+        </tr>
+
+        <tr id="304.4">
+            <td class="verse-ref">304.4 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxxi-dharmashastra-and-sānkhya.html#p-chapter-xxxi-dharmashastra-and-sānkhya-12">vol-5-part-2 §chapter-xxxi-dharmashastra-and-sānkhya</a></td>
+            <td class="verse-context"><small>...tered completely both Sāṅkhya and Yoga. Śāntiparva 304. 4 (=316. 4 of Citra. eḍ) states that Sāṅk...</small></td>
+        </tr>
+
+        <tr id="306.56-66">
+            <td class="verse-ref">306.56-66 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxxi-dharmashastra-and-sānkhya.html#p-chapter-xxxi-dharmashastra-and-sānkhya-12">vol-5-part-2 §chapter-xxxi-dharmashastra-and-sānkhya</a></td>
+            <td class="verse-context"><small>...shastra-and-sānkhya-29"&gt;29&lt;/a&gt;&lt;/sup&gt; In Śāntiparva 306. 56-66 ( = Chitra eḍ 318. 58-62) Viśvāvasu tel...</small></td>
+        </tr>
+
+        <tr id="308.47">
+            <td class="verse-ref">308.47 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxxvi-fundamental-and-leading-characteristics-of-hindu-culture-and-civil.html#p-chapter-xxxvi-fundamental-and-leading-characteristics-of-hindu-culture-and-civil-36">vol-5-part-2 §chapter-xxxvi-fundamental-and-leading-characteristics-of-hindu-culture-and-civil</a></td>
+            <td class="verse-context"><small>... They are condemned in the Mahābhārata, Śāntiparva 308. 47 ( cr. eḍ = 320. 47 Ch. eḍ) quoted in H....</small></td>
+        </tr>
+
+        <tr id="321">
+            <td class="verse-ref">321 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-vi-consequences-of-not-undergoing-penances.html#p-chapter-vi-consequences-of-not-undergoing-penances-3">vol-4 §chapter-vi-consequences-of-not-undergoing-penances</a></td>
+            <td class="verse-context"><small>...are frequently referred to For example, Śāntiparva 321 32 speaks of Vaitaraṇī and Asipatravana...</small></td>
+        </tr>
+
+        <tr id="323">
+            <td class="verse-ref">323 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-ii-means-of-reducing-consequences-of-sins.html#p-chapter-ii-means-of-reducing-consequences-of-sins-16">vol-4 §chapter-ii-means-of-reducing-consequences-of-sins</a></td>
+            <td class="verse-context"><small>... II. 7 34) and to fasts on Ekādaśī. The Śāntiparva 323 17 states 'Just as a dirty garment is a...</small></td>
+        </tr>
+
+        <tr id="328">
+            <td class="verse-ref">328 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxviii-mīmāmsā-and-dharmashastra.html#p-chapter-xxviii-mīmāmsā-and-dharmashastra-13">vol-5-part-2 §chapter-xxviii-mīmāmsā-and-dharmashastra</a></td>
+            <td class="verse-context"><small>...e pupils of Vyāsa; vide Sabhā 4. 11 and Śāntiparva 328, 26–27 (cr. eḍ 314, 23–24, 29) and 350....</small></td>
+        </tr>
+
+        <tr id="328.49">
+            <td class="verse-ref">328.49 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">आवेच्चेच्चतुरो वर्णान्कृत्वा ब्राह्मणमग्रतः।</div><div class="kane-note">शान्तिपर्व 328. 49; vide also आदिपर्व 62. 22, and 95. 87.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-iii-the-duties-disabilities-and-privileges-of-varnas.html#fn-chapter-iii-the-duties-disabilities-and-privileges-of-varnas-145">vol-2-part-1 §chapter-iii-the-duties-disabilities-and-privileges-of-varnas</a></div></td>
+            <td class="verse-locs"><a href="../vol-1-part-2/107-raghunandana.html#p-107-raghunandana-11">vol-1-part-2 §107-raghunandana</a></td>
+            <td class="verse-context"><small>...rahmasūtra I. 3. 38 quotes a portion of Śāntiparva 328. 49 for establishing that Smṛti declares th...</small></td>
+        </tr>
+
+        <tr id="337">
+            <td class="verse-ref">337 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxiv-influence-of-purānas-on-dharmashastra.html#p-chapter-xxiv-influence-of-purānas-on-dharmashastra-4">vol-5-part-2 §chapter-xxiv-influence-of-purānas-on-dharmashastra</a></td>
+            <td class="verse-context"><small>...nce the effect is like the cause'. Vide Śāntiparva 337 for a story on the discussion between s...</small></td>
+        </tr>
+
+        <tr id="339.68">
+            <td class="verse-ref">339.68 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxiv-influence-of-purānas-on-dharmashastra.html#p-chapter-xxiv-influence-of-purānas-on-dharmashastra-43">vol-5-part-2 §chapter-xxiv-influence-of-purānas-on-dharmashastra</a></td>
+            <td class="verse-context"><small>...&lt;/sup&gt; Vedas and Pāśupata’. ]Relying on Śāntiparva 339. 68 several writers particularly those of t...</small></td>
+        </tr>
+
+        <tr id="339.103-104">
+            <td class="verse-ref">339.103-104 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">Vide Hopkins' 'Epic Mythology' 1915, pp. 209-219 and Indian Historical Quarterly, vol. XI. p. 121 ff. for detailed information on the avatāras of Viṣṇu; note the following : असतौ निग्रहार्थाय धर्मसंस्थपनाय च ॥ आभमेधिकपर्व 54.13; भगवद्गीता IV. 7-8, वनपर्व 272. 61-70, 276. 8. &amp;c.; अयोध्यकाण्ड I. 7, उत्तरकाण्ड 8. 27; हंसा कूमों मत्स्यश्च वाराहश्च द्विजोत्तम । नृसिंहो नारसिंहश्च वामनो राम एव च ॥ रामो वामनश्चैव सात्वत । कलिर्रेव च ।</div><div class="kane-note">शान्तिपर्व 339. 103-104.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-2/chapter-xix-devayajna.html#fn-chapter-xix-devayajna-38">vol-2-part-2 §chapter-xix-devayajna</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xix-devayajna.html#p-chapter-xix-devayajna-16">vol-2-part-2 §chapter-xix-devayajna</a></td>
+            <td class="verse-context"><small>...r-xix-devayajna-38"&gt;38&lt;/a&gt;&lt;/sup&gt; In the Śāntiparva (339. 103-104) the avatāras are stated to be ten and t...</small></td>
+        </tr>
+
+        <tr id="341.19">
+            <td class="verse-ref">341.19 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/29-sumantu.html#p-29-sumantu-5">vol-1-part-1 §29-sumantu</a></td>
+            <td class="verse-context"><small>... a promulgator of the Atharvaveda. Vide Śāntiparva 341. 19 for Sumantu and other pupils of Vyāsa a...</small></td>
+        </tr>
+
+        <tr id="343.13-14">
+            <td class="verse-ref">343.13-14 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-iii-the-duties-disabilities-and-privileges-of-varnas.html#p-chapter-iii-the-duties-disabilities-and-privileges-of-varnas-25">vol-2-part-1 §chapter-iii-the-duties-disabilities-and-privileges-of-varnas</a></td>
+            <td class="verse-context"><small>...maṇa indeed is Agni-vaiśvā- nara’. Vide Śāntiparva 343. 13-14, Manu IV. 117, Likhita 31, Vaṣ Dh. S. 3...</small></td>
+        </tr>
+
+        <tr id="345">
+            <td class="verse-ref">345 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-ix-shrāddha.html#p-chapter-ix-shrāddha-16">vol-4 §chapter-ix-shrāddha</a></td>
+            <td class="verse-context"><small>...Manu as Śrāddha-deva. Similarly, in the Śāntiparva 345.&lt;sup class="fn-ref"&gt;&lt;a href="#fn-chapte...</small></td>
+        </tr>
+
+        <tr id="345.21">
+            <td class="verse-ref">345.21 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-ix-shrāddha.html#p-chapter-ix-shrāddha-17">vol-4 §chapter-ix-shrāddha</a></td>
+            <td class="verse-context"><small>...- self in the position of Aniruddha. In Śāntiparva 345. 21 it is stated that Viṣṇu should be looke...</small></td>
+        </tr>
+
+        <tr id="953">
+            <td class="verse-ref">953 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-167">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>... Veda 962 ; identified with Sāttvata in Śāntiparva 953, 955n ; is called 'Ekānta- dharma' 953,...</small></td>
+        </tr>
+
+        <tr id="956">
+            <td class="verse-ref">956 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-167">vol-5-part-2 §index-to-vol-v</a> · <a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-167">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>...'s name is concerned with Pañcarātra in Śāntiparva 956 ; peculiar doctrine of P. is that of vy...</small></td>
+        </tr>
+
+        <tr id="1358">
+            <td class="verse-ref">1358 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-223">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>...Tattvas, twenty-five, in Sāṅkhya and in Śāntiparva 1358, 1365. Tattvārthasūtra of Umāsvāti 472ṇ...</small></td>
+        </tr>
+
+        <tr id="1363-65">
+            <td class="verse-ref">1363-65 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-190">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>...18 refute it, 1318 ; high praise of, in Śānti- parva 1363-65; is called Sānkhyatantra by Sankarācāry...</small></td>
+        </tr>
+
+        <tr id="1367">
+            <td class="verse-ref">1367 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-190">vol-5-part-2 §index-to-vol-v</a> · <a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-190">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>...s teachers about pu- ruṣa, mentioned in Śāntiparva 1367, 1374; one of the six well-known darśan...</small></td>
+        </tr>
+
+        <tr id="1374">
+            <td class="verse-ref">1374 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-88">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>...aigiṣavya, ṃ as Sāṁkhya-yoga teacher in Śāntiparva 1374, 75 ( dialogues of J. and Asita Devala ...</small></td>
+        </tr>
+
+        <tr id="1390-91">
+            <td class="verse-ref">1390-91 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-251">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>...to be the ancient propounder of Yoga in Śāntiparva 1390-91; ideal of Y., is to be Jīvanmukta 1455 ...</small></td>
+        </tr>
+
+        <tr id="1400">
+            <td class="verse-ref">1400 <a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in MBTA" style="font-size:0.85em;vertical-align:baseline;opacity:0.7">↗</a></td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-54">vol-5-part-2 §index-to-vol-v</a> · <a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-251">vol-5-part-2 §index-to-vol-v</a> · <a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-251">vol-5-part-2 §index-to-vol-v</a> · <a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-251">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>... disturbances or faults ): 317; five in Śāntiparva 1400n; in Āp. Dh. S. (a larger number ) 1390...</small></td>
+        </tr>
+            </tbody>
+        </table>
+    </div>
+
+    
+    <footer class="container-fluid pt-4" style="background-color:#2e4144">
+        <div class="row border-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img src="https://sanatana.in/mbta/public/images/Homepage_html/images/layer_8.png" alt="">
+            </div>
+            <div class="col-md-5 text-white">
+                <p>The divine knowledge and wisdom of our shastras is the only thing eternal,
+                   which was and which will remain ever-present in this gods creation.
+                   Our endeavours are to preserve this knowledge.</p>
+            </div>
+            <div class="col-md-1 text-white">
+                <div class="d-flex" style="height: 75px;">
+                    <div class="vr"></div>
+                </div>
+            </div>
+            <div class="col-md-3 text-white">
+                <i class="fa-solid fa-globe"></i>&emsp;
+                <a href="https://sanatanasampatti.in" class="text-light">www.sanatanasampatti.in</a><br>
+                <i class="fa-solid fa-envelope"></i>&emsp;
+                <a href="" class="text-light">sriranga.yoga@gmail.com</a>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center py-3 mb-4 align-items-center border-bottom">
+            <div class="col-md-2 text-white fs-4 text-center">Project</div>
+            <div class="col-md-2 text-white fs-4 text-center">Our Mission</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contribute</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contact Us</div>
+        </div>
+        <div class="row">
+            <p class="col-md-6 fs-6 text-start text-light">
+                <small>&copy; 2026 Sanatanasampatti</small>
+            </p>
+            <p class="col-md-6 fs-6 text-end text-light">
+                <a class="text-white" rel="nofollow" href="http://www.srirangadigital.com" target="_blank">
+                    <img src="https://sanatana.in/mbta/public/images/logo.png" alt="sriranga logo" />
+                    <small>Designed, Developed and Maintained by Sriranga Digital</small>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+</body>
+</html>

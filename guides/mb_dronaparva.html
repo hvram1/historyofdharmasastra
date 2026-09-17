@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Droṇaparva Study Guide — History of Dharmaśāstra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Open+Sans:wght@400;600&family=Tiro+Devanagari+Sanskrit&display=swap" rel="stylesheet">
+<style>
+:root {
+    --saffron: #D4600A;
+    --ink: #2C2416;
+    --parchment: #FDF6EC;
+    --parchment-dark: #F5ECD8;
+    --indigo: #2E5FA3;
+    --maroon: #8B1A1A;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: var(--parchment);
+    color: var(--ink);
+    line-height: 1.6;
+}
+.navbar {
+    background: linear-gradient(135deg, #3D2B1F 0%, #5C3D2E 100%);
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    position: sticky;
+    top: 0;
+    z-index: 1031;
+}
+.navbar a { color: #F5ECD8; text-decoration: none; font-size: 14px; }
+.navbar a:hover { color: var(--saffron); }
+.navbar .brand { font-family: 'Lora', serif; font-size: 16px; font-weight: 600; }
+.breadcrumb-bar {
+    background: var(--parchment-dark);
+    padding: 8px 24px;
+    font-size: 13px;
+    border-bottom: 1px solid #E0D5C3;
+}
+.breadcrumb-bar a { color: var(--indigo); text-decoration: none; }
+.breadcrumb-bar .sep { margin: 0 6px; color: #999; }
+.breadcrumb-bar .current { color: var(--ink); }
+.content { max-width: 900px; margin: 0 auto; padding: 30px 24px; }
+
+/* Hero */
+.parva-hero {
+    text-align: center;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 2px solid #E0D5C3;
+}
+.parva-hero .parva-number {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(212, 96, 10, 0.10);
+    color: var(--saffron);
+    font-family: 'Lora', serif;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 50px;
+    margin-bottom: 8px;
+}
+.parva-hero h1 {
+    font-family: 'Lora', serif;
+    font-size: 28px;
+    color: var(--saffron);
+    margin: 6px 0;
+}
+.parva-hero .desc {
+    font-size: 15px;
+    color: #555;
+    max-width: 600px;
+    margin: 0 auto 10px;
+}
+.parva-hero .stats {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 10px;
+}
+.ext-link {
+    display: inline-block;
+    font-size: 13px;
+    color: var(--indigo);
+    font-weight: 600;
+    text-decoration: none;
+    padding: 4px 12px;
+    border: 1px solid var(--indigo);
+    border-radius: 4px;
+    margin: 6px 4px;
+}
+.ext-link:hover { background: rgba(46, 95, 163, 0.08); }
+.ref-page-link {
+    display: inline-block;
+    font-size: 13px;
+    color: #888;
+    text-decoration: none;
+    padding: 4px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: 6px 4px;
+}
+.ref-page-link:hover { border-color: #999; color: #666; }
+.subject-tag {
+    display: inline-block;
+    font-size: 11px;
+    background: rgba(139, 26, 26, 0.08);
+    color: var(--maroon);
+    padding: 2px 8px;
+    border-radius: 3px;
+    text-decoration: none;
+    margin: 2px;
+}
+.subject-tag:hover { background: rgba(139, 26, 26, 0.15); }
+
+/* Top adhyayas */
+.top-adhyayas {
+    margin-bottom: 28px;
+    padding: 16px;
+    background: #fff;
+    border: 1px solid #E0D5C3;
+    border-radius: 8px;
+}
+.top-adhyayas h3 {
+    font-family: 'Lora', serif;
+    font-size: 15px;
+    color: var(--ink);
+    margin-bottom: 10px;
+}
+.adhyaya-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.adhyaya-chip {
+    display: inline-block;
+    font-size: 12px;
+    padding: 3px 10px;
+    background: var(--parchment-dark);
+    border: 1px solid #E0D5C3;
+    border-radius: 4px;
+    color: var(--ink);
+    text-decoration: none;
+}
+a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
+.adhyaya-chip small { color: #999; }
+
+/* Volume sections */
+.vol-section { margin-bottom: 28px; }
+.vol-heading {
+    font-family: 'Lora', serif;
+    font-size: 17px;
+    color: var(--ink);
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #E0D5C3;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.vol-count {
+    font-size: 12px;
+    font-weight: 400;
+    color: #999;
+}
+.ch-group { margin-bottom: 16px; }
+.ch-heading {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 6px;
+    padding: 4px 8px;
+    background: var(--parchment-dark);
+    border-radius: 4px;
+}
+.ch-count {
+    font-weight: 400;
+    color: #999;
+    font-size: 11px;
+    margin-left: 4px;
+}
+.snippet {
+    padding: 10px 14px;
+    margin-bottom: 6px;
+    background: #fff;
+    border: 1px solid #E0D5C3;
+    border-radius: 6px;
+    border-left: 3px solid var(--saffron);
+}
+.snippet-text {
+    font-family: 'Lora', serif;
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.65;
+}
+.snippet-meta {
+    margin-top: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.snippet-link {
+    font-size: 12px;
+    color: var(--indigo);
+    text-decoration: none;
+}
+.snippet-link:hover { text-decoration: underline; }
+.snippet-verse {
+    font-size: 11px;
+    color: #999;
+    font-style: italic;
+}
+.mbta-icon {
+    color: var(--indigo);
+    text-decoration: none;
+    font-style: normal;
+    font-size: 12px;
+}
+.overflow {
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+    padding: 6px;
+}
+</style>
+</head>
+<body>
+<nav class="navbar">
+    <a href="../index.html" class="brand">History of Dharmaśāstra</a>
+    <a href="../refs/index.html">Sources</a>
+    <a href="../topics/index.html">Topics</a>
+    <a href="../subjects/index.html">Subjects</a>
+    <a href="../timeline.html">Timeline</a>
+    <a href="../network.html">Network</a>
+</nav>
+<div class="breadcrumb-bar">
+    <a href="../index.html">Home</a>
+    <span class="sep">›</span>
+    <a href="index.html">Parva Study Guides</a>
+    <span class="sep">›</span>
+    <span class="current">Droṇaparva</span>
+</div>
+<div class="content">
+    <div class="parva-hero">
+        <div class="parva-number">7</div>
+        <h1>Droṇaparva</h1>
+        <p class="desc">The Book of Droṇa — Droṇa as commander, the death of Abhimanyu.</p>
+        <p class="stats">48 references across 7 volumes</p>
+        <div><a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="ext-link">Browse on MBTA ↗</a>
+            <a href="../refs/mb_dronaparva.html" class="ref-page-link">Verse reference table →</a>
+        </div>
+        <div style="margin-top:8px"></div>
+    </div>
+    
+            <div class="top-adhyayas">
+                <h3>Most-Cited Adhyāyas</h3>
+                <div class="adhyaya-chips"><a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="adhyaya-chip">Adhyāya 7 <small>(5)</small></a><a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="adhyaya-chip">Adhyāya 82 <small>(2)</small></a><a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="adhyaya-chip">Adhyāya 127 <small>(2)</small></a><a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="adhyaya-chip">Adhyāya 6 <small>(2)</small></a><a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="adhyaya-chip">Adhyāya 154 <small>(2)</small></a><a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="adhyaya-chip">Adhyāya 70 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="adhyaya-chip">Adhyāya 202 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="adhyaya-chip">Adhyāya 14 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="adhyaya-chip">Adhyāya 182 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="adhyaya-chip">Adhyāya 80 <small>(1)</small></a></div>
+            </div>
+    
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume I: Part I
+                    <span class="vol-count">18 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">14 Arthashastra Of Kautilya <span class="ch-count">5</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...as cows and crops” (*arthavān~ ayam deśa ucyate yasmin gāvaḥ sasyāni ca vartante*) on Vārtika 4 in Pāṇ. V. 2. 135 (Kielhorn’s eḍ Vol. II. p. 40). The <strong>Droṇaparva</strong> (7. 1) speaks of Mānavi Arthavidyā and Vanaparva (35. 21) states that Manu declared Rājadharmaṣ Unless there existed some authority that regulated the peopl...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-4" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">7.1 <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...tioned in K. X. 6. 35, that a śyena array is mentioned by Kauțilya (X. 6. 12), though not Krauñca and that an array called Śakaţa is mentioned in the <strong>Droṇaparva</strong> 7. 24, which occurs in Kauțiliya also (at X. 6. 26).</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-17" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">7.24 <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">.... 7). The same parva speaks of a vyūha called Krauñcāruṇa (in 50. 40) which was suggested to Indra by Bṛhaspati; a vyūha of that kind is mentioned in Droṇa-parvan (7. 25). It is noteworthy that Kauṭilya deals with vyūhas in X. 6 and in the first sūtra refers to the arrangement of a vyūha according to Uśanas an...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-17" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...&c ) and individual authorṣ It has been shown above that works on Arthaśāstra composed by Bṛhaspati and Uśanas existed before the Mahābhārata and the <strong>Droṇaparva</strong> (7. 1) speaks of ‘Mānavi Artha-vidyā’. If the work had been the product of a school, then instead of ‘iti Kautilyaḥ’ we would have had the words ‘iti Kautil...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-63" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">7.1 <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...atriyām prabhuh... | tato yajñena mahatā Jamadagnyah pratāpavān । tarpayāmāsa devendram-ṛtvigbhyaḥ pradadau mahim ।; vide also Ādi- parva 130. 61–62, <strong>Droṇaparva</strong> 70. 15–19, Śalyaparva 49. 7–10, where the donee is the sage Kaśyapa. The idea is that he gave up lobha ( greed ) which is the root of all sins ( lobhamūlāni pā...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-76" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">70.15-19 <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">31 The Manusmriti <span class="ch-count">3</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...who received from God himself the laws and regulations, as a king in the Kṛta yuga (Aśvamedhika- parva 4. 2), as the author of a work on Arthaśāstra (Droṇa- parva 7.1). The Manusmṛti (VII. 42) itself states that Manu became king by his disciplined behaviour (vinaya).</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/31-the-manusmriti.html#p-31-the-manusmriti-4" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">7.1 <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...dition of the Mahābhārata war that after Bhīṣma was mortally wounded, Droṇa, a brāhmaṇa teacher, was made commander-in-chief of the Kaurava army. The <strong>Droṇaparva</strong> expressly refers to the ceremony of abhiṣeka in the case of Droṇa as commander-in- chief Although, the Āp. Dh. S. (I. 10. 29. 7) states that a brāhma...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/31-the-manusmriti.html#p-31-the-manusmriti-26" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...e the Śāntiparva speaks of the ‘rājadharmas<sup class="fn-ref"><a href="#fn-31-the-manusmriti-46" id="fnref-31-the-manusmriti-46">46</a></sup> in the <strong>Droṇaparva</strong> (7. 1) ‘Mānavi arthavidyā’ is referred to and in Vanaparva the rājadharmas as proclaimed by Manu are referred to (Vanaparva 35. 2. 21). In other places, the...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/31-the-manusmriti.html#p-31-the-manusmriti-26" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">7.1 <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">32 The Two Epics <span class="ch-count">10</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">... in the Śāntiparva (chap. 29 ) there is a brief reference to Rāma’s rule for 11000 years and the ideal happiness of the people under his rule. In the <strong>Droṇaparva</strong> also Rāma is briefly referred to in the Śoḍaśa-rājakiya section (chap. 55-71, that relating to Rāma being chap. 59). Stray references to a few other ...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-11" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...er and son) is practically the same as chap. 277. Śalya 38. 39-45 are the same as Vanaparva 83. 116-121. The Śodaśarājakīya occurs twice, once in the <strong>Droṇaparva</strong> (chap. 55-1) and again in the Śāntiparva chap. 29. The story of Āstika occurs twice, in Ādi 13ff and in chap. 48ff agaiṇ</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-13" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...d in Vana- parva (191. 16). The Svargarohaṇaparva (5. 46-47) states that there are 18 Purāṇas composed by Kṛṣṇa Dvaipāyana. Upavedas are mentioned in <strong>Droṇaparva</strong> 202. 75. Dhanurveda is mentioned in Śānti 49. 32, 50. 233 and 167. 31.</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-14" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">202.75 <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...had already stated in the Ādiparva and Vana- parva the same rule against killing a womaṇ So it is probable that some interpolator mentioned it in the <strong>Droṇaparva</strong> to show off his knowledge of the other epic. As regards the 2nd citation I am sorry to say that Hopkins is carried away by his enthusiasm to prove di...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-23" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...ns is 'api cāyam pura gitah śloko Vālmikinā bhuvi | na hantavyāh striya iti yad-bravīṣi plavangama...Piḍākaram amitranām yat-syāt kartavyam eva tat' (<strong>Droṇaparva</strong> 14. 67-68)<sup class="fn-ref"><a href="#fn-32-the-two-epics-29" id="fnref-32-the-two-epics-29">29</a></sup>. The criticisms against this citation are several. ...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-23" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">14.67-68 <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...lanation of ‘Jāruthyān’ in Vanaparva 284.23; on Ādi 170.15 he notes that Devabodha and others read it differently and on the word ‘madhuparki-kāh’ in <strong>Droṇaparva</strong> 182.2. he gives Devabodha’s explanatioṇ On Vanaparva 263.8 he refers to Saṅkarācārya’s commentary on Viṣṇusahasranāma and on Udyoga 42.1 he refers to the c...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-37" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">182.2 <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">... and Śāntiparva.<sup class="fn-ref"><a href="#fn-32-the-two-epics-55" id="fnref-32-the-two-epics-55">55</a></sup> There are grand eulogies of Śiva in <strong>Droṇaparva</strong> 80. 39-48 and Sauptikaparva 17 ( this last by Kṛṣṇa ). In Anuśāsana ( 16.8 ) Śiva is identified with Brahmaṇ The Mausalaparva<sup class="fn-ref"><a href="#fn-3...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-47" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">80.39-48 <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...even thousand yearṣ This verse occurs in the Rāmāyaṇa also ( Yuddha 131.106 ). The <strong>Droṇaparva</strong> ( chap. 59 ) describes the excellence of Rāmarājya. The Droṇaparva ( 196. 36 ) compares the death of Droṇa to the death of Vāliṇ A large volume would have to be written if one were to deal with all questions relating to the two ...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-55" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">196.36 <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...ma story and ends with the verse that Rāma ruled the kingdom for eleven thousand yearṣ This verse occurs in the Rāmāyaṇa also ( Yuddha 131.106 ). The <strong>Droṇaparva</strong> ( chap. 59 ) describes the excellence of Rāmarājya. The Droṇaparva ( 196. 36 ) compares the death of Droṇa to the death of Vāliṇ A large volume would...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-55" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">... at the hands of Rāma who was angered by Rāvaṇa.<sup class="fn-ref"><a href="#fn-32-the-two-epics-69" id="fnref-32-the-two-epics-69">69</a></sup> The <strong>Droṇaparva</strong> compares the fight of Ghaṭotkaca and Alāyudha with the fight of Rāma and Rāvaṇa ( 96.27–28 ).</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-56" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">c <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume II: Part I
+                    <span class="vol-count">9 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter V Slavery <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...of 88000 snātaka brāhmaṇas are spoken of. In Vanaparva 185. 34 Vainya is said to have given a thousand handsome dāsīs with ornaments on to Atri. Vide <strong>Droṇaparva</strong> 57. 5–9. Manu (VIII. 299–300) places a slave on the same level as one’s son in the matter of corporal punish-ment ‘the wife, the son, the slave, a menial ser...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-2-part-1/chapter-v-slavery.html#p-chapter-v-slavery-4" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">57.5-9 <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Vii Upanayana <span class="ch-count">3</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...ion of the greatness of a guru and the necessity of single-minded devotion to him for attaining proficiency (vide Ādiparva 132 for the story and also <strong>Droṇaparva</strong> 181. 17). The Mahābhārata condemns him who learns the Vedas at home and says that Raibhya became superior to Yavakṛta <sup class="fn-ref"><a href="#fn-chapte...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-2-part-1/chapter-vii-upanayana.html#p-chapter-vii-upanayana-63" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">181.17 <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...se obstacles in his study except in seasons of distresṣ A teacher becomes no teacher if he avoids giving instruction' (i.e. he may be abandoned). The <strong>Droṇaparva</strong> (50. 21) says that a pupil comes only after the son according to the idea of those who know dharma. If a teacher does not teach a pupil any- thing even after ...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-2-part-1/chapter-vii-upanayana.html#p-chapter-vii-upanayana-67" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">50.21 <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">... also the form is Yavana (E. I. 20 p. 79). In the Mahābhārata the words Yavana and Śaka occur very frequently. Vide notes above on these wordṣ In the <strong>Droṇaparva</strong> 119. 45-46 Yavana, Kamboja, Śaka, Śabara, Kirāta and Barbara are mentioned as one group fighting against Sātyaki. In Droṇa 119. 47-48 they are referred to as da...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-2-part-1/chapter-vii-upanayana.html#p-chapter-vii-upanayana-130" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">119.45-46 <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Ix Marriage <span class="ch-count">3</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...e Bhṛgus is a sub-division called Vainya which is further subdivided into Pārthas and Bāskalaṣ The story of Pṛthu who milked the earth is well-known (Droṇa-parva 69); he is called ‘ādirāja’ in Anuśāsana 166. 55. The Vāyupurāṇa in several places narrates that some kṣatriyas became the pravaras of brāhmaṇaṣ Vide ch...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-2-part-1/chapter-ix-marriage.html#p-chapter-ix-marriage-77" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">69 <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...). The Śaunaka-kārikā<sup>1192</sup> (mṣ in Bombay University Library folio 22 b) includes a maiden among the eight objects which were auspiciouṣ The <strong>Droṇaparva</strong> (82. 20–22 ) mentions numerous objects which Arjuna looked at and touched as auspicious when starting for battle, among which well-decked maidens are mentioneḍ Go...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-2-part-1/chapter-ix-marriage.html#p-chapter-ix-marriage-90" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">82.20-22 <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...-chapter-ix-marriage-242" id="fnref-chapter-ix-marriage-242">242</a></sup>. The most essential ceremonies of marriage are the homa and saptapadī. The <strong>Droṇaparva</strong><sup class="fn-ref"><a href="#fn-chapter-ix-marriage-243" id="fnref-chapter-ix-marriage-243">243</a></sup> says that promise of a daughter and giving ...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-2-part-1/chapter-ix-marriage.html#p-chapter-ix-marriage-146" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xvii Āhnika And Āchāra <span class="ch-count">2</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...a III, Mārkaṇḍeya-purāṇa 29-30 and 34, Nṛsiṁha-purāṇa 58. 45-106, Kūrmapurāṇa ( _uttarārdha_ chap. 15-16 ), Laghu-Hārīta IV. p. 183 ff ( Jīvānanda ), <strong>Droṇaparva</strong> 82, Vanaparva 2. 53-63, Aśvamedhika 45. 16-25, Anuśāsana-parva 97. Among the digests may be mentioned the Sṃ C. (I. pp. 88-232), the Smṛtyarthasāra (pp....</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-2-part-1/chapter-xvii-āhnika-and-āchāra.html#p-chapter-xvii-āhnika-and-āchāra-6" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">82 <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...jects (these are quoted in Gr. R. pp. 553-554). Viṣṇu Dh. S. 23. 58 enumerates six objects derived from the cow as auspiciouṣ *Vide* Ādiparva 29. 34, <strong>Droṇaparva</strong> 127. 14 (for touching eight maṅgalas), Śānti 40. 7, Anuśāsana 126. 18 and 131. 8. According to the Viṣṇu Dh. S. 63. 26 one should start on a journey after se...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-2-part-1/chapter-xvii-āhnika-and-āchāra.html#p-chapter-xvii-āhnika-and-āchāra-47" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">127.14 <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume II: Part II
+                    <span class="vol-count">1 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">General Index <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...as by Viṣṇu Dh. S., 757. **Droṇa,** a brāhmaṇa commander, 123, 322; taught the Kauravas and Pāṇḍavas but without prior stipu- lation for fees, 362. **Droṇa-parva,** 8<sup>n</sup>, 84, 88, 322, 329, 511, 539. **Dṛṣadvatī,** river in Rg., 12; falls into the Sarasvatī, 15<sup>n</sup>. **Druhyus,** 39. **Dumont, P...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-2-part-2/general-index.html#p-general-index-17" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume III
+                    <span class="vol-count">11 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter I Preliminary <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...is clear that Āpastamba has in view dharmaśāstra and arthaśāstra The Anuśāsanaparva says that Bṛhaspati and others composed artha- śāstras (39.10–11) <strong>Droṇaparva</strong> 6 1 speaks of a science of artha composed by Manu (Mānavī arthavidyā) Vide Jayaswal in ‘Manu and Yājñavalkya’ (pp. 5, 7, 16, 25, 36, 41, 42, 50, 84 for...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-i-preliminary.html#p-chapter-i-preliminary-8" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">6 <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Iii Duties And Responsibilities Of The Ruler <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...e are descriptions of the abhiseka of a yuvarāja (as of Bhima in Śānti 41), of a great commander (as of Bhisma in Udyogaparva 155.26-32), of Droṇa in <strong>Droṇaparva</strong> 5.39-43, of Skanda in Śalyaparva 45.</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-iii-duties-and-responsibilities-of-the-ruler.html#p-chapter-iii-duties-and-responsibilities-of-the-ruler-21" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">5.39-43 <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Iv Ministers <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...cree shall be passed against that party'.<sup class="fn-ref"><a href="#fn-chapter-iv-ministers-46" id="fnref-chapter-iv-ministers-46">46</a></sup> In <strong>Droṇaparva</strong> 75. 4 it is said that Kṛṣṇa had his spies in the army of Duryodhana and *vice versa* (74.1). Śānti 69. 8-12 and 140. 39-42 mention the places where spies a...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-iv-ministers.html#p-chapter-iv-ministers-13" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">75.4 <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Viii Bala The Army <span class="ch-count">3</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...0). Manu VII. 192 refers to battles on water also. From references in the Mahābhārata it appears that chariots had only two wheels Vide Bhisma 98 47, <strong>Droṇaparva</strong> 154 3, Salya 16 24 (Saineyo daksinaṁ cakraṁ Dhṛṣṭadyumnas-tathottaram). Two noted warriors were told oft to guard the two wheels of the chariot of the pr...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-viii-bala-the-army.html#p-chapter-viii-bala-the-army-2" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">154 <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...e slaying of Abhimanyu by many engaging him at one time). The general rule was that fighting ceased when the sun went down (Bhisma 49. 52–53). But in <strong>Droṇaparva</strong> 154 and 163. 16 ff we have a description of night battles and it is provided that chariots, elephants and horses should carry lampṣ</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-viii-bala-the-army.html#p-chapter-viii-bala-the-army-4" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">154 <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">... from fight or is without armour. Āp Dh. S. II. 5. 10. 12, Gaut. X. 17–18, Yāj I 326, Manu VII. 90–93, Śānti 95. 7–14, 96.3, Śānti 98. 48–49, 297. 4, <strong>Droṇaparva</strong> 143. 8, Karṇa 90. 111–113, Sauptika 5. 11–12, 6. 21–23, Śankha (quoted by the Mit on Yāj I 326 ), Bauḍ Dh. S.I. 10. 10–12, Vṛddha-Hārita VII. 226, Bṛhat-Par...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-viii-bala-the-army.html#p-chapter-viii-bala-the-army-4" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">143.8 <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xxxii Practices Of Shistas Conflict Among Shruti Smriti And Sadāchāra An <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">... been won by his younger brother Arjuna by his skill in archery and who prevaricated in order to bring about the death of his brāhmaṇa teacher Droṇa (<strong>Droṇaparva</strong> 190 55); (8) Kṛṣṇa Dvaipāyana (Vyāsa), who thought himself a perpetual student, procreated by niyoga at mother Satyavatī two sons on the widows of his br...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-xxxii-practices-of-shistas-conflict-among-shruti-smriti-and-sadāchāra-an.html#p-chapter-xxxii-practices-of-shistas-conflict-among-shruti-smriti-and-sadāchāra-an-10" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">190 <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xxxiv Kalivarjya Actions Forbidden In The Kali Age <span class="ch-count">3</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...gy of Bhāskaravarman start with Naraka, whose son Bhagadatta fought on the side of the Kauravas in the Mahābhārata war and was killed by Arjuna (vide Drona-parva chap 29 ) Bhagadatta’s son is said to have been Vajra-datta. After Vajradatta his descendants ruled over Kāmarūpa for 3000 years and then Pusyavarman, ...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-14" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">c <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...e to the following theories propounded by him viz, his division of the astronomical references into two groups, -his assumption that a passage in the <strong>Droṇaparva</strong> (chap 184) about the rising of the moon at about 2 A. M is an interpolation ( because it does not square with his explanations of the other passages ...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-20" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...are reduced, when conflicting passages have got to be explained away. One more indication about the *tithi* on which the war commenced is afforded by <strong>Droṇaparva</strong> chap. 184, where it is stated that a grim fight went on till midnight when Ghatotkaca was killed, that the fatigued armies then snatched some sleep, th...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-23" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">c <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">General Index <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">... some others 659, succession to, by both mothers 723–724. Drona (a measure of coro) differed for various purposes 1460 Dyūta ( gambhog ) defined 538. <strong>Droṇaparva</strong> 6, 8, 79, 127, 131, 134–35, 168, 205–6, 208–9, 211, 214, 232, 643n, 845, 898, 904, 914. Earoest, what becomes of, if sale goes off through the fault of...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/general-index.html#p-general-index-7" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">6 <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume IV
+                    <span class="vol-count">1 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">List Of Tīrthas <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...t of Mhow and falls into the Yamunā 25 miles south-west of Etawah town) Ādi 138 74 (Drupada ruled over southern Pañcāla up to Carmanvatī), V. 82. 54. <strong>Droṇaparva</strong> 67 5 (the name is due to the heaps of the hides of animals killed in Raṇtudeva's śayāśās), P. I 24 3, Meghadūta I. 45 (refers to Raṇtudeva), the word Ca...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-4/list-of-tīrthas.html#p-list-of-tīrthas-31" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">67 <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume V: Part I
+                    <span class="vol-count">2 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">List Of Vratas And Utsavas <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...o Atharvaṇapariśista q by HV II 626 brāhmaṇa, cow, fire, land, mustard, clarified butter, śami, grains of rice and barley are eight auspicious things <strong>Droṇaparva</strong> 127.14 speaks of eight maṅgalas; Droṇa 82, 20-22 contains a much longer list. Vā 14 36-37 enumerate several things as auspicious which should be touched whe...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-1/list-of-vratas-and-utsavas.html#p-list-of-vratas-and-utsavas-394" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">127.14 <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xvi Muhūrta <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...8</a></sup> that a householder should get up from his bed in the Brāhma-muhūrta (the last half watch of the night). The Brāhmamuhūrta is mentioned in <strong>Droṇaparva</strong> (30.23). In the Raghuvamśa (V. 36) Kalidasa says that Aja was born on the Brahma muhūrta (i. e. Abhijit of which Brahma is the presiding deity) and in the Ku...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-1/chapter-xvi-muhūrta.html#p-chapter-xvi-muhūrta-4" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">30.23 <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume V: Part II
+                    <span class="vol-count">6 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xxi Individual Shāntis <span class="ch-count">2</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...ra refers to earthquakes that happened when angry Arjuna got no sleep after he made a vow that he would kill Jayadratha before the next day’s sunset (<strong>Droṇaparva</strong> 77. 4) and when Duryodhana challenged Bhima for a mace fight (Śalyaparva 56. 10 and 58. 49).</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-2/chapter-xxi-individual-shāntis.html#p-chapter-xxi-individual-shāntis-19" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">77.4 <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...shāntis-44">44</a></sup> the fall of a flaming meteor accompanied by a great noise and whirlwind when Duryodhana fell in the macefight with Bhīma. In <strong>Droṇaparva</strong> a flaming meteor is referred to as indicative of the coming death of the great ācārya and warrior Droṇa. The Adbhutaśāgara (pp. 342-344) quotes a lon...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-2/chapter-xxi-individual-shāntis.html#p-chapter-xxi-individual-shāntis-22" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xxiv Influence Of Purānas On Dharmashastra <span class="ch-count">2</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...n to) any being'. The words ‘ahimsā paramo dharmaḥ’ (ahimsā is the highest dharma) occur very frequently in the Mahābhārata <sup>1523</sup> (e. g. in <strong>Droṇaparva</strong> 192. 38, Śānti 265. 6, 329. 18, Anuśāsana 115, 25, 116. 38, Āśvamedhikaparva 28. 16-18, 43. 21). Śāntiparva (296. 22-24) enumerates thirteen virtues common t...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-2/chapter-xxiv-influence-of-purānas-on-dharmashastra.html#p-chapter-xxiv-influence-of-purānas-on-dharmashastra-33" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">192.38 <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">... Śāṇḍilya was supposed to have promulgated the Bhāgavata or Pāñcarātra śāstra, because he did not find the highest bliss in all the four Vedaṣ In the <strong>Droṇaparva</strong> (29. 26-29) there is another and different reference to the four mūrtis of the Supreme for the benefit of the worlds viz. one performs tapas (austerities) on the...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-2/chapter-xxiv-influence-of-purānas-on-dharmashastra.html#p-chapter-xxiv-influence-of-purānas-on-dharmashastra-44" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">29.26-29 <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Index To Vol V <span class="ch-count">2</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">**<strong>Droṇaparva</strong>**, 90<sup class="fn-ref"><a href="#fn-index-to-vol-v-3" id="fnref-index-to-vol-v-3">3</a></sup>, 129, 539, 703<sup class="fn-ref"><a href="#fn-index-...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-55" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">... ( vide Śvetadvīpa ) ; Bāṇa mentions Bhāgavatas and Pañcarātras separately in Harṣacarita 955n ; doctrine is only one of several bhakti schools 962 ; <strong>Droṇaparva</strong> puts forward four forms ( mūrtis ) of Supreme Person different from those in Śāntiparva 956 ; general view of most medieval writers on Dharmaśāstra w...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-167" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/dronaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+</div>
+</body>
+</html>

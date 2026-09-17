@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- MDB UI Kit -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/fonts.css?v=1.2">
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/navbar.css?v=2.4">
+
+    <title>Chapter XIV. Gayā — Volume IV — History of Dharmaśāstra</title>
+    <style>
+    :root {
+        --saffron:        #D4600A;
+        --saffron-light:  #F0924A;
+        --saffron-wash:   rgba(212, 96, 10, 0.07);
+        --indigo:         #2E5FA3;
+        --indigo-dark:    #1C3D70;
+        --maroon:         #7A1E1E;
+        --amber:          #C97A1A;
+        --ink:            #1A1209;
+        --ink-secondary:  #4A3B2A;
+        --parchment:      #FDFAF4;
+        --parchment-mid:  #F5EFE2;
+        --rule:           rgba(180, 130, 60, 0.22);
+        --shadow:         0 2px 18px rgba(90, 50, 10, 0.08);
+        --font-devanagari: 'Tiro Devanagari Sanskrit', 'Siddhanta', 'Noto Sans Devanagari', serif;
+        --font-roman:      'Junicode', Georgia, serif;
+    }
+
+    body {
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: var(--font-roman);
+    }
+
+    .devanagari {
+        font-family: var(--font-devanagari);
+    }
+
+    /* ── Navbar overrides ── */
+    .navbar-ontop { z-index: 1031; }
+    .hdclr { color: var(--saffron); }
+    .engpara { font-family: 'Open Sans', sans-serif; }
+
+    /* ── Layout ── */
+    .dh-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .dh-content {
+        flex: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        background: var(--parchment);
+        box-shadow: var(--shadow);
+        min-height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        .dh-content { padding: 24px 20px; }
+        .dh-wrapper { flex-direction: column; }
+    }
+
+    /* ── TOC Sidebar ── */
+    .toc-sidebar {
+        position: sticky;
+        top: 80px;
+        width: 280px;
+        min-width: 280px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding: 20px 16px;
+        margin-right: 24px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        scrollbar-width: thin;
+    }
+
+    .toc-title {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--saffron-light);
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list li {
+        padding: 4px 0;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-list li.toc-l3 {
+        padding-left: 16px;
+        font-size: 0.78rem;
+    }
+
+    .toc-list li a {
+        color: var(--ink-secondary);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .toc-list li a:hover { color: var(--saffron); }
+
+    .toc-list li.active {
+        border-left-color: var(--saffron);
+    }
+
+    .toc-list li.active a {
+        color: var(--saffron);
+        font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-sidebar { display: none; }
+    }
+
+    /* ── Mobile TOC Toggle ── */
+    .toc-mobile-toggle {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1050;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--saffron);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-mobile-toggle { display: block; }
+    }
+
+    /* ── Section Headings ── */
+    .section-heading {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        margin: 48px 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--rule);
+        letter-spacing: 0.5px;
+        scroll-margin-top: 80px;
+    }
+
+    h2.section-heading { font-size: 1.6rem; }
+
+    h3.section-heading {
+        font-size: 1.25rem;
+        border-left: 4px solid var(--saffron-light);
+        border-bottom: none;
+        padding: 8px 16px;
+        background: var(--saffron-wash);
+        border-radius: 0 5px 5px 0;
+    }
+
+    /* ── Prose ── */
+    .prose {
+        font-family: var(--font-roman);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+        color: var(--ink);
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    .prose em { color: var(--maroon); }
+
+    .prose:target {
+        background: rgba(212, 96, 10, 0.12);
+        border-left: 4px solid var(--saffron);
+        padding-left: 16px;
+        margin-left: -20px;
+        border-radius: 0 6px 6px 0;
+        animation: target-pulse 2s ease-out;
+    }
+
+    @keyframes target-pulse {
+        0%   { background: rgba(212, 96, 10, 0.30); }
+        100% { background: rgba(212, 96, 10, 0.12); }
+    }
+
+    /* ── Footnote References ── */
+    .fn-ref {
+        font-size: 0.75em;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    .fn-ref a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 0 2px;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: color 0.15s;
+    }
+
+    .fn-ref a:hover { color: var(--indigo); }
+
+    /* ── Synopsis Box ── */
+    .synopsis-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron-light);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .synopsis-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .synopsis-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .synopsis-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .synopsis-box.open .synopsis-toggle i {
+        transform: rotate(90deg);
+    }
+    .synopsis-body {
+        display: none;
+        padding: 0 20px 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+    }
+    .synopsis-box.open .synopsis-body { display: block; }
+    .synopsis-body p { margin: 0; }
+    .synopsis-attribution {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: var(--ink-secondary);
+        opacity: 0.7;
+        font-style: italic;
+    }
+    .synopsis-audio {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    .synopsis-play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--saffron);
+        background: none;
+        color: var(--saffron);
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: background 0.2s, color 0.2s;
+        padding: 0;
+    }
+    .synopsis-play-btn:hover {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn.playing {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn i { padding-left: 2px; }
+
+    /* ── Index Terms Panel ── */
+    .index-terms-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .index-terms-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .index-terms-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .index-terms-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .index-terms-box.open .index-terms-toggle i {
+        transform: rotate(90deg);
+    }
+    .index-terms-body {
+        display: none;
+        padding: 0 20px 16px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .index-terms-box.open .index-terms-body { display: block; }
+    .index-terms-dl {
+        margin: 0;
+        padding: 0;
+    }
+    .index-terms-dl dt {
+        font-family: var(--font-roman);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+        margin-top: 8px;
+    }
+    .index-terms-dl dd {
+        margin: 2px 0 0 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        color: var(--ink-secondary);
+        line-height: 1.5;
+    }
+    .nyaya-heading {
+        font-family: var(--font-roman);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        margin: 16px 0 4px;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+    }
+
+    /* ── Inline Index Popovers ── */
+    .idx-term {
+        border-bottom: 1px dotted var(--saffron-light);
+        cursor: help;
+        position: relative;
+    }
+    .idx-term:hover::after {
+        content: attr(data-def);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        background: rgba(44, 36, 22, 0.92);
+        color: #F5ECD8;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        max-width: 280px;
+        z-index: 100;
+        white-space: normal;
+        line-height: 1.4;
+        pointer-events: none;
+    }
+
+    /* ── Structured Version Banner ── */
+    .structured-banner {
+        margin: 0 0 28px;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, rgba(212, 96, 10, 0.06) 0%, rgba(212, 96, 10, 0.02) 100%);
+        border: 1px solid var(--saffron-light);
+        border-radius: 6px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        color: var(--ink-secondary);
+        line-height: 1.6;
+    }
+    .structured-banner i { color: var(--saffron); margin-right: 4px; }
+    .structured-banner a { color: var(--indigo); font-weight: 600; text-decoration: none; }
+    .structured-banner a:hover { text-decoration: underline; }
+
+    /* ── Footnotes Section ── */
+    .footnotes-section {
+        margin: 32px 0 48px;
+        padding: 20px 24px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .footnotes-section hr {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 0 0 16px;
+    }
+
+    .footnotes-list {
+        padding-left: 24px;
+        margin: 0;
+    }
+
+    .footnote-item {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+        scroll-margin-top: 80px;
+    }
+
+    .footnote-item:target {
+        background: rgba(212, 96, 10, 0.1);
+        border-radius: 4px;
+        padding: 4px 6px;
+        margin-left: -6px;
+    }
+
+    .fn-back {
+        color: var(--saffron-light);
+        text-decoration: none;
+        font-size: 0.85em;
+        margin-left: 4px;
+    }
+
+    .fn-back:hover { color: var(--saffron); }
+
+    /* ── Reference Links ── */
+    a.ref {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: all 0.15s;
+    }
+
+    a.ref:hover {
+        color: var(--saffron);
+        border-bottom-style: solid;
+    }
+
+    a.mbta-ext {
+        color: var(--indigo);
+        font-size: 0.7em;
+        margin-left: 2px;
+        opacity: 0.5;
+        text-decoration: none;
+        vertical-align: super;
+    }
+    a.mbta-ext:hover { opacity: 1; color: var(--saffron); }
+
+    /* ── References Panel (sidebar) ── */
+    .refs-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .refs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .refs-list li {
+        padding: 3px 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .ref-source-link {
+        font-weight: 600;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .ref-source-link:hover {
+        text-decoration: underline;
+    }
+
+    .ref-verse-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.76rem;
+    }
+
+    .ref-verse-link:hover {
+        text-decoration: underline;
+        color: var(--saffron);
+    }
+
+    .ref-verses {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Timeline panel ── */
+    .timeline-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .timeline-list li {
+        padding: 2px 0;
+        font-size: 0.76rem;
+        line-height: 1.4;
+        position: relative;
+        padding-left: 14px;
+    }
+
+    .timeline-list li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--saffron);
+    }
+
+    .timeline-list li.tl-approximate::before {
+        background: transparent;
+        border: 2px solid var(--saffron);
+        width: 4px;
+        height: 4px;
+    }
+
+    .timeline-list li.tl-century::before {
+        background: transparent;
+        border: 2px dashed var(--saffron);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+
+    .tl-dot-link {
+        text-decoration: none;
+        color: var(--ink);
+        display: block;
+    }
+
+    .tl-dot-link:hover {
+        color: var(--saffron);
+    }
+
+    .tl-year {
+        font-weight: 600;
+        color: var(--saffron);
+        font-size: 0.72rem;
+        min-width: 70px;
+        display: inline-block;
+    }
+
+    .tl-label {
+        color: var(--ink-secondary);
+        font-size: 0.72rem;
+    }
+
+    .tl-view-link, .tl-more {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.72rem;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .tl-view-link:hover, .tl-more:hover {
+        text-decoration: underline;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+
+    .breadcrumb-bar a {
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+
+    .breadcrumb-bar .sep {
+        color: var(--amber);
+        margin: 0 8px;
+    }
+
+    .breadcrumb-bar .current {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Chapter Navigation ── */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        margin-top: 48px;
+        border-top: 2px solid var(--rule);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .chapter-nav a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        transition: all 0.2s;
+        max-width: 45%;
+    }
+
+    .chapter-nav a:hover {
+        background: var(--saffron-wash);
+        border-color: var(--saffron-light);
+    }
+
+    .nav-prev { text-align: left; }
+    .nav-next { text-align: right; margin-left: auto; }
+
+    .page-range {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+    }
+
+    /* ── Volume Cards (Landing) ── */
+    .vol-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .vol-card {
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        transition: all 0.25s;
+    }
+
+    .vol-card:hover {
+        border-color: var(--saffron-light);
+        box-shadow: 0 4px 24px rgba(212, 96, 10, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .vol-num {
+        font-family: var(--font-roman);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--saffron);
+        margin-bottom: 8px;
+    }
+
+    .vol-subtitle {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        line-height: 1.5;
+        flex: 1;
+    }
+
+    .vol-chapters {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        margin-top: 12px;
+    }
+
+    /* ── Chapter Cards (Volume Index) ── */
+    .chapter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .chapter-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .chapter-card:hover {
+        border-color: var(--saffron-light);
+        background: var(--saffron-wash);
+    }
+
+    .card-num {
+        font-family: var(--font-roman);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--saffron);
+        min-width: 36px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        flex: 1;
+    }
+
+    .card-pages {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        color: var(--ink-secondary);
+    }
+
+    /* ── Landing Hero ── */
+    .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-family: var(--font-roman);
+        font-size: 2.4rem;
+        color: var(--saffron);
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .hero .devanagari-title {
+        font-family: var(--font-devanagari);
+        font-size: 1.8rem;
+        color: var(--ink);
+        margin-bottom: 16px;
+    }
+
+    .hero .author {
+        font-family: var(--font-roman);
+        font-size: 1.1rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .hero .desc {
+        font-family: var(--font-roman);
+        font-size: 1rem;
+        color: var(--ink-secondary);
+        line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer { margin-top: 48px; }
+</style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mbta/">
+      <div class="container-fluid">&emsp;&emsp;
+      <a href="../index.html" class="navbar-brand" style="text-decoration:none;">
+        <span class="devanagari ms-3" style="font-size:1.5rem; color:var(--saffron); font-weight:700;">धर्मशास्त्रम्</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="../index.html">धर्मशास्त्रम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5 active" href="../index.html">खण्डाः</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in/mbta/">महाभारतम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in">सनातनम्</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+
+    <div class="dh-wrapper container-xl">
+        <nav id="toc" class="toc-sidebar">
+<div class="refs-panel">
+<h5 class="toc-title">References</h5>
+<ul class="refs-list">
+<li><a href="../refs/agni_purana.html" class="ref-source-link">Agnipurāṇa</a> <span class="ref-verses"><a href="../refs/agni_purana.html#c" class="ref-verse-link">c</a></span></li>
+<li><a href="../refs/aitareya_br.html" class="ref-source-link">Aitareya Brāhmaṇa</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mb_anushasana.html" class="ref-source-link">Anuśāsanaparva</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/apararka.html" class="ref-source-link">Aparārka</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/atharvaveda.html" class="ref-source-link">Atharvaveda</a> <span class="ref-verses"><a href="../refs/atharvaveda.html#I.14.4" class="ref-verse-link">I.14.4</a></span></li>
+<li><a href="../refs/kurma_purana.html" class="ref-source-link">Kūrmapurāṇa</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mahabharata.html" class="ref-source-link">Mahābhārata</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/manu.html" class="ref-source-link">Manusmṛti</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/matsya_purana.html" class="ref-source-link">Matsyapurāṇa</a> <span class="ref-verses"><a href="../refs/matsya_purana.html#22.4-6" class="ref-verse-link">22.4-6</a></span></li>
+<li><a href="../refs/padma_purana.html" class="ref-source-link">Padmapurāṇa</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/skanda_purana.html" class="ref-source-link">Skandapurāṇa</a> <span class="ref-verses"><a href="../refs/skanda_purana.html#I" class="ref-verse-link">I</a></span></li>
+<li><a href="../refs/mb_vanaparva.html" class="ref-source-link">Vanaparva</a> <span class="ref-verses"><a href="../refs/mb_vanaparva.html#87.11, 95.9" class="ref-verse-link">87.11, 95.9</a>, <a href="../refs/mb_vanaparva.html#84.82-103" class="ref-verse-link">84.82-103</a>, <a href="../refs/mb_vanaparva.html#c" class="ref-verse-link">c</a>, <a href="../refs/mb_vanaparva.html#84.I" class="ref-verse-link">84.I</a>, <a href="../refs/mb_vanaparva.html#84.1-81" class="ref-verse-link">84.1-81</a>, <a href="../refs/mb_vanaparva.html#95" class="ref-verse-link">95</a> <a href="../refs/mb_vanaparva.html" class="ref-verse-link">+1</a></span></li>
+<li><a href="../refs/vishnu_smriti.html" class="ref-source-link">Viṣṇu Smṛti</a> <span class="ref-verses"><a href="../refs/vishnu_smriti.html#i" class="ref-verse-link">i</a></span></li>
+<li><a href="../refs/vishnu_purana.html" class="ref-source-link">Viṣṇupurāṇa</a> <span class="ref-verses"><a href="../refs/vishnu_purana.html#V.33.37-38" class="ref-verse-link">V.33.37-38</a></span></li>
+<li><a href="../refs/vayu_purana.html" class="ref-source-link">Vāyupurāṇa</a> <span class="ref-verses"><a href="../refs/vayu_purana.html#c" class="ref-verse-link">c</a>, <a href="../refs/vayu_purana.html#77.108" class="ref-verse-link">77.108</a>, <a href="../refs/vayu_purana.html#ci" class="ref-verse-link">ci</a>, <a href="../refs/vayu_purana.html#i" class="ref-verse-link">i</a></span></li>
+<li><a href="../refs/rigveda.html" class="ref-source-link">Ṛgveda</a> <span class="ref-verses"><a href="../refs/rigveda.html#III.53.14" class="ref-verse-link">III.53.14</a>, <a href="../refs/rigveda.html#I.22.17" class="ref-verse-link">I.22.17</a>, <a href="../refs/rigveda.html#I" class="ref-verse-link">I</a></span></li>
+</ul>
+</div>
+<div class="timeline-panel">
+<h5 class="toc-title">Timeline</h5>
+<ul class="timeline-list">
+<li class="tl-exact"><a href="#p-chapter-xiv-gayā-2" class="tl-dot-link"><span class="tl-year">~483 BCE</span> <span class="tl-label">Viṣṇu Smṛti</span></a></li>
+<li class="tl-range"><a href="#p-chapter-xiv-gayā-2" class="tl-dot-link"><span class="tl-year">~429 BCE</span> <span class="tl-label">Viṣṇu Smṛti</span></a></li>
+<li class="tl-approximate"><a href="#p-chapter-xiv-gayā-24" class="tl-dot-link"><span class="tl-year">~250 BCE</span> <span class="tl-label">Viṣṇu Smṛti</span></a></li>
+<li class="tl-century"><a href="#p-chapter-xiv-gayā-1" class="tl-dot-link"><span class="tl-year">301 CE</span> <span class="tl-label">Viṣṇu Smṛti</span></a></li>
+<li class="tl-range"><a href="#p-chapter-xiv-gayā-7" class="tl-dot-link"><span class="tl-year">399 CE</span> <span class="tl-label">Vāyupurāṇa</span></a></li>
+<li class="tl-approximate"><a href="#p-chapter-xiv-gayā-7" class="tl-dot-link"><span class="tl-year">~400 CE</span> <span class="tl-label">Vāyupurāṇa</span></a></li>
+<li class="tl-century"><a href="#p-chapter-xiv-gayā-7" class="tl-dot-link"><span class="tl-year">601 CE</span> <span class="tl-label">Vāyupurāṇa</span></a></li>
+<li class="tl-century"><a href="#p-chapter-xiv-gayā-8" class="tl-dot-link"><span class="tl-year">801 CE</span> <span class="tl-label">Vāyupurāṇa</span></a></li>
+<li class="tl-century"><a href="#p-chapter-xiv-gayā-8" class="tl-dot-link"><span class="tl-year">1001 CE</span> <span class="tl-label">Vāyupurāṇa</span></a></li>
+<li class="tl-exact"><a href="#p-chapter-xiv-gayā-1" class="tl-dot-link"><span class="tl-year">1033 CE</span> <span class="tl-label">Viṣṇu Smṛti</span></a></li>
+<li class="tl-approximate"><a href="#p-chapter-xiv-gayā-8" class="tl-dot-link"><span class="tl-year">~1040 CE</span> <span class="tl-label">Vāyupurāṇa</span></a></li>
+<li class="tl-exact"><a href="#p-chapter-xiv-gayā-1" class="tl-dot-link"><span class="tl-year">1045 CE</span> <span class="tl-label">Viṣṇu Smṛti</span></a></li>
+<li><a href="chapter-xiv-gayā-timeline.html" class="tl-more">View all 17 dates &rarr;</a></li>
+</ul>
+<a href="chapter-xiv-gayā-timeline.html" class="tl-view-link">View full timeline &rarr;</a>
+</div>
+<h5 class="toc-title">Sections</h5>
+<ul class="toc-list">
+<li class="toc-l2"><a href="#chapter-xiv-gayā">Chapter XIV. Gayā</a></li>
+</ul>
+</nav>
+        <main class="dh-content">
+            
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep">›</span>
+        <a href="index.html">Volume IV</a>
+        <span class="sep">›</span>
+        <span class="current">Chapter XIV. Gayā</span>
+    </div>
+    
+            <h1 class="text-center" style="font-family: var(--font-roman); font-size: 2rem; color: var(--saffron); margin-bottom: 8px;">
+                Chapter XIV. Gayā
+            </h1>
+            <p class="text-center" style="font-family: 'Open Sans', sans-serif; color: var(--ink-secondary); font-size: 0.9rem; margin-bottom: 36px;">
+                Volume IV <span class="page-range">pp. 643–679</span>
+            </p>
+
+            
+    <div class="synopsis-box" id="synopsis">
+        <button class="synopsis-toggle" onclick="this.parentElement.classList.toggle('open')"
+                aria-expanded="false" aria-controls="synopsis-body">
+            <i class="fa-solid fa-chevron-right"></i>
+            Kane's Synopsis
+        </button>
+        <div class="synopsis-audio">
+            <span class="synopsis-play-btn" role="button" tabindex="0"
+                    onclick="toggleSynopsisAudio(this)"
+                    data-src="../audio/synopsis/vol-4/vol-4_sec014.mp3" title="Listen to synopsis">
+                <i class="fa-solid fa-play"></i>
+            </span>
+            <audio preload="none"></audio>
+        </div>
+        <div class="synopsis-body" id="synopsis-body">
+            <p>The chapter on Gayā begins by exploring its significance, drawing substantially from the *Gayāmāhātmya* found in chapters 105–112 of the *Vāyupurāṇa*. Scholarly views regarding the dating of this *Gayāmāhātmya* are also discussed, providing a crucial historical context. Further, the antiquity of key locations such as *Viṣṇupada* and *Gayāsiras* is highlighted through their mention in the *Nirukta*.
+
+A brief summary of the *Gayāmāhātmya*'s narrative is presented, leading to an identification of Gayā's most important spots. These include the *Phalgu* river, *Viṣṇupada*, and *Akṣayavaṭa*, which are central to the pilgrimage. The chapter also delineates the five *tīrthas* of Gayā. Central to the rituals performed here is the offering of *śrāddha* and *piṇḍas*, a practice deeply ingrained in Hindu custom. Finally, the chapter contextualizes Gayā's importance by listing it alongside other revered sites, such as the seven holy cities, the twelve *Jyotir-liṅgas*, and the four *Dhāmas*.</p>
+            <p class="synopsis-attribution">— Synopsis by P.V. Kane, from History of Dharmaśāstra</p>
+        </div>
+    </div>
+
+
+            
+
+            <h2 id="chapter-xiv-gayā" class="section-heading">Chapter XIV. Gayā</h2>
+<p class="prose" id="p-chapter-xiv-gayā-1">Gayā occupies a unique place in the hearts of all pious Hindus even in these dayṣ Hundreds of pages have been written about the history, the antiquities, the architectural remains of Gayā, the sacred places in and round about Gayā, the śrāddha rites performed in Gayā and about Gayāwals (the priests of Gayā). It is not possible to deal with this vast mass in this work. But it is impossible not to say a few words about the many conflicting views on certain important matters put forward by scholars for about three quarters of a century. Those who are deeply interested in the history and antiquities of Gayā should carefully read the following books and papers; Dr. Rajendralal Mitra's 'Buddha-Gayā' with 51 plates (1878); General Cunningham's 'Mahābodhi' with 31 plates at the end (1892); L. S. S. O'Malley's District Gazetteer of Gayā, vol. XII and J. A. S. B for 1903 LXXII, No. 3, pp 1-11 on 'Gayāśrāddha and Gayāvāls;' Indian Antiquary, vol X pp. 339-340 for a Chinese inscription at Buddha Gayā dated in a Chinese date corresponding to 1033 A. D. and pp. 341-347 for Inscriptions at Gayā, one of which is engraved in a temple of the Sun near a tank 'Dakṣiṇamānasa' near the <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>pada, dated 1813 years after Buddha's Parinirvāṇa; Indian Antiquary, vol 16 pp 63 ff Inscription of Yakṣapāla, son of Viśvāditya, which records the building of a temple for certain images in the 15th regnal year of the Pāla king Nayapāladeva who died in 1045 A. D., edited by Kielhorn; Dr. Benimādhav Barua's 'Gayā and Buddha-Gayā' in two volumes (1934) with plates; Journal of Bihar and Orissa R. Society, vol, 24 (for 1938) pp. 89-111 where Dr. J. C. Ghose deals with 'the antiquity of Gayā.' Some of the remarks of Dr Ghose are most unwarranted and cannot be accepted, such as holding 'maganda' in 'Pramagaṇḍasya' in <a class="ref" href="../refs/rigveda.html#III.53.14" data-source="rigveda" data-ref="III.53.14" title="Ṛgveda III.53.14">Rg. III. 53. 14</a> as identical with Magadha and the explanation of 'udantyāh' in the <a class="ref" href="../refs/aitareya_br.html" data-source="aitareya_br" data-ref="" title="Aitareya Brāhmaṇa">Ait. Br.</a> as 'people of sunrise.' Among medieval digests Gayā is dealt with in Kalpataru on Tīrthas pp 163-174, Tīrtha-cintāmaṇi of Vācaspati pp. 268-328, Trīsthālisetu of Nārāyanabhaṭṭa pp. 316-379, Tīrthaprakāśa pp. 384-452, Tīrthenḍu-śekhara pp. 54-59, Trīsthālisetu-sāra-saṅgraha of Bhaṭṭoji pp. 36-38. The most important work on Gayā relied upon in such works as the Tristhali-setu and in modern times is the Gayā-māhātmya that occurs at the end of the <a class="ref" href="../refs/vayu_purana.html" data-source="vayu_purana" data-ref="" title="Vāyupurāṇa">Vāyupurāṇa</a> (chapters 105–112 of the Ānandāśrama eḍ). Scholars differ about the antiquity of these chapterṣ Rājendralāl Mitra assigned the Gayā-māhātmya to the 3rd or 4th century A. D. O'Malley was inclined to hold that the legend of Gayāsura was invented in the 14th or 15th century, principally on the ground that the Gayāwals profess the Vaiṣṇava faith established by Madhvācārya<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-1" id="fnref-chapter-xiv-gayā-1">1</a></sup> and acknowledge as their spiritual head the mahant of Hari Narasimhāpura; vide J. A. S. B. vol. LXXII (1903) p. 4. To my mind there is hardly anything in thiṣ The Gayāwals are notorious for their indolence, dissoluteness and ignorance and they are a dying race. O'Malley himself notes in the paper mentioned above (at p. 8) that originally the families of Gayāwals were 1484, that in Buchanan Hamilton's time they numbered about 1000, that in 1893 a Gayāwal counted 128 families, that in the census of 1901 there existed only 168 males (as pure Gayāwals) and 153 femaleṣ Gayā is a place sacred to <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> and if the Gayāwals had to turn in medieval times for support to some great ācārya they would naturally choose to align themselves with the Vaiṣṇava ācārya Madhva rather than with Śaṅkara Dr. Barua, after an elaborate examination of the several items of evidence, holds 'that' the Gayā-māhātmya is not earlier than the 13th or 14th century A. D. (vol. I, p. 64 of 'Gayā and Buddha Gayā'). From considerations of the space at my disposal I cannot examine in detail his arguments His conclusion is vitiated mainly for two reasonṣ He relies too much on the dubious and unconvincing argument from silence. He examines the account of Gayā that appears in the <a class="ref" href="../refs/mb_vanaparva.html" data-source="mb_vanaparva" data-ref="" title="Vanaparva">Vanaparva</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> and compares it with the fuller account in the Gayāmāhātmya and arrives at the rather startling conclusion 'The Gayā proper as known to the Epic (the <a class="ref" href="../refs/mahabharata.html" data-source="mahabharata" data-ref="" title="Mahābhārata">Mahābhārata</a>) is essentially a place sacred to Yama Dharmarāja, Brahmā and Śivaśūlin, and <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> and Vaiṣṇavism has no place in it either as a name or as an idea, Except Brahmayūpa, Śivalingā and Vṛṣabha there is no reference to any structural erection nor any iconic suggestion'. In order to show how this conclusion is not at all justified the references to Gayā in the Epic and other Sanskrit works will have to be set out and compared with each other and with the Gayāmāhātmya. The second reason that vitiates Dr. Barua's conclusion is the wrong interpretation that he puts on verse 12 of the Inscription edited by Kielhorn in I. A., vol 16,</p>
+<p class="prose" id="p-chapter-xiv-gayā-2">I shall now turn to the name Gayā and references to it or similar names from the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> downwardṣ A Gayā, son of Plati, is the reputed author of two hymns of the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> (X. 63 and X. 64). In Ṛg X. 63. 17 and X. 64. 17 we have the words 'astāvi jano divyo Gayena' (the divine host was praised by Gayā). So Gayā was a proper name applied to a composer of Ṛgvedic hymnṣ In the Ṛg, the word Gayā has several other senses, which are not material here. In the <a class="ref" href="../refs/atharvaveda.html#I.14.4" data-source="atharvaveda" data-ref="I.14.4" title="Atharvaveda I.14.4">Atharvaveda (I. 14.4)</a> Gayā appears to be a wonder-worker or a sorcerer along with Asita and Kaśyapa. Even in the Vedic Saṁhitās Asuras, Dāsas and Rākṣasas are credited with tricks and magic. Vide Ṛg VII 99.4, VII. 104.24-25 and Atharva IV. 23. 5. It is not difficult to imagine how a sorcerer Gayā could have been transformed into Gayāsura later oṇ Proceeding further, the Nirukta <sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-2" id="fnref-chapter-xiv-gayā-2">2</a></sup> while explaining 'idam <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>r-vi cakrame tredhā nidadhe padam' (<a class="ref" href="../refs/rigveda.html#I.22.17" data-source="rigveda" data-ref="I.22.17" title="Ṛgveda I.22.17">Ṛg. I. 22. 17</a>) gives two very interesting interpretations, one explaining the verse as a natural phenomenon and the other explaining it from geographical or legendary points of view 'He (<a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>) puts down his foot in three wayṣ According to Śakapūṇi, <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> plants his foot on the earth, in mid air (sky) and heaven; according to Aurnavābha, on Samārohaṇa, on <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>pada and on Gayaśiraṣ' Whatever the Vedic verse may mean, it is clear that two interpretations had arisen several centuries before Christ and if the usual dates about Buddha's nirvāṇa are accepted Aurnavābha and Yāska both flourished before Buddha. Vide S. B. E., vol. XIII pp. XXII-XXIII for Buddha's nirvāṇa being placed at 483 B. C. according to Ceylonese chronicle, while some western scholars would place it between 429-400 B. C. <sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-3" id="fnref-chapter-xiv-gayā-3">3</a></sup> Gayaśiras is named in the <a class="ref" href="../refs/mb_vanaparva.html#87.11, 95.9" data-source="mb_vanaparva" data-ref="87.11, 95.9" title="Vanaparva 87.11, 95.9">Vanaparva (87. 11, 95. 9)</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva#P03_U07_A087_S011" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>, in the Visnudharma-sūtra 85,4 (in the form Gayā- śīrṣa), Vāmanapurāņa (22,20 as the eastern vedi of Brahmā), Skanda I, 2, 13,21 and even in the Buddhist books such as the Mahāvagga (I 21. 1, S. B. E. vol. XIII p. 134) in which last it is said that after having dwelt at Uruvela, Buddha accom- panied by a thousand bhikkhus went to Gayāśīṣa (which is the Pali equivalent of Gayāśīrsa). Traditions of Gayā as a king of the territories round about Gayā are mentioned in Jaina and Buddhist workṣ The Uttarādhyayanasūtra (S B E. vol. 45 p. 86 and note 3 there) states that he was son of king Samudravijaya of Rājagṛha and became the 11th Cakravartiṇ The Buddhacarita of Aśvaghoṣa states that Buddha visited the hermitage called a city of the royal sage Gayā, that the saint (future Buddha) fixed his dwelling on the pure bank of the Nairanjanā river (S. B. E vol. 49 part 1 p. 132, Canto XII. 87-88) and p. 193 (chap XVII. 8 of the same work) and that Buddha went to the hermitage of Kāśyapa at Gayā called Uruvilvā. The same work (S. B E vol. 49 part 1 p 192) speaks of Dharmāṭavī where dwelt 700 ascetics whom Buddha helped to enter nirvāņa. <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>pada occurs in the <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>dharmasūtra 85 40 as a holy place very fit for śrāddha. In my opinion at least Aurṇavābha held that in a particular region there were three places on which according to the legends current in his time the foot-prints of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>'s foot could be seen <sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-4" id="fnref-chapter-xiv-gayā-4">4</a></sup>. Two of IV] these, <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>pada and Gayaśiras are well-known; hence it would not be unreasonable to hold that ‘Samārohaṇa’ is a place and has to be located somewhere near the other two. Samārohaṇa means ‘mounting up’ or ‘ascending’. This word probably refers to the ascent of the hill that rises up from the river Phalgu. It is also possible that it is the same as the Udyanta hill echoing with the warbling (of birds) <sup>1472</sup> I therefore hold that at least 600 years before Christ (and hence even before Buddha) there was a tradition about <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>’s footprints in at least two well-known places viz. <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>pada and Gayā-śiras (both in Gayā). Even if some other work does not mention any one of these it does not follow from mere non-mention that that spot was not so named or did not exist.</p>
+<p class="prose" id="p-chapter-xiv-gayā-3">Let us now turn to the <a class="ref" href="../refs/mb_vanaparva.html" data-source="mb_vanaparva" data-ref="" title="Vanaparva">Vanaparva</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>. Dr. Barua mainly relies on <a class="ref" href="../refs/mb_vanaparva.html#84.82-103" data-source="mb_vanaparva" data-ref="84.82-103" title="Vanaparva 84.82-103">Vanaparva 84. 82-103</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva#P03_U07_A084_S082" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> and 95. 9-29. But some preliminary remarks must be made before the two passages are examineḍ</p>
+<p class="prose" id="p-chapter-xiv-gayā-4">The Nāradīyapurāṇa (uttara, 46. 16) states that Gayaśiras extends from Krauñcapada to Phalgutirtha.</p>
+<p class="prose" id="p-chapter-xiv-gayā-5"><a class="ref" href="../refs/mb_vanaparva.html#c" data-source="mb_vanaparva" data-ref="c" title="Vanaparva c">Vanaparva c</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>hapter 82 sets out Pulastya’s replies to Bhīṣma’s question about tīrthaṣ First comes Puṣkara (verses 20-40), then Jambumārga, Tandulikāśrama, Agastyasarali, Mahākāla, Koțitirtha, Bhadravata (Sthānutirtha), Narmadā, Prabhāsa and several other tīrthas (not in any particular order but selected at random). In chap. 83 Kurukṣetra is described at some length.</p>
+<p class="prose" id="p-chapter-xiv-gayā-6">Before discussing the most important passage of the <a class="ref" href="../refs/mb_vanaparva.html" data-source="mb_vanaparva" data-ref="" title="Vanaparva">Vana- parva</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> (viz. 84. 82-103) we must see what precedes the descrip- tion of Gayā. Dr. Barua and many of those that have written on this passage have not carefully considered the implications of verses 1-81 of chapter 84 and also of the following chapterṣ In <a class="ref" href="../refs/mb_vanaparva.html#84.1-81" data-source="mb_vanaparva" data-ref="84.1-81" title="Vanaparva 84.1-81">Vanaparva 84. 1-81</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva#P03_U07_A084_S001" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> the author makes Dhaumya name about 57 holy places (including such famous ones as Naimisa, Sakambhari, Gangādvāra, Kanakhala, the confluence of Ganga and Yamuna, Kubjāmraka) and then comes to speak of the sacred spots in Gayā<sup>1473</sup>. It is therefore clear that the intention of the author is not to speak exhaustively about any tīrtha. For this reason some tīrthas are described twice in the <a class="ref" href="../refs/mb_vanaparva.html" data-source="mb_vanaparva" data-ref="" title="Vanaparva">Vana- parva</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>. For example Naimisa is very highly praised in chap. 81, 59-64 and again in chap. 87, 6-7. The same happens with regard to Gayā in 85.82-103 and 87.8-12. We cannot at all presume from the manner in which tīrthas in Gayā are named and des- cribed that the writer of <a class="ref" href="../refs/mb_vanaparva.html" data-source="mb_vanaparva" data-ref="" title="Vanaparva">Vanaparva</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> (chap. 84. 82–103) meant to be exhaustive as regards the holy spots in Gayā or the legends about Gayā. This conclusion is very much strengthened by the fact that in the <a class="ref" href="../refs/mb_anushasana.html" data-source="mb_anushasana" data-ref="" title="Anuśāsanaparva">Anuśāsanaparva</a><a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> three sacred spots in Gayā are mentioned which do not occur in <a class="ref" href="../refs/mb_vanaparva.html#84.82-103" data-source="mb_vanaparva" data-ref="84.82-103" title="Vanaparva 84.82-103">Vanaparva 84. 82–103</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva#P03_U07_A084_S082" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> viz. 'In Gayā a man becomes purified in Āśmapṛṣṭha (the same as Pretaśīlā), on the hill Niravinda and of even a third brāhmaṇa murder in Krauñcapadī'.<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-9" id="fnref-chapter-xiv-gayā-9">9</a></sup> These three, Āśmapṛṣṭha, Nira- vinda and Krauñcapadī, are in addition to those sacred spots that are mentioned in <a class="ref" href="../refs/mb_vanaparva.html#84.I" data-source="mb_vanaparva" data-ref="84.I" title="Vanaparva 84.I">Vanaparva 84. I</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>n Vayu 109. 15 a hill Aravindaka is said to be a peak of the Śīlāparvata and Nāradīya (uttara 47. 83), Vāyu 108. 75 and Nāradīya (uttara 46. 16) men- tion the hill Krauñcapada (Muṇḍa-pṛṣṭha was so called) There- fore it is clear that three important sites in the Gayāmāhātmya are mentioned by the <a class="ref" href="../refs/mb_anushasana.html" data-source="mb_anushasana" data-ref="" title="Anuśāsanaparva">Anuśāsanaparva</a><a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>.</p>
+<p class="prose" id="p-chapter-xiv-gayā-7">It was unfortunate that Dr. Barua confined his attention on the question of the antiquity of Gayā to merely three works viz. the <a class="ref" href="../refs/mb_vanaparva.html#c" data-source="mb_vanaparva" data-ref="c" title="Vanaparva c">Vanaparva c</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>hapters 84 and 95, the <a class="ref" href="../refs/agni_purana.html#c" data-source="agni_purana" data-ref="c" title="Agnipurāṇa c">Agnipurāṇa c</a>hap. 114–116 and the <a class="ref" href="../refs/vayu_purana.html#c" data-source="vayu_purana" data-ref="c" title="Vāyupurāṇa c">Vāyupurāṇa c</a>hapters 105–112. He did not care to investigate all the other Purāṇas nor did it strike him that the explanation of three padas of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> furnished by Aurnavābha probably referred to spots around Gayā alone. Other Purāṇas such as Padma (Ādīkhaṇḍa 38. 2–21), Garuḍa I chapters 82–86, and the Nāradīya (uttara chap. 44–47) contain much that concerns Gayā and all of them have many verses in commoṇ The critical edition of the <a class="ref" href="../refs/mahabharata.html" data-source="mahabharata" data-ref="" title="Mahābhārata">Mahābhārata</a> (published by the B. O. R. I., Poona) reads ‘sāvitram padam’ (chap. 82.81) for ‘sāvitryāstu padam’ of the Bombay editioṇ The reading of the critical edition is supported by numerous and ancient Msṣ Further, the printed <a class="ref" href="../refs/padma_purana.html" data-source="padma_purana" data-ref="" title="Padmapurāṇa">Padmapurāṇa</a> (in Ādīkhaṇḍa 38. 13) reads ‘Sāvitram padam’ and thus lends support to the reading adopted in the critical editioṇ The words ‘sāvitram padam’ may be taken to mean the foot-print of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> (Savitṛ). Dr. Barua goes very much further than the facts warrant when he says that there is no reference in the <a class="ref" href="../refs/mb_vanaparva.html" data-source="mb_vanaparva" data-ref="" title="Vanaparva">Vanaparva</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> to any struc- tural erection or iconic suggestioṇ It is clear that there must have been an image of Dharma, since the <a class="ref" href="../refs/mb_vanaparva.html" data-source="mb_vanaparva" data-ref="" title="Vanaparva">Vanaparva</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> speaks of The pilgrim to Gayā having to touch Dharma (Dharmam ista-bhi-samspṛśya). Besides, there is a reference to the footprints of a cow with a calf and to 'Savitra pada'. All these would surely be things that have an 'iconic suggestion'. Moreover, Dr. Barua forgets for the moment that, according to the Chinese traveller Fa Hien who visited India between 399–413 A. D., the Gayā of the Hindu faith was 'all emptiness and desolation' (vide Legge's translation p. 87). It is possible that Gayā might have suffered from earthquakes before 400 A. D. (as it is a region that is liable to severe earthquakes even in modern times) and therefore no structural erection of the ancient city of Gayā (to which ancient Pāli works and the Lalitavistara p 311 refer) might have been left in Fa Hien's day. Gayā appears to have passed through several vicissitudeṣ Some centuries before the Christian era it was in existence and was a flourishing towṇ By 400 A. D. it had been reduced to desolatioṇ But in the 7th century the Chinese traveller Hiouen Thsang notes that the Hindu Gayā was a town with 1000 brāhmaṇa families (vide Beal's B. R. W. W. vol. II p. 113). Later on when Buddhism waned and vanished, Gayā came to comprehend even Buddhist remnants, since the <a class="ref" href="../refs/vayu_purana.html" data-source="vayu_purana" data-ref="" title="Vāyupurāṇa">Vāyupurāṇa</a> speaks of Gayā as extending from Pretasilā to Mahābodhi tree (a distance of about 13 miles, according to Mitra p 19).</p>
+<p class="prose" id="p-chapter-xiv-gayā-8">Dr. Barua has also misunderstood verse 12 of the inscription at Gayā edited by Dr. Kielhorn in I. A. vol 16 p. 63 ff. The verse<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-10" id="fnref-chapter-xiv-gayā-10">10</a></sup> set out below may be translated as follows: That wise (prince Yaksapala) caused to be constructed a temple for the images of Maunāditya and the other gods (mentioned in it), he dug up the famous Uttaramānasa lake and esta-blished a sattra (charity house for food) near the Akṣaya (vata)'. This inscription of the reign of Nayapāla was IV] engraved about 1040 A.D. Dr. Barua thought that Uttaramānasa was dug up at that time and therefore Uttaramānasa tank is taken to be not older than 1040 A. D. and that it and many of the sacred spots must have been later and the Gayā-māhātmya which speaks of Uttaramānasa must be much later than the 11th century A. D. But Dr Barua is entirely mistaken in thiṣ If a tank was dug up for the first time at the time of the inscription, it is impossible that it should have been called ‘khyāta’ (famous). The tank can become famous some centuries after it was dug. Uttaramānasa tank is mentioned as a sacred spot in <a class="ref" href="../refs/vayu_purana.html#77.108" data-source="vayu_purana" data-ref="77.108" title="Vāyupurāṇa 77.108">Vāyupurāṇa 77. 108</a> (which verse is quoted about 1110 A. D. in the Kalpataru on tīrtha at p. 168), Vāyu 82. 21, Agni 115. 10. Therefore Uttaramānasa tank was well known at least in the 8th or 9th century A. D. What the inscription means is either that the famous tank had silted up and so it was dug up or that it was made longer, broader and deeper in about 1040. That is all.</p>
+<p class="prose" id="p-chapter-xiv-gayā-9">In my opinion the Gayāmāhātmya (Vāyu, chap. 105-112), though possibly later than the main text of the <a class="ref" href="../refs/vayu_purana.html" data-source="vayu_purana" data-ref="" title="Vāyupurāṇa">Vāyupurāṇa</a>, cannot be placed so late as the 13th or 14th century A. D. It is really a patch-work from many sources of earlier times such as the <a class="ref" href="../refs/mb_vanaparva.html" data-source="mb_vanaparva" data-ref="" title="Vanaparva">Vanaparva</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>, <a class="ref" href="../refs/mb_anushasana.html" data-source="mb_anushasana" data-ref="" title="Anuśāsanaparva">Anuśāsanaparva</a><a href="https://sanatana.in/mbta/listing/parva/anushasanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>, Padma I 38, the Nāradīya (uttara) chap. 44-47 Several verses and half verses of it are repetitions (such as the half verse ‘Gayāyāṁ akṣayaṁ śrāddham japahomatapāṁsī ca’ Vāyu 108 35 and Vāyu 82.43 quoted as from Vāyu in Kalpataru on tīrtha p. 167, and Vāyu 110. 29-30 are the same as Vāyu 105.37-38. So also Vāyu 82. 31-33 are the same as Vāyu 110. 51-53. Dr. Barua does not notice that in Vāyu (20-24) several sub-tīrthas of Gayā are expressly mentioned viz. Brahmakuṇḍa, Prabhāsa, Pretaparvata, Uttaramānasa, Udici, Kanakhala, Dakṣiṇamānasa, Dharma-araṇya, Gadādhara, Mātaṅga; so also chap 77. 97-108 mention Gṛdhrakūṭa, hermitage of Bharata, Mātaṅgapada, Muṇḍapṛṣṭha and Uttaramānasa. Many of the verses occurring in the Gayāmāhātmya are found quoted in the Smṛticandrikā <sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-11" id="fnref-chapter-xiv-gayā-11">11</a></sup> (about 1150-1225 A. D.) on śrāddha and Āśauca (without name) as briefly exemplified below. I think that the Gayāmāhātmya is to be assigned to some date between the 7th and 10th centuries A. D.</p>
+<p class="prose" id="p-chapter-xiv-gayā-10">Having disposed of the question of the date of the Gayā- māhātmya and the references to the sacred spots in Gayā in <a class="ref" href="../refs/mb_vanaparva.html#c" data-source="mb_vanaparva" data-ref="c" title="Vanaparva c">Vanaparva c</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>hap. 84, it is necessary to see how Gayā is spoken of in the other parts of the <a class="ref" href="../refs/mahabharata.html" data-source="mahabharata" data-ref="" title="Mahābhārata">Mahābhārata</a> and the smṛtis In the <a class="ref" href="../refs/mb_vanaparva.html#i" data-source="mb_vanaparva" data-ref="i" title="Vanaparva i">Vanaparva i</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>tself references to Gayā occur in chap. 87 and chap. 95. <a class="ref" href="../refs/mb_vanaparva.html" data-source="mb_vanaparva" data-ref="" title="Vanaparva">Vanaparva</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>, chap. 87, starts by saying that going towards the east (from Kāmyaka-vana where the Pāṇḍavas dwelt for some time) the pilgrim would come to the Naimiśa forest and the Gomati river. Thus it is said that in the east there is a holy hill called after Gayā and a holy pool called Brahmasaras; then comes a famous verse <sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-13" id="fnref-chapter-xiv-gayā-13">13</a></sup> 'one should desire to have many sons if even one (of whom) goes to Gayā, or performs the Aśvamedha sacri- fice or lets loose a <em>nīla bull</em> (the pitrs may be gratified ). Then <a class="ref" href="../refs/mb_vanaparva.html#c" data-source="mb_vanaparva" data-ref="c" title="Vanaparva c">Vanaparva c</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a>hap. 87 goes on to refer to the holy river (mahā- nadi) Phalgu, the hill Gayāśiras, the Akṣayya Vaṭa, where food offered to pitrs becomes inexhaustible. In <a class="ref" href="../refs/mb_vanaparva.html#95" data-source="mb_vanaparva" data-ref="95" title="Vanaparva 95">Vanaparva 95</a><a href="https://sanatana.in/mbta/listing/parva/vanaparva#P03_U07_A095" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> men- tion is made of Brahmasaras (where Agastya went to Dharma- rāja i. e. Yama, verse 12), of Akṣayavaṭa (v. 14) which is an imperishable place of worship and where the fruit (of offerings made) is inexhaustible; it further states that king Gayā, son of Amūrtarayās, <sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-14" id="fnref-chapter-xiv-gayā-14">14</a></sup> performed a sacrifice in which food and fees in plenty were distributed (verses 18–19). Vaṣ (XI. 42) states: when a man goes to Gayā and offers food his ancestors become delighted like agriculturists that rejoice when there is good rain and pitrs become (really) <em>putrin</em> (having a son) on account of such a son The Visnudharmasūtra, chapter 85,<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-15" id="fnref-chapter-xiv-gayā-15">15</a></sup> mentions by name about 55 holy places that are most proper for śrāddha among which those connected with Gayā are Gayāśīrṣa, Akṣaya- vaṭa, Phalgu, Uttaramānasa, Mātangavāpī, <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>pada, and winds up by quoting three verses as <em>gāthās</em> sung by pitrṣ–Yaj. I. 261 states that whatever a man gives while in Gayā leads to inexhaustible rewardṣ Atri-smṛti (55-58) refers to a son's going to Gayā for the benefit of the pitrs, to a bath in Phalgu and <em>tarpaṇa</em> of pitrs in the river, to seeing Gadādhara (<a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>) at Gayā and to Gayāśīrṣa. Śankha (14 27–28) refers <sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-16" id="fnref-chapter-xiv-gayā-16">16</a></sup> to several tīrthas (one being Gayā) the offerings made at which become inexhaustible. The Likhita-Smṛti speaks<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-17" id="fnref-chapter-xiv-gayā-17">17</a></sup> of the importance of Gayā as follows: In whosesoever name a piṇḍa is offered at Gayāśiras, whether for oneself or for another, that person, if in hell, goes to heaven and if in heaven that man secures release (from saṃsāra). The <a class="ref" href="../refs/kurma_purana.html" data-source="kurma_purana" data-ref="" title="Kūrmapurāṇa">Kūrmapurāṇa</a> remarks that one should desire to have many sons so that if one out of them goes to Gayā on some other business and offers śrāddha, he thereby saves his pitṛs and himself reaches the highest goal. The <a class="ref" href="../refs/matsya_purana.html#22.4-6" data-source="matsya_purana" data-ref="22.4-6" title="Matsyapurāṇa 22.4-6">Matsyapurāṇa (22. 4-6)</a> quoted by the Kalpataru (on tīrtha p. 163) speaks of Gayā as pitṛtīrtha and as the best among tīrthas where Brahmā himself dwells and also has the verse 'estavyā bahavah putrāḥ'.</p>
+<p class="prose" id="p-chapter-xiv-gayā-11">In the Gayāmāhātmya (<a class="ref" href="../refs/vayu_purana.html" data-source="vayu_purana" data-ref="" title="Vāyupurāṇa">Vāyupurāṇa</a>, chapters 105-112) there are about 560 verseṣ An attempt will be made here to give a brief summary of it and some of the important verses will be quoteḍ Chapter 105 is general and briefly indicates some of the main topics dealt with in the following chapterṣ It states that in Śvetavārāhakalpa Gayā performed a sacrifice and Gayā was named after him<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-18" id="fnref-chapter-xiv-gayā-18">18</a></sup>, that pitṛs hanker after sons because the son that goes to Gayā saves the pitṛs from hell<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-19" id="fnref-chapter-xiv-gayā-19">19</a></sup>. At Gayā a man should offer piṇḍas to his father and others and even to himself but without sesame; all the five mortal sins like brāhmaṇa-murder are removed by the performance of śrāddha at Gayā. A piṇḍa offered after uttering the name and gotra of the recipient by the son or any other person in Gayā leads that person to the imperishable brahma<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-20" id="fnref-chapter-xiv-gayā-20">20</a></sup> (i. e. results in four ways) viz. by knowledge of brahma, śrāddha at Gayā, death in (a fight for preventing) the seizure of cows and residence in Kurukṣetra and śrāddha at Gayā renders the others unnecessary <sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-21" id="fnref-chapter-xiv-gayā-21">21</a></sup>. Śrāddha may be performed at Gayā at all times, even in an intercalary month, on the anniversary of one's birthday, or even when Jupiter and Venus are invisible or when Jupiter is in Leo. One should honour the brāhmaṇas (of Gayā) that were established there by Brahmā; when they are gratified all dęities together with the pitṛs are gratifieḍ Tonsure <sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-22" id="fnref-chapter-xiv-gayā-22">22</a></sup> and fast are to be observed at all tīrthas except in Kurukṣetra, Viśālā, Virajā and Gayā. An ascetic <sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-23" id="fnref-chapter-xiv-gayā-23">23</a></sup> (sannyāsin) should not offer piṇḍas (at Gayā) but should merely exhibit (hold up) his staff and should put it down on <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>pada. The (whole) Gayākṣetra is five krośas in extent and Gayāśiras is one krośa and all the tīrthas of the three worlds are centered in these two <sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-24" id="fnref-chapter-xiv-gayā-24">24</a></sup>. At Gayā one may offer (to pitṛs) piṇḍas by means of pāyasa (rice cooked in milk), boiled rice, barley flour, fruits and roots, the cake of sesame (after oil is extracted), sweetmeats or jagery with ghee or with curds alone or with invigorating honey. In a śrāddha at Gayā, the procedure consists in preparing <sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-25" id="fnref-chapter-xiv-gayā-25">25</a></sup> a seat for the piṇḍas, the offering, the sprinkling of water again (on the kuśa grass), giving fees and declaration of dinner (to brāhmaṇas); but there is no invocation of pitṛs, no curtains for privacy and no blemish due to śrāddha being seen (by undesirable persons or animals) Those who desire to reap the full fruit of śrāddha performed at a tīrtha (like Gayā) must give up passionate longings, anger and avarice, observe celibacy, eat only one meal a day, should sleep on the ground (and not on a cot), should speak the truth, should be pure and intent on the good of all beingṣ The famous river Vaitaraṇī has come down to Gayā; one taking a bath in it and donating a cow saves 21 generations in his family. One should go to the Akṣayavaṭa and gratify the (Gayā) brāhmaṇaṣ There is no spot in Gayā which is not a sacred place.<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-26" id="fnref-chapter-xiv-gayā-26">26</a></sup></p>
+<p class="prose" id="p-chapter-xiv-gayā-12">Chap. 106 narrates the story of Gayāsura. Gayāsura, a very powerful asura 125 yojanas in height and 60 yojanas in girth, performed severe austerities for thousands of years on the mountain called Kolāhala. The gods, anxious and tormented by his austerities, went to Brahmā for protectioṇ Brahmā took them to Śiva who proposed to go to <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>. Brahmā and the gods praised <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>, who appeared to them and said that they should, riding their respective conveyances, go to Gayāsura. <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> asked him why he practised severe austerities and said that the boon he would ask would be granteḍ He asked the boon that he should be purer than all the gods, sages, mantras, ascetics &c. The gods said ‘Let it be so’ and left for heaveṇ All people who saw or touched Gayāsura's holy body went to heaveṇ The capital of Yama became deserted and so he went to Brahmā who took him to <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> who asked Brahmā to request Gayāsura to give his pure body for the purpose of a sacrifice. Gayāsura agreed and fell down on the earth towards the southwest with his head on the north on Kolāhala mountain and feet to the south. Brahmā collected materials and mind-born ṛtviks (about 40 are named) and performed a sacrifice on the body of Gayāsura. That body, however, was not stable but moved and hence Brahmā asked Yama to place on Gayāsura's head a śilā (stone slab) that was in Yama's house. Yama did so; yet Gayāsura's body together with the śilā still moveḍ Brahmā asked Śiva and other gods to stand immoveable on the śilā. They did so and yet the body moveḍ Hence Brahmā went to <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> and requested him to make the body and śilā stable. <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> gave his own mūrti and though it was placed on the śilā it still moveḍ Then <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> sat on the śilā in three forms viz Janārdana, Puṇḍarīka and Ādi-Gadādhara, Brahmā in five forms (Prapitāmaha, Pitāmaha, Phalguvīśa, Kedāra and Kanakeśvara), Vināyaka in the form of an elephant, the Sun in three forms, the Goddesses Lakṣmī (as Sitā), Gaurī (as Mangalā), Gāyatrī and Sarasvatī. As Gayāsura was made stable by the first Gadā (mace) wielded by Hari, therefore Hari was called Ādigadā- dhara.<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-27" id="fnref-chapter-xiv-gayā-27">27</a></sup> Gayāsura complained 'why am I deceived? I have given my pure body to Brahmā for the latter's sacrifice. Would I not have become stable at the mere word of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> (why tor- ment me with the mace?).' Then the gods asked him to choose a booṇ He chose 'As long as the earth, mountains, the Sun, Moon and stars last, may Brahmā, <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> and Śiva and the other gods remain on the śīla<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-79" id="fnref-chapter-xiv-gayā-79">79</a></sup> Let this sacred spot be known by my name. Let all tīrthas be centered in the midst of Gayā which is five krośas in extent and in Gayāśiras which is one krośa and do good to people. May all the gods remain here in manifest forms (images &c ) and unmanifest forms (such as footprints &c ) ' Those to whom śrāddha with pindas is offered may go to the world of Brahmā and all grave sins like brāhmaṇa-murder be destroyed at once.' The gods said 'Let it be so.' Then Brahmā gave to the brāhmaṇas Gayā (with its extent of five krośas), 55 villages, well-furnished houses, desire-yielding cow and trees, a river flowing with milk, golden wells, heaps of food, but enjoined on them not to beg from any one else. But the brāhmaṇas, greedy as they were, performed a sacrifice for Dharma in Dharmāranya and begged him for feeṣ Then Brahmā came, cursed them and took away everything from theṃ When the brāhmaṇas bewailed that they had been deprived of everything and their livelihood should be provided for, Brahmā said that they would live on the charity of pilgrims to Gayā and those who would honour them would be honouring Brahmā.</p>
+<p class="prose" id="p-chapter-xiv-gayā-13">Chap. 107 deals with the story of the śīlā<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-28" id="fnref-chapter-xiv-gayā-28">28</a></sup> that was placed on the head of Gayāsura for making it stable. Dharma had a daughter called Dharmavratā. Dharma could not find a bridegroom worthy of her virtues and accomplishments and asked her to perform <em>tapas</em> for the purpose. She performed severe austerities (subsisting only on air) for ten thousand yearṣ Marīci, one of the mind-born sons of Brahmā, once saw her and asked her to become his wife. Dharmavratā asked him to request her father Dharma. Marīci approached Dharma who gave her in marriage to Marici, who took her to his hermitage and had one hundred sons from her. Once Marici being tired lay down for sleep and asked Dharmavratā to shampoo his feet. While she shampooed his feet Brahmā (her father-in-law) came there. She left off shampooing her husband's feet and got up to receive with honour her husband's father. In the meanwhile Marici awoke and not seeing his wife cursed her to be a śilā (stone slab) as she disobeyed his order by giving up the shampooing of his feet. She being innocent of any fault got angry and was about to curse Marici but said 'Mahādeva will curse you'. She, standing in the midst of Gārhapatya fire, performed tapas and Marici also did the same. The gods led by Indra got anxious as usual and went to <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> who asked her to choose a booṇ She prayed that the curse pronounced by her husband be annulleḍ The gods said that Marici being a great sage the curse could not be annulled and asked her to choose some other booṇ She said that she should be a śilā more holy than all rivers, sages and gods and that all tīrthas should stand in the slab of stone, that those who would bathe in the tīrthas on the śilā and offer piṇḍas and śrāddha should be able to go to brahmaloka, that all holy rivers like the Ganges should always remain in her. The gods conceded what she prayed for and said that when she would become stable on the head of Gayāsura, they would all stand on the śilā.</p>
+<p class="prose" id="p-chapter-xiv-gayā-14">Chap. 108 presents numerous divergences in the Mss In the Ānandāśrama edition its contents briefly are: The śilā was placed on the head of Gayāsura and therefore there was union of two very holy objects, on which Brahmā performed Aśvamedha and when the gods came to receive their share of the sacrificial offerings the śilā said to <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> and others 'promise that you would remain on the śilā and would bring about the release of pitṛs'. The gods agreed and they stayed on the śilā in the form of images and foot-printṣ As the śilā was placed on the back of the head of the asura the hill was called Muṇḍapṛṣṭha (lit. the back of the head) which gave Brahmaloka to pitṛṣ Then the chapter speaks of a hill called Prabhāsa, of Rāmatīrtha near the place where the great river (Phalgu) and Prabhāsa hill meet, the hermitage of Bharata, of Maṭangapada, of the baḷ to be offered to Yamarāja and Dharmarāja and to the dogs of Yama, viz. Śyāma and Śabala, of the Udyantaka hill near the left of Śilā, of Agastya-kuṇḍa, and numerous other holy places such as Gṛdhrakūṭa hill, the her- mitage of Cyavana, the river Punahpunā, Krauñca-pada, Janārdana on Bhasmakūṭa.</p>
+<p class="prose" id="p-chapter-xiv-gayā-15">The story of Gayāsura has puzzled Mitra and subsequent writerṣ Mitra holds that nothing appears more absurd or stupid than the story of Gayāsura who, he emphasizes, is not a demon or a vicious monster, but a devout Vaiṣṇava ('Bodh-Gayā' pp. 15–16). The story of Gayāsura is not unique. The Purāṇas abound in stories that appear to modern minds absurd and puerile. Besides, there were several asuras like Prahlāda, Bāṇa (devotee of Śiva) and Bali (who was an exemplary and pious king and a worshipper of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>) that were not monsters but good and devout persons, and yet fought with gods For example, <a class="ref" href="../refs/kurma_purana.html" data-source="kurma_purana" data-ref="" title="Kūrmapurāṇa">Kūrmapurāṇa</a> (I. 16. 59–60 and 91–92) narrates that Prahlāda fought with Nṛsimha; the Padma (Bhūmikhaṇḍa 1.8) calls him a Mahābhāgavata but states that he first fought with <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> and entered Vaiṣṇavītanu; while Vāmanapurāṇa (chap. 7–8) speaks of his fight with Narānārāyaṇa In Pali works (e. g. Anguttara-nikāya, part IV pp. 197–204) he is called Paharāda and asu pinda (asurendra). Vide Anguttara-nikāya (text) vol. IV p. 197. For Bali who was grandson of Prahlāda, a good king and a devotee of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>, vide Brahmapurāṇa, chap. 73, Kūrma I, 17, Vāmana (chapters 77 and 92). For Bāṇa, son of Bali and the fight of Bāṇa helped by Śiva with Kṛṣṇa, vide Brahma chap. 205–206 and <a class="ref" href="../refs/vishnu_purana.html#V.33.37-38" data-source="vishnu_purana" data-ref="V.33.37-38" title="Viṣṇupurāṇa V.33.37-38">Viṣṇupurāṇa V. 33. 37–38</a>.</p>
+<p class="prose" id="p-chapter-xiv-gayā-16">According to Dr. Rajendralal Mitra (in ‘Bodh-Gayā’ pp. 14–18) the story of Gayāsura is an allegory of the vanquishing of Buddhism by Brahmanisṃ O’ Malley thought (J. A. S. B. vol. LXXII part 3 p. 7 for 1904) that the Gayāsura legend represents an amalgamation or compromise of Brahmanism with the popular demonolatry which preceded Brahmanisṃ Dr. Barua criticizes both theories and appears to hold (vol. I. pp. 40–41) that the idea underlying the legend is to impress on people’s minds the high sanctity of the Gayā range of hills along the western bank of the river Phalgu, that Gayā <sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-29" id="fnref-chapter-xiv-gayā-29">29</a></sup> or Namuci or Vṛtra is represented as a demon of darkness and as an enemy of Indra and that the Vedic word Trivikraīṇa and the interpretation of Aurṇavābha are the nucleus of the legend of Gayāsura. From considerations of space it is not possible to discuss these theories here. To my mind it appears that Gayā had become a famous <em>pīrttīrtha</em> centuries before Christ and that the Gayāsura is a <em>post fact</em> attempt to account for the sanctity of the place and the numerous shrines and holy places that had sprung up round Gayā.</p>
+<p class="prose" id="p-chapter-xiv-gayā-17">Chap. 109 deals with the questions how Ādi-Gadādhara abided in manifest and unmanifest forms, how his <em>gadā</em> (mace) was produced and how the <em>tīrtha</em> called Gadālola became a destroyer of all sinṣ There was a powerful Asura called Gada, who, when Brahmā. requested, gave up his bones to Viśvakarmā, at the desire of Brahmā, fashioned a wonderful mace out of the boneṣ In the times of Svāyambhuva <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> an Asura named Heti, son of Brahmā, performed severe austerities for thousands of divine yearṣ He secured from Brahmā and other gods the boon that he could not be killed by gods, <em>daityas</em>, men or with such weapons as the discus of Kṛṣṇa and otherṣ Heti conquered the gods and became Indra. The gods went to Hari and requested him to kill Heti. He asked for a powerful weapon and the gods gave him the mace manufactured from the bones of Gada and <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> killed Heti with the Gadā. This story about demon Heti is mentioned in Agni 114 26-27 and Nāradīya (uttara) 47. 9-11. Hari is called Ādi-Gadādhara because<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-30" id="fnref-chapter-xiv-gayā-30">30</a></sup> he was the first to wield that mace and stood on the <em>silā</em> on the head of Gayāsura, supported by the Gadā, in order to make (the head of Gayāsura) stable. He shows himself in the form of hills viz. the Muṇḍapṛṣṭha hill, the Prabhāsa and other hillṣ These and Akshayavata, Phalgu and other rivers are the non-manifest forms of Ādigadādhara. The <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>pada, Rudrapada, Brahma- pada and other padas are the non-manifest and manifest forms of Gadādhara.<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-31" id="fnref-chapter-xiv-gayā-31">31</a></sup> The image of Gadādhara is purely a mani- <strong>IV]</strong> fest forṃ Asura Heti was killed by <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> and went to <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>-loka. When the body of Gayāsura was made stable Brahmā sang a hymn of praise to <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> who asked Brahmā to choose a booṇ Brahmā said ‘we (gods) shall not abide in the śilā with-out you, but shall remain therein together with you if you have a manifest form’.<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-32" id="fnref-chapter-xiv-gayā-32">32</a></sup> <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> said ‘be it so’ and <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> stood on Gayāśiras in the Adigadādhara form and as Janārdana and Pundarīkāksa. Śiva also praised <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> (Vāyu 109. 43-50). The Vāyu speaks at several places of ‘vyaktāvyakta’ symbols of the deity (chap. 109. 20 and 43-45) What is meant is <a class="ref" href="../refs/vishnu_smriti.html#i" data-source="vishnu_smriti" data-ref="i" title="Viṣṇu Smṛti i">Viṣṇu i</a>s non-manifest in Phalgu, vyaktāvyakta in Visnupada and manifest in images and statues (vide Tristhalisetu p. 365, prati-māsvārūpī vyaktah).</p>
+<p class="prose" id="p-chapter-xiv-gayā-18">Chap. 110 deals with Gayāyātrā. To the east of Gayā is a great river (Phalgu). (If it is dry) one should dig a pit for water and take a bath, should perform tarpana and śrāddha according to one’s own recension of the Veda, but without arghya (water for showing respect) and āvāhana (invoking) In the after- noon the pilgrim should go to the Pretāśilā, take a bath in the Brahmakunda, offer tarpaņa to the gods and perform śrāddha of his sapindas on the Pretāśilā with the mantras set out in Vāyu (110. 10–12) and offer piņḑas to his ancestorṣ In Aṣṭakās, in Vrddhiśrāddha, at Gayā and on the anniversary of death, one may offer a śrāddha separately to one's mother but on all other occasions with her husbanḍ<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-34" id="fnref-chapter-xiv-gayā-34">34</a></sup> To the sapindas other than one's paternal ancestors he should offer śrāddha to the south (of the place where he offers to his father &c.) viz. should spread kuśas and once offer water mixed with sesame and should offer them a piņḑa made of barley flour and repeat the mantras (Vāyu 110. 21–22). The piņḑas to be offered at Gayāśiras may be in size as <sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-35" id="fnref-chapter-xiv-gayā-35">35</a></sup> big as one's closed hand, or an undried āmalaka (myrobalan) fruit or of the size of śami leaveṣ By means of these he saves seven gotras viz. that of his father, of his mother, of his wife, sister, daughter, paternal aunt and maternal aunt. Water mixed with sesame and piņḑas are offered to all persons on the maternal grandfather's side, to all bandhus, to all infants, to persons cremated or not cremated, to persons that were killed by lightning or robbers or that commit-ted suicide in various ways and,to those who may be undergo-ing torments of Hells of various kinds and those who have become beasts or birds or insects or trees owing to evil deeds (Vāyu 110, verses 30–55). The verses of most comprehensive character about offering water have been cited in ṇ 1237 p. 550 and on pp. 616–617 above.</p>
+<p class="prose" id="p-chapter-xiv-gayā-19">Chap. 111 deals with the order in which the several tīrthas are to be visiteḍ The full pilgrimage lasts for seven dayṣ In chap. 110 it has been stated as shown above that on entering Gayā, a pilgrim takes a bath in the Phalgu water, performs tarpaņa and śrāddha, then on the same day he goes to the Pretāśilā (which is a part of the Śilā as stated in Vāyu 108 15) and performs a śrāddha there and offers piņḑas with boiled rice and ghee (Vāyu 110.15). On doing this the persons for whom this is done become free from the position of <em>preta</em>. It is stated (in <em>Vāyu</em> 108. 17-22) that one should bathe in the Rāmātīrtha which is near the place where Phalgu meets the Prabhāsa hill. By bath in Rāmātīrtha and offering of <em>śrāddha</em> and <em>piṇḍa</em> there the persons for whom this is done become <em>pitṛs</em> (being already free from <em>pretatva</em> by the <em>śrāddha</em> on <em>pretaśilā</em>). On a hill on the south of Pretaśilā one should offer a <em>bali</em> (food offered with <em>kuśa</em>, sesame and water) to Yamarāja and Dharmarāja and to the two dogs Śyāma and Śabala. On the next day after entering Gayā (i. e. the 2nd day), the pilgrim should proceed to the Pretaparvata<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-36" id="fnref-chapter-xiv-gayā-36">36</a></sup> (<em>Vāyu</em> 110.8) and take a bath in the Brahmakuṇḍa and perform tarpana, <em>śrāddha</em> and giving of <em>piṇḍas</em> mixed with sesame, ghee, curds and honey to his ancestors (father, grandfather &c.) with the mantras ‘<em>pitā pitāmahaścaiva</em>’ (<em>Vāyu</em> 110. 23-24). Then the pilgrim should offer on <em>kuśas</em>, water, sesame and <em>piṇḍas</em> to persons related in various ways with the mantras ‘<em>asmat-kule mṛtā</em> ye ca &c., (<em>Vāyu</em> 110. 34-55). He should then invoke the gods to be witnesses to the fact of his having come to Gayā and become free from the debt to the ancestors (<em>Vāyu</em> 110. 59-60). It is stated in <em>Vāyu</em> 110.61 that at all sacred spots in Gayā the offering of <em>piṇḍas</em> should be done in the same way as at Pretaparvata<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-37" id="fnref-chapter-xiv-gayā-37">37</a></sup>.</p>
+<p class="prose" id="p-chapter-xiv-gayā-20">On the third day of entering Gayā one has to perform Pañcatīrthī rites<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-38" id="fnref-chapter-xiv-gayā-38">38</a></sup> (<em>Vāyu</em> 111. 1 ff.). The pilgrim first bathes in Uttaramanasa, offers <em>tarpana</em> to gods, gives water and <em>śrāddha</em> and <em>piṇḍas</em> to his ancestors with the mantras (<em>Vāyu</em> 110. 21-24). The fruit of this rite is the inexhaustible gratification of the <em>pitṛs</em>. Then the pilgrim goes to the three <em>tīrthas</em> which constitute Dakṣiṇamānasa, viz. Udīcītīrtha (on the north), Kanakhala (in the middle) and Dakṣiṇamānasa ( on the south ). At each of these three there is a śrāddha. Then the pilgrim goes to the Phalgutīrtha, which is the best of all (Gayā) tīrthaṣ The pilgrim performs tarpaṇa and śrāddha with piṇḍas on Phalgu. This śrāddha at Phalgu results in mukti for the performer and also for those for whose benefit it is performed (muktir-bhavati kartṛṇām pitṛṇām śrāddhatah sadā, Vāyu 110. 13). It is stated that Phalgu is Ādi-Gadādhara himself in a fluid forṃ<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-39" id="fnref-chapter-xiv-gayā-39">39</a></sup> By bath in Phalgu and seeing Gadādhara a man saves himself, ten ancestors and ten descend- antṣ Then he worships Gadādhara by a bath with pañcāmṛta after bowing<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-39" id="fnref-chapter-xiv-gayā-39">39</a></sup> to Vāsudeva, Saṅkarṣaṇa, Pradyumna, Aniruddha, <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>, Śrīdhara. On the 2nd day of the Pañca- tīrthī rites (i. e. 4th day from entering Gayā) the pilgrim should repair to Dharmāraṇya which is so-called because Dharma per- formed a sacrifice there. Then the pilgrim should bathe in the Matanga-vāpī (which is situated in Dharmāraṇya), then he should perform tarpaṇa, śrāddha and piṇḍadāna at the well called Brahmātīrtha and also in the space between Brahma- tīrtha and Brahmayūpa; then bow to Brahmā and Dharm- eśvara.<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-40" id="fnref-chapter-xiv-gayā-40">40</a></sup> He should bow to the Mahābodhi tree (i. e. the sacred pippala) and perform śrāddha also underneath it. Agni 115. 34-37 and Nāradīya (uttara) 45. 104 refer to these tīrthaṣ On the third day of the Pañcatīrthī rites (i. e. on 5th day from entering Gayā) the pilgrim should bathe in Brahmasaras and perform śrāddha with piṇḍas between the Brahmakūpa and the Yūpa (sacrificial post ) raised by Brahmā when he performed a sacrifice. By this śrāddha the pilgrim saves his pitṛṣ<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-41" id="fnref-chapter-xiv-gayā-41">41</a></sup> He should go round the Brahma-yūpa and bow to Brahmā. There are mango trees near Gopracāra establish- ed by Brahmā. By watering a mango with water from the Brahmasaras the pitṛs attain mokṣa. Here follows the verse ('eko muniḥ' &c.) quoted above (n 1493). Then a bali should be offered to Yama and Dharmarāja, then to the two dogs of Yama, then he should offer a bali to crows and then bathe (in Brahmasaras). This is briefly a summary of Vāyu 111 30– 40. Some of these details are mentioned by Agni 115. 34–40 and Nāradīya (uttara) 46. Then on the 4th day of the Pañca- tīrthī rites (i. e. 6th day from entrance into Gayā ) the pilgrim should take an ordinary bath in the Phalgu and should then perform śrāddhas at the several padas on Gayāśiras which is near Phalgutīrtha. Gayāśiras extends from Krauñcapāda up to Phalgutīrtha. Śrāddha offered here (on Gayāśiras) becomes inexhaustible.<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-42" id="fnref-chapter-xiv-gayā-42">42</a></sup> Here Ādi-Gadādhara abides in the form of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>pada. By performing a śrāddha with piṇḍas on <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>- pada (which is a footprint on a slab deemed to be of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> ) the pilgrim saves one thousand families and takes them and himself to the blissful, inexhaustible and never-ending world of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>. Then Vāyu 111. 47–56 deal with the rewards of śrāddhas performed at Rudrapada, Brahmapada and 14 other padas expressly named by it.<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-43" id="fnref-chapter-xiv-gayā-43">43</a></sup> ‘For whomsoever by name a pilgrim offers a piṇḍa on Gayāśiras, that man, if in hell, goes to heaven and if in heaven he secures mokṣa.'</p>
+<p class="prose" id="p-chapter-xiv-gayā-21">On the 5th day of the Pañcatīrthī rites (i. e. the 7th day from entering Gayā ), the pilgrim should bathe in the sacred place called Gadālola.<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-44" id="fnref-chapter-xiv-gayā-44">44</a></sup> By performing śrāddha with piṇḍas at Gadālola he takes his pitṛs and himself to the world of Brahmā. Then at the Akṣayavaṭa he should perform a śrāddha and honour the ( Gayā ) brāhmaṇas established by Brahmā with offerings and food When they are gratified gods together with pitṛs become gratified,<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-45" id="fnref-chapter-xiv-gayā-45">45</a></sup> Then the pilgrim should bow to the Aksayavata and worship it with a mantra and also bow to worship Prapitāmaha. <em>Agni</em> 115. 69–73 and <em>Nāradīya</em> (uttara) chap. 47 also refer to these.</p>
+<p class="prose" id="p-chapter-xiv-gayā-22">The <em>Tristhālīsetu</em> (p 368) remarks that the above are the fixed rites for seven days in Gayā, that other tīrthas may be visited according to one’s convenience if one stays in Gayā for half a month or a month ; that the śrāddha at the Pretaśilā is to be the first and that at the Aksayavata is to be performed at the end,<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-46" id="fnref-chapter-xiv-gayā-46">46</a></sup> and that although there is variation between the order in which tīrthas are to be visited on the several days according to the <em><a class="ref" href="../refs/vayu_purana.html" data-source="vayu_purana" data-ref="" title="Vāyupurāṇa">Vāyupurāṇa</a></em>, the <em><a class="ref" href="../refs/agni_purana.html" data-source="agni_purana" data-ref="" title="Agnipurāṇa">Agnipurāṇa</a></em> and other <em>purāṇas</em>, yet as the <em><a class="ref" href="../refs/vayu_purana.html" data-source="vayu_purana" data-ref="" title="Vāyupurāṇa">Vāyupurāṇa</a></em> is most detailed as regards Gayā rites, the order therein should be followed and that one not knowing the order may visit the tīrthas in any order<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-47" id="fnref-chapter-xiv-gayā-47">47</a></sup> except Pretaśilā and Aksayavata. <em>Gayāyātrā</em>, chapter 112 of the <em><a class="ref" href="../refs/vayu_purana.html" data-source="vayu_purana" data-ref="" title="Vāyupurāṇa">Vāyupurāṇa</a></em>, refers to king Gayā who performed a <em>yajña</em> and who got two boons, one about the restoration of the Gayā brāhmaṇas to favour and the other that Gayāpurī be named after him and who then went to <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>loka. Then it narrates the story of king Viśāla (verses 7–15) who being sonless performed <em>piṇḍadāna</em> on Gayāśirṣa and thereby saved his three ancestors, got a son and also himself went to heaveṇ Then another story is told (verses 16–20) of a deceased person, who was in the condition of a <em>preta</em>, offering one-sixth of his property, to a trader and asking him to perform Gayāśrāddha with the rest of his wealth and who on account of śrāddha at Gayā became free from the condition of <em>preta.</em><sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-48" id="fnref-chapter-xiv-gayā-48">48</a></sup> Then verses 20–60 mention several other tīrthas of Gayā such as Gayātrītīrtha, Prācī-sarasvatītīrtha, Viśālā, Lelihāna, the hermitage of Bharata, Mundaprstha, Ākāśagangā, Vaitaranī and other rivers and sacred placeṣ It winds up by saying that six Gayās confer mukti (by worship and piṇḍadāna at them) viz. Gayāgaja, Gayāditya, Gayātrī (tīrtha), Gadādhara, Gayā and Gayāśiraṣ<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-49" id="fnref-chapter-xiv-gayā-49">49</a></sup></p>
+<p class="prose" id="p-chapter-xiv-gayā-23">The <a class="ref" href="../refs/agni_purana.html" data-source="agni_purana" data-ref="" title="Agnipurāṇa">Agnipurāṇa</a> (chap 116. 1-34) has a long list of tīrthas at Gayā that is quoted by the Tristhalisetu pp. 376-378, which are passed over here.</p>
+<p class="prose" id="p-chapter-xiv-gayā-24">Though the number of tīrthas at Gayā is very large, the majority of pilgrims do not visit them all. Visits to three places are absolutely necessary for every pilgrim to Gayā, viz. Phalgu river, <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>pada and Akṣayavaṭa, at all of which worship has to be done with milk, water, flowers, sandalwood paste, tāmbūla, lighted lamp and piṇḍas to ancestors have to be offereḍ The <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>pada temple is built over the footprint of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> on the rock to the west of the river Phalgu. The old town of Gayā was built round <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>pada and it is the largest and most important temple in Gayā. The footprint (about 16 inches in length) deemed to be God <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>'s is inside an octa- goal basin plated with silver. Pilgrims of all castes (except untouchables) surround the basin and cast their offerings in- side the basin, though for a substantial payment the priests clear out all people, shut the door for a minute or two and allow a very orthodox or a rich person to make his offerings without being disturbed by anyone else. There are 45 vedis (or sacred places) at which the leisured pilgrim may offer piṇḍas in the Gayākṣetra which extends from about five miles to the north-west of Old Gayā town to about 7 miles south of it. Though the ancient Buddhist works and Fa Hien and Hiouen Thsang make a distinction between Gayā and Uruvilyā or Uruvelā where Buddha attained Enlightenment after six years of severe tapas, the Bodhi tree (Mahābodhitaru) was recognized by the Gayāmāhātmya as one of the sacred places which Hindu pilgrims should visit and is so regarded even now. When the Hindus appropriated Buddhist sacred places to themselves it is difficult to say. The Bodhi tree is the oldest historical tree in the worlḍ A branch of it is said to have been transplanted to Ceylon in the times of the great Emperor Aśoka (about 250 B.C) and at Kandy in Ceylon a <em>pippala</em> tree is even now shown as that transplanted tree or the successor of that branch. The Gayāśīrṣa<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-50" id="fnref-chapter-xiv-gayā-50">50</a></sup> is a set of rocky hills such as Gayāpreṣṭha, Prabhāsa, Gṛdhrakūṭa, Nāgakūṭa, ranging over one krośa (about two miles).</p>
+<p class="prose" id="p-chapter-xiv-gayā-25">It has been already stated above (p 666) that the rites at the Akṣayavaṭa are the last in the pilgrimage to Gayā. The Gayāwāl priest binds the thumbs or hands of the pilgrim with a garland of flowers and receives his fees He gives sweetmeats to the pilgrim as <em>prasāda</em>, applies <em>tilaka</em> to the pilgrim's forehead, touches the pilgrim on his back, pronounces the word ‘<em>suphala</em>’ (the pilgrimage has been fruitful or successful), declares that the pilgrim's ancestors have gone to heaven and blesses the pilgriṃ It must be noted that there is a special class of priests called Dhāmīn who alone (and not the ordinary Gayāwals) have the right of officiating at five <em>vedis</em> viz. at Preṭaśilā, Rāmaśilā, Rāmakunda, Brahmakunda and Kākabali, that are situated on or about the two hills Rāmaśilā and Preṭaśilā (vide Bengal District Gazetteers, vol 12 for Gayā p. 66) They are regarded as inferior in status to the regular Gayāwālṣ</p>
+<p class="prose" id="p-chapter-xiv-gayā-26">One important question on which there is great divergence of views among the medieval digests is about the ancestors to whom <em>śrāddha</em> is to be offered at Gayā. In the Vāyu and other Purāṇas it is frequently said that he who performs <em>śrāddha</em> at Gayā becomes free from the debt due to the <em>pitṛs</em><sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-51" id="fnref-chapter-xiv-gayā-51">51</a></sup> or that what is offered to the <em>pitṛs</em> at Gayā, Dharmapraṣṭha, Brahma-saras, or on the Gayāśīrṣa and under the imperishable Vaṭa tree becomes inexhaustible. In most of these passages the plural of the word ‘<em>pitṛ</em>’ is useḍ Therefore it follows that <em>śrāddha</em> is to be offered in Gayā to three paternal ancestorṣ And on account of a verse attributed to Gautamia,<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-52" id="fnref-chapter-xiv-gayā-52">52</a></sup> the three male maternal ancestors also are to be offered <em>śrāddha</em>. The difference arises with reference to the wives of these six male paternal and maternal ancestorṣ The <a class="ref" href="../refs/agni_purana.html" data-source="agni_purana" data-ref="" title="Agnipurāṇa">Agnipurāṇa</a> proposes an option (115 10) that the devatās in Gayā-śrāddha are nine or twelve. When they are to be nine, the śrāddha is for three paternal ancestors, three male ancestors of the mother and the wives of the latter three male ancestors, while there is a separate śrāddha for the mother, paternal grand-mother and paternal great-grandmother. If there are to be twelve devatās in Gayā-śrāddha, then all the wives of the paternal ancestors and of maternal ancestors would be included in one śrāddha. <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> allowed an option (as in Agni) in Gayā-śrāddha.<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-53" id="fnref-chapter-xiv-gayā-53">53</a></sup> According to the Smṛtyarthasāra<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-54" id="fnref-chapter-xiv-gayā-54">54</a></sup> and Hemādri the Anvaṣṭakā-śrāddha and Gayā-śrāddha for the paternal ancestors and that for the wives of these (i. e. mother, paternal grandmother &c.) must always be separate, but the śrāddha for the mother's paternal ancestors and their wives should be one (and therefore the devatās will be nine). Yama (verse 80) appears to hold that the mother, paternal grandmother and paternal great-grandmother are always to be associated with their respective husbands in śrāddha. Some held that the devatās of Gayā-śrāddha were only six viz the three male paternal ancestors and three male maternal ancestorṣ<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-55" id="fnref-chapter-xiv-gayā-55">55</a></sup> The Tri. S ultimately remarks that the usage of the country should be the deciding principle The Prajāpati-smṛti (183-184) has some rather contradictory views as to when there would be 12 or 9 or 6 devatās in a śrāddha, When there are twelve devatās, the saṁkalpa at the Pretasila-śrāddha which is the model of all the śrāddhas at the other sacred spots in Gayā (with suitable modifications) will be as noted below.<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-56" id="fnref-chapter-xiv-gayā-56">56</a></sup></p>
+<p class="prose" id="p-chapter-xiv-gayā-27">It should be noted that there are certain special characteristics of Gayāśrāddha. There is no tonsure (Vāyu 83. 18 and note 1485 above). One must honour the Gayāwals alone, and not other brāhmaṇas, however learned they may be; one should not consider the family or character or learning of Gayā brāhmaṇas (vide p. 579 above and note 1313). But it has to be remembered that Nārāyaṇabhaṭṭa<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-57" id="fnref-chapter-xiv-gayā-57">57</a></sup> did not accept this for all śrāddhas t Gayā, but only as to the śrāddha under the Akṣaya- vaṭa, since the Vāyu (111. 79-80) again refers under Akṣaya- vaṭa to the worship of Gayā brāhmaṇas and since following the maxim of ‘caturdhākaraṇa’ laid down in Jai. III 1 26-27 the later specific provision narrows down the wide words used in the earlier passage. At Gayā one could offer piṇḍa to oneself but without sesame.<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-58" id="fnref-chapter-xiv-gayā-58">58</a></sup> The Tri S. (p 350) observes (relying on Vāyu) that when a man offers a piṇḍa to himself, it should be in the hands of the image of Janārdana on Bhasmakūṭa<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-60" id="fnref-chapter-xiv-gayā-60">60</a></sup> and that the pilgrim to Gayā can offer a piṇḍa to himself only when it is certain that he has no son or other adhikarīṇ for offering śrāddha. Further, any one related or unrelated, could offer a piṇḍa <sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-61" id="fnref-chapter-xiv-gayā-61">61</a></sup> to anybody, as laid down in Vāyu ‘Whether it is one’s own son or the son of another (who offers), in whosesoever name a piṇḍa is let fall at Gayā, that man attains everlasting Brahma It is desired that anyone may offer a piṇḍa to anybody after uttering that person’s name and gotra and the latter reaches the highest goal ’ There are several works, printed and in mss, that deal with the procedure of Gayāśrāddha. There is the Gayāśrāddha-paddhati of Vācaspati printed at the Chandraprabha press, Benares city, the tīrtha-yātrā-tattva of Raghunandana (which contains a Gayā- paddhati) published in Bengali characterṣ Then I consulted two msṣ viz the Gayā-śrāddha-paddhati of Raghunātha son of Mādhava (D. C. mṣ No. 93 of 1891–95) and the Gayāśrāddha-vidhi of Vācaspati (D. C No 245 of 1887–91). The procedure in the Tīrthayātrā-tattva of Raghunandana is set out here briefly with-out actually citing in full the <a class="ref" href="../refs/vayu_purana.html" data-source="vayu_purana" data-ref="" title="Vāyupurāṇa">Vāyupurāṇa</a> passages which it quotes profusely. Raghunandana appears to follow the Tīrtha-cintāmaṇi closely as some of the notes will show. After the pilgrim enters Gayā he should first make an appropriate saṅkalpa<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-62" id="fnref-chapter-xiv-gayā-62">62</a></sup> for a bath in Phalgu, take the clay from the river, apply it to his body and bathe Then he should perform tarpaṇa<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-63" id="fnref-chapter-xiv-gayā-63">63</a></sup> to the twelve male and female ancestors (specified in note 1516 above) Then he should declare a saṅkalpa that he would per-form Gayāśrāddha with the words ‘Om! adyetyādi Gayātīrtha-prāpti-nimittaka-śrāddhamaham karişye’. Then he should per-form a pūrvaṇa-śrāddha (described above pp. 485–505) excepting the āvāhana and arghya rites If the pilgrim be unable to per-form all the details of śrāddha, he may offer only piṇḍaṣ Then on the same day he should go to the Pretaśilā which adjoins the west bank of the river Phalgu and is to the north of Gayā and perform śrāddha there as follows : he should perform the purification of the ground, sit down on it, perform ācamana, face the south, wear the sacred thread in the apasavya form, recite the verses (Vāyu 110 10–12 ‘Kavyavalo...śrāddhenānena śāśvatim), contemplate on his pitṛs, perform prāṇāyāma, sprinkle water on the materials for śrāddha after remembering Puṇḍarīkākṣa (<a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>), make the saṅkalpa (set out in note 1516). He should go through the whole procedure of śrāddha up to the payment of dakṣiṇā to brāhmaṇaṣ After this he should sit to the south of the altar (where he performed the śrāddha), should wear the sacred thread in the apasavya form, face the south, place on the ground three kusas and after reciting the mantra (Vāyu 110. 10–12 ) should make an invocation once in the form of offering an añjali of water mixed with sesame, then honour the father with pādya (water for washing the feet), recite the two verses (Vāyu 110. 20-21 'ā brahma.. tilodakam' with om prefixed), perform invocation as before of the father and others with water in folded hands and should offer a piṇḍa to his father of pāyasa or other material mixed with sesame, water and honey with the words 'Om, adya amuka-gotra pitar-amukadevasar-man, eṣa te piṇḍaḥ svadhā'. In this way he should offer piṇḍa to the remaining eleven devatās, viz. paternal grandfather and others (or eight or five according to usage). He should donate a fee according to his meanṣ Then he should sit to the south of the place he so far occupied, spread on the ground kuśas having roots but with tips turned to the south, should repeat the mantras (Vāyu 110 10-12), perform on those kuśas once an invocation in the form of an añjali of water mixed with sesame, repeat the two verses (Vāyu 110. 22-23 'Pitā pitāmaha...mupatisthatām' with om prefixed <sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-63" id="fnref-chapter-xiv-gayā-63">63</a></sup>) and should offer one piṇḍa made of one handful of barley flour mixed with sesame, kuśas, ghee, curds, water and honey to all the twelve devatās (ancestors) together. Then follows what is called Ṣoḍaśīkarma, which is as followṣ Nineteen spots for piṇḍas should be made (each to the south of the preceding) and should be smeared with pañcagavya one after another; then he should spread over each kuśas with their tips to the south, should invoke on the kuśas the persons intended with the mantras (Vāyu 110. 30-32 'asmat-kule mṛtā... tilodakaih'), should worship them by offering sandalwood paste and the rest, (and if he is performing the rite of ṣoḍaśī on a spot sacred to a specific deity then worship that deity also with an appropriate mantra ), should then offer once as before an añjali of water mixed with sesame and offer piṇḍas beginning from the first spot, each piṇḍa being offered after reciting each of the 19 mantras (Vāyu 110. 34-55, omitting 110.44 'asipatva o', 110. 46 'anekāyatāna-samsthāh ye nitā o', and treating 52-53 as one mantra and 54-55 as one mantra) <sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-63" id="fnref-chapter-xiv-gayā-63">63</a></sup>. He should offer 19 piṇḍaṣ of the size already stated and made of the material already mentioned with the sacred thread in the <em>apasavya</em> forṃ Raghu- nandana explains that although there are nineteen <em>pindas</em> still this is called <em>śrāddhasoḍaśī</em> as a technical terṃ<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-64" id="fnref-chapter-xiv-gayā-64">64</a></sup> It would be noticed that all the mantras refer to males in the words 'ye', 'te', 'tebhyaḥ'. So this is 'Pūrṇ-soḍaśī.' There is a 'stri-soḍaśī' also which only involves changing the words of the mantras in the masculine to words in the feminine gender as indicated in the <em><a class="ref" href="../refs/vayu_purana.html" data-source="vayu_purana" data-ref="" title="Vāyupurāṇa">Vāyupurāṇa</a></em> itself.<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-65" id="fnref-chapter-xiv-gayā-65">65</a></sup> Otherwise there is no difference between the two (<em>pumsoḍaśī</em> and <em>strisodaśī</em>). The note below states the mode in which both males and females are to be invoked and gratifieḍ</p>
+<p class="prose" id="p-chapter-xiv-gayā-28">Water should be sprinkled over all <em>pindas</em> three times with a vessel full of water mixed with sesame. The mantras repeated at the time are quoted below in the note.<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-66" id="fnref-chapter-xiv-gayā-66">66</a></sup> Then he prostrates himself on the ground and should dismiss (send away) them (the persons invoked) with the words 'O father and others! forgive me.' Then wearing the sacred thread in the <em>savya</em> form, he should sip water (perform <em>ācamana</em>) and recite with his face to the east the two mantras (<em>Vāyu</em> 110. 59-60 <em>sākṣināḥ santu</em>, and 'āgatosmi Gayām'). If a pilgrim is unable to carry out all this lengthy procedure, he should at least offer <em>pindas</em> on Pretaśīla, by making a <em>sankalpa</em> (like the one in note 1516 saying '<em>pindaḍānam</em>' for <em>śrāddham</em>). He should wear the sacred thread in the <em>apasavya</em> mode and repeat the verses in <em>Vāyu</em> (110. 10-12 and 110. 59-60) and should perform according to his <em>sūtra</em> the various items such as drawing lines on the altar meant for placing <em>pindas</em>, spreading <em>kuśas</em>, sprinkling down water on the <em>pindas</em>, the offering of <em>pindas</em>, re-sprinkling water, holding one's breath, loosening the knot of one's garment, offering a thread and sandalwood paste.</p>
+<p class="prose" id="p-chapter-xiv-gayā-29">Then the pilgrim should descend from the hill (Pretaśilā) to the ground below and should bathe in the deep pool well-known as Rāmatīrtha <sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-67" id="fnref-chapter-xiv-gayā-67">67</a></sup> (which is in the form of Prabhāsa-hrada) at the meeting place of the great river (Phalgu) with the Prabhāsa hill after making a sankalpa (as given in the foot-note) and after repeating the mantra 'janmāntarasatam' (Vāyu 108 18). He should then perform tarpana and perform śrāddha or (if unable to offer śrāddha) offer only piṇḍas accord-ing to the procedure of his own gṛhyasūtra. He should offer as done in the Pretaśilā śrāddha twelve piṇḍas to the father and the others, the single inexhaustible piṇḍa and the ṣoḍaśi-piṇḍaṣ If he cannot go through all these, he may perform any one of theṃ Then he should make a sankalpa and should offer obeisance to Rāma with the mantra 'Rāma Rāma' (Vāyu 108.20). When a pilgrim performs this bath, śrāddha and piṇḍadāna his pitṛs become free from the condition of being preta (Vāyu 108. 21). Then he should perform obeisance to the refulgent Prabhāseśa (Śiva). He should offer obeisance to both Rāma and Prabhāseśa with the mantra 'āpastvamasi' (Vāyu 108. 22) Then he should offer a bali of boiled rice to Yama with the words 'this is a bali, om ! bow to Yama.' Then on a hill called Nāga situated to the south of Prabhāsa hill and on the middle of Pretaśilā he should recite the verse 'dvau śvānau' (Vāyu 108.30) and offer a bali made up of some kind of cooked food with the words 'this is a bali to Yamarāja and Bhramarāja (Dharma-rāja?); salutation' This offering of bali is obligatory (on every pilgrim); the rest may be done according to one's ability. This finishes the rites on the first day (i. e. the day of entering Gayā).</p>
+<p class="prose" id="p-chapter-xiv-gayā-30">On the 2nd day of entering Gayā the pilgrim should bathe in Phalgu, perform his daily duty of tarpana and worship of gods and then in the afternoon bathe in Brahmakuṇḍa <sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-68" id="fnref-chapter-xiv-gayā-68">68</a></sup> situated in the north-east corner which touches the root of Pretaparvata, that is at the distance of a gavyūti from Gayā, and that (Brahmakuṇḍa) is situated to the north-west of Gayā. The śrāddha performed here is believed to be performed on the altar of Brahma (i. e. where Brahmā performed his Asvamedha). Then he should with the face to the south throw on Prataparvata barley grains mixed with sesame with the mantra 'ye kecit' (Vāyu 110 63 q both by Tīr. C. p. 297 and by Raghunandana) and offer an añjali of water mixed with sesame with the mantra 'a-brahma' (Vāyu 110.64).<sup>1528</sup></p>
+<p class="prose" id="p-chapter-xiv-gayā-31">On the third day after entering Gayā come the rites of Pañcatīrthī described above (pp. 663-666). The pilgrim bathes<sup>1529</sup> in the Uttaramānasa with the mantra 'uttare mānase snānam' (Vāyu 111. 2-3). He should offer one añjali with the verses (Vāyu 110. 20-21) and perform śrāddha. After this śrāddha he sits to the south of Uttara-mānasa, spreads kusas with tips towards the south, offers water with sesame and offers to all together one pinda of one handful of barley flour mixed with sesame, kuśas, honey, curds and water Then he bows to and worships the Sun's image on Uttaramānasa with the mantra 'namostu bhānave' (Vāyu 111 5). Then he repairs to Rudramānasa in silence and there takes a bath in Udicī tīrtha, in Kanakhala and then in Dakṣiṇamānasa with the mantra (Vāyu 111 9-10) and then performs salutation and worship to Dakṣiṇārka, then makes a bow to Maunārka, then goes to Phalgu tīrtha situated to the east of Gadādhara and takes a bath and performs tarpana and śrāddha there; then he worships Pitāmaha (with Vāyu 111. 19), visits Gadādhara and worships (with Vāyu 111.21), then again goes to the five tīrthas, at each of which he bathes and performs tarpana Then he bathes the image of Gadādhara with pañcāmṛta. Raghu- nandana notes that the bathing of Gadādhara with pañcāmṛta is obligatory, while the rest may be done according to one's ability. This finishes the rites of pañcatīrthī.</p>
+<p class="prose" id="p-chapter-xiv-gayā-32">The various tīrthas to be visited after Pañcatīrthī have been mentioned above It is not necessary to repeat them here. The special mantras from the <a class="ref" href="../refs/vayu_purana.html#ci" data-source="vayu_purana" data-ref="ci" title="Vāyupurāṇa ci">Vāyupurāṇa ci</a>ted by Raghu- nandana will alone be specified here. After bath and śrāddha at Matangavāpī, the pilgrim should go to the north of Matangavāpī and recite Vāyu 111. 25 (pramānam devatāh santu &c). When pouring water at the root of the mango tree established by Brahmā the pilgrim repeats Vāyu 111. 36 (āmram brahma-sarodbhūtam &c.). When bowing to Brahmā, the mantra is Vāyu 111. 34 (namo brahman &c.). The bali to Yama is offered with Vāyu 111. 38 (Yamarāja-dharmarājau &c.). The bali to the two dogs is to be given with the mantra (Vāyu 111. 39) and that to the crows with Vāyu 111. 40 (Aindra-vāruna-vāyavya &c). As regards the padas the pilgrim should begin with Rudrapada and perform śrāddha there and then proceed to <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>pada and worship <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> with five upacāras<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-71" id="fnref-chapter-xiv-gayā-71">71</a></sup> with the mantra 'Idam <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>r-vi cakrame' (<a class="ref" href="../refs/rigveda.html#I" data-source="rigveda" data-ref="I" title="Ṛgveda I">Rg. I</a> 22. 17). To the south of the vedi of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>pada he should perform the śrāddhasodaśī (described above pp 672-673) up to Vāyu 110. 60 (anṛṇosham-ṛṇatrayāt). About an ascetic, vide above p. 655.</p>
+<p class="prose" id="p-chapter-xiv-gayā-33">Then Raghunandana briefly touches upon the śrāddhas to be performed at the several padas and remarks that the last śrāddha at the padas is that at Kāśyapapada. He prescribes Vāyu 111. 76 as the mantra for bath in Gadalola-tīrtha. Then he states that the śrāddha at the Akṣayavata is to be performed on the north side of the Vaṭa near its bottoṃ He prescribes Vāyu 111. 82-83 (ekārṇave &c ) as the mantras for bowing to the Akṣayavaṭa. Further, he speaks of śrāddhas to be performed at several sub-tīrthas, such as Gayatrī, Sarasvatī, Viśālā, the hermitage of Bharata, Mundapṛṣṭha. Then he prescribes that the pilgrim should cross the Vaitaraṇī (situated to the east of the Devanadi which is near Bhasmakūṭa) with the mantra (Vāyu 105. 44, yāsau Vaitaraṇī nāma &c ). After referring to several other tīrthas such as Gopracāra, Ghṛtakulyā, Madhukulyā, Raghunandana recommends that the pilgrim should visit Pāṇḍuśīlā (which is in Campakavana near Pitāmaha) and perform śrāddha there. He notes that the four rivers and streams called Ghṛtakulyā, Madhukulyā, Devikā and Mahānadī<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-72" id="fnref-chapter-xiv-gayā-72">72</a></sup> (Phalgu) are called Madhusravā when they meet the Śilā (Vāyu 112.30) and a bath, tarpana and śrāddha thereon yield immense resultṣ Then are mentioned several other tīrthas such as Daśāśvamedha, Matangapada, Makha-kunda (near Udyanta parvata), Gayākūṭa. Raghunandana winds up by providing hand in the hand of Janārdana a piṇḍa mixed with curds (but without sesame) and on doing so recite five verses (Vāyu 108. 86-90, <sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-73" id="fnref-chapter-xiv-gayā-73">73</a></sup> ‘esa piṇḍo maya’ &c.). Then Raghunandana quotes sixteen verses about Mātṛṣoḍaśī (which do not occur in <a class="ref" href="../refs/vayu_purana.html" data-source="vayu_purana" data-ref="" title="Vāyupurāṇa">Vāyu-purāṇa</a> and are passed over here).</p>
+<p class="prose" id="p-chapter-xiv-gayā-34">We have to distinguish between Gayākṣetra, Gayā and Gayāśiras or Gayāśīrṣa. The Vāyu, Agni and Nāradīya all assert that Gayākṣetra is five krośas<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-74" id="fnref-chapter-xiv-gayā-74">74</a></sup> (in extent) and Gayā-śiras is one krośa. It had become the fashion to speak of famous tīrthas like Kāśī and Prayāga as pañcakrośa. But so far as the <a class="ref" href="../refs/vayu_purana.html#i" data-source="vayu_purana" data-ref="i" title="Vāyupurāṇa i">Vāyupurāṇa i</a>s concerned the Gayākṣetra is about 13 miles in length from Pretasilā to Mahābodhi tree as shown above. Gayā is said to be two krośas and a half in extent in all directions from Mundapṛṣṭha<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-75" id="fnref-chapter-xiv-gayā-75">75</a></sup>. Gayāśiras is smaller than Gayā and is identified with Phalgutīrtha (vide note 1499). Gayā and Gayasisa (Pāli for Gayāśīrsa) are well known to ancient Buddhist texts (Mahāvagga I 21. 1 in S. B. E. XIII p. 136, Anguttaranikāya, text vol IV. p. 302). Vide ṇ 1510</p>
+<p class="prose" id="p-chapter-xiv-gayā-35">Four of the most important and holy tīrthas have been dealt with at some length so far. It is not possible in the space allotted to the section on tīrthas to pursue the same procedure as regards other famous tīrthaṣ It is proposed to devote a few pages to each of half a dozen or more tīrthas and then to give a somewhat comprehensive list of tīrthas with a few references in the case of each. But before proceeding further reference must be made to certain popular groupings of tīrthaṣ There is a group of seven cities that are deemed to be very holy and The bestowers of mokṣa.<sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-76" id="fnref-chapter-xiv-gayā-76">76</a></sup> They are Ayodhyā, Mathurā, Māyā (i. e. Haridvāra ), Kāśī, Kāñcī, Avantikā (i. e. Ujjayinī), Dvārakā. In some works it is Kāntī and not Kāñcī that is mentioneḍ Badarinātha, Jagannātha Purī, Rāmeśvara and Dvārakā—these four are styled Dhāma There are said to be twelve Jyotirlingas of Śiva, according to the Śivapurāṇa viz. Somanātha <sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-77" id="fnref-chapter-xiv-gayā-77">77</a></sup> in Saurāṣṭra, Mallikārjuna on Śrīśaila hill (in Karnul District and about 50 miles from the Krishna station on the G. I. P. Railway ), Mahākāla (in Ujjayinī), Parameśvara in Omkāra-kṣetra (an island in the Narmadā ), Kedāra in the Himālayas, Bhīmāśaṅkara (north-west of Poona at the source of the Bhīmā river) in Ḍākinī, Viśveśvara in Banaras, Tryambakeśvara on the banks of the Gautamī i. e Godāvarī (near Nasik), Vaidyanātha in Citābhūmi, Nāgeśa in Darukāvana, Rāmeśvara in Setubandha and Ghṛṣṇeśa <sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-78" id="fnref-chapter-xiv-gayā-78">78</a></sup> in Śivālaya (i. e the modern shrine at the village of Elura, 7 miles from Devagiri or Daulatabad). The Śivapurāṇa (Kotirudra-saṃhitā) chap. 1 names the twelve Jyotirlingas and chapters 14-33 narrate the legends connected with the twelve lingaṣ The <a class="ref" href="../refs/skanda_purana.html#I" data-source="skanda_purana" data-ref="I" title="Skandapurāṇa I">Skandapurāṇa I</a> (Kedārakhanda) chap. 7 verses 30-35 enumerate several lingas including most of the twelve Jyotirlingaṣ The Bārhaspatyasūtra (edited by Dr. F. W. Thomas) mentions eight great tīrthas each of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>, Śiva and Śakti, that yield all siddhis <sup class="fn-ref"><a href="#fn-chapter-xiv-gayā-78" id="fnref-chapter-xiv-gayā-78">78</a></sup>.</p>
+<aside class="footnotes-section" aria-label="Footnotes">
+<hr>
+<ol class="footnotes-list">
+<li id="fn-chapter-xiv-gayā-1" class="footnote-item">There is conflict about the dates of Madhvācārya’s birth and death. The Uttarādi-matha records give śaka 1040 (1118 A. D.) and śaka 1120 (1198 A. D.) as the dates of his birth and death respectively. This is said to conflict with the date given in Madhva's <span class="devanagari">महाभारततात्पर्यनिर्णय</span> viz. that he was born in <span class="devanagari">शकलि</span> 4300. In a paper published in the Journal of the Annamalai University, vol III for 1934 pp. 245 ff. the correct dates are said to be 1238 A. D.–1317 A. D. <a href="#fnref-chapter-xiv-gayā-1" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-2" class="footnote-item"><span class="devanagari">इहया निघत्ते पदम्। पृथिव्यामन्तरिक्षे दिवीति शाकपूणिः। समारोहणे विष्णुं पदे गयशिरासि</span>-<span class="devanagari">इति और्णवाभः। निरुक्त</span> 12 19. <a href="#fnref-chapter-xiv-gayā-2" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-3" class="footnote-item">The Nirukta is placed not later than at least 500 B. C. by most Sanskrit scholarṣ Aurnavābha is earlier than the Nirukta. Vide History of (Continued on next page) <a href="#fnref-chapter-xiv-gayā-3" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-4" class="footnote-item">(Continued from last page)     Sanskrit literature by Winternitz, vol I p. 69 (English tr ). Scholars are not     agreed about the exact location and extent of Gayāśiraṣ Rajendralal In     'Buddha-gayā' p 19 says 'Gayāśiras is not the Brahmayoni hill but a low spur     of it to the north-east about a mile in area forming the site of the old town     of Gayā. This Gayāśiras is the most sacred spot in Gayā.' Dr. Barua (vol. I     p. 246) 'Gayā proper is still sandwiched between the Phalgu and a small set     of hills containing some 25 hill-tops with Gayāśira or Gayāśira (Brahma-     yoni) in the south-west &c'. Both are, however, agreed that Gayāśiras is     part of the ancient Gayā regioṇ Vide S, B E vol. XIII p. 134 ṇ 1 about     Cunngham's view that <span class="devanagari">गयासीस</span> is the <span class="devanagari">ब्रह्मयोनि</span> hill near Gayā. <a href="#fnref-chapter-xiv-gayā-4" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-5" class="footnote-item">I am not unmindful of the fact that in the Iron Pillar Inscrip-     tion of a king called Candra at Meherauli (nine miles south of Delhi) the     last verse reads <span class="devanagari">तेनायं प्रणिधाय भूमिपतिना</span> ... <span class="devanagari">भ्राङ्गवद्विष्णुपदे गिरी     स्थितेः</span> (Gupta Inscriptions, No 32 at p. 141). This shows that near Delhi     there was a hill called <span class="devanagari">विष्णुपाद</span> But there is nothing to show that there was     a place called <span class="devanagari">गयाशिरस्</span> near it. Hence <span class="devanagari">विष्णुपद</span> and <span class="devanagari">गयाशिरस्</span> being taken     together point out to Gayā. The inscription is undated but looking to the     characters it would not be far wrong to assign it to a period near Samudra- <a href="#fnref-chapter-xiv-gayā-5" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-6" class="footnote-item">( Continued from last page ) gupta. Therefore Viṣṇu’s footprint existed on a hill near Delhi in the 4th century A D. There is no sound reason advanced why it could not have existed at Gayā about the same time or even earlier. Besides in the Rāṃ II 68 19 a <span class="devanagari">विष्णुपद</span> south of the river <span class="devanagari">विपाशा</span> is mentioneḍ <a href="#fnref-chapter-xiv-gayā-6" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-7" class="footnote-item">1472. Dr Barua regards <span class="devanagari">गीतनादिति</span> in Vanaparva 84. 93 as the name of a peak (vol I p. 246). But this appears to be wrong It is an adjective of <span class="devanagari">उदयन्त</span> (<span class="devanagari">उद्यन्त</span>) that immediately precedeṣ I have not come across any peak called <span class="devanagari">गीतनादिति</span> in any other work and Dr. Barua does not cite any other text in support of his view. <span class="devanagari">उदयन्त</span> would mean ‘the hill of sunrise, not necessarily for the whole of Āryāvartta but in the place where both <span class="devanagari">विष्णुपद</span> and <span class="devanagari">गयाशिरस्</span> were situated <a href="#fnref-chapter-xiv-gayā-7" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-8" class="footnote-item">The verses relating to <span class="devanagari">गया</span> in <span class="devanagari">वनपर्व</span> 84 are set out in full here,     <span class="devanagari">ततो गयो समासाद्य ब्रह्मचारी समाहितः । अश्वमेधमवाप्नोति कुलं चैव समुद्धरेत् ॥ ततो     नाम जिष्णु लोकेषु विश्रुतः । तत्र दत्तं पितृभ्यस्तु भवत्यक्षय्यमृच्छते ॥</span> '<span class="devanagari">महानध्यायुपज्ञाय तपैर्धियु     पितृदेवता</span>. <span class="devanagari">। अक्षयान्ध्यामुयात् लोकान् कुलं चैव समुद्धरेत् ॥ ततो ब्रह्मसरों गत्वा धर्मारोप्यसो</span>-     <span class="devanagari">मत्तम् । ब्रह्मलोकमवाप्नोति प्रभातामेव शर्वरीम् ॥</span> '<span class="devanagari">ब्रह्मणा तत्र संरास यूषश्रेष्ठैः समुद्भिन्नः ।     पूर्वं प्रदक्षिणोकृत्य वाजपेयफला लभेत् ॥ ततो गच्छेत राजेन्द्र श्रेष्ठलोकनिगश्रुतम् । एकरात्रो</span>-     <span class="devanagari">पितो राजन् प्रयच्छेत् तिलधेनूकाम् ॥ सर्वपापविशुद्धात्मा सोमलोकं ब्रजेत् ध्रुवम् । तत्र चित्रं     महादर्कथादि सुसमग्रं शुसमम् । कपिलाया सर्वसत्त्वरम्याः पर्वते ह्यतप् ॥ सर्वसाया     पदानि स्म इदमसेरपि भारत ॥ तेष्वपसूच्य राजेन्द्र परेंडु उपसंप्तम । पालिकिचेद्दुर्भ कर्म     तण्णणपति भारतो ततो गुह्यप्रदं गच्छेत्स्थान देवस्य श्रीमतः । तत्रोपिन भक्षन् तत्राभिमुख्य     सुपभषणम् ॥ ग्राहेण विवीर्णं व्रत द्वादशावापिकम् । इतरेषा तु वर्षाणां सर्वपार्व प्रपद्यते ॥     उदकं व पर्व गच्छेत् पर्व गीतानदितम् । सावित्यास्तु पदं तत्र इइयते भवत्वर्पम् ॥ तत्र     सम्प्राप्यास्रोत ब्राह्मण</span>. <span class="devanagari">सक्षिशत्त</span>. <span class="devanagari">। तेन ह्यपास्ता भवति सन्ध्या द्वादशावापिकी ॥ योनियु</span>-     <span class="devanagari">द्वारं च तत्रैव निडसं भरतर्षे । तत्राभिगम्य सुच्येते गुह्यो योनिसमुद्धरात् ॥ कृष्णकुण्डेऽम्भ्रो     पक्षी गयायां यो वसेन्नर । युनात्यासनं राजन् कुलं नास्त्यन्न संशय ॥ ह्यदणा</span>...<span class="devanagari">युपछुद्यतेत् ॥     यसः फल्गुतीर्थेद्राजन्न तीर्थसेवी नराधिप । अश्वमेधमवामोति सिद्धिं च महतीं व्रजेत् ॥ ततो     गच्छेत राजेन्द्र धर्मस्थं समाहितः । तत्र धर्मो महाराज नित्यमास्ते युधिष्ठिर ॥ तत्र कुपीदकं     कृत्वा तेन स्नात्</span>. <span class="devanagari">शुचिस्त्वघा । पितृन्वैवांस्तु सन्तर्प्य सुकृपापो दिव प्रजेत् ॥ षडदशाम्बस्तत्र     महर्षेभोवितरामन</span>. <span class="devanagari">। तं प्रविद्याधार्य श्रीमत्सृष्ष्मशोकविनाशनम् ॥ गवामयनज्ञस्य फल प्राप्नोति     मानवः । धर्मे तत्राभिसंयुज्य वाजिसमेधमवाप्नुयात् ॥ ततो गच्छेत राजेन्द्र महारथानमभूतमम् ।     तत्राभिगम्य राजेन्द्र ब्रह्मणां पुष्येवेभ्र्म ॥ राजसूयस्त्राभनेद्याम्ना फल विन्दति मानव । ततो     तीर्थसेवी नराधिप ॥ वनपर्व</span> 84, 82-104. These verses are q. in the     <span class="devanagari">तीर्थचि</span>. pp. 275-277 (except three), <span class="devanagari">त्रिस्थलीसेतु</span> pp 321-323. It may be     noted that the Padmapurāṇa, Adīkhanda, chap 38 (verses 2-19) contains     verbatim and in the same order the verses about Gayā in the Vanaparva 84,     82-99 except that a word is changed here and there. There is hardly any     doubt that one borrows from the other Good grounds have been advanced     by Mr M. V. Vaidya in his paper 'Tīrthayātrā in the Āranyakaparvan and     the Padmapurāṇa' in the Kane Festschrift pp 530-537 Dr. S. K. Belvalkar     in the volume of Indian and eastern studies presented to Prof F. W Thomas     pp. 19-28 in his paper on 'Cosmographical episode in the Mahābhārata and     the Padmapurāṇa' has shown that chapters 80-83 of the Vanaparva are taken     over by the author of the Padmapurāṇa in chapters 10. 5 to chapter 39,120. <a href="#fnref-chapter-xiv-gayā-8" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-9" class="footnote-item"><span class="devanagari">अस्मपृष्ठे गयायाञ्च निरविन्दे च पर्वते । तृतीयां क्रौञ्चपद्यां च ब्रह्महत्यां विशुध्यते ॥ अनुशासन</span> 25. 42. <span class="devanagari">नीलकण्ठ</span> explains '<span class="devanagari">अश्मपृष्ठे प्रेतशिलाया एकां ब्रह्महत्यां स्थपद्यां निरविन्दे सुसुप्तनहृते द्वितीयां ब्रह्महत्यां निरस्य क्रौञ्चपदि सर्वेषां विष्णुगदा</span>- <span class="devanagari">दीनामुपलक्षणं तेषु तृतीयां ब्रह्महत्यां सङ्ख्या गत एव विशुध्यते पूतो भवति</span>', H, D. 82 <a href="#fnref-chapter-xiv-gayā-9" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-10" class="footnote-item"><span class="devanagari">मौनादित्यसद्वन्द्रिकमहाबोधिनृपशासनपण्डितहेमचन्द्रपालमन्त्रिदेवपाल</span>- <span class="devanagari">याना कृती । स मासादमनोकरहृदिविपदा केदारदेश्य च प्रपातसागरवत्सलन सत्तथा यातीति</span> verse 12 of the inscription of prince (Narendra) <span class="devanagari">यक्षपाल</span> son of <span class="devanagari">विश्वाहित्य</span> edited in I. A. vol p 65. Kielhorn translates: '...the wise (prince) caused to be built a temple of the phallicate of (men called Maunaditya...He likewise had the famous Uttaramnasa tank excavated and established a sattra (hall of charity) to last forever'. Dr. Kielhorn is wrong in his translation 'to last forever'. Dr. Barua read <span class="devanagari">सत्तथवा</span> as one word and connects that one word with <span class="devanagari">द्विविपदा</span> (vol I p 65). One is to understand how <span class="devanagari">द्विपदा</span> (genitive plural) is to be constructed with <span class="devanagari">सत्तथ</span> which according to Dr Barua's construction is only part of a compound worḍ <a href="#fnref-chapter-xiv-gayā-10" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-11" class="footnote-item">Vide H. of Dh vol. 1. p. 346 for the date of the Smṛticandrikā The verses <span class="devanagari">ब्रह्मज्ञान</span> .. <span class="devanagari">चतुर्विध</span> (vide note 1484) and <span class="devanagari">ब्रह्महत्या</span> ...<span class="devanagari">हिन्यवृत्ति</span> (<span class="devanagari">वायु</span>. 105.13) are <span class="devanagari">नारदीय</span> (<span class="devanagari">उत्तर</span>) chap. 44, 20 and 22; <span class="devanagari">वायु</span> 110. 63-64 are equal to <span class="devanagari">नारदीय</span>, <span class="devanagari">उत्तर</span>, 45 64-66, <span class="devanagari">वायु</span> 110. 63-64 are the same as <span class="devanagari">नारदीय</span> (<span class="devanagari">उत्तर</span>) 45.64-66, <span class="devanagari">वायु</span> 108.13-16 are the same as <span class="devanagari">नारदीय</span> (<span class="devanagari">उत्तर</span> 45.2-4. <span class="devanagari">वायु</span> 110 4-5 are the same as Vanaparva 82.9-10.. <span class="devanagari">मयपुराण</span> (I ( Continued on the next page ) <a href="#fnref-chapter-xiv-gayā-11" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-12" class="footnote-item">2-22 } contains most of the verses of Vāyu 110. 34-60. The notes below in this Gayā section will show that the Nāradīya and the Gayāmāhātmya contain scores of verses in commoṇ
+ The <span class="devanagari">स्मृतिचन्द्रिका</span> (University of Mysore edition) on <span class="devanagari">आशीर्व</span> has towards the end a section on <span class="devanagari">गयाश्राद्धविधि</span>, several verses of which occur in <span class="devanagari">वायु</span>. A few verses are cited by way of illustratioṇ The first two verses (<span class="devanagari">स्मृतिच</span>. p 194) though ascribed to <span class="devanagari">आदिपुराण</span> are almost the same as <span class="devanagari">वायु</span> 110 2-3; the verses <span class="devanagari">गोमावार</span>...<span class="devanagari">धर्मभू</span> (in <span class="devanagari">स्मृतिच</span> on <span class="devanagari">आशीर्व</span> p. 199) are almost the same as <span class="devanagari">वायु</span> 111. 35 and 37, <span class="devanagari">स्मृतिच</span>° p 197 the verse <span class="devanagari">मकरे वर्तमानं</span> is the same as <span class="devanagari">वायु</span> 105.48 and <span class="devanagari">स्मृतिच</span>. p 199 the verse <span class="devanagari">या सा वैतरणी नाम</span> is <span class="devanagari">वायु</span> 105 <sup>44</sup>
+ The Tīrtha-cintāmaṇi of Vācaspati quotes many verses from the Gayā- māhātmya of the Vāyupurāṇa. Vācaspati's literary activity lies between 1450 to 1480 (or 1500 AD at the latest) He treats the Gayāmāhātmya as on the same level as the other purāṇaṣ This position could not have been attained by the Gayāmāhātmya in a century or two Therefore it must be much earlier than 1300 AD. A few examples of the citations of the Gayāmāhātmya by Vācaspati may be indicated here On pp. 285-286 <span class="devanagari">तीर्थिक</span>. expressly quotes from the <span class="devanagari">वायव</span> verses 18, 19, 26 of <span class="devanagari">वायु</span>. 105. <span class="devanagari">मार्ग</span> from as from <span class="devanagari">वायुः</span> <sup>48</sup> in <span class="devanagari">तीर्थिक</span> p. 7, on pp. 280-283 numerous verses are quoted from <span class="devanagari">वायुपुराण</span> which are (with slight variations) the same as <span class="devanagari">वायुपुराण</span> 108. 13-23, 28-30; on pp 284-285 from <span class="devanagari">वायुपुराण</span> are cited <span class="devanagari">वायु</span>. 110 9-15 and 19-20, 56-59, <span class="devanagari">तीर्थिक</span>. pp. 288-293 quote from the <span class="devanagari">वायुपुराण</span> 110. 17, 21-24, 30-32, 34-55, <span class="devanagari">तीर्थिक</span> pp. 298-301 quote <span class="devanagari">वायु</span>. 111. 1-22 (with additions and variant readings); similarly the <span class="devanagari">पृथ्वीचन्द्रोदय</span> can also quote about 300 verses from <span class="devanagari">गयामाहात्म्य</span> and the <span class="devanagari">तीर्थचिन्तामण्</span> (pp. 356-359 &c ) several times refers to the explanations of verses from <span class="devanagari">गयामाहात्म्य</span> given by his predecessors But space does not allow me to go into this subject at greater length. <a href="#fnref-chapter-xiv-gayā-12" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-13" class="footnote-item"><span class="devanagari">एकस्यां भवेत् पुत्रः पयेकेनापि गयां ब्रजेत् । दधीत सुसमेधाविणं शतं च कुलमुद्धरेत् ॥ महानदीं च तथैव सद्यं गजेषितं नृपाः । नयन्ति कीर्तिमत्यन्तं ये मृतं गामयेत् परं सद्यो मुच्येत् ।</span> (Continued on the next page) <a href="#fnref-chapter-xiv-gayā-13" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-14" class="footnote-item">It is to be noted that the Rāmāyaṇa I. 32. 7 states that Dharmāranya was founded by Asūrtarayās (probably a variant of Amūrtarayās), a son of Kuśā, son of Brahmā. <a href="#fnref-chapter-xiv-gayā-14" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-15" class="footnote-item"><span class="devanagari">कुलेऽस्माकं स जन्तु</span> '<span class="devanagari">स्याद् यो न दद्याजलाञ्जलीन् । नदीपू बहुतोयासु जायेत सोऽस्माक कुले क्वचिन्चरोत् । गयाशीर्षे वटे श्राद्धं यै न</span>: .. <span class="devanagari">स्मृतम् ॥ विष्णुधर्मसूत्र</span> 85. 65-67. The verse <span class="devanagari">अपि जायेत</span>: is quoted in <span class="devanagari">कल्पतरु</span> on <span class="devanagari">तीर्थं</span> p. 173. <a href="#fnref-chapter-xiv-gayā-15" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-16" class="footnote-item">It is somewhat strange that Dr. Barua (in 'Gayā and Buddha gayā' vol. I p 66) read <span class="devanagari">तीर्थे वामनकुण्टके</span> in Śankha and thought that Vāmara- kuṇṭaka was a holy place (instead separating as <span class="devanagari">वा अमरकुण्टके</span>). <a href="#fnref-chapter-xiv-gayā-16" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-17" class="footnote-item"><span class="devanagari">गयाशिरे तु पक्षिणित्राषा पिण्ड तु निर्वषेत् । नरकस्था दिवं यान्ति स्वर्गस्था मोक्षमाप्नुयुः ॥ आत्मनो वा परस्यापि गयाकूपे यतस्ततः । यज्ञानां पातयेद्विण्ड त जयद्वेद ब्रह्म शाश्वतम् ॥ लिखितस्मृति</span> verses 12-13, compare <span class="devanagari">अग्नि</span> 115. 46-47 <span class="devanagari">समीपचः प्रसानेन पिण्ड दत्त्वा गयाशिरे । नरकस्थाः</span> ... <span class="devanagari">प्राप्नुयुः ।।</span> <a href="#fnref-chapter-xiv-gayā-17" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-18" class="footnote-item"><span class="devanagari">वायु</span> 105 7-8, <span class="devanagari">अग्नि</span> 114. 41 '<span class="devanagari">गयोषै चाकरोयं यक्षच बहुदक्षिणं ।</span> <a href="#fnref-chapter-xiv-gayā-18" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-19" class="footnote-item">Here occurs the well-known verse <span class="devanagari">एष्टव्या बहवः पुत्रा</span>' (<span class="devanagari">वायु</span> 105.10) q in ṇ 1477. A verse is quoted by the <span class="devanagari">विष्णुस्मृति</span> p. 319 which defines what makes a son worthy of being so called: '<span class="devanagari">जीवतो वाक्यकरणात्</span> ... <span class="devanagari">त्रिभिः पुत्रस्य दुष्वता ।।</span>' (quoted above in note 832). <a href="#fnref-chapter-xiv-gayā-19" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-20" class="footnote-item"><span class="devanagari">आत्मज्योत्स्यो वापि गयाशिरो यदा यदा । यज्ञानां पातयेद्विण्ड त जयद्वेद ब्रह्म शाश्वतम् । नागीनै सहचार्ये पिण्डपातनिषिष्यते । बायु</span>. 105.14-15; the half verse <span class="devanagari">यज्ञानां</span> ...<span class="devanagari">शाश्वतम्</span> is <span class="devanagari">अग्नि</span> 116.29. <a href="#fnref-chapter-xiv-gayā-20" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-21" class="footnote-item"><span class="devanagari">ब्रह्माज्ञानं गयाश्राद्धं गोयने मरणं तथा। वासः पूसां कुरुक्षेत्रे मुक्तिरेषा चतुर्विधा॥ ब्रह्माज्ञानेन किं कार्ये</span> ... <span class="devanagari">यदि पुत्रो गयां व्रजेत्॥ गयायां सर्वकालेषु पिण्ड दद्याद्विचक्षणः। वायु</span> 105, 16-18, compare <span class="devanagari">न कालादि गयातीर्थे दद्यात्पिण्डान्घ्रि नित्यश। अग्नि</span>. 115.8. <span class="devanagari">ब्रह्माज्ञानं चतुर्विधा ॥</span>-is also <span class="devanagari">नारदीय</span> ( <span class="devanagari">उत्तर</span>) 44.20 Both occur in <span class="devanagari">अग्नि</span>. 115, 3-4 and 5-6 (in reverse order) and the verse <span class="devanagari">ब्रह्माज्ञानं</span> occurs in <span class="devanagari">वामनपुराण</span> 33.8. <a href="#fnref-chapter-xiv-gayā-21" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-22" class="footnote-item"><span class="devanagari">मुण्डन चोपवासश्च</span> .. <span class="devanagari">विरजा गयाम्॥ वायु</span> 105 25, q in n 1301 above where various readings also are noteḍ <a href="#fnref-chapter-xiv-gayā-22" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-23" class="footnote-item"><span class="devanagari">दण्डं प्रदर्शयेच्छुश्रूषां शला न पिण्डदः। दण्डं न्यस्य विष्णु पदे पितृभिः सह सूपते॥ वायु</span> 105. 26 and <span class="devanagari">नारदीय</span> II. 45. 31 q. by <span class="devanagari">सी</span>. <span class="devanagari">म</span> p 390. <a href="#fnref-chapter-xiv-gayā-23" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-24" class="footnote-item"><span class="devanagari">पञ्चक्रोशी गयाक्षेत्रे क्रोशमेकं गयाशिरः। तन्मध्ये सर्वतीर्थानि त्रैलोक्ये यान्ति सन्निवे</span>!<span class="devanagari">॥</span> 105.29-30 and 106. 65 q by <span class="devanagari">त्रिस्थली</span> p 335, <span class="devanagari">ती म</span> p 391; <span class="devanagari">अग्नि</span> 115. 42 has the half verse <span class="devanagari">पञ्चक्रोशं</span> and also <span class="devanagari">नारदीय</span> (<span class="devanagari">उत्तर</span>) 44.16. It had become the fashion to speak of famous tīrthas as five krośas in extent. <a href="#fnref-chapter-xiv-gayā-24" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-25" class="footnote-item"><span class="devanagari">पिण्डासनं पिण्डदानं पुनः प्रत्यग्नेजनम्। दक्षिणा चाक्षयस्तृप्तीर्धनात्पूर्वार्थमप्सुदेवमर्चयेत्। विधिः ॥ आवाहन न द्विजगण न दोषो दृष्टिसम्भवः। अन्नयात्राधिवासतः काले पितरौ याप्पयेत्। प्रति। तीर्थे सदा स्वस्ययेते सत्मादावाहनं न हि॥</span> 105. 37-39. The verses <span class="devanagari">नाचावने</span> ... <span class="devanagari">ह्टिमव</span>, <span class="devanagari">पिण्डासनं</span>...<span class="devanagari">विधि</span> are repeated in <span class="devanagari">वायु</span> 110, 28-29. <a href="#fnref-chapter-xiv-gayā-25" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-26" class="footnote-item"><span class="devanagari">गयर्यां न हि तत्स्थानं यत्र तीर्थं न विद्यते । वायु</span>. 105. 46 = <span class="devanagari">आदि</span>. 116.28 <a href="#fnref-chapter-xiv-gayā-26" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-27" class="footnote-item"><span class="devanagari">वायु</span> 105 60 mentions why Viṣṇu is called <span class="devanagari">आदिगदाधर</span> '<span class="devanagari">आद्यया गदया शीलैर् यस्माह्यस्य स्थिरीकृतः । स्थित ह्येवेद हरिरिह तस्मादादिगदाधर ॥</span>' q. by <span class="devanagari">विष्णुपर</span>° p. 338. In <span class="devanagari">वायु</span> 109. 13 also a similar derivation is giveṇ <a href="#fnref-chapter-xiv-gayā-27" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-28" class="footnote-item">The story of the Śīlā is briefly narrated in the Agnipurāṇa also (chap 114. 8–22), often using the very words that occur in the Vāyupurāṇa. H. D. 83 <a href="#fnref-chapter-xiv-gayā-28" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-29" class="footnote-item">It is not clear whence Dr Barua derived his information that in the Veda Gayā is represented as a demon like Vṛtra. In the Ṛg. at least Gayā is not a demon like Vṛtra. <a href="#fnref-chapter-xiv-gayā-29" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-30" class="footnote-item">Vide note 1490 <a href="#fnref-chapter-xiv-gayā-30" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-31" class="footnote-item">The principal rivers, hills, padas are enumerated here in one place. Unless otherwise expressly mentioned the chapters and verses in this note refer to the <span class="devanagari">वायुपुराण</span>. The holy rivers are: <span class="devanagari">फल्गु</span> often called <span class="devanagari">महानदी</span> (<span class="devanagari">अग्नि</span>. 115, 25), <span class="devanagari">फल्गुल्पा</span>, <span class="devanagari">मधुकुल्पा</span> (these two, <span class="devanagari">वायु</span> 109, 17), <span class="devanagari">मधुमखा</span> (106. 75), <span class="devanagari">अग्निकुधा</span> (from <span class="devanagari">उद्दन्ड</span> hill, 106. 59), <span class="devanagari">कपिला</span> (108. 55), <span class="devanagari">वैतरणी</span> (105. 44 and 109, 17), <span class="devanagari">देविका</span> (112, 30 ), <span class="devanagari">आकासगङ्गा</span> (<span class="devanagari">अग्नि</span>. 116 5). Some of these are mere streamṣ The sacred hills and peaks are: <span class="devanagari">गयाशीर्ष</span> (<span class="devanagari">अग्नि</span> 115 26 and 44), <span class="devanagari">इन्द्रपुष्ट</span> (108. 12, 109. 14), <span class="devanagari">ब्रह्मा</span> (108. 13 and 16, 109. 14), <span class="devanagari">उष्णकुण्ड</span> (<span class="devanagari">वनपर्व</span> 84.93, <span class="devanagari">वायु</span> 108, 59, 109. 15), <span class="devanagari">भरतकुण्ड</span> (109. 15), <span class="devanagari">नन्दकुण्ड</span> (109. 15), <span class="devanagari">नागकुण्ड</span> (111 22, <span class="devanagari">अग्नि</span> 115. 25), <span class="devanagari">सूर्यकुण्ड</span> (109. 15), <span class="devanagari">देवकुण्ड</span> (109. 15). ( Continued on the next page ) <a href="#fnref-chapter-xiv-gayā-31" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-32" class="footnote-item">(Continued from last page) <span class="devanagari">आदिपाल</span> (109 15), <span class="devanagari">क्षीरपाद</span> (109 16), <span class="devanagari">रामशिला</span>, <span class="devanagari">प्रेतशिला</span> (110 15, 108 67), <span class="devanagari">फल्गुतीर्थ</span> (111. 13), <span class="devanagari">अग्नि</span> 115 25-26 and 44), <span class="devanagari">अरण्यपद</span> (108 16-18), <span class="devanagari">रेवतीतीर्थ</span> (108 2), <span class="devanagari">ब्रह्मालोचन</span> (11-74, <span class="devanagari">अग्नि</span> 115 69), <span class="devanagari">वैतरणी</span> (105 44), <span class="devanagari">ब्रह्मपद</span> (<span class="devanagari">वनपर्व</span> 84 85, <span class="devanagari">वायु</span> 111. 30), <span class="devanagari">ब्रह्मकुण्ड</span>, (110 8), <span class="devanagari">उत्तरमानस</span> (111 2 and 22), <span class="devanagari">दक्षिणमानस</span> (111 6 and 8), <span class="devanagari">रुविमणीकुण्ड</span>, <span class="devanagari">प्रेतकुण्ड</span>, <span class="devanagari">नि सारा</span> (<span class="devanagari">नि</span>.<span class="devanagari">सीरा</span>) <span class="devanagari">डुफारिणी</span> (108.84), <span class="devanagari">मत्स्यधापी</span> (111. 24). The sacred sites are <span class="devanagari">पक्षलोक</span>, <span class="devanagari">सप्तलोक</span>, <span class="devanagari">वैकुण्ठ</span>, <span class="devanagari">लोहदंडक</span> (all four, in 109 16), <span class="devanagari">गोप्रचार</span> (111. 35-37 where there were mango trees established by <span class="devanagari">ब्रह्मा</span>), <span class="devanagari">धर्मांरण्य</span> (111. 23), <span class="devanagari">ब्रह्मरूप</span> (<span class="devanagari">अग्नि</span> 115. 39 and <span class="devanagari">वनपर्व</span> 84. 86). The sacred trees are, <span class="devanagari">अक्षयवट</span> (<span class="devanagari">वनपर्व</span> 84. 83, 95. 14, <span class="devanagari">वायु</span> 105 45, 111 79–81, <span class="devanagari">अग्नि</span> 115. 70–73), <span class="devanagari">आम्र</span> near <span class="devanagari">गोप्रचार</span> (111 35-37), <span class="devanagari">गुह्यकवट</span> (108. 63), <span class="devanagari">महाबोधिद्रुम</span> (111 26-27, <span class="devanagari">अग्नि</span> 115 37). The verse about the mango tree is famous ‘<span class="devanagari">एको मुनिः कुम्भकृष्णांश्रयत आम्रस्य मूले सलिलं ददानः । आम्रश्च सिंकः पितरश्च तृप्ता एका क्रिया द्वर्यकरी प्रसिद्धा ।।</span>’ <span class="devanagari">वायु</span>. 111 37, <span class="devanagari">अग्नि</span>. 115 40, <span class="devanagari">नारदीय</span> (<span class="devanagari">उत्तर</span>) 46. 7, <span class="devanagari">पद्म</span>, <span class="devanagari">सुहिएण्ड</span> 11 77 There are several other <span class="devanagari">तीर्थेड</span>, such as <span class="devanagari">फल्गुदीठा</span>, <span class="devanagari">फल्गुचण्डी</span>, <span class="devanagari">अहोरकेश्वर</span> (all in <span class="devanagari">अग्नि</span> 116. 29) which are not mentioned here. The <span class="devanagari">पद</span> (stone slabs with foot prints thereon) are. <span class="devanagari">वायु</span>. 111. 46-58 men-tion 13 by name and refer to others generally. <span class="devanagari">अग्नि</span>. 115. 48-53 mentions at least 13. The <span class="devanagari">पद</span>s mentioned by <span class="devanagari">वायु</span>. are <span class="devanagari">विष्णु</span>, <span class="devanagari">रुद्र</span>, <span class="devanagari">ब्रह्म</span>, <span class="devanagari">क्रश्यप</span>, <span class="devanagari">दक्षिणाग्नि</span>, <span class="devanagari">गार्हपत्य</span>, <span class="devanagari">सभ्य</span>, <span class="devanagari">आवसथ्य</span>, <span class="devanagari">शक्र</span>, <span class="devanagari">अगस्त्य</span>, <span class="devanagari">क्रोध</span>, <span class="devanagari">मार्तण्ड</span>, <span class="devanagari">सूर्य</span>, <span class="devanagari">कार्तिकेय</span> and <span class="devanagari">गणेश</span>. <span class="devanagari">वायु</span>. 111. 56 states that four out of these are most eminent viz. of <span class="devanagari">काश्यप</span>, <span class="devanagari">विष्णु</span>, <span class="devanagari">रुद्र</span> and <span class="devanagari">ब्रह्मा नारदीय</span> (<span class="devanagari">उत्तर</span>) 46. 27 states that <span class="devanagari">विष्णुपद</span> and <span class="devanagari">रुद्रपद</span> are superior, but <span class="devanagari">ब्रह्मपद</span> is superior to all. <a href="#fnref-chapter-xiv-gayā-32" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-33" class="footnote-item">Verses 2-3 and 4-5 of Vāyu 110 are quoted above in notes 1295 and 1261 respectively. <a href="#fnref-chapter-xiv-gayā-33" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-34" class="footnote-item"><span class="devanagari">अटकाश्च हुडौ च गयाया च वृत्तिहानि । माह्मं श्राद्ध पृथक् कुर्यात्पितृणाम् सयु ॥ वायु ॥</span> 110. 17 q 10. <span class="devanagari">तीर्थंय</span>, p 389 (reads <span class="devanagari">अम्बष्टकाष्ठ</span>), <span class="devanagari">तीर्थांय</span>, p. 298. <a href="#fnref-chapter-xiv-gayā-34" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-35" class="footnote-item"><span class="devanagari">हृषिमावकमार्ग च आद्रमिलकमात्रकम् । शमीपत्रप्रमाणं वा पिण्ड दुधात् । दूणप्रसिद्धे ऊद्धृतलङ्ग गोत्राणि कुलाणि शतासद्धरदेत् ॥ पितृगोत्रशुद्धयर्थ शमीनियुक्तिकूलहा । पिण्डतुळनतुळदुदुः शृण मोकाः महीकृतितः ॥ वायु</span> 110 25-26. The <span class="devanagari">मिरवळी</span> p 327 explains '<span class="devanagari">अथ मातृगोत्रे मातामहीगोत्रम् । आर्चनीयं श्वशुरपस्नेतृगेत्रम् । भगिनीदुहितृपितृष्वषुः मातृस्वसुर्या गोत्राणि यच्छ्रळे तानि दशासद्धीर्गानि । एतेषामेव गोत्राणामेकोत्तरे शातं कुल लक्षाणयां तत्त्वया पुरणा</span>, <span class="devanagari">॥</span>' . <a href="#fnref-chapter-xiv-gayā-35" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-36" class="footnote-item">On <span class="devanagari">प्रेतपर्वत</span> and <span class="devanagari">ब्रह्मकुण्ड</span>, the <span class="devanagari">निरुपदी०</span> p. 355 remarks '<span class="devanagari">प्रेतपर्वतो गयायामप्यतिशेते गयातो गङ्गाकूलेऽधिकदूरस्थः । ब्रह्मकुण्डे प्रेतपर्वतमूल ईशानभागे।</span>'. <a href="#fnref-chapter-xiv-gayā-36" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-37" class="footnote-item"><span class="devanagari">सर्वस्थानेषु चैवं स्यात्पिण्डदानं तु नारद । प्रेतपर्वतमारभ्य कुर्यात्तीर्थेषु च क्रमात् ॥ वायु</span>. 110. 61. <a href="#fnref-chapter-xiv-gayā-37" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-38" class="footnote-item">The five <span class="devanagari">तीर्थीस</span> are <span class="devanagari">उत्तरमानसा</span>, <span class="devanagari">उदीचीतार्थ</span>, <span class="devanagari">कनखल</span>, <span class="devanagari">दक्षिणमानस</span> and <span class="devanagari">फलुगु</span>. The <span class="devanagari">निरूपदी०</span> says (p. 360) that one has not to take a bath in each of these, i e there are not five baths on this day. Phalgu-tīrtha is the same as Gayāśiras and is defined in <span class="devanagari">वायु</span> 111. 22 ' <span class="devanagari">नागकुष्ठामदायुद्दूपरामानसात् । एतद्यथागिरः प्रोक्तं फलस्यतीर्थं तदुच्यते ।।</span> The <span class="devanagari">आशिभु</span>. (115. 25-26) differs ‘ <span class="devanagari">नागा</span>- <span class="devanagari">जन्मादेरुपादायोत्तरामानसात् । एत</span> ... <span class="devanagari">स्थति ।। अथर्व</span>. I, 83 4 is ' <span class="devanagari">नागान्मा०</span> ' <span class="devanagari">तदुच्यते ।।</span> The <span class="devanagari">निरूपदी०</span> p. 359 reads <span class="devanagari">सुण्ण्डपूण्डषाणामृष्यास्तथात्मफलम् ।</span> <a href="#fnref-chapter-xiv-gayā-38" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-39" class="footnote-item"><span class="devanagari">गदापादीदकं विष्णोः फल्गूत्थगदिगाधरः। स्वयं हि द्रवत्वेण तस्माद्दद्यात्तृप्तिक विदुः॥ वायु</span>. 111. 16. 1500 a. Pañcāmṛta consists of milk, curds, clarified butter, honey and sugar. With these the image of Gadādhara is to be batheḍ Vide <span class="devanagari">नारद</span> (<span class="devanagari">उत्तर</span>) 43 53 '<span class="devanagari">पञ्चामृतेन च स्नानमर्च्यो हु सिषिच्यते</span>'. <a href="#fnref-chapter-xiv-gayā-39" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-40" class="footnote-item">Dr. Barua (in 'Gayā and Buddha-Gayā' vol I p 22 note) holds that Dharma and Dharmesvara refer to Buddha, while O'Malley (in J. A. S. B. vol. LXXII for 1904 part 3, p. 5) takes Dharma to mean Yama. I am inclined to agree with O'Malley. Padma, Srstikhaṇḍa 11. 73, states that there are three araṇyas for piṇḍadāna viz Puskarāraṇya, Naimiṣāraṇya and Dharmāraṇya. <a href="#fnref-chapter-xiv-gayā-40" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-41" class="footnote-item">It may be noted that the three verses (Vāyu 111. 27-29) addres- sed to <span class="devanagari">ब्रह्मादिदेव</span> do not occur in <span class="devanagari">विरह्वली</span> p 361, which gives two other verses instead viz '<span class="devanagari">चन्द्रदुद्वाय वृक्षाग्र सवंर्दा चल्वरिष्णोपि । कोचित्सचाय यज्ञाश्चाश्रमाय गर्दी नमः ॥ एकादशोसि शहाणा ब्रह्मणासदस्थथा । नारायगोसि देवाना इक्षयातोसि पिवल्गा</span>'. The <span class="devanagari">विरह्वली</span> remarks that in some msṣ even these two are not to be founḍ <a href="#fnref-chapter-xiv-gayā-41" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-42" class="footnote-item"><span class="devanagari">क्रौञ्चपादात्फलतृतीर्थं यावत्त्सायत्स्माद्रयाशिरः । वायु</span>. 111. 44 <span class="devanagari">क्रौञ्चपाद्</span> is the hill <span class="devanagari">शुण्डपृष्ट</span> as stated in <span class="devanagari">वायु</span>. 108. 75 ‘<span class="devanagari">कौञ्चरूपेण हि शुनिशृङ्गपृष्टे तपोसकरोत् । तस्य पादाङ्कितो यस्मात्कौञ्चपादस्ततः स्मृतः ॥</span>’ <a href="#fnref-chapter-xiv-gayā-42" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-43" class="footnote-item">The <span class="devanagari">त्रिशूली</span>• p 366 remarks that there is no separate śrāddha on Gayāśiras apart from the śrāddhas on Viṣṇupada and the other padas <span class="devanagari">गयाशिरेसि यः पिण्डान्नेदां नाम्ना हि निवपेत् । नरकस्था दिबं यान्ति स्वर्गस्था मोक्षमाप्नुयु ॥ वायु</span> 111 73. Agni. 115. 47 has the latter half Gayāśiras is the centre of Gayā and the most holy spot in it <a href="#fnref-chapter-xiv-gayā-43" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-44" class="footnote-item">This tīrtha was so called because Ādi-Gadādhara washed his mace in the water there after smashing the head of demon Heti with it <span class="devanagari">दैवदुष्टस्य यद्गद्गा सष्ट्र दधिा कृतवत् । ततः प्रक्षालिता यस्मात्प्रौष्ठीद्य सद्य विशुष्का । गदालेलेमिति ख्याते सर्वैवावृतमोत्तमम् । वायु</span> 111, 75 <span class="devanagari">गदालोल</span> is in the stream of the river Phalgu. <a href="#fnref-chapter-xiv-gayā-44" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-45" class="footnote-item">Compare ‘<span class="devanagari">ये सुमन्यपुणाविष्यन्ति गयायामागत्य नराः । इन्द्रादीन्प्रीणयन्ते नाग्निस्तेषां कुलशतं ब्रजेत् । नरकात्स्वर्गलोक।य स्वर्गलोकात्सदा गतिः।</span> ’ <em><span class="devanagari">अग्नि</span>.</em> 114. 39–40. <a href="#fnref-chapter-xiv-gayā-45" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-46" class="footnote-item"><span class="devanagari">संसारावृक्षशाखोयायोपपापसयच। अक्षयवप्रदात्रे च नमोऽक्षयवटाय वै ॥ कलौ माहेश्वर लोका येन तत्सादृशः । सिद्धेरुक्तोऽभूवसं च वन्दे श्री मय</span> 111. 83-84; <span class="devanagari">श्राद्धं तदवते कुर्य्याद् ब्राह्मणानां च भोजनम् । एकस्मिन् भोजिते विप्रे कोटिर्भवति भोजिताः । कि पुनर्वहुभिर्मिश्रैः पितॄणां दत्तमक्षयम् ।</span>... <span class="devanagari">इदं यदेवं नरः पूजयेत् पितृनामहम् ।</span> <em><span class="devanagari">अग्नि</span>.</em> 115. 71–73. <a href="#fnref-chapter-xiv-gayā-46" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-47" class="footnote-item"><span class="devanagari">क्रमतोऽक्रमतो वापि गयायात्रा महाफला ।</span> <em><span class="devanagari">अग्नि</span>.</em> 115 74 q by <em><span class="devanagari">त्रिसुटीघ</span></em> p. 368. <a href="#fnref-chapter-xiv-gayā-47" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-48" class="footnote-item">Both the stories occur in <em><span class="devanagari">अग्निपुराण</span></em> 115. 54-63, <em><span class="devanagari">नारदीय</span></em> (<span class="devanagari">उत्तर</span>) 44. 26-50, <em><span class="devanagari">गरुड</span></em> I 84, 34-43, and the first about Ling Viśāl in <em><span class="devanagari">परशुरूप</span></em> 7.126. <a href="#fnref-chapter-xiv-gayā-48" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-49" class="footnote-item"><span class="devanagari">गयागजे गय। दित्यौ गायत्री च गदाधर</span> | <span class="devanagari">गय। श्रयाशिरश्चैव षड् गया मुक्तिदा</span> (<span class="devanagari">वायु</span> 112. 50 q. by <span class="devanagari">तीर्थ०</span> p 328 (reads <span class="devanagari">षड्गय। मुक्तिदायकी</span>), <span class="devanagari">त्रिस्थली०</span> p 372. This occurs in <span class="devanagari">नारदीय</span> (<span class="devanagari">उत्तर</span>) 47. 39-40. <span class="devanagari">गयागज</span>--probably refers to the pillar with the figure of an elephant near the Gadādhara temple at Gayā. . <a href="#fnref-chapter-xiv-gayā-49" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-50" class="footnote-item">Gayāśiras and Gayā were according to Buddhist works well-known places in Buddha's dayṣ Vide the Mahāvagga I. 21. 1 (S. B. E. vol 13 p. 134) cited above (on p. 646) and Aṅguttara Nikāya (text) vol IV. p 302 ‘<span class="devanagari">एक समयं भगवा गयायं विहरति गय़ासीसे</span>’<span class="devanagari">।</span> <a href="#fnref-chapter-xiv-gayā-50" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-51" class="footnote-item"><span class="devanagari">आद्धकृतो गयाशीर्षे पितृणामृणतो हि सः। वायु</span> 105. 30; vide also <span class="devanagari">वायु</span> 108. 60 and 90, 109. 41; ‘<span class="devanagari">गयायां धर्मपृष्ठे च सरसि ब्रह्मदणस्तथा। गयाशीर्षे वटे चैव पितृणामृणमक्षयम्</span>’ <span class="devanagari">नारदीय</span> (<span class="devanagari">उत्तर</span>) 44. 54, <span class="devanagari">गरुड</span> I. 83 42-43. This last is ascribed to <span class="devanagari">बृहस्पति</span> by <span class="devanagari">कल्पतरु</span> (on <span class="devanagari">तीर्थी</span>) p. 167. <a href="#fnref-chapter-xiv-gayā-51" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-52" class="footnote-item"><span class="devanagari">पितरो यत्र पूज्यन्ते तत्र मातामहा अपि । अविशेषेण कर्तव्यं विशेषकारणवर्जनेऽपि इति गौतमौक्तः। त्रिस्थली०</span> p. 349, quoted also in <span class="devanagari">रघुपूर्वसार</span> p. 56. <a href="#fnref-chapter-xiv-gayā-52" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-53" class="footnote-item"><span class="devanagari">तत्प्रबन्धकल्पद्रुमे स्त्रीणां श्राद्धं पृथगेव । गयामाहात्म्ये तु पृथक् सह वा भर्तृभिर्निश्चिति सिद्धम् । अपरार्के</span> p 432, <span class="devanagari">गरुड</span> I 84. 24 is ‘<span class="devanagari">श्राद्धं तु नवदैवत्यं कुर्याद् द्वांदश</span>-<span class="devanagari">दैवत्म् । अन्वष्टकाष्ठ शुद्धौ च गयायां श्रुतवासरे॥</span>.' <a href="#fnref-chapter-xiv-gayā-53" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-54" class="footnote-item"><span class="devanagari">तत्र मातृश्राद्धं पृथक् महास्तम् । मातामहानां सपत्नीकमेव । स्मृत्यर्थसार</span> pp 59-60, vide <span class="devanagari">त्रिस्थली</span>° p. 349 for the view of <span class="devanagari">हेमाद्रि</span>. <a href="#fnref-chapter-xiv-gayā-54" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-55" class="footnote-item"><span class="devanagari">अब केचिदपितुर्वर्गातामहामहूर्गमरुपतया षट्देवमेवमेवेत्याहुः ।</span>... <span class="devanagari">अत्र सर्वत्र मूल</span>-<span class="devanagari">वंचनानि देशाचारतश्च व्यवस्थेति साम्प्रदायिर्काणोक्तम् । त्रिस्थली</span>° p 349. <span class="devanagari">रघुनन्दन</span> in his <span class="devanagari">तीर्थयात्रातत्त्व</span> notes that this is the <span class="devanagari">गौड</span> view. <a href="#fnref-chapter-xiv-gayā-55" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-56" class="footnote-item"><span class="devanagari">ओम् । अद्यमुकगोत्राणां पितृपितामहप्रपितामहानांमामुकउकादेवशर्मणाम्</span>, <span class="devanagari">अद्यमुकगोत्राणां मातृपितामही</span>-<span class="devanagari">प्रपितामहीनाममुकउकादेवीनाम्</span>, <span class="devanagari">अद्यमुकगोत्राणां मातामह</span>-<span class="devanagari">प्रमातामह</span>-<span class="devanagari">वृद्धप्रमातामहानाममुकउकादेवशर्मणाम्</span>, <span class="devanagari">अद्यमुकगोत्राणां मातामही</span>-<span class="devanagari">प्रमांतामही</span>-<span class="devanagari">वृद्ध</span>-<span class="devanagari">प्रमातामहीनाममुकउकादेवीनां प्रेतशिलाया श्राद्धमहं करिष्ये । तीर्थविधि</span>, p. 287 These twelve are specified in <span class="devanagari">गरुडपुराण</span> I. 84 47- <a href="#fnref-chapter-xiv-gayā-56" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-57" class="footnote-item"><span class="devanagari">गयायां तु निर्गुणा अपि तवस्या एव द्विजा भोज्या इति तु मया</span>- <span class="devanagari">प्रकापितान् विद्याम्नयोग्धेयूगवेदथं इश्यश्यवदमकरणे पुनः श्रवणणध्याम् नाक्ष्यवदभ्राजन्नियमो न गयाश्राद्धभाजे । एवं च शिक्षाचारोपश्युप</span> p. 352. <a href="#fnref-chapter-xiv-gayā-57" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-58" class="footnote-item"><span class="devanagari">आत्मनस्तु महाबुद्धे गयायां तु तिलैर्विना । पिण्डनिर्वेपणं कुर्यात्तथा चाञ्ध्व गोत्रजा</span>. <span class="devanagari">॥ वायु</span>. 83. 34 q by <span class="devanagari">त्रिखण्डी</span> p 350 from <span class="devanagari">स्मृतिरत्नावली</span>. Vide also <span class="devanagari">वायु</span>. <a href="#fnref-chapter-xiv-gayā-58" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-59" class="footnote-item">12 and <span class="devanagari">अग्नि</span> 115 68 ‘<span class="devanagari">पिण्डो देयस्तु सर्वेर्ध सवैर्द्ध कुलतारकै</span>. <span class="devanagari">। आत्मनस्तु तथा देयो शास्त्रं लोकमिच्छता ॥</span>’ <a href="#fnref-chapter-xiv-gayā-59" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-60" class="footnote-item"><span class="devanagari">जनार्दनो भस्मकुटे तस्य हस्ते तु पिण्डदः । आत्मनोन्यद्यदन्येषां सप्नेनापि तिलैर्विना ॥ जीवतां दर्विपिणामि सर्वो ते विष्णूलोकगः ॥ वायु</span>. 108. 85; vide <span class="devanagari">गरुडपुराण</span> ‘<span class="devanagari">जनार्दनस्य हस्ते तु पिण्डं दद्यादात्मकृतः स्वः । एव पिण्डो मया दत्तो तव एष जनार्दन । परलोकात्ततो महामक्षय्स्यपुपतिष्ठताम् ।।</span>’, compare <span class="devanagari">नारद</span> (<span class="devanagari">उत्तर</span>) 47. 62–65 for very similar verseṣ <a href="#fnref-chapter-xiv-gayā-60" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-61" class="footnote-item"><span class="devanagari">आत्मोद्देश्यमपी वाग्नि गयाश्राद्धे भवेत्तदा । यस्मान्ना पातयेत्पिण्डे से मेय भ्रूद्ध शाश्श्वतम् ॥ नामगोत्रे समुच्चार्य पिण्डपातयेन्निपे</span> | <span class="devanagari">येन केनापि कर्मेर्ध्वस याति परग शांतिम् ॥ वायु</span> 105. 14-15. Vide also <span class="devanagari">वायु</span>. 83. 36. <a href="#fnref-chapter-xiv-gayā-61" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-62" class="footnote-item"><span class="devanagari">ओद्‍म् । अद्येत्यादि अश्वमेधसहस्रजन्मफलविलक्षणफलप्राप्तिकाम फल्गुतीर्थे स्नानमहं करिष्ये ।</span> This is the <span class="devanagari">सङ्कल्प</span> in <span class="devanagari">तीर्थचि०</span> p 286 and <span class="devanagari">तीर्थयात्रातत्त्व</span> p 2 <a href="#fnref-chapter-xiv-gayā-62" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-63" class="footnote-item"><span class="devanagari">रघुनन्दन</span> sets out the formulas of tarpaṇa for Sāmavedins and Yajurvedins <span class="devanagari">पित्र्यकर्मप्रयोगपारिजात अङ्गदेवकाण्ड पुण्याहदर्पणे तीर्थेन्दौके वृहत्त तपस मीमाप्रयत्नानि सागर</span>. | <span class="devanagari">प्रबोधप्रभाकर । ओ अमुकगोत्रोऽमुकदेवशर्मास्तृप्यतेऽमुक तीर्थोदके स्वधा पितरं प्रीणयामि । तीर्थयात्रातत्त्व</span> p 3. The first is set out by <span class="devanagari">तीर्थचि०</span> p, 286 also. <a href="#fnref-chapter-xiv-gayā-63" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-64" class="footnote-item"><span class="devanagari">ऊनविंशतो षोडशत्वं पारिभाषिकं पञ्चाग्निवत् । तीर्थयात्रातत्त्व</span> p. 8. When a person inquires of another how many mango trees or fruit the latter has got the latter may reply they are five, even if actually they may be six or seveṇ <a href="#fnref-chapter-xiv-gayā-64" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-65" class="footnote-item"><span class="devanagari">तत्रैव सर्वमन्त्रेषु स्त्रीलिङ्गनां सहृद्य च । पिण्डान् दद्याद्यथापूर्वं स्त्रीणां मात्रा</span>- <span class="devanagari">दिक्रमात् । वायु</span>. 110 56 q. in <span class="devanagari">निरूपक्षी</span> p 356 <span class="devanagari">स्त्रीपोडेश्यां तु</span> —'<span class="devanagari">अस्मत्कुले मृता ये चेत्यवाहन्मन्त्रमादारभ्य मिश्राणि सख्य इति पर्यन्तं सम्भवत्स्त्रीलिङ्गमूहनीयम्</span>, <span class="devanagari">अन्येषु पुंल्लिङ्ग</span>- <span class="devanagari">शीर्षवत् । तिथितचि</span> p 292. So instead of the <span class="devanagari">मन्त्र</span> ‘<span class="devanagari">अस्मत्</span>- <span class="devanagari">न विद्यते</span>' (<span class="devanagari">वायु</span>. 110. 34), in the <span class="devanagari">स्त्रीपोडेशी</span> the <span class="devanagari">मन्त्र</span> will be '<span class="devanagari">अस्मत्कुले मृता याश्च गति</span>- <span class="devanagari">पोंसा न विद्यते । तासामुद्धरणार्थाय इमं पिण्डं ददाम्यहम् ॥ निरूपक्षी०</span> p. 357 refers to this <span class="devanagari">स्त्रीपोडेशी</span> <a href="#fnref-chapter-xiv-gayā-65" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-66" class="footnote-item"><span class="devanagari">ओम् । ये च वो येचास्मात्समासन्न भक्ष्य वो पाश्चमात्समासन्न ये चावाहनन्ता । साक्ष</span>- <span class="devanagari">वागन्ताम् । तृप्यन्तु भनन्तस्तुभ्यन्तु भवस्रुप्यन्त भोत्रात् पुन्नानभिवयन्तीरापो मधुनमतीरिमाः । स्मधा पितृभ्योऽस्तु सुहाणा आपो देवीरभयास्तृप्यन्तु । तृप्यन्त तृप्यत तृप्येतेति । तीर्थचि</span>. p 293, <span class="devanagari">तीर्थयात्रातत्त्व</span> pp. 10-11. <a href="#fnref-chapter-xiv-gayā-66" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-67" class="footnote-item"><span class="devanagari">ओङ् । अध्येत्त्वादि साम्यमन्तस्तप्तरशक्कृतुङ्गकुण्विलयस्थामोऽसिमन्मामनीर्थो झणाङ्गय मद् करिष्ये । तीर्थयात्रारत्न</span> p. 294, <span class="devanagari">तीर्थयात्रारस</span> pp 11-12 The <span class="devanagari">मन्त्र जनमांतराप</span>' (<span class="devanagari">वायु</span>. 108. 18) is quoted by both. <a href="#fnref-chapter-xiv-gayā-67" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-68" class="footnote-item">The <span class="devanagari">संकल्प</span> at <span class="devanagari">ब्रह्मकुण्डदान</span> is <span class="devanagari">ओं अध्येत्त्वादि पित्रादीनां पुनरावृत्तिर्ब्रह्मलोकमभिसीकाम प्रेतपर्वते श्राद्धम् करिष्ये । तीर्थयात्रातत्त्व</span> p. 13, <a href="#fnref-chapter-xiv-gayā-68" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-69" class="footnote-item">It may be stated once for all that there is a sańkalpa appropriate to each bath, that a bath in a sacred place is followed by tarpana, that śrāddha is performed as on Pretasilā with all details beginning from invocation and ending with making the gods bear witness Therefore these items will not be repeated hereafter and only the special provisions in each case will be pointed out <a href="#fnref-chapter-xiv-gayā-69" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-70" class="footnote-item">The <span class="devanagari">सङ्कल्प</span> is <span class="devanagari">ओं अद्येत्यादि पापक्षयपूर्वक</span>-<span class="devanagari">मर्यलोकादिमभिवृद्धिमुकामिदं उत्तरमनसे स्नानमहं करिष्ये</span> <a href="#fnref-chapter-xiv-gayā-70" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-71" class="footnote-item">For the five upacāras, vide H. of Db. vol. II, pp. 729-730. <a href="#fnref-chapter-xiv-gayā-71" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-72" class="footnote-item">In the <span class="devanagari">वायुपुराण</span> when speaking of <span class="devanagari">गया</span> the word <span class="devanagari">महानदी</span> occurs frequently (as in 112. 30, 110 6), but it refers to <span class="devanagari">फल्गु</span> On <span class="devanagari">वायु</span> 110. 6 (<span class="devanagari">ततो गयाप्रवेशे च पूर्वोक्तेरिति महानदी । तत्र तोयं समुद्रतुल्यं स्नात्वाय निर्मले जले ॥</span>) the <span class="devanagari">चिरत्त्री॰</span> p. 352 observes ‘<span class="devanagari">महानदीति फल्गुरा एव नामधेयम्। तोयं समुद्रतुल्यं शुभ्रमनदीप्रवाहकागमनैव तोयमुच्यते ॥</span>’. . <a href="#fnref-chapter-xiv-gayā-72" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-73" class="footnote-item">Raghunandana reads the five verses somewhat differently from the printed Vāyupurāṇa, though the sense is not much affecteḍ <a href="#fnref-chapter-xiv-gayā-73" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-74" class="footnote-item"><span class="devanagari">पञ्चक्रोशं गयाक्षेत्रं क्रोशमेकं गयाशिरः। वायु</span>. 106. 65, <span class="devanagari">अग्नि</span>. 115. 42, <span class="devanagari">नारदीय</span> (<span class="devanagari">उत्तर</span>) 44. 16 <a href="#fnref-chapter-xiv-gayā-74" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-75" class="footnote-item"><span class="devanagari">मुण्डपृष्ठं पूर्वस्मिन् दक्षिणे पश्चिमोत्तरे। सार्धं क्रोशद्वयं साने भवेदिति परिकीर्तितम् ॥ वायुपुराण</span> q by <span class="devanagari">विश्वलो</span> p 342 The printed <span class="devanagari">वायु</span> (105. 28-29 <span class="devanagari">मुण्ड क्रुपांच पूर्वस्मिन्</span>') appears to have a corrupt reading <a href="#fnref-chapter-xiv-gayā-75" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-76" class="footnote-item"><span class="devanagari">अयोध्या मथुरा माया काशी काञ्ची ह्यवन्तिका । पुरीद्वारवती चैव सप्त पुर्योत्र मोक्षदा ।। स्कन्द</span>, <span class="devanagari">काशीखण्ड</span>, 6. 68; <span class="devanagari">काश्यावन्ती द्वारवती मथुरा पुरी चेत्यष्टावपि मोक्षदाः ॥ काशीखण्ड</span> 23.7. <span class="devanagari">अयोध्या च</span>-<span class="devanagari">कान्ती पुरी द्वारवती ज्ञेया सप्तैता मोक्षदायिका ॥ गरुडपुराण</span> (<span class="devanagari">प्रेतखण्ड</span>) 38 5-6. In the <span class="devanagari">स्कन्द</span>, <span class="devanagari">नागरखण्ड</span> 47. 4 <span class="devanagari">कान्ती</span> occurs as capital of Rudrasena and in Brahmāṇḍa III 13. 94-97 Kāntipurī is described as possessing a place for Vyāsa's contemplation, a Kumārādhvara and Paśarīnī If the reading Kāntī is to be accepted there are divergent views about its location, some holding it to be the ancient name of Khatmandu the capital of Nepal, while A. G. identifies it with Kotival 20 miles north of Gwalior <a href="#fnref-chapter-xiv-gayā-76" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-77" class="footnote-item"><span class="devanagari">पृथिव्यां यानि लिङ्गानि तेषां संख्या न विद्यते । सौराष्ट्रे सोमनाथं च श्रीशैले मल्लिकार्जुनम् । उज्जयिन्यां महाकालमोङ्कारं परमेश्वरम् ॥ केदारं हिमवत्पृष्ठे डाकिन्यां भीमशङ्करम् । वाराणसीं च विश्वेशं त्र्यम्बकं गौतमीतटे ॥ द्वारावने च रामेशं घुश्मेशं</span> (<span class="devanagari">घृश्मेशं</span> ?) <span class="devanagari">च शिवालये । द्वादशैतानि नामानि प्रातरुत्थाय य</span>. <span class="devanagari">पठेत् । सर्वपापविनिर्मुक्तः सर्वसिद्धिफल लभेत् । शिवपुराण</span> IV 1. 18, 21-24. There is divergence of views about the identification of some of these, viz. about <span class="devanagari">औङ्कार</span> (Dey p 5), <span class="devanagari">वैद्यनाथ</span> (Dey p. 10 showing it is either Deoghar in the Santal Pargana or in Paraligrāma near Satara), <span class="devanagari">दावकावन</span> (Dey, pp. 53-54). Each <span class="devanagari">ज्योतिर्लिङ्ग</span> has an <span class="devanagari">उपलिङ्ग</span> (vide <span class="devanagari">शिवपुराण</span> IV 1. 34 42). The <span class="devanagari">बृहत्सारदीयलपुराण</span> (<span class="devanagari">पूर्वार्थ</span>) I 6 51 has '<span class="devanagari">काशीविश्वेश्वर लिङ्गं ज्योतिर्लिङ्गं तदुच्यते । तद् दृष्ट्वा परमं ज्योतिरामिति महोज्योतिषम् ॥</span>' Vide 'the Cave Temples of India ' by Fergusson and Burgess p. 367 ṇ 1. In JBBRAS, vol. X, pp. 4-6 the verses about the twelve Jyotirlingas and their locations are set out from morning Stotra. <a href="#fnref-chapter-xiv-gayā-77" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-78" class="footnote-item">For Ghṛṣṇeśvara or Gṛṣṭāneśvara at the village Elura, vide A. S. W. I. vol III pp. 82-83. The famous Kailāsa temple at Eliora is not the Ghrṇeśvara linga. <a href="#fnref-chapter-xiv-gayā-78" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xiv-gayā-79" class="footnote-item"><span class="devanagari">अट्ट वैष्णवक्षेत्राः । बदरिका</span>-<span class="devanagari">सालगाम</span>-<span class="devanagari">पुरुषोत्तम</span>-<span class="devanagari">द्वारका</span>-<span class="devanagari">चित्राचल</span>-<span class="devanagari">अनन्त</span>-<span class="devanagari">सिंह</span>-<span class="devanagari">श्रीरङ्गाः । अष्टौ शैवाः । अविमुक्त</span>-<span class="devanagari">गङ्गद्वार</span>-<span class="devanagari">शिरीषक्षेत्र</span>-<span class="devanagari">रामेसुना</span> (?) - <span class="devanagari">शिवसरस्वती</span>-<span class="devanagari">सन्</span>-<span class="devanagari">शाईल गजासेवाः । शाक्ता अष्टौ च ओषीण</span>-<span class="devanagari">जाल</span>-<span class="devanagari">पूर्ण</span>-<span class="devanagari">काम</span>-<span class="devanagari">कोल्ह</span>-<span class="devanagari">श्रीशैल</span>-<span class="devanagari">पाखी</span>-<span class="devanagari">महेन्द्राः । एते महाक्षेत्राः सर्वसिद्धिकराश्च । वार्हस्पत्यसूत्र</span> III 119-126. <a href="#fnref-chapter-xiv-gayā-79" class="fn-back" aria-label="Back to text">↩</a></li>
+</ol>
+</aside>
+
+            <div class="chapter-nav">
+                <a href="chapter-xiii-kāshī.html" class="nav-prev"><i class="fa-solid fa-chevron-left"></i> Chapter XIII. Kāshī</a>
+                <a href="chapter-xv-kurukshetra-and-some-other-famous-tīrthas.html" class="nav-next">Chapter XV. Kurukshetra and Some Other Famous Tīrthas <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </main>
+    </div>
+
+    <button class="toc-mobile-toggle" onclick="toggleMobileToc()" aria-label="Table of contents">
+        <i class="fa-solid fa-list"></i>
+    </button>
+
+    
+    <footer class="container-fluid pt-4" style="background-color:#2e4144">
+        <div class="row border-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img src="https://sanatana.in/mbta/public/images/Homepage_html/images/layer_8.png" alt="">
+            </div>
+            <div class="col-md-5 text-white">
+                <p>The divine knowledge and wisdom of our shastras is the only thing eternal,
+                   which was and which will remain ever-present in this gods creation.
+                   Our endeavours are to preserve this knowledge.</p>
+            </div>
+            <div class="col-md-1 text-white">
+                <div class="d-flex" style="height: 75px;">
+                    <div class="vr"></div>
+                </div>
+            </div>
+            <div class="col-md-3 text-white">
+                <i class="fa-solid fa-globe"></i>&emsp;
+                <a href="https://sanatanasampatti.in" class="text-light">www.sanatanasampatti.in</a><br>
+                <i class="fa-solid fa-envelope"></i>&emsp;
+                <a href="" class="text-light">sriranga.yoga@gmail.com</a>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center py-3 mb-4 align-items-center border-bottom">
+            <div class="col-md-2 text-white fs-4 text-center">Project</div>
+            <div class="col-md-2 text-white fs-4 text-center">Our Mission</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contribute</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contact Us</div>
+        </div>
+        <div class="row">
+            <p class="col-md-6 fs-6 text-start text-light">
+                <small>&copy; 2026 Sanatanasampatti</small>
+            </p>
+            <p class="col-md-6 fs-6 text-end text-light">
+                <a class="text-white" rel="nofollow" href="http://www.srirangadigital.com" target="_blank">
+                    <img src="https://sanatana.in/mbta/public/images/logo.png" alt="sriranga logo" />
+                    <small>Designed, Developed and Maintained by Sriranga Digital</small>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        const headings = [];
+        tocLinks.forEach(link => {
+            const id = link.getAttribute('href').substring(1);
+            const el = document.getElementById(id);
+            if (el) headings.push({ el: el, link: link.parentElement });
+        });
+
+        function onScroll() {
+            let current = null;
+            for (const h of headings) {
+                const rect = h.el.getBoundingClientRect();
+                if (rect.top <= 120) current = h;
+            }
+            tocLinks.forEach(l => l.parentElement.classList.remove('active'));
+            if (current) current.link.classList.add('active');
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    });
+
+    function toggleMobileToc() {
+        const toc = document.getElementById('toc');
+        if (!toc) return;
+        if (toc.style.display === 'block') {
+            toc.style.display = '';
+            toc.style.position = '';
+        } else {
+            toc.style.display = 'block';
+            toc.style.position = 'fixed';
+            toc.style.top = '0';
+            toc.style.left = '0';
+            toc.style.width = '80vw';
+            toc.style.maxWidth = '320px';
+            toc.style.height = '100vh';
+            toc.style.maxHeight = '100vh';
+            toc.style.zIndex = '2000';
+            toc.style.background = 'var(--parchment)';
+            toc.style.boxShadow = '4px 0 20px rgba(0,0,0,0.2)';
+            toc.style.padding = '24px';
+            toc.style.overflowY = 'auto';
+        }
+    }
+    </script>
+
+    <script>
+    function toggleSynopsisAudio(btn) {
+        var audio = btn.parentElement.querySelector('audio');
+        if (!audio.src) audio.src = btn.getAttribute('data-src');
+        if (audio.paused) {
+            audio.play();
+            btn.classList.add('playing');
+            btn.querySelector('i').className = 'fa-solid fa-pause';
+        } else {
+            audio.pause();
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        }
+        audio.onended = function() {
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        };
+        // Prevent click from toggling the synopsis open/close
+        event.stopPropagation();
+    }
+    </script>
+</body>
+</html>

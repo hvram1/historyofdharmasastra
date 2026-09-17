@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- MDB UI Kit -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/fonts.css?v=1.2">
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/navbar.css?v=2.4">
+
+    <title>38. Kātyāyana — Volume I: Part I — History of Dharmaśāstra</title>
+    <style>
+    :root {
+        --saffron:        #D4600A;
+        --saffron-light:  #F0924A;
+        --saffron-wash:   rgba(212, 96, 10, 0.07);
+        --indigo:         #2E5FA3;
+        --indigo-dark:    #1C3D70;
+        --maroon:         #7A1E1E;
+        --amber:          #C97A1A;
+        --ink:            #1A1209;
+        --ink-secondary:  #4A3B2A;
+        --parchment:      #FDFAF4;
+        --parchment-mid:  #F5EFE2;
+        --rule:           rgba(180, 130, 60, 0.22);
+        --shadow:         0 2px 18px rgba(90, 50, 10, 0.08);
+        --font-devanagari: 'Tiro Devanagari Sanskrit', 'Siddhanta', 'Noto Sans Devanagari', serif;
+        --font-roman:      'Junicode', Georgia, serif;
+    }
+
+    body {
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: var(--font-roman);
+    }
+
+    .devanagari {
+        font-family: var(--font-devanagari);
+    }
+
+    /* ── Navbar overrides ── */
+    .navbar-ontop { z-index: 1031; }
+    .hdclr { color: var(--saffron); }
+    .engpara { font-family: 'Open Sans', sans-serif; }
+
+    /* ── Layout ── */
+    .dh-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .dh-content {
+        flex: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        background: var(--parchment);
+        box-shadow: var(--shadow);
+        min-height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        .dh-content { padding: 24px 20px; }
+        .dh-wrapper { flex-direction: column; }
+    }
+
+    /* ── TOC Sidebar ── */
+    .toc-sidebar {
+        position: sticky;
+        top: 80px;
+        width: 280px;
+        min-width: 280px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding: 20px 16px;
+        margin-right: 24px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        scrollbar-width: thin;
+    }
+
+    .toc-title {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--saffron-light);
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list li {
+        padding: 4px 0;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-list li.toc-l3 {
+        padding-left: 16px;
+        font-size: 0.78rem;
+    }
+
+    .toc-list li a {
+        color: var(--ink-secondary);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .toc-list li a:hover { color: var(--saffron); }
+
+    .toc-list li.active {
+        border-left-color: var(--saffron);
+    }
+
+    .toc-list li.active a {
+        color: var(--saffron);
+        font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-sidebar { display: none; }
+    }
+
+    /* ── Mobile TOC Toggle ── */
+    .toc-mobile-toggle {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1050;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--saffron);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-mobile-toggle { display: block; }
+    }
+
+    /* ── Section Headings ── */
+    .section-heading {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        margin: 48px 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--rule);
+        letter-spacing: 0.5px;
+        scroll-margin-top: 80px;
+    }
+
+    h2.section-heading { font-size: 1.6rem; }
+
+    h3.section-heading {
+        font-size: 1.25rem;
+        border-left: 4px solid var(--saffron-light);
+        border-bottom: none;
+        padding: 8px 16px;
+        background: var(--saffron-wash);
+        border-radius: 0 5px 5px 0;
+    }
+
+    /* ── Prose ── */
+    .prose {
+        font-family: var(--font-roman);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+        color: var(--ink);
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    .prose em { color: var(--maroon); }
+
+    .prose:target {
+        background: rgba(212, 96, 10, 0.12);
+        border-left: 4px solid var(--saffron);
+        padding-left: 16px;
+        margin-left: -20px;
+        border-radius: 0 6px 6px 0;
+        animation: target-pulse 2s ease-out;
+    }
+
+    @keyframes target-pulse {
+        0%   { background: rgba(212, 96, 10, 0.30); }
+        100% { background: rgba(212, 96, 10, 0.12); }
+    }
+
+    /* ── Footnote References ── */
+    .fn-ref {
+        font-size: 0.75em;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    .fn-ref a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 0 2px;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: color 0.15s;
+    }
+
+    .fn-ref a:hover { color: var(--indigo); }
+
+    /* ── Synopsis Box ── */
+    .synopsis-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron-light);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .synopsis-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .synopsis-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .synopsis-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .synopsis-box.open .synopsis-toggle i {
+        transform: rotate(90deg);
+    }
+    .synopsis-body {
+        display: none;
+        padding: 0 20px 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+    }
+    .synopsis-box.open .synopsis-body { display: block; }
+    .synopsis-body p { margin: 0; }
+    .synopsis-attribution {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: var(--ink-secondary);
+        opacity: 0.7;
+        font-style: italic;
+    }
+    .synopsis-audio {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    .synopsis-play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--saffron);
+        background: none;
+        color: var(--saffron);
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: background 0.2s, color 0.2s;
+        padding: 0;
+    }
+    .synopsis-play-btn:hover {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn.playing {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn i { padding-left: 2px; }
+
+    /* ── Index Terms Panel ── */
+    .index-terms-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .index-terms-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .index-terms-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .index-terms-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .index-terms-box.open .index-terms-toggle i {
+        transform: rotate(90deg);
+    }
+    .index-terms-body {
+        display: none;
+        padding: 0 20px 16px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .index-terms-box.open .index-terms-body { display: block; }
+    .index-terms-dl {
+        margin: 0;
+        padding: 0;
+    }
+    .index-terms-dl dt {
+        font-family: var(--font-roman);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+        margin-top: 8px;
+    }
+    .index-terms-dl dd {
+        margin: 2px 0 0 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        color: var(--ink-secondary);
+        line-height: 1.5;
+    }
+    .nyaya-heading {
+        font-family: var(--font-roman);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        margin: 16px 0 4px;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+    }
+
+    /* ── Inline Index Popovers ── */
+    .idx-term {
+        border-bottom: 1px dotted var(--saffron-light);
+        cursor: help;
+        position: relative;
+    }
+    .idx-term:hover::after {
+        content: attr(data-def);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        background: rgba(44, 36, 22, 0.92);
+        color: #F5ECD8;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        max-width: 280px;
+        z-index: 100;
+        white-space: normal;
+        line-height: 1.4;
+        pointer-events: none;
+    }
+
+    /* ── Structured Version Banner ── */
+    .structured-banner {
+        margin: 0 0 28px;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, rgba(212, 96, 10, 0.06) 0%, rgba(212, 96, 10, 0.02) 100%);
+        border: 1px solid var(--saffron-light);
+        border-radius: 6px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        color: var(--ink-secondary);
+        line-height: 1.6;
+    }
+    .structured-banner i { color: var(--saffron); margin-right: 4px; }
+    .structured-banner a { color: var(--indigo); font-weight: 600; text-decoration: none; }
+    .structured-banner a:hover { text-decoration: underline; }
+
+    /* ── Footnotes Section ── */
+    .footnotes-section {
+        margin: 32px 0 48px;
+        padding: 20px 24px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .footnotes-section hr {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 0 0 16px;
+    }
+
+    .footnotes-list {
+        padding-left: 24px;
+        margin: 0;
+    }
+
+    .footnote-item {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+        scroll-margin-top: 80px;
+    }
+
+    .footnote-item:target {
+        background: rgba(212, 96, 10, 0.1);
+        border-radius: 4px;
+        padding: 4px 6px;
+        margin-left: -6px;
+    }
+
+    .fn-back {
+        color: var(--saffron-light);
+        text-decoration: none;
+        font-size: 0.85em;
+        margin-left: 4px;
+    }
+
+    .fn-back:hover { color: var(--saffron); }
+
+    /* ── Reference Links ── */
+    a.ref {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: all 0.15s;
+    }
+
+    a.ref:hover {
+        color: var(--saffron);
+        border-bottom-style: solid;
+    }
+
+    a.mbta-ext {
+        color: var(--indigo);
+        font-size: 0.7em;
+        margin-left: 2px;
+        opacity: 0.5;
+        text-decoration: none;
+        vertical-align: super;
+    }
+    a.mbta-ext:hover { opacity: 1; color: var(--saffron); }
+
+    /* ── References Panel (sidebar) ── */
+    .refs-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .refs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .refs-list li {
+        padding: 3px 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .ref-source-link {
+        font-weight: 600;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .ref-source-link:hover {
+        text-decoration: underline;
+    }
+
+    .ref-verse-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.76rem;
+    }
+
+    .ref-verse-link:hover {
+        text-decoration: underline;
+        color: var(--saffron);
+    }
+
+    .ref-verses {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Timeline panel ── */
+    .timeline-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .timeline-list li {
+        padding: 2px 0;
+        font-size: 0.76rem;
+        line-height: 1.4;
+        position: relative;
+        padding-left: 14px;
+    }
+
+    .timeline-list li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--saffron);
+    }
+
+    .timeline-list li.tl-approximate::before {
+        background: transparent;
+        border: 2px solid var(--saffron);
+        width: 4px;
+        height: 4px;
+    }
+
+    .timeline-list li.tl-century::before {
+        background: transparent;
+        border: 2px dashed var(--saffron);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+
+    .tl-dot-link {
+        text-decoration: none;
+        color: var(--ink);
+        display: block;
+    }
+
+    .tl-dot-link:hover {
+        color: var(--saffron);
+    }
+
+    .tl-year {
+        font-weight: 600;
+        color: var(--saffron);
+        font-size: 0.72rem;
+        min-width: 70px;
+        display: inline-block;
+    }
+
+    .tl-label {
+        color: var(--ink-secondary);
+        font-size: 0.72rem;
+    }
+
+    .tl-view-link, .tl-more {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.72rem;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .tl-view-link:hover, .tl-more:hover {
+        text-decoration: underline;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+
+    .breadcrumb-bar a {
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+
+    .breadcrumb-bar .sep {
+        color: var(--amber);
+        margin: 0 8px;
+    }
+
+    .breadcrumb-bar .current {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Chapter Navigation ── */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        margin-top: 48px;
+        border-top: 2px solid var(--rule);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .chapter-nav a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        transition: all 0.2s;
+        max-width: 45%;
+    }
+
+    .chapter-nav a:hover {
+        background: var(--saffron-wash);
+        border-color: var(--saffron-light);
+    }
+
+    .nav-prev { text-align: left; }
+    .nav-next { text-align: right; margin-left: auto; }
+
+    .page-range {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+    }
+
+    /* ── Volume Cards (Landing) ── */
+    .vol-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .vol-card {
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        transition: all 0.25s;
+    }
+
+    .vol-card:hover {
+        border-color: var(--saffron-light);
+        box-shadow: 0 4px 24px rgba(212, 96, 10, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .vol-num {
+        font-family: var(--font-roman);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--saffron);
+        margin-bottom: 8px;
+    }
+
+    .vol-subtitle {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        line-height: 1.5;
+        flex: 1;
+    }
+
+    .vol-chapters {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        margin-top: 12px;
+    }
+
+    /* ── Chapter Cards (Volume Index) ── */
+    .chapter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .chapter-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .chapter-card:hover {
+        border-color: var(--saffron-light);
+        background: var(--saffron-wash);
+    }
+
+    .card-num {
+        font-family: var(--font-roman);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--saffron);
+        min-width: 36px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        flex: 1;
+    }
+
+    .card-pages {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        color: var(--ink-secondary);
+    }
+
+    /* ── Landing Hero ── */
+    .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-family: var(--font-roman);
+        font-size: 2.4rem;
+        color: var(--saffron);
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .hero .devanagari-title {
+        font-family: var(--font-devanagari);
+        font-size: 1.8rem;
+        color: var(--ink);
+        margin-bottom: 16px;
+    }
+
+    .hero .author {
+        font-family: var(--font-roman);
+        font-size: 1.1rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .hero .desc {
+        font-family: var(--font-roman);
+        font-size: 1rem;
+        color: var(--ink-secondary);
+        line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer { margin-top: 48px; }
+</style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mbta/">
+      <div class="container-fluid">&emsp;&emsp;
+      <a href="../index.html" class="navbar-brand" style="text-decoration:none;">
+        <span class="devanagari ms-3" style="font-size:1.5rem; color:var(--saffron); font-weight:700;">धर्मशास्त्रम्</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="../index.html">धर्मशास्त्रम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5 active" href="../index.html">खण्डाः</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in/mbta/">महाभारतम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in">सनातनम्</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+
+    <div class="dh-wrapper container-xl">
+        <nav id="toc" class="toc-sidebar">
+<div class="refs-panel">
+<h5 class="toc-title">References</h5>
+<ul class="refs-list">
+<li><a href="../refs/apararka.html" class="ref-source-link">Aparārka</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/baudhayana.html" class="ref-source-link">Baudhāyana Dharmasūtra</a> <span class="ref-verses"><a href="../refs/baudhayana.html#I.2.47" class="ref-verse-link">I.2.47</a></span></li>
+<li><a href="../refs/brihaspati.html" class="ref-source-link">Bṛhaspati</a> <span class="ref-verses"><a href="../refs/brihaspati.html#i" class="ref-verse-link">i</a>, <a href="../refs/brihaspati.html#v" class="ref-verse-link">v</a>, <a href="../refs/brihaspati.html#C" class="ref-verse-link">C</a></span></li>
+<li><a href="../refs/hodh.html" class="ref-source-link">History of Dharmaśāstra</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/kautilya.html" class="ref-source-link">Kauṭilya Arthaśāstra</a> <span class="ref-verses"><a href="../refs/kautilya.html#I.19.32" class="ref-verse-link">I.19.32</a></span></li>
+<li><a href="../refs/katyayana.html" class="ref-source-link">Kātyāyana</a> <span class="ref-verses"><a href="../refs/katyayana.html#i" class="ref-verse-link">i</a>, <a href="../refs/katyayana.html#ci" class="ref-verse-link">ci</a>, <a href="../refs/katyayana.html#c" class="ref-verse-link">c</a>, <a href="../refs/katyayana.html#v" class="ref-verse-link">v</a></span></li>
+<li><a href="../refs/mahabharata.html" class="ref-source-link">Mahābhārata</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/manu.html" class="ref-source-link">Manusmṛti</a> <span class="ref-verses"><a href="../refs/manu.html#8.360" class="ref-verse-link">8.360</a>, <a href="../refs/manu.html#9.215" class="ref-verse-link">9.215</a>, <a href="../refs/manu.html#9.231" class="ref-verse-link">9.231</a>, <a href="../refs/manu.html#c" class="ref-verse-link">c</a>, <a href="../refs/manu.html#VIII.216" class="ref-verse-link">VIII.216</a>, <a href="../refs/manu.html#7.1" class="ref-verse-link">7.1</a> <a href="../refs/manu.html" class="ref-verse-link">+5</a></span></li>
+<li><a href="../refs/medhatithi.html" class="ref-source-link">Medhātithi</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mitakshara.html" class="ref-source-link">Mitākṣarā</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/narada.html" class="ref-source-link">Nārada</a> <span class="ref-verses"><a href="../refs/narada.html#c" class="ref-verse-link">c</a>, <a href="../refs/narada.html#v" class="ref-verse-link">v</a>, <a href="../refs/narada.html#12.5-6" class="ref-verse-link">12.5-6</a></span></li>
+<li><a href="../refs/parasara.html" class="ref-source-link">Parāśara</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/vasishtha.html" class="ref-source-link">Vasiṣṭha Dharmasūtra</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/vishvarupa.html" class="ref-source-link">Viśvarūpa</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/yajnavalkya.html" class="ref-source-link">Yājñavalkya</a> <span class="ref-verses"><a href="../refs/yajnavalkya.html#I.4-5" class="ref-verse-link">I.4-5</a>, <a href="../refs/yajnavalkya.html#II.183" class="ref-verse-link">II.183</a>, <a href="../refs/yajnavalkya.html#III.8-11" class="ref-verse-link">III.8-11</a>, <a href="../refs/yajnavalkya.html#III.260" class="ref-verse-link">III.260</a>, <a href="../refs/yajnavalkya.html#III.242" class="ref-verse-link">III.242</a>, <a href="../refs/yajnavalkya.html#III.247" class="ref-verse-link">III.247</a> <a href="../refs/yajnavalkya.html" class="ref-verse-link">+4</a></span></li>
+<li><a href="../refs/sankha_likhita.html" class="ref-source-link">Śaṅkha-Likhita</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mb_shantiparva.html" class="ref-source-link">Śāntiparva</a> <span class="ref-verses"><a href="../refs/mb_shantiparva.html#27.31" class="ref-verse-link">27.31</a></span></li>
+</ul>
+</div>
+<div class="timeline-panel">
+<h5 class="toc-title">Timeline</h5>
+<ul class="timeline-list">
+<li class="tl-exact"><a href="#p-38-kātyāyana-2" class="tl-dot-link"><span class="tl-year">121 CE</span> <span class="tl-label">Kātyāyana</span></a></li>
+<li class="tl-century"><a href="#p-38-kātyāyana-10" class="tl-dot-link"><span class="tl-year">301 CE</span> <span class="tl-label">Kātyāyana</span></a></li>
+<li class="tl-century"><a href="#p-38-kātyāyana-10" class="tl-dot-link"><span class="tl-year">501 CE</span> <span class="tl-label">Kātyāyana</span></a></li>
+<li class="tl-century"><a href="#p-38-kātyāyana-14" class="tl-dot-link"><span class="tl-year">1001 CE</span> <span class="tl-label">Kātyāyana</span></a></li>
+<li class="tl-century"><a href="#p-38-kātyāyana-21" class="tl-dot-link"><span class="tl-year">~1476 CE</span> <span class="tl-label">Yājñavalkya</span></a></li>
+</ul>
+<a href="38-kātyāyana-timeline.html" class="tl-view-link">View full timeline &rarr;</a>
+</div>
+<h5 class="toc-title">Sections</h5>
+<ul class="toc-list">
+<li class="toc-l2"><a href="#38-kātyāyana">38. Kātyāyana</a></li>
+</ul>
+</nav>
+        <main class="dh-content">
+            
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep">›</span>
+        <a href="index.html">Volume I: Part I</a>
+        <span class="sep">›</span>
+        <span class="current">38. Kātyāyana</span>
+    </div>
+    
+            <h1 class="text-center" style="font-family: var(--font-roman); font-size: 2rem; color: var(--saffron); margin-bottom: 8px;">
+                38. Kātyāyana
+            </h1>
+            <p class="text-center" style="font-family: 'Open Sans', sans-serif; color: var(--ink-secondary); font-size: 0.9rem; margin-bottom: 36px;">
+                Volume I: Part I <span class="page-range">pp. 496–507</span>
+            </p>
+
+            
+    <div class="synopsis-box" id="synopsis">
+        <button class="synopsis-toggle" onclick="this.parentElement.classList.toggle('open')"
+                aria-expanded="false" aria-controls="synopsis-body">
+            <i class="fa-solid fa-chevron-right"></i>
+            Kane's Synopsis
+        </button>
+        <div class="synopsis-audio">
+            <span class="synopsis-play-btn" role="button" tabindex="0"
+                    onclick="toggleSynopsisAudio(this)"
+                    data-src="../audio/synopsis/vol-1-part-1/vol-1-part-1_sec038.mp3" title="Listen to synopsis">
+                <i class="fa-solid fa-play"></i>
+            </span>
+            <audio preload="none"></audio>
+        </div>
+        <div class="synopsis-body" id="synopsis-body">
+            <p>Work of Kātyāyana on vyavahāra not yet recovered - collection of Kātyāyana's 973 verses with English translation by Dr. P. V. Kane and collection of 121 verses by Prof. Aiyangar - Nārada and Bṛhas- pati are models of Kātyāyana - on several points he presupposes Nārada - Nārada very brief on strīdhana, while Kātyāyana's treat- ment is classical - Kātyāyana first to give definitions of some kinds of strīdhana - Kātyāyana often refers to Bṛhaspati's views - About 900 verses of Kātyāyana on vyavahāra quoted in digests - he refers to Bhṛgu 20 times - only a few of these are found in Manu - many of the views attributed in Kātyāyana to Manu are not found in extant Manusmṛti - some of the views ascribed to Mānavas by Kātyāyana differed from the views of the extant Manusmṛti - some verses are ascribed to Kātyāyana and Manu, Yājñavalkya and Bṛhaspati in the digests - Kātyāyana is in advance of Nārada and Bṛhaspati in the matter of definitions and as to rules on strīdhana - Kātyāyana probably first to distinguish between jayapatra and paścātkāra - date of Kātyāyana - later than Yājñavalkya, Nārada and Bṛhaspati - flourished between 400-600 A. D. - Medhātithi ( on Manu 7.1) quotes a Kātyāyana sūtra in prose - Bṛhat Kātyāyana and Vṛddha
+ i
+Kātyāyana - Hemādri speaks of Upa-Kātyāyana - the Karmapradīpa of Kātyāyana or Gobhilasmṛti in 500 verses - contents thereof - Karmapradīpa - some verses of it identical with authors named by Karmapradīpa - some verses of it identical with Manu, Yājñavalkya and Mahābhārata - Karmapradīpa profusely quoted in Aparārka and Smṛticandrikā and to a lesser degree by Mitākṣarā – some quotations ascribed to Kātyāyana on topics other than vyavahāra are not found in the Karmapradīpa – Kātyāyana composed some large work of which Karmapradīpa is part or abridgment – no sufficient data to identify jurist Kātyāyana and the author of the Karmapradīpa – many verses ascribed to Bṛhaspati in some Dharmaśāstra works and to Kātyāyana by others.</p>
+            <p class="synopsis-attribution">— Synopsis by P.V. Kane, from History of Dharmaśāstra</p>
+        </div>
+    </div>
+
+
+            
+
+            <h2 id="38-kātyāyana" class="section-heading">38. Kātyāyana</h2>
+<p class="prose" id="p-38-kātyāyana-1">38. <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a></p>
+<p class="prose" id="p-38-kātyāyana-2"><a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a>, <a class="ref" href="../refs/brihaspati.html" data-source="brihaspati" data-ref="" title="Bṛhaspati">Bṛhaspati</a> and <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> form a triumvirate in the realm of the ancient Hindu Law and procedure. The work of <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> on Vyavahāra, like that of <a class="ref" href="../refs/brihaspati.html" data-source="brihaspati" data-ref="" title="Bṛhaspati">Bṛhaspati</a>, has yet to be recovereḍ After the first volume of <a class="ref" href="../refs/hodh.html" data-source="hodh" data-ref="" title="History of Dharmaśāstra">H. of Dh.</a> was published in 1930, I contributed to a Law Journal in Bombay a collec- tion of <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>'s verses gathered from quotations in 21 works and later (in 1933) published in a book form 973 verses of <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> with English translation, two Appendices and a General Index (in all 372 pages). Later on Prof. K. V. Rangaswami Aiyangar contributed a paper to the Kane Fest- schrift (pp 7–17) embodying 121 additional verses of <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> from the work called Vyavahāranirṇaya of Vara- darāja (which he published in 1942 as No. 29 of the Adyar Library series ).</p>
+<p class="prose" id="p-38-kātyāyana-3"><a class="ref" href="../refs/katyayana.html#i" data-source="katyayana" data-ref="i" title="Kātyāyana i">Kātyāyana i</a>s enumerated as one of the expounders of dharma by <a class="ref" href="../refs/sankha_likhita.html" data-source="sankha_likhita" data-ref="" title="Śaṅkha-Likhita">Śaṅkha-Likhita</a>, <a class="ref" href="../refs/yajnavalkya.html#I.4-5" data-source="yajnavalkya" data-ref="I.4-5" title="Yājñavalkya I.4-5">Yājñavalkya (I. 4–5)</a> and Parā- śara. A Kātya is quoted as an authority in the <a class="ref" href="../refs/baudhayana.html#I.2.47" data-source="baudhayana" data-ref="I.2.47" title="Baudhāyana Dharmasūtra I.2.47">Baudhāyana- dharmasūtra (I. 2. 47)</a>. A Śrautasūtra and Śrāddhakalpa of the white Yajurveda are ascribed to <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>.</p>
+<p class="prose" id="p-38-kātyāyana-4"><a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> appears to have taken <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> and <a class="ref" href="../refs/brihaspati.html" data-source="brihaspati" data-ref="" title="Bṛhaspati">Bṛhaspati</a> as his models in the order and treatment of the subjects to be dealt with on vyavahāra. He closely follows both the writers in terminology and technique. On several points he presupposes <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> and expounds and elucidates the latter's dicta. For example, <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> (Intro. chap. I. 10–11 ) lays down that Vyavahāra has four pādas, each later one prevailing, viz. dharma, vyavahāra, caritra, rājāśāsana (note 361 ) and then <a class="ref" href="../refs/narada.html#v" data-source="narada" data-ref="v" title="Nārada v">Nārada v</a>ery briefly in one verse explains these four terms; <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>, on the other hand, devotes at least nine verses to the elucidation of the rule as to each succeeding one prevailing over its predecessor.<sup class="fn-ref"><a href="#fn-38-kātyāyana-1" id="fnref-38-kātyāyana-1">1</a></sup> <a class="ref" href="../refs/narada.html#c" data-source="narada" data-ref="c" title="Nārada c">Nārada c</a>ontains very little on the topic of strīdhana (dāyabhāga chap. verses 8–9 ). He merely enumerates the six kinds of strīdhana and then lays down the rule of successioṇ <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>'s treatment of strīdhana has attained classical rank. It appears that he was probably the first to carefully define the several kinds of strīdhana (such as adhyagni, adhyāvahanika, pritidatta, śulka, anvā- dheya, saudāyika), to lay down woman's power of disposal over the several varieties of strīdhana and to prescribe lines of devolution as to strīdhana. The verses on this topic occurring in the nibandhas number about thirty. The leading nibandhas contain only a few quotations from <a class="ref" href="../refs/brihaspati.html" data-source="brihaspati" data-ref="" title="Bṛhaspati">Bṛhaspati</a> on strīdhana. Hence it may be surmised that <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> probably was the first smṛti writer to give elaborate rules on this topic.</p>
+<p class="prose" id="p-38-kātyāyana-5">It has been already shown how <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> often quotes the views of <a class="ref" href="../refs/brihaspati.html" data-source="brihaspati" data-ref="" title="Bṛhaspati">Bṛhaspati</a>. A few more examples may be added here. According to <a class="ref" href="../refs/brihaspati.html" data-source="brihaspati" data-ref="" title="Bṛhaspati">Bṛhaspati</a>, says <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>, when a man who stands surety with others on a joint liability goes abroad, his son would have to pay the whole debt, but if the man dies then the son would be liable for his father's share only.<sup class="fn-ref"><a href="#fn-38-kātyāyana-2" id="fnref-38-kātyāyana-2">2</a></sup> When cattle stray into fields, gardens, houses or cowpens, they may be, according to <a class="ref" href="../refs/brihaspati.html" data-source="brihaspati" data-ref="" title="Bṛhaspati">Bṛhaspati</a>, caught hold of (by the ear &c.) or beateṇ<sup class="fn-ref"><a href="#fn-38-kātyāyana-3" id="fnref-38-kātyāyana-3">3</a></sup> According to <a class="ref" href="../refs/brihaspati.html" data-source="brihaspati" data-ref="" title="Bṛhaspati">Bṛhaspati</a>, a man of the kṣatriya, vaiśya or śūdra caste may employ one of his own caste to do the work of a dāsa (slave or serf), but even a Brāhmaṇa could never employ another Brāhmaṇa in the same way.<sup class="fn-ref"><a href="#fn-38-kātyāyana-4" id="fnref-38-kātyāyana-4">4</a></sup></p>
+<p class="prose" id="p-38-kātyāyana-6">More than 21 nibandhas on Vyavahāra quote about 1100 verses of <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> on vyavahāra, the Smṛticandrikā alone citing about 600 of theṃ In these verses <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> refers at least a score of times to the views of Bhṛgu. It is remarkable that only a few of the views ascribed to Bhṛgu are found in the extant <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a>. <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> says, according to Bhṛgu, whatever (ancestral) wealth was concealed by one coparcener from others, whatever was badly divided should be divided in equal shares when afterwards discovered (<a class="ref" href="../refs/parasara.html" data-source="parasara" data-ref="" title="Parāśara">Parāśara</a>-Mādhavīya III, p. 566). This may well be compared with <a class="ref" href="../refs/manu.html#9.215" data-source="manu" data-ref="9.215" title="Manusmṛti 9.215">Manu 9. 215</a>. <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> says, according to Bhṛgu, it is not Brāhmaṇa-murder to kill an ātātāyin who is foremost by his austerities, learning and caste. This has in view <a class="ref" href="../refs/manu.html#8.360" data-source="manu" data-ref="8.360" title="Manusmṛti 8.360">Manu 8. 360</a>. Kullūka distinctly says that <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> simply explains the verse of <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> by referring to it as Bhṛgu'ṣ On the other hand, there are several places where the views ascribed to Bhṛgu find no counterpart in the extant <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>. Bhṛgu seems to have been a predecessor of the author of the extant <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a> since it mentions ( III. 16 ) the view of Bhṛgu. The <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> on Yaj. III. 292 quotes a verse of Bhṛgu. <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a> also quotes a verse of Bhṛgu on Yaj. I.79 and another on Yaj. I.187, both of which are not found in the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>-smṛti. <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> quotes in all four verses of Bhṛgu (on pp. 58, 461, 547, 696). The Smṛticandrikā, <sup class="fn-ref"><a href="#fn-38-kātyāyana-5" id="fnref-38-kātyāyana-5">5</a></sup> after dilating upon the two superior places cited by <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> ( viz. the king or a judge appointed by the king where disputes are decided ) quotes three verses of Bhṛgu which refer to 15 inferior tribunals for decision in some special matterṣ The Smṛticandrikā also quotes several verses of Bhṛgu on Śrāddha, two of which are interesting and indicate that the Bhṛgu it quotes is a much later writer than <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>, as they refer to the position of the Sun in rāśis ( signs of the zodiac ).</p>
+<p class="prose" id="p-38-kātyāyana-7">According to Bhṛgu in all sāhasas of the worst type the truth should be found out by means of divine proof (ordeals &c. ) even though there may be witnesseṣ <sup class="fn-ref"><a href="#fn-38-kātyāyana-6" id="fnref-38-kātyāyana-6">6</a></sup> There is nothing in the <a class="ref" href="../refs/manu.html#c" data-source="manu" data-ref="c" title="Manusmṛti c">Manusmṛti c</a>orresponding with thiṣ According to Bhṛgu the ordeals of balance &c. are prescribed for those who are suspected to be in league with marauders and who have incurred popular censure, but in such cases there is no under-taking (by the complainant to pay fine).<sup class="fn-ref"><a href="#fn-38-kātyāyana-7" id="fnref-38-kātyāyana-7">7</a></sup> The <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a> has not a word on this point. Household paraphernalia, beasts of burden, cattle, ornaments, slaves should be divided when discovered; if they are (alleged to be) concealed, the ordeal of kośa should be resorted to; so says Bhrgu.<sup class="fn-ref"><a href="#fn-38-kātyāyana-8" id="fnref-38-kātyāyana-8">8</a></sup> Another important circumstance that deserves to be noted is that <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> several times refers to the view of <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>. Kātyā-yana says that the view of <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> was ‘In those disputes (or crimes) for which ordeals are forbidden (to be administered to perpetrators) the king should make efforts to have them performed by good men on their behalf (if available); he should not abandon the person charged (without testing his guilt by proxy)’: this is the view of <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>.<sup class="fn-ref"><a href="#fn-38-kātyāyana-9" id="fnref-38-kātyāyana-9">9</a></sup> According to <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>, if a woman deserted her son, though he may be able (to pay), her strīdhana should be seized and the paternal debt should be paid thereout.<sup class="fn-ref"><a href="#fn-38-kātyāyana-10" id="fnref-38-kātyāyana-10">10</a></sup> <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> declared, says <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>, that if animals be killed, the offender should offer (to the owner) another similar animal or its proper price. All these views attributed to <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> by <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> are not found in the extant <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a>. In certain places <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> refers to the views of the Mānavas; e. g. according to the Gārgiyas and Mānavas if a bribe had already been paid, the person receiving it should be made to repay it and should be finèd eleven times as much;<sup class="fn-ref"><a href="#fn-38-kātyāyana-11" id="fnref-38-kātyāyana-11">11</a></sup> according to the Mānavas thieves caught red- handed with their booty should be at once banisheḍ<sup class="fn-ref"><a href="#fn-38-kātyāyana-12" id="fnref-38-kātyāyana-12">12</a></sup> As regards both these references, the teaching of the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a> seems to be different; vide <a class="ref" href="../refs/manu.html#9.231" data-source="manu" data-ref="9.231" title="Manusmṛti 9.231">Manu 9. 231</a> and 270 respectively. These facts about <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>'s references to Bhrgu and <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> raise several difficult questions, whether Bhrgu and <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> stand for two entirely different works or for the same work and whether he refers to some other version of the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a> ascribed to Bhrgu. In my opinion he is not referring to two separate works, and that he had before him a version of the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a> promulgated by Bhrgu but somewhat different from and probably larger than the present <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a>.</p>
+<p class="prose" id="p-38-kātyāyana-8">In the nibandhas several verses are ascribed to <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> along with <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a>, <a class="ref" href="../refs/yajnavalkya.html" data-source="yajnavalkya" data-ref="" title="Yājñavalkya">Yājñavalkya</a> and <a class="ref" href="../refs/brihaspati.html" data-source="brihaspati" data-ref="" title="Bṛhaspati">Bṛhaspati</a>. For example, the well-known verse about the sixfold division of strīdhana (adhyagnyādhyāvahanikam &c. ) is ascribed by the Dāyabhāga to <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> and <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>. The half-verse “varṇa-nāmānulomyena dāsyam na pratilomatah” is the same in both <a class="ref" href="../refs/yajnavalkya.html#II.183" data-source="yajnavalkya" data-ref="II.183" title="Yājñavalkya II.183">Yājñavalkya (II. 183)</a> and <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>. The Viramitrodaya (p. 140 ) ascribes a verse to <a class="ref" href="../refs/brihaspati.html" data-source="brihaspati" data-ref="" title="Bṛhaspati">Bṛhaspati</a> and <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>, in which the opinion of <a class="ref" href="../refs/brihaspati.html#i" data-source="brihaspati" data-ref="i" title="Bṛhaspati i">Bṛhaspati i</a>s citeḍ There is very close agreement between the definitions proposed by the two last writers of dharma, vyavahāra, caritra, and rājāsāsana. Besides <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> ( or Mānavas ), <a class="ref" href="../refs/brihaspati.html" data-source="brihaspati" data-ref="" title="Bṛhaspati">Bṛhaspati</a> and Bhrgu, <a class="ref" href="../refs/katyayana.html#ci" data-source="katyayana" data-ref="ci" title="Kātyāyana ci">Kātyāyana ci</a>tes the views of several other writers on dharma. For Gārgyas and Gautama vide notes 567 and 568. He says, accord-ing to Kauśika, powerful robbers were to be guarded by chains of iron, were to be low-fed and were to undergo hard labour for the state till death ( <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> p. 849 ). He quotes the view of Likhita that where a woman is deprived of food, raiment and dwelling ( by her husband's coparceners ) she would be entitled to demand her own ( strīdhana ) and a share from the coparcenerṣ In one case ( <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> p. 755 ), a verse is cited as <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>'s in which <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> himself is named ( <a class="ref" href="../refs/parasara.html" data-source="parasara" data-ref="" title="Parāśara">Parāśara</a>mādhavīya III. p. 235 ).</p>
+<p class="prose" id="p-38-kātyāyana-9"><a class="ref" href="../refs/katyayana.html#c" data-source="katyayana" data-ref="c" title="Kātyāyana c">Kātyāyana c</a>ontains the same advanced views about law and rules of procedure as are found in <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> and <a class="ref" href="../refs/brihaspati.html" data-source="brihaspati" data-ref="" title="Bṛhaspati">Bṛhaspati</a>. He is even in advance of these two writers in certain matters, such as definitions in general and the elaboration of rules about strīdhana. He gives numerous definitions, such as those of vyavahāra, prāḍvivāka, stobhaka, dharmādhikaraṇa, tirita and anusiṣṭa, sāmanta &c. He seems to have been the first to invent some new termṣ For example, he defines paścātkāra as a judgment given in favour of the plaintiff' after a hot contest between the plaintiff' and the defendant, while the term jayapatra is restricted by him to the judgment given on admission by the defendant or a judgment dismissing the suit on various groundṣ<sup class="fn-ref"><a href="#fn-38-kātyāyana-13" id="fnref-38-kātyāyana-13">13</a></sup> He lays down a stringent rule that if a man abandons a ground of defence or attack and puts forward a less cogent one, he would not be allowed to put forward again the stronger ground after a decisive judgment of the court.<sup class="fn-ref"><a href="#fn-38-kātyāyana-14" id="fnref-38-kātyāyana-14">14</a></sup> This resembles the 4th explanation to section 11 of the Indian Civil Procedure Code ( 1908 ) about the verses about kārṣāpaṇa and dināra quoted above ( note 368 ) from <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> ( pariśiṣṭa verses 58-60 ) are ascribed to <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> by the Smṛticandrikā.</p>
+<p class="prose" id="p-38-kātyāyana-10">The date of <a class="ref" href="../refs/katyayana.html#c" data-source="katyayana" data-ref="c" title="Kātyāyana c">Kātyāyana c</a>an be settled only approxi mately. He is certainly much later than <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> and yajña valkya. As shown above he presupposes <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> and regarded <a class="ref" href="../refs/brihaspati.html" data-source="brihaspati" data-ref="" title="Bṛhaspati">Bṛhaspati</a> as a very leading authority on vyavahāra. Hence his upper limit is the 3rd or 4th century A. D. <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a> quotes eight verses as <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>'s by name ( vide on Yaj. II. 5, 6, 47, 63, 281 ) on such topics of Vyavahāra as the defects of the plaint, the contents of the plaint, the liability for the debts of a deceased person, payments of debts of honour ( satyaṁkāra ), punishment for abortion, grievous hurt and homicide of a brāhmaṇa womaṇ <a class="ref" href="../refs/medhatithi.html" data-source="medhatithi" data-ref="" title="Medhātithi">Medhātithi</a> ( on <a class="ref" href="../refs/manu.html#7.1" data-source="manu" data-ref="7.1" title="Manusmṛti 7.1">Manu 7. 1</a> ) ascribes to <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> the rule that in case of conflict between the dictates of dharmaśāstra and arthaśāstra the king should prefer the former. <a class="ref" href="../refs/medhatithi.html" data-source="medhatithi" data-ref="" title="Medhātithi">Medhātithi</a> on <a class="ref" href="../refs/manu.html#VIII.216" data-source="manu" data-ref="VIII.216" title="Manusmṛti VIII.216">Manu ( VIII. 216 )</a> speaks of <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>-sūtra, appears to quote a portion of it in prose and explains it.<sup class="fn-ref"><a href="#fn-38-kātyāyana-15" id="fnref-38-kātyāyana-15">15</a></sup> <a class="ref" href="../refs/medhatithi.html" data-source="medhatithi" data-ref="" title="Medhātithi">Medhātithi</a> says that <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> extended the maxim of the trader carrying merchandise (bhāṇḍavāha-vaṇik maxim) to all similar transactionṣ All known quotations of <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> are in verse. When <a class="ref" href="../refs/medhatithi.html" data-source="medhatithi" data-ref="" title="Medhātithi">Medhātithi</a> speaks of a sūtra and quotes a portion of it (as “vā” and “iti” after “nivarteta” indicate) in prose, we must either suppose that he is referring to some other work of <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> than the one in verse from which hundreds of verses are cited by other writers or that <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>’s work on vyavahāra also contained some prose passageṣ As hardly any other writer quotes a prose passage of <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> on vyavahāra, the second alternative appears somewhat unlikely. <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a> and <a class="ref" href="../refs/medhatithi.html" data-source="medhatithi" data-ref="" title="Medhātithi">Medhātithi</a> regarded <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> as an authoritative smṛtikāra along with <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> and <a class="ref" href="../refs/brihaspati.html" data-source="brihaspati" data-ref="" title="Bṛhaspati">Bṛhaspati</a>. This position he could not have attained in less than a few hundred yearṣ Therefore, the lowest limit to which <a class="ref" href="../refs/katyayana.html#c" data-source="katyayana" data-ref="c" title="Kātyāyana c">Kātyāyana c</a>an be assigned is the 6th century. Hence it may be said that <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> flourished between the 4th and 6th century A. D.</p>
+<p class="prose" id="p-38-kātyāyana-11">The Vyavahāramātṛkā (p. 307) quotes a Bṛhat-<a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> on the question of proof. The Dāyabhāga mentions a Vṛddha-<a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>. The Sarasvatīvilāsa also quotes verses of Vṛddha-<a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> on rescission of purchase and other topics (p. 320). In the present state of our knowledge it is very difficult to say whether these two are different workṣ The Caturvarga-cintāmaṇi (vol. III, part 2, p. 657) speaks of Upakātyāyana. <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> on p. 485 quotes a verse from śloka-<a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> which is not found in the Karmapradīpa (Jīvānanda’s eḍ), but appears to be a summary of a prose passage quoted as <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>’s immediately before by <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a>.</p>
+<p class="prose" id="p-38-kātyāyana-12">In Jīvānanda’s collection of smṛtis (part I, pp. 603-644) there is one of <a class="ref" href="../refs/katyayana.html#i" data-source="katyayana" data-ref="i" title="Kātyāyana i">Kātyāyana i</a>n three prapāṭhakas and 29 khaṇḍas and about five hundred verseṣ The same work is printed as Gobhilasmṛti in the Ānandāśrama collection (pp. 49-71). It contains also a few prose passages in the 12th, 13th and 14th khaṇḍaṣ The prevailing metre is Anuṣṭubh, a few verses being in the Indravajrā and other metreṣ 38. <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> work is styled the Karmapradipa of <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>. The opening verse justifies this name when it states that like a lamp the work will clearly show the mode of performing certain rites treated by Gobhila and other rites which are not clearly elucidateḍ<sup class="fn-ref"><a href="#fn-38-kātyāyana-16" id="fnref-38-kātyāyana-16">16</a></sup> The contents of this work are briefly as follows:—how to wear the sacred thread; sipping water and touching various limbs with water; the worship of Gaṇeśa and fourteen mātṛs in every rite; kuśas; śrāddha details; consecration of sacred fires; details about araṇis, sruc, sruva; rules about cleansing the teeth and bathing; sandhyā; prāṇa- yāma, muttering of Vedic mantras; tarpaṇa of gods and manes; the great daily yajñas; who is to offer śrāddha; rules about periods of impurity due to death; duties of wife; śrāddhas of various kindṣ</p>
+<p class="prose" id="p-38-kātyāyana-13">The Karmapradipa mentions by name several authorṣ It very frequently cites the views of Gobhila (pp. 603, 626, 638) and Gautama (pp. 619, 620, 626, 630, 636, 639). The Karmapradīpa as the opening verse says is intimately related to the Gobhila Gṛhyasūtra. It distinctly says that as Gobhila did not dilate upon the details as to time and procedure of goyajña and vājīyajña, <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> dilates upon theṃ This is borne out by the Gobhila gṛhya-sūtra<sup class="fn-ref"><a href="#fn-38-kātyāyana-17" id="fnref-38-kātyāyana-17">17</a></sup> Another passage of <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a><sup class="fn-ref"><a href="#fn-38-kātyāyana-18" id="fnref-38-kātyāyana-18">18</a></sup> about the Aṣṭakās is based upon the very words of the Gobhila-gṛhya. Frequent reference is made to the views of <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> on the worship of Mātṛs (p. 605), on śrāddha (pp. 608, 625). Vide also p. 642 (28. 16). Among the other authors named are <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> on the sticks for danta- dhāvana (p. 615), Bhārgava (probably Uśanas) on p. 640, Śāṇḍilya and Śāṇḍilyāyana on p. 626. <a class="ref" href="../refs/katyayana.html#i" data-source="katyayana" data-ref="i" title="Kātyāyana i">Kātyāyana i</a>s named in several places ( pp. 624, 627, 638 ) and once the first person ‘mamāpyetad hṛdi sthitam’ ( p. 643 ). The <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>smṛti quotes the verse of <a class="ref" href="../refs/manu.html#III.70" data-source="manu" data-ref="III.70" title="Manusmṛti III.70">Manu (III.70)</a> on the five great yajñaṣ On p. 633 four verses forming the consolation to be offered to the relatives of a person departed are the same as <a class="ref" href="../refs/yajnavalkya.html#III.8-11" data-source="yajnavalkya" data-ref="III.8-11" title="Yājñavalkya III.8-11">Yāj. ( III. 8–11 )</a> and one verse in the same con- text occurs in the <a class="ref" href="../refs/mahabharata.html" data-source="mahabharata" data-ref="" title="Mahābhārata">Mahābhārata</a> ( <a class="ref" href="../refs/mb_shantiparva.html#27.31" data-source="mb_shantiparva" data-ref="27.31" title="Śāntiparva 27.31">Śāntiparva 27.31</a><a href="https://sanatana.in/mbta/listing/parva/shantiparva" target="_blank" rel="noopener" class="mbta-ext" title="View in Mahābhārata Text Archive">↗</a> and other places ).<sup class="fn-ref"><a href="#fn-38-kātyāyana-19" id="fnref-38-kātyāyana-19">19</a></sup> On p. 631 <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> speaks of Rāma having performed yajñas taking as his spouse the golden image of Sītā.</p>
+<p class="prose" id="p-38-kātyāyana-14">The question is:—what is the date of this <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>-smṛti ( Karmapradīpa ) and whether it is the work of Kātyā- yana the great jurist. The <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> ( on <a class="ref" href="../refs/yajnavalkya.html#I.254" data-source="yajnavalkya" data-ref="I.254" title="Yājñavalkya I.254">Yāj. I. 254</a> ) quotes a verse as <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>’s which occurs in Jīvānanda’s text ( p. 624 verse 20 ); similarly the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> quotes two verses as Kātyā- yana’s (on <a class="ref" href="../refs/yajnavalkya.html#III.247" data-source="yajnavalkya" data-ref="III.247" title="Yājñavalkya III.247">Yāj. III. 247</a>) which have a place in the Karmapradīpa ( Jīvānanda p. 634 verses 4–5 ). Scores of verses cited as <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>’s by <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> ( on ācāra and prāyaścitta ) are found in the Karmapradīpa. For example, vide <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> p. 43 ( three verses ) and Karmapradīpa (p.605, 1110–12 ), <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> p. 51 ( three verses about samūh ) and Karmapr. ( p. 613, 8. 17–19 ), <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> p. 135 ( four verses about bathing in rivers ) and Karma. ( p. 615, 10. 5–7 and 14 ), <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> p. 532 ( four verses on śrāddha in which <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> himself is cited as an authority ) and Karma. ( p. 621, 16. 16–19 ), <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> p. 872 ( six verses ) and Karma. ( 21. 2–7 p. 632 ), <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> p. 1066 ( three verses about an agnihotrin being guilty of mahāpātaka ) and Karma. ( 23. 4–6 p. 634 ). The Smṛticandrikā also quotes profusely from <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> on ācāra, śrāddha etc. and cites from the Karmapradīpa by name passages which occur in Jīvānanda’s editioṇ The above references show that in the eyes of the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mitākṣarā</a> and <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> the Karmapradīpa was an authoritative work. Therefore, it follows that it must have been composed long before the 11th century A. D. It is, however, remarkable that several quotations ascribed to <a class="ref" href="../refs/katyayana.html#i" data-source="katyayana" data-ref="i" title="Kātyāyana i">Kātyāyana i</a>n the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mitākṣarā</a>, <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> and other works are not found in the Karmapradīpa. For example, the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mitākṣarā</a> (on <a class="ref" href="../refs/yajnavalkya.html#III.242" data-source="yajnavalkya" data-ref="III.242" title="Yājñavalkya III.242">Yāj. III. 242</a>) cites <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>’s verse about five varieties of lapses in conduct viz. mahāpā- taka, atipātaka, pātaka, prāsaṁgika, upapātaka and on <a class="ref" href="../refs/yajnavalkya.html#III.260" data-source="yajnavalkya" data-ref="III.260" title="Yājñavalkya III.260">Yāj. III. 260</a> quotes a verse of <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> about what are ati- pātakaṣ These are not to be traced in the Karmapradīpa printed by Jīvananda. Similarly, <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> (pp. 94–95) quotes three verses of <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> that are very interesting but are not found in Jīvananda’s editioṇ<sup class="fn-ref"><a href="#fn-38-kātyāyana-20" id="fnref-38-kātyāyana-20">20</a></sup> Later works like the Nirṇayasindhu, the Saṁskāramayūkha, the Madanapāri- jāta quote numerous verses of <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> on upanayana, marriage and other saṁskāras which we vainly seek to find in the Karmapradīpa. It is better to hold with Dr. R. C. Hazra that several works were ascribed to <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>, though they were composed by different personṣ Vide New I. A. vol. VII at pp. 64–65.</p>
+<p class="prose" id="p-38-kātyāyana-15">The next question is whether <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> the jurist and the author of the Karmapradīpa are identical. There are not sufficient data to identify the two. The only fact that points to the identity is that such eminent and early writers as Vijñāneśvara and <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> appear to make no distinction between the two. Besides, the Karmapradīpa is also an early work. Against this it has to be remembered that <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a>, probably the most ancient of all extant commentators, no- where quotes <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> on ācāra and prāyaścitta. This absence of quotations is not a not very cogent argument; still it raises a doubt in one’s mind whether a work of <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> on ācāra and other non-jural topics was known to <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a>.</p>
+<p class="prose" id="p-38-kātyāyana-16">A few words must be said about the additional 121 verses collected and published in Kane Festschrift by Prof. Aiyangar as ascribed to <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>. Many verses are ascribed to <a class="ref" href="../refs/brihaspati.html#i" data-source="brihaspati" data-ref="i" title="Bṛhaspati i">Bṛhaspati i</a>n some Dharmaśāstra works which are attributed to <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> by otherṣ For reasons of space only a few striking examples are cited below: ( <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kāt.</a> = collection of <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>’s verses by P. V. Kane and Br. Col. stands for <a class="ref" href="../refs/brihaspati.html#C" data-source="brihaspati" data-ref="C" title="Bṛhaspati C">Bṛhaspati C</a>ollection). Prof. Aiyangar's own collection of <a class="ref" href="../refs/brihaspati.html#v" data-source="brihaspati" data-ref="v" title="Bṛhaspati v">Bṛhaspati v</a>erses; P. M. = <a class="ref" href="../refs/parasara.html" data-source="parasara" data-ref="" title="Parāśara">Parāśara</a>-mādhavīya, Vy. N.=Vyavahāranirṇaya eḍ by Prof. Aiyangar):</p>
+<p class="prose" id="p-38-kātyāyana-17">1.  The verse ‘Unmatta-matta’ in Vy. N. p. 59 is ascribed to Bṛ. by <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> p. 615 in Bṛ. Col. (I. 173). 2.  The verse ‘Pramāṇasamatā yatra’ <a class="ref" href="../refs/katyayana.html#i" data-source="katyayana" data-ref="i" title="Kātyāyana i">Kāt. i</a>n Vy. N. p. 63 is Bṛ. 3.45 (p. 43) found in <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> p. 625, Smṛticandrikā and several other workṣ 3.  ‘Stribālārtalipijñānām’ is <a class="ref" href="../refs/katyayana.html#i" data-source="katyayana" data-ref="i" title="Kātyāyana i">Kāt. i</a>n Vy. N. p. 91, but Bṛ. Col. p. 66 (Bṛ. in Smṛ. c. p. 65 on Vy.). 4.  ‘Paśyan-nanyasya dadatāḥ’ is <a class="ref" href="../refs/katyayana.html#i" data-source="katyayana" data-ref="i" title="Kātyāyana i">Kāt. i</a>n Vy. N. p. 138, while it is Bṛ. in <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> p. 632, Smṛ. c. (Vy. p. 68). 5.  ‘Parīkṣeta svayam paṇyam’ is <a class="ref" href="../refs/katyayana.html#i" data-source="katyayana" data-ref="i" title="Kātyāyana i">Kāt. i</a>n Vy. N. p. 344, but Bṛ. (in Bṛ. Col. p. 156 and is Smṛ c. (Vy. p. 220), Vyavahāramātṛkā p. 215 and otherṣ 6.  ‘Vāgdaṇḍam prathamam kuryāt’ is <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kāt.</a> acc. to Vy. N. p. 528, but Bṛ. in Daṇḍaviveka p. 263 (Bṛ. Col. p. 227).</p>
+<p class="prose" id="p-38-kātyāyana-18">Three verses of <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> are quoted as occurring in <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kāt.</a> by Vy. N. p. 529, which are respectively <a class="ref" href="../refs/manu.html#IX.288" data-source="manu" data-ref="IX.288" title="Manusmṛti IX.288">Manu IX. 288</a> and <a class="ref" href="../refs/manu.html#VIII.124-125" data-source="manu" data-ref="VIII.124-125" title="Manusmṛti VIII.124-125">Manu VIII. 124–125</a>.</p>
+<p class="prose" id="p-38-kātyāyana-19">The verse ‘strīṇām sākṣyam striyaḥ kuryuḥ’ is ascribed to <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kāt.</a> (my collection No. 351) and to <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> by Vyavahāramātṛkā p. 323 (and it is <a class="ref" href="../refs/manu.html#VIII.68" data-source="manu" data-ref="VIII.68" title="Manusmṛti VIII.68">Manu VIII. 68</a>). The same is the case with the verse ‘Svabhāvenaiva yad-brūyus’ &c. (<a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kāt.</a> No. 393, which is <a class="ref" href="../refs/manu.html#8.78" data-source="manu" data-ref="8.78" title="Manusmṛti 8.78">Manu 8. 78</a>). The verse ‘anupasthāpayan-mūlam’ (<a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kāt.</a> No. 619) is ascribed to <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> by the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> on <a class="ref" href="../refs/yajnavalkya.html#II.170" data-source="yajnavalkya" data-ref="II.170" title="Yājñavalkya II.170">Yāj. II. 170</a> and to <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kāt.</a> by Smṛ. caṇ (Vy. p. 215), <a class="ref" href="../refs/parasara.html" data-source="parasara" data-ref="" title="Parāśara">Par.</a> M., Vivāda-ratnākara 108 and Viramitrodaya and Vy. Mayūkha.</p>
+<p class="prose" id="p-38-kātyāyana-20">It is difficult to say why these differences arise. All that can be proposed as the rule to be followed is that the ascrip tion to Bṛ. or <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kāt.</a> of a verse should be accepted on this basis that one should follow what the older and distinguished authors and works (such as <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a>, <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mitākṣarā</a>, <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a>, Kalpataru, Vyavahāramātṛkā, Smṛticandrikā and <a class="ref" href="../refs/parasara.html" data-source="parasara" data-ref="" title="Parāśara">Parāśara</a>mādhavīya) say or a majority of them say.</p>
+<p class="prose" id="p-38-kātyāyana-21">Similarly, many verses on Vyavahāra are ascribed to both <a class="ref" href="../refs/brihaspati.html" data-source="brihaspati" data-ref="" title="Bṛhaspati">Bṛhaspati</a> and <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>. A few examples may be citeḍ <a class="ref" href="../refs/katyayana.html#v" data-source="katyayana" data-ref="v" title="Kātyāyana v">Kāt. v</a>erses 382–384 are ascribed to different authors by different authoritieṣ Verses 693–95 in my <a class="ref" href="../refs/katyayana.html#c" data-source="katyayana" data-ref="c" title="Kātyāyana c">Kāt. c</a>ollection are . 38. <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> assigned to different authors viz. to <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> (first two occur in printed <a class="ref" href="../refs/narada.html#12.5-6" data-source="narada" data-ref="12.5-6" title="Nārada 12.5-6">Nārada 12. 5–6</a> ), Br̥haspati, <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kāt.</a> and Vyāsa (No. 83 <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kāt.</a> ) is ascribed to both Br. and <a class="ref" href="../refs/katyayana.html#i" data-source="katyayana" data-ref="i" title="Kātyāyana i">Kāt. i</a>n Vyavahāramātr̥kā p. 281 (it is <a class="ref" href="../refs/kautilya.html#I.19.32" data-source="kautilya" data-ref="I.19.32" title="Kauṭilya Arthaśāstra I.19.32">Kauṭilya I. 19. 32</a>); No. 141 is ascribed to both Br. and <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kāt.</a> by Kalpataru (Vy. p. 61, Vya. Mātr̥kā p. 291, but <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> (p. 610) and Smr. c. (Vya. p. 40) ascribe to Br. alone and it occurs in <a class="ref" href="../refs/vishvarupa.html" data-source="vishvarupa" data-ref="" title="Viśvarūpa">Viśvarūpa</a> on <a class="ref" href="../refs/yajnavalkya.html#II.6" data-source="yajnavalkya" data-ref="II.6" title="Yājñavalkya II.6">Yāj. II. 6</a> (without name). The Pr̥thvīcandra ascribes it to both Br. and <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kāt.</a> (on Vya. p. 47, a digest of about last quarter of the 15th century A. D.); <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kāt.</a> No. 152 (‘ sāhasasteya ’ &c.) is ascribed to both Br. and <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kāt.</a> by Pr̥thvīcandra (Vy. p. 55) and Kalpataru (Vy. p. 67) and is almost the same as <a class="ref" href="../refs/yajnavalkya.html#II.12" data-source="yajnavalkya" data-ref="II.12" title="Yājñavalkya II.12">Yāj. II. 12</a> ).</p>
+<p class="prose" id="p-38-kātyāyana-22"><a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> himself is named in a verse that is cited from <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a> by <a class="ref" href="../refs/parasara.html" data-source="parasara" data-ref="" title="Parāśara">Par.</a> M.<sup class="fn-ref"><a href="#fn-38-kātyāyana-21" id="fnref-38-kātyāyana-21">21</a></sup></p>
+<p class="prose" id="p-38-kātyāyana-23">The number of Smr̥tis or Smr̥tikāras quoted or referred to by themselves or mentioned in commentaries and digests is very large, particularly if one takes into account Smr̥tikāras ‘brhat’ ‘madhyama,’ ‘laghu’ and ‘vr̥ddha’ prefixed to many of theṃ The important versified Smr̥tis in the Sanskrit alphabetical order will now be briefly dealt with one after another.</p>
+<aside class="footnotes-section" aria-label="Footnotes">
+<hr>
+<ol class="footnotes-list">
+<li id="fn-38-kātyāyana-1" class="footnote-item">Vide <span class="devanagari">परा</span>. <span class="devanagari">मा</span>. vol. III, part I, pp. 16–17, and <span class="devanagari">वीर०</span> p. 9-10, 120-121. <a href="#fnref-38-kātyāyana-1" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-38-kātyāyana-2" class="footnote-item"><span class="devanagari">एकच्छायापते सर्वं दयात् प्रोपिते मृते । मृते पितरि पित्रंशं परणं न वृहस्पतिः ॥ परा</span>. <span class="devanagari">मा</span>. III, p. 251. <a href="#fnref-38-kātyāyana-2" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-38-kātyāyana-3" class="footnote-item"><span class="devanagari">क्षेत्रारामविवीतेषु गृहेषु पशुषादिषु । ग्रहणं तत्प्रविष्टानां ताडनं वा वृहस्पतिः ॥ वि</span>. <span class="devanagari">र</span>. p. 241. <a href="#fnref-38-kātyāyana-3" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-38-kātyāyana-4" class="footnote-item"><span class="devanagari">क्षत्रविशुद्धवर्त्मस्तु समवर्णे करावन । कारयेद् दासकर्माणं ब्राह्मणं न वृहस्पतिः ॥ वि</span>. <span class="devanagari">र</span>. p. 152. <a href="#fnref-38-kātyāyana-4" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-38-kātyāyana-5" class="footnote-item"><span class="devanagari">दशस्थानानि वादानां पक्षं चैवाववीन्मनुः । निर्णयं येन गच्छन्ति विवादं प्राप्य वादिनः ॥ आरण्यास्तु स्वकैः कुर्युः सार्थिकाः सार्थिकैस्तथा । सैनिकाः सैनिकैरेव प्रामेषूभयवासिनिः ॥</span> ( and two more verses ) quoted by <span class="devanagari">स्मृतिच०</span> (<span class="devanagari">व्यव०</span> ) p. 18. <span class="devanagari">एकराशिसिथिते सूर्ये यदा दर्शद्वयं भवेत् । हव्यकव्यक्रियाहन्ता तदाज्ञेयोऽ</span>- <span class="devanagari">धिमासकः ॥ बुद्धिश्श्राद्धे तथा सोममन्वार्धयं महालयम् । राजाभिषेकं काम्यं च न कुर्याद्वाहुलक्षिते ॥ स्मृतिच०</span> on <span class="devanagari">श्राद्ध</span> p. 370. <span class="devanagari">भृगुः । येषु पापेषु दिव्यानि प्रतिषिद्धानि यत्नतः । कार्येत्वसज्जनैस्तानि नाभिशस्तं त्वनेनगुः ॥ भृगु</span> q. by <span class="devanagari">अपरार्क</span> p. 666 reads <span class="devanagari">प्रतिशुद्धानि ।</span> <a href="#fnref-38-kātyāyana-5" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-38-kātyāyana-6" class="footnote-item"><span class="devanagari">उत्तमेषु च सर्वेषु साहसेषु विचारयेत् । सद्भावं दिव्यदृष्टेन सत्सु साक्षिषु वै भृगुः ॥ परा</span>. <span class="devanagari">मा</span>. III, p. 90. <a href="#fnref-38-kātyāyana-6" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-38-kātyāyana-7" class="footnote-item"><span class="devanagari">लोककवाददुष्टानां शङ्कितानां च दण्डुमिः । तुलादीनि नियोज्यानि न शिरस्त्रन्न वै मृगुः ॥ अपर्पर्क</span>, <span class="devanagari">स्मृति० ६०</span>. <a href="#fnref-38-kātyāyana-7" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-38-kātyāyana-8" class="footnote-item"><span class="devanagari">गृह्मोपस्करवावाह्याश्च दोषाश्रमणकर्मणः । दृश्यमाना विभज्यन्ते कोशं गूढेर्व्वीमन्मनुः ॥ अपर्पर्क</span> p. 723 and <span class="devanagari">परा</span>. <span class="devanagari">मा</span>. III, p. 557. <a href="#fnref-38-kātyāyana-8" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-38-kātyāyana-9" class="footnote-item"><span class="devanagari">एघु वादिषु दिव्यानि प्रतिषिद्धानि यत्नतः । कायेत्स्नर्जनैस्तानि नाभिश्तरतं र्जनेन्नुमनुः ॥ अपर्क</span> p. 696 who ascribes it to <span class="devanagari">मृगु</span>. The <span class="devanagari">टोडानन्द</span> reads <span class="devanagari">खजेनरः</span>. <a href="#fnref-38-kātyāyana-9" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-38-kātyāyana-10" class="footnote-item"><span class="devanagari">या खपुत्रं तु जङ्गास्त्री समर्थमपि पुत्रिणी । आहृत्य खीधनं तत्र पितृवर्णं शोध्येन्मनुः ॥ वि</span>. <span class="devanagari">र</span>. p. 65. <a href="#fnref-38-kātyāyana-10" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-38-kātyāyana-11" class="footnote-item"><span class="devanagari">अथ प्रागेव दत्ता स्यात्प्रतिदाप्यस्तथा बलात् । दण्डं चैकादशगुणमाहुर्गागीय</span>-<span class="devanagari">मानवाः ॥ अपर्पर्क</span> p. 782; <span class="devanagari">वि</span>. <span class="devanagari">र</span>. 626 (which reads <span class="devanagari">आरुमीयमानवाः</span>). <a href="#fnref-38-kātyāyana-11" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-38-kātyāyana-12" class="footnote-item"><span class="devanagari">मानवाः सथ एवाहुः सहोढानां प्रवासनम् ० गौतमानुमानसिद्धं यथापुच्छेऽदाद्वि</span>- <span class="devanagari">गर्हितम् ॥ वि</span>. <span class="devanagari">र</span>. 332. It is not unlikely that the correct reading is <span class="devanagari">प्रमाणणं</span> for <span class="devanagari">प्रवासनं</span>, as the immediately following view of <span class="devanagari">गौतम</span> suggestṣ The words of <span class="devanagari">मनु</span> are <span class="devanagari">सहोढै सोपकरणं चातयेदविचारयन्</span>. <a href="#fnref-38-kātyāyana-12" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-38-kātyāyana-13" class="footnote-item"><span class="devanagari">निरस्तास्तु क्रिया यत्र प्रमाणेन वादिना । पश्चात्कालो भवेत्तत्र न सर्वांसु विधीयते ॥ अन्यवादादिहीनभ्य इतरेण प्रदीर्यते । वृत्तानुवादसंसिद्धं तत्त्व स्याज्जयपत्रकम् ॥ स्मृतिच०</span>, <span class="devanagari">टोडरानन्द</span>, <span class="devanagari">वीर०</span>. <a href="#fnref-38-kātyāyana-13" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-38-kātyāyana-14" class="footnote-item"><span class="devanagari">क्रियां बलवतीं मुक्त्वा दुर्बलां योवलम्बते । स जयेवधृते सभ्यैः पुनस्तां नाप्नुयात् क्रियाम् ॥ मिता०</span> on <span class="devanagari">याज्ञ</span>. II, 30 ; <span class="devanagari">व्य</span>. <span class="devanagari">मा</span>. p. 281 ; <span class="devanagari">वीर०</span> p. 108. <a href="#fnref-38-kātyāyana-14" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-38-kātyāyana-15" class="footnote-item">‘<span class="devanagari">यो वान्यः कस्यचिल्कर्मणि धनमावक्ष्य अर्थतो निवँर्तेत इति कात्यायनीये सूत्रे धनमावक्ष्य आसज्य धनव्ययं कारयित्वा यदि अर्धकृते निवँर्तेत सोपि तद्वैहिंदिः स्रनुपज्ञः ॥</span>’ <a href="#fnref-38-kātyāyana-15" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-38-kātyāyana-16" class="footnote-item"><span class="devanagari">अथातो गोभिलोक्तानामन्येषां चैव कर्मणाम् । अस्पष्टानां विधिं सम्यग्दर्शयिष्ये प्रदीपवत् ॥</span> <a href="#fnref-38-kātyāyana-16" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-38-kātyāyana-17" class="footnote-item">Vide p. 638 verses 1-11 of 26th khaṇḍa and compare with Gobhilagṛhyasūtra III. 6. 10-15 (<span class="devanagari">गोयज्ञे पायसस्रङ्गः । अग्निं यजेत पूष्णामिन्द्र</span>- <span class="devanagari">प्रीश्चम् । ऋषपूजा । गोयज्ञेनावाश्रयो व्याख्यातः । यमवरुणो देवतानाम</span>- <span class="devanagari">मान्द्रिधौ । गन्धर</span>-<span class="devanagari">युश्खणं गवाम् ।</span>). <a href="#fnref-38-kātyāyana-17" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-38-kātyāyana-18" class="footnote-item"><span class="devanagari">यस्तु शाकादिको होमः कार्योपपूष्टकास्तृतः । अनध्वक्ष्यं मध्यमायामिति गोभिलणोत्तमो । वाकेणडिथ कौत्सो । मेनेष्कासु च ॥ कात्यायन०</span> 17. 24 (p. 626) ; compare <span class="devanagari">गोभिलगृह्य०</span>. III. 10. 4-7 ‘<span class="devanagari">चतुरष्को हेमन्तः ताः सर्वाः समीक्षाधिकारिवदिति कौत्सः । व्यष्टक इत्योद्ग्राहमानिः । तथा गोतमवाक्</span>- <span class="devanagari">लवणो । गार्धमाहाध्याध्यास्तामिस्खामी तामुपपाठकेत्याचक्षते ।</span>’ <a href="#fnref-38-kātyāyana-18" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-38-kātyāyana-19" class="footnote-item"><span class="devanagari">सर्वे क्षयान्ता निचयाः पतनान्ताः समुच्छ्रयाः । संयोगा विप्रयोगान्ता मरणान्तं हि जीवितम् ॥</span> <a href="#fnref-38-kātyāyana-19" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-38-kātyāyana-20" class="footnote-item"><span class="devanagari">वरयित्वा तु यः कच्चिद्ग्रिणयेत्पुरुर्षो यदा । रक्तागमश्रीदीनलीय कन्यान्यं वरयेद्दरम्</span> || <span class="devanagari">प्रदाय गच्छेच्छुल्कं यः कन्यायाः क्षीथंनं तथा । धार्यौ सा वर्षमेकं तु देयान्ध्यस्स्मै विधनत ।। पूर्वदत्ता तु या कन्या अन्योनोडा यदा भवेत् । संस्कृतापि प्रदेया स्वायस्मे पूर्व प्रतिश्रुता</span> || The first verse ‘Varayitvā tu &c.’ and the third ‘Pūrvadattā’ are cited by Aparārka on Āhnika (pp. 82–83) as Kātyāyana’s view and the first as of Kāt. in Smṛticandrikā p. 82 (āhnika ). H. D.,—64 <a href="#fnref-38-kātyāyana-20" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-38-kātyāyana-21" class="footnote-item"><span class="devanagari">अनिर्दिष्टञ्च निर्दिष्टमेव च विलेखितम् । विशेषलेखितं ज्याय इति कात्या</span>- <span class="devanagari">यनोक्तात् ।। परा</span>. <span class="devanagari">मा</span>. vol. III, part I. p. 235. <a href="#fnref-38-kātyāyana-21" class="fn-back" aria-label="Back to text">↩</a></li>
+</ol>
+</aside>
+
+            <div class="chapter-nav">
+                <a href="37-brihaspati.html" class="nav-prev"><i class="fa-solid fa-chevron-left"></i> 37. Brihaspati</a>
+                <a href="39-angiras.html" class="nav-next">39. Angiras <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </main>
+    </div>
+
+    <button class="toc-mobile-toggle" onclick="toggleMobileToc()" aria-label="Table of contents">
+        <i class="fa-solid fa-list"></i>
+    </button>
+
+    
+    <footer class="container-fluid pt-4" style="background-color:#2e4144">
+        <div class="row border-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img src="https://sanatana.in/mbta/public/images/Homepage_html/images/layer_8.png" alt="">
+            </div>
+            <div class="col-md-5 text-white">
+                <p>The divine knowledge and wisdom of our shastras is the only thing eternal,
+                   which was and which will remain ever-present in this gods creation.
+                   Our endeavours are to preserve this knowledge.</p>
+            </div>
+            <div class="col-md-1 text-white">
+                <div class="d-flex" style="height: 75px;">
+                    <div class="vr"></div>
+                </div>
+            </div>
+            <div class="col-md-3 text-white">
+                <i class="fa-solid fa-globe"></i>&emsp;
+                <a href="https://sanatanasampatti.in" class="text-light">www.sanatanasampatti.in</a><br>
+                <i class="fa-solid fa-envelope"></i>&emsp;
+                <a href="" class="text-light">sriranga.yoga@gmail.com</a>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center py-3 mb-4 align-items-center border-bottom">
+            <div class="col-md-2 text-white fs-4 text-center">Project</div>
+            <div class="col-md-2 text-white fs-4 text-center">Our Mission</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contribute</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contact Us</div>
+        </div>
+        <div class="row">
+            <p class="col-md-6 fs-6 text-start text-light">
+                <small>&copy; 2026 Sanatanasampatti</small>
+            </p>
+            <p class="col-md-6 fs-6 text-end text-light">
+                <a class="text-white" rel="nofollow" href="http://www.srirangadigital.com" target="_blank">
+                    <img src="https://sanatana.in/mbta/public/images/logo.png" alt="sriranga logo" />
+                    <small>Designed, Developed and Maintained by Sriranga Digital</small>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        const headings = [];
+        tocLinks.forEach(link => {
+            const id = link.getAttribute('href').substring(1);
+            const el = document.getElementById(id);
+            if (el) headings.push({ el: el, link: link.parentElement });
+        });
+
+        function onScroll() {
+            let current = null;
+            for (const h of headings) {
+                const rect = h.el.getBoundingClientRect();
+                if (rect.top <= 120) current = h;
+            }
+            tocLinks.forEach(l => l.parentElement.classList.remove('active'));
+            if (current) current.link.classList.add('active');
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    });
+
+    function toggleMobileToc() {
+        const toc = document.getElementById('toc');
+        if (!toc) return;
+        if (toc.style.display === 'block') {
+            toc.style.display = '';
+            toc.style.position = '';
+        } else {
+            toc.style.display = 'block';
+            toc.style.position = 'fixed';
+            toc.style.top = '0';
+            toc.style.left = '0';
+            toc.style.width = '80vw';
+            toc.style.maxWidth = '320px';
+            toc.style.height = '100vh';
+            toc.style.maxHeight = '100vh';
+            toc.style.zIndex = '2000';
+            toc.style.background = 'var(--parchment)';
+            toc.style.boxShadow = '4px 0 20px rgba(0,0,0,0.2)';
+            toc.style.padding = '24px';
+            toc.style.overflowY = 'auto';
+        }
+    }
+    </script>
+
+    <script>
+    function toggleSynopsisAudio(btn) {
+        var audio = btn.parentElement.querySelector('audio');
+        if (!audio.src) audio.src = btn.getAttribute('data-src');
+        if (audio.paused) {
+            audio.play();
+            btn.classList.add('playing');
+            btn.querySelector('i').className = 'fa-solid fa-pause';
+        } else {
+            audio.pause();
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        }
+        audio.onended = function() {
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        };
+        // Prevent click from toggling the synopsis open/close
+        event.stopPropagation();
+    }
+    </script>
+</body>
+</html>

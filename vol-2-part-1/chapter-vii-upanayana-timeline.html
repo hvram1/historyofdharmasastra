@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline — Chapter VII. Upanayana</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+    :root {
+        --parchment: #faf6ef;
+        --parchment-mid: #f0e6d3;
+        --saffron: #e8941a;
+        --ink: #2c1810;
+        --ink-secondary: #5a3e2b;
+        --rule: #d4c5a9;
+        --indigo: #2d5a87;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+        font-family: 'Lora', Georgia, serif;
+        background: var(--parchment);
+        color: var(--ink);
+    }
+    .navbar {
+        background: linear-gradient(135deg, #1a0f0a, #2c1810);
+        padding: 12px 24px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+    .navbar a { color: var(--parchment); text-decoration: none; }
+    .navbar .devanagari { font-size: 1.3rem; }
+    .navbar .nav-title { font-family: 'Lora', serif; font-size: 1rem; opacity: 0.9; }
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+    .breadcrumb-bar a { color: var(--saffron); text-decoration: none; }
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+    .content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 24px;
+    }
+    h1 {
+        font-size: 1.6rem;
+        margin-bottom: 8px;
+        color: var(--ink);
+    }
+    .subtitle {
+        font-size: 0.9rem;
+        color: var(--ink-secondary);
+        margin-bottom: 24px;
+    }
+    .timeline-container {
+        overflow-x: auto;
+        padding: 16px 0;
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        background: var(--parchment);
+    }
+    .timeline-svg {
+        display: block;
+        min-width: 100%;
+    }
+    .timeline-svg .tl-evt { cursor: pointer; }
+    .timeline-svg .tl-evt:hover { transform: scale(1.5); }
+    .event-list {
+        margin-top: 32px;
+    }
+    .event-list h2 {
+        font-size: 1.1rem;
+        margin-bottom: 16px;
+        color: var(--ink-secondary);
+    }
+    .event-item {
+        display: flex;
+        gap: 16px;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--rule);
+        font-size: 0.88rem;
+    }
+    .event-year {
+        min-width: 90px;
+        font-weight: 600;
+        color: var(--saffron);
+        font-family: 'Open Sans', sans-serif;
+    }
+    .event-label { font-weight: 600; }
+    .event-context {
+        color: var(--ink-secondary);
+        font-size: 0.82rem;
+        margin-top: 2px;
+    }
+    .event-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.8rem;
+    }
+    .event-link:hover { text-decoration: underline; }
+    .back-link {
+        display: inline-block;
+        margin-top: 24px;
+        color: var(--saffron);
+        text-decoration: none;
+        font-family: 'Open Sans', sans-serif;
+    }
+    .back-link:hover { text-decoration: underline; }
+    .century-group {
+        margin-bottom: 8px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        overflow: hidden;
+    }
+    .century-heading {
+        display: block;
+        padding: 10px 16px;
+        background: var(--parchment-mid);
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: var(--ink);
+    }
+    .century-heading:hover { background: #e8dcc8; }
+    .century-count {
+        font-weight: 400;
+        color: var(--ink-secondary);
+        font-size: 0.82rem;
+    }
+    .century-events {
+        padding: 8px 16px;
+    }
+    .vol-tl-link {
+        display: inline-block;
+        margin: 4px 8px 4px 0;
+        padding: 6px 14px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        color: var(--saffron);
+        text-decoration: none;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+    }
+    .vol-tl-link:hover {
+        border-color: var(--saffron);
+        background: #f5ebe0;
+    }
+    .vol-tl-count {
+        color: var(--ink-secondary);
+        font-size: 0.78rem;
+    }
+    /* ── Tab switcher ── */
+    .tl-tabs {
+        display: flex; gap: 0; margin-bottom: 20px;
+        border-bottom: 2px solid var(--rule);
+    }
+    .tl-tab {
+        padding: 10px 20px; cursor: pointer;
+        font-family: 'Open Sans', sans-serif; font-size: 0.9rem;
+        color: var(--ink-secondary); border-bottom: 2px solid transparent;
+        margin-bottom: -2px; transition: all 0.2s;
+    }
+    .tl-tab:hover { color: var(--ink); }
+    .tl-tab.active { color: var(--saffron); border-bottom-color: var(--saffron); font-weight: 600; }
+    .tl-panel { display: none; }
+    .tl-panel.active { display: block; }
+    /* ── Entity graph styles ── */
+    .eg-entity {
+        border: 1px solid var(--rule); border-radius: 6px;
+        margin-bottom: 8px; overflow: hidden; transition: border-color 0.2s;
+    }
+    .eg-entity.highlighted { border-color: var(--saffron); box-shadow: 0 0 0 1px var(--saffron); }
+    .eg-header {
+        display: flex; align-items: center; gap: 12px;
+        padding: 10px 16px; background: var(--parchment-mid);
+        cursor: pointer; font-family: 'Open Sans', sans-serif;
+    }
+    .eg-header:hover { background: #e8dcc8; }
+    .eg-name { font-weight: 600; font-size: 0.92rem; flex: 1; }
+    .eg-type {
+        font-size: 0.72rem; padding: 2px 8px; border-radius: 10px;
+        background: var(--parchment); color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .eg-claims-count {
+        font-size: 0.78rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif;
+    }
+    .eg-body { padding: 12px 16px; display: none; }
+    .eg-entity.open .eg-body { display: block; }
+    .eg-range-bar {
+        position: relative; height: 32px;
+        background: var(--parchment-mid); border-radius: 4px;
+        margin-bottom: 10px; overflow: hidden;
+    }
+    .eg-range-fill {
+        position: absolute; top: 6px; height: 20px;
+        background: var(--saffron); opacity: 0.3; border-radius: 3px;
+    }
+    .eg-range-dot {
+        position: absolute; top: 11px; width: 10px; height: 10px;
+        background: var(--saffron); border-radius: 50%;
+        transform: translateX(-5px); cursor: pointer;
+    }
+    .eg-range-dot:hover { transform: translateX(-5px) scale(1.4); }
+    .eg-range-label {
+        position: absolute; top: -2px;
+        font-size: 0.7rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif;
+        transform: translateX(-50%);
+    }
+    .eg-cooccur {
+        margin-top: 8px; padding-top: 8px;
+        border-top: 1px solid var(--rule);
+    }
+    .eg-cooccur-title {
+        font-size: 0.78rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif; margin-bottom: 6px;
+    }
+    .eg-cooccur-chip {
+        display: inline-block; margin: 2px 4px 2px 0;
+        padding: 3px 10px; background: var(--parchment-mid);
+        border: 1px solid var(--rule); border-radius: 12px;
+        font-size: 0.78rem; color: var(--ink);
+        font-family: 'Open Sans', sans-serif;
+        cursor: pointer; transition: all 0.2s;
+    }
+    .eg-cooccur-chip:hover { border-color: var(--saffron); color: var(--saffron); }
+    .eg-cooccur-weight {
+        font-size: 0.68rem; color: var(--ink-secondary); margin-left: 2px;
+    }
+    .eg-claim-list { margin-top: 8px; }
+    .eg-claim {
+        display: flex; gap: 12px; padding: 4px 0;
+        font-size: 0.82rem; border-bottom: 1px solid #f0e6d3;
+    }
+    .eg-claim-year {
+        min-width: 80px; font-weight: 600; color: var(--saffron);
+        font-family: 'Open Sans', sans-serif; font-size: 0.8rem;
+    }
+    .eg-claim-ctx { color: var(--ink-secondary); font-size: 0.78rem; }
+    .eg-claim a { color: var(--indigo); text-decoration: none; font-size: 0.76rem; }
+    .eg-claim a:hover { text-decoration: underline; }
+    .eg-stats {
+        display: flex; gap: 24px; margin-bottom: 16px;
+        font-family: 'Open Sans', sans-serif; font-size: 0.85rem;
+        color: var(--ink-secondary);
+    }
+    .eg-stat-num { font-weight: 700; color: var(--saffron); font-size: 1.1rem; }
+    .eg-sort {
+        font-family: 'Open Sans', sans-serif; font-size: 0.82rem;
+        margin-bottom: 12px; color: var(--ink-secondary);
+    }
+    .eg-sort a {
+        color: var(--indigo); text-decoration: none; cursor: pointer;
+        margin: 0 6px;
+    }
+    .eg-sort a:hover { text-decoration: underline; }
+    .eg-sort a.active { color: var(--saffron); font-weight: 600; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="../index.html"><span class="devanagari">धर्मशास्त्रम्</span></a>
+        <a href="../index.html" class="nav-title">History of Dharmaśāstra</a>
+    </div>
+    
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep"> &rsaquo; </span>
+        <a href="index.html">Volume II: Part I</a>
+        <span class="sep"> &rsaquo; </span>
+        <a href="chapter-vii-upanayana.html">Chapter VII. Upanayana</a>
+        <span class="sep"> &rsaquo; </span>
+        <span>Timeline</span>
+    </div>
+    
+    <div class="content">
+        <h1>Timeline: Chapter VII. Upanayana</h1>
+        <p class="subtitle">25 dated references</p>
+        <div class="tl-tabs">
+            <div class="tl-tab active" data-panel="events-panel">Events</div>
+            <div class="tl-tab" data-panel="graph-panel">Entity Graph</div>
+        </div>
+        <div id="events-panel" class="tl-panel active">
+            <div class="timeline-container">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 280" class="timeline-svg" role="img" aria-label="Timeline for Chapter VII. Upanayana">
+<rect width="1500" height="280" fill="#faf6ef" rx="8"/>
+<line x1="60" y1="100" x2="1460" y2="100" stroke="#c4956a" stroke-width="2"/>
+<line x1="60.0" y1="94" x2="60.0" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="60.0" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">600 BCE</text>
+<line x1="65.55335184450615" y1="94" x2="65.55335184450615" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="65.55335184450615" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">400 BCE</text>
+<line x1="176.6203887346291" y1="94" x2="176.6203887346291" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="176.6203887346291" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">200 BCE</text>
+<line x1="287.6874256247521" y1="94" x2="287.6874256247521" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="287.6874256247521" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1 CE</text>
+<line x1="398.75446251487506" y1="94" x2="398.75446251487506" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="398.75446251487506" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">200 CE</text>
+<line x1="509.82149940499806" y1="94" x2="509.82149940499806" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="509.82149940499806" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">400 CE</text>
+<line x1="620.888536295121" y1="94" x2="620.888536295121" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="620.888536295121" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">600 CE</text>
+<line x1="731.9555731852439" y1="94" x2="731.9555731852439" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="731.9555731852439" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">800 CE</text>
+<line x1="843.0226100753669" y1="94" x2="843.0226100753669" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="843.0226100753669" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1000 CE</text>
+<line x1="954.0896469654899" y1="94" x2="954.0896469654899" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="954.0896469654899" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1200 CE</text>
+<line x1="1065.1566838556128" y1="94" x2="1065.1566838556128" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="1065.1566838556128" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1400 CE</text>
+<line x1="1176.2237207457358" y1="94" x2="1176.2237207457358" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="1176.2237207457358" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1600 CE</text>
+<line x1="1287.2907576358589" y1="94" x2="1287.2907576358589" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="1287.2907576358589" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1800 CE</text>
+<line x1="1398.3577945259817" y1="94" x2="1398.3577945259817" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="1398.3577945259817" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">2000 CE</text>
+<text x="60" y="120" text-anchor="start" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">&larr; 1 earlier</text>
+<circle cx="60.0" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="2" stroke-dasharray="2,2" class="tl-evt" data-para="p-chapter-vii-upanayana-90" data-href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-90"><title>Great controversies have raged round the</title></circle>
+<line x1="60.0" y1="106" x2="60.0" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="60.0" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Great controversies have </text>
+<text x="60.0" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">800 BCE</text>
+<line x1="176.6203887346291" y1="100" x2="232.15390717969058" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="204.38714795715984" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-vii-upanayana-99" data-href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-99"><title>Ṛgveda</title></circle>
+<line x1="204.38714795715984" y1="106" x2="204.38714795715984" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="204.38714795715984" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Ṛgveda</text>
+<text x="204.38714795715984" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">200 BCE</text>
+<line x1="176.6203887346291" y1="100" x2="232.15390717969058" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="204.38714795715984" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-vii-upanayana-109" data-href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-109"><title>Yājñavalkya</title></circle>
+<line x1="204.38714795715984" y1="106" x2="204.38714795715984" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="204.38714795715984" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Yājñavalkya</text>
+<text x="204.38714795715984" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">200 BCE</text>
+<line x1="574.7957159857199" y1="100" x2="575.3510511701705" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="575.0733835779452" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-vii-upanayana-99" data-href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-99"><title>Ṛgveda</title></circle>
+<line x1="575.0733835779452" y1="106" x2="575.0733835779452" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="575.0733835779452" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Ṛgveda</text>
+<text x="575.0733835779452" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">517 CE</text>
+<circle cx="598.1197937326458" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-chapter-vii-upanayana-92" data-href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-92"><title>Aparārka</title></circle>
+<line x1="598.1197937326458" y1="106" x2="598.1197937326458" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="598.1197937326458" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Aparārka</text>
+<text x="598.1197937326458" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">559 CE</text>
+<circle cx="620.888536295121" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="2" stroke-dasharray="2,2" class="tl-evt" data-para="p-chapter-vii-upanayana-30" data-href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-30"><title>Though kṣatriyas and vaiśyas also were e</title></circle>
+<line x1="620.888536295121" y1="106" x2="620.888536295121" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="620.888536295121" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Though kṣatriyas and vaiś</text>
+<text x="620.888536295121" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">600 CE</text>
+<line x1="621.4438714795716" y1="100" x2="676.4220547401825" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="648.932963109877" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-vii-upanayana-116" data-href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-116"><title>It is outside the scope of this work to </title></circle>
+<line x1="648.932963109877" y1="106" x2="648.932963109877" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="648.932963109877" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">It is outside the scope o</text>
+<text x="648.932963109877" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">601 CE</text>
+<line x1="676.977389924633" y1="100" x2="731.9555731852439" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="704.4664815549385" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-vii-upanayana-135" data-href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-135"><title>Śāntiparva</title></circle>
+<line x1="704.4664815549385" y1="106" x2="704.4664815549385" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="704.4664815549385" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Śāntiparva</text>
+<text x="704.4664815549385" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">701 CE</text>
+<circle cx="843.0226100753669" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-chapter-vii-upanayana-128" data-href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-128"><title>History of Dharmaśāstra</title></circle>
+<line x1="843.0226100753669" y1="106" x2="843.0226100753669" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="843.0226100753669" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">History of Dharmaśāstra</text>
+<text x="843.0226100753669" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1000 CE</text>
+<line x1="843.5779452598176" y1="100" x2="898.5561285204284" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="871.0670368901231" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-vii-upanayana-128" data-href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-128"><title>History of Dharmaśāstra</title></circle>
+<line x1="871.0670368901231" y1="106" x2="871.0670368901231" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="871.0670368901231" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">History of Dharmaśāstra</text>
+<text x="871.0670368901231" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1001 CE</text>
+<line x1="866.3466878222927" y1="100" x2="866.9020230067434" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="866.624355414518" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-vii-upanayana-128" data-href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-128"><title>History of Dharmaśāstra</title></circle>
+<line x1="866.624355414518" y1="106" x2="866.624355414518" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="866.624355414518" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">History of Dharmaśāstra</text>
+<text x="866.624355414518" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1042 CE</text>
+<circle cx="875.7873859579531" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-chapter-vii-upanayana-104" data-href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-104"><title>Aparārka</title></circle>
+<line x1="875.7873859579531" y1="106" x2="875.7873859579531" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="875.7873859579531" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Aparārka</text>
+<text x="875.7873859579531" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1059 CE</text>
+<line x1="886.8940896469655" y1="100" x2="887.4494248314161" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="887.1717572391908" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-vii-upanayana-128" data-href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-128"><title>History of Dharmaśāstra</title></circle>
+<line x1="887.1717572391908" y1="106" x2="887.1717572391908" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="887.1717572391908" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">History of Dharmaśāstra</text>
+<text x="887.1717572391908" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1079 CE</text>
+<circle cx="897.4454581515271" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-chapter-vii-upanayana-99" data-href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-99"><title>Ṛgveda</title></circle>
+<line x1="897.4454581515271" y1="106" x2="897.4454581515271" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="897.4454581515271" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Ṛgveda</text>
+<text x="897.4454581515271" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1098 CE</text>
+<circle cx="1004.0698135660451" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-chapter-vii-upanayana-99" data-href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-99"><title>Ṛgveda</title></circle>
+<line x1="1004.0698135660451" y1="106" x2="1004.0698135660451" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1004.0698135660451" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Ṛgveda</text>
+<text x="1004.0698135660451" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1290 CE</text>
+<circle cx="1041.832606108687" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-chapter-vii-upanayana-35" data-href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-35"><title>Ṛgveda</title></circle>
+<line x1="1041.832606108687" y1="106" x2="1041.832606108687" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1041.832606108687" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Ṛgveda</text>
+<text x="1041.832606108687" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1358 CE</text>
+<circle cx="1071.2653708845696" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-chapter-vii-upanayana-60" data-href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-60"><title>Viṣṇu Smṛti</title></circle>
+<line x1="1071.2653708845696" y1="106" x2="1071.2653708845696" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1071.2653708845696" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Viṣṇu Smṛti</text>
+<text x="1071.2653708845696" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1411 CE</text>
+<line x1="1176.7790559301866" y1="100" x2="1231.7572391907972" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1204.2681475604918" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-vii-upanayana-27" data-href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-27"><title>Manusmṛti</title></circle>
+<line x1="1204.2681475604918" y1="106" x2="1204.2681475604918" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1204.2681475604918" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Manusmṛti</text>
+<text x="1204.2681475604918" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1601 CE</text>
+<line x1="1232.3125743752478" y1="100" x2="1259.523998413328" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1245.9182863942879" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-vii-upanayana-128" data-href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-128"><title>History of Dharmaśāstra</title></circle>
+<line x1="1245.9182863942879" y1="106" x2="1245.9182863942879" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1245.9182863942879" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">History of Dharmaśāstra</text>
+<text x="1245.9182863942879" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1701 CE</text>
+<line x1="1287.8460928203094" y1="100" x2="1342.8242760809203" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1315.3351844506149" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-vii-upanayana-117" data-href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-117"><title>The salient features of the educational </title></circle>
+<line x1="1315.3351844506149" y1="106" x2="1315.3351844506149" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1315.3351844506149" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">The salient features of t</text>
+<text x="1315.3351844506149" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1801 CE</text>
+<circle cx="1297.2867909559698" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="2" stroke-dasharray="2,2" class="tl-evt" data-para="p-chapter-vii-upanayana-104" data-href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-104"><title>Aparārka</title></circle>
+<line x1="1297.2867909559698" y1="106" x2="1297.2867909559698" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1297.2867909559698" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Aparārka</text>
+<text x="1297.2867909559698" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1818 CE</text>
+<line x1="1343.3796112653708" y1="100" x2="1398.3577945259817" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1370.8687028956763" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-vii-upanayana-91" data-href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-91"><title>Aitareya Brāhmaṇa</title></circle>
+<line x1="1370.8687028956763" y1="106" x2="1370.8687028956763" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1370.8687028956763" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Aitareya Brāhmaṇa</text>
+<text x="1370.8687028956763" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1901 CE</text>
+<line x1="1343.3796112653708" y1="100" x2="1398.3577945259817" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1370.8687028956763" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-vii-upanayana-104" data-href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-104"><title>Aparārka</title></circle>
+<line x1="1370.8687028956763" y1="106" x2="1370.8687028956763" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1370.8687028956763" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Aparārka</text>
+<text x="1370.8687028956763" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1901 CE</text>
+<line x1="1343.3796112653708" y1="100" x2="1398.3577945259817" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1370.8687028956763" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-vii-upanayana-117" data-href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-117"><title>The salient features of the educational </title></circle>
+<line x1="1370.8687028956763" y1="106" x2="1370.8687028956763" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1370.8687028956763" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">The salient features of t</text>
+<text x="1370.8687028956763" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1901 CE</text>
+<line x1="1343.3796112653708" y1="100" x2="1398.3577945259817" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1370.8687028956763" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-vii-upanayana-131" data-href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-131"><title>Prof. D. R. Bhandarkar in a very learned</title></circle>
+<line x1="1370.8687028956763" y1="106" x2="1370.8687028956763" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1370.8687028956763" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Prof. D. R. Bhandarkar in</text>
+<text x="1370.8687028956763" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1901 CE</text>
+</svg>
+            </div>
+            <div class="event-list">
+                <h2>All Dated References</h2>
+                <div class="event-item"><span class="event-year">about 800 BCE</span><div><span class="event-label">Great controversies have raged round the question whether the art of writing was</span><div class="event-context">Great controversies have raged round the question whether the art of writing was known in India in very ancient times, w...</div><a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-90" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">200 BCE</span><div><span class="event-label">Ṛgveda</span><div class="event-context">From very ancient times the literature to be studied appears to have been vast. Vide Tai. Br. quoted above (at p. 271) w...</div><a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-99" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">200 BCE</span><div><span class="event-label">Yājñavalkya</span><div class="event-context">A few words must now be said about the education of kṣatriyas, vaiśyas and śūdraṣ According to Gaut. XI. 3 a king should...</div><a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-109" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">517 CE</span><div><span class="event-label">Ṛgveda</span><div class="event-context">From very ancient times the literature to be studied appears to have been vast. Vide Tai. Br. quoted above (at p. 271) w...</div><a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-99" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">559 CE</span><div><span class="event-label">Aparārka</span><div class="event-context">Par. M. (I. 1. p. 154) quotes a verse of Nārada to the effect <sup class="fn-ref"><a href="#fn-chapter-vii-upanayana-231...</div><a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-92" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">about 600 CE</span><div><span class="event-label">Though kṣatriyas and vaiśyas also were entitled to have the upanayana performed,</span><div class="event-context">Though kṣatriyas and vaiśyas also were entitled to have the upanayana performed, it appears that they often neglected it...</div><a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-30" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">601 CE</span><div><span class="event-label">It is outside the scope of this work to show from the numerous inscriptions and</span><div class="event-context">It is outside the scope of this work to show from the numerous inscriptions and copper-plate grants that have been publi...</div><a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-116" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">701 CE</span><div><span class="event-label">Śāntiparva</span><div class="event-context">Hinduism has not been an avowedly proselytizing religioṇ In theory it could not be so. For about two thousand years the ...</div><a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-135" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1000 CE</span><div><span class="event-label">History of Dharmaśāstra</span><div class="event-context">historiaṇ The judge has to give a decision on the evidence adduced by the parties before him; it is no part of his busin...</div><a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-128" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1001 CE</span><div><span class="event-label">History of Dharmaśāstra</span><div class="event-context">historiaṇ The judge has to give a decision on the evidence adduced by the parties before him; it is no part of his busin...</div><a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-128" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1042 CE</span><div><span class="event-label">History of Dharmaśāstra</span><div class="event-context">historiaṇ The judge has to give a decision on the evidence adduced by the parties before him; it is no part of his busin...</div><a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-128" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1059 CE</span><div><span class="event-label">Aparārka</span><div class="event-context">Another striking feature of the ancient educational system was the total absence of any prior agreement about fees for t...</div><a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-104" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1079 CE</span><div><span class="event-label">History of Dharmaśāstra</span><div class="event-context">historiaṇ The judge has to give a decision on the evidence adduced by the parties before him; it is no part of his busin...</div><a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-128" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1098 CE</span><div><span class="event-label">Ṛgveda</span><div class="event-context">From very ancient times the literature to be studied appears to have been vast. Vide Tai. Br. quoted above (at p. 271) w...</div><a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-99" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1290 CE</span><div><span class="event-label">Ṛgveda</span><div class="event-context">From very ancient times the literature to be studied appears to have been vast. Vide Tai. Br. quoted above (at p. 271) w...</div><a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-99" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1358 CE</span><div><span class="event-label">Ṛgveda</span><div class="event-context">Upanayana was so highly thought of that some of the ancient texts prescribe a method of upanayana for the Aśvattha tree....</div><a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-35" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1411 CE</span><div><span class="event-label">Viṣṇu Smṛti</span><div class="event-context">The Sṃ C. I. (pp. 146-148) quotes long passages about the mudrās (hand poses) to be made in the saṁdhyā adoratioṇ The Sa...</div><a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-60" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1601 CE</span><div><span class="event-label">Manusmṛti</span><div class="event-context">A few rules about yajñopavīta may now be stated here.⁶⁸³ The yajñopavīta is to have three threads of nine strands well t...</div><a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-27" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1701 CE</span><div><span class="event-label">History of Dharmaśāstra</span><div class="event-context">historiaṇ The judge has to give a decision on the evidence adduced by the parties before him; it is no part of his busin...</div><a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-128" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1801 CE</span><div><span class="event-label">The salient features of the educational system outlined in the Dharmaśāstra work</span><div class="event-context">The salient features of the educational system outlined in the Dharmaśāstra works are the high and honourable position a...</div><a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-117" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">before 1818 CE</span><div><span class="event-label">Aparārka</span><div class="event-context">Another striking feature of the ancient educational system was the total absence of any prior agreement about fees for t...</div><a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-104" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1901 CE</span><div><span class="event-label">Aitareya Brāhmaṇa</span><div class="event-context">Oral instruction was the cheapest and most accurate method of imparting learning. In ancient times writing materials wer...</div><a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-91" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1901 CE</span><div><span class="event-label">Aparārka</span><div class="event-context">Another striking feature of the ancient educational system was the total absence of any prior agreement about fees for t...</div><a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-104" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1901 CE</span><div><span class="event-label">The salient features of the educational system outlined in the Dharmaśāstra work</span><div class="event-context">The salient features of the educational system outlined in the Dharmaśāstra works are the high and honourable position a...</div><a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-117" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1901 CE</span><div><span class="event-label">Prof. D. R. Bhandarkar in a very learned and scholarly paper in Indian Antiquary</span><div class="event-context">Prof. D. R. Bhandarkar in a very learned and scholarly paper in Indian Antiquary vol. 40 pp. 7–37 endeavours to establis...</div><a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-131" class="event-link">View in text &rarr;</a></div></div>
+            </div>
+        </div>
+        <div id="graph-panel" class="tl-panel">
+            <div class="eg-stats">
+<div><span class="eg-stat-num">8</span> entities</div>
+<div><span class="eg-stat-num">19</span> date claims</div>
+<div><span class="eg-stat-num">3</span> debated</div>
+<div><span class="eg-stat-num">100</span> co-occurrences</div>
+</div>
+<div class="eg-sort">Sort: <a class="active" onclick="egSort('date')">by date</a><a onclick="egSort('claims')">by claims</a><a onclick="egSort('name')">by name</a></div>
+<div id="eg-entities">
+<div class="eg-entity" data-key="y-j-avalkya-sm-ti" data-consensus="-200" data-claims="1" data-name="Yājñavalkya Smṛti"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Yājñavalkya Smṛti</span><span class="eg-type">text</span><span class="eg-claims-count">1 claims &middot; 200 BCE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="-200" data-max="2000"><span class="eg-range-label" style="left:0;">200 BCE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">2000 CE</span><div class="eg-range-dot" style="left:0.0%;" title="200 BCE — 2nd century B. C."></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="gautama-dharmas-tra" onclick="egHighlight('gautama-dharmas-tra')">Gautama Dharmasūtra<span class="eg-cooccur-weight">4x</span></span><span class="eg-cooccur-chip" data-target="manusm-ti" onclick="egHighlight('manusm-ti')">Manusmṛti<span class="eg-cooccur-weight">3x</span></span><span class="eg-cooccur-chip" data-target="artha-stra" onclick="egHighlight('artha-stra')">Arthaśāstra<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="b-had-ra-yaka-upani-ad" onclick="egHighlight('b-had-ra-yaka-upani-ad')">Bṛhadāraṇyaka Upaniṣad<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="pastamba-dharmas-tra" onclick="egHighlight('pastamba-dharmas-tra')">Āpastamba Dharmasūtra<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="atapatha-br-hma-a" onclick="egHighlight('atapatha-br-hma-a')">Śatapatha Brāhmaṇa<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="atharvaveda" onclick="egHighlight('atharvaveda')">Atharvaveda<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="gveda" onclick="egHighlight('gveda')">Ṛgveda<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">200 BCE</span><div><span class="eg-claim-ctx">A few words must now be said about the education of kṣatriyas, vaiśyas and śūdraṣ According to Gaut....</span> <a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-109">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="ntiparva" data-consensus="701" data-claims="1" data-name="Śāntiparva"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Śāntiparva</span><span class="eg-type">text</span><span class="eg-claims-count">1 claims &middot; 701 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="-200" data-max="2000"><span class="eg-range-label" style="left:0;">200 BCE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">2000 CE</span><div class="eg-range-dot" style="left:41.0%;" title="701 CE — 8th century "></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="gautama-dharmas-tra" onclick="egHighlight('gautama-dharmas-tra')">Gautama Dharmasūtra<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="manusm-ti" onclick="egHighlight('manusm-ti')">Manusmṛti<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="y-j-avalkya-sm-ti" onclick="egHighlight('y-j-avalkya-sm-ti')">Yājñavalkya Smṛti<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">701 CE</span><div><span class="eg-claim-ctx">Hinduism has not been an avowedly proselytizing religioṇ In theory it could not be so. For about two...</span> <a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-135">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="history-of-dharma-stra" data-consensus="1042" data-claims="5" data-name="History of Dharmaśāstra"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">History of Dharmaśāstra</span><span class="eg-type">text</span><span class="eg-claims-count">5 claims &middot; 1000 CE to 1701 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="-200" data-max="2000"><span class="eg-range-label" style="left:0;">200 BCE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">2000 CE</span><div class="eg-range-fill" style="left:54.5%;width:31.9%;"></div><div class="eg-range-dot" style="left:54.5%;" title="1000 CE — 1000 A. D."></div><div class="eg-range-dot" style="left:54.6%;" title="1001 CE — 11th century A. D."></div><div class="eg-range-dot" style="left:56.5%;" title="1042 CE — 1042-43 A. D."></div><div class="eg-range-dot" style="left:58.1%;" title="1079 CE — 1079-1080 A. D."></div><div class="eg-range-dot" style="left:86.4%;" title="1701 CE — first half of 18th century "></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="manusm-ti" onclick="egHighlight('manusm-ti')">Manusmṛti<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="mit-k-ar" onclick="egHighlight('mit-k-ar')">Mitākṣarā<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="par-arasm-ti" onclick="egHighlight('par-arasm-ti')">Parāśarasmṛti<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="vi-upur-a" onclick="egHighlight('vi-upur-a')">Viṣṇupurāṇa<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">1000 CE</span><div><span class="eg-claim-ctx">historiaṇ The judge has to give a decision on the evidence adduced by the parties before him; it is ...</span> <a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-128">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">1001 CE</span><div><span class="eg-claim-ctx">historiaṇ The judge has to give a decision on the evidence adduced by the parties before him; it is ...</span> <a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-128">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">1042 CE</span><div><span class="eg-claim-ctx">historiaṇ The judge has to give a decision on the evidence adduced by the parties before him; it is ...</span> <a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-128">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">1079 CE</span><div><span class="eg-claim-ctx">historiaṇ The judge has to give a decision on the evidence adduced by the parties before him; it is ...</span> <a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-128">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">1701 CE</span><div><span class="eg-claim-ctx">historiaṇ The judge has to give a decision on the evidence adduced by the parties before him; it is ...</span> <a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-128">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="gveda" data-consensus="1098" data-claims="5" data-name="Ṛgveda"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Ṛgveda</span><span class="eg-type">text</span><span class="eg-claims-count">5 claims &middot; 200 BCE to 1358 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="-200" data-max="2000"><span class="eg-range-label" style="left:0;">200 BCE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">2000 CE</span><div class="eg-range-fill" style="left:0.0%;width:70.8%;"></div><div class="eg-range-dot" style="left:0.0%;" title="200 BCE — 2nd century B. C."></div><div class="eg-range-dot" style="left:32.6%;" title="517 CE — 517–18 A. D."></div><div class="eg-range-dot" style="left:59.0%;" title="1098 CE — 1098 A. D."></div><div class="eg-range-dot" style="left:67.7%;" title="1290 CE — 1290 A. D."></div><div class="eg-range-dot" style="left:70.8%;" title="1358 CE — 1358 A. D."></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="aitareya-br-hma-a" onclick="egHighlight('aitareya-br-hma-a')">Aitareya Brāhmaṇa<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="artha-stra" onclick="egHighlight('artha-stra')">Arthaśāstra<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="atapatha-br-hma-a" onclick="egHighlight('atapatha-br-hma-a')">Śatapatha Brāhmaṇa<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="atharvaveda" onclick="egHighlight('atharvaveda')">Atharvaveda<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="b-had-ra-yaka-upani-ad" onclick="egHighlight('b-had-ra-yaka-upani-ad')">Bṛhadāraṇyaka Upaniṣad<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="gautama-dharmas-tra" onclick="egHighlight('gautama-dharmas-tra')">Gautama Dharmasūtra<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="n-radasm-ti" onclick="egHighlight('n-radasm-ti')">Nāradasmṛti<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="taittir-ya-br-hma-a" onclick="egHighlight('taittir-ya-br-hma-a')">Taittirīya Brāhmaṇa<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">200 BCE</span><div><span class="eg-claim-ctx">From very ancient times the literature to be studied appears to have been vast. Vide Tai. Br. quoted...</span> <a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-99">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">517 CE</span><div><span class="eg-claim-ctx">From very ancient times the literature to be studied appears to have been vast. Vide Tai. Br. quoted...</span> <a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-99">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">1098 CE</span><div><span class="eg-claim-ctx">From very ancient times the literature to be studied appears to have been vast. Vide Tai. Br. quoted...</span> <a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-99">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">1290 CE</span><div><span class="eg-claim-ctx">From very ancient times the literature to be studied appears to have been vast. Vide Tai. Br. quoted...</span> <a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-99">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">1358 CE</span><div><span class="eg-claim-ctx">Upanayana was so highly thought of that some of the ancient texts prescribe a method of upanayana fo...</span> <a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-35">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="vi-u-sm-ti" data-consensus="1411" data-claims="1" data-name="Viṣṇu Smṛti"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Viṣṇu Smṛti</span><span class="eg-type">text</span><span class="eg-claims-count">1 claims &middot; 1411 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="-200" data-max="2000"><span class="eg-range-label" style="left:0;">200 BCE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">2000 CE</span><div class="eg-range-dot" style="left:73.2%;" title="1411 CE — saṁvat 1468 (1411-12 A. D.)"></div></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">1411 CE</span><div><span class="eg-claim-ctx">The Sṃ C. I. (pp. 146-148) quotes long passages about the mudrās (hand poses) to be made in the saṁd...</span> <a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-60">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="manusm-ti" data-consensus="1601" data-claims="1" data-name="Manusmṛti"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Manusmṛti</span><span class="eg-type">text</span><span class="eg-claims-count">1 claims &middot; 1601 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="-200" data-max="2000"><span class="eg-range-label" style="left:0;">200 BCE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">2000 CE</span><div class="eg-range-dot" style="left:81.9%;" title="1601 CE — 17th century A. D."></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="gautama-dharmas-tra" onclick="egHighlight('gautama-dharmas-tra')">Gautama Dharmasūtra<span class="eg-cooccur-weight">3x</span></span><span class="eg-cooccur-chip" data-target="y-j-avalkya-sm-ti" onclick="egHighlight('y-j-avalkya-sm-ti')">Yājñavalkya Smṛti<span class="eg-cooccur-weight">3x</span></span><span class="eg-cooccur-chip" data-target="pastamba-dharmas-tra" onclick="egHighlight('pastamba-dharmas-tra')">Āpastamba Dharmasūtra<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="medh-tithi" onclick="egHighlight('medh-tithi')">Medhātithi<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="vi-u-dharmas-tra" onclick="egHighlight('vi-u-dharmas-tra')">Viṣṇu Dharmasūtra<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="apar-rka" onclick="egHighlight('apar-rka')">Aparārka<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="b-had-ra-yaka-upani-ad" onclick="egHighlight('b-had-ra-yaka-upani-ad')">Bṛhadāraṇyaka Upaniṣad<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="k-ty-yanasm-ti" onclick="egHighlight('k-ty-yanasm-ti')">Kātyāyanasmṛti<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">1601 CE</span><div><span class="eg-claim-ctx">A few rules about yajñopavīta may now be stated here.⁶⁸³ The yajñopavīta is to have three threads of...</span> <a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-27">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="apar-rka" data-consensus="1818" data-claims="4" data-name="Aparārka"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Aparārka</span><span class="eg-type">person</span><span class="eg-claims-count">4 claims &middot; 559 CE to 1901 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="-200" data-max="2000"><span class="eg-range-label" style="left:0;">200 BCE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">2000 CE</span><div class="eg-range-fill" style="left:34.5%;width:61.0%;"></div><div class="eg-range-dot" style="left:34.5%;" title="559 CE — 559 A. D."></div><div class="eg-range-dot" style="left:57.2%;" title="1059 CE — śake 981"></div><div class="eg-range-dot" style="left:91.7%;" title="1818 CE — before 1818 A. D."></div><div class="eg-range-dot" style="left:95.5%;" title="1901 CE — 20th century "></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="n-radasm-ti" onclick="egHighlight('n-radasm-ti')">Nāradasmṛti<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="par-arasm-ti" onclick="egHighlight('par-arasm-ti')">Parāśarasmṛti<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="b-had-ra-yaka-upani-ad" onclick="egHighlight('b-had-ra-yaka-upani-ad')">Bṛhadāraṇyaka Upaniṣad<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="gautama-dharmas-tra" onclick="egHighlight('gautama-dharmas-tra')">Gautama Dharmasūtra<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="k-ty-yanasm-ti" onclick="egHighlight('k-ty-yanasm-ti')">Kātyāyanasmṛti<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="manusm-ti" onclick="egHighlight('manusm-ti')">Manusmṛti<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="pastamba-dharmas-tra" onclick="egHighlight('pastamba-dharmas-tra')">Āpastamba Dharmasūtra<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="y-j-avalkya-sm-ti" onclick="egHighlight('y-j-avalkya-sm-ti')">Yājñavalkya Smṛti<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">559 CE</span><div><span class="eg-claim-ctx">Par. M. (I. 1. p. 154) quotes a verse of Nārada to the effect &lt;sup class=&quot;fn-ref&quot;&gt;&lt;a href=&quot;#fn-chapt...</span> <a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-92">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">1059 CE</span><div><span class="eg-claim-ctx">Another striking feature of the ancient educational system was the total absence of any prior agreem...</span> <a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-104">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">before 1818 CE</span><div><span class="eg-claim-ctx">Another striking feature of the ancient educational system was the total absence of any prior agreem...</span> <a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-104">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">1901 CE</span><div><span class="eg-claim-ctx">Another striking feature of the ancient educational system was the total absence of any prior agreem...</span> <a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-104">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="aitareya-br-hma-a" data-consensus="1901" data-claims="1" data-name="Aitareya Brāhmaṇa"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Aitareya Brāhmaṇa</span><span class="eg-type">text</span><span class="eg-claims-count">1 claims &middot; 1901 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="-200" data-max="2000"><span class="eg-range-label" style="left:0;">200 BCE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">2000 CE</span><div class="eg-range-dot" style="left:95.5%;" title="1901 CE — 20th century "></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="gveda" onclick="egHighlight('gveda')">Ṛgveda<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">1901 CE</span><div><span class="eg-claim-ctx">Oral instruction was the cheapest and most accurate method of imparting learning. In ancient times w...</span> <a href="chapter-vii-upanayana.html#p-chapter-vii-upanayana-91">view</a></div></div></div></div></div>
+</div>
+<script>
+function egToggle(header) {
+    header.parentElement.classList.toggle('open');
+}
+function egHighlight(key) {
+    // Remove existing highlights
+    document.querySelectorAll('.eg-entity.highlighted').forEach(function(el) {
+        el.classList.remove('highlighted');
+    });
+    // Highlight target and scroll to it
+    var target = document.querySelector('.eg-entity[data-key="' + key + '"]');
+    if (target) {
+        target.classList.add('highlighted');
+        target.classList.add('open');
+        target.scrollIntoView({behavior: 'smooth', block: 'center'});
+    }
+}
+function egSort(mode) {
+    var container = document.getElementById('eg-entities');
+    var items = Array.from(container.querySelectorAll('.eg-entity'));
+    items.sort(function(a, b) {
+        if (mode === 'date') return parseInt(a.dataset.consensus) - parseInt(b.dataset.consensus);
+        if (mode === 'claims') return parseInt(b.dataset.claims) - parseInt(a.dataset.claims);
+        if (mode === 'name') return a.dataset.name.localeCompare(b.dataset.name);
+        return 0;
+    });
+    items.forEach(function(el) { container.appendChild(el); });
+    // Update active sort link
+    document.querySelectorAll('.eg-sort a').forEach(function(a) { a.classList.remove('active'); });
+    event.target.classList.add('active');
+}
+</script>
+        </div>
+        <a href="chapter-vii-upanayana.html" class="back-link">&larr; Back to Chapter VII. Upanayana</a>
+    </div>
+    <script>
+    document.querySelectorAll('.tl-evt').forEach(function(el) {
+        el.addEventListener('click', function() {
+            var href = this.getAttribute('data-href');
+            if (href) {
+                window.location.href = href;
+            } else {
+                var paraId = this.getAttribute('data-para');
+                if (paraId) {
+                    var target = document.getElementById(paraId);
+                    if (target) target.scrollIntoView({behavior: 'smooth'});
+                }
+            }
+        });
+    });
+    // Tab switching
+    document.querySelectorAll('.tl-tab').forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            document.querySelectorAll('.tl-tab').forEach(function(t) { t.classList.remove('active'); });
+            document.querySelectorAll('.tl-panel').forEach(function(p) { p.classList.remove('active'); });
+            tab.classList.add('active');
+            var panel = document.getElementById(tab.getAttribute('data-panel'));
+            if (panel) panel.classList.add('active');
+        });
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- MDB UI Kit -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/fonts.css?v=1.2">
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/navbar.css?v=2.4">
+
+    <title>Kauṭilya Arthaśāstra — References in History of Dharmaśāstra</title>
+    <style>
+    :root {
+        --saffron:        #D4600A;
+        --saffron-light:  #F0924A;
+        --saffron-wash:   rgba(212, 96, 10, 0.07);
+        --indigo:         #2E5FA3;
+        --indigo-dark:    #1C3D70;
+        --maroon:         #7A1E1E;
+        --amber:          #C97A1A;
+        --ink:            #1A1209;
+        --ink-secondary:  #4A3B2A;
+        --parchment:      #FDFAF4;
+        --parchment-mid:  #F5EFE2;
+        --rule:           rgba(180, 130, 60, 0.22);
+        --shadow:         0 2px 18px rgba(90, 50, 10, 0.08);
+        --font-devanagari: 'Tiro Devanagari Sanskrit', 'Siddhanta', 'Noto Sans Devanagari', serif;
+        --font-roman:      'Junicode', Georgia, serif;
+    }
+
+    body {
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: var(--font-roman);
+    }
+
+    .devanagari {
+        font-family: var(--font-devanagari);
+    }
+
+    /* ── Navbar overrides ── */
+    .navbar-ontop { z-index: 1031; }
+    .hdclr { color: var(--saffron); }
+    .engpara { font-family: 'Open Sans', sans-serif; }
+
+    /* ── Layout ── */
+    .dh-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .dh-content {
+        flex: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        background: var(--parchment);
+        box-shadow: var(--shadow);
+        min-height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        .dh-content { padding: 24px 20px; }
+        .dh-wrapper { flex-direction: column; }
+    }
+
+    /* ── TOC Sidebar ── */
+    .toc-sidebar {
+        position: sticky;
+        top: 80px;
+        width: 280px;
+        min-width: 280px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding: 20px 16px;
+        margin-right: 24px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        scrollbar-width: thin;
+    }
+
+    .toc-title {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--saffron-light);
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list li {
+        padding: 4px 0;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-list li.toc-l3 {
+        padding-left: 16px;
+        font-size: 0.78rem;
+    }
+
+    .toc-list li a {
+        color: var(--ink-secondary);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .toc-list li a:hover { color: var(--saffron); }
+
+    .toc-list li.active {
+        border-left-color: var(--saffron);
+    }
+
+    .toc-list li.active a {
+        color: var(--saffron);
+        font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-sidebar { display: none; }
+    }
+
+    /* ── Mobile TOC Toggle ── */
+    .toc-mobile-toggle {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1050;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--saffron);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-mobile-toggle { display: block; }
+    }
+
+    /* ── Section Headings ── */
+    .section-heading {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        margin: 48px 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--rule);
+        letter-spacing: 0.5px;
+        scroll-margin-top: 80px;
+    }
+
+    h2.section-heading { font-size: 1.6rem; }
+
+    h3.section-heading {
+        font-size: 1.25rem;
+        border-left: 4px solid var(--saffron-light);
+        border-bottom: none;
+        padding: 8px 16px;
+        background: var(--saffron-wash);
+        border-radius: 0 5px 5px 0;
+    }
+
+    /* ── Prose ── */
+    .prose {
+        font-family: var(--font-roman);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+        color: var(--ink);
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    .prose em { color: var(--maroon); }
+
+    .prose:target {
+        background: rgba(212, 96, 10, 0.12);
+        border-left: 4px solid var(--saffron);
+        padding-left: 16px;
+        margin-left: -20px;
+        border-radius: 0 6px 6px 0;
+        animation: target-pulse 2s ease-out;
+    }
+
+    @keyframes target-pulse {
+        0%   { background: rgba(212, 96, 10, 0.30); }
+        100% { background: rgba(212, 96, 10, 0.12); }
+    }
+
+    /* ── Footnote References ── */
+    .fn-ref {
+        font-size: 0.75em;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    .fn-ref a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 0 2px;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: color 0.15s;
+    }
+
+    .fn-ref a:hover { color: var(--indigo); }
+
+    /* ── Synopsis Box ── */
+    .synopsis-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron-light);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .synopsis-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .synopsis-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .synopsis-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .synopsis-box.open .synopsis-toggle i {
+        transform: rotate(90deg);
+    }
+    .synopsis-body {
+        display: none;
+        padding: 0 20px 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+    }
+    .synopsis-box.open .synopsis-body { display: block; }
+    .synopsis-body p { margin: 0; }
+    .synopsis-attribution {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: var(--ink-secondary);
+        opacity: 0.7;
+        font-style: italic;
+    }
+    .synopsis-audio {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    .synopsis-play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--saffron);
+        background: none;
+        color: var(--saffron);
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: background 0.2s, color 0.2s;
+        padding: 0;
+    }
+    .synopsis-play-btn:hover {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn.playing {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn i { padding-left: 2px; }
+
+    /* ── Index Terms Panel ── */
+    .index-terms-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .index-terms-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .index-terms-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .index-terms-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .index-terms-box.open .index-terms-toggle i {
+        transform: rotate(90deg);
+    }
+    .index-terms-body {
+        display: none;
+        padding: 0 20px 16px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .index-terms-box.open .index-terms-body { display: block; }
+    .index-terms-dl {
+        margin: 0;
+        padding: 0;
+    }
+    .index-terms-dl dt {
+        font-family: var(--font-roman);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+        margin-top: 8px;
+    }
+    .index-terms-dl dd {
+        margin: 2px 0 0 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        color: var(--ink-secondary);
+        line-height: 1.5;
+    }
+    .nyaya-heading {
+        font-family: var(--font-roman);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        margin: 16px 0 4px;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+    }
+
+    /* ── Inline Index Popovers ── */
+    .idx-term {
+        border-bottom: 1px dotted var(--saffron-light);
+        cursor: help;
+        position: relative;
+    }
+    .idx-term:hover::after {
+        content: attr(data-def);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        background: rgba(44, 36, 22, 0.92);
+        color: #F5ECD8;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        max-width: 280px;
+        z-index: 100;
+        white-space: normal;
+        line-height: 1.4;
+        pointer-events: none;
+    }
+
+    /* ── Structured Version Banner ── */
+    .structured-banner {
+        margin: 0 0 28px;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, rgba(212, 96, 10, 0.06) 0%, rgba(212, 96, 10, 0.02) 100%);
+        border: 1px solid var(--saffron-light);
+        border-radius: 6px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        color: var(--ink-secondary);
+        line-height: 1.6;
+    }
+    .structured-banner i { color: var(--saffron); margin-right: 4px; }
+    .structured-banner a { color: var(--indigo); font-weight: 600; text-decoration: none; }
+    .structured-banner a:hover { text-decoration: underline; }
+
+    /* ── Footnotes Section ── */
+    .footnotes-section {
+        margin: 32px 0 48px;
+        padding: 20px 24px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .footnotes-section hr {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 0 0 16px;
+    }
+
+    .footnotes-list {
+        padding-left: 24px;
+        margin: 0;
+    }
+
+    .footnote-item {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+        scroll-margin-top: 80px;
+    }
+
+    .footnote-item:target {
+        background: rgba(212, 96, 10, 0.1);
+        border-radius: 4px;
+        padding: 4px 6px;
+        margin-left: -6px;
+    }
+
+    .fn-back {
+        color: var(--saffron-light);
+        text-decoration: none;
+        font-size: 0.85em;
+        margin-left: 4px;
+    }
+
+    .fn-back:hover { color: var(--saffron); }
+
+    /* ── Reference Links ── */
+    a.ref {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: all 0.15s;
+    }
+
+    a.ref:hover {
+        color: var(--saffron);
+        border-bottom-style: solid;
+    }
+
+    a.mbta-ext {
+        color: var(--indigo);
+        font-size: 0.7em;
+        margin-left: 2px;
+        opacity: 0.5;
+        text-decoration: none;
+        vertical-align: super;
+    }
+    a.mbta-ext:hover { opacity: 1; color: var(--saffron); }
+
+    /* ── References Panel (sidebar) ── */
+    .refs-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .refs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .refs-list li {
+        padding: 3px 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .ref-source-link {
+        font-weight: 600;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .ref-source-link:hover {
+        text-decoration: underline;
+    }
+
+    .ref-verse-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.76rem;
+    }
+
+    .ref-verse-link:hover {
+        text-decoration: underline;
+        color: var(--saffron);
+    }
+
+    .ref-verses {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Timeline panel ── */
+    .timeline-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .timeline-list li {
+        padding: 2px 0;
+        font-size: 0.76rem;
+        line-height: 1.4;
+        position: relative;
+        padding-left: 14px;
+    }
+
+    .timeline-list li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--saffron);
+    }
+
+    .timeline-list li.tl-approximate::before {
+        background: transparent;
+        border: 2px solid var(--saffron);
+        width: 4px;
+        height: 4px;
+    }
+
+    .timeline-list li.tl-century::before {
+        background: transparent;
+        border: 2px dashed var(--saffron);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+
+    .tl-dot-link {
+        text-decoration: none;
+        color: var(--ink);
+        display: block;
+    }
+
+    .tl-dot-link:hover {
+        color: var(--saffron);
+    }
+
+    .tl-year {
+        font-weight: 600;
+        color: var(--saffron);
+        font-size: 0.72rem;
+        min-width: 70px;
+        display: inline-block;
+    }
+
+    .tl-label {
+        color: var(--ink-secondary);
+        font-size: 0.72rem;
+    }
+
+    .tl-view-link, .tl-more {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.72rem;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .tl-view-link:hover, .tl-more:hover {
+        text-decoration: underline;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+
+    .breadcrumb-bar a {
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+
+    .breadcrumb-bar .sep {
+        color: var(--amber);
+        margin: 0 8px;
+    }
+
+    .breadcrumb-bar .current {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Chapter Navigation ── */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        margin-top: 48px;
+        border-top: 2px solid var(--rule);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .chapter-nav a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        transition: all 0.2s;
+        max-width: 45%;
+    }
+
+    .chapter-nav a:hover {
+        background: var(--saffron-wash);
+        border-color: var(--saffron-light);
+    }
+
+    .nav-prev { text-align: left; }
+    .nav-next { text-align: right; margin-left: auto; }
+
+    .page-range {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+    }
+
+    /* ── Volume Cards (Landing) ── */
+    .vol-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .vol-card {
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        transition: all 0.25s;
+    }
+
+    .vol-card:hover {
+        border-color: var(--saffron-light);
+        box-shadow: 0 4px 24px rgba(212, 96, 10, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .vol-num {
+        font-family: var(--font-roman);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--saffron);
+        margin-bottom: 8px;
+    }
+
+    .vol-subtitle {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        line-height: 1.5;
+        flex: 1;
+    }
+
+    .vol-chapters {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        margin-top: 12px;
+    }
+
+    /* ── Chapter Cards (Volume Index) ── */
+    .chapter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .chapter-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .chapter-card:hover {
+        border-color: var(--saffron-light);
+        background: var(--saffron-wash);
+    }
+
+    .card-num {
+        font-family: var(--font-roman);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--saffron);
+        min-width: 36px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        flex: 1;
+    }
+
+    .card-pages {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        color: var(--ink-secondary);
+    }
+
+    /* ── Landing Hero ── */
+    .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-family: var(--font-roman);
+        font-size: 2.4rem;
+        color: var(--saffron);
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .hero .devanagari-title {
+        font-family: var(--font-devanagari);
+        font-size: 1.8rem;
+        color: var(--ink);
+        margin-bottom: 16px;
+    }
+
+    .hero .author {
+        font-family: var(--font-roman);
+        font-size: 1.1rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .hero .desc {
+        font-family: var(--font-roman);
+        font-size: 1rem;
+        color: var(--ink-secondary);
+        line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer { margin-top: 48px; }
+
+
+    .ref-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    .ref-table th { text-align: left; padding: 10px 12px; border-bottom: 2px solid var(--saffron);
+        font-family: 'Open Sans', sans-serif; font-size: 0.8rem; color: var(--ink-secondary);
+        text-transform: uppercase; letter-spacing: 0.5px; }
+    .ref-table td { padding: 8px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+    .ref-table tr:target { background: var(--saffron-wash); }
+    .verse-ref { font-weight: 600; color: var(--saffron); white-space: nowrap; min-width: 80px; }
+    .verse-locs a { color: var(--indigo); text-decoration: none; font-size: 0.85rem; }
+    .verse-locs a:hover { text-decoration: underline; }
+    .verse-context { color: var(--ink-secondary); font-style: italic; max-width: 400px; }
+    .verse-text { max-width: 460px; }
+    .kane-sa { font-family: 'Noto Serif Devanagari', serif; font-size: 0.95rem;
+        line-height: 1.7; color: var(--ink); }
+    .kane-note { font-size: 0.72rem; color: var(--ink-secondary); margin-top: 4px;
+        padding-left: 8px; border-left: 2px solid var(--rule, #ddd); opacity: .85; }
+    .kane-src { font-size: 0.7rem; color: var(--ink-secondary); margin-top: 3px; }
+    .kane-src a { color: var(--indigo); text-decoration: none; }
+    .kane-src a:hover { text-decoration: underline; }
+    .tier { text-transform: uppercase; letter-spacing: .06em; font-size: 0.62rem;
+        border: 1px solid currentColor; border-radius: 2px; padding: 0 3px; }
+    .tier.cited { color: #1f6b5c; }
+    .tier.sole { color: #a8730d; }
+    .kane-none { color: var(--ink-secondary); font-size: 0.75rem; opacity: .55; }
+    .source-hero { text-align: center; padding: 40px 20px 30px; max-width: 800px; margin: 0 auto; }
+    .source-hero h1 { font-family: var(--font-roman); color: var(--saffron); font-size: 2rem; }
+    .source-hero .stats { font-family: 'Open Sans', sans-serif; color: var(--ink-secondary);
+        font-size: 0.9rem; margin-top: 8px; }
+    .ext-link { color: var(--indigo); font-weight: 600; }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mbta/">
+      <div class="container-fluid">&emsp;&emsp;
+      <a href="../index.html" class="navbar-brand" style="text-decoration:none;">
+        <span class="devanagari ms-3" style="font-size:1.5rem; color:var(--saffron); font-weight:700;">धर्मशास्त्रम्</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="../index.html">धर्मशास्त्रम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5 active" href="../index.html">खण्डाः</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in/mbta/">महाभारतम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in">सनातनम्</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+
+    <div style="max-width: 1100px; margin: 0 auto; padding: 20px;">
+        <div class="breadcrumb-bar">
+            <a href="../index.html">Home</a>
+            <span class="sep">›</span>
+            <a href="index.html">References</a>
+            <span class="sep">›</span>
+            <span class="current">Kauṭilya Arthaśāstra</span>
+        </div>
+
+        <div class="source-hero">
+            <h1>Kauṭilya Arthaśāstra</h1>
+            <p class="stats">766 references across all volumes ·
+               99 distinct verses ·
+               <b>28</b> of them with the verse as Kane prints it</p>
+        </div>
+
+        <table class="ref-table">
+            <thead>
+                <tr><th>Verse</th><th>The verse, as Kane prints it</th><th>Locations</th><th>Context</th></tr>
+            </thead>
+            <tbody>
+                
+        <tr id="c">
+            <td class="verse-ref">c</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-16">vol-1-part-1 §14-arthashastra-of-kautilya</a> · <a href="../vol-2-part-1/chapter-xiv-remarriage-of-widows.html#p-chapter-xiv-remarriage-of-widows-8">vol-2-part-1 §chapter-xiv-remarriage-of-widows</a> · <a href="../vol-3/chapter-i-preliminary.html#p-chapter-i-preliminary-14">vol-3 §chapter-i-preliminary</a> · <a href="../vol-3/chapter-iii-duties-and-responsibilities-of-the-ruler.html#p-chapter-iii-duties-and-responsibilities-of-the-ruler-5">vol-3 §chapter-iii-duties-and-responsibilities-of-the-ruler</a> · <a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-167">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>...reason and the fur-ther reason that the Kauṭilya contains two sections (called dharmasthiy...</small></td>
+        </tr>
+
+        <tr id="l">
+            <td class="verse-ref">l</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">‘ अपण्य इत्युच्यते तनेदं न सिध्यति । शिवः स्कन्दः विशाल इति । किं कारणम् । मौर्यैर्हिरण्यार्थिभिरर्चाः प्रकल्पिताः । भवेतासु न स्यात् । यास्त्वेताः संप्रति पूजार्थास्तासु भविष्यति । महाभाष्य ,</div><div class="kane-src"><span class="tier sole" title="the only Sanskrit on the only passage citing it — inferred">sole</span> <a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#fn-14-arthashastra-of-kautilya-101">vol-1-part-1 §14-arthashastra-of-kautilya</a></div></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-125">vol-1-part-1 §14-arthashastra-of-kautilya</a> · <a href="../vol-3/chapter-xxx-stridhana.html#p-chapter-xxx-stridhana-19">vol-3 §chapter-xxx-stridhana</a></td>
+            <td class="verse-context"><small>It is of great importance to note that Kauṭilya lays down ( II.4 ) that in the midst of t...</small></td>
+        </tr>
+
+        <tr id="XL">
+            <td class="verse-ref">XL</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-ii-seven-angas-of-rājya.html#p-chapter-ii-seven-angas-of-rājya-11">vol-3 §chapter-ii-seven-angas-of-rājya</a></td>
+            <td class="verse-context"><small>...o at one time formed a republic, acc to Kauṭilya XL 1) and he took an oath as stated in his...</small></td>
+        </tr>
+
+        <tr id="IL">
+            <td class="verse-ref">IL</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o.html#p-chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o-62">vol-3 §chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o</a></td>
+            <td class="verse-context"><small>...andhapustakasthānam kārayet). Vide also Kaut. IL 21, IL 30, IV. 9, IV. 10 for references...</small></td>
+        </tr>
+
+        <tr id="i">
+            <td class="verse-ref">i</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">The भरतवाक्य in the Mudrārākṣasa is put in the mouth of Rākṣasa in some msṣ and in that of Cāṇakya in otherṣ It is as follows; वाराहीमात्मयोनिस्तनुवनविधिवावास्थितस्यानुरूपां यस्य प्रागदन्तकोटिं प्रलय - परिगता शिप्रिये भूतधात्री । स्वेच्छैकैके जृमाना भुजयुगमधुना संश्रिता राज - मूत्तैः स श्रीमदबन्धुमुख्याश्चिरमवतु मही पाथिर्वश्चन्द्रगुप्तः ॥ There are various readings in the last seven letters viz. ‘ पार्थिवश्चन्द्रगुप्तः , पार्थिवोदन्तिवर्मा , पार्थिवो दन्तिवर्मा and others which may be neglect- eḍ The present author holds that the proper reading is पार्थिव - श्चन्द्रगुप्तः .</div><div class="kane-src"><span class="tier sole" title="the only Sanskrit on the only passage citing it — inferred">sole</span> <a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#fn-14-arthashastra-of-kautilya-31">vol-1-part-1 §14-arthashastra-of-kautilya</a></div></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/13-manavadharmasutra-did-it-exist.html#p-13-manavadharmasutra-did-it-exist-3">vol-1-part-1 §13-manavadharmasutra-did-it-exist</a> · <a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-3">vol-1-part-1 §14-arthashastra-of-kautilya</a> · <a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-16">vol-1-part-1 §14-arthashastra-of-kautilya</a> · <a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-16">vol-1-part-1 §14-arthashastra-of-kautilya</a> · <a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-26">vol-1-part-1 §14-arthashastra-of-kautilya</a></td>
+            <td class="verse-context"><small>...-daka is only paraphrasing the words of Kauṭilya in the above two placeṣ&lt;sup class="fn-ref...</small></td>
+        </tr>
+
+        <tr id="I">
+            <td class="verse-ref">I</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-iv-ministers.html#p-chapter-iv-ministers-1">vol-3 §chapter-iv-ministers</a> · <a href="../vol-3/chapter-iv-ministers.html#p-chapter-iv-ministers-2">vol-3 §chapter-iv-ministers</a> · <a href="../vol-3/chapter-vii-kosha-treasury-or-finance.html#p-chapter-vii-kosha-treasury-or-finance-2">vol-3 §chapter-vii-kosha-treasury-or-finance</a> · <a href="../vol-3/appendix-note-191.html#p-appendix-note-191-2">vol-3 §appendix-note-191</a> · <a href="../vol-3/appendix-note-191.html#p-appendix-note-191-14">vol-3 §appendix-note-191</a></td>
+            <td class="verse-context"><small>...d mantrin seem to be distinguisheḍ From Kaut. I 8 (last verse) 'Having divided the sphe...</small></td>
+        </tr>
+
+        <tr id="1">
+            <td class="verse-ref">1</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o.html#p-chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o-43">vol-3 §chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o</a></td>
+            <td class="verse-context"><small>.... 258, Kaut. III. 9, Yaj. II. 150-152). Kaut. 1 19 and Br.&lt;sup class="fn-ref"&gt;&lt;a href="...</small></td>
+        </tr>
+
+        <tr id="I.2">
+            <td class="verse-ref">I.2</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/64-medhātithi.html#p-64-medhātithi-6">vol-1-part-1 §64-medhātithi</a></td>
+            <td class="verse-context"><small>...he explains them almost in the words of Kauṭilya ( I. 2 ). On VII. 148 he quotes the five angas o...</small></td>
+        </tr>
+
+        <tr id="I.2.10">
+            <td class="verse-ref">I.2.10</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-81">vol-1-part-1 §14-arthashastra-of-kautilya</a></td>
+            <td class="verse-context"><small>...he meaning of Ānvīkṣikī ( which acc. to Kauṭilya I. 2. 10 includes Sāṅkhya, Yoga and Lokāyata ) h...</small></td>
+        </tr>
+
+        <tr id="I.3.13">
+            <td class="verse-ref">I.3.13</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/1-meaning-of-dharma.html#p-1-meaning-of-dharma-2">vol-1-part-1 §1-meaning-of-dharma</a></td>
+            <td class="verse-context"><small>...It may be noted that the Arthaśāstra of Kauṭilya (I. 3. 13) prescribes for all men ahimsā, satya, ś...</small></td>
+        </tr>
+
+        <tr id="I.4">
+            <td class="verse-ref">I.4</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-ii-seven-angas-of-rājya.html#p-chapter-ii-seven-angas-of-rājya-28">vol-3 §chapter-ii-seven-angas-of-rājya</a></td>
+            <td class="verse-context"><small>...vidyās (Jātakas, vol. II. 87, III 115). Kauṭilya (I. 4) explains that Vārtā is constituted by a...</small></td>
+        </tr>
+
+        <tr id="I.4.11-14">
+            <td class="verse-ref">I.4.11-14</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">सुविज्ञातप्रणीतो हि दण्डः प्रजा धर्मार्थकामैर्योजयति। अप्रणीतस्तु मात्स्यन्याय - मुत्थापयति। बलीयानबलं ग्रसते दण्डभयाभावे।</div><div class="kane-note">अर्थशास्त्र I, 4, 11, 13, 14; दण्डश्चेत् प्रणीतो नित्यलोकद्विजेरणाः प्रजा। जले मत्स्यानिवाभक्षयन् दुर्बलान् बलव - तराः ।। शान्ति 15. 30 and सुप्रणीतेन दण्डेनाप्रियानप्रियानात्मा प्रजा रक्षति स सम्म्यग्धर्म एव स केवलः।। यथा ममेतद्वचनं प्रागेव मनुना पुरा। यन्मापौर्त्यालं मनुष्येण ब्राह्मणो वचनं महान् । शान्ति 21 10-12 ( चित्रशाळा eḍ Poona.)</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-2/102-dandaviveka-of-vardhamāna.html#fn-102-dandaviveka-of-vardhamāna-1">vol-1-part-2 §102-dandaviveka-of-vardhamāna</a></div></td>
+            <td class="verse-locs"><a href="../vol-1-part-2/102-dandaviveka-of-vardhamāna.html#p-102-dandaviveka-of-vardhamāna-5">vol-1-part-2 §102-dandaviveka-of-vardhamāna</a></td>
+            <td class="verse-context"><small>...āma (Manu VII. 27, Śāntiparva 121. 10). Kauṭilya (in I. 4. 11-14) emphasizes the same thingṣ&lt;sup class="f...</small></td>
+        </tr>
+
+        <tr id="I.5">
+            <td class="verse-ref">I.5</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-i-preliminary.html#p-chapter-i-preliminary-11">vol-3 §chapter-i-preliminary</a> · <a href="../vol-3/chapter-ii-seven-angas-of-rājya.html#p-chapter-ii-seven-angas-of-rājya-29">vol-3 §chapter-ii-seven-angas-of-rājya</a></td>
+            <td class="verse-context"><small>...a, Yajurveda, Sāmaveda and Atharvaveda. Kauṭilya (I. 5) states that the king should listen to t...</small></td>
+        </tr>
+
+        <tr id="I.6">
+            <td class="verse-ref">I.6</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-ii-seven-angas-of-rājya.html#p-chapter-ii-seven-angas-of-rājya-30">vol-3 §chapter-ii-seven-angas-of-rājya</a></td>
+            <td class="verse-context"><small>Kauṭilya (I. 6) emphasizes that control of the organs o...</small></td>
+        </tr>
+
+        <tr id="I.6.Vi">
+            <td class="verse-ref">I.6.Vi</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-ii-seven-angas-of-rājya.html#p-chapter-ii-seven-angas-of-rājya-30">vol-3 §chapter-ii-seven-angas-of-rājya</a></td>
+            <td class="verse-context"><small>...ṃ I 58 is the same as the last verse of Kauṭilya I. 6. Vide Mārkaṇḍeya 27. 12-13. In the Vāsavada...</small></td>
+        </tr>
+
+        <tr id="I.9">
+            <td class="verse-ref">I.9</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">वेदैर्तिहासधर्मशास्त्रेषु कुशलं कुलीनमध्यस्‌ तपस्विनं पुरोहितं च वरयेत्‌। विष्णु - धर्मसूत्र III. 70. पुरोहितं प्रकुर्वीत दैवज्ञमुदितोदितम्‌। दण्डनीत्या च कुशलमथर्वाङ्गिरसे सदा च याज्ञ . I. 313. पुरोहितहितोदितोपदिष्टं यत्‌। वेदवेदे येते निर्भयं दण्डनीत्यां चाभिविनितमनुपष्टहा देवज्ञमुदितोदितमनिरभिधत्‌ महोपचारै रुर्वीत। हमाचार्य शिष्यः पितरं पुत्रो गुरुम्ः स्वामिनमिव चानुवर्तेत्‌। ... ब्राह्मणोपहितं क्षत्रं मन्त्रिमन्त्रशुभिभिजितम्‌। जपध्वनिसंपन्नमस्त्रं शास्त्रानुगमभूषितम्‌॥</div><div class="kane-note">कौटिल्य I. 9. राजा पुरोहितं कुर्याद‌वृतिं ब्राह्मणं हितम्‌। कृताध्ययनसंपन्नमद्धृ सत्यवादिनम्‌ ॥ कात्या . 9 In स पि . p 20.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-3/chapter-iv-ministers.html#fn-chapter-iv-ministers-28">vol-3 §chapter-iv-ministers</a></div></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-iv-ministers.html#p-chapter-iv-ministers-2">vol-3 §chapter-iv-ministers</a></td>
+            <td class="verse-context"><small>...re laid down in several places e. g. in Kauṭilya I. 9, Manu VII. 54, Yāj. I. 312, Kāṃ IV. 25-...</small></td>
+        </tr>
+
+        <tr id="I.10">
+            <td class="verse-ref">I.10</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">Important quotations from दशकुमारचरित ( pp. 258 ff. of the Nir. eḍ of 1951 ) are: (1) ननु चतस्रो राजविद्यायधी वार्ता - न्वीक्षिकी दण्डनीति - रिति । ... अधीच तावद्दण्डनीतिम् । इयमिदानीमाचार्यविष्णुगुप्तेन मौर्यार्थे षड्भिः लोकसहस्रैः संक्षिप्ता । Vide अर्थशास्त्र I. 1. 18 षट्स्रोकसहस्रा - णीति । ; (2) चत्वारिंशच्चाणक्योपदिष्टांनाहरषोपायान्० ; vide A. II. 8. 20-21; (3) सत्यमाह चाणक्यः । चित्तज्ञानानुवर्तिनोऽनर्था ( यर्था ) अपि प्रियाः स्युः । दक्षिणा अपि तद्द्भाववहिष्कृता द्वेष्या भवेयुरिति । vide A. V. 4, verses 13-14. (one half of each) ; (4) राज्यं नाम शक्तित्रयायत्तम् । शक्यस्य मन्त्रप्रभावात्साहाः परस्परायुगृहीताः क्रलेषु क्रम्मन्ते । ... अतः पञ्चाङ्ग - मन्त्रमूले ... द्विसप्ततिप्रकृतिपन्नः षड्गुणिमकिस्यः । etc. ; vide अर्थ . VI. 2. 33 ( शक्य : ), VI. 2. 28 ( द्विसप्तति : ); VII. 1. 2 ( षाड्गुण्य ) ; (5) भूयो भूयोपधाभिर्विशोध्य ... मतिसहायमकरवन् । ( vide</div><div class="kane-note">अर्थशास्त्र I. 10. 1-4) ; (6 on p. 54) येऽपि मन्त्रकर्त्तारः शास्त्रतत्त्वकाराः शुक्राङ्गिरस - विशालाइम - बाहुदन्तिपुत्र - पराशरप्रभृतयस्तैः किमिरिष्वड्गो जितः कृतं वा तैः शास्त्रानुष्ठानम् । शुक्र and आङ्गिरस are respectively उसनस् and बृहस्पति . These are among the individual predecessors mentioned in the Arthaśāstra.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#fn-14-arthashastra-of-kautilya-27">vol-1-part-1 §14-arthashastra-of-kautilya</a></div></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/61-vishvarūpa.html#p-61-vishvarūpa-3">vol-1-part-1 §61-vishvarūpa</a> · <a href="../vol-3/chapter-iii-duties-and-responsibilities-of-the-ruler.html#p-chapter-iii-duties-and-responsibilities-of-the-ruler-30">vol-3 §chapter-iii-duties-and-responsibilities-of-the-ruler</a></td>
+            <td class="verse-context"><small>... _kāma_ and _bhaya_. This is an echo of Kauṭilya ( I. 10 ). On Yāj. I. 343 Viś. refers to the view...</small></td>
+        </tr>
+
+        <tr id="I.11">
+            <td class="verse-ref">I.11</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">उपधाभिः शुद्धाममात्यवर्गो गूढपुरुषानुपगृह्येतृ । कापटीकोदास्थतस्तृतश्च वैदेहकतापसव्यञ्जनान् सत्रिणीतीक्ष्णरसदभिक्षुकीच । परफर्मणः प्रगलभः छात्रः कापदिकः । .... प्रव्रज्याव्यवसितः प्रज्ञाशौचयुक्त उदास्त्रितः ! ...... कृषकौ वृत्ति क्षीणौ प्रज्ञाशौचयुक्तौ गृहेहकत्यञ्जनः । वाणिज्यको वृत्तिझीणः प्रज्ञाशोचयुक्तो वैदेहकन्यञ्ज - ना वृत्तिव्यस्ततापसव्यञ्जनः । ... पूजिताश्रयार्यमानभ्यां राज्ञा राजोपजीविनामू । जातीयुः शोच्यनित्यतः परश्च संरधाः प्रकीर्तिताः ॥</div><div class="kane-note">अर्थशास्त्र I. 11. प्रव्रज्यामवसित means the same thing as प्रव्रज्याप्रवसित , which occurs in याज्ञ II. 183 and is मिटाक्षरा as प्रव्रज्या संन्यासस्ततौर्दाप्तसिंहः प्रच्छन्नः मेधातिथि on Manu VII 154 quotes almost verbatim a large part of Kaut I. 11 from कापटीका० and a portion from I. 12.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-3/chapter-iv-ministers.html#fn-chapter-iv-ministers-44">vol-3 §chapter-iv-ministers</a></div></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-iv-ministers.html#p-chapter-iv-ministers-13">vol-3 §chapter-iv-ministers</a></td>
+            <td class="verse-context"><small>...y labour, swift in action, ready-witteḍ Kaut. (I. 11) says&lt;sup class="fn-ref"&gt;&lt;a href="#fn-ch...</small></td>
+        </tr>
+
+        <tr id="I.12">
+            <td class="verse-ref">I.12</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/appendix-note-191.html#p-appendix-note-191-2">vol-3 §appendix-note-191</a> · <a href="../vol-3/appendix-note-191.html#p-appendix-note-191-2">vol-3 §appendix-note-191</a> · <a href="../vol-3/appendix-note-191.html#p-appendix-note-191-3">vol-3 §appendix-note-191</a> · <a href="../vol-3/appendix-note-191.html#p-appendix-note-191-14">vol-3 §appendix-note-191</a> · <a href="../vol-3/appendix-note-191.html#p-appendix-note-191-14">vol-3 §appendix-note-191</a></td>
+            <td class="verse-context"><small>...rge of forest tractṣ The word occurs in Kauṭilya I. 12 among the 18 tīrthas आधिकारिक—Officer. ...</small></td>
+        </tr>
+
+        <tr id="I.13">
+            <td class="verse-ref">I.13</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-ii-seven-angas-of-rājya.html#p-chapter-ii-seven-angas-of-rājya-7">vol-3 §chapter-ii-seven-angas-of-rājya</a> · <a href="../vol-3/chapter-ii-seven-angas-of-rājya.html#p-chapter-ii-seven-angas-of-rājya-12">vol-3 §chapter-ii-seven-angas-of-rājya</a></td>
+            <td class="verse-context"><small>...arried among those of the immortal gods Kauṭilya (I. 13) makes a spy say among pauras and jānapa...</small></td>
+        </tr>
+
+        <tr id="I.15">
+            <td class="verse-ref">I.15</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">‘ त्रयी वार्ता दण्डनीतिश्चेति मानवाः। त्रयीविशेषो ह्यान्वीक्षिकी ’ कौटिल्य I, 2; ‘ मन्त्रिपरिषदं द्वादशामात्यान् कुर्वन्ति मानवाः षोडशेति बाहस्पत्याः विंशतिमित्यौशनसाः ’</div><div class="kane-note">कौटिल्य I, 15, H. D.—19 .</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-1/13-manavadharmasutra-did-it-exist.html#fn-13-manavadharmasutra-did-it-exist-4">vol-1-part-1 §13-manavadharmasutra-did-it-exist</a></div></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-iv-ministers.html#p-chapter-iv-ministers-3">vol-3 §chapter-iv-ministers</a></td>
+            <td class="verse-context"><small>...-14"&gt;14&lt;/a&gt;&lt;/sup&gt; In most works such as Kaut. I. 15, Kāṃ XI. 56, Agnipurāṇa 241. 4, Pañcata...</small></td>
+        </tr>
+
+        <tr id="I.19">
+            <td class="verse-ref">I.19</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">उस्थानं हि नरेन्द्रणां बृहस्पतिरभाषत । राजधर्मस्य तन्मूलं श्लोकाञ्च्छात्रान्नियोध मे ॥ उस्थानिनार्त लब्धमुर्थिनानुरा हताः ॥ उस्थानिन महोन्द्रेण श्रैर्द्य प्राप्तं दिदीह च । उस्थानिनवीरः पुरुर्षा वाग्वरीरानधिष्ठित॥ रमयन्त उपात्ते ॥ उस्थानहीनो राजा हि बुद्धिमानपि नित्यशः । अपर्वणीयः शत्रूणां भुजङ्ग इव निर्विषः । शान्ति 58. 13-18; compare कौटिल्य ' राजामनु - स्थितसमतिष्ठन्त सूच्याः । प्रमाणान्तप्रतु प्रमाणिन । कर्माणि वाह्य भक्ष्ययन्ति । । इन्द्रियादिकषितजीवनै । तस्यादुस्थानमामनः कुर्यात । ... राजो हि व्रतमुत्थानं यः कार्यानुशासनम । दक्षिणा वृत्तिसाम्ध्य तु दीक्षा तस्याभिषेचनम् ॥ तस्माजि - त्यार्थिनो राजा कार्यार्थ्यनुशासनम् । अथर्थस्य मूलमुत्थानमनर्थस्य विषयर्धयः ॥</div><div class="kane-note">अर्थशास्त्र I. 19. 1-5 and 33-35.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#fn-14-arthashastra-of-kautilya-21">vol-1-part-1 §14-arthashastra-of-kautilya</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxii-bhojana.html#p-chapter-xxii-bhojana-41">vol-2-part-2 §chapter-xxii-bhojana</a> · <a href="../vol-5-part-1/list-of-vratas-and-utsavas.html#p-list-of-vratas-and-utsavas-53">vol-5-part-1 §list-of-vratas-and-utsavas</a> · <a href="../vol-5-part-1/chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-30">vol-5-part-1 §chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc</a></td>
+            <td class="verse-context"><small>..., 151-154, 216-226, Yāj. I. 327-333 and Kaut. I. 19 dilate upon the daily duties of the kin...</small></td>
+        </tr>
+
+        <tr id="1.19">
+            <td class="verse-ref">1.19</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-iii-duties-and-responsibilities-of-the-ruler.html#p-chapter-iii-duties-and-responsibilities-of-the-ruler-37">vol-3 §chapter-iii-duties-and-responsibilities-of-the-ruler</a></td>
+            <td class="verse-context"><small>...uld generally be used and not the dual. Kauṭilya (1. 19) states that the king should in the 2nd ...</small></td>
+        </tr>
+
+        <tr id="I.19.32">
+            <td class="verse-ref">I.19.32</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/38-kātyāyana.html#p-38-kātyāyana-21">vol-1-part-1 §38-kātyāyana</a></td>
+            <td class="verse-context"><small>... Kāt. in Vyavahāramātr̥kā p. 281 (it is Kauṭilya I. 19. 32); No. 141 is ascribed to both Br. and K...</small></td>
+        </tr>
+
+        <tr id="I.20">
+            <td class="verse-ref">I.20</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-iii-duties-and-responsibilities-of-the-ruler.html#p-chapter-iii-duties-and-responsibilities-of-the-ruler-30">vol-3 §chapter-iii-duties-and-responsibilities-of-the-ruler</a></td>
+            <td class="verse-context"><small>...ies-of-the-ruler-55"&gt;55&lt;/a&gt;&lt;/sup&gt; safe. Kaut. (I. 20) and Kāṃ (VII. 51-54) both name seven ki...</small></td>
+        </tr>
+
+        <tr id="II">
+            <td class="verse-ref">II</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-iii-duties-and-responsibilities-of-the-ruler.html#p-chapter-iii-duties-and-responsibilities-of-the-ruler-5">vol-3 §chapter-iii-duties-and-responsibilities-of-the-ruler</a> · <a href="../vol-3/chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-2">vol-3 §chapter-v-rāshtra-the-territory-of-a-state</a> · <a href="../vol-3/chapter-vii-kosha-treasury-or-finance.html#p-chapter-vii-kosha-treasury-or-finance-7">vol-3 §chapter-vii-kosha-treasury-or-finance</a> · <a href="../vol-3/appendix-note-191.html#p-appendix-note-191-2">vol-3 §appendix-note-191</a></td>
+            <td class="verse-context"><small>... upon the rule of the king as paternal. Kaut. II 1 states that the king should favour li...</small></td>
+        </tr>
+
+        <tr id="2">
+            <td class="verse-ref">2</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/appendix-note-191.html#p-appendix-note-191-75">vol-3 §appendix-note-191</a></td>
+            <td class="verse-context"><small>...aratna 869ṇ Ācāryas, views of, cited by Kauṭilya 2, 201, 223, 225n, 232, 392. Accountant, ...</small></td>
+        </tr>
+
+        <tr id="II.1">
+            <td class="verse-ref">II.1</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">ऋत्विग्वाचार्य - पुरोहित - श्रोत्रियेभ्यो ब्रह्मदेयान्दण्डकराण्याभिरूपदायकानि प्रयच्छेत् ।</div><div class="kane-note">कौटिल्य II. 1.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-iii-the-duties-disabilities-and-privileges-of-varnas.html#fn-chapter-iii-the-duties-disabilities-and-privileges-of-varnas-106">vol-2-part-1 §chapter-iii-the-duties-disabilities-and-privileges-of-varnas</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxv-dāna-gifts.html#p-chapter-xxv-dāna-gifts-29">vol-2-part-2 §chapter-xxv-dāna-gifts</a> · <a href="../vol-2-part-2/chapter-xxv-dāna-gifts.html#p-chapter-xxv-dāna-gifts-38">vol-2-part-2 §chapter-xxv-dāna-gifts</a> · <a href="../vol-2-part-2/chapter-xxviii-sannyāsa.html#p-chapter-xxviii-sannyāsa-4">vol-2-part-2 §chapter-xxviii-sannyāsa</a> · <a href="../vol-3/chapter-iii-duties-and-responsibilities-of-the-ruler.html#p-chapter-iii-duties-and-responsibilities-of-the-ruler-3">vol-3 §chapter-iii-duties-and-responsibilities-of-the-ruler</a> · <a href="../vol-3/chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-7">vol-3 §chapter-v-rāshtra-the-territory-of-a-state</a></td>
+            <td class="verse-context"><small>...ges and settlement of learned brāhmaṇaṣ Kaut. II. 1 also pres- cribes that lands free from ...</small></td>
+        </tr>
+
+        <tr id="II.3">
+            <td class="verse-ref">II.3</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-vi-durga-fort-or-capital.html#p-chapter-vi-durga-fort-or-capital-1">vol-3 §chapter-vi-durga-fort-or-capital</a></td>
+            <td class="verse-context"><small>...ithout a pass or without being searcheḍ Kaut. (II. 3) gives detailed instructions for the con...</small></td>
+        </tr>
+
+        <tr id="II.4">
+            <td class="verse-ref">II.4</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-vi-durga-fort-or-capital.html#p-chapter-vi-durga-fort-or-capital-2">vol-3 §chapter-vi-durga-fort-or-capital</a></td>
+            <td class="verse-context"><small>...where and how a capital was to be built Kauṭilya (in II. 4) describes at great length how the capit...</small></td>
+        </tr>
+
+        <tr id="II.5">
+            <td class="verse-ref">II.5</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/appendix-note-191.html#p-appendix-note-191-14">vol-3 §appendix-note-191</a> · <a href="../vol-3/appendix-note-191.html#p-appendix-note-191-38">vol-3 §appendix-note-191</a></td>
+            <td class="verse-context"><small>.... पुल्ब—means 'inferior servant' (as in Kauṭilya II. 5 ) or a bailiff attached to a Court of j...</small></td>
+        </tr>
+
+        <tr id="II.7">
+            <td class="verse-ref">II.7</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">देशस्य जात्या सङ्घस्य धर्मो ग्रामस्य चापि यः । उचितस्तस्य तेनैव चायधर्मं प्रकष्टयेत् ॥ अर्थशास्त्र III. 7. p. 165. अष्पदलमपभक्षा ... निबभूखत्तकरयानं कार्येत्। * साधिकरणानि संख्या ... देशामाजातिकुलसङ्घनानां धर्मव्यवहारचरित्रसंस्थानं ... नियन्त्र - द्दुष्कारणम् कार्येत्।</div><div class="kane-note">अर्थशास्त्र II. 7 p. 62.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-3/chapter-xxxiii-customs-and-dharmashastra-works.html#fn-chapter-xxxiii-customs-and-dharmashastra-works-12">vol-3 §chapter-xxxiii-customs-and-dharmashastra-works</a></div></td>
+            <td class="verse-locs"><a href="../vol-3/appendix-note-191.html#p-appendix-note-191-2">vol-3 §appendix-note-191</a></td>
+            <td class="verse-context"><small>...rintendent of records and accountṣ Vide Kauṭilya II. 7 and p. 143 above for his dutieṣ अक्षाशा...</small></td>
+        </tr>
+
+        <tr id="II.10">
+            <td class="verse-ref">II.10</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-iii-duties-and-responsibilities-of-the-ruler.html#p-chapter-iii-duties-and-responsibilities-of-the-ruler-39">vol-3 §chapter-iii-duties-and-responsibilities-of-the-ruler</a></td>
+            <td class="verse-context"><small>...inted editions of Maṇḍlik and Gharpure. Kauṭilya (II. 10) devotes a chapter to the drawing up of ...</small></td>
+        </tr>
+
+        <tr id="II.12">
+            <td class="verse-ref">II.12</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/appendix-note-191.html#p-appendix-note-191-3">vol-3 §appendix-note-191</a></td>
+            <td class="verse-context"><small>...I. 12 mentions him among the 18 tīrthaṣ Kauṭilya II. 12 is headed ‘ākara-karmāntapravartanam’ i...</small></td>
+        </tr>
+
+        <tr id="II.24">
+            <td class="verse-ref">II.24</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-14">vol-3 §chapter-v-rāshtra-the-territory-of-a-state</a></td>
+            <td class="verse-context"><small>...dināras (vide Rājataraṅgiṇi V. 84-117). Kauṭilya (II. 24) refers to the various ways in which cro...</small></td>
+        </tr>
+
+        <tr id="II.33">
+            <td class="verse-ref">II.33</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-iv-ministers.html#p-chapter-iv-ministers-11">vol-3 §chapter-iv-ministers</a></td>
+            <td class="verse-context"><small>...ef are stated in several places such as Kauṭilya (II. 33), Ayodhyā 100.30 (= Sabhā 5. 46), Sānti ...</small></td>
+        </tr>
+
+        <tr id="II.36">
+            <td class="verse-ref">II.36</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">पाहुण्यासे स्थयायामावभानो दण्डः । पङ्कोदकनिसेपे याद । राजमार्गे दिगुण । दुषणभ्रसामेद्वृषाणगृहए राजपरिमेहषु पणोत्तस विडावृण्डा । मृदेवदृवधूणा । भयवण्या - पिभयनिमित्तमृदण्डा ।</div><div class="kane-note">अर्थशास्त्र II. 36</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-3/chapter-xxii-simāvivāda-boundary-disputes.html#fn-chapter-xxii-simāvivāda-boundary-disputes-21">vol-3 §chapter-xxii-simāvivāda-boundary-disputes</a></div></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-vi-durga-fort-or-capital.html#p-chapter-vi-durga-fort-or-capital-2">vol-3 §chapter-vi-durga-fort-or-capital</a> · <a href="../vol-3/appendix-note-191.html#p-appendix-note-191-14">vol-3 §appendix-note-191</a></td>
+            <td class="verse-context"><small>...e nāgaraka described above (p 149) from Kauṭilya (II. 36). From the Paharpur plates (dated Gupta ...</small></td>
+        </tr>
+
+        <tr id="III">
+            <td class="verse-ref">III</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-13">vol-3 §chapter-v-rāshtra-the-territory-of-a-state</a> · <a href="../vol-3/chapter-xx-vetanasyānapākarma-abhyupetyāshushrūshā-and-svāmipālavivāda.html#p-chapter-xx-vetanasyānapākarma-abhyupetyāshushrūshā-and-svāmipālavivāda-3">vol-3 §chapter-xx-vetanasyānapākarma-abhyupetyāshushrūshā-and-svāmipālavivāda</a> · <a href="../vol-3/chapter-xxiii-vakpārushya-and-dandapārushya-abuse-and-defamation-assault.html#p-chapter-xxiii-vakpārushya-and-dandapārushya-abuse-and-defamation-assault-4">vol-3 §chapter-xxiii-vakpārushya-and-dandapārushya-abuse-and-defamation-assault</a></td>
+            <td class="verse-context"><small>...ncur loss of capital spent by theṃ From Kaut. III 10 it appears that the village headman ...</small></td>
+        </tr>
+
+        <tr id="3">
+            <td class="verse-ref">3</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/general-index.html#p-general-index-12">vol-3 §general-index</a></td>
+            <td class="verse-context"><small>...Śāntiparva 2. 56. expoonders of, acc to Kauṭilya 3. expounders of, acc Nītiprakā- śikā 4 R...</small></td>
+        </tr>
+
+        <tr id="III.1">
+            <td class="verse-ref">III.1</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-ix-marriage.html#p-chapter-ix-marriage-98">vol-2-part-1 §chapter-ix-marriage</a> · <a href="../vol-3/chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o.html#p-chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o-40">vol-3 §chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o</a></td>
+            <td class="verse-context"><small>... 58, Nārada (stripuiṁsa, verses 38-39), Kauṭilya III. 1, 59th prakaraṇa, Ādi-parva 102. 12-15 (...</small></td>
+        </tr>
+
+        <tr id="III.2">
+            <td class="verse-ref">III.2</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">पितृप्रमाणाश्चत्वारः पूर्वे धर्म्याः ।</div><div class="kane-note">अर्थशास्त्र III. 2.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-xiv-remarriage-of-widows.html#fn-chapter-xiv-remarriage-of-widows-31">vol-2-part-1 §chapter-xiv-remarriage-of-widows</a></div></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxix-order-of-succession-after-the-son.html#p-chapter-xxix-order-of-succession-after-the-son-13">vol-3 §chapter-xxix-order-of-succession-after-the-son</a></td>
+            <td class="verse-context"><small>...ted by her from her husband are limiteḍ Kaut. III. 2 was&lt;sup class="fn-ref"&gt;&lt;a href="#fn-cha...</small></td>
+        </tr>
+
+        <tr id="III.2.1-9">
+            <td class="verse-ref">III.2.1-9</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/9-vasishtha-dharmasutra.html#p-9-vasishtha-dharmasutra-14">vol-1-part-1 §9-vasishtha-dharmasutra</a></td>
+            <td class="verse-context"><small>.... S. I. 11. 1-9, Manu III 21 and 27-34, Kauṭilya III. 2. 1-9 name and define the same eight forms of...</small></td>
+        </tr>
+
+        <tr id="III.4">
+            <td class="verse-ref">III.4</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xiv-remarriage-of-widows.html#p-chapter-xiv-remarriage-of-widows-3">vol-2-part-1 §chapter-xiv-remarriage-of-widows</a></td>
+            <td class="verse-context"><small>...lling upon her to repair to her husbanḍ Kauṭilya (III. 4) prescribes some interesting rules: ‘the...</small></td>
+        </tr>
+
+        <tr id="III.5">
+            <td class="verse-ref">III.5</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">संसद्विविनि मते ससदरी रिक्थाभाक् । गौ . 28 26; अविदुद्धव्य विभक्तपितृसुषावा सह जीवनसः पुनर्विभेदरज ।</div><div class="kane-note">अर्थशास्त्र III, 5.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-3/chapter-xxix-order-of-succession-after-the-son.html#fn-chapter-xxix-order-of-succession-after-the-son-140">vol-3 §chapter-xxix-order-of-succession-after-the-son</a></div></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxvii-dāyabhāga-partition-of-wealth.html#p-chapter-xxvii-dāyabhāga-partition-of-wealth-29">vol-3 §chapter-xxvii-dāyabhāga-partition-of-wealth</a> · <a href="../vol-3/chapter-xxvii-dāyabhāga-partition-of-wealth.html#p-chapter-xxvii-dāyabhāga-partition-of-wealth-42">vol-3 §chapter-xxvii-dāyabhāga-partition-of-wealth</a> · <a href="../vol-3/chapter-xxvii-dāyabhāga-partition-of-wealth.html#p-chapter-xxvii-dāyabhāga-partition-of-wealth-64">vol-3 §chapter-xxvii-dāyabhāga-partition-of-wealth</a> · <a href="../vol-3/chapter-xxvii-dāyabhāga-partition-of-wealth.html#p-chapter-xxvii-dāyabhāga-partition-of-wealth-67">vol-3 §chapter-xxvii-dāyabhāga-partition-of-wealth</a> · <a href="../vol-3/chapter-xxvii-dāyabhāga-partition-of-wealth.html#p-chapter-xxvii-dāyabhāga-partition-of-wealth-81">vol-3 §chapter-xxvii-dāyabhāga-partition-of-wealth</a></td>
+            <td class="verse-context"><small>...r did not operate as a bar to partitioṇ Kaut. (III. 5) says 'partition takes place when the pe...</small></td>
+        </tr>
+
+        <tr id="III.6">
+            <td class="verse-ref">III.6</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">इन्द्रस्तु व्याधितो वा राजा मातृगुप्तयगुप्तरक्तानाममन्यतेन क्षेत्रे वीज - समुत्पादयेत् । कौटिल्य (I. 17. p. 35); क्षेत्रे वा जनयेदस्य नियुक्ताः क्षेत्रजं सुतम् । मातृ - बन्धुः सगौत्रो वा तस्मै तयदेशोन्नम् ॥</div><div class="kane-note">कौटिल्य III. 6 (p. 163).</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-xiii-niyoga.html#fn-chapter-xiii-niyoga-7">vol-2-part-1 §chapter-xiii-niyoga</a></div></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxvii-dāyabhāga-partition-of-wealth.html#p-chapter-xxvii-dāyabhāga-partition-of-wealth-50">vol-3 §chapter-xxvii-dāyabhāga-partition-of-wealth</a> · <a href="../vol-3/chapter-xxvii-dāyabhāga-partition-of-wealth.html#p-chapter-xxvii-dāyabhāga-partition-of-wealth-69">vol-3 §chapter-xxvii-dāyabhāga-partition-of-wealth</a></td>
+            <td class="verse-context"><small>... Gaut 28. 33-37, Bauḍ Dh. S. II. 2. 10, Kaut. III. 6, Vas 17. 48-50, Manu IX. 149-155, Yaj. ...</small></td>
+        </tr>
+
+        <tr id="III.7">
+            <td class="verse-ref">III.7</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-ii-varna.html#p-chapter-ii-varna-25">vol-2-part-1 §chapter-ii-varna</a> · <a href="../vol-2-part-1/chapter-ii-varna.html#p-chapter-ii-varna-69">vol-2-part-1 §chapter-ii-varna</a> · <a href="../vol-2-part-1/chapter-ii-varna.html#p-chapter-ii-varna-75">vol-2-part-1 §chapter-ii-varna</a> · <a href="../vol-2-part-1/chapter-ii-varna.html#p-chapter-ii-varna-78">vol-2-part-1 §chapter-ii-varna</a> · <a href="../vol-2-part-1/chapter-ii-varna.html#p-chapter-ii-varna-111">vol-2-part-1 §chapter-ii-varna</a></td>
+            <td class="verse-context"><small>...rva 48. 4, Nārada ( stripumsa 106 ) and Kauṭilya ( III. 7 ) say the same. Gautama IV. 15 as interpr...</small></td>
+        </tr>
+
+        <tr id="III.9">
+            <td class="verse-ref">III.9</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxvi-pratishthā-and-utsarga.html#p-chapter-xxvi-pratishthā-and-utsarga-28">vol-2-part-2 §chapter-xxvi-pratishthā-and-utsarga</a> · <a href="../vol-3/chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o.html#p-chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o-43">vol-3 §chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o</a></td>
+            <td class="verse-context"><small>...d also pay a fine of five hundred paṇaṣ Kaut. III. 9 prescribes punishment for encroachment ...</small></td>
+        </tr>
+
+        <tr id="III.10">
+            <td class="verse-ref">III.10</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-13">vol-3 §chapter-v-rāshtra-the-territory-of-a-state</a> · <a href="../vol-3/appendix-note-191.html#p-appendix-note-191-8">vol-3 §appendix-note-191</a></td>
+            <td class="verse-context"><small>...village was liable to pay, according to Kauṭilya III. 10, a fine of 24 panaṣ It will be seen fro...</small></td>
+        </tr>
+
+        <tr id="III.11">
+            <td class="verse-ref">III.11</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">साक्षिणभेदेभियोगार्द्धम् अनुरतिरिक्तमियामियोका बन्धे दृष्टात् । अतिरिक्तं वा यमुलवतिरिक्कं राजा हरेत् ।</div><div class="kane-note">अर्थशास्त्र III. 11.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-3/chapter-xiii-witnesses-sākshinah.html#fn-chapter-xiii-witnesses-sākshinah-52">vol-3 §chapter-xiii-witnesses-sākshinah</a></div></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xiii-witnesses-sākshinah.html#p-chapter-xiii-witnesses-sākshinah-4">vol-3 §chapter-xiii-witnesses-sākshinah</a> · <a href="../vol-3/chapter-xiii-witnesses-sākshinah.html#p-chapter-xiii-witnesses-sākshinah-7">vol-3 §chapter-xiii-witnesses-sākshinah</a> · <a href="../vol-3/chapter-xiii-witnesses-sākshinah.html#p-chapter-xiii-witnesses-sākshinah-7">vol-3 §chapter-xiii-witnesses-sākshinah</a> · <a href="../vol-3/chapter-xiii-witnesses-sākshinah.html#p-chapter-xiii-witnesses-sākshinah-7">vol-3 §chapter-xiii-witnesses-sākshinah</a> · <a href="../vol-3/chapter-xiii-witnesses-sākshinah.html#p-chapter-xiii-witnesses-sākshinah-8">vol-3 §chapter-xiii-witnesses-sākshinah</a></td>
+            <td class="verse-context"><small>...ncompetent to be witnesses are given in Kaut. III. 11, Manu VIII 64-67, Udyogaparva 35. 44-47...</small></td>
+        </tr>
+
+        <tr id="III.12">
+            <td class="verse-ref">III.12</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">स्थावरस्तु मयासमभोग्यः फलभोग्यो वा ।</div><div class="kane-note">कौटिल्य III. 12.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-3/chapter-xvi-contracts.html#fn-chapter-xvi-contracts-52">vol-3 §chapter-xvi-contracts</a></div></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xvi-contracts.html#p-chapter-xvi-contracts-34">vol-3 §chapter-xvi-contracts</a></td>
+            <td class="verse-context"><small>...esence. Manu VIII 149 (=Vasiṣ. 16. 18), Kaut. III. 12 hold *nikṣepa* and *upa- nidhi* to be d...</small></td>
+        </tr>
+
+        <tr id="III.13">
+            <td class="verse-ref">III.13</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xx-vetanasyānapākarma-abhyupetyāshushrūshā-and-svāmipālavivāda.html#p-chapter-xx-vetanasyānapākarma-abhyupetyāshushrūshā-and-svāmipālavivāda-3">vol-3 §chapter-xx-vetanasyānapākarma-abhyupetyāshushrūshā-and-svāmipālavivāda</a></td>
+            <td class="verse-context"><small>... law, but it was modified in later ageṣ Kaut. (III. 13) states that if the employer does not pa...</small></td>
+        </tr>
+
+        <tr id="III.14">
+            <td class="verse-ref">III.14</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xviii-sambhūya-samutthāna-a-joint-undertaking-partnership.html#p-chapter-xviii-sambhūya-samutthāna-a-joint-undertaking-partnership-3">vol-3 §chapter-xviii-sambhūya-samutthāna-a-joint-undertaking-partnership</a> · <a href="../vol-3/chapter-xviii-sambhūya-samutthāna-a-joint-undertaking-partnership.html#p-chapter-xviii-sambhūya-samutthāna-a-joint-undertaking-partnership-3">vol-3 §chapter-xviii-sambhūya-samutthāna-a-joint-undertaking-partnership</a> · <a href="../vol-3/chapter-xx-vetanasyānapākarma-abhyupetyāshushrūshā-and-svāmipālavivāda.html#p-chapter-xx-vetanasyānapākarma-abhyupetyāshushrūshā-and-svāmipālavivāda-3">vol-3 §chapter-xx-vetanasyānapākarma-abhyupetyāshushrūshā-and-svāmipālavivāda</a> · <a href="../vol-3/chapter-xx-vetanasyānapākarma-abhyupetyāshushrūshā-and-svāmipālavivāda.html#p-chapter-xx-vetanasyānapākarma-abhyupetyāshushrūshā-and-svāmipālavivāda-3">vol-3 §chapter-xx-vetanasyānapākarma-abhyupetyāshushrūshā-and-svāmipālavivāda</a> · <a href="../vol-3/chapter-xx-vetanasyānapākarma-abhyupetyāshushrūshā-and-svāmipālavivāda.html#p-chapter-xx-vetanasyānapākarma-abhyupetyāshushrūshā-and-svāmipālavivāda-7">vol-3 §chapter-xx-vetanasyānapākarma-abhyupetyāshushrūshā-and-svāmipālavivāda</a></td>
+            <td class="verse-context"><small>...p. 284-285) quotes a few sentences from Kaut. III. 14.</small></td>
+        </tr>
+
+        <tr id="III.15">
+            <td class="verse-ref">III.15</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxi-samvid-vyatikrama-and-other-titles-violation-of-compacts-or-conventi.html#p-chapter-xxi-samvid-vyatikrama-and-other-titles-violation-of-compacts-or-conventi-3">vol-3 §chapter-xxi-samvid-vyatikrama-and-other-titles-violation-of-compacts-or-conventi</a></td>
+            <td class="verse-context"><small>...eral rule in Manu VIII 222 cited above. Kaut. (III. 15) allows only one night, three nights, fi...</small></td>
+        </tr>
+
+        <tr id="III.16">
+            <td class="verse-ref">III.16</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">परचक्रादीभृतं तु प्रत्यर्पणीय राजा यथावत् प्रच्चेत् । चोरहतमविषमानं स्वद्रव्येभ्यः प्रयच्छेत् ।</div><div class="kane-note">कौटिल्य III. 16 p 190</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-3/chapter-v-rāshtra-the-territory-of-a-state.html#fn-chapter-v-rāshtra-the-territory-of-a-state-42">vol-3 §chapter-v-rāshtra-the-territory-of-a-state</a></div></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-18">vol-3 §chapter-v-rāshtra-the-territory-of-a-state</a> · <a href="../vol-3/chapter-xvi-contracts.html#p-chapter-xvi-contracts-28">vol-3 §chapter-xvi-contracts</a> · <a href="../vol-3/chapter-xvii-asvāmivikraya-sale-by-one-not-the-owner.html#p-chapter-xvii-asvāmivikraya-sale-by-one-not-the-owner-2">vol-3 §chapter-xvii-asvāmivikraya-sale-by-one-not-the-owner</a> · <a href="../vol-3/chapter-xix-dattānapakarma-resumption-of-gift.html#p-chapter-xix-dattānapakarma-resumption-of-gift-2">vol-3 §chapter-xix-dattānapakarma-resumption-of-gift</a> · <a href="../vol-4/chapter-iii-prāyashchitta-its-origin-derivation-and-meaning.html#p-chapter-iii-prāyashchitta-its-origin-derivation-and-meaning-10">vol-4 §chapter-iii-prāyashchitta-its-origin-derivation-and-meaning</a></td>
+            <td class="verse-context"><small>...ensate the owner, the king incurred siṇ Kaut. III. 16 contains a similar rule.&lt;sup class="fn-...</small></td>
+        </tr>
+
+        <tr id="III.18">
+            <td class="verse-ref">III.18</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">म्लेच्छानामदोषः प्रजी विकेतुमाधातुं वा। न त्वेवार्थस्य दासभावः।</div><div class="kane-note">कौटिल्य III. 18.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-v-slavery.html#fn-chapter-v-slavery-9">vol-2-part-1 §chapter-v-slavery</a></div></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxiii-vakpārushya-and-dandapārushya-abuse-and-defamation-assault.html#p-chapter-xxiii-vakpārushya-and-dandapārushya-abuse-and-defamation-assault-3">vol-3 §chapter-xxiii-vakpārushya-and-dandapārushya-abuse-and-defamation-assault</a></td>
+            <td class="verse-context"><small>... a beautiful eye) is made punishable by Kaut. (III. 18). To warn&lt;sup class="fn-ref"&gt;&lt;a href="#f...</small></td>
+        </tr>
+
+        <tr id="III.19">
+            <td class="verse-ref">III.19</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xv-decision.html#p-chapter-xv-decision-2">vol-3 §chapter-xv-decision</a> · <a href="../vol-3/chapter-xv-decision.html#p-chapter-xv-decision-16">vol-3 §chapter-xv-decision</a> · <a href="../vol-3/chapter-xxiii-vakpārushya-and-dandapārushya-abuse-and-defamation-assault.html#p-chapter-xxiii-vakpārushya-and-dandapārushya-abuse-and-defamation-assault-4">vol-3 §chapter-xxiii-vakpārushya-and-dandapārushya-abuse-and-defamation-assault</a> · <a href="../vol-3/chapter-xxiii-vakpārushya-and-dandapārushya-abuse-and-defamation-assault.html#p-chapter-xxiii-vakpārushya-and-dandapārushya-abuse-and-defamation-assault-4">vol-3 §chapter-xxiii-vakpārushya-and-dandapārushya-abuse-and-defamation-assault</a></td>
+            <td class="verse-context"><small>... a document embodies only what happeneḍ Kaut. (III. 19) appears to employ the word 'paścātkāra'...</small></td>
+        </tr>
+
+        <tr id="III.20">
+            <td class="verse-ref">III.20</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">पूज्या विद्याबुद्धिशौर्यप्रभिज्जन - कर्माशयतनय पुस्कषाः ।</div><div class="kane-note">अर्थशास्त्र III. 20.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-vii-upanayana.html#fn-chapter-vii-upanayana-224">vol-2-part-1 §chapter-vii-upanayana</a></div></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxvi-dyūtasamāhvaya-gambling-and-prize-fighting.html#p-chapter-xxvi-dyūtasamāhvaya-gambling-and-prize-fighting-1">vol-3 §chapter-xxvi-dyūtasamāhvaya-gambling-and-prize-fighting</a></td>
+            <td class="verse-context"><small>...) is to the same effect Yaj II. 203 and Kaut. III. 20 &lt;sup&gt;994&lt;/sup&gt; allowed gambling in a ce...</small></td>
+        </tr>
+
+        <tr id="IV">
+            <td class="verse-ref">IV</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-18">vol-3 §chapter-v-rāshtra-the-territory-of-a-state</a> · <a href="../vol-3/chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o.html#p-chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o-11">vol-3 §chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o</a> · <a href="../vol-3/chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o.html#p-chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o-11">vol-3 §chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o</a> · <a href="../vol-3/chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o.html#p-chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o-11">vol-3 §chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o</a> · <a href="../vol-3/chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o.html#p-chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o-12">vol-3 §chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o</a></td>
+            <td class="verse-context"><small>...Ballālasena quoted above (p. 153, n 19) Kauṭilya IV 13 also gives similar rules and mention...</small></td>
+        </tr>
+
+        <tr id="IV.1">
+            <td class="verse-ref">IV.1</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">यानि भाण्डानि राजोपयोगितया यथा हस्तिनः काश्मीरजं कुङ्कुममायेषु षष्ठोर्णा वीणि प्रतीच्छ्येच्चथा । मणिशुक्तादीनि । मेधा . on मनु VIII 400 The passage as printed by Mandhk and Gharpura is corrupt. We should rather read यथा हस्तिनः । काश्मीरजं कुङ्कुमं शम्बेषु षष्ठोर्णादीनि . Saffron is still a monopoly in Kashmir ' सरसकृपांशुकाकाः सारित्रभांग लभेरन । द्यौ राजा रत्न च ।</div><div class="kane-note">अर्थशास्त्र IV. 1</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-3/chapter-vii-kosha-treasury-or-finance.html#fn-chapter-vii-kosha-treasury-or-finance-24">vol-3 §chapter-vii-kosha-treasury-or-finance</a></div></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-22">vol-3 §chapter-v-rāshtra-the-territory-of-a-state</a></td>
+            <td class="verse-context"><small>...been referred to (H. Dh. vol II, p 146) Kaut. (IV. 1) gives the following ruleṣ The person gi...</small></td>
+        </tr>
+
+        <tr id="IV.3">
+            <td class="verse-ref">IV.3</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">देवाग्निवृष्टिमहायान्यग्निवर्षं व्याधिपीडिमिका व्यालाः सर्प रक्षांसीति । सेभ्यो जनपदं रक्षेत ।</div><div class="kane-note">अर्थशास्त्र IV. 3; अमाष्याप्यग्रैत्यसेर्वर्षम्वर्षमिरवंद मृकी ( मर्की ?) दुभिंक्षा व्याधिपिडिग्सर्वोपघातं जन्तुसर्गं व्याधिर्भूतापिशाचशाकिनीसर्पव्यालमूषकश्वेतव्यापदः । नीतिवाक्य p.160.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-3/chapter-iv-ministers.html#fn-chapter-iv-ministers-29">vol-3 §chapter-iv-ministers</a></div></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-iv-ministers.html#p-chapter-iv-ministers-8">vol-3 §chapter-iv-ministers</a></td>
+            <td class="verse-context"><small>...maṇ The great divine calamities acc. to Kauṭilya IV. 3 are fire, flood, disease, famine, rats,...</small></td>
+        </tr>
+
+        <tr id="IV.4">
+            <td class="verse-ref">IV.4</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xv-decision.html#p-chapter-xv-decision-16">vol-3 §chapter-xv-decision</a></td>
+            <td class="verse-context"><small>...ishment for witchcraft may be mentioneḍ Kaut. IV. 4 prescribes &lt;sup class="fn-ref"&gt;&lt;a href=...</small></td>
+        </tr>
+
+        <tr id="IV.6">
+            <td class="verse-ref">IV.6</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o.html#p-chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o-11">vol-3 §chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o</a></td>
+            <td class="verse-context"><small>...eputed to possess miraculous powerṣ The Kauṭilya IV. 6 and 7 respectively describe the seizure...</small></td>
+        </tr>
+
+        <tr id="IV.8">
+            <td class="verse-ref">IV.8</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">सर्वापराधेपपीडनीयो ब्राह्मणः । तस्याभिशस्ताङ्को ललाटे स्याद्व्यवहारप्रतापनाय । स्तेये श्व्त्रा ...... सुरापाने मद्यध्वजः । ब्राह्मणे पापकर्मोण्ड्युद्भावितव्रणम् । कुर्याविषिषयं राजा वासयेदधरेषु वा ॥ कौटिल्य 's</div><div class="kane-note">अर्थशास्त्र IV. 8</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-iii-the-duties-disabilities-and-privileges-of-varnas.html#fn-chapter-iii-the-duties-disabilities-and-privileges-of-varnas-100">vol-2-part-1 §chapter-iii-the-duties-disabilities-and-privileges-of-varnas</a></div></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xv-decision.html#p-chapter-xv-decision-14">vol-3 §chapter-xv-decision</a></td>
+            <td class="verse-context"><small>...e whole body there- froṃ Gaut. XII. 43, Kaut. IV. 8, Manu (VIII. 125, 380–381), Yāj. II. 27...</small></td>
+        </tr>
+
+        <tr id="IV.10">
+            <td class="verse-ref">IV.10</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o.html#p-chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o-11">vol-3 §chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o</a> · <a href="../vol-3/chapter-xv-decision.html#p-chapter-xv-decision-16">vol-3 §chapter-xv-decision</a> · <a href="../vol-4/chapter-iii-prāyashchitta-its-origin-derivation-and-meaning.html#p-chapter-iii-prāyashchitta-its-origin-derivation-and-meaning-10">vol-4 §chapter-iii-prāyashchitta-its-origin-derivation-and-meaning</a></td>
+            <td class="verse-context"><small>...ed or for rape on a woman in a lock-up. Kaut. IV.10 prescribes alternative punishments of f...</small></td>
+        </tr>
+
+        <tr id="IV.11">
+            <td class="verse-ref">IV.11</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">राज्यप्रकाशसमन्तः पुरुप्रर्थाकनकद्वयविश्रोत्साहके दुर्गराष्ट्रण्डकोपके वा शिरो - हरप्रैषिकं घातयेत् । ब्राह्मणे मरणं प्रेषयेत् ।</div><div class="kane-note">अर्थशास्त्र IV. 11</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-3/chapter-xv-decision.html#fn-chapter-xv-decision-45">vol-3 §chapter-xv-decision</a></div></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xv-decision.html#p-chapter-xv-decision-14">vol-3 §chapter-xv-decision</a></td>
+            <td class="verse-context"><small>... weapon or if he kills a chaste woman¹. Kauṭilya (IV. 11) prescribes that a brāhmaṇa who aims at ...</small></td>
+        </tr>
+
+        <tr id="IV.13">
+            <td class="verse-ref">IV.13</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">मातापित्रोर्भगिनीं माहुलाणीमाचार्याणां स्नुषा दुहितर भगिनीं वाधिचरत लिङ्गच्छेदन वधश्च । सकामा तदैव लभत ।</div><div class="kane-note">अर्थशास्त्र IV. 13.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-3/chapter-xxv-strīsangrahanam-adultery-or-unlawful-intercourse-with-a-woman.html#fn-chapter-xxv-strīsangrahanam-adultery-or-unlawful-intercourse-with-a-woman-10">vol-3 §chapter-xxv-strīsangrahanam-adultery-or-unlawful-intercourse-with-a-woman</a></div></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o.html#p-chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o-11">vol-3 §chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o</a> · <a href="../vol-3/chapter-xxv-strīsangrahanam-adultery-or-unlawful-intercourse-with-a-woman.html#p-chapter-xxv-strīsangrahanam-adultery-or-unlawful-intercourse-with-a-woman-5">vol-3 §chapter-xxv-strīsangrahanam-adultery-or-unlawful-intercourse-with-a-woman</a> · <a href="../vol-3/appendix-note-191.html#p-appendix-note-191-8">vol-3 §appendix-note-191</a></td>
+            <td class="verse-context"><small>... paramour should be sentenced to death. Kaut. IV. 13 provides punishment for brāhmaṇas eatin...</small></td>
+        </tr>
+
+        <tr id="v">
+            <td class="verse-ref">v</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-46">vol-1-part-1 §14-arthashastra-of-kautilya</a></td>
+            <td class="verse-context"><small>...d Buddhist works 14. The Arthaśāstra of Kauṭilya vouch for his existence. Well then, the P...</small></td>
+        </tr>
+
+        <tr id="5">
+            <td class="verse-ref">5</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o.html#p-chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o-7">vol-3 §chapter-xi-meaning-of-vyavahāra-vyavahārapadas-kautilya-on-this-subject-grades-o</a></td>
+            <td class="verse-context"><small>Kauṭilya 5 rnādāna 6 upanidhi 11 asvāmivikraya 8 s...</small></td>
+        </tr>
+
+        <tr id="V.3">
+            <td class="verse-ref">V.3</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-iv-ministers.html#p-chapter-iv-ministers-9">vol-3 §chapter-iv-ministers</a> · <a href="../vol-3/chapter-iv-ministers.html#p-chapter-iv-ministers-10">vol-3 §chapter-iv-ministers</a> · <a href="../vol-3/chapter-iv-ministers.html#p-chapter-iv-ministers-10">vol-3 §chapter-iv-ministers</a> · <a href="../vol-3/chapter-iv-ministers.html#p-chapter-iv-ministers-10">vol-3 §chapter-iv-ministers</a> · <a href="../vol-3/chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-11">vol-3 §chapter-v-rāshtra-the-territory-of-a-state</a></td>
+            <td class="verse-context"><small>....19 says practically the same thing. In Kaut. V. 3 the salaries range from 48000 to 60 paṇ...</small></td>
+        </tr>
+
+        <tr id="V.4">
+            <td class="verse-ref">V.4</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-14">vol-3 §chapter-v-rāshtra-the-territory-of-a-state</a></td>
+            <td class="verse-context"><small>...is pleased or displeased with theṃ Vide Kauṭilya V. 4, Virāṭaparva 4 12-50 (where the refrain...</small></td>
+        </tr>
+
+        <tr id="VI">
+            <td class="verse-ref">VI</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-ix-suhrit-or-mitra-ally-or-friend.html#p-chapter-ix-suhrit-or-mitra-ally-or-friend-4">vol-3 §chapter-ix-suhrit-or-mitra-ally-or-friend</a></td>
+            <td class="verse-context"><small>...y-or-friend-7"&gt;7&lt;/a&gt;&lt;/sup&gt; (detailed in Kaut. VI 1). The *yātavya* (to be attacked or in...</small></td>
+        </tr>
+
+        <tr id="VI.1">
+            <td class="verse-ref">VI.1</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">अत्राजग्बीजो लक्षण : क्षुद्रपरिकरौ बिरक्तप्रकृतिरन्याय्यवृत्तो भयनिष्कारो दैवप्रमाणो परिकष्टबलकारी अपारितव्ययः क्षीणनिष्प्रयत्नो चेत्प्रतिकर्षप्रवृत्त : । भूतो हि मन्युः क्रुधा शत्रुषु भवति ।</div><div class="kane-note">कौटिल्य VI. 1.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-3/chapter-ix-suhrit-or-mitra-ally-or-friend.html#fn-chapter-ix-suhrit-or-mitra-ally-or-friend-7">vol-3 §chapter-ix-suhrit-or-mitra-ally-or-friend</a></div></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-ii-seven-angas-of-rājya.html#p-chapter-ii-seven-angas-of-rājya-25">vol-3 §chapter-ii-seven-angas-of-rājya</a> · <a href="../vol-3/chapter-ii-seven-angas-of-rājya.html#p-chapter-ii-seven-angas-of-rājya-25">vol-3 §chapter-ii-seven-angas-of-rājya</a></td>
+            <td class="verse-context"><small>...Kāṃ IV. 22. The word 'śakyasāmanta' (in Kaut. VI. 1) occurs also in Agnipurāṇa 239. 4. The ...</small></td>
+        </tr>
+
+        <tr id="VI.1.1">
+            <td class="verse-ref">VI.1.1</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-19">vol-1-part-1 §14-arthashastra-of-kautilya</a></td>
+            <td class="verse-context"><small>...rs to 'Saptāngarājya'; Manu IX. 294 and Kauṭilya (VI. 1. 1) also mention the seven constituent elem...</small></td>
+        </tr>
+
+        <tr id="VI.2">
+            <td class="verse-ref">VI.2</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">अरिंसम्पद्यः सामन्तः शत्रुः। व्यवसी यावच्च अनपायधौर्दुबलामयो बोध्येदू - नीयः। विपर्यये पीडनीयः कर्शनीयो वा।</div><div class="kane-note">कौटिल्य VI. 2, अरिः पुनरुद्गर्विवः । ' शक्तिहीनघे - सम्पदीधवीयकर्शनीयमवेदन । यत्र यातधोसङ्ख्यनूप्रतिः व्यवसी हीनबलो निरक्रमकृत्तिः। विजुगुीर्षां मित्रहीनौ दुर्बलधोसम्भवः । पीडनीयो मन्त्रलवर्णाहीनः । प्रवलमन्त्रबलयुक्तः कर्श - जीयः। निर्मूलमात्मस - चेषे पीडनं बलनिग्रह्यम्। कर्शनं दू पुनः प्रादुः कोशदण्डोपकर्गादेनात् ॥ इति। मिताक्षरा on या . I. 345 These very words are quoted in the सरस्वती - विलास p 36.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-3/chapter-ix-suhrit-or-mitra-ally-or-friend.html#fn-chapter-ix-suhrit-or-mitra-ally-or-friend-8">vol-3 §chapter-ix-suhrit-or-mitra-ally-or-friend</a></div></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-ii-seven-angas-of-rājya.html#p-chapter-ii-seven-angas-of-rājya-1">vol-3 §chapter-ii-seven-angas-of-rājya</a> · <a href="../vol-3/chapter-ix-suhrit-or-mitra-ally-or-friend.html#p-chapter-ix-suhrit-or-mitra-ally-or-friend-3">vol-3 §chapter-ix-suhrit-or-mitra-ally-or-friend</a></td>
+            <td class="verse-context"><small>...s (of a maṇḍala) Vide Manu VII. 156 and Kauṭilya (VI.2). The word also means ministers as in Śu...</small></td>
+        </tr>
+
+        <tr id="VII">
+            <td class="verse-ref">VII</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-ix-suhrit-or-mitra-ally-or-friend.html#p-chapter-ix-suhrit-or-mitra-ally-or-friend-6">vol-3 §chapter-ix-suhrit-or-mitra-ally-or-friend</a></td>
+            <td class="verse-context"><small>... defines theṃ His treatment is based on Kaut. VII 3 Kaut (VII. 3) says that when a weak k...</small></td>
+        </tr>
+
+        <tr id="VII.15">
+            <td class="verse-ref">VII.15</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-ix-suhrit-or-mitra-ally-or-friend.html#p-chapter-ix-suhrit-or-mitra-ally-or-friend-6">vol-3 §chapter-ix-suhrit-or-mitra-ally-or-friend</a></td>
+            <td class="verse-context"><small>...z. land, ally and wealth—Kāṃ X. 26–28). Kaut. VII. 15 deals with the attitude and conduct of ...</small></td>
+        </tr>
+
+        <tr id="VII.16">
+            <td class="verse-ref">VII.16</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-iii-duties-and-responsibilities-of-the-ruler.html#p-chapter-iii-duties-and-responsibilities-of-the-ruler-9">vol-3 §chapter-iii-duties-and-responsibilities-of-the-ruler</a></td>
+            <td class="verse-context"><small>Kauṭilya (VII. 16) prescribes that the conqueror should no...</small></td>
+        </tr>
+
+        <tr id="VIII.1">
+            <td class="verse-ref">VIII.1</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">मन्त्रिपुरोहितादिभृत्यवर्गमध्येक्षचरं पुरुषद्रव्यप्रकृतिव्यसनप्रतीकारमेधने च करोति । व्यसनिनु वामात्येन्वव्यानव्यासिनिनः करोति । ... स्वामी च सम्पन् ... सम्पद्धिः प्रकृतीः सम्पादयति । स यच्छीलस्तच्छीलाः प्रकृतयो भवन्ति , उपलभ प्रादे च तदाशयत्वादू । नलटस्थानोयो हि स्वामोति ।</div><div class="kane-note">अर्थशास्त्र VIII. 1. 13-18.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#fn-14-arthashastra-of-kautilya-86">vol-1-part-1 §14-arthashastra-of-kautilya</a></div></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-ii-seven-angas-of-rājya.html#p-chapter-ii-seven-angas-of-rājya-1">vol-3 §chapter-ii-seven-angas-of-rājya</a></td>
+            <td class="verse-context"><small>...tate than those of each succeeding one (Kauṭilya VIII. 1, Manu IX. 295). For janapada sometimes ...</small></td>
+        </tr>
+
+        <tr id="VIII.2">
+            <td class="verse-ref">VIII.2</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-iii-duties-and-responsibilities-of-the-ruler.html#p-chapter-iii-duties-and-responsibilities-of-the-ruler-42">vol-3 §chapter-iii-duties-and-responsibilities-of-the-ruler</a> · <a href="../vol-3/chapter-ix-suhrit-or-mitra-ally-or-friend.html#p-chapter-ix-suhrit-or-mitra-ally-or-friend-10">vol-3 §chapter-ix-suhrit-or-mitra-ally-or-friend</a></td>
+            <td class="verse-context"><small>...zetteer, vol. I part 1 pp 198, 200, 206 Kauṭilya (VIII. 2) speaks of a novel rule called ‘dvai-rāj...</small></td>
+        </tr>
+
+        <tr id="VIII.3">
+            <td class="verse-ref">VIII.3</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">मृगयाया तु व्यायामः श्लेष्मपित्तमेदोस्वेदवज्रापहारः शिरिचे काये लक्षपरिचयः कोपस्थानं हि तेषु च मृगाणां चित्तज्ञानमन्विष्यर्थान् क्षेति ।</div><div class="kane-note">कौटिल्य VIII. 3; जितश्रमं व्यायाम आममेदःकफक्षयः । चराधिरसुलक्ष्येषु बाणसिद्धिरुत्तमम् ।। मृगयाणां गुणान् तामाहृणये न तससमयम् । दोषाः प्राणहराः प्रायस्तस्मादुद्भव्यसनं महदु च काम . XIV. 25-26. The reading कोपमथ्यस्थाने in some Msṣ of the Kauṭilya is preferable in view of Kālidāsa's words ' जितं भयकोषयोः .'</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-3/chapter-ii-seven-angas-of-rājya.html#fn-chapter-ii-seven-angas-of-rājya-49">vol-3 §chapter-ii-seven-angas-of-rājya</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxii-bhojana.html#p-chapter-xxii-bhojana-34">vol-2-part-2 §chapter-xxii-bhojana</a> · <a href="../vol-3/chapter-ii-seven-angas-of-rājya.html#p-chapter-ii-seven-angas-of-rājya-30">vol-3 §chapter-ii-seven-angas-of-rājya</a> · <a href="../vol-3/chapter-iii-duties-and-responsibilities-of-the-ruler.html#p-chapter-iii-duties-and-responsibilities-of-the-ruler-38">vol-3 §chapter-iii-duties-and-responsibilities-of-the-ruler</a></td>
+            <td class="verse-context"><small>...st pernicious of all the vices of kingṣ Kauṭilya VIII. 3 agrees with thiṣ Gaut. XII. 38 and Yāj....</small></td>
+        </tr>
+
+        <tr id="IX.1">
+            <td class="verse-ref">IX.1</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-iii-duties-and-responsibilities-of-the-ruler.html#p-chapter-iii-duties-and-responsibilities-of-the-ruler-6">vol-3 §chapter-iii-duties-and-responsibilities-of-the-ruler</a> · <a href="../vol-3/chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-20">vol-3 §chapter-v-rāshtra-the-territory-of-a-state</a></td>
+            <td class="verse-context"><small>... Inscription (E I vol. XX at pp. 88–89) Kauṭilya (IX. 1) defines the land of the cakravartin &lt;su...</small></td>
+        </tr>
+
+        <tr id="IX.2">
+            <td class="verse-ref">IX.2</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-viii-bala-the-army.html#p-chapter-viii-bala-the-army-2">vol-3 §chapter-viii-bala-the-army</a> · <a href="../vol-5-part-2/chapter-xxxvi-fundamental-and-leading-characteristics-of-hindu-culture-and-civil.html#p-chapter-xxxvi-fundamental-and-leading-characteristics-of-hindu-culture-and-civil-30">vol-5-part-2 §chapter-xxxvi-fundamental-and-leading-characteristics-of-hindu-culture-and-civil</a></td>
+            <td class="verse-context"><small>...e-ties are explained at great length by Kaut. IX. 2 and Kāṃ XVIII 5-6. Kaut. (IX 2) states ...</small></td>
+        </tr>
+
+        <tr id="IX.3">
+            <td class="verse-ref">IX.3</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-iv-ministers.html#p-chapter-iv-ministers-9">vol-3 §chapter-iv-ministers</a></td>
+            <td class="verse-context"><small>...em went wrong (VIII 335 and IX 234) and Kaut. (IX. 3 ) prescribes that when the purohita is gu...</small></td>
+        </tr>
+
+        <tr id="IX.7">
+            <td class="verse-ref">IX.7</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-ix-suhrit-or-mitra-ally-or-friend.html#p-chapter-ix-suhrit-or-mitra-ally-or-friend-6">vol-3 §chapter-ix-suhrit-or-mitra-ally-or-friend</a></td>
+            <td class="verse-context"><small>...es of black magic against his enemy &amp;c. Kaut. IX. 7 (at the end) says that the removal of d...</small></td>
+        </tr>
+
+        <tr id="X">
+            <td class="verse-ref">X</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-viii-bala-the-army.html#p-chapter-viii-bala-the-army-3">vol-3 §chapter-viii-bala-the-army</a></td>
+            <td class="verse-context"><small>...d Vajra described in the work of Uśanas Kauṭilya X 6 also refers to Auśanasa and Bārhaspat...</small></td>
+        </tr>
+
+        <tr id="12">
+            <td class="verse-ref">12</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/general-index.html#p-general-index-2">vol-3 §general-index</a></td>
+            <td class="verse-context"><small>...11, 12, 83, 232, views of criticized by Kauṭilya 12 Bharadvāja, gṛhyasūtra of 685&lt;sup&gt;n&lt;/su...</small></td>
+        </tr>
+
+        <tr id="XII.1">
+            <td class="verse-ref">XII.1</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-iii-duties-and-responsibilities-of-the-ruler.html#p-chapter-iii-duties-and-responsibilities-of-the-ruler-7">vol-3 §chapter-iii-duties-and-responsibilities-of-the-ruler</a></td>
+            <td class="verse-context"><small>...ferent. III] as will be presently showṇ Kauṭilya (XII. 1) declares&lt;sup class="fn-ref"&gt;&lt;a href="#f...</small></td>
+        </tr>
+
+        <tr id="XIII.1">
+            <td class="verse-ref">XIII.1</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-vii-kosha-treasury-or-finance.html#p-chapter-vii-kosha-treasury-or-finance-9">vol-3 §chapter-vii-kosha-treasury-or-finance</a></td>
+            <td class="verse-context"><small>... enemy or destroy their own king. place Kauṭilya (XIII. 1) suggests&lt;sup&gt;257&lt;/sup&gt; that a conqueror...</small></td>
+        </tr>
+
+        <tr id="18">
+            <td class="verse-ref">18</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/general-index.html#p-general-index-10">vol-3 §general-index</a></td>
+            <td class="verse-context"><small>...of his age 3, 892, is the State, acc to Kauṭilya 18, is to look into lawsuits in the 2nd pa...</small></td>
+        </tr>
+
+        <tr id="48">
+            <td class="verse-ref">48</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/general-index.html#p-general-index-14">vol-3 §general-index</a></td>
+            <td class="verse-context"><small>..., 731n, 870, 964n, 968n, Vedas, acc. to Kauṭilya 48, angas of 48–49. Veda-Vyāsa, smṛti of 2...</small></td>
+        </tr>
+
+        <tr id="120">
+            <td class="verse-ref">120</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/general-index.html#p-general-index-13">vol-3 §general-index</a></td>
+            <td class="verse-context"><small>...ivergence of views about ṣ mentioned by Kauṭilya 120, 125; of officers over 10, 100 or more ...</small></td>
+        </tr>
+
+        <tr id="142">
+            <td class="verse-ref">142</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/general-index.html#p-general-index-14">vol-3 §general-index</a></td>
+            <td class="verse-context"><small>...enty-eight departments of, mentioned by Kauṭilya 142ff, was not an end in itself but only a ...</small></td>
+        </tr>
+
+        <tr id="147">
+            <td class="verse-ref">147</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/general-index.html#p-general-index-12">vol-3 §general-index</a></td>
+            <td class="verse-context"><small>... the several provinces of India, acc to Kauṭilya 147 **Rājadharma** 1–241, discussed in work...</small></td>
+        </tr>
+
+        <tr id="151">
+            <td class="verse-ref">151</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/general-index.html#p-general-index-13">vol-3 §general-index</a></td>
+            <td class="verse-context"><small>...142, of officers and servants stated by Kauṭilya 151 Sale of Goods Act (Indian) 465n, 492n, ...</small></td>
+        </tr>
+
+        <tr id="152">
+            <td class="verse-ref">152</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/general-index.html#p-general-index-11">vol-3 §general-index</a></td>
+            <td class="verse-context"><small>...pensions and gratuities to, provided by Kauṭilya 152; qualifications of n of several departm...</small></td>
+        </tr>
+
+        <tr id="241">
+            <td class="verse-ref">241</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/general-index.html#p-general-index-12">vol-3 §general-index</a></td>
+            <td class="verse-context"><small>...rtha is the chief among three p acc. to Kauṭilya 241, dharma is the highest among three and ...</small></td>
+        </tr>
+
+        <tr id="258">
+            <td class="verse-ref">258</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/general-index.html#p-general-index-12">vol-3 §general-index</a></td>
+            <td class="verse-context"><small>...a, meaning of, 251, meaning of, acc. to Kauṭilya 258 Pramati Bhārgava, an avatāra of Viṣṇu, ...</small></td>
+        </tr>
+
+        <tr id="406">
+            <td class="verse-ref">406</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/general-index.html#p-general-index-10">vol-3 §general-index</a></td>
+            <td class="verse-context"><small>...Jail, construction of, acc. to Manu and Kauṭilya 406, 407, duty of nāgaraka to release on th...</small></td>
+        </tr>
+
+        <tr id="819">
+            <td class="verse-ref">819</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-99">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>... table for king's daily routine acc. to Kauṭilya 819; when the nakṣatra of the king's corona...</small></td>
+        </tr>
+            </tbody>
+        </table>
+    </div>
+
+    
+    <footer class="container-fluid pt-4" style="background-color:#2e4144">
+        <div class="row border-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img src="https://sanatana.in/mbta/public/images/Homepage_html/images/layer_8.png" alt="">
+            </div>
+            <div class="col-md-5 text-white">
+                <p>The divine knowledge and wisdom of our shastras is the only thing eternal,
+                   which was and which will remain ever-present in this gods creation.
+                   Our endeavours are to preserve this knowledge.</p>
+            </div>
+            <div class="col-md-1 text-white">
+                <div class="d-flex" style="height: 75px;">
+                    <div class="vr"></div>
+                </div>
+            </div>
+            <div class="col-md-3 text-white">
+                <i class="fa-solid fa-globe"></i>&emsp;
+                <a href="https://sanatanasampatti.in" class="text-light">www.sanatanasampatti.in</a><br>
+                <i class="fa-solid fa-envelope"></i>&emsp;
+                <a href="" class="text-light">sriranga.yoga@gmail.com</a>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center py-3 mb-4 align-items-center border-bottom">
+            <div class="col-md-2 text-white fs-4 text-center">Project</div>
+            <div class="col-md-2 text-white fs-4 text-center">Our Mission</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contribute</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contact Us</div>
+        </div>
+        <div class="row">
+            <p class="col-md-6 fs-6 text-start text-light">
+                <small>&copy; 2026 Sanatanasampatti</small>
+            </p>
+            <p class="col-md-6 fs-6 text-end text-light">
+                <a class="text-white" rel="nofollow" href="http://www.srirangadigital.com" target="_blank">
+                    <img src="https://sanatana.in/mbta/public/images/logo.png" alt="sriranga logo" />
+                    <small>Designed, Developed and Maintained by Sriranga Digital</small>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+</body>
+</html>

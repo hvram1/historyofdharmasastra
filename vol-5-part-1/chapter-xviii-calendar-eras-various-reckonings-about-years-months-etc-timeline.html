@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline — Chapter XVIII. Calendar, Eras, Various Reckonings about Years, Months etc.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+    :root {
+        --parchment: #faf6ef;
+        --parchment-mid: #f0e6d3;
+        --saffron: #e8941a;
+        --ink: #2c1810;
+        --ink-secondary: #5a3e2b;
+        --rule: #d4c5a9;
+        --indigo: #2d5a87;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+        font-family: 'Lora', Georgia, serif;
+        background: var(--parchment);
+        color: var(--ink);
+    }
+    .navbar {
+        background: linear-gradient(135deg, #1a0f0a, #2c1810);
+        padding: 12px 24px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+    .navbar a { color: var(--parchment); text-decoration: none; }
+    .navbar .devanagari { font-size: 1.3rem; }
+    .navbar .nav-title { font-family: 'Lora', serif; font-size: 1rem; opacity: 0.9; }
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+    .breadcrumb-bar a { color: var(--saffron); text-decoration: none; }
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+    .content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 24px;
+    }
+    h1 {
+        font-size: 1.6rem;
+        margin-bottom: 8px;
+        color: var(--ink);
+    }
+    .subtitle {
+        font-size: 0.9rem;
+        color: var(--ink-secondary);
+        margin-bottom: 24px;
+    }
+    .timeline-container {
+        overflow-x: auto;
+        padding: 16px 0;
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        background: var(--parchment);
+    }
+    .timeline-svg {
+        display: block;
+        min-width: 100%;
+    }
+    .timeline-svg .tl-evt { cursor: pointer; }
+    .timeline-svg .tl-evt:hover { transform: scale(1.5); }
+    .event-list {
+        margin-top: 32px;
+    }
+    .event-list h2 {
+        font-size: 1.1rem;
+        margin-bottom: 16px;
+        color: var(--ink-secondary);
+    }
+    .event-item {
+        display: flex;
+        gap: 16px;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--rule);
+        font-size: 0.88rem;
+    }
+    .event-year {
+        min-width: 90px;
+        font-weight: 600;
+        color: var(--saffron);
+        font-family: 'Open Sans', sans-serif;
+    }
+    .event-label { font-weight: 600; }
+    .event-context {
+        color: var(--ink-secondary);
+        font-size: 0.82rem;
+        margin-top: 2px;
+    }
+    .event-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.8rem;
+    }
+    .event-link:hover { text-decoration: underline; }
+    .back-link {
+        display: inline-block;
+        margin-top: 24px;
+        color: var(--saffron);
+        text-decoration: none;
+        font-family: 'Open Sans', sans-serif;
+    }
+    .back-link:hover { text-decoration: underline; }
+    .century-group {
+        margin-bottom: 8px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        overflow: hidden;
+    }
+    .century-heading {
+        display: block;
+        padding: 10px 16px;
+        background: var(--parchment-mid);
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: var(--ink);
+    }
+    .century-heading:hover { background: #e8dcc8; }
+    .century-count {
+        font-weight: 400;
+        color: var(--ink-secondary);
+        font-size: 0.82rem;
+    }
+    .century-events {
+        padding: 8px 16px;
+    }
+    .vol-tl-link {
+        display: inline-block;
+        margin: 4px 8px 4px 0;
+        padding: 6px 14px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        color: var(--saffron);
+        text-decoration: none;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+    }
+    .vol-tl-link:hover {
+        border-color: var(--saffron);
+        background: #f5ebe0;
+    }
+    .vol-tl-count {
+        color: var(--ink-secondary);
+        font-size: 0.78rem;
+    }
+    /* ── Tab switcher ── */
+    .tl-tabs {
+        display: flex; gap: 0; margin-bottom: 20px;
+        border-bottom: 2px solid var(--rule);
+    }
+    .tl-tab {
+        padding: 10px 20px; cursor: pointer;
+        font-family: 'Open Sans', sans-serif; font-size: 0.9rem;
+        color: var(--ink-secondary); border-bottom: 2px solid transparent;
+        margin-bottom: -2px; transition: all 0.2s;
+    }
+    .tl-tab:hover { color: var(--ink); }
+    .tl-tab.active { color: var(--saffron); border-bottom-color: var(--saffron); font-weight: 600; }
+    .tl-panel { display: none; }
+    .tl-panel.active { display: block; }
+    /* ── Entity graph styles ── */
+    .eg-entity {
+        border: 1px solid var(--rule); border-radius: 6px;
+        margin-bottom: 8px; overflow: hidden; transition: border-color 0.2s;
+    }
+    .eg-entity.highlighted { border-color: var(--saffron); box-shadow: 0 0 0 1px var(--saffron); }
+    .eg-header {
+        display: flex; align-items: center; gap: 12px;
+        padding: 10px 16px; background: var(--parchment-mid);
+        cursor: pointer; font-family: 'Open Sans', sans-serif;
+    }
+    .eg-header:hover { background: #e8dcc8; }
+    .eg-name { font-weight: 600; font-size: 0.92rem; flex: 1; }
+    .eg-type {
+        font-size: 0.72rem; padding: 2px 8px; border-radius: 10px;
+        background: var(--parchment); color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .eg-claims-count {
+        font-size: 0.78rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif;
+    }
+    .eg-body { padding: 12px 16px; display: none; }
+    .eg-entity.open .eg-body { display: block; }
+    .eg-range-bar {
+        position: relative; height: 32px;
+        background: var(--parchment-mid); border-radius: 4px;
+        margin-bottom: 10px; overflow: hidden;
+    }
+    .eg-range-fill {
+        position: absolute; top: 6px; height: 20px;
+        background: var(--saffron); opacity: 0.3; border-radius: 3px;
+    }
+    .eg-range-dot {
+        position: absolute; top: 11px; width: 10px; height: 10px;
+        background: var(--saffron); border-radius: 50%;
+        transform: translateX(-5px); cursor: pointer;
+    }
+    .eg-range-dot:hover { transform: translateX(-5px) scale(1.4); }
+    .eg-range-label {
+        position: absolute; top: -2px;
+        font-size: 0.7rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif;
+        transform: translateX(-50%);
+    }
+    .eg-cooccur {
+        margin-top: 8px; padding-top: 8px;
+        border-top: 1px solid var(--rule);
+    }
+    .eg-cooccur-title {
+        font-size: 0.78rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif; margin-bottom: 6px;
+    }
+    .eg-cooccur-chip {
+        display: inline-block; margin: 2px 4px 2px 0;
+        padding: 3px 10px; background: var(--parchment-mid);
+        border: 1px solid var(--rule); border-radius: 12px;
+        font-size: 0.78rem; color: var(--ink);
+        font-family: 'Open Sans', sans-serif;
+        cursor: pointer; transition: all 0.2s;
+    }
+    .eg-cooccur-chip:hover { border-color: var(--saffron); color: var(--saffron); }
+    .eg-cooccur-weight {
+        font-size: 0.68rem; color: var(--ink-secondary); margin-left: 2px;
+    }
+    .eg-claim-list { margin-top: 8px; }
+    .eg-claim {
+        display: flex; gap: 12px; padding: 4px 0;
+        font-size: 0.82rem; border-bottom: 1px solid #f0e6d3;
+    }
+    .eg-claim-year {
+        min-width: 80px; font-weight: 600; color: var(--saffron);
+        font-family: 'Open Sans', sans-serif; font-size: 0.8rem;
+    }
+    .eg-claim-ctx { color: var(--ink-secondary); font-size: 0.78rem; }
+    .eg-claim a { color: var(--indigo); text-decoration: none; font-size: 0.76rem; }
+    .eg-claim a:hover { text-decoration: underline; }
+    .eg-stats {
+        display: flex; gap: 24px; margin-bottom: 16px;
+        font-family: 'Open Sans', sans-serif; font-size: 0.85rem;
+        color: var(--ink-secondary);
+    }
+    .eg-stat-num { font-weight: 700; color: var(--saffron); font-size: 1.1rem; }
+    .eg-sort {
+        font-family: 'Open Sans', sans-serif; font-size: 0.82rem;
+        margin-bottom: 12px; color: var(--ink-secondary);
+    }
+    .eg-sort a {
+        color: var(--indigo); text-decoration: none; cursor: pointer;
+        margin: 0 6px;
+    }
+    .eg-sort a:hover { text-decoration: underline; }
+    .eg-sort a.active { color: var(--saffron); font-weight: 600; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="../index.html"><span class="devanagari">धर्मशास्त्रम्</span></a>
+        <a href="../index.html" class="nav-title">History of Dharmaśāstra</a>
+    </div>
+    
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep"> &rsaquo; </span>
+        <a href="index.html">Volume V: Part I</a>
+        <span class="sep"> &rsaquo; </span>
+        <a href="chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html">Chapter XVIII. Calendar, Eras, Various Reckonings about Years, Months etc.</a>
+        <span class="sep"> &rsaquo; </span>
+        <span>Timeline</span>
+    </div>
+    
+    <div class="content">
+        <h1>Timeline: Chapter XVIII. Calendar, Eras, Various Reckonings about Years, Months etc.</h1>
+        <p class="subtitle">54 dated references</p>
+        <div class="tl-tabs">
+            <div class="tl-tab active" data-panel="events-panel">Events</div>
+            <div class="tl-tab" data-panel="graph-panel">Entity Graph</div>
+        </div>
+        <div id="events-panel" class="tl-panel active">
+            <div class="timeline-container">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1616 260" class="timeline-svg" role="img" aria-label="Timeline overview">
+<rect width="1616" height="260" fill="#faf6ef" rx="8"/>
+<line x1="60" y1="30" x2="60" y2="200" stroke="#c4956a" stroke-width="1"/>
+<line x1="60" y1="200" x2="1596" y2="200" stroke="#c4956a" stroke-width="1"/>
+<rect x="70" y="168.0" width="40" height="32.0" fill="#e8941a" opacity="0.8" rx="2"/>
+<rect x="70" y="30" width="40" height="170" fill="transparent" pointer-events="all" data-century="-14" style="cursor:pointer"><title>1 references</title></rect>
+<text x="90.0" y="164.0" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="10" fill="#5a3e2b" style="pointer-events:none">1</text>
+<text x="90.0" y="216" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914" style="pointer-events:none" transform="rotate(-45 90.0 216)">14c BCE</text>
+<rect x="114" y="200" width="40" height="2" fill="#e8e0d0" opacity="0.3" rx="2"/>
+<text x="134.0" y="216" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914" style="pointer-events:none" transform="rotate(-45 134.0 216)">13c BCE</text>
+<rect x="158" y="168.0" width="40" height="32.0" fill="#e8941a" opacity="0.8" rx="2"/>
+<rect x="158" y="30" width="40" height="170" fill="transparent" pointer-events="all" data-century="-12" style="cursor:pointer"><title>1 references</title></rect>
+<text x="178.0" y="164.0" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="10" fill="#5a3e2b" style="pointer-events:none">1</text>
+<text x="178.0" y="216" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914" style="pointer-events:none" transform="rotate(-45 178.0 216)">12c BCE</text>
+<rect x="202" y="200" width="40" height="2" fill="#e8e0d0" opacity="0.3" rx="2"/>
+<text x="222.0" y="216" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914" style="pointer-events:none" transform="rotate(-45 222.0 216)">11c BCE</text>
+<rect x="246" y="200" width="40" height="2" fill="#e8e0d0" opacity="0.3" rx="2"/>
+<text x="266.0" y="216" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914" style="pointer-events:none" transform="rotate(-45 266.0 216)">10c BCE</text>
+<rect x="290" y="200" width="40" height="2" fill="#e8e0d0" opacity="0.3" rx="2"/>
+<text x="310.0" y="216" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914" style="pointer-events:none" transform="rotate(-45 310.0 216)">9c BCE</text>
+<rect x="334" y="200" width="40" height="2" fill="#e8e0d0" opacity="0.3" rx="2"/>
+<text x="354.0" y="216" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914" style="pointer-events:none" transform="rotate(-45 354.0 216)">8c BCE</text>
+<rect x="378" y="200" width="40" height="2" fill="#e8e0d0" opacity="0.3" rx="2"/>
+<text x="398.0" y="216" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914" style="pointer-events:none" transform="rotate(-45 398.0 216)">7c BCE</text>
+<rect x="422" y="168.0" width="40" height="32.0" fill="#e8941a" opacity="0.8" rx="2"/>
+<rect x="422" y="30" width="40" height="170" fill="transparent" pointer-events="all" data-century="-6" style="cursor:pointer"><title>1 references</title></rect>
+<text x="442.0" y="164.0" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="10" fill="#5a3e2b" style="pointer-events:none">1</text>
+<text x="442.0" y="216" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914" style="pointer-events:none" transform="rotate(-45 442.0 216)">6c BCE</text>
+<rect x="466" y="200" width="40" height="2" fill="#e8e0d0" opacity="0.3" rx="2"/>
+<text x="486.0" y="216" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914" style="pointer-events:none" transform="rotate(-45 486.0 216)">5c BCE</text>
+<rect x="510" y="200" width="40" height="2" fill="#e8e0d0" opacity="0.3" rx="2"/>
+<text x="530.0" y="216" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914" style="pointer-events:none" transform="rotate(-45 530.0 216)">4c BCE</text>
+<rect x="554" y="200" width="40" height="2" fill="#e8e0d0" opacity="0.3" rx="2"/>
+<text x="574.0" y="216" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914" style="pointer-events:none" transform="rotate(-45 574.0 216)">3c BCE</text>
+<rect x="598" y="40.0" width="40" height="160.0" fill="#e8941a" opacity="0.8" rx="2"/>
+<rect x="598" y="30" width="40" height="170" fill="transparent" pointer-events="all" data-century="-2" style="cursor:pointer"><title>5 references</title></rect>
+<text x="618.0" y="36.0" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="10" fill="#5a3e2b" style="pointer-events:none">5</text>
+<text x="618.0" y="216" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914" style="pointer-events:none" transform="rotate(-45 618.0 216)">2c BCE</text>
+<rect x="642" y="72.0" width="40" height="128.0" fill="#e8941a" opacity="0.8" rx="2"/>
+<rect x="642" y="30" width="40" height="170" fill="transparent" pointer-events="all" data-century="-1" style="cursor:pointer"><title>4 references</title></rect>
+<text x="662.0" y="68.0" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="10" fill="#5a3e2b" style="pointer-events:none">4</text>
+<text x="662.0" y="216" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914" style="pointer-events:none" transform="rotate(-45 662.0 216)">1c BCE</text>
+<rect x="686" y="168.0" width="40" height="32.0" fill="#e8941a" opacity="0.8" rx="2"/>
+<rect x="686" y="30" width="40" height="170" fill="transparent" pointer-events="all" data-century="0" style="cursor:pointer"><title>1 references</title></rect>
+<text x="706.0" y="164.0" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="10" fill="#5a3e2b" style="pointer-events:none">1</text>
+<text x="706.0" y="216" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914" style="pointer-events:none" transform="rotate(-45 706.0 216)">0c CE</text>
+<rect x="730" y="104.0" width="40" height="96.0" fill="#e8941a" opacity="0.8" rx="2"/>
+<rect x="730" y="30" width="40" height="170" fill="transparent" pointer-events="all" data-century="1" style="cursor:pointer"><title>3 references</title></rect>
+<text x="750.0" y="100.0" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="10" fill="#5a3e2b" style="pointer-events:none">3</text>
+<text x="750.0" y="216" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914" style="pointer-events:none" transform="rotate(-45 750.0 216)">1c CE</text>
+<rect x="774" y="136.0" width="40" height="64.0" fill="#e8941a" opacity="0.8" rx="2"/>
+<rect x="774" y="30" width="40" height="170" fill="transparent" pointer-events="all" data-century="2" style="cursor:pointer"><title>2 references</title></rect>
+<text x="794.0" y="132.0" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="10" fill="#5a3e2b" style="pointer-events:none">2</text>
+<text x="794.0" y="216" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914" style="pointer-events:none" transform="rotate(-45 794.0 216)">2c CE</text>
+<rect x="818" y="72.0" width="40" height="128.0" fill="#e8941a" opacity="0.8" rx="2"/>
+<rect x="818" y="30" width="40" height="170" fill="transparent" pointer-events="all" data-century="3" style="cursor:pointer"><title>4 references</title></rect>
+<text x="838.0" y="68.0" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="10" fill="#5a3e2b" style="pointer-events:none">4</text>
+<text x="838.0" y="216" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914" style="pointer-events:none" transform="rotate(-45 838.0 216)">3c CE</text>
+<rect x="862" y="168.0" width="40" height="32.0" fill="#e8941a" opacity="0.8" rx="2"/>
+<rect x="862" y="30" width="40" height="170" fill="transparent" pointer-events="all" data-century="4" style="cursor:pointer"><title>1 references</title></rect>
+<text x="882.0" y="164.0" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="10" fill="#5a3e2b" style="pointer-events:none">1</text>
+<text x="882.0" y="216" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914" style="pointer-events:none" transform="rotate(-45 882.0 216)">4c CE</text>
+<rect x="906" y="40.0" width="40" height="160.0" fill="#e8941a" opacity="0.8" rx="2"/>
+<rect x="906" y="30" width="40" height="170" fill="transparent" pointer-events="all" data-century="5" style="cursor:pointer"><title>5 references</title></rect>
+<text x="926.0" y="36.0" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="10" fill="#5a3e2b" style="pointer-events:none">5</text>
+<text x="926.0" y="216" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914" style="pointer-events:none" transform="rotate(-45 926.0 216)">5c CE</text>
+<rect x="950" y="104.0" width="40" height="96.0" fill="#e8941a" opacity="0.8" rx="2"/>
+<rect x="950" y="30" width="40" height="170" fill="transparent" pointer-events="all" data-century="6" style="cursor:pointer"><title>3 references</title></rect>
+<text x="970.0" y="100.0" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="10" fill="#5a3e2b" style="pointer-events:none">3</text>
+<text x="970.0" y="216" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914" style="pointer-events:none" transform="rotate(-45 970.0 216)">6c CE</text>
+<rect x="994" y="168.0" width="40" height="32.0" fill="#e8941a" opacity="0.8" rx="2"/>
+<rect x="994" y="30" width="40" height="170" fill="transparent" pointer-events="all" data-century="7" style="cursor:pointer"><title>1 references</title></rect>
+<text x="1014.0" y="164.0" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="10" fill="#5a3e2b" style="pointer-events:none">1</text>
+<text x="1014.0" y="216" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914" style="pointer-events:none" transform="rotate(-45 1014.0 216)">7c CE</text>
+<rect x="1038" y="168.0" width="40" height="32.0" fill="#e8941a" opacity="0.8" rx="2"/>
+<rect x="1038" y="30" width="40" height="170" fill="transparent" pointer-events="all" data-century="8" style="cursor:pointer"><title>1 references</title></rect>
+<text x="1058.0" y="164.0" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="10" fill="#5a3e2b" style="pointer-events:none">1</text>
+<text x="1058.0" y="216" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914" style="pointer-events:none" transform="rotate(-45 1058.0 216)">8c CE</text>
+<rect x="1082" y="136.0" width="40" height="64.0" fill="#e8941a" opacity="0.8" rx="2"/>
+<rect x="1082" y="30" width="40" height="170" fill="transparent" pointer-events="all" data-century="9" style="cursor:pointer"><title>2 references</title></rect>
+<text x="1102.0" y="132.0" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="10" fill="#5a3e2b" style="pointer-events:none">2</text>
+<text x="1102.0" y="216" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914" style="pointer-events:none" transform="rotate(-45 1102.0 216)">9c CE</text>
+<rect x="1126" y="104.0" width="40" height="96.0" fill="#e8941a" opacity="0.8" rx="2"/>
+<rect x="1126" y="30" width="40" height="170" fill="transparent" pointer-events="all" data-century="10" style="cursor:pointer"><title>3 references</title></rect>
+<text x="1146.0" y="100.0" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="10" fill="#5a3e2b" style="pointer-events:none">3</text>
+<text x="1146.0" y="216" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914" style="pointer-events:none" transform="rotate(-45 1146.0 216)">10c CE</text>
+<rect x="1170" y="168.0" width="40" height="32.0" fill="#e8941a" opacity="0.8" rx="2"/>
+<rect x="1170" y="30" width="40" height="170" fill="transparent" pointer-events="all" data-century="11" style="cursor:pointer"><title>1 references</title></rect>
+<text x="1190.0" y="164.0" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="10" fill="#5a3e2b" style="pointer-events:none">1</text>
+<text x="1190.0" y="216" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914" style="pointer-events:none" transform="rotate(-45 1190.0 216)">11c CE</text>
+<rect x="1214" y="104.0" width="40" height="96.0" fill="#e8941a" opacity="0.8" rx="2"/>
+<rect x="1214" y="30" width="40" height="170" fill="transparent" pointer-events="all" data-century="12" style="cursor:pointer"><title>3 references</title></rect>
+<text x="1234.0" y="100.0" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="10" fill="#5a3e2b" style="pointer-events:none">3</text>
+<text x="1234.0" y="216" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914" style="pointer-events:none" transform="rotate(-45 1234.0 216)">12c CE</text>
+<rect x="1258" y="168.0" width="40" height="32.0" fill="#e8941a" opacity="0.8" rx="2"/>
+<rect x="1258" y="30" width="40" height="170" fill="transparent" pointer-events="all" data-century="13" style="cursor:pointer"><title>1 references</title></rect>
+<text x="1278.0" y="164.0" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="10" fill="#5a3e2b" style="pointer-events:none">1</text>
+<text x="1278.0" y="216" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914" style="pointer-events:none" transform="rotate(-45 1278.0 216)">13c CE</text>
+<rect x="1302" y="104.0" width="40" height="96.0" fill="#e8941a" opacity="0.8" rx="2"/>
+<rect x="1302" y="30" width="40" height="170" fill="transparent" pointer-events="all" data-century="14" style="cursor:pointer"><title>3 references</title></rect>
+<text x="1322.0" y="100.0" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="10" fill="#5a3e2b" style="pointer-events:none">3</text>
+<text x="1322.0" y="216" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914" style="pointer-events:none" transform="rotate(-45 1322.0 216)">14c CE</text>
+<rect x="1346" y="136.0" width="40" height="64.0" fill="#e8941a" opacity="0.8" rx="2"/>
+<rect x="1346" y="30" width="40" height="170" fill="transparent" pointer-events="all" data-century="15" style="cursor:pointer"><title>2 references</title></rect>
+<text x="1366.0" y="132.0" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="10" fill="#5a3e2b" style="pointer-events:none">2</text>
+<text x="1366.0" y="216" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914" style="pointer-events:none" transform="rotate(-45 1366.0 216)">15c CE</text>
+<rect x="1390" y="136.0" width="40" height="64.0" fill="#e8941a" opacity="0.8" rx="2"/>
+<rect x="1390" y="30" width="40" height="170" fill="transparent" pointer-events="all" data-century="16" style="cursor:pointer"><title>2 references</title></rect>
+<text x="1410.0" y="132.0" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="10" fill="#5a3e2b" style="pointer-events:none">2</text>
+<text x="1410.0" y="216" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914" style="pointer-events:none" transform="rotate(-45 1410.0 216)">16c CE</text>
+<rect x="1434" y="200" width="40" height="2" fill="#e8e0d0" opacity="0.3" rx="2"/>
+<text x="1454.0" y="216" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914" style="pointer-events:none" transform="rotate(-45 1454.0 216)">17c CE</text>
+<rect x="1478" y="168.0" width="40" height="32.0" fill="#e8941a" opacity="0.8" rx="2"/>
+<rect x="1478" y="30" width="40" height="170" fill="transparent" pointer-events="all" data-century="18" style="cursor:pointer"><title>1 references</title></rect>
+<text x="1498.0" y="164.0" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="10" fill="#5a3e2b" style="pointer-events:none">1</text>
+<text x="1498.0" y="216" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914" style="pointer-events:none" transform="rotate(-45 1498.0 216)">18c CE</text>
+<rect x="1522" y="168.0" width="40" height="32.0" fill="#e8941a" opacity="0.8" rx="2"/>
+<rect x="1522" y="30" width="40" height="170" fill="transparent" pointer-events="all" data-century="19" style="cursor:pointer"><title>1 references</title></rect>
+<text x="1542.0" y="164.0" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="10" fill="#5a3e2b" style="pointer-events:none">1</text>
+<text x="1542.0" y="216" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914" style="pointer-events:none" transform="rotate(-45 1542.0 216)">19c CE</text>
+</svg>
+<p style="font-size:0.82rem; color:var(--ink-secondary); margin-top:8px; font-family:'Open Sans',sans-serif;">Click a century bar above to see individual events below.</p>
+<div id="century-detail" style="margin-top:20px;"></div>
+<script>var centuryData = {"-32": [{"year_start": -3102, "year_end": -3102, "precision": "exact", "qualifier": "", "label": "Viṣṇupurāṇa", "context": "Differing views were held even in ancient times, as to when the Kaliyuga<sup>992</sup> started and w", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-8", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-8"}], "-31": [{"year_start": -3076, "year_end": -3076, "precision": "exact", "qualifier": "", "label": "Another era, which is current even now i", "context": "Another era, which is current even now in Kashmir, is the Saptarṣi era, also called Laukika era. Acc", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-13", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-13"}], "-14": [{"year_start": -1400, "year_end": -1300, "precision": "century", "qualifier": "", "label": "Ṛgveda", "context": "It is possible to advance several theories about the origin of the seven day week in India. The five", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-38", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-38"}], "-12": [{"year_start": -1176, "year_end": -1176, "precision": "exact", "qualifier": "", "label": "Several other eras such as the Vardhaman", "context": "Several other eras such as the Vardhamana and Buddha-nīrvāṇa eras, Gupta, Cedi, Harsa, Laksamana-sen", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-14", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-14"}], "-6": [{"year_start": -528, "year_end": -528, "precision": "exact", "qualifier": "", "label": "Kauṭilya Arthaśāstra", "context": "Among all nations the fundamental periods of time are the same, viz. the day, the month and the year", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-6", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-6"}], "-2": [{"year_start": -200, "year_end": -100, "precision": "century", "qualifier": "", "label": "Kauṭilya Arthaśāstra", "context": "Among all nations the fundamental periods of time are the same, viz. the day, the month and the year", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-6", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-6"}, {"year_start": -200, "year_end": -100, "precision": "century", "qualifier": "", "label": "Bṛhadāraṇyaka Upaniṣad", "context": "Though inscriptions before the Christian era rarely mentioned the names of months (such as Kārtika 1", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-25", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-25"}, {"year_start": -200, "year_end": -200, "precision": "exact", "qualifier": "", "label": "Ṛgveda", "context": "It is possible to advance several theories about the origin of the seven day week in India. The five", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-38", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-38"}, {"year_start": -150, "year_end": -150, "precision": "approximate", "qualifier": "about", "label": "Ṛgveda", "context": "It is possible to advance several theories about the origin of the seven day week in India. The five", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-38", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-38"}, {"year_start": -140, "year_end": -140, "precision": "exact", "qualifier": "", "label": "Āśvamedhikaparva", "context": "Now some other literary evidence about the dates of which there are likely to be doubts and disputes", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-37", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-37"}], "-1": [{"year_start": -100, "year_end": -100, "precision": "approximate", "qualifier": "about", "label": "Kauṭilya Arthaśāstra", "context": "Among all nations the fundamental periods of time are the same, viz. the day, the month and the year", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-6", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-6"}, {"year_start": -100, "year_end": 0, "precision": "century", "qualifier": "", "label": "Let us now turn to the literary evidence", "context": "Let us now turn to the literary evidence. The Aryabhaṭīya (Daśagītikā, verso 3) mentions Thursday.<s", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-36", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-36"}, {"year_start": -100, "year_end": -100, "precision": "exact", "qualifier": "", "label": "Āśvamedhikaparva", "context": "Now some other literary evidence about the dates of which there are likely to be doubts and disputes", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-37", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-37"}, {"year_start": -23, "year_end": -23, "precision": "exact", "qualifier": "", "label": "māsa occurs there is an adhikamāsa befor", "context": "māsa occurs there is an adhikamāsa before and after it within three months (Grahagaṇita, Madhyamādhi", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-19", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-19"}], "0": [{"year_start": 0, "year_end": 0, "precision": "exact", "qualifier": "", "label": "It has already been shown that in ancien", "context": "It has already been shown that in ancient Brāhmaṇa times the months ended with the Full Moon (i. e. ", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-24", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-24"}], "1": [{"year_start": 1, "year_end": 100, "precision": "century", "qualifier": "", "label": "Let us now turn to the literary evidence", "context": "Let us now turn to the literary evidence. The Aryabhaṭīya (Daśagītikā, verso 3) mentions Thursday.<s", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-36", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-36"}, {"year_start": 100, "year_end": 100, "precision": "exact", "qualifier": "", "label": "Kauṭilya Arthaśāstra", "context": "Among all nations the fundamental periods of time are the same, viz. the day, the month and the year", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-6", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-6"}, {"year_start": 100, "year_end": 100, "precision": "exact", "qualifier": "", "label": "Āśvamedhikaparva", "context": "Now some other literary evidence about the dates of which there are likely to be doubts and disputes", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-37", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-37"}], "2": [{"year_start": 150, "year_end": 150, "precision": "exact", "qualifier": "", "label": "Bṛhadāraṇyaka Upaniṣad", "context": "Though inscriptions before the Christian era rarely mentioned the names of months (such as Kārtika 1", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-25", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-25"}, {"year_start": 150, "year_end": 150, "precision": "approximate", "qualifier": "about", "label": "Āśvamedhikaparva", "context": "Now some other literary evidence about the dates of which there are likely to be doubts and disputes", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-37", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-37"}], "3": [{"year_start": 201, "year_end": 300, "precision": "century", "qualifier": "", "label": "Bṛhadāraṇyaka Upaniṣad", "context": "Though inscriptions before the Christian era rarely mentioned the names of months (such as Kārtika 1", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-25", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-25"}, {"year_start": 201, "year_end": 225, "precision": "century", "qualifier": "", "label": "On the origin and development of the sev", "context": "On the origin and development of the seven-day cycle the leading work is F. H. Colson's 'the week' (", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-35", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-35"}, {"year_start": 201, "year_end": 225, "precision": "century", "qualifier": "", "label": "Let us now turn to the literary evidence", "context": "Let us now turn to the literary evidence. The Aryabhaṭīya (Daśagītikā, verso 3) mentions Thursday.<s", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-36", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-36"}, {"year_start": 222, "year_end": 222, "precision": "exact", "qualifier": "", "label": "On the origin and development of the sev", "context": "On the origin and development of the seven-day cycle the leading work is F. H. Colson's 'the week' (", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-35", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-35"}], "4": [{"year_start": 319, "year_end": 319, "precision": "exact", "qualifier": "", "label": "Several other eras such as the Vardhaman", "context": "Several other eras such as the Vardhamana and Buddha-nīrvāṇa eras, Gupta, Cedi, Harsa, Laksamana-sen", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-14", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-14"}], "5": [{"year_start": 425, "year_end": 426, "precision": "range", "qualifier": "", "label": "Bṛhadāraṇyaka Upaniṣad", "context": "Though inscriptions before the Christian era rarely mentioned the names of months (such as Kārtika 1", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-25", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-25"}, {"year_start": 455, "year_end": 456, "precision": "range", "qualifier": "", "label": "Bṛhadāraṇyaka Upaniṣad", "context": "Though inscriptions before the Christian era rarely mentioned the names of months (such as Kārtika 1", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-25", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-25"}, {"year_start": 458, "year_end": 458, "precision": "exact", "qualifier": "", "label": "Almost all astronomical works in Sanskri", "context": "Almost all astronomical works in Sanskrit from about 500 A. D employ the Śaka era Why the Śaka era", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-12", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-12"}, {"year_start": 476, "year_end": 476, "precision": "exact", "qualifier": "", "label": "Viṣṇupurāṇa", "context": "Differing views were held even in ancient times, as to when the Kaliyuga<sup>992</sup> started and w", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-8", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-8"}, {"year_start": 500, "year_end": 500, "precision": "approximate", "qualifier": "about", "label": "Almost all astronomical works in Sanskri", "context": "Almost all astronomical works in Sanskrit from about 500 A. D employ the Śaka era Why the Śaka era", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-12", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-12"}], "6": [{"year_start": 525, "year_end": 526, "precision": "range", "qualifier": "", "label": "Bṛhadāraṇyaka Upaniṣad", "context": "Though inscriptions before the Christian era rarely mentioned the names of months (such as Kārtika 1", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-25", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-25"}, {"year_start": 543, "year_end": 543, "precision": "exact", "qualifier": "", "label": "Almost all astronomical works in Sanskri", "context": "Almost all astronomical works in Sanskrit from about 500 A. D employ the Śaka era Why the Śaka era", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-12", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-12"}, {"year_start": 578, "year_end": 578, "precision": "exact", "qualifier": "", "label": "Almost all astronomical works in Sanskri", "context": "Almost all astronomical works in Sanskrit from about 500 A. D employ the Śaka era Why the Śaka era", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-12", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-12"}], "7": [{"year_start": 606, "year_end": 606, "precision": "exact", "qualifier": "", "label": "Several other eras such as the Vardhaman", "context": "Several other eras such as the Vardhamana and Buddha-nīrvāṇa eras, Gupta, Cedi, Harsa, Laksamana-sen", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-14", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-14"}], "8": [{"year_start": 770, "year_end": 770, "precision": "exact", "qualifier": "", "label": "Viṣṇu Smṛti", "context": "Something must be said about the 60 year cycle called Bārhaspatya (Jovian). The Viṣṇu-dharmottara<su", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-17", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-17"}], "9": [{"year_start": 801, "year_end": 900, "precision": "century", "qualifier": "", "label": "Viṣṇu Smṛti", "context": "( Continued from last page ) Brahmāṇḍa III 74. 225 no doubt read एकाराशो. The three Matsya-purāṇa ve", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-11", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-11"}, {"year_start": 801, "year_end": 900, "precision": "century", "qualifier": "", "label": "Bṛhadāraṇyaka Upaniṣad", "context": "Though inscriptions before the Christian era rarely mentioned the names of months (such as Kārtika 1", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-25", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-25"}], "10": [{"year_start": 923, "year_end": 923, "precision": "exact", "qualifier": "", "label": "Bṛhadāraṇyaka Upaniṣad", "context": "Though inscriptions before the Christian era rarely mentioned the names of months (such as Kārtika 1", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-25", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-25"}, {"year_start": 943, "year_end": 943, "precision": "exact", "qualifier": "", "label": "Viṣṇupurāṇa", "context": "Differing views were held even in ancient times, as to when the Kaliyuga<sup>992</sup> started and w", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-8", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-8"}, {"year_start": 966, "year_end": 966, "precision": "approximate", "qualifier": "about", "label": "Almost all astronomical works in Sanskri", "context": "Almost all astronomical works in Sanskrit from about 500 A. D employ the Śaka era Why the Śaka era", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-12", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-12"}], "11": [{"year_start": 1076, "year_end": 1077, "precision": "range", "qualifier": "", "label": "Viṣṇu Smṛti", "context": "( Continued from last page ) Brahmāṇḍa III 74. 225 no doubt read एकाराशो. The three Matsya-purāṇa ve", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-11", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-11"}], "12": [{"year_start": 1148, "year_end": 1148, "precision": "exact", "qualifier": "", "label": "Another era, which is current even now i", "context": "Another era, which is current even now in Kashmir, is the Saptarṣi era, also called Laukika era. Acc", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-13", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-13"}, {"year_start": 1191, "year_end": 1191, "precision": "approximate", "qualifier": "about", "label": "Several other eras such as the Vardhaman", "context": "Several other eras such as the Vardhamana and Buddha-nīrvāṇa eras, Gupta, Cedi, Harsa, Laksamana-sen", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-14", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-14"}, {"year_start": 1193, "year_end": 1193, "precision": "exact", "qualifier": "", "label": "māsa occurs there is an adhikamāsa befor", "context": "māsa occurs there is an adhikamāsa before and after it within three months (Grahagaṇita, Madhyamādhi", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-19", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-19"}], "13": [{"year_start": 1251, "year_end": 1251, "precision": "exact", "qualifier": "", "label": "Almost all astronomical works in Sanskri", "context": "Almost all astronomical works in Sanskrit from about 500 A. D employ the Śaka era Why the Śaka era", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-12", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-12"}], "14": [{"year_start": 1301, "year_end": 1400, "precision": "century", "qualifier": "", "label": "Almost all astronomical works in Sanskri", "context": "Almost all astronomical works in Sanskrit from about 500 A. D employ the Śaka era Why the Śaka era", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-12", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-12"}, {"year_start": 1334, "year_end": 1334, "precision": "exact", "qualifier": "", "label": "māsa occurs there is an adhikamāsa befor", "context": "māsa occurs there is an adhikamāsa before and after it within three months (Grahagaṇita, Madhyamādhi", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-19", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-19"}, {"year_start": 1354, "year_end": 1354, "precision": "exact", "qualifier": "", "label": "Almost all astronomical works in Sanskri", "context": "Almost all astronomical works in Sanskrit from about 500 A. D employ the Śaka era Why the Śaka era", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-12", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-12"}], "15": [{"year_start": 1456, "year_end": 1456, "precision": "exact", "qualifier": "", "label": "māsa occurs there is an adhikamāsa befor", "context": "māsa occurs there is an adhikamāsa before and after it within three months (Grahagaṇita, Madhyamādhi", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-19", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-19"}, {"year_start": 1478, "year_end": 1478, "precision": "exact", "qualifier": "", "label": "Viṣṇu Smṛti", "context": "( Continued from last page ) Brahmāṇḍa III 74. 225 no doubt read एकाराशो. The three Matsya-purāṇa ve", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-11", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-11"}], "16": [{"year_start": 1520, "year_end": 1520, "precision": "exact", "qualifier": "", "label": "In order to be able to perform *vratas* ", "context": "In order to be able to perform *vratas* and celebrate *utsavas* at the proper times and in order to ", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-2", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-2"}, {"year_start": 1582, "year_end": 1582, "precision": "exact", "qualifier": "", "label": "It should not be supposed that India is ", "context": "It should not be supposed that India is singular in this respect. The present European calendar is a", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-4", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-4"}], "18": [{"year_start": 1750, "year_end": 1750, "precision": "exact", "qualifier": "", "label": "It should not be supposed that India is ", "context": "It should not be supposed that India is singular in this respect. The present European calendar is a", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-4", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-4"}], "19": [{"year_start": 1830, "year_end": 1830, "precision": "exact", "qualifier": "", "label": "Several other eras such as the Vardhaman", "context": "Several other eras such as the Vardhamana and Buddha-nīrvāṇa eras, Gupta, Cedi, Harsa, Laksamana-sen", "para_id": "p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-14", "link": "chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-14"}]};
+
+function ordinal(n) {
+    n = Math.abs(n);
+    var s = ["th","st","nd","rd"];
+    var v = n % 100;
+    return n + (s[(v-20)%10] || s[v] || s[0]);
+}
+
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/'/g,'&#39;').replace(/"/g,'&quot;'); }
+
+function showCentury(c) {
+    var events = centuryData[c];
+    if (!events) return;
+    var cNum = parseInt(c);
+    var label = cNum < 0 ? ordinal(Math.abs(cNum)) + " century BCE" : ordinal(cNum) + " century CE";
+
+    // Sort events by year
+    events.sort(function(a,b) { return a.year_start - b.year_start; });
+
+    // Build mini SVG timeline for this century
+    var minY = events[0].year_start, maxY = events[events.length-1].year_start;
+    if (minY === maxY) { minY -= 10; maxY += 10; }
+    var pad = Math.max(5, (maxY - minY) * 0.1);
+    var axStart = minY - pad, axEnd = maxY + pad, span = axEnd - axStart;
+    var w = Math.max(600, Math.min(1200, events.length * 80));
+    var h = events.length <= 15 ? 220 : 140;
+    var showLabels = events.length <= 15;
+    var ml = 50, mr = 30, pw = w - ml - mr, ay = showLabels ? 70 : 60;
+
+    function x(yr) { return ml + ((Math.max(axStart, Math.min(axEnd, yr)) - axStart) / span) * pw; }
+
+    var svg = '<svg viewBox="0 0 '+w+' '+h+'" style="max-width:100%;background:#faf6ef;border-radius:6px;">';
+    svg += '<line x1="'+ml+'" y1="'+ay+'" x2="'+(w-mr)+'" y2="'+ay+'" stroke="#c4956a" stroke-width="2"/>';
+
+    // Ticks
+    var tickStep = span > 200 ? 50 : span > 80 ? 20 : 10;
+    var firstTick = Math.ceil(axStart / tickStep) * tickStep;
+    for (var t = firstTick; t <= axEnd; t += tickStep) {
+        var tx = x(t);
+        if (tx >= ml && tx <= w - mr) {
+            var tl = t < 0 ? Math.abs(t) + " BCE" : t + " CE";
+            svg += '<line x1="'+tx+'" y1="'+(ay-5)+'" x2="'+tx+'" y2="'+(ay+5)+'" stroke="#c4956a" stroke-width="1"/>';
+            svg += '<text x="'+tx+'" y="'+(ay-10)+'" text-anchor="middle" font-family="Open Sans,sans-serif" font-size="10" fill="#8b6914">'+tl+'</text>';
+        }
+    }
+
+    // Dots + labels
+    for (var i = 0; i < events.length; i++) {
+        var e = events[i];
+        var cx = x(e.year_start);
+        var fill = e.precision === "exact" ? "#e8941a" : "none";
+        var stroke = e.precision === "exact" ? "" : ' stroke="#e8941a" stroke-width="2"';
+        var dash = e.precision === "approximate" ? ' stroke-dasharray="2,2"' : '';
+        svg += '<circle cx="'+cx+'" cy="'+ay+'" r="5" fill="'+fill+'"'+stroke+dash+' style="cursor:pointer" onclick="if(\''+esc(e.link)+'\')window.location.href=\''+esc(e.link)+'\'"><title>'+esc(e.label)+'</title></circle>';
+        if (showLabels) {
+            var ly = ay + 20 + (i % 3) * 24;
+            svg += '<line x1="'+cx+'" y1="'+(ay+6)+'" x2="'+cx+'" y2="'+(ly-8)+'" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>';
+            svg += '<text x="'+cx+'" y="'+ly+'" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="10" fill="#5a3e2b">'+esc(e.label.substring(0,20))+'</text>';
+        }
+    }
+    svg += '</svg>';
+
+    // Event list
+    var list = '';
+    for (var i = 0; i < events.length; i++) {
+        var e = events[i];
+        var yr = e.year_start < 0 ? Math.abs(e.year_start) + " BCE" : e.year_start + " CE";
+        if (e.qualifier) yr = e.qualifier + " " + yr;
+        list += '<div class="event-item"><span class="event-year">' + yr + '</span><div><span class="event-label">' + esc(e.label) + '</span>';
+        if (e.context) list += '<div class="event-context">' + esc(e.context) + '...</div>';
+        if (e.link) list += '<a href="' + esc(e.link) + '" class="event-link">View in text →</a>';
+        list += '</div></div>';
+    }
+
+    document.getElementById("century-detail").innerHTML =
+        '<h3 style="font-size:1.1rem;margin-bottom:12px;color:var(--ink);">' + label + ' <span style="font-weight:400;color:var(--ink-secondary);font-size:0.85rem;">(' + events.length + ' events)</span></h3>' +
+        '<div class="timeline-container" style="margin-bottom:16px;">' + svg + '</div>' +
+        list;
+    document.getElementById("century-detail").scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+// Make bars clickable with hover highlight
+document.querySelectorAll('.timeline-svg rect[data-century]').forEach(function(el) {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', function() { showCentury(this.getAttribute('data-century')); });
+    el.addEventListener('mouseenter', function() {
+        // Highlight the visible bar (previous sibling rect)
+        var prev = this.previousElementSibling;
+        if (prev && prev.tagName === 'rect') { prev.setAttribute('opacity', '1'); prev.setAttribute('fill', '#d4600a'); }
+    });
+    el.addEventListener('mouseleave', function() {
+        var prev = this.previousElementSibling;
+        if (prev && prev.tagName === 'rect') { prev.setAttribute('opacity', '0.8'); prev.setAttribute('fill', '#e8941a'); }
+    });
+});
+
+</script>
+            </div>
+            <div class="event-list">
+                <h2>All Dated References</h2>
+                
+            </div>
+        </div>
+        <div id="graph-panel" class="tl-panel">
+            <div class="eg-stats">
+<div><span class="eg-stat-num">6</span> entities</div>
+<div><span class="eg-stat-num">26</span> date claims</div>
+<div><span class="eg-stat-num">6</span> debated</div>
+<div><span class="eg-stat-num">25</span> co-occurrences</div>
+</div>
+<div class="eg-sort">Sort: <a class="active" onclick="egSort('date')">by date</a><a onclick="egSort('claims')">by claims</a><a onclick="egSort('name')">by name</a></div>
+<div id="eg-entities">
+<div class="eg-entity" data-key="gveda" data-consensus="-200" data-claims="3" data-name="Ṛgveda"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Ṛgveda</span><span class="eg-type">text</span><span class="eg-claims-count">3 claims &middot; 1400 BCE to 150 BCE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="-3102" data-max="1478"><span class="eg-range-label" style="left:0;">3102 BCE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1478 CE</span><div class="eg-range-fill" style="left:37.2%;width:27.3%;"></div><div class="eg-range-dot" style="left:37.2%;" title="1400 BCE — 14th century B C"></div><div class="eg-range-dot" style="left:63.4%;" title="200 BCE — 200 B. C."></div><div class="eg-range-dot" style="left:64.5%;" title="150 BCE — about 150 B. C."></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="artha-stra" onclick="egHighlight('artha-stra')">Arthaśāstra<span class="eg-cooccur-weight">2x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">1400 BCE</span><div><span class="eg-claim-ctx">It is possible to advance several theories about the origin of the seven day week in India. The five...</span> <a href="chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-38">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">200 BCE</span><div><span class="eg-claim-ctx">It is possible to advance several theories about the origin of the seven day week in India. The five...</span> <a href="chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-38">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">about 150 BCE</span><div><span class="eg-claim-ctx">It is possible to advance several theories about the origin of the seven day week in India. The five...</span> <a href="chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-38">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="artha-stra" data-consensus="-100" data-claims="4" data-name="Arthaśāstra"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Arthaśāstra</span><span class="eg-type">text</span><span class="eg-claims-count">4 claims &middot; 528 BCE to 100 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="-3102" data-max="1478"><span class="eg-range-label" style="left:0;">3102 BCE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1478 CE</span><div class="eg-range-fill" style="left:56.2%;width:13.7%;"></div><div class="eg-range-dot" style="left:56.2%;" title="528 BCE — 528 B. C."></div><div class="eg-range-dot" style="left:63.4%;" title="200 BCE — 2nd century B. C."></div><div class="eg-range-dot" style="left:65.5%;" title="100 BCE — about 100 B. C."></div><div class="eg-range-dot" style="left:69.9%;" title="100 CE — 100 A. D."></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="gveda" onclick="egHighlight('gveda')">Ṛgveda<span class="eg-cooccur-weight">2x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">528 BCE</span><div><span class="eg-claim-ctx">Among all nations the fundamental periods of time are the same, viz. the day, the month and the year...</span> <a href="chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-6">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">200 BCE</span><div><span class="eg-claim-ctx">Among all nations the fundamental periods of time are the same, viz. the day, the month and the year...</span> <a href="chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-6">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">about 100 BCE</span><div><span class="eg-claim-ctx">Among all nations the fundamental periods of time are the same, viz. the day, the month and the year...</span> <a href="chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-6">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">100 CE</span><div><span class="eg-claim-ctx">Among all nations the fundamental periods of time are the same, viz. the day, the month and the year...</span> <a href="chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-6">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="vamedhikaparva" data-consensus="100" data-claims="4" data-name="Āśvamedhikaparva"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Āśvamedhikaparva</span><span class="eg-type">text</span><span class="eg-claims-count">4 claims &middot; 140 BCE to 150 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="-3102" data-max="1478"><span class="eg-range-label" style="left:0;">3102 BCE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1478 CE</span><div class="eg-range-fill" style="left:64.7%;width:6.3%;"></div><div class="eg-range-dot" style="left:64.7%;" title="140 BCE — 140 B. C"></div><div class="eg-range-dot" style="left:65.5%;" title="100 BCE — 100 B C."></div><div class="eg-range-dot" style="left:69.9%;" title="100 CE — 100 A D"></div><div class="eg-range-dot" style="left:71.0%;" title="150 CE — about 150 A D"></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="history-of-dharma-stra" onclick="egHighlight('history-of-dharma-stra')">History of Dharmaśāstra<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="k-rmapur-a" onclick="egHighlight('k-rmapur-a')">Kūrmapurāṇa<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="mah-bh-rata" onclick="egHighlight('mah-bh-rata')">Mahābhārata<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="n-radasm-ti" onclick="egHighlight('n-radasm-ti')">Nāradasmṛti<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="vi-u-sm-ti" onclick="egHighlight('vi-u-sm-ti')">Viṣṇu Smṛti<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="y-j-avalkya-sm-ti" onclick="egHighlight('y-j-avalkya-sm-ti')">Yājñavalkya Smṛti<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">140 BCE</span><div><span class="eg-claim-ctx">Now some other literary evidence about the dates of which there are likely to be doubts and disputes...</span> <a href="chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-37">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">100 BCE</span><div><span class="eg-claim-ctx">Now some other literary evidence about the dates of which there are likely to be doubts and disputes...</span> <a href="chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-37">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">100 CE</span><div><span class="eg-claim-ctx">Now some other literary evidence about the dates of which there are likely to be doubts and disputes...</span> <a href="chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-37">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">about 150 CE</span><div><span class="eg-claim-ctx">Now some other literary evidence about the dates of which there are likely to be doubts and disputes...</span> <a href="chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-37">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="b-had-ra-yaka-upani-ad" data-consensus="455" data-claims="8" data-name="Bṛhadāraṇyaka Upaniṣad"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Bṛhadāraṇyaka Upaniṣad</span><span class="eg-type">text</span><span class="eg-claims-count">8 claims &middot; 200 BCE to 923 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="-3102" data-max="1478"><span class="eg-range-label" style="left:0;">3102 BCE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1478 CE</span><div class="eg-range-fill" style="left:63.4%;width:24.5%;"></div><div class="eg-range-dot" style="left:63.4%;" title="200 BCE — 2nd century B. C."></div><div class="eg-range-dot" style="left:71.0%;" title="150 CE — 150 A. D."></div><div class="eg-range-dot" style="left:72.1%;" title="201 CE — 3rd century A. D."></div><div class="eg-range-dot" style="left:77.0%;" title="425 CE — 425-26 A. D"></div><div class="eg-range-dot" style="left:77.7%;" title="455 CE — 455-56 A. D."></div><div class="eg-range-dot" style="left:79.2%;" title="525 CE — 525-26 A. D."></div><div class="eg-range-dot" style="left:85.2%;" title="801 CE — 9th century"></div><div class="eg-range-dot" style="left:87.9%;" title="923 CE — samvat 879 (923 A. D)"></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="ch-ndogya-upani-ad" onclick="egHighlight('ch-ndogya-upani-ad')">Chāndogya Upaniṣad<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">200 BCE</span><div><span class="eg-claim-ctx">Though inscriptions before the Christian era rarely mentioned the names of months (such as Kārtika 1...</span> <a href="chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-25">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">150 CE</span><div><span class="eg-claim-ctx">Though inscriptions before the Christian era rarely mentioned the names of months (such as Kārtika 1...</span> <a href="chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-25">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">201 CE</span><div><span class="eg-claim-ctx">Though inscriptions before the Christian era rarely mentioned the names of months (such as Kārtika 1...</span> <a href="chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-25">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">425 CE</span><div><span class="eg-claim-ctx">Though inscriptions before the Christian era rarely mentioned the names of months (such as Kārtika 1...</span> <a href="chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-25">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">455 CE</span><div><span class="eg-claim-ctx">Though inscriptions before the Christian era rarely mentioned the names of months (such as Kārtika 1...</span> <a href="chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-25">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">525 CE</span><div><span class="eg-claim-ctx">Though inscriptions before the Christian era rarely mentioned the names of months (such as Kārtika 1...</span> <a href="chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-25">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">801 CE</span><div><span class="eg-claim-ctx">Though inscriptions before the Christian era rarely mentioned the names of months (such as Kārtika 1...</span> <a href="chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-25">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">923 CE</span><div><span class="eg-claim-ctx">Though inscriptions before the Christian era rarely mentioned the names of months (such as Kārtika 1...</span> <a href="chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-25">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="vi-upur-a" data-consensus="476" data-claims="3" data-name="Viṣṇupurāṇa"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Viṣṇupurāṇa</span><span class="eg-type">text</span><span class="eg-claims-count">3 claims &middot; 3102 BCE to 943 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="-3102" data-max="1478"><span class="eg-range-label" style="left:0;">3102 BCE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1478 CE</span><div class="eg-range-fill" style="left:0.0%;width:88.3%;"></div><div class="eg-range-dot" style="left:0.0%;" title="3102 BCE — 3102 B. C"></div><div class="eg-range-dot" style="left:78.1%;" title="476 CE — 476 A. D."></div><div class="eg-range-dot" style="left:88.3%;" title="943 CE — 943 A. D."></div></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">3102 BCE</span><div><span class="eg-claim-ctx">Differing views were held even in ancient times, as to when the Kaliyuga&lt;sup&gt;992&lt;/sup&gt; started and w...</span> <a href="chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-8">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">476 CE</span><div><span class="eg-claim-ctx">Differing views were held even in ancient times, as to when the Kaliyuga&lt;sup&gt;992&lt;/sup&gt; started and w...</span> <a href="chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-8">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">943 CE</span><div><span class="eg-claim-ctx">Differing views were held even in ancient times, as to when the Kaliyuga&lt;sup&gt;992&lt;/sup&gt; started and w...</span> <a href="chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-8">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="vi-u-sm-ti" data-consensus="1076" data-claims="4" data-name="Viṣṇu Smṛti"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Viṣṇu Smṛti</span><span class="eg-type">text</span><span class="eg-claims-count">4 claims &middot; 770 CE to 1478 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="-3102" data-max="1478"><span class="eg-range-label" style="left:0;">3102 BCE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1478 CE</span><div class="eg-range-fill" style="left:84.5%;width:15.5%;"></div><div class="eg-range-dot" style="left:84.5%;" title="770 CE — Śake 692"></div><div class="eg-range-dot" style="left:85.2%;" title="801 CE — 9th century A. D"></div><div class="eg-range-dot" style="left:91.2%;" title="1076 CE — 1076-77 A. D."></div><div class="eg-range-dot" style="left:100.0%;" title="1478 CE — 1478 A. D."></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="matsyapur-a" onclick="egHighlight('matsyapur-a')">Matsyapurāṇa<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="agnipur-a" onclick="egHighlight('agnipur-a')">Agnipurāṇa<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="history-of-dharma-stra" onclick="egHighlight('history-of-dharma-stra')">History of Dharmaśāstra<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="k-rmapur-a" onclick="egHighlight('k-rmapur-a')">Kūrmapurāṇa<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="mah-bh-rata" onclick="egHighlight('mah-bh-rata')">Mahābhārata<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="n-radasm-ti" onclick="egHighlight('n-radasm-ti')">Nāradasmṛti<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="vamedhikaparva" onclick="egHighlight('vamedhikaparva')">Āśvamedhikaparva<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="y-j-avalkya-sm-ti" onclick="egHighlight('y-j-avalkya-sm-ti')">Yājñavalkya Smṛti<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">770 CE</span><div><span class="eg-claim-ctx">Something must be said about the 60 year cycle called Bārhaspatya (Jovian). The Viṣṇu-dharmottara&lt;su...</span> <a href="chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-17">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">801 CE</span><div><span class="eg-claim-ctx">( Continued from last page ) Brahmāṇḍa III 74. 225 no doubt read एकाराशो. The three Matsya-purāṇa ve...</span> <a href="chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-11">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">1076 CE</span><div><span class="eg-claim-ctx">( Continued from last page ) Brahmāṇḍa III 74. 225 no doubt read एकाराशो. The three Matsya-purāṇa ve...</span> <a href="chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-11">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">1478 CE</span><div><span class="eg-claim-ctx">( Continued from last page ) Brahmāṇḍa III 74. 225 no doubt read एकाराशो. The three Matsya-purāṇa ve...</span> <a href="chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-11">view</a></div></div></div></div></div>
+</div>
+<script>
+function egToggle(header) {
+    header.parentElement.classList.toggle('open');
+}
+function egHighlight(key) {
+    // Remove existing highlights
+    document.querySelectorAll('.eg-entity.highlighted').forEach(function(el) {
+        el.classList.remove('highlighted');
+    });
+    // Highlight target and scroll to it
+    var target = document.querySelector('.eg-entity[data-key="' + key + '"]');
+    if (target) {
+        target.classList.add('highlighted');
+        target.classList.add('open');
+        target.scrollIntoView({behavior: 'smooth', block: 'center'});
+    }
+}
+function egSort(mode) {
+    var container = document.getElementById('eg-entities');
+    var items = Array.from(container.querySelectorAll('.eg-entity'));
+    items.sort(function(a, b) {
+        if (mode === 'date') return parseInt(a.dataset.consensus) - parseInt(b.dataset.consensus);
+        if (mode === 'claims') return parseInt(b.dataset.claims) - parseInt(a.dataset.claims);
+        if (mode === 'name') return a.dataset.name.localeCompare(b.dataset.name);
+        return 0;
+    });
+    items.forEach(function(el) { container.appendChild(el); });
+    // Update active sort link
+    document.querySelectorAll('.eg-sort a').forEach(function(a) { a.classList.remove('active'); });
+    event.target.classList.add('active');
+}
+</script>
+        </div>
+        <a href="chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html" class="back-link">&larr; Back to Chapter XVIII. Calendar, Eras, Various Reckonings about Years, Months etc.</a>
+    </div>
+    <script>
+    document.querySelectorAll('.tl-evt').forEach(function(el) {
+        el.addEventListener('click', function() {
+            var href = this.getAttribute('data-href');
+            if (href) {
+                window.location.href = href;
+            } else {
+                var paraId = this.getAttribute('data-para');
+                if (paraId) {
+                    var target = document.getElementById(paraId);
+                    if (target) target.scrollIntoView({behavior: 'smooth'});
+                }
+            }
+        });
+    });
+    // Tab switching
+    document.querySelectorAll('.tl-tab').forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            document.querySelectorAll('.tl-tab').forEach(function(t) { t.classList.remove('active'); });
+            document.querySelectorAll('.tl-panel').forEach(function(p) { p.classList.remove('active'); });
+            tab.classList.add('active');
+            var panel = document.getElementById(tab.getAttribute('data-panel'));
+            if (panel) panel.classList.add('active');
+        });
+    });
+    </script>
+</body>
+</html>

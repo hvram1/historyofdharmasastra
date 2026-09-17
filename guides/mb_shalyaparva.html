@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Śalyaparva Study Guide — History of Dharmaśāstra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Open+Sans:wght@400;600&family=Tiro+Devanagari+Sanskrit&display=swap" rel="stylesheet">
+<style>
+:root {
+    --saffron: #D4600A;
+    --ink: #2C2416;
+    --parchment: #FDF6EC;
+    --parchment-dark: #F5ECD8;
+    --indigo: #2E5FA3;
+    --maroon: #8B1A1A;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: var(--parchment);
+    color: var(--ink);
+    line-height: 1.6;
+}
+.navbar {
+    background: linear-gradient(135deg, #3D2B1F 0%, #5C3D2E 100%);
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    position: sticky;
+    top: 0;
+    z-index: 1031;
+}
+.navbar a { color: #F5ECD8; text-decoration: none; font-size: 14px; }
+.navbar a:hover { color: var(--saffron); }
+.navbar .brand { font-family: 'Lora', serif; font-size: 16px; font-weight: 600; }
+.breadcrumb-bar {
+    background: var(--parchment-dark);
+    padding: 8px 24px;
+    font-size: 13px;
+    border-bottom: 1px solid #E0D5C3;
+}
+.breadcrumb-bar a { color: var(--indigo); text-decoration: none; }
+.breadcrumb-bar .sep { margin: 0 6px; color: #999; }
+.breadcrumb-bar .current { color: var(--ink); }
+.content { max-width: 900px; margin: 0 auto; padding: 30px 24px; }
+
+/* Hero */
+.parva-hero {
+    text-align: center;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 2px solid #E0D5C3;
+}
+.parva-hero .parva-number {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(212, 96, 10, 0.10);
+    color: var(--saffron);
+    font-family: 'Lora', serif;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 50px;
+    margin-bottom: 8px;
+}
+.parva-hero h1 {
+    font-family: 'Lora', serif;
+    font-size: 28px;
+    color: var(--saffron);
+    margin: 6px 0;
+}
+.parva-hero .desc {
+    font-size: 15px;
+    color: #555;
+    max-width: 600px;
+    margin: 0 auto 10px;
+}
+.parva-hero .stats {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 10px;
+}
+.ext-link {
+    display: inline-block;
+    font-size: 13px;
+    color: var(--indigo);
+    font-weight: 600;
+    text-decoration: none;
+    padding: 4px 12px;
+    border: 1px solid var(--indigo);
+    border-radius: 4px;
+    margin: 6px 4px;
+}
+.ext-link:hover { background: rgba(46, 95, 163, 0.08); }
+.ref-page-link {
+    display: inline-block;
+    font-size: 13px;
+    color: #888;
+    text-decoration: none;
+    padding: 4px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: 6px 4px;
+}
+.ref-page-link:hover { border-color: #999; color: #666; }
+.subject-tag {
+    display: inline-block;
+    font-size: 11px;
+    background: rgba(139, 26, 26, 0.08);
+    color: var(--maroon);
+    padding: 2px 8px;
+    border-radius: 3px;
+    text-decoration: none;
+    margin: 2px;
+}
+.subject-tag:hover { background: rgba(139, 26, 26, 0.15); }
+
+/* Top adhyayas */
+.top-adhyayas {
+    margin-bottom: 28px;
+    padding: 16px;
+    background: #fff;
+    border: 1px solid #E0D5C3;
+    border-radius: 8px;
+}
+.top-adhyayas h3 {
+    font-family: 'Lora', serif;
+    font-size: 15px;
+    color: var(--ink);
+    margin-bottom: 10px;
+}
+.adhyaya-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.adhyaya-chip {
+    display: inline-block;
+    font-size: 12px;
+    padding: 3px 10px;
+    background: var(--parchment-dark);
+    border: 1px solid #E0D5C3;
+    border-radius: 4px;
+    color: var(--ink);
+    text-decoration: none;
+}
+a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
+.adhyaya-chip small { color: #999; }
+
+/* Volume sections */
+.vol-section { margin-bottom: 28px; }
+.vol-heading {
+    font-family: 'Lora', serif;
+    font-size: 17px;
+    color: var(--ink);
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #E0D5C3;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.vol-count {
+    font-size: 12px;
+    font-weight: 400;
+    color: #999;
+}
+.ch-group { margin-bottom: 16px; }
+.ch-heading {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 6px;
+    padding: 4px 8px;
+    background: var(--parchment-dark);
+    border-radius: 4px;
+}
+.ch-count {
+    font-weight: 400;
+    color: #999;
+    font-size: 11px;
+    margin-left: 4px;
+}
+.snippet {
+    padding: 10px 14px;
+    margin-bottom: 6px;
+    background: #fff;
+    border: 1px solid #E0D5C3;
+    border-radius: 6px;
+    border-left: 3px solid var(--saffron);
+}
+.snippet-text {
+    font-family: 'Lora', serif;
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.65;
+}
+.snippet-meta {
+    margin-top: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.snippet-link {
+    font-size: 12px;
+    color: var(--indigo);
+    text-decoration: none;
+}
+.snippet-link:hover { text-decoration: underline; }
+.snippet-verse {
+    font-size: 11px;
+    color: #999;
+    font-style: italic;
+}
+.mbta-icon {
+    color: var(--indigo);
+    text-decoration: none;
+    font-style: normal;
+    font-size: 12px;
+}
+.overflow {
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+    padding: 6px;
+}
+</style>
+</head>
+<body>
+<nav class="navbar">
+    <a href="../index.html" class="brand">History of Dharmaśāstra</a>
+    <a href="../refs/index.html">Sources</a>
+    <a href="../topics/index.html">Topics</a>
+    <a href="../subjects/index.html">Subjects</a>
+    <a href="../timeline.html">Timeline</a>
+    <a href="../network.html">Network</a>
+</nav>
+<div class="breadcrumb-bar">
+    <a href="../index.html">Home</a>
+    <span class="sep">›</span>
+    <a href="index.html">Parva Study Guides</a>
+    <span class="sep">›</span>
+    <span class="current">Śalyaparva</span>
+</div>
+<div class="content">
+    <div class="parva-hero">
+        <div class="parva-number">9</div>
+        <h1>Śalyaparva</h1>
+        <p class="desc">The Book of Śalya — the final day, Duryodhana's fall.</p>
+        <p class="stats">39 references across 7 volumes</p>
+        <div><a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="ext-link">Browse on MBTA ↗</a>
+            <a href="../refs/mb_shalyaparva.html" class="ref-page-link">Verse reference table →</a>
+        </div>
+        <div style="margin-top:8px"></div>
+    </div>
+    
+            <div class="top-adhyayas">
+                <h3>Most-Cited Adhyāyas</h3>
+                <div class="adhyaya-chips"><a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="adhyaya-chip">Adhyāya 39 <small>(3)</small></a><a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="adhyaya-chip">Adhyāya 37 <small>(2)</small></a><a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="adhyaya-chip">Adhyāya 34 <small>(2)</small></a><a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="adhyaya-chip">Adhyāya 56 <small>(2)</small></a><a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="adhyaya-chip">Adhyāya 49 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="adhyaya-chip">Adhyāya 61 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="adhyaya-chip">Adhyāya 63 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="adhyaya-chip">Adhyāya 19 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="adhyaya-chip">Adhyāya 29 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="adhyaya-chip">Adhyāya 5 <small>(1)</small></a></div>
+            </div>
+    
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume I: Part I
+                    <span class="vol-count">9 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">14 Arthashastra Of Kautilya <span class="ch-count">2</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...ertain Vyūha (array of army) was arranged according to the opinion of Bṛhaspati and Uśanas (31. 12-13). Vide Karṇaparva 46. 27 for Barhaspatya Vyūha. <strong>Śalyaparva</strong> states that, acc. to Bṛhaspati’s view, a king who is weak should desire to make peace (with a stronger one) or with his equal, while one who is growi...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-19" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...ato yajñena mahatā Jamadagnyah pratāpavān । tarpayāmāsa devendram-ṛtvigbhyaḥ pradadau mahim ।; vide also Ādi- parva 130. 61–62, Droṇaparva 70. 15–19, <strong>Śalyaparva</strong> 49. 7–10, where the donee is the sage Kaśyapa. The idea is that he gave up lobha ( greed ) which is the root of all sins ( lobhamūlāni pāpāni ) and, though th...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-76" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">49.7-10 <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">17 Ushanas <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...nd that one should proceed cautiously even after making an alliance (sandhi). The Ādiparva (76. 6) says that Kāvya was the purohita of the asuraṣ The <strong>Śalyaparva</strong> (39. 6) says that Kāvya performed austerities at Kajālamocanatīrtha and the whole science of Nīti (Rājanīti) appeared to hiṃ The Udyogaparva states that ever...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/17-ushanas.html#p-17-ushanas-3" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">39.6 <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">21 Cyavana <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...d on the banks of the Sarasvatī astronomy with its 64 aṅgaṣ In the same *parva* it is said that Vṛddha-Gargya inquired about vṛṣotsarga (125. 77 ff). <strong>Śalyaparva</strong> (37. 14-15) narrates that old Garga by his *tapas* acquired on the sacred Sarasvatī knowledge of kāla, movements of the planets, of evil and good *utpātas* and t...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/21-cyavana.html#p-21-cyavana-2" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">37.14-15 <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">32 The Two Epics <span class="ch-count">4</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...Rāma story may be made here. For example, Rāma being led to pursue the gold-coloured deer; the Śāntiparva refers briefly to the story of Śambūka. The <strong>Śalyaparva</strong> mentions that Rāma cut off the head of a rākṣasa and the Śānti refers to the killing of Rāvaṇa by Rāma through anger (361. 15).<sup class="fn-ref"><a...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-11" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">In Anusāsana 18. 38 Garga is said to have obtained the knowledge of the sixty-four Kulās (arts) and in Śalya-parva 37. 145 Garga is said to have gained on the banks of Sarasvati knowledge of kāla and about the movements of heavenly bodieṣ Astronomer Garga is assigned to 5...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-16" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">37.145 <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...s attacked by the Ābhīras on his way and the Ābhīras forcibly carried away many ladies and some *went with them of their own free will*. Moreover, in Śalya- parva 61. 28 ff,<sup class="fn-ref"><a href="#fn-32-the-two-epics-57" id="fnref-32-the-two-epics-57">57</a></sup> where Duryodhana, being mortally wounded by a ma...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-47" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">61.28 <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">In the <strong>Śalyaparva</strong> ( 39.9–10 ) reference is made to the cutting of the head of a rākṣasa by Rāma in Janasthāna. In the Śāntiparva<sup class="fn-ref"><a href="#fn-32-the-two-epics-6...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-56" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">39.9-10 <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">36 The Nāradasmriti <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...hira on the death of his many relatives and warriors by dilating upon the stories of sixteen ancient kings and heroes who had also similar sorrowṣ In <strong>Śalyaparva</strong>, Nārada is said to have informed Balarāma that his his two disciples Bhīma and Duryodhana were going to fight with maceṣ There Nārada is described as...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/36-the-nāradasmriti.html#p-36-the-nāradasmriti-4" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume I: Part II
+                    <span class="vol-count">1 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">113 The Vīramitrodaya Of Mitramiśra <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...></sup> as a tīrtha is described in Vanaparva 83. 1-8. Vanaparva chapters 87-90 speak of the tīrthas in the east, south, west and north respectively. <strong>Śalyaparva</strong> (chapters 35-39) describes the tīrthas which were visited by Balarāma in his pilgrimage. The Anuśāsanaparva (chapter 26) is full of the greatness of ...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-2/113-the-vīramitrodaya-of-mitramiśra.html#p-113-the-vīramitrodaya-of-mitramiśra-18" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume II: Part I
+                    <span class="vol-count">5 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Ix Marriage <span class="ch-count">2</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...rich. In course of time popular feeling changed and no girl could remain unmarried if she wanted heavenly worldṣ There is an interesting story in the <strong>Śalyaparva</strong> chap. 52 of the daughter of Kunigarġa who, when told by Nārada that an unmarried woman could not secure heaven, married for one day Śṛngavat and then w...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-2-part-1/chapter-ix-marriage.html#p-chapter-ix-marriage-11" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">c <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">... age for marriage. Vide Saṁskārakaustubha quoted below. It came to be believed that there was no hope of heaven for a woman who died unmarrieḍ In the <strong>Śalyaparva</strong><sup class="fn-ref"><a href="#fn-chapter-ix-marriage-42" id="fnref-chapter-ix-marriage-42">42</a></sup> chap. 52 we have the story of a girl, daughter...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-2-part-1/chapter-ix-marriage.html#p-chapter-ix-marriage-22" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xi Polygamy Polyandry And Rights And Duties On Marriage <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...rane, when the brāhmaṇa tried to frighten the virtuous woman for her tardiness in welcoming him as a guest and for looking only after her husbanḍ The <strong>Śalyaparva</strong> (63) narrates how awful the power of a pati- vratā like Gāndhārī is in that she can, if she choose, burn the world, she can stop even the motions of the s...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-2-part-1/chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage.html#p-chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage-14" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">63 <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xii The Duties Of A Widow Some Privileges Of Women And The Purda System <span class="ch-count">2</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...eir ladies whom even the sun did not see in their palaces were seen by the common people who had come to the capital. *Vide* also Sabhāparva 97. 4–7, <strong>Śalyaparva</strong> 19. 63, Strīparva 9. 9–10, Āśrama-vāsi-parva 15. 13. In the Harṣacarita (IV) princess Rājyaśrī, whom the intended bride-groom Grahavarmā came to see just be...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-2-part-1/chapter-xii-the-duties-of-a-widow-some-privileges-of-women-and-the-purda-system.html#p-chapter-xii-the-duties-of-a-widow-some-privileges-of-women-and-the-purda-system-17" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">19.63 <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...adies, did not appear in public except on certain occasions, but it does not follow that they always wore the veil. When the Kauravas were routed the <strong>Śalyaparva</strong> (29. 74) laments that their ladies whom even the sun did not see in their palaces were seen by the common people who had come to the capital. *Vide* also Sabh...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-2-part-1/chapter-xii-the-duties-of-a-widow-some-privileges-of-women-and-the-purda-system.html#p-chapter-xii-the-duties-of-a-widow-some-privileges-of-women-and-the-purda-system-17" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">29.74 <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume II: Part II
+                    <span class="vol-count">2 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xxvii Vānaprastha Forest Hermit <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...ces like Prayāga, the Sarasvati and Benares persons were allowed to kill themselves by drowning with the desire of securing release from saṁsāra. The <strong>Śalyaparva</strong> (39. 33-34) states 'whoever abandons his body at Pṛthūdaka on the northern bank of the Sarasvati after repeating Vedic prayers would not be troubled by death the...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-2-part-2/chapter-xxvii-vānaprastha-forest-hermit.html#p-chapter-xxvii-vānaprastha-forest-hermit-24" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">39.33-34 <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">General Index <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...: various modes of, 335-343; who do not deserve, 339. Sālva, country of, 224-225n; king of, attacked Dvārakā, 225n; Yaugan-dhara, a division of, 225ṇ <strong>Śalyaparva</strong>, 8n, 66, 225n, 436, 444, 568, 598, 925. Sāman (see under ‘stotra’): cessa-tion of Ṛgveda or Yajurveda study on hearing chanting of, 397; means a melo...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-2-part-2/general-index.html#p-general-index-60" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume III
+                    <span class="vol-count">10 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Iii Duties And Responsibilities Of The Ruler <span class="ch-count">2</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...use from some disease; the ancient code of conduct for him is that he should meet death from steel’ (Bhīṣmaparva 17 11) The same idea is presented in <strong>Śalyaparva</strong> 5 32, Śānti 97 23 and 25</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-iii-duties-and-responsibilities-of-the-ruler.html#p-chapter-iii-duties-and-responsibilities-of-the-ruler-2" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">5 <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...a of a yuvarāja (as of Bhima in Śānti 41), of a great commander (as of Bhisma in Udyogaparva 155.26-32), of Droṇa in Droṇaparva 5.39-43, of Skanda in <strong>Śalyaparva</strong> 45.</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-iii-duties-and-responsibilities-of-the-ruler.html#p-chapter-iii-duties-and-responsibilities-of-the-ruler-21" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">45 <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Viii Bala The Army <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...'s people if possible ( particularly brāhmaṇas) The rule in gadāyuddha (fight with maces or clubs) was that no blow was to be struck below the navel (<strong>Śalyaparva</strong> 60 6 ) But this rule was violated by Bhima when he struck Duryodhana on the thigh with his mace. Duryodhana recounts (in Salya 61) all the bad deeds of ...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-viii-bala-the-army.html#p-chapter-viii-bala-the-army-4" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">60 <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xxxiv Kalivarjya Actions Forbidden In The Kali Age <span class="ch-count">6</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...lanations of the other passages ), his bold expedient of changing, ‘citram’ to ‘caitram’ in Bhisma 3 12 and his transposition of Sravana and Pusya in <strong>Śalyaparva</strong> 34. 6, his taking ‘angaraka’ to mean Venus (and not Mars ). Dr. Daftari’s work was reviewed by Prof Sen-Gupta in JASB for 1943, vol. IX pp. 221-228 and aft...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-20" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">34.6 <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...gest that the eclipse of the sun at an unusual time had become a stock example of an evil portent without the actual occurrence thereof. The words in <strong>Śalyaparva</strong> refer to the last day of the war before the mace duel between Duryodhana and Bhīma and the passage says that Rāhu seized the sun and there was an ear...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-21" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...ika Full Moon when Kṛṣṇa had gone as a peace-maker and that there was a solar eclipse on the amāvāsyā of Kārtika just about the time the war begaṇ In <strong>Śalyaparva</strong> 56. 10 we again meet with the words ( at the beginning of the mace duel ) ‘Rāhu swallowed the Sun at an unusual season’. This passage and Aśvamedhika 77. 15...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-21" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">56.10 <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">... me when the moon is in Pusya'. If the moon was in Jyeṣṭhā on amāvāsyā when Kṛṣṇa had proposed to Karṇa that the war should be begun, this passage of <strong>Śalyaparva</strong> would put the beginning of the war 16 or 17 days after Kārtika amāvāsyā, which is not war ranted by any other passage and which no scholar puts forwa...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-21" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...oth of whom were his pupils in mace-duel and went on a pilgrimage(Udyoga 157. 33-35 and 158 39). Balarāma returned on the 18th day of the war and (in <strong>Śalyaparva</strong> 34. 6) he remarks, 'it is 42 days since I left (on a pilgrimage); I start- ed when the moon was in Pusya and I have come here again on Śravana' <sup class=...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-23" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">34.6 <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...rva 94. 49 says that on Karna's death the son of the Moon (i. e. Mercury), the white luminary, rose slantingly resembling in hue fire and the Sun The <strong>Śalyaparva</strong> 11. 18 states that Mars, Venus and Mercury were in conjunction <sup>1783</sup> If Mars was in Maghā as stated in Bhisma 3 14 and Mars and Mercury were in co...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-29" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">11.18 <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">General Index <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">..., 547, 554. Salt, State manufactured s and levied a duty on salt imported or manufac- turned privately 196 Sālva, besieged Dvārakā 208, 214 Salya 204 <strong>Śalyaparva</strong> 58, 79, 112n, 210, 214, 896n, 904, 908n, 909, 911–12, 915, 918. Sāma (an upāya), is of five kinds 174. Samāhartr, duties of 131, 143, 253, 276 Samāhvaya...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/general-index.html#p-general-index-13" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">58 <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume IV
+                    <span class="vol-count">7 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Vii Eschatology <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...d in dissipation, all rise is to end in fall, all unions in separation and life in death'. Aparārka quotes the Rāmāyaṇa and Vasudeva's words from the <strong>Śalyaparva</strong> to Dhrtarastra on the death of Duryodhana. The Par. M. I 2 pp. 292-93, the Suddhi-prakasa pp. 205-206 and several other works quote the verses of Viṣ...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-4/chapter-vii-eschatology.html#p-chapter-vii-eschatology-47" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xi Tīrthayātrā Pilgrimages To Holy Places <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...ontain on a very modest calculation at least 40000 verses on tīrthas, sub-tīrthas and legends connected with theṃ In the Vanaparva (chap. 82-156) and <strong>Śalyaparva</strong> (chap. 35-54) alone there are about 3900 verses on tīrthayātrā. To mention only a few of the purāṇas, the Brahmapurāṇa devotes about 6700 verses (i. ...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-4/chapter-xi-tīrthayātrā-pilgrimages-to-holy-places.html#p-chapter-xi-tīrthayātrā-pilgrimages-to-holy-places-20" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xv Kurukshetra And Some Other Famous Tīrthas <span class="ch-count">3</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...than the river Sarasvatī and that Pṛthūdaka is holier than all the other tīrthas on Sarasvatī. There is no tīrtha that is better than Pṛthūdaka'. The <strong>Śalyaparva</strong><sup class="fn-ref"><a href="#fn-chapter-xv-kurukshetra-and-some-other-famous-tīrthas-20" id="fnref-chapter-xv-kurukshetra-and-some-other-famous-tīrth...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-4/chapter-xv-kurukshetra-and-some-other-famous-tīrthas.html#p-chapter-xv-kurukshetra-and-some-other-famous-tīrthas-6" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">..., viz. Kāmyaka, Aditivana, Vyāsavana, Phalākivana, Sūryavana, Madhuvana and Sītāvana. Vide A. S. R. for India, vol. 14 pp. 90-91 for the vanaṣ In the <strong>Śalyaparva</strong> (chap. 38) it is said that the world is encompassed by seven Sarasvatīs, then they are enumerated and their locations are specified viz. Suprabhā (in...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-4/chapter-xv-kurukshetra-and-some-other-famous-tīrthas.html#p-chapter-xv-kurukshetra-and-some-other-famous-tīrthas-7" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...e same name. It is to be noted that in the Rāmāyaṇa III. 13. 13 Pañcavatī is styled a deśa (country). Janasthāna was in Daṇḍakāranya according to the <strong>Śalyaparva</strong> III, 21, 19-20, Nāradiya-purāṇa II 75. 30 and Agni 7. 2-3<sup>1619</sup> and Pañcavatī was part of Janasthāna. Janasthāna is said to be four yojanas in e...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-4/chapter-xv-kurukshetra-and-some-other-famous-tīrthas.html#p-chapter-xv-kurukshetra-and-some-other-famous-tīrthas-45" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">III <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Abbreviations Employed In This List Alone <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...umdar Sastri (Calcutta, 1927) r.—River. R.—Rājataraṅgiṇī (edited and trans- lated by Dr. Stein). Rām—Rāmāyaṇa. S.—Sabhāparva of the Mahābhārata. Śal.—<strong>Śalyaparva</strong> of the Mahābhārata. Śāṇ—Śāntiparva of the Mahābhārata. SK.—Skandapurāṇa SM.—Stein’s Memoir on maps illustrating the Ancient Geography of Kashmir. T. ...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-4/abbreviations-employed-in-this-list-alone.html#p-abbreviations-employed-in-this-list-alone-1" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">General Index Of Vol Iv <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...nufactured, condemned for use in śrāddha but natural salt from a lake allowed 416; was not to be directly served to dining brāhmaṇas in a śrāddha 466 <strong>Śalyaparva</strong>, 237, 582, 683n, 684n, 685, 686, 710 Sāmans, as purifiers of sin 45; should be repeated from 10 to 100 times for removal of sins as expiation 49 Sama...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-4/general-index-of-vol-iv.html#p-general-index-of-vol-iv-22" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume V: Part II
+                    <span class="vol-count">5 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xxi Individual Shāntis <span class="ch-count">2</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...er he made a vow that he would kill Jayadratha before the next day’s sunset (Droṇaparva 77. 4) and when Duryodhana challenged Bhima for a mace fight (<strong>Śalyaparva</strong> 56. 10 and 58. 49).</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-2/chapter-xxi-individual-shāntis.html#p-chapter-xxi-individual-shāntis-19" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">56.10 <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...is-43" id="fnref-chapter-xxi-individual-shāntis-43">43</a></sup> Meteors are often referred to in the epics as falling on serious occasions e. g. the Śalya-parva mentions <sup class="fn-ref"><a href="#fn-chapter-xxi-individual-shāntis-44" id="fnref-chapter-xxi-individual-shāntis-44">44</a></sup> the fall of a ...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-2/chapter-xxi-individual-shāntis.html#p-chapter-xxi-individual-shāntis-22" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xxxii Yoga And Dharmashastra <span class="ch-count">2</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">In <strong>Śalyaparva</strong> (chap. 50) a story is told about bhikṣu Jaigīṣavya who was a great Yogin and of ‘Asita Devala’, a householder staying on the holy Sarasvata-tīrtha.</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-2/chapter-xxxii-yoga-and-dharmashastra.html#p-chapter-xxxii-yoga-and-dharmashastra-8" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...ata as shown above (pp. 1367 and 1374). Vide also the story of Asita Devala with whom Jaigīṣavya stayed for many years as a bhikṣu and adept in Yoga (<strong>Śalyaparva</strong>, chap. 50). It has to be remembered that several interpretations of the same Yogasūtra are noted in the bhāṣya (as on II. 55). The Yogabhāṣya quotes ...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-2/chapter-xxxii-yoga-and-dharmashastra.html#p-chapter-xxxii-yoga-and-dharmashastra-22" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Index To Vol V <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...90, 1193. Śālivāhana, era ( vide Śaka era ): these words occur in Inscrip- tions of 13th and 14th century A. D., 655. Śalokat's a kind of mukti 1631ṇ <strong>Śalyaparva</strong> 90n, 520n, 687n, 742n, 743-44, 764, 767, 787n, 1219, 1391. Śam : adhrigu-praisa, bearing of on root śam, 724 ; undecli- able 'śam' occurs about 160 time...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-190" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">90 <a href="https://sanatana.in/mbta/listing/parva/shalyaparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+</div>
+</body>
+</html>

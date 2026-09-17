@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- MDB UI Kit -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/fonts.css?v=1.2">
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/navbar.css?v=2.4">
+
+    <title>Chapter I. Vrata in the Rigveda — Volume V: Part I — History of Dharmaśāstra</title>
+    <style>
+    :root {
+        --saffron:        #D4600A;
+        --saffron-light:  #F0924A;
+        --saffron-wash:   rgba(212, 96, 10, 0.07);
+        --indigo:         #2E5FA3;
+        --indigo-dark:    #1C3D70;
+        --maroon:         #7A1E1E;
+        --amber:          #C97A1A;
+        --ink:            #1A1209;
+        --ink-secondary:  #4A3B2A;
+        --parchment:      #FDFAF4;
+        --parchment-mid:  #F5EFE2;
+        --rule:           rgba(180, 130, 60, 0.22);
+        --shadow:         0 2px 18px rgba(90, 50, 10, 0.08);
+        --font-devanagari: 'Tiro Devanagari Sanskrit', 'Siddhanta', 'Noto Sans Devanagari', serif;
+        --font-roman:      'Junicode', Georgia, serif;
+    }
+
+    body {
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: var(--font-roman);
+    }
+
+    .devanagari {
+        font-family: var(--font-devanagari);
+    }
+
+    /* ── Navbar overrides ── */
+    .navbar-ontop { z-index: 1031; }
+    .hdclr { color: var(--saffron); }
+    .engpara { font-family: 'Open Sans', sans-serif; }
+
+    /* ── Layout ── */
+    .dh-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .dh-content {
+        flex: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        background: var(--parchment);
+        box-shadow: var(--shadow);
+        min-height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        .dh-content { padding: 24px 20px; }
+        .dh-wrapper { flex-direction: column; }
+    }
+
+    /* ── TOC Sidebar ── */
+    .toc-sidebar {
+        position: sticky;
+        top: 80px;
+        width: 280px;
+        min-width: 280px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding: 20px 16px;
+        margin-right: 24px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        scrollbar-width: thin;
+    }
+
+    .toc-title {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--saffron-light);
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list li {
+        padding: 4px 0;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-list li.toc-l3 {
+        padding-left: 16px;
+        font-size: 0.78rem;
+    }
+
+    .toc-list li a {
+        color: var(--ink-secondary);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .toc-list li a:hover { color: var(--saffron); }
+
+    .toc-list li.active {
+        border-left-color: var(--saffron);
+    }
+
+    .toc-list li.active a {
+        color: var(--saffron);
+        font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-sidebar { display: none; }
+    }
+
+    /* ── Mobile TOC Toggle ── */
+    .toc-mobile-toggle {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1050;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--saffron);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-mobile-toggle { display: block; }
+    }
+
+    /* ── Section Headings ── */
+    .section-heading {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        margin: 48px 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--rule);
+        letter-spacing: 0.5px;
+        scroll-margin-top: 80px;
+    }
+
+    h2.section-heading { font-size: 1.6rem; }
+
+    h3.section-heading {
+        font-size: 1.25rem;
+        border-left: 4px solid var(--saffron-light);
+        border-bottom: none;
+        padding: 8px 16px;
+        background: var(--saffron-wash);
+        border-radius: 0 5px 5px 0;
+    }
+
+    /* ── Prose ── */
+    .prose {
+        font-family: var(--font-roman);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+        color: var(--ink);
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    .prose em { color: var(--maroon); }
+
+    .prose:target {
+        background: rgba(212, 96, 10, 0.12);
+        border-left: 4px solid var(--saffron);
+        padding-left: 16px;
+        margin-left: -20px;
+        border-radius: 0 6px 6px 0;
+        animation: target-pulse 2s ease-out;
+    }
+
+    @keyframes target-pulse {
+        0%   { background: rgba(212, 96, 10, 0.30); }
+        100% { background: rgba(212, 96, 10, 0.12); }
+    }
+
+    /* ── Footnote References ── */
+    .fn-ref {
+        font-size: 0.75em;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    .fn-ref a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 0 2px;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: color 0.15s;
+    }
+
+    .fn-ref a:hover { color: var(--indigo); }
+
+    /* ── Synopsis Box ── */
+    .synopsis-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron-light);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .synopsis-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .synopsis-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .synopsis-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .synopsis-box.open .synopsis-toggle i {
+        transform: rotate(90deg);
+    }
+    .synopsis-body {
+        display: none;
+        padding: 0 20px 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+    }
+    .synopsis-box.open .synopsis-body { display: block; }
+    .synopsis-body p { margin: 0; }
+    .synopsis-attribution {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: var(--ink-secondary);
+        opacity: 0.7;
+        font-style: italic;
+    }
+    .synopsis-audio {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    .synopsis-play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--saffron);
+        background: none;
+        color: var(--saffron);
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: background 0.2s, color 0.2s;
+        padding: 0;
+    }
+    .synopsis-play-btn:hover {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn.playing {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn i { padding-left: 2px; }
+
+    /* ── Index Terms Panel ── */
+    .index-terms-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .index-terms-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .index-terms-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .index-terms-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .index-terms-box.open .index-terms-toggle i {
+        transform: rotate(90deg);
+    }
+    .index-terms-body {
+        display: none;
+        padding: 0 20px 16px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .index-terms-box.open .index-terms-body { display: block; }
+    .index-terms-dl {
+        margin: 0;
+        padding: 0;
+    }
+    .index-terms-dl dt {
+        font-family: var(--font-roman);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+        margin-top: 8px;
+    }
+    .index-terms-dl dd {
+        margin: 2px 0 0 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        color: var(--ink-secondary);
+        line-height: 1.5;
+    }
+    .nyaya-heading {
+        font-family: var(--font-roman);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        margin: 16px 0 4px;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+    }
+
+    /* ── Inline Index Popovers ── */
+    .idx-term {
+        border-bottom: 1px dotted var(--saffron-light);
+        cursor: help;
+        position: relative;
+    }
+    .idx-term:hover::after {
+        content: attr(data-def);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        background: rgba(44, 36, 22, 0.92);
+        color: #F5ECD8;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        max-width: 280px;
+        z-index: 100;
+        white-space: normal;
+        line-height: 1.4;
+        pointer-events: none;
+    }
+
+    /* ── Structured Version Banner ── */
+    .structured-banner {
+        margin: 0 0 28px;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, rgba(212, 96, 10, 0.06) 0%, rgba(212, 96, 10, 0.02) 100%);
+        border: 1px solid var(--saffron-light);
+        border-radius: 6px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        color: var(--ink-secondary);
+        line-height: 1.6;
+    }
+    .structured-banner i { color: var(--saffron); margin-right: 4px; }
+    .structured-banner a { color: var(--indigo); font-weight: 600; text-decoration: none; }
+    .structured-banner a:hover { text-decoration: underline; }
+
+    /* ── Footnotes Section ── */
+    .footnotes-section {
+        margin: 32px 0 48px;
+        padding: 20px 24px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .footnotes-section hr {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 0 0 16px;
+    }
+
+    .footnotes-list {
+        padding-left: 24px;
+        margin: 0;
+    }
+
+    .footnote-item {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+        scroll-margin-top: 80px;
+    }
+
+    .footnote-item:target {
+        background: rgba(212, 96, 10, 0.1);
+        border-radius: 4px;
+        padding: 4px 6px;
+        margin-left: -6px;
+    }
+
+    .fn-back {
+        color: var(--saffron-light);
+        text-decoration: none;
+        font-size: 0.85em;
+        margin-left: 4px;
+    }
+
+    .fn-back:hover { color: var(--saffron); }
+
+    /* ── Reference Links ── */
+    a.ref {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: all 0.15s;
+    }
+
+    a.ref:hover {
+        color: var(--saffron);
+        border-bottom-style: solid;
+    }
+
+    a.mbta-ext {
+        color: var(--indigo);
+        font-size: 0.7em;
+        margin-left: 2px;
+        opacity: 0.5;
+        text-decoration: none;
+        vertical-align: super;
+    }
+    a.mbta-ext:hover { opacity: 1; color: var(--saffron); }
+
+    /* ── References Panel (sidebar) ── */
+    .refs-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .refs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .refs-list li {
+        padding: 3px 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .ref-source-link {
+        font-weight: 600;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .ref-source-link:hover {
+        text-decoration: underline;
+    }
+
+    .ref-verse-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.76rem;
+    }
+
+    .ref-verse-link:hover {
+        text-decoration: underline;
+        color: var(--saffron);
+    }
+
+    .ref-verses {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Timeline panel ── */
+    .timeline-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .timeline-list li {
+        padding: 2px 0;
+        font-size: 0.76rem;
+        line-height: 1.4;
+        position: relative;
+        padding-left: 14px;
+    }
+
+    .timeline-list li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--saffron);
+    }
+
+    .timeline-list li.tl-approximate::before {
+        background: transparent;
+        border: 2px solid var(--saffron);
+        width: 4px;
+        height: 4px;
+    }
+
+    .timeline-list li.tl-century::before {
+        background: transparent;
+        border: 2px dashed var(--saffron);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+
+    .tl-dot-link {
+        text-decoration: none;
+        color: var(--ink);
+        display: block;
+    }
+
+    .tl-dot-link:hover {
+        color: var(--saffron);
+    }
+
+    .tl-year {
+        font-weight: 600;
+        color: var(--saffron);
+        font-size: 0.72rem;
+        min-width: 70px;
+        display: inline-block;
+    }
+
+    .tl-label {
+        color: var(--ink-secondary);
+        font-size: 0.72rem;
+    }
+
+    .tl-view-link, .tl-more {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.72rem;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .tl-view-link:hover, .tl-more:hover {
+        text-decoration: underline;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+
+    .breadcrumb-bar a {
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+
+    .breadcrumb-bar .sep {
+        color: var(--amber);
+        margin: 0 8px;
+    }
+
+    .breadcrumb-bar .current {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Chapter Navigation ── */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        margin-top: 48px;
+        border-top: 2px solid var(--rule);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .chapter-nav a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        transition: all 0.2s;
+        max-width: 45%;
+    }
+
+    .chapter-nav a:hover {
+        background: var(--saffron-wash);
+        border-color: var(--saffron-light);
+    }
+
+    .nav-prev { text-align: left; }
+    .nav-next { text-align: right; margin-left: auto; }
+
+    .page-range {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+    }
+
+    /* ── Volume Cards (Landing) ── */
+    .vol-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .vol-card {
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        transition: all 0.25s;
+    }
+
+    .vol-card:hover {
+        border-color: var(--saffron-light);
+        box-shadow: 0 4px 24px rgba(212, 96, 10, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .vol-num {
+        font-family: var(--font-roman);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--saffron);
+        margin-bottom: 8px;
+    }
+
+    .vol-subtitle {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        line-height: 1.5;
+        flex: 1;
+    }
+
+    .vol-chapters {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        margin-top: 12px;
+    }
+
+    /* ── Chapter Cards (Volume Index) ── */
+    .chapter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .chapter-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .chapter-card:hover {
+        border-color: var(--saffron-light);
+        background: var(--saffron-wash);
+    }
+
+    .card-num {
+        font-family: var(--font-roman);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--saffron);
+        min-width: 36px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        flex: 1;
+    }
+
+    .card-pages {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        color: var(--ink-secondary);
+    }
+
+    /* ── Landing Hero ── */
+    .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-family: var(--font-roman);
+        font-size: 2.4rem;
+        color: var(--saffron);
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .hero .devanagari-title {
+        font-family: var(--font-devanagari);
+        font-size: 1.8rem;
+        color: var(--ink);
+        margin-bottom: 16px;
+    }
+
+    .hero .author {
+        font-family: var(--font-roman);
+        font-size: 1.1rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .hero .desc {
+        font-family: var(--font-roman);
+        font-size: 1rem;
+        color: var(--ink-secondary);
+        line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer { margin-top: 48px; }
+</style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mbta/">
+      <div class="container-fluid">&emsp;&emsp;
+      <a href="../index.html" class="navbar-brand" style="text-decoration:none;">
+        <span class="devanagari ms-3" style="font-size:1.5rem; color:var(--saffron); font-weight:700;">धर्मशास्त्रम्</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="../index.html">धर्मशास्त्रम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5 active" href="../index.html">खण्डाः</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in/mbta/">महाभारतम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in">सनातनम्</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+
+    <div class="dh-wrapper container-xl">
+        <nav id="toc" class="toc-sidebar">
+<div class="refs-panel">
+<h5 class="toc-title">References</h5>
+<ul class="refs-list">
+<li><a href="../refs/atharvaveda.html" class="ref-source-link">Atharvaveda</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/brihaspati.html" class="ref-source-link">Bṛhaspati</a> <span class="ref-verses"><a href="../refs/brihaspati.html#i" class="ref-verse-link">i</a></span></li>
+<li><a href="../refs/hodh.html" class="ref-source-link">History of Dharmaśāstra</a> <span class="ref-verses"><a href="../refs/hodh.html#vol. II" class="ref-verse-link">vol. II</a>, <a href="../refs/hodh.html#vol I p 1" class="ref-verse-link">vol I p 1</a>, <a href="../refs/hodh.html#vol IV pp 2-5" class="ref-verse-link">vol IV pp 2-5</a></span></li>
+<li><a href="../refs/vishnu_smriti.html" class="ref-source-link">Viṣṇu Smṛti</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/vajasaneya.html" class="ref-source-link">Vājasaneya Saṃhitā</a> <span class="ref-verses"><a href="../refs/vajasaneya.html#I" class="ref-verse-link">I</a></span></li>
+<li><a href="../refs/shatapatha.html" class="ref-source-link">Śatapatha Brāhmaṇa</a> <span class="ref-verses"><a href="../refs/shatapatha.html#i" class="ref-verse-link">i</a></span></li>
+<li><a href="../refs/rigveda.html" class="ref-source-link">Ṛgveda</a> <span class="ref-verses"><a href="../refs/rigveda.html#I.185.1" class="ref-verse-link">I.185.1</a>, <a href="../refs/rigveda.html#V.30.8" class="ref-verse-link">V.30.8</a>, <a href="../refs/rigveda.html#I.164.11" class="ref-verse-link">I.164.11</a>, <a href="../refs/rigveda.html#X.19.1" class="ref-verse-link">X.19.1</a>, <a href="../refs/rigveda.html#IV.43" class="ref-verse-link">IV.43</a>, <a href="../refs/rigveda.html#VI.41.2" class="ref-verse-link">VI.41.2</a> <a href="../refs/rigveda.html" class="ref-verse-link">+29</a></span></li>
+</ul>
+</div>
+<h5 class="toc-title">Sections</h5>
+<ul class="toc-list">
+<li class="toc-l2"><a href="#chapter-i-vrata-in-the-rigveda">Chapter I. Vrata in the Rigveda</a></li>
+</ul>
+</nav>
+        <main class="dh-content">
+            
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep">›</span>
+        <a href="index.html">Volume V: Part I</a>
+        <span class="sep">›</span>
+        <span class="current">Chapter I. Vrata in the Rigveda</span>
+    </div>
+    
+            <h1 class="text-center" style="font-family: var(--font-roman); font-size: 2rem; color: var(--saffron); margin-bottom: 8px;">
+                Chapter I. Vrata in the Rigveda
+            </h1>
+            <p class="text-center" style="font-family: 'Open Sans', sans-serif; color: var(--ink-secondary); font-size: 0.9rem; margin-bottom: 36px;">
+                Volume V: Part I <span class="page-range">pp. 1–21</span>
+            </p>
+
+            
+    <div class="synopsis-box" id="synopsis">
+        <button class="synopsis-toggle" onclick="this.parentElement.classList.toggle('open')"
+                aria-expanded="false" aria-controls="synopsis-body">
+            <i class="fa-solid fa-chevron-right"></i>
+            Kane's Synopsis
+        </button>
+        <div class="synopsis-audio">
+            <span class="synopsis-play-btn" role="button" tabindex="0"
+                    onclick="toggleSynopsisAudio(this)"
+                    data-src="../audio/synopsis/vol-5-part-1/vol-5-part-1_sec001.mp3" title="Listen to synopsis">
+                <i class="fa-solid fa-play"></i>
+            </span>
+            <audio preload="none"></audio>
+        </div>
+        <div class="synopsis-body" id="synopsis-body">
+            <p>The first chapter of Kane's seminal 'History of Dharmaśāstra' meticulously delves into the concept of *Vrata* as it emerges within the textual landscape of the Ṛgveda. This foundational inquiry sets the stage for understanding one of the most pervasive elements of Hindu religious and social life, establishing its earliest contextual and semantic dimensions.
+
+In the Ṛgvedic hymns, *Vrata* manifests with a rich semantic range, encompassing divine ordinances, cosmic laws, and the vows or practices undertaken by humans. It is often associated with the adherence to moral and ritual duties, particularly those observed under the watchful gaze of deities like Varuṇa, who upholds the universal order and whose *vrata* signifies his immutable cosmic law.
+
+Kane's examination here critically analyses the various nuances of *Vrata* in its earliest attestations, distinguishing between its divine and human aspects, and tracing its nascent implications for the broader framework of dharma. This rigorous philological and contextual study reveals *Vrata* not merely as a simple vow, but as a complex socio-religious construct crucial for comprehending the evolution of Hindu legal and customary traditions.</p>
+            <p class="synopsis-attribution">— Synopsis by P.V. Kane, from History of Dharmaśāstra</p>
+        </div>
+    </div>
+
+
+            
+    <div class="index-terms-box" id="index-terms">
+        <button class="index-terms-toggle" onclick="this.parentElement.classList.toggle('open')"
+                aria-expanded="false" aria-controls="index-terms-body">
+            <i class="fa-solid fa-chevron-right"></i>
+            Index Terms (147)
+        </button>
+        <div class="index-terms-body" id="index-terms-body">
+            <dl class="index-terms-dl"><dt>## Kaivalya does not occur in the principal or older Upaniṣads but the word Kevala occurs in Śv. Up. IV</dt><dd>and VI</dd><dt>## Karma and Punarjanma 1530-1612: (vide under Christianity</dt><dd>Empedocles, Heaven, Herodotus, Plato, Pythagoras, Prof. Ranade, 'reincarnation,' Vedanta, Upanisads) : antecedent supposition to belief in K. and P. are four ; Ap. Dh. S. and Gautama on ; belief had arisen in times of Sat. Br. that one who does evil deeds in one life has to suffer for them in a later life from that being which he harmed ; belief that punishment by the king for a bad deed relieved the doer of the sin ; Brahmana works (such as Sat. XII. 9. 1. 1) give details about the rewards of good works and the retribution for evil deeds ; Br. Up. IV. 4. 5-7 is the leading and the oldest Upanisad passage on K. and P. and so is Br. Up. III. 3. , confession of sins was in certain cases held to purify a person as in Varupa-praghāsa Cāturmāsya and necessary in prāyaścittas for some sins ; clear statement of the doctrine of K. and P. is absent from the Rgveda though it refers to two births of Vasistha ; difficulty of reconciling the doctrine of K. with the system of Sraddhas for ancestors ; doctrine of Karma leads on to doctrine of punarjanma ; doctrine of, extends the inexorable physical law of causality to the mental and moral sphere ; doctrine of, has attracted many minds from the West and there is now a voluminous literature on it in the West, doctrine of, modified doctrine of Heaven and Hell ; doctrine of Karma, instead of being a gospel of hope and an urge to effort, became in the minds of many Indians confused with fatalism ; doctrine of K. permeated the whole of society, poets and others ; doctrine of K. not pessimistic or fatalist if rightly understood but emphasizes all-out effort in this life ; doctrine of, received almost unanimous support from all darśanas (except Cārvāka) that severely criticize each other's doctrines ; doctrine of, touched upon by the Bhagavadgītā in many passages ; doctrine of, a unique characteristic of Hindu culture, effects of evil deeds done by a man can be got rid of only by expiations, or by suffering them in another life or by realization of Absolute brahman ; efforts made by a man on the path of Yoga are not altogether lost, but become steps on the path of perfection ; four kinds of, viz. krsna, sukla etc. ; idea of K. was prevalent among Jewish people in the time of Jesus (vide St. John IX. 2) ; idea of punar-mṛtyu in Śat. Br. and Tai. Br., Br. Up. and Kauṣ. Br. ; influenced Indian thought from at least Upaniṣad times and all Hindus, Buddhists and Jains ; is an endeavour to answer the question, what happens to men after death of body ; law of Karma, laid down by Upaniṣads, was inexorable that fruits of all actions, good or bad, must be experienced, but some exceptions were made, the first being that actions done after a person has realized brahman but before the body falls do not produce results ; little is said in the Ṛgveda about the fate of evil-doers ; McTaggart, L. P. Jacks, Wordsworth and some other Western writers favour the doctrine of K. ; Mahābhārata in some passages avers that the consequences of the evil deeds of a man are suffered by the man’s son or grandsons (and not by himself), Manu prescribes Japa of certain Vedic hymns for removal of even mortal sins and highly praises Aghamarṣaṇa hymn, men guilty of grave sins may, acc. to Chān. Up., Kathā Up., Manusmṛti become beasts, or even tree trunks but theosophists and some modern men say that once the state of a human body is reached there is no regre-ssion to a lower stage ; objections against doctrine of K. stated and replied ; objection that doctrine of K. leaves no scope for Free will, dealt with ; once prāyaścittas were admitted as removing effects of sins, other ways were prescribed in early times for the same purpose such as Japa (recitation of holy texts), homa, tapas, fast, gifts, pilgrimages ; passages in Manu, Yāj. and other Smṛtis that a guest when not properly honoured gives his demerit to the householder and takes away latter’s all puṇya or stating that if a witness deposes falsely all his merit in many lives will go to the party who lost that suit are mere arthavādas ; popular idea of last thought at death leading to a new birth appropriate to it is an interference with the law of K. ; Prāṇāyāma, practice of, for removal of effects of sins, Purāṇas emphasize the importance of good or evil deeds, that one has to reap the fruits of one’s actions, that Karma does not come to end even after many lives unless the results thereof are undergone ; Purāṇas went so far as to prescribe mere remembrance of the name of Kṛṣṇa or Nārāyaṇa, particularly for śūdras and pratiloma castes, for removal of effects of sins ; Ramayaṇa, on doctrine of K. ; Ṛgveda contains some prayers for wealth and heroic sons, but it was immortality and joys of heaven that were most valued ; Śatapatha Br. had arrived at the idea that man's will governs what he will reach after death ; Śatapatha Br. has a passage on the powers conferred in yonder world by sacrifices performed in this life such as Darśapūrṇamāsa, Cāturmāsya ; some features of our present life can be more satisfactorily explained on the theory of Karma than on any other ; strict doctrine of K. would require that one man's good or bad Karma cannot be transferred to another, but in Ṛg. fear is expressed that one may have to suffer for others’ deeds and modifications were introduced such as the king getting 1/6 in the merit or demerit of his subjects ; three classes of Karma, *sañcita*, *prārabdha* and *kriyamāṇa* (or '*sañcīyamāna*') explained ; three regular treatises in Sanskrit on K. mentioned and described ; Vedāntasūtra on K. and P. ; very few regular treatises in Sanskrit on the law of K. ; word Karma in some passages of Ṛg. means ‘exploits’, ‘valiant deeds’ and in some ‘religious works’ such as sacrifices and gifts, works and conduct done in this life fashion a man's future life and that the present existence of a man depends on his actions and conduct in a past life or lives — this is the gist of the grand passages of Bṛ. Up. IV. 4, 5-7 and III. 2, which are illumined by the illustrations of the caterpillar and the snake's slough, works in English on K.</dd><dt>## Mahābhārata</dt><dd>and Sāṅkhya ; called Jaya by itself and other works , claims that it is superior to all Vedas ; contains no pas-sage giving the position of planets in relation to rāśis ; critical edition of, at Poonā ; date of ; describes itself as Dharmaśāstra, Arthaśāstra, Kāmaśāstra and Kārṣṇaveda ; dilates upon all four puruṣārthas and should be listened to by one desiring Mokṣa ; discussion in, on daiva and puruṣakāra ; emphasizes often that there is only one God and that there is no difference between Śiva and Viṣṇu ; enjoins (in Bhīṣma 5. ) that incompre-hensible matters should not be tried to be solved by Tarka ; many passages in M. where planets in relation to Nakṣatras are stated to fore-bode misfortune to people in general or to individuals ; Nīlakaṇṭha, commentator of, stated to contain the substance of the Veda and a better means of the education of the common people including Śūdras, women etc. ; words ‘ahiṁsā paramo dhar-maḥ’ o cur frequently in M. ; (spiritual or religi-ous debts ), (about sonless man )</dd><dt>## Prabhākara : (vide under Kumārila): called ‘Our Guru’ by Śālikanāthā</dt><dd>a. of com. called Bṛhatī on P. M. Sūtra ; flourished between A. D., inscriptions and other evidence establish that P. held an eminent position in Karṇāṭaka and Marātha countries in 11th century A. D. ; held the view that no word was significant in isolation but became significant when joined with a word or words in a sentence ; Jaiminīya-nyāya–mālā–vistāra cites points of difference between P. and Kumārila ; later than Kumārila, though no substantial evidence (except tradition) for holding that P. was a pupil of Kumārila ; quotes Kirātārjunīya</dd><dt>'avrata</dt><dd>apavrata', 'anyavrata', meaning of 'sacred vow or observance' ; meaning of, came to be restricted to</dd><dt>'sacred vows' and 'rules of conduct</dt><dd>' ; meaning of, as compared with ṛta and dharma ; meanings of, two, generally in Saṁhitās other than Ṛgveda, in Brāhmaṇas and Upaniṣads ; meanings of, two, secondary in Brāhmaṇa times viz. 'a proper pattern of conduct'</dd><dt>*homa*</dt><dd>and *dāna* ), 1325n-26, 1328n-29n, 1634n-36n, 1638n-1640, Vol. III. — (on pp.) , ( on Manu II. 7 ) , and n, ( discussion on valid customs and usages ), ( Kumārila's explanations of transgressions by great men of antiquity ), ( adoption by Hindu widow ), 1469n-70, Vol IV3, 40n-41, 673n-4n, ( meaning of</dd><dt>*stobhas* )</dt><dd>( meaning of ' *brahmaloka* ' in VIII. 3. 2 ), ( VIII. has the idea of *pratyāhāra* of Y. S., though not the word ), ( uses the word ' *dhyāna* ' ), ( on Karma and *punarjanma* ), ( four mortal sins ), (*salokatā*, *sārṣṭitā* and *sāyujya*), ( on *cāṇḍālas* ), ( on</dd><dt>-   Śruti</dt><dd>technical meaning of, in PMS III. 3.</dd><dt>Abhiṣeka</dt><dd>procedure of, in tantra cult, resembles Christian Baptism ; sprinkling of disciple by guru with water to the accompaniment of mantras, is the main part, at the end guru gives a name to disciple ending in Ānandanātha</dd><dt>Addhātālayaḥ</dt><dd>( in Ṛg. X. . ), meaning of</dd><dt>Alberuni</dt><dd>a. of a work on ‘India’ composed in A.D., (on Harṣa era), (names Manus), (furnishes two lists of Purāṇas), (mixes up Purāṇas and Upapurāṇas in his list and gives details about contents of some Purāṇas), (collected with the help of Hindu Pandits vast materials)</dd><dt>Alekhana</dt><dd>mentioned in P. M. S., is quoted at least times in Āp. Śr. Sūtra, his views being frequently in conflict with Āśmarathya's</dd><dt>Annals of Bhandarkar Oriental Institute; 3</dt><dd>(on a modern Siddha Śivayogin ), (on Bhavadāsa ), (on Gītā .4 ), (present author's paper on ‘Brief sketch of the PMS’), (pre-sent author's paper ‘Pūrva-mīmāṁsā’), (Śaṅkha-dharmasūtra )</dd><dt>Apte</dt><dd>Prof. V. M., on derivation and meaning of vrata, 2, 4, 6, 8, 9n</dd><dt>Asat</dt><dd>meaning of, in Ṛg. X. . 2, Chān. Up. III. . 1, Bṛ. Up. I. 4. 7, Tai. Up. II. 7</dd><dt>Atharvaveda</dt><dd>(verses of, used in Śāntis on dreams), (on Utpātas), (abhaya-mantras), (two interpretations of X. 8. 9), (magic spells in), (spells for softening the heart and for destroying worms), (on dīkṣā), (on joys of heaven), (aṣṭakāmantra</dd><dt>Aśmarathya</dt><dd>quoted by both P. M. S and V. S. and is quoted at least times by Āp. Śr. sūtra, his views being often in conflict with Ālekhana’s</dd><dt>Aśoka 493; Ahiṁsā of A. was qualified 1015; appointed officers called Mahāmātras to look after Buddhist Saṅgha</dt><dd>Brāhmaṇas, Ājīvikas and all other sects ; 12th Rock edict of, requires honour to be shown to all beliefs and sects , edict of, shows that he sent missionaries to five kings of the Near East about B. C.; edicts 2 and 5 refer to Yāvanas (Yona) ; emphasized moral endeavour, disliked sacrifices, believed in gods and desired that people should strive for heaven ; employs regal years in his edicts ; forbids festival meetings (samāja) ; his regulations about not killing birds and animals and about the sale of fish must have caused great hardships to poor people, in later life appears to gloat over the fact that gods worshipped as divinities in</dd><dt>Aśvalāyana-śrauta-sūtra</dt><dt>Balabaladhikaraṇa</dt><dd>is PMS III. 3. ; Dharmaśāstra works employ it</dd><dt>Bauddhas</dt><dd>of Vijñānavādī school rely on Br. Up. IV. 5. as supporting them, acc. to Śabara ; heterodox hypotheses of B.acc. to Kumārila sprang from the arthavāda passages of the Upaniṣads and serve the purpose of inducing people to give up extreme attachment to sensual pleasures and are useful in their own way</dd><dt>Brahmapurāṇa 43</dt><dd>(on nyāsa), ( on Sāṅkhya ), (on creation), chapters containing verses deal with tīrthas, com-posed between 10th and 12th</dd><dt>Brāhmaṇa or Brāhmaṇas (vide under gifts</dt><dd>pātra, priests); all brāhmaṇas were not priests, are not priests in modern times and all temple priests are not always brāhmaṇas ; every b. was not a proper recipient for gifts in ancient Indian times ; difference of view on killing an ātatāyin b. ; gifts (religious) to be made acc. to śāstras, Manu and other Smṛtis only to pātra (deserving) br. who has learning, character and tapas, gifts made to brāhmaṇa not learned in Veda or who is avaricious or deceitful were deemed fruitless by Manu and to lead donor to hell ; had no power to raise taxes like tithes nor was there a regularly paid hierarchy of priests and bishops as in England, high ideal placed before br. of plain living, of giving up active pursuit of riches, of devotion to study, pp. , how importance of birth as a brāhmaṇa arose ; lores to be studied by a learned brāhmaṇa, acc. to Gautama Dh. S. ; maintaining themselves by practising astrology were unfit for being invited to perform rites for gods or for śrāddha dinner acc. to Manu ; Manu and others provided that in rites for pitṛs the learning and character of b. should be carefully scrutinized, but Purāṇas did away with this, particularly at Gayā ; of Mathurā are like gods, says Varāhapurāṇa ; Mahābhārata emphasizes that good character makes a brāhmaṇa ; milk is vrata of, most Br. studied only one Veda or a part of it, only br. were entitled to drink Soma beverage in Vedic sacrifices ; performed solemn Vedic sacrifices like Vājapeya ; reasons or basis of the veneration paid to brāhmaṇas for over three thousand years, result of threatening or striking or injuring (with blood from wound) a brāhmaṇa declared in Tai. S., which is interpreted in two ways by different writers, substantial sources of income were only three, viz. teaching, officiating as priests at sacrifices of others and receiving gifts made voluntarily which were fitful, variable and precarious, to learn vidyā from a kṣatriya was unnatural or unusual in Upaniṣad times, to be fed in all vratas, tribute paid in passing to the ancient brāhmaṇa ideal by Pandit Jawaharlal Nehru ; vast Vedic and classical literature was cultivated, preserved and propagated mostly by brāhmaṇas with arduous labour and the Ṛgveda was preserved by them with unparalleled care, were asked to study Veda and subsidiary lores without any eye to motives of profit as a duty and to understand it, to teach the Veda without demanding a fee beforehand, to perform sacrifices and to make gifts, who is not a Vaiṣṇava is declared as a heretic by Padmapurāṇa and Vṛddha-Hārīta ; Yāj. provides that even a learned br. should refuse gifts and that the king should donate to learned brāhmaṇas, land, houses and marriage expenses or br. should approach a king or rich person for their 'Yogakṣema'</dd><dt>Buddhism held forth by a restatement of Hindu religion</dt><dd>philosophy and practices , ten topics of, according to Bhāgavata ; topics of tīrtha, dāna, śrāddha and vrata cover about one lakh of verses in the extant P. ; total number of ślokas in</dd><dt>Bṛhadāraṇyakopaniṣad</dt><dd>( on dreams ), ( emphasis on dayā ), ( on last thought ), ( explains Rg. VI. . ), ( on 72000 nāḍīs ), ( eulogy of Gāyatrī ), ( mandala of the Sun ), ( derivation of Puruṣa ), ( Yājñavalkya expounds brahman to Janaka and answers angry brāhmaṇas in his court ), ( vamśas ), ( prāṇa as symbol of brahman ), ( 'mantaryyaḥ' implies tarka ), ( frequently has the words 'apa punarmṛtyum jayati' ), ( I. 4. quotes Rg. IV. . 1 ), ( Free will and Determinism ), ( noblest prayer in ), ( sāyujya and salokatā occur ), ( on āśramas )</dd><dt>Child Marriage Restraint Act ( XIX of): fixedyears ( later raised toby the Hindu Marriage</dt><dt>Christian era 815; treat Vedas as authoritative and prescribe the use of Vedic mantras in many rites</dt><dd>two separate Purāṇa versions called Āgneya, Brāhma, Liṅga and Viṣṇu known to Ballālasena in latter half of 12th cen. A. D. ; Vāyupurāṇa named as first among P. by Matsya, Agni, Nāradīya, while several of the other P. substitute Śiva for Vāyu but Vāyu is one of the Mahāpurāṇas and not Śivapurāṇa ; Vāyupurāṇa and Śiva P. both included among P. by Ballālasena ; Vedārthasaṅgraha of Rāmānujācārya states that all Purāṇas should be so interpreted as not to be in conflict with Viṣṇupurāṇa ; Vedic mantras occurring in Purāṇas were not to be read or listened to by śūdras ; Viṣṇupurāṇa alone of all extant P. closely agrees with the definition given by Amarakōśa but it also contains several other topics ; wax eloquent as to great efficacy of vratas, śrāddha, pilgrimages, fasts, gifts, repetition of the name of God, bhakti , P. were affected by the theory of the power of mantras ; word Purāṇa occurs over a dozen times in Ṛg and means *ancient, old' ; Yāj. Smṛti holds Purāṇa as one of the sources of Vidyā and Dharma ; Purāṇas give informa-tion on Architecture, sculpture and painting</dd><dt>Dattatreya Vs. Govind</dt><dd>I. L. R. . Bom.</dd><dt>Devayāna and Pityrāņa Paths— (vide under Paths): described in Br. Up. VI. 2 and Chān. Up. V. 10 and brought in relation to the doctrine of transmigra-tion described in Br. Up. IV. 4. 5-7 and III. 3. 13</dt><dd>men that have to go by D. and P. paths , men-tioned in Rg. X. 2 7 and X. . 1</dd><dt>Devibhāgavata</dt><dd>(states that Matsya is first out of Purāņas), (mnemonic verse containing first letters of Purāņas), (note on), (verse 'gurur-brahmā' etc), (on cakras and sahasrāra), (states nyāsa should be part of Sandhyā worship), (Khecarī-mudrā), (on mudrās)</dd><dt>Dharma</dt><dd>three important words in the Ṛgveda are *ṛta, vrata* and *dharma*, that were transformed into other meanings later on, is not immutable, but liable to change and is subject to country and time ; roots of ( Dharmamūla ), four or five, acc. to Dharmasūtras ( ancient ) and Yāj. , several classifications, one into śrauta ( based on Veda ) and smārta ( based on smṛtis ), another into six ( named and illustrated )</dd><dt>Dharman</dt><dd>meaning of</dd><dt>Dhātupāṭha</dt><dt>Durgotsava</dt><dd>(vide under Durgā, Saptaśatī) : also called Navarātra, all men and women of all castes and even those beyond the pale of the caste system such as Mlecchas have adhikāra for, animals that may be sacrificed in honour of Durgā, animals are offered principally on the 9th tithi, but no female of any species is to be sacrificed, Bhadrakālī, described as having arms in Kālikāpurāṇa 163&lt;sup&gt;26&lt;/sup&gt;; bilva twig to be brought and Durgā is to be invoked to abide in it, bodhana (rousing from sleep) of Devi on different days , brief statement of what is to be done from the 2nd to the 5th tithi of Aśvina or to the 9th, Caṇḍīgāyatrī in, 179&lt;sup&gt;27&lt;/sup&gt;; celebrated all over India from 1st to 9th tithi of Aśvina-śukla in some form or other, but it is celebrated in a grand way in Bengal, Bihar. and Kāmarūpa, contemplation on form of Devī ; description of Durgotsava from 1st day to 10th, description of the form of Devī, long and finely worded, in Matsya and Kālikā-purāṇas, Devī ( Durgā ) got different weapons from several gods, Devī may be worshipped in her shrine, on mountain Vindhya, in all places, towns and villages, forests, in a liṅga, in a book, in water etc., Durgā is said to go to sleep on 8th of Āṣāḍha-śukla and hence some works provide for rousing her ( bodhana ) on different dates</dd><dt>Durgāṣṭamīvrata in Kalpataru and Hemādri 185 ; elaborate ritual about offering the blood and head of a bali</dt><dd>prescribed in Durgārcanapaddhati, rites and mantras differing according to the bali offered, 166ff; establishment of the image of Durgā on a seat, the bundle of nine plants to its right and placing the bilva twig near the image and performance of prāṇapratiṣṭhā ; even now many high caste people of Bengal including brāhmaṇas offer goats and rarely buffaloes to Durgā, though some brāhmaṇa families offer only fruits and vegetables in lieu of animals, family members, and guests sit together after each day’s pūjā in Navarātra and persons present partake of prasāda, ghaṭa (a jar with a peculiar shape ) is to be established and filled with water, twigs of mango and other auspicious plants to be placed thereon and worship of Durgā thereon, on 7th tithi with , or 5 upacāras, goats and buffaloes alone sacrificed usually in D. ; Guggulu incense, favourite of Durgā, homa is performed after pūjā in fire called ' Balada', with a mantra preceded by ‘ om ’ and followed by svāhā, horses honoured in, by kings and those who possess them, if an animal was killed as bali, what was offered was only the blood or head, if brāhmaṇa offered his own blood to Devī, he would be guilty of suicide and go to hell, in place of wine one should offer cocoanut water in a vessel of bell metal or honey in a copper vessel, in Navarātra the performer has to listen to the recitation of the Vedas and from the 1st tithi to the 9th he should mutter Caṇḍīpāṭha or engage a person to do so, it was believed in the Vedic times and also by Manusmṛti that animals killed in sacrifices to gods and pitṛs went to heaven and those who offered them did not incur sin, image of Durgā with four or ten arms to be made from certain substances only or a picture is to be used, image of Durga with lion and Mahisasura and images of Lakshmi and Ganesa and of Sarasvati and Kārtikeya to be shown on her two sides ; is nitya as well as a Kāmya rite, Jāpaka was to be engaged for reciting the mūlamantra a hundred thousand times, besides the reader of Satacandi, Kālikā-purāna details the different periods of time for which Durga becomes gratified by the offering of the blood of different animals, Mahā-navami rites (of 9th day) described, Mahā-stami rites (on 8th day) described, including a fast to be observed by one having no son, Mantra of Durgā to be repeated after sankalpa for japa and homa is either the Jayantīmantra or the mantra of nine syllables , naivedya of various kinds to be offered to Durgā, offering of devotee's own blood and the flesh of a he-buffalo and goats pleases Durgā most, offering of wine in D. relates to ages other than Kali, says Prāyascittatattva, pranapratisthā of images of Durgā, Ganesa and other deities, principal items in Durgāpūjā are snāpana (bath), pūjā, offering of bali and homa, reciting of Devīmāhātmya in, also rewards of so doing, revelry and abuse indulged in, on last day of Durgā-pūjā, revulsion of feeling against killing animals arose and Kālikāpurāna provides substitution of Kūsmānda (pumpkin), sugarcane stalks etc. ; sankalpa (a short period viz. last ghatikā of the mahāstami and the first part of Mahānavami), pūjā of Durgā on, with Yoginīs, is deemed to be the holiest of pūjās, sankalpa, different forms of, sankalpa, at time of giving daksinā, sapta-sati is the best of stavas (lauds) ; several alternatives for the beginning and duration of D. suggested by Tithi-tattva, most of which find support in Kālikā and other Purānas, some works provide that D. must be celebrated in Sarad (Asvina) and also in Vasanta (Caitra), Svastika used in D., explained, three-fold character of Candikā, three times for Durgāpūjā, the principal one being at night and varying views, tilaka mark with blood of the bali made on forehead of devotee, tithi more important than nakṣatra in D. ; twigs of nine plants bound together in a sheaf with a separate mantra for each plant and worship of sheaf, Upacāras in D. are slightly different from the offered to other gods, Veda recitation in D. ; voluminous literature on D., worship of maidens</dd><dt>Gautama-dharma-sūtra</dt><dd>1544n–45</dd><dt>God ( vide under creation</dt><dd>Einstein, Ṛgveda, Vāk, cosmology ; arguments for the existence of G. ( vide under cosmology ) ; Bhagavadgita ( XIII. )</dd><dt>Herodotus</dt><dd>(Greaks borrowed from Babylonians two kinds of sun-dials and division of day into parts) ; refers to peculiar practice of Egyptians to regard each month and day as sacred to some god ; states some Greeks had made the doctrine of punarjanma their own and that Egyptians were the first to teach it ; states that India constituted the 20th province of Persian empire and paid tribute</dd><dt>History of Dharmaśāstra : Vol. I</dt><dd>on pp , vol. II on pp. , 31n-33n, 218n-9n, 674n-5n. , . , 1096n-97, 1217n-18, ( for Madhuparka ), ( for Sautrāmaṇi ), ( Upanayana for women ), ( marrying a maternal uncle's daughter and gift or sale of horses ), ( distinction between *yāga*</dd><dt>Holākādhikaraṇa—Jaim. I. 3.-are so called because the first example in Śabara's bhāṣya is</dt><dt>I. 179.6 adopted in Agnipūrāņa as mantra for arghya to</dt><dd>story of A., Indra and Maruts, Vedic sage</dd><dt>I. 3 M. means probably the work of Jaimini in 12 chapters</dt><dd>many writers like Mādhavācārya speak of two mīmāṁsās, Pūrva ( chap of Jaimini) and Uttara (four chapters forming the Vedānta-sūtra) ; meaning of the word M. long before the Upaniṣads ; not concerned with legislation by the king or bheda , rule that the singular includes the plural is a general one and so is the rule that a word importing a male includes a female ; rule that a doubt about the exact meaning of a part of a passage may be removed by relying on the remaining part of the passage , rule about understanding words in the Veda and in Jai. in the same sense as in popular usage as far as possible ; rule that words are to be taken in the primary and not in a secondary sense ; rule that the same word must not be used in two senses in the same sentence, rule that where words like yava, varāha, and vetasa have two meanings the meaning that the</dd><dt>Indian General Clauses Act (X of 1897)</dt><dd>Sec. lays down that the singular includes the plural and words of masouline gender include females, unless the subject or context is repugnant</dd><dt>Indian Historical Quarterly 30</dt><dd>(Pargiter criticized), . , (Inscription of Rajaraja in A. D in which Mimāṁsāśāstra is said to have Chap.), (problem of 'Taduktam' sūtras), (paper on 'Vṛttikāras of Pūrvamīmāṁsā-sūtra'), (Prof. Renou criticized)</dd><dt>Indra and Prajāpati 1497–8; exploits of</dt><dd>paramour of Ahalyā (night), relation to Yatis, in Ṛgveda ; said to be a killer of 'ahi'</dd><dt>Itikartavyatā-means procedure of sacrifices</dt><dd>Kalpa is the same as i. ; word occurs in P. M. S. III. 3.</dd><dt>IV. 4. 5-7)</dt><dd>(holds that Ṛg. I. . has nothing to do with Devayāna</dd><dt>Iṣu-yāga</dt><dd>a magic rite referred to in P. M. S. VII. 1. , to which details are transferred from Śyena-yāga</dd><dt>Janaka</dt><dd>king of Mithilā, a pupil of Pañcaśikha acc. to Śāntiparva, had reached a position of unconcern about worldly goods and power , dialogue between J. and Sulabhā and her scathing remarks against J. ; learned from Pañca-śikha the whole doctrine of mokṣa as based on Upaniṣad passages acc. to Śāntiparva, learnt from Yājña-valkya the doctrine of brahmaṇa acc. to Br. Up. , offered to become slave of Yājñavalkya</dd><dt>Kalikāpurāṇa 34</dt><dd>158n-60n, ( on Upacāras of Devī, on animals to be offered ), ( Yoginis named and numerous balis to Devī ), Śābarotsava in Durgā pūjā ), ( pūjā of Devī three times in the day ), ( nīrājana ), ( many chapters on mantras, mudrās, nyāsa etc. ), ( mātṛkānyāsa ), ( three verses q. by Kalpataru ) ; devotes considerable space to Durgā and her worship, describes mudrās like Dhenu, Yoni, and states there are mudrās, for general worship and for special occasions ; Note on ; three separate recensions of, acc. to Dr. V. Rāghavan ; to be placed before A. D.</dd><dt>Kalpasūtras : Jaimini ( I. 3 11-14 ) has a separate adhikaraṇa on them 1274; Kumārila distinguishes between Kalpa ( ritual of Vedic sacrifices ) and Kalpa-sūtras and names eight of the last</dt><dd>and n ; Śabara mentions three K. by name ; various interpretations by Kumārila of P. M. Sūtras I. 3.</dd><dt>Karandikar</dt><dd>Mr. J. S.: a. of Gītātattvamañjarī (in Marathi); relies on Ṛg. X. . 8, X. . 3 and 5, X. . 6 for his view that the doctrine of Trans-migration is as old as Ṛgveda ; view of, examined and held to be wrong</dd><dt>Karṣa</dt><dd>a weight equal to *māṣas* of eighty *raktikās*</dd><dt>Kauśikāsūtra (of the Atharva-veda )</dt><dd>729n–30n, ( *Keśava’s paddhati* on ), ( on *Āyuṣya mantras* ); *Kauśikās* of chapter deal with *adbhutas* and the *Śāntis* therefor ; *mantras* m. in K. on *Śāntis* appear to have formed an independent collection and Atharvaveda mantras play a secondary role ; *Śāntis* in K. are spoken of as *prāyaścittas*</dd><dt>Kāmya (for securing some object in this life or next life or both 55; most v. are for both men and women 51; V. of gods</dt><dd>violated by human beings that are punished by gods for this 9; passages where the words ‘tava vrate’ occur ; regarded as tapas or niyama also ; several V. prescribed for women alone ; spoken of, not only in relation to Agni</dd><dt>Kārtika-śukla first is one of three most auspicious days in the year 201; Kārtika-śukla first if it has Svātinakṣatra is most commended 201; lights in temples of Viṣṇu</dt><dd>Śiva and other gods, in monasteries, rooms for implements, on caityas, stables, not a festival in honour of a single god as Navarātra is, oil bath necessary on all three days from 14th, of lights, and fireworks, is most joyful of festivals and observed throughout India, though the observances differ in detail from age to age and from country to country ; on evenings of 14th dark half and Amāvāsyā men with firebrands show the way to pitṛs ; origin of, not certain ; rites on Amāvāsyā in, rites performed on the 14th of dark half of Aśvina ( or Kārtika according to pūrṇimānta reckoning ), second tithi of Kārtikaśukla is called Bhrātṛdvitīyā ; tarpaṇa on 14th of Yama with seven names or names, and n; three days, viz. 14th, Amāvāsyā and Kārtika śukla first constitute Kaumudī festival , usage of eating kinds of vegetables on 14th in Divali</dd><dt>Kṛṣṇa 152; brief description of</dt><dd>from Agnipuraṇa ; celebrated on 14th of Bhādrapadaśukla ; consists mainly in the worship of Hari as Ananta and in wearing on the right hand of men and left hand of women a holy strap of thread dyed with saffron, made of cotton or silk ; description of, in Hemādri ; description of, in Vratārka ; doraka dyed with saffron and knots ; not mentioned in K. K. V. (ou vrata ), salt forbidden in this vrata ; varying views of eminent writers about the exact time and tithi for this when third is mixed with another tithi</dd><dt>Laghuruḍra</dt><dd>is same as Ekādaśinī, acc. to Kamalākara and some others, but in popular practice it is eleven times of ‘Ekādaśinī’.</dd><dt>M. 1107; differing interpretations of Rg. IV. 58. 3 (catvāri śṛṅgā etc.) by Nirukta and others</dt><dd>examples of short mantras of 5, 6, 8, syllables from Smṛtis</dd><dt>M. ‘Om Man'padme hūm’ discussed and results supposed to be derived from it</dt><dd>most sacred Vedic M. is Gāyatrī (Rg. III. . ) called Vedamātā in Atharvaveda ; no difference of meaning in the words used in</dd><dt>Mahābhārata and Purāṇas) that are concerned with Dharma and Mokṣa have the Veda as their source</dt><dd>while Smṛti parts concerned with artha and kāma are based on worldly practices, acc. to Tantravārtika, while episodes and tales in the epic and Purāṇas are arthavādas ; Yaj. (II. ) and Nārada propose that when two smṛtis are in conflict, reasoning based on the practices of elders was of greater force, what those who advocate the historical method or approach towards S. mean ; when Smṛtis were in conflict with each other, various devices were employed instead of allowing an option, viz. different smṛtis prevailed in the different yugas or that Manu should be followed, or the opinion of the majority be followed</dd><dt>Mandalas : an item in Tantrik worship which is also a feature of orthodox Hindu practices in medieval and modern times 1131-34 ; M. and Cakra said to be synonymous by Jñānāravatantra 1133 ; Buddhist tantras like Mañjuśrīmūlakalpa describe M. 1133 ; drawn with powders of five colours</dt><dd>acc. to Matsyapurāṇa and also figures of a lotus with 8 or petals drawn with saffron, or red sandalwood paste or in various colours ; eight maṇḍalas, Sarvatobhadra and others, referred to in Agnipurāṇa ; four characteristic items in Maṇḍala rites specified, in Puṣyasnāna a Maṇḍala with different coloured powders was to be drawn ; meaning of the word in Tai. S., Śat. Br. and Bṛ. Up. is 'circular form' and 'orb of the Sun,' and later any figure or diagram (generally circular) drawn on an altar ; means 'circle' in Śulba sūtras and reference to the squaring of a circle (maṇḍala) ; references in several purāṇas to invocation of the Sun on the figure of a lotus and also of Nārāyaṇa, and to images or paintings of Lakṣmī and Nārāyaṇa and to Maṇḍalas called Sarvatobhadra etc. ; several Maṇḍalas described in Jñānārṇava, Śāradātilaka and other tantras ; several M drawn in Ṛgveda-brahma-karma-samuccaya (Nirṇ. ed.) ; Smṛtikaustubha mentions several names of M. ; twenty-six M. described in chapters of Niṣpaṇṇayogāvalī</dd><dt>Marriage</dt><dd>(vide Candrabala, child marriage Restraint Act, Gorajas, Gurvāditya, Kūṭas, Simhastha, Tārābala); anuloma marriages allowed by most Smṛtis but medieval writers changed all that by Kalivarjya ; auspicious ages for the marriage of maidens and of bridegrooms ; auspicious times, months and nakṣatras for, auspicious nakṣatras for M., different views on, calculation on tallying the horoscopes of both bride and bridegroom in regard to eight matters, called 'ghāṭita-guṇa-vicāra' or 'vadhū-vara-melaka-vicāra' ; Cantrabala and Tārābala in M. ; comparative astrological strength of tithi, week-day, nakṣatra, Sun, Moon in m. ; great importance of gaṇa and nāḍī among brāhmaṇas even now, intricate astrological rules for, Jupiter, auspicious and inauspicious positions of, in m. ; Moon, importance of the auspicious position of, in m. ; not disapproved in simhastha Guru when performed north of the Ganges and South of the Godāvari ; proper lagna rāśis at time of m. ; Rājamārtanda devotes verses to astrological requirements of m. ; Ṛgveda X. is marriage hymn, rule of 'godhūli' or gorajas muhūrta in m. ; rules about simhastha Guru observed even now ; rules about the sameness of rāśi or nakṣatra of bride and bridegroom in m. ; Śaiva marriage acc. to Mahānirvāṇatantra in which no question of caste arises ; Śanti for inauspiciousness of Jupiter ; tithis proper and inauspicious for m. ; usages of countries to be followed about month proper for m. ; Venus, position of, in m. ; week days proper for m. ; when a maiden is very grown -up, no waiting for an auspicious time but one should consider only the lagna and the moon's position at m. ; Yama and Yami dialogue (Ṛg. X. ) wrongly considered by some Western scholars as referring to marriage of brother and sister ; ban against intercaste marriages removed by legislation .; futile legislation as to dowry in m. . Mars, statements about position of, in Mahābhārata are irreconcilable . Marshall, Sir John, editor of three volumes on Sanchi n; a. of 'Taxila' (three vol.,) and Guide to Taxila Martin E. W. editor of 'In Search of Faith', a symposium by several writers , . Marx: meaning of 'I am not a marxist' . Maskarin, means (a wandering ascetic), acc. to Pāṇini and Mahābhāṣya . Mātharavṛtti, com. on Sāṅkhya-kārikā not later than A. D., furnishes names of Sāṅkhya teachers between Pañcaśikha and Īśvarakṛṣṇa ; on the same Saṣṭi-tantra</dd><dt>Mesopotamia.</dt><dt>Mudranighaṇṭu: names and defi-nes nine Mudrās ( āvāhanī and others ) that may be employed in the worship of any god</dt><dd>then enumerates M. appro-priate to Viṣṇu worship, ten appropriate to Śiva worship, seven to Gaṇeśa worship, one to the Sun ( called Padma ) and Mudrās of Śakti, Agni, Tripurā and other deities, and n; Śāradātilaka names and defines only nine Mudrās, while Viṣṇu Saṃhitā states that Mudrās are numberless but names and defines about thirty and Jayā-khyasaṃhitā has about Mud-rās ; some Dharma-śāstra works from 13th century onwards dilate at some length on Mudrās, such as Hemādri, Smṛticandrikā ; Some Purāṇas like Brahmā, Nāradīya</dd><dt>Muhūrta : (vide under Upanayana</dt><dd>marriage, week day): ff; called Brāhma , called Jaya ; called Kutapa ; called Maitra ; called Yeṣṭiha in Kauṣītakī Up. ; concurrence of four elements, viz. tithi, nakṣatra, Karaṇa and M. required for success in a rite or act , Coronation of the king, m. for ; derivation of the word ; difference in the length of a M. of day and of night according to the seasons , equal to two nāḍis or ghațis ; fifteen M. in the day and also in the night in the Śat. Br. and other ancient works , for religious rites 604ff; for secular matters such as purchase of merchandise, animals, for oil bath ; known by the names of the deities presiding over M. ; Literature on, is extensive ; loud declaration by brāhmaṇas enough in case of urgency ; meanings of , meaning ‘time fit for performance of auspicious acts' ; names of set out in Brhadyogayātrā ( not in Brhatsaṁhitā) ; names of fifteen m. by day and of night acc. to Vāyupurāṇa ; names of m. differed in the Brāhmanas and Smṛtis ; names of m. acc. to Atharvaṇa jyotiṣa and Muhūrtadarśana ; names of the deities, presiding over the m. of day and night ; new garments, M for wearing for first time ; no need to consider auspiciousness of days, of Jupiter and Venus in times of distress ; M. (word) occurs twice in Ṛgveda ; the Muhūrtamuktāvalī provides for an auspicious time for thieving ; performance of auspicious rite in the month of Jyeṣṭha for the eldest boy or girl not allowed ; position of Jupiter to be considered for, Purity of mind superior to all m. acc. to Matsya, Varāhamihira, Ratnamālā ; rules (general) about auspicious conditions for all undertakings ; seven auspicious M. out of M. of the day ; simple rule in Āśv. gr. for M. in Upanayana, caula, marriage , stages in the naming of muhūrtas, three, understanding of M. in the sense of auspicious time requi-res some knowledge of planets, nakṣatras, rāśis, bhāvas (places in horoscope ), 543ff; what should be done on the m. of the day acc. to Ātharvaṇa-jyotiṣa</dd><dt>Murarji Vs. Nenbai</dt><dd>I. L. R. Bom.</dd><dt>Mātrs ( Mother Goddesses ) 1046 ( in Gupta Inscriptions ) ; gene-rally said to be eight</dt><dd>but , are also mentioned, and n; referred to in Kumārasambhava and Bṛhat-saṁhitā</dd><dt>Nanda )</dt><dd>( story of Purūravas and Urvaśī ), ( adopts Upaniṣad passages ), ( vidyāsthānas ), 92829, 957n-59, ( on</dd><dt>Nimitta</dt><dd>portent, Puṣyasnāna): , description of</dd><dt>Nirukta</dt><dd>(vide ‘Vedic interpretation’ and ‘Yaska’ ), (two interpretations of several Ṛgveda Mantras), (discussion whether Vedic Mantras have meanings), (explains Ṛg. I. . ), (PMS agrees with many conclusions of N ), (on Vaiśvānara ), (word jāti occurs), (story of Devāpi and Śantanu)</dd><dt>Number</dt><dd>prominent in Mahābhārata</dd><dt>Oman R.C.</dt><dd>a. of ‘The Mystics, ascetics and saints of India'</dd><dt>Pañcāṅga (calendar) ; (see week day</dt><dd>Yoga) : five important parts in P. are tithi, weekday, nakṣatra, Yoga and Karaṇa ; fourth aṅga of p. is Yoga ; generally prepared for each year ; must be prepared for every town or place more than or miles away from Bombay or Madras or Calcutta where p. are at present prepared, if accuracy as to tithi, nakṣatra is required ; numerous p. in use now in India ; necessity of p. for all Hindus, samples of pages from a Pañcāṅga of śaka ( A. D. ) and from another years earlier facing pp. ; varieties of, in South India, such as</dd><dt>Prajāprakāśa (part of Viramitradaya) 37</dt><dd>(dwells upon several nyāsas) , (prescribes that āvāhana in Viṣṇu worship should be made with ‘Sahasraśīrṣā,’ (Rg. X. . 1, and mudrās should be shown) ; (defines in all mudrās)</dd><dt>Puruṣārthas (goals of human life); (vide mokṣa</dt><dd>sannyāsa): are four, Dharma (actions prescribed by Śāstra, doing one’s duties), Artha (economics, politics, civics), Kāma (enjoyment of pleasures and aesthetics) and Mokṣa (liberation), the last being the highest to be attained only by a few, Bhagavadgītā demands a life dedicated to active work and regards doing one’s duty as worship ; enjoyment of sexual life and pleasures not in conflict with Dharma is not condemned by Manu and other śāstras and in the Gītā (VII. ) Kṛṣṇa identifies himself with Kāma not in conflict with Dharma ; Mahābhārata is the śāstra of all p. acc. to Mārkaṇḍeya ; Manu s'ates conclusion that there are three p. for all men and condemns premature Sannyāsa resorted to before fulfilling one’s duties (one’s three debts) ; Ṛgveda contains prayers for health, happiness and a life of hundred years</dd><dt>Purāṇas and Līlāvatī 698; from one to ten</dt><dd>hundred, thousand and ten thousand, several times occur in Ṛg. ; Greeks appear to have had no single word for million ; larger numbers are sometimes mentioned in the Ṛgveda before smaller numbers ; list of the word for orders of n. ; list of Sanskrit words suggesting numbers from one onwards ; method of using a group of words for the place of units, tens etc. acc. to</dd><dt>Purāṇas in</dt><dd>matters that do not affect a vrata, particularly where performer is a woman, child or one in extreme pain, mlecchas authorised to perform ; meaning in which it is used in this section of H. of Dh, meaning of, in Yājñavalkya Smṛti ; meanings of, in all passages of Ṛgveda are command or ordinance, religious or moral practices or worship, or vows 8, meaning of 'command' or 'law' quite appropriate in more than half the Ṛgveda passages where the word occurs, meaning of 'mode of worship or ethical practices' in words like</dd><dt>Purāṇas on 913-1002; later digests on D. adopt prāṇapratiṣṭhā mantra evolved by Śāradatilaka</dt><dd>a tāntrik work, medieval works on D. make a distinction between Smṛtis based on Veda and those based on perceptible motives, mentioned by śānti and Anuśāsana parvans ; profoundly influenced by Jātaka and Śākha, refused to follow mīmāṁsā rules in regard to vratas, smṛtis were called D. by Manu ( II. ), Tai. Up. provides the usage of learned brāhmaṇas of high character as source of decision in case of doubt, were known to</dd><dt>Purāṇācaraṇa (of a mantra); 1107-1112; (vide under ‘Mantrā’); five are minimum constituents of P. viz. pūjā</dt><dd>japa, tarpana, homa, dinner to brāhmaṇas, 1107n-9; mantra to be repeated , or or , or 8 times; if any one of five constituents cannot be carried out, japa of mantra twice as many times as prescribed or dinner to brāhmaṇas may be substituted, in P. mantra is to be repeated times if no express direction about number, meaning of, places where P. is to be practised ; signs that indicate perfection in mantra, terrible way to secure perfection in mantra in a single night by going to cemetery, securing the corpse of a cāṇḍāla, or one killed with a sword, or of a young warrior, wash it, worship it and Durgā-this being called Śavasādhanavidhi, various modes of P. ; way-of, suggested by Rāghavabhatta</dd><dt>Purūravas and Urvaśī in Matsya (Chap. 24) and drama Vikramorvaśīya agree closely 900–901</dt><dd>though there are one or two points of difference. Matsyendranātha, called Luipā in Tibet , . Mattavilāsaprahasana of Pallava king Mahendravikramavarman . Mauryas, being greedy of gold, manufactured images of gods for sale . Mausalaparva , (dreams), (on Abhiras). Maxims (some Nyāyas), generally of Mīmāṁsā—vide pp. ); about nindā (condemnation) being meant to prescribe the opposite of what is condemned , Anyāyāścaneka-thatvam, explained , Anūpādhi-karaṇa or Anūpanyāya , ‘dṛṣṭe satyādṛṣṭakal-panā anyāyyā—if a seen result or purpose can be found for an act, it is improper to assign an unseen reward for it, and n, grahaikatvanyāya, explained , hetuvan-ni-gadādhikaraṇa, Holākādhikaraṇa , prādhānyena vyapā-deśā bhavanti ; rātri-sattranyāya , Rathakāra-dhikaraṇa , Sā-marthādhikaraṇa , Saṁyoga-pṛthaktva, explained and applied , Sarvaśākhāpratyaya-nyāya , (explained) or śākhā-ntarādhikaraṇanyāya ; Sthālīpulakanyāya , Udbhid-nyāya , yāvad-vacanam vāca-nikam , . Max-Müller, his date (hypotheti-cal) for the Vedic period, his date for Amara-kośa ; remarks against his dating for Veda ; a. of ‘Six Systems of Indian Phi-losophy’ , wrong translation by, . Maxwell on Interpretation of Statutes, . Maya, astrological writer m. by Varāhamihira . Maya, king of Yavanas, to whom Jyotiṣa was imparted by the Sun-god . Māyā ; Bādarāyaṇa (V. S. II. 2. ) and Śaṁkara are agreed that the ordinary physical world is different from dreams; Śaṁkarācārya employs the word Māyā to express the idea of mystery as to how the finite arises from the Infinite ; proper language for most men is not to speak about the world as Māyā (illusion) ; Upaniṣad passages like Katha II. 4. 2, Praśna I. , Chān. VIII. 3. 1–2 and Bṛ. Up. I. 3. may suggest the doct-rine of M., word M. used in V. S. III. 3. 3 has been differently interpreted by ācāyas ; word occurs in Rg. in connection with Indra about his Śakti or Śaktis</dd><dt>Puṣyasnāna (or Bārhaspatyasnāna): (vide Nakṣatrasnāna) 793-797 ; all utpātas destroyed by Śānti in P. 793 ; Bṛhaspati is presiding deity of Puṣya 798 ; clay collected from several places such as mountain top and king's head and other limbs rubbed with it in P.</dt><dd>leaves of plants to be cast in jars filled with water ; Maṇḍala drawn with powders of different colours in, many Purāṇik mantras along with Vedic ones prescribed by the Matsya, Br. S. and Hemādri ; part of lakṣahoma, acc. to Matsya ; release of prisoners jailed for offences at the end of, procedure of P.employed in the case of king's elephants and horses to free them from diseases, proper time, procedure and duration for performing P. acc. to Viṣṇudharmottara ; reward and results of P.</dd><dt>Pāṇini</dt><dd>5, (knew Naṭasūtras of Śīlālin and Kṛśāśva), (explains ‘Mīmāṁsate’), (mentions Kāśyapa to show respect), (charge that Pāṇini violates his own rules), (distinguishes between the author of a work and expositor or tran-mitter of it), (does not observe his own rules), called Śālāturiya by Bhāmaha and other medieval writers ; date of, hailed from Northwest India ; in P.'s times there were mendicant ascetics (bhikṣus) who studied the Bhikṣusūtra of Parāśarya and that of Karmāṇḍa and were called 'Pārāśariṇo bhikṣavaḥ' . ; names of countries and places expressly mentioned by P. ; papers on geographical details in, teaches formation of words like Takṣaśila ; was acquainted with the whole of India from the extreme northwest of India to Kalinga ( Orissa ), Āśmaka ( country near Ajaṇṭā and Paithan) and modern Kutch , (Sindhu as the name of a country ), (word jāti occurs ), ( on Brāhma-ṇaka ), (names at least ten predecessors and shows that before him there was considerable secular litera-ture ). of teachers ending in 'Ānanda', speaks of three mārgas (paths) viz. Dakṣiṇa, Vāma, Uttara, speaks of jīvanmukti and quotes Upaniṣads ; (well known verse 'pitvā pitvā ' etc. esoterically explained )</dd><dt>Pūtikās as substitute and nothing else</dt><dd>though it be more similar to Soma ; is called ‘ Vṛṣavrata ’ in Ṛgveda, is called Lord of plants and king of brāhmaṇas in Śat</dd><dt>Ramlinga</dt><dd>M, I. A. at</dd><dt>Royce</dt><dd>J., a. of ‘the world and the individual,’ expounds Chān. Up. III. and VI. 2–15 and Bṛ. Up. ; quotes from a mystic work ‘who knows Him is silent’</dd><dt>Rṣiputra</dt><dd>a. of a work on astrology, (Bṛ. S. quotes verses of his), (Bṛ. S. summarises its views)</dd><dt>Sarasvati m</dt><dd>as holy rivers for establishing Agni in Ṛg, eighteen or rivers are mentioned in order from Ganges in the east to Kubhā (Kabul river), Gomati and Krumu (Kurram) in the west ; many rivers m, in Anuśāsanaparva ; several Purāṇas mention rivers as flowing from the principal mountains ; seven Sindhus mentioned in</dd><dt>Sattras (sacrifices of long duration to be performed by brāhmaṇas alone ); Jaimini deals with them in PMS VI. 6.–and elsewhere and neither</dt><dt>Saurapurāņa 104n</dt><dd>(names Purāņas, Vayu being 4th and Brahmanda last)</dd><dt>Saṁ.</dt><dd>Mait. Saṁ. and Atharvaveda ; countries governed by n. acc. to Br. S. 14th chap. , deemed parts (or limbs) of Time looked upon as a Puruṣa ; different n. associated with eight kinds of *dvādaśīs* ; different n. were called male in different ages ; divided into three classes viz. auspicious, inauspicious and neutral ; enumerated from Kṛttikā to Bharaṇī in Vedic literature, Vedāṅgajyotiṣa and Yaj. ; enumerated from Aśvinī to Revati in works from 3rd or 4th century</dd><dt>Saṃvatsarikasattra</dt><dd>observances in</dd><dt>Saṅkalpa in V. to be made in the morning 81; Saṅkalpa of v.</dt><dd>formula of ; some rules about times when to begin V ; some vratas not to be begun when Jupiter and Venus are invisible or during some days before and after their setting , this volume speaks only of such Vratas as are mentioned in works on Dharmaśāstra and does not attempt to include all vratas performed by usage ; to be performed in the evening or night have to be performed on the tithi existing in the evening or night even though it may be mixed with another tithi ; Udyāpana, absence of, renders vrata fruitless ; verbal forms of root ‘mi’ or ‘mi’ often used in Ṛgveda in relation to, virtues to be cultivated by one undergoing V. ; what acts to be avoided by one observing</dd><dt>Sāmrājyalakṣmī-pīṭhikā</dt><dd>observances in</dd><dt>Taittiriya Brāhmaṇa</dt><dd>(adhrigupraisa), (food is life), (has all verses of Rg. X. except one), Tai. Br. I. 5 differs from Tai. Br. III. 1 as to the names of nakṣatras and presiding deities</dd><dt>Taittiriya Saṃhitā</dt><dd>(prohibits speaking untruth), (on śūdra and theory of debts), ( word Sāyujyāta )</dd><dt>Tantra (or tantras</dt><dd>acc. to context): ; (vide under Cakrapūjā, China, guhya, guru, Kauladharma, magic, magicians, Mahānirvāṇatantra, makāras, months, nāḍis, puraścaraṇa, śakti, śāktas, Śāradātilaka, siddhis, Śrīvidyāmantra, spells, tāntrika, tattva, Tibet, Vajrayāna vāmācāra, yantra) ; aims of T. were mokṣa and attainment of siddhis, are Hindu, Buddhist and Jaina and are alike in some respects but differ in some others , are upaveda of Atharvaveda, acc. to Śukranītisāra ; Bhairavi-cakra, and tattva cakra worship and n; Buddhist T. deified important personages of Buddhism and took over other deities, Gaṇeśa, Sarasvati and others ; Buddhist T. also claimed to show the path to the attainment of all objects from success in love affairs to liberation ; Cakrapūjā, a revolting rite ; derivation of word Tantra ; differences and similarities between Buddhist and Hindu tantras ; difficulty of defining a T. ; Durgā acc. to Mahānirvāṇa T., is highest prakṛti of Paramātman, has various names ; end and aim of a few higher minds among some tantras and Tāntrikas was attainment of high spiritual powers by Yoga practices and realization of supreme Tattva, variously called Brahma, Śiva, Devī and mokṣa ; evidence of any Buddhist works on Tantras before A. D. practically none, evidence in Bāṇa's works of the prevalence of Tantrik and Śākta worship in India before 7th century A. D. ; famous Chinese travellers Fa Hien, Yuan Chwang and I-tsing do not refer to study of Buddhist T. in India. , five āmnāyas spoken of as paths to mokṣa by some T. ; five paths named in some T. and four in Sādhanamālā 1038n-1039; four named Tantras introduced in Kambuja ( Cambodia ) about A. D. ; Gāyatrī mantra of Kālī set out , great importance of guru and mantra in all Tantras , groups of , and Śaiva T. in Tantrāloka ; guru, after initiating a disciple into T. rites, was to hand over to the neophyte a bowl for drinking wine, mudrā and courtezan ; Haraprasad Sastri's view that T. practices originally came from outside India and view of A. Avalon that they came to India from Chaldea or Śakadvīpa, examined , Hindu T. try to show that they are based on the Vedas. quote Vedic mantras and claim to describe an easier and quicker path to mokṣa ; Hindu T. present two sides, one philosophical, the other popular and magical, relying on mantras, mudrās, cakras and yantras, ignore the great moral danger, involved in the persistent teaching of worship with five makāras and also ignore the advice of Gītā ( III. ), in Kaula system siddhi results from those very substances ( wine, flesh etc. ) by ( resorting to ) which men ( ordinarily ) incur sin , influenced by Sāṅkhya ; important Kashmir Tāutrik works ; Kṣetras of Devi over one hundred acc. to Devībhāgavata, Kulārṇava and other T. praise the vedas; employ vedic mantras and quote Upaniṣads and Bhagavadgītā ; list of Sanskrit works on T. with authors, dates and editions, list of works and papers on T. in English ; literature on T. was vast ; Makāras five, emphasis on, in almost all Tantra works as leading to miraculous powers and liberation, Makāras explained by later writers on T. as used not in the ordinary senses but in special esoteric senses on which the writers themselves differ ; Mantras called bīja like hrīm´ and śrīm and a list of them called Bījanighapṭu ; Mantra of ten syllables ´ hrīm śrīm krīm parameśvarī svāhā. by merely listening to which a man becomes jīvanmukta but Mahānirvāṇa adds that mantras do not confer siddhi unless five makāras are offered ; Maṇḍalas, an item in T. worship, 1131ff; Mantras are the very core of T. and T. is often called Mantraśāstra ; Mantras of Śakti do not confer perfection · unless one follows kula practices ; mantras that the followers of Vāmamārga may employ about three makāras ( wine, mudrā and coitus ) ; Mantra ‘saccidekam brahma’ is best ; mantra ‘brahmārpapam brahma’ ( Bhagavadgītā IV. ) to be recited when offering wine and other tattvas to the highest</dd><dt>Tantrik worship)</dt><dd>(verses of, q. by Mahānirvāṇa-tantra), (Vedic Mantras employed in T. works exemplified), (orb of Sun is called wheel), (references that are held historical), (who went to heaven and what joys were there), (Madhvācārya claims that he is referred to in Ṛg. text I. . 1-3), (mantras full of faith in God and beati-tude), and n, (quoted often by Upaniṣads), (some doubters about Indra), Ṛg.IX.82.1 explained in Tāṇḍya), (passages where word Karman occurs), (Ṛg. VII.33.10-14 about Vasiṣṭha's two births explained), (interpretation of Ṛg. X. . 3 ), (Vaiśvā-nara ), and n, (river Sindhu), (meaning of 'Kṛṇvanto Viś-vam Āryam'), (.indications of at least three Āśramas ), (shift towards oblation of cooked food or ghee as equal to animal sacrifices); (Vasiṣṭha's prayer that sins due to wine and gambling may be for-given); prayer to bestow ten songs on newly married bride) (X. . explained )</dd><dt>Uddālaka</dt><dd>Āruṇi, shown to be ignorant of Vaiśvānāravidyā in Chān. V. , but in Chān. VI. 8.7 ff, is shown as teaching the sublime doctrine of ‘tat tvamasi’</dd><dt>Udyāpana : last rite in a vrata 120-21; if no rite of udyāpana for a vrata is expressly prescribed what should be done 121; Ud. is concluding rite in a vrata undertaken only once</dt><dd>while the concluding rite is called pāraṇa when a vrata is to be continued for life ( such as Ekādaśī or Janmā-ṣṭamī ) ; of Śivaratrivrata when undertaking was to ob-serve it for , or years</dd><dt>Untouchability</dt><dd>abolished by Indian Constitution ( Art. ) and an Act passed to make treating a man as untouchable in public an offence</dd><dt>Up. 1500; hold that esoteric knowledge has to be imparted by a guru to a disciple or by father to son</dt><dd>but not to all and sundry nor in an assembly ; illustrations ( two ) to bring home to the inquiring spirit non-difference are rivers flowing into the sea and losing their names and forms and pure water poured in other pure water, most important doctrines of Up. are two (1) non-difference of individual self from supreme Self and (2) transmigration of self depends on his deeds and conduct as taught by brāhmaņa Yaj. to Janaka or by Uddālaka Āruņi to son Śvetaketu, offer very little to the common man and did not solve his problems while the Bhagavadgītā took that matter in hand, old Up. like Br. and Chān. are admitted to be earlier than Buddha ; passages of Up. fore-shadowing Sānkhya doctrines or employing technical Sānkhya words ; put the knowledge of the Highest Self as superior to the Vedas ( called aparā vidyā ) yet quote Vedic verses in support of their statements , real thought of Up. centres round the non-difference between brahman and the individual soul and the physical world, renunciation of all actions and their rewards was inculcated by Up. for a Sannyāsin who was to beg for alms till the body lasted, as even good deeds would lead to good births and put off mokṣa, several vidyās or upāsanās are described in Up. particularly in Chān. and Br. for men that are not yet far advanced on the path of brahmavidyā ; some apparent discrepancies in Up. as to what was first created and as to the order of the creation of elements, as explained by Śaṁkarācārya ; some late Up. mentioned as the basis of Śākta doctrines by late medieval works, speak of brahman, as creator, sustainer and as ultimate absorber of bhūtas ( elements or beings ) ; teach that sound moral preparation necessary before a true Vedāntic view is attained ; verse enumerating ten ancient and principal Up. ; Yoga in Up. . Upapurāņas ( vide under Hazra, Narasimhapuraṇa, Samba, Viṣṇudharma and Viṣṇudharmottara ); all chapters and even single verses of U. are suspect ; Alberuni's work shows that some U. such as Ādi, Āditya, Nanda ( Nandi!), Narasimha and Samba had been composed at least some time before A. D. ; are summaries made by sages after listening to P, began to be compiled from the 7th century and their numbers went on increasing till 13th century A. D. or even later. ; dates assigned by Prof. Hazra to Upapurāṇas not at all acceptable ; early commentaries and digests on Dharmasastra like the Mit. and Kalpataru very rarely mention U. and even the latter refers to six Up. ; Hazra (Prof.) says there are over Upapurāṇas ; Hazra admits that adherents of various sects such as Śāktas, Pāñcarātras, Sauras, interpolated chapters in Purāṇas and sometimes wrote new and independent works styled Purāṇas ; Kūrma Purāṇa mentions Brahmāṇḍa, Nāradīya Skanda, Vāmana as Up. ; Matsya names Narasimha, Nandi, Āditya and Sāmba as Up. and there is nothing to show that more than four were regarded by the Matsya as of any authority ; names of U. are set out by Devībhāgavata, Garuḍa, Kūrma, Padma, Hemādri and n; none of the U. except Devī, Narasiṁha, the Viṣṇu dharmottara, and one or two more can be held to be as old as 7th or 8th century A. D. , only a few Upapurāṇas are published and those published belie definition of Purāṇa as Pañcalakṣaṇa ; only eight U. m. by Ballalasena ; some U. bear the same names as those of principal Purāṇas, such as Skanda, Vāmana, Brahmāṇḍa and Nāradīya ; total of 4 lakhs of verses of Purāṇas excludes the verses of U.</dd><dt>Up. enumerated</dt><dd>to be offered with the verses of</dd><dt>Up. II. 3. 6</dt><dd>IV. 2.4–22, IV. 5.15, III. 7. , distinction made in Upaniṣad texts between saguṇa br. that was for prayer and worship and nirguṇa brahma ; it is impossible to define what br. is, we can only say what it is not ; is said to be endowed with all powers in VS. and by Śaṅkarācārya, passages of Upaniṣads referring to nirguṇa br. cited, are Br. Up. III. 9. , IV. 4. and , IV. 5. , Chān</dd><dt>Up. VII. 24. 1</dt><dd>Śv. Up. VI. , Katha IV. ; para br. is conceived as beyond space, time and causality ; real truth (pāramārthika satya) about br. is that it is one, that everything in the world (men, animals, matter) is br. ; śāstras (Vedānta texts) are sources of the correct knowledge of br. and that they are agreed that their purport is to establish that br. ; seeker after br. reaches it by the practice of truthfulness, tapas, samyag-jñāna and brahmacarya, acc. to Muṇḍaka, story of Bādhva conveying idea of br. to Bāṣkali by remaining silent ; Tai. Br. describes br. as the tree from which heaven and earth were chiselled out ; when it is said that the world is nondifferent from brahman, it is not meant that they are identical, but the meaning is that the individual selves and the world are not entirely different from brahman</dd><dt>Upacāras: folding the hands ( namaskāra ) was one of the U. before the Nirukta</dt><dd>U. in pūjā were either , or 5, nine out of U. are mentioned in Aiv. Gr. sūtra ; not absent in Vedic age ; quoted from Prapañcasā-ratantra in Dharmasastra works ; several of Up. were well known long before the grhyasūtras ; sixteen</dd><dt>Uparava</dt><dd>meaning of</dd><dt>V. 43-43; women are entitled to perform V. but women performing vrata without consent of husband</dt><dd>father or son, reap no benefits ; woman or maiden who is impure ( in monthly illness or the like ) should get her vrata performed or finished through another, but may perform bodily acts ( like fast ) herself , words ‘dhṛtavrata’ ( times), mahivrata (5 times), sucivrata (five times), vivrata (7 times) occur in Ṛg. and help in settling meaning of ‘vrata’ ; word ‘vrata’ explained ; word ‘vratani’ explained ; word ‘vratapa’, meaning of , w rks on, relied on in this volume arranged chronologically as far as possible</dd><dt>Vaiśvānara</dt><dd>meaning of, in Ṛg. and Chān. Up. V. . 2</dd><dt>Varuṇa</dt><dd>praised in hymns of</dd><dt>Varṇa system and caste system : ( vide under brāhmaṇas</dt><dd>Cāṇdālas, caste, jātis, moral qualities, social legislation, śūdra) : origin and development of ; Bhagavadgītā ( IV. and XVIII. ) asserts that the Varṇa system was based on qualities and actions and specifies the qualities and actions of the four varṇas, most of which for brāhmaṇas and kṣatriyas are moral and spiritual ; how and why several thousands of castes and sub-castes arose only in India is an insoluble problem ; if Varṇa and caste system has broken down and become harmful and unpopular among people it may be discarded, but that cannot be done by force or mere legislation, but by strenuous work and education of all from childhood ; intermarriages between the first three varṇas were allowed even in the times of Yāj. and a few other Smṛtis , is distinguished from jāti, but the two are confounded in Manu, it may be conceded that some centuries before the Puruṣasūkta, Aryan community was divided into four groups, a similar division not being unnatural and being found in other countries ; no evidence to show that intermarriages and interdining among the four varṇas was prohibited in the Vedic age ; numerous artisans and craftsmen are mentioned in Vāj. S., Kāṭhaka S. and Tai. Br., but there is nothing to show that they had become petrified castes, Varṇas were only four and there was no fifth v. ; word varṇa was applied to āryas and dāsas in Ṛgveda, they being hostile camps, words brāhmaṇa and kṣatriya frequently occur in Ṛg, but the word varṇa is not expressly connected with them in it</dd><dt>Veda is the word of God or that rewards of religious acts are due to the favour of God</dt><dd>Vedic G. have the epithet ‘Vṛṣa’ (bull, powerful) or ‘Vṛṣabha’ applied to them, to their chariots, weapons etc. ; wives of gods Indra</dd><dt>Vedic Saṃhitās at least 1000 years B. C. 697-8; names of Vedic metres such as Aṣṭi</dt><dd>Atyaṣṭi suggest numerals , etc. ; Pāṇini mentions paṅkti (ten), viṃśati up to navati and śata ; several methods of writing n., Tai. S. mentions bricks from one, one hundred, thousand, ayuta, niyuta, prayuta, arbuda, nyarbuda, samudra, madhya, anta and parārdha ; Varāhamihira employs words suggesting numerals even in the place value system</dd><dt>Vedic Texts</dt><dd>the repetition of which or homa offered with which was deemed to purify a person are set out in Vasiṣṭha Dh. S. (. )&lt;sup&gt;733n&lt;/sup&gt;, Velankar Prof. H. D. : explanation of Rg. X. (aditer dakṣo ajāyata) by, demurred to&lt;sup&gt;1488n&lt;/sup&gt;</dd><dt>Vedāṅga-Jyotiṣa 538n ; three parts of</dt><dd>mentioned in Ṛgveda ; two meanings of, (1) from sunrise to sunrise and (2) from sunrise to sunset ; two systems of dividing d. into ghaṭikās and hours, various views about divisions of d. into 2, 3, 4, 6, 8 or parts</dd><dt>Vidyās: fourteen V. set out in Yaj. and others 820</dt><dd>fourteen known to Kālidāsa ; eighteen acc. to some ( including Upavedas ). , Ghurye, Dr. G. S. work of, on ; sources of are but Bauddha works are not included as sources of dharma or vidyās</dd><dt>Vindhya 243</dt><dd>householder having a son not to fast on e. ; in (20th June) four lakhs of people took a bath at Kurukşetra and Sanyahet, if one does not bathe at time of e. or sun's entrance into rāśi he would have, it is said, leprosy ; moon e. a lakh of times more meritorious than an ordinary day and sun e. ten times more than moon e. ; obligatory japa of Gāyatrī in e. ; one should bathe when e. begins, perform homa, worship gods and perform śrāddha, while e. is in progress, make gifts when e. is about to end, take a bath again when e. ends ff. ; order of the several religious acts to be done on e. ; persons born on nakşatra of e. suffer troubles, unless they perform a śānti ; persons impure owing to birth or death in family have to bathe in e. ; poor people clamour for gifts on, prājāpatya expiation for eating food during e. ; puṇyakāla (holy period) in e. lasts only so long as it is or can be visible to the eye and for kalās on both sides of it, Rāhu is not the cause of. ; real causes of, were known to</dd><dt>Viniyogavidhi: conveys the rela-tion between the principal act (*aṅgin* or *śeṣin*) and its subsi-diaries (*aṅgas* or *śeṣa*) 1307; is the concern of 3rd chap. of P. M. S. 1307</dt><dd>six means of determining what is princi pal and what are subsidiaries and the relative strength of the latter when there is a doubt or a conflict, each succeeding one being weaker than each preceding one, and there being probable cases of conflict among these six and a few illustrations</dd><dt>Viṣṇu: (vide under Avatāras</dt><dd>Śāstras): appears to be a name of the Sun in the Ṛgveda and came to be regarded as Highest God in Brāhmaṇa times ; Bhaviṣyapurāṇa says that V. begins to sleep in the first quarter of Anurādhā nakṣatra, turns on another side in the middle of Śrāvaṇa and wakes up in the last quarter of Revati ; day of, is equal to whole life of Brahmā ; different tithis (11th, 12th, 15th) for Viṣṇu's going to sleep in different authorities ; deluded people and asuras by producing Māyāmoha from his body that led them away from the Vedic path ; how śayana (sleeping) and prabodha (awakening) of V. are to be celebrated, identified with sacrifice (yajña) ; Meghadūta and Vanaparva mention the sleeping of Viṣṇu on the snake Śeṣa and waking up , one thousand eight names of V. set out in Anuśāsana parva, chap. and Garuḍapurāṇa I. . 1–160, possible explanations of sleep of Viṣṇu for four months ; steps called V. in sacrifices ; was supposed to go to sleep on night of 11th of Āṣāḍha bright half and to awake in the day on 11th of Kārtika bright half , was supposed to turn from one side to the other in his sleep on Bhādrapada bright half 11th tithi (which was therefore called Parivartinī ; worship of V. in three different ways, Vaidika, Tantrika or Miśra ; worship of, in six mediums , worship of, may be performed on Śālāgrāma stone, on a jewel, yantra, maṇḍala, image, or in a temple, acc. to Padmapurāṇa</dd><dt>Vājasaneya Saṃhitā</dt><dd>(on</dd><dt>Vāmanapurāṇa: 71</dt><dd>(says Matsya is chief among Purāṇas), (adapts Ṛg. I. . 1), (on ahiṁsā), date between A. D., note on, short Purāṇa with verses in Venk. ed. and prose in chap. , )</dd><dt>Vṛtta</dt><dd>meaning of</dd><dt>Whitney: 1</dt><dd>5, 6, W’s derivation of vrata, from ‘vṛt’ to proceed 1–5; had doubts about his theory of the derivation and meaning of ‘vrata’ owing to the verb</dd><dt>Yama</dt><dd>god of death, called Vaivasvata ; seven or names of, in tarpaṇa on 14th</dd><dt>Year: (vide Bārhaspatya cycle; Samvatsara): beginning of Indian Y. now in either Caitra or Kārtika but in different months in ancient times 659-60; Bārhaspatya year 658; Bārhaspatya year names adopted at the beginning of a year in N. India and Deccan 661; Cāndra year (pure) of 354 days 657; Egyptian year</dt><dd>extent of, in Vedic times ; four beginnings of Indian year, m. by Alberuni ; is said in the Brāhmaņa texts to have days and days and nights together ; length of Bārhaspatya year ; length of y. acc. to Sūryasiddhānta and modern sidereal year ; lunar y. is less than solar year by a little over days ; most ancient peoples including Indians followed Luni-solar Y. ; one human year supposed to be equal to a day of gods in Tai. Br. ; origin and information of cycle of Barhaspatya year ; sam-vatsara and varṣa used in same sense by Asoka ; Saura year defined ; Sāvana y. of days , several synonyms for, in the Veda ; sidereal year, length of ; thirteenth month recog-nized in the Ṛgveda, other Vedas and Brāhmaṇa texts ; tropical year, length of</dd><dt>Yoga : (vide Amr̥tasiddhi</dt><dd>Vṛtyu-yoga, Dagdha-yoga); 4th aṅga in a pañcāṅga ; yogas are in number and make to-gether degree S, i. e. each yoga corresponds to degrees and minutes-being the sum of the longitudes of the Sun and Moon, and n; in all auspicious rites the first few ghaṭikās as specified should be avoided in the case of Viṣkam-bha, Vajra, Vyāghāta and Ati-gaṇḍa ; names of Yogas beginning with Viṣkambha that are ever recurring ; no direct astronomical phenomena correspond to it, names of nine of the yogas that are condemned astrologically ; other yogas than are m. in pañcāṅgas ; rules as to observance of fasts, vratas and religious gifts and śrāddhas when a yoga extends over two days ; special yogas when there is conjunction of certain tithis, nakṣatras and week days and of planets with rāśis and nakṣatras ; system of Y. ancient ; Vyatipāta ; Y. called Vyatipāta and Vai-dhṛti and the first half of Pari-gha and the first quarter of those the names of which are odious are inauspicious</dd><dt>Yogavidhi</dt><dd>as leading to correct knowledge of Reality occurs in Kathopaniṣad VI. and in Raghuvamśa VIII.</dd><dt>Yogayātrā)</dt><dd>(quotes verses from Garga on week days), commentator of Bṛhajjātaka 573n–75n</dd><dt>Yogin: (vide under aparigraha</dt><dd>brahmacarya): belief in Śānti-parva and of Śaṅkarācārya that Y. could transfer himself to other bodies ; belief that Y. can vanish from people, see distant objects and hear in spite of great distance ; duties of Sannyāsin in Manu are applicable to Y. ; greatest emphasis laid on chas-tity in thought, word and deed for the Y. or the seeker after brahman ; has to master sleep (nidrā) also, and n; has to stick to aparigraha ; honour and disrespect should be treated by Y. as poison or nectar respectively ; if individual Yogin possesses a tolerably sound body he need not devote time to āsanās but may proceed with prāṇāyāma ; is said to repeat the Ajapā-japa by breathing in and out ; places to be resorted to for practice of Yoga by Y. and to be avoided ; proper behaviour for Y. (yogī-caryā) acc. to Mārkaṇḍeya and Viṣṇu-purāṇas ; practitioner of Yoga is asked by Gītā (VI. ) to gaze steadily at the tip of his nose ; purity of mind follows on purity of food acc. to Chān. Up. (VII. . 2) and Hārita ; rules about food to be taken or avoided by one aspiring to be yogin in Gītā, Devala etc. and n, Śāntiparva on who is a real yogin ; state of Y. in Samādhi described ; three classes of, acc. to Vaikhānasa-smārta-sūtra and their sub-divisions ; while pract-ising dhāraṇā, dhyāna, samādhi, Y. may develop certain supernormal powers, but Y. is advised to ignore them as they are hind-rances in the way of his goal (Y. S. III. ), Y. and Sannyāsins have been paid highest honours in India through centuries ; Yogin, acc. to Gītā (VI. ), is superior to Tapasvin, Jñānin and Karmin ; Y. residing in a country makes it holy if he has profound knowledge of Yoga, acc. to Dakṣa</dd><dt>Ādipurāņa : Prof. Hazra places it between 1203-1525 A. D.</dt><dd>. note on ; Vāyu mentions an Ādika among Purāņas, writers make confusion between Ādi and Āditya</dd><dt>Śatāpatha-brāhmaṇa : 17</dt><dd>(mentions</dd><dt>Śaṅkarācārya (vide Abhinava-gupta</dt><dd>Devala, Śrīharṣa Tārā-nāth): 731n-2n, (Prof. Hazra misunderstands what Ś. says), (on Pañcarātra), (on V. S. I. 1. 1.), (Pūrva-mīmāṁsā and Vedānta-sūtras as one śāstra), (on Gītā . 4), and n. (on Apūrva), (quotes sūtra in which the words paryudāsa, pratiṣedha and vikalpa occurs), (Agnihotra as ārūdupakaraka in acquiring knowledge of brahma), (position as to Yoga), (on Chān. Up. I. 3. 3, mis-understood by Caland, Dumont and others), (Ś. on Bṛ. Up. I. 5. 3 and on Praśna), (explains 'asat'), 1563n-64n, doctrine of Māyā declared by Padmapurāṇa as Bauddha in disguise, holds that Bādarāyaṇa a. of V. S. is diffe-rent from Vedavyāsa, a. of Mahābhārata, horoscope of, in com. on Saundaryalahari examined ; Prapañcasaratantra, ascribed to Ś. dilates upon a mantra called Trailokyambhana for accomplishing six cruel acts ; Saundaryalahari, ascribed to Ś. ; says that Manusmṛti and Devala-dharmasūtra accept some doctrines of Sāṅkhya system ; verses quoted by Ś on V. S. I. 3. as Smṛtis, set out, identified in Śāntiparva and Purāṇas ; view that Śūdras like Vidura and Dharmavyādha had brahmajñāna and a śūdra may secure mokṣa by reading the Itihasa and Purāṇas, and Vacaknavi Gārgi, though a woman, possessed brahmajñāna</dd><dt>Śiva</dt><dd>Ardhanarīśvara form of, (known to Kālidāsa); created sesame on Makara-saṅkrānti ; thousand names of, in Anusāsana (. ) and Śānti (. 74ff) and in Śiva-purāṇa , twelve names of, when offering flowers ; twelve Jyotir-liṅgas of</dd><dt>Śuṅga</dt><dd>Āndhra and others ; Kumārilabhaṭṭa on the contents of P. ; lay emphasis on bhakti, on ahiṁsā, on pūrtadharma ; list of Purāṇas completed long before A. D. ; list of principal Purāṇas together with the number of ślokas in each acc. to different works ; M. as a compound word (itihāṣapurāṇam) or as two words (itihāṣaḥ purāṇam) in Tai. Ā, Chan. Up. and Bṛ. Up. ; list of works, papers and translations of p ; m. by the extant Mahābhārata in numerous places ; m. by Kauṭilya and Manusmṛti ; m. by Kauṭilya and Yāj. Smṛti as one of the fourteen branches of knowledge and for japa ; Mahābhārata quotes hundreds of verses called Ānuvaṁśa and gāthās, many of which deal with Paurāṇika matters and have a Paurāṇika ring ; Mahāpurāṇa (word) applied to the P. in Viṣṇu and Bhāgavata ; mantra 'om namo Nārāyaṇāya' confers all objects, frees from sins and leads to mokṣa, acc. to Narasiṁha and Vāmana , Matsyapurāṇa sets out other characteristics of P. ; Mit. prescribes a smārta mantra in śrāddha which occurs in Garuda and Skanda P. and some digests prescribe Vedic and Paurāṇika mantras even for brāhmaṇas in religious rites ; modern works and papers dealing with several questions relating to Purāṇas set out ; Nāradīya Purāṇa describes the relation between Veda, Smṛti and Purāṇas and provides that he who calls P. as arthavādas goes to hell ; myths and legends of Purāṇas on creation of universe, about eclipses etc. must in modern times held as mere myths ; no Mahāpurāṇa composed after the 9th century A. D. but additional matter was unscrupulously added in several Purāṇas, the worst example being that of Bhaviṣya (part III) which contains stories of Adam and Eve, Taimur, Akbar, Caitanya, Nādirshah ; not restricted to religious matters or to five characteristics but some of them deal exhaustively with rājanīti, number of P. is traditionally eighteen called Mahāpurāṇas and enumerated in many Purāṇas, though some Purāṇas say originally there was only one, on doctrine of Karma ; on rebirth for sins ; one important topic is 'avatāras' 922ff; only pursue an attitude to Veda and sacrifices that is found in such Upaniṣads as Muṇḍaka and Katha ; order in which P. are enumerated is not uniform, most putting Brahma as first, while Vāyu and Devībhāgavata put Matsya as first and Skanda puts Brahmāṇḍa as first</dd><dt>Śāntis)</dt><dd>(causes of earthquakes), (premonitory signs of earthquakes), (criticizes vṛddha-Garga and Parāśara), (quotes verses of Rṣiputra), (Puṣyasnāna), (verses that are also found in Matsya</dd><dt>Śāstras and Purāṇas are of hardly any use</dt><dd>when Mahānirvāṇatantra is understood ; Vedic mantras for sanctifying flesh, fish, and mudrā are respectively Rg. I. . , VIII. . , I. . ; T. Vidyā divided into three groups viz. Kāḍi, Hāḍi and Sāḍi ; view of Dr</dd><dt>‘Yām janāh’ etc.)</dt><dd>(repeats verses of Puruṣasūkta), (hymns on Creator and creation), (Devayāna and Pitryāṇa), (relied upon in V. S.), five Kalpas of A. are Nakṣatra, Vaitāna, Saṃhitā, Aṅgirasa and Śānti</dd></dl><h4 class="nyaya-heading">Mīmāṁsā Nyāyas</h4><dl class="index-terms-dl"><dt>आकृष्टपातानामर्थनुवर्त शक्त सवकारिणी</dt><dd>जै. I. 4. 25</dd><dt>जातिर्टिग्म्याय</dt><dd>जै. IV. 3. 38-39</dd><dt>जै. IV. 3. 27-28. The ज्योतिर्होस does not simultaneously bring out all the rewards but only one after another. The word occurs in sutra 28 itself and चोर्गसद्धि</dt><dt>दशाह्रन्याय</dt><dt>न विधो परः शब्दार्थः</dt><dt>नागृह्यमाणविशेषाधिकरणन्याय</dt><dd>जै. VII. 2. 13</dd><dt>पशुपुरोडाश न्याय</dt><dd>जै. XII. 1. 1-6</dd><dt>सर्वशाखप्रत्ययन्याय</dt><dt>सर्वसामान्यन्याय</dt></dl>
+        </div>
+    </div>
+
+
+            <h2 id="chapter-i-vrata-in-the-rigveda" class="section-heading">Chapter I. Vrata in the Rigveda</h2>
+<p class="prose" id="p-chapter-i-vrata-in-the-rigveda-1">Vrata is one of many Sanskrit words, the use and history of which extend over several thousand yearṣ The derivation and semantic development of the word vrata have been the subject of great controversieṣ These questions have been dealt with by me at some length in the JBBRAS, vol 29 (1954) pp. 1-28. I shall here summarise the discussion contained thereiṇ</p>
+<p class="prose" id="p-chapter-i-vrata-in-the-rigveda-2">In the great St. Petersburg Dictionary the word vrata is derived from the root 'vr' (to choose) and the important senses of the word given in that Dictionary are: (1) will, command, law, prescribed order; (2) subservience, obedience, service; (3) domain; (4) order, regulated succession, realm; (5) calling, office, custom-ary activity, carrying on, custom; (6) religious duty, worship, obligation; (7) any undertaking, religious or ascetic performance or observance, vow, sacred work; (8) vow in general, fixed purpose; (9) other specialized senseṣ Max Muller derived it from <em>vr</em> 'to protect' and held that it meant originally what is enclosed, protected, set apart, then what is settled or determined, law, ordinance and then 'sway or power'. Whitney, in a note on this word in the Proceedings published in J. A. O. S. vol XI pp. 29-31, after setting out the treatment of the word in the St. Petersburg Dictionary, brushed aside Max Muller's etymology as unsatisfactory and as possessing little plausibility and declared that he did not accept the derivation of the word from <em>vr</em> 'to choose', that 'vr' did not signify willing or command, but only choice or preference, though he admitted that there is a relation-ship between 'choose' and 'command'. He objected that 'ta' as an affix (except in the formation of past passive participles) was very rare and that the only analogous word he could think of would be 'marta' from 'mr' to die. He preferred to derive the word from 'vrt' 'to proceed' and, though he admitted that the form vrata from 'vrt' with affix <em>a</em> would be exceptional, he thought that the words 'vraja' and 'trada' supported the deriva-tion and put forward the ground that the word 'vrata' occurs frequently in the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> with verbs of motion such as ‘car’, ‘saśc’ or ‘sac’.</p>
+<p class="prose" id="p-chapter-i-vrata-in-the-rigveda-3">Prof. V. M <span class="idx-term" data-def="Prof. V. M., on derivation and meaning of vrata, 2, 4, 6, 8, 9n">Apte</span> contributed a long article on vrata to the 3rd volume of the Bulletin of the Deccan College Research Institute at Poona (pp. 407-488) Prof Apte agreed with Whitney in deriving the word vrata from ‘vṛt’, boldly asserted that the derivation of the word from ‘vr’ to choose or ‘vr’ to guard or enclose is impossible (p 410), that there is not a single vrata passage in the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> which favours the meaning ‘will, command, obedience or fixed purpose’, that ‘vṛt’ not only means ‘to proceed’ (as Whitney holds) but also ‘to turn, to turn oneself, turn round, revolve, move on’ and that therefore ‘vrata’ means not only procedure, course of action, conduct, but also ‘circular movement’ and then ‘route or circular path’ (pp. 411-412).</p>
+<p class="prose" id="p-chapter-i-vrata-in-the-rigveda-4">My own view is that both Whitney and Prof Apte are wrong in deriving the word <em>vrata</em> from ‘vṛt’. I further hold that ‘vṛt’ occurs with <em>upasargas</em> such as <em>abhi</em>, <em>ā</em>, <em>ni</em>, <em>pari</em>, <em>pra</em> or <em>vi</em>, would not be helpful in determining the original meaning of ‘vṛt’ by itself, since <em>upasargas</em> often totally change the meaning of the root<sup class="fn-ref"><a href="#fn-chapter-i-vrata-in-the-rigveda-12" id="fnref-chapter-i-vrata-in-the-rigveda-12">12</a></sup>, that it is doubtful whether the root ‘vṛt’ standing by itself means in the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> ‘to proceed’ (as Whitney thought) and I deny that ‘vṛt’ occurring by itself in the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> ever means ‘to turn round, move on’ (as Prof Apte asserts) In my opinion the root ‘vṛt’ by itself (and not used in a causal or frequentative sense) means simply ‘to be, to remain, to abide’ Occurrences of the root ‘vṛt’ without any upasarga before or after it are few in the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a>. Some typical examples may be given ‘When, O Indra, thou didst strike down the wiles of Svarbhānu (the demon Rāhu) that remained below the sky<sup class="fn-ref"><a href="#fn-chapter-i-vrata-in-the-rigveda-2" id="fnref-chapter-i-vrata-in-the-rigveda-2">2</a></sup>’ (Ṛg V 40.6), ‘the wheel does not affect (jolt) your chariot (O Aśvins!) that is followed by songs one after another and that remains possessed of food’ (Ṛg VIII. 5. 34); ‘they (the dice) remain downwards (lie down on the board or ground) but they throb or strike above (I e they shake or terrify the hearts of gamblers), though they have no hands yet they defeat those that are endowed with hands’ (Ṛg X. 34 9). Vide also Ṛg X. 34 19, X 107 11 for other verses where ‘vṛt’ očcurs without an upasarga and means ‘to remain or abide’. Even with an upasarga like ‘sam’ <em>vṛt</em> means simply ‘to be or to abide’ and not ‘revolve or turn’ or ‘move on’. <em>Vide</em> <a class="ref" href="../refs/rigveda.html#VI.41.2" data-source="rigveda" data-ref="VI.41.2" title="Ṛgveda VI.41.2">Rg. VI. 41. 2</a>, X. 90. 14, X. 121. 1 and 7, X. 129. 4, in which ‘sam-vartatām’ or ‘samavartata’ simply means ‘let it remain’ or ‘it was or existed’. Simply because ‘vṛt’ with ‘<em>abhī</em>’ means ‘to turn towards or attack’ (as in <a class="ref" href="../refs/rigveda.html#IV.43" data-source="rigveda" data-ref="IV.43" title="Ṛgveda IV.43">Rg. IV. 43</a> 5 or V. 31. 5) or with ‘<em>ni</em>’ means ‘come down or return’ (as in <a class="ref" href="../refs/rigveda.html#X.19.1" data-source="rigveda" data-ref="X.19.1" title="Ṛgveda X.19.1">Rg. X. 19. 1</a>, 3, 5, X. 95. 17) or with ‘<em>parī</em>’ means ‘roam over or round’ (as in <a class="ref" href="../refs/rigveda.html#I.164.11" data-source="rigveda" data-ref="I.164.11" title="Ṛgveda I.164.11">Rg. I. 164. 11</a> and IV. 36 1), or with ‘<em>pra</em>’ means ‘to proceed’ (as in <a class="ref" href="../refs/rigveda.html#V.30.8" data-source="rigveda" data-ref="V.30.8" title="Ṛgveda V.30.8">Rg. V. 30. 8</a> or X. 89. 12), or with ‘<em>u</em>’ means ‘roll or revolve’ (as in <a class="ref" href="../refs/rigveda.html#I.185.1" data-source="rigveda" data-ref="I.185.1" title="Ṛgveda I.185.1">Rg. I. 185. 1</a>, V. 30. 8, V. 53 7, VI 9.1) it does not at all follow that the original sense of ‘vṛt’ is, as Prof Apte asserts (p. 411 end), ‘to revolve or roll on’. Besides, the last two senses are somewhat contradictory.</p>
+<p class="prose" id="p-chapter-i-vrata-in-the-rigveda-5">Prof. Apte complains that scholars were content as to <em>vrata</em> with the meanings ‘law, statute, command, sacrifice, vow, fixed purpose, duty’ and did not take enough notice of the important part that the sense of ‘route or circular path’ plays in the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a>. He opines that the divine vratas often mentioned in the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> rather mean ‘the heavenly routes, the divine rounds, the periodical movements round the sky closely adhered to by the gods themselves’ rather than ‘holy laws’ laid down by a particular deity. Adopting a suggestion of Tilak in ‘Orion’ (p. 154) that the path of ṛta sometimes mentioned in the <a class="ref" href="../refs/rigveda.html#i" data-source="rigveda" data-ref="i" title="Ṛgveda i">Ṛgveda i</a>s the broad belt of the Zodiac which the luminaries never transgress, Prof. Apte sets out to prove that the word ‘ṛta’ in the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> primarily means the belt of the Zodiac (vide his paper in the Silver Jubilee volume of the Annals of the B O R I, pp 55–56). This theory has failed to appeal to eminent Vedic scholars In my humble way I endeavoured to show in the 4th vol of the <a class="ref" href="../refs/hodh.html" data-source="hodh" data-ref="" title="History of Dharmaśāstra">H. of Dh.</a> (pp 2-5) that ‘ṛta’ has three senses in the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a>, one of which is ‘the course of nature or the regular general order in the cosmos’. ‘The path by which the group of Ādityas reaches ṛta’ in <a class="ref" href="../refs/rigveda.html#I.41.4" data-source="rigveda" data-ref="I.41.4" title="Ṛgveda I.41.4">Rg. I. 41. 4</a><sup class="fn-ref"><a href="#fn-chapter-i-vrata-in-the-rigveda-3" id="fnref-chapter-i-vrata-in-the-rigveda-3">3</a></sup> or the statement in Rg I. 164 11 ‘the wheel of ṛta, that has twelve spokes (12 constellations or months), continually goes round the sky without being worn out’ are only illustrations of the first meaning of ṛta But this meaning of ṛta by itself sheds hardly any light on the meaning of vrata Ṛta and vrata are not synonyms and it is difficult to see how, conceding for argu- ment that ‘ṛta’ is the belt of the Zodiac, vrata means, as Prof. Apte obviously thinks, the same thing. Ṛta is an Indo-European word but so far as I know ‘vrata’ is not even shown to be Indo- Iranian, much less Indo-European</p>
+<p class="prose" id="p-chapter-i-vrata-in-the-rigveda-6">Prof. Apte advances the theory that there are two parallel phases of the semantic evolution of the word ‘vrata’ viz a ‘divine phase’ and a ‘human’ phase. I feel no hesitation in denying the existence of any such distinction in the meaning of the word ‘vrata’. Prof Apte arranges (pp 414–415) the so-called divine phase of the meaning of vrata into six groups, viz. (I) turning round, passage, procedure, physical activity, (II) circular path, settled or beaten route, (III) sphere or region of movement or influence, (IV) routine, laws of movement; periodic appearance or visit, customary activity, recurring march, (V) victorious advance or strength, (VI) ordinance, law, rule or code of conduct. In the so-called ‘human phase’ of semantic development he sets out four groups of senses, viz (I) physical activity (as distin- guished from mental), duty, profession; (II) the sum total of those peculiar ethical and religious duties and practices which made up the culture pattern of the Aryans; (III) the specific social and religious duties of the three classes of Aryan society; (IV) devo- tion to duty in general on the part of men and womeṇ</p>
+<p class="prose" id="p-chapter-i-vrata-in-the-rigveda-7">I have summarised Prof. Apte’s long list of meanings in ten groupṣ The very fact that Prof. Apte had to marshall over sixty English equivalents for the meaning of the word ‘vrata’, which occurs in the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> only about 220 times by itself or in com- bination with other words is enough to make scholars suspicious about the correctness of the entire scheme. Though he had the hardihood to assert in one place (p 410)<sup class="fn-ref"><a href="#fn-chapter-i-vrata-in-the-rigveda-4" id="fnref-chapter-i-vrata-in-the-rigveda-4">4</a></sup> that no passage in the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> favours the meaning ‘will or command’ he admits (on pp. 476–477) that in three passages (<a class="ref" href="../refs/rigveda.html#II.38" data-source="rigveda" data-ref="II.38" title="Ṛgveda II.38">Ṛg. II. 38</a> 7, X. 10 5, X. 33 9) the meaning of vrata as ‘ordinances laid down by a divinity for devotees or human beings’ is quite acceptable to him and further that in about 25 passages (which come under groups II to IV of the so-called human phase of Prof. Apte) vrata either means ‘ethical or religious code of practices of the three classes of Aryans’ or ‘beneficent sway or devotion’. I shall now state my own views on the derivation and the meanings of the word vrata in the Ṛgveda. I derive the word from the root ‘vṛ’ (to choose). From this root comes the word ‘vara’ (bridegroom who is chosen from among several men by a maiden or her guardian), which occurs in Ṛg IX. 101. 14 and X. 85. 8 and 9. Choosing involves willing or volition on the part of the person choosing. Hence ‘vṛ’ also means ‘to will’. Therefore, when the word vrata is derived from ‘vṛ’ with the suffix ‘ta’, the meaning of vrata can be ‘what is willed’ or simply ‘will’. The will of a person in power or authority is a command or law unto otherṣ Devotees believe that gods have laid down certain commands to be followed by themselves as well as by all beingṣ Thus comes the sense of ‘law or ordinance’. A command of a superior imposes and implies a corresponding duty to obey. When commands are obeyed or duties are performed in the same way for long, they become the patterns of obligations i. e. customs or practiceṣ When persons believe or feel that they must perform certain acts as ordained by gods, then arises the sense of religious worship or duty. If a man imposes upon himself certain restrictions as to his behaviour or food to win the favour of gods that becomes a sacred vow or religious observance. Thus the several meanings of the word ‘vrata’, which I derive from the root ‘vṛ’, are command or law, obedience or duty, religious or moral practices, religious worship or observance, sacred or solemn vow or undertaking, then any vow or pattern of conduct. It should not be supposed that these several meanings followed one another in a time sequence. Two or more meanings might have been simultaneously in vogue such as ‘ordinance, duty or obedience’. These meanings of vrata set out by me are quite sufficient for the interpretation of almost all Ṛgveda passages in which the word occurṣ</p>
+<p class="prose" id="p-chapter-i-vrata-in-the-rigveda-8">When Whitney derived the word ‘vrata’ from ‘vṛ’ with affix ‘a’, he could cite only two words ‘vraja’ and ‘trada’ as parallel. But it is quite possible to argue that ‘vraja’ is not analogous to vrata (if derived from ‘vṛt’). Vraja (cowpen) occurs in the Ṛgveda in II. 38. 8, IV. 1. 15, IV. 16. 6, V. 6. 7, V. 33 10, can very well be derived from ‘vraj’ to go and <span class="idx-term" data-def="5, (knew Naṭasūtras of Śīlālin and Kṛśāśva), (explains ‘Mīmāṁsate’), (mentions Kāśyapa to show respect), (charge that Pāṇini violates his own rules), (distinguishes between the author of a work and...">Pāṇini</span> III. 3 119 appears to derive<sup class="fn-ref"><a href="#fn-chapter-i-vrata-in-the-rigveda-5" id="fnref-chapter-i-vrata-in-the-rigveda-5">5</a></sup> it from ‘vraj’ in the sense of ‘karaṇa’ or adhikaraṇa. The root ‘vraj’ occurs in the Ṛgveda<sup class="fn-ref"><a href="#fn-chapter-i-vrata-in-the-rigveda-6" id="fnref-chapter-i-vrata-in-the-rigveda-6">6</a></sup> If vraja is derived from the root 'vraj', it is not on all fours with vrata derived from 'vṛt'. Whitney probably derived 'vraja' from 'vṛj'. But the meaning of 'vraja' (cowpen) can hardly arise from the root 'vṛj' (to give up, abandon). The word 'trada' occurs only once in the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> (VIII 45 28)<sup class="fn-ref"><a href="#fn-chapter-i-vrata-in-the-rigveda-7" id="fnref-chapter-i-vrata-in-the-rigveda-7">7</a></sup> and is applied to Indra. It is difficult to say from what root, if any, it is deriveḍ Whitney probably derived it from 'tṛd' to injure or pierce. The word 'tṛdiḷaḥ' (crushing) is applied to the stones (grāvāṇaḥ) which crush soma stalks<sup class="fn-ref"><a href="#fn-chapter-i-vrata-in-the-rigveda-8" id="fnref-chapter-i-vrata-in-the-rigveda-8">8</a></sup> (<a class="ref" href="../refs/rigveda.html#X" data-source="rigveda" data-ref="X" title="Ṛgveda X">Ṛg. X</a> 94 11). Whitney says he knows only one word 'marta' derived from 'mṛ' (to die) with the affix 'ta' which is analogous to vrata if the latter be derived from 'vṛ'. But Whitney failed to notice other words with the affix 'ta' (not past passive particles) such as 'karta' (deep hole, cavern) (in <a class="ref" href="../refs/rigveda.html#I" data-source="rigveda" data-ref="I" title="Ṛgveda I">Ṛg. I</a> 121.13, II 29 6, IX. 73. 8 and 9) and 'garta' (cavity or seat in a war chariot) (in <a class="ref" href="../refs/rigveda.html#II" data-source="rigveda" data-ref="II" title="Ṛgveda II">Ṛg. II</a> 33 11, V. 62. 5 and 8, VI. 20 9, VII 64. 4), vāta (wind) from 'vā' (<a class="ref" href="../refs/rigveda.html#V" data-source="rigveda" data-ref="V" title="Ṛgveda V">Ṛg. V</a> 31. 10, X 168. 1 &c.), dhūrta and several otherṣ</p>
+<p class="prose" id="p-chapter-i-vrata-in-the-rigveda-9">Prof Apte cites the word <em>vartam</em> (which means 'way' in Ṛg I. 23 9, V 61 9, VII 8 16, VIII. 23. 19, VIII 63 8) as analogous to vrata (from vṛt). But that word lends very little help. In 'vartanī' there is <em>guṇa</em> (vṛt becomes vart), besides vartani cannot be derived from 'vṛt' meaning 'turn round or revolve' (which Prof Apte gives as the original meaning), but from the meaning 'to abide' or at the most 'to proceed' and further 'vartanī' has practically only one meaning in the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a>, while vrata has to be paraphrased by sixty different words in English by Prof Apte.</p>
+<p class="prose" id="p-chapter-i-vrata-in-the-rigveda-10">Prof Apte following Whitney relies on the fact (p 409) that vrata is frequently employed in the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> with verbs of motion such as anu-i, anu-car, anu-gā, anu-vṛt. But these roots take on another meaning (viz 'to follow or observe') owing to the presence of 'anu' and in almost all the passages where the forms of these roots with anu occur there is no indication whatever of physical motion, but only that of 'obeying or observing'. Besides, the root 'car' itself is not used in the sense of physical motion in several passages of the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a>, but in the sense of 'performing' and 'observing'. Vide<sup class="fn-ref"><a href="#fn-chapter-i-vrata-in-the-rigveda-2" id="fnref-chapter-i-vrata-in-the-rigveda-2">2</a></sup> <a class="ref" href="../refs/rigveda.html#I.52" data-source="rigveda" data-ref="I.52" title="Ṛgveda I.52">Rg. I. 52</a>, 6, III. 54. 2, VI. 9. 6, VII. 89. 5.<sup class="fn-ref"><a href="#fn-chapter-i-vrata-in-the-rigveda-9" id="fnref-chapter-i-vrata-in-the-rigveda-9">9</a></sup> Moreover, in words like brahmacārī (Rg X. 109.5) and vratācarinah (Rg VII. 103.1) the meaning of a physical motion, if it was the original one at all, is totally absent and the meaning 'performing' or 'observing' is the only one possible. Some occurrences of the roots 'saśc' and 'sac' in which the meaning of physical motion is inapplicable but the meaning 'resort to, accept or be united to' appears to be intended are found in <a class="ref" href="../refs/rigveda.html#II" data-source="rigveda" data-ref="II" title="Ṛgveda II">Rg. II</a> 1 13, VII. 28. 4 (for forms of 'sasc') and IV. 12. 2., VII, 35. 5, VIII, 4 9, IX. 95. 4 (for forms of 'sac').</p>
+<p class="prose" id="p-chapter-i-vrata-in-the-rigveda-11">It is now necessary to examine the contention of Prof. Apte that vrata means in the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> the tracks or routes that the various luminaries trace in the heavens Vratas are spoken of not only in relation to Agni, Indra, Mitra, Soma, Usas, Savitr and Ādityas but also in relation to Varuna (in Rg I. 25.1, III. 54.18, V. 69 4, VII 83.9), <a class="ref" href="../refs/brihaspati.html" data-source="brihaspati" data-ref="" title="Bṛhaspati">Bṛhaspati</a> (in II 23.6), Indra and Brahmanaspati (II. 24. 12), Aditi (I. 144.12, VII 87 9), Parjanya (V. 83.5) and Aśvins (I 183 3) Conceding for a moment that by some stretch of imagination or some linguistic acrobatics one can speak of the vratas of Agni, Ādityas, Mitra, Indra, Savitr and Usas as referring to the tracks of luminaries in the heavens, the mid regions and on the earth, one should like to know whether Aditi, Aśvins, Varuna, <a class="ref" href="../refs/brihaspati.html" data-source="brihaspati" data-ref="" title="Bṛhaspati">Bṛhaspati</a> or Brahmanaspati are luminaries and what tracks they were supposed to trace in the heavens or elsewhere. Scholars are not agreed as to the meaning of Aditi or as to the physical or celestial phenomena Varuna or the Aśvins were supposed to represent. Aditi is a riddle, being identified with the heaven and the mid regions and also spoken of as the father, mother or the son or as the mother of Daksa and also his daughter ; vide <a class="ref" href="../refs/rigveda.html#I.89.10" data-source="rigveda" data-ref="I.89.10" title="Ṛgveda I.89.10">Rg. I. 89. 10</a>, II 27.1, X 72. 4-5 and <span class="idx-term" data-def="(vide ‘Vedic interpretation’ and ‘Yaska’ ), (two interpretations of several Ṛgveda Mantras), (discussion whether Vedic Mantras have meanings), (explains Ṛg. I. . ), (PMS agrees with many conclusion...">Nirukta</span> XI 23 as to Aditi and <a class="ref" href="../refs/rigveda.html#II" data-source="rigveda" data-ref="II" title="Ṛgveda II">Rg. II</a> 1 11 where Agni is identified with Aditi Long before the times of the Nirukta there was difference on the question of the nature of Aśvins, some identifying them with Heaven and Earth, or day and night, or the Sun and the Moon or two meritorious kings (Nirukta XII 1), while some Western scholars hold them to be the Morning and the Evening star or Castor and Pollux The endeavour of interpreters of the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> should be to assign such a derivation and meaning to the word vrata as would be appro- priate in all cases where the word vrata is brought in relation to some godṣ In my opinion the only meanings that can be well construed with all passages in which the vratas of the several gods mentioned above are referred to is ‘commands or ordinances, religious or moral practices or worship or vows’ One does not understand what Prof. Apte means when he remarks at (p. 442) in a tone of ridicule that observing or obeying the ‘ordinances or religious worship of gods’ is a soft job and looking after the paths or the tracks of luminaries is a strenuous one If anything, the reverse of this should be true</p>
+<p class="prose" id="p-chapter-i-vrata-in-the-rigveda-12">The word ‘samrāj’ appears to be applied to a human king in Rg <sup class="fn-ref"><a href="#fn-chapter-i-vrata-in-the-rigveda-10" id="fnref-chapter-i-vrata-in-the-rigveda-10">10</a></sup> VII. 58 4 ‘the sovereign, protected by you, O Maruts! kills the enemy’, and in <a class="ref" href="../refs/rigveda.html#X.85" data-source="rigveda" data-ref="X.85" title="Ṛgveda X.85">Rg. X. 85</a> 46 the newly married girl has the blessing ‘be you a queen’ (samrājñī). Varuna, Mitra, Indra, Agni, Viśve-devāh and Ādityas are called kings (rājan) and emperors (samrāj) in <a class="ref" href="../refs/rigveda.html#II.41.6" data-source="rigveda" data-ref="II.41.6" title="Ṛgveda II.41.6">Rg. II. 41. 6</a>, III 10 1, III. 54 10, V. 85 1, VII. 38. 4, VIII 27 22, X. 63. 5. Varuna (who is praised in about 12 hymns) is called samrāj oftener than even Indra praised in about 200 hymns What is more natural than to suppose that the gods called kings and emperors were believed to have laid down commands or ordinances to be obeyed by all. Though Rgvedic sages extol several gods they had already arrived at the conception that there was only one Supreme Being that was addressed under different names such as Indra, Mitra, Varuna, Agni and assumed several forms (Rg I 164. 46, VI 47 18, X. 121. 1, X 129. 1-2) Vratas are spoken of as dhruva (imutably fixed) as in II. 5 4, III 56 1, V. 69 4 and as adabdha (unharmed, unassailable) as in I 24 10, II. 9 1, III 54 18, VII. 66. 6 and davya (divine) as in Rg I 70 1, I 92 12, VII 75 3. One must carefully remember these facts when ascertaining the exact meaning of vrata mentioned in connection with almost all the prominent gods of the <a class="ref" href="../refs/rigveda.html#I" data-source="rigveda" data-ref="I" title="Ṛgveda I">Ṛgveda I</a>t is often stated in the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> that the vratas of the god whom the sage for the moment praises are not violated by other gods Some striking examples<sup class="fn-ref"><a href="#fn-chapter-i-vrata-in-the-rigveda-11" id="fnref-chapter-i-vrata-in-the-rigveda-11">11</a></sup> may, be given here : <a class="ref" href="../refs/rigveda.html#III.7.7" data-source="rigveda" data-ref="III.7.7" title="Ṛgveda III.7.7">Rg. III. 7. 7</a> ‘the gods observe the vratas of gods’ (devā devānām-anu hi vratā guḥ); II. 38 9 ‘I invoke for my welfare with salutations god Savitr whose vrata is not violated by Indra, Varuna, Mitra, Aryaman, or Rudra or by the (gods’) enemies’; III. 56. 1 ‘the primeval and immutably fixed vratas are not destroyed by the wily (demons), nor by the wise (sages), nor by the well-disposed Heaven and Earth and the firmly fixed mountains are not there for being bent down’; VIII. 42. 1 ‘the all-know-ing and powerful (Varuna) made Heaven firm, he measured (created) the expanse of the earth; the great king sits over (rules) all the worlds; all these are the vratas of Varuna’. Vide also <a class="ref" href="../refs/rigveda.html#I.101.3" data-source="rigveda" data-ref="I.101.3" title="Ṛgveda I.101.3">Rg. I. 101. 3</a>, II. 24. 12, II 38. 2, III. 30. 4, V. 69. 4.</p>
+<p class="prose" id="p-chapter-i-vrata-in-the-rigveda-13">The above mentioned passages clearly show that the Vedic sages believed that not only did the several gods observe or carry out the immutably fixed ordinances laid down by themselves or by any one of them but that even wily demons had to observe them and that waters or rivers flow as ordained by godṣ We have to take into account along with these beliefs that the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> often adverts to the fact that human beings also break (or violate) the vratas of gods, are liable to be punished therefor and pray to the gods to pity them and to withhold the punishment. For example,<sup class="fn-ref"><a href="#fn-chapter-i-vrata-in-the-rigveda-13" id="fnref-chapter-i-vrata-in-the-rigveda-13">13</a></sup> Rg I. 25. 1-2 ‘Whatever ordinance (vrata) of thine, O Varuna! we may break day to day as people (subjects) do (i. e. break the king’s law) do not reduce us to death &c.’; X. 25. 3 ‘O Soma! if I transgress your perfect (lit. well-baked) vratas, then in thy exhilaration (at our sacrifices) take pity on us as a father does towards his son’. Vide also VII. 89. 5, VIII. 48 9. It would have been noticed that in some of the passages quoted above (in note 11) on vrata, verbal forms of the root ‘mī’ or ‘mi’ occur. For the correct understanding of these passages the exact meaning of the root ‘mī’ is very important. The Nighanṭu (II 19) includes ‘mīnāti’ among verbs meaning ‘vadha’ (killing or harming). In the Dhātupāṭha the meaning of the root ‘mī’ is hiṃsā (killing, annihilating, breaking). Vide Pāṇini VII 3 81 (mināter-nigame). The forms of ‘mī’ or ‘mi’ with or without the preposition ‘a’ or ‘pra’ occur more than 50 times in the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> and often in connection with vrata. Whitney felt that the occurrences of the forms of ‘mī’ or ‘mi’ presented some difficulty about his theory of the derivation of vrata and its meanings, but Prof. Apte, who derived his inspiration from Whitney, feels no such misgivings as Whitney felt, holds, relying on his own interpretation of Ṛg I 124 3, that ‘mī’ or ‘mi’ is a verb of motion and has the primary sense of ‘miss, deviate, wander or stray from’ (p 411). Over a dozen verses at least will clearly show that Prof. Apte has been led astray by his preconceived theory about vrata meaning ‘tracks of luminaries’ and that ‘mī’ or ‘mi’ cannot at all be construed in the sense of ‘miss’ or ‘deviate’ in the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a>. Ṛg I 71. 10 ‘old age destroys me as (the dark or clouded) sky destroys (distinctness of) forms’ (nabho na rūpaṃ jarimā mināti); I 124 2<sup>13</sup> (‘the dawn) which does not violate divine laws but destroys the spans of human life’, I. 179. 1 (Lopāmudrā says to Agastya) ‘old age destroys the beauty of limbs’ (mināti śriyaṃ jarimā tanūnām); VII 84 4 (Varuna) who is an Āditya, who destroys the false ones and who, the valiant one, imparts immeasurable wealth’. Vide also Ṛg I 92 11, I 117 3, III 32 8, IV. 30 23, V 7.4, V 82. 2 for other examples where forms of ‘mī’ or ‘mi’ occur. It is unnecessary to adduce more examples about ‘mī’. It is impossible, if Prof Apte is to be followed, that old age misses or deviates from beauty or that Aśvins miss or deviate from the wiles of the demon or that Varuna misses falsehood (or false men). Prof Apte relies (p 411) on <a class="ref" href="../refs/rigveda.html#I.124.3" data-source="rigveda" data-ref="I.124.3" title="Ṛgveda I.124.3">Rg. I. 124. 3</a><sup class="fn-ref"><a href="#fn-chapter-i-vrata-in-the-rigveda-14" id="fnref-chapter-i-vrata-in-the-rigveda-14">14</a></sup> as decisively establishing that originally ‘mi’ was a verb of motioṇ In the first place, one verse cannot demolish what many verses quoted above convey. Besides, there is nothing in <a class="ref" href="../refs/rigveda.html#I" data-source="rigveda" data-ref="I" title="Ṛgveda I">Rg. I</a>, 124. 3 that establishes what Prof. Apte thinks it does That verse says ‘Here this daughter of heaven wearing a garment of light is seen in the east (by us) simultaneously; she (Dawn) well follows the path of ṛta (cosmic order), she like (a woman) knowing well does not annihilate the several quarters’.</p>
+<p class="prose" id="p-chapter-i-vrata-in-the-rigveda-14">The sense of ‘command or law’ is quite appropriate in more than half the Rgvedic passages in which the word vrata occurṣ In some passages the sense of ‘religious practices or modes of sacred worship’ is suitable. For example, <a class="ref" href="../refs/rigveda.html#X.65.11" data-source="rigveda" data-ref="X.65.11" title="Ṛgveda X.65.11">Rg. X. 65. 11</a> says ‘(the Viśve-devas) that are good donors make the sun rise in heaven and spread about the Ārya vratas over the earth’. Vide also <a class="ref" href="../refs/rigveda.html#VI.14.3" data-source="rigveda" data-ref="VI.14.3" title="Ṛgveda VI.14.3">Rg. VI. 14. 3</a>.</p>
+<p class="prose" id="p-chapter-i-vrata-in-the-rigveda-15">There are several places in the <a class="ref" href="../refs/rigveda.html#i" data-source="rigveda" data-ref="i" title="Ṛgveda i">Ṛgveda i</a>n which the words ‘avrata’ (11 times), ‘apavrata’ (in <a class="ref" href="../refs/rigveda.html#1" data-source="rigveda" data-ref="1" title="Ṛgveda 1">Rg. 1</a> 51. 9, V. 42. 9, V. 40. 6), ‘anyavrata’ (in V. 20. 2, VIII. 70. 11, X. 22. 8) occur and in almost all of which <em>vrata</em> must be taken to mean ‘mode of worship or ethical and religious practices of the Vedic worshipers’. Prof. Apte has to admit this (pp. 479, 483). It will not do to ignore these passages in finding out the derivation and meanings of the word <em>vrata</em> or to clap them in a separate group (as Prof. Apte does on p. 413) and distinguish them from other passages supposed to indicate the divine phase. There is nothing to show that Vedic sages distinguished between divine <em>vratas</em> and other <em>vratas</em> meant to be followed by Heaven and Earth, rivers, mountains and human beingṣ Some of these passages in which the word ‘avrata’ occurs strongly militate against the theory of Prof. Apte. For example,<sup class="fn-ref"><a href="#fn-chapter-i-vrata-in-the-rigveda-15" id="fnref-chapter-i-vrata-in-the-rigveda-15">15</a></sup> in <a class="ref" href="../refs/rigveda.html#I.101.2" data-source="rigveda" data-ref="I.101.2" title="Ṛgveda I.101.2">Rg. I. 101. 2</a> Indra is said to have killed Pipru who was <em>avrata</em> and in the very next verse it is said that Varuna and Sūrya abide in the <em>vrata</em> of Indra and the rivers also accept his <em>vrata</em>. Therefore, <em>vrata</em> in this hymn must mean something akin to the meaning of <em>vrata</em> in <em>avrata</em> and not akin to ‘tracks of luminaries’. Compare IX. 73 5 and 8 where <em>avrata</em> occurs with ‘<em>raksati vratam</em>’ in IX.73 3 (both being verses about Soma)</p>
+<p class="prose" id="p-chapter-i-vrata-in-the-rigveda-16">There are seven passages in the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> where the word ‘<em>vivrata</em>’ occurs In six of them ‘<em>vivrata</em>’ is applied to the horses of Indra. According to Prof. Apte, the only natural meaning is ‘moving or wandering along diverse paths’ (p 419) But this is arguing in a circle They can be explained if <em>vrata</em> is taken to mean ‘ordinance, duty or practice’, when applied to horses ‘<em>vivrata</em>’ may be held to mean no more than this that two horses are yoked on two sides of the chariot and obey the various orders indicated through the pulling of the reins The 7th passage X. 55. 3 in which ‘<em>vivrata</em>’ occurs as an adjective of ‘<em>jyotih</em>’ is difficult to construe and Prof. Apte has not succeeded in satisfactorily explaining it</p>
+<p class="prose" id="p-chapter-i-vrata-in-the-rigveda-17">In several passages of the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> phrases like ‘<em>tava vrate</em>’ occur. Whitney (p 409) stated that the phrase should rather mean ‘in thy established or approved course, following thy lead or example’, than ‘under thy control or protection’ or ‘in thy service’ as some scholars holḍ Prof. Apte thinks that the translation of ‘<em>tava vrate</em>’ as ‘abiding in thy ordinance’ (by Macdonell) misses the point and avers that the proper meaning is ‘dominion, authority, region or sphere’ Some of the passages containing the words ‘<em>tava vrate</em>’ are <a class="ref" href="../refs/rigveda.html#VI" data-source="rigveda" data-ref="VI" title="Ṛgveda VI">Rg. VI</a> 54. 9, IX 102 5, X 36 13, X 57 6 In my opinion ‘<em>tava vrate</em>’ means ‘while we abide by your ordinances’. In X. 36 13 the first half<sup class="fn-ref"><a href="#fn-chapter-i-vrata-in-the-rigveda-16" id="fnref-chapter-i-vrata-in-the-rigveda-16">16</a></sup> is a relative clause without a vorb and we have to supply a form of the root ‘as’ (to bo) or of ‘bhū’. In some versos such a form of ‘as’ does occur with the words as in <a class="ref" href="../refs/rigveda.html#I" data-source="rigveda" data-ref="I" title="Ṛgveda I">Rg. I</a> 124 15<sup class="fn-ref"><a href="#fn-chapter-i-vrata-in-the-rigveda-17" id="fnref-chapter-i-vrata-in-the-rigveda-17">17</a></sup> Therefore whorover the words ‘<em>tava vrata</em>’ occur, we should gonorally understand that the moaning is ‘while abiding by your ordinances’. This is further supported by the fact that there are passages whoro the word ‘<em>vrata</em>’ and other words like ‘sumati’ in the locative are used with the forms of the root ‘as’ to be or of verbs meaning to abide or dwell. Vide <a class="ref" href="../refs/rigveda.html#I.83" data-source="rigveda" data-ref="I.83" title="Ṛgveda I.83">Rg. I. 83</a> 3 (‘vrate te kṣeti’, ‘abides in thy vrata’), II 27. 13 (‘ya ādityānām bhavati praṇītau’, ‘who is within or under the lead of Adityas); X. 14. 6<sup class="fn-ref"><a href="#fn-chapter-i-vrata-in-the-rigveda-18" id="fnref-chapter-i-vrata-in-the-rigveda-18">18</a></sup> ‘may we be in the good will of them (the pitrs) that deserve to have sacrifices offered to them and also in their beneficent grace’. Vide also Rg III 1. 21 and III 59 4, VI 47. 13, X. 131. 7 (tasya vayam sumatau ..syāma)</p>
+<p class="prose" id="p-chapter-i-vrata-in-the-rigveda-18">There are eight passages in the <a class="ref" href="../refs/rigveda.html#i" data-source="rigveda" data-ref="i" title="Ṛgveda i">Ṛgveda i</a>n which the word ‘śucivrata’ occurs and is always applied to some god or gods In three passages VIII. 43. 16, VIII. 44 21, X. 118 1 ‘śucivrata’ is an attribute of Agni and Prof Apte renders it as ‘(Agni) with a blazing trail, track or sphere’ (p 421) He says ‘śuci’ is derived from ‘śuc’ (to shine or flame up), that the word ‘śuci’ can only mean ‘brilliant or flaming’, that the meaning ‘pure’ is purely figurative and secondary and is found only in about six or seven out of a total of over a hundred or more in the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> when it is an epithet of ‘manīṣā, stoma, mati or girah’. These remarks are mis-statements; ‘śuci’ in the sense of ‘pure’ is not so rare as Prof. Apte tries to make out (6 or 7 times out of 100). In one verse alone addressed to the Maruts (<a class="ref" href="../refs/rigveda.html#VII.56.12" data-source="rigveda" data-ref="VII.56.12" title="Ṛgveda VII.56.12">Rg. VII. 56. 12</a>) the word<sup class="fn-ref"><a href="#fn-chapter-i-vrata-in-the-rigveda-19" id="fnref-chapter-i-vrata-in-the-rigveda-19">19</a></sup> ‘śuci’ occurs six times and should ordinarily be taken only in one sense in those six and can only mean ‘pure’, since ‘śuci’ is there applied to offerings (havya) and sacrifice In VIII. 44. 21 Agni is styled ‘śucir-viprah’ and ‘śucih’ and ‘kavih’. The word ‘śuci’ occurs in that verse four times out of which ‘śuci’ as applied to ‘vipra’ and ‘kavi’ can only mean ‘pure or holy’. Vide II 27 13, where the yajamāna (sacrificer) is called ‘śuci’, I 142. 9 where the three goddesses Bhārati, Ilā and Sarasvatī are said to be ‘śuci’. Conceding for argument that the root ‘śuc’ originally meant ‘to shine or blaze’, the distinction of two mean-ings (primary and secondary) in ‘śuci’ had disappeared long before the Rgvedic hymns were composed, as <a class="ref" href="../refs/rigveda.html#VII.56.12" data-source="rigveda" data-ref="VII.56.12" title="Ṛgveda VII.56.12">Rg. VII. 56. 12</a> and other verses establish Vide <a class="ref" href="../refs/rigveda.html#III.62.5" data-source="rigveda" data-ref="III.62.5" title="Ṛgveda III.62.5">Rg. III. 62. 5</a> (where <a class="ref" href="../refs/brihaspati.html#i" data-source="brihaspati" data-ref="i" title="Bṛhaspati i">Bṛhaspati i</a>s called śuci), I 181 2 (where the horses of the Asvins are styled ‘śuci’), II 33. 13 (where the herbs or drugs of Maruts are spoken of as śuci), VII 49. 2 and 3 where waters are called ‘śuci’ and VII 89. 3 (where Varuna is addressed as ‘śuci’) In the above passages the word śuci in at least a dozen cases is clearly used in the sense of ‘pure’, is applied to offerings, sacrifices, drugs, horses, waters or rivers and is not restricted to manişū, stoma, mati and girah as Prof Apte wrongly assertṣ Prof Apte minimises the <span class="idx-term" data-def="prominent in Mahābhārata">number</span> of times that ‘śuci’ means ‘pure’, and observes a discreet silence about its being an attribute of the physical objects mentioned above. Therefore, there is no difficulty in holding ‘śucivrata’ as applied to gods meaning ‘whose ordinances are pure or holy’. In I 15 11 and I 182 1 the word ‘sucivrata’ is an attribute of the Aśvins, in III 62 17 and VI 16 24 of Mitra and Varuna and in VI 70 2 of Heaven and Earth. Besides, we have the analogous word ‘sucikraṅda’ (the loud laud addressed to whom is pure) applied to <a class="ref" href="../refs/brihaspati.html#i" data-source="brihaspati" data-ref="i" title="Bṛhaspati i">Bṛhaspati i</a>n VII 97 5.</p>
+<p class="prose" id="p-chapter-i-vrata-in-the-rigveda-19">The word ‘mahivrata’ occurs five times and is applied to Soma (IX. 97 7, IX. 100. 9), to Agni (I. 45. 3, X. 115. 3) and to Varuna (VI 68 9) and the word ‘mahāmahivrata’ to Soma (IX. 48 2). In all these cases the meaning ‘whose commands or laws are great or many’ would be quite appropriate. The word ‘mahi’ by itself occurs in over 110 passages in the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a>, in all of which ‘mahi’ stands for ‘mahat’ and qualifies words like ‘sravas’ (food or fame), kşatra (‘prowess’ as in I 54 8 and 11), namah, śarma (in I 93 8), dātra (‘gift’, as in I 116 6), enas (in II 12. 10), karma (II. 22 1), Mahītvana (in II 23 4), varūtha, draviṇa (III. 1 22), raksas (IV 3 14). Prof Apte (p 475) quite unnecessarily suggests three separate meanings of ‘mahivrata’, the first of which is ‘of great dominion’, ‘of great tracks’, ‘of great exploits’ and expands that meaning by interpolating the words ‘mighty or resplendent sway or sphere’. ‘Mahi’ hardly ever means ‘resplendent’ by itself.</p>
+<p class="prose" id="p-chapter-i-vrata-in-the-rigveda-20">The word ‘priyavrata’ occurs only once in the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> (in X 150 3), is applied to gods and means ‘to whom the ordinances laid down by them are dear’. Prof Apte (p 472) criticizes people who explain the word as ‘whose laws we love’; but he names no one who does so. Similarly, the word ‘puruvrata’ occurs once only in Rg IX 3 10, is applied to Soma and means ‘whose ordinances are many’. Both these words do not at all help Prof. Apte in his interpretation and are rather against his pet theory (of tracks of luminaries &c )</p>
+<p class="prose" id="p-chapter-i-vrata-in-the-rigveda-21">The word ‘dhunivrata’ occurs twice (in Rg V 58 2 and V. 87 1) and is applied to Marut or the band of Marutṣ Prof Apte (p. 435 section 47) takes ‘dhuni’ as an adjective, and as meaning ‘roar- ing, storming’ and translates ‘dhunivrata’ as ‘whose paths are characterised by roaring or raging’. The word ‘dhuni’ occurs about ten times in the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> and when an adjective means ‘one that shakes his enemies or clouds’ or is a noun meaning ‘river’ (as in II. 15. 5). Dhuni is also the name of a demon (in <a class="ref" href="../refs/rigveda.html#VI.18.8" data-source="rigveda" data-ref="VI.18.8" title="Ṛgveda VI.18.8">Rg. VI. 18. 8</a>, VII. 19. 4, X. 113. 9). In I. 174. 9, V. 34. 5 and 8, VI. 20. 12 ‘dhuni’ is an attribute of Indra, and in I. 79. 1 of Agni. The Nirukta (V. 12) while explaining <a class="ref" href="../refs/rigveda.html#X.89.5" data-source="rigveda" data-ref="X.89.5" title="Ṛgveda X.89.5">Rg. X. 89. 5</a> (in which both Soma and Indra are praised) explains ‘dhuni’ as derived from ‘dhū’ to shake. Therefore ‘dhunivrata’ should mean ‘whose ordinances are such as make others (breakers) tremble’.</p>
+<p class="prose" id="p-chapter-i-vrata-in-the-rigveda-22">It is not necessary to examine separately each of the verses in which the word ‘vrata’ occurs and Prof. Apte’s interpretations thereof. The preceding discussion is sufficient to show what vrata means in almost all passages in the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a>. In his zeal to buttress up his theory, Prof. Apte commits mistakes in the construction and translation of some verseṣ On p. 420 (section 29) he renders <a class="ref" href="../refs/rigveda.html#VIII.94.2" data-source="rigveda" data-ref="VIII.94.2" title="Ṛgveda VIII.94.2">Rg. VIII. 94. 2</a><sup class="fn-ref"><a href="#fn-chapter-i-vrata-in-the-rigveda-20" id="fnref-chapter-i-vrata-in-the-rigveda-20">20</a></sup> as ‘she (Prśni) in whose lap all the gods maintain their vratas, the Sun and the Moon also, in order that they may be seen’, explains that the Sun and the Moon are seen only when they keep their vratas and concludes that vratas must mean tracks followed by the Suṇ Prof. Apte takes ‘sūryāmāsā’ as the subject of ‘Dhārayante’ along with Viśve-devāh’, but ‘Sūryāmāsā’ is in the objective case in relation to ‘dṛśe’, the proper translation being ‘in the lap of whom (i.e. of Prśni, the mother of Maruts), all the gods uphold their laws in order that (people) may see the Sun and the Moon’. What is meant is that the Sun and the Moon rise at the proper times because the gods uphold their ordinanceṣ If we compare VIII. 94.2 with I. 23.21 (=X.9.7), I. 50.1, I. 52.8, X. 57.4, X. 60.5 it would be clear that my translation is the only correct one and if that be so no question of ‘tracks of light’ will arise.</p>
+<p class="prose" id="p-chapter-i-vrata-in-the-rigveda-23">Misinterpretations of words like ‘ksitih’ in III. 3. 9 as meaning dwellings (rather it means “the common mass of people” as in III. 14. 4, VI. 65. 1, VII. 65. 2, VII. 75. 4, VII. 79. 1. &c.) and of ‘śruṣṭim’ (on p 450) are passed over here. On VI. 70 5 Prof. Apte remarks (p 420, Sec 17) that to take ‘vrata’ in ‘madhuvrata’ applied to the deities Heaven and Earth as mean-ing ‘law, duty or will’ is almost absurḍ One fails to see why it would be absurd to hold, when heaven and earth are spoken of as ‘dropping<sup class="fn-ref"><a href="#fn-chapter-i-vrata-in-the-rigveda-21" id="fnref-chapter-i-vrata-in-the-rigveda-21">21</a></sup> madhu’ (madhuścuta) and ‘yielding madhu’ (madhudughe), that the Vedic poet thinks that the laws of Heaven and Earth as deities are sweet (and not harsh).</p>
+<p class="prose" id="p-chapter-i-vrata-in-the-rigveda-24">We have next to turn to the word ‘dhṛtavrata’ which occurs eighteen times in the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a>. Out of these Varuna is certainly called dhṛtavrata in seven passages viz in I. 25 8 and 10, I 44, 14, I. 141 9, II 1. 4,<sup class="fn-ref"><a href="#fn-chapter-i-vrata-in-the-rigveda-22" id="fnref-chapter-i-vrata-in-the-rigveda-22">22</a></sup> VIII 27 3 and X 66 5. Both Mitra and Varuna are styled ‘dhṛtavrata’ in I 15 6, VIII 25 2 and 8 (and also ‘kṣatriya’ in verse 8), Indra and Varuna are said to be dhṛtavrata in VI. 68 10, Indra alone in VI 19. 5 and VIII 97 11, the Ādityas in II 29. 1, Viśvedevāḥ in X 66. 8 (and also ‘kṣatriyāḥ’), Agni in VIII. 44 25 and Savitṛ in IV. 53 4. Prof. Apte (p 430 para 37) avers that Varuna is pre-eminently called dhṛtavrata (this is not quite accurate as more than half the passages in which the word ‘dhṛtavrata’ occurs refer to gods other than Varuna), because he maintains intact the paths he has excavated for the luminaries or he sees that the fixed laws of luminaries or their fixed movements, these ‘dhṛtavrata’ passages are of no help in settling the original meanings of vrata. They can all be well construed by taking ‘dhṛtavrata’ in the sense of ‘one who upholds or supports his ordinances’. Supposing that Prof Apte is right in thinking that the epithet pre-eminently applies to Varuna, it is quite arguable that what is mainly aimed at in calling Varuna ‘dhṛtavrata’ is the high moral level Varuna is held by the Ṛgvedic sages to maintain by punishing sinners, by looking into the truth and falsehood of men (VII 49 3 ‘satyānṛte avapaśyan janānām’), by the fact that he is styled ‘kṣatriya’, ‘rājan’ and ‘samrāj’ (who exacts obedience to his laws) as shown above. Therefore, the view that vrata means ordinances in connection with Varuna is far more appropriate than the theory about his seeing that the luminaries follow their trackṣ In this connection the word ‘dhṛtavrata’<sup class="fn-ref"><a href="#fn-chapter-i-vrata-in-the-rigveda-23" id="fnref-chapter-i-vrata-in-the-rigveda-23">23</a></sup> in I 25 6. becomes very important. Almost all scholars hold that that verse means ‘(Mitra and Varuna) fond of the donor who observes the laws of religious worship partake of the same offering (made by the donor) and they are not heedless about it (or do not miss it)’. Scholars hold that in this verse the word ‘dhrtavrata’ applies to a human worshipper and not to a god as in all other passageṣ Prof. Apte (p 430 para 37) explains that the words ‘dhrtavratāya dāśuṣe’, mean ‘donor who makes a gift to (Varuna) that is dhrtavrata.’ This construction is objectionable for several reasonṣ There are two deities referred to in the principal sentence (the verb is ‘āsāte), while dhrtavratāya, being singular, can only be construed with one deity. Prof. Apte further relies on VIII. 94. 2 of which he gives an interpretation which as shown above is wrong. Constructions parallel to ‘dhrtavratāya dāśuṣe’ and containing an adjective of the word ‘dāśuṣe’ are found in other <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> passageṣ For example, in I 142. 1 we have <sup class="fn-ref"><a href="#fn-chapter-i-vrata-in-the-rigveda-24" id="fnref-chapter-i-vrata-in-the-rigveda-24">24</a></sup> ‘O Agni! spread the ancient thread (i.e. sacrifice) for the worshipper who has extracted Soma juice’. Here the words ‘sutasomāya dāśuṣe’ do not mean ‘to the wor-shipper who gives offerings to the god who extracts soma’. Similarly, in VIII. 5.6 the words ‘sudevāya dāśuṣe’ mean ‘to or for the worshipper (or donor) who worships god’ (or for donor to whom gods are beneficent). These several considerations make it highly probable that ‘dhrtavratāya’ is an attribute of a human being in I. 25. 6 and not necessarily of Varuna. If that be so, vrata in ‘dhrtavrata’ must mean ‘ordinances or mode of religious worship’ and not ‘tracks of luminaries’. We have the word ‘dhrtadakṣa’ (who upholds strength i. e. who is strong or constant) applied to a priest in X. 41. 3. It is worthy of note that the <a class="ref" href="../refs/shatapatha.html#i" data-source="shatapatha" data-ref="i" title="Śatapatha Brāhmaṇa i">Śatapatha Br i</a>n explaining <sup class="fn-ref"><a href="#fn-chapter-i-vrata-in-the-rigveda-25" id="fnref-chapter-i-vrata-in-the-rigveda-25">25</a></sup> ‘nisasāda dhrtavrato Varuṇah’ in <a class="ref" href="../refs/rigveda.html#I.25.10" data-source="rigveda" data-ref="I.25.10" title="Ṛgveda I.25.10">Rg. I. 25. 10</a> (= Vaj. S. X. 2?) remarks that the king and a brāhmaṇa deeply learned in the Veda are both ‘dhrtavrata’. It is probable that even in the times of the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> people had come to assign the same meaning to the word ‘dhrtavrata’ that the Sat. Br. ascribes to it. Conceding for argument that dhrtavratāya in I. 25. 6 refers to Varuna, that does not at all solve the problem of the derivation and meaning of vrata. The word ‘vratanih’ occurs only once in <a class="ref" href="../refs/rigveda.html#X.65.6" data-source="rigveda" data-ref="X.65.6" title="Ṛgveda X.65.6">Ṛgveda X. 65. 6</a> and probably means '(the cow) that is the carrier of vrata' i.e. of the milk on which a sacrificer has to subsist. In T. S. VI. 2. 5 2-3 it is said that milk is the brāhmaṇa's vrata. On p. 442 Prof. Apte refers to Sūrya being called 'vratapā' very aptly. Vratapa occurs nine times in the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a>, but the Sun is called 'vratapā' only once in I. 83. 5. Vratapā means nothing more than vratapati, which word occurs in T. S. 1 6 6 3<sup class="fn-ref"><a href="#fn-chapter-i-vrata-in-the-rigveda-26" id="fnref-chapter-i-vrata-in-the-rigveda-26">26</a></sup>, I 6 7. 2 and <a class="ref" href="../refs/vajasaneya.html#I" data-source="vajasaneya" data-ref="I" title="Vājasaneya Saṃhitā I">Vāj. S. I</a> 5 and is applied to Agni. In these passages 'vrata' means a religious vow such as that of a Vedic student who undertakes to study Veda after Upanayana. There is no reason why the word 'vratapā' in the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> should not be deemed to have been used in the sense in which 'vratapati' is employed in the T. S. and <a class="ref" href="../refs/vajasaneya.html" data-source="vajasaneya" data-ref="" title="Vājasaneya Saṃhitā">Vāj. S.</a> Similarly, in Ṛg VII 103 1<sup class="fn-ref"><a href="#fn-chapter-i-vrata-in-the-rigveda-27" id="fnref-chapter-i-vrata-in-the-rigveda-27">27</a></sup> it is said that the frogs lying silent for a year (in crevices), like brāhmaṇas observing a vrata, send forth their croaking inspired by the rainṣ Here 'vrata' has the meaning 'a sacred vow or observance' which is the sense in which the word is used in medieval times and is so used even upto this day.</p>
+<p class="prose" id="p-chapter-i-vrata-in-the-rigveda-25">There is one more word viz. vṛṣavrata, which is analogous to 'dhṛtavrata' and which remains to be considereḍ That word occurs only twice (i.e. in <a class="ref" href="../refs/rigveda.html#IX.62" data-source="rigveda" data-ref="IX.62" title="Ṛgveda IX.62">Ṛg. IX. 62</a> 1<sup class="fn-ref"><a href="#fn-chapter-i-vrata-in-the-rigveda-28" id="fnref-chapter-i-vrata-in-the-rigveda-28">28</a></sup> and IX, 64 1) and is an attribute of Soma. Prof. Apte (p. 485, section 48) tries to fit this word in his scheme by referring to the description of Soma as bellowing like a bull, as a bull among cows and as brandishing and sharpening his hornṣ One must not forget the twofold character of Soma as a very pre-eminent deity (the whole of Ṛg IX. is a glorification of Soma) and as a beverage produced from the twigs and tendrils of the Soma plant and that these two characters become mixed up. In the process of producing Soma beverage, four sounding holes called uparavas are employed<sup class="fn-ref"><a href="#fn-chapter-i-vrata-in-the-rigveda-29" id="fnref-chapter-i-vrata-in-the-rigveda-29">29</a></sup> (vide <a class="ref" href="../refs/hodh.html#vol. II" data-source="hodh" data-ref="vol. II" title="History of Dharmaśāstra vol. II">H of Dh. vol. II</a>. pp. 1154-55). for 'uparavas'): This is described as the bellowing of Soma, when Soma is called a <em>vrsa</em> (bull) or <em>vrsabha</em>. Most of the great Vedic gods (Indra, Agni, Soma and others), their chariots, their weapons and even the exhilaration on drinking Soma are spoken of as bulls <sup class="fn-ref"><a href="#fn-chapter-i-vrata-in-the-rigveda-30" id="fnref-chapter-i-vrata-in-the-rigveda-30">30</a></sup>. When Soma twigs are being pressed with stones (grāvan) the tendrils of Soma look like horns All these descrip- tions about bellowing &c. apply strictly to the soma plant and are poetically transferred to the deity Soma. Prof. Apte translates ‘vrsavrata’ as ‘whose behaviour or deportment is like that of a bull’ On the other theory also we can easily explain the word as meaning ‘(Soma) whose ordinances are powerful like a bull’. Vrsavrata is an attribute of god Soma and cannot be easily construed with god Soma, if vrata primarily means some physical activity and its implications are rather against Prof. Apte's theory.</p>
+<p class="prose" id="p-chapter-i-vrata-in-the-rigveda-26">The result of this long discussion is that Prof. Apte's theory of the derivation of <em>vrata</em> from the root ‘vrt’ and his long scheme of meanings is not proved and that the derivation from the root ‘vr’ expressly stated by Yaska at least twenty-five centuries ago and accepted by most scholars has not been at all shakeṇ Prof Apte probably did not anticipate that the meaning he assigned to ‘vrt’ would be challenged, but I dispute that meaning also.</p>
+<p class="prose" id="p-chapter-i-vrata-in-the-rigveda-27">There are three passages of the <a class="ref" href="../refs/rigveda.html#i" data-source="rigveda" data-ref="i" title="Ṛgveda i">Ṛgveda i</a>n which the words ‘vrttam na cakram’ (like a round wheel) occur, viz I. 155 6 (addressed to <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>), IV. 31 4, V. 36. 3 (both addressed to Indra). Prof. Apte did not mention them and they have no bear- ing on the derivation of <em>vrata</em>. At the most those might have been relied upon for the meaning of the root ‘vrt’. In this discussion we have restricted ourselves to verbal forms or present participles and omitted past passive participles which sometimes depart very much from the root-meaning as in the case of ‘krta’ in <a class="ref" href="../refs/rigveda.html#X.43.5" data-source="rigveda" data-ref="X.43.5" title="Ṛgveda X.43.5">Ṛgveda X. 43. 5</a> (krtam na svagni vi cinoti devas). ‘Vrtta’ cannot mean revolving even if vrt meant ‘to revolve’; it is <em>vartamāna</em> that might have that meaning if ‘vrt’ originally meant ‘to revolve’ Besides, Rg I 155 6 is obscure. It probably refers to the belt of the zodiac that goes round the sky.</p>
+<p class="prose" id="p-chapter-i-vrata-in-the-rigveda-28">It is necessary to clarify the meanings and mutual relations of the three words <em>rta, vrata</em> and <em><span class="idx-term" data-def="meaning of">dharman</span></em>. The meanings (three) of 'rta' have been specified in <a class="ref" href="../refs/hodh.html#vol IV pp 2-5" data-source="hodh" data-ref="vol IV pp 2-5" title="History of Dharmaśāstra vol IV pp 2-5">H of Dh vol IV pp 2-5</a> and the meanings of vrata have been discussed in what precedes (vide pp 5-8). In the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> the word is dharman and not <span class="idx-term" data-def="three important words in the Ṛgveda are *ṛta, vrata* and *dharma*, that were transformed into other meanings later on, is not immutable, but liable to change and is subject to country and time ; ro...">dharma</span>. For a brief discussion of dharman vide <a class="ref" href="../refs/hodh.html#vol I p 1" data-source="hodh" data-ref="vol I p 1" title="History of Dharmaśāstra vol I p 1">H of Dh vol I p 1</a>. In the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> sometimes dharman is masculine and often an adjective, meaning 'upholder or sustainer' as in Rg I. 187 1, X. 92 2. In X. 21. 3 (tva dharmāņa āśate) the word is masculine. In other cases it is obviously in the neuter gender as in I. 22 18 (ato dharmāņi dhārayan), V 26 6, IX 64 1. In these passages the meaning seems to be 'religious rites or sacrifices', thus approaching vrata in one of its senseṣ In I 164 43 and 50 sacrifices are said to be the primeval dharmanṣ Vide also 'prathamā dharmā' in Rg III 17 1 and 'sanatā dharmāņi' in Rg III 3 1. In some cases this sense of dharman would not do, as in IV 53 3, V. 63. 7. where the meaning seems to be 'fixed principles or rules of conduct'. In some cases dharman appears to mean almost the same thing as 'vrata'. For example, in VII 89. 5<sup class="fn-ref"><a href="#fn-chapter-i-vrata-in-the-rigveda-31" id="fnref-chapter-i-vrata-in-the-rigveda-31">31</a></sup> the sage says 'when we destroy (or violate) your dharmas through heedlessness (or infatuation), do not harm us, O Varuna, on account of that sin', which is just the same as Rg I 25 1, where we have 'vratam' for dharmani. In VI. 70 1<sup class="fn-ref"><a href="#fn-chapter-i-vrata-in-the-rigveda-32" id="fnref-chapter-i-vrata-in-the-rigveda-32">32</a></sup> it is said 'heaven and earth, never decaying and endowed with plenty of seed, are held firmly apart by the dharman of Varuna'. In VIII 42 1 (cited above) making the Heaven firmly fixed is described as one of the vratas of Varuna.</p>
+<p class="prose" id="p-chapter-i-vrata-in-the-rigveda-29">Though in this way in some passages even of the <a class="ref" href="../refs/rigveda.html" data-source="rigveda" data-ref="" title="Ṛgveda">Ṛgveda</a> the senses of 'vrata' and 'dharman' appear to have coalesced, there are verses where all the three words or two of the three occur. It may be noted that even in what are regarded by Western scholars to be later portions of the <a class="ref" href="../refs/atharvaveda.html" data-source="atharvaveda" data-ref="" title="Atharvaveda"><span class="idx-term" data-def="(verses of, used in Śāntis on dreams), (on Utpātas), (abhaya-mantras), (two interpretations of X. 8. 9), (magic spells in), (spells for softening the heart and for destroying worms), (on dīkṣā), (o...">Atharvaveda</span></a> (e.g. 18. 2 7, 14 1. 51) the word is dharmaṇ All three words occur in Rg V. 63. 7<sup class="fn-ref"><a href="#fn-chapter-i-vrata-in-the-rigveda-33" id="fnref-chapter-i-vrata-in-the-rigveda-33">33</a></sup> 'O wise Mitra and Varuna! You naturally (or according to your fixed rule of conduct) guard your ordinances with the wonderful power of an asura; you rule over (or shine over) the whole world according to the principle of cosmic order, you establish in the heaven the Sun that is (like) a brilliant chariot'. Vrata and dharman occur in V. 72. 2 and VI. 70. 3<sup class="fn-ref"><a href="#fn-chapter-i-vrata-in-the-rigveda-34" id="fnref-chapter-i-vrata-in-the-rigveda-34">34</a></sup>; rta and vrata occur in I. 65 2, II. 27. 8, III. 4 7, X. 65. 3. Speaking generally, ‘rta’ is the cosmic order that has been there from the most ancient times Vrata means the laws or ordinances supposed to be laid down by all gods or by individual godṣ Dharman meant religious rites or sacrifices or fixed principles Gradually the conception ‘rta’ became faint and receded into the background and ‘satya’ took its place. Dharman became an all-embracing conception and vrata came to be restricted to sacred vows and rules of conduct to be observed by a person as a member of a community or as an individual</p>
+<aside class="footnotes-section" aria-label="Footnotes">
+<hr>
+<ol class="footnotes-list">
+<li id="fn-chapter-i-vrata-in-the-rigveda-1" class="footnote-item"><span class="devanagari">उपसर्गण धातूर्थो बलादवन्यत्र नीयते । नीहाराहारासहारापहारमहारुद्रुप ।</span> <a href="#fnref-chapter-i-vrata-in-the-rigveda-1" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-vrata-in-the-rigveda-2" class="footnote-item"><span class="devanagari">स्वर्गोन्नरध यद्विन्द माया अयो दिवो वर्तमाना अवाहादः । ऋ</span> V 40.6; <span class="devanagari">रथे वासमनप्यसे पचमना वर्तते बह</span> | <span class="devanagari">न चक्रननि धाते । ऋ</span> VIII 5.34. <span class="devanagari">नीचा वर्तन्स उपरि स्कुरवहासी हप्तनवत्त सहन्ते । ऋ</span>. X. 34, 9. <a href="#fnref-chapter-i-vrata-in-the-rigveda-2" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-vrata-in-the-rigveda-3" class="footnote-item"><span class="devanagari">हुमा पन्था अद्भूवर आदित्यास्तु श्रतं यते। ऋग</span>. I. 41. 4. <span class="devanagari">द्वादशारं नहि तज्जराय चर्बति चक्रं परि द्वावृत्तस्य। ऋग</span>. I. 164. 11. <a href="#fnref-chapter-i-vrata-in-the-rigveda-3" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-vrata-in-the-rigveda-4" class="footnote-item">Hereafter up to note 23 wherever only pages are mentioned and no work, the reference is to the pages of the 3rd vol. of the Bulletin of the Deccan College Research Institute <a href="#fnref-chapter-i-vrata-in-the-rigveda-4" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-vrata-in-the-rigveda-5" class="footnote-item"><span class="devanagari">गोचरसञ्चरवहवव्रजव्यापणिगमशत्रघ । पा</span>. III. 3 119 on which <span class="devanagari">सि</span>. <span class="devanagari">को</span>. explains ‘<span class="devanagari">वात्त्या निपात्यते</span>’. <a href="#fnref-chapter-i-vrata-in-the-rigveda-5" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-vrata-in-the-rigveda-6" class="footnote-item"><span class="devanagari">आपद्विहस्ता अरमन् देवी</span>: <span class="devanagari">पृथगव्रजन्ती</span>: <span class="devanagari">परि दीमनखञ्ञास्</span> III. 56. 4. <a href="#fnref-chapter-i-vrata-in-the-rigveda-6" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-vrata-in-the-rigveda-7" class="footnote-item"><span class="devanagari">तरणिं वो जननानां अदृ वाजस्य गोमतः। समानगु ष शासिएद्। ऋ</span>. VIII. 45. 28. <span class="devanagari">वाजस्य अदृ</span> would mean '(Indra) who is the injurer of pine,' which would be absurḍ Indra sets free cows imprisoned by Vṛtra. <a href="#fnref-chapter-i-vrata-in-the-rigveda-7" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-vrata-in-the-rigveda-8" class="footnote-item"><span class="devanagari">वृत्रिला अनुविलासी अद्रव्योऽस्मणा अध्रुपिता असुरस्य। ऋ</span>. X. 94. 11. <a href="#fnref-chapter-i-vrata-in-the-rigveda-8" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-vrata-in-the-rigveda-9" class="footnote-item"><span class="devanagari">दर्शि वृणा चरति लिंखिये क्षोड़पो दूर्भी रजेतो ब्रुन्मभावये । ऋ</span>. I 52 6, <span class="devanagari">महि दिषे अर्ची वृचिये कामो म इच्छुवरति प्रज्ञानम्र । ऋ</span>. III. 54. 2; <span class="devanagari">वि से प्रभवति दृरभाधीः किलिंदक्षिणानि किंब यू नभिविजे । ऋ</span>. VI. 9 6. <a href="#fnref-chapter-i-vrata-in-the-rigveda-9" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-vrata-in-the-rigveda-10" class="footnote-item"><span class="devanagari">सुम्नीत</span>. <span class="devanagari">सभादुध हन्ति जुघं य तदवो अस्सु धूतयो देण्यान्। ऋ</span> VII. 58 4, <a href="#fnref-chapter-i-vrata-in-the-rigveda-10" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-vrata-in-the-rigveda-11" class="footnote-item"><span class="devanagari">न यस्येन्द्रो वरुणो न मित्रो व्रतमर्यमा न मिनन्ति श्चः । आराघ्ततस्तनिर्व स्वदित हने देव सवितार नमोमि</span>. <span class="devanagari">।। ऋ</span> II. 38 9 : <span class="devanagari">न ता मिनन्ति मायिनो न धीरा व्रता देवाना प्रथमथा ध्रवाणि। न रोदसी अदृहा वेद्याभिर्न पर्वता मिनन्ति सरिप्याध्न । ऋ</span> III 56.1, <span class="devanagari">अह्लानाष्ट मुद्यते। न रोदसी अदृहा वेद्याभिर्न पर्वता मिनन्ति सरिप्याध्न । आसिद्धदश्मिया भुत्नानि सम्राद् विश्वेचनि धानशुवो विश्श्वेवेदा अनिमोन परिमाण ध्रुवियाणः ।</span> ( Continued on next page ) <a href="#fnref-chapter-i-vrata-in-the-rigveda-11" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-vrata-in-the-rigveda-12" class="footnote-item"><span class="devanagari">पक्णस्य हतानि</span> VIII. 42 1, the word vrata occurs five times in II 38 (verses 2, 3, 6, 7, 9) and should be construed according to the general rules of inter-pretation in the same sense in all verses of the same hymn at least Prof. Apte admits (on p 476) that the meaning ‘ordinances’ would be appropriate in .Rg. II. 38. 7 (<span class="devanagari">नकिरस्य तानि व्रता देवस्य सवितुर्मिनन्ति</span>) and accepts that meaning in that verse, but on II. 38. 9 (p. 468) his obsession about the original meaning being ‘tracks’ leads him to say “that in that verse the word vrata means ‘Savitr’s fixed movements in the heavens,” <a href="#fnref-chapter-i-vrata-in-the-rigveda-12" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-vrata-in-the-rigveda-13" class="footnote-item"><span class="devanagari">यच्चिद्धि ते विशो यथा प्र देव वरुण व्रतम्। मिनीमसि द्यविद्यवि। नदीनांश्चरमसीधा अक्रान्।</span> Rg. I. 25 1-2, <span class="devanagari">उरु ब्रतानि सोम ते मार्ग पितुर्नायम् ।</span> X. 25. 3. At the end of all verses in X. 24. 1-3 the word <span class="devanagari">विक्षसे</span> occurs and is explained as <span class="devanagari">महारुचो भवति</span> by <span class="devanagari">सायण</span>. But this is unsatisfactory. <span class="devanagari">वि वो मदे</span> and <span class="devanagari">विक्षसे</span> appear to be refrains with some recondite meaning. H. D. 2 <a href="#fnref-chapter-i-vrata-in-the-rigveda-13" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-vrata-in-the-rigveda-14" class="footnote-item"><span class="devanagari">एषा दिवो दुहिता मत्वर्षि उपोऽविहासा समना पुरस्तात्। ऋतस्य पन्थामन्येति साधु प्रजानातिव न दिशो मिनाति ॥ ऋ</span> 1. 124. 3. The meaning of the last quarter is that Usas always rises in the east and that she does not annihilate the separateness of the four quarters by sometimes rising in a direction other than the east. In this the dawn simply follows the law laid down for her in the order of nature (<em>ṛtasya panthām</em>). The idea about the confusion of quarters is well expressed in Rg V. 40. 5 Vide also X. 32 7. <a href="#fnref-chapter-i-vrata-in-the-rigveda-14" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-vrata-in-the-rigveda-15" class="footnote-item">Rg I. 101. 2 is <span class="devanagari">यो व्यंसे जाहषाणेन म॒न्युना या</span>: <span class="devanagari">शम्बरं यो अहन्न् पिप्रमुख्यात्</span> ; <span class="devanagari">शंभरे</span> I. 101. 3 is <span class="devanagari">यस्य चात्मानुपृथिवी पीतर्य मदहू यस्य इमे चक्रणो यस्य दूयौ । यस्येतेऽष्ट्रस्य सिन्धव</span>: <span class="devanagari">सख्यते व्रत</span> &c. <a href="#fnref-chapter-i-vrata-in-the-rigveda-15" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-vrata-in-the-rigveda-16" class="footnote-item"><span class="devanagari">ये संवितु स्यप्रसस्य निधे विश्वस्य भने ह्यध्यव देराः । ते सीधूम धीरसल्हूमलो इधून हरिए चितगने ॥ ऋ</span>. X. 36 13. <a href="#fnref-chapter-i-vrata-in-the-rigveda-16" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-vrata-in-the-rigveda-17" class="footnote-item"><span class="devanagari">अद्या पश्याद्यदिम भूते सद्युगागम्रा अहियेव स्याम । ऋ</span> I. 24.15, <span class="devanagari">वाज स</span>. 12 12, <span class="devanagari">अथर्व</span> VII. 83 (85) 3. <a href="#fnref-chapter-i-vrata-in-the-rigveda-17" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-vrata-in-the-rigveda-18" class="footnote-item"><span class="devanagari">देवांश्च यद्व्रतमीशानमादितेर्भूयाम भूर्याम ते सुम्नम् । ऋ</span>. X 14. 6. <a href="#fnref-chapter-i-vrata-in-the-rigveda-18" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-vrata-in-the-rigveda-19" class="footnote-item"><span class="devanagari">शुची वो हव्या मरुतः</span>, <span class="devanagari">शुचीना शुचि हिन्पोम्यध्वरं शुचिमते सत्यश्रुत्संपसाय आपवदृधिन्मजाम</span>, <span class="devanagari">शुचयः पावका ॥ ऋ</span>. VII. 56. 12 The word <span class="devanagari">शुचि</span> thrice applied to the Maruts may mean ‘pure’ or ‘brilliant.’ <span class="devanagari">अग्निः शुचिव्रततमः शुचिविप्रः शुचिः कविः। शुची रोचत आहुतः ॥</span> VIII. 44. 21. . <a href="#fnref-chapter-i-vrata-in-the-rigveda-19" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-vrata-in-the-rigveda-20" class="footnote-item"><span class="devanagari">परण देवा उपस्थे अता विश्वे धारयन्त । सूर्यामासा हसे कमू ॥</span> VIII. 94. 2. Compare <span class="devanagari">आपूर् पूणीत मेषणं वरुणे तन्ये र्डे मस । ज्योक् च सूर्य इमे</span> in I. 23, 21 (=X. 9 7). <span class="devanagari">इशे विशाय सूर्य</span> in I. 50. 1, <span class="devanagari">बिविय सूर्य हशे</span> in X. 60 5. In all these cases <span class="devanagari">सूर्य</span> is the object of <span class="devanagari">हशे</span> and in VIII. 94. 2 the dual <span class="devanagari">सूर्यामासा</span> is used with <span class="devanagari">हशे</span>. <a href="#fnref-chapter-i-vrata-in-the-rigveda-20" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-vrata-in-the-rigveda-21" class="footnote-item"><span class="devanagari">मधु नो द्यावापृथिवी मिनिक्षता मधुश्चुता मधुदुघे मधुलवे। ऋ</span> VI 70. 5 <a href="#fnref-chapter-i-vrata-in-the-rigveda-21" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-vrata-in-the-rigveda-22" class="footnote-item"><span class="devanagari">धृतरत्नो राजा वरुणो धृतव्रतस्तप्यसो भिषर्दिषम्</span> II.1 4. <a href="#fnref-chapter-i-vrata-in-the-rigveda-22" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-vrata-in-the-rigveda-23" class="footnote-item"><span class="devanagari">सविस्सन्मानमाशास्ते बेनन्त न न शुच्यन्त</span>! <span class="devanagari">धृतव्रताय दाशुषे। ऋ</span>. I. 25. 6. <a href="#fnref-chapter-i-vrata-in-the-rigveda-23" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-vrata-in-the-rigveda-24" class="footnote-item"><span class="devanagari">समिति अञ्जा आ वह देवाँ अद्य यत्सुवच्। तन्तुं तन्वन् पूर्वं सूतसोमाय दाशुषे ॥</span> I. 142. 1. <span class="devanagari">सा सुदेवाय दाशुषे सुमेधामवितारोम् । कृणोत्विदस्यानृणम् ॥</span> VIII. 5. 6 <a href="#fnref-chapter-i-vrata-in-the-rigveda-24" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-vrata-in-the-rigveda-25" class="footnote-item"><span class="devanagari">निषसाद धृतव्रतो वरुणः पृक्ष्वव ओदोषिब्ववतो हो महस्येयु पृष्ठवोः । शतपथ</span> V. 4. 4.3. <span class="devanagari">द्वौ लोकौ धृतव्रतो राजा ब्राह्मणश्र बहुश्रुतो। गो</span>. <span class="devanagari">घ स्</span> IIII. 1. <a href="#fnref-chapter-i-vrata-in-the-rigveda-25" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-vrata-in-the-rigveda-26" class="footnote-item"><span class="devanagari">आद्रासुतो व्रतभृद् व्रतयुष्पेणम् श्रयावषे घृतपते व्रतपति ते न</span> I 6 7 2. <span class="devanagari">अत्रे व्रतपते वत्तभेचारित्वं तदर्शके तत्ने । ते स</span> I 6 6 3. <a href="#fnref-chapter-i-vrata-in-the-rigveda-26" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-vrata-in-the-rigveda-27" class="footnote-item"><span class="devanagari">मंडूका ब्राह्मणा व्रतचारिण । वाच पर्व्वण्यजिन्वति म मण्डूका अराविपुण</span> VI. 103. 1 Vide <span class="devanagari">निरूक्त</span> IX. 6 which explains this verse. Persons engaged in solemn sacrifices like the Sāmvatsarikasattras had to observe certain strict rules such as not speaking with non-Aryans, subsisting on milk &c. Vide <span class="devanagari">है मा</span> III.3 4 (<span class="devanagari">च मरुत्त्वर व्रत चरति</span>), <span class="devanagari">डावपद्माब्राह्मण</span> XI 3 1.1 and <span class="devanagari">आस</span>. <span class="devanagari">श्रौ सू</span> XII 3 1, 3, 7, 29, (or Uttararatka VI). <a href="#fnref-chapter-i-vrata-in-the-rigveda-27" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-vrata-in-the-rigveda-28" class="footnote-item"><span class="devanagari">इन्द्र शूष्या पिबत परमानो अग्रलिता</span> ! <span class="devanagari">फल्गुसूमि दारुणेने क्षुमौ असि एषा देव दुष्वधः। मृषा धर्मानी द्रुपितेऽ</span> IX 61. 1. <a href="#fnref-chapter-i-vrata-in-the-rigveda-28" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-vrata-in-the-rigveda-29" class="footnote-item">Vide com on <span class="devanagari">कात्यायनश्रौतसूत्र</span> VIII. 4 28 for the upatavaṣ <a href="#fnref-chapter-i-vrata-in-the-rigveda-29" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-vrata-in-the-rigveda-30" class="footnote-item">Only one verse need be quoted to illustrate the above Rg. II, 16 <span class="devanagari">उपा से वज्र उत ते वृष्ण रयो वृषणा हरी वृषणाभ्यामुषा । वृष्णे मत्सस्य वनीषीष् इन्द्र सोमस्य वृषमस्य तुध्राधि ॥</span> <a href="#fnref-chapter-i-vrata-in-the-rigveda-30" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-vrata-in-the-rigveda-31" class="footnote-item"><span class="devanagari">अदिति यद्धर्म पुरुषेण या मनागसेदसीव ।</span> VII 89.5. <a href="#fnref-chapter-i-vrata-in-the-rigveda-31" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-vrata-in-the-rigveda-32" class="footnote-item"><span class="devanagari">द्यावाभूमी प्रकृताय धर्मणा विष्टभिते सहसा ।</span> VI 70 1 <a href="#fnref-chapter-i-vrata-in-the-rigveda-32" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-vrata-in-the-rigveda-33" class="footnote-item"><span class="devanagari">पवित्रा पितरा नावतः सद्व्रता धर्मणा सधयतः । क्ष्मया दिवि धर्म सूर्यमा दधा ।</span> V. 63. 7. <a href="#fnref-chapter-i-vrata-in-the-rigveda-33" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-i-vrata-in-the-rigveda-34" class="footnote-item"><span class="devanagari">प्र प्रजाभिजायते धर्मणरूपरि युवोः सिक्ता विद्रुरूपाणि सख्यता ॥</span> VI, 70 3. <a href="#fnref-chapter-i-vrata-in-the-rigveda-34" class="fn-back" aria-label="Back to text">↩</a></li>
+</ol>
+</aside>
+
+            <div class="chapter-nav">
+                
+                <a href="chapter-ii-vrata-in-vedic-literature-sūtras-and-smritis-definition-and-importanc.html" class="nav-next">Chapter II. Vrata in Vedic Literature, Sūtras and Smritis; Definition and Importance of Vratas <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </main>
+    </div>
+
+    <button class="toc-mobile-toggle" onclick="toggleMobileToc()" aria-label="Table of contents">
+        <i class="fa-solid fa-list"></i>
+    </button>
+
+    
+    <footer class="container-fluid pt-4" style="background-color:#2e4144">
+        <div class="row border-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img src="https://sanatana.in/mbta/public/images/Homepage_html/images/layer_8.png" alt="">
+            </div>
+            <div class="col-md-5 text-white">
+                <p>The divine knowledge and wisdom of our shastras is the only thing eternal,
+                   which was and which will remain ever-present in this gods creation.
+                   Our endeavours are to preserve this knowledge.</p>
+            </div>
+            <div class="col-md-1 text-white">
+                <div class="d-flex" style="height: 75px;">
+                    <div class="vr"></div>
+                </div>
+            </div>
+            <div class="col-md-3 text-white">
+                <i class="fa-solid fa-globe"></i>&emsp;
+                <a href="https://sanatanasampatti.in" class="text-light">www.sanatanasampatti.in</a><br>
+                <i class="fa-solid fa-envelope"></i>&emsp;
+                <a href="" class="text-light">sriranga.yoga@gmail.com</a>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center py-3 mb-4 align-items-center border-bottom">
+            <div class="col-md-2 text-white fs-4 text-center">Project</div>
+            <div class="col-md-2 text-white fs-4 text-center">Our Mission</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contribute</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contact Us</div>
+        </div>
+        <div class="row">
+            <p class="col-md-6 fs-6 text-start text-light">
+                <small>&copy; 2026 Sanatanasampatti</small>
+            </p>
+            <p class="col-md-6 fs-6 text-end text-light">
+                <a class="text-white" rel="nofollow" href="http://www.srirangadigital.com" target="_blank">
+                    <img src="https://sanatana.in/mbta/public/images/logo.png" alt="sriranga logo" />
+                    <small>Designed, Developed and Maintained by Sriranga Digital</small>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        const headings = [];
+        tocLinks.forEach(link => {
+            const id = link.getAttribute('href').substring(1);
+            const el = document.getElementById(id);
+            if (el) headings.push({ el: el, link: link.parentElement });
+        });
+
+        function onScroll() {
+            let current = null;
+            for (const h of headings) {
+                const rect = h.el.getBoundingClientRect();
+                if (rect.top <= 120) current = h;
+            }
+            tocLinks.forEach(l => l.parentElement.classList.remove('active'));
+            if (current) current.link.classList.add('active');
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    });
+
+    function toggleMobileToc() {
+        const toc = document.getElementById('toc');
+        if (!toc) return;
+        if (toc.style.display === 'block') {
+            toc.style.display = '';
+            toc.style.position = '';
+        } else {
+            toc.style.display = 'block';
+            toc.style.position = 'fixed';
+            toc.style.top = '0';
+            toc.style.left = '0';
+            toc.style.width = '80vw';
+            toc.style.maxWidth = '320px';
+            toc.style.height = '100vh';
+            toc.style.maxHeight = '100vh';
+            toc.style.zIndex = '2000';
+            toc.style.background = 'var(--parchment)';
+            toc.style.boxShadow = '4px 0 20px rgba(0,0,0,0.2)';
+            toc.style.padding = '24px';
+            toc.style.overflowY = 'auto';
+        }
+    }
+    </script>
+
+    <script>
+    function toggleSynopsisAudio(btn) {
+        var audio = btn.parentElement.querySelector('audio');
+        if (!audio.src) audio.src = btn.getAttribute('data-src');
+        if (audio.paused) {
+            audio.play();
+            btn.classList.add('playing');
+            btn.querySelector('i').className = 'fa-solid fa-pause';
+        } else {
+            audio.pause();
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        }
+        audio.onended = function() {
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        };
+        // Prevent click from toggling the synopsis open/close
+        event.stopPropagation();
+    }
+    </script>
+</body>
+</html>

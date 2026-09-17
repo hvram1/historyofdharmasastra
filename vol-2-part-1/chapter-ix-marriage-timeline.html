@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline — Chapter IX. Marriage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+    :root {
+        --parchment: #faf6ef;
+        --parchment-mid: #f0e6d3;
+        --saffron: #e8941a;
+        --ink: #2c1810;
+        --ink-secondary: #5a3e2b;
+        --rule: #d4c5a9;
+        --indigo: #2d5a87;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+        font-family: 'Lora', Georgia, serif;
+        background: var(--parchment);
+        color: var(--ink);
+    }
+    .navbar {
+        background: linear-gradient(135deg, #1a0f0a, #2c1810);
+        padding: 12px 24px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+    .navbar a { color: var(--parchment); text-decoration: none; }
+    .navbar .devanagari { font-size: 1.3rem; }
+    .navbar .nav-title { font-family: 'Lora', serif; font-size: 1rem; opacity: 0.9; }
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+    .breadcrumb-bar a { color: var(--saffron); text-decoration: none; }
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+    .content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 24px;
+    }
+    h1 {
+        font-size: 1.6rem;
+        margin-bottom: 8px;
+        color: var(--ink);
+    }
+    .subtitle {
+        font-size: 0.9rem;
+        color: var(--ink-secondary);
+        margin-bottom: 24px;
+    }
+    .timeline-container {
+        overflow-x: auto;
+        padding: 16px 0;
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        background: var(--parchment);
+    }
+    .timeline-svg {
+        display: block;
+        min-width: 100%;
+    }
+    .timeline-svg .tl-evt { cursor: pointer; }
+    .timeline-svg .tl-evt:hover { transform: scale(1.5); }
+    .event-list {
+        margin-top: 32px;
+    }
+    .event-list h2 {
+        font-size: 1.1rem;
+        margin-bottom: 16px;
+        color: var(--ink-secondary);
+    }
+    .event-item {
+        display: flex;
+        gap: 16px;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--rule);
+        font-size: 0.88rem;
+    }
+    .event-year {
+        min-width: 90px;
+        font-weight: 600;
+        color: var(--saffron);
+        font-family: 'Open Sans', sans-serif;
+    }
+    .event-label { font-weight: 600; }
+    .event-context {
+        color: var(--ink-secondary);
+        font-size: 0.82rem;
+        margin-top: 2px;
+    }
+    .event-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.8rem;
+    }
+    .event-link:hover { text-decoration: underline; }
+    .back-link {
+        display: inline-block;
+        margin-top: 24px;
+        color: var(--saffron);
+        text-decoration: none;
+        font-family: 'Open Sans', sans-serif;
+    }
+    .back-link:hover { text-decoration: underline; }
+    .century-group {
+        margin-bottom: 8px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        overflow: hidden;
+    }
+    .century-heading {
+        display: block;
+        padding: 10px 16px;
+        background: var(--parchment-mid);
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: var(--ink);
+    }
+    .century-heading:hover { background: #e8dcc8; }
+    .century-count {
+        font-weight: 400;
+        color: var(--ink-secondary);
+        font-size: 0.82rem;
+    }
+    .century-events {
+        padding: 8px 16px;
+    }
+    .vol-tl-link {
+        display: inline-block;
+        margin: 4px 8px 4px 0;
+        padding: 6px 14px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        color: var(--saffron);
+        text-decoration: none;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+    }
+    .vol-tl-link:hover {
+        border-color: var(--saffron);
+        background: #f5ebe0;
+    }
+    .vol-tl-count {
+        color: var(--ink-secondary);
+        font-size: 0.78rem;
+    }
+    /* ── Tab switcher ── */
+    .tl-tabs {
+        display: flex; gap: 0; margin-bottom: 20px;
+        border-bottom: 2px solid var(--rule);
+    }
+    .tl-tab {
+        padding: 10px 20px; cursor: pointer;
+        font-family: 'Open Sans', sans-serif; font-size: 0.9rem;
+        color: var(--ink-secondary); border-bottom: 2px solid transparent;
+        margin-bottom: -2px; transition: all 0.2s;
+    }
+    .tl-tab:hover { color: var(--ink); }
+    .tl-tab.active { color: var(--saffron); border-bottom-color: var(--saffron); font-weight: 600; }
+    .tl-panel { display: none; }
+    .tl-panel.active { display: block; }
+    /* ── Entity graph styles ── */
+    .eg-entity {
+        border: 1px solid var(--rule); border-radius: 6px;
+        margin-bottom: 8px; overflow: hidden; transition: border-color 0.2s;
+    }
+    .eg-entity.highlighted { border-color: var(--saffron); box-shadow: 0 0 0 1px var(--saffron); }
+    .eg-header {
+        display: flex; align-items: center; gap: 12px;
+        padding: 10px 16px; background: var(--parchment-mid);
+        cursor: pointer; font-family: 'Open Sans', sans-serif;
+    }
+    .eg-header:hover { background: #e8dcc8; }
+    .eg-name { font-weight: 600; font-size: 0.92rem; flex: 1; }
+    .eg-type {
+        font-size: 0.72rem; padding: 2px 8px; border-radius: 10px;
+        background: var(--parchment); color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .eg-claims-count {
+        font-size: 0.78rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif;
+    }
+    .eg-body { padding: 12px 16px; display: none; }
+    .eg-entity.open .eg-body { display: block; }
+    .eg-range-bar {
+        position: relative; height: 32px;
+        background: var(--parchment-mid); border-radius: 4px;
+        margin-bottom: 10px; overflow: hidden;
+    }
+    .eg-range-fill {
+        position: absolute; top: 6px; height: 20px;
+        background: var(--saffron); opacity: 0.3; border-radius: 3px;
+    }
+    .eg-range-dot {
+        position: absolute; top: 11px; width: 10px; height: 10px;
+        background: var(--saffron); border-radius: 50%;
+        transform: translateX(-5px); cursor: pointer;
+    }
+    .eg-range-dot:hover { transform: translateX(-5px) scale(1.4); }
+    .eg-range-label {
+        position: absolute; top: -2px;
+        font-size: 0.7rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif;
+        transform: translateX(-50%);
+    }
+    .eg-cooccur {
+        margin-top: 8px; padding-top: 8px;
+        border-top: 1px solid var(--rule);
+    }
+    .eg-cooccur-title {
+        font-size: 0.78rem; color: var(--ink-secondary);
+        font-family: 'Open Sans', sans-serif; margin-bottom: 6px;
+    }
+    .eg-cooccur-chip {
+        display: inline-block; margin: 2px 4px 2px 0;
+        padding: 3px 10px; background: var(--parchment-mid);
+        border: 1px solid var(--rule); border-radius: 12px;
+        font-size: 0.78rem; color: var(--ink);
+        font-family: 'Open Sans', sans-serif;
+        cursor: pointer; transition: all 0.2s;
+    }
+    .eg-cooccur-chip:hover { border-color: var(--saffron); color: var(--saffron); }
+    .eg-cooccur-weight {
+        font-size: 0.68rem; color: var(--ink-secondary); margin-left: 2px;
+    }
+    .eg-claim-list { margin-top: 8px; }
+    .eg-claim {
+        display: flex; gap: 12px; padding: 4px 0;
+        font-size: 0.82rem; border-bottom: 1px solid #f0e6d3;
+    }
+    .eg-claim-year {
+        min-width: 80px; font-weight: 600; color: var(--saffron);
+        font-family: 'Open Sans', sans-serif; font-size: 0.8rem;
+    }
+    .eg-claim-ctx { color: var(--ink-secondary); font-size: 0.78rem; }
+    .eg-claim a { color: var(--indigo); text-decoration: none; font-size: 0.76rem; }
+    .eg-claim a:hover { text-decoration: underline; }
+    .eg-stats {
+        display: flex; gap: 24px; margin-bottom: 16px;
+        font-family: 'Open Sans', sans-serif; font-size: 0.85rem;
+        color: var(--ink-secondary);
+    }
+    .eg-stat-num { font-weight: 700; color: var(--saffron); font-size: 1.1rem; }
+    .eg-sort {
+        font-family: 'Open Sans', sans-serif; font-size: 0.82rem;
+        margin-bottom: 12px; color: var(--ink-secondary);
+    }
+    .eg-sort a {
+        color: var(--indigo); text-decoration: none; cursor: pointer;
+        margin: 0 6px;
+    }
+    .eg-sort a:hover { text-decoration: underline; }
+    .eg-sort a.active { color: var(--saffron); font-weight: 600; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="../index.html"><span class="devanagari">धर्मशास्त्रम्</span></a>
+        <a href="../index.html" class="nav-title">History of Dharmaśāstra</a>
+    </div>
+    
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep"> &rsaquo; </span>
+        <a href="index.html">Volume II: Part I</a>
+        <span class="sep"> &rsaquo; </span>
+        <a href="chapter-ix-marriage.html">Chapter IX. Marriage</a>
+        <span class="sep"> &rsaquo; </span>
+        <span>Timeline</span>
+    </div>
+    
+    <div class="content">
+        <h1>Timeline: Chapter IX. Marriage</h1>
+        <p class="subtitle">25 dated references</p>
+        <div class="tl-tabs">
+            <div class="tl-tab active" data-panel="events-panel">Events</div>
+            <div class="tl-tab" data-panel="graph-panel">Entity Graph</div>
+        </div>
+        <div id="events-panel" class="tl-panel active">
+            <div class="timeline-container">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 280" class="timeline-svg" role="img" aria-label="Timeline for Chapter IX. Marriage">
+<rect width="1500" height="280" fill="#faf6ef" rx="8"/>
+<line x1="60" y1="100" x2="1460" y2="100" stroke="#c4956a" stroke-width="2"/>
+<line x1="60.0" y1="94" x2="60.0" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="60.0" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1000 BCE</text>
+<line x1="69.61098398169337" y1="94" x2="69.61098398169337" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="69.61098398169337" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">800 BCE</text>
+<line x1="176.39969488939738" y1="94" x2="176.39969488939738" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="176.39969488939738" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">600 BCE</text>
+<line x1="283.18840579710144" y1="94" x2="283.18840579710144" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="283.18840579710144" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">400 BCE</text>
+<line x1="389.9771167048055" y1="94" x2="389.9771167048055" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="389.9771167048055" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">200 BCE</text>
+<line x1="496.76582761250955" y1="94" x2="496.76582761250955" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="496.76582761250955" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1 CE</text>
+<line x1="603.5545385202137" y1="94" x2="603.5545385202137" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="603.5545385202137" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">200 CE</text>
+<line x1="710.3432494279176" y1="94" x2="710.3432494279176" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="710.3432494279176" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">400 CE</text>
+<line x1="817.1319603356217" y1="94" x2="817.1319603356217" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="817.1319603356217" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">600 CE</text>
+<line x1="923.9206712433257" y1="94" x2="923.9206712433257" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="923.9206712433257" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">800 CE</text>
+<line x1="1030.7093821510298" y1="94" x2="1030.7093821510298" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="1030.7093821510298" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1000 CE</text>
+<line x1="1137.4980930587337" y1="94" x2="1137.4980930587337" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="1137.4980930587337" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1200 CE</text>
+<line x1="1244.286803966438" y1="94" x2="1244.286803966438" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="1244.286803966438" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1400 CE</text>
+<line x1="1351.0755148741418" y1="94" x2="1351.0755148741418" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="1351.0755148741418" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1600 CE</text>
+<line x1="1457.864225781846" y1="94" x2="1457.864225781846" y2="106" stroke="#c4956a" stroke-width="1.5"/>
+<text x="1457.864225781846" y="86" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="11" fill="#8b6914">1800 CE</text>
+<circle cx="176.39969488939738" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-chapter-ix-marriage-20" data-href="chapter-ix-marriage.html#p-chapter-ix-marriage-20"><title>Nārada</title></circle>
+<line x1="176.39969488939738" y1="106" x2="176.39969488939738" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="176.39969488939738" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Nārada</text>
+<text x="176.39969488939738" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">600 BCE</text>
+<circle cx="176.39969488939738" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="2" stroke-dasharray="2,2" class="tl-evt" data-para="p-chapter-ix-marriage-22" data-href="chapter-ix-marriage.html#p-chapter-ix-marriage-22"><title>Manusmṛti</title></circle>
+<line x1="176.39969488939738" y1="106" x2="176.39969488939738" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="176.39969488939738" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Manusmṛti</text>
+<text x="176.39969488939738" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">600 BCE</text>
+<circle cx="603.5545385202137" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="2" stroke-dasharray="2,2" class="tl-evt" data-para="p-chapter-ix-marriage-22" data-href="chapter-ix-marriage.html#p-chapter-ix-marriage-22"><title>Manusmṛti</title></circle>
+<line x1="603.5545385202137" y1="106" x2="603.5545385202137" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="603.5545385202137" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Manusmṛti</text>
+<text x="603.5545385202137" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">200 CE</text>
+<line x1="604.0884820747522" y1="100" x2="656.9488939740656" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="630.5186880244089" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-ix-marriage-42" data-href="chapter-ix-marriage.html#p-chapter-ix-marriage-42"><title>Yājñavalkya</title></circle>
+<line x1="630.5186880244089" y1="106" x2="630.5186880244089" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="630.5186880244089" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Yājñavalkya</text>
+<text x="630.5186880244089" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">201 CE</text>
+<line x1="663.8901601830663" y1="100" x2="675.1029748283753" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="669.4965675057208" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-ix-marriage-140" data-href="chapter-ix-marriage.html#p-chapter-ix-marriage-140"><title>Ṛgveda</title></circle>
+<line x1="669.4965675057208" y1="106" x2="669.4965675057208" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="669.4965675057208" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Ṛgveda</text>
+<text x="669.4965675057208" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">313 CE</text>
+<line x1="710.8771929824561" y1="100" x2="723.6918382913806" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="717.2845156369183" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-ix-marriage-25" data-href="chapter-ix-marriage.html#p-chapter-ix-marriage-25"><title>Viṣṇu Smṛti</title></circle>
+<line x1="717.2845156369183" y1="106" x2="717.2845156369183" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="717.2845156369183" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Viṣṇu Smṛti</text>
+<text x="717.2845156369183" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">401 CE</text>
+<line x1="817.6659038901602" y1="100" x2="870.5263157894738" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="844.096109839817" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-ix-marriage-23" data-href="chapter-ix-marriage.html#p-chapter-ix-marriage-23"><title>The rule that brāhmaṇa girls were to be </title></circle>
+<line x1="844.096109839817" y1="106" x2="844.096109839817" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="844.096109839817" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">The rule that brāhmaṇa gi</text>
+<text x="844.096109839817" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">601 CE</text>
+<circle cx="843.8291380625476" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="2" stroke-dasharray="2,2" class="tl-evt" data-para="p-chapter-ix-marriage-25" data-href="chapter-ix-marriage.html#p-chapter-ix-marriage-25"><title>Viṣṇu Smṛti</title></circle>
+<line x1="843.8291380625476" y1="106" x2="843.8291380625476" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="843.8291380625476" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Viṣṇu Smṛti</text>
+<text x="843.8291380625476" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">650 CE</text>
+<line x1="924.4546147978641" y1="100" x2="950.6178489702517" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="937.5362318840579" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-ix-marriage-27" data-href="chapter-ix-marriage.html#p-chapter-ix-marriage-27"><title>Yājñavalkya</title></circle>
+<line x1="937.5362318840579" y1="106" x2="937.5362318840579" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="937.5362318840579" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Yājñavalkya</text>
+<text x="937.5362318840579" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">801 CE</text>
+<circle cx="961.8306636155606" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-chapter-ix-marriage-101" data-href="chapter-ix-marriage.html#p-chapter-ix-marriage-101"><title>Ādiparva</title></circle>
+<line x1="961.8306636155606" y1="106" x2="961.8306636155606" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="961.8306636155606" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Ādiparva</text>
+<text x="961.8306636155606" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">871 CE</text>
+<circle cx="977.3150266971777" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="2" stroke-dasharray="2,2" class="tl-evt" data-para="p-chapter-ix-marriage-27" data-href="chapter-ix-marriage.html#p-chapter-ix-marriage-27"><title>Yājñavalkya</title></circle>
+<line x1="977.3150266971777" y1="106" x2="977.3150266971777" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="977.3150266971777" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Yājñavalkya</text>
+<text x="977.3150266971777" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">900 CE</text>
+<line x1="977.8489702517163" y1="100" x2="1030.7093821510298" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1004.279176201373" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-ix-marriage-25" data-href="chapter-ix-marriage.html#p-chapter-ix-marriage-25"><title>Viṣṇu Smṛti</title></circle>
+<line x1="1004.279176201373" y1="106" x2="1004.279176201373" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1004.279176201373" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Viṣṇu Smṛti</text>
+<text x="1004.279176201373" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">901 CE</text>
+<circle cx="1018.4286803966437" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-chapter-ix-marriage-25" data-href="chapter-ix-marriage.html#p-chapter-ix-marriage-25"><title>Viṣṇu Smṛti</title></circle>
+<line x1="1018.4286803966437" y1="106" x2="1018.4286803966437" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1018.4286803966437" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Viṣṇu Smṛti</text>
+<text x="1018.4286803966437" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">977 CE</text>
+<circle cx="1030.7093821510298" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="2" stroke-dasharray="2,2" class="tl-evt" data-para="p-chapter-ix-marriage-140" data-href="chapter-ix-marriage.html#p-chapter-ix-marriage-140"><title>Ṛgveda</title></circle>
+<line x1="1030.7093821510298" y1="106" x2="1030.7093821510298" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1030.7093821510298" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Ṛgveda</text>
+<text x="1030.7093821510298" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1000 CE</text>
+<line x1="1057.4065598779557" y1="100" x2="1084.1037376048816" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1070.7551487414187" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-ix-marriage-101" data-href="chapter-ix-marriage.html#p-chapter-ix-marriage-101"><title>Ādiparva</title></circle>
+<line x1="1070.7551487414187" y1="106" x2="1070.7551487414187" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1070.7551487414187" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Ādiparva</text>
+<text x="1070.7551487414187" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1050 CE</text>
+<circle cx="1080.366132723112" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-chapter-ix-marriage-71" data-href="chapter-ix-marriage.html#p-chapter-ix-marriage-71"><title>In many inscriptions and copper-plate gr</title></circle>
+<line x1="1080.366132723112" y1="106" x2="1080.366132723112" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1080.366132723112" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">In many inscriptions and </text>
+<text x="1080.366132723112" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1093 CE</text>
+<line x1="1084.6376811594203" y1="100" x2="1137.4980930587337" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1111.067887109077" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-ix-marriage-17" data-href="chapter-ix-marriage.html#p-chapter-ix-marriage-17"><title>Āpastamba Dharmasūtra</title></circle>
+<line x1="1111.067887109077" y1="106" x2="1111.067887109077" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1111.067887109077" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Āpastamba Dharmasūtra</text>
+<text x="1111.067887109077" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1101 CE</text>
+<circle cx="1124.6834477498094" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-chapter-ix-marriage-70" data-href="chapter-ix-marriage.html#p-chapter-ix-marriage-70"><title>Virāṭaparva</title></circle>
+<line x1="1124.6834477498094" y1="106" x2="1124.6834477498094" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1124.6834477498094" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Virāṭaparva</text>
+<text x="1124.6834477498094" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1176 CE</text>
+<circle cx="1137.4980930587337" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-chapter-ix-marriage-17" data-href="chapter-ix-marriage.html#p-chapter-ix-marriage-17"><title>Āpastamba Dharmasūtra</title></circle>
+<line x1="1137.4980930587337" y1="106" x2="1137.4980930587337" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1137.4980930587337" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Āpastamba Dharmasūtra</text>
+<text x="1137.4980930587337" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1200 CE</text>
+<line x1="1173.8062547673533" y1="100" x2="1189.8245614035086" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1181.815408085431" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-ix-marriage-25" data-href="chapter-ix-marriage.html#p-chapter-ix-marriage-25"><title>Viṣṇu Smṛti</title></circle>
+<line x1="1181.815408085431" y1="106" x2="1181.815408085431" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1181.815408085431" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Viṣṇu Smṛti</text>
+<text x="1181.815408085431" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1268 CE</text>
+<circle cx="1257.1014492753623" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-chapter-ix-marriage-71" data-href="chapter-ix-marriage.html#p-chapter-ix-marriage-71"><title>In many inscriptions and copper-plate gr</title></circle>
+<line x1="1257.1014492753623" y1="106" x2="1257.1014492753623" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1257.1014492753623" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">In many inscriptions and </text>
+<text x="1257.1014492753623" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1424 CE</text>
+<circle cx="1262.4408848207474" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-chapter-ix-marriage-74" data-href="chapter-ix-marriage.html#p-chapter-ix-marriage-74"><title>The word gotra also came to mean any fam</title></circle>
+<line x1="1262.4408848207474" y1="106" x2="1262.4408848207474" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1262.4408848207474" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">The word gotra also came </text>
+<text x="1262.4408848207474" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1434 CE</text>
+<line x1="1329.717772692601" y1="100" x2="1332.921434019832" y2="100" stroke="#e8941a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1331.3196033562167" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="1.5" class="tl-evt" data-para="p-chapter-ix-marriage-23" data-href="chapter-ix-marriage.html#p-chapter-ix-marriage-23"><title>The rule that brāhmaṇa girls were to be </title></circle>
+<line x1="1331.3196033562167" y1="106" x2="1331.3196033562167" y2="142" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1331.3196033562167" y="152" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">The rule that brāhmaṇa gi</text>
+<text x="1331.3196033562167" y="164" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1560 CE</text>
+<circle cx="1343.6003051106027" cy="100" r="4" fill="#e8941a" class="tl-evt" data-para="p-chapter-ix-marriage-71" data-href="chapter-ix-marriage.html#p-chapter-ix-marriage-71"><title>In many inscriptions and copper-plate gr</title></circle>
+<line x1="1343.6003051106027" y1="106" x2="1343.6003051106027" y2="170" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1343.6003051106027" y="180" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">In many inscriptions and </text>
+<text x="1343.6003051106027" y="192" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1586 CE</text>
+<circle cx="1457.864225781846" cy="100" r="4" fill="none" stroke="#e8941a" stroke-width="2" stroke-dasharray="2,2" class="tl-evt" data-para="p-chapter-ix-marriage-86" data-href="chapter-ix-marriage.html#p-chapter-ix-marriage-86"><title>Āpastamba Dharmasūtra</title></circle>
+<line x1="1457.864225781846" y1="106" x2="1457.864225781846" y2="114" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="2,2"/>
+<text x="1457.864225781846" y="124" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="10" fill="#5a3e2b">Āpastamba Dharmasūtra</text>
+<text x="1457.864225781846" y="136" text-anchor="middle" font-family="Open Sans, sans-serif" font-size="9" fill="#8b6914">1800 CE</text>
+</svg>
+            </div>
+            <div class="event-list">
+                <h2>All Dated References</h2>
+                <div class="event-item"><span class="event-year">600 BCE</span><div><span class="event-label">Nārada</span><div class="event-context">Gaut.<sup class="fn-ref"><a href="#fn-chapter-ix-marriage-39" id="fnref-chapter-ix-marriage-39">39</a></sup> (18. 20–23)...</div><a href="chapter-ix-marriage.html#p-chapter-ix-marriage-20" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">about 600 BCE</span><div><span class="event-label">Manusmṛti</span><div class="event-context">So we see that from about 600 B. C. to about the beginning of the Christian Era it did not matter at all if a girl was m...</div><a href="chapter-ix-marriage.html#p-chapter-ix-marriage-22" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">about 200 CE</span><div><span class="event-label">Manusmṛti</span><div class="event-context">So we see that from about 600 B. C. to about the beginning of the Christian Era it did not matter at all if a girl was m...</div><a href="chapter-ix-marriage.html#p-chapter-ix-marriage-22" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">201 CE</span><div><span class="event-label">Yājñavalkya</span><div class="event-context">Both of them allow a person’s marriage with his paternal aunt’s daughter. Certain inscriptions at Nāgārjunikoṇḍa (of abo...</div><a href="chapter-ix-marriage.html#p-chapter-ix-marriage-42" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">313 CE</span><div><span class="event-label">Ṛgveda</span><div class="event-context">_Ardrākṣatāropaṇa:_ (mutual showering of wet unbroken rice grains by the bride and bride-groom). In a vessel of some met...</div><a href="chapter-ix-marriage.html#p-chapter-ix-marriage-140" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">401 CE</span><div><span class="event-label">Viṣṇu Smṛti</span><div class="event-context">This shows that the ancient smṛtis ungrudgingly recognised marriages between a brāhmaṇa and a kṣatriya or a vaiśya girl....</div><a href="chapter-ix-marriage.html#p-chapter-ix-marriage-25" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">601 CE</span><div><span class="event-label">The rule that brāhmaṇa girls were to be married between 8 to 10 years became gen</span><div class="event-context">The rule that brāhmaṇa girls were to be married between 8 to 10 years became general from about the 6th or 7th century a...</div><a href="chapter-ix-marriage.html#p-chapter-ix-marriage-23" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">about 650 CE</span><div><span class="event-label">Viṣṇu Smṛti</span><div class="event-context">This shows that the ancient smṛtis ungrudgingly recognised marriages between a brāhmaṇa and a kṣatriya or a vaiśya girl....</div><a href="chapter-ix-marriage.html#p-chapter-ix-marriage-25" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">not later than 801 CE</span><div><span class="event-label">Yājñavalkya</span><div class="event-context">It is extremely difficult to say when exactly inter-caste marriages even between dvijātis came to be prohibited by the s...</div><a href="chapter-ix-marriage.html#p-chapter-ix-marriage-27" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">871 CE</span><div><span class="event-label">Ādiparva</span><div class="event-context">The smṛtis contain several views about the suitability of these eight to various varṇaṣ All are agreed that the first fo...</div><a href="chapter-ix-marriage.html#p-chapter-ix-marriage-101" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">about 900 CE</span><div><span class="event-label">Yājñavalkya</span><div class="event-context">It is extremely difficult to say when exactly inter-caste marriages even between dvijātis came to be prohibited by the s...</div><a href="chapter-ix-marriage.html#p-chapter-ix-marriage-27" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">901 CE</span><div><span class="event-label">Viṣṇu Smṛti</span><div class="event-context">This shows that the ancient smṛtis ungrudgingly recognised marriages between a brāhmaṇa and a kṣatriya or a vaiśya girl....</div><a href="chapter-ix-marriage.html#p-chapter-ix-marriage-25" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">977 CE</span><div><span class="event-label">Viṣṇu Smṛti</span><div class="event-context">This shows that the ancient smṛtis ungrudgingly recognised marriages between a brāhmaṇa and a kṣatriya or a vaiśya girl....</div><a href="chapter-ix-marriage.html#p-chapter-ix-marriage-25" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">about 1000 CE</span><div><span class="event-label">Ṛgveda</span><div class="event-context">_Ardrākṣatāropaṇa:_ (mutual showering of wet unbroken rice grains by the bride and bride-groom). In a vessel of some met...</div><a href="chapter-ix-marriage.html#p-chapter-ix-marriage-140" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1050 CE</span><div><span class="event-label">Ādiparva</span><div class="event-context">The smṛtis contain several views about the suitability of these eight to various varṇaṣ All are agreed that the first fo...</div><a href="chapter-ix-marriage.html#p-chapter-ix-marriage-101" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1093 CE</span><div><span class="event-label">In many inscriptions and copper-plate grants hundreds of donees with their gotra</span><div class="event-context">In many inscriptions and copper-plate grants hundreds of donees with their gotras and pravaras occur and it would be an ...</div><a href="chapter-ix-marriage.html#p-chapter-ix-marriage-71" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1101 CE</span><div><span class="event-label">Āpastamba Dharmasūtra</span><div class="event-context">There is another very important indicatioṇ Most of the grhyasūtras prescribe that the married couple should be celibate ...</div><a href="chapter-ix-marriage.html#p-chapter-ix-marriage-17" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1176 CE</span><div><span class="event-label">Virāṭaparva</span><div class="event-context">A few words must be said about the gotra and pravara of kings and other *kṣatriyas*. It appears from the Ait.Br. quoted ...</div><a href="chapter-ix-marriage.html#p-chapter-ix-marriage-70" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1200 CE</span><div><span class="event-label">Āpastamba Dharmasūtra</span><div class="event-context">There is another very important indicatioṇ Most of the grhyasūtras prescribe that the married couple should be celibate ...</div><a href="chapter-ix-marriage.html#p-chapter-ix-marriage-17" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1268 CE</span><div><span class="event-label">Viṣṇu Smṛti</span><div class="event-context">This shows that the ancient smṛtis ungrudgingly recognised marriages between a brāhmaṇa and a kṣatriya or a vaiśya girl....</div><a href="chapter-ix-marriage.html#p-chapter-ix-marriage-25" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1424 CE</span><div><span class="event-label">In many inscriptions and copper-plate grants hundreds of donees with their gotra</span><div class="event-context">In many inscriptions and copper-plate grants hundreds of donees with their gotras and pravaras occur and it would be an ...</div><a href="chapter-ix-marriage.html#p-chapter-ix-marriage-71" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1434 CE</span><div><span class="event-label">The word gotra also came to mean any family name (surname). In the inscriptions</span><div class="event-context">The word gotra also came to mean any family name (surname). In the inscriptions we find this usage very ofteṇ For exampl...</div><a href="chapter-ix-marriage.html#p-chapter-ix-marriage-74" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1560 CE</span><div><span class="event-label">The rule that brāhmaṇa girls were to be married between 8 to 10 years became gen</span><div class="event-context">The rule that brāhmaṇa girls were to be married between 8 to 10 years became general from about the 6th or 7th century a...</div><a href="chapter-ix-marriage.html#p-chapter-ix-marriage-23" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">1586 CE</span><div><span class="event-label">In many inscriptions and copper-plate grants hundreds of donees with their gotra</span><div class="event-context">In many inscriptions and copper-plate grants hundreds of donees with their gotras and pravaras occur and it would be an ...</div><a href="chapter-ix-marriage.html#p-chapter-ix-marriage-71" class="event-link">View in text &rarr;</a></div></div>
+<div class="event-item"><span class="event-year">about 1800 CE</span><div><span class="event-label">Āpastamba Dharmasūtra</span><div class="event-context">These passages lead to the inference that in ancient times girls were sometimes purchased for marriage, as was the case ...</div><a href="chapter-ix-marriage.html#p-chapter-ix-marriage-86" class="event-link">View in text &rarr;</a></div></div>
+            </div>
+        </div>
+        <div id="graph-panel" class="tl-panel">
+            <div class="eg-stats">
+<div><span class="eg-stat-num">8</span> entities</div>
+<div><span class="eg-stat-num">19</span> date claims</div>
+<div><span class="eg-stat-num">6</span> debated</div>
+<div><span class="eg-stat-num">95</span> co-occurrences</div>
+</div>
+<div class="eg-sort">Sort: <a class="active" onclick="egSort('date')">by date</a><a onclick="egSort('claims')">by claims</a><a onclick="egSort('name')">by name</a></div>
+<div id="eg-entities">
+<div class="eg-entity" data-key="n-radasm-ti" data-consensus="-600" data-claims="1" data-name="Nāradasmṛti"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Nāradasmṛti</span><span class="eg-type">text</span><span class="eg-claims-count">1 claims &middot; 600 BCE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="-600" data-max="1800"><span class="eg-range-label" style="left:0;">600 BCE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1800 CE</span><div class="eg-range-dot" style="left:0.0%;" title="600 BCE — 600 B. C."></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="manusm-ti" onclick="egHighlight('manusm-ti')">Manusmṛti<span class="eg-cooccur-weight">3x</span></span><span class="eg-cooccur-chip" data-target="y-j-avalkya-sm-ti" onclick="egHighlight('y-j-avalkya-sm-ti')">Yājñavalkya Smṛti<span class="eg-cooccur-weight">3x</span></span><span class="eg-cooccur-chip" data-target="gautama-dharmas-tra" onclick="egHighlight('gautama-dharmas-tra')">Gautama Dharmasūtra<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="anu-sanaparva" onclick="egHighlight('anu-sanaparva')">Anuśāsanaparva<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="alyaparva" onclick="egHighlight('alyaparva')">Śalyaparva<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="apar-rka" onclick="egHighlight('apar-rka')">Aparārka<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="gveda" onclick="egHighlight('gveda')">Ṛgveda<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="par-arasm-ti" onclick="egHighlight('par-arasm-ti')">Parāśarasmṛti<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">600 BCE</span><div><span class="eg-claim-ctx">Gaut.&lt;sup class=&quot;fn-ref&quot;&gt;&lt;a href=&quot;#fn-chapter-ix-marriage-39&quot; id=&quot;fnref-chapter-ix-marriage-39&quot;&gt;39&lt;/...</span> <a href="chapter-ix-marriage.html#p-chapter-ix-marriage-20">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="manusm-ti" data-consensus="200" data-claims="2" data-name="Manusmṛti"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Manusmṛti</span><span class="eg-type">text</span><span class="eg-claims-count">2 claims &middot; 600 BCE to 200 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="-600" data-max="1800"><span class="eg-range-label" style="left:0;">600 BCE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1800 CE</span><div class="eg-range-fill" style="left:0.0%;width:33.3%;"></div><div class="eg-range-dot" style="left:0.0%;" title="600 BCE — about 600 B. C."></div><div class="eg-range-dot" style="left:33.3%;" title="200 CE — about 200 A. D."></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="y-j-avalkya-sm-ti" onclick="egHighlight('y-j-avalkya-sm-ti')">Yājñavalkya Smṛti<span class="eg-cooccur-weight">5x</span></span><span class="eg-cooccur-chip" data-target="n-radasm-ti" onclick="egHighlight('n-radasm-ti')">Nāradasmṛti<span class="eg-cooccur-weight">3x</span></span><span class="eg-cooccur-chip" data-target="gautama-dharmas-tra" onclick="egHighlight('gautama-dharmas-tra')">Gautama Dharmasūtra<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="medh-tithi" onclick="egHighlight('medh-tithi')">Medhātithi<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="mit-k-ar" onclick="egHighlight('mit-k-ar')">Mitākṣarā<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="mah-bh-rata" onclick="egHighlight('mah-bh-rata')">Mahābhārata<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="pastamba-dharmas-tra" onclick="egHighlight('pastamba-dharmas-tra')">Āpastamba Dharmasūtra<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="anu-sanaparva" onclick="egHighlight('anu-sanaparva')">Anuśāsanaparva<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">about 600 BCE</span><div><span class="eg-claim-ctx">So we see that from about 600 B. C. to about the beginning of the Christian Era it did not matter at...</span> <a href="chapter-ix-marriage.html#p-chapter-ix-marriage-22">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">about 200 CE</span><div><span class="eg-claim-ctx">So we see that from about 600 B. C. to about the beginning of the Christian Era it did not matter at...</span> <a href="chapter-ix-marriage.html#p-chapter-ix-marriage-22">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="y-j-avalkya-sm-ti" data-consensus="801" data-claims="3" data-name="Yājñavalkya Smṛti"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Yājñavalkya Smṛti</span><span class="eg-type">text</span><span class="eg-claims-count">3 claims &middot; 201 CE to 900 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="-600" data-max="1800"><span class="eg-range-label" style="left:0;">600 BCE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1800 CE</span><div class="eg-range-fill" style="left:33.4%;width:29.1%;"></div><div class="eg-range-dot" style="left:33.4%;" title="201 CE — 3rd century A. D."></div><div class="eg-range-dot" style="left:58.4%;" title="801 CE — not later than first half of 9th century"></div><div class="eg-range-dot" style="left:62.5%;" title="900 CE — about 900 A. D."></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="manusm-ti" onclick="egHighlight('manusm-ti')">Manusmṛti<span class="eg-cooccur-weight">5x</span></span><span class="eg-cooccur-chip" data-target="n-radasm-ti" onclick="egHighlight('n-radasm-ti')">Nāradasmṛti<span class="eg-cooccur-weight">3x</span></span><span class="eg-cooccur-chip" data-target="gautama-dharmas-tra" onclick="egHighlight('gautama-dharmas-tra')">Gautama Dharmasūtra<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="par-arasm-ti" onclick="egHighlight('par-arasm-ti')">Parāśarasmṛti<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="pastamba-dharmas-tra" onclick="egHighlight('pastamba-dharmas-tra')">Āpastamba Dharmasūtra<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="anu-sanaparva" onclick="egHighlight('anu-sanaparva')">Anuśāsanaparva<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="alyaparva" onclick="egHighlight('alyaparva')">Śalyaparva<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="apar-rka" onclick="egHighlight('apar-rka')">Aparārka<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">201 CE</span><div><span class="eg-claim-ctx">Both of them allow a person’s marriage with his paternal aunt’s daughter. Certain inscriptions at Nā...</span> <a href="chapter-ix-marriage.html#p-chapter-ix-marriage-42">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">not later than 801 CE</span><div><span class="eg-claim-ctx">It is extremely difficult to say when exactly inter-caste marriages even between dvijātis came to be...</span> <a href="chapter-ix-marriage.html#p-chapter-ix-marriage-27">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">about 900 CE</span><div><span class="eg-claim-ctx">It is extremely difficult to say when exactly inter-caste marriages even between dvijātis came to be...</span> <a href="chapter-ix-marriage.html#p-chapter-ix-marriage-27">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="vi-u-sm-ti" data-consensus="901" data-claims="5" data-name="Viṣṇu Smṛti"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Viṣṇu Smṛti</span><span class="eg-type">text</span><span class="eg-claims-count">5 claims &middot; 401 CE to 1268 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="-600" data-max="1800"><span class="eg-range-label" style="left:0;">600 BCE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1800 CE</span><div class="eg-range-fill" style="left:41.7%;width:36.1%;"></div><div class="eg-range-dot" style="left:41.7%;" title="401 CE — first quarter of 5th century A. D."></div><div class="eg-range-dot" style="left:52.1%;" title="650 CE — about 650 A. D."></div><div class="eg-range-dot" style="left:62.5%;" title="901 CE — 10th century A. D."></div><div class="eg-range-dot" style="left:65.7%;" title="977 CE — saṁvat 1034 (977 A. D.)"></div><div class="eg-range-dot" style="left:77.8%;" title="1268 CE — 1268–1298 A. D."></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="manusm-ti" onclick="egHighlight('manusm-ti')">Manusmṛti<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">401 CE</span><div><span class="eg-claim-ctx">This shows that the ancient smṛtis ungrudgingly recognised marriages between a brāhmaṇa and a kṣatri...</span> <a href="chapter-ix-marriage.html#p-chapter-ix-marriage-25">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">about 650 CE</span><div><span class="eg-claim-ctx">This shows that the ancient smṛtis ungrudgingly recognised marriages between a brāhmaṇa and a kṣatri...</span> <a href="chapter-ix-marriage.html#p-chapter-ix-marriage-25">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">901 CE</span><div><span class="eg-claim-ctx">This shows that the ancient smṛtis ungrudgingly recognised marriages between a brāhmaṇa and a kṣatri...</span> <a href="chapter-ix-marriage.html#p-chapter-ix-marriage-25">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">977 CE</span><div><span class="eg-claim-ctx">This shows that the ancient smṛtis ungrudgingly recognised marriages between a brāhmaṇa and a kṣatri...</span> <a href="chapter-ix-marriage.html#p-chapter-ix-marriage-25">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">1268 CE</span><div><span class="eg-claim-ctx">This shows that the ancient smṛtis ungrudgingly recognised marriages between a brāhmaṇa and a kṣatri...</span> <a href="chapter-ix-marriage.html#p-chapter-ix-marriage-25">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="gveda" data-consensus="1000" data-claims="2" data-name="Ṛgveda"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Ṛgveda</span><span class="eg-type">text</span><span class="eg-claims-count">2 claims &middot; 313 CE to 1000 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="-600" data-max="1800"><span class="eg-range-label" style="left:0;">600 BCE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1800 CE</span><div class="eg-range-fill" style="left:38.0%;width:28.6%;"></div><div class="eg-range-dot" style="left:38.0%;" title="313 CE — 313-34 ad"></div><div class="eg-range-dot" style="left:66.7%;" title="1000 CE — about 1000 A. D."></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="alyaparva" onclick="egHighlight('alyaparva')">Śalyaparva<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="apar-rka" onclick="egHighlight('apar-rka')">Aparārka<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="manusm-ti" onclick="egHighlight('manusm-ti')">Manusmṛti<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="n-radasm-ti" onclick="egHighlight('n-radasm-ti')">Nāradasmṛti<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="par-arasm-ti" onclick="egHighlight('par-arasm-ti')">Parāśarasmṛti<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="v-yupur-a" onclick="egHighlight('v-yupur-a')">Vāyupurāṇa<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="y-j-avalkya-sm-ti" onclick="egHighlight('y-j-avalkya-sm-ti')">Yājñavalkya Smṛti<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">313 CE</span><div><span class="eg-claim-ctx">_Ardrākṣatāropaṇa:_ (mutual showering of wet unbroken rice grains by the bride and bride-groom). In ...</span> <a href="chapter-ix-marriage.html#p-chapter-ix-marriage-140">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">about 1000 CE</span><div><span class="eg-claim-ctx">_Ardrākṣatāropaṇa:_ (mutual showering of wet unbroken rice grains by the bride and bride-groom). In ...</span> <a href="chapter-ix-marriage.html#p-chapter-ix-marriage-140">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="diparva" data-consensus="1050" data-claims="2" data-name="Ādiparva"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Ādiparva</span><span class="eg-type">text</span><span class="eg-claims-count">2 claims &middot; 871 CE to 1050 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="-600" data-max="1800"><span class="eg-range-label" style="left:0;">600 BCE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1800 CE</span><div class="eg-range-fill" style="left:61.3%;width:7.5%;"></div><div class="eg-range-dot" style="left:61.3%;" title="871 CE — śake 793"></div><div class="eg-range-dot" style="left:68.8%;" title="1050 CE — latter half of 11th century"></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="gautama-dharmas-tra" onclick="egHighlight('gautama-dharmas-tra')">Gautama Dharmasūtra<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="k-mas-tra" onclick="egHighlight('k-mas-tra')">Kāmasūtra<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="mah-bh-rata" onclick="egHighlight('mah-bh-rata')">Mahābhārata<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="manusm-ti" onclick="egHighlight('manusm-ti')">Manusmṛti<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="n-radasm-ti" onclick="egHighlight('n-radasm-ti')">Nāradasmṛti<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="pastamba-dharmas-tra" onclick="egHighlight('pastamba-dharmas-tra')">Āpastamba Dharmasūtra<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="vanaparva" onclick="egHighlight('vanaparva')">Vanaparva<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="vi-u-dharmas-tra" onclick="egHighlight('vi-u-dharmas-tra')">Viṣṇu Dharmasūtra<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">871 CE</span><div><span class="eg-claim-ctx">The smṛtis contain several views about the suitability of these eight to various varṇaṣ All are agre...</span> <a href="chapter-ix-marriage.html#p-chapter-ix-marriage-101">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">1050 CE</span><div><span class="eg-claim-ctx">The smṛtis contain several views about the suitability of these eight to various varṇaṣ All are agre...</span> <a href="chapter-ix-marriage.html#p-chapter-ix-marriage-101">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="vir-aparva" data-consensus="1176" data-claims="1" data-name="Virāṭaparva"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Virāṭaparva</span><span class="eg-type">text</span><span class="eg-claims-count">1 claims &middot; 1176 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="-600" data-max="1800"><span class="eg-range-label" style="left:0;">600 BCE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1800 CE</span><div class="eg-range-dot" style="left:74.0%;" title="1176 CE — samvat 1233 i. e. 1176 A. D. )"></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="aitareya-br-hma-a" onclick="egHighlight('aitareya-br-hma-a')">Aitareya Brāhmaṇa<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="mah-bh-rata" onclick="egHighlight('mah-bh-rata')">Mahābhārata<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="manusm-ti" onclick="egHighlight('manusm-ti')">Manusmṛti<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="medh-tithi" onclick="egHighlight('medh-tithi')">Medhātithi<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="mit-k-ar" onclick="egHighlight('mit-k-ar')">Mitākṣarā<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">1176 CE</span><div><span class="eg-claim-ctx">A few words must be said about the gotra and pravara of kings and other *kṣatriyas*. It appears from...</span> <a href="chapter-ix-marriage.html#p-chapter-ix-marriage-70">view</a></div></div></div></div></div>
+<div class="eg-entity" data-key="pastamba-dharmas-tra" data-consensus="1200" data-claims="3" data-name="Āpastamba Dharmasūtra"><div class="eg-header" onclick="egToggle(this)"><span class="eg-name">Āpastamba Dharmasūtra</span><span class="eg-type">text</span><span class="eg-claims-count">3 claims &middot; 1101 CE to 1800 CE</span></div><div class="eg-body"><div class="eg-range-bar" data-min="-600" data-max="1800"><span class="eg-range-label" style="left:0;">600 BCE</span><span class="eg-range-label" style="left:100%;transform:translateX(-100%);">1800 CE</span><div class="eg-range-fill" style="left:70.9%;width:29.1%;"></div><div class="eg-range-dot" style="left:70.9%;" title="1101 CE — 12th century A. D."></div><div class="eg-range-dot" style="left:75.0%;" title="1200 CE — 1200 A. D."></div><div class="eg-range-dot" style="left:100.0%;" title="1800 CE — about 1800 A. D."></div></div><div class="eg-cooccur"><div class="eg-cooccur-title">Discussed together with:</div><span class="eg-cooccur-chip" data-target="manusm-ti" onclick="egHighlight('manusm-ti')">Manusmṛti<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="y-j-avalkya-sm-ti" onclick="egHighlight('y-j-avalkya-sm-ti')">Yājñavalkya Smṛti<span class="eg-cooccur-weight">2x</span></span><span class="eg-cooccur-chip" data-target="diparva" onclick="egHighlight('diparva')">Ādiparva<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="gautama-dharmas-tra" onclick="egHighlight('gautama-dharmas-tra')">Gautama Dharmasūtra<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="k-mas-tra" onclick="egHighlight('k-mas-tra')">Kāmasūtra<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="mah-bh-rata" onclick="egHighlight('mah-bh-rata')">Mahābhārata<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="n-radasm-ti" onclick="egHighlight('n-radasm-ti')">Nāradasmṛti<span class="eg-cooccur-weight">1x</span></span><span class="eg-cooccur-chip" data-target="vanaparva" onclick="egHighlight('vanaparva')">Vanaparva<span class="eg-cooccur-weight">1x</span></span></div><div class="eg-claim-list"><div class="eg-claim"><span class="eg-claim-year">1101 CE</span><div><span class="eg-claim-ctx">There is another very important indicatioṇ Most of the grhyasūtras prescribe that the married couple...</span> <a href="chapter-ix-marriage.html#p-chapter-ix-marriage-17">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">1200 CE</span><div><span class="eg-claim-ctx">There is another very important indicatioṇ Most of the grhyasūtras prescribe that the married couple...</span> <a href="chapter-ix-marriage.html#p-chapter-ix-marriage-17">view</a></div></div><div class="eg-claim"><span class="eg-claim-year">about 1800 CE</span><div><span class="eg-claim-ctx">These passages lead to the inference that in ancient times girls were sometimes purchased for marria...</span> <a href="chapter-ix-marriage.html#p-chapter-ix-marriage-86">view</a></div></div></div></div></div>
+</div>
+<script>
+function egToggle(header) {
+    header.parentElement.classList.toggle('open');
+}
+function egHighlight(key) {
+    // Remove existing highlights
+    document.querySelectorAll('.eg-entity.highlighted').forEach(function(el) {
+        el.classList.remove('highlighted');
+    });
+    // Highlight target and scroll to it
+    var target = document.querySelector('.eg-entity[data-key="' + key + '"]');
+    if (target) {
+        target.classList.add('highlighted');
+        target.classList.add('open');
+        target.scrollIntoView({behavior: 'smooth', block: 'center'});
+    }
+}
+function egSort(mode) {
+    var container = document.getElementById('eg-entities');
+    var items = Array.from(container.querySelectorAll('.eg-entity'));
+    items.sort(function(a, b) {
+        if (mode === 'date') return parseInt(a.dataset.consensus) - parseInt(b.dataset.consensus);
+        if (mode === 'claims') return parseInt(b.dataset.claims) - parseInt(a.dataset.claims);
+        if (mode === 'name') return a.dataset.name.localeCompare(b.dataset.name);
+        return 0;
+    });
+    items.forEach(function(el) { container.appendChild(el); });
+    // Update active sort link
+    document.querySelectorAll('.eg-sort a').forEach(function(a) { a.classList.remove('active'); });
+    event.target.classList.add('active');
+}
+</script>
+        </div>
+        <a href="chapter-ix-marriage.html" class="back-link">&larr; Back to Chapter IX. Marriage</a>
+    </div>
+    <script>
+    document.querySelectorAll('.tl-evt').forEach(function(el) {
+        el.addEventListener('click', function() {
+            var href = this.getAttribute('data-href');
+            if (href) {
+                window.location.href = href;
+            } else {
+                var paraId = this.getAttribute('data-para');
+                if (paraId) {
+                    var target = document.getElementById(paraId);
+                    if (target) target.scrollIntoView({behavior: 'smooth'});
+                }
+            }
+        });
+    });
+    // Tab switching
+    document.querySelectorAll('.tl-tab').forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            document.querySelectorAll('.tl-tab').forEach(function(t) { t.classList.remove('active'); });
+            document.querySelectorAll('.tl-panel').forEach(function(p) { p.classList.remove('active'); });
+            tab.classList.add('active');
+            var panel = document.getElementById(tab.getAttribute('data-panel'));
+            if (panel) panel.classList.add('active');
+        });
+    });
+    </script>
+</body>
+</html>

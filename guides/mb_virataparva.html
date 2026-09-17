@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Virāṭaparva Study Guide — History of Dharmaśāstra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Open+Sans:wght@400;600&family=Tiro+Devanagari+Sanskrit&display=swap" rel="stylesheet">
+<style>
+:root {
+    --saffron: #D4600A;
+    --ink: #2C2416;
+    --parchment: #FDF6EC;
+    --parchment-dark: #F5ECD8;
+    --indigo: #2E5FA3;
+    --maroon: #8B1A1A;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: var(--parchment);
+    color: var(--ink);
+    line-height: 1.6;
+}
+.navbar {
+    background: linear-gradient(135deg, #3D2B1F 0%, #5C3D2E 100%);
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    position: sticky;
+    top: 0;
+    z-index: 1031;
+}
+.navbar a { color: #F5ECD8; text-decoration: none; font-size: 14px; }
+.navbar a:hover { color: var(--saffron); }
+.navbar .brand { font-family: 'Lora', serif; font-size: 16px; font-weight: 600; }
+.breadcrumb-bar {
+    background: var(--parchment-dark);
+    padding: 8px 24px;
+    font-size: 13px;
+    border-bottom: 1px solid #E0D5C3;
+}
+.breadcrumb-bar a { color: var(--indigo); text-decoration: none; }
+.breadcrumb-bar .sep { margin: 0 6px; color: #999; }
+.breadcrumb-bar .current { color: var(--ink); }
+.content { max-width: 900px; margin: 0 auto; padding: 30px 24px; }
+
+/* Hero */
+.parva-hero {
+    text-align: center;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 2px solid #E0D5C3;
+}
+.parva-hero .parva-number {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(212, 96, 10, 0.10);
+    color: var(--saffron);
+    font-family: 'Lora', serif;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 50px;
+    margin-bottom: 8px;
+}
+.parva-hero h1 {
+    font-family: 'Lora', serif;
+    font-size: 28px;
+    color: var(--saffron);
+    margin: 6px 0;
+}
+.parva-hero .desc {
+    font-size: 15px;
+    color: #555;
+    max-width: 600px;
+    margin: 0 auto 10px;
+}
+.parva-hero .stats {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 10px;
+}
+.ext-link {
+    display: inline-block;
+    font-size: 13px;
+    color: var(--indigo);
+    font-weight: 600;
+    text-decoration: none;
+    padding: 4px 12px;
+    border: 1px solid var(--indigo);
+    border-radius: 4px;
+    margin: 6px 4px;
+}
+.ext-link:hover { background: rgba(46, 95, 163, 0.08); }
+.ref-page-link {
+    display: inline-block;
+    font-size: 13px;
+    color: #888;
+    text-decoration: none;
+    padding: 4px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: 6px 4px;
+}
+.ref-page-link:hover { border-color: #999; color: #666; }
+.subject-tag {
+    display: inline-block;
+    font-size: 11px;
+    background: rgba(139, 26, 26, 0.08);
+    color: var(--maroon);
+    padding: 2px 8px;
+    border-radius: 3px;
+    text-decoration: none;
+    margin: 2px;
+}
+.subject-tag:hover { background: rgba(139, 26, 26, 0.15); }
+
+/* Top adhyayas */
+.top-adhyayas {
+    margin-bottom: 28px;
+    padding: 16px;
+    background: #fff;
+    border: 1px solid #E0D5C3;
+    border-radius: 8px;
+}
+.top-adhyayas h3 {
+    font-family: 'Lora', serif;
+    font-size: 15px;
+    color: var(--ink);
+    margin-bottom: 10px;
+}
+.adhyaya-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.adhyaya-chip {
+    display: inline-block;
+    font-size: 12px;
+    padding: 3px 10px;
+    background: var(--parchment-dark);
+    border: 1px solid #E0D5C3;
+    border-radius: 4px;
+    color: var(--ink);
+    text-decoration: none;
+}
+a.adhyaya-chip:hover { border-color: var(--saffron); color: var(--saffron); }
+.adhyaya-chip small { color: #999; }
+
+/* Volume sections */
+.vol-section { margin-bottom: 28px; }
+.vol-heading {
+    font-family: 'Lora', serif;
+    font-size: 17px;
+    color: var(--ink);
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #E0D5C3;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.vol-count {
+    font-size: 12px;
+    font-weight: 400;
+    color: #999;
+}
+.ch-group { margin-bottom: 16px; }
+.ch-heading {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 6px;
+    padding: 4px 8px;
+    background: var(--parchment-dark);
+    border-radius: 4px;
+}
+.ch-count {
+    font-weight: 400;
+    color: #999;
+    font-size: 11px;
+    margin-left: 4px;
+}
+.snippet {
+    padding: 10px 14px;
+    margin-bottom: 6px;
+    background: #fff;
+    border: 1px solid #E0D5C3;
+    border-radius: 6px;
+    border-left: 3px solid var(--saffron);
+}
+.snippet-text {
+    font-family: 'Lora', serif;
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.65;
+}
+.snippet-meta {
+    margin-top: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.snippet-link {
+    font-size: 12px;
+    color: var(--indigo);
+    text-decoration: none;
+}
+.snippet-link:hover { text-decoration: underline; }
+.snippet-verse {
+    font-size: 11px;
+    color: #999;
+    font-style: italic;
+}
+.mbta-icon {
+    color: var(--indigo);
+    text-decoration: none;
+    font-style: normal;
+    font-size: 12px;
+}
+.overflow {
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+    padding: 6px;
+}
+</style>
+</head>
+<body>
+<nav class="navbar">
+    <a href="../index.html" class="brand">History of Dharmaśāstra</a>
+    <a href="../refs/index.html">Sources</a>
+    <a href="../topics/index.html">Topics</a>
+    <a href="../subjects/index.html">Subjects</a>
+    <a href="../timeline.html">Timeline</a>
+    <a href="../network.html">Network</a>
+</nav>
+<div class="breadcrumb-bar">
+    <a href="../index.html">Home</a>
+    <span class="sep">›</span>
+    <a href="index.html">Parva Study Guides</a>
+    <span class="sep">›</span>
+    <span class="current">Virāṭaparva</span>
+</div>
+<div class="content">
+    <div class="parva-hero">
+        <div class="parva-number">4</div>
+        <h1>Virāṭaparva</h1>
+        <p class="desc">The Book of Virāṭa — the year of concealment in King Virāṭa's court.</p>
+        <p class="stats">16 references across 6 volumes</p>
+        <div><a href="https://sanatana.in/mbta/listing/parva/virataparva" target="_blank" class="ext-link">Browse on MBTA ↗</a>
+            <a href="../refs/mb_virataparva.html" class="ref-page-link">Verse reference table →</a>
+        </div>
+        <div style="margin-top:8px"></div>
+    </div>
+    
+            <div class="top-adhyayas">
+                <h3>Most-Cited Adhyāyas</h3>
+                <div class="adhyaya-chips"><a href="https://sanatana.in/mbta/listing/parva/virataparva#P04_U04_A052_S001" target="_blank" class="adhyaya-chip">Adhyāya 52 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/virataparva#P04_U01_A002_S001" target="_blank" class="adhyaya-chip">Adhyāya 2 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/virataparva#P04_U01_A009_S001" target="_blank" class="adhyaya-chip">Adhyāya 9 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/virataparva#P04_U01_A007_S001" target="_blank" class="adhyaya-chip">Adhyāya 7 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/virataparva#P04_U01_A006_S001" target="_blank" class="adhyaya-chip">Adhyāya 6 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/virataparva#P04_U01_A004_S001" target="_blank" class="adhyaya-chip">Adhyāya 4 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/virataparva#P04_U03_A022_S001" target="_blank" class="adhyaya-chip">Adhyāya 22 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/virataparva#P04_U04_A065_S001" target="_blank" class="adhyaya-chip">Adhyāya 65 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/virataparva#P04_U04_A059_S001" target="_blank" class="adhyaya-chip">Adhyāya 59 <small>(1)</small></a><a href="https://sanatana.in/mbta/listing/parva/virataparva#P04_U04_A050_S001" target="_blank" class="adhyaya-chip">Adhyāya 50 <small>(1)</small></a></div>
+            </div>
+    
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume I: Part I
+                    <span class="vol-count">2 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">14 Arthashastra Of Kautilya <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...ol. V. part 1 p. 505 note 732. The statement that two intercalary months were allowed in five years was also the rule, according to the Mahābhārata ( <strong>Virāṭaparva</strong> 52. 3-4 ) and the Yajuṣa Vedāṅgajyotiṣa ( verse 35 ).</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-105" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">52.3-4 <a href="https://sanatana.in/mbta/listing/parva/virataparva#P04_U04_A052_S003" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">32 The Two Epics <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">... commentary called ‘Viśamaślokāvyākhyā’ on Vanaparva 82.38 as reading a certain verse there but states it was omitted by later ignorant expositorṣ On <strong>Virāṭaparva</strong> 2.9 he mentions the mean-ing of ‘ārālika’ given by the author of the coṃ Visamaśloki. He mentions Arjūnamisra’s explanation of ‘Jāruthyān’ in Vanaparva 2...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-1-part-1/32-the-two-epics.html#p-32-the-two-epics-37" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">2.9 <a href="https://sanatana.in/mbta/listing/parva/virataparva#P04_U01_A002_S009" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume II: Part I
+                    <span class="vol-count">3 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Ii Varna <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...in the gaṇa kulālādi (Pāṇ. IV. 3. 118). From the Mahābhārata we see what duties Draupadi disguised as hair- andhri had to do for the queen of Viraṭa (Virāṭa-parva 9. 18-19), viz. combing and arranging the hair, pounding unguents, making garlandṣ Similarly Damayanti became a sairandhri to the mother of the Cedi king (Van...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-2-part-1/chapter-ii-varna.html#p-chapter-ii-varna-182" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">9.18-19 <a href="https://sanatana.in/mbta/listing/parva/virataparva#P04_U01_A009_S018" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Ix Marriage <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...went to the court of Virāṭa in the guise of a brāhmaṇa and was asked by the king to state his gotra he said that he was of the Vaiyāghrapadya gotra ( Virāṭa-parva 7. 8-12 ). That this was the gotra of the Pāṇḍavas also follows from the fact that in the Bhīṣmatarpaṇa<sup class="fn-ref"><a href="#fn-chapter-ix-marriage-1...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-2-part-1/chapter-ix-marriage.html#p-chapter-ix-marriage-70" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">7.8-12 <a href="https://sanatana.in/mbta/listing/parva/virataparva#P04_U01_A007_S008" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xv Satī Self Immolation Of Widows <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...up class="fn-ref"><a href="#fn-chapter-xv-satī-self-immolation-of-widows-5" id="fnref-chapter-xv-satī-self-immolation-of-widows-5">5</a></sup> In the Virāṭa-parva Sairandhrī is ordered to be burnt with Kīcaka,<sup class="fn-ref"><a href="#fn-chapter-xv-satī-self-immolation-of-widows-6" id="fnref-chapter-xv-satī...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-2-part-1/chapter-xv-satī-self-immolation-of-widows.html#p-chapter-xv-satī-self-immolation-of-widows-2" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/virataparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume II: Part II
+                    <span class="vol-count">1 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xix Devayajna <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...dge of the Great Being. The various names of Durgā are Umā, Pārvatī, Devī, Ambikā, Gaurī, Caṇḍī or Caṇḍikā, Kālī, Kumārī, Lalitā &c. The Mahābhārata (<strong>Virāṭaparva</strong> 6 and Bhīṣma 23 ) contains two hymns addressed to Durgā in which she is stated to be Vindhyavāsinī and fond of blood and wine, and in Vanaparva 39. 4 i...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-2-part-2/chapter-xix-devayajna.html#p-chapter-xix-devayajna-31" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">6 <a href="https://sanatana.in/mbta/listing/parva/virataparva#P04_U01_A006" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume III
+                    <span class="vol-count">4 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter V Rāshtra The Territory Of A State <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">... ) of kings, how they should conduct themselves, how servants should find out whether the king is pleased or displeased with theṃ Vide Kauṭilya V. 4, <strong>Virāṭaparva</strong> 4 12-50 (where the refrain of most verses is 'sa rājavasaṭim vaset'), Matsyapurāṇa 216 (the whole of which is quoted in the Rājadarmakāṇda pp. 24-27 an...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-14" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">4 <a href="https://sanatana.in/mbta/listing/parva/virataparva#P04_U01_A004" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Vi Durga Fort Or Capital <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...ort-or-capital-2">2</a></sup> Vide also Āsramavāsi-parva 16 3 The Mahābhārata states that palaces had dancing halls (`nartanāgāra`) attached to them (Virāta-parva 22 16 and 25-26) Sānti 69 60 states that the capital was rendered gay by `natas` (players) and dancers and Sānti 86 (4-15) describes how cities were to ...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-vi-durga-fort-or-capital.html#p-chapter-vi-durga-fort-or-capital-2" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">22 <a href="https://sanatana.in/mbta/listing/parva/virataparva#P04_U03_A022" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Viii Bala The Army <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">... not, except in rare cases, play any role in the fighting that went on, while chariots and the other arms of an army are described everywhere. In the <strong>Virāṭaparva</strong> (65. 6) Vikarṇa was seated on an elephant when he attacked Arjuna; Bhīṣmaparva 20. 7 refers to Duryodhana as riding an elephant and (95. 32-33) Bhagadatta is...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/chapter-viii-bala-the-army.html#p-chapter-viii-bala-the-army-2" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">65.6 <a href="https://sanatana.in/mbta/listing/parva/virataparva#P04_U04_A065_S006" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">General Index <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...aprakāśa and Rājanītiprakāśa), 10, 445, 571, 576, 671, 731, 735, 759, 782, 800, 879, is of paramount authority in the Benares School of Hindu Law 544 <strong>Virāṭaparva</strong> 59, 135, 160, 180, 203, 888 Viśālākṣa, expounder of Rājaśāstra 2, 83, 232, summarised the work of Brahmā 4 Viṣṇu, smṛti of (not found in printed text) 7...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-3/general-index.html#p-general-index-14" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">59 <a href="https://sanatana.in/mbta/listing/parva/virataparva#P04_U04_A059" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume V: Part I
+                    <span class="vol-count">2 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Ix Navarātra Or Durgotsava <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...ted with different forms and names of Devi. For example, Vidyāpati in describing the form of Kālī or Cāmundā speaks of her as having four armṣ In the <strong>Virāṭaparva</strong> (chap. 6) where Yudhisthira praises Durgā, she is described ( in verse 8) as having four armṣ</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-1/chapter-ix-navarātra-or-durgotsava.html#p-chapter-ix-navarātra-or-durgotsava-21" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/virataparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xviii Calendar Eras Various Reckonings About Years Months Etc <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...various-reckonings-about-years-months-etc-44" id="fnref-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-44">44</a></sup> In the <strong>Virāṭaparva</strong><sup class="fn-ref"><a href="#fn-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-45" id="fnref-chapter-xviii-calendar-eras-vario...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-1/chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc.html#p-chapter-xviii-calendar-eras-various-reckonings-about-years-months-etc-18" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/virataparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="vol-section">
+                <h3 class="vol-heading">Volume V: Part II
+                    <span class="vol-count">4 references</span></h3>
+                
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xxvi Tāntrik Doctrines And Dharmashastra <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...<a href="#fn-chapter-xxvi-tāntrik-doctrines-and-dharmashastra-25" id="fnref-chapter-xxvi-tāntrik-doctrines-and-dharmashastra-25">25</a></sup> viz. in <strong>Virāṭaparva</strong> (chap. 6) by Yudhiṣṭhira and the other in Bhīṣmaparva (chap. 23) by Arjuna, but they are discarded as apocryphal in the Poona critical editioṇ The Ga...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-2/chapter-xxvi-tāntrik-doctrines-and-dharmashastra.html#p-chapter-xxvi-tāntrik-doctrines-and-dharmashastra-13" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/virataparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Chapter Xxxvi Fundamental And Leading Characteristics Of Hindu Culture And Civil <span class="ch-count">1</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">...nd criticism about the petrified caste systeṃ The epic frequently refers to the theme of वर्णस and जातिस्. Vide for example, Vanaparva (chapter 180), <strong>Virāṭaparva</strong> 50. 4-7, Udyoga 23. 26, 40. 25-29, शान्ति 188. 10-14, Anusāsana 143. A few passages may be set out here. शान्ति 188. 10 says 'there is no (real) distinction ...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-2/chapter-xxxvi-fundamental-and-leading-characteristics-of-hindu-culture-and-civil.html#p-chapter-xxxvi-fundamental-and-leading-characteristics-of-hindu-culture-and-civil-29" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse">50.4-7 <a href="https://sanatana.in/mbta/listing/parva/virataparva#P04_U04_A050_S004" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ch-group">
+                    <h4 class="ch-heading">Index To Vol V <span class="ch-count">2</span></h4>
+                    
+                    <div class="snippet">
+                        <div class="snippet-text">**Durgā**, antiquity of pūjā of, 185-86; Arjuṇa's and Yudhisthira's praise of D. in Bhīṣmaparva and <strong>Virāṭaparva</strong>, 85, 1046<sup class="fn-ref"><a href="#fn-index-to-vol-v-10" id="fnref-index-to-vol-v-10">10</a></sup>; killed Śumbha and Niśumbha 186; on coins 186;</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-60" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/virataparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    <div class="snippet">
+                        <div class="snippet-text">...aya** of Mitramiśra, 835n, 1192 (on Vyavahāra); on āhnika 42ṇ **Virāsana**, a posture in Kṛcchra and Aghamarṣaṇa vratas 415; a yogic āsana 1425–26ṇ **<strong>Virāṭaparva</strong>** 179, 185n, 192n, 506n, 663, 743, 821, 1570n, 1636. **Viṣa-ghaṭī** or **Viṣanāḍī**, 736n; birth of a child on V. is portent of death of father or mo...</div>
+                        <div class="snippet-meta">
+                            <a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-245" class="snippet-link">
+                                Read in context →
+                            </a>
+                            <span class="snippet-verse"> <a href="https://sanatana.in/mbta/listing/parva/virataparva" target="_blank" class="mbta-icon" title="View on MBTA">↗</a></span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+</div>
+</body>
+</html>

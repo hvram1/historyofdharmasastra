@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- MDB UI Kit -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/fonts.css?v=1.2">
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/navbar.css?v=2.4">
+
+    <title>111. Kamalākarabhatta — Volume I: Part II — History of Dharmaśāstra</title>
+    <style>
+    :root {
+        --saffron:        #D4600A;
+        --saffron-light:  #F0924A;
+        --saffron-wash:   rgba(212, 96, 10, 0.07);
+        --indigo:         #2E5FA3;
+        --indigo-dark:    #1C3D70;
+        --maroon:         #7A1E1E;
+        --amber:          #C97A1A;
+        --ink:            #1A1209;
+        --ink-secondary:  #4A3B2A;
+        --parchment:      #FDFAF4;
+        --parchment-mid:  #F5EFE2;
+        --rule:           rgba(180, 130, 60, 0.22);
+        --shadow:         0 2px 18px rgba(90, 50, 10, 0.08);
+        --font-devanagari: 'Tiro Devanagari Sanskrit', 'Siddhanta', 'Noto Sans Devanagari', serif;
+        --font-roman:      'Junicode', Georgia, serif;
+    }
+
+    body {
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: var(--font-roman);
+    }
+
+    .devanagari {
+        font-family: var(--font-devanagari);
+    }
+
+    /* ── Navbar overrides ── */
+    .navbar-ontop { z-index: 1031; }
+    .hdclr { color: var(--saffron); }
+    .engpara { font-family: 'Open Sans', sans-serif; }
+
+    /* ── Layout ── */
+    .dh-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .dh-content {
+        flex: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        background: var(--parchment);
+        box-shadow: var(--shadow);
+        min-height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        .dh-content { padding: 24px 20px; }
+        .dh-wrapper { flex-direction: column; }
+    }
+
+    /* ── TOC Sidebar ── */
+    .toc-sidebar {
+        position: sticky;
+        top: 80px;
+        width: 280px;
+        min-width: 280px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding: 20px 16px;
+        margin-right: 24px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        scrollbar-width: thin;
+    }
+
+    .toc-title {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--saffron-light);
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list li {
+        padding: 4px 0;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-list li.toc-l3 {
+        padding-left: 16px;
+        font-size: 0.78rem;
+    }
+
+    .toc-list li a {
+        color: var(--ink-secondary);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .toc-list li a:hover { color: var(--saffron); }
+
+    .toc-list li.active {
+        border-left-color: var(--saffron);
+    }
+
+    .toc-list li.active a {
+        color: var(--saffron);
+        font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-sidebar { display: none; }
+    }
+
+    /* ── Mobile TOC Toggle ── */
+    .toc-mobile-toggle {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1050;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--saffron);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-mobile-toggle { display: block; }
+    }
+
+    /* ── Section Headings ── */
+    .section-heading {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        margin: 48px 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--rule);
+        letter-spacing: 0.5px;
+        scroll-margin-top: 80px;
+    }
+
+    h2.section-heading { font-size: 1.6rem; }
+
+    h3.section-heading {
+        font-size: 1.25rem;
+        border-left: 4px solid var(--saffron-light);
+        border-bottom: none;
+        padding: 8px 16px;
+        background: var(--saffron-wash);
+        border-radius: 0 5px 5px 0;
+    }
+
+    /* ── Prose ── */
+    .prose {
+        font-family: var(--font-roman);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+        color: var(--ink);
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    .prose em { color: var(--maroon); }
+
+    .prose:target {
+        background: rgba(212, 96, 10, 0.12);
+        border-left: 4px solid var(--saffron);
+        padding-left: 16px;
+        margin-left: -20px;
+        border-radius: 0 6px 6px 0;
+        animation: target-pulse 2s ease-out;
+    }
+
+    @keyframes target-pulse {
+        0%   { background: rgba(212, 96, 10, 0.30); }
+        100% { background: rgba(212, 96, 10, 0.12); }
+    }
+
+    /* ── Footnote References ── */
+    .fn-ref {
+        font-size: 0.75em;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    .fn-ref a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 0 2px;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: color 0.15s;
+    }
+
+    .fn-ref a:hover { color: var(--indigo); }
+
+    /* ── Synopsis Box ── */
+    .synopsis-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron-light);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .synopsis-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .synopsis-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .synopsis-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .synopsis-box.open .synopsis-toggle i {
+        transform: rotate(90deg);
+    }
+    .synopsis-body {
+        display: none;
+        padding: 0 20px 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+    }
+    .synopsis-box.open .synopsis-body { display: block; }
+    .synopsis-body p { margin: 0; }
+    .synopsis-attribution {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: var(--ink-secondary);
+        opacity: 0.7;
+        font-style: italic;
+    }
+    .synopsis-audio {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    .synopsis-play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--saffron);
+        background: none;
+        color: var(--saffron);
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: background 0.2s, color 0.2s;
+        padding: 0;
+    }
+    .synopsis-play-btn:hover {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn.playing {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn i { padding-left: 2px; }
+
+    /* ── Index Terms Panel ── */
+    .index-terms-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .index-terms-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .index-terms-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .index-terms-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .index-terms-box.open .index-terms-toggle i {
+        transform: rotate(90deg);
+    }
+    .index-terms-body {
+        display: none;
+        padding: 0 20px 16px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .index-terms-box.open .index-terms-body { display: block; }
+    .index-terms-dl {
+        margin: 0;
+        padding: 0;
+    }
+    .index-terms-dl dt {
+        font-family: var(--font-roman);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+        margin-top: 8px;
+    }
+    .index-terms-dl dd {
+        margin: 2px 0 0 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        color: var(--ink-secondary);
+        line-height: 1.5;
+    }
+    .nyaya-heading {
+        font-family: var(--font-roman);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        margin: 16px 0 4px;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+    }
+
+    /* ── Inline Index Popovers ── */
+    .idx-term {
+        border-bottom: 1px dotted var(--saffron-light);
+        cursor: help;
+        position: relative;
+    }
+    .idx-term:hover::after {
+        content: attr(data-def);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        background: rgba(44, 36, 22, 0.92);
+        color: #F5ECD8;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        max-width: 280px;
+        z-index: 100;
+        white-space: normal;
+        line-height: 1.4;
+        pointer-events: none;
+    }
+
+    /* ── Structured Version Banner ── */
+    .structured-banner {
+        margin: 0 0 28px;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, rgba(212, 96, 10, 0.06) 0%, rgba(212, 96, 10, 0.02) 100%);
+        border: 1px solid var(--saffron-light);
+        border-radius: 6px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        color: var(--ink-secondary);
+        line-height: 1.6;
+    }
+    .structured-banner i { color: var(--saffron); margin-right: 4px; }
+    .structured-banner a { color: var(--indigo); font-weight: 600; text-decoration: none; }
+    .structured-banner a:hover { text-decoration: underline; }
+
+    /* ── Footnotes Section ── */
+    .footnotes-section {
+        margin: 32px 0 48px;
+        padding: 20px 24px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .footnotes-section hr {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 0 0 16px;
+    }
+
+    .footnotes-list {
+        padding-left: 24px;
+        margin: 0;
+    }
+
+    .footnote-item {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+        scroll-margin-top: 80px;
+    }
+
+    .footnote-item:target {
+        background: rgba(212, 96, 10, 0.1);
+        border-radius: 4px;
+        padding: 4px 6px;
+        margin-left: -6px;
+    }
+
+    .fn-back {
+        color: var(--saffron-light);
+        text-decoration: none;
+        font-size: 0.85em;
+        margin-left: 4px;
+    }
+
+    .fn-back:hover { color: var(--saffron); }
+
+    /* ── Reference Links ── */
+    a.ref {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: all 0.15s;
+    }
+
+    a.ref:hover {
+        color: var(--saffron);
+        border-bottom-style: solid;
+    }
+
+    a.mbta-ext {
+        color: var(--indigo);
+        font-size: 0.7em;
+        margin-left: 2px;
+        opacity: 0.5;
+        text-decoration: none;
+        vertical-align: super;
+    }
+    a.mbta-ext:hover { opacity: 1; color: var(--saffron); }
+
+    /* ── References Panel (sidebar) ── */
+    .refs-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .refs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .refs-list li {
+        padding: 3px 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .ref-source-link {
+        font-weight: 600;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .ref-source-link:hover {
+        text-decoration: underline;
+    }
+
+    .ref-verse-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.76rem;
+    }
+
+    .ref-verse-link:hover {
+        text-decoration: underline;
+        color: var(--saffron);
+    }
+
+    .ref-verses {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Timeline panel ── */
+    .timeline-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .timeline-list li {
+        padding: 2px 0;
+        font-size: 0.76rem;
+        line-height: 1.4;
+        position: relative;
+        padding-left: 14px;
+    }
+
+    .timeline-list li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--saffron);
+    }
+
+    .timeline-list li.tl-approximate::before {
+        background: transparent;
+        border: 2px solid var(--saffron);
+        width: 4px;
+        height: 4px;
+    }
+
+    .timeline-list li.tl-century::before {
+        background: transparent;
+        border: 2px dashed var(--saffron);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+
+    .tl-dot-link {
+        text-decoration: none;
+        color: var(--ink);
+        display: block;
+    }
+
+    .tl-dot-link:hover {
+        color: var(--saffron);
+    }
+
+    .tl-year {
+        font-weight: 600;
+        color: var(--saffron);
+        font-size: 0.72rem;
+        min-width: 70px;
+        display: inline-block;
+    }
+
+    .tl-label {
+        color: var(--ink-secondary);
+        font-size: 0.72rem;
+    }
+
+    .tl-view-link, .tl-more {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.72rem;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .tl-view-link:hover, .tl-more:hover {
+        text-decoration: underline;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+
+    .breadcrumb-bar a {
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+
+    .breadcrumb-bar .sep {
+        color: var(--amber);
+        margin: 0 8px;
+    }
+
+    .breadcrumb-bar .current {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Chapter Navigation ── */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        margin-top: 48px;
+        border-top: 2px solid var(--rule);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .chapter-nav a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        transition: all 0.2s;
+        max-width: 45%;
+    }
+
+    .chapter-nav a:hover {
+        background: var(--saffron-wash);
+        border-color: var(--saffron-light);
+    }
+
+    .nav-prev { text-align: left; }
+    .nav-next { text-align: right; margin-left: auto; }
+
+    .page-range {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+    }
+
+    /* ── Volume Cards (Landing) ── */
+    .vol-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .vol-card {
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        transition: all 0.25s;
+    }
+
+    .vol-card:hover {
+        border-color: var(--saffron-light);
+        box-shadow: 0 4px 24px rgba(212, 96, 10, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .vol-num {
+        font-family: var(--font-roman);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--saffron);
+        margin-bottom: 8px;
+    }
+
+    .vol-subtitle {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        line-height: 1.5;
+        flex: 1;
+    }
+
+    .vol-chapters {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        margin-top: 12px;
+    }
+
+    /* ── Chapter Cards (Volume Index) ── */
+    .chapter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .chapter-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .chapter-card:hover {
+        border-color: var(--saffron-light);
+        background: var(--saffron-wash);
+    }
+
+    .card-num {
+        font-family: var(--font-roman);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--saffron);
+        min-width: 36px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        flex: 1;
+    }
+
+    .card-pages {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        color: var(--ink-secondary);
+    }
+
+    /* ── Landing Hero ── */
+    .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-family: var(--font-roman);
+        font-size: 2.4rem;
+        color: var(--saffron);
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .hero .devanagari-title {
+        font-family: var(--font-devanagari);
+        font-size: 1.8rem;
+        color: var(--ink);
+        margin-bottom: 16px;
+    }
+
+    .hero .author {
+        font-family: var(--font-roman);
+        font-size: 1.1rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .hero .desc {
+        font-family: var(--font-roman);
+        font-size: 1rem;
+        color: var(--ink-secondary);
+        line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer { margin-top: 48px; }
+</style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mbta/">
+      <div class="container-fluid">&emsp;&emsp;
+      <a href="../index.html" class="navbar-brand" style="text-decoration:none;">
+        <span class="devanagari ms-3" style="font-size:1.5rem; color:var(--saffron); font-weight:700;">धर्मशास्त्रम्</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="../index.html">धर्मशास्त्रम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5 active" href="../index.html">खण्डाः</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in/mbta/">महाभारतम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in">सनातनम्</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+
+    <div class="dh-wrapper container-xl">
+        <nav id="toc" class="toc-sidebar">
+<div class="refs-panel">
+<h5 class="toc-title">References</h5>
+<ul class="refs-list">
+<li><a href="../refs/apararka.html" class="ref-source-link">Aparārka</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/brihaspati.html" class="ref-source-link">Bṛhaspati</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/skanda_purana.html" class="ref-source-link">Skandapurāṇa</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/vishnu_smriti.html" class="ref-source-link">Viṣṇu Smṛti</a> <span class="ref-verses"></span></li>
+</ul>
+</div>
+<div class="timeline-panel">
+<h5 class="toc-title">Timeline</h5>
+<ul class="timeline-list">
+<li class="tl-exact"><a href="#p-111-kamalākarabhatta-15" class="tl-dot-link"><span class="tl-year">1513 CE</span> <span class="tl-label">The time when Kamalākara flour</span></a></li>
+<li class="tl-century"><a href="#p-111-kamalākarabhatta-15" class="tl-dot-link"><span class="tl-year">1576 CE</span> <span class="tl-label">The time when Kamalākara flour</span></a></li>
+<li class="tl-exact"><a href="#p-111-kamalākarabhatta-15" class="tl-dot-link"><span class="tl-year">1610 CE</span> <span class="tl-label">The time when Kamalākara flour</span></a></li>
+<li class="tl-exact"><a href="#p-111-kamalākarabhatta-15" class="tl-dot-link"><span class="tl-year">1612 CE</span> <span class="tl-label">The time when Kamalākara flour</span></a></li>
+<li class="tl-exact"><a href="#p-111-kamalākarabhatta-18" class="tl-dot-link"><span class="tl-year">1612 CE</span> <span class="tl-label">Another interesting remark of </span></a></li>
+<li class="tl-exact"><a href="#p-111-kamalākarabhatta-15" class="tl-dot-link"><span class="tl-year">1621 CE</span> <span class="tl-label">The time when Kamalākara flour</span></a></li>
+<li class="tl-exact"><a href="#p-111-kamalākarabhatta-7" class="tl-dot-link"><span class="tl-year">1638 CE</span> <span class="tl-label">His Tattva-kamalākāra appears </span></a></li>
+<li class="tl-exact"><a href="#p-111-kamalākarabhatta-15" class="tl-dot-link"><span class="tl-year">1638 CE</span> <span class="tl-label">The time when Kamalākara flour</span></a></li>
+<li class="tl-exact"><a href="#p-111-kamalākarabhatta-15" class="tl-dot-link"><span class="tl-year">1640 CE</span> <span class="tl-label">The time when Kamalākara flour</span></a></li>
+</ul>
+<a href="111-kamalākarabhatta-timeline.html" class="tl-view-link">View full timeline &rarr;</a>
+</div>
+<h5 class="toc-title">Sections</h5>
+<ul class="toc-list">
+<li class="toc-l2"><a href="#111-kamalākarabhatta">111. Kamalākarabhatta</a></li>
+</ul>
+</nav>
+        <main class="dh-content">
+            
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep">›</span>
+        <a href="index.html">Volume I: Part II</a>
+        <span class="sep">›</span>
+        <span class="current">111. Kamalākarabhatta</span>
+    </div>
+    
+            <h1 class="text-center" style="font-family: var(--font-roman); font-size: 2rem; color: var(--saffron); margin-bottom: 8px;">
+                111. Kamalākarabhatta
+            </h1>
+            <p class="text-center" style="font-family: 'Open Sans', sans-serif; color: var(--ink-secondary); font-size: 0.9rem; margin-bottom: 36px;">
+                Volume I: Part II <span class="page-range">pp. 925–936</span>
+            </p>
+
+            
+    <div class="synopsis-box" id="synopsis">
+        <button class="synopsis-toggle" onclick="this.parentElement.classList.toggle('open')"
+                aria-expanded="false" aria-controls="synopsis-body">
+            <i class="fa-solid fa-chevron-right"></i>
+            Kane's Synopsis
+        </button>
+        <div class="synopsis-audio">
+            <span class="synopsis-play-btn" role="button" tabindex="0"
+                    onclick="toggleSynopsisAudio(this)"
+                    data-src="../audio/synopsis/vol-1-part-2/vol-1-part-2_sec111.mp3" title="Listen to synopsis">
+                <i class="fa-solid fa-play"></i>
+            </span>
+            <audio preload="none"></audio>
+        </div>
+        <div class="synopsis-body" id="synopsis-body">
+            <p>Kamalākarabhaṭṭa, the distinguished grandson of Nārāyaṇabhaṭṭa, was a prolific scholar who authored more than twenty-two works spanning several śāstras. Among these, a significant portion—about a dozen—are dedicated to dharmaśāstra, with the Nirṇayasindhu, Śūdrakamalākara, and Vivādātaṇḍava standing out as his most renowned contributions. Notably, he conceived of all his dharmaśāstra works as integral parts of a larger digest, which he intended to title Dharmatattva.
+
+The scope of his writings is evident in the contents of works such as the Pūrtakamalākara, Śāntiratna, Vivādatāṇḍava, Śūdrakamalākara, and especially the Nirṇayasindhu. The Nirṇayasindhu itself is notable as one of his earliest compositions, completed in 1612 A.D., placing his primary literary activity between approximately 1610 and 1640 A.D.
+
+Interestingly, Kamalākarabhaṭṭa occasionally presented viewpoints that diverged from those of his grandfather, Nārāyaṇabhaṭṭa, showcasing his independent scholarship. His works are characterized by many interesting observations, particularly evident in the detailed contents of the Nirṇayasindhu, which solidified his position as a preeminent authority in the field of dharmaśāstra.</p>
+            <p class="synopsis-attribution">— Synopsis by P.V. Kane, from History of Dharmaśāstra</p>
+        </div>
+    </div>
+
+
+            
+
+            <h2 id="111-kamalākarabhatta" class="section-heading">111. Kamalākarabhatta</h2>
+<p class="prose" id="p-111-kamalākarabhatta-1">111. Kamalākarabhatta</p>
+<p class="prose" id="p-111-kamalākarabhatta-2">Kamalākarabhatta was one of the foremost scions of the Bhaṭṭa family. He was a grandson of the famous Nārāyaṇa-bhaṭṭa and a son of Rāmākṛṣṇabhaṭṭa. He was one of three brothers, the eldest being Dinākara alias Divākara<sup class="fn-ref"><a href="#fn-111-kamalākarabhatta-1" id="fnref-111-kamalākarabhatta-1">1</a></sup> and the youngest was Lakṣmaṇabhaṭṭa,<sup class="fn-ref"><a href="#fn-111-kamalākarabhatta-2" id="fnref-111-kamalākarabhatta-2">2</a></sup> who studied under Kamalā-karabhaṭṭa. Kamalākarabhatta's father Rāmākṛṣṇa also was a very<sup class="fn-ref"><a href="#fn-111-kamalākarabhatta-3" id="fnref-111-kamalākarabhatta-3">3</a></sup> learned man and a profound <em>mimāṁsaka</em> and his mother Umā immolated herself as a <em>satī</em>. Kamalākara was a man of profound erudition and composed works on almost every <em>śāstra</em>. In some of his own works there are high eulogies of his learn-ing and proficiency in Tarka, Nyāya, grammar, <em>mimāṁsā</em> (in both the schools of Kumārila and Prabhākara), Vedānta, Poetics, dharmaśāstra and Vedic sacrificeṣ<sup class="fn-ref"><a href="#fn-111-kamalākarabhatta-4" id="fnref-111-kamalākarabhatta-4">4</a></sup> He composed more than twenty-two workṣ At the end of his Vivādatāṇḍava it is said that he composed the Nirnayasindhu, a commentary on the Vartika ( of Kumarila ), a work on the mimamsa ( sastratattva ) and a series of 20 other workṣ<sup class="fn-ref"><a href="#fn-111-kamalākarabhatta-5" id="fnref-111-kamalākarabhatta-5">5</a></sup> At the end of a mṣ of the Santiratna in the Bhau Daji collection there is a list of 22 works of his out of which the Nirnayasindhu is said to have been the first.<sup class="fn-ref"><a href="#fn-111-kamalākarabhatta-6" id="fnref-111-kamalākarabhatta-6">6</a></sup> More than half of these works are concerned with topics Kamalākarabhatta of Dharmaśāstra, viz. the Nirṇayasindhu, the Dānakamalākara, Śāntiratna, Pūrtakamalākara, Vratakamalākara, Prāyaścittaratna, Vivādāṇḍava, Bahvṛcāhnika, Gotrapradarpaṇa, Karmavipakāratna, Śūdrakamalākara, Sarvatīrthavidhi. The Śūdrakamalākara, the Vivādāṇḍava and the Nirṇayasindhu are the most famous of his works on dharmaśāstra. Brief references may be made here to some of the works of Kamalākarabhatta other than the three mentioned above. It appears from the introductory verses of the Vratakamalākara that Kamalākara intended to compose a digest on dharma called Dharmatattva in ten paricchedas<sup>1425</sup> and not only carried it out but added some more works on dharma. It will be noticed that nine out of these 10 sections are enumerated under the same names at the end of the Śāntiratna quoted above, the one not named being the section on ācāra. Burnell mentions a work called Ācāradīpa by Kamalākara on daily duties and on the same page notices another work on āhnika by Kamalākara.<sup>1426</sup> It is difficult to say whether both are names of the same work. It is not unlikely that the ācāra section of the digest Dharmatattva is the same as the Bahvṛcāhnika enumerated at the end of the Śāntiratna. There is a mṣ of the Bahvṛcāhnika at Bikaner.<sup>1427</sup> It deals with daily duties commencing with rising from one’s bed at the brāhma muhūrta. In this work Kamalākarabhatta refers to his own Prāyaścittaratna, and to the Madanapārijāta, Madanaratna, Mādhava and Śūlapāṇi. The Pūrtakamalākāra<sup class="fn-ref"><a href="#fn-111-kamalākarabhatta-7" id="fnref-111-kamalākarabhatta-7">7</a></sup> was an extensive work and dealt with the dedication of tanks, wells, trees and gardens to the public, the dedication of Aśvattha tree and five sacred trees, dedication and laying the foundation of public buildings, consecration of sacred images, of Śālagrāma, of temples and flags, repairing of images, accidental breaking of temples, consecration of Vināyaka, pacification of planets, coronation of kings and emperorṣ In this work he mentions his own Dānakamalākara.</p>
+<p class="prose" id="p-111-kamalākarabhatta-3">The Śāntiratna or Śāntikamalākāra is a huge work.<sup class="fn-ref"><a href="#fn-111-kamalākarabhatta-8" id="fnref-111-kamalākarabhatta-8">8</a></sup></p>
+<p class="prose" id="p-111-kamalākarabhatta-4">It deals with various rites for propitiating Vināyaka, the nine planets, and for averting the consequences of portentous occur- rences and evil omens, birth on such constellations as mūla, the observances known as Ekādaśīnī, Laghurudra, Mahārudra, Śata- caṇḍī &c. He refers to his own Nirṇayasindhu in this work.</p>
+<p class="prose" id="p-111-kamalākarabhatta-5">The Nirṇayasindhu ( on pp. 293, 300-301 ) mentions Pravara- darpaṇa as his work on Gotras and Pravaraṣ</p>
+<p class="prose" id="p-111-kamalākarabhatta-6">In the Bombay Asiatic Society’s Library there is a mṣ of his Saṁskāra-prayogakamalākāra which appears to be over and above the 22 works enumerated above.<sup class="fn-ref"><a href="#fn-111-kamalākarabhatta-9" id="fnref-111-kamalākarabhatta-9">9</a></sup> He starts with an enumera- tion of the 48 saṁskāras mentioned by Gautama, deals with the several saṁskāras of puṁsavana, jātakarama, marriage &c., and with utsarjana and upākarma, propitiatory rites on the first appearance of menses, the Aṣṭakā śrāddha &c.</p>
+<p class="prose" id="p-111-kamalākarabhatta-7">His Tattva-kamalākāra appears to have been a work of consi- derable interest dealing with the bearing of the doctrines and maxims of the Mīmāṁsā system on ritual and dharmaśāstra.<sup class="fn-ref"><a href="#fn-111-kamalākarabhatta-10" id="fnref-111-kamalākarabhatta-10">10</a></sup> A mṣ of it is dated saṁvat 1695 Caitra śukla 4 Friday ( i. e. 9th March 1638 A. D.). Tattvakamlākāra and Mīmāṁsā-kautūhala are two separate works, incomplete msṣ of which are in possession of the Asiatic Society of Bengal. Vide ‘ Indian Culture ’ Vol. V. 111. Kamalākarabhatta</p>
+<p class="prose" id="p-111-kamalākarabhatta-8">pp. 211–214 (paper by Prof. Chintaharan Chakravarti). The first is briefly mentioned in Mitra’s Notices, vol. III. p. 335 and it is stated in ‘Indian Culture’ Vol. V. that it comments on some selected sūtras of the Pūrvamīmāṁsā systeṃ The Mimāṁsā-kau-tūhala gives a brief outline of the principal doctrines of the Pūrvamīmāṁsā systeṃ Of the Mantrakamalākara a mṣ (complete in 126 leaves) is in the possession of the A. S. of Bengal. The work was composed for the benefit of Ananta, son of Kamalākarabhatta.</p>
+<p class="prose" id="p-111-kamalākarabhatta-9">For the Prāyaścittaratna, vide Bühler’s report, 3, p. 108.</p>
+<p class="prose" id="p-111-kamalākarabhatta-10">I was able to secure a mṣ of the Vivādātaṇḍava from the Mandlik collection in the Fergusson College at Poona. That work closely resembles in method and matter the Vyavahāra-mayūkha of Kamalākara’s cousin Nīlakaṇṭha, the section on ordeals being almost the same in both. It treats of the follow-ing subjects: the sabhā; members of the sabhā; judge, amātya; the scribe and the accountant; conflict of smṛtis; the plaint, the reply, the modes of proof, viz. documents, witnesses, possession; modes of punishment; the principal and secondary sons; the enumeration of the eighteen titles of law; partition of heritage and detailed description of the other titleṣ Like the Vyavahāra-mayūkha, the Vivādātaṇḍava quotes the Madanaratna as fre-quently as ( or perhaps more frequently than) the mitākṣarā. The other writers and works quoted are noted below.<sup class="fn-ref"><a href="#fn-111-kamalākarabhatta-11" id="fnref-111-kamalākarabhatta-11">11</a></sup> As it mentions several works of his own, viz. Nirnayasindhu, the Dānakamalā-kara, the Prāyaścittaratna and the Śūdradharma (i. e. Śūdra-kamalākara ), the Vivādātaṇḍava was one of his latest workṣ On several points he differs from his own cousin Nīlakaṇṭha. For example, he prefers the mother to the father as an heir and does not give the sister a high place among the gotraja heirs as Nīlakaṇṭha doeṣ The Vivādātaṇḍava has been frequently noticed in judicial decisionṣ<sup class="fn-ref"><a href="#fn-111-kamalākarabhatta-12" id="fnref-111-kamalākarabhatta-12">12</a></sup></p>
+<p class="prose" id="p-111-kamalākarabhatta-11">The Vivādātaṇḍava was published in “Our Heritage” Vol. VII part 2 pp. 1–23 edited by Dr. Herambanath Chaṭṭopādhyaya. The work is a small one. About half of its 23 pages contain foot- notes covering half or more of each page. Pages 2-5 have only 1/3 page for the text. Its first verse is quoted below<sup class="fn-ref"><a href="#fn-111-kamalākarabhatta-13" id="fnref-111-kamalākarabhatta-13">13</a></sup> The Śūdrakamalākara (also called Śūdra-dharmatattva or Śūdradharmatattvaprakāśa) has been printed in Bombay several times (with Marathi translation). I used the Nīrnayasāgara edi- tion of 1895. In this work he refers to his own Dānakamalākara, Pūrtakamalākara, Prāyaścittaratna and Nīrnayasindhu. Out of about two hundred authors and works quoted therein, prominent ones are noted below.<sup class="fn-ref"><a href="#fn-111-kamalākarabhatta-14" id="fnref-111-kamalākarabhatta-14">14</a></sup> This work is a standard treatise on the duties and religious observances of Śūdraṣ</p>
+<p class="prose" id="p-111-kamalākarabhatta-12">Kamalākarabhatta was at least prepared to say, following his father Rāmākṛṣṇabhaṭṭa, that in spite of the statement in some Purāṇas that in the Kaliyuga only two varṇas viz. the first (Brāhmaṇas) and the last (viz. Śūdras) exist, Kṣatriyas and Vaiśyas that have given up their proper religious and other activities do exist here and there.<sup class="fn-ref"><a href="#fn-111-kamalākarabhatta-15" id="fnref-111-kamalākarabhatta-15">15</a></sup></p>
+<p class="prose" id="p-111-kamalākarabhatta-13">He first starts with the discussion that the Śūdra is not authorised to study the Vedas, but that he can listen to the recita- tion by Brāhmaṇas of smṛtis and purāṇas and religious rites are to be performed for Śūdras with Purāṇic mantraṣ Then the follo- wing subjects are dealt with :- worship of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> and other deities by Śūdras and the observances of vratas and fasts by them; Śūdra can make gifts of works of public utility (pūrta); Śūdra can adopt a son; the conflicting views as to the number of saṁskāras for a Śūdra, most authors holding that he is entitled to ten saṁskāras (without Vedic mantras), viz. garbhādhāna, puṁsavana, sīmanta, jātakarama, nāmakaraṇa, śiśuniṣkramaṇa, annaprāśana, cūḍākarma, karṇavedha, and vivāha; the five great 111. Kamalākarabhatta daily yajñas were to be performed for the śūdra according to the Vājasaneyasākhā;<sup class="fn-ref"><a href="#fn-111-kamalākarabhatta-16" id="fnref-111-kamalākarabhatta-16">16</a></sup> śrāddhas for Śūdra (to be performed with uncooked food); actions prescribed and forbidden in the case of Śūdras; the details of various rites and saṃskāras of Śūdras; the daily duties of Śūdras; impurity on birth and death; rites of wives and widows; persons of mixed castes who have to follow the rules laid down for Śūdras; rules for those who are born of pratiloma connections; about Kāyasthaṣ</p>
+<p class="prose" id="p-111-kamalākarabhatta-14">The Nirṇayasindhu or Nirṇayakamalākara is the most famous of Kamalākara's workṣ It is a monument of erudition, industry and lucidity. It has been judicially referred to as a work of authority.<sup class="fn-ref"><a href="#fn-111-kamalākarabhatta-17" id="fnref-111-kamalākarabhatta-17">17</a></sup> I have used the Nirṇayasāgara edition of 1905 (with Marathi translation). In the whole range of nibandhakāras there is hardly any other writer, except perhaps Nīlakaṇṭha and Mitramiśra, who lays under contribution as many works as Kamalākara doeṣ In the Nirṇayasindhu about one hundred smṛtis and over three hundred nibandhakāras are mentioned by name. In the introductory verses he expressly says that he pondered over the views of Hemādri, Mādhava and other learned writerṣ The work is divided into three paricchedaṣ The following is a very concise statement of the contents of this voluminous work. The principal subject is to give decisive opinions as to the proper times for various religious acts; the various views about the year being solar, lunar, sidereal etc., months of four kinds, lunar, solar etc., saṃkrānti rites and gifts; intercalary month; kṣayamāsa; about tithis, śuddha and viddhā (combined with another tithi on same day); vratas; the various vratas and festivals during the twelve months of the year; the saṃskāras from garbhādhāna onwards; sapiṇḍa relationship; consecration of images; auspicious times (muhūrtas) for various actions such as sowing operations, buying horses and cattle &c.; śrāddha; ...impurities on birth and death; rites after death, rites for satī; samnyāsa.</p>
+<p class="prose" id="p-111-kamalākarabhatta-15">The time when Kamalākara flourished can be determined with great accuracy. We saw above that the Nirṇayasindhu was one of his earliest works and that it is referred to in several works of hiṣ According to a verse at the end of the Nirṇayasindhu the work was composed in 1668 of the Vikrama era on the 14th day of the dark half of the month of Māgha when cyclic year was Raudra (i. e. on the 20th February 1612 A. D.). In a mṣ noticed by M. M. Haraprasāda Śāstri the same verse is read differently, so as to refer the composition to Vikrama saṁvat 1678; but it is clearly a copyist's error or misreading, since the cyclic year Raudra cannot tally with Vikrama 1678<sup class="fn-ref"><a href="#fn-111-kamalākarabhatta-18" id="fnref-111-kamalākarabhatta-18">18</a></sup>. We saw above that a mṣ of the Tattvakamalākara is dated 1638 A. D. Kamalākara was a voluminous writer and therefore we shall be not far wrong if his literary activity be assigned to the period between 1610 A. D and 1640 A. D. This date is corroborated in several wayṣ His grandfather Nārāyaṇabhaṭṭa was born in 1513 A. D. and he quotes in his Nirṇayasindhu the Toḍārānanda compiled in the last quarter of the 16th century.</p>
+<p class="prose" id="p-111-kamalākarabhatta-16">The Toḍārānanda is quoted by the Nirṇayasindhu on p. 26, on p. 96 (on Nṛsiṁhajayanti) and on p. 104 (the Tithisaukhya of Toḍārānanda is quoted in Cāturmāsyānirṇaya).</p>
+<p class="prose" id="p-111-kamalākarabhatta-17">Though he expressly states in the Introductory verse 7 of the Nirṇayasindhu that he bestowed proper thought on the views of Hemādri and Mādhava and quotes both of them hundreds of times, he differs, in some places, from both of them or one of the two. On the pāraṇā (breaking the fast) on Śivarātri there are contradictory texts and both Hemādri and Mādhava evolve the same order out of contradictions, but Kamalākara does not accept that vyavasthā (vide pp. 224-25 of the Nirṇaya-sindhu).</p>
+<p class="prose" id="p-111-kamalākarabhatta-18">Another interesting remark of Kamalākara shows that he probably introduced changes long after the Nirṇayasindhu was composed in 1612 A. D. In the Nirṇayasindhu (3rd pari. pūr- vārdha p. 250 on the subject of adoption ) he holds that there is ownership in the father as regards his son and pompously declares that there is no ownership in one's son, is a fool.<sup class="fn-ref"><a href="#fn-111-kamalākarabhatta-19" id="fnref-111-kamalākarabhatta-19">19</a></sup> The Nirṇayasindhu was Kamalākara's first work. The latter was the 2nd son of Rāmakṛṣṇa, who was the eldest son of Nārāyaṇabhaṭṭa, while Nīlakaṇṭha was the youngest of four brothers, who were the sons of Śaṅkarabhaṭṭa, the 2nd son of Nārāyaṇabhaṭṭa. So though both were first cousins, it is very likely that Nīlakaṇṭha, author of the twelve Mayūkhās, was junior to Kamalākara by some years at least and could not have been the author of a work before 1612 A. D., the date of the Nirṇayasindhu, the first work of Kamalākara.</p>
+<p class="prose" id="p-111-kamalākarabhatta-19">He desired his work to be encyclopaedic and therefore, he remarks that the rites called Śatacandī, and Sahasracandī are not described in the great works ( on Dharmaśāstra ), but as those rites had become popular among people, he describes them in his section on Navarātra pp. 185–86 ).<sup class="fn-ref"><a href="#fn-111-kamalākarabhatta-20" id="fnref-111-kamalākarabhatta-20">20</a></sup> He quotes the Tristhālisetu of Nārāyaṇabhaṭṭa dozens of times (e. g. pp. 16, 89, 99. 151, 208 209, 214, 274 &c.) and also the Prayo- garatna of the same, though not so frequently ( as on pp. 53, 259, 266, 267). He quotes Raghunandana's work frequently e. g. Tithitattva ( vol. I. pp. 135–36 ) quotes four verses from Liṅga- purāṇa ( Aśvine paurṇamāsyām tu &c.) which are quoted in the Nirṇayasindhu (p. 191, 2nd pariccheda ). Similarly, about the amāvāsyā of Aśvina the Nirṇayasindhu (p. 200) mentions a passage quoted in Tithitattva<sup class="fn-ref"><a href="#fn-111-kamalākarabhatta-21" id="fnref-111-kamalākarabhatta-21">21</a></sup> ( Jīvananda, vol. I p. 185 ). On p. 82 he refers to the Koṅkaṇas<sup class="fn-ref"><a href="#fn-111-kamalākarabhatta-22" id="fnref-111-kamalākarabhatta-22">22</a></sup> that rely on certain passages (about 7 verses) as contained in the Varāhapurāṇa about the Jayantīs (tithis) of the ten avatāras of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> (viz. from Matsya to Kalkin) and remarks that they are obligatory on the devotees of the respective ten avatāras and optional for otherṣ Here the word Kauṇkaṇas refers probably to learned men from Koṅkaṇa residing in Benares in Kamalākara's times or to authors from Koṅkaṇa (probably the latter).</p>
+<p class="prose" id="p-111-kamalākarabhatta-20">The Nirṇayasindhu frequently mentions an author called Nārāyaṇa-vṛtti-kṛt. (e. g. pp. 37, 55, 58, 116, 153, 191, 291 &c.) on the Āśvalāyana Śrauta and Gṛhya sūtraṣ He is to be distinguished from Nārāyaṇabhaṭṭa (the grandfather of Kamalākara).</p>
+<p class="prose" id="p-111-kamalākarabhatta-21">He notes that the works of Gauda authors,<sup class="fn-ref"><a href="#fn-111-kamalākarabhatta-23" id="fnref-111-kamalākarabhatta-23">23</a></sup> such as the Tithitattva, hold that, after an invitation to officiate at a śrāddha is given and accepted, if there is death of a relative of the person inviting a brāhmaṇa or a relative of the invitee dies, both are not affected by āśauca, since the <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a>smṛti provides that there is no āśauca for the performer (of śrāddha) nor for the officiating priest after the invitation to officiate is given and accepteḍ The Nirṇayasindhu remarks that the text applies to marriage and not to śrāddhas, since the word 'śrāddha' does not occur thereiṇ 111. Kamalākarabhatta Kamalākara sometimes differs from his great ancestor Nārāyaṇabhaṭṭa. For example, on p. 325 he quotes from the Prayogaratna a verse ‘ If the newly married bride makes her first entrance into her husband’s house on the first, third or fifth day or the 2nd or 4th day from the day of her marriage, it is auspicious, but if she enters on the 6th day after her marriage she would incur sorrow in the form of separation or disease’. The Nirṇaya- sindhu avers that a passage in support of this has to be found ( i. e. the assertoin made is baseless ).<sup class="fn-ref"><a href="#fn-111-kamalākarabhatta-24" id="fnref-111-kamalākarabhatta-24">24</a></sup> On p. 337 ( of N. S. ) he further points out that in the Tristhalisetu his venerable grandfather stated that śūdras have no right to instal images of deities like <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> or Śaṅkara and relied on a passage of the <a class="ref" href="../refs/skanda_purana.html" data-source="skanda_purana" data-ref="" title="Skandapurāṇa">Skandapurāṇa</a> quoted in the Brahman-Nāradīya but he ( Kamalā- kara ) says ‘ we hold that, on account of other passages from the Devīpurāṇa quoted in the Kṛtyakalpataru, in the case of śūdras there is an option as to establishing images of <a class="ref" href="../refs/vishnu_smriti.html" data-source="vishnu_smriti" data-ref="" title="Viṣṇu Smṛti">Viṣṇu</a> or Śaṅkara.<sup class="fn-ref"><a href="#fn-111-kamalākarabhatta-25" id="fnref-111-kamalākarabhatta-25">25</a></sup> Vide p. 553, where he differs from Nārāyaṇabhaṭṭa about suicide by a brāhmaṇa in certain circumstances and p. 554 where Mādhava, <a class="ref" href="../refs/apararka.html" data-source="apararka" data-ref="" title="Aparārka">Aparārka</a> and Hemādri approve of it for certain persons suffering from incurable diseaseṣ</p>
+<p class="prose" id="p-111-kamalākarabhatta-22">In some matters the N. S. takes a position far in advance of what some orthodox brāhmaṇas in modern times would like to recommend or follow; e. g. on p. 304 he provides that when a girl reaches the age of puberty, one should not wait to consider whether Jupiter’s position is favourable but she should be got married even when Jupiter is in the 8th place from the rāśi at her birth ( after performing <a class="ref" href="../refs/brihaspati.html" data-source="brihaspati" data-ref="" title="Bṛhaspati">Bṛhaspati</a>-śānti thrice ).</p>
+<p class="prose" id="p-111-kamalākarabhatta-23">There are some interesting observations he makeṣ For example, if a man does not know his gotra and pravara he quotes Satyāṣāḍha to the effect that he should take the gotra and pravara of his purohita or ācārya; if he does not know them he should adopt the gotra and pravara of some one else or he should adopt Jamadagni as his gotra.<sup class="fn-ref"><a href="#fn-111-kamalākarabhatta-26" id="fnref-111-kamalākarabhatta-26">26</a></sup></p>
+<p class="prose" id="p-111-kamalākarabhatta-24">People in the medieval times seem to have been frightened by the very names of some of the nakṣatras on which children were borṇ It is stated in the Brahmayāmala quoted in the Nirṇayasindhu that the effects of the birth of a child on one of the ten parts of the Jyeṣṭhā-nakṣatra are respectively as follows:— (1) death of the child's mother's mother, (2) death of the child's mother's father, (3) death of the mother's brother, (4) death of the child's mother, (5) death of the child itself, (6) destruction of the gotra (of the child), (7) destruction of the families of the child's mother and father, (8) death of the elder brother (of the child), (9) death of the father-in-law of the child, (10) death of relationṣ Similarly, very dire results of the birth of a child on Mūla nakṣatra are stated; viz. a child born in the first two ghaṭikās of Mūla should be abandoned or the father of the child should not see its face for eight years; birth of a child born on the four quarters of the Mūla nakṣatra portends respectively death of the father, death of the mother, loss of father's wealth and the 4th quarter is auspiciouṣ</p>
+<p class="prose" id="p-111-kamalākarabhatta-25">The Nirṇayasindhu is a very large work and is divided into three Paricchedas (sections). The first section (pp. 1-77) deals with Kāla divisions viz. Abda (year), ayana (half year), ṛtu (seasons), māsa (months), divasa (days); the year is of five sorts acc. to Mādhava viz. Sāvana, Saura, Cāndra, Nakṣatra and Bārhaspatya; the year for Dharmaśāstra purposes, acc. to Hemādri, is only of three kinds (the last two not being required in Dharmaśāstra); months are twelve; the cāndra years have respectively sixty names Prabhava, Vibhava &c.; Malamāsa, Kṣayamāsa; tithis are either śuddhā (that is not mixed with or joined to another tithi on the same day) or viddhā (joined to another tithi on the same day); vratas; installations of images;</p>
+<aside class="footnotes-section" aria-label="Footnotes">
+<hr>
+<ol class="footnotes-list">
+<li id="fn-111-kamalākarabhatta-1" class="footnote-item"><span class="devanagari">बिन्दुमाधवपादाब्जोरोलम्बीकृतविग्रहम् । ज्यायां सं भट्ठदिवाकरमुपासहे ॥</span>     6th Intro. verse of <span class="devanagari">निर्णयसिन्धु</span>. <span class="devanagari">रोलम्ब</span> is a deśya word meaning     to <span class="devanagari">क्षीरस्वामी</span> on <span class="devanagari">अमर</span>. <span class="devanagari">बिन्दुमाधव</span> is a form of Viṣṇu,     worshipded at Benareṣ <a href="#fnref-111-kamalākarabhatta-1" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-111-kamalākarabhatta-2" class="footnote-item"><span class="devanagari">अधीत्य लक्ष्मणोदध्येन कमलाकरोदरात् । आचाररत्नं सुधिया यथामति वितन्यते ॥</span>     7th Intro. verse of <span class="devanagari">आचाररत्न</span>. <a href="#fnref-111-kamalākarabhatta-2" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-111-kamalākarabhatta-3" class="footnote-item"><span class="devanagari">यो भट्ठत्न्त्रगहनार्णवकर्णधारः शास्त्रान्तरेषु निखिलेष्वपि मर्मभेत्ता । योत्र भ्रमः किल     कृतः कमलाकरेण प्रौढोऽमुनासु सुकृती बुधरामकृष्णः ॥</span> ‘<span class="devanagari">निर्णयसिन्धु</span>’ at the     end of 2nd <span class="devanagari">परिच्छेद</span>. <a href="#fnref-111-kamalākarabhatta-3" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-111-kamalākarabhatta-4" class="footnote-item"><span class="devanagari">तर्कै दुस्तर्कमेघः फणिपतिफणिभिः पाणिनिये प्रपञ्चे । न्याये प्रायः प्रगल्भः प्रकटित</span>-     <span class="devanagari">पटिमा भट्ठशास्त्रप्रबध्वे । प्रामः प्राभाकरीये पथि प्रथितदुरूहवेदान्तसिन्धुः ।     श्रोते साहित्यकाव्ये प्रचुररत्नगतिर्मर्मशाखेषु यश्च ॥</span> from <span class="devanagari">काव्यप्रकाशव्याख्या</span>     D. C. mṣ No. 433 of 1895-1902. <a href="#fnref-111-kamalākarabhatta-4" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-111-kamalākarabhatta-5" class="footnote-item"><span class="devanagari">येनाकारि प्रोद्भूटा वार्तिकस्य टीका चान्या विंशतिग्रन्थमाला । श्रीरामभट्ट्योर्पाता निर्णयसिन्धुः शास्त्रे तत्त्वकौतूहल चे ॥</span> Vide I. O. cat. p. 455 No. 1502; also vide D. C. mṣ No. 122 of 1883–84 for a mṣ of <span class="devanagari">कमलाकर</span>’s commentary on the first pūrvā of the 2nd chap. called <span class="devanagari">भावार्थ</span> of the <span class="devanagari">तन्त्रवार्तिक</span>. <a href="#fnref-111-kamalākarabhatta-5" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-111-kamalākarabhatta-6" class="footnote-item"><span class="devanagari">आदौ निर्णयसिन्धुस्तु वार्तिके टिप्पणी पुन</span>: <span class="devanagari">। काव्यप्रकाशगणा व्याख्या दाने च कमलाकरः ॥ शान्तिरत्नं ततः पूर्वव्रतयोः कमलाकरः । ग्रन्थो वेदान्तरत्नं च समा</span>- <span class="devanagari">चक्रुर्कुहलम् ॥ मन्यते रान्नमेके व्यवहारे तथापरम् । बहुवाहकन्यस्य गोत्र</span>- <span class="devanagari">प्रवरदर्पणः ॥ रत्नं कर्मविपाककाव्यं कार्तवीर्यस्य पद्धतिः । सोमप्रयोगः शूद्राणां धर्मों दशांशास्त्रस्य कमलाकरः ॥ संततिविधिषेधं मन्दिरे तत्मोत्तमम् । रामकृष्ठनुत्ते</span>- <span class="devanagari">नेत्यं कमलाकरशर्मणा । ग्रन्थिका विशतीनां च ग्रन्थानां रत्नमालिका । सेषां कर्तुमुशकेन ज्ञापिते रामपादपोः ॥</span> concluding verses of <span class="devanagari">शान्तिरत्न</span>. The verses enumerating the 22 works are found not in all msṣ of the Sāntiratna, but occur in the mṣ described in Prof. Velankar’s Cat. of Sanskrit and Prakrit Msṣ in the Library of the B. B. R. A. S. ( p. 234 ) published in 1925. Though in the Sāntiratna it is stated that the Nirnayasindhu was Kamalākara’s first work, yet it appears probable that Kamalākara made additions to that work from time to time e. g. on p. 248 of the Nirnayasindhu he says ‘ <span class="devanagari">अन्येषु मूलादीकेषु शास्त्र्यादि प्रयोगपारिजाते मस्कृते शान्तिरत्ने च ज्ञेयम्</span> ’; the word <span class="devanagari">ज्ञेय</span> is rather of doubtful import. It is possible that he had then only planned to write that work. On p. 257 of the same work on ‘abdapūrti’ he refers to his work Śūdrakamalākara “<span class="devanagari">विशेषो मस्कृते शुद्धधर्मे ज्ञेयः</span>.” On p. 293 ( of Nirnaya. ) he mentions his Pravaradarpaņa. The Sāntiratna is a large work dealing with rites for averting the evil consequences of portentous phenomena or for birth on certain tithis, nakṣatras ( like Mūla, Jyeṣṭhā, Āśleṣā ) or evil influences of planetṣ The Sāntiratna is also called Śāntiratnākara, as in the Mṣ in the Bhau Daji Collection of Msṣ of the Bombay Asiatic Society ( No. 305 of that collection, the extent being 357 folios ); vide Prof. Velankar’s Cat. of the Msṣ with the B. B. R. A. S. and No. 732, p. 235 and I. O. Cat. vol. III. ( by Eggeling ) ( Continued on the next page ) <a href="#fnref-111-kamalākarabhatta-6" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-111-kamalākarabhatta-7" class="footnote-item">Vide Mitra's Notices vol. V. p 138 No. 1481 for <span class="devanagari">पूर्त्तकमलकर</span>; in the Bombay Asiatic Society's collection of thiṣ <a href="#fnref-111-kamalākarabhatta-7" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-111-kamalākarabhatta-8" class="footnote-item">Vide I. O. cat. p. 568 No. 1758 and BBRAS cat. p. 234 No. 729 for <span class="devanagari">शान्तिग्नत्त</span>. <a href="#fnref-111-kamalākarabhatta-8" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-111-kamalākarabhatta-9" class="footnote-item">Vide I. O. cat. p. 514 No. 1630 for <span class="devanagari">संस्कारकमलकर</span>. <a href="#fnref-111-kamalākarabhatta-9" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-111-kamalākarabhatta-10" class="footnote-item">Vide Mitra's Notices, vol. III. p. 335 No. 1331 for <span class="devanagari">तत्वकमलकर</span>. <a href="#fnref-111-kamalākarabhatta-10" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-111-kamalākarabhatta-11" class="footnote-item"><span class="devanagari">अपराकं</span>, <span class="devanagari">कल्पतरु</span>, <span class="devanagari">गोविन्दराज</span>, <span class="devanagari">जीमूतवाहन</span>, <span class="devanagari">दिव्यतत्त्व</span> (of <span class="devanagari">गौड</span> i. e. <span class="devanagari">रघुन्दन</span>), <span class="devanagari">भोज</span>, <span class="devanagari">मनुटीका</span>, <span class="devanagari">माधवीय</span>, <span class="devanagari">रत्नाकर</span>, <span class="devanagari">विश्वरूप</span>, <span class="devanagari">शिरोमणि</span>, <span class="devanagari">शिरोमणिभट्टाचार्य</span>. <a href="#fnref-111-kamalākarabhatta-11" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-111-kamalākarabhatta-12" class="footnote-item">Vide I. L. R. 33 Boṃ 452 at p. 459, I. L. R. 9 Cal. 315 at p. 324, I. L. R. 39 Cal. 319 at p. 331 for references to <span class="devanagari">विवादताण्डव</span>.     H. D. 117 <a href="#fnref-111-kamalākarabhatta-12" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-111-kamalākarabhatta-13" class="footnote-item"><span class="devanagari">विवादो यत्र विद्वर्णा प्रमोद महतामपि । कमलाकरसंज्ञेन दायभागः स उच्यते ।</span> first verse of <span class="devanagari">विवादाताण्डव</span>. <a href="#fnref-111-kamalākarabhatta-13" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-111-kamalākarabhatta-14" class="footnote-item"><span class="devanagari">आचार्यचूडामणि</span>, <span class="devanagari">तिथितत्व</span>, <span class="devanagari">मदनरत्न</span>, <span class="devanagari">माधवीय</span>, <span class="devanagari">रूपनारायणीय</span>, <span class="devanagari">शुधिविवेक</span> ( of <span class="devanagari">रुद्रधर</span> ), <span class="devanagari">शूलपाणि</span>, <span class="devanagari">श्रीदत्त</span>, <span class="devanagari">स्मृतिकौमुदी</span>, <span class="devanagari">हरिहरभाष्य</span>. <a href="#fnref-111-kamalākarabhatta-14" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-111-kamalākarabhatta-15" class="footnote-item"><span class="devanagari">पुराणान्तररेपि</span>- <span class="devanagari">ब्राह्मणाः क्षत्रिया वैश्याः शूद्रा वर्णास्त्रयो द्विजाः । युगे युगे स्थिताः सर्वे कलावावचन्त्योः स्थितिः । अतः कथं द्विजसृङ्गरुजा उक्ताः । मेवम् ।</span> ...<span class="devanagari">प्रच्छन्न</span>- <span class="devanagari">रूपाः स्वकर्मभ्रष्टाः क्षत्रिया वैश्याश्च सन्तयेव क्वचित्सल्तिपूतरचरणाः ॥ शूद्र</span>- <span class="devanagari">कमलाकर</span> at enḍ <a href="#fnref-111-kamalākarabhatta-15" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-111-kamalākarabhatta-16" class="footnote-item">This is interesting ‘<span class="devanagari">तथा शूद्राणां पञ्चमहायज्ञा भवन्ति ।</span> ... <span class="devanagari">ते च वाज</span>- <span class="devanagari">सनेयिशाखा कार्याः । शूद्रा बाससेनेयिन इति गौडनिबन्धे दक्षेणोक्तेः । हरिहरभाष्ये विवाहप्रकरणेयमुक्तम्</span>’ <span class="devanagari">शूद्रकमलाकर</span> p. 51; vide <span class="devanagari">शूद्रकुलविचारतत्त्व</span> (Jivananda vol. II. p. 634 ) and <span class="devanagari">मलमासतत्त्व</span> (vol. I, p. 792 ) for an explanation of thiṣ <a href="#fnref-111-kamalākarabhatta-16" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-111-kamalākarabhatta-17" class="footnote-item">I. L. R. 3 Boṃ at p. 197; Khushalchand v. Bai Mani I. L. R. 11 Boṃ 247 at p. 254; I. L. R. 46 Boṃ at p. 556; I. L. R. 49 Boṃ 739 at p. 757; I. L. R. 9 Cal 315 at p. 324. <a href="#fnref-111-kamalākarabhatta-17" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-111-kamalākarabhatta-18" class="footnote-item"><span class="devanagari">वसुकृतुक्तभूर्मिते गतेऽब्दे नरपतिनृपगोथ यांति रौद्रे। तपस शिवयिर्था समा</span>-     <span class="devanagari">पितोयं रघुपितृपादसरोज्हैषितस्य ।।</span> 6th verse at end; vide Notices of     msṣ by Haraprasāda Śāstri vol. X, p. 324, No 1233 where the     reading is <span class="devanagari">वसुषाकृतुक्तभूर्मिते</span>. <a href="#fnref-111-kamalākarabhatta-18" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-111-kamalākarabhatta-19" class="footnote-item"><span class="devanagari">तमाद्यथेऽविनियोगार्हत्वं स्वत्वं भवत्येव । पुत्रे स्वत्वाभावं वदन् पुत्रक्रयविक्रय</span>-<span class="devanagari">दि</span>-     <span class="devanagari">शुनःशेषविक्रयाद्विषयादलद्वाद् दासक्रयविक्रयव्यवहारयोग्राद् मूर्ख एव ।     निर्णय०</span> p. 250; vide <span class="devanagari">व्यवहारमयूख</span> p. 92 (my edition) ‘<span class="devanagari">गवादाविव     भार्यायां स्वत्वाभावेन तत्सुखोपभोक्तरणमेवात् ।</span>' On p. 187 about     Navarātrapāraṇā he employs the words <span class="devanagari">इति मूर्खीतः परास्ता</span>. It     is difficult to say whom he here dubs as fool. On page     600 he regards a remark of Śūlapāṇi as due to foolishness,     <span class="devanagari">गौडास्तु मुनिनाऽवधिके एकदिनाधिके मासैत्सवसप्तरे गौणं पूर्णम् इति ईषदसमास</span>-     <span class="devanagari">परत्वमिति शूलपाणिः । तेन द्वितीयोयाद्विमासादावाधे मासिकदिनाम्मोस्थ्यर्ध्वम् ।</span> <a href="#fnref-111-kamalākarabhatta-19" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-111-kamalākarabhatta-20" class="footnote-item">On page 186 he states <span class="devanagari">एतद् द्वयं यद्यपि महानिवन्धेषु नास्ति तथापि     प्रचरद्रुत्वाद्रुक्कर्मिति दिक् ।</span> <a href="#fnref-111-kamalākarabhatta-20" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-111-kamalākarabhatta-21" class="footnote-item"><span class="devanagari">अत्र विशेषस्थितित्वं लेशे । आश्विने पौर्णमास्यां तु चरैजागरण निशि । कौमुदी     सा समाख्याता कार्या लोकैर्विभूयते ॥ कौमुद्यां ज्येष्ठलक्ष्मी</span>... <span class="devanagari">अक्षेः क्रीडा करोति यः ॥</span>     ( Continued on the next page ) . <a href="#fnref-111-kamalākarabhatta-21" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-111-kamalākarabhatta-22" class="footnote-item"><span class="devanagari">कोङ्कणास्तु वराहपुराणस्थेन वाक्यानि पठन्ति। आषाढे शुक्लपक्षे तु एकादश्यां महातिथौ। जयन्ती मन्यमानानां तस्यां कार्योऽनुपोषणम् ।</span>... <span class="devanagari">तदत्र समूलकनिर्णये</span>- <span class="devanagari">क्तिर्न केनचिद्भेन व्यवद्धा द्रष्टव्या। एताश्च तदुपवासकानां नित्या अन्येषां तु काम्याः। निर्णयसिन्धु</span> p. 82. <a href="#fnref-111-kamalākarabhatta-22" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-111-kamalākarabhatta-23" class="footnote-item"><span class="devanagari">तिथितत्त्वादिगौडग्रन्थेषु निमन्त्रणोत्तरे श्राद्धे प्रारम्भः स्यादिति स्मृतेरिति विष्णुक्तेः। निर्णयसिन्धु</span> p. 470; compare <span class="devanagari">शुद्धितत्त्व</span> ( vol. II p. 290 ); ‘ <span class="devanagari">आदित्यपुराणे । निवृत्ते कुण्डग्रामौ ब्राह्मणादिषु भोजने । गृहीतिनिमन्त्रणस्यापि न स्यादन्धस्य कस्यचित् । निमन्त्रणे विप्रु प्रारम्भ आद्धकर्मणि । निमन्त्रणादि विप्रस्य सोवाचादिरिष्यत न । देदे विष्णु निवृत्तं नाशाचं विद्यते कचित् ।</span>... <span class="devanagari">कम्पर्कस्तु राजसूयादिवैद्येषु । एवं प्रारम्भश्राद्धपि कश्चिद्येनैव दातृभोक्तोरा</span>- <span class="devanagari">शौचाभावः। तथा च विष्णुः। व्रतयज्ञाविवाहेषु श्राद्धे होमदर्शने जपे । प्रारब्धे सूतके न स्यादनारम्भे तु सूतकम् । इति ।</span> <a href="#fnref-111-kamalākarabhatta-23" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-111-kamalākarabhatta-24" class="footnote-item"><span class="devanagari">प्रयोगरत्ने तु वधूप्रवेशः प्रथमे तृतीये शुभप्रदः पञ्चमकेऽवधि । द्वितीये वाथ चतुर्थे वा पष्ठे वियोगामयदुःखदः स्यादित्यक्तं तत्र मूलं चिन्त्यम् । निर्णयसिन्धु</span> 325. <a href="#fnref-111-kamalākarabhatta-24" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-111-kamalākarabhatta-25" class="footnote-item"><span class="devanagari">प्रतिमायां तु शूद्रादीनां नाधिकारः । स्त्रीणामुपनीतानां शूद्राणां च जनेश्वर । स्थापने नाधिकारोस्ति विष्णोर्वा शङ्करस्य वा ।</span>. <span class="devanagari">इति ब्रह्मनारदीयास्कान्दोकेरिति त्रिस्यलीसेतो पितामहचरणाः । चतुर्वर्णेतिनि पूर्वोक्तवचनाद्विष्णुप्रतिमायां शूद्रस्य विकल्प इति युक्तं पश्यामः । नि</span>. <span class="devanagari">सि</span>. p. 337. The Devīpurāṇa verse quoted in the Kṛtyakalpataru is: <span class="devanagari">चतुर्वर्ण्यवस्थो वै विष्णुः प्रति</span>-<span class="devanagari">ष्ठाप्यः शुभाशिभिः । भैरवोपि चतुर्वर्ण्यस्यज्ञानां तथा मनः । मातः सर्वलोकैकस्तु</span>-<span class="devanagari">त्याप्याः पूज्याः सुरोत्तमाः ।</span> (p. 336 of <span class="devanagari">निर्णयसिन्धु</span>): <a href="#fnref-111-kamalākarabhatta-25" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-111-kamalākarabhatta-26" class="footnote-item"><span class="devanagari">स्वगोत्राज्ञाने तु सत्याषाढः । अथाज्ञातबन्धोः पुरोहितप्रवरणाचार्यप्रवरेण वेत्ति । आचार्यगोत्रप्रवरमिङ्गीकृत्य द्विजः स्वयं दरवमाननं तु कस्मिंश्चित्तद्रोत्रप्रवरो भवेत् ।। यद्वा स्वगोत्रप्रवरविदुरो जमदग्निजः ।</span>... <span class="devanagari">दिवोदासीयेपि स्वगोत्रप्रवरज्ञाने जमदग्नि</span>- <span class="devanagari">मुपाश्रयेत् । निर्णयसिन्धु</span> pp. 301-2. <a href="#fnref-111-kamalākarabhatta-26" class="fn-back" aria-label="Back to text">↩</a></li>
+</ol>
+</aside>
+
+            <div class="chapter-nav">
+                <a href="110-nandapandita.html" class="nav-prev"><i class="fa-solid fa-chevron-left"></i> 110. Nandapandita</a>
+                <a href="112-nīlakanthabhatta.html" class="nav-next">112. Nīlakanthabhatta <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </main>
+    </div>
+
+    <button class="toc-mobile-toggle" onclick="toggleMobileToc()" aria-label="Table of contents">
+        <i class="fa-solid fa-list"></i>
+    </button>
+
+    
+    <footer class="container-fluid pt-4" style="background-color:#2e4144">
+        <div class="row border-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img src="https://sanatana.in/mbta/public/images/Homepage_html/images/layer_8.png" alt="">
+            </div>
+            <div class="col-md-5 text-white">
+                <p>The divine knowledge and wisdom of our shastras is the only thing eternal,
+                   which was and which will remain ever-present in this gods creation.
+                   Our endeavours are to preserve this knowledge.</p>
+            </div>
+            <div class="col-md-1 text-white">
+                <div class="d-flex" style="height: 75px;">
+                    <div class="vr"></div>
+                </div>
+            </div>
+            <div class="col-md-3 text-white">
+                <i class="fa-solid fa-globe"></i>&emsp;
+                <a href="https://sanatanasampatti.in" class="text-light">www.sanatanasampatti.in</a><br>
+                <i class="fa-solid fa-envelope"></i>&emsp;
+                <a href="" class="text-light">sriranga.yoga@gmail.com</a>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center py-3 mb-4 align-items-center border-bottom">
+            <div class="col-md-2 text-white fs-4 text-center">Project</div>
+            <div class="col-md-2 text-white fs-4 text-center">Our Mission</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contribute</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contact Us</div>
+        </div>
+        <div class="row">
+            <p class="col-md-6 fs-6 text-start text-light">
+                <small>&copy; 2026 Sanatanasampatti</small>
+            </p>
+            <p class="col-md-6 fs-6 text-end text-light">
+                <a class="text-white" rel="nofollow" href="http://www.srirangadigital.com" target="_blank">
+                    <img src="https://sanatana.in/mbta/public/images/logo.png" alt="sriranga logo" />
+                    <small>Designed, Developed and Maintained by Sriranga Digital</small>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        const headings = [];
+        tocLinks.forEach(link => {
+            const id = link.getAttribute('href').substring(1);
+            const el = document.getElementById(id);
+            if (el) headings.push({ el: el, link: link.parentElement });
+        });
+
+        function onScroll() {
+            let current = null;
+            for (const h of headings) {
+                const rect = h.el.getBoundingClientRect();
+                if (rect.top <= 120) current = h;
+            }
+            tocLinks.forEach(l => l.parentElement.classList.remove('active'));
+            if (current) current.link.classList.add('active');
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    });
+
+    function toggleMobileToc() {
+        const toc = document.getElementById('toc');
+        if (!toc) return;
+        if (toc.style.display === 'block') {
+            toc.style.display = '';
+            toc.style.position = '';
+        } else {
+            toc.style.display = 'block';
+            toc.style.position = 'fixed';
+            toc.style.top = '0';
+            toc.style.left = '0';
+            toc.style.width = '80vw';
+            toc.style.maxWidth = '320px';
+            toc.style.height = '100vh';
+            toc.style.maxHeight = '100vh';
+            toc.style.zIndex = '2000';
+            toc.style.background = 'var(--parchment)';
+            toc.style.boxShadow = '4px 0 20px rgba(0,0,0,0.2)';
+            toc.style.padding = '24px';
+            toc.style.overflowY = 'auto';
+        }
+    }
+    </script>
+
+    <script>
+    function toggleSynopsisAudio(btn) {
+        var audio = btn.parentElement.querySelector('audio');
+        if (!audio.src) audio.src = btn.getAttribute('data-src');
+        if (audio.paused) {
+            audio.play();
+            btn.classList.add('playing');
+            btn.querySelector('i').className = 'fa-solid fa-pause';
+        } else {
+            audio.pause();
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        }
+        audio.onended = function() {
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        };
+        // Prevent click from toggling the synopsis open/close
+        event.stopPropagation();
+    }
+    </script>
+</body>
+</html>

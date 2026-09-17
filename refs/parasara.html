@@ -1,0 +1,1800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- MDB UI Kit -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/fonts.css?v=1.2">
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/navbar.css?v=2.4">
+
+    <title>Parāśara — References in History of Dharmaśāstra</title>
+    <style>
+    :root {
+        --saffron:        #D4600A;
+        --saffron-light:  #F0924A;
+        --saffron-wash:   rgba(212, 96, 10, 0.07);
+        --indigo:         #2E5FA3;
+        --indigo-dark:    #1C3D70;
+        --maroon:         #7A1E1E;
+        --amber:          #C97A1A;
+        --ink:            #1A1209;
+        --ink-secondary:  #4A3B2A;
+        --parchment:      #FDFAF4;
+        --parchment-mid:  #F5EFE2;
+        --rule:           rgba(180, 130, 60, 0.22);
+        --shadow:         0 2px 18px rgba(90, 50, 10, 0.08);
+        --font-devanagari: 'Tiro Devanagari Sanskrit', 'Siddhanta', 'Noto Sans Devanagari', serif;
+        --font-roman:      'Junicode', Georgia, serif;
+    }
+
+    body {
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: var(--font-roman);
+    }
+
+    .devanagari {
+        font-family: var(--font-devanagari);
+    }
+
+    /* ── Navbar overrides ── */
+    .navbar-ontop { z-index: 1031; }
+    .hdclr { color: var(--saffron); }
+    .engpara { font-family: 'Open Sans', sans-serif; }
+
+    /* ── Layout ── */
+    .dh-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .dh-content {
+        flex: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        background: var(--parchment);
+        box-shadow: var(--shadow);
+        min-height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        .dh-content { padding: 24px 20px; }
+        .dh-wrapper { flex-direction: column; }
+    }
+
+    /* ── TOC Sidebar ── */
+    .toc-sidebar {
+        position: sticky;
+        top: 80px;
+        width: 280px;
+        min-width: 280px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding: 20px 16px;
+        margin-right: 24px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        scrollbar-width: thin;
+    }
+
+    .toc-title {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--saffron-light);
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list li {
+        padding: 4px 0;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-list li.toc-l3 {
+        padding-left: 16px;
+        font-size: 0.78rem;
+    }
+
+    .toc-list li a {
+        color: var(--ink-secondary);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .toc-list li a:hover { color: var(--saffron); }
+
+    .toc-list li.active {
+        border-left-color: var(--saffron);
+    }
+
+    .toc-list li.active a {
+        color: var(--saffron);
+        font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-sidebar { display: none; }
+    }
+
+    /* ── Mobile TOC Toggle ── */
+    .toc-mobile-toggle {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1050;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--saffron);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-mobile-toggle { display: block; }
+    }
+
+    /* ── Section Headings ── */
+    .section-heading {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        margin: 48px 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--rule);
+        letter-spacing: 0.5px;
+        scroll-margin-top: 80px;
+    }
+
+    h2.section-heading { font-size: 1.6rem; }
+
+    h3.section-heading {
+        font-size: 1.25rem;
+        border-left: 4px solid var(--saffron-light);
+        border-bottom: none;
+        padding: 8px 16px;
+        background: var(--saffron-wash);
+        border-radius: 0 5px 5px 0;
+    }
+
+    /* ── Prose ── */
+    .prose {
+        font-family: var(--font-roman);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+        color: var(--ink);
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    .prose em { color: var(--maroon); }
+
+    .prose:target {
+        background: rgba(212, 96, 10, 0.12);
+        border-left: 4px solid var(--saffron);
+        padding-left: 16px;
+        margin-left: -20px;
+        border-radius: 0 6px 6px 0;
+        animation: target-pulse 2s ease-out;
+    }
+
+    @keyframes target-pulse {
+        0%   { background: rgba(212, 96, 10, 0.30); }
+        100% { background: rgba(212, 96, 10, 0.12); }
+    }
+
+    /* ── Footnote References ── */
+    .fn-ref {
+        font-size: 0.75em;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    .fn-ref a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 0 2px;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: color 0.15s;
+    }
+
+    .fn-ref a:hover { color: var(--indigo); }
+
+    /* ── Synopsis Box ── */
+    .synopsis-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron-light);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .synopsis-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .synopsis-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .synopsis-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .synopsis-box.open .synopsis-toggle i {
+        transform: rotate(90deg);
+    }
+    .synopsis-body {
+        display: none;
+        padding: 0 20px 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+    }
+    .synopsis-box.open .synopsis-body { display: block; }
+    .synopsis-body p { margin: 0; }
+    .synopsis-attribution {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: var(--ink-secondary);
+        opacity: 0.7;
+        font-style: italic;
+    }
+    .synopsis-audio {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    .synopsis-play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--saffron);
+        background: none;
+        color: var(--saffron);
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: background 0.2s, color 0.2s;
+        padding: 0;
+    }
+    .synopsis-play-btn:hover {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn.playing {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn i { padding-left: 2px; }
+
+    /* ── Index Terms Panel ── */
+    .index-terms-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .index-terms-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .index-terms-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .index-terms-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .index-terms-box.open .index-terms-toggle i {
+        transform: rotate(90deg);
+    }
+    .index-terms-body {
+        display: none;
+        padding: 0 20px 16px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .index-terms-box.open .index-terms-body { display: block; }
+    .index-terms-dl {
+        margin: 0;
+        padding: 0;
+    }
+    .index-terms-dl dt {
+        font-family: var(--font-roman);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+        margin-top: 8px;
+    }
+    .index-terms-dl dd {
+        margin: 2px 0 0 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        color: var(--ink-secondary);
+        line-height: 1.5;
+    }
+    .nyaya-heading {
+        font-family: var(--font-roman);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        margin: 16px 0 4px;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+    }
+
+    /* ── Inline Index Popovers ── */
+    .idx-term {
+        border-bottom: 1px dotted var(--saffron-light);
+        cursor: help;
+        position: relative;
+    }
+    .idx-term:hover::after {
+        content: attr(data-def);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        background: rgba(44, 36, 22, 0.92);
+        color: #F5ECD8;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        max-width: 280px;
+        z-index: 100;
+        white-space: normal;
+        line-height: 1.4;
+        pointer-events: none;
+    }
+
+    /* ── Structured Version Banner ── */
+    .structured-banner {
+        margin: 0 0 28px;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, rgba(212, 96, 10, 0.06) 0%, rgba(212, 96, 10, 0.02) 100%);
+        border: 1px solid var(--saffron-light);
+        border-radius: 6px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        color: var(--ink-secondary);
+        line-height: 1.6;
+    }
+    .structured-banner i { color: var(--saffron); margin-right: 4px; }
+    .structured-banner a { color: var(--indigo); font-weight: 600; text-decoration: none; }
+    .structured-banner a:hover { text-decoration: underline; }
+
+    /* ── Footnotes Section ── */
+    .footnotes-section {
+        margin: 32px 0 48px;
+        padding: 20px 24px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .footnotes-section hr {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 0 0 16px;
+    }
+
+    .footnotes-list {
+        padding-left: 24px;
+        margin: 0;
+    }
+
+    .footnote-item {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+        scroll-margin-top: 80px;
+    }
+
+    .footnote-item:target {
+        background: rgba(212, 96, 10, 0.1);
+        border-radius: 4px;
+        padding: 4px 6px;
+        margin-left: -6px;
+    }
+
+    .fn-back {
+        color: var(--saffron-light);
+        text-decoration: none;
+        font-size: 0.85em;
+        margin-left: 4px;
+    }
+
+    .fn-back:hover { color: var(--saffron); }
+
+    /* ── Reference Links ── */
+    a.ref {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: all 0.15s;
+    }
+
+    a.ref:hover {
+        color: var(--saffron);
+        border-bottom-style: solid;
+    }
+
+    a.mbta-ext {
+        color: var(--indigo);
+        font-size: 0.7em;
+        margin-left: 2px;
+        opacity: 0.5;
+        text-decoration: none;
+        vertical-align: super;
+    }
+    a.mbta-ext:hover { opacity: 1; color: var(--saffron); }
+
+    /* ── References Panel (sidebar) ── */
+    .refs-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .refs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .refs-list li {
+        padding: 3px 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .ref-source-link {
+        font-weight: 600;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .ref-source-link:hover {
+        text-decoration: underline;
+    }
+
+    .ref-verse-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.76rem;
+    }
+
+    .ref-verse-link:hover {
+        text-decoration: underline;
+        color: var(--saffron);
+    }
+
+    .ref-verses {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Timeline panel ── */
+    .timeline-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .timeline-list li {
+        padding: 2px 0;
+        font-size: 0.76rem;
+        line-height: 1.4;
+        position: relative;
+        padding-left: 14px;
+    }
+
+    .timeline-list li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--saffron);
+    }
+
+    .timeline-list li.tl-approximate::before {
+        background: transparent;
+        border: 2px solid var(--saffron);
+        width: 4px;
+        height: 4px;
+    }
+
+    .timeline-list li.tl-century::before {
+        background: transparent;
+        border: 2px dashed var(--saffron);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+
+    .tl-dot-link {
+        text-decoration: none;
+        color: var(--ink);
+        display: block;
+    }
+
+    .tl-dot-link:hover {
+        color: var(--saffron);
+    }
+
+    .tl-year {
+        font-weight: 600;
+        color: var(--saffron);
+        font-size: 0.72rem;
+        min-width: 70px;
+        display: inline-block;
+    }
+
+    .tl-label {
+        color: var(--ink-secondary);
+        font-size: 0.72rem;
+    }
+
+    .tl-view-link, .tl-more {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.72rem;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .tl-view-link:hover, .tl-more:hover {
+        text-decoration: underline;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+
+    .breadcrumb-bar a {
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+
+    .breadcrumb-bar .sep {
+        color: var(--amber);
+        margin: 0 8px;
+    }
+
+    .breadcrumb-bar .current {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Chapter Navigation ── */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        margin-top: 48px;
+        border-top: 2px solid var(--rule);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .chapter-nav a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        transition: all 0.2s;
+        max-width: 45%;
+    }
+
+    .chapter-nav a:hover {
+        background: var(--saffron-wash);
+        border-color: var(--saffron-light);
+    }
+
+    .nav-prev { text-align: left; }
+    .nav-next { text-align: right; margin-left: auto; }
+
+    .page-range {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+    }
+
+    /* ── Volume Cards (Landing) ── */
+    .vol-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .vol-card {
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        transition: all 0.25s;
+    }
+
+    .vol-card:hover {
+        border-color: var(--saffron-light);
+        box-shadow: 0 4px 24px rgba(212, 96, 10, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .vol-num {
+        font-family: var(--font-roman);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--saffron);
+        margin-bottom: 8px;
+    }
+
+    .vol-subtitle {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        line-height: 1.5;
+        flex: 1;
+    }
+
+    .vol-chapters {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        margin-top: 12px;
+    }
+
+    /* ── Chapter Cards (Volume Index) ── */
+    .chapter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .chapter-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .chapter-card:hover {
+        border-color: var(--saffron-light);
+        background: var(--saffron-wash);
+    }
+
+    .card-num {
+        font-family: var(--font-roman);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--saffron);
+        min-width: 36px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        flex: 1;
+    }
+
+    .card-pages {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        color: var(--ink-secondary);
+    }
+
+    /* ── Landing Hero ── */
+    .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-family: var(--font-roman);
+        font-size: 2.4rem;
+        color: var(--saffron);
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .hero .devanagari-title {
+        font-family: var(--font-devanagari);
+        font-size: 1.8rem;
+        color: var(--ink);
+        margin-bottom: 16px;
+    }
+
+    .hero .author {
+        font-family: var(--font-roman);
+        font-size: 1.1rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .hero .desc {
+        font-family: var(--font-roman);
+        font-size: 1rem;
+        color: var(--ink-secondary);
+        line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer { margin-top: 48px; }
+
+
+    .ref-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    .ref-table th { text-align: left; padding: 10px 12px; border-bottom: 2px solid var(--saffron);
+        font-family: 'Open Sans', sans-serif; font-size: 0.8rem; color: var(--ink-secondary);
+        text-transform: uppercase; letter-spacing: 0.5px; }
+    .ref-table td { padding: 8px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+    .ref-table tr:target { background: var(--saffron-wash); }
+    .verse-ref { font-weight: 600; color: var(--saffron); white-space: nowrap; min-width: 80px; }
+    .verse-locs a { color: var(--indigo); text-decoration: none; font-size: 0.85rem; }
+    .verse-locs a:hover { text-decoration: underline; }
+    .verse-context { color: var(--ink-secondary); font-style: italic; max-width: 400px; }
+    .verse-text { max-width: 460px; }
+    .kane-sa { font-family: 'Noto Serif Devanagari', serif; font-size: 0.95rem;
+        line-height: 1.7; color: var(--ink); }
+    .kane-note { font-size: 0.72rem; color: var(--ink-secondary); margin-top: 4px;
+        padding-left: 8px; border-left: 2px solid var(--rule, #ddd); opacity: .85; }
+    .kane-src { font-size: 0.7rem; color: var(--ink-secondary); margin-top: 3px; }
+    .kane-src a { color: var(--indigo); text-decoration: none; }
+    .kane-src a:hover { text-decoration: underline; }
+    .tier { text-transform: uppercase; letter-spacing: .06em; font-size: 0.62rem;
+        border: 1px solid currentColor; border-radius: 2px; padding: 0 3px; }
+    .tier.cited { color: #1f6b5c; }
+    .tier.sole { color: #a8730d; }
+    .kane-none { color: var(--ink-secondary); font-size: 0.75rem; opacity: .55; }
+    .source-hero { text-align: center; padding: 40px 20px 30px; max-width: 800px; margin: 0 auto; }
+    .source-hero h1 { font-family: var(--font-roman); color: var(--saffron); font-size: 2rem; }
+    .source-hero .stats { font-family: 'Open Sans', sans-serif; color: var(--ink-secondary);
+        font-size: 0.9rem; margin-top: 8px; }
+    .ext-link { color: var(--indigo); font-weight: 600; }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mbta/">
+      <div class="container-fluid">&emsp;&emsp;
+      <a href="../index.html" class="navbar-brand" style="text-decoration:none;">
+        <span class="devanagari ms-3" style="font-size:1.5rem; color:var(--saffron); font-weight:700;">धर्मशास्त्रम्</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="../index.html">धर्मशास्त्रम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5 active" href="../index.html">खण्डाः</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in/mbta/">महाभारतम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in">सनातनम्</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+
+    <div style="max-width: 1100px; margin: 0 auto; padding: 20px;">
+        <div class="breadcrumb-bar">
+            <a href="../index.html">Home</a>
+            <span class="sep">›</span>
+            <a href="index.html">References</a>
+            <span class="sep">›</span>
+            <span class="current">Parāśara</span>
+        </div>
+
+        <div class="source-hero">
+            <h1>Parāśara</h1>
+            <p class="stats">644 references across all volumes ·
+               119 distinct verses ·
+               <b>33</b> of them with the verse as Kane prints it</p>
+        </div>
+
+        <table class="ref-table">
+            <thead>
+                <tr><th>Verse</th><th>The verse, as Kane prints it</th><th>Locations</th><th>Context</th></tr>
+            </thead>
+            <tbody>
+                
+        <tr id="ci">
+            <td class="verse-ref">ci</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/35-the-parāshara-smriti.html#p-35-the-parāshara-smriti-8">vol-1-part-1 §35-the-parāshara-smriti</a></td>
+            <td class="verse-context"><small>...riti-6"&gt;6&lt;/a&gt;&lt;/sup&gt; In the 12th chapter Parāśara cites the view of Manu that a Brāhmaṇa fed...</small></td>
+        </tr>
+
+        <tr id="c">
+            <td class="verse-ref">c</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">व्याख्याते चेदं शङ्कवचनं विचारण्यश्रीचरणेः पराशरस्मृतिटीकायां पैतृकद्रव्यविभागकाले स्वभृततालुद्वारादिकमपि कन्या प्राप्नोतीत्याह शङ्कु इति । वीर० p. 583; vide p. 672 ‘ विचारण्यश्रीचरणोकं प्राग्विलग्नं तप्ताग्निस्थितिं तु स्त्रीणां दायग्रहणप्रतिषेधपर्यवसेवास्याः श्रुतेर्नास्तीति । ’. This refers to the remarks in परा मा . vol. III. p. 538.</div><div class="kane-src"><span class="tier sole" title="the only Sanskrit on the only passage citing it — inferred">sole</span> <a href="../vol-1-part-2/93-mādhavācārya.html#fn-93-mādhavācārya-11">vol-1-part-2 §93-mādhavācārya</a></div></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/35-the-parāshara-smriti.html#p-35-the-parāshara-smriti-8">vol-1-part-1 §35-the-parāshara-smriti</a> · <a href="../vol-1-part-1/35-the-parāshara-smriti.html#p-35-the-parāshara-smriti-9">vol-1-part-1 §35-the-parāshara-smriti</a> · <a href="../vol-1-part-1/35-the-parāshara-smriti.html#p-35-the-parāshara-smriti-12">vol-1-part-1 §35-the-parāshara-smriti</a> · <a href="../vol-1-part-2/93-mādhavācārya.html#p-93-mādhavācārya-4">vol-1-part-2 §93-mādhavācārya</a> · <a href="../vol-1-part-2/93-mādhavācārya.html#p-93-mādhavācārya-18">vol-1-part-2 §93-mādhavācārya</a></td>
+            <td class="verse-context"><small>Parāśara contains several peculiar viewṣ He speaks...</small></td>
+        </tr>
+
+        <tr id="l">
+            <td class="verse-ref">l</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxx-on-mīmāmsā-principles-and-rules-of-interpretation-in-relation-to-dha.html#p-chapter-xxx-on-mīmāmsā-principles-and-rules-of-interpretation-in-relation-to-dha-44">vol-5-part-2 §chapter-xxx-on-mīmāmsā-principles-and-rules-of-interpretation-in-relation-to-dha</a></td>
+            <td class="verse-context"><small>...rful than pāṭhakrama (PMS V. 4. 1). The Parāśarasmṛti lays down that every day one should perfo...</small></td>
+        </tr>
+
+        <tr id="XL">
+            <td class="verse-ref">XL</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxxv-the-doctrine-of-karma-and-punarjanma-transmigration-or-metempsychos.html#p-chapter-xxxv-the-doctrine-of-karma-and-punarjanma-transmigration-or-metempsychos-89">vol-5-part-2 §chapter-xxxv-the-doctrine-of-karma-and-punarjanma-transmigration-or-metempsychos</a></td>
+            <td class="verse-context"><small>... like Manu VI. 253, Yājñavalkya I. 166, Parāśara XL 19 provide that a brāhmaṇa could take f...</small></td>
+        </tr>
+
+        <tr id="i">
+            <td class="verse-ref">i</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/35-the-parāshara-smriti.html#p-35-the-parāshara-smriti-5">vol-1-part-1 §35-the-parāshara-smriti</a> · <a href="../vol-1-part-1/35-the-parāshara-smriti.html#p-35-the-parāshara-smriti-5">vol-1-part-1 §35-the-parāshara-smriti</a> · <a href="../vol-1-part-1/35-the-parāshara-smriti.html#p-35-the-parāshara-smriti-5">vol-1-part-1 §35-the-parāshara-smriti</a> · <a href="../vol-1-part-1/35-the-parāshara-smriti.html#p-35-the-parāshara-smriti-7">vol-1-part-1 §35-the-parāshara-smriti</a> · <a href="../vol-1-part-1/35-the-parāshara-smriti.html#p-35-the-parāshara-smriti-8">vol-1-part-1 §35-the-parāshara-smriti</a></td>
+            <td class="verse-context"><small>...a is an ancient one. In Rg. VII. 18. 21 Parāśara is mentioned as a grandson of Vasiṣṭha ‘P...</small></td>
+        </tr>
+
+        <tr id="I">
+            <td class="verse-ref">I</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxxiii-customs-and-dharmashastra-works.html#p-chapter-xxxiii-customs-and-dharmashastra-works-8">vol-3 §chapter-xxxiii-customs-and-dharmashastra-works</a> · <a href="../vol-3/chapter-xxxiii-customs-and-dharmashastra-works.html#p-chapter-xxxiii-customs-and-dharmashastra-works-8">vol-3 §chapter-xxxiii-customs-and-dharmashastra-works</a> · <a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-9">vol-3 §chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age</a></td>
+            <td class="verse-context"><small>...shastra-works-33"&gt;33&lt;/a&gt;&lt;/sup&gt; (= Brhat-Parāśara I. p. 55) declares that in the Kṛta age t...</small></td>
+        </tr>
+
+        <tr id="1.5">
+            <td class="verse-ref">1.5</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/list-of-tīrthas.html#p-list-of-tīrthas-5">vol-4 §list-of-tīrthas</a></td>
+            <td class="verse-context"><small>...from it are quoted in T K pp 215– 216); Parāśarasmṛti 1. 5 states that Parāśara, father of Vyāsa, ...</small></td>
+        </tr>
+
+        <tr id="I.21">
+            <td class="verse-ref">I.21</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxix-some-fundamental-doctrines-of-pūrvamīmāmsā.html#p-chapter-xxix-some-fundamental-doctrines-of-pūrvamīmāmsā-3">vol-5-part-2 §chapter-xxix-some-fundamental-doctrines-of-pūrvamīmāmsā</a></td>
+            <td class="verse-context"><small>...embrance of Dharma in different Kalpas (Parāśarasmṛti I. 21).</small></td>
+        </tr>
+
+        <tr id="I.22">
+            <td class="verse-ref">I.22</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-8">vol-3 §chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age</a></td>
+            <td class="verse-context"><small>...li (Manu I 85, Śānti 232 27 and 261. 8, Parāśara I. 22 all have the same verse stating that th...</small></td>
+        </tr>
+
+        <tr id="I.22-23">
+            <td class="verse-ref">I.22-23</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxxiii-customs-and-dharmashastra-works.html#p-chapter-xxxiii-customs-and-dharmashastra-works-8">vol-3 §chapter-xxxiii-customs-and-dharmashastra-works</a></td>
+            <td class="verse-context"><small>...me. Manu (I. 85-86 = Sānti 232. 27-28 = Parāśara I. 22-23 = Brhat-Parāśara I. p. 55) himself says...</small></td>
+        </tr>
+
+        <tr id="I.23">
+            <td class="verse-ref">I.23</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">अलपेनैव प्रसन्नैश्च धर्मो सिध्यन्ति वै कलौ ॥ विष्णुपुराण VI. 2. 24, मत्स्य 19. 74; शान्ति 232. 32 ( त्रेतायुगे ) विर्शिस्त्वेष यज्ञानां न कृते युगे। द्वारैरे विछिन्ने यान्ति यज्ञाः कलयुगे तथा ॥</div><div class="kane-note">पराशरस्मृति I. 23 is the same as मनु I. 86; बहुने द्वारे यद्वा दानं कलियुगे वरम्। वायु 8. 66.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-1/33-the-purānas.html#fn-33-the-purānas-7">vol-1-part-1 §33-the-purānas</a></div></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/33-the-purānas.html#p-33-the-purānas-6">vol-1-part-1 §33-the-purānas</a></td>
+            <td class="verse-context"><small>...), in Śāntiparva, Vāyupurāṇa (6.65-66), Parāśarasmṛti (I. 23). The gifts of food (and particu-larly t...</small></td>
+        </tr>
+
+        <tr id="I.24">
+            <td class="verse-ref">I.24</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">अस्वर्ग्यो लोकनाशाय परानीकमयावहः। आयुर्धु जद्दरी राजा सति वाक्ये स्वयं चाखानुगमारण राजा कार्याणि साधयेत् । वाक्याभावे तु सर्वेषां देशदृष्टेन तक्षयेत् ॥ कात्यायन q. by अपराक on या . II. 1 (p. 599) ; कृते तु मानवो धर्मसत्रतां गौतमः स्मृतः । टोरेर शास्त्रेलिखितः कलौ पाराशरः स्मृतः ॥</div><div class="kane-note">पराशर I. 24 q. by स्मृतिच० ( आह्निक p. 11).</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-1-part-1/31-the-manusmriti.html#fn-31-the-manusmriti-16">vol-1-part-1 §31-the-manusmriti</a></div></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxxiii-customs-and-dharmashastra-works.html#p-chapter-xxxiii-customs-and-dharmashastra-works-8">vol-3 §chapter-xxxiii-customs-and-dharmashastra-works</a> · <a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-1">vol-3 §chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age</a></td>
+            <td class="verse-context"><small>... in one yuga was prohibited in another. Parāśara I. 24 &lt;sup class="fn-ref"&gt;&lt;a href="#fn-chapte...</small></td>
+        </tr>
+
+        <tr id="I.25">
+            <td class="verse-ref">I.25</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-58">vol-3 §chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age</a></td>
+            <td class="verse-context"><small>...ilar remarkṣ The Udvahatattva says that Parāśara I. 25 is to be interpreted in this way that m...</small></td>
+        </tr>
+
+        <tr id="I.25-26">
+            <td class="verse-ref">I.25-26</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-58">vol-3 §chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age</a></td>
+            <td class="verse-context"><small>...rs into a matrimonial alliance with hiṃ Parāśara (I. 25–26) states that in the Kṛta age a person be...</small></td>
+        </tr>
+
+        <tr id="I.25-28">
+            <td class="verse-ref">I.25-28</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">स्पृक्क्वो कुलकमेकं तु कतरि च कली संप्रवाद्यापनीयं चेन्न दर्शनात् । द्वापरे चासमादाय कलो पतति कर्मणा ॥</div><div class="kane-note">पराशर I. 25-26.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#fn-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-104">vol-3 §chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age</a></div></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-9">vol-3 §chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age</a></td>
+            <td class="verse-context"><small>...śūdras (Brahma 229. 52, Matsya 144. 78) Parāśara (I. 25-28) points out other characteristics of the...</small></td>
+        </tr>
+
+        <tr id="I.40">
+            <td class="verse-ref">I.40</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">प्रियो वा यदि वा द्वेष्यो मूर्खः पण्डित एव वा । वैश्वदेवे तु संप्राप्तः सोऽतिथिः स्वर्गसंक्रमः ॥</div><div class="kane-note">पराशर I. 40, शातातप quoted in स्मृतिच० I. p. 217 (reads मूर्खो वा यदि वा द्वेष्यो &amp;c. ).</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-2/chapter-xxi-nriyajna-or-manushya-yajna.html#fn-chapter-xxi-nriyajna-or-manushya-yajna-13">vol-2-part-2 §chapter-xxi-nriyajna-or-manushya-yajna</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxi-nriyajna-or-manushya-yajna.html#p-chapter-xxi-nriyajna-or-manushya-yajna-2">vol-2-part-2 §chapter-xxi-nriyajna-or-manushya-yajna</a></td>
+            <td class="verse-context"><small>...treat even a cāṇḍāla with consideratioṇ Parāśara (I. 40) and Śātātapa went so far&lt;sup class="fn-...</small></td>
+        </tr>
+
+        <tr id="I.42">
+            <td class="verse-ref">I.42</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxi-nriyajna-or-manushya-yajna.html#p-chapter-xxi-nriyajna-or-manushya-yajna-1">vol-2-part-2 §chapter-xxi-nriyajna-or-manushya-yajna</a></td>
+            <td class="verse-context"><small>...u III. 102 for another derivation; also Parāśara I. 42 and Mārk. 29. 2–9. Manu and others say ...</small></td>
+        </tr>
+
+        <tr id="I.46-47">
+            <td class="verse-ref">I.46-47</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxi-nriyajna-or-manushya-yajna.html#p-chapter-xxi-nriyajna-or-manushya-yajna-5">vol-2-part-2 §chapter-xxi-nriyajna-or-manushya-yajna</a></td>
+            <td class="verse-context"><small>`Parāśara (I. 46-47) says that the brahmacārin and the ascet...</small></td>
+        </tr>
+
+        <tr id="I.51">
+            <td class="verse-ref">I.51</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxviii-sannyāsa.html#p-chapter-xxviii-sannyāsa-10">vol-2-part-2 §chapter-xxviii-sannyāsa</a></td>
+            <td class="verse-context"><small>... p. 201, Yati- dh. p. 75). According to Parāśara I. 51 and the Sūtasamhitā (Jñāna-yoga-khaṇḍa ...</small></td>
+        </tr>
+
+        <tr id="I.53">
+            <td class="verse-ref">I.53</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxviii-sannyāsa.html#p-chapter-xxviii-sannyāsa-10">vol-2-part-2 §chapter-xxviii-sannyāsa</a></td>
+            <td class="verse-context"><small>...then again water is poured on his hand (Parāśara I. 53 quoted by Haradatta on Gaut. V. 16). Vi...</small></td>
+        </tr>
+
+        <tr id="2">
+            <td class="verse-ref">2</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-63">vol-1-part-1 §14-arthashastra-of-kautilya</a></td>
+            <td class="verse-context"><small>... Ghoṭakamukha (1), Dīrgha Cārāyaṇa (1), Parāśara (2), Pīśuna (6), Pīśunaputra (1), Bāhudantī...</small></td>
+        </tr>
+
+        <tr id="III">
+            <td class="verse-ref">III</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-37">vol-3 §chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age</a> · <a href="../vol-4/chapter-vii-eschatology.html#p-chapter-vii-eschatology-30">vol-4 §chapter-vii-eschatology</a> · <a href="../vol-4/chapter-vii-eschatology.html#p-chapter-vii-eschatology-40">vol-4 §chapter-vii-eschatology</a> · <a href="../vol-4/chapter-viii-shuddhi.html#p-chapter-viii-shuddhi-14">vol-4 §chapter-viii-shuddhi</a> · <a href="../vol-4/chapter-viii-shuddhi.html#p-chapter-viii-shuddhi-30">vol-4 §chapter-viii-shuddhi</a></td>
+            <td class="verse-context"><small>...mes free from im- purity in a day) with Parāśara III 8 (that for ten days on impurity due to...</small></td>
+        </tr>
+
+        <tr id="III.5">
+            <td class="verse-ref">III.5</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-37">vol-3 §chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age</a> · <a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-37">vol-3 §chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age</a> · <a href="../vol-4/chapter-viii-shuddhi.html#p-chapter-viii-shuddhi-6">vol-4 §chapter-viii-shuddhi</a> · <a href="../vol-4/chapter-viii-shuddhi.html#p-chapter-viii-shuddhi-63">vol-4 §chapter-viii-shuddhi</a></td>
+            <td class="verse-context"><small>...ay for a learned man, but explains that Parāśara III. 5 is only an arthavāda meant for glorifyi...</small></td>
+        </tr>
+
+        <tr id="III.5-6">
+            <td class="verse-ref">III.5-6</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-1">vol-3 §chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age</a></td>
+            <td class="verse-context"><small>...e learning and character of a brāhmaṇa (Parāśara III. 5-6), permission for a brāhmaṇa to partake ...</small></td>
+        </tr>
+
+        <tr id="III.9">
+            <td class="verse-ref">III.9</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-viii-shuddhi.html#p-chapter-viii-shuddhi-7">vol-4 §chapter-viii-shuddhi</a></td>
+            <td class="verse-context"><small>...is due to birth or death.&lt;sup&gt;609&lt;/sup&gt; Parāśara (III. 9) quoted by the Mit. on Yaj. III. 18 prov...</small></td>
+        </tr>
+
+        <tr id="III.12-13">
+            <td class="verse-ref">III.12-13</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-viii-shuddhi.html#p-chapter-viii-shuddhi-59">vol-4 §chapter-viii-shuddhi</a></td>
+            <td class="verse-context"><small>Parāśara (III. 12-13) provides that, if a man has gone for ma...</small></td>
+        </tr>
+
+        <tr id="III.20-21">
+            <td class="verse-ref">III.20-21</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">शिल्पिनः कावका वैद्या दासीदासाश्व नापिता । राजान श्रोत्रियाश्चैव सद्यःशौकाः प्रकीर्त्तिताः ॥ सवत्तः सव्रतस्थ आइताग्निश्च यो द्विजः। राज्ञश्च घूतकं नास्ति यस्य चेच्छति पाक्षिकः ॥</div><div class="kane-note">पराशर III.20-21,</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-4/chapter-viii-shuddhi.html#fn-chapter-viii-shuddhi-73">vol-4 §chapter-viii-shuddhi</a></div></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-viii-shuddhi.html#p-chapter-viii-shuddhi-48">vol-4 §chapter-viii-shuddhi</a></td>
+            <td class="verse-context"><small>...y deal or come in contact. For example, Parāśara (III. 20–21) says: 'craftsmen (such as those who dra...</small></td>
+        </tr>
+
+        <tr id="III.24">
+            <td class="verse-ref">III.24</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-viii-shuddhi.html#p-chapter-viii-shuddhi-14">vol-4 §chapter-viii-shuddhi</a></td>
+            <td class="verse-context"><small>...utama 14. 15-16, Bauḍ Dh. S. I. 5. 136, Parāśara III. 24, Manu V. 66, Yaj. III. 20 (latter half)...</small></td>
+        </tr>
+
+        <tr id="III.28">
+            <td class="verse-ref">III.28</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-viii-shuddhi.html#p-chapter-viii-shuddhi-40">vol-4 §chapter-viii-shuddhi</a></td>
+            <td class="verse-context"><small>... Viṣṇu Dh. S. 22. 35-38, Śaṅkha 15. 10, Parāśara III. 28 lay down the general rule promulgated b...</small></td>
+        </tr>
+
+        <tr id="III.31">
+            <td class="verse-ref">III.31</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-viii-bala-the-army.html#p-chapter-viii-bala-the-army-5">vol-3 §chapter-viii-bala-the-army</a></td>
+            <td class="verse-context"><small>...on of arms Vide Rājanītiprakāśa p. 407. Parāśara (III. 31) and Brhat-Parāśara X. p 281 remark that...</small></td>
+        </tr>
+
+        <tr id="III.36">
+            <td class="verse-ref">III.36</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">यं यज्ञसंस्थैस्तपसा च विमाः स्वर्गविणोत्र यथैव कान्ति । क्षणेन यान्त्येव हि तत्र वीराः प्राणान् सुयुद्धेषु परित्यजन्तः ॥</div><div class="kane-note">पराशर III. 36; कौटिल्य X 3 presents some different readings The second verse in कौटिल्य X is नव शराचं सलिलरुह पूर्ण सुसंस्कृते वर्षकृतासोरीषम्। नत रूपं मा भूचरक च गच्छेयो भर्तृपिण्डस्य कृतं न च also in the अ . नि . ज्ञा . योग्याराजय (IV 2) attributed to भान , where also it appears introduced with the words ह्युपवन्धु कृते सैन्य यो युद्धात् न निवर्तते। तस्येदानीहृतुल्यानि भूभ्येकशतशः ॥ शिरीरोस्तस्यैव वक्त्रे सोमोपेतं ते तृप्तम् इति वसिष्ठजामदग्नीत् ॥ युध्यन्ते भृत्या ये च हृतवीराभिः पावितं यान्ति विशिष्टवत् । बृहत्पराशर X. p 281. वसिष्ठज means पराशर .</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-3/chapter-viii-bala-the-army.html#fn-chapter-viii-bala-the-army-18">vol-3 §chapter-viii-bala-the-army</a></div></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-viii-bala-the-army.html#p-chapter-viii-bala-the-army-5">vol-3 §chapter-viii-bala-the-army</a></td>
+            <td class="verse-context"><small>... choose him as their Lord (III. 34–35). Parāśara III. 36 is a &lt;sup class="fn-ref"&gt;&lt;a href="#fn-c...</small></td>
+        </tr>
+
+        <tr id="III.39-40">
+            <td class="verse-ref">III.39-40</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-viii-shuddhi.html#p-chapter-viii-shuddhi-34">vol-4 §chapter-viii-shuddhi</a></td>
+            <td class="verse-context"><small>...f a poor brāhmaṇa was highly eulogised (Parāśara III. 39–40). But, as Manu V 101–102 provide, if a ...</small></td>
+        </tr>
+
+        <tr id="III.39-41">
+            <td class="verse-ref">III.39-41</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-vii-eschatology.html#p-chapter-vii-eschatology-30">vol-4 §chapter-vii-eschatology</a></td>
+            <td class="verse-context"><small>... has no relatives is highly extolled by Parāśara (III. 39–41) who says that a person, that thus carri...</small></td>
+        </tr>
+
+        <tr id="III.42">
+            <td class="verse-ref">III.42</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-vii-eschatology.html#p-chapter-vii-eschatology-30">vol-4 §chapter-vii-eschatology</a></td>
+            <td class="verse-context"><small>...ut. 14. 29, Yaj. III. 26, Manu IV. 103, Parāśara III. 42, Devala q. by Par. M. I 2, p. 277, Hārī...</small></td>
+        </tr>
+
+        <tr id="III.43-46">
+            <td class="verse-ref">III.43-46</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-viii-shuddhi.html#p-chapter-viii-shuddhi-34">vol-4 §chapter-viii-shuddhi</a> · <a href="../vol-4/chapter-viii-shuddhi.html#p-chapter-viii-shuddhi-34">vol-4 §chapter-viii-shuddhi</a></td>
+            <td class="verse-context"><small>... take in ghee and then he becomes pura. Parāśara III.43-46 and Kūrmapurāṇa (Uttarārdha 23 45) prov...</small></td>
+        </tr>
+
+        <tr id="III.44">
+            <td class="verse-ref">III.44</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">प्रतिज्ञा० . II. 13 is ‘ अर्थशास्त्रगुणग्राही ज्येष्ठो गोपालकः सुतः। मान्धर्ध्व - देवी व्यायामाशाली चाप्यनृपालकः ॥ ’ गुण seems to refer to the षाडगुण्य in अर्थशास्त्र VII ( अधिकरण ).</div><div class="kane-src"><span class="tier sole" title="the only Sanskrit on the only passage citing it — inferred">sole</span> <a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#fn-14-arthashastra-of-kautilya-36">vol-1-part-1 §14-arthashastra-of-kautilya</a></div></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/14-arthashastra-of-kautilya.html#p-14-arthashastra-of-kautilya-35">vol-1-part-1 §14-arthashastra-of-kautilya</a></td>
+            <td class="verse-context"><small>...4a&lt;/sup&gt; The first occurs in the extant Parāśarasmṛti III. 44, which is comparatively a late smṛti as...</small></td>
+        </tr>
+
+        <tr id="III.45">
+            <td class="verse-ref">III.45</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/35-the-parāshara-smriti.html#p-35-the-parāshara-smriti-9">vol-1-part-1 §35-the-parāshara-smriti</a></td>
+            <td class="verse-context"><small>...two verses of Parāśara by name that are Parāśara III. 45 and 47 ; on Yāj. III. 30 he cites verse...</small></td>
+        </tr>
+
+        <tr id="3.202">
+            <td class="verse-ref">3.202</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-2/74-bhavadevabhatta.html#p-74-bhavadevabhatta-21">vol-1-part-2 §74-bhavadevabhatta</a></td>
+            <td class="verse-context"><small>...a III. 28-29, Gautama Dh. S. 14, 41-42, Parāśara 3. 202); purification on carrying the dead bod...</small></td>
+        </tr>
+
+        <tr id="IV.1-2">
+            <td class="verse-ref">IV.1-2</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">अतिमानान्निकृष्टोऽस्नेहहाद्वा यदि वा भयात्। उद्वन्धनं प्रपांतं च यस्समाप्नोति गति - रेषा विद्यते ।। षष्टिवर्षसहस्राणि नरके वसते स्थिरा । षष्ठि वर्षसहस्राणि नरके प्रतिपद्यते ॥</div><div class="kane-note">पराशर IV. 1-2.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-2/chapter-xxvii-vānaprastha-forest-hermit.html#fn-chapter-xxvii-vānaprastha-forest-hermit-16">vol-2-part-2 §chapter-xxvii-vānaprastha-forest-hermit</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxvii-vānaprastha-forest-hermit.html#p-chapter-xxvii-vānaprastha-forest-hermit-23">vol-2-part-2 §chapter-xxvii-vānaprastha-forest-hermit</a></td>
+            <td class="verse-context"><small>...ttempt to commit suicide as a great siṇ Parāśara (IV. 1-2) states that if a man or woman hangs him...</small></td>
+        </tr>
+
+        <tr id="IV.7">
+            <td class="verse-ref">IV.7</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-v-names-of-all-prāyashchittas.html#p-chapter-v-names-of-all-prāyashchittas-16">vol-4 §chapter-v-names-of-all-prāyashchittas</a></td>
+            <td class="verse-context"><small>...gripurāna 171 6-7, Atri verses 122-123, Parāśara IV. 7 speak of it as of 12 days' duration com...</small></td>
+        </tr>
+
+        <tr id="IV.20">
+            <td class="verse-ref">IV.20</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage.html#p-chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage-18">vol-2-part-1 §chapter-xi-polygamy-polyandry-and-rights-and-duties-on-marriage</a></td>
+            <td class="verse-context"><small>...in cases of adultery. Vide Atri V. 1–5, Parāśara IV. 20 and XI. 87 and Bṛhad-Yama IV. 36.</small></td>
+        </tr>
+
+        <tr id="IV.23-24">
+            <td class="verse-ref">IV.23-24</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxvii-dāyabhāga-partition-of-wealth.html#p-chapter-xxvii-dāyabhāga-partition-of-wealth-89">vol-3 §chapter-xxvii-dāyabhāga-partition-of-wealth</a></td>
+            <td class="verse-context"><small>...iṣṇu Dh. S. ) is 15th and the last. The Parāśarasmṛti ( IV. 23–24 ) mentions, besides Kuṇḍa and Golaka, onl...</small></td>
+        </tr>
+
+        <tr id="IV.30">
+            <td class="verse-ref">IV.30</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">दास - गोपाल - कुलमित्रादर्धसीरिणः । एते शूद्रैषु भोज्यान्ना यश्चान्नानं निवेदयेत् ॥ पराशरस्मृति XI. 21. Compare याज्ञ . I, 166 for about the same words and नारदीय भोज्यन्नाः पञ्चैते शूद्रयोनयः ॥ पञ्चास्यश्च नापीनो पतिभ्यो विधीयते ॥</div><div class="kane-note">पराशरस्मृति IV. 30, on which पराश . मा . II. 1. p. 53 remarks ' अयं च पुनरुद्वाह्रो युगान्तरविषयः '.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-5-part-2/chapter-xxix-some-fundamental-doctrines-of-pūrvamīmāmsā.html#fn-chapter-xxix-some-fundamental-doctrines-of-pūrvamīmāmsā-114">vol-5-part-2 §chapter-xxix-some-fundamental-doctrines-of-pūrvamīmāmsā</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xiv-remarriage-of-widows.html#p-chapter-xiv-remarriage-of-widows-1">vol-2-part-1 §chapter-xiv-remarriage-of-widows</a> · <a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-1">vol-3 §chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age</a></td>
+            <td class="verse-context"><small>...ther husbanḍ Nārada (stripuṃsa, v. 97), Parāśara IV. 30 and Agnipurāṇa 154. 5-6 have the same v...</small></td>
+        </tr>
+
+        <tr id="IV.31">
+            <td class="verse-ref">IV.31</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xii-the-duties-of-a-widow-some-privileges-of-women-and-the-purda-system.html#p-chapter-xii-the-duties-of-a-widow-some-privileges-of-women-and-the-purda-system-4">vol-2-part-1 §chapter-xii-the-duties-of-a-widow-some-privileges-of-women-and-the-purda-system</a></td>
+            <td class="verse-context"><small>...would go to heaven even though sonlesṣ’ Parāśara IV. 31 is almost the same as Manu V. 160. Bṛha...</small></td>
+        </tr>
+
+        <tr id="v">
+            <td class="verse-ref">v</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/35-the-parāshara-smriti.html#p-35-the-parāshara-smriti-9">vol-1-part-1 §35-the-parāshara-smriti</a></td>
+            <td class="verse-context"><small>...kā, Hemādri and other later works quote Parāśara very frequently. Most of these are found ...</small></td>
+        </tr>
+
+        <tr id="V">
+            <td class="verse-ref">V</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xvii-āhnika-and-āchāra.html#p-chapter-xvii-āhnika-and-āchāra-46">vol-2-part-1 §chapter-xvii-āhnika-and-āchāra</a> · <a href="../vol-4/chapter-iv-penances-for-particular-sins.html#p-chapter-iv-penances-for-particular-sins-31">vol-4 §chapter-iv-penances-for-particular-sins</a></td>
+            <td class="verse-context"><small>...ika-and-āchāra-147"&gt;147&lt;/a&gt;&lt;/sup&gt; Bṛhat-Parāśara V. p. 85 and Laghu-Vyāsa (Jīvānanda part ...</small></td>
+        </tr>
+
+        <tr id="V.1">
+            <td class="verse-ref">V.1</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-vii-upanayana.html#p-chapter-vii-upanayana-37">vol-2-part-1 §chapter-vii-upanayana</a></td>
+            <td class="verse-context"><small>...ntain hyperbolical eulogies of Gāyatrī. Parāśara V. 1 calls it ‘Vedamātā’. The words ‘Apo jyo...</small></td>
+        </tr>
+
+        <tr id="V.10-11">
+            <td class="verse-ref">V.10-11</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">अश्रोत्रिया अनुक्तवाक्या अनग्नयो वा शूद्रसधर्मणो भवन्ति । मानवं चात्र श्लोकमुदाहरन्ति । योऽनधीत्य द्विजो वेदमन्नत्र कुरुते श्रमम् । स जीवन्नैव शूद्रत्वमाशु गच्छति सान्वयः ।। वसिष्ठ III. 1-2; this verse is also लघुच्छखलायन 22. 23; vide also</div><div class="kane-note">पराशर V. 10 and लघुच्छल 21-22; गायत्त्ररहितो विप्रः शूद्रादप्यशुचिर्भवेत् । पराशर VIII. 24; but the very next verse is द्वः शीलॉपि द्विजः पूज्यो न शूद्रो विजितेंद्रियः ।।</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-iii-the-duties-disabilities-and-privileges-of-varnas.html#fn-chapter-iii-the-duties-disabilities-and-privileges-of-varnas-76">vol-2-part-1 §chapter-iii-the-duties-disabilities-and-privileges-of-varnas</a></div></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-vii-eschatology.html#p-chapter-vii-eschatology-39">vol-4 §chapter-vii-eschatology</a></td>
+            <td class="verse-context"><small>...rnt (a smṛti q by Par. M. I. 2. p. 226, Parāśara V. 10-11, Vaik Smārta V. 11) and he was to be cr...</small></td>
+        </tr>
+
+        <tr id="vi">
+            <td class="verse-ref">vi</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/35-the-parāshara-smriti.html#p-35-the-parāshara-smriti-9">vol-1-part-1 §35-the-parāshara-smriti</a> · <a href="../vol-4/chapter-i-sin-in-rigveda-conception-of-rita-enumeration-and-classification-of-si.html#p-chapter-i-sin-in-rigveda-conception-of-rita-enumeration-and-classification-of-si-30">vol-4 §chapter-i-sin-in-rigveda-conception-of-rita-enumeration-and-classification-of-si</a></td>
+            <td class="verse-context"><small>...47 ; on Yāj. III. 30 he cites verses of Parāśara viz. III. 5 (ekabhāt &amp;c. ), III. 6 (nāmadh...</small></td>
+        </tr>
+
+        <tr id="VI">
+            <td class="verse-ref">VI</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxii-bhojana.html#p-chapter-xxii-bhojana-24">vol-2-part-2 §chapter-xxii-bhojana</a> · <a href="../vol-4/chapter-viii-shuddhi.html#p-chapter-viii-shuddhi-30">vol-4 §chapter-viii-shuddhi</a></td>
+            <td class="verse-context"><small>... whatever else is cooked in milk. Bṛhat-Parāśara VI. says 'uncooked meat, ghee, honey and o...</small></td>
+        </tr>
+
+        <tr id="VI.1-15">
+            <td class="verse-ref">VI.1-15</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-iv-penances-for-particular-sins.html#p-chapter-iv-penances-for-particular-sins-30">vol-4 §chapter-iv-penances-for-particular-sins</a></td>
+            <td class="verse-context"><small>... Yāj III 269-274, Viṣṇu Dh. S 50.25-32, Parāśara VI. 1-15 prescribe several penances for killing ...</small></td>
+        </tr>
+
+        <tr id="VI.16">
+            <td class="verse-ref">VI.16</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xii-the-duties-of-a-widow-some-privileges-of-women-and-the-purda-system.html#p-chapter-xii-the-duties-of-a-widow-some-privileges-of-women-and-the-purda-system-15">vol-2-part-1 §chapter-xii-the-duties-of-a-widow-some-privileges-of-women-and-the-purda-system</a></td>
+            <td class="verse-context"><small>...a or a woman (Bauḍ Dh. S. II. 1. 11-12, Parāśara VI. 16 ). Ordinarily women, children and very ...</small></td>
+        </tr>
+
+        <tr id="VI.44">
+            <td class="verse-ref">VI.44</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-ii-varna.html#p-chapter-ii-varna-85">vol-2-part-1 §chapter-ii-varna</a></td>
+            <td class="verse-context"><small>...( 51.8 ), Āpastamba ( in verse 9. 32 ), Parāśara (VI. 44). According to Uśanas (4), he is the off...</small></td>
+        </tr>
+
+        <tr id="VI.52-53">
+            <td class="verse-ref">VI.52-53</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">व्रतच्छिद्रं तपश्छिद्रं यज्ञच्छिद्रं यज्ञकर्मणि । सर्वे भवति निश्छिद्रं ब्राह्मणैरूपपा - दितम् ।। ब्राह्मणा यानि भाषन्ते भाषन्ते तानि देवताः । सर्वदेवमया विप्रा न तद्वचनमन्यथा ।</div><div class="kane-note">पराशर VI. 52–53. ज्ञातातप (I. 30–31) has the same two verses with slight variationṣ</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-iii-the-duties-disabilities-and-privileges-of-varnas.html#fn-chapter-iii-the-duties-disabilities-and-privileges-of-varnas-86">vol-2-part-1 §chapter-iii-the-duties-disabilities-and-privileges-of-varnas</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-iii-the-duties-disabilities-and-privileges-of-varnas.html#p-chapter-iii-the-duties-disabilities-and-privileges-of-varnas-25">vol-2-part-1 §chapter-iii-the-duties-disabilities-and-privileges-of-varnas</a></td>
+            <td class="verse-context"><small>...n object of honour even to the deitieṣ’ Parāśara (VI. 52–53) holds ‘whatever defects there may be in...</small></td>
+        </tr>
+
+        <tr id="VI.55-57">
+            <td class="verse-ref">VI.55-57</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">दुर्बलैश्चवतुः मोक्तस्तथा च बालवृद्धयोः । अतोऽन्यथा भवेदोपसप्तत्क्षाद्गृह . स्थता ॥ स्नेहाद्वा यदि वा लोभाद्वाज्ञानातोपि वा । कुर्वन्त्यल्पग्रहं ह्ये तु तत्राप तेषु गच्छति ॥</div><div class="kane-note">पराशर VI. 55-57.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-4/chapter-iii-prāyashchitta-its-origin-derivation-and-meaning.html#fn-chapter-iii-prāyashchitta-its-origin-derivation-and-meaning-72">vol-4 §chapter-iii-prāyashchitta-its-origin-derivation-and-meaning</a></div></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-iii-prāyashchitta-its-origin-derivation-and-meaning.html#p-chapter-iii-prāyashchitta-its-origin-derivation-and-meaning-23">vol-4 §chapter-iii-prāyashchitta-its-origin-derivation-and-meaning</a></td>
+            <td class="verse-context"><small>...erivation-and-meaning-71"&gt;71&lt;/a&gt;&lt;/sup&gt;. Parāśara (VI. 55-57) provides that the assembly should take ...</small></td>
+        </tr>
+
+        <tr id="VI.64-65">
+            <td class="verse-ref">VI.64-65</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-viii-shuddhi.html#p-chapter-viii-shuddhi-85">vol-4 §chapter-viii-shuddhi</a></td>
+            <td class="verse-context"><small>...r, insects, flies, then Yaj. I. 189 and Parāśara VI.64-65 provide that in order to purify it wate...</small></td>
+        </tr>
+
+        <tr id="VI.71-74">
+            <td class="verse-ref">VI.71-74</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxii-bhojana.html#p-chapter-xxii-bhojana-21">vol-2-part-2 §chapter-xxii-bhojana</a> · <a href="../vol-4/chapter-viii-shuddhi.html#p-chapter-viii-shuddhi-86">vol-4 §chapter-viii-shuddhi</a></td>
+            <td class="verse-context"><small>...up&gt; IX. 15 contains a similar directioṇ Parāśara VI. 71-74 says that cooked food (rice) amounting ...</small></td>
+        </tr>
+
+        <tr id="VII">
+            <td class="verse-ref">VII</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-viii-shuddhi.html#p-chapter-viii-shuddhi-84">vol-4 §chapter-viii-shuddhi</a></td>
+            <td class="verse-context"><small>...85, Viṣṇu Dh S. 23. 8-11, Sankha 16. 6, Parāśara VII, 2-3 and others lay down rules about th...</small></td>
+        </tr>
+
+        <tr id="VII.3">
+            <td class="verse-ref">VII.3</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">मूत्रमृत्तलरुजाकुटीप्यस्त्यीपेदपहतताथा। आप . समुद्रप्रेस्वस्थैर्धाट्यंम्वालिं कृत्वा कृपे एकेचकाविते । पञ्चगव्यं स्पेलेत्‌ एव्क्ष्माव g by अपराके p. 272. The first is quoted as a text of Usanas by क्षु . कौ . p. 298 and reads शार्टेण ( शाकविधिना ) for भक्तेन . The two verses are विष्णुद्धर्मसूत्र 23.44-45.</div><div class="kane-src"><span class="tier sole" title="the only Sanskrit on the only passage citing it — inferred">sole</span> <a href="../vol-4/chapter-viii-shuddhi.html#fn-chapter-viii-shuddhi-132">vol-4 §chapter-viii-shuddhi</a></div></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-viii-shuddhi.html#p-chapter-viii-shuddhi-79">vol-4 §chapter-viii-shuddhi</a></td>
+            <td class="verse-context"><small>...be resorted to if there is more water). Parāśara VII. 3 says the same about wells (with steps),...</small></td>
+        </tr>
+
+        <tr id="VII.6-9">
+            <td class="verse-ref">VII.6-9</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">माता चैव पिता चैव ज्येष्ठो भ्राता तथैव च । त्रयस्ते नरकं यान्ति दृष्ट्वा कन्यां रजस्वलाम् ॥ यस्तां समुद्वहेत्कन्यां ब्राह्मणोऽज्ञानमोहितः । असंभाष्यो ह्यपाङ्क्तेयः स विज्ञेयो वृषलीपतिः ॥</div><div class="kane-note">पराशर VII. 8-9. Tho स्मृतिच . (I. pp. 73 and 81) quotes पराशर VII. 6-9 as from यम .</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-ix-marriage.html#fn-chapter-ix-marriage-45">vol-2-part-1 §chapter-ix-marriage</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-ix-marriage.html#p-chapter-ix-marriage-22">vol-2-part-1 §chapter-ix-marriage</a></td>
+            <td class="verse-context"><small>... highly commendeḍ The same four verses (Parāśara VII. 6-9) occur in Bṛhad-Yama (Ānaṇ eḍ) chap. 3....</small></td>
+        </tr>
+
+        <tr id="VII.11-15.I">
+            <td class="verse-ref">VII.11-15.I</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxii-bhojana.html#p-chapter-xxii-bhojana-40">vol-2-part-2 §chapter-xxii-bhojana</a></td>
+            <td class="verse-context"><small>...rse) VII. 20-22, Bṛhad-Yama III. 64-68, Parāśara VII. 11-15. If a rajasvalā is touched by a caṇḍāla or...</small></td>
+        </tr>
+
+        <tr id="VII.16-17">
+            <td class="verse-ref">VII.16-17</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxii-bhojana.html#p-chapter-xxii-bhojana-40">vol-2-part-2 §chapter-xxii-bhojana</a></td>
+            <td class="verse-context"><small>...e Angiras 43, Āpastamba (verse) VII. 2, Parāśara VII. 16-17.</small></td>
+        </tr>
+
+        <tr id="VII.17">
+            <td class="verse-ref">VII.17</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">यत्तु गर्भाधानमधिकृत्य हारीतेनोक्तं चतुर्थेहि स्नातायां युग्मासु चेति तत्तच्चतुर्हः स्नानादुद्गमपिषयम्‌ । स्नृतिच० I. p. 15; एतदेवाभिपेत्य कात्यायनः । रजवला चतुर्थेहि स्नानाच्छुद्धिमनुगम्यत्‌ । इति , quoted in स्मृतिचन्द्रिका I. p. 15 स्नाता रजवला या तु चतुर्थेपि शुध्यति । युग्मौजिनिष्तौ तु दैवपित्र्यादिकर्म च ॥</div><div class="kane-note">पराशर VII. 17; गर्भाधानं द्विजः कुर्वोहो प्रथम एव हि । चतुर्थे दिवसादृर्ध्वं पुत्राथी दिवसे समे ॥ लघुवा० III. 1.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-vi-samskāras.html#fn-chapter-vi-samskāras-37">vol-2-part-1 §chapter-vi-samskāras</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-vi-samskāras.html#p-chapter-vi-samskāras-15">vol-2-part-1 §chapter-vi-samskāras</a></td>
+            <td class="verse-context"><small>... four nights must be omitteḍ Kātyāyana, Parāśara (VII. 17) and others say that a woman in her mens...</small></td>
+        </tr>
+
+        <tr id="VII.18-19">
+            <td class="verse-ref">VII.18-19</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">प्रथमेऽग्नि चण्डाली द्वितीये अङ्गचापायिनी । तृतीये रजकी प्रोक्ता चातुर्थेऽङ्गिरुचि ।।</div><div class="kane-note">पराशर VII. 18-19, on which पर। सा . ( vol. II. 1, pp. 168-169 ) remarks ‘ खण्डाल्पान्यभिधाने यावान् प्रत्यवायस्तावदत्यल्पनिमित्रेण नैमित्तविधवाधारा । यथा कुण्डपायिनसत्रमे मासमग्निहोत्रं जुहोति जुहोत्यग्निहोत्रमित्यनेन निरपवादिनो निमित्तवत्परम् । '</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-5-part-2/chapter-xxx-on-mīmāmsā-principles-and-rules-of-interpretation-in-relation-to-dha.html#fn-chapter-xxx-on-mīmāmsā-principles-and-rules-of-interpretation-in-relation-to-dha-84">vol-5-part-2 §chapter-xxx-on-mīmāmsā-principles-and-rules-of-interpretation-in-relation-to-dha</a></div></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/chapter-xxx-on-mīmāmsā-principles-and-rules-of-interpretation-in-relation-to-dha.html#p-chapter-xxx-on-mīmāmsā-principles-and-rules-of-interpretation-in-relation-to-dha-55">vol-5-part-2 §chapter-xxx-on-mīmāmsā-principles-and-rules-of-interpretation-in-relation-to-dha</a></td>
+            <td class="verse-context"><small>...ng of piṇḍas to the Pārvanaśrāddha. The Parāśarasmṛti (VII. 18–19) speaks &lt;sup class="fn-ref"&gt;&lt;a href="#fn...</small></td>
+        </tr>
+
+        <tr id="VII.19-20">
+            <td class="verse-ref">VII.19-20</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxii-bhojana.html#p-chapter-xxii-bhojana-40">vol-2-part-2 §chapter-xxii-bhojana</a></td>
+            <td class="verse-context"><small>... be free from the impurity (Angiras 21, Parāśara VII. 19-20 quoted in Mit. on Yāj. III. 20). If a r...</small></td>
+        </tr>
+
+        <tr id="VII.24-25">
+            <td class="verse-ref">VII.24-25</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-viii-shuddhi.html#p-chapter-viii-shuddhi-82">vol-4 §chapter-viii-shuddhi</a></td>
+            <td class="verse-context"><small>... fire and then it becomes pure (compare Parāśara VII. 24–25); but if it is polluted thus only once ...</small></td>
+        </tr>
+
+        <tr id="VII.28">
+            <td class="verse-ref">VII.28</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-viii-shuddhi.html#p-chapter-viii-shuddhi-88">vol-4 §chapter-viii-shuddhi</a></td>
+            <td class="verse-context"><small>...g off only that portion that is defileḍ Parāśara VII. 28 provides that garments made from bamboo...</small></td>
+        </tr>
+
+        <tr id="VII.34">
+            <td class="verse-ref">VII.34</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">ख्यपार्कदमंतोयानि नागर . पन्यास्तुषानि च । मत्तार्त्तौण शुद्धयति ॥</div><div class="kane-note">पराशर VII, 34. दीपकलिका on या . I. 197 and हु को p 304 quote it but read स्पर्शन। मञ्जयति पर्क० and the latter explains ' स्पर्शादिनाममध्यर्थ comment on या . I 197 saying that it is superfluous, for the verse ख्यपाकदमंतोयानि गाव : पथि तृणानि च माडसत्तेन शुद्धयति vide वामनपुराण 14. 73.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-4/chapter-viii-shuddhi.html#fn-chapter-viii-shuddhi-133">vol-4 §chapter-viii-shuddhi</a></div></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-viii-shuddhi.html#p-chapter-viii-shuddhi-80">vol-4 §chapter-viii-shuddhi</a></td>
+            <td class="verse-context"><small>...d by the wind alone. (blowing on them). Parāśara VII. 34 states &lt;sup class="fn-ref"&gt;&lt;a href="#fn...</small></td>
+        </tr>
+
+        <tr id="VIII">
+            <td class="verse-ref">VIII</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-iii-prāyashchitta-its-origin-derivation-and-meaning.html#p-chapter-iii-prāyashchitta-its-origin-derivation-and-meaning-10">vol-4 §chapter-iii-prāyashchitta-its-origin-derivation-and-meaning</a></td>
+            <td class="verse-context"><small>...9"&gt;39&lt;/a&gt;&lt;/sup&gt; also has similar verseṣ Parāśara VIII, 29 states that the king also should no...</small></td>
+        </tr>
+
+        <tr id="VIII.2">
+            <td class="verse-ref">VIII.2</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxviii-sannyāsa.html#p-chapter-xxviii-sannyāsa-51">vol-2-part-2 §chapter-xxviii-sannyāsa</a> · <a href="../vol-4/chapter-iii-prāyashchitta-its-origin-derivation-and-meaning.html#p-chapter-iii-prāyashchitta-its-origin-derivation-and-meaning-22">vol-4 §chapter-iii-prāyashchitta-its-origin-derivation-and-meaning</a></td>
+            <td class="verse-context"><small>...hapter-xxviii-sannyāsa-74"&gt;74&lt;/a&gt;&lt;/sup&gt; Parāśara VIII. 2 prescribes that one should on being con...</small></td>
+        </tr>
+
+        <tr id="VIII.6">
+            <td class="verse-ref">VIII.6</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxviii-sannyāsa.html#p-chapter-xxviii-sannyāsa-50">vol-2-part-2 §chapter-xxviii-sannyāsa</a></td>
+            <td class="verse-context"><small>... S. I. 1. 17 and 12=Vaṣ Dh. S. III. 5-6=Parāśara VIII. 6 and 15) state 'Even if thousands of brā...</small></td>
+        </tr>
+
+        <tr id="VIII.11">
+            <td class="verse-ref">VIII.11</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxviii-sannyāsa.html#p-chapter-xxviii-sannyāsa-50">vol-2-part-2 §chapter-xxviii-sannyāsa</a></td>
+            <td class="verse-context"><small>... Dh. S. IIL 7, Yāj. I. 9, Manu XII.112, Parāśara VIII. 11 state that at least four or three men s...</small></td>
+        </tr>
+
+        <tr id="VIII.13">
+            <td class="verse-ref">VIII.13</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxviii-sannyāsa.html#p-chapter-xxviii-sannyāsa-50">vol-2-part-2 §chapter-xxviii-sannyāsa</a></td>
+            <td class="verse-context"><small>... a deep student of the Veda. Yāj. I. 9, Parāśara VIII. 13, Angiras&lt;sup class="fn-ref"&gt;&lt;a href="#f...</small></td>
+        </tr>
+
+        <tr id="VIII.19">
+            <td class="verse-ref">VIII.19</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">जन्मना ब्राह्मणो ज्ञेयः संस्कारैद्विज उच्यते। विद्यया याति विप्रत्वं श्रोत्रियश्त्रि भिरैव च ॥ अत्रि 141-142; ब्रह्मपुराण reads जन्मना ... । विद्यया वाति विप्रत्वं त्रिभिः श्रोत्रिय उच्यते ॥ quoted in सं . प्र . p. 404. विश्वकर्मे यथानेकै रङ्गैरुन्मील्यते शनैः । ब्राह्मण्यमपि तद्वत्संस्कारैर्विविधैर्गुणैः।</div><div class="kane-note">पराशर VIII. 19; quoted as Devala’s by Aparārka (p. 25) and as of Ańgiras in Par. M. II. part I. p. 22, संस्कारतत्त्व p. 857 स्मृति सं . म . p. 136.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-vi-samskāras.html#fn-chapter-vi-samskāras-7">vol-2-part-1 §chapter-vi-samskāras</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-vi-samskāras.html#p-chapter-vi-samskāras-1">vol-2-part-1 §chapter-vi-samskāras</a></td>
+            <td class="verse-context"><small>...ount of all these three’&lt;sup&gt;444&lt;/sup&gt;. Parāśara (VIII. 19) contains a fine image to illustrate thi...</small></td>
+        </tr>
+
+        <tr id="VIII.24">
+            <td class="verse-ref">VIII.24</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">अश्रोत्रिया अनुक्तवाक्या अनग्नयो वा शूद्रसधर्मणो भवन्ति । मानवं चात्र श्लोकमुदाहरन्ति । योऽनधीत्य द्विजो वेदमन्नत्र कुरुते श्रमम् । स जीवन्नैव शूद्रत्वमाशु गच्छति सान्वयः ।। वसिष्ठ III. 1-2; this verse is also लघुच्छखलायन 22. 23; vide also पराशर V. 10 and लघुच्छल 21-22; गायत्त्ररहितो विप्रः शूद्रादप्यशुचिर्भवेत् ।</div><div class="kane-note">पराशर VIII. 24; but the very next verse is द्वः शीलॉपि द्विजः पूज्यो न शूद्रो विजितेंद्रियः ।।</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-iii-the-duties-disabilities-and-privileges-of-varnas.html#fn-chapter-iii-the-duties-disabilities-and-privileges-of-varnas-76">vol-2-part-1 §chapter-iii-the-duties-disabilities-and-privileges-of-varnas</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-iii-the-duties-disabilities-and-privileges-of-varnas.html#p-chapter-iii-the-duties-disabilities-and-privileges-of-varnas-23">vol-2-part-1 §chapter-iii-the-duties-disabilities-and-privileges-of-varnas</a></td>
+            <td class="verse-context"><small>... Vide Manu X. 92 quoted above (p. 127). Parāśara (VIII. 24) says &lt;sup class="fn-ref"&gt;&lt;a href="#fn-c...</small></td>
+        </tr>
+
+        <tr id="VIII.25">
+            <td class="verse-ref">VIII.25</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">दुःशीलोपि द्विज पूज्यो न तु शूद्रो जितेन्द्रियः। काः परित्यज्य या दुष्टा दुहे - लीवतीं क्षराम्‌।</div><div class="kane-note">पराशर VIII. 25 on which परा मा II 1. p 228 observes ज्ञानिशीलोभ्योपीधे यात्सुकलंष एंव प्राधान्येनोपादेयः। शीलं तु यथासम्भवम्। अत एव चतुर्विंशति - मते शूद्रोपदेशहासत्याग्यपादेयेनं प्रचप्रयति। श्रचर्मणि यथा क्षीरमेपेयं ब्राह्मणदिभिः। तद्बच्छूद्र - दलाह्यस्य न जोत्तव्यम् ॥ पण्डितस्यापि शूद्रस्य शास्त्रज्ञानरतस्य च ॥ वचनं तद्वन्न ग्राह्यं शुनोच्छिष्टं हविर्यथा ॥</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-4/chapter-iii-prāyashchitta-its-origin-derivation-and-meaning.html#fn-chapter-iii-prāyashchitta-its-origin-derivation-and-meaning-70">vol-4 §chapter-iii-prāyashchitta-its-origin-derivation-and-meaning</a></div></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-iii-prāyashchitta-its-origin-derivation-and-meaning.html#p-chapter-iii-prāyashchitta-its-origin-derivation-and-meaning-23">vol-4 §chapter-iii-prāyashchitta-its-origin-derivation-and-meaning</a></td>
+            <td class="verse-context"><small>...siveness and pride had gone so far that Parāśara (VIII. 25) and the Caturvimśatimata quoted by Par ...</small></td>
+        </tr>
+
+        <tr id="VIII.27">
+            <td class="verse-ref">VIII.27</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">चातुर्विद्यौ विकल्पी च अङ्गविद्धर्मपाठक : । आश्रमस्थत्रयश्चाथौ स्वरूपाः पर्षदे गुणाः दशपरान् ॥ वसिष्ठ III. 20= बी . धृ . I. 1. 8 =</div><div class="kane-note">पराशर VIII. 27 = अङ्गिरस् quoted by अपरार्क p. 22, where he sets out the definitions of these given by Aṅgiraṣ</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-2/chapter-xxviii-sannyāsa.html#fn-chapter-xxviii-sannyāsa-68">vol-2-part-2 §chapter-xxviii-sannyāsa</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxviii-sannyāsa.html#p-chapter-xxviii-sannyāsa-50">vol-2-part-2 §chapter-xxviii-sannyāsa</a></td>
+            <td class="verse-context"><small>...straṣ Vaṣ Dh. S. III. 20, Bauḍ I. 1. 8, Parāśara VIII. 27 and Aṅgiras declare that four persons e...</small></td>
+        </tr>
+
+        <tr id="VIII.28">
+            <td class="verse-ref">VIII.28</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-iii-prāyashchitta-its-origin-derivation-and-meaning.html#p-chapter-iii-prāyashchitta-its-origin-derivation-and-meaning-10">vol-4 §chapter-iii-prāyashchitta-its-origin-derivation-and-meaning</a></td>
+            <td class="verse-context"><small>...performance of the prescribed penance.’ Parāśara VIII. 28 says ‘an assembly should point out the ...</small></td>
+        </tr>
+
+        <tr id="VIII.28-29">
+            <td class="verse-ref">VIII.28-29</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">राजा चाह्मतो स्थिराया प्रायश्चित्तं विनिर्दिशेत् । स्वयमेव न कर्तव्यं कर्तव्यं स्वरूपनिष्कृतिः ॥ ब्राह्मणविमानक्रितप्य राजा कर्तु पश्चित्पति । तत्पापं शतधा कूप्या राजा - समनुगच्छति ॥</div><div class="kane-note">पराशर VIII. 28-29.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-2/chapter-xxviii-sannyāsa.html#fn-chapter-xxviii-sannyāsa-73">vol-2-part-2 §chapter-xxviii-sannyāsa</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxviii-sannyāsa.html#p-chapter-xxviii-sannyāsa-51">vol-2-part-2 §chapter-xxviii-sannyāsa</a></td>
+            <td class="verse-context"><small>...he matter and then declare the penance. Parāśara (VIII. 28-29) ordains&lt;sup class="fn-ref"&gt;&lt;a href="#fn...</small></td>
+        </tr>
+
+        <tr id="VIII.31-41">
+            <td class="verse-ref">VIII.31-41</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-iv-penances-for-particular-sins.html#p-chapter-iv-penances-for-particular-sins-29">vol-4 §chapter-iv-penances-for-particular-sins</a></td>
+            <td class="verse-context"><small>...ṣṇu Dh. S. 50. 16-24, Samvarta 130-135, Parāśara VIII. 31-41 (q. in Smrtimuktāphala p. 875, prāyaści...</small></td>
+        </tr>
+
+        <tr id="IX.19">
+            <td class="verse-ref">IX.19</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-iii-the-duties-disabilities-and-privileges-of-varnas.html#p-chapter-iii-the-duties-disabilities-and-privileges-of-varnas-52">vol-2-part-1 §chapter-iii-the-duties-disabilities-and-privileges-of-varnas</a></td>
+            <td class="verse-context"><small>...3 (=Viṣṇu Dh. S. 57. 16 ), Yaj. I. 166, Parāśara IX. 19. Āp. Dh. S. I. 5. 16. 22 says &lt;sup clas...</small></td>
+        </tr>
+
+        <tr id="IX.36">
+            <td class="verse-ref">IX.36</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-vii-upanayana.html#p-chapter-vii-upanayana-130">vol-2-part-1 §chapter-vii-upanayana</a> · <a href="../vol-4/chapter-iv-penances-for-particular-sins.html#p-chapter-iv-penances-for-particular-sins-38">vol-4 §chapter-iv-penances-for-particular-sins</a></td>
+            <td class="verse-context"><small>...āryavācāḥ sarve te dasyavah smṛtāḥ). In Parāśara IX. 36 mlecchas are referred to as eaters of c...</small></td>
+        </tr>
+
+        <tr id="IX.54-55">
+            <td class="verse-ref">IX.54-55</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">सर्वागकेशान्ना सहस्रघृत्य चेदपयेदङ्गुलिद्वयम्। एवं नारीकुमारीणां शिरसो - मुण्डनं स्मृतम्। न स्त्रिया केशकल्पनं न दूरे शयनाशयम्॥</div><div class="kane-note">पराशर IX. 54-55.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-4/chapter-iv-penances-for-particular-sins.html#fn-chapter-iv-penances-for-particular-sins-78">vol-4 §chapter-iv-penances-for-particular-sins</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xii-the-duties-of-a-widow-some-privileges-of-women-and-the-purda-system.html#p-chapter-xii-the-duties-of-a-widow-some-privileges-of-women-and-the-purda-system-8">vol-2-part-1 §chapter-xii-the-duties-of-a-widow-some-privileges-of-women-and-the-purda-system</a> · <a href="../vol-4/chapter-iv-penances-for-particular-sins.html#p-chapter-iv-penances-for-particular-sins-41">vol-4 §chapter-iv-penances-for-particular-sins</a></td>
+            <td class="verse-context"><small>...adha* &amp;c. in the case of women ( *vide* Parāśara IX. 54-55, Angiras 163, Yama 54); (3) one whose h...</small></td>
+        </tr>
+
+        <tr id="IX.61">
+            <td class="verse-ref">IX.61</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-59">vol-3 §chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age</a></td>
+            <td class="verse-context"><small>... Dh. S. 55 deals with secret expiationṣ Parāśara IX. 61 (last verse) laid down&lt;sup class="fn-re...</small></td>
+        </tr>
+
+        <tr id="X">
+            <td class="verse-ref">X</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/35-the-parāshara-smriti.html#p-35-the-parāshara-smriti-9">vol-1-part-1 §35-the-parāshara-smriti</a> · <a href="../vol-3/chapter-v-rāshtra-the-territory-of-a-state.html#p-chapter-v-rāshtra-the-territory-of-a-state-21">vol-3 §chapter-v-rāshtra-the-territory-of-a-state</a> · <a href="../vol-3/chapter-vii-kosha-treasury-or-finance.html#p-chapter-vii-kosha-treasury-or-finance-7">vol-3 §chapter-vii-kosha-treasury-or-finance</a> · <a href="../vol-3/chapter-viii-bala-the-army.html#p-chapter-viii-bala-the-army-4">vol-3 §chapter-viii-bala-the-army</a> · <a href="../vol-3/chapter-viii-bala-the-army.html#p-chapter-viii-bala-the-army-5">vol-3 §chapter-viii-bala-the-army</a></td>
+            <td class="verse-context"><small>... ), on Yāj. III. 250 (Patat-yardham &amp;c. Parāśara X. p. 40). Medhātithi on Manu V. 89 state...</small></td>
+        </tr>
+
+        <tr id="X.3">
+            <td class="verse-ref">X.3</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-v-names-of-all-prāyashchittas.html#p-chapter-v-names-of-all-prāyashchittas-13">vol-4 §chapter-v-names-of-all-prāyashchittas</a></td>
+            <td class="verse-context"><small>...be as large as the egg of a peahen, and Parāśara X.3&lt;sup class="fn-ref"&gt;&lt;a href="#fn-chapter...</small></td>
+        </tr>
+
+        <tr id="X.5-7">
+            <td class="verse-ref">X.5-7</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">सप्तमाये भूमौ मनुष्यवर्गे माणाग्नाय्यों च मोक्षम् । तद्‌द्व्यतिरेकेणापि भुवनभरणार्थसिद्धिर्देवर्षिपित्रूनौषधिनि च चतुर्णामपि वर्णानांमाविर्भावो देवैः । विवेके of द्विजनाथ (Sarasvatibhavana series, Benares, 1927), ये तु कलिवर्य - संप्रायार्थश्विनं धनलोभेषु परिदर्शयन्ति सामुसुपसिद्धानयने ( सपिण्डादिपरिवर्णे ?) च न विवदन्ते । राजोगुद्धपित्चेतसो देवनानां नियास्ते केन शिक्षणीया इत्यपि भासवित्तेपि : सौगतमतानु - सरिभिः सह अग्रेणिति । ibiḍ pp. 28–29.</div><div class="kane-src"><span class="tier sole" title="the only Sanskrit on the only passage citing it — inferred">sole</span> <a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#fn-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-113">vol-3 §chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age</a></div></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-61">vol-3 §chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age</a></td>
+            <td class="verse-context"><small>...rcourse with a cāṇḍāla or śvāpaka woman Parāśara (X. 5–7) prescribes that he has to undergo a fas...</small></td>
+        </tr>
+
+        <tr id="X.26">
+            <td class="verse-ref">X.26</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">पातरत्यधं शरीरस्य यस्य भार्या सुरां पिबेत् । पाति - वृत्यभिधते ॥ वसिष्ठ 21. 15 and</div><div class="kane-note">पराशर X. 26, quoted by विश्वरूप as स्वसुरयगर on या . III. 250 ( पतिलोके न स l. etc.).</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-2/chapter-xxii-bhojana.html#fn-chapter-xxii-bhojana-97">vol-2-part-2 §chapter-xxii-bhojana</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxii-bhojana.html#p-chapter-xxii-bhojana-31">vol-2-part-2 §chapter-xxii-bhojana</a></td>
+            <td class="verse-context"><small>...he Mit. on Yāj. I. 73 quotes a text (of Parāśara X. 26 and Vaṣ Dh. S. 21. 15) that half of the...</small></td>
+        </tr>
+
+        <tr id="X.27">
+            <td class="verse-ref">X.27</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-81">vol-3 §chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age</a></td>
+            <td class="verse-context"><small>...th but the woman raped incurs no blame. Parāśara (X. 27) provides that if a woman is raped by an...</small></td>
+        </tr>
+
+        <tr id="X.40">
+            <td class="verse-ref">X.40</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-i-sin-in-rigveda-conception-of-rita-enumeration-and-classification-of-si.html#p-chapter-i-sin-in-rigveda-conception-of-rita-enumeration-and-classification-of-si-42">vol-4 §chapter-i-sin-in-rigveda-conception-of-rita-enumeration-and-classification-of-si</a></td>
+            <td class="verse-context"><small>...iberality’. Similar provisions occur in Parāśara X. 40, Śatātapa I. 4, Samvarta 203, Hārita (q...</small></td>
+        </tr>
+
+        <tr id="X.41">
+            <td class="verse-ref">X.41</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-viii-shuddhi.html#p-chapter-viii-shuddhi-70">vol-4 §chapter-viii-shuddhi</a></td>
+            <td class="verse-context"><small>... ladle and a mongoose are always pure’. Parāśara (X. 41) states:&lt;sup class="fn-ref"&gt;&lt;a href="#fn...</small></td>
+        </tr>
+
+        <tr id="XI">
+            <td class="verse-ref">XI</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-v-names-of-all-prāyashchittas.html#p-chapter-v-names-of-all-prāyashchittas-3">vol-4 §chapter-v-names-of-all-prāyashchittas</a> · <a href="../vol-4/chapter-v-names-of-all-prāyashchittas.html#p-chapter-v-names-of-all-prāyashchittas-22">vol-4 §chapter-v-names-of-all-prāyashchittas</a></td>
+            <td class="verse-context"><small>...iṣṇu Dh S 54 30, Laugāksigṛhya V.12-13, Parāśara XI,54-55, Vas 24 1-2, Baud Dh S IV 5 8 als...</small></td>
+        </tr>
+
+        <tr id="XI.3">
+            <td class="verse-ref">XI.3</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxii-bhojana.html#p-chapter-xxii-bhojana-13">vol-2-part-2 §chapter-xxii-bhojana</a> · <a href="../vol-4/chapter-iv-penances-for-particular-sins.html#p-chapter-iv-penances-for-particular-sins-41">vol-4 §chapter-iv-penances-for-particular-sins</a></td>
+            <td class="verse-context"><small>...ful and fall in hell. But Devala 61 and Parāśara XI. 3 and 27 allow śūdras (and women) to take...</small></td>
+        </tr>
+
+        <tr id="XI.19">
+            <td class="verse-ref">XI.19</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-71">vol-3 §chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age</a></td>
+            <td class="verse-context"><small>...7"&gt;127&lt;/a&gt;&lt;/sup&gt; 57 16), Yāj I. 166 and Parāśara XI. 19 say that a brāhmaṇa may eat the food of...</small></td>
+        </tr>
+
+        <tr id="XI.21">
+            <td class="verse-ref">XI.21</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">शूद्रकन्यासुत्पन्नो ब्राह्मणेन तु संस्कृतः। संस्कृतस्तु भवेद्दासौ असंस्कृतस्तु नापितः ॥</div><div class="kane-note">पराशर XI. 21.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-ii-varna.html#fn-chapter-ii-varna-144">vol-2-part-1 §chapter-ii-varna</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-ii-varna.html#p-chapter-ii-varna-109">vol-2-part-1 §chapter-ii-varna</a> · <a href="../vol-2-part-2/chapter-xxii-bhojana.html#p-chapter-xxii-bhojana-24">vol-2-part-2 §chapter-xxii-bhojana</a></td>
+            <td class="verse-context"><small>...s the hair on the body below the navel. Parāśara (XI. 21)&lt;sup class="fn-ref"&gt;&lt;a href="#fn-chapter...</small></td>
+        </tr>
+
+        <tr id="XI.22-24">
+            <td class="verse-ref">XI.22-24</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">दुल्लासो ( स्वदासो ?) नापितो गोपः कुम्भकारः कृषीवलः। ब्राह्मणैरपि भोज्यत्वाः पञ्चैते शूद्रयोनयः॥ देवल in गृह . र . p. 337</div><div class="kane-note">पराशर XI. 22-24 are शूद्र - कन्यासमृत्पन्नो ब्राह्मणेन तु संस्कृतः। संस्काराद्यु भवेद्दासो : असंसकारस्तु नापितः। क्षत्रि - याद्भूधन्योपार्ये समृत्युत्पन्नं यः कुतः। स गोपाल इति ज्ञेयो भोज्यो विप्रैर्न संशयः॥ वैश्य - कन्यात्वात्समुत्पन्नो ब्राह्मणेन तु संस्कृतः । स आर्धिक इति ज्ञेयो भोज्यो विप्रैर्न संशयः॥</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-2/chapter-xxii-bhojana.html#fn-chapter-xxii-bhojana-78">vol-2-part-2 §chapter-xxii-bhojana</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxii-bhojana.html#p-chapter-xxii-bhojana-24">vol-2-part-2 §chapter-xxii-bhojana</a></td>
+            <td class="verse-context"><small>...-78"&gt;78&lt;/a&gt;&lt;/sup&gt; It may be stated that Parāśara (XI. 22-24) gives peculiar meanings to the words dā...</small></td>
+        </tr>
+
+        <tr id="XI.27-28">
+            <td class="verse-ref">XI.27-28</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-v-names-of-all-prāyashchittas.html#p-chapter-v-names-of-all-prāyashchittas-34">vol-4 §chapter-v-names-of-all-prāyashchittas</a></td>
+            <td class="verse-context"><small>...this is called the rite of Brahmakūrca. Parāśara (XI. 27–28) appears to hold that Pañcagavya and Bra...</small></td>
+        </tr>
+
+        <tr id="XI.28-34">
+            <td class="verse-ref">XI.28-34</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">गोमूत्रं गोमयं क्षीरं दधि सर्पिः कुशोडकम् । निर्दह पंचगव्यं तु पवित्रां पापमा - ज्ञानम् ।। ... गायया दूधं गोमूत्रं गन्धहारति गोमयम् । आप्यायरस्वति च क्षीरं कृषि - षड्भूमिरापरम् देवस्य त्वा कुशोडकम् ।</div><div class="kane-note">पराशर XI. 28-33. The मत्स्य 267. 5-6 ( सापिण्डया दूध &amp;c. ) are almost the same as पराशर XI. These and other verses of Parāśara ( in all eleven ) are quoted by the Mit. on Yāj. III. 314 and by Aparārka p. 1250.</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-2/chapter-xxii-bhojana.html#fn-chapter-xxii-bhojana-45">vol-2-part-2 §chapter-xxii-bhojana</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxii-bhojana.html#p-chapter-xxii-bhojana-13">vol-2-part-2 §chapter-xxii-bhojana</a></td>
+            <td class="verse-context"><small>...verses to be recited when preparing it. Parāśara XI. 28-34, Devala 62-65, Laghuśātātapa 158-162, M...</small></td>
+        </tr>
+
+        <tr id="XI, 55-56">
+            <td class="verse-ref">XI, 55-56</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-iii-prāyashchitta-its-origin-derivation-and-meaning.html#p-chapter-iii-prāyashchitta-its-origin-derivation-and-meaning-21">vol-4 §chapter-iii-prāyashchitta-its-origin-derivation-and-meaning</a></td>
+            <td class="verse-context"><small>...strength and the nature of the offence. Parāśara (XI, 55–56) provides that the recitation of the Gāy...</small></td>
+        </tr>
+
+        <tr id="XII">
+            <td class="verse-ref">XII</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-1-part-1/35-the-parāshara-smriti.html#p-35-the-parāshara-smriti-10">vol-1-part-1 §35-the-parāshara-smriti</a> · <a href="../vol-4/chapter-iv-penances-for-particular-sins.html#p-chapter-iv-penances-for-particular-sins-20">vol-4 §chapter-iv-penances-for-particular-sins</a> · <a href="../vol-5-part-1/list-of-vratas-and-utsavas.html#p-list-of-vratas-and-utsavas-394">vol-5-part-1 §list-of-vratas-and-utsavas</a></td>
+            <td class="verse-context"><small>... of which most are found in the printed Parāśara XII Jīvānanda pp. 50–51 ) though not all.</small></td>
+        </tr>
+
+        <tr id="XII.5-8">
+            <td class="verse-ref">XII.5-8</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-iv-penances-for-particular-sins.html#p-chapter-iv-penances-for-particular-sins-16">vol-4 §chapter-iv-penances-for-particular-sins</a></td>
+            <td class="verse-context"><small>... Pr. Prakaraṇa p. 15). Vaṣ 23.18-19 and Parāśara XII.5-8 prescribe other prāyaścittas for such p...</small></td>
+        </tr>
+
+        <tr id="XII.9-11">
+            <td class="verse-ref">XII.9-11</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xvii-āhnika-and-āchāra.html#p-chapter-xvii-āhnika-and-āchāra-31">vol-2-part-1 §chapter-xvii-āhnika-and-āchāra</a></td>
+            <td class="verse-context"><small>...vya, divya, mānasa. Dakṣa II. 15-16 and Parāśara XII. 9-11 mention these except bhauma and mānasa ...</small></td>
+        </tr>
+
+        <tr id="XII.12-13">
+            <td class="verse-ref">XII.12-13</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xvii-āhnika-and-āchāra.html#p-chapter-xvii-āhnika-and-āchāra-32">vol-2-part-1 §chapter-xvii-āhnika-and-āchāra</a></td>
+            <td class="verse-context"><small>.... S. 64. 23–24 (quoted above in ṇ1570), Parāśara XII. 12–13 for thiṣ He joins his two hands togethe...</small></td>
+        </tr>
+
+        <tr id="XII.26">
+            <td class="verse-ref">XII.26</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">अस्तमिते च स्नानम् ( वर्जयेत् ) ॥ आप . ध . सू . I 11. 32. 8, बौ . ध . सू . II. 3. 29; राहुदर्शनसंक्रान्तिविवाहात्ययद्दिषु । स्नानमादिंकं कुर्युनिशि काम्यव्रतेषु च ॥ देवल quoted by अपराक pp. 135, 229, स्मृतिच • I. pp. 120, 229; vide</div><div class="kane-note">पराशर XII. 26 to the same effect. .</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-1/chapter-xvii-āhnika-and-āchāra.html#fn-chapter-xvii-āhnika-and-āchāra-64">vol-2-part-1 §chapter-xvii-āhnika-and-āchāra</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xvii-āhnika-and-āchāra.html#p-chapter-xvii-āhnika-and-āchāra-30">vol-2-part-1 §chapter-xvii-āhnika-and-āchāra</a></td>
+            <td class="verse-context"><small>...vii-āhnika-and-āchāra-78"&gt;78&lt;/a&gt;&lt;/sup&gt; (Parāśara XII. 26 and Devala quoted above). Similarly a m...</small></td>
+        </tr>
+
+        <tr id="XII.27">
+            <td class="verse-ref">XII.27</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xvii-āhnika-and-āchāra.html#p-chapter-xvii-āhnika-and-āchāra-23">vol-2-part-1 §chapter-xvii-āhnika-and-āchāra</a></td>
+            <td class="verse-context"><small>...ches (Manu IV. 129, Kullūka thereon and Parāśara XII. 27 ). The obligatory (*nitya*) bath is to ...</small></td>
+        </tr>
+
+        <tr id="XII.28">
+            <td class="verse-ref">XII.28</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xvii-āhnika-and-āchāra.html#p-chapter-xvii-āhnika-and-āchāra-30">vol-2-part-1 §chapter-xvii-āhnika-and-āchāra</a></td>
+            <td class="verse-context"><small>...purāṇa 34. 82-83, Brahmapurāṇa 113. 79, Parāśara XII. 28, if a man vomits or has many purges (te...</small></td>
+        </tr>
+
+        <tr id="XII.47">
+            <td class="verse-ref">XII.47</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">These verses are from गोभिलस्मृति II. 163 and 165 (called कर्मप्रदीप also) quoted in आह्निकतत्त्व p. 327, आह्निकप्र . p. 22, स्मृतिमु . ( आह्निक ) p. 211. I read पापिनं दुर्गमानमन्यं (and not मर्च or मर्त्य as these do).</div><div class="kane-src"><span class="tier sole" title="the only Sanskrit on the only passage citing it — inferred">sole</span> <a href="../vol-2-part-1/chapter-xvii-āhnika-and-āchāra.html#fn-chapter-xvii-āhnika-and-āchāra-26">vol-2-part-1 §chapter-xvii-āhnika-and-āchāra</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-1/chapter-xvii-āhnika-and-āchāra.html#p-chapter-xvii-āhnika-and-āchāra-12">vol-2-part-1 §chapter-xvii-āhnika-and-āchāra</a></td>
+            <td class="verse-context"><small>...xvii-āhnika-and-āchāra-26"&gt;26&lt;/a&gt;&lt;/sup&gt; Parāśara XII. 47 says that one who has built the fire al...</small></td>
+        </tr>
+
+        <tr id="XII.51">
+            <td class="verse-ref">XII.51</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">This is बृहस्पति 38 ( वापी कूपसहस्रेण अश्व० ), पद्मपुराण VI. 33. 37 ( वापी - कूपसहस्रण ) and occurs in E. I. XIII p. 280-281 (sake 690), E. I. XI pp. 382-383</div><div class="kane-note">पराशर XII. 51 is वापीकूपतडाकाद्यैर्वोपजेयसेतैरपि । वर्षा ...... कुष्पति ॥</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-2-part-2/appendix-of-longer-extracts-in-sanskrit.html#fn-appendix-of-longer-extracts-in-sanskrit-87">vol-2-part-2 §appendix-of-longer-extracts-in-sanskrit</a></div></td>
+            <td class="verse-locs"><a href="../vol-2-part-2/chapter-xxv-dāna-gifts.html#p-chapter-xxv-dāna-gifts-33">vol-2-part-2 §chapter-xxv-dāna-gifts</a></td>
+            <td class="verse-context"><small>...chapter-xxv-dāna-gifts-52"&gt;52&lt;/a&gt;&lt;/sup&gt; Parāśara (XII. 51) says that the sin of resuming land alre...</small></td>
+        </tr>
+
+        <tr id="XII.65-67">
+            <td class="verse-ref">XII.65-67</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-iv-penances-for-particular-sins.html#p-chapter-iv-penances-for-particular-sins-14">vol-4 §chapter-iv-penances-for-particular-sins</a></td>
+            <td class="verse-context"><small>Parāśara (XII. 65-67) prescribes for brahmahatyā the penance ...</small></td>
+        </tr>
+
+        <tr id="XII.69-70">
+            <td class="verse-ref">XII.69-70</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/chapter-iii-prāyashchitta-its-origin-derivation-and-meaning.html#p-chapter-iii-prāyashchitta-its-origin-derivation-and-meaning-10">vol-4 §chapter-iii-prāyashchitta-its-origin-derivation-and-meaning</a></td>
+            <td class="verse-context"><small>...0. 41, Yāj. III. 259, Viṣṇu 52. 1–2 and Parāśara XII. 69–70 provide a somewhat similar penance for ...</small></td>
+        </tr>
+
+        <tr id="XII.79">
+            <td class="verse-ref">XII.79</td>
+            <td class="verse-text"><div class="kane-sa" lang="sa">आसनादस्पर्शभावेन सभावात् सहभोजनात् । संकन्यति हि पापानि तैल - बिन्दुरिवम्भसि ॥</div><div class="kane-note">पराशर XII, 79, which is the same as कण्व by परा गा II. 1 p 28 (where सलापात् is read for सम्भावात् ).</div><div class="kane-src"><span class="tier cited" title="Kane names this address beside these words">cited</span> <a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#fn-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-105">vol-3 §chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age</a></div></td>
+            <td class="verse-locs"><a href="../vol-3/chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age.html#p-chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age-58">vol-3 §chapter-xxxiv-kalivarjya-actions-forbidden-in-the-kali-age</a></td>
+            <td class="verse-context"><small>...dden-in-the-kali-age-104"&gt;104&lt;/a&gt;&lt;/sup&gt; Parāśara (XII. 79) no doubt&lt;sup class="fn-ref"&gt;&lt;a href="#f...</small></td>
+        </tr>
+
+        <tr id="13">
+            <td class="verse-ref">13</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/general-index.html#p-general-index-3">vol-3 §general-index</a></td>
+            <td class="verse-context"><small>...ti, work of (in prose) 452n, 602ṇ Bṛhat-Parāśara 13, 98, 170, 173, 197, 209, 211, 391, 860,...</small></td>
+        </tr>
+
+        <tr id="84">
+            <td class="verse-ref">84</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/general-index-of-vol-iv.html#p-general-index-of-vol-iv-20">vol-4 §general-index-of-vol-iv</a></td>
+            <td class="verse-context"><small>...housand times is p for all sins, acc to Parāśara 84, relation of p to punishment. 69, 71, r...</small></td>
+        </tr>
+
+        <tr id="104">
+            <td class="verse-ref">104</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/general-index-of-vol-iv.html#p-general-index-of-vol-iv-4">vol-4 §general-index-of-vol-iv</a></td>
+            <td class="verse-context"><small>...rvaṅganāgama', prāyaścittas for, acc to Parāśara 104, punishment and prāyaścitta for, are sa...</small></td>
+        </tr>
+
+        <tr id="113">
+            <td class="verse-ref">113</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/general-index-of-vol-iv.html#p-general-index-of-vol-iv-42">vol-4 §general-index-of-vol-iv</a></td>
+            <td class="verse-context"><small>...-Manu 222n, 285n, 371n, 390, 532 Vṛddha-Parāśara 113, 503n Vṛddha-Śātātapa 441n Vṛddha-Vasiṣ...</small></td>
+        </tr>
+
+        <tr id="286">
+            <td class="verse-ref">286</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-4/general-index-of-vol-iv.html#p-general-index-of-vol-iv-3">vol-4 §general-index-of-vol-iv</a></td>
+            <td class="verse-context"><small>...ely on the words of the śāstra 67 Bṛhat-Parāśara 286 304, 364, 386, 392, 425 n, 473. Bṛhat-s...</small></td>
+        </tr>
+
+        <tr id="592">
+            <td class="verse-ref">592</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-131">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>...Āyurdaya 592; re- fers to Horāśāstra of Parāśara 592ṇ Manjuśrī-mūlakalpa 1040 (has late elem...</small></td>
+        </tr>
+
+        <tr id="791">
+            <td class="verse-ref">791</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-3/general-index.html#p-general-index-11">vol-3 §general-index</a></td>
+            <td class="verse-context"><small>...one's own mother among 859&lt;sup&gt;n&lt;/sup&gt;. Parāśara 791. Parāśara-gṛhyasūtra 828&lt;sup&gt;n&lt;/sup&gt;, 8...</small></td>
+        </tr>
+
+        <tr id="1266">
+            <td class="verse-ref">1266</td>
+            <td class="verse-text"><span class="kane-none">no text found</span></td>
+            <td class="verse-locs"><a href="../vol-5-part-2/index-to-vol-v.html#p-index-to-vol-v-131">vol-5-part-2 §index-to-vol-v</a></td>
+            <td class="verse-context"><small>...urāṇa 1520n; some verses identical with Parāśarasmṛti 1266n; three theories about creation in 1515...</small></td>
+        </tr>
+            </tbody>
+        </table>
+    </div>
+
+    
+    <footer class="container-fluid pt-4" style="background-color:#2e4144">
+        <div class="row border-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img src="https://sanatana.in/mbta/public/images/Homepage_html/images/layer_8.png" alt="">
+            </div>
+            <div class="col-md-5 text-white">
+                <p>The divine knowledge and wisdom of our shastras is the only thing eternal,
+                   which was and which will remain ever-present in this gods creation.
+                   Our endeavours are to preserve this knowledge.</p>
+            </div>
+            <div class="col-md-1 text-white">
+                <div class="d-flex" style="height: 75px;">
+                    <div class="vr"></div>
+                </div>
+            </div>
+            <div class="col-md-3 text-white">
+                <i class="fa-solid fa-globe"></i>&emsp;
+                <a href="https://sanatanasampatti.in" class="text-light">www.sanatanasampatti.in</a><br>
+                <i class="fa-solid fa-envelope"></i>&emsp;
+                <a href="" class="text-light">sriranga.yoga@gmail.com</a>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center py-3 mb-4 align-items-center border-bottom">
+            <div class="col-md-2 text-white fs-4 text-center">Project</div>
+            <div class="col-md-2 text-white fs-4 text-center">Our Mission</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contribute</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contact Us</div>
+        </div>
+        <div class="row">
+            <p class="col-md-6 fs-6 text-start text-light">
+                <small>&copy; 2026 Sanatanasampatti</small>
+            </p>
+            <p class="col-md-6 fs-6 text-end text-light">
+                <a class="text-white" rel="nofollow" href="http://www.srirangadigital.com" target="_blank">
+                    <img src="https://sanatana.in/mbta/public/images/logo.png" alt="sriranga logo" />
+                    <small>Designed, Developed and Maintained by Sriranga Digital</small>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+</body>
+</html>

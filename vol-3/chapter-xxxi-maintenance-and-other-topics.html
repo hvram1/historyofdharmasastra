@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <!-- MDB UI Kit -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/fonts.css?v=1.2">
+    <link rel="stylesheet" href="https://sanatana.in/mbta/public/css/navbar.css?v=2.4">
+
+    <title>Chapter XXXI. Maintenance and Other Topics — Volume III — History of Dharmaśāstra</title>
+    <style>
+    :root {
+        --saffron:        #D4600A;
+        --saffron-light:  #F0924A;
+        --saffron-wash:   rgba(212, 96, 10, 0.07);
+        --indigo:         #2E5FA3;
+        --indigo-dark:    #1C3D70;
+        --maroon:         #7A1E1E;
+        --amber:          #C97A1A;
+        --ink:            #1A1209;
+        --ink-secondary:  #4A3B2A;
+        --parchment:      #FDFAF4;
+        --parchment-mid:  #F5EFE2;
+        --rule:           rgba(180, 130, 60, 0.22);
+        --shadow:         0 2px 18px rgba(90, 50, 10, 0.08);
+        --font-devanagari: 'Tiro Devanagari Sanskrit', 'Siddhanta', 'Noto Sans Devanagari', serif;
+        --font-roman:      'Junicode', Georgia, serif;
+    }
+
+    body {
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: var(--font-roman);
+    }
+
+    .devanagari {
+        font-family: var(--font-devanagari);
+    }
+
+    /* ── Navbar overrides ── */
+    .navbar-ontop { z-index: 1031; }
+    .hdclr { color: var(--saffron); }
+    .engpara { font-family: 'Open Sans', sans-serif; }
+
+    /* ── Layout ── */
+    .dh-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .dh-content {
+        flex: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 60px;
+        background: var(--parchment);
+        box-shadow: var(--shadow);
+        min-height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        .dh-content { padding: 24px 20px; }
+        .dh-wrapper { flex-direction: column; }
+    }
+
+    /* ── TOC Sidebar ── */
+    .toc-sidebar {
+        position: sticky;
+        top: 80px;
+        width: 280px;
+        min-width: 280px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding: 20px 16px;
+        margin-right: 24px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        scrollbar-width: thin;
+    }
+
+    .toc-title {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--saffron-light);
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list li {
+        padding: 4px 0;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-list li.toc-l3 {
+        padding-left: 16px;
+        font-size: 0.78rem;
+    }
+
+    .toc-list li a {
+        color: var(--ink-secondary);
+        text-decoration: none;
+        transition: color 0.15s;
+    }
+
+    .toc-list li a:hover { color: var(--saffron); }
+
+    .toc-list li.active {
+        border-left-color: var(--saffron);
+    }
+
+    .toc-list li.active a {
+        color: var(--saffron);
+        font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-sidebar { display: none; }
+    }
+
+    /* ── Mobile TOC Toggle ── */
+    .toc-mobile-toggle {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1050;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--saffron);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+        .toc-mobile-toggle { display: block; }
+    }
+
+    /* ── Section Headings ── */
+    .section-heading {
+        font-family: var(--font-roman);
+        color: var(--saffron);
+        font-weight: 700;
+        margin: 48px 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--rule);
+        letter-spacing: 0.5px;
+        scroll-margin-top: 80px;
+    }
+
+    h2.section-heading { font-size: 1.6rem; }
+
+    h3.section-heading {
+        font-size: 1.25rem;
+        border-left: 4px solid var(--saffron-light);
+        border-bottom: none;
+        padding: 8px 16px;
+        background: var(--saffron-wash);
+        border-radius: 0 5px 5px 0;
+    }
+
+    /* ── Prose ── */
+    .prose {
+        font-family: var(--font-roman);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+        color: var(--ink);
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    .prose em { color: var(--maroon); }
+
+    .prose:target {
+        background: rgba(212, 96, 10, 0.12);
+        border-left: 4px solid var(--saffron);
+        padding-left: 16px;
+        margin-left: -20px;
+        border-radius: 0 6px 6px 0;
+        animation: target-pulse 2s ease-out;
+    }
+
+    @keyframes target-pulse {
+        0%   { background: rgba(212, 96, 10, 0.30); }
+        100% { background: rgba(212, 96, 10, 0.12); }
+    }
+
+    /* ── Footnote References ── */
+    .fn-ref {
+        font-size: 0.75em;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    .fn-ref a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 0 2px;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: color 0.15s;
+    }
+
+    .fn-ref a:hover { color: var(--indigo); }
+
+    /* ── Synopsis Box ── */
+    .synopsis-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron-light);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .synopsis-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .synopsis-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .synopsis-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .synopsis-box.open .synopsis-toggle i {
+        transform: rotate(90deg);
+    }
+    .synopsis-body {
+        display: none;
+        padding: 0 20px 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+    }
+    .synopsis-box.open .synopsis-body { display: block; }
+    .synopsis-body p { margin: 0; }
+    .synopsis-attribution {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: var(--ink-secondary);
+        opacity: 0.7;
+        font-style: italic;
+    }
+    .synopsis-audio {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    .synopsis-play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--saffron);
+        background: none;
+        color: var(--saffron);
+        cursor: pointer;
+        font-size: 0.7rem;
+        transition: background 0.2s, color 0.2s;
+        padding: 0;
+    }
+    .synopsis-play-btn:hover {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn.playing {
+        background: var(--saffron);
+        color: #fff;
+    }
+    .synopsis-play-btn i { padding-left: 2px; }
+
+    /* ── Index Terms Panel ── */
+    .index-terms-box {
+        margin: 0 0 36px;
+        border: 1px solid var(--rule);
+        border-left: 4px solid var(--saffron);
+        border-radius: 6px;
+        background: var(--parchment-mid);
+        overflow: hidden;
+    }
+    .index-terms-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        letter-spacing: 0.3px;
+    }
+    .index-terms-toggle:hover { background: rgba(212, 96, 10, 0.04); }
+    .index-terms-toggle i {
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    .index-terms-box.open .index-terms-toggle i {
+        transform: rotate(90deg);
+    }
+    .index-terms-body {
+        display: none;
+        padding: 0 20px 16px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .index-terms-box.open .index-terms-body { display: block; }
+    .index-terms-dl {
+        margin: 0;
+        padding: 0;
+    }
+    .index-terms-dl dt {
+        font-family: var(--font-roman);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink-primary);
+        margin-top: 8px;
+    }
+    .index-terms-dl dd {
+        margin: 2px 0 0 16px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.82rem;
+        color: var(--ink-secondary);
+        line-height: 1.5;
+    }
+    .nyaya-heading {
+        font-family: var(--font-roman);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--saffron);
+        margin: 16px 0 4px;
+        padding-top: 12px;
+        border-top: 1px solid var(--rule);
+    }
+
+    /* ── Inline Index Popovers ── */
+    .idx-term {
+        border-bottom: 1px dotted var(--saffron-light);
+        cursor: help;
+        position: relative;
+    }
+    .idx-term:hover::after {
+        content: attr(data-def);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        background: rgba(44, 36, 22, 0.92);
+        color: #F5ECD8;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        max-width: 280px;
+        z-index: 100;
+        white-space: normal;
+        line-height: 1.4;
+        pointer-events: none;
+    }
+
+    /* ── Structured Version Banner ── */
+    .structured-banner {
+        margin: 0 0 28px;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, rgba(212, 96, 10, 0.06) 0%, rgba(212, 96, 10, 0.02) 100%);
+        border: 1px solid var(--saffron-light);
+        border-radius: 6px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.88rem;
+        color: var(--ink-secondary);
+        line-height: 1.6;
+    }
+    .structured-banner i { color: var(--saffron); margin-right: 4px; }
+    .structured-banner a { color: var(--indigo); font-weight: 600; text-decoration: none; }
+    .structured-banner a:hover { text-decoration: underline; }
+
+    /* ── Footnotes Section ── */
+    .footnotes-section {
+        margin: 32px 0 48px;
+        padding: 20px 24px;
+        background: var(--parchment-mid);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .footnotes-section hr {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 0 0 16px;
+    }
+
+    .footnotes-list {
+        padding-left: 24px;
+        margin: 0;
+    }
+
+    .footnote-item {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        color: var(--ink-secondary);
+        scroll-margin-top: 80px;
+    }
+
+    .footnote-item:target {
+        background: rgba(212, 96, 10, 0.1);
+        border-radius: 4px;
+        padding: 4px 6px;
+        margin-left: -6px;
+    }
+
+    .fn-back {
+        color: var(--saffron-light);
+        text-decoration: none;
+        font-size: 0.85em;
+        margin-left: 4px;
+    }
+
+    .fn-back:hover { color: var(--saffron); }
+
+    /* ── Reference Links ── */
+    a.ref {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--saffron-light);
+        transition: all 0.15s;
+    }
+
+    a.ref:hover {
+        color: var(--saffron);
+        border-bottom-style: solid;
+    }
+
+    a.mbta-ext {
+        color: var(--indigo);
+        font-size: 0.7em;
+        margin-left: 2px;
+        opacity: 0.5;
+        text-decoration: none;
+        vertical-align: super;
+    }
+    a.mbta-ext:hover { opacity: 1; color: var(--saffron); }
+
+    /* ── References Panel (sidebar) ── */
+    .refs-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .refs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .refs-list li {
+        padding: 3px 0;
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .ref-source-link {
+        font-weight: 600;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .ref-source-link:hover {
+        text-decoration: underline;
+    }
+
+    .ref-verse-link {
+        color: var(--indigo);
+        text-decoration: none;
+        font-size: 0.76rem;
+    }
+
+    .ref-verse-link:hover {
+        text-decoration: underline;
+        color: var(--saffron);
+    }
+
+    .ref-verses {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Timeline panel ── */
+    .timeline-panel {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .timeline-list li {
+        padding: 2px 0;
+        font-size: 0.76rem;
+        line-height: 1.4;
+        position: relative;
+        padding-left: 14px;
+    }
+
+    .timeline-list li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--saffron);
+    }
+
+    .timeline-list li.tl-approximate::before {
+        background: transparent;
+        border: 2px solid var(--saffron);
+        width: 4px;
+        height: 4px;
+    }
+
+    .timeline-list li.tl-century::before {
+        background: transparent;
+        border: 2px dashed var(--saffron);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+
+    .tl-dot-link {
+        text-decoration: none;
+        color: var(--ink);
+        display: block;
+    }
+
+    .tl-dot-link:hover {
+        color: var(--saffron);
+    }
+
+    .tl-year {
+        font-weight: 600;
+        color: var(--saffron);
+        font-size: 0.72rem;
+        min-width: 70px;
+        display: inline-block;
+    }
+
+    .tl-label {
+        color: var(--ink-secondary);
+        font-size: 0.72rem;
+    }
+
+    .tl-view-link, .tl-more {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.72rem;
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .tl-view-link:hover, .tl-more:hover {
+        text-decoration: underline;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb-bar {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+        background: var(--parchment-mid);
+        border-left: 4px solid var(--saffron);
+        border-radius: 0 6px 6px 0;
+    }
+
+    .breadcrumb-bar a {
+        color: var(--saffron);
+        text-decoration: none;
+    }
+
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+
+    .breadcrumb-bar .sep {
+        color: var(--amber);
+        margin: 0 8px;
+    }
+
+    .breadcrumb-bar .current {
+        color: var(--ink-secondary);
+    }
+
+    /* ── Chapter Navigation ── */
+    .chapter-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        margin-top: 48px;
+        border-top: 2px solid var(--rule);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .chapter-nav a {
+        color: var(--saffron);
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        transition: all 0.2s;
+        max-width: 45%;
+    }
+
+    .chapter-nav a:hover {
+        background: var(--saffron-wash);
+        border-color: var(--saffron-light);
+    }
+
+    .nav-prev { text-align: left; }
+    .nav-next { text-align: right; margin-left: auto; }
+
+    .page-range {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+    }
+
+    /* ── Volume Cards (Landing) ── */
+    .vol-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .vol-card {
+        display: flex;
+        flex-direction: column;
+        padding: 28px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        transition: all 0.25s;
+    }
+
+    .vol-card:hover {
+        border-color: var(--saffron-light);
+        box-shadow: 0 4px 24px rgba(212, 96, 10, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .vol-num {
+        font-family: var(--font-roman);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--saffron);
+        margin-bottom: 8px;
+    }
+
+    .vol-subtitle {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        line-height: 1.5;
+        flex: 1;
+    }
+
+    .vol-chapters {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-secondary);
+        margin-top: 12px;
+    }
+
+    /* ── Chapter Cards (Volume Index) ── */
+    .chapter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .chapter-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--parchment);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .chapter-card:hover {
+        border-color: var(--saffron-light);
+        background: var(--saffron-wash);
+    }
+
+    .card-num {
+        font-family: var(--font-roman);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--saffron);
+        min-width: 36px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-family: var(--font-roman);
+        font-size: 0.95rem;
+        color: var(--ink);
+        flex: 1;
+    }
+
+    .card-pages {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.75rem;
+        color: var(--ink-secondary);
+    }
+
+    /* ── Landing Hero ── */
+    .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-family: var(--font-roman);
+        font-size: 2.4rem;
+        color: var(--saffron);
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .hero .devanagari-title {
+        font-family: var(--font-devanagari);
+        font-size: 1.8rem;
+        color: var(--ink);
+        margin-bottom: 16px;
+    }
+
+    .hero .author {
+        font-family: var(--font-roman);
+        font-size: 1.1rem;
+        color: var(--ink-secondary);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .hero .desc {
+        font-family: var(--font-roman);
+        font-size: 1rem;
+        color: var(--ink-secondary);
+        line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer { margin-top: 48px; }
+</style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-ontop" data-base-url="https://sanatana.in/mbta/">
+      <div class="container-fluid">&emsp;&emsp;
+      <a href="../index.html" class="navbar-brand" style="text-decoration:none;">
+        <span class="devanagari ms-3" style="font-size:1.5rem; color:var(--saffron); font-weight:700;">धर्मशास्त्रम्</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="../index.html">धर्मशास्त्रम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5 active" href="../index.html">खण्डाः</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in/mbta/">महाभारतम्</a>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link fs-5" href="https://sanatana.in">सनातनम्</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+
+    <div class="dh-wrapper container-xl">
+        <nav id="toc" class="toc-sidebar">
+<div class="refs-panel">
+<h5 class="toc-title">References</h5>
+<ul class="refs-list">
+<li><a href="../refs/brihaspati.html" class="ref-source-link">Bṛhaspati</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/gautama.html" class="ref-source-link">Gautama Dharmasūtra</a> <span class="ref-verses"><a href="../refs/gautama.html#28.37" class="ref-verse-link">28.37</a></span></li>
+<li><a href="../refs/hodh.html" class="ref-source-link">History of Dharmaśāstra</a> <span class="ref-verses"><a href="../refs/hodh.html#vol. II" class="ref-verse-link">vol. II</a>, <a href="../refs/hodh.html#vol. II pp. 571-73" class="ref-verse-link">vol. II pp. 571-73</a>, <a href="../refs/hodh.html#vol II" class="ref-verse-link">vol II</a></span></li>
+<li><a href="../refs/kautilya.html" class="ref-source-link">Kauṭilya Arthaśāstra</a> <span class="ref-verses"><a href="../refs/kautilya.html#II.1" class="ref-verse-link">II.1</a></span></li>
+<li><a href="../refs/katyayana.html" class="ref-source-link">Kātyāyana</a> <span class="ref-verses"><a href="../refs/katyayana.html#922" class="ref-verse-link">922</a></span></li>
+<li><a href="../refs/manu.html" class="ref-source-link">Manusmṛti</a> <span class="ref-verses"><a href="../refs/manu.html#VIII.389" class="ref-verse-link">VIII.389</a>, <a href="../refs/manu.html#III.72" class="ref-verse-link">III.72</a>, <a href="../refs/manu.html#IX.202" class="ref-verse-link">IX.202</a>, <a href="../refs/manu.html#IX.188" class="ref-verse-link">IX.188</a>, <a href="../refs/manu.html#XI.176" class="ref-verse-link">XI.176</a>, <a href="../refs/manu.html#XI.189" class="ref-verse-link">XI.189</a> <a href="../refs/manu.html" class="ref-verse-link">+6</a></span></li>
+<li><a href="../refs/medhatithi.html" class="ref-source-link">Medhātithi</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/mitakshara.html" class="ref-source-link">Mitākṣarā</a> <span class="ref-verses"><a href="../refs/mitakshara.html#i" class="ref-verse-link">i</a></span></li>
+<li><a href="../refs/narada.html" class="ref-source-link">Nārada</a> <span class="ref-verses"><a href="../refs/narada.html#vi" class="ref-verse-link">vi</a></span></li>
+<li><a href="../refs/parasara.html" class="ref-source-link">Parāśara</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/vasishtha.html" class="ref-source-link">Vasiṣṭha Dharmasūtra</a> <span class="ref-verses"></span></li>
+<li><a href="../refs/vishnu_dh.html" class="ref-source-link">Viṣṇu Dharmasūtra</a> <span class="ref-verses"><a href="../refs/vishnu_dh.html#V.163" class="ref-verse-link">V.163</a>, <a href="../refs/vishnu_dh.html#42" class="ref-verse-link">42</a></span></li>
+<li><a href="../refs/yajnavalkya.html" class="ref-source-link">Yājñavalkya</a> <span class="ref-verses"><a href="../refs/yajnavalkya.html#I.224" class="ref-verse-link">I.224</a>, <a href="../refs/yajnavalkya.html#II.140-142" class="ref-verse-link">II.140-142</a>, <a href="../refs/yajnavalkya.html#I.72" class="ref-verse-link">I.72</a>, <a href="../refs/yajnavalkya.html#I.70" class="ref-verse-link">I.70</a>, <a href="../refs/yajnavalkya.html#I.67" class="ref-verse-link">I.67</a>, <a href="../refs/yajnavalkya.html#II.290" class="ref-verse-link">II.290</a> <a href="../refs/yajnavalkya.html" class="ref-verse-link">+2</a></span></li>
+<li><a href="../refs/apastamba.html" class="ref-source-link">Āpastamba Dharmasūtra</a> <span class="ref-verses"><a href="../refs/apastamba.html#I.10.28.9" class="ref-verse-link">I.10.28.9</a></span></li>
+</ul>
+</div>
+<div class="timeline-panel">
+<h5 class="toc-title">Timeline</h5>
+<ul class="timeline-list">
+<li class="tl-century"><a href="#p-chapter-xxxi-maintenance-and-other-topics-16" class="tl-dot-link"><span class="tl-year">701 CE</span> <span class="tl-label">Bṛhaspati</span></a></li>
+<li class="tl-century"><a href="#p-chapter-xxxi-maintenance-and-other-topics-16" class="tl-dot-link"><span class="tl-year">1701 CE</span> <span class="tl-label">Bṛhaspati</span></a></li>
+<li class="tl-exact"><a href="#p-chapter-xxxi-maintenance-and-other-topics-16" class="tl-dot-link"><span class="tl-year">1758 CE</span> <span class="tl-label">Bṛhaspati</span></a></li>
+<li class="tl-exact"><a href="#p-chapter-xxxi-maintenance-and-other-topics-16" class="tl-dot-link"><span class="tl-year">1775 CE</span> <span class="tl-label">Bṛhaspati</span></a></li>
+<li class="tl-exact"><a href="#p-chapter-xxxi-maintenance-and-other-topics-16" class="tl-dot-link"><span class="tl-year">1812 CE</span> <span class="tl-label">Bṛhaspati</span></a></li>
+<li class="tl-century"><a href="#p-chapter-xxxi-maintenance-and-other-topics-18" class="tl-dot-link"><span class="tl-year">1901 CE</span> <span class="tl-label">Mitākṣarā</span></a></li>
+<li class="tl-century"><a href="#p-chapter-xxxi-maintenance-and-other-topics-20" class="tl-dot-link"><span class="tl-year">1901 CE</span> <span class="tl-label">Another provision in the draft</span></a></li>
+</ul>
+<a href="chapter-xxxi-maintenance-and-other-topics-timeline.html" class="tl-view-link">View full timeline &rarr;</a>
+</div>
+<h5 class="toc-title">Sections</h5>
+<ul class="toc-list">
+<li class="toc-l2"><a href="#chapter-xxxi-maintenance-and-other-topics">Chapter XXXI. Maintenance and Other Topics</a></li>
+</ul>
+</nav>
+        <main class="dh-content">
+            
+    <div class="breadcrumb-bar">
+        <a href="../index.html">Home</a>
+        <span class="sep">›</span>
+        <a href="index.html">Volume III</a>
+        <span class="sep">›</span>
+        <span class="current">Chapter XXXI. Maintenance and Other Topics</span>
+    </div>
+    
+            <h1 class="text-center" style="font-family: var(--font-roman); font-size: 2rem; color: var(--saffron); margin-bottom: 8px;">
+                Chapter XXXI. Maintenance and Other Topics
+            </h1>
+            <p class="text-center" style="font-family: 'Open Sans', sans-serif; color: var(--ink-secondary); font-size: 0.9rem; margin-bottom: 36px;">
+                Volume III <span class="page-range">pp. 803–824</span>
+            </p>
+
+            
+
+            
+
+            <h2 id="chapter-xxxi-maintenance-and-other-topics" class="section-heading">Chapter XXXI. Maintenance and Other Topics</h2>
+<p class="prose" id="p-chapter-xxxi-maintenance-and-other-topics-1"><strong>MAINTENANCE AND OTHER TOPICS</strong></p>
+<p class="prose" id="p-chapter-xxxi-maintenance-and-other-topics-2">The subject of maintenance occupies an important place in modern Hindu Law. A brief statement of the law of the smṛtis and the digests on this subject must be made here.</p>
+<p class="prose" id="p-chapter-xxxi-maintenance-and-other-topics-3">The liability to provide maintenance for certain persons arises under the ancient Hindu Law in either of two ways viz. (1) on account of bare relationship between the parties or (2) on the ground of the possession of property. A verse<sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-1" id="fnref-chapter-xxxi-maintenance-and-other-topics-1">1</a></sup> quoted by <a class="ref" href="../refs/medhatithi.html" data-source="medhatithi" data-ref="" title="Medhātithi">Medhātithi</a> on <a class="ref" href="../refs/manu.html#III.72" data-source="manu" data-ref="III.72" title="Manusmṛti III.72">Manu III. 72</a> and IV. 251, by the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> on <a class="ref" href="../refs/yajnavalkya.html#I.224" data-source="yajnavalkya" data-ref="I.224" title="Yājñavalkya I.224">Yāj. I. 224</a> and II. 175 and occurring in some msṣ of the <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manusmṛti</a> after XI 10 provides, ' <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a> declares that one must maintain one's aged parents, a virtuous wife and a minor son by doing even a hundred bad actṣ' From this verse it follows that irrespective of the possession of property there is a personal legal obligation on the father to maintain his minor son, on the husband to maintain his wife and on the son to maintain his aged parentṣ Bauḍ Dh. S (II. 2. 48) goes further and provides<sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-2" id="fnref-chapter-xxxi-maintenance-and-other-topics-2">2</a></sup> that a son is bound to maintain a mother even if she be patita. To the same effect are <a class="ref" href="../refs/apastamba.html#I.10.28.9" data-source="apastamba" data-ref="I.10.28.9" title="Āpastamba Dharmasūtra I.10.28.9">Āp Dh. S I. 10. 28. 9</a> and Vaṣ 13. 47. <a class="ref" href="../refs/manu.html#VIII.389" data-source="manu" data-ref="VIII.389" title="Manusmṛti VIII.389">Manu VIII. 389</a> prescribes that the man who abandons and does not maintain his parents, wife and son, when they are not <em>patita</em>, should be fined 600 <em>panas</em> by the king. <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nār.</a> also (S. B. E. 33 p. 184 verse 95) provides punishment for such a husbanḍ Yaj. I. 76 states that if a man abandoned a wife who was obedient, diligent, the mother of a son and agreeable in speech he was to be made to give one third of his property to the wife and to maintain her, if he had no property. <a class="ref" href="../refs/vishnu_dh.html#V.163" data-source="vishnu_dh" data-ref="V.163" title="Viṣṇu Dharmasūtra V.163">Viṣṇu Dh. S. V. 163</a> made the husband punishable like a thief if he abandoned his blameless wife. <a class="ref" href="../refs/kautilya.html#II.1" data-source="kautilya" data-ref="II.1" title="Kauṭilya Arthaśāstra II.1">Kaut. II. 1</a> prescribes <sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-3" id="fnref-chapter-xxxi-maintenance-and-other-topics-3">3</a></sup> that if a man being able fails to maintain his child or wife, parents, minor brothers and sisters, unmarried daughters, widowed daughters, when these are not <em>patita</em>, should be fined twelve <em>panas</em>. These dicta have been followed even by modern courts in India. In <em>Subbarayana</em> v. <em>Subbakka</em> <sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-4" id="fnref-chapter-xxxi-maintenance-and-other-topics-4">4</a></sup> it has been held that a son is bound to maintain his aged mother whether he has inherited property from his father or not</p>
+<p class="prose" id="p-chapter-xxxi-maintenance-and-other-topics-4">The manager of a joint Hindu family is under a legal obligation to maintain all male members of the family, their wives and children <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> states <sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-5" id="fnref-chapter-xxxi-maintenance-and-other-topics-5">5</a></sup> that if any one among several (undivided) brothers dies without issue or becomes an ascetic the rest should take the estate and give maintenance to his wives till their death, provided they keep the bed of their husband unsullied but that they may cut off the maintenance if they (wives) behave otherwise. This is because the surviving brothers succeed to the estate in which the deceased had an interest during his lifetime. This is made quite clear <sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-6" id="fnref-chapter-xxxi-maintenance-and-other-topics-6">6</a></sup> in the Sṃ C. explaining a verse of <a class="ref" href="../refs/narada.html#vi" data-source="narada" data-ref="vi" title="Nārada vi">Nār. vi</a>z. ‘widows that are virtuous must be maintained with food and raiment by the eldest brother (of the deceased) or by the father-in-law or by any other gotraja’ on which it remarks: “The words ‘by him who takes the estate’ must be understood before all the words such as ‘the eldest brother’”. <a class="ref" href="../refs/katyayana.html#922" data-source="katyayana" data-ref="922" title="Kātyāyana 922">Kāt. (922)</a> states, ‘when the husband goes to heaven the wife is entitled only to food and raiment if he was unseparated or she may get a share in (ancestral) property till her death’. The Sṃ C. remarks that as maintenance depends upon taking wealth, <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kāt.</a> provides two alternativeṣ ‘In cases too numerous to cite this has been followed by all High Courtṣ Similarly an heir is bound to maintain out of the estate taken by him those persons whom the deceased was legally or morally bound to maintaiṇ Those persons who are excluded from inheritance or partition are entitled to maintenance and their virtuous wives and unmarried daughters also are entitled to be maintained (<a class="ref" href="../refs/yajnavalkya.html#II.140-142" data-source="yajnavalkya" data-ref="II.140-142" title="Yājñavalkya II.140-142">Yāj. II. 140-142</a> <a class="ref" href="../refs/manu.html#IX.202" data-source="manu" data-ref="IX.202" title="Manusmṛti IX.202">Manu IX. 202</a>, Vas 17. 54). The Bauḍ Dh. S. (II. 2. 43-46)<sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-7" id="fnref-chapter-xxxi-maintenance-and-other-topics-7">7</a></sup> provides that those who are past undertaking transactions (i. e. are very old) should be given food and raiment and also those who are blind, idiotic, impotent, immersed in vice and suffering from (incurable) diseases, and those that engage in prohibited acts, except the patita and his issue. Devala (quoted in the V Mayūkha p. 165) has a similar passage, ‘when the father is dead (or even when being alive he makes a partition) the impotent, the leper, the lunatic, the idiot, the blind, an outcast and his offspring, a person wearing a heretical sect mark—these are not entitled to a share of the heritage; to these except the patita food and raiment are to be given’. These persons suffer from a personal disqualification and maintenance is given to them in lieu of a share not because their status is denied but because they are incapable of management and enjoyment of property. Vide Raja Ram Rao v. Raja of Pithapur.</p>
+<p class="prose" id="p-chapter-xxxi-maintenance-and-other-topics-5">The general principle is that an heir is legally bound to provide out of the estate taken by him as heir maintenance for those persons, male or female, whom the late owner was morally or legally bound to maintaiṇ For example, if there is no ancestral property the father-in-law who possesses only self- acquired property is not legally bound to maintain his daughter-in-law (widow of a predeceased son); but on the death of the father-in-law, his heir i. e. son, widow, or daughter would be legally bound to maintain a widowed daughter-in-law.<sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-9" id="fnref-chapter-xxxi-maintenance-and-other-topics-9">9</a></sup> The Bombay High Court, however, adds the condition that the predeceased son must have been in union with his father when he died ; vide 23 Boṃ 608.</p>
+<p class="prose" id="p-chapter-xxxi-maintenance-and-other-topics-6">By Act XVIII of 1937 it has been provided that in a family governed by the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mitākṣarā</a> the widows of deceased coparceners such as the daughter-in-law and the grand-daughter-in-law are entitled to their husband's interest. The Act does not expressly state that their rights to maintenance are taken away. In many cases such widows may prefer to take a share instead of being allotted only maintenance and so far the law of maintenance will tend to become obsolete.</p>
+<p class="prose" id="p-chapter-xxxi-maintenance-and-other-topics-7">Another important question is what is the effect of unchastity on the right to maintenance? As regards the wife's right to maintenance and the effect of unchastity thereon during the husband's lifetime, vide <a class="ref" href="../refs/hodh.html#vol. II pp. 571-73" data-source="hodh" data-ref="vol. II pp. 571-73" title="History of Dharmaśāstra vol. II pp. 571-73">H. of Dh. vol. II pp. 571-73</a> above. <a class="ref" href="../refs/manu.html#XI.176" data-source="manu" data-ref="XI.176" title="Manusmṛti XI.176">Manu XI. 176</a> says that a wife guilty of adultery should be confined by the husband in the same house and should be made to undergo the same penance as a man guilty of adultery has to undergo; <a class="ref" href="../refs/yajnavalkya.html#I.70" data-source="yajnavalkya" data-ref="I.70" title="Yājñavalkya I.70">Yāj. I. 70</a> also says that a wife guilty of adultery should be deprived of her status as a wife as to wealth and religious observances, should be given bare maintenance and should be confined to a part of the house. Unchastity on the part of a Hindu widow disentitles her to maintenance under certain circumstanceṣ Vaṣ 21.10 provides that four classes of wives must be abandoned viz. one who yields herself to her husband's pupil or to his guru and especially one' who attempts the life of her husband or who commits adultery with a man of a degraded caste and in 21. 12 <a class="ref" href="../refs/vasishtha.html" data-source="vasishtha" data-ref="" title="Vasiṣṭha Dharmasūtra">Vasiṣṭha</a> states that the wives of brāhmaṇas, kṣatriyas and vaiśyas, who commit adultery with a śūdra, may be purified by penance if no child is born (of the adulterous intercourse) but not otherwise'. It is provided by <a class="ref" href="../refs/yajnavalkya.html#I.72" data-source="yajnavalkya" data-ref="I.72" title="Yājñavalkya I.72">Yāj. I. 72</a> that if a woman (of the three higher castes) conceives through adultery with a śūdra or kills her foetus or attempts the death of her husband or is guilty of grave sins (such as brāhmaṇa-murder) she shall be abandoneḍ <a class="ref" href="../refs/manu.html#IX.188" data-source="manu" data-ref="IX.188" title="Manusmṛti IX.188">Manu IX. 188</a> provides that when women becomes pat-ta, the rite called <em>ghatasphota</em> (the procedure of which may be seen at p. 388 of the <a class="ref" href="../refs/hodh.html#vol. II" data-source="hodh" data-ref="vol. II" title="History of Dharmaśāstra vol. II">H. of Dh. vol. II </a>and in note 1168 in the Appendix to this volume) may be performed, but they must be given food and raiment and they must be provided with a hut near the family house. Yaj. III. 296 has a similar provisioṇ The result is that there is no text which provides that a widow who is once unchaste must be deemed unchaste for ever and must for ever forfeit her claim even to a starving maintenance even if she repents, reforms her ways and gives up an immoral life. On the contrary the texts say that widows guilty of adultery are purified by penance and may be restored to all their social privilegeṣ For example, <a class="ref" href="../refs/manu.html" data-source="manu" data-ref="" title="Manusmṛti">Manu</a><sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-10" id="fnref-chapter-xxxi-maintenance-and-other-topics-10">10</a></sup> XI. 189 says generally about all persons that after they perform the appropriate <em>prāyaścitta</em>, they should not be rebuked or avoided (but should be restored to all social intercourse). The <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> on Yaj. I. 72 expressly says that the abandonment of even such women as are referred to in that verse consists in not associating with them conjugally and in religious matters, but does not mean that they are to be driven out of the house.<sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-11" id="fnref-chapter-xxxi-maintenance-and-other-topics-11">11</a></sup></p>
+<p class="prose" id="p-chapter-xxxi-maintenance-and-other-topics-8">On Yaj. III. 297 (which states that in the case of women there are three peculiarly grave sins viz. adultery with a low-caste man, killing the foetus and attempt to murder the husband) the Mit sums up the whole position as follows: (1) total abandonment of women for the four grave sins laid down in Vaṣ 21. 10 takes place when they do not perform penance; (2) women guilty of adultery not of the aggravated kind mentioned in Vas 21. 10 are to be given starving maintenance that would keep body and soul together and are to be lodged in a hut near the house and to be afforded protection (Yaj. I. 70 and III 296 ), even if they do not perform the requisite penance. But the <a class="ref" href="../refs/mitakshara.html#i" data-source="mitakshara" data-ref="i" title="Mitākṣarā i">Mit. i</a>s silent as to the claim to maintenance of widows that at first led a life of incontinence (but not of the aggravated kind) and subsequently reformed their wayṣ But from <a class="ref" href="../refs/manu.html#XI.189" data-source="manu" data-ref="XI.189" title="Manusmṛti XI.189">Manu XI. 189</a> it may be inferred that widows not guilty of aggravated adultery that have undergone the proper prāyaścitta and that return to decent life would have been entitled to ordinary maintenance from the period they turned over a new leaf.<sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-12" id="fnref-chapter-xxxi-maintenance-and-other-topics-12">12</a></sup></p>
+<p class="prose" id="p-chapter-xxxi-maintenance-and-other-topics-9">A brief reference to the modern case law on this point may be made here. In Bhikubai v. Hariba<sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-13" id="fnref-chapter-xxxi-maintenance-and-other-topics-13">13</a></sup> Sir Lallubhai Shah ( after an elaborate examination of ancient and medieval authorities and decided cases ) held that a widow who had been unchaste, but who is proved to have given up the life of un-chastity is entitled to bare maintenance. In Lakhmichand v. Anandi the Privy Council make the general observatioṇ<sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-14" id="fnref-chapter-xxxi-maintenance-and-other-topics-14">14</a></sup> 'It is true that the right of a Hindu widow to maintenance is conditional upon her leading a life of chastity and that she loses that right if she becomes unchaste'. In Kisanji v. Lakshmibai<sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-15" id="fnref-chapter-xxxi-maintenance-and-other-topics-15">15</a></sup> it was held that subsequent unchastity disentitled a widow from recovering maintenance, even though it is claim-able under an agreement made with the deceased husband's father and brother. In Musammat Ganga v. Ghasita 1 All. 46 (F. B.) it has been held that unchastity does not incapacitate a daughter from inheriting strīdhana. In Angammal v. Venkata 26 Mad 509 the same rule was laid dowṇ</p>
+<p class="prose" id="p-chapter-xxxi-maintenance-and-other-topics-10">The illegitimate son born of a śūdra concubine to a man of the three higher castes appears to have been held entitled to maintenance from very early timeṣ <a class="ref" href="../refs/gautama.html#28.37" data-source="gautama" data-ref="28.37" title="Gautama Dharmasūtra 28.37">Gaut. 28. 37</a> provides, 'the son from a śūdra woman of a man ( of the three higher varnas ) who is without issue receives maintenance (lit source of maintenance ), if he is obedient, in the same way as a pupil might receive'. And Gautama (28 43) extends the same rule to the offspring of pratiloma unionṣ Vide p. 601 above and note 1135 for the text of Gaut and Br. on the point. <a class="ref" href="../refs/manu.html#IX.155" data-source="manu" data-ref="IX.155" title="Manusmṛti IX.155">Manu IX. 155</a> also provides that the son of a man of the three higher castes from a śūdra woman (not married to him) is not entitled to share in the ancestral estate. Br. (S. B. E. 33 p. 374 v. 31) states <sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-16" id="fnref-chapter-xxxi-maintenance-and-other-topics-16">16</a></sup> that an obedient and meritorious son born from a woman of the śūdra caste to a man who has no other child should get main- tenance and that the sapindas should divide the rest of the wealth of the deceaseḍ Both the Mit and the V. Mayūkha, while explaining Yaj. II. 133-134 about the rights of the illegitimate son of a śūdra from a śūdra woman, remark that one who is begotten on a dāsī <sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-17" id="fnref-chapter-xxxi-maintenance-and-other-topics-17">17</a></sup> by a member of the regenerate classes is not entitled to a share even at the father's choice nor to a half share after his father's death but that he is only entitled to maintenance. <sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-18" id="fnref-chapter-xxxi-maintenance-and-other-topics-18">18</a></sup></p>
+<p class="prose" id="p-chapter-xxxi-maintenance-and-other-topics-11">There is a good deal of case law on this subject, but much of it is irrelevant in this treatise. The right of maintenance attaches in the first instance to the separate property of the putative father and if the latter leaves no such property but was a member of a joint family it attaches to the property of the joint family of which the putative father was a member. <sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-19" id="fnref-chapter-xxxi-maintenance-and-other-topics-19">19</a></sup> It has further been held that it does not matter if the woman was not a dāsī (a slave) or a permanent concubine in the exclusive keeping of a man or that the intercourse was adulterouṣ <sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-20" id="fnref-chapter-xxxi-maintenance-and-other-topics-20">20</a></sup> It has been also held that the illegitimate son's right to maintenance is a personal right and cannot be transmitted to his son <sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-21" id="fnref-chapter-xxxi-maintenance-and-other-topics-21">21</a></sup> and that maintenance has to be provided for him till his death <sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-22" id="fnref-chapter-xxxi-maintenance-and-other-topics-22">22</a></sup> (and not merely up to his attaining majority), except in Bengal.<sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-23" id="fnref-chapter-xxxi-maintenance-and-other-topics-23">23</a></sup> The fact that the texts employ the word "śūdraputra " (in the masculine gender) has been interpreted by the decided cases as involving that an illegitimate daughter is not entitled under Hindu Law to maintenance. <em>Vide Parvati v. Ganpatrao</em><sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-24" id="fnref-chapter-xxxi-maintenance-and-other-topics-24">24</a></sup> and <em>Vellayappa v. Natarajan</em>.<sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-25" id="fnref-chapter-xxxi-maintenance-and-other-topics-25">25</a></sup></p>
+<p class="prose" id="p-chapter-xxxi-maintenance-and-other-topics-12">Another frequent subject of litigation in modern times has been a concubine's right of maintenance under the Hindu Law. It has been held that a concubine has no legal right to claim maintenance from her paramour during the latter's lifetime, as he can discard her at any time and as she cannot compel him to keep her.<sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-26" id="fnref-chapter-xxxi-maintenance-and-other-topics-26">26</a></sup> So also a Hindu is not entitled to transfer joint family property to a concubine for her maintenance during his lifetime.<sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-27" id="fnref-chapter-xxxi-maintenance-and-other-topics-27">27</a></sup> But on the death of the paramour a great difference is made in the rights of a concubine that was in his <em>exclusive keeping till his death</em>. Such a concubine has been held to possess a legal right to maintenance payable out of the estate, ancestral or self-acquired as the case may be, in the hands of those who take it after the death of the paramour. The rights of women, who are not wives, to maintenance are based mainly on two texts, viz. of <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> and <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kātyāyana</a>, that are explained in the Mit, the V. Mayūkha and other medieval workṣ <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nārada</a> says :<sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-28" id="fnref-chapter-xxxi-maintenance-and-other-topics-28">28</a></sup> 'A king devoted to dharma should give maintenance to the women (<em>stri</em>) of a deceased person (when the king succeeds as heir by escheat), except when the deceased person is a brāhmaṇa '; while Kat. (931) states,<sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-29" id="fnref-chapter-xxxi-maintenance-and-other-topics-29">29</a></sup> 'heirless property goes to the king after keeping aside (wealth sufficient to provide) for the women (<em>yosit</em>), the dependents (or servants) and the funeral rites and śrāddhas (of the deceased)' <a class="ref" href="../refs/kautilya.html" data-source="kautilya" data-ref="" title="Kauṭilya Arthaśāstra">Kaut.</a> also similarly prescribes ( III.<sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-30" id="fnref-chapter-xxxi-maintenance-and-other-topics-30">30</a></sup> 5. p. 161 ), 'the king takes heirless property except that of śrotriyas, setting apart ( wealth ) for the maintenance of women ( of the deceased ), for funeral rites and for poor or wretched ( dependents of the deceased )'. The <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a>, the V. Mayūkha, the <a class="ref" href="../refs/parasara.html" data-source="parasara" data-ref="" title="Parāśara">Par.</a> M. and others state that the verses of <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nār.</a> and Kāt refer to avaruddha-strī alone, since the word patnī ( duly wedded wife ) does not occur therein, but only the words 'yoṣit' and 'strī'.<sup>1588</sup> There has been a great divergence of views in the decided cases about the significance of avaruddha strī. It is generally rendered as a concubine or mistress in the exclusive keeping of a person till the latter's death'. Several conditions are necessary to constitute a woman an avaruddha strī capable of claiming maintenance from the estate of her deceased paramour in the hands of his sons or other heirṣ In the first place, she must have been continuously and exclusively in his keeping till his death. How long she should have been thus in his keeping cannot be fixed by any hard and fast ruleṣ She must have been so long in his keeping continuously till his death that it can be said that the connection had become permanent. In Bai Nagubai v Bai Monglubai a period of five years was deemed to be sufficient. In the second place the concubine<sup>1589</sup> must observe sexual fidelity to her deceased paramour after his death in order to be able to claim maintenance from the estate in the hands of his heirs or successorṣ In Bai Monghubai v. Bai Nagubai <sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-31" id="fnref-chapter-xxxi-maintenance-and-other-topics-31">31</a></sup> a third condition was laid down viz. that the connection of the concubine with the deceased paramour should be perfectly open and recognized and she must have been kept practically as a member of the family. But in Bai Nagubai v Bai Monghubai <sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-32" id="fnref-chapter-xxxi-maintenance-and-other-topics-32">32</a></sup> the Privy Council overruled the above decision and held that in order to entitle a mistress to maintenance it is not necessary that she should have resided in the same house with the deceased together with his wife and the ordinary members of his family. And in Dayavatı v Kesarba <sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-33" id="fnref-chapter-xxxi-maintenance-and-other-topics-33">33</a></sup> it was further held that the concubine need not prove that she was recognized by the family of the deceased or that his relationship with her was known to the family. A further restriction was imposed by the case of Anandlal v Chandrabai <sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-34" id="fnref-chapter-xxxi-maintenance-and-other-topics-34">34</a></sup> that the intercourse with the paramour should not have been adulterouṣ But this case has been overruled by a recent Full Bench deci-sion in Akku v Ganesh <sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-35" id="fnref-chapter-xxxi-maintenance-and-other-topics-35">35</a></sup> which holds that a permanently kept concubine is entitled to be maintained out of the estate of her deceased paramour, although she has a husband living (who was examined in the case as a witness), provided she observes sexual fidelity to the deceased paramour after his death. It becomes, therefore, necessary to examine the Sanskrit medieval commentaries and digests in order to arrive at a correct inter-pretation of the expression 'avaruddha stri'. Strangely enough, the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> does not define the word in the section on dāyabhāga, but only under 'strī-sangrahana'. Yāj II 290 provides, 'a man should be awarded a fine of fifty panas, if he has intercourse with dāsīs that are avaruddhā or that are bhujiṣyā and also (other women such as prostitutes and svairinīs), even though ordinarily they (i e dāsīs and others) are approachable (with-out incurring the consequence of punishment)'. The Mit explains that the word 'ca' placed after 'bhujiṣyāsu' in <a class="ref" href="../refs/yajnavalkya.html#II.290" data-source="yajnavalkya" data-ref="II.290" title="Yājñavalkya II.290">Yāj. II. 290</a> is meant to include vesyās and svairinis along with bhuji-ṣyāṣ Acc. to the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> the verse prescribes the same fine for intercourse with three kinds of women, viz. dāsīs that are ava-ruddhā, dāsīs that are bhujiṣyā and other women such as veśyās (who are ordinarily approachable by all males of their own or higher castes) and svairinīs (who abandon their husbands and resort at their desire to some other male of their own caste, as defined by <a class="ref" href="../refs/yajnavalkya.html#I.67" data-source="yajnavalkya" data-ref="I.67" title="Yājñavalkya I.67">Yāj. I. 67</a> ) A woman though originally a veśyā or a svairiṇī may be known to be kept by a man In that case if another man approaches her, Yāj II 290 declares that he would be liable to be fined in the same amount as if he approached an avaruddhā dāsī or bhujiṣyā, because being in the keeping of another at the time she would be like a wife (as the other two classes do) so far as punishment for approaching a kept woman is concerneḍ This verse is not concerned with the maintenance of women at all. The <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> here defines ‘avaruddha dāsī’ as “a slave woman who is prohibited by her master from intercourse with other men with an order to stay in the master’s house alone in order that there may be no loss of attendance (on the master)”. The <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> defines a <em>bhujisyā dāsī</em> as ‘one who is restricted (as to enjoyment) to certain definite males’ (<em>puruṣamyata-pari-graha-bhujisyā</em>).<sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-36" id="fnref-chapter-xxxi-maintenance-and-other-topics-36">36</a></sup> It is worthy of note that the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> employs different phraseology in defining the two wordṣ In defining a <em>bhujisyā</em> it employs the word ‘<em>niyatā</em>’, which generally means ‘fixed or definite’, while in defining ‘<em>avaruddhā</em>’ it employs the word ‘<em>niruddhāh</em>’ meaning ‘prevented or prohibited’. If the two words were intended to convey the same meaning, there is no reason why the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> should not have employed the same word (<em>niruddhā</em>) in defining a <em>bhujisyā</em>. The difference between an <em>avaruddhā dāsī</em> and a <em>bhujisyā</em> is that the former is ordered to stay in the master’s house, while the <em>bhujisyā</em> is not so ordered and secondly the <em>avaruddhā</em> is forbidden to have sexual intercourse with any one except the master, while the <em>bhujisyā</em> is not so forbidden, but she is to restrict herself to enjoyment by certain specified males (friends or men of the master’s family) and not necessarily by the master alone. This is the meaning assigned to those words by Mitramiśra in his commentary<sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-37" id="fnref-chapter-xxxi-maintenance-and-other-topics-37">37</a></sup> (not his digest) on Yāj II. 290. The <a class="ref" href="../refs/mitakshara.html#i" data-source="mitakshara" data-ref="i" title="Mitākṣarā i">Mit. i</a>tself springs from certain fixed sources (<em>nyatopāyakam svatvam</em> on Yāj II 114). It is respectfully submitted that the Privy Council gave a wrong interpretation of the word ‘<em>avaruddhā</em>’ in <em>Bai Nuqubai v. Bai Monqubai</em><sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-38" id="fnref-chapter-xxxi-maintenance-and-other-topics-38">38</a></sup>. Though slavery is now abolished in India there is no reason why the two characteris- tics of <em>avaruddhā</em> (viz staying in the master’s house and being exclusively kept by the master) stated by the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> should not have been strictly adhered to by the Privy Council, particularly when they were holding heirs liable for the maintenance of kept mistresses, which is hardly ever allowed in any other system of law. With the greatest respect to the Full Bench, it must be said they went wrong in holding that bhūjiṣyā means 'a mistress who is restrained from intercourse with other persons (other than the master)' and in holding that the only distinction between an avaruddhā and a bhujisyā is that the former is required to stay in the house of the paramour, while the latter is not ( 47 Boṃ L. R. at pp. 13 and 22 ). The learned Judges have not correctly interpreted the word 'niyata' and also the explanation of 'bhujisyā' given by the Bālambhaṭṭi<sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-39" id="fnref-chapter-xxxi-maintenance-and-other-topics-39">39</a></sup>. The meaning of the Bālambhaṭṭi was misunderstood on account of the wrong meaning attached to the word 'niyata'. What the Bālambhaṭṭi means in explaining the definition of bhujisyā is 'one who is to be enjoyed by certain definite males only other than the master' (i. e. by the master and also certain defined males) and it does not mean 'who is forbidden to be enjoyed by males other than the master'.</p>
+<p class="prose" id="p-chapter-xxxi-maintenance-and-other-topics-13">The F. B. further rely upon a passage of the <a class="ref" href="../refs/mitakshara.html#i" data-source="mitakshara" data-ref="i" title="Mitākṣarā i">Mit. i</a>n support of their conclusion ( 47 Boṃ L. R. at pp. 14 and 22 ) On the question of what properties are impartible, the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> on Yaj. II. 119 quotes <a class="ref" href="../refs/manu.html#IX.219" data-source="manu" data-ref="IX.219" title="Manusmṛti IX.219">Manu IX. 219</a> viz 'clothes, conveyances, ornaments, cooked food, water (wells &c.), women, yogaksema and pastures (or ways)—these they declare are impartible 'The Mit explanation<sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-40" id="fnref-chapter-xxxi-maintenance-and-other-topics-40">40</a></sup> of the word 'striyah' may be translated as follows: 'striyah' here means 'female slaves; if they are uneven in number they should not be divided by taking their price into consideration, but they are to be made to work in turns (for the separated members of the family ), but as regards women kept by the father such as svairinis and the rest, they are not to be divided by the sons even though they be even in number ". It is difficult to see how this passage supports the Full Bench decisioṇ That passage can be explained in two or three different wayṣ In the first place, the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> having itself clearly distinguished and defined three classes, viz avaruddhā, bhujisyā and svairinīs (together with veśyas also) it cannot be lightly supposed that elsewhere it gives up that distinctioṇ Therefore it would be difficult to say that here ( on Yāj II. 119 ) the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> means that svairinīs are also the same as avaruddhāṣ Hence the interpretation should be that women who are avaruddhā (kept exclusively by the father) and even other women also like svairinīs (who had sexual connection with the father though not as avaruddhā) should not be divided i. e. a 'ca' should be understood after 'svairinyādyāḥ'. Or it is possible to hold that the word 'avaruddhā' in that passage is not employed in the strict technical sense (as defined by the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> on <a class="ref" href="../refs/yajnavalkya.html#II" data-source="yajnavalkya" data-ref="II" title="Yājñavalkya II">Yāj. II</a> 290 ), but in its etymological sense meaning 'women who are svairinīs and the like that are taken into his harem ( or under his protec- tion ) by the father should not be divided '. This interpretation derives support from the explanation offered by the Subodhinī ( which is repeated almost verbatim by the Bālambhattī ) about the text of Gautama quoted by the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> that 'samyukta' in <a class="ref" href="../refs/gautama.html" data-source="gautama" data-ref="" title="Gautama Dharmasūtra">Gaut.</a> means 'enjoyed' or 'confined' (in the house). This shows that the words 'ruddhā' and 'avaruddhā' were used in the etymological sense by distinguished writerṣ The Sṃ C. II p. 321 while explaining the word 'ruddhā' in <a class="ref" href="../refs/manu.html#IX.12" data-source="manu" data-ref="IX.12" title="Manusmṛti IX.12">Manu IX. 12</a> applied to a wife guilty of adultery explains it as mean- ing 'confined in a part of the house' ( gṛhe avaruddhām ). When the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mit.</a> states (p. 811 ) that the verses of <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nār.</a> and <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kāt.</a> refer to avaruddhā strī it follows that these verses do not refer to bhujisyā, who would therefore be deemed not entitled to maintenance at all.</p>
+<p class="prose" id="p-chapter-xxxi-maintenance-and-other-topics-14">There is a large body of caselaw about the right of a widow in a joint Hindu family to reside in the family house, about the right of a daughter-in-law against her deceased husband's father who has no ancestral property in his hands and against the heirs of the father-in-law, about the amount of maintenance to be allowed to a widow and about the rate at which arrears of maintenance are to be awarded, about making the period for which arrears may be awarded, about making the maintenance a charge on the estate in the hands of the heirs, about varying the rate of maintenance fixed by a decree or an agreement &c. These are not quite germane to the present volume, particularly because most of the decisions on these matters are not based on the words of the <em>smṛtis</em> or of the medieval digests, but are based on logic and principles of justice and equity. But there is one matter which deserves a passing reference. Ancient Hindu Law attached the highest spiritual importance to the payment of debts (vide pp. 414-417 above). Therefore debts contracted by a Hindu are held by the Courts to take precedence over the right of maintenance of a man's wife, his infant child or his widow after his death.<sup>1600</sup> Similarly debts contracted by the manager of the joint family of which the widow's husband was a member would take precedence over the widow's right of maintenance, provided the debts were for the benefit of the family or were for legal necessity.</p>
+<p class="prose" id="p-chapter-xxxi-maintenance-and-other-topics-15">The last <em>vyavahāi apadu</em> is <em>prakīrnaka</em>, which is defined by <a class="ref" href="../refs/vishnu_dh.html#42" data-source="vishnu_dh" data-ref="42" title="Viṣṇu Dharmasūtra 42">Viṣṇu Dh. S. 42</a>' 1 as ‘miscellaneous’ (yadanuktam tat pra-kīrnakam) or by <a class="ref" href="../refs/narada.html" data-source="narada" data-ref="" title="Nārada">Nār.</a> as matters that were to be set in motion by the king himself (vide note 331). These have been dealt with above and do not require any further treatment here.</p>
+<p class="prose" id="p-chapter-xxxi-maintenance-and-other-topics-16">At the end of this section on Vyavahāra it would not be out of place to say a few words about willṣ Owing to the joint family system and the custom of adoption testamentary dis-positions did not come into vogue in ancient India. Among the many kinds of documents (<em>lekhya</em>) mentioned by <a class="ref" href="../refs/kautilya.html" data-source="kautilya" data-ref="" title="Kauṭilya Arthaśāstra">Kaut.</a>, Br., <a class="ref" href="../refs/katyayana.html" data-source="katyayana" data-ref="" title="Kātyāyana">Kāt.</a> and others cited above there is no term for a document which can convey the idea of a modern will. But it need not be supposed that the idea had not at all dawned upon the minds of people before the advent of the British<sup>1601</sup>. Wills were known among Mahomedans and contact with them would naturally suggest the idea of a will. Oral or written instructions by a man expecting death to his heirs intended to affect the disposal of his property must have been given occasionally and should not be supposed to have been entirely unknowṇ Verses 341-359 of the Rājataraṇgiṇī IV. appear to embody the political testament of king Lalitāditya of Kashmir in the first half of the 8th century. Kāṭ. (566) makes a very near approach to the modern conception of a will<sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-43" id="fnref-chapter-xxxi-maintenance-and-other-topics-43">43</a></sup>. He says, 'if a gift was promised by a man for a religious purpose whether when in good health or when afflicted with disease, the son should be made to pay it, if the father dies without giving it over.' Here the mere declaration of the intention of a person was made enforceable after his death against the son or other heir. <a class="ref" href="../refs/brihaspati.html" data-source="brihaspati" data-ref="" title="Bṛhaspati">Bṛhaspati</a>'s verse saying that a promise or direction to take effect after the death of the promisor was not ordinarily enforceable has already been quoted above (ṇ 823). In the quarterly of the Bhārata-itihāsa- samsodaka Mandala of Poona, vol. XX p. 210 (for May 1940) there is a letter (dated 1775 A. D.) written by one Naro Babaji, who, after referring to his illness, provides on a generous scale for his funeral and śrāddha expenses and makes dispositions in favour of his daughter-in-law, of another widow, and for the marriage of his kinsman's sons and distribution of the balance of his assets<sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-44" id="fnref-chapter-xxxi-maintenance-and-other-topics-44">44</a></sup>. One of the earliest wills to come before the British Indian Courts was that of the notorious Umichand<sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-45" id="fnref-chapter-xxxi-maintenance-and-other-topics-45">45</a></sup> (who died in 1758 A. D.). Bengal Regulation XI of 1793 recognized by section VI the power of a Hindu proprietor to make a will or declaration giving, prior or subsequent to 1st July 1794, his entire landed estate to his eldest son or next heir or other son or heir or to any person or personṣ In a Bombay case the will of a Hindu made in 1789 is referred to <sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-46" id="fnref-chapter-xxxi-maintenance-and-other-topics-46">46</a></sup>. A Pundit of the Recorder's court of Bombay gave it as his opinion in 1812 A.D., 'there is no mention of wills in our <em>Shaster</em>; therefore they ought not to be made ' (vide Strange's Hindu Law, vol. II p. 449). In I. L. R. (1940) 1 Cal. 415 at p. 424 the Privy Council observe that the Hindu will in its present form is a development since the middle of the 18th century.</p>
+<p class="prose" id="p-chapter-xxxi-maintenance-and-other-topics-17">It is beyond the scope of this work to dilate on the modern Acts dealing with Testamentary dispositions such as the Indian Succession Act (Act 39 of 1925 ).</p>
+<p class="prose" id="p-chapter-xxxi-maintenance-and-other-topics-18">Now that the foregoing lengthy 'presentation of the ancient and medieval Hindu judicial procedure and substantive law has been brought to a close a few general observations may be indulged in here. The Hindu Law of pleading and evidence compares favourably with similar laws of many other countries and has extorted the admiration and encomiums of such eminent Jurists and Judges as Sir William Jones, Sir Thomas Strange and otherṣ For example, Sir Thomas Strange in ‘Hindu Law’ (1830) vol. I observes (at p. 311), “sufficient be it to observe that Hindu pleading was noticed with commendation by Sir William Jones and that, with some trifling exceptions, the Hindu doctrine of evidence is, for the most part, distinguished nearly as much as our own, by the excellent sense that determines the competency and designates the choice of witnesses with the manner of examining and the credit to be given them; as well as by the solemn earnestness with which the obligation of truth is urged and inculcated; insomuch that less cannot be said of this part of their law than that it will be read by every English lawyer with a mixture of admiration and delight, as it may be studied by him to advantage. Even the <em>pious perjury</em> which it has been supposed to sanction<sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-47" id="fnref-chapter-xxxi-maintenance-and-other-topics-47">47</a></sup> being resolvable after all into no greater liberty than what our juries (not indeed with perfect approbation) have long been allowed to take, where the life of a prisoner on trial before them is at stake; credit is to be given to the pregnant brevity of the Hindu oath viz. ‘what you know ..declare at large and with truth’(<a class="ref" href="../refs/manu.html#VIII.80" data-source="manu" data-ref="VIII.80" title="Manusmṛti VIII.80">Manu VIII. 80</a> ); as also to the noble warning, with which the subject as detailed by <a class="ref" href="../refs/manu.html#i" data-source="manu" data-ref="i" title="Manusmṛti i">Manu i</a>s ushered in, that ‘either the court must not be entered by judges, parties and witnesses or law and truth must be openly declared’ (<a class="ref" href="../refs/manu.html#VIII.13" data-source="manu" data-ref="VIII.13" title="Manusmṛti VIII.13">Manu VIII. 13</a> ).” The medieval digests made a very near approach to the modern ideal of equality of all men before the law. How even in the 20th century the much vaunted equality before the law of all people in England is far from being achieved and how it often proves quite illusory where the poor or the labouring classes are concerned is well brought out in a book entitled ‘Justice in England’ by a Barrister published by Victor Gollancz in 1938, especially in chapters I and VI. The Hindu jurists evolved tolerably clear and sound ideas about contracts, debts, deposits and pledges, sales, mortgages and gifts of immovable properties, developed a system of joint family rights and liabilities and laid down a peculiar law of inheritance and succession to males and femaleṣ The Hindu system of inheritance and succession pursues a middle course. It does not distribute the estate of a deceased person simultaneously among several heirs as under the Mahomedan Law (where the widow, the father, mother, sons and daughters of a man take the estate together if they are all alive at the time). Nor did the Hindu system confine the descent to a single person among a group of heirs of the same degree and sex as in the English system before 1926 (where the eldest son succeeded to the real estate of an intestate person). It has further been seen how the ancient and medieval Hindu rules as to debts, adoption, partition and inheritance have been moulded for over a century by Legislation and by decisions of the Privy Council and the Courts in India Many persons feel that the time has now arrived for the codification of Hindu Law. A Committee presided over by Sir B N. Rau has prepared a draft code which attempts to codify certain branches of Hindu Law From several quarters there has been vehement opposition to this draft code The objections raised are many. It is not possible to deal here with the several objections in detail. But some of them which raise questions of fundamental importance will have to be briefly stated and answereḍ The first objection is that in view of Queen Victoria's proclamation of 1858 the Indian Legislature should not interfere with the customs and usages of the people that are part and parcel of the Hindu religious system But this objection is hollow and unsubstantial and conveniently ignores what has happened during the last hundred years or so. All that the Queen proclaimed was ‘Firmly relying ourselves on the truth of Christianity and acknowledging with gratitude the solace of religion we disclaim alike the right and the desire to impose our convictions on any of our subjectṣ We desire it to be our royal will and pleasure that none be in any wise favoured, none molested or disquieted by reason of their religious faith or observances; but that all shall alike enjoy the equal and impartial protection of the law; and we do strictly charge and enjoin all those who may be in authority under us that they abstain from all interference with the religious belief or worship of any of our subjects on pain of our highest displeasure.’ Not-withstanding the noble sentiments expressed here, the Indian Legislature both before and after the proclamation passed numerous laws that more or less impinged upon or affected the religious theories, sentiments and practices of millions of Hindus! The following is a list of some of the important laws of this character which will convince any one of the fact that people have always submitted to laws passed by the Governor- General or the Legislature that prevented them from carrying out their cherished ideas and practices: Regulation XVII of 1829 which declared the practice of Sati illegal and a crime punishable by the courts; the Caste Disabilities Removal Act (XXI of 1850 ); Hindu Widows' Remarriage Act (XV of 1856, which legalises the marriages of Hindu widows notwithstanding any custom or interpretation of the Hindu Law to the contrary); the Indian Penal Code (XLV of 1860, which makes sexual inter- course by a man with his own wife that is under thirteen years of age punishable as rape ); the Child Marriage Restraint Act (XIX of 1929), which makes the marriage of a male below 18 and of a female below 14 punishable as a crime; the Hindu Inheri- tance (Removal of Disabilities) Act (XII of 1928) which sets aside the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mitākṣarā</a> rules about exclusion from partition and inherit- ance except in the case of those that have been lunatics or idiots from birth; the Hindu Law of Inheritance Amendment Act (II of 1929, which enables the son's daughter, daughter's daughter, sister and sister's son to succeed under the <a class="ref" href="../refs/mitakshara.html#i" data-source="mitakshara" data-ref="i" title="Mitākṣarā i">Mitākṣarā i</a>n that order after the paternal grandfather and before a father's brother ); the Hindu Gains of Learning Act (XXX of 1930 ); the Hindu Women's Rights to Property Act (XVIII of 1937 which enables the widow of a deceased member of a joint Hindu family to succeed to the interest of her husband in the joint family property and to succeed to her deceased husband's separate property for the same share as that of a son ). The Privy Council claimed more than 70 years ago that ' the British Government by virtue of its sovereign power asserted, as the former rulers of the country had done, the right to visit endowments of this kind (viz temples) and to prevent and redress abuses in their management ' ( Rajah Mullu Ramalinga v. Perianayagum 1 I. A. 209 at p. 232 )<sup class="fn-ref"><a href="#fn-chapter-xxxi-maintenance-and-other-topics-41" id="fnref-chapter-xxxi-maintenance-and-other-topics-41">41</a></sup>. Non-Hindu Judges of the Privy Council and the High Courts have been interpreting and laying down the Hindu Law for over a hundred years and on many points the law declared by them has thoroughly changed the law of the smṛtis and digests If all this has been allowed to happen without hardly a demur, there is apparently no satisfactory or convincing reason why an elected Indian Legisla- ture the majority of whose members are likely to be Hindus should not pass an Act dealing with Hindu Law.</p>
+<p class="prose" id="p-chapter-xxxi-maintenance-and-other-topics-19">Another objection raised even by some retired judges of the High Court is that the present system of laying down the Hindu Law by means of judicial decisions is quite satisfactory and there is no need of a code of Hindu Law. This objection merely shows that change is rather a painful process for most meṇ The present method may be a veritable El Dorado or paradise for lawyers and busy bodies fomenting longdrawn litigationṣ One must stand appalled at the colossal expenditure of time, labour and money which must have been involved during the last hundred years or more in fighting out doubtful points of Hindu Law from the lowest court to the Privy Council. It not unfrequently happens that after a point had been settled by a Full Bench decision of a High Court and after common people and lawyers had followed the law thus settled for fifty years the Privy Council upsets the decision on an appeal by an enterprising litigant. For example, the Bombay High Court decided in 1879 in Ramji v. Ghamau (6 Boṃ 498) that the adoption by the widow of a deceased co-parcener, who had not her husband's express authority to adopt, was invalid, if made without the consent of the surviving co-parcenerṣ But in 1932 the Privy Council held that Ramji v. Ghamau was wrongly decided and that a widow can adopt without her husband's express authority and even in the teeth of the opposition of the surviving members of her husband's family. And when an appeal was made to the principle of ‘ <em>stare decisis</em> ’ the Privy Council was pleased to observe, ‘ It was pressed on their Lordships that Ramji v. Ghamau had been accepted and acted upon in the Presidency of Bombay since 1879 and that the decision should not be disturbeḍ But this is a belated appeal. It should have been madę when Yadav v. Namdeo was before the Board ‘. To ordinary minds this dictum, speaking with the utmost respect, appears strange. If for some reason or other a certain line of argument is not placed before the Privy Council by the counsel of a private party and a wrong decision is given, is it to be supposed that all litigants are to be precluded from trying to set the wrong decision right for all time to come? The Privy Council has not seldom set right a wrong decision given by the Board in a prior appeal. In Sahu Ram v. Bhup Singh 44 I. A. 126 the Privy Council held that the pious duty of the son to discharge his father’s or grandfather’s debts does not attach while the father or grandfather is alive; but in Brij Narayan v. Mangla Prasad 51 I. A. 129 the Privy Council held (at p. 134) that the pious duty is always there irrespective of the question whether the father or grandfather is alive or deaḍ Others opine that one Code for the whole of India is not and cannot be a practicable propositioṇ In support of their objection they rely on the existence of the several schools of law now prevalent in the whole of India. If India desires to be a self-governing political unity in the future, there is a compelling reason why it should be governed by a single Code of Hindu Law, as it has been governed and will be governed in other substantial provinces of law by codes applicable to all alike. That will help in the direction of solidarity and will be doing away with fissiparous tendencieṣ There are really only two schools of Hindu Law. And the unification of Hindu Law will be helped by the abolition of the right by birth which is the cornerstone of the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mitākṣarā</a> school and which the draft Hindu Code seeks to abolish. Many people are vehemently opposed to the change. But they forget that, what with the rule that any member of a joint Hindu family may alienate his interest for value, what with the Gains of Learning Act, the Hindu Women’s Rights to Property Act and other enactments, the real core of the ancient Hindu family system has been removed and only the outer moribund shell remains (vide p. 604 above). Some are opposed to giving along with sons a share to daughters, particularly to married daugh- terṣ But here a compromise may be effected by allowing a share to unmarried daughters alone {as <a class="ref" href="../refs/yajnavalkya.html#II.124" data-source="yajnavalkya" data-ref="II.124" title="Yājñavalkya II.124">Yāj. II. 124</a> and the <a class="ref" href="../refs/mitakshara.html" data-source="mitakshara" data-ref="" title="Mitākṣarā">Mitākṣarā</a> thereon expressly provide).</p>
+<p class="prose" id="p-chapter-xxxi-maintenance-and-other-topics-20">Another provision in the draft Hindu Code which has come in for severe animadversion is the provision that a woman even when taking by inheritance an estate from a male or by partition should be held to become absolute owner thereof. In the first place, if a man’s agnate of the 13th degree or a male cognate up to the 5th degree takes an estate absolutely and may squander it away as he pleases, one fails to see why his own widow should not have a like power in the 20th century, what- ever may have been the view of ancient workṣ In the second place, this objection can be met by means of a compromise, viz. that a widow inheriting her husband’s estate will take only a limited estate if at the time of her husband’s death any one of the compact series of heirs or any direct lineal descendant of her husband (such as a son’s daughter or daughter’s daughter) be alive, but she will take an absolute estate if none of these existṣ Such a compromise should allay all fears about the widow unfairly disposing of the estate against near relations like the daughter or daughter's son or husband's brother &c. There are numerous other objections, but they are in matters of detail and I once it is agreed that there should be a Code of Hindu Law passed by the Indian Legislature these matters of detail may be adjusted to the satisfaction of most people.</p>
+<p class="prose" id="p-chapter-xxxi-maintenance-and-other-topics-21">Similarly serious objections are raised to the provisions of the Code as regards marriages and divorce. The draft code proposes to do away with the prohibitions based on sameness of gotra and pravara. This is a desirable change and being optional should not be opposed Some reasons for this change have been advanced in <a class="ref" href="../refs/hodh.html#vol II" data-source="hodh" data-ref="vol II" title="History of Dharmaśāstra vol II">H. of Dh. vol II</a>. p 498. Besides, this provision will affect only a small percentage of the Hindu population Similarly the insistence on monogamy is opposed by many. In this case some compromise may be arrived at as regards classes to whom two wives are an economic advantage The provisions about divorce have been overdue. Among the higher castes no divorce has been allowed on any ground what- ever. Many hard cases occur where there is no redress and the draft code proposes to give relief in such caseṣ</p>
+<p class="prose" id="p-chapter-xxxi-maintenance-and-other-topics-22">On the most contentious subject of adoption the draft code, it is satisfactory to note, has made certain provisions which are in line with the suggestions put forth by me in note 1338a above.</p>
+<p class="prose" id="p-chapter-xxxi-maintenance-and-other-topics-23">Compelling reasons exist why Hindu Law should be codified as early as possible Men naturally desire that they should have easy access to the laws by which they are to be governed in all their actions, dealings and relations It is hardly a commendable or desirable state of things that-people should be forced to consult lawyers or bulky textbooks every now and then and even in small and simple matterṣ The general outlines and provisions of Hindu Law must be within easy reach of every intelligent or inquiring Hindu. This can only happen if there is a code for all Hindus or, if that is deemed impracticable for the present, at least for a large pro- vince or for a number of provinceṣ</p>
+<aside class="footnotes-section" aria-label="Footnotes">
+<hr>
+<ol class="footnotes-list">
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-1" class="footnote-item"><span class="devanagari">वृद्धौ च मातापितरौ साध्वी भार्या सुतः शिशुः । अकार्यशतमप्यकृत्वा भर्तव्या मनुरब्रवीत् ॥ मेघा</span> on <span class="devanagari">मनु</span>IV. 251 quotes part of it as <span class="devanagari">स्मृत्यन्तर</span>, while the <span class="devanagari">मिता</span> on <span class="devanagari">या</span>. II 175 ascribes it to Manu. This verse is cited in <em>Savitribai v Luxmibai</em> 2 Boṃ 573 (F. B ) at p. 597 (which holds that a Hindu widow voluntarily living apart from her husband's relatives is not entitled to a money allowance as maintenance from them if they were separated from him at the time of his death and that she is not entitled to such maintenance from them whether they were separated or unseparated from him at the time of his death if they have no ancestral estate belonging to him in their hands). The texts of Manu Yāj 1 76 and Nār. are held on p. 598 of that report to impose a personal obligation enforceable by the State Vide <em>Raja Rama Rao v. Raja of Pitapur</em> 45 I. A. 148 at p. 154 where it is stated that the grandson is not included under the word 'son' and a grandfather is under no personal obligation to maintain a grandson if there is no ancestral property in his hands <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-1" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-2" class="footnote-item"><span class="devanagari">पतितामपि तु मातरं बिभृयादृषिरब्रवीत् । बौ</span>. <span class="devanagari">धृ</span>. II. 2. 48 ; <span class="devanagari">पतितः पिता परित्याज्यो माता तु पुत्रे न पतिता । वसिष्ठ</span> 13. 47; <span class="devanagari">अत्याज्या माता तथा पिता सपिण्डाश्चेति दृ</span> q. by <span class="devanagari">अपराक</span> p 523 <span class="devanagari">या</span>. II 217. . <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-2" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-3" class="footnote-item"><span class="devanagari">अपत्त्यद्वारे मातातपित्रोरुं आत्मनाऽप्युपचर्यते यग्निनी</span>: <span class="devanagari">कन्या विधवाधाविश्रातः शक्तिमतो द्वादशपणो दण्डोऽन्यत्र पतितेभ्योऽन्यत्र मातुः। कौ</span>. II. 1. p. 48. <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-3" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-4" class="footnote-item">8 Maḍ 236, referred to in <em>Surampalli</em> v. <em>Surampalli</em> 31 Maḍ 338 at p. 342. <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-4" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-5" class="footnote-item">This verse of Nār. is quoted in <em>Bhikubai</em> v. <em>Hariba</em> 49 Boṃ 459, 463, 27 Boṃ L. R. 13 at p. 16. <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-5" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-6" class="footnote-item"><span class="devanagari">तथा च नारदः। या</span>. <span class="devanagari">पत्न्यो विधवाः साध्व्यो ज्येष्टेन धान्येन भर्तुः स्याद्भावादानंशेनैः॥ धनग्रासदिग्येति सर्वत्र ज्येष्टादौ शेषो ब्रूयः। अनन्यगुणमिदं त्वाद् भरणस्य। अत्र विशेषमाह कात्यायनः। स्वर्याति स्वामिनि स्त्री तु प्राप्ताऽच्छदादमार्गिणी। भ्रासिकायमशेषं तु सीमत्तमस्मिन्विषये। स्वर्याहि यस्या नक्तं बलवदाशनं नाशयते तु। भ्राविकामाशेषमत्से कालयने सिच्येते तत्सद्विशेषः। तु यत्स्वो वा अस्यामधमो व।</span> (The passage of <span class="devanagari">नारद</span> in Mr. Charpure's ediiton is rather corrupt) The <span class="devanagari">मयूब</span> p. 139 quotes <span class="devanagari">कात्यायनः</span>. this verse of Kātyāyana is quoted in <em>Lakshman</em> v. <em>Satyabhamabai</em> 2 Boṃ 494 at p. 511. <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-6" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-7" class="footnote-item">Vide note 1151 above for <span class="devanagari">बौ</span>. <span class="devanagari">ध</span>. <span class="devanagari">सू</span>. II. 2. 43-46 This and the text of Devala are quoted in Murari v. Pārvatībai 1 Boṃ 177 at p. 183. <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-7" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-8" class="footnote-item">45 I. A 148 at p 154. <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-8" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-9" class="footnote-item">Vide Rajani Kanta v. Sajani Sundari 61 I. A 29; Yamunabai v. Manubai 23 B ṃ 608. <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-9" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-10" class="footnote-item"><span class="devanagari">एनस्विभिरनिर्णेतेर्भिः किल्बिषसहायेतु । कृतनिर्णजमायेन न जुगुप्सेत कर्हिचित् ।। मनु</span> XI 189 = (<span class="devanagari">त्रिंशद्युगसंध</span> 54 31 <span class="devanagari">अपराध</span> p 98 says on <span class="devanagari">या</span> I. 70, <span class="devanagari">कृतप्राय</span>-<span class="devanagari">श्चित्ता य आपस्तम्वपरिभ्रष्टत्वार्थं</span>– <span class="devanagari">कार्यंनिंद्यं न जुगुप्सनं ।</span> <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-10" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-11" class="footnote-item"><span class="devanagari">त्यागरचप्रयोजनमकथोपयोगं तु निष्कासनं गृहवास्याः । निरुक्तयात्रेदेवनमनि</span>– <span class="devanagari">हरति निदासाः क्षिया</span>. on <span class="devanagari">या</span> I. 72. <span class="devanagari">निष्करणाइकेष्टानि</span> is <span class="devanagari">मनु</span> XI 176 This passage of the Mit is quoted in Bhikubai v Hariba 27 Bom L. R. 13 at p 20 (=49 Bom 459 at p 467). <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-11" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-12" class="footnote-item">Vide Sathyabhama v Kesavacharya 39 Mad 658 at p 660 where it is said, 'But in none of these texts is there any provision for a woman who has repented and was subsequently leading an honest life. It is not to be presumed from the omission to provide for such a contingency that the presumption once made is to be irrevocable and that the fallen woman who had reformed is to be denied even a starving allowance'. Vide also Bhikubai v Hariba 27 Bom L R 13 at pp 23 and 26 and Ramkumar v Bhagawanta 56 All 392, 394. <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-12" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-13" class="footnote-item">27 Bom L R. 13–49 Bom 459. <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-13" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-14" class="footnote-item">62 I. A 250 at p. 255 <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-14" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-15" class="footnote-item">33 Bom L R. 510 But this case seems to be in conflict with the decision in Shivlal v. Bai Sankli 23 Bom L. R. 479. <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-15" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-16" class="footnote-item"><span class="devanagari">अनपत्यस्य</span> . . <span class="devanagari">समवाख्यायुः ॥ ब्रुहु</span>. cited above in ṇ 1135 and q. by <span class="devanagari">दायभाग</span> IX. 28, <span class="devanagari">व्य</span>. <span class="devanagari">मयूख</span> (p 103). This verse of Br is cited and translated in Krishnayyan v. Muttusami 7 Mad 407 at p 412 and in Rajans Nath v. Nitar 48 Cal 643 (F. B ) at p 686. <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-16" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-17" class="footnote-item">For the meaning of dāsī vide above p. 602 ṇ 1137. <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-17" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-18" class="footnote-item"><span class="devanagari">अत्र च शूद्रमयात्</span> . <span class="devanagari">किं त्वकुलस्त्र्यौजीवनमात्रं लभते । मिता</span> on <span class="devanagari">यज</span> II. 133-134 q. above in n 1136 Vide <span class="devanagari">व्य</span>. <span class="devanagari">मयूख</span> p 104 and <span class="devanagari">व्य</span>. p. 488 for almost the same words The word <span class="devanagari">आजीवनमात्रं</span> does not mean ‘bare main- tenance’ or ‘bare necessities of life,’ has no reference to the amount of maintenance but is used to distinguish it from amsa (share). Vide Hiralal v. Meghraj I. L. R. (1938) Bom 779 at pp. 787 and 794. <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-18" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-19" class="footnote-item">Ananthaya v. Vishnu 17 Maḍ 160; Subramania v. Valu 34 Maḍ 68. Vellayappa v Natarajan 58 I. A 402. Hiralal v. Meghraj I. L. R. (1938) Boṃ 779 = 40 Bom L. R 935. <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-19" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-20" class="footnote-item">Vide Rahi v Govind 1 Boṃ 97. <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-20" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-21" class="footnote-item">Roshan Singh v. Batwant Singh 27 I A. 51 = 22 All. 191. <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-21" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-22" class="footnote-item">Hargobind v Dharam Singh 6 All. 329; Kuppa v. Singaravelu 8. Maḍ 325; Hiralal v. Meghraj I. L. R. (1938) Boṃ 779. <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-22" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-23" class="footnote-item">Nilmoney v. Baneshwar 4 Cal. 91. <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-23" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-24" class="footnote-item">18 Bom 177, 183. <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-24" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-25" class="footnote-item">50 Mad 340. <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-25" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-26" class="footnote-item">Ramanarasu v. Buchamma 23 Maḍ 282, <em>Ningareddi</em> v. <em>Lakshmawa</em> 26 Bom 163, <em>Akku v. Ganesh</em> 47 Boṃ L. R. 5 (F. B) at p. 12. <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-26" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-27" class="footnote-item"><em>Thakur Rab Prasad v Chhotay Munwan</em> 12 Lucknow 469. <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-27" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-28" class="footnote-item"><span class="devanagari">अन्यत्र ब्राह्मणात् किन्तु राजा धर्मपरायणः । तस्तस्त्रीणां जीवनं वृत्तादेयं दाया</span>-<span class="devanagari">विधिः स्मृतः ॥ नारद</span> ( <span class="devanagari">वृषभभाग</span> 52). q. by the Mit. on Yāj. II 114, <span class="devanagari">परा</span>. <span class="devanagari">मा</span>. III. p. 535, <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-28" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-29" class="footnote-item"><span class="devanagari">अदाविकं राजगानि योविभूत्यार्थ्यवृद्धिकम् । अपास्य श्रोत्रियद्रव्ये श्रोत्रिये</span>-<span class="devanagari">मरण्छुपैतृत्त् ॥ कात्या</span>. q. by <span class="devanagari">मिता</span>. on <span class="devanagari">या</span> II 114, <span class="devanagari">परा</span>. <span class="devanagari">मा</span>. III, p 535, <span class="devanagari">ल व</span>, p. 139. This verse is quoted in <em>Savitribai</em> v. <em>Luxmibai</em> 2 Boṃ 573 at p. 608, <em>Yashvantrao</em> v. <em>Kashibai</em> 12 Boṃ 26. <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-29" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-30" class="footnote-item"><span class="devanagari">अष्ट्रापादकी राजा हरेछौत्श्रियुक्ति</span>-<span class="devanagari">प्रेत</span>-<span class="devanagari">कार्येष्ववर्वज्यश्च स्त्रीभ्यश्च प्रयच्छेत्। कौ</span>. III, 5 p 161, Dr Sham Shastri's translation (p 205 ) 'property for which no claimant is found shall go to the king, except the property of a woman, of a dead man for whom no funeral rites have been performed or of a niggardly man' is clearly inaccurate and hardly in consonance with the actual words of the text. 1588 <span class="devanagari">यदपि कात्यायनमनोर्लोक</span>-<span class="devanagari">अदापिकं</span> .... <span class="devanagari">पर्येष्ट</span>-<span class="devanagari">इति</span> .... <span class="devanagari">तदनुवद्धस्त्रीविषयैर्माभिप्रेग्रहणात्। नारदवचनं च अन्यत्र</span> .... <span class="devanagari">स्त्रुतं</span>-<span class="devanagari">दृष्टापचद्स्त्रीविषयमेव। कीशाद्</span>-<span class="devanagari">ग्रहणम्। मिता</span>. on <span class="devanagari">या</span>. II 114. 1589 Yashvantrao v. Kashibai 12 Boṃ 26 at p 28. <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-30" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-31" class="footnote-item">24 Bom, L. R. 1009 = 47 Boṃ 401. <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-31" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-32" class="footnote-item">53 I. A, 153 = 50 Bom, 604 = 28 Bom, L, R. 1143. <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-32" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-33" class="footnote-item">36 Boṃ L. R. 61. <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-33" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-34" class="footnote-item">48 Boṃ 203 = 26 Boṃ L. R. 63 <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-34" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-35" class="footnote-item">47 Boṃ L. R. 5 (F. B ). <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-35" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-36" class="footnote-item">Vide note 1134 for <span class="devanagari">या</span> II 290. <span class="devanagari">उत्पलक्षणा वर्जयित्वा दास्यस्तथा एव स्वामिना शुश्रूषानिर्द्धदासनार्थी गृह एव स्थापनियमितेयं पुरुषान्तरोपभोगे निरूद्धा अवरुद्धा । पुरुषनियतपरिषदा भुजिष्या । यदा दास्यदंडा भुजिष्या वा भवेत्सदा तामः । तथा यस्मात् देशनिर्मितानां साधारणस्त्रीणां भुजिष्याणां च ग्रहणम् । मिता</span>. on <span class="devanagari">या</span>. II. 290. <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-36" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-37" class="footnote-item"><span class="devanagari">प्रोक्तान् श्रीमित्सुयुक्तमपददति । अवरुद्धादिवित्यादि । वृत्त्या दासी पुरुषविशेषेण विवाह्या परिरक्षिता च विधिः । एकेन पुरुषेण स्वभोगायैव पुरुषान्तरभोगो निरूद्धा</span>, <span class="devanagari">भुजिष्या । वेड्याचेति । भुजिष्या च स्वामित्युपभोगान्तरौपभोगविषय । स्वरपरिचर्यिकाङ्गी ।</span> ... <span class="devanagari">एवं च यदास्यास्तथा देशनिर्मितानां स्वजातीनां । अवरुद्धाभुजिष्योर्व्यपदेशे नियमपुरुषस्या । नियमरूपभावः परपारिष्यमाभिधानादिति मिताहारस्तु । मितमिश्र</span> in coṃ on <span class="devanagari">या</span> II. 290. <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-37" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-38" class="footnote-item">53 I. A. 153 = 50 Boṃ 604. <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-38" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-39" class="footnote-item"><span class="devanagari">पुंश्चल्युपभोग्यौ हि नैवेति भावः । पुरुषेणेति स्वामिभिन्नेनार्थः । बालभट्टी</span> on <span class="devanagari">या</span>. II. 290. <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-39" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-40" class="footnote-item"><span class="devanagari">स्त्रियश्च दासीत्वं विवक्षा न मूल्यद्वारेण विभाज्याः पर्यायेण कर्म कारयितव्याः । अपुत्रस्यैव पितुः स्त्रियश्च यथा अत्र पुत्रेण विभाज्याः । स्त्रीषु च संयुक्तास्वपि गोतमनवचनं दर्शयति स्त्रीषु च संयुक्तास्वपि । संयुक्तासु वा अपृष्टकासु अवरुद्धकासु विवादे । अरक्षिता गृहे कन्याः पुरुषेराकासनिभिः</span>—<span class="devanagari">इति तेनैकत्वात् । एव च बद्धमित्रस्य पुत्रेऽप्यपृथग्निमापवष्टम्भम् । स्मृतिच</span>. II, p. 321. <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-40" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-41" class="footnote-item">Vide Lakshman v. Satyabhamabai 2 Boṃ 494 at pp 499, 505, Radhabai v. Gopal 45 Boṃ L. R. 980 at p. 991. <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-41" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-42" class="footnote-item">In Nagalutchmee Ummal v. Gopoo Nadaraja 6 Moo I A, p 309 the P. C. said (at p. 344): ‘It must be allowed that in the ancient Hindu Law, as it was understood through the whole of Hindustan, testa-mentary instruments in the sense affixed by English lawyers to that expres-sion were unknown; and it is stated by a writer of authority (Sir Thomas Strange) that the Hindoo language has no terms to express what we mean by a will. But it does not necessarily follow that what in effect though not in form are testamentary instruments which are only to come into operation and affect property after the death of the maker of the instrument were equally unknowṇ <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-42" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-43" class="footnote-item"><span class="devanagari">स्वरसेनार्जन वा देयं श्रविभ्रं धर्मकारणात् । अदत्त्वा तु मृते दाप्यस्तत्सुतो नात्र संशयः । कात्या० १</span> by <span class="devanagari">अपरार्क</span> p. 782, <span class="devanagari">द्वि</span>. <span class="devanagari">चि</span>. p 16, <span class="devanagari">स्म</span>. <span class="devanagari">मयूरख</span> p. 206. ' <span class="devanagari">श्रावविक्षा यदि पुत्रमकुर्वन्न मुतस्तदा तदाप्यनेनैवपद्म् । अप्रयच्छतो राजा दाप्यः । एवञ्च धर्मोय प्रतिश्रवणे सति द्रष्टव्यम् । अपरार्क</span> p. 782 <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-43" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-44" class="footnote-item"><span class="devanagari">यादी चिरंजीव राजश्री माधवराव यासि नारो बाबाजी असिरवाद उपरि सन १७७५ सम्वत्सन नाम संवत्सरे आपले शरीर आज महिनाभर वेधा झाली आहे न जाणे शरी</span>- <span class="devanagari">राचा भरवसा नाही आपला धर्माचा ऐवज अन्तकाल वगैरे ठेवला आहे तो येणेप्रमाणे</span> :     <span class="devanagari">धर्म करावा भीतपडीत     ५००० आपण जिवंत असतां आपले हाते माधव्वीत व हिरण्यद्वारा मोक्षत वगैरे प्रसंग आल्यास करवावे     १०००० क्रियेस लागावे     ५००० मासिक धर्मश्राद्ध मिलोण</span>     x x     <span class="devanagari">१५००० आपले गंगागर्जन व कासीत एक गायत्रीपुरश्चरण व किरकोल धर्म     ५००० घासीयाब किरकोल धर्म कासीस अथवा अन्य देवो</span>     x x     <span class="devanagari">५००००</span>     ( Continued on the next page ) <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-44" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-45" class="footnote-item">The will is set out in an English translation in W. A. Montrion's 'The Hindu Will in Bengal' (Calcutta, 1870) pp. 9ff. <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-45" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-46" class="footnote-item">Vide Jugmohandas v. Sir Mangaldas 10 Boṃ 528. <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-46" class="fn-back" aria-label="Back to text">↩</a></li>
+<li id="fn-chapter-xxxi-maintenance-and-other-topics-47" class="footnote-item">This is a reference to the texts of Gaut. 23 29, the Mahābhārata, Manu, Yājñavalkya and others cited on p 353 above Sir William Jones re- marks (in Works, vol. VIII p. 445, ed, of 1807) ‘ In the great system of contracts and the common intercourse between man and man, the Foedus (Pact? ) of the Indians and the Digest of the Romans are by no means dissimilar '. <a href="#fnref-chapter-xxxi-maintenance-and-other-topics-47" class="fn-back" aria-label="Back to text">↩</a></li>
+</ol>
+</aside>
+
+            <div class="chapter-nav">
+                <a href="chapter-xxx-stridhana.html" class="nav-prev"><i class="fa-solid fa-chevron-left"></i> Chapter XXX. Stridhana</a>
+                <a href="chapter-xxxii-practices-of-shistas-conflict-among-shruti-smriti-and-sadāchāra-an.html" class="nav-next">Chapter XXXII. Practices of Shistas; Conflict among Shruti, Smriti and Sadāchāra: Ancient Instances of Transgressions of Dharma; Customs and Pūrvamīmāmsā <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </main>
+    </div>
+
+    <button class="toc-mobile-toggle" onclick="toggleMobileToc()" aria-label="Table of contents">
+        <i class="fa-solid fa-list"></i>
+    </button>
+
+    
+    <footer class="container-fluid pt-4" style="background-color:#2e4144">
+        <div class="row border-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img src="https://sanatana.in/mbta/public/images/Homepage_html/images/layer_8.png" alt="">
+            </div>
+            <div class="col-md-5 text-white">
+                <p>The divine knowledge and wisdom of our shastras is the only thing eternal,
+                   which was and which will remain ever-present in this gods creation.
+                   Our endeavours are to preserve this knowledge.</p>
+            </div>
+            <div class="col-md-1 text-white">
+                <div class="d-flex" style="height: 75px;">
+                    <div class="vr"></div>
+                </div>
+            </div>
+            <div class="col-md-3 text-white">
+                <i class="fa-solid fa-globe"></i>&emsp;
+                <a href="https://sanatanasampatti.in" class="text-light">www.sanatanasampatti.in</a><br>
+                <i class="fa-solid fa-envelope"></i>&emsp;
+                <a href="" class="text-light">sriranga.yoga@gmail.com</a>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center py-3 mb-4 align-items-center border-bottom">
+            <div class="col-md-2 text-white fs-4 text-center">Project</div>
+            <div class="col-md-2 text-white fs-4 text-center">Our Mission</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contribute</div>
+            <div class="col-md-2 text-white fs-4 text-center">Contact Us</div>
+        </div>
+        <div class="row">
+            <p class="col-md-6 fs-6 text-start text-light">
+                <small>&copy; 2026 Sanatanasampatti</small>
+            </p>
+            <p class="col-md-6 fs-6 text-end text-light">
+                <a class="text-white" rel="nofollow" href="http://www.srirangadigital.com" target="_blank">
+                    <img src="https://sanatana.in/mbta/public/images/logo.png" alt="sriranga logo" />
+                    <small>Designed, Developed and Maintained by Sriranga Digital</small>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        const headings = [];
+        tocLinks.forEach(link => {
+            const id = link.getAttribute('href').substring(1);
+            const el = document.getElementById(id);
+            if (el) headings.push({ el: el, link: link.parentElement });
+        });
+
+        function onScroll() {
+            let current = null;
+            for (const h of headings) {
+                const rect = h.el.getBoundingClientRect();
+                if (rect.top <= 120) current = h;
+            }
+            tocLinks.forEach(l => l.parentElement.classList.remove('active'));
+            if (current) current.link.classList.add('active');
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    });
+
+    function toggleMobileToc() {
+        const toc = document.getElementById('toc');
+        if (!toc) return;
+        if (toc.style.display === 'block') {
+            toc.style.display = '';
+            toc.style.position = '';
+        } else {
+            toc.style.display = 'block';
+            toc.style.position = 'fixed';
+            toc.style.top = '0';
+            toc.style.left = '0';
+            toc.style.width = '80vw';
+            toc.style.maxWidth = '320px';
+            toc.style.height = '100vh';
+            toc.style.maxHeight = '100vh';
+            toc.style.zIndex = '2000';
+            toc.style.background = 'var(--parchment)';
+            toc.style.boxShadow = '4px 0 20px rgba(0,0,0,0.2)';
+            toc.style.padding = '24px';
+            toc.style.overflowY = 'auto';
+        }
+    }
+    </script>
+
+    <script>
+    function toggleSynopsisAudio(btn) {
+        var audio = btn.parentElement.querySelector('audio');
+        if (!audio.src) audio.src = btn.getAttribute('data-src');
+        if (audio.paused) {
+            audio.play();
+            btn.classList.add('playing');
+            btn.querySelector('i').className = 'fa-solid fa-pause';
+        } else {
+            audio.pause();
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        }
+        audio.onended = function() {
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fa-solid fa-play';
+        };
+        // Prevent click from toggling the synopsis open/close
+        event.stopPropagation();
+    }
+    </script>
+</body>
+</html>
